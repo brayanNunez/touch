@@ -1,0 +1,7 @@
+los que usa el index son
+css
+
+img
+
+js
+
