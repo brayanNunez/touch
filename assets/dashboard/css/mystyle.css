@@ -1,0 +1,235 @@
+.hoja{
+	width: 90%;
+	height: 90%;
+	background-color: white;
+	margin: 5% auto;
+	box-shadow: 10px 10px 5px #444444;
+
+}
+
+.listaHojas{
+    /*float: left;*/
+	width: 1068.98px;
+	height: 1555px;
+	background-color: grey;
+	/*left: auto;
+	right: auto;*/
+    /*position: absolute;*/
+    float: left;
+}
+
+#encabezado{
+	padding: 2%;
+	width: 100%;
+	height: 16%;    /*%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+	background-color: red;
+}
+
+#encabezado .imagen{
+	width: 100%;
+	height: 150px;
+}
+
+#encabezado #logo{
+	width: 150px;
+	height: 100%;
+	float: left;
+}
+
+#encabezado #datosEncabezado{
+	margin: 0 7px;
+	width: 80%;
+	height: 100%;
+	/*background-color: blue;*/
+	float: left;
+
+}
+
+#encabezado #datosEncabezado .datos{
+ color: white;
+ font-size: 20px;
+ /*height: 100%;*/
+ /*padding: 5px;*/
+}
+
+#encabezado #datosEncabezado #datos1{
+	width: 68%;
+	float: left;
+	margin-left: 2%;
+}
+#encabezado #datosEncabezado #datos2{
+	width: 30%;
+	float: right;
+}
+
+#nombreEmpresa {
+	font-size: 25px;
+}
+
+.barra-horizontal {
+	width: 100%;
+	height: 1%;    /*%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+
+}
+#barra1{
+		background-color: #585858;
+}
+
+#detalle{
+	width: 100%;
+	height: 39%;    /*%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+	background-color: white;
+}
+#barra2{
+		background-color: #585858;
+}
+
+#informacion{
+	height: 29%;    /*%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+	background-color: red;
+	padding: 2%;
+}
+#barra3{
+		background-color: #585858;
+}
+
+#informacion .datos{
+	color: white;
+	 font-size: 20px;
+	 /*height: 100%;*/
+	 padding: 5px;
+}
+
+#nombreFirma{
+	margin-left: 10%;
+}
+
+#footerCotizacion{
+	width: 100%;
+	height: 9%;    /*%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+	background-color: #FAAC58;
+	padding: 2%;
+}
+
+#informacionSistema{
+	width: 100%;
+	height: 2%;    /*%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+	background-color: white;
+	text-align: center;
+	padding: 4px;
+}
+
+
+
+
+#footerCotizacion .imagen{
+	width: 100%;
+	height: 100px;
+}
+
+#footerCotizacion #logo{
+	width: 100px;
+	height: 100%;
+	float: left;
+}
+
+#footerCotizacion #datosFooter{
+	margin: 0 7px;
+	width: 80%;
+	height: 100%;
+	/*background-color: blue;*/
+	float: left;
+
+}
+
+#footerCotizacion #datosFooter .datos{
+ color: white;
+ font-size: 20px;
+ /*height: 100%;*/
+ /*padding: 5px;*/
+}
+
+#footerCotizacion #datosFooter #datos1{
+	width: 48%;
+	float: left;
+	margin-left: 2%;
+}
+#footerCotizacion #datosFooter #datos2{
+	width: 50%;
+	float: right;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    width: 15%;/*
+    height: 2%;*/
+    text-align: center;
+}
+
+#datallesCotizacion{
+	width: 96%;
+	margin: 2% 2%;
+	text-align: center;
+	font-size: 22px;
+}
+
+#datallesCotizacion img{
+	width: 100%;
+	margin: auto;
+}
+#resultadoCotizacion{
+	width: 18%;
+	height: 150px;
+	float: right;
+	margin-right: 2%;
+}
+
+#resultadoCotizacion{
+	margin-right: 2%;
+	font-size: 22px;
+}
+
+p{
+    margin: 0 0 10px;
+}
+
+#card-diseno{
+		overflow-x: scroll;
+		overflow-y: scroll;
+		height: 700px;
+}
+
+.ventana{
+	width: 100%;
+	height: 100%;
+	color: #FFF;
+	position: fixed;
+	background-image: url(../images/bg-modal.png);
+	top: 0;
+	left: 0;
+	display:none;
+}
+.form{
+	width: 300px;
+	height: 300px;
+	padding: 25px;
+	background-color: #FFF;
+	color: #666;
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	margin-left: -175px;
+	margin-top: -175px;
+}
+.cerrar{
+	font-weight: 900;
+	text-align: right;
+}
+.cerrar a{
+	color: red;
+}
+

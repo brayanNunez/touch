@@ -25,6 +25,7 @@
     <!-- CORE CSS-->    
     <link href="<?=base_url()?>assets/dashboard/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="<?=base_url()?>assets/dashboard/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="<?=base_url()?>assets/dashboard/css/mystyle.css" type="text/css" rel="stylesheet" media="screen,projection">
 
 
     <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
@@ -37,6 +38,9 @@
 </head>
 
 <body>
+
+
+
     <!-- Start Page Loading -->
     <div id="loader-wrapper">
         <div id="loader"></div>        
@@ -82,3 +86,4 @@
     <div id="main">
         <!-- START WRAPPER -->
         <div class="wrapper">
+        
