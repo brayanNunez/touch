@@ -67,6 +67,12 @@
                               </div>
 
                               </div>
+
+
+
+
+                              <div class="icon-preview col s6 m3"><i class="mdi-communication-messenger"></i><span>mdi-communication-messenger</span>
+                  </div>
                            </div>
                          </div>
                     </div>

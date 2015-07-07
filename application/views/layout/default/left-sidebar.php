@@ -68,7 +68,8 @@
                             </li>
                             <li class="bold"><a href="#" class="waves-effect waves-cyan"><i class="mdi-device-now-widgets"></i> Avanzado <span class="new badge"></span></a>
                             </li>
-                           
+                        </ul>
+                    </li>  
                     <li class="li-hover"><div class="divider"></div></li>
                     <li class="li-hover"><p class="ultra-small margin more-text">M&aacute;s Opciones</p></li>
                     <li><a href="#"><i class="mdi-action-swap-vert-circle"></i> Agregar cotización</a>
