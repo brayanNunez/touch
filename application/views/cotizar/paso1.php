@@ -13,10 +13,7 @@
                             
                             <div class="col s12 m12 l12">
                               <div class="card">
-
-                  <a class="btn-floating btn-large red" id="editarDiseno">
-                  <i class="large mdi-editor-mode-edit"></i>
-                </a>
+                                  
                                     <!-- Form with placeholder -->
                                     <div class="col s12 m12 l6">
                                       <div class="card-panel">
@@ -58,7 +55,6 @@
                                         </div>
                                       </div>
                                     </div>
-
 
                                </div>
                     </div>

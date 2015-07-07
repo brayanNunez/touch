@@ -26,7 +26,37 @@
     <link href="<?=base_url()?>assets/dashboard/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="<?=base_url()?>assets/dashboard/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="<?=base_url()?>assets/dashboard/css/mystyle.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="<?=base_url()?>assets/variant/theme/css/bootstrap.css" type="text/css" rel="stylesheet" media="screen,projection">
 
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="<?= base_url() ?>assets/dashboard/js/jquery.treetable-ajax-persist.js"></script>
+    <script type="text/javascript" src="<?= base_url() ?>assets/dashboard/js/jquery.treetable-3.0.0.js"></script>
+    <script type="text/javascript" src="<?= base_url() ?>assets/dashboard/js/persist-min.js"></script>
+    <link href="<?= base_url() ?>assets/dashboard/css/jquery.treetable.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url() ?>assets/dashboard/css/mystyle-s.css" media="all" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#example").agikiTreeTable({
+                persist: true, persistStoreName: "files"});
+        });
+        $(document).ready(function() {
+            $('#search').keyup(function() {
+                debugger;
+                searchTable($(this).val());
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        function toggle_visibility(id) {
+            var e = document.getElementById(id);
+            if(e.style.display == 'block')
+                e.style.display = 'none';
+            else
+                e.style.display = 'block';
+        }
+    </script>
 
     <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
     <link href="<?=base_url()?>assets/dashboard/js/plugins/material-preloader/materialPreloader.css" type="text/css" rel="stylesheet" media="screen,projection">
@@ -39,37 +69,33 @@
 
 <body>
 
-
-
-    <!-- Start Page Loading -->
+<!--     Start Page Loading-->
     <div id="loader-wrapper">
-        <div id="loader"></div>        
+        <div id="loader"></div>
         <div class="loader-section section-left"></div>
         <div class="loader-section section-right"></div>
     </div>
-    <!-- End Page Loading -->
+<!--     End Page Loading-->
 
-    <!-- //////////////////////////////////////////////////////////////////////////// -->
-
-    <!-- START HEADER -->
+<!--     START HEADER-->
     <header id="header" class="page-topbar">
         <!-- start header nav-->
         <div class="navbar-fixed">
             <nav class="touch">
                 <div class="nav-wrapper">
                     <h1 class="logo-wrapper"><a href="index.html" class="brand-logo darken-1"><img src="<?=base_url()?>assets/dashboard/images/materialize-logo.png" alt="materialize logo"></a> <span class="logo-text">Touch!</span></h1>
-                    <ul class="right hide-on-med-and-down"> 
+                    <ul class="right hide-on-med-and-down">
                         <li class="search-out">
                             <input type="text" class="search-out-text">
                         </li>
-                        <li>    
-                            <a href="javascript:void(0);" class="waves-effect waves-block waves-light show-search"><i class="mdi-action-search"></i></a>                              
+                        <li>
+                            <a href="javascript:void(0);" class="waves-effect waves-block waves-light show-search"><i class="mdi-action-search"></i></a>
                         </li>
                         <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen"><i class="mdi-action-settings-overscan"></i></a>
                         </li>
                         <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light"><i class="mdi-social-notifications"></i></a>
                         </li>
-                        <!-- Dropdown Trigger -->                        
+                        <!-- Dropdown Trigger -->
                         <li><a href="#" data-activates="chat-out" class="waves-effect waves-block waves-light chat-collapse"><i class="mdi-communication-chat"></i></a>
                         </li>
                     </ul>
@@ -78,7 +104,7 @@
         </div>
         <!-- end header nav-->
     </header>
-    <!-- END HEADER -->
+<!--     END HEADER-->
 
     <!-- //////////////////////////////////////////////////////////////////////////// -->
 
@@ -86,4 +112,3 @@
     <div id="main">
         <!-- START WRAPPER -->
         <div class="wrapper">
-        
