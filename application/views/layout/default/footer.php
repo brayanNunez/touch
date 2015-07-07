@@ -174,6 +174,12 @@
     <!-- chartist -->
     <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/plugins/chartist-js/chartist.min.js"></script>   
 
+
+
+    <!-- data-tables -->
+    <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/plugins/data-tables/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/plugins/data-tables/data-tables-script.js"></script>
+    
     <!-- chartjs -->
     <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/plugins/chartjs/chart.min.js"></script>
     <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/plugins/chartjs/chart-script.js"></script>
@@ -187,7 +193,9 @@
     <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
     <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/plugins/jvectormap/vectormap-script.js"></script>
     
-    
+
+
+
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/plugins.js"></script>
     <!-- Toast Notification -->

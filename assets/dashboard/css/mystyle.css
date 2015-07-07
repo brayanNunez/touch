@@ -167,11 +167,11 @@
 	float: right;
 }
 
-table, th, td {
+.listaHojas table,.listaHojas th,.listaHojas td {
     border: 1px solid black;
     border-collapse: collapse;
 }
-th, td {
+.listaHojas th, td {
     padding: 5px;
     width: 15%;/*
     height: 2%;*/
@@ -241,6 +241,12 @@ p{
 	color: red;
 }
 
+/*#listaCotizaciones{
+	width: 1000px;
+}*/
 
-
+#table-datatables{
+	margin: 1%;
+	/*width: 98%;*/
+}
 

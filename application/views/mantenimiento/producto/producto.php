@@ -189,6 +189,27 @@
                                             });
                                         }
                                     </script>
+                                    <script type="text/javascript">
+                                        $(document).ready(function(){
+                                            $("#example").agikiTreeTable({
+                                                persist: true, persistStoreName: "files"});
+                                        });
+                                        $(document).ready(function() {
+                                            $('#search').keyup(function() {
+                                                debugger;
+                                                searchTable($(this).val());
+                                            });
+                                        });
+                                    </script>
+                                    <script type="text/javascript">
+                                        function toggle_visibility(id) {
+                                            var e = document.getElementById(id);
+                                            if(e.style.display == 'block')
+                                                e.style.display = 'none';
+                                            else
+                                                e.style.display = 'block';
+                                        }
+                                    </script>
 
                                 </div>
                             </div>
