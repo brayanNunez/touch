@@ -2,7 +2,7 @@
  <section id="content">
 
     <!--start container-->
-<div id="breadcrumbs-wrapper" class=" grey lighten-3">
+        <div id="breadcrumbs-wrapper" class=" grey lighten-3">
           <div class="container">
             <div class="row">
               <div class="col s12 m12 l12">
@@ -22,10 +22,10 @@
             <div class="row">
                 <div class="col s12 m12 l8">
 
-                <div id="submit-button" class="section">
-                          <div class="row">
+                    <div id="submit-button" class="section">
+                        <div class="row">
                             
-                            <div class="col s12 m12 l12">
+                            <div class="col s12 m8 l9">
                               <div class="card" id="card-diseno">
 
                                    <div class="listaHojas">
@@ -167,6 +167,7 @@
                                             </div>
                                         </div>
                                    </div>
+                              </div>
                         </div>
                     </div>
 
