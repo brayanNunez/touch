@@ -5725,7 +5725,7 @@ small {
     letter-spacing: .8px;
     width: 15%; }
     .tabs .tab a {
-      color: #00bcd4;
+      color: #225264;
       display: block;
       width: 100%;
       height: 100%;
@@ -5735,12 +5735,12 @@ small {
       -ms-transition: color 0.28s ease;
       transition: color 0.28s ease; }
       .tabs .tab a:hover {
-        color: #3be9ff; }
+        color: #57923f; }
   .tabs .indicator {
     position: absolute;
     bottom: 0;
     height: 2px;
-    background-color: #b2ebf2;
+    background-color: #57923f;
     will-change: left, right; }
 
 .tabs .tab {

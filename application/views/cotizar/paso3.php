@@ -2,6 +2,20 @@
  <section id="content">
 
     <!--start container-->
+<div id="breadcrumbs-wrapper" class=" grey lighten-3">
+          <div class="container">
+            <div class="row">
+              <div class="col s12 m12 l12">
+                <h5 class="breadcrumbs-title">Diseño</h5>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--breadcrumbs end-->
+
+
+
 
     <div class="container">
         <div id="chart-dashboard">
@@ -16,17 +30,7 @@
 
                                    <div class="listaHojas">
                                    
-                                        <div id="barraEditar">
-                                        <div style="margin-top: 20%; float: left">
-                                         
-                                            
-                                        </div>
-
-
-
-
-                                           
-                                        </div>
+                                        
                                         <div class="hoja">
 
                                             <a  class="btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
@@ -65,6 +69,7 @@
                                                 <i class="mdi-editor-mode-edit"></i>
                                             </a>
                                             <div id="detalle">
+
                                                 <div id="datallesCotizacion">
                                                     <table style="width:100%">
                                                         <tr>
@@ -72,7 +77,12 @@
                                                             <th>Precio</th>
                                                             <th>Cantidad</th>
                                                             <th>Imagen</th>
-                                                            <th>Sub-total</th>
+                                                            <th>Sub-total
+                                                            <a  class="btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
+                                                <i class="mdi-editor-mode-edit"></i>
+                                            </a>
+
+                                                            </th>
                                                         </tr>
                                                         <tr>
                                                             <td>Almuerzo</td>
@@ -109,6 +119,10 @@
                                             <div class="barra-horizontal" id="barra2">
 
                                             </div>
+
+                                             <a  class="btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
+                                                <i class="mdi-editor-mode-edit"></i>
+                                            </a>
                                             <div id="informacion">
                                                 <div class="datos">
                                                     <p>Forma de pago: 50% primer mes, 50% segundo mes.</p>
@@ -124,6 +138,10 @@
                                             <div class="barra-horizontal" id="barra3">
 
                                             </div>
+
+                                             <a  class="btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
+                                                <i class="mdi-editor-mode-edit"></i>
+                                            </a>
                                             <div id="footerCotizacion">
                                                 <div id="logo">
                                                     <img class="imagen" src="<?=base_url()?>assets/dashboard/images/sombrero.png">
@@ -148,7 +166,7 @@
                                                 <p>Esta cotización ha sido desarrollada en la plataforma: touchcr.com</p>
                                             </div>
                                         </div>
-                                 </div>
+                                   </div>
                         </div>
                     </div>
 
