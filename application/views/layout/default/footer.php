@@ -164,7 +164,7 @@
     ================================================ -->
     
     <!-- jQuery Library -->
-    <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/jquery-1.11.2.min.js"></script>    
+<!--    <script type="text/javascript" src="--><?//=base_url()?><!--assets/dashboard/js/jquery-1.11.2.min.js"></script>-->
     <!--materialize js-->
     <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/materialize.min.js"></script>
     <!--scrollbar-->
@@ -206,6 +206,43 @@
     });
     
     </script>
+
+ <div id="popup-box2" class="popup-position">
+     <div class="popup-wrapper">
+         <div class="popup-container">
+             <h2>Agregar elemento</h2>
+             <form class="text-left">
+                 <input class="mb0" type="text" id="padreA" style="display: none">
+                 <input class="mb0" type="text" placeholder="Nombre">
+                 Tipo:<br />
+                 <input type="radio" name="tipo" value="producto">Producto<br />
+                 <input type="radio" name="tipo" value="categoria">Categoria
+                 <br />
+                 <input type="submit" value="Aceptar" class="btn btn-success" style="width: 100%">
+             </form>
+             <p><a href="javascript:void(0)" onclick="toggle_visibility('popup-box2');" style="float: right">Cerrar</a></p>
+         </div>
+     </div>
+ </div>
+
+ <div id="popup-box3" class="popup-position">
+     <div class="popup-wrapper">
+         <div class="popup-container">
+             <h2>Editar elemento</h2>
+             <form class="text-left">
+                 <input class="mb0" type="text" id="padreE" style="display: none">
+                 <input class="mb0" type="text" placeholder="Nombre">
+                 Tipo:<br />
+                 <input type="radio" name="tipo" value="producto">Producto<br />
+                 <input type="radio" name="tipo" value="categoria">Categoria
+                 <br />
+                 <input type="submit" value="Aceptar" class="btn btn-success" style="width: 100%">
+             </form>
+             <p><a href="javascript:void(0)" onclick="toggle_visibility('popup-box3');" style="float: right">Cerrar</a></p>
+         </div>
+     </div>
+ </div>
+
 </body>
 
 </html>
