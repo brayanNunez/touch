@@ -1,7 +1,20 @@
-<!-- START CONTENT -->
+
 <section id="content">
 
     <!--start container-->
+
+        <div id="breadcrumbs-wrapper" class=" grey lighten-3">
+          <div class="container">
+            <div class="row">
+              <div class="col s12 m12 l12">
+                <h5 class="breadcrumbs-title">Productos</h5>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--breadcrumbs end-->
+
 
     <div class="container">
         <div id="chart-dashboard">
@@ -15,10 +28,10 @@
                                 <div id="card_productos" class="card">
 
                                     <div id="tableHeader">
-                                        <div class="col-md-6" style="float: left">
+                                        <!-- <div class="col-md-6" style="float: left">
                                             <h2>Productos</h2>
-                                        </div>
-                                        <div class="col-md-6" style="float: right; margin-top: 15px">
+                                        </div> -->
+                                        <div  style="float: right; margin-top: 15px">
                                             <input type="text" id="search" placeholder="Buscar"/>
                                         </div>
                                     </div>
@@ -220,4 +233,4 @@
             </div>
             <!--end container-->
 </section>
-<!-- END CONTENT-->
+<!-- END CONTENT

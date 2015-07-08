@@ -245,12 +245,15 @@ p{
 	width: 1000px;
 }*/
 
-#table-datatables{
-	margin: 1%;
-	/*width: 98%;*/
-}
 
 .container {
   width: 98% !important;
+}
+
+#card_productos{
+	padding: 1%;
+}
+#listaCotizaciones{
+	padding: 1%;
 }
 

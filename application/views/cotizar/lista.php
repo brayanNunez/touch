@@ -6,7 +6,7 @@
           <div class="container">
             <div class="row">
               <div class="col s12 m12 l12">
-                <h5 class="breadcrumbs-title">Lista de cotizaciones</h5>
+                <h1 class="breadcrumbs-title">Lista de cotizaciones</h1>
                 
               </div>
             </div>
