@@ -8,7 +8,7 @@
                     <!--chart dashboard start-->
                     <div id="chart-dashboard">
                         <div class="row">
-                            <div class="col s12 m8 l8">
+                            <div class="col s12 m12 l8">
                                 <div class="card">
                                     <div class="card-move-up waves-effect waves-block waves-light">
                                         <div class="move-up cyan darken-1">
