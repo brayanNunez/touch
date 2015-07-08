@@ -250,3 +250,7 @@ p{
 	/*width: 98%;*/
 }
 
+.container {
+  width: 98% !important;
+}
+
