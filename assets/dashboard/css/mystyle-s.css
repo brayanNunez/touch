@@ -6,3 +6,5 @@ input:focus { outline: 0; }
 .popup-container { background-color: white; padding: 20px; border-radius: 5px; }
 .mb0 { margin: 7px 0px; width: 100% }
 /*#card_productos { width: 100%; }*/
+
+#example tbody td { text-align: left; padding-left: 10px; }
