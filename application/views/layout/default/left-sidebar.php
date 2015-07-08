@@ -27,7 +27,7 @@
                     </li>
                     <li class="bold"><a href="index.html" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Inicio</a>
                     </li>
-                    <li class="bold"><a href="#" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Cotizaciones <span class="new badge">4</span></a>
+                    <li class="bold"><a href="<?=base_url()?>cotizacion" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Cotizaciones <span class="new badge">4</span></a>
                     </li>
                     <li class="bold"><a href="#" class="waves-effect waves-cyan"><i class="mdi-action-favorite"></i> Servicios</a>
                     </li>
