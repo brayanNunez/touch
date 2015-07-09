@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--================================================================================
+  Item Name: Materialize - Material Design Admin Template
+  Version: 1.0
+  Author: GeeksLabs
+  Author URL: http://www.themeforest.net/user/geekslabs
+================================================================================ -->
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
+  <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
+  <title>Forms Layouts | Materialize - Material Design Admin Template</title>
+
+  <!-- Favicons-->
+  <link rel="icon" href="../images/favicon/favicon-32x32.png" sizes="32x32">
+  <!-- Favicons-->
+  <link rel="apple-touch-icon-precomposed" href="../images/favicon/apple-touch-icon-152x152.png">
+  <!-- For iPhone -->
+  <meta name="msapplication-TileColor" content="#00bcd4">
+  <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
+  <!-- For Windows Phone -->
+
+
+  <!-- CORE CSS-->
+  
+  <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
+
+
+  <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+  <link href="../css/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="../js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="../js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+</head>
+
+<body>
+  <!-- START MAIN -->
+  <div id="main">
+    <!-- START WRAPPER -->
+    <div class="wrapper">
+
+      <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+      <!-- START CONTENT -->
+      <section id="content">
+
+          <!--Form Advance-->          
+          <div class="row">
+            <div class="col s6 m6 l6">
+              <div class="card-panel">
+                <h3 class="header2">Agregar una persona</h3>
+                <div class="row">
+                  <form class="col s12">
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <select>
+                          <option value="" disabled selected>Tipo de persona</option>
+                          <option value="1">Fisica</option>
+                          <option value="2">Juridica</option>
+                        </select>
+                      </div>
+                        <div class="input-field col s12">
+                            <input id="client_code" type="text">
+                            <label for="client_code">Codigo</label>
+                        </div>
+                      <div class="input-field col s12">
+                        <input id="first_name" type="text">
+                        <label for="first_name">Nombre</label>
+                      </div>
+                    
+                      <div class="input-field col s12">
+                        <input id="cliente_id" type="text">
+                        <label for="cliente_id">Identificacion</label>
+                      </div>
+                        <div class="input-field col s12">
+                            <input type="date" class="datepicker">
+                            <label for="">Fecha de nacimiento</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input id="email5" type="email">
+                        <label for="email5">Correo</label>
+                      </div>
+                        <div class="input-field col s12">
+                            <input id="mobile_phone" type="text">
+                            <label for="mobile_phone">Telefono movil</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input id="other_phone" type="text">
+                            <label for="other_phone">Telefono fijo</label>
+                        </div>
+                    </div>
+                      <div class="input-field col s12">
+                          <label>Contactos</label>
+                          <br />
+                          <br />
+                          <table class="table table-striped">
+                              <thead>
+                              <tr>
+                                  <th>Nombre</th>
+                                  <th>Correo</th>
+                                  <th>Opciones</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td>Maria Rodriguez</td>
+                                      <td>maria@gmail.com</td>
+                                      <td>
+                                          <a class="btn btn-default">Ed</a>
+                                          <a class="btn btn-default">El</a>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>Juan Perez</td>
+                                      <td>juan@gmail.com</td>
+                                      <td>
+                                          <a class="btn btn-default">Ed</a>
+                                          <a class="btn btn-default">El</a>
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                          <a href="#" class="btn btn-default">+ Agregar</a>
+                      </div>
+                      <div class="input-field col s12">
+                          <label>Gustos y preferencias</label>
+                          <br />
+                          <br />
+                          <table class="table-bordered">
+                              <thead>
+                              <tr>
+                                  <th>Gusto</th>
+                                  <th>Estado</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td>Preferencia 1</td>
+                                      <td>
+                                          <div class="switch">
+                                              <label style="position: relative">
+                                                  Off
+                                                  <input type="checkbox">
+                                                  <span class="lever"></span> On
+                                              </label>
+                                          </div>
+                                          <br />
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>Preferencia 2</td>
+                                      <td>
+                                          <div class="switch">
+                                              <label style="position: relative">
+                                                  Off
+                                                  <input type="checkbox">
+                                                  <span class="lever"></span> On
+                                              </label>
+                                          </div>
+                                          <br />
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>Preferencia 3</td>
+                                      <td>
+                                          <div class="switch">
+                                              <label style="position: relative">
+                                                  Off
+                                                  <input type="checkbox">
+                                                  <span class="lever"></span> On
+                                              </label>
+                                          </div>
+                                          <br />
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                          <div class="input-field col s12">
+                              <div class="input-field col s8">
+                                  <input id="otro_gusto" type="text">
+                                  <label for="otro_gusto">Nuevo gusto</label>
+                              </div>
+                              <div class="input-field col s4">
+                                  <a href="#" class="btn btn-default">Agregar</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="input-field col s12">
+                          <label>Medios de contacto</label>
+                          <br />
+                          <br />
+                          <table class="table-bordered">
+                              <thead>
+                              <tr>
+                                  <th>Medio</th>
+                                  <th>Estado</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <tr>
+                                  <td>Medio 1</td>
+                                  <td>
+                                      <div class="switch">
+                                          <label style="position: relative">
+                                              Off
+                                              <input type="checkbox">
+                                              <span class="lever"></span> On
+                                          </label>
+                                      </div>
+                                      <br />
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Medio 2</td>
+                                  <td>
+                                      <div class="switch">
+                                          <label style="position: relative">
+                                              Off
+                                              <input type="checkbox">
+                                              <span class="lever"></span> On
+                                          </label>
+                                      </div>
+                                      <br />
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Medio 3</td>
+                                  <td>
+                                      <div class="switch">
+                                          <label style="position: relative">
+                                              Off
+                                              <input type="checkbox">
+                                              <span class="lever"></span> On
+                                          </label>
+                                      </div>
+                                      <br />
+                                  </td>
+                              </tr>
+                              </tbody>
+                          </table>
+                          <div class="input-field col s12">
+                              <div class="input-field col s8">
+                                  <input id="otro_medio" type="text">
+                                  <label for="otro_medio">Nuevo medio</label>
+                              </div>
+                              <div class="input-field col s4">
+                                  <a href="#" class="btn btn-default">Agregar</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="input-field col s12">
+                          <select>
+                              <option value="" disabled selected>Cotizador</option>
+                              <option value="1">Pepe</option>
+                              <option value="2">Juan</option>
+                              <option value="3">Maria</option>
+                          </select>
+                          <!--<label>Select Profile</label>-->
+                      </div>
+
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input id="password6" type="password">
+                        <label for="password6">Contrasena</label>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <select>
+                          <option value="" disabled selected>Rol en el sistema</option>
+                          <option value="1">Manager</option>
+                          <option value="2">Developer</option>
+                          <option value="3">Business</option>
+                        </select>
+                        <!--<label>Select Profile</label>-->
+                      </div>
+                      
+                    </div>
+                    
+                    <div class="row">
+                      <div class="file-field input-field col s12">
+                        <input class="file-path validate" type="text"/>
+                        <div class="btn">
+                          <span>Ex</span>
+                          <input type="file" />
+                        </div>
+                      </div>
+                      <!--<div class="input-field">-->
+                         <!--<span>Image</span>-->
+                         <!--<p class="range-field">-->
+                          <!--<input type="range" id="test5" min="0" max="100" />-->
+                        <!--</p>-->
+                      <!--</div>-->
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <textarea id="message5" class="materialize-textarea" length="120"></textarea>
+                        <label for="message5">Descripcion</label>
+                      </div>
+
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <button class="btn waves-effect waves-light right" type="submit" name="action">Submit
+                            <i class="mdi-content-send right"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+      </section>
+  <!-- END CONTENT -->
+
+  <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+
+  </div>
+  <!-- END WRAPPER -->
+
+  </div>
+  <!-- END MAIN -->
+
+
+
+  <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+  <!--&lt;!&ndash; START FOOTER &ndash;&gt;-->
+  <!--<footer class="page-footer">-->
+    <!--<div class="footer-copyright">-->
+      <!--<div class="container">-->
+        <!--<span>Copyright © 2015 <a class="grey-text text-lighten-4" href="http://themeforest.net/user/geekslabs/portfolio?ref=geekslabs" target="_blank">GeeksLabs</a> All rights reserved.</span>-->
+        <!--<span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="http://geekslabs.com/">GeeksLabs</a></span>-->
+        <!--</div>-->
+    <!--</div>-->
+  <!--</footer>-->
+  <!--&lt;!&ndash; END FOOTER &ndash;&gt;-->
+
+
+
+    <!-- ================================================
+    Scripts
+    ================================================ -->
+    
+    <!-- jQuery Library -->
+    <script type="text/javascript" src="../js/jquery-1.11.2.min.js"></script>    
+    <!--materialize js-->
+    <script type="text/javascript" src="../js/materialize.js"></script>
+    <!--prism-->
+    <script type="text/javascript" src="../js/prism.js"></script>
+    <!--scrollbar-->
+    <script type="text/javascript" src="../js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <!-- chartist -->
+    <script type="text/javascript" src="../js/plugins/chartist-js/chartist.min.js"></script>   
+    
+    <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+    <script type="text/javascript" src="../js/plugins.js"></script>
+    
+</body>
+
+</html>

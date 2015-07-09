@@ -6,9 +6,9 @@
                     <div id="right-search" class="row">
                         <form class="col s12">
                             <div class="input-field">
-                                <i class="mdi-action-search prefix"></i>
+                                <!-- <i class="mdi-action-search prefix"></i> -->
                                 <input id="icon_prefix" type="text" class="validate">
-                                <label for="icon_prefix">Search</label>
+                                <label for="icon_prefix"><?=label('comentar');?></label>
                             </div>
                         </form>
                     </div>
@@ -16,51 +16,32 @@
                     <li class="li-hover">
                         <ul class="chat-collapsible" data-collapsible="expandable">
                         <li>
-                            <div class="collapsible-header teal white-text active"><i class="mdi-social-whatshot"></i>Recent Activity</div>
-                            <div class="collapsible-body recent-activity">
+                            <!-- <div class="collapsible-header teal white-text active"><i class="mdi-social-whatshot"></i>Recent Activity</div> -->
+                            <!-- <div class="collapsible-body recent-activity"> -->
                                 <div class="recent-activity-list chat-out-list row">
-                                    <div class="col s3 recent-activity-list-icon"><i class="mdi-action-add-shopping-cart"></i>
-                                    </div>
-                                    <div class="col s9 recent-activity-list-text">
-                                        <a href="#">just now</a>
-                                        <p>Jim Doe Purchased new equipments for zonal office.</p>
+                                    <!-- <div class="col s3 recent-activity-list-icon"><i class="mdi-action-add-shopping-cart"></i>
+                                    </div> -->
+                                    <div class="col s12 recent-activity-list-text">
+                                        <a href="#">Brayan Nuñez Rojas</a>
+                                        <p>Falta agregar el impuesto</p>
                                     </div>
                                 </div>
                                 <div class="recent-activity-list chat-out-list row">
-                                    <div class="col s3 recent-activity-list-icon"><i class="mdi-device-airplanemode-on"></i>
-                                    </div>
-                                    <div class="col s9 recent-activity-list-text">
-                                        <a href="#">Yesterday</a>
-                                        <p>Your Next flight for USA will be on 15th August 2015.</p>
+                                    <div class="col s12 recent-activity-list-text">
+                                        <a href="#">Juan Mendez Perez</a>
+                                        <p>Todos los productos han sido agregados</p>
                                     </div>
                                 </div>
                                 <div class="recent-activity-list chat-out-list row">
-                                    <div class="col s3 recent-activity-list-icon"><i class="mdi-action-settings-voice"></i>
-                                    </div>
-                                    <div class="col s9 recent-activity-list-text">
-                                        <a href="#">5 Days Ago</a>
-                                        <p>Natalya Parker Send you a voice mail for next conference.</p>
+                                    <div class="col s12 recent-activity-list-text">
+                                        <a href="#">María Salas Bolaños</a>
+                                        <p>Falta agregar los servicios</p>
                                     </div>
                                 </div>
-                                <div class="recent-activity-list chat-out-list row">
-                                    <div class="col s3 recent-activity-list-icon"><i class="mdi-action-store"></i>
-                                    </div>
-                                    <div class="col s9 recent-activity-list-text">
-                                        <a href="#">Last Week</a>
-                                        <p>Jessy Jay open a new store at S.G Road.</p>
-                                    </div>
-                                </div>
-                                <div class="recent-activity-list chat-out-list row">
-                                    <div class="col s3 recent-activity-list-icon"><i class="mdi-action-settings-voice"></i>
-                                    </div>
-                                    <div class="col s9 recent-activity-list-text">
-                                        <a href="#">5 Days Ago</a>
-                                        <p>Natalya Parker Send you a voice mail for next conference.</p>
-                                    </div>
-                                </div>
-                            </div>
+                               
+                            <!-- </div> -->
                         </li>
-                        <li>
+                        <!-- <li>
                             <div class="collapsible-header light-blue white-text active"><i class="mdi-editor-attach-money"></i>Sales Repoart</div>
                             <div class="collapsible-body sales-repoart">
                                 <div class="sales-repoart-list  chat-out-list row">
@@ -129,7 +110,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </li>
+                        </li> -->
                         </ul>
                     </li>
                 </ul>
