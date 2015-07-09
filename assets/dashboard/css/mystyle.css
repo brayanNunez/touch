@@ -264,3 +264,10 @@ p{
 #comentariosCotizacion{
 	color: #57923f;
 }
+
+
+
+#formGeneral .mdi-content-add{
+	color: #57923f;
+	/*margin-top: 25px;*/
+}
