@@ -37,13 +37,13 @@
                                                 <div class="row">
                                                   <div class="col s12">
                                                     <ul class="tabs tab-demo z-depth-1">
-                                                      <li class="tab col s3"><a class="active" href="#paso1"><?=label('paso1');?></a>
+                                                      <li class="tab col s3"><a id="botonPaso1" class="active" href="#paso1"><?=label('paso1');?></a>
                                                       </li>
-                                                      <li class="tab col s3"><a href="#paso2"><?=label('paso2');?></a>
+                                                      <li class="tab col s3"><a id="botonPaso2" href="#paso2"><?=label('paso2');?></a>
                                                       </li>
-                                                      <li class="tab col s3"><a href="#paso3"><?=label('paso3');?></a>
+                                                      <li class="tab col s3"><a id="botonPaso3" href="#paso3"><?=label('paso3');?></a>
                                                       </li>
-                                                      <li class="tab col s3"><a href="#paso4"><?=label('paso4');?></a>
+                                                      <li class="tab col s3"><a id="botonPaso4" href="#paso4"><?=label('paso4');?></a>
                                                       </li>
                                                     </ul>
                                                   </div>
@@ -56,6 +56,9 @@
                                                             <li>Aliquam tincidunt mauris eu risus.</li>
                                                             <li>Vestibulum auctor dapibus neque.</li>
                                                           </ol>
+                                                          <div class="atras_adelante">
+                                                            <a class="siguiente right" href="#" onclick="darclick(2);"><?=label('siguiente');?></a>
+                                                          </div>
                                                         </div>
                                                         <div id="paso2" class="card col s12">
                                                           <dl>
@@ -64,19 +67,43 @@
                                                             <dt>Lorem ipsum dolor sit amet</dt>
                                                             <dd>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</dd>
                                                           </dl>
+                                                          <div class="atras_adelante">
+                                                            <a class="siguiente right" href="#" onclick="darclick(3);"><?=label('siguiente');?></a>
+                                                            <a class="anterior left" href="#" onclick="darclick(1);"><?=label('anterior');?></a>
+                                                          </div>
+                                                          
                                                         </div>
                                                         <div id="paso3" class="card col s12">
                                                           <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies
                                                             mi vitae est. Mauris placerat eleifend leo.</p>
-                                                        </div>
+                                                           <div class="atras_adelante">
+                                                            <a class="siguiente right" href="#" onclick="darclick(4);"><?=label('siguiente');?></a>
+                                                            <a class="anterior left" href="#" onclick="darclick(2);"><?=label('anterior');?></a>
+                                                          </div>
+
+                                                          </div>
                                                         <div id="paso4" class="card col s12">
                                                           <ul>
                                                             <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
                                                             <li>Aliquam tincidunt mauris eu risus.</li>
                                                             <li>Vestibulum auctor dapibus neque.</li>
                                                           </ul>
+                                                          <div class="atras_adelante">
+                                                            <a class="anterior" class="left" href="#" onclick="darclick(3);"><?=label('anterior');?></a>
+                                                          </div>
                                                         </div>
                                                       </div>
+
+                                                      <script type="text/javascript">
+                                                          function darclick(paso){ 
+
+                                                          var obj=document.getElementById('botonPaso' + paso);
+
+                                                          obj.click();
+
+                                                          }
+                                                      </script>
+
                                                     <!-- </div> -->
                                                 </div>
 

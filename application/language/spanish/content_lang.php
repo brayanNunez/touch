@@ -35,5 +35,7 @@
 	$lang['paso3'] = '3 Diseño';
 	$lang['paso4'] = '4 Finalizar';
 
+	$lang['siguiente'] = 'Siguiente';
+	$lang['anterior'] = 'Anterior';
 	
 ?>
