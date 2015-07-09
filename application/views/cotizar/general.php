@@ -30,6 +30,31 @@
 
                                 <!--Basic Form-->
                                   <div id="formGeneral" class="section">
+                                    
+                                    <div class="row">
+                                          <div class="input-field col s6 m3 l3">
+                                            <select class="input-field col s12">
+                                              <option value="" disabled selected>Cliente</option>
+                                              <option value="1">Dos Pinos</option>
+                                              <option value="2">Juan Carlos Porras</option>
+                                              <option value="3">Ana Bolaños Rojas</option>
+                                            </select>
+                                            <label>Seleccione el cliente</label>
+                                            
+                                          </div>  
+                                          
+                                          <div class="input-field col s6 m3 l3">
+                                            <div class="input-field col s12">
+                                              <input id="last_name" type="text">
+                                              <label for="last_name" class="">Utilidad</label>
+                                            </div>
+                                          
+                                           </div> 
+                                    </div>
+
+
+
+
                                     <div class="row">
                                           <div class="input-field col s12 m6 l6">
                                             <select class="input-field col s12">
