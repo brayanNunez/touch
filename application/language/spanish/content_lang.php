@@ -35,6 +35,7 @@
 	$lang['paso3'] = '3 Diseño';
 	$lang['paso4'] = '4 Finalizar';
 
+<<<<<<< HEAD
 //Menú izquierdo 
 	$lang['inicio'] = 'Inicio';
 	$lang['cotizaciones'] = 'Cotizaciones';
@@ -56,5 +57,9 @@
 	$lang['agregarProduto_Servicio'] = 'Agregar Producto/Servicio';
 	$lang['agregarEmpleado'] = 'Agregar Empleado';
 	$lang['agregarProveedor'] = 'Agregar Proveedor';
+=======
+	$lang['siguiente'] = 'Siguiente';
+	$lang['anterior'] = 'Anterior';
+>>>>>>> origin/master
 	
 ?>
