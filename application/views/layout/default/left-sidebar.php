@@ -25,62 +25,62 @@
                             </div>
                         </div>
                     </li>
-                    <li class="bold"><a href="index.html" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Inicio</a>
+                    <li class="bold"><a href="index.html" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> <?=label('inicio');?></a>
                     </li>
-                    <li class="bold"><a href="<?=base_url()?>cotizacion" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Cotizaciones <span class="new badge">4</span></a>
+                    <li class="bold"><a href="<?=base_url()?>cotizacion" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> <?=label('cotizaciones');?> <span class="new badge">4</span></a>
                     </li>
-                    <li class="bold"><a href="#" class="waves-effect waves-cyan"><i class="mdi-action-favorite"></i> Servicios</a>
+                    <li class="bold"><a href="#" class="waves-effect waves-cyan"><i class="mdi-action-favorite"></i> <?=label('servicios');?></a>
                     </li>
                     <li class="no-padding">
                         <ul class="collapsible collapsible-accordion">
-                            <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-invert-colors"></i> Productos</a>
+                            <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-invert-colors"></i> <?=label('productos');?></a>
                                 <div class="collapsible-body">
                                     <ul>
-                                        <li><a href="#">Agregar</a>
+                                        <li><a href="#"><?=label('agregarP');?></a>
                                         </li>                                        
-                                        <li><a href="#">Listar</a>
+                                        <li><a href="#"><?=label('listarP');?></a>
                                         </li>
                                        
                                         </li>
                                     </ul>
                                 </div>
                             </li>
-                            <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-image-palette"></i> Administraci&oacute;n</a>
+                            <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-image-palette"></i> <?=label('administración');?></a>
                                 <div class="collapsible-body">
                                     <ul>
-                                        <li><a href="#">Costos</a>
+                                        <li><a href="#"><?=label('costos');?></a>
                                         </li>
-                                        <li><a href="#">Empleados</a>
+                                        <li><a href="#"><?=label('empleados');?></a>
                                         </li>
-                                        <li><a href="#">Proveedores</a>
+                                        <li><a href="#"><?=label('proveedores');?></a>
                                         </li>
-                                        <li><a href="#">Monedas</a>
+                                        <li><a href="#"><?=label('monedas');?></a>
                                         </li>
-                                        <li><a href="#">Usuarios</a>
+                                        <li><a href="#"><?=label('usuarios');?></a>
                                         </li>  
-                                        <li><a href="#">Financiamiento</a>
+                                        <li><a href="#"><?=label('financiamiento');?></a>
                                         </li>   
-                                        <li><a href="#">Gastos</a>
+                                        <li><a href="#"><?=label('gastos');?></a>
                                         </li>                                       
                                         
                                     </ul>
                                 </div>
                             </li>
-                            <li class="bold"><a href="#" class="waves-effect waves-cyan"><i class="mdi-device-now-widgets"></i> Avanzado <span class="new badge"></span></a>
+                            <li class="bold"><a href="#" class="waves-effect waves-cyan"><i class="mdi-device-now-widgets"></i> <?=label('avanzado');?> <span class="new badge"></span></a>
                             </li>
                         </ul>
                     </li>  
                     <li class="li-hover"><div class="divider"></div></li>
-                    <li class="li-hover"><p class="ultra-small margin more-text">M&aacute;s Opciones</p></li>
-                    <li><a href="#"><i class="mdi-action-swap-vert-circle"></i> Agregar cotización</a>
+                    <li class="li-hover"><p class="ultra-small margin more-text"><?=label('masOpciones');?> </p></li>
+                    <li><a href="#"><i class="mdi-action-swap-vert-circle"></i> <?=label('agregarCotizacion');?></a>
                     </li>
                    
                     </li>
-                    <li><a href="#"><i class="mdi-action-swap-vert-circle"></i> Agregar Producto/Servicio</a>
+                    <li><a href="#"><i class="mdi-action-swap-vert-circle"></i> <?=label('agregarProduto_Servicio');?></a>
                     </li>
-                    <li><a href="#"><i class="mdi-action-swap-vert-circle"></i> Agregar Empleado</a>
+                    <li><a href="#"><i class="mdi-action-swap-vert-circle"></i> <?=label('agregarEmpleado');?></a>
                     </li> 
-                    <li><a href="#"><i class="mdi-action-swap-vert-circle"></i> Agregar Proveedor</a>
+                    <li><a href="#"><i class="mdi-action-swap-vert-circle"></i> <?=label('agregarProveedor');?></a>
                     </li>                    
                     
                 </ul>

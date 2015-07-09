@@ -35,5 +35,26 @@
 	$lang['paso3'] = '3 Diseño';
 	$lang['paso4'] = '4 Finalizar';
 
+//Menú izquierdo 
+	$lang['inicio'] = 'Inicio';
+	$lang['cotizaciones'] = 'Cotizaciones';
+	$lang['servicios'] = 'Servicios';
+	$lang['productos'] = 'Productos';
+	$lang['agregarP'] = 'Agregar';
+	$lang['listarP'] = 'Listar';
+	$lang['administración'] = 'Administración';
+	$lang['costos'] = 'Costos';
+	$lang['empleados'] = 'Empleados';
+	$lang['proveedores'] = 'Proveedores';
+	$lang['monedas'] = 'Monedas';
+	$lang['usuarios'] = 'Usuarios';
+	$lang['financiamiento'] = 'Financiamiento';
+	$lang['gastos'] = 'Gastos';
+	$lang['avanzado'] = 'Avanzado';
+	$lang['masOpciones'] = 'MÁS OPCIONES';
+	$lang['agregarCotizacion'] = 'Agregar Cotización';
+	$lang['agregarProduto_Servicio'] = 'Agregar Producto/Servicio';
+	$lang['agregarEmpleado'] = 'Agregar Empleado';
+	$lang['agregarProveedor'] = 'Agregar Proveedor';
 	
 ?>
