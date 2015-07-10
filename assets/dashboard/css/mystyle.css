@@ -278,7 +278,7 @@ p{
 	background-color: #09856e;
 
 }
-hojas
+
 .btn:hover, .btn-large:hover {
 
 	background-color: #57923f;
@@ -286,9 +286,6 @@ hojas
 }
 
 
-/*[type="checkbox"].filled-in:checked + label:after {
-border: red !important;
-background-color: red !important;
-
-
-	}*/
+.modal-header{
+	color: white;
+}

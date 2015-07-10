@@ -187,8 +187,10 @@
 
 <!-- lista modals -->
     <div id="agregarAtencion" class="modal">
+    <div class="modal-header">
+        <p><?=label('nombreSistema');?></p>
+    </div>
     <div class="modal-content">
-      
       <div class="row">
             <div class="col s12 m12 l12">
               <form action="#">
@@ -229,7 +231,6 @@
                   
               </div>
               <div class="row col s12 m6 l6">
-                  >
                   <div class="input-field col s12">
                    <p>Color de fondo: <input class="input-field"  type="color" id="myColor1"> </p>
                  </div>

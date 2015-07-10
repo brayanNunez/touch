@@ -117,8 +117,9 @@
 
 <!-- lista modals -->
 <div id="Elminar" class="modal">
-    <div class="modal-header white-text">
-        <p>Touch!</p>
+    
+    <div class="modal-header">
+        <p><?=label('nombreSistema');?></p>
     </div>
     <div class="modal-content">
         <p><?=label('confirmarEliminarCotizacion');?></p>
@@ -129,8 +130,8 @@
     </div>
 </div>
 <div id="finalizar" class="modal">
-    <div class="modal-header white-text">
-        <p>Touch!</p>
+    <div class="modal-header">
+        <p><?=label('nombreSistema');?></p>
     </div>
     <div class="modal-content">
         <p><?=label('confirmarFinalizarCotizacion');?></p>
@@ -141,8 +142,8 @@
     </div>
 </div>
 <div id="duplicar" class="modal">
-    <div class="modal-header white-text">
-        <p>Touch!</p>
+    <div class="modal-header">
+        <p><?=label('nombreSistema');?></p>
     </div>
     <div class="modal-content">
         <p><?=label('confirmarDuplicarCotizacion');?></p>

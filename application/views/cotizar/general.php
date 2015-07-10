@@ -182,17 +182,17 @@
 
 <!-- lista modals -->
 <div id="agregarAtencion" class="modal">
-    <div class="modal-header white-text">
-        <p>Touch!</p>
+    <div class="modal-header">
+        <p><?=label('nombreSistema');?></p>
     </div>
     <div class="modal-content">
         <div class="input-field col s12">
             <input id="client_code" type="text" value="">
-            <label for="client_code">Nombre</label>
+            <label for="client_code"><?=label('formCliente_nombreContacto');?></label>
         </div>
         <div class="input-field col s12">
             <input id="client_code" type="text" value="">
-            <label for="client_code">Correo</label>
+            <label for="client_code"><?=label('formCliente_correoContacto');?></label>
         </div>
     </div>
     <div class="modal-footer">

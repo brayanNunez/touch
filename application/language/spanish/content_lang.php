@@ -1,4 +1,7 @@
 <?php
+
+	$lang['nombreSistema'] = 'Touch!';
+
 //mensajes 
 	$lang['confirmarEliminarCotizacion'] = '¿Realmente desea eliminar la cotización seleccionada?';
 	$lang['confirmarFinalizarCotizacion'] = '¿Realmente desea finalizar la cotización seleccionada?';
@@ -26,6 +29,8 @@
 	$lang['editar'] = 'Editar';
 	$lang['duplicar'] = 'Duplicar';
 	$lang['finalizar'] = 'Finalizar';
+	$lang['on'] = 'On';
+	$lang['off'] = 'Off';
 
 //comentarios de una cotizacion
 	$lang['comentar'] = 'Comentar';
@@ -57,5 +62,34 @@
 	$lang['agregarProduto_Servicio'] = 'Agregar Producto/Servicio';
 	$lang['agregarEmpleado'] = 'Agregar Empleado';
 	$lang['agregarProveedor'] = 'Agregar Proveedor';
+
+//formulario cliente
+	$lang['formCliente_tipoPersona'] = 'Tipo de persona';
+	$lang['formCliente_fisica'] = 'Física';
+	$lang['formCliente_juridica'] = 'Jurídica';
+	$lang['formCliente_codigo'] = 'Código';
+	$lang['formCliente_nombre'] = 'Nombre';
+	$lang['formCliente_identificacion'] = 'Identificación';
+	$lang['formCliente_fechaNacimiento'] = 'Fecha de nacimiento';
+	$lang['formCliente_correo'] = 'Correo';
+	$lang['formCliente_telefonoMovil'] = 'Teléfono móvil';
+	$lang['formCliente_telefonoFijo'] = 'Teléfono fijo';
+	$lang['formCliente_Contactos'] = 'Contactos';
+	$lang['formCliente_nombreContacto'] = 'Nombre';
+	$lang['formCliente_correoContacto'] = 'Correo';
+	$lang['formCliente_opcionesContacto'] = 'Opciones';
+	$lang['formCliente_gustos_preferencias'] = 'Gustos y preferencias';
+	$lang['formCliente_gustos'] = 'Gusto';
+	$lang['formCliente_estado'] = 'Estado';
+	$lang['formCliente_nuevoGusto'] = 'Nuevo gusto';
+	$lang['formCliente_mediosContacto'] = 'Medios de contacto';
+	$lang['formCliente_medio'] = 'Medio';
+	$lang['formCliente_estadoMedio'] = 'Estado';
+	$lang['formCliente_nuevoMedio'] = 'Nuevo medio';
+	$lang['formCliente_cotizador'] = 'Cotizador';
+
+	//botones formulario cliente
+	$lang['formCliente_agregar'] = 'Agregar';
+	$lang['formCliente_enviar'] = 'Enviar';
 
 ?>
