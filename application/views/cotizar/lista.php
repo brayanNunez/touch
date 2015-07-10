@@ -40,23 +40,23 @@
                                           <table id="data-table-simple" class="responsive-table display" cellspacing="0">
                                             <thead>
                                                 <tr>
-                                                    <th><?=label('codigo');?></th>
-                                                    <th><?=label('fecha');?></th>
-                                                    <th><?=label('cliente');?></th>
-                                                    <th><?=label('monto');?></th>
-                                                    <th><?=label('estado');?></th>
-                                                    <th><?=label('opciones');?></th>
+                                                    <th><?=label('tablaCotizaciones_codigo');?></th>
+                                                    <th><?=label('tablaCotizaciones_fecha');?></th>
+                                                    <th><?=label('tablaCotizaciones_cliente');?></th>
+                                                    <th><?=label('tablaCotizaciones_monto');?></th>
+                                                    <th><?=label('tablaCotizaciones_estado');?></th>
+                                                    <th><?=label('tablaCotizaciones_opciones');?></th>
                                                 </tr>
                                             </thead>
                                          
                                             <tfoot>
                                                 <tr>
-                                                    <th><?=label('codigo');?></th>
-                                                    <th><?=label('fecha');?></th>
-                                                    <th><?=label('cliente');?></th>
-                                                    <th><?=label('monto');?></th>
-                                                    <th><?=label('estado');?></th>
-                                                    <th><?=label('opciones');?></th>
+                                                    <th><?=label('tablaCotizaciones_codigo');?></th>
+                                                    <th><?=label('tablaCotizaciones_fecha');?></th>
+                                                    <th><?=label('tablaCotizaciones_cliente');?></th>
+                                                    <th><?=label('tablaCotizaciones_monto');?></th>
+                                                    <th><?=label('tablaCotizaciones_estado');?></th>
+                                                    <th><?=label('tablaCotizaciones_opciones');?></th>
                                                 </tr>
                                             </tfoot>
                                          
@@ -117,7 +117,7 @@
 
 <!-- lista modals -->
 <div id="Elminar" class="modal">
-    
+
     <div class="modal-header">
         <p><?=label('nombreSistema');?></p>
     </div>

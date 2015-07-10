@@ -14,12 +14,12 @@
 
 
 //columnas tabla de cotizaciones 
-	$lang['codigo'] = 'Código';
-	$lang['fecha'] = 'Fecha';
-	$lang['cliente'] = 'Cliente';
-	$lang['monto'] = 'Monto';
-	$lang['estado'] = 'Estado';
-	$lang['opciones'] = 'Opciones';
+	$lang['tablaCotizaciones_codigo'] = 'Código';
+	$lang['tablaCotizaciones_fecha'] = 'Fecha';
+	$lang['tablaCotizaciones_cliente'] = 'Cliente';
+	$lang['tablaCotizaciones_monto'] = 'Monto';
+	$lang['tablaCotizaciones_estado'] = 'Estado';
+	$lang['tablaCotizaciones_opciones'] = 'Opciones';
 	
 // texto de los botones
 	$lang['aceptar'] = 'Aceptar';
