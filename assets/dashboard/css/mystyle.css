@@ -186,7 +186,8 @@
 }
 
 #datallesCotizacion img{
-	width: 100%;
+	width: 80%;
+	/*height: 100%;*/
 	margin: auto;
 }
 #resultadoCotizacion{
@@ -277,7 +278,7 @@ p{
 	background-color: #09856e;
 
 }
-
+hojas
 .btn:hover, .btn-large:hover {
 
 	background-color: #57923f;

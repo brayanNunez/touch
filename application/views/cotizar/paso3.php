@@ -188,26 +188,69 @@
 <!-- lista modals -->
     <div id="agregarAtencion" class="modal">
     <div class="modal-content">
-      <div class="input-field col s12">
-        <input id="client_code" type="text" value="">
-        <label for="client_code">Nombre</label>
-      </div>
-      <div class="input-field col s12">
-        <input id="client_code" type="text" value="">
-        <label for="client_code">Correo</label>
-      </div>
-      <p class="left">
-        <input type="checkbox" class="filled-in" id="filled-in-box1" checked="checked">
-        <label for="filled-in-box1">12</label>
-      </p>
-      <p class="left">
-        <input type="checkbox" class="filled-in" id="filled-in-box2" checked="checked">
-        <label for="filled-in-box2">123</label>
-      </p>
-      <p>
-        <input type="checkbox" class="filled-in" id="filled-in-box3" checked="checked">
-        <label for="filled-in-box3">1234</label>
-      </p class="left">
+      
+      <div class="row">
+            <div class="col s12 m12 l12">
+              <form action="#">
+              <div class="row col s12 m6 l6">
+
+                  <p>
+                      <input type="checkbox" class="filled-in" id="filled-in-box1" checked="checked">
+                      <label for="filled-in-box1">Nombre de la empresa</label>
+                    </p>
+                    <p>
+                      <input type="checkbox" class="filled-in" id="filled-in-box2" checked="checked">
+                      <label for="filled-in-box2">Código de cotización</label>
+                    </p>
+                    <p>
+                      <input type="checkbox" class="filled-in" id="filled-in-box3" checked="checked">
+                      <label for="filled-in-box3">Cliente</label>
+                    </p>
+                    <p>
+                      <input type="checkbox" class="filled-in" id="filled-in-box4" checked="checked">
+                      <label for="filled-in-box4">Atención</label>
+                    </p>
+                    <p>
+                      <input type="checkbox" class="filled-in" id="filled-in-box5" checked="checked">
+                      <label for="filled-in-box5">Cotizador</label>
+                    </p>
+                    <p>
+                      <input type="checkbox" class="filled-in" id="filled-in-box6" checked="checked">
+                      <label for="filled-in-box6">Fecha</label>
+                    </p>
+                    <p>
+                      <input type="checkbox" class="filled-in" id="filled-in-box7" checked="checked">
+                      <label for="filled-in-box7">Hora</label>
+                    </p>
+                    <p>
+                      <input type="checkbox" class="filled-in" id="filled-in-box8" checked="checked">
+                      <label for="filled-in-box8">Imagen</label>
+                    </p>
+                  
+              </div>
+              <div class="row col s12 m6 l6">
+                  >
+                  <div class="input-field col s12">
+                   <p>Color de fondo: <input class="input-field"  type="color" id="myColor1"> </p>
+                 </div>
+                  <div class="input-field col s12">
+                   <p>Color de letra: <input class="input-field"  type="color" id="myColor2"></p>
+                  </div>
+                  <div class="input-field col s12">
+                    <p>Color de barra horizontal: <input class="input-field"  type="color" id="myColor3"></p>
+                  </div>
+                  <div class="input-field col s12">
+                    <textarea id="message" class="materialize-textarea" style="height: 24px;"></textarea>
+                    <label for="message" class="">Texto adicional</label>
+                  </div
+
+              </div>
+                
+                  
+              </form>
+            </div>
+          </div>
+     
     </div>
     <div class="modal-footer">
       <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
