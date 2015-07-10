@@ -6799,8 +6799,8 @@ form p:last-child {
   top: 0px;
   width: 20px;
   height: 20px;
-  border: 2px solid #000000;
-  background-color: #000000;
+  border: 2px solid #b73b26;
+  background-color: #b73b26;
   z-index: 0; }
 [type="checkbox"].filled-in:disabled:not(:checked) + label:before {
   background-color: transparent;

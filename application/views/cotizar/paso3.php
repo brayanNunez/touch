@@ -20,12 +20,12 @@
     <div class="container">
         <div id="chart-dashboard">
             <div class="row">
-                <div class="col s12 m12 l8">
+                <div class="col s12 m12 l12">
 
                     <div id="submit-button" class="section">
                         <div class="row">
                             
-                            <div class="col s12 m8 l9">
+                            <div class="col s12 m12 l11">
                               <div class="card" id="card-diseno">
 
                                    <div class="listaHojas">
@@ -33,7 +33,8 @@
                                         
                                         <div class="hoja">
 
-                                            <a  class="btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
+                                        
+                                            <a href="#agregarAtencion"  class="modal-trigger btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
                                                 <i class="mdi-editor-mode-edit"></i>
                                             </a>
 
@@ -178,3 +179,42 @@
 <!--end container-->
 </section>
 <!-- END CONTENT-->
+
+
+
+
+
+
+<!-- lista modals -->
+    <div id="agregarAtencion" class="modal">
+    <div class="modal-content">
+      <div class="input-field col s12">
+        <input id="client_code" type="text" value="">
+        <label for="client_code">Nombre</label>
+      </div>
+      <div class="input-field col s12">
+        <input id="client_code" type="text" value="">
+        <label for="client_code">Correo</label>
+      </div>
+      <p class="left">
+        <input type="checkbox" class="filled-in" id="filled-in-box1" checked="checked">
+        <label for="filled-in-box1">12</label>
+      </p>
+      <p class="left">
+        <input type="checkbox" class="filled-in" id="filled-in-box2" checked="checked">
+        <label for="filled-in-box2">123</label>
+      </p>
+      <p>
+        <input type="checkbox" class="filled-in" id="filled-in-box3" checked="checked">
+        <label for="filled-in-box3">1234</label>
+      </p class="left">
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
+      <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+      
+    </div>
+  </div>
+
+      
+<!--Fin lista modals -->

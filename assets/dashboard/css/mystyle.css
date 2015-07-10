@@ -17,7 +17,7 @@
 
 .listaHojas{
     /*float: left;*/
-	width: 1068.98px;
+	width: 1137.98px;
 	height: 1555px;
 	background-color: grey;
 	/*left: auto;
@@ -207,8 +207,8 @@ p{
 
 #card-diseno{
 		overflow-x: scroll;
-		overflow-y: scroll;
-		height: 700px;
+		/*overflow-y: scroll;
+		height: 700px;*/
 }
 
 .ventana{
@@ -283,3 +283,11 @@ p{
 	background-color: #57923f;
 
 }
+
+
+/*[type="checkbox"].filled-in:checked + label:after {
+border: red !important;
+background-color: red !important;
+
+
+	}*/
