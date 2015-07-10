@@ -70,7 +70,7 @@
                                                     <td>Finalizada</td>
                                                     <td>
                                                         <a  class="modal-trigger" href="#duplicar"><?=label('duplicar');?></a>
-                                                        <a href=""><?=label('ver');?></a>
+                                                        <a href="<?=base_url()?>cotizacion/cotizar"><?=label('ver');?></a>
                                                         <a class="modal-trigger" href="#Elminar"><?=label('eliminar');?></a>
                                                     </td>
                                                 </tr>
@@ -82,7 +82,7 @@
                                                     <td>Enviada</td>
                                                     <td>
                                                         <a  class="modal-trigger" href="#duplicar"><?=label('duplicar');?></a>
-                                                        <a href=""><?=label('ver');?></a>
+                                                        <a href="<?=base_url()?>cotizacion/cotizar"><?=label('ver');?></a>
                                                         <a class="modal-trigger" href="#finalizar"><?=label('finalizar');?></a>
                                                         <a class="modal-trigger" href="#Elminar"><?=label('eliminar');?></a>
                                                     </td>
