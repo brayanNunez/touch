@@ -181,23 +181,24 @@
 
 
 <!-- lista modals -->
-    <div id="agregarAtencion" class="modal">
+<div id="agregarAtencion" class="modal">
+    <div class="modal-header white-text">
+        <p>Touch!</p>
+    </div>
     <div class="modal-content">
-      <div class="input-field col s12">
-        <input id="client_code" type="text" value="">
-        <label for="client_code">Nombre</label>
-      </div>
-      <div class="input-field col s12">
-        <input id="client_code" type="text" value="">
-        <label for="client_code">Correo</label>
-      </div>
+        <div class="input-field col s12">
+            <input id="client_code" type="text" value="">
+            <label for="client_code">Nombre</label>
+        </div>
+        <div class="input-field col s12">
+            <input id="client_code" type="text" value="">
+            <label for="client_code">Correo</label>
+        </div>
     </div>
     <div class="modal-footer">
-      <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
-      <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
-      
+        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
-  </div>
-
+</div>
       
 <!--Fin lista modals -->
