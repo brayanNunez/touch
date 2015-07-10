@@ -1,13 +1,13 @@
 <?php
 //mensajes 
-	$lang['confirmarEliminar'] = '¿Realmente desea eliminar la cotización seleccionada?';
-	$lang['confirmarFinalizar'] = '¿Realmente desea finalizar la cotización seleccionada?';
-	$lang['confirmarDuplicar'] = '¿Realmente desea duplicar la cotización seleccionada?';
-
+	$lang['confirmarEliminarCotizacion'] = '¿Realmente desea eliminar la cotización seleccionada?';
+	$lang['confirmarFinalizarCotizacion'] = '¿Realmente desea finalizar la cotización seleccionada?';
+	$lang['confirmarDuplicarCotizacion'] = '¿Realmente desea duplicar la cotización seleccionada?';
+	$lang['confirmarEliminarContacto'] = '¿Realmente desea eliminar el contacto seleccionado?';
 //titulos
 	$lang['tituloListaCotizaciones'] = 'Lista de cotizaciones';
 	$lang['tituloCotizacion'] = 'Cotización';
-
+	$lang['tituloFormularioCliente'] = 'Agregar cliente';
 
 
 //columnas tabla de cotizaciones 
@@ -23,6 +23,7 @@
 	$lang['cancelar'] = 'Cancelar';
 	$lang['eliminar'] = 'Eliminar';
 	$lang['ver'] = 'Ver';
+	$lang['editar'] = 'Editar';
 	$lang['duplicar'] = 'Duplicar';
 	$lang['finalizar'] = 'Finalizar';
 

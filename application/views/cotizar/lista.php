@@ -89,39 +89,6 @@
                                                 </tr>
                                             </tbody>
 
-                                                <!-- lista pop up -->
-                                                    <div id="Elminar" class="modal">
-                                                        <div class="modal-content">
-                                                          <p><?=label('confirmarEliminar');?></p>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                          <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
-                                                          <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
-                                                          
-                                                        </div>
-                                                      </div>
-
-                                                      <div id="finalizar" class="modal">
-                                                        <div class="modal-content">
-                                                          <p><?=label('confirmarFinalizar');?></p>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                          <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
-                                                          <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
-                                                          
-                                                        </div>
-                                                      </div>
-                                                      <div id="duplicar" class="modal">
-                                                        <div class="modal-content">
-                                                          <p><?=label('confirmarDuplicar');?></p>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                          <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
-                                                          <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
-                                                          
-                                                        </div>
-                                                      </div>
-                                               <!--Fin lista pop up -->
 
 
                                           </table>
@@ -142,3 +109,42 @@
 <!--end container-->
 </section>
 <!-- END CONTENT-->
+
+
+
+
+
+
+<!-- lista modals -->
+    <div id="Elminar" class="modal">
+        <div class="modal-content">
+          <p><?=label('confirmarEliminarCotizacion');?></p>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
+          <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+          
+        </div>
+      </div>
+
+      <div id="finalizar" class="modal">
+        <div class="modal-content">
+          <p><?=label('confirmarFinalizarCotizacion');?></p>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
+          <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+          
+        </div>
+      </div>
+      <div id="duplicar" class="modal">
+        <div class="modal-content">
+          <p><?=label('confirmarDuplicarCotizacion');?></p>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
+          <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+          
+        </div>
+      </div>
+<!--Fin lista modals -->

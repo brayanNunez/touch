@@ -1,19 +1,19 @@
+<!-- START CONTENT  -->
 
-<section id="content">
+ <section id="content">
 
     <!--start container-->
-
-    <div id="breadcrumbs-wrapper" class=" grey lighten-3">
-        <div class="container">
+        <div id="breadcrumbs-wrapper" class=" grey lighten-3">
+          <div class="container">
             <div class="row">
-                <div class="col s12 m12 l12">
-                    <h5 class="breadcrumbs-title">Productos</h5>
-
-                </div>
+              <div class="col s12 m12 l12">
+                <h1 class="breadcrumbs-title"><?=label('tituloFormularioCliente');?></h1>
+                
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-    <!--breadcrumbs end-->
+        <!--breadcrumbs end-->
 
     <div class="container">
         <div id="chart-dashboard">
@@ -23,10 +23,10 @@
                     <div id="submit-button" class="section">
                         <div class="row">
 
-                            <div class="col s12 m8 l8">
-                                <div class="card">
+                            <div class="col s12 m12 l8">
+                                <!-- <div class="card"> -->
 
-                                    <h4 class="uppercase mb16">Agregar cliente</h4>
+                                    <!-- <h4 class="uppercase mb16">Agregar cliente</h4> -->
                                     <form class="col s12">
                                         <div class="row">
                                             <div class="input-field col s12">
@@ -85,21 +85,26 @@
                                                     <td>Maria Rodriguez</td>
                                                     <td>maria@gmail.com</td>
                                                     <td>
-                                                        <a class="btn btn-default">Ed</a>
-                                                        <a class="btn btn-default">El</a>
+                                                        <!-- <a class="btn btn-default">Ed</a>
+                                                        <a class="btn btn-default">El</a> -->
+                                                        <a class="modal-trigger" href="#editar"><?=label('editar');?></a>
+                                                        <a class="modal-trigger" href="#elminar"><?=label('eliminar');?></a>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Juan Perez</td>
                                                     <td>juan@gmail.com</td>
                                                     <td>
-                                                        <a class="btn btn-default">Ed</a>
-                                                        <a class="btn btn-default">El</a>
+                                                        <a class="modal-trigger" href="#editar"><?=label('editar');?></a>
+                                                        <a class="modal-trigger" href="#elminar"><?=label('eliminar');?></a>
+                                    
                                                     </td>
                                                 </tr>
                                                 </tbody>
+
+
                                             </table>
-                                            <a href="#" class="btn btn-default">+ Agregar</a>
+                                            <a href="#agregar" class="btn btn-default modal-trigger">Agregar</a>
                                         </div>
                                         <div class="input-field col s12">
                                             <label>Gustos y preferencias</label>
@@ -237,14 +242,14 @@
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s12">
-                                                <button class="btn waves-effect waves-light right" type="submit" name="action">Submit
+                                                <button class="btn waves-effect waves-light right" type="submit" name="action">Enviar
                                                     <i class="mdi-content-send right"></i>
                                                 </button>
                                             </div>
                                         </div>
                                     </form>
 
-                                </div>
+                                <!-- </div> -->
                             </div>
 
                         </div>
@@ -254,3 +259,53 @@
             <!--end container-->
 </section>
 <!-- END CONTENT
+
+
+<!-- lista modals -->
+<div id="elminar" class="modal">
+    <div class="modal-content">
+      <p><?=label('confirmarEliminarContacto');?></p>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
+      <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+      
+    </div>
+  </div>
+
+  <div id="editar" class="modal">
+    <div class="modal-content">
+      <div class="input-field col s12">
+        <input id="client_code" type="text" value="Maria Rodriguez">
+        <label for="client_code">Nombre</label>
+      </div>
+      <div class="input-field col s12">
+        <input id="client_code" type="text" value="maria@gmail.com">
+        <label for="client_code">Correo</label>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
+      <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+      
+    </div>
+  </div>
+
+  <div id="agregar" class="modal">
+    <div class="modal-content">
+      <div class="input-field col s12">
+        <input id="client_code" type="text" value="">
+        <label for="client_code">Nombre</label>
+      </div>
+      <div class="input-field col s12">
+        <input id="client_code" type="text" value="">
+        <label for="client_code">Correo</label>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
+      <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+      
+    </div>
+  </div>
+<!--Fin lista modals

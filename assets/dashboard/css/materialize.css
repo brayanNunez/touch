@@ -6833,7 +6833,7 @@ form p:last-child {
   height: 0; }
 
 .switch label input[type=checkbox]:checked + .lever {
-  background-color: #f7c7d8; }
+  background-color: #57923f; }
 
 .switch label input[type=checkbox]:checked + .lever:after {
   background-color: #000000; }
@@ -8080,7 +8080,7 @@ select {
   background: #fef3f7; }
 
 .picker__weekday-display {
-  background-color: #ff1c69;
+  background-color: #09856e;
   padding: 10px;
   font-weight: 200;
   letter-spacing: .5;

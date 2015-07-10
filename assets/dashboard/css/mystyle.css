@@ -271,3 +271,15 @@ p{
 	color: #57923f;
 	/*margin-top: 25px;*/
 }
+
+.btn, .btn-large {
+
+	background-color: #09856e;
+
+}
+
+.btn:hover, .btn-large:hover {
+
+	background-color: #57923f;
+
+}
