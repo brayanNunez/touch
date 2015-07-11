@@ -9,6 +9,7 @@ input:focus { outline: 0; }
 
 .modal div.modal-header { background-color: #009966; }
 .modal div.modal-header p { font-size: xx-large; text-align: center; padding-top: 10px; }
-.modal div.modal-content p { font-size: large; }
+/*.modal div.modal-content p { font-size: large; } */
+/*mae le comente esa linea de arriba porque me esta jodiendo un cosa*/
 .modal div.modal-footer a { color: #000000; font-weight: bold; }
 

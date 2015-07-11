@@ -231,19 +231,19 @@
                   
               </div>
               <div class="row col s12 m6 l6">
-                  <div class="input-field col s12">
+                  <div class="inputModals input-field col s12">
                    <p>Color de fondo: <input class="input-field"  type="color" id="myColor1"> </p>
                  </div>
-                  <div class="input-field col s12">
+                  <div class="inputModals input-field col s12">
                    <p>Color de letra: <input class="input-field"  type="color" id="myColor2"></p>
                   </div>
-                  <div class="input-field col s12">
+                  <div class="inputModals input-field col s12">
                     <p>Color de barra horizontal: <input class="input-field"  type="color" id="myColor3"></p>
                   </div>
                   <div class="input-field col s12">
                     <textarea id="message" class="materialize-textarea" style="height: 24px;"></textarea>
                     <label for="message" class="">Texto adicional</label>
-                  </div
+                  </div>
 
               </div>
                 
