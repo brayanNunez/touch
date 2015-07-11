@@ -69,9 +69,9 @@
                                                     <td>$300</td>
                                                     <td>Finalizada</td>
                                                     <td>
-                                                        <a  class="modal-trigger" href="#duplicar"><?=label('duplicar');?></a>
-                                                        <a href="<?=base_url()?>cotizacion/cotizar"><?=label('ver');?></a>
-                                                        <a class="modal-trigger" href="#Elminar"><?=label('eliminar');?></a>
+                                                        <a class="btn_duplicar modal-trigger" href="#duplicar"><?=label('duplicar');?></a>
+                                                        <a class="btn_ver" href="<?=base_url()?>cotizacion/cotizar"><?=label('ver');?></a>
+                                                        <a class="btn_eliminar modal-trigger" href="#Elminar"><?=label('eliminar');?></a>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -81,10 +81,10 @@
                                                     <td>$100</td>
                                                     <td>Enviada</td>
                                                     <td>
-                                                        <a  class="modal-trigger" href="#duplicar"><?=label('duplicar');?></a>
-                                                        <a href="<?=base_url()?>cotizacion/cotizar"><?=label('ver');?></a>
-                                                        <a class="modal-trigger" href="#finalizar"><?=label('finalizar');?></a>
-                                                        <a class="modal-trigger" href="#Elminar"><?=label('eliminar');?></a>
+                                                        <a  class="btn_duplicar modal-trigger" href="#duplicar"><?=label('duplicar');?></a>
+                                                        <a class="btn_ver" href="<?=base_url()?>cotizacion/cotizar"><?=label('ver');?></a>
+                                                        <a class="btn_finalizar modal-trigger" href="#finalizar"><?=label('finalizar');?></a>
+                                                        <a class="btn_eliminar modal-trigger" href="#Elminar"><?=label('eliminar');?></a>
                                                     </td>
                                                 </tr>
                                             </tbody>
