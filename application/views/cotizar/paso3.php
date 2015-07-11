@@ -34,7 +34,7 @@
                                         <div class="hoja">
 
                                         
-                                            <a href="#agregarAtencion"  class="modal-trigger btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
+                                            <a href="#modalEncabezado"  class="modal-trigger btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
                                                 <i class="mdi-editor-mode-edit"></i>
                                             </a>
 
@@ -66,7 +66,7 @@
 
                                             </div>
 
-                                            <a  class="btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
+                                            <a href="#modalCuerpo" class="modal-trigger btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
                                                 <i class="mdi-editor-mode-edit"></i>
                                             </a>
                                             <div id="detalle">
@@ -80,8 +80,8 @@
                                                             <th>Imagen</th>
                                                             <th>Sub-total
                                                             <a  class="btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
-                                                <i class="mdi-editor-mode-edit"></i>
-                                            </a>
+                                                                <i class="mdi-editor-mode-edit"></i>
+                                                            </a>
 
                                                             </th>
                                                         </tr>
@@ -121,7 +121,7 @@
 
                                             </div>
 
-                                             <a  class="btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
+                                             <a href="#modalInformacion" class="modal-trigger btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
                                                 <i class="mdi-editor-mode-edit"></i>
                                             </a>
                                             <div id="informacion">
@@ -139,8 +139,7 @@
                                             <div class="barra-horizontal" id="barra3">
 
                                             </div>
-
-                                             <a  class="btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
+                                             <a href="#modalFooter" class="modal-trigger btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
                                                 <i class="mdi-editor-mode-edit"></i>
                                             </a>
                                             <div id="footerCotizacion">
@@ -186,78 +185,254 @@
 
 
 <!-- lista modals -->
-    <div id="agregarAtencion" class="modal">
-    <div class="modal-header">
-        <p><?=label('nombreSistema');?></p>
-    </div>
-    <div class="modal-content">
-      <div class="row">
-            <div class="col s12 m12 l12">
-              <form action="#">
-              <div class="row col s12 m6 l6">
+  <div id="modalEncabezado" class="modal">
+      <div class="modal-header">
+          <p><?=label('nombreSistema');?></p>
+      </div>
+      <div class="modal-content">
+        <div class="row">
+              <div class="col s12 m12 l12">
+                <form action="#">
+                <div class="row col s12 m6 l6">
+                    <div class="listaCecksModals">
+                      <p>
+                        <input type="checkbox" class="filled-in" id="filled-in-box1" checked="checked">
+                        <label for="filled-in-box1">Nombre de la empresa</label>
+                      </p>
+                      <p>
+                        <input type="checkbox" class="filled-in" id="filled-in-box2" checked="checked">
+                        <label for="filled-in-box2">Código de cotización</label>
+                      </p>
+                      <p>
+                        <input type="checkbox" class="filled-in" id="filled-in-box3" checked="checked">
+                        <label for="filled-in-box3">Cliente</label>
+                      </p>
+                      <p>
+                        <input type="checkbox" class="filled-in" id="filled-in-box4" checked="checked">
+                        <label for="filled-in-box4">Atención</label>
+                      </p>
+                      <p>
+                        <input type="checkbox" class="filled-in" id="filled-in-box5" checked="checked">
+                        <label for="filled-in-box5">Cotizador</label>
+                      </p>
+                      <p>
+                        <input type="checkbox" class="filled-in" id="filled-in-box6" checked="checked">
+                        <label for="filled-in-box6">Fecha</label>
+                      </p>
+                      <p>
+                        <input type="checkbox" class="filled-in" id="filled-in-box7" checked="checked">
+                        <label for="filled-in-box7">Hora</label>
+                      </p>
+                      <p>
+                        <input type="checkbox" class="filled-in" id="filled-in-box8" checked="checked">
+                        <label for="filled-in-box8">Imagen</label>
+                      </p>
+                      
+                    </div>
+                </div>
+                <div class="row col s12 m6 l6">
+                    <div class="inputModals input-field col s12">
+                     <p>Color de fondo: <input class=""  type="color" id="myColor1"> </p>
+                   </div>
+                    <div class="inputModals input-field col s12">
+                     <p>Color de letra: <input class=""  type="color" id="myColor2"></p>
+                    </div>
+                    <div class="inputModals input-field col s12">
+                      <p>Color de barra horizontal: <input class=""  type="color" id="myColor3"></p>
+                    </div>
+                    <div class="input-field col s12">
+                      <textarea id="message" class="materialize-textarea" style="height: 24px;"></textarea>
+                      <label for="message" class="">Texto adicional</label>
+                    </div>
 
-                  <p>
-                      <input type="checkbox" class="filled-in" id="filled-in-box1" checked="checked">
-                      <label for="filled-in-box1">Nombre de la empresa</label>
-                    </p>
-                    <p>
-                      <input type="checkbox" class="filled-in" id="filled-in-box2" checked="checked">
-                      <label for="filled-in-box2">Código de cotización</label>
-                    </p>
-                    <p>
-                      <input type="checkbox" class="filled-in" id="filled-in-box3" checked="checked">
-                      <label for="filled-in-box3">Cliente</label>
-                    </p>
-                    <p>
-                      <input type="checkbox" class="filled-in" id="filled-in-box4" checked="checked">
-                      <label for="filled-in-box4">Atención</label>
-                    </p>
-                    <p>
-                      <input type="checkbox" class="filled-in" id="filled-in-box5" checked="checked">
-                      <label for="filled-in-box5">Cotizador</label>
-                    </p>
-                    <p>
-                      <input type="checkbox" class="filled-in" id="filled-in-box6" checked="checked">
-                      <label for="filled-in-box6">Fecha</label>
-                    </p>
-                    <p>
-                      <input type="checkbox" class="filled-in" id="filled-in-box7" checked="checked">
-                      <label for="filled-in-box7">Hora</label>
-                    </p>
-                    <p>
-                      <input type="checkbox" class="filled-in" id="filled-in-box8" checked="checked">
-                      <label for="filled-in-box8">Imagen</label>
-                    </p>
+                </div>
                   
+                    
+                </form>
               </div>
-              <div class="row col s12 m6 l6">
-                  <div class="inputModals input-field col s12">
-                   <p>Color de fondo: <input class="input-field"  type="color" id="myColor1"> </p>
-                 </div>
-                  <div class="inputModals input-field col s12">
-                   <p>Color de letra: <input class="input-field"  type="color" id="myColor2"></p>
-                  </div>
-                  <div class="inputModals input-field col s12">
-                    <p>Color de barra horizontal: <input class="input-field"  type="color" id="myColor3"></p>
-                  </div>
-                  <div class="input-field col s12">
-                    <textarea id="message" class="materialize-textarea" style="height: 24px;"></textarea>
-                    <label for="message" class="">Texto adicional</label>
-                  </div>
-
-              </div>
-                
-                  
-              </form>
             </div>
-          </div>
-     
-    </div>
-    <div class="modal-footer">
-      <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
-      <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
-      
-    </div>
+       
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+        
+      </div>
+  </div>
+
+
+  <div id="modalCuerpo" class="modal">
+      <div class="modal-header">
+          <p><?=label('nombreSistema');?></p>
+      </div>
+      <div class="modal-content">
+        <div class="row">
+              <div class="col s12 m12 l12">
+                <form action="#">
+                <div class="row col s12 m6 l6">
+                    <div class="listaCecksModals">
+                      <p>
+                        <input type="checkbox" class="filled-in" id="cuerpofilled-in-box1" checked="checked">
+                        <label for="cuerpofilled-in-box1">Impuesto</label>
+                      </p>
+                      <p>
+                        <input type="checkbox" class="filled-in" id="cuerpofilled-in-box2" checked="checked">
+                        <label for="cuerpofilled-in-box2">Descuento</label>
+                      </p>
+                      <p>
+                        <input type="checkbox" class="filled-in" id="cuerpofilled-in-box3" checked="checked">
+                        <label for="cuerpofilled-in-box3">Tolal</label>
+                      </p>
+
+                    </div>
+                </div>
+                <div class="row col s12 m6 l6">
+                    <div class="inputModals input-field col s12">
+                     <p>Color de fondo: <input class=""  type="color" id="myColor1"> </p>
+                   </div>
+                    <div class="inputModals input-field col s12">
+                     <p>Color de letra: <input class=""  type="color" id="myColor2"></p>
+                    </div>
+                    <div class="inputModals input-field col s12">
+                      <p>Color de barra horizontal: <input class=""  type="color" id="myColor3"></p>
+                    </div>
+
+                </div>
+                  
+                    
+                </form>
+              </div>
+            </div>
+       
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+        
+      </div>
+  </div>
+
+  <div id="modalInformacion" class="modal">
+      <div class="modal-header">
+          <p><?=label('nombreSistema');?></p>
+      </div>
+      <div class="modal-content">
+        <div class="row">
+              <div class="col s12 m12 l12">
+                <form action="#">
+                <div class="row col s12 m6 l6">
+                    <div class="listaCecksModals">
+                      <p>
+                        <input type="checkbox" class="filled-in" id="informacionfilled-in-box1" checked="checked">
+                        <label for="informacionfilled-in-box1">Forma de pago</label>
+                      </p>
+                      <p>
+                        <input type="checkbox" class="filled-in" id="informacionfilled-in-box2" checked="checked">
+                        <label for="informacionfilled-in-box2">Vlidez</label>
+                      </p>
+                      <p>
+                        <input type="checkbox" class="filled-in" id="informacionfilled-in-box3" checked="checked">
+                        <label for="informacionfilled-in-box3">Detalle</label>
+                      </p>
+                      <p>
+                        <input type="checkbox" class="filled-in" id="informacionfilled-in-box4" checked="checked">
+                        <label for="informacionfilled-in-box4">Firma</label>
+                      </p>
+                      <div class="file-field input-field col s12">
+                        <div class="inputModals">Firma electónica:<input type="file">
+                        </div>
+                        <input class="file-path validate" type="text">
+                      </div>
+
+                      
+                    </div>
+                </div>
+                <div class="row col s12 m6 l6">
+                    <div class="inputModals input-field col s12">
+                     <p>Color de fondo: <input class=""  type="color" id="myColor1"> </p>
+                   </div>
+                    <div class="inputModals input-field col s12">
+                     <p>Color de letra: <input class=""  type="color" id="myColor2"></p>
+                    </div>
+                    <div class="inputModals input-field col s12">
+                      <p>Color de barra horizontal: <input class=""  type="color" id="myColor3"></p>
+                    </div>
+                    <div class="input-field col s12">
+                      <textarea id="message" class="materialize-textarea" style="height: 24px;"></textarea>
+                      <label for="message" class="">Texto adicional</label>
+                    </div>
+
+                </div>
+                  
+                    
+                </form>
+              </div>
+            </div>
+       
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+        
+      </div>
+  </div>
+
+
+  <div id="modalFooter" class="modal">
+      <div class="modal-header">
+          <p><?=label('nombreSistema');?></p>
+      </div>
+      <div class="modal-content">
+        <div class="row">
+              <div class="col s12 m12 l12">
+                <form action="#">
+                <div class="row col s12 m6 l6">
+                    <div class="listaCecksModals">
+                      <p>
+                        <input type="checkbox" class="filled-in" id="footerfilled-in-box1" checked="checked">
+                        <label for="footerfilled-in-box1">Teléfono</label>
+                      </p>
+                      <p>
+                        <input type="checkbox" class="filled-in" id="footerfilled-in-box2" checked="checked">
+                        <label for="footerfilled-in-box2">Sitio web</label>
+                      </p>
+                      <p>
+                        <input type="checkbox" class="filled-in" id="footerfilled-in-box3" checked="checked">
+                        <label for="footerfilled-in-box3">Correo</label>
+                      </p>
+                      <p>
+                        <input type="checkbox" class="filled-in" id="footerfilled-in-box4" checked="checked">
+                        <label for="footerfilled-in-box4">Imagen</label>
+                      </p>
+                      
+                      
+                    </div>
+                </div>
+                <div class="row col s12 m6 l6">
+                    <div class="inputModals input-field col s12">
+                     <p>Color de fondo: <input class=""  type="color" id="myColor1"> </p>
+                   </div>
+                    <div class="inputModals input-field col s12">
+                     <p>Color de letra: <input class=""  type="color" id="myColor2"></p>
+                    </div>
+                    <div class="input-field col s12">
+                      <textarea id="message" class="materialize-textarea" style="height: 24px;"></textarea>
+                      <label for="message" class="">Texto adicional</label>
+                    </div>
+
+                </div>
+                  
+                    
+                </form>
+              </div>
+            </div>
+       
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+        
+      </div>
   </div>
 
       
