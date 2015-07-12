@@ -1,7 +1,7 @@
 <section>
     <div class="container">
 
-        <div class="row bloquehome1">
+        <div class="row bloque-home1">
             <div class="col-sm-12 text-center">
                 <h4 class="uppercase mb16">Precios</h4>
             </div>

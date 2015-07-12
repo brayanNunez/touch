@@ -1,7 +1,7 @@
 <section>
     <div class="container">
 
-        <div class="row col-sm-12 col-md-12 bloquefaq1">
+        <div class="row col-sm-12 col-md-12 bloque-home2">
             <div class="col-sm-6 col-md-6 text-center ">
                 <h4 class="uppercase mb16">Preguntas frecuentes</h4>
             </div>
@@ -17,7 +17,7 @@
 
         </div>
 
-            <div class=" bloquefaq2 panel-group row col-md-12" id="accordion" style="float: left">
+            <div class=" panel-group row col-md-12" id="accordion">
                 <div class="panel panel-default">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
                         <div class="panel-heading">
