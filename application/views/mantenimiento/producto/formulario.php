@@ -262,6 +262,8 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
             <!--end container-->
 </section>
 <!-- END CONTENT
@@ -280,50 +282,42 @@
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>
-
-
+<div id="editar" class="modal">
+    <div class="modal-header">
+        <p><?=label('nombreSistema');?></p>
+    </div>
+    <div class="modal-content">
+        <div class="input-field col s12">
+            <input id="client_code" type="text" value="Maria Rodriguez">
+            <label for="client_code"><?=label('formCliente_nombreContacto');?></label>
+        </div>
+        <div class="input-field col s12">
+            <input id="client_code" type="text" value="maria@gmail.com">
+            <label for="client_code"><?=label('formCliente_correoContacto');?></label>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+    </div>
 </div>
-
-  <div id="editar" class="modal">
-    <div class="modal-header">
-        <p><?=label('nombreSistema');?></p>
-    </div>
-
-    <div class="modal-content">
-      <div class="input-field col s12">
-        <input id="client_code" type="text" value="Maria Rodriguez">
-        <label for="client_code"><?=label('formCliente_nombreContacto');?></label>
-      </div>
-      <div class="input-field col s12">
-        <input id="client_code" type="text" value="maria@gmail.com">
-        <label for="client_code"><?=label('formCliente_correoContacto');?></label>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
-      <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
-      
-    </div>
-  </div>
-
-  <div id="agregar" class="modal">
+<div id="agregar" class="modal">
     <div class="modal-header">
         <p><?=label('nombreSistema');?></p>
     </div>
     <div class="modal-content">
-      <div class="input-field col s12">
-        <input id="client_code" type="text" value="">
-        <label for="client_code"><?=label('formCliente_nombreContacto');?></label>
-      </div>
-      <div class="input-field col s12">
-        <input id="client_code" type="text" value="">
-        <label for="client_code"><?=label('formCliente_correoContacto');?></label>
-      </div>
+        <div class="input-field col s12">
+            <input id="client_code" type="text" value="">
+            <label for="client_code"><?=label('formCliente_nombreContacto');?></label>
+        </div>
+        <div class="input-field col s12">
+            <input id="client_code" type="text" value="">
+            <label for="client_code"><?=label('formCliente_correoContacto');?></label>
+        </div>
     </div>
     <div class="modal-footer">
-      <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
-      <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
-      
+        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
-  </div>
+</div>
 <!-- Fin lista modals -->

@@ -1,5 +1,4 @@
 <?php
-
 	$lang['nombreSistema'] = 'Touch!';
 
 //mensajes 
@@ -7,11 +6,26 @@
 	$lang['confirmarFinalizarCotizacion'] = '¿Realmente desea finalizar la cotización seleccionada?';
 	$lang['confirmarDuplicarCotizacion'] = '¿Realmente desea duplicar la cotización seleccionada?';
 	$lang['confirmarEliminarContacto'] = '¿Realmente desea eliminar el contacto seleccionado?';
+	$lang['confirmarEliminarSalario'] = '¿Realmente desea eliminar el salario seleccionado?';
+	$lang['confirmarEliminarCaracteristica'] = '¿Realmente desea eliminar la característica seleccionada?';
+	$lang['confirmarEliminarElementoServicio'] = '¿Realmente desea eliminar el elemento seleccionado?';
+	$lang['confirmarEditarEmpleado'] = '¿Realmente desea guardar los cambios realizados?';
+//tipos de salario
+    $lang['horas'] = 'Por horas';
+    $lang['dia'] = 'Diario';
+    $lang['semana'] = 'Semanal';
+    $lang['quincena'] = 'Quincenal';
+    $lang['mes'] = 'Mensual';
 //titulos
 	$lang['tituloListaCotizaciones'] = 'Lista de cotizaciones';
 	$lang['tituloCotizacion'] = 'Cotización';
 	$lang['tituloFormularioCliente'] = 'Agregar cliente';
-
+	$lang['tituloFormularioEmpleado'] = 'Agregar empleado';
+	$lang['tituloFormularioProveedor'] = 'Agregar proveedor';
+	$lang['tituloFormularioUsuario'] = 'Agregar usuario';
+	$lang['tituloFormularioRegistro'] = 'Registro';
+	$lang['tituloFormularioServicio'] = 'Agregar servicio';
+	$lang['tituloFormularioProducto'] = 'Agregar producto';
 
 //columnas tabla de cotizaciones 
 	$lang['tablaCotizaciones_codigo'] = 'Código';
@@ -65,6 +79,7 @@
 
 //formulario cliente
 	$lang['formCliente_tipoPersona'] = 'Tipo de persona';
+	$lang['formCliente_seleccioneUno'] = 'Seleccione uno';
 	$lang['formCliente_fisica'] = 'Física';
 	$lang['formCliente_juridica'] = 'Jurídica';
 	$lang['formCliente_codigo'] = 'Código';
@@ -88,7 +103,115 @@
 	$lang['formCliente_nuevoMedio'] = 'Nuevo medio';
 	$lang['formCliente_cotizador'] = 'Cotizador';
 
-	//botones formulario cliente
+//Formulario de empleados
+    $lang['formEmpleado_codigo'] = 'Código';
+    $lang['formEmpleado_nombre'] = 'Nombre';
+    $lang['formEmpleado_identificacion'] = 'Identificación';
+    $lang['formEmpleado_fechaNacimiento'] = 'Fecha de nacimiento';
+    $lang['formEmpleado_fechaIngreso'] = 'Fecha de ingreso a la empresa';
+    $lang['formEmpleado_palabrasClave'] = 'Palabras clave';
+    $lang['formEmpleado_descripcion'] = 'Descripción';
+    $lang['formEmpleado_salarios'] = 'Salarios';
+    $lang['formEmpleado_nuevaPalabra'] = 'Nueva palabra clave';
+    $lang['formEmpleado_agregar'] = 'Agregar';
+    $lang['formEmpleado_salariosTipo'] = 'Agregar';
+    $lang['formEmpleado_salariosMonto'] = 'Agregar';
+    $lang['formEmpleado_salariosOpciones'] = 'Agregar';
+    $lang['formEmpleado_enviar'] = 'Enviar';
+    $lang['formEmpleado_palabraNombre'] = 'Ocupación';
+    $lang['formEmpleado_salarioTipo'] = 'Tipo';
+    $lang['formEmpleado_salarioMonto'] = 'Monto';
+
+//Formulario de proveedores
+    $lang['formProveedor_tipoProveedor'] = 'Tipo de proveedor';
+    $lang['formProveedor_seleccioneUno'] = 'Seleccione uno';
+    $lang['formProveedor_fisico'] = 'Físico';
+    $lang['formProveedor_juridico'] = 'Jurídico';
+    $lang['formProveedor_codigo'] = 'Código';
+    $lang['formProveedor_nombre'] = 'Nombre';
+    $lang['formProveedor_identificacion'] = 'Identificación';
+    $lang['formProveedor_palabrasClave'] = 'Palabras clave';
+    $lang['formProveedor_descripcion'] = 'Descripción';
+    $lang['formProveedor_salarios'] = 'Salarios';
+    $lang['formProveedor_nuevaPalabra'] = 'Nueva palabra clave';
+    $lang['formProveedor_agregar'] = 'Agregar';
+    $lang['formProveedor_salariosTipo'] = 'Agregar';
+    $lang['formProveedor_salariosMonto'] = 'Agregar';
+    $lang['formProveedor_salariosOpciones'] = 'Agregar';
+    $lang['formProveedor_enviar'] = 'Enviar';
+    $lang['formProveedor_salarioTipo'] = 'Tipo';
+    $lang['formProveedor_salarioMonto'] = 'Monto';
+
+//Formulario de usuarios
+    $lang['formUsuario_nombre'] = 'Nombre';
+    $lang['formUsuario_correo'] = 'Correo electrónico';
+    $lang['formUsuario_nombreUsuario'] = 'Nombre de usuario';
+    $lang['formUsuario_contrasena'] = 'Contraseña';
+    $lang['formUsuario_fotografia'] = 'Fotografía';
+    $lang['formUsuario_roles'] = 'Roles asignados';
+    $lang['formUsuario_examinar'] = 'Ex';
+    $lang['formUsuario_rol'] = 'Rol';
+    $lang['formUsuario_rolEstado'] = 'Estado';
+    $lang['formUsuario_rolAdministrador'] = 'Administrador';
+    $lang['formUsuario_rolAprobador'] = 'Aprobador';
+    $lang['formUsuario_rolCotizador'] = 'Cotizador';
+    $lang['formUsuario_rolContador'] = 'Contador';
+    $lang['formUsuario_enviar'] = 'Enviar';
+
+//Formulario de registro
+    $lang['formRegistro_nombre'] = 'Nombre';
+    $lang['formRegistro_correo'] = 'Correo electrónico';
+    $lang['formRegistro_telefono'] = 'Número telefónico';
+    $lang['formRegistro_sitioWeb'] = 'Sitio Web';
+    $lang['formRegistro_nombreUsuario'] = 'Nombre de usuario';
+    $lang['formRegistro_contrasena'] = 'Contraseña';
+    $lang['formRegistro_contrasenaConfirm'] = 'Cconfirmar contraseña';
+    $lang['formRegistro_fotografia'] = 'Imagen';
+    $lang['formRegistro_examinar'] = 'Ex';
+    $lang['formRegistro_crearPerfil'] = 'Crear perfil';
+
+//Formulario de servicio
+    $lang['formServicio_codigo'] = 'Código';
+    $lang['formServicio_nombre'] = 'Nombre';
+    $lang['formServicio_descripcion'] = 'Descripción';
+    $lang['formServicio_imagen'] = 'Imagen';
+    $lang['formServicio_examinar'] = 'Ex';
+    $lang['formServicio_gastos'] = 'Gastos relacionados';
+    $lang['formServicio_gastosNombre'] = 'Nombre';
+    $lang['formServicio_gastosCantidad'] = 'Cantidad';
+    $lang['formServicio_gastosSubtotal'] = 'Sub-total';
+    $lang['formServicio_gastosOpciones'] = 'Opciones';
+    $lang['formServicio_nueva'] = '+';
+    $lang['formServicio_utilidad'] = 'Utilidad';
+    $lang['formServicio_total'] = 'Total';
+    $lang['formServicio_enviar'] = 'Enviar';
+    $lang['formServicio_gastoAdicionalNombre'] = 'Nombre';
+    $lang['formServicio_gastoAdicionalMonto'] = 'Monto';
+    $lang['formServicio_nuevaPersonaTipo'] = 'Tipo de persona';
+    $lang['formServicio_nuevaPersonaEmpleado'] = 'Empleado';
+    $lang['formServicio_nuevaPersonaProveedor'] = 'Proveedor';
+    $lang['formServicio_nuevaPersonaCodigo'] = 'Código';
+    $lang['formServicio_nuevaPersonaIdentificacion'] = 'Identificación';
+    $lang['formServicio_nuevaPersonaNombre'] = 'Nombre';
+    $lang['formServicio_nuevaPersonaDescripcion'] = 'Descripción';
+    $lang['formServicio_nuevaPersonaSalario'] = 'Salario';
+    $lang['formServicio_nuevaPersonaSalarioTipo'] = 'Tipo de salario';
+    $lang['formServicio_nuevaPersonaSalarioMonto'] = 'Monto';
+
+//Formulario de producto
+$lang['formProducto_codigo'] = 'Código';
+$lang['formProducto_nombre'] = 'Nombre';
+$lang['formProducto_descripcion'] = 'Descripción';
+$lang['formProducto_precio'] = 'Precio';
+$lang['formProducto_imagen'] = 'Imagen';
+$lang['formProducto_examinar'] = 'Ex';
+$lang['formProducto_caracteristicas'] = 'Características';
+$lang['formProducto_caracteristicasDescripcion'] = 'Descripción';
+$lang['formProducto_caracteristicasOpciones'] = 'Opciones';
+$lang['formProducto_nueva'] = 'Nueva';
+$lang['formProducto_enviar'] = 'Enviar';
+
+//botones formulario cliente
 	$lang['formCliente_agregar'] = 'Agregar';
 	$lang['formCliente_enviar'] = 'Enviar';
 

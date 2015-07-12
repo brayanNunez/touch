@@ -200,5 +200,4 @@
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>
-      
 <!--Fin lista modals -->
