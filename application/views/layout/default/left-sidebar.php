@@ -36,9 +36,9 @@
                             <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-invert-colors"></i> <?=label('productos');?></a>
                                 <div class="collapsible-body">
                                     <ul>
-                                        <li><a href="#"><?=label('agregarP');?></a>
+                                        <li><a href="<?=base_url();?>productos/agregar"><?=label('agregarP');?></a>
                                         </li>                                        
-                                        <li><a href="#"><?=label('listarP');?></a>
+                                        <li><a href="<?=base_url();?>productos/"><?=label('listarP');?></a>
                                         </li>
                                        
                                         </li>

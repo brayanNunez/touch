@@ -16,11 +16,25 @@ class Productos extends CI_Controller {
         $this->load->view('mantenimiento/producto/producto');
         $this->load->view('layout/default/footer');
     }
-    public function formulario()
+    public function agregar()
     {
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
         $this->load->view('mantenimiento/formularios/productos');
+        $this->load->view('layout/default/footer');
+    }
+    public function editar()
+    {
+        $this->load->view('layout/default/header');
+        $this->load->view('layout/default/left-sidebar');
+        $this->load->view('mantenimiento/formularios/productos_editar');
+        $this->load->view('layout/default/footer');
+    }
+    public function formulario()
+    {
+        $this->load->view('layout/default/header');
+        $this->load->view('layout/default/left-sidebar');
+        $this->load->view('mantenimiento/formularios/usuarios');
         $this->load->view('layout/default/footer');
     }
 }

@@ -1,4 +1,4 @@
-#search { float: left; margin-top: 5px; border-top: none; border-left: none; border-right: none; margin-left: 10px; width: 200px; font-size: large; }
+#search { float: right; margin-top: 5px; border-top: none; border-left: none; border-right: none; margin-left: 10px; width: 300px; font-size: large; }
 input:focus { outline: 0; }
 #tableHeader { min-height: 80px; }
 .popup-position { display: none; position: fixed; top: 0; left: 0; background-color: rgba(0,0,0,0.7); width: 100%; height: 100%; }
@@ -6,6 +6,7 @@ input:focus { outline: 0; }
 .popup-container { background-color: white; padding: 20px; border-radius: 5px; }
 .mb0 { margin: 7px 0px; width: 100% }
 #example tbody td { text-align: left; padding-left: 10px; }
+.file-field input.file-path { margin-left: 100px !important; }
 
 .modal div.modal-header { background-color: #009966; }
 .modal div.modal-header p { font-size: xx-large; text-align: center; padding-top: 10px; }

@@ -7,6 +7,7 @@
 	$lang['confirmarDuplicarCotizacion'] = '¿Realmente desea duplicar la cotización seleccionada?';
 	$lang['confirmarEliminarContacto'] = '¿Realmente desea eliminar el contacto seleccionado?';
 	$lang['confirmarEliminarSalario'] = '¿Realmente desea eliminar el salario seleccionado?';
+	$lang['confirmarEliminarElementoProductos'] = '¿Realmente desea eliminar el elemento seleccionado?';
 	$lang['confirmarEliminarCaracteristica'] = '¿Realmente desea eliminar la característica seleccionada?';
 	$lang['confirmarEliminarElementoServicio'] = '¿Realmente desea eliminar el elemento seleccionado?';
 	$lang['confirmarEditarEmpleado'] = '¿Realmente desea guardar los cambios realizados?';
@@ -26,6 +27,8 @@
 	$lang['tituloFormularioRegistro'] = 'Registro';
 	$lang['tituloFormularioServicio'] = 'Agregar servicio';
 	$lang['tituloFormularioProducto'] = 'Agregar producto';
+	$lang['tituloFormularioProductoEditar'] = 'Editar producto';
+	$lang['tituloProducto'] = 'Productos';
 
 //columnas tabla de cotizaciones 
 	$lang['tablaCotizaciones_codigo'] = 'Código';
@@ -45,6 +48,7 @@
 	$lang['finalizar'] = 'Finalizar';
 	$lang['on'] = 'On';
 	$lang['off'] = 'Off';
+	$lang['annadir'] = 'Añadir';
 
 //comentarios de una cotizacion
 	$lang['comentar'] = 'Comentar';
@@ -199,6 +203,17 @@
     $lang['formServicio_nuevaPersonaSalarioMonto'] = 'Monto';
 
 //Formulario de producto
+$lang['Producto_agregarNuevo'] = 'Agregar producto';
+$lang['Producto_tipo'] = 'Tipo de elemento';
+$lang['Producto_categorias'] = 'Categorías';
+$lang['Producto_categoriaNombre'] = 'Nombre de la categoría';
+$lang['Producto_tablaNombre'] = 'Nombre';
+$lang['Producto_tablaCodigo'] = 'Código';
+$lang['Producto_tablaDescripcion'] = 'Descripción';
+$lang['Producto_tablaPrecio'] = 'Precio';
+$lang['Producto_tablaOpciones'] = 'Opciones';
+$lang['Producto_tablaBusqueda'] = 'Buscar: ';
+$lang['Producto_productos'] = 'Productos';
 $lang['formProducto_codigo'] = 'Código';
 $lang['formProducto_nombre'] = 'Nombre';
 $lang['formProducto_descripcion'] = 'Descripción';
@@ -210,6 +225,7 @@ $lang['formProducto_caracteristicasDescripcion'] = 'Descripción';
 $lang['formProducto_caracteristicasOpciones'] = 'Opciones';
 $lang['formProducto_nueva'] = 'Nueva';
 $lang['formProducto_enviar'] = 'Enviar';
+$lang['formProducto_guardar'] = 'Guardar cambios';
 
 //botones formulario cliente
 	$lang['formCliente_agregar'] = 'Agregar';
