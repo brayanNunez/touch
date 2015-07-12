@@ -29,7 +29,7 @@
                     </li>
                     <li class="bold"><a href="<?=base_url()?>cotizacion" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> <?=label('cotizaciones');?> <span class="new badge">4</span></a>
                     </li>
-                    <li class="bold"><a href="#" class="waves-effect waves-cyan"><i class="mdi-action-favorite"></i> <?=label('servicios');?></a>
+                    <li class="bold"><a href="<?=base_url();?>servicios/" class="waves-effect waves-cyan"><i class="mdi-action-favorite"></i> <?=label('servicios');?></a>
                     </li>
                     <li class="no-padding">
                         <ul class="collapsible collapsible-accordion">

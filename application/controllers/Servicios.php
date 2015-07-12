@@ -1,8 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Productos extends CI_Controller {
-    
+class Servicios extends CI_Controller {
+
     function __construct()
     {
         parent::__construct();
@@ -13,28 +13,21 @@ class Productos extends CI_Controller {
     {
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
-        $this->load->view('mantenimiento/producto/producto');
+        $this->load->view('mantenimiento/formularios/servicios_lista');
         $this->load->view('layout/default/footer');
     }
     public function agregar()
     {
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
-        $this->load->view('mantenimiento/formularios/productos');
+        $this->load->view('mantenimiento/formularios/servicios');
         $this->load->view('layout/default/footer');
     }
     public function editar()
     {
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
-        $this->load->view('mantenimiento/formularios/productos_editar');
-        $this->load->view('layout/default/footer');
-    }
-    public function formulario()
-    {
-        $this->load->view('layout/default/header');
-        $this->load->view('layout/default/left-sidebar');
-        $this->load->view('mantenimiento/formularios/servicios_lista');
+        $this->load->view('mantenimiento/formularios/servicios_editar');
         $this->load->view('layout/default/footer');
     }
 }

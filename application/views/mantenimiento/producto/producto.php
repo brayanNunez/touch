@@ -25,10 +25,10 @@
 <!--                                        <div>-->
 <!--                                            <input type="text" id="search" placeholder="Buscar"/>-->
 <!--                                        </div>-->
-                                        <div id="search" class="dataTables_filter">
+                                        <div class="dataTables_filter search">
                                             <label>
                                                 <?=label('Producto_tablaBusqueda');?>
-                                                <input type="search" class="" placeholder="" aria-controls="data-table-simple">
+                                                <input id="search" type="search" aria-controls="data-table-simple">
                                             </label>
                                         </div>
                                     </div>
@@ -50,8 +50,8 @@
                                                     <td></td>
                                                     <td></td>
                                                     <td>
-                                                        <a style="width: 45%" class="modal-trigger" href="#editarCategoría"><?=label('editar');?></a>
-                                                        <a style="width: 45%"  class="modal-trigger" href="#agregarCategoría" ><?=label('annadir') ?></a>
+                                                        <a class="modal-trigger" href="#editarCategoría"><?=label('editar');?></a>
+                                                        <a class="modal-trigger" href="#agregarCategoría" ><?=label('annadir') ?></a>
                                                     </td>
                                                 </tr>
                                                 <tr data-tt-id="2" data-tt-parent-id="1">
@@ -60,9 +60,9 @@
                                                     <td></td>
                                                     <td></td>
                                                     <td>
-                                                        <a style="width: 30%" class="modal-trigger" href="#editarCategoría"><?=label('editar');?></a>
+                                                        <a class="modal-trigger" href="#editarCategoría"><?=label('editar');?></a>
                                                         <a class="modal-trigger" href="#eliminarElemento"><?=label('eliminar');?></a>
-                                                        <a style="width: 30%" class="modal-trigger" href="<?=base_url()?>productos/agregar"><?=label('annadir') ?></a>
+                                                        <a class="modal-trigger" href="<?=base_url()?>productos/agregar"><?=label('annadir') ?></a>
                                                     </td>
                                                 </tr>
                                                 <tr data-tt-id="3" data-tt-parent-id="2">
@@ -71,7 +71,7 @@
                                                     <td>Paquete de 2 Kg</td>
                                                     <td>$2</td>
                                                     <td>
-                                                        <a style="width: 45%" href="<?=base_url()?>productos/editar"><?=label('editar');?></a>
+                                                        <a href="<?=base_url()?>productos/editar"><?=label('editar');?></a>
                                                         <a class="modal-trigger" href="#eliminarElemento"><?=label('eliminar');?></a>
                                                     </td>
                                                 </tr>
@@ -81,9 +81,9 @@
                                                     <td></td>
                                                     <td></td>
                                                     <td>
-                                                        <a style="width: 30%" class="modal-trigger" href="#editarCategoría"><?=label('editar');?></a>
+                                                        <a class="modal-trigger" href="#editarCategoría"><?=label('editar');?></a>
                                                         <a class="modal-trigger" href="#eliminarElemento"><?=label('eliminar');?></a>
-                                                        <a style="width: 30%" class="modal-trigger" href="#agregarCategoría"><?=label('annadir') ?></a>
+                                                        <a class="modal-trigger" href="#agregarCategoría"><?=label('annadir') ?></a>
                                                     </td>
                                                 </tr>
                                                 <tr data-tt-id="5" data-tt-parent-id="4">
@@ -92,9 +92,9 @@
                                                     <td></td>
                                                     <td></td>
                                                     <td>
-                                                        <a style="width: 30%" class="modal-trigger" href="#editarCategoría""><?=label('editar');?></a>
+                                                        <a class="modal-trigger" href="#editarCategoría""><?=label('editar');?></a>
                                                         <a class="modal-trigger" href="#eliminarElemento"><?=label('eliminar');?></a>
-                                                        <a style="width: 30%" class="modal-trigger" href="<?=base_url()?>productos/agregar"><?=label('annadir') ?></a>
+                                                        <a class="modal-trigger" href="<?=base_url()?>productos/agregar"><?=label('annadir') ?></a>
                                                     </td>
                                                 </tr>
                                                 <tr data-tt-id="6" data-tt-parent-id="5">
@@ -103,7 +103,7 @@
                                                     <td>Envase de 2 litros</td>
                                                     <td>$3</td>
                                                     <td>
-                                                        <a style="width: 45%" href="<?=base_url()?>productos/editar"><?=label('editar');?></a>
+                                                        <a href="<?=base_url()?>productos/editar"><?=label('editar');?></a>
                                                         <a class="modal-trigger" href="#eliminarElemento"><?=label('eliminar');?></a>
                                                     </td>
                                                 </tr>
@@ -113,7 +113,7 @@
                                                     <td>Envase de 1.5 litros</td>
                                                     <td>$2</td>
                                                     <td>
-                                                        <a style="width: 45%" href="<?=base_url()?>productos/editar""><?=label('editar');?></a>
+                                                        <a href="<?=base_url()?>productos/editar""><?=label('editar');?></a>
                                                         <a class="modal-trigger" href="#eliminarElemento"><?=label('eliminar');?></a>
                                                     </td>
                                                 </tr>
@@ -123,9 +123,9 @@
                                                     <td></td>
                                                     <td></td>
                                                     <td>
-                                                        <a style="width: 30%" class="modal-trigger" href="#editarCategoría"><?=label('editar');?></a>
+                                                        <a class="modal-trigger" href="#editarCategoría"><?=label('editar');?></a>
                                                         <a class="modal-trigger" href="#eliminarElemento"><?=label('eliminar');?></a>
-                                                        <a style="width: 30%" class="modal-trigger" href="<?=base_url()?>productos/agregar"><?=label('annadir') ?></a>
+                                                        <a class="modal-trigger" href="<?=base_url()?>productos/agregar"><?=label('annadir') ?></a>
                                                     </td>
                                                 </tr>
                                                 <tr data-tt-id="9" data-tt-parent-id="8">
@@ -134,7 +134,7 @@
                                                     <td>Envase de 1 litro</td>
                                                     <td>$1</td>
                                                     <td>
-                                                        <a style="width: 45%" href="<?=base_url()?>productos/editar"><?=label('editar');?></a>
+                                                        <a href="<?=base_url()?>productos/editar"><?=label('editar');?></a>
                                                         <a class="modal-trigger" href="#eliminarElemento"><?=label('eliminar');?></a>
                                                     </td>
                                                 </tr>
@@ -144,7 +144,7 @@
                                                     <td>Envase de 3 litros</td>
                                                     <td>$3</td>
                                                     <td>
-                                                        <a style="width: 45%" href="<?=base_url()?>productos/editar"><?=label('editar');?></a>
+                                                        <a href="<?=base_url()?>productos/editar"><?=label('editar');?></a>
                                                         <a class="modal-trigger" href="#eliminarElemento"><?=label('eliminar');?></a>
                                                     </td>
                                                 </tr>

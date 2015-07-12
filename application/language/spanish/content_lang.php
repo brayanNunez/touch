@@ -8,6 +8,7 @@
 	$lang['confirmarEliminarContacto'] = '¿Realmente desea eliminar el contacto seleccionado?';
 	$lang['confirmarEliminarSalario'] = '¿Realmente desea eliminar el salario seleccionado?';
 	$lang['confirmarEliminarElementoProductos'] = '¿Realmente desea eliminar el elemento seleccionado?';
+	$lang['confirmarEliminarServicio'] = '¿Realmente desea eliminar el servicio seleccionado?';
 	$lang['confirmarEliminarCaracteristica'] = '¿Realmente desea eliminar la característica seleccionada?';
 	$lang['confirmarEliminarElementoServicio'] = '¿Realmente desea eliminar el elemento seleccionado?';
 	$lang['confirmarEditarEmpleado'] = '¿Realmente desea guardar los cambios realizados?';
@@ -26,9 +27,11 @@
 	$lang['tituloFormularioUsuario'] = 'Agregar usuario';
 	$lang['tituloFormularioRegistro'] = 'Registro';
 	$lang['tituloFormularioServicio'] = 'Agregar servicio';
+	$lang['tituloFormularioServicioEditar'] = 'Editar servicio';
 	$lang['tituloFormularioProducto'] = 'Agregar producto';
 	$lang['tituloFormularioProductoEditar'] = 'Editar producto';
 	$lang['tituloProducto'] = 'Productos';
+	$lang['tituloServicios'] = 'Servicios';
 
 //columnas tabla de cotizaciones 
 	$lang['tablaCotizaciones_codigo'] = 'Código';
@@ -175,6 +178,12 @@
     $lang['formRegistro_crearPerfil'] = 'Crear perfil';
 
 //Formulario de servicio
+    $lang['Servicio_tablaNombre'] = 'Nombre';
+    $lang['Servicio_tablaCodigo'] = 'Código';
+    $lang['Servicio_tablaDescripcion'] = 'Descripción';
+    $lang['Servicio_tablaPrecio'] = 'Precio';
+    $lang['Servicio_tablaOpciones'] = 'Opciones';
+    $lang['Servicio_nuevo'] = 'Agregar nuevo';
     $lang['formServicio_codigo'] = 'Código';
     $lang['formServicio_nombre'] = 'Nombre';
     $lang['formServicio_descripcion'] = 'Descripción';
