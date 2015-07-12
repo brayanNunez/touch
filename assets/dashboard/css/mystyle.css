@@ -19,11 +19,11 @@
     /*float: left;*/
 	width: 1137.98px;
 	height: 1555px;
-	background-color: grey;
 	/*left: auto;
 	right: auto;*/
     /*position: absolute;*/
     float: left;
+    /*overflow-x: scroll;*/
 }
 
 #encabezado{
@@ -207,9 +207,9 @@ p{
 }
 
 #card-diseno{
-		overflow-x: scroll;
-		/*overflow-y: scroll;
-		height: 700px;*/
+		/*overflow-x: scroll;*/
+		padding: 1%;
+		max-width: 1180px;
 }
 
 .ventana{
@@ -298,3 +298,7 @@ p{
 	margin-top: 14.5px;
 }
 
+.contenedorHoja{
+	overflow-x: scroll;
+	background-color: grey;
+}
