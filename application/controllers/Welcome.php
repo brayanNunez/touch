@@ -13,57 +13,57 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-        $this->load->view('home/header.php');
-        $this->load->view('home/index.php');
-        $this->load->view('home/footer.php');
+        $this->load->view('home/header');
+        $this->load->view('home/index');
+        $this->load->view('home/footer');
 	}
 
     public function que()
     {
-        $this->load->view('home/header.php');
-        $this->load->view('home/que_es.php');
-        $this->load->view('home/footer.php');
+        $this->load->view('home/header');
+        $this->load->view('home/que-es');
+        $this->load->view('home/footer');
     }
 
     public function como()
     {
-        $this->load->view('home/header.php');
-        $this->load->view('home/como_funciona.php');
-        $this->load->view('home/footer.php');
+        $this->load->view('home/header');
+        $this->load->view('home/como-funciona');
+        $this->load->view('home/footer');
     }
 
     public function beneficios()
     {
-        $this->load->view('home/header.php');
-        $this->load->view('home/beneficios.php');
-        $this->load->view('home/footer.php');
+        $this->load->view('home/header');
+        $this->load->view('home/beneficios');
+        $this->load->view('home/footer');
     }
 
     public function precios()
     {
-        $this->load->view('home/header.php');
-        $this->load->view('home/precios.php');
-        $this->load->view('home/footer.php');
+        $this->load->view('home/header');
+        $this->load->view('home/precios');
+        $this->load->view('home/footer');
     }
 
     public function faq()
     {
-        $this->load->view('home/header.php');
-        $this->load->view('home/faq.php');
-        $this->load->view('home/footer.php');
+        $this->load->view('home/header');
+        $this->load->view('home/faq');
+        $this->load->view('home/footer');
     }
 
     public function prensa()
     {
-        $this->load->view('home/header.php');
-        $this->load->view('home/prensa.php');
-        $this->load->view('home/footer.php');
+        $this->load->view('home/header');
+        $this->load->view('home/prensa');
+        $this->load->view('home/footer');
     }
 
     public function terminos()
     {
-        $this->load->view('home/header.php');
-        $this->load->view('home/terminos_condiciones.php');
-        $this->load->view('home/footer.php');
+        $this->load->view('home/header');
+        $this->load->view('home/terminos-condiciones');
+        $this->load->view('home/footer');
     }
 }

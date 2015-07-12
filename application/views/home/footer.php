@@ -21,9 +21,9 @@
                         <i class="icon mb32 ti-announcement"></i>
                         <h6 class="uppercase">PLANES</h6>
                         <ul>
-                            <li><a href="#planes">¿Cuánto debo pagar?</a></li>
-                            <li><a href="#planes">Tipos de planes</a></li>
-                            <li><a href="#planes">Médotos de pago</a></li>
+                            <li><a href="<?=base_url()?>welcome/index/#planes">¿Cuánto debo pagar?</a></li>
+                            <li><a href="<?=base_url()?>welcome/index/#planes">Tipos de planes</a></li>
+                            <li><a href="<?=base_url()?>welcome/index/#planes">Médotos de pago</a></li>
                         </ul>
                     </div>
                     <div class="col-md-3 col-sm-6 mb-xs-24">
@@ -40,7 +40,7 @@
                     </div>
                     <div class="col-md-3 col-sm-6 mb-xs-24">
                         <i class="icon mb32 ti-info-alt"></i>
-                        <h6 class="uppercase"><a href="#contacto">Contáctenos</a></h6>
+                        <h6 class="uppercase"><a href="<?=base_url()?>welcome/index/#contacto">Contáctenos</a></h6>
                         <ul>
                             <li>hello@touchcr.com</li>
                             <li>+506-24542407
