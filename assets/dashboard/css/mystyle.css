@@ -302,3 +302,12 @@ p{
 	overflow-x: scroll;
 	background-color: grey;
 }
+
+.ver {
+		/*position: absolute;
+		left: 100px;
+		top: 100px;*/
+		z-index: 1;
+		float: right;
+}
+
