@@ -21,7 +21,7 @@
                 <div class="panel panel-default">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
                         <div class="panel-heading">
-                            <h4 class="panel-title">
+                            <h4 class="panel-title title-acordeon">
                                 Lorem ipsum
                             </h4>
                         </div>
@@ -47,7 +47,7 @@
                 <div class="panel panel-default">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
                         <div class="panel-heading">
-                            <h4 class="panel-title">
+                            <h4 class="panel-title title-acordeon">
                                 Lorem ipsum
                             </h4>
                         </div>
@@ -73,7 +73,7 @@
                 <div class="panel panel-default">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
                         <div class="panel-heading">
-                            <h4 class="panel-title">
+                            <h4 class="panel-title title-acordeon">
                                 Lorem ipsum
                             </h4>
                         </div>
