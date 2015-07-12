@@ -6675,7 +6675,7 @@ form p:last-child {
     padding-left: 35px;
     cursor: pointer;
     display: inline-block;
-    height: 25px;
+    height: 15px;
     line-height: 25px;
     font-size: 1rem;
     -webkit-user-select: none;
@@ -6691,10 +6691,10 @@ form p:last-child {
     position: absolute;
     top: 0;
     left: 0;
-    width: 18px;
-    height: 18px;
+    width: 6px;
+    height: 6px;
     z-index: 0;
-    border: 2px solid #5a5a5a;
+    border: 2px solid #FFFFFF;
     border-radius: 1px;
     margin-top: 2px;
     -webkit-transition: 0.2s;
@@ -6709,8 +6709,8 @@ form p:last-child {
 [type="checkbox"]:checked + label:before {
   top: -4px;
   left: -3px;
-  width: 12px;
-  height: 22px;
+  width: 6px;
+  height: 11px;
   border-top: 2px solid transparent;
   border-left: 2px solid transparent;
   border-right: 2px solid #000000;

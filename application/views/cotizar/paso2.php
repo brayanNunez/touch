@@ -29,80 +29,178 @@
                               <div class="card" id="card-paso1">
 
 
-                                      <div id="hoverable-table">
-                                          <h4 class="header">Hoverable Table</h4>
-                                          <div class="row">
-                                            <!-- <div class="col s12 m4 l3">
-                                              <p>Add <code class=" language-markup">class="hoverable"</code> to the table tag for a hoverable table</p>
-                                            </div> -->
-                                            <div class="col s12 m12 l12">
-                                              <table class="hoverable">
-                                                <thead>
-                                                  <tr>
-                                                    <th data-field="id"><input type="checkbox" id="test6"><label class="ver" for="test6"></label>Nombre</th>
-                                                    <th data-field="name"><input type="checkbox" id="test6"><label class="ver" for="test6"></label>Descripción</th>
-                                                    <th data-field="price"><input type="checkbox" id="test6"><label class="ver" for="test6"></label>Imagen</th>
-                                                    <th data-field="price"><input type="checkbox" id="test6"><label class="ver" for="test6"></label>Precio unitario</th>
-                                                    <th data-field="price"><input type="checkbox" id="test6"><label class="ver" for="test6"></label>cantidad</th>
-                                                    <th data-field="price"><input type="checkbox" id="test6"><label class="ver" for="test6"></label>IV</th>
-                                                    <th data-field="price"><input type="checkbox" id="test6"><label class="ver" for="test6"></label>Unidad</th>
-                                                    <th data-field="price"><input type="checkbox" id="test6"><label class="ver" for="test6"></label>Subtotal</th>
-                                                    <th data-field="price"><input type="checkbox" id="test6"><label class="ver" for="test6"></label>Opciones</th>
-                                                  </tr>
-                                                </thead>
-                                                <tbody>
-                                                  <tr>
-                                                  
+                                  
+                            
+
+                                     <div id="centered-table">
+                                       <!--  <h4 class="header">Centered Table</h4> -->
+                                        <div class="row">
+                                          <div class="col s12 m4 l3">
+                                            <p>Add <code class=" language-markup">class="centered"</code> to the table tag to center align all the text in the table</p>
+                                          </div>
+                                          <div class="col s12 m12 l12">
+                                            <table class="centered">
+                                              <thead>
+                                                <tr>
+                                                    <th data-field="id">Item</th>
+                                                    <th data-field="id">Nombre</th>
+                                                    <th data-field="name">Descripción</th>
+                                                    <th data-field="price">Imagen</th>
+                                                    <th data-field="price">Precio unitario</th>
+                                                    <th data-field="price">cantidad</th>
+                                                    <th data-field="price">IV</th>
+                                                    <th data-field="price">Utilidad</th>
+                                                    <th data-field="price">Subtotal</th>
+                                                    <th data-field="price">Opciones</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                                <tr> <!-- <td> <input type="checkbox" id="test14"><label class="ver" for="test14"></label><button></button></td> -->
+                                                    <td> 
+                                                      <row>
+                                                          <div class="col s12 m12 l12">
+                                                            <input type="checkbox" id="item1" checked>
+                                                            <label class="ver" for="item1">
+                                                            </label>
+
+                                                          </div>
+                                                          <div class="col s12 m12 l12 celda">
+                                                            <input value="001" type="text" name="ito1">
+                                                          </div>
+                                                      </row>
+                                                    </td>
+
+                                                    <td> 
+                                                      <row>
+                                                          <div class="col s12 m12 l12">
+                                                            <input type="checkbox" id="nombre1" checked>
+                                                            <label class="ver" for="nombre1">
+                                                            </label>
+
+                                                          </div>
+                                                          <div class="col s12 m12 l12 celda">
+                                                            <input value="Almuerzo" type="text" name="nombre1">
+                                                          </div>
+                                                      </row>
+                                                    </td>
+
+                                                    <td> 
+                                                      <row>
+                                                          <div class="col s12 m12 l12">
+                                                            <input type="checkbox" id="descripcion1" checked>
+                                                            <label class="ver" for="descripcion1">
+                                                            </label>
+
+                                                          </div>
+                                                          <div class="col s12 m12 l12 celda">
+                                                            <input value="Arroz, ensalada, carne" type="text" name="descripcion1">
+                                                          </div>
+                                                      </row>
+                                                    </td>
+
+                                                    <td> 
+                                                      <row>
+                                                          <div class="col s12 m12 l12">
+                                                            <input type="checkbox" id="imagen1" checked>
+                                                            <label class="ver" for="imagen1">
+                                                            </label>
+
+                                                          </div>
+                                                          <div class="col s12 m12 l12 celda">
+                                                            <input value="Almuerzo.jpg" type="text" name="imagen1">
+                                                          </div>
+                                                      </row>
+                                                    </td>
+
+                                                    <td> 
+                                                      <row>
+                                                          <div class="col s12 m12 l12">
+                                                            <input type="checkbox" id="precio1" checked>
+                                                            <label class="ver" for="precio1">
+                                                            </label>
+
+                                                          </div>
+                                                          <div class="col s12 m12 l12 celda">
+                                                            <input value="$6" type="text" name="precio1">
+                                                          </div>
+                                                      </row>
+                                                    </td>
+
+                                                    <td> 
+                                                      <row>
+                                                          <div class="col s12 m12 l12">
+                                                            <input type="checkbox" id="cantidad1" checked>
+                                                            <label class="ver" for="cantidad1">
+                                                            </label>
+
+                                                          </div>
+                                                          <div class="col s12 m12 l12 celda">
+                                                            <input value="20" type="number" name="cantidad1">
+                                                          </div>
+                                                      </row>
+                                                    </td>
+
+                                                    <td> 
+                                                      <row>
+                                                          <div class="col s12 m12 l12">
+                                                            <input type="checkbox" id="impuestoVenta1" checked>
+                                                            <label class="ver" for="impuestoVenta1">
+                                                            </label>
+
+                                                          </div>
+                                                          <div class="col s12 m12 l12 celda">
+                                                            <input value="13" type="number" name="impuestoVenta1">
+                                                          </div>
+                                                      </row>
+                                                    </td>
+
+
+                                                    <td> 
+                                                      <row>
+                                                          <div class="col s12 m12 l12">
+                                                            <input type="checkbox" id="utilidad1" checked>
+                                                            <label class="ver" for="utilidad1">
+                                                            </label>
+
+                                                          </div>
+                                                          <div class="col s12 m12 l12 celda">
+                                                            <input value="2" type="number" name="utilidad1">
+                                                          </div>
+                                                      </row>
+                                                    </td>
+
+                                                    <td> 
+                                                      <row>
+                                                          <div class="col s12 m12 l12">
+                                                            <input type="checkbox" id="subTotal1" checked>
+                                                            <label class="ver" for="subTotal1">
+                                                            </label>
+
+                                                          </div>
+                                                          <div class="col s12 m12 l12 celda">
+                                                            <input value="$120" type="text" name="subTotal1" readonly="true">
+                                                          </div>
+                                                      </row>
+                                                    </td>
+
+
+
+                                                    <td> 
+                                                      <div class="col s12 m12 l12 celdaBoton">
+                                                         <a class="btn_eliminar modal-trigger" href="#Elminar"><?=label('eliminar');?></a>
+                                                      </div>
+                                                    </td>
                                                     
+                                                </tr>
+
+                                                <tr>
                                                  
-                                                    <td> <input type="checkbox" id="test6"><label class="ver" for="test6"></label><input value="Hola mundo" type="text" name="usrname"></td>
-                                                    <td> <input type="checkbox" id="test7"><label class="ver" for="test7"></label><input type="text" name="usrname"></td>
-                                                    <td> <input type="checkbox" id="test8"><label class="ver" for="test8"></label></td>
-                                                    <td> <input type="checkbox" id="test9"><label class="ver" for="test9"></label><input type="number" name="usrname"></td>
-                                                    <td> <input type="checkbox" id="test10"><label class="ver" for="test10"></label><input type="number" name="usrname"></td>
-                                                    <td> <input type="checkbox" id="test11"><label class="ver" for="test11"></label><input type="number" name="usrname"></td>
-                                                    <td> <input type="checkbox" id="test12"><label class="ver" for="test12"></label><input type="number" name="usrname"></td>
-                                                    <td> <input type="checkbox" id="test13"><label class="ver" for="test13"></label><input type="number" name="usrname"></td>
-                                                    <td> <input type="checkbox" id="test14"><label class="ver" for="test14"></label><button></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td> <input type="checkbox" id="test6"><label class="ver" for="test6"></label><input value="Hola mundo" type="text" name="usrname"></td>
-                                                    <td> <input type="checkbox" id="test6"><label class="ver" for="test6"></label><input type="text" name="usrname"></td>
-                                                    <td> <input type="checkbox" id="test6"><label class="ver" for="test6"></label></td>
-                                                    <td> <input type="checkbox" id="test6"><label class="ver" for="test6"></label><input type="number" name="usrname"></td>
-                                                    <td> <input type="checkbox" id="test6"><label class="ver" for="test6"></label><input type="number" name="usrname"></td>
-                                                    <td> <input type="checkbox" id="test6"><label class="ver" for="test6"></label><input type="number" name="usrname"></td>
-                                                    <td> <input type="checkbox" id="test6"><label class="ver" for="test6"></label><input type="number" name="usrname"></td>
-                                                    <td> <input type="checkbox" id="test6"><label class="ver" for="test6"></label><input type="number" name="usrname"></td>
-                                                    <td> <input type="checkbox" id="test6"><label class="ver" for="test6"></label><button></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td> <input type="checkbox" id="test6"><label class="ver" for="test6"></label><input value="Hola mundo" type="text" name="usrname"></td>
-                                                    <td> <input type="checkbox" id="test6"><label class="ver" for="test6"></label><input type="text" name="usrname"></td>
-                                                    <td> <input type="checkbox" id="test6"><label class="ver" for="test6"></label></td>
-                                                    <td> <input type="checkbox" id="test6"><label class="ver" for="test6"></label><input type="number" name="usrname"></td>
-                                                    <td> <input type="checkbox" id="test6"><label class="ver" for="test6"></label><input type="number" name="usrname"></td>
-                                                    <td> <input type="checkbox" id="test6"><label class="ver" for="test6"></label><input type="number" name="usrname"></td>
-                                                    <td> <input type="checkbox" id="test6"><label class="ver" for="test6"></label><input type="number" name="usrname"></td>
-                                                    <td> <input type="checkbox" id="test6"><label class="ver" for="test6"></label><input type="number" name="usrname"></td>
-                                                    <td> <input type="checkbox" id="test6"><label class="ver" for="test6"></label><button></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td> <input type="checkbox" id="test6"><label class="ver" for="test6"></label><input value="Hola mundo" type="text" name="usrname"></td>
-                                                    <td> <input type="checkbox" id="test6"><label class="ver" for="test6"></label><input type="text" name="usrname"></td>
-                                                    <td> <input type="checkbox" id="test6"><label class="ver" for="test6"></label></td>
-                                                    <td> <input type="checkbox" id="test6"><label class="ver" for="test6"></label><input type="number" name="usrname"></td>
-                                                    <td> <input type="checkbox" id="test6"><label class="ver" for="test6"></label><input type="number" name="usrname"></td>
-                                                    <td> <input type="checkbox" id="test6"><label class="ver" for="test6"></label><input type="number" name="usrname"></td>
-                                                    <td> <input type="checkbox" id="test6"><label class="ver" for="test6"></label><input type="number" name="usrname"></td>
-                                                    <td> <input type="checkbox" id="test6"><label class="ver" for="test6"></label><input type="number" name="usrname"></td>
-                                                    <td> <input type="checkbox" id="test6"><label class="ver" for="test6"></label><button></button></td>
-                                                  </tr>
-                                                </tbody>
-                                              </table>
-                                            </div>
+                                                </tr>
+                                              </tbody>
+                                            </table>
                                           </div>
                                         </div>
+                                    </div>
 
 
                               </div>
@@ -119,3 +217,18 @@
 </section>
 <!-- END CONTENT-->
 
+
+
+<div id="Elminar" class="modal">
+
+    <div class="modal-header">
+        <p><?=label('nombreSistema');?></p>
+    </div>
+    <div class="modal-content">
+        <p><?=label('confirmarEliminarlineaDetalle');?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+    </div>
+</div>
