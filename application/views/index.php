@@ -25,7 +25,7 @@
 						<span class="sub">hello@touchcr.com</span>
 					</div>
 					<div class="module right">
-						<a class="btn btn-sm" href="inicio">REGISTRARSE</a><a class="btn btn-sm" href="inicio">Ingresar</a>
+                        <a class="btn btn-sm" href="inicio">FAQ</a><a class="btn btn-sm" href="inicio">REGISTRARSE</a><a class="btn btn-sm" href="inicio">Ingresar</a>
 					</div>
 				</div>
 				<div class="nav-bar">
