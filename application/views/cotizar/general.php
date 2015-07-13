@@ -66,7 +66,7 @@
                                           
                                           <div class="input-field col s12 m6 l6">
                                             <div class="input-field col s12">
-                                              <input id="last_name" type="text">
+                                              <input id="last_name" type="number">
                                               <label for="last_name" class="">Utilidad</label>
                                             </div>
                                           
@@ -88,7 +88,7 @@
                                           
                                           <div class="input-field col s12 m6 l6">
                                             <div class="input-field col s12">
-                                              <input id="last_name" type="text">
+                                              <input id="last_name" type="number">
                                               <label for="last_name" class="">Impuesto</label>
                                             </div>
                                           
@@ -138,7 +138,7 @@
 
                                           <div class="input-field col s12 m6 l6">
                                             <div class="input-field col s12">
-                                              <input id="last_name" type="text">
+                                              <input value="0" id="last_name" type="text">
                                               <label for="last_name" class="">Tipo de cambio</label>
                                           </div> 
                                           
