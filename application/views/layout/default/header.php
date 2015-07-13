@@ -34,6 +34,17 @@
     <script type="text/javascript" src="<?= base_url() ?>assets/dashboard/js/jquery.treetable-ajax-persist.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>assets/dashboard/js/jquery.treetable-3.0.0.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>assets/dashboard/js/persist-min.js"></script>
+    <script type="text/javascript">
+        function embed(seleccion) {
+            if (seleccion.value=="1"){
+                $("#embedCategoria").show();
+                $("#embedPrecio").show();
+            }else{
+                $("#embedCategoria").hide();
+                $("#embedPrecio").hide();
+            }
+        }
+    </script>
     <link href="<?= base_url() ?>assets/dashboard/css/jquery.treetable.css" media="all" rel="stylesheet" type="text/css" />
     <link href="<?= base_url() ?>assets/dashboard/css/mystyle-s.css" media="all" rel="stylesheet" type="text/css" />
     <link href="<?= base_url() ?>assets/dashboard/css/mystyle-j.css" media="all" rel="stylesheet" type="text/css" />

@@ -1,0 +1,70 @@
+<!-- START CONTENT  -->
+
+<section id="content">
+    <!--start breadcrumbs-->
+    <div id="breadcrumbs-wrapper" class=" grey lighten-3">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <h1 class="breadcrumbs-title"><?=label('tituloCotizarEmbed');?></h1>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs end-->
+
+    <!--start container-->
+    <div class="container">
+        <div id="chart-dashboard">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <div id="submit-button" class="section">
+                        <div class="row">
+                            <div class="col s12 m12 l8">
+                                <form class="col s12">
+                                    <div class="row">
+
+                                        <p>Lista de productos</p>
+
+                                        <p>Aquí va la lista</p>
+
+                                        <p>Datos adicionales</p>
+
+                                        <div class="input-field col s12">
+                                            <textarea id="embed_detalle" class="materialize-textarea" length="250"></textarea>
+                                            <label for="embed_detalle"><?=label('formEmbed_detalle');?></label>
+                                        </div>
+
+                                        <div class="input-field col s12">
+                                            <input id="embed_nombre" type="text">
+                                            <label for="embed_nombre"><?=label('formEmbed_nombre');?></label>
+                                        </div>
+
+                                        <div class="input-field col s12">
+                                            <input id="embed_correo" type="email">
+                                            <label for="embed_correo"><?=label('formEmbed_correo');?></label>
+                                        </div>
+
+                                        <div class="input-field col s12">
+                                            <input id="embed_telefono" type="text">
+                                            <label for="embed_telefono"><?=label('formEmbed_telefono');?></label>
+                                        </div>
+
+                                        <div class="input-field col s12">
+                                            <button class="btn waves-effect waves-light right" type="submit" name="action"><?=label('formEmbed_enviar');?>
+                                                <i class="mdi-content-send right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end container-->
+</section>
+<!-- END CONTENT

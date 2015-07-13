@@ -26,7 +26,7 @@
 
                                         <div class="col-sm-12 col-md-12">
                                             <p>Tipo de formulario</p>
-                                            <select>
+                                            <select onChange="embed(this)">
                                                 <option value="">Seleccionar</option>
                                                 <option value="1"><?=label('incluir') ?></option>
                                                 <option value="2"><?=label('noIncluir') ?></option>
@@ -34,6 +34,26 @@
                                         </div>
 
                                         <div class="col-sm-12 col-md-12">
+                                            <p>Seleccione los datos del cliente que solicitar</p>
+                                            <div class="input-field col s12">
+                                                <input id="embed_cliente1" type="checkbox">
+                                                <label for="embed_cliente1"><?=label('formEmbed_cliente1');?></label>
+                                            </div>
+                                            <div class="input-field col s12">
+                                                <input id="embed_cliente2" type="checkbox">
+                                                <label for="embed_cliente2"><?=label('formEmbed_cliente2');?></label>
+                                            </div>
+                                            <div class="input-field col s12">
+                                                <input id="embed_cliente3" type="checkbox">
+                                                <label for="embed_cliente3"><?=label('formEmbed_cliente3');?></label>
+                                            </div>
+                                            <div class="input-field col s12">
+                                                <input id="embed_cliente4" type="checkbox">
+                                                <label for="embed_cliente4"><?=label('formEmbed_cliente4');?></label>
+                                            </div>
+                                        </div>
+
+                                        <div id="embedCategoria" class="col-sm-12 col-md-12">
                                             <div class="col-md-6">
                                                 <p>Seleccione las categorías que desea mostrar</p>
                                             </div>
@@ -63,7 +83,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-12 col-md-12">
+                                        <div id="embedPrecio" class="col-sm-12 col-md-12">
                                             <p>¿Desea mostrar el precio de los productos/servicios?</p>
                                             <select>
                                                 <option value="">Seleccionar</option>
