@@ -315,15 +315,29 @@ p{
 	height:58px;
 }
 
-#test6{
+/*#test6{
 	width: 1px;
 	height: 1px;
-}
+}*/
 
 .celdaBoton{
 	margin-top: 5px;
 }
 
+#contenerdorTablaDetalles{
+	overflow-x: scroll;
+}
 
+#resultadoDetalles {
+	/*width: 100%;*/
+	/*background-color: red;*/
+	float: right;
+	/*height: 30px;*/
+}
+
+.agregarElementos {
+	margin: 1%;
+	width: 98%;
+}
 
 
