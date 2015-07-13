@@ -171,73 +171,79 @@
                             <!--card stats start-->
                             <div id="card-stats">
                                 <div class="row">
-                                    <div class="col s12 m6 l3">
-                                        <div class="card">
-                                            <div class="card-content  green white-text">
-                                                <p class="card-stats-title"><i class="mdi-social-group-add"></i> Total cotizaciones</p>
-                                                <h4 class="card-stats-number">76</h4>
-                                                
-                                            </div>
-                                            <div class="card-action  green darken-2">
+                                    <a href="<?= base_url() ?>cotizacion">
+                                        <div class="col s12 m6 l3">
+                                            <div class="card">
+                                                <div class="card-content  green white-text">
+                                                    <p class="card-stats-title"><i class="mdi-social-group-add"></i> Total cotizaciones</p>
+                                                    <h4 class="card-stats-number">76</h4>
+                                                </div>
+                                                <div class="card-action  green darken-2">
                                                 <div></div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col s12 m6 l3">
-                                        <div class="card">
-                                            <div class="card-content purple white-text">
-                                                <p class="card-stats-title"><i class="mdi-editor-attach-money"></i>Cotizaciones aprobadas</p>
-                                                <h4 class="card-stats-number">8</h4>
-                                                <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-up"></i> 70% <span class="purple-text text-lighten-5">mes pasado</span>
-                                                </p>
-                                            </div>
-                                            <div class="card-action purple darken-2">
-                                                <div></div>
+                                    </a>
+                                    <a href="<?= base_url() ?>cotizacion">
+                                        <div class="col s12 m6 l3">
+                                            <div class="card">
+                                                <div class="card-content purple white-text">
+                                                    <p class="card-stats-title"><i class="mdi-editor-attach-money"></i>Cotizaciones aprobadas</p>
+                                                    <h4 class="card-stats-number">8</h4>
+                                                    <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-up"></i> 70% <span class="purple-text text-lighten-5">mes pasado</span>
+                                                    </p>
+                                                </div>
+                                                <div class="card-action purple darken-2">
+                                                    <div></div>
 
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>                            
-                                    <div class="col s12 m6 l3">
-                                        <div class="card">
-                                            <div class="card-content blue-grey white-text">
-                                                <p class="card-stats-title"><i class="mdi-action-trending-up"></i> Cotizaciones enviadas</p>
-                                                <h4 class="card-stats-number">67</h4>
-                                                
-                                            </div>
-                                            <div class="card-action blue-grey darken-2">
-                                                <div></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    
-                                    <div class="col s12 m6 l3">
-                                        <div class="card">
-                                            <div class="card-content  green white-text">
-                                                <p class="card-stats-title"><i class="mdi-social-group-add"></i> Cotizaciones en revisi&oacute;n</p>
-                                                <h4 class="card-stats-number">8</h4>
-                                                
-                                            </div>
-                                            <div class="card-action  green darken-2">
-                                                <div></div>
+                                    </a>
+                                    <a href="<?= base_url() ?>cotizacion">
+                                        <div class="col s12 m6 l3">
+                                            <div class="card">
+                                                <div class="card-content blue-grey white-text">
+                                                    <p class="card-stats-title"><i class="mdi-action-trending-up"></i> Cotizaciones enviadas</p>
+                                                    <h4 class="card-stats-number">67</h4>
+
+                                                </div>
+                                                <div class="card-action blue-grey darken-2">
+                                                    <div></div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    
-                                    
-                                    
-                                    <div class="col s12 m6 l3">
-                                        <div class="card">
-                                            <div class="card-content deep-purple white-text">
-                                                <p class="card-stats-title"><i class="mdi-editor-insert-drive-file"></i> Cotizaciones rechazadas</p>
-                                                <h4 class="card-stats-number">16</h4>
-                                                
-                                            </div>
-                                            <div class="card-action  deep-purple darken-2">
-                                                <div></div>
+                                    </a>
+
+                                    <a href="<?= base_url() ?>cotizacion">
+                                        <div class="col s12 m6 l3">
+                                            <div class="card">
+                                                <div class="card-content  green white-text">
+                                                    <p class="card-stats-title"><i class="mdi-social-group-add"></i> Cotizaciones en revisi&oacute;n</p>
+                                                    <h4 class="card-stats-number">8</h4>
+
+                                                </div>
+                                                <div class="card-action  green darken-2">
+                                                    <div></div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </a>
+
+                                    <a href="<?= base_url() ?>cotizacion">
+                                        <div class="col s12 m6 l3">
+                                            <div class="card">
+                                                <div class="card-content deep-purple white-text">
+                                                    <p class="card-stats-title"><i class="mdi-editor-insert-drive-file"></i> Cotizaciones rechazadas</p>
+                                                    <h4 class="card-stats-number">16</h4>
+
+                                                </div>
+                                                <div class="card-action  deep-purple darken-2">
+                                                    <div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
                                     
                                 </div>
                             </div>
@@ -268,19 +274,14 @@
                                             </div>
                                             <div class="card-reveal">
                                                 <span class="card-title grey-text text-darken-4">Gestión de usuarios <i class="mdi-navigation-close right"></i></span>
-                                           
-                                                <p><i class="mdi-action-perm-identity cyan-text text-darken-2"></i> Agregar Contactos</p>
-                                                <p><i class="mdi-action-perm-identity cyan-text text-darken-2"></i> Agregar Empleados</p>
-                                                <p><i class="mdi-action-perm-identity cyan-text text-darken-2"></i> Agregar Proveedores</p>
+
+                                                <a href="<?=base_url()?>clientes/agregar"><p><i class="mdi-action-perm-identity cyan-text text-darken-2"></i> Agregar Clientes</p></a>
+                                                <a href="<?=base_url()?>empleados/agregar"><p><i class="mdi-action-perm-identity cyan-text text-darken-2"></i> Agregar Empleados</p></a>
+                                                <a href="<?=base_url()?>proveedores/agregar"><p><i class="mdi-action-perm-identity cyan-text text-darken-2"></i> Agregar Proveedores</p></a>
                                                 
                                                
                                             </div>
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
+
                                         </div>
                                     </div>
                                     
@@ -303,7 +304,7 @@
                                             <div class="card-reveal">
                                                 <span class="card-title grey-text text-darken-4">Embed <i class="mdi-navigation-close right"></i></span>
                                            
-                                                <p><i class="mdi-action-perm-identity cyan-text text-darken-2"></i> Llévate tu embed ...</p>
+                                                <a href="<?=base_url()?>embed"><p><i class="mdi-action-perm-identity cyan-text text-darken-2"></i> Llévate tu embed ...</p></a>
                                                 
                                                
                                             </div>
@@ -335,9 +336,9 @@
                                             <div class="card-reveal">
                                                 <span class="card-title grey-text text-darken-4">Reportes <i class="mdi-navigation-close right"></i></span>
                                            
-                                                <p><i class="mdi-action-perm-identity cyan-text text-darken-2"></i> Reporte x</p>
-                                                <p><i class="mdi-action-perm-identity cyan-text text-darken-2"></i> Reporte y</p>
-                                                <p><i class="mdi-action-perm-identity cyan-text text-darken-2"></i> Todos los reportes</p>
+<!--                                                <p><i class="mdi-action-perm-identity cyan-text text-darken-2"></i> Reporte x</p>-->
+<!--                                                <p><i class="mdi-action-perm-identity cyan-text text-darken-2"></i> Reporte y</p>-->
+                                                <a href="<?=base_url()?>reporte"><p><i class="mdi-action-perm-identity cyan-text text-darken-2"></i> Todos los reportes</p></a>
                                                 
                                                
                                             </div>

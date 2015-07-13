@@ -8,7 +8,7 @@
                             </div>
                             <div class="col col s8 m8 l8">
                                 <ul id="profile-dropdown" class="dropdown-content">
-                                    <li><a href="#"><i class="mdi-action-face-unlock"></i> Perfil</a>
+                                    <li><a href="<?=base_url();?>usuarios/editar"><i class="mdi-action-face-unlock"></i> Perfil</a>
                                     </li>
                                     <li><a href="#"><i class="mdi-action-settings"></i> Settings</a>
                                     </li>
@@ -60,7 +60,7 @@
                                         </li>
                                         <li><a href="<?=base_url()?>usuarios"><?=label('usuarios');?></a>
                                         </li>  
-                                        <li><a href="#"><?=label('financiamiento');?></a>
+                                        <li><a href="<?=base_url();?>financiamiento"><?=label('financiamiento');?></a>
                                         </li>   
                                         <li><a href="#"><?=label('gastos');?></a>
                                         </li>                                       

@@ -33,88 +33,91 @@
                                             </select>
                                         </div>
 
-                                        
-                                    <div id="tableHeader">
-                                        <div class="dataTables_filter search">
-                                            <label>
-                                                <?=label('Producto_tablaBusqueda');?>
-                                                <input id="search" type="search" aria-controls="data-table-simple">
-                                            </label>
+                                    <div id="embedCategoria">
+                                        <div id="tableHeader">
+                                            <div class="dataTables_filter search">
+                                                <label>
+                                                    <?=label('Producto_tablaBusqueda');?>
+                                                    <input id="search" type="search" aria-controls="data-table-simple">
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div id="table">
+                                            <p>Seleccione las categorias o subcategorias que desea mostrar</p>
+                                            <table id="example" class="table table-responsive striped" data-search="true">
+                                                <thead>
+                                                    <tr>
+                                                        <th><?=label('Producto_tablaNombre')?></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr data-tt-id="1">
+                                                        <td>
+                                                            <input type="checkbox" class="filled-in" id="footerfilled-in-box4" checked="checked">
+                                                            <label for="footerfilled-in-box4">Productos</label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr data-tt-id="2" data-tt-parent-id="1">
+                                                        <td><span style="margin-left: 20px">
+                                                            <input type="checkbox" class="filled-in" id="idAlimentos" checked="checked">
+                                                            <label for="idAlimentos">Alimentacion</label>
+                                                        </span></td>
+
+                                                    </tr>
+                                                    <tr data-tt-id="3" data-tt-parent-id="2">
+                                                        <td><a href="<?=base_url()?>productos/editar">Arroz</a></td>
+
+                                                    </tr>
+                                                    <tr data-tt-id="4" data-tt-parent-id="1">
+                                                        <td><span style="margin-left: 20px">
+                                                            <input type="checkbox" class="filled-in" id="idBebidas" checked="checked">
+                                                            <label for="idBebidas">Bebidas</label>
+
+
+                                                        </span></td>
+
+                                                    </tr>
+                                                    <tr data-tt-id="5" data-tt-parent-id="4">
+                                                        <td><span style="margin-left: 20px">
+                                                             <input type="checkbox" class="filled-in" id="idGaseosas" checked="checked">
+                                                            <label for="idGaseosas">Gaseosas</label>
+                                                        </span></td>
+
+                                                    </tr>
+                                                    <tr data-tt-id="6" data-tt-parent-id="5">
+                                                        <td><a href="<?=base_url()?>productos/editar">Coca Cola</a></td>
+
+
+                                                    </tr>
+                                                    <tr data-tt-id="7" data-tt-parent-id="5">
+                                                        <td><a href="<?=base_url()?>productos/editar">Fanta</a></td>
+
+                                                    </tr>
+                                                    <tr data-tt-id="8" data-tt-parent-id="4">
+                                                        <td><span style="margin-left: 20px">
+                                                            <input type="checkbox" class="filled-in" id="idNaturales" checked="checked">
+                                                            <label for="idNaturales">Naturales</label>
+                                                        </span></td>
+
+                                                    </tr>
+                                                    <tr data-tt-id="9" data-tt-parent-id="8">
+                                                        <td><a href="<?=base_url()?>productos/editar">Te frio</a></td>
+
+                                                    </tr>
+                                                    <tr data-tt-id="10" data-tt-parent-id="8">
+                                                        <td><a href="<?=base_url()?>productos/editar">Mora</a></td>
+
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th><?=label('Producto_tablaNombre')?></th>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
                                         </div>
                                     </div>
-                                    <div id="table">
-                                        <table id="example" class="table table-responsive striped" data-search="true">
-                                            <thead>
-                                                <tr>
-                                                    <th><?=label('Producto_tablaNombre')?></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr data-tt-id="1">
-                                                    <td>
-                                                        <input type="checkbox" class="filled-in" id="footerfilled-in-box4" checked="checked">
-                                                        <label for="footerfilled-in-box4">Productos</label>
-                                                    </td>
-                                                </tr>
-                                                <tr data-tt-id="2" data-tt-parent-id="1">
-                                                    <td><span style="margin-left: 20px">
-                                                        <input type="checkbox" class="filled-in" id="idAlimentos" checked="checked">
-                                                        <label for="idAlimentos">Alimentacion</label>
-                                                    </span></td>
-                                                    
-                                                </tr>
-                                                <tr data-tt-id="3" data-tt-parent-id="2">
-                                                    <td><a href="<?=base_url()?>productos/editar">Arroz</a></td>
-                                                    
-                                                </tr>
-                                                <tr data-tt-id="4" data-tt-parent-id="1">
-                                                    <td><span style="margin-left: 20px">
-                                                        <input type="checkbox" class="filled-in" id="idBebidas" checked="checked">
-                                                        <label for="idBebidas">Bebidas</label>
 
-
-                                                    </span></td>
-                                                    
-                                                </tr>
-                                                <tr data-tt-id="5" data-tt-parent-id="4">
-                                                    <td><span style="margin-left: 20px">
-                                                         <input type="checkbox" class="filled-in" id="idGaseosas" checked="checked">
-                                                        <label for="idGaseosas">Gaseosas</label>
-                                                    </span></td>
-                                                    
-                                                </tr>
-                                                <tr data-tt-id="6" data-tt-parent-id="5">
-                                                    <td><a href="<?=base_url()?>productos/editar">Coca Cola</a></td>
-                                                    
-
-                                                </tr>
-                                                <tr data-tt-id="7" data-tt-parent-id="5">
-                                                    <td><a href="<?=base_url()?>productos/editar">Fanta</a></td>
-                                                    
-                                                </tr>
-                                                <tr data-tt-id="8" data-tt-parent-id="4">
-                                                    <td><span style="margin-left: 20px">
-                                                        <input type="checkbox" class="filled-in" id="idNaturales" checked="checked">
-                                                        <label for="idNaturales">Naturales</label>
-                                                    </span></td>
-                                                    
-                                                </tr>
-                                                <tr data-tt-id="9" data-tt-parent-id="8">
-                                                    <td><a href="<?=base_url()?>productos/editar">Te frio</a></td>
-                                                    
-                                                </tr>
-                                                <tr data-tt-id="10" data-tt-parent-id="8">
-                                                    <td><a href="<?=base_url()?>productos/editar">Mora</a></td>
-                                                    
-                                                </tr>
-                                            </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <th><?=label('Producto_tablaNombre')?></th>
-                                                </tr>
-                                            </tfoot>
-                                        </table>
-                                    </div>
                                     <script>
                                         function searchTable(inputVal) {
                                             var table = $('#example');
@@ -164,35 +167,25 @@
                                         }
                                     </script>
 
-                                        
-
-                                        <div id="embedCategoria" class="col-sm-12 col-md-12">
+                                        <div class="col-sm-12 col-md-12 bloque-embed-cliente">
                                             <div class="col-md-6">
-                                                <p>Seleccione las categorías que desea mostrar</p>
-                                            </div>
-                                            <div class="input-group col-md-6" >
-                                                <div>
-                                                    <input id="generic_search" type="text" class="form-control" placeholder="Buscar...">
-                                                </div>
-                                                <span class="input-group-btn">
-                                                    <button class="btn btn-blue" type="button">Buscar</button>
-                                                </span>
+                                                <p>Seleccione los espacios del cliente que desea mostrar</p>
                                             </div>
                                             <div class="input-field col s12">
-                                                <input id="embed_categoria1" type="checkbox">
-                                                <label for="embed_categoria1"><?=label('formEmbed_categoria1');?></label>
+                                                <input id="embed_cliente1" type="checkbox">
+                                                <label for="embed_cliente1"><?=label('formEmbed_cliente1');?></label>
                                             </div>
                                             <div class="input-field col s12">
-                                                <input id="embed_categoria2" type="checkbox">
-                                                <label for="embed_categoria2"><?=label('formEmbed_categoria2');?></label>
+                                                <input id="embed_cliente2" type="checkbox">
+                                                <label for="embed_cliente2"><?=label('formEmbed_cliente2');?></label>
                                             </div>
                                             <div class="input-field col s12">
-                                                <input id="embed_categoria3" type="checkbox">
-                                                <label for="embed_categoria3"><?=label('formEmbed_categoria3');?></label>
+                                                <input id="embed_cliente3" type="checkbox">
+                                                <label for="embed_cliente3"><?=label('formEmbed_cliente3');?></label>
                                             </div>
                                             <div class="input-field col s12">
-                                                <input id="embed_categoria4" type="checkbox">
-                                                <label for="embed_categoria4"><?=label('formEmbed_categoria4');?></label>
+                                                <input id="embed_cliente4" type="checkbox">
+                                                <label for="embed_cliente4"><?=label('formEmbed_cliente4');?></label>
                                             </div>
                                         </div>
 
