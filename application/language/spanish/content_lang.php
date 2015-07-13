@@ -18,7 +18,8 @@
 	$lang['confirmarEliminarElementoServicio'] = '¿Realmente desea eliminar el elemento seleccionado?';
 	$lang['confirmarEditarEmpleado'] = '¿Realmente desea guardar los cambios realizados?';
     $lang['confirmarEliminarlineaDetalle'] = '¿Realmente desea eliminar la linea de detalle seleccionada?';
-
+    $lang['confirmarEliminarFinanciamiento'] = '¿Realmente desea eliminar el financiamiento seleccionada?';
+    $lang['confirmarEliminarMoneda'] = '¿Realmente desea eliminar la moneda seleccionada?';
 
 //tipos de salario
     $lang['horas'] = 'Por horas';
@@ -27,6 +28,18 @@
     $lang['quincena'] = 'Quincenal';
     $lang['mes'] = 'Mensual';
 //titulos
+    $lang['tituloReporte'] = 'Reportes';
+    $lang['tituloFormularioPlan'] = 'Plan';
+    $lang['tituloListaPlanes'] = 'Lista de planes';
+    $lang['tituloListaPagos'] = 'Lista de pagos';
+    $lang['tituloFormularioMonedas'] = 'Moneda';
+    $lang['tituloListaMonedas'] = 'Lista de monedas';
+    $lang['tituloGenerarEmbed'] = 'Generar embed';
+    $lang['tituloFormularioEmbed'] = 'Solicitud de cotización';
+    $lang['tituloCotizarEmbed'] = 'Realizar cotización';
+    $lang['tituloProductoEmbed'] = 'Detalles del artículo';
+    $lang['tituloFormularioFinanciamiento'] = 'Financiamiento';
+    $lang['tituloListaFinanciamiento'] = 'Lista de financiamientos';
 	$lang['tituloListaCotizaciones'] = 'Lista de cotizaciones';
 	$lang['tituloCotizacion'] = 'Cotización';
 	$lang['tituloFormularioCliente'] = 'Agregar cliente';
@@ -80,6 +93,7 @@
 	$lang['recordar'] = 'Recordarme';
 	$lang['registrar'] = 'Registrar';
 	$lang['contrasena_olvido'] = '¿Olvidó su contraseña?';
+    $lang['editarContenido'] = 'Editar contenido';
 
 //comentarios de una cotizacion
 	$lang['comentar'] = 'Comentar';
@@ -302,4 +316,68 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
 	$lang['formCliente_agregar'] = 'Agregar';
 	$lang['formCliente_enviar'] = 'Enviar';
 
+
+    //Formulario de plan
+    $lang['planNuevo'] = 'Agregar nuevo';
+    $lang['formPlan_nombre'] = 'Nombre';
+    $lang['formPlan_descripcion'] = 'Descripción';
+    $lang['formPlan_costo'] = 'Costo';
+    $lang['formPlan_beneficio1'] = 'Administrar';
+    $lang['formPlan_beneficio2'] = 'Cotizar';
+    $lang['formPlan_beneficio3'] = 'Embed';
+    $lang['formPlan_beneficio4'] = 'Vender';
+    $lang['formPlan_agregar'] = 'Agregar';
+
+    //tabla de plan
+    $lang['planes'] = 'Planes';
+    $lang['tablaPlanes_nombre'] = 'Nombre';
+    $lang['tablaPlanes_costo'] = 'Costo';
+    $lang['tablaPlanes_beneficios'] = 'Beneficios';
+    $lang['tablaPlanes_opciones'] = 'Opciones';
+
+    //tabla de pagos
+    $lang['pagos'] = 'Pagos';
+    $lang['tablaPagos_empresa'] = 'Empresa';
+    $lang['tablaPagos_fecha'] = 'Fecha';
+    $lang['tablaPagos_pago'] = 'Monto';
+    $lang['tablaPagos_opciones'] = 'Opciones';
+    $lang['ver_comprobante'] = 'Ver comprobante';
+    $lang['mostrarComprobante'] = 'Comprobante del pago';
+
+    //Formulario de moneda
+    $lang['monedas'] = 'Monedas';
+    $lang['formMoneda_agregar'] = 'Agregar';
+    $lang['formMoneda_nombre'] = 'Nombre';
+    $lang['formMoneda_signo'] = 'Símbolo';
+    $lang['monedaNuevo'] = 'Agregar nuevo';
+
+    //Generar embed
+    $lang['incluir '] = 'Incluir productos/servicios';
+    $lang['noIncluir '] = 'No incluir productos/servicios';
+    $lang['si'] = 'Sí';
+    $lang['no'] = 'No';
+    $lang['vertical'] = 'Vertical';
+    $lang['horizontal'] = 'Horizontal';
+    $lang['copiarCodigo'] = 'Copiar código';
+
+    //Embed
+    $lang['formEmbed_cliente1 '] = 'Dato adicional 1';
+    $lang['formEmbed_cliente2 '] = 'Dato adicional 2';
+    $lang['formEmbed_cliente3 '] = 'Dato adicional 3';
+    $lang['formEmbed_cliente4 '] = 'Dato adicional 4';
+    $lang['formEmbed_enviar'] = 'Enviar';
+    $lang['formEmbed_correo'] = 'Correo electrónico';
+    $lang['formEmbed_nombre'] = 'Nombre completo';
+    $lang['formEmbed_telefono'] = 'Número telefónico';
+    $lang['formEmbed_detalle'] = 'Detalles adicionales';
+    $lang['ListaEmbed_tablaNombre'] = 'Nombre';
+    $lang['ListaEmbed_tablaPrecio'] = 'Precio';
+    $lang['ListaEmbed_tablaCantidad'] = 'Cantidad';
+    $lang['formEmbedProducto_cerrar'] = 'Cerrar';
+
+    //Formulario financiamiento
+    $lang['financiamientoNuevo '] = 'Agregar nuevo';
+    $lang['formFinanciamiento_nombre '] = 'Nombre';
+    $lang['formFinanciamiento_descripcion '] = 'Descripción';
+    $lang['formFinanciamiento_agregar '] = 'Agregar';
 ?>

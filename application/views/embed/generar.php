@@ -173,19 +173,19 @@
                                             </div>
                                             <div class="input-field col s12">
                                                 <input id="embed_cliente1" type="checkbox">
-                                                <label for="embed_cliente1"><?=label('formEmbed_cliente1');?></label>
+                                                <label for="embed_cliente1"><?=label('Dato adicional 1');?></label>
                                             </div>
                                             <div class="input-field col s12">
                                                 <input id="embed_cliente2" type="checkbox">
-                                                <label for="embed_cliente2"><?=label('formEmbed_cliente2');?></label>
+                                                <label for="embed_cliente2"><?=label('Dato adicional 2');?></label>
                                             </div>
                                             <div class="input-field col s12">
                                                 <input id="embed_cliente3" type="checkbox">
-                                                <label for="embed_cliente3"><?=label('formEmbed_cliente3');?></label>
+                                                <label for="embed_cliente3"><?=label('Dato adicional 3');?></label>
                                             </div>
                                             <div class="input-field col s12">
                                                 <input id="embed_cliente4" type="checkbox">
-                                                <label for="embed_cliente4"><?=label('formEmbed_cliente4');?></label>
+                                                <label for="embed_cliente4"><?=label('Dato adicional 4');?></label>
                                             </div>
                                         </div>
 
