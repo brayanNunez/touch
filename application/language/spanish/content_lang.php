@@ -11,6 +11,7 @@
 	$lang['confirmarEliminarServicio'] = '¿Realmente desea eliminar el servicio seleccionado?';
 	$lang['confirmarEliminarEmpleado'] = '¿Realmente desea eliminar el empleado seleccionado?';
 	$lang['confirmarEliminarProveedor'] = '¿Realmente desea eliminar el proveedor seleccionado?';
+	$lang['confirmarEliminarCliente'] = '¿Realmente desea eliminar el cliente seleccionado?';
 	$lang['confirmarEliminarCaracteristica'] = '¿Realmente desea eliminar la característica seleccionada?';
 	$lang['confirmarEliminarElementoServicio'] = '¿Realmente desea eliminar el elemento seleccionado?';
 	$lang['confirmarEditarEmpleado'] = '¿Realmente desea guardar los cambios realizados?';
@@ -24,6 +25,7 @@
 	$lang['tituloListaCotizaciones'] = 'Lista de cotizaciones';
 	$lang['tituloCotizacion'] = 'Cotización';
 	$lang['tituloFormularioCliente'] = 'Agregar cliente';
+	$lang['tituloFormularioClienteEditar'] = 'Editar cliente';
 	$lang['tituloFormularioEmpleado'] = 'Agregar empleado';
 	$lang['tituloFormularioEmpleadoEditar'] = 'Editar empleado';
 	$lang['tituloFormularioProveedor'] = 'Agregar proveedor';
@@ -38,6 +40,7 @@
 	$lang['tituloServicios'] = 'Servicios';
 	$lang['tituloEmpleados'] = 'Empleados';
 	$lang['tituloProveedores'] = 'Proveedores';
+	$lang['tituloClientes'] = 'Clientes';
 
 //columnas tabla de cotizaciones 
 	$lang['tablaCotizaciones_codigo'] = 'Código';
@@ -77,6 +80,7 @@
 	$lang['listarP'] = 'Listar';
 	$lang['administración'] = 'Administración';
 	$lang['costos'] = 'Costos';
+	$lang['clientes'] = 'Clientes';
 	$lang['empleados'] = 'Empleados';
 	$lang['proveedores'] = 'Proveedores';
 	$lang['monedas'] = 'Monedas';
@@ -91,6 +95,14 @@
 	$lang['agregarProveedor'] = 'Agregar Proveedor';
 
 //formulario cliente
+    $lang['Cliente_tablaNombre'] = 'Nombre';
+    $lang['Cliente_tablaCodigo'] = 'Código';
+    $lang['Cliente_tablaTipo'] = 'Identificación';
+    $lang['Cliente_tablaTelefono'] = 'Teléfono';
+    $lang['Cliente_tablaCorreo'] = 'Correo electrónico';
+    $lang['Cliente_tablaCotizador'] = 'Cotizador';
+    $lang['Cliente_tablaOpciones'] = 'Opciones';
+    $lang['Cliente_nuevo'] = 'Agregar nuevo';
 	$lang['formCliente_tipoPersona'] = 'Tipo de persona';
 	$lang['formCliente_seleccioneUno'] = 'Seleccione uno';
 	$lang['formCliente_fisica'] = 'Física';

@@ -1,0 +1,135 @@
+<!-- START CONTENT -->
+
+ <section id="content">
+
+    <!--start container-->
+        <div id="breadcrumbs-wrapper" class=" grey lighten-3">
+          <div class="container">
+            <div class="row">
+              <div class="col s12 m12 l12">
+                <h1 class="breadcrumbs-title"><?=label('tituloClientes');?></h1>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--breadcrumbs end-->
+
+
+    <div class="container">
+        <div id="chart-dashboard">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <div id="submit-button" class="section">
+                        <div class="row">
+                            <div class="col s12 m12 l12">
+                                <div class="card" id="listaClientes">
+                                    <div id="table-datatables">
+                                        <div class="row">
+                                            <div class="col s12 m12 l12 servicios">
+                                                <table id="data-table-simple" class="responsive-table display" cellspacing="0">
+                                                    <div id="cliente_nuevo">
+                                                        <a href="<?=base_url()?>clientes/agregar" class="btn btn-default"><?=label('Cliente_nuevo');?></a>
+                                                    </div>
+                                                    <thead>
+                                                        <tr>
+                                                            <th><?=label('Cliente_tablaCodigo');?></th>
+                                                            <th><?=label('Cliente_tablaTipo');?></th>
+                                                            <th><?=label('Cliente_tablaNombre');?></th>
+                                                            <th><?=label('Cliente_tablaTelefono');?></th>
+                                                            <th><?=label('Cliente_tablaCorreo');?></th>
+                                                            <th><?=label('Cliente_tablaCotizador');?></th>
+                                                            <th><?=label('Cliente_tablaOpciones');?></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>0001</td>
+                                                            <td>Jurídico</td>
+                                                            <td><a href="<?=base_url()?>clientes/editar">Dos Pinos S.A.</a></td>
+                                                            <td>2456-0708</td>
+                                                            <td>coopedospinos@gmail.com</td>
+                                                            <td><a href="#">Juan</a></td>
+                                                            <td>
+                                                                <a href="<?=base_url()?>clientes/editar"><?=label('editar');?></a>
+                                                                <a class="modal-trigger" href="#eliminarCliente"><?=label('eliminar');?></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>0002</td>
+                                                            <td>Físico</td>
+                                                            <td><a href="<?=base_url()?>clientes/editar">Emanuel Conejo R.</a></td>
+                                                            <td>2458-9632</td>
+                                                            <td>emanuel@gmail.com</td>
+                                                            <td><a href="#">Maria</a></td>
+                                                            <td>
+                                                                <a href="<?=base_url()?>clientes/editar"><?=label('editar');?></a>
+                                                                <a class="modal-trigger" href="#eliminarCliente"><?=label('eliminar');?></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>0003</td>
+                                                            <td>Jurídico</td>
+                                                            <td><a href="<?=base_url()?>clientes/editar">Pipasa S.A.</a></td>
+                                                            <td>2478-4512</td>
+                                                            <td>pipasa@gmail.com</td>
+                                                            <td><a href="#">Maria</a></td>
+                                                            <td>
+                                                                <a href="<?=base_url()?>clientes/editar"><?=label('editar');?></a>
+                                                                <a class="modal-trigger" href="#eliminarCliente"><?=label('eliminar');?></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>0004</td>
+                                                            <td>Físico</td>
+                                                            <td><a href="<?=base_url()?>clientes/editar">Julia Bolaños E.</a></td>
+                                                            <td>2448-4250</td>
+                                                            <td>julia@gmail.com</td>
+                                                            <td><a href="#">Juan</a></td>
+                                                            <td>
+                                                                <a href="<?=base_url()?>clientes/editar"><?=label('editar');?></a>
+                                                                <a class="modal-trigger" href="#eliminarCliente"><?=label('eliminar');?></a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th><?=label('Cliente_tablaCodigo');?></th>
+                                                            <th><?=label('Cliente_tablaTipo');?></th>
+                                                            <th><?=label('Cliente_tablaNombre');?></th>
+                                                            <th><?=label('Cliente_tablaTelefono');?></th>
+                                                            <th><?=label('Cliente_tablaCorreo');?></th>
+                                                            <th><?=label('Cliente_tablaCotizador');?></th>
+                                                            <th><?=label('Cliente_tablaOpciones');?></th>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--end container-->
+</section>
+<!-- END CONTENT-->
+
+<!-- lista modals -->
+<div id="eliminarCliente" class="modal">
+    <div class="modal-header">
+        <p><?=label('nombreSistema');?></p>
+    </div>
+    <div class="modal-content">
+        <p><?=label('confirmarEliminarCliente');?></p>
+    </div>
+    <div class="modal-footer black-text">
+        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+    </div>
+</div>
+<!--Fin lista modals -->
