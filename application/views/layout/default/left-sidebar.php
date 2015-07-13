@@ -60,7 +60,7 @@
                                         </li>
                                         <li><a href="<?=base_url()?>usuarios"><?=label('usuarios');?></a>
                                         </li>  
-                                        <li><a href="#"><?=label('financiamiento');?></a>
+                                        <li><a href="<?=base_url();?>financiamiento"><?=label('financiamiento');?></a>
                                         </li>   
                                         <li><a href="#"><?=label('gastos');?></a>
                                         </li>                                       
