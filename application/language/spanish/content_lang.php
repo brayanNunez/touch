@@ -172,7 +172,7 @@
     $lang['formRegistro_sitioWeb'] = 'Sitio Web';
     $lang['formRegistro_nombreUsuario'] = 'Nombre de usuario';
     $lang['formRegistro_contrasena'] = 'Contraseña';
-    $lang['formRegistro_contrasenaConfirm'] = 'Cconfirmar contraseña';
+    $lang['formRegistro_contrasenaConfirm'] = 'Confirmar contraseña';
     $lang['formRegistro_fotografia'] = 'Imagen';
     $lang['formRegistro_examinar'] = 'Ex';
     $lang['formRegistro_crearPerfil'] = 'Crear perfil';
