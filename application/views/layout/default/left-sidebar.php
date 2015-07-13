@@ -25,7 +25,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="bold"><a href="index.html" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> <?=label('inicio');?></a>
+                    <li class="bold"><a href="<?=base_url()?>inicio" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> <?=label('inicio');?></a>
                     </li>
                     <li class="bold"><a href="<?=base_url()?>cotizacion" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> <?=label('cotizaciones');?> <span class="new badge">4</span></a>
                     </li>
@@ -74,15 +74,30 @@
                     </li>  
                     <li class="li-hover"><div class="divider"></div></li>
                     <li class="li-hover"><p class="ultra-small margin more-text"><?=label('masOpciones');?> </p></li>
-                    <li><a href="#"><i class="mdi-action-swap-vert-circle"></i> <?=label('agregarCotizacion');?></a>
+                    <li><a href="<?=base_url()?>cotizacion/cotizar"><i class="mdi-action-swap-vert-circle"></i> <?=label('agregarCotizacion');?></a>
                     </li>
                    
+<!--                    </li>-->
+<!--                    <li><a href="#"><i class="mdi-action-swap-vert-circle"></i> --><?//=label('agregarProduto_Servicio');?><!--</a>-->
+<!--                    </li>-->
+
+                    <li class="no-padding">
+                        <ul class="collapsible collapsible-accordion">
+                            <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-swap-vert-circle"></i> <?=label('agregarProduto_Servicio');?></a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <li><a href="<?=base_url();?>productos/agregar"><?=label('agregarProducto');?></a>
+                                        </li>
+                                        <li><a href="<?=base_url();?>servicios/agregar"><?=label('agregarServicio');?></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
                     </li>
-                    <li><a href="#"><i class="mdi-action-swap-vert-circle"></i> <?=label('agregarProduto_Servicio');?></a>
-                    </li>
-                    <li><a href="#"><i class="mdi-action-swap-vert-circle"></i> <?=label('agregarEmpleado');?></a>
+
+                    <li><a href="<?=base_url()?>empleados/agregar"><i class="mdi-action-swap-vert-circle"></i> <?=label('agregarEmpleado');?></a>
                     </li> 
-                    <li><a href="#"><i class="mdi-action-swap-vert-circle"></i> <?=label('agregarProveedor');?></a>
+                    <li><a href="<?=base_url()?>proveedores/agregar"><i class="mdi-action-swap-vert-circle"></i> <?=label('agregarProveedor');?></a>
                     </li>                    
                     
                 </ul>

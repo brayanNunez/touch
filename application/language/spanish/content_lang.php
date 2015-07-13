@@ -94,6 +94,8 @@
 	$lang['masOpciones'] = 'MÁS OPCIONES';
 	$lang['agregarCotizacion'] = 'Agregar Cotización';
 	$lang['agregarProduto_Servicio'] = 'Agregar Producto/Servicio';
+	$lang['agregarProducto'] = 'Producto';
+	$lang['agregarServicio'] = 'Servicio';
 	$lang['agregarEmpleado'] = 'Agregar Empleado';
 	$lang['agregarProveedor'] = 'Agregar Proveedor';
 
