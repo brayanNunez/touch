@@ -24,7 +24,7 @@
                                 <form class="col s12">
                                     <div class="row">
 
-                                        <div class="col-sm-12 col-md-12">
+                                        <div class="col-sm-12">
                                             <p>Tipo de formulario</p>
                                             <select onChange="embed(this)">
                                                 <option value="">Seleccionar</option>
@@ -111,10 +111,6 @@
                                             <tfoot>
                                                 <tr>
                                                     <th><?=label('Producto_tablaNombre')?></th>
-                                                    <th><?=label('Producto_tablaCodigo')?></th>
-                                                    <th><?=label('Producto_tablaDescripcion')?></th>
-                                                    <th><?=label('Producto_tablaPrecio')?></th>
-                                                    <th><?=label('Producto_tablaOpciones')?></th>
                                                 </tr>
                                             </tfoot>
                                         </table>
