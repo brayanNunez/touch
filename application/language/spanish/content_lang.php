@@ -16,6 +16,9 @@
 	$lang['confirmarEliminarCaracteristica'] = '¿Realmente desea eliminar la característica seleccionada?';
 	$lang['confirmarEliminarElementoServicio'] = '¿Realmente desea eliminar el elemento seleccionado?';
 	$lang['confirmarEditarEmpleado'] = '¿Realmente desea guardar los cambios realizados?';
+    $lang['confirmarEliminarlineaDetalle'] = '¿Realmente desea eliminar la linea de detalle seleccionada?';
+
+
 //tipos de salario
     $lang['horas'] = 'Por horas';
     $lang['dia'] = 'Diario';
