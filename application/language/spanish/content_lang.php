@@ -9,6 +9,7 @@
 	$lang['confirmarEliminarSalario'] = '¿Realmente desea eliminar el salario seleccionado?';
 	$lang['confirmarEliminarElementoProductos'] = '¿Realmente desea eliminar el elemento seleccionado?';
 	$lang['confirmarEliminarServicio'] = '¿Realmente desea eliminar el servicio seleccionado?';
+	$lang['confirmarEliminarEmpleado'] = '¿Realmente desea eliminar el empleado seleccionado?';
 	$lang['confirmarEliminarCaracteristica'] = '¿Realmente desea eliminar la característica seleccionada?';
 	$lang['confirmarEliminarElementoServicio'] = '¿Realmente desea eliminar el elemento seleccionado?';
 	$lang['confirmarEditarEmpleado'] = '¿Realmente desea guardar los cambios realizados?';
@@ -32,6 +33,7 @@
 	$lang['tituloFormularioProductoEditar'] = 'Editar producto';
 	$lang['tituloProducto'] = 'Productos';
 	$lang['tituloServicios'] = 'Servicios';
+	$lang['tituloEmpleados'] = 'Empleados';
 
 //columnas tabla de cotizaciones 
 	$lang['tablaCotizaciones_codigo'] = 'Código';
@@ -111,6 +113,12 @@
 	$lang['formCliente_cotizador'] = 'Cotizador';
 
 //Formulario de empleados
+    $lang['Empleado_tablaNombre'] = 'Nombre';
+    $lang['Empleado_tablaCodigo'] = 'Código';
+    $lang['Empleado_tablaIdentificacion'] = 'Identificación';
+    $lang['Empleado_tablaPalabras'] = 'Palabras clave';
+    $lang['Empleado_tablaOpciones'] = 'Opciones';
+    $lang['Empleado_nuevo'] = 'Agregar nuevo';
     $lang['formEmpleado_codigo'] = 'Código';
     $lang['formEmpleado_nombre'] = 'Nombre';
     $lang['formEmpleado_identificacion'] = 'Identificación';
