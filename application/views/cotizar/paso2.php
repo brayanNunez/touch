@@ -34,6 +34,7 @@
                                     <input type="text" class="tags">
                                     <!-- <label class="input-field" for="tags"></label -->
                                     <!-- </div> -->
+
                                     <div id="contenerdorTablaDetalles">
                                        <table class="centered">
                                           <thead>
@@ -515,6 +516,8 @@
                                           </tbody>
                                        </table>
                                     </div>
+                                    <br>
+                                    <a href="#" class="btn btn-default">Nueva</a>
                                     <div id="resultadoDetalles" class="col s12 m12 l12">
                                        <div class="input-field col s12 m6 l3">
                                           <div class="input-field col s12">

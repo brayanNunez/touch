@@ -169,3 +169,55 @@
    <!--end container-->
 <!-- </section> -->
 <!-- END CONTENT-->
+
+
+<div id="enviar" class="modal">
+   <div class="modal-header">
+      <p><?=label('nombreSistema');?></p>
+   </div>
+   <div class="modal-content">
+      Seleccionar aprobadores
+      <div class="row">
+         <div class="col s12 m12 l12">
+            <form action="#">
+               <div class="row col s12 m6 l6">
+                  <div class="listaCecksModals">
+                     <p>
+                        <input type="checkbox" class="filled-in" id="filled-in-box_1" checked="checked">
+                        <label for="filled-in-box_1">Esteban Nuñez Rojas</label>
+                     </p>
+                     <p>
+                        <input type="checkbox" class="filled-in" id="filled-in-box_2" checked="checked">
+                        <label for="filled-in-box_2">María Alfaro Bolaños</label>
+                     </p>
+                     <p>
+                        <input type="checkbox" class="filled-in" id="filled-in-box_3" checked="checked">
+                        <label for="filled-in-box_3">Juan Carlos Arias</label>
+                     </p>
+                     
+                  </div>
+               </div>
+               <!-- <div class="row col s12 m6 l6">
+                  <div class="inputModals input-field col s12">
+                     <p>Color de fondo: <input class=""  type="color" id="myColor1"> </p>
+                  </div>
+                  <div class="inputModals input-field col s12">
+                     <p>Color de letra: <input class=""  type="color" id="myColor2"></p>
+                  </div>
+                  <div class="inputModals input-field col s12">
+                     <p>Color de barra horizontal: <input class=""  type="color" id="myColor3"></p>
+                  </div>
+                  <div class="input-field col s12">
+                     <textarea id="message" class="materialize-textarea" style="height: 24px;"></textarea>
+                     <label for="message" class="">Texto adicional</label>
+                  </div>
+               </div> -->
+            </form>
+         </div>
+      </div>
+   </div>
+   <div class="modal-footer">
+      <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
+      <a href="<?=base_url()?>cotizacion" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+   </div>
+</div>
