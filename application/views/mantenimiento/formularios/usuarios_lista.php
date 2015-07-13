@@ -28,7 +28,7 @@
                                         <div class="row">
                                             <div class="col s12 m12 l12 servicios">
                                                 <table id="data-table-simple" class="responsive-table display" cellspacing="0">
-                                                    <div id="usuario_nuevo">
+                                                    <div class="agregar_nuevo">
                                                         <a href="<?=base_url()?>usuarios/agregar" class="btn btn-default"><?=label('Usuario_nuevo');?></a>
                                                     </div>
                                                     <thead>

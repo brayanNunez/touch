@@ -66,7 +66,11 @@
 	$lang['finalizar'] = 'Finalizar';
 	$lang['on'] = 'On';
 	$lang['off'] = 'Off';
+	$lang['loguear'] = 'Ingresar';
 	$lang['annadir'] = 'Añadir';
+	$lang['recordar'] = 'Recordarme';
+	$lang['registrar'] = 'Registrar';
+	$lang['contrasena_olvido'] = '¿Olvidó su contraseña?';
 
 //comentarios de una cotizacion
 	$lang['comentar'] = 'Comentar';
@@ -278,6 +282,12 @@ $lang['formProducto_caracteristicasOpciones'] = 'Opciones';
 $lang['formProducto_nueva'] = 'Nueva';
 $lang['formProducto_enviar'] = 'Enviar';
 $lang['formProducto_guardar'] = 'Guardar cambios';
+
+
+$lang['agregar_nuevo'] = 'Agregar nuevo';
+//Formulario de logueo
+    $lang['login_username'] = 'Nombre de usuario';
+    $lang['login_password'] = 'Contraseña';
 
 //botones formulario cliente
 	$lang['formCliente_agregar'] = 'Agregar';

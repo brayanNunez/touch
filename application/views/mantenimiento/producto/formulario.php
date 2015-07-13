@@ -87,8 +87,8 @@
                                                     <td>
                                                         <!-- <a class="btn btn-default">Ed</a>
                                                         <a class="btn btn-default">El</a> -->
-                                                        <a class="modal-trigger" href="#editar"><?=label('editar');?></a>
-                                                        <a class="modal-trigger" href="#elminar"><?=label('eliminar');?></a>
+                                                        <a class="modal-trigger" href="#login-page"><?=label('editar');?></a>
+                                                        <a class="modal-trigger" href="#login"><?=label('eliminar');?></a>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -318,6 +318,82 @@
     <div class="modal-footer">
         <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+    </div>
+</div>
+
+<div id="login" class="modal">
+    <div class="modal-header white" style="min-height: 50px; ">
+        <img style="display: block; margin: 0 auto; margin-top: 10px;" src="<?=base_url()?>assets/dashboard/images/materialize-logo.png" alt="materialize logo">
+    </div>
+    <div class="modal-content">
+        <form action="<?=base_url()?>inicio">
+            <div class="input-field col s12">
+                <input id="login_username" type="text" value="">
+                <label for="login_username"><?=label('login_username');?></label>
+            </div>
+            <div class="input-field col s12">
+                <input id="login_password" type="text" value="">
+                <label for="login_password"><?=label('login_password');?></label>
+            </div>
+            <div class="input-field col s12">
+                <button class="btn waves-effect waves-light" style="width: 50%;" type="submit" name="action"><?=label('formCliente_enviar');?>
+                    <i class="mdi-content-send right"></i>
+                </button>
+            </div>
+        </form>
+        <div class="input-field col s12">
+            <a href="#">¿Olvidó su contraseña?</a>
+        </div>
+        <div class="input-field col s12">
+            <a href="<?=base_url()?>welcome/registro" style="font-size: x-large;">Registrarse</a>
+        </div>
+    </div>
+</div>
+
+<div id="login-page" class="modal fade in" style="width: 25%; max-height: none; ">
+    <div class="col s12 z-depth-4 card-panel" style="box-shadow: none; margin: 0px; padding-bottom: 0px; ">
+        <form class="login-form" style="width: auto; ">
+            <div class="row">
+                <div class="input-field col s12 center">
+                    <img src="<?=base_url()?>assets/dashboard/images/login-logo.png" alt="" class="circle responsive-img valign profile-image-login">
+                    <p class="center login-form-text"><?=label('nombreSistema');?></p>
+                </div>
+            </div>
+            <div class="row margin">
+                <div class="input-field col s12">
+                    <i class="mdi-social-person-outline prefix"></i>
+                    <input id="username" type="text">
+                    <label for="username" class="center-align"><?=label('login_username');?></label>
+                </div>
+            </div>
+            <div class="row margin">
+                <div class="input-field col s12">
+                    <i class="mdi-action-lock-outline prefix"></i>
+                    <input id="password" type="password">
+                    <label for="password"><?=label('login_password');?></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 m12 l12  login-text">
+                    <input type="checkbox" id="remember-me" />
+                    <label for="remember-me"><?=label('recordar')?></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <a href="<?=base_url()?>inicio" class="btn waves-effect waves-light col s12"><?=label('loguear')?></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6 m6 l6">
+                    <p class="margin medium-small"><a href="<?=base_url()?>welcome/registro"><?=label('registrar')?></a></p>
+                </div>
+                <div class="input-field col s6 m6 l6">
+                    <p class="margin right-align medium-small"><a href="page-forgot-password.html"><?=label('contrasena_olvido')?></a></p>
+                </div>
+            </div>
+
+        </form>
     </div>
 </div>
 <!-- Fin lista modals -->

@@ -28,8 +28,8 @@
                                         <div class="row">
                                             <div class="col s12 m12 l12 servicios">
                                                 <table id="data-table-simple" class="responsive-table display" cellspacing="0">
-                                                    <div id="empleado_nuevo">
-                                                        <a href="<?=base_url()?>empleados/agregar" class="btn btn-default"><?=label('Empleado_nuevo');?></a>
+                                                    <div class="agregar_nuevo">
+                                                        <a href="<?=base_url()?>empleados/agregar" class="btn btn-default"><?=label('agregar_nuevo');?></a>
                                                     </div>
                                                     <thead>
                                                         <tr>
