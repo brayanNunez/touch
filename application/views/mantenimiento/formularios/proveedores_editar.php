@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 m12 l12">
-                    <h1 class="breadcrumbs-title"><?=label('tituloFormularioEmpleadoEditar');?></h1>
+                    <h1 class="breadcrumbs-title"><?=label('tituloFormularioProveedorEditar');?></h1>
                 </div>
             </div>
         </div>
@@ -24,56 +24,56 @@
                                 <form class="col s12">
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <input id="empleado_codigo" type="text" value="0001">
-                                            <label for="empleado_codigo"><?=label('formEmpleado_codigo');?></label>
+                                            <select>
+                                                <option value="" selected disabled><?=label('formProveedor_seleccioneUno');?></option>
+                                                <option value="1"><?=label('formProveedor_fisico');?></option>
+                                                <option value="2" selected><?=label('formProveedor_juridico');?></option>
+                                            </select>
+                                            <label for="proveedor_tipo"><?=label('formProveedor_tipoProveedor');?></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input id="empleado_id" type="text" value="11-356-689">
-                                            <label for="empleado_id"><?=label('formEmpleado_identificacion');?></label>
+                                            <input id="proveedor_codigo" type="text" value="0001">
+                                            <label for="proveedor_codigo"><?=label('formProveedor_codigo');?></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input id="empleado_nombre" type="text" value="Jorge Arias C.">
-                                            <label for="empleado_nombre"><?=label('formEmpleado_nombre');?></label>
+                                            <input id="proveedor_id" type="text" value="2-789-456">
+                                            <label for="proveedor_id"><?=label('formProveedor_identificacion');?></label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input id="proveedor_nombre" type="text" value="Juan Perez D.">
+                                            <label for="proveedor_nombre"><?=label('formProveedor_nombre');?></label>
                                         </div>
 
                                         <div class="input-field col s12">
-                                            <label for="empleado_palabras"><?=label('formEmpleado_palabrasClave');?></label>
-                                            <input id="empleado_palabras" type="text" value="Programador, Bases de datos">
+                                            <label for="proveedor_palabras"><?=label('formProveedor_palabrasClave');?></label>
+                                            <input id="proveedor_palabras" type="text" value="Diseño">
                                             <div class="input-field col s12">
                                                 <div class="input-field col s8">
                                                     <input id="otra_palabra" type="text">
-                                                    <label for="otra_palabra"><?=label('formEmpleado_nuevaPalabra');?></label>
+                                                    <label for="otra_palabra"><?=label('formProveedor_nuevaPalabra');?></label>
                                                 </div>
                                                 <div class="input-field col s4">
-                                                    <a href="#" class="btn btn-default modal-trigger"><?=label('formEmpleado_agregar');?></a>
+                                                    <a href="#" class="btn btn-default"><?=label('formProveedor_agregar');?></a>
                                                 </div>
                                             </div>
                                             <hr />
                                         </div>
 
                                         <div class="input-field col s12">
-                                            <input id="empleado_fechaNacimiento" type="date" class="datepicker" value="18-06-1994">
-                                            <label for="empleado_fechaNacimiento"><?=label('formEmpleado_fechaNacimiento');?></label>
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <input id="empleado_fechaIngreso" type="date" class="datepicker" value="09-03-2015">
-                                            <label for="empleado_fechaIngreso"><?=label('formEmpleado_fechaIngreso');?></label>
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <textarea id="empleado_descripcion" class="materialize-textarea" length="120">Primer empleado</textarea>
-                                            <label for="empleado_descripcion"><?=label('formEmpleado_descripcion');?></label>
+                                            <textarea id="proveedor_descripcion" class="materialize-textarea" length="120">Diseñador profesional</textarea>
+                                            <label for="proveedor_descripcion"><?=label('formProveedor_descripcion');?></label>
                                         </div>
 
                                         <div class="input-field col s12">
-                                            <label><?=label('formEmpleado_salarios');?></label>
+                                            <label><?=label('formProveedor_salarios');?></label>
                                             <br />
                                             <br />
                                             <table class="table striped">
                                                 <thead>
                                                     <tr>
-                                                        <th><?=label('formEmpleado_salariosTipo');?></th>
-                                                        <th><?=label('formEmpleado_salariosMonto');?></th>
-                                                        <th><?=label('formEmpleado_salariosOpciones');?></th>
+                                                        <th><?=label('formProveedor_salariosTipo');?></th>
+                                                        <th><?=label('formProveedor_salariosMonto');?></th>
+                                                        <th><?=label('formProveedor_salariosOpciones');?></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -104,12 +104,12 @@
                                                 </tbody>
                                             </table>
                                             <br />
-                                            <a href="#agregarSalario" class="btn btn-default modal-trigger"><?=label('formEmpleado_agregar');?></a>
+                                            <a href="#agregarSalario" class="btn btn-default modal-trigger"><?=label('formProveedor_agregar');?></a>
                                             <hr />
                                         </div>
 
                                         <div class="input-field col s12">
-                                            <button class="btn waves-effect waves-light right" type="submit" name="action"><?=label('formEmpleado_enviar');?>
+                                            <button class="btn waves-effect waves-light right" type="submit" name="action"><?=label('formProveedor_enviar');?>
                                                 <i class="mdi-content-send right"></i>
                                             </button>
                                         </div>
@@ -128,21 +128,7 @@
 
 
 <!-- lista modals -->
-<div id="agregarPalabra" class="modal">
-    <div class="modal-header">
-        <p><?=label('nombreSistema');?></p>
-    </div>
-    <div class="modal-content">
-        <div class="input-field col s12">
-            <input id="palabra_nombre" type="text" value="">
-            <label for="palabra_nombre"><?=label('formEmpleado_palabraNombre');?></label>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
-    </div>
-</div>
+
 <div id="agregarSalario" class="modal">
     <div class="modal-header">
         <p><?=label('nombreSistema');?></p>
@@ -157,11 +143,11 @@
                 <option value="4"><?=label('quincena') ?></option>
                 <option value="5"><?=label('mes') ?></option>
             </select>
-            <label for=""><?=label('formEmpleado_salarioTipo');?></label>
+            <label for=""><?=label('formProveedor_salarioTipo');?></label>
         </div>
         <div class="input-field col s12">
             <input id="salario_monto" type="text" value="">
-            <label for="salario_monto"><?=label('formEmpleado_salarioMonto');?></label>
+            <label for="salario_monto"><?=label('formProveedor_salarioMonto');?></label>
         </div>
     </div>
     <div class="modal-footer">
@@ -183,10 +169,10 @@
                 <option value="4"><?=label('quincena') ?></option>
                 <option value="5"><?=label('mes') ?></option>
             </select>
-            <label for=""><?=label('formEmpleado_salarioTipo');?></label>
+            <label for=""><?=label('formProveedor_salarioTipo');?></label>
         </div><div class="input-field col s12">
             <input id="salario_monto" type="text" value="$10">
-            <label for="salario_monto"><?=label('formEmpleado_salarioMonto');?></label>
+            <label for="salario_monto"><?=label('formProveedor_salarioMonto');?></label>
         </div>
     </div>
     <div class="modal-footer">

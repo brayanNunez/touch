@@ -10,6 +10,7 @@
 	$lang['confirmarEliminarElementoProductos'] = '¿Realmente desea eliminar el elemento seleccionado?';
 	$lang['confirmarEliminarServicio'] = '¿Realmente desea eliminar el servicio seleccionado?';
 	$lang['confirmarEliminarEmpleado'] = '¿Realmente desea eliminar el empleado seleccionado?';
+	$lang['confirmarEliminarProveedor'] = '¿Realmente desea eliminar el proveedor seleccionado?';
 	$lang['confirmarEliminarCaracteristica'] = '¿Realmente desea eliminar la característica seleccionada?';
 	$lang['confirmarEliminarElementoServicio'] = '¿Realmente desea eliminar el elemento seleccionado?';
 	$lang['confirmarEditarEmpleado'] = '¿Realmente desea guardar los cambios realizados?';
@@ -24,7 +25,9 @@
 	$lang['tituloCotizacion'] = 'Cotización';
 	$lang['tituloFormularioCliente'] = 'Agregar cliente';
 	$lang['tituloFormularioEmpleado'] = 'Agregar empleado';
+	$lang['tituloFormularioEmpleadoEditar'] = 'Editar empleado';
 	$lang['tituloFormularioProveedor'] = 'Agregar proveedor';
+	$lang['tituloFormularioProveedorEditar'] = 'Editar proveedor';
 	$lang['tituloFormularioUsuario'] = 'Agregar usuario';
 	$lang['tituloFormularioRegistro'] = 'Registro';
 	$lang['tituloFormularioServicio'] = 'Agregar servicio';
@@ -34,6 +37,7 @@
 	$lang['tituloProducto'] = 'Productos';
 	$lang['tituloServicios'] = 'Servicios';
 	$lang['tituloEmpleados'] = 'Empleados';
+	$lang['tituloProveedores'] = 'Proveedores';
 
 //columnas tabla de cotizaciones 
 	$lang['tablaCotizaciones_codigo'] = 'Código';
@@ -138,6 +142,12 @@
     $lang['formEmpleado_salarioMonto'] = 'Monto';
 
 //Formulario de proveedores
+    $lang['Proveedor_tablaNombre'] = 'Nombre';
+    $lang['Proveedor_tablaCodigo'] = 'Código';
+    $lang['Proveedor_tablaIdentificacion'] = 'Identificación';
+    $lang['Proveedor_tablaDescripcion'] = 'Descripción';
+    $lang['Proveedor_tablaOpciones'] = 'Opciones';
+    $lang['Proveedor_nuevo'] = 'Agregar nuevo';
     $lang['formProveedor_tipoProveedor'] = 'Tipo de proveedor';
     $lang['formProveedor_seleccioneUno'] = 'Seleccione uno';
     $lang['formProveedor_fisico'] = 'Físico';

@@ -52,7 +52,7 @@
                                         </li>
                                         <li><a href="<?=base_url()?>empleados"><?=label('empleados');?></a>
                                         </li>
-                                        <li><a href="#"><?=label('proveedores');?></a>
+                                        <li><a href="<?=base_url()?>proveedores""><?=label('proveedores');?></a>
                                         </li>
                                         <li><a href="#"><?=label('monedas');?></a>
                                         </li>
