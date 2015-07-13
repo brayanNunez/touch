@@ -12,6 +12,7 @@
 	$lang['confirmarEliminarEmpleado'] = '¿Realmente desea eliminar el empleado seleccionado?';
 	$lang['confirmarEliminarProveedor'] = '¿Realmente desea eliminar el proveedor seleccionado?';
 	$lang['confirmarEliminarCliente'] = '¿Realmente desea eliminar el cliente seleccionado?';
+	$lang['confirmarEliminarTipoMoneda'] = '¿Realmente desea eliminar el tipo de moneda seleccionado?';
 	$lang['confirmarEliminarUsuario'] = '¿Realmente desea eliminar el usuario seleccionado?';
 	$lang['confirmarEliminarCaracteristica'] = '¿Realmente desea eliminar la característica seleccionada?';
 	$lang['confirmarEliminarElementoServicio'] = '¿Realmente desea eliminar el elemento seleccionado?';
@@ -47,6 +48,14 @@
 	$lang['tituloProveedores'] = 'Proveedores';
 	$lang['tituloClientes'] = 'Clientes';
 	$lang['tituloUsuarios'] = 'Usuarios';
+
+	$lang['tituloTiposMoneda'] = 'Tipos de moneda';
+	$lang['tiposMoneda_defecto'] = 'Tipo de moneda por defecto';
+	$lang['tiposMoneda_selecionarUno'] = 'Seleccione uno';
+	$lang['tiposMoneda_permitidos'] = 'Tipos de moneda permitidos en las cotizaciones';
+	$lang['tiposMoneda_nombre'] = 'Moneda';
+	$lang['tiposMoneda_opciones'] = 'Opciones';
+	$lang['tiposMoneda_nuevo'] = '+';
 
 //columnas tabla de cotizaciones 
 	$lang['tablaCotizaciones_codigo'] = 'Código';
