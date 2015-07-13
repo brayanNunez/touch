@@ -74,7 +74,7 @@
                                                 <th>Cantidad</th>
                                                 <th>Imagen</th>
                                                 <th>Sub-total
-                                                   <a  class="btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
+                                                   <a onclick="darclick(2);" class="btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
                                                    <i class="mdi-editor-mode-edit"></i>
                                                    </a>
                                                 </th>
@@ -152,8 +152,8 @@
                            </div>
                            <div class="row">
                               <div class="input-field col s4 m7 l7">
-                              <a href="#modalVistaPrevia" class=" left btn btn-default modal-trigger">Vista previa</a>
-                           </div>
+                                 <a href="#modalVistaPrevia" class=" left btn btn-default modal-trigger">Vista previa</a>
+                              </div>
 
                            </div>
 

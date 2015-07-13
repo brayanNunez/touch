@@ -206,7 +206,7 @@ p{
     margin: 0 0 10px;
 }
 
-#paso3{
+#paso3, #paso4{
 		/*overflow-x: scroll;*/
 		padding: 1%;
 		max-width: 1180px;
@@ -344,4 +344,8 @@ p{
 #modalVistaPrevia{
 	width:75%; 
 	height: 1500px;
+}
+
+#btnEnviar{
+	width: 100%;
 }

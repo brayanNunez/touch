@@ -54,7 +54,7 @@
                                         </li>
                                         <li><a href="<?=base_url()?>empleados"><?=label('empleados');?></a>
                                         </li>
-                                        <li><a href="<?=base_url()?>proveedores""><?=label('proveedores');?></a>
+                                        <li><a href="<?=base_url()?>proveedores"><?=label('proveedores');?></a>
                                         </li>
                                         <li><a href="#"><?=label('monedas');?></a>
                                         </li>
@@ -93,6 +93,7 @@
                                     </ul>
                                 </div>
                             </li>
+                        </ul>
                     </li>
 
                     <li><a href="<?=base_url()?>empleados/agregar"><i class="mdi-action-swap-vert-circle"></i> <?=label('agregarEmpleado');?></a>

@@ -58,11 +58,7 @@
                                  </div>
                               </div>
                               <div id="paso4" class="card card-ContenidoPasos col s12">
-                                 <ul>
-                                    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                                    <li>Aliquam tincidunt mauris eu risus.</li>
-                                    <li>Vestibulum auctor dapibus neque.</li>
-                                 </ul>
+                                 <?php $this->load->view('cotizar/paso4'); ?>
                                  <div class="atras_adelante">
                                     <a class="anterior" class="left" href="#" onclick="darclick(3);"><?=label('anterior');?></a>
                                  </div>
