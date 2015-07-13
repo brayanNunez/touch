@@ -22,9 +22,6 @@
                             <div class="col s12 m12 l12">
                                 <div id="card_productos" class="card">
                                     <div id="tableHeader">
-<!--                                        <div>-->
-<!--                                            <input type="text" id="search" placeholder="Buscar"/>-->
-<!--                                        </div>-->
                                         <div class="dataTables_filter search">
                                             <label>
                                                 <?=label('Producto_tablaBusqueda');?>
