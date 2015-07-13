@@ -14,7 +14,7 @@ class Administrador extends CI_Controller
     public function index()
     {
         $this->load->view('layout/default/header');
-        $this->load->view('layout/default/left-sidebar');
+        $this->load->view('administrador/left-sidebar');
         $this->load->view('administrador/general');
         $this->load->view('layout/default/footer');
     }
@@ -22,7 +22,7 @@ class Administrador extends CI_Controller
     public function monedas()
     {
         $this->load->view('layout/default/header');
-        $this->load->view('layout/default/left-sidebar');
+        $this->load->view('administrador/left-sidebar');
         $this->load->view('administrador/monedas');
         $this->load->view('layout/default/footer');
     }
@@ -30,7 +30,7 @@ class Administrador extends CI_Controller
     public function listaMonedas()
     {
         $this->load->view('layout/default/header');
-        $this->load->view('layout/default/left-sidebar');
+        $this->load->view('administrador/left-sidebar');
         $this->load->view('administrador/lista-monedas');
         $this->load->view('layout/default/footer');
     }
@@ -38,7 +38,7 @@ class Administrador extends CI_Controller
     public function listaPagos()
     {
         $this->load->view('layout/default/header');
-        $this->load->view('layout/default/left-sidebar');
+        $this->load->view('administrador/left-sidebar');
         $this->load->view('administrador/lista-pagos');
         $this->load->view('layout/default/footer');
     }
@@ -46,7 +46,7 @@ class Administrador extends CI_Controller
     public function listaPlanes()
     {
         $this->load->view('layout/default/header');
-        $this->load->view('layout/default/left-sidebar');
+        $this->load->view('administrador/left-sidebar');
         $this->load->view('administrador/lista-planes');
         $this->load->view('layout/default/footer');
     }
@@ -54,7 +54,7 @@ class Administrador extends CI_Controller
     public function planes()
     {
         $this->load->view('layout/default/header');
-        $this->load->view('layout/default/left-sidebar');
+        $this->load->view('administrador/left-sidebar');
         $this->load->view('administrador/planes');
         $this->load->view('layout/default/footer');
     }
