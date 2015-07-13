@@ -26,7 +26,7 @@
             </div>
         </div>
 
-        <div class="row bloque-home1">
+        <div class="row">
             <div class="col-sm-12 text-center">
                 <h4 class="uppercase mb16">Nuestros valores</h4>
                 <p class="lead mb64">

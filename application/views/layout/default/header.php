@@ -36,6 +36,7 @@
     <script type="text/javascript" src="<?= base_url() ?>assets/dashboard/js/persist-min.js"></script>
     <link href="<?= base_url() ?>assets/dashboard/css/jquery.treetable.css" media="all" rel="stylesheet" type="text/css" />
     <link href="<?= base_url() ?>assets/dashboard/css/mystyle-s.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url() ?>assets/dashboard/css/mystyle-j.css" media="all" rel="stylesheet" type="text/css" />
 
     
 

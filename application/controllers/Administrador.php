@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Administrador extends CI_Controller {
+class Administrador extends CI_Controller
+{
 
     function __construct()
     {
@@ -15,6 +16,14 @@ class Administrador extends CI_Controller {
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
         $this->load->view('administrador/general');
+        $this->load->view('layout/default/footer');
+    }
+
+    public function monedas()
+    {
+        $this->load->view('layout/default/header');
+        $this->load->view('layout/default/left-sidebar');
+        $this->load->view('administrador/monedas');
         $this->load->view('layout/default/footer');
     }
 
@@ -46,7 +55,7 @@ class Administrador extends CI_Controller {
     {
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
-        $this->load->view('administrador/lista-planes');
+        $this->load->view('administrador/planes');
         $this->load->view('layout/default/footer');
     }
 
