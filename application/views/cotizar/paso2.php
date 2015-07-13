@@ -546,10 +546,10 @@
                                     </div>
                                     <div class="row">
                                        <div class="input-field col s12 m6 l4">
-                                          <a href="#modalVistaPrevia" class=" left btn btn-default modal-trigger agregarElementos">Agregar producto</a>
+                                          <a href="<?=base_url();?>productos/agregar" class=" left btn btn-default modal-trigger agregarElementos">Agregar producto</a>
                                        </div>
                                        <div class="input-field col s12 m6 l4 ">
-                                          <a href="#modalVistaPrevia" class=" left btn btn-default modal-trigger agregarElementos">Agregar servicio</a>
+                                          <a href="<?=base_url();?>servicios/agregar" class=" left btn btn-default modal-trigger agregarElementos">Agregar servicio</a>
                                        </div>
                                     </div>
                                  </div>
