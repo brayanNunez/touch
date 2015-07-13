@@ -1,123 +1,163 @@
-<!-- START CONTENT -->
- <section id="content">
-
-    <!--start container-->
-        <div id="breadcrumbs-wrapper" class=" grey lighten-3">
-          <div class="container">
-            <div class="row">
-              <div class="col s12 m12 l12">
-                <h5 class="breadcrumbs-title"><?=label('tituloCotizacion');?></a></h5>
-                
-              </div>
+<!-- START CONTENT --> 
+<!-- <section id="content"> -->
+   <!--start container-->
+   <!-- <div id="breadcrumbs-wrapper" class=" grey lighten-3">
+      <div class="container">
+         <div class="row">
+            <div class="col s12 m12 l12">
+               <h5 class="breadcrumbs-title"><?=label('tituloCotizacion');?></a></h5>
             </div>
-          </div>
-        </div>
-        <!--breadcrumbs end-->
+         </div>
+      </div>
+   </div> -->
+
+
+   <!--breadcrumbs end-->
+
+
+
+<!--    <div class="container">
+   <div id="chart-dashboard">
+      <div class="row">
+         <div class="col s12 m12 l12">
+            <div id="submit-button" class="section">
+               <div class="row">
+                  <div class="col s12 m12 l12"> -->
 
 
 
 
-    <div class="container">
-        <div id="chart-dashboard">
-            <div class="row">
-                <div class="col s12 m12 l12">
-
-                    <div id="submit-button" class="section">
+                     <!-- <div class="card"> -->
+                     <!--Basic Form-->
+                     <div id="formGeneral" class="section">
                         <div class="row">
-                            
-                            <div class="col s12 m12 l12">
-                              <!-- <div class="card"> -->
-
-                                    
-
-                                              <div class="col s12 m12 l12">
-                                              <a id="comentariosCotizacion" href="#" data-activates="chat-out" class="right waves-effect waves-block waves-light chat-collapse">
-                                              <i class="mdi-communication-chat"></i></a>
-
-                                                <div class="row">
-                                                  <div class="col s12">
-                                                    <ul class="tabs tab-demo z-depth-1">
-                                                      <li class="tab col s3"><a id="botonPaso1" class="active" href="#paso1"><?=label('paso1');?></a>
-                                                      </li>
-                                                      <li class="tab col s3"><a id="botonPaso2" href="#paso2"><?=label('paso2');?></a>
-                                                      </li>
-                                                      <li class="tab col s3"><a id="botonPaso3" href="#paso3"><?=label('paso3');?></a>
-                                                      </li>
-                                                      <li class="tab col s3"><a id="botonPaso4" href="#paso4"><?=label('paso4');?></a>
-                                                      </li>
-                                                    </ul>
-                                                  </div>
-                                                    <!-- <div class="card"> -->
-                                                      <div class="col s12">
-                                                        <div id="paso1" class="card col s12">
-                                                          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                                                          <ol>
-                                                            <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                                                            <li>Aliquam tincidunt mauris eu risus.</li>
-                                                            <li>Vestibulum auctor dapibus neque.</li>
-                                                          </ol>
-                                                          <div class="atras_adelante">
-                                                            <a class="siguiente right" href="#" onclick="darclick(2);"><?=label('siguiente');?></a>
-                                                          </div>
-                                                        </div>
-                                                        <div id="paso2" class="card col s12">
-                                                          <dl>
-                                                            <dt>Definition list</dt>
-                                                            <dd>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</dd>
-                                                            <dt>Lorem ipsum dolor sit amet</dt>
-                                                            <dd>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</dd>
-                                                          </dl>
-                                                          <div class="atras_adelante">
-                                                            <a class="siguiente right" href="#" onclick="darclick(3);"><?=label('siguiente');?></a>
-                                                            <a class="anterior left" href="#" onclick="darclick(1);"><?=label('anterior');?></a>
-                                                          </div>
-                                                          
-                                                        </div>
-                                                        <div id="paso3" class="card col s12">
-                                                          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies
-                                                            mi vitae est. Mauris placerat eleifend leo.</p>
-                                                           <div class="atras_adelante">
-                                                            <a class="siguiente right" href="#" onclick="darclick(4);"><?=label('siguiente');?></a>
-                                                            <a class="anterior left" href="#" onclick="darclick(2);"><?=label('anterior');?></a>
-                                                          </div>
-
-                                                          </div>
-                                                        <div id="paso4" class="card col s12">
-                                                          <ul>
-                                                            <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                                                            <li>Aliquam tincidunt mauris eu risus.</li>
-                                                            <li>Vestibulum auctor dapibus neque.</li>
-                                                          </ul>
-                                                          <div class="atras_adelante">
-                                                            <a class="anterior" class="left" href="#" onclick="darclick(3);"><?=label('anterior');?></a>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-
-                                                      <script type="text/javascript">
-                                                          function darclick(paso){ 
-
-                                                          var obj=document.getElementById('botonPaso' + paso);
-
-                                                          obj.click();
-
-                                                          }
-                                                      </script>
-
-                                                    <!-- </div> -->
-                                                </div>
-
-                                              </div>
-
-                                    
-                              <!-- </div> -->
+                           <div class="input-field col s6 m3 l3">
+                              <div class="input-field col s12">
+                                 <input id="last_name" type="text">
+                                 <label for="last_name" class="">Código</label>
+                              </div>
+                           </div>
+                           <div class="input-field col s6 m3 l3">
+                              <div class="input-field col s12">
+                                 <input id="last_name" type="text">
+                                 <label for="last_name" class="">Número</label>
+                              </div>
+                           </div>
                         </div>
-                    </div>
-
-                </div>
+                        <div class="row">
+                           <div class="input-field col s12 m6 l6">
+                              <select class="input-field col s12">
+                                 <option value="" disabled selected>Cliente</option>
+                                 <option value="1">Dos Pinos</option>
+                                 <option value="2">Juan Carlos Porras</option>
+                                 <option value="3">Ana Bolaños Rojas</option>
+                              </select>
+                              <label>Seleccione el cliente</label>
+                           </div>
+                           <div class="input-field col s12 m6 l6">
+                              <div class="input-field col s12">
+                                 <input id="last_name" type="number">
+                                 <label for="last_name" class="">Utilidad</label>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="input-field col s12 m6 l6">
+                              <select class="input-field col s11">
+                                 <option value="" disabled selected>Atención</option>
+                                 <option value="1">Sebastián Rodriguez Bolaños</option>
+                                 <option value="2">Juan Carlos Porras</option>
+                                 <option value="3">Ana Bolaños Rojas</option>
+                              </select>
+                              <label>Seleccione la atención</label>
+                              <a class="modal-trigger" href="#agregarAtencion"><i class="mdi-content-add col s1"></i></a>
+                           </div>
+                           <div class="input-field col s12 m6 l6">
+                              <div class="input-field col s12">
+                                 <input id="last_name" type="number">
+                                 <label for="last_name" class="">Impuesto</label>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="input-field col s12 m6 l6">
+                              <select class="input-field col s12">
+                                 <option value="" disabled selected>Moneda</option>
+                                 <option value="1">Dolar</option>
+                                 <option value="2">Colón</option>
+                                 <option value="3">Peso mexicano</option>
+                              </select>
+                              <label>Seleccione el tipo de moneda</label>
+                           </div>
+                           <div class="input-field col s12 m6 l6">
+                              <select class="input-field col s12">
+                                 <option value="" disabled selected>Forma de pago</option>
+                                 <option value="1">Credito</option>
+                                 <option value="2">Al contado</option>
+                                 <option value="3">50-50</option>
+                              </select>
+                              <label>Seleccione la forma de pago</label>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="input-field col s12 m6 l6">
+                              <select class="input-field col s12">
+                                 <option value="" disabled selected>Valido por</option>
+                                 <option value="1">1 mes</option>
+                                 <option value="1">1.5 meses</option>
+                                 <option value="2">2 meses</option>
+                                 <option value="3">3 meses</option>
+                                 <option value="3">4 meses</option>
+                                 <option value="3">5 meses</option>
+                              </select>
+                              <label>Seleccione el tiempo de validez</label>
+                           </div>
+                           <div class="input-field col s12 m6 l6">
+                              <div class="input-field col s12">
+                                 <input value="0" id="last_name" type="text">
+                                 <label for="last_name" class="">Tipo de cambio</label>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="input-field col s12 m12 l12">
+                                 <div class="input-field col s12">
+                                    <textarea id="message" class="materialize-textarea" style="height: 24px;"></textarea>
+                                    <label for="message" class="">Detalle</label>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  <!-- </div> -->
+                  <!-- </div> -->
+               <!-- </div>
             </div>
-        </div>
-    </div>
-<!--end container-->
-</section>
+         </div>
+      </div>
+   </div> -->
+   <!--end container-->
+<!-- </section> -->
 <!-- END CONTENT-->
+<!-- lista modals -->
+<div id="agregarAtencion" class="modal">
+   <div class="modal-header">
+      <p><?=label('nombreSistema');?></p>
+   </div>
+   <div class="modal-content">
+      <div class="input-field col s12">
+         <input id="client_code" type="text" value="">
+         <label for="client_code"><?=label('formCliente_nombreContacto');?></label>
+      </div>
+      <div class="input-field col s12">
+         <input id="client_code" type="text" value="">
+         <label for="client_code"><?=label('formCliente_correoContacto');?></label>
+      </div>
+   </div>
+   <div class="modal-footer">
+      <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
+      <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+   </div>
+</div>
+
+
+<!--Fin lista modals-->

@@ -1,7 +1,9 @@
 <!-- START CONTENT -->
-<section id="content">
+<!-- <section id="content"> -->
    <!--start container-->
-   <div id="breadcrumbs-wrapper" class=" grey lighten-3">
+
+   
+<!--    <div id="breadcrumbs-wrapper" class=" grey lighten-3">
       <div class="container">
          <div class="row">
             <div class="col s12 m12 l12">
@@ -9,16 +11,18 @@
             </div>
          </div>
       </div>
-   </div>
+   </div> -->
    <!--breadcrumbs end-->
-   <div class="container">
+
+
+  <!--  <div class="container">
       <div id="chart-dashboard">
          <div class="row">
             <div class="col s12 m12 l12">
                <div id="submit-button" class="section">
                   <div class="row">
                      <div class="col s12 m12 l12">
-                        <div class="card" id="card-paso1">
+                        <div class="card" id="card-paso1"> -->
                            <div id="centered-table">
                               <!--  <h4 class="header">Centered Table</h4> -->
                               <div class="row">
@@ -548,7 +552,7 @@
                                  </div>
                               </div>
                            </div>
-                        </div>
+                        <!-- </div>
                      </div>
                   </div>
                </div>
@@ -556,9 +560,9 @@
          </div>
       </div>
    </div>
-   </div>
+   </div> -->
    <!--end container-->
-</section>
+<!-- </section> -->
 <!-- END CONTENT-->
 <script>
    function check(nombre, elemnto) {
