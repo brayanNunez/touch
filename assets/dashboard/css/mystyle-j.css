@@ -10,6 +10,6 @@ input[type="text"], input[type="password"] {  height: 43px;  }
 
 .panel-heading {  padding: 0px;  }
 
-#boton_nuevo{
-    margin: 10px !important;
-}
+#boton_nuevo{  margin: 10px !important;  }
+
+.bloque-embed-codigo-generado{  padding: 20px;  margin: 0.5rem 0px 1rem;  border-radius: 2px;  background-color: #CCCCCC;  }

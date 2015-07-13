@@ -40,19 +40,19 @@
 
                                         <p>Seleccione los beneficios</p>
                                         <div class="input-field col s12">
-                                            <input id="plan_beneficio1" type="checkbox"></textarea>
+                                            <input id="plan_beneficio1" type="checkbox">
                                             <label for="plan_beneficio1"><?=label('formPlan_beneficio1');?></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input id="plan_beneficio2" type="checkbox"></textarea>
+                                            <input id="plan_beneficio2" type="checkbox">
                                             <label for="plan_beneficio2"><?=label('formPlan_beneficio2');?></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input id="plan_beneficio3" type="checkbox"></textarea>
+                                            <input id="plan_beneficio3" type="checkbox">
                                             <label for="plan_beneficio3"><?=label('formPlan_beneficio3');?></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input id="plan_beneficio4" type="checkbox"></textarea>
+                                            <input id="plan_beneficio4" type="checkbox">
                                             <label for="plan_beneficio4"><?=label('formPlan_beneficio4');?></label>
                                         </div>
 

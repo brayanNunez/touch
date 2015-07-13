@@ -27,11 +27,11 @@
                     </li>
                     <li class="bold"><a href="index.html" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> <?=label('inicio');?></a>
                     </li>
-                    <li class="bold"><a href="<?=base_url()?>administrador/listaPlanes" class="waves-effect waves-cyan"><i class="mdi-action-favorite"></i> <?=label('planes');?></a>
+                    <li class="bold"><a href="<?=base_url()?>administrador/listaPlanes" class="waves-effect waves-cyan"><i class="mdi-action-favorite mdi-device-now-widgets"></i> <?=label('planes');?></a>
                     </li>
-                    <li class="bold"><a href="<?=base_url();?>administrador/listaMonedas/" class="waves-effect waves-cyan"><i class="mdi-action-favorite"></i> <?=label('monedas');?></a>
+                    <li class="bold"><a href="<?=base_url();?>administrador/listaMonedas/" class="waves-effect waves-cyan"><i class="mdi-action-favorite mdi-device-now-widgets"></i> <?=label('monedas');?></a>
                     </li>
-                    <li class="bold"><a href="<?=base_url();?>administrador/listaPagos/" class="waves-effect waves-cyan"><i class="mdi-action-favorite"></i> <?=label('pagos');?></a>
+                    <li class="bold"><a href="<?=base_url();?>administrador/listaPagos/" class="waves-effect waves-cyan"><i class="mdi-action-favorite mdi-device-now-widgets"></i> <?=label('pagos');?></a>
                     </li>
                 </ul>
                 <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only darken-2"><i class="mdi-navigation-menu" ></i></a>
