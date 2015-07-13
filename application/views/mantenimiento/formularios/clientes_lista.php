@@ -49,7 +49,7 @@
                                                             <td><a href="<?=base_url()?>clientes/editar">Dos Pinos S.A.</a></td>
                                                             <td>2456-0708</td>
                                                             <td>coopedospinos@gmail.com</td>
-                                                            <td><a href="#">Juan</a></td>
+                                                            <td><a href="<?=base_url()?>usuarios/editar">Juan</a></td>
                                                             <td>
                                                                 <a href="<?=base_url()?>clientes/editar"><?=label('editar');?></a>
                                                                 <a class="modal-trigger" href="#eliminarCliente"><?=label('eliminar');?></a>
@@ -61,7 +61,7 @@
                                                             <td><a href="<?=base_url()?>clientes/editar">Emanuel Conejo R.</a></td>
                                                             <td>2458-9632</td>
                                                             <td>emanuel@gmail.com</td>
-                                                            <td><a href="#">Maria</a></td>
+                                                            <td><a href="<?=base_url()?>usuarios/editar">Maria</a></td>
                                                             <td>
                                                                 <a href="<?=base_url()?>clientes/editar"><?=label('editar');?></a>
                                                                 <a class="modal-trigger" href="#eliminarCliente"><?=label('eliminar');?></a>
@@ -73,7 +73,7 @@
                                                             <td><a href="<?=base_url()?>clientes/editar">Pipasa S.A.</a></td>
                                                             <td>2478-4512</td>
                                                             <td>pipasa@gmail.com</td>
-                                                            <td><a href="#">Maria</a></td>
+                                                            <td><a href="<?=base_url()?>usuarios/editar">Maria</a></td>
                                                             <td>
                                                                 <a href="<?=base_url()?>clientes/editar"><?=label('editar');?></a>
                                                                 <a class="modal-trigger" href="#eliminarCliente"><?=label('eliminar');?></a>
@@ -85,7 +85,7 @@
                                                             <td><a href="<?=base_url()?>clientes/editar">Julia Bolaños E.</a></td>
                                                             <td>2448-4250</td>
                                                             <td>julia@gmail.com</td>
-                                                            <td><a href="#">Juan</a></td>
+                                                            <td><a href="<?=base_url()?>usuarios/editar">Juan</a></td>
                                                             <td>
                                                                 <a href="<?=base_url()?>clientes/editar"><?=label('editar');?></a>
                                                                 <a class="modal-trigger" href="#eliminarCliente"><?=label('eliminar');?></a>

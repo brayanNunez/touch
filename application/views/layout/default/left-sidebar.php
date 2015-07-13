@@ -58,7 +58,7 @@
                                         </li>
                                         <li><a href="#"><?=label('monedas');?></a>
                                         </li>
-                                        <li><a href="#"><?=label('usuarios');?></a>
+                                        <li><a href="<?=base_url()?>usuarios"><?=label('usuarios');?></a>
                                         </li>  
                                         <li><a href="#"><?=label('financiamiento');?></a>
                                         </li>   
