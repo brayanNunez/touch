@@ -31,4 +31,10 @@ class Embed extends CI_Controller
         $this->load->view('embed/footer');
     }
 
+    public function embedProducto(){
+        $this->load->view('embed/header');
+        $this->load->view('embed/embed-producto');
+        $this->load->view('embed/footer');
+    }
+
 }

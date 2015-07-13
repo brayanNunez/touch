@@ -23,69 +23,69 @@
                             <div class="col s12 m12 l8">
                                 <form class="col s12">
                                     <div class="row">
-                                        <div class="input-field col s12">
-                                            <input id="producto_codigo" type="text" value="0001">
-                                            <label for="producto_codigo"><?=label('formProducto_codigo');?></label>
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <input id="producto_nombre" type="text" value="Arroz">
-                                            <label for="producto_nombre"><?=label('formProducto_nombre');?></label>
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <textarea id="producto_descripcion" class="materialize-textarea" length="120">Esta es la descripción</textarea>
-                                            <label for="producto_descripcion"><?=label('formProducto_descripcion');?></label>
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <input id="producto_precio" type="text" value="$2">
-                                            <label for="producto_precio"><?=label('formProducto_precio');?></label>
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <br />
-                                            <label for="producto_imagen"><?=label('formProducto_imagen');?></label>
-                                            <div class="file-field input-field col s12">
-                                                <input class="file-path validate" type="text"/>
-                                                <div class="btn">
-                                                    <span><?=label('formProducto_examinar') ?></span>
-                                                    <input type="file" />
+                                            <div class="input-field col s12">
+                                                <input id="producto_codigo" type="text" value="0001">
+                                                <label for="producto_codigo"><?=label('formProducto_codigo');?></label>
+                                            </div>
+                                            <div class="input-field col s12">
+                                                <input id="producto_nombre" type="text" value="Arroz">
+                                                <label for="producto_nombre"><?=label('formProducto_nombre');?></label>
+                                            </div>
+                                            <div class="input-field col s12">
+                                                <textarea id="producto_descripcion" class="materialize-textarea" length="120">Esta es la descripción</textarea>
+                                                <label for="producto_descripcion"><?=label('formProducto_descripcion');?></label>
+                                            </div>
+                                            <div class="input-field col s12">
+                                                <input id="producto_precio" type="text" value="$2">
+                                                <label for="producto_precio"><?=label('formProducto_precio');?></label>
+                                            </div>
+                                            <div class="input-field col s12">
+                                                <br />
+                                                <label for="producto_imagen"><?=label('formProducto_imagen');?></label>
+                                                <div class="file-field input-field col s12">
+                                                    <input class="file-path validate" type="text"/>
+                                                    <div class="btn">
+                                                        <span><?=label('formProducto_examinar') ?></span>
+                                                        <input type="file" />
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div class="input-field col s12">
-                                            <label><?=label('formProducto_caracteristicas');?></label>
-                                            <br />
-                                            <br />
-                                            <table class="table striped">
-                                                <thead>
-                                                    <tr>
-                                                        <th><?=label('formProducto_caracteristicasDescripcion');?></th>
-                                                        <th><?=label('formProducto_caracteristicasOpciones');?></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Pantalla 35"</td>
-                                                        <td>
-                                                            <a class="modal-trigger" href="#editarCaracteristica"><?=label('editar');?></a>
-                                                            <a class="modal-trigger" href="#eliminarCaracteristica"><?=label('eliminar');?></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>HDD 2TB</td>
-                                                        <td>
-                                                            <a class="modal-trigger" href="#editarCaracteristica"><?=label('editar');?></a>
-                                                            <a class="modal-trigger" href="#eliminarCaracteristica"><?=label('eliminar');?></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Procesador Intel Core I7</td>
-                                                        <td>
-                                                            <a class="modal-trigger" href="#editarCaracteristica"><?=label('editar');?></a>
-                                                            <a class="modal-trigger" href="#eliminarCaracteristica"><?=label('eliminar');?></a>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                            <div class="input-field col s12">
+                                                <label><?=label('formProducto_caracteristicas');?></label>
+                                                <br />
+                                                <br />
+                                                <table class="table striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th><?=label('formProducto_caracteristicasDescripcion');?></th>
+                                                            <th><?=label('formProducto_caracteristicasOpciones');?></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Pantalla 35"</td>
+                                                            <td>
+                                                                <a class="modal-trigger" href="#editarCaracteristica"><?=label('editar');?></a>
+                                                                <a class="modal-trigger" href="#eliminarCaracteristica"><?=label('eliminar');?></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>HDD 2TB</td>
+                                                            <td>
+                                                                <a class="modal-trigger" href="#editarCaracteristica"><?=label('editar');?></a>
+                                                                <a class="modal-trigger" href="#eliminarCaracteristica"><?=label('eliminar');?></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Procesador Intel Core I7</td>
+                                                            <td>
+                                                                <a class="modal-trigger" href="#editarCaracteristica"><?=label('editar');?></a>
+                                                                <a class="modal-trigger" href="#eliminarCaracteristica"><?=label('eliminar');?></a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
                                             <br />
                                             <a href="#agregarCaracteristica" class="btn btn-default modal-trigger"><?=label('formProducto_nueva');?></a>
                                             <hr />
