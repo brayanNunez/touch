@@ -68,7 +68,7 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li class="bold"><a href="#" class="waves-effect waves-cyan"><i class="mdi-device-now-widgets"></i> <?=label('avanzado');?> <span class="new badge"></span></a>
+                            <li class="bold"><a href="<?=base_url();?>embed" class="waves-effect waves-cyan"><i class="mdi-device-now-widgets"></i> <?=label('avanzado');?> <span class="new badge"></span></a>
                             </li>
                         </ul>
                     </li>  
