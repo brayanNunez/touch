@@ -48,6 +48,15 @@
 
       <link href="<?=base_url()?>assets/dashboard/js/plugins/data-tables/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 
+
+     <!-- js necesario para autocompletar en las lineas de detalle -->
+    <link rel="stylesheet" href="<?=base_url()?>assets/dashboard/css/jquery-ui.min.css">
+    <script src="<?=base_url()?>assets/dashboard/js/jquery-1.10.2.js"></script>
+    <script src="<?=base_url()?>assets/dashboard/js/jquery-ui.js"></script>
+
+
+
+
 </head>
 
 <body>
