@@ -77,7 +77,7 @@
                                                         <td>Maria Rodriguez</td>
                                                         <td>maria@gmail.com</td>
                                                         <td>
-                                                            <a class="modal-trigger" href="#editar"><?=label('editar');?></a>
+                                                            <a class="modal-trigger" href="#editarContacto"><?=label('editar');?></a>
                                                             <a class="modal-trigger" href="#eliminarContacto"><?=label('eliminar');?></a>
                                                         </td>
                                                     </tr>
@@ -85,7 +85,7 @@
                                                         <td>Juan Perez</td>
                                                         <td>juan@gmail.com</td>
                                                         <td>
-                                                            <a class="modal-trigger" href="#editar"><?=label('editar');?></a>
+                                                            <a class="modal-trigger" href="#editarContacto"><?=label('editar');?></a>
                                                             <a class="modal-trigger" href="#eliminarContacto"><?=label('eliminar');?></a>
                                                         </td>
                                                     </tr>
@@ -93,7 +93,7 @@
                                                         <td>Jose Mora</td>
                                                         <td>jose@gmail.com</td>
                                                         <td>
-                                                            <a class="modal-trigger" href="#editar"><?=label('editar');?></a>
+                                                            <a class="modal-trigger" href="#editarContacto"><?=label('editar');?></a>
                                                             <a class="modal-trigger" href="#eliminarContacto"><?=label('eliminar');?></a>
                                                         </td>
                                                     </tr>
