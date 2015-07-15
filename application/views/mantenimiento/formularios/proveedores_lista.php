@@ -23,10 +23,10 @@
                     <div id="submit-button" class="section">
                         <div class="row">
                             <div class="col s12 m12 l12">
-                                <div class="card" id="listaProveedores">
+                                <div class="card lista-elementos">
                                     <div id="table-datatables">
                                         <div class="row">
-                                            <div class="col s12 m12 l12 servicios">
+                                            <div class="col s12 m12 l12">
                                                 <table id="data-table-simple" class="responsive-table display" cellspacing="0">
                                                     <div class="agregar_nuevo">
                                                         <a href="<?=base_url()?>proveedores/agregar" class="btn btn-default"><?=label('agregar_nuevo');?></a>

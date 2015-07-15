@@ -220,20 +220,6 @@
 
 
 <!-- lista modals -->
-
-<!--<div id="agregarElemento" class="modal">-->
-<!--    <div class="modal-header">-->
-<!--        <p>--><?//=label('nombreSistema');?><!--</p>-->
-<!--    </div>-->
-<!--    <div class="modal-content">-->
-<!--        <div class="input-field col s6">-->
-<!--            <a href="#agregarCategoría" data-dismiss="modal" class="btn modal-trigger">--><?//=label('Producto_categorias')?><!--</a>-->
-<!--        </div>-->
-<!--        <div class="input-field col s6">-->
-<!--            <a href="--><?//=base_url()?><!--productos/agregar" class="waves-effect waves-green btn-flat modal-action modal-close">--><?//=label('Producto_productos')?><!--</a>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
 <div id="agregarCategoría" class="modal">
     <div class="modal-header">
         <p><?=label('nombreSistema');?></p>

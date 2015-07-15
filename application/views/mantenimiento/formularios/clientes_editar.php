@@ -247,9 +247,8 @@
                                             </select>
                                             <label for="cliente_cotizador"><?=label('formCliente_cotizador');?></label>
                                         </div>
-                                        <div class="input-field col s12">
-                                            <button class="btn waves-effect waves-light right" type="submit" name="action"><?=label('formCliente_enviar');?>
-                                                <i class="mdi-content-send right"></i>
+                                        <div class="input-field col s12 envio-formulario">
+                                            <button class="btn waves-effect waves-light right" type="submit" name="action"><?=label('formCliente_editar');?>
                                             </button>
                                         </div>
                                     </div>

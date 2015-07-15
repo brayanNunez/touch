@@ -108,9 +108,8 @@
                                             <hr />
                                         </div>
 
-                                        <div class="input-field col s12">
-                                            <button class="btn waves-effect waves-light right" type="submit" name="action"><?=label('formProveedor_enviar');?>
-                                                <i class="mdi-content-send right"></i>
+                                        <div class="input-field col s12 envio-formulario">
+                                            <button class="btn waves-effect waves-light right" type="submit" name="action"><?=label('formProveedor_editar');?>
                                             </button>
                                         </div>
                                     </div>

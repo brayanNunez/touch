@@ -34,7 +34,7 @@
                                             </select>
                                             <label for="cliente_tipo"><?=label('tiposMoneda_defecto');?></label>
                                         </div>
-                                        <div class="col s12 m12 l12">
+                                        <div class="col s12 m12 l12" style="margin-top: 5%; padding: 0%; ">
                                             <div class="col s12">
                                                 <label><?=label('tiposMoneda_permitidos');?></label>
                                                 <br />

@@ -6,9 +6,10 @@ input:focus { outline: 0; }
 .popup-container { background-color: white; padding: 20px; border-radius: 5px; }
 .mb0 { margin: 7px 0px; width: 100% }
 #example tbody td { text-align: left; padding-left: 10px; }
-.file-field input.file-path { margin-left: 100px !important; }
-/*div.servicios div.dataTables_length { width: 20% !important; margin-left: 35% !important; }*/
-/*div.agregar_nuevo a.btn { position: absolute !important; margin: 30px !important; }*/
+.file-field input.file-path { margin-left: 15% !important; width: 87% !important; }
+.lista-elementos { padding: 1%; }
+.lista-elementos div.agregar_nuevo a.btn { margin: 2%; }
+.envio-formulario button.btn { display: block; float: none !important; margin: 0 auto !important; width: 60%; }
 
 .modal div.modal-header { background-color: #009966; }
 .modal div.modal-header p { font-size: xx-large; text-align: center; padding-top: 10px; }

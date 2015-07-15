@@ -127,9 +127,8 @@
                                             </div>
                                         </div>
 
-                                        <div class="input-field col s12">
-                                            <button class="btn waves-effect waves-light right" type="submit" name="action"><?=label('formUsuario_enviar');?>
-                                                <i class="mdi-content-send right"></i>
+                                        <div class="input-field col s12 envio-formulario">
+                                            <button class="btn waves-effect waves-light right" type="submit" name="action"><?=label('formUsuario_editar');?>
                                             </button>
                                         </div>
                                     </div>

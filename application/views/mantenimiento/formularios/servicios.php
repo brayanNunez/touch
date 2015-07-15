@@ -124,9 +124,8 @@
                                             <label for="servicio_total"><?=label('formServicio_total');?></label>
                                         </div>
 
-                                        <div class="input-field col s12">
+                                        <div class="input-field col s12 envio-formulario">
                                             <button class="btn waves-effect waves-light right" type="submit" name="action"><?=label('formServicio_enviar');?>
-                                                <i class="mdi-content-send right"></i>
                                             </button>
                                         </div>
                                     </div>

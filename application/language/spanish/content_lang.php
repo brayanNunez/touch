@@ -183,7 +183,8 @@
     $lang['formEmpleado_salariosTipo'] = 'Agregar';
     $lang['formEmpleado_salariosMonto'] = 'Agregar';
     $lang['formEmpleado_salariosOpciones'] = 'Agregar';
-    $lang['formEmpleado_enviar'] = 'Enviar';
+    $lang['formEmpleado_enviar'] = 'Agregar empleado';
+    $lang['formEmpleado_editar'] = 'Guardar cambios';
     $lang['formEmpleado_palabraNombre'] = 'Ocupación';
     $lang['formEmpleado_salarioTipo'] = 'Tipo';
     $lang['formEmpleado_salarioMonto'] = 'Monto';
@@ -210,7 +211,8 @@
     $lang['formProveedor_salariosTipo'] = 'Agregar';
     $lang['formProveedor_salariosMonto'] = 'Agregar';
     $lang['formProveedor_salariosOpciones'] = 'Agregar';
-    $lang['formProveedor_enviar'] = 'Enviar';
+    $lang['formProveedor_enviar'] = 'Agregar proveedor';
+    $lang['formProveedor_editar'] = 'Guardar cambios';
     $lang['formProveedor_salarioTipo'] = 'Tipo';
     $lang['formProveedor_salarioMonto'] = 'Monto';
 
@@ -233,7 +235,8 @@
     $lang['formUsuario_rolAprobador'] = 'Aprobador';
     $lang['formUsuario_rolCotizador'] = 'Cotizador';
     $lang['formUsuario_rolContador'] = 'Contador';
-    $lang['formUsuario_enviar'] = 'Enviar';
+    $lang['formUsuario_enviar'] = 'Agregar usuario';
+    $lang['formUsuario_editar'] = 'Guardar cambios';
 
 //Formulario de registro
     $lang['formRegistro_nombre'] = 'Nombre';
@@ -267,7 +270,8 @@
     $lang['formServicio_nueva'] = '+';
     $lang['formServicio_utilidad'] = 'Utilidad';
     $lang['formServicio_total'] = 'Total';
-    $lang['formServicio_enviar'] = 'Enviar';
+    $lang['formServicio_enviar'] = 'Agregar servicio';
+    $lang['formServicio_editar'] = 'Guardar cambios';
     $lang['formServicio_gastoAdicionalNombre'] = 'Nombre';
     $lang['formServicio_gastoAdicionalMonto'] = 'Monto';
     $lang['formServicio_nuevaPersonaTipo'] = 'Tipo de persona';
@@ -303,8 +307,8 @@ $lang['formProducto_caracteristicas'] = 'Características';
 $lang['formProducto_caracteristicasDescripcion'] = 'Descripción';
 $lang['formProducto_caracteristicasOpciones'] = 'Opciones';
 $lang['formProducto_nueva'] = 'Nueva';
-$lang['formProducto_enviar'] = 'Enviar';
-$lang['formProducto_guardar'] = 'Guardar cambios';
+$lang['formProducto_enviar'] = 'Agregar producto';
+$lang['formProducto_editar'] = 'Guardar cambios';
 
 
 $lang['agregar_nuevo'] = 'Agregar nuevo';
@@ -313,8 +317,9 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['login_password'] = 'Contraseña';
 
 //botones formulario cliente
-	$lang['formCliente_agregar'] = 'Agregar';
-	$lang['formCliente_enviar'] = 'Enviar';
+	$lang['formCliente_agregar'] = 'Nuevo contacto';
+	$lang['formCliente_enviar'] = 'Agregar cliente';
+	$lang['formCliente_editar'] = 'Guardar cambios';
 
 
     //Formulario de plan
