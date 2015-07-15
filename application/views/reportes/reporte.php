@@ -54,10 +54,10 @@
 	                        <div class="row">
 	                           <div class="input-field col s12 m6 l6">
 	                              <select class="input-field col s12">
-	                                 <option value="" disabled selected>Outsourcing</option>
+	                                 <option value="" disabled selected>Cliente</option>
 	                                 <option value="1">Todos</option>
-	                                 <option value="2">Transportes Rojas</option>
-	                                 <option value="3">Música en vivo</option>
+	                                 <option value="2">Juan Alfaro Alfaro</option>
+	                                 <option value="3">Diego Rojas</option>
 	                              </select>
 	                              <label>Seleccione el cliente</label>
 	                           </div>
