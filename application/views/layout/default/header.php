@@ -112,18 +112,21 @@
                         </li>
 
 
-                        <li><a style="width: 170px;" class="dropdown-button" data-activates="dropdown1" href="javascript:void(0);" class="waves-effect waves-block waves-light"><i class="mdi-social-notifications"></i></a>
+                        <li><a style="width: 170px;" class="dropdown-button" data-activates="dropdown1" href="javascript:void(0);" class="waves-effect waves-block waves-light"><i class="mdi-social-notifications">9</i></a>
                         </li>
                         <ul id="dropdown1" class="dropdown-content">
-                            <li><a href="#!" class="-text">Revisadas 3</a>
+                            <li><a href="<?=base_url();?>cotizacion" class="-text">Revisadas 3</a>
                             </li>
                             <li><a href="#!" class="-text">Pendientes 2</a>
                             </li>
-                            <li><a href="#!" class="-text">Rechazadas 2</a>
+                            <li><a href="<?=base_url();?>cotizacion" class="-text">Rechazadas 2</a>
                             </li>
 
                             </li>
-                            <li><a href="#!" class="-text">Nuevo cliente 1</a>
+                            <li><a href="<?=base_url();?>Solicitud/listaAsignar" class="-text">Nuevo cliente 1</a>
+                            </li>
+                            </li>
+                            <li><a href="<?=base_url();?>Solicitud/listaPendientes" class="-text">Solicitudes 1</a>
                             </li>
                         </ul>
                         

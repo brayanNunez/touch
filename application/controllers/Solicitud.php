@@ -22,29 +22,14 @@ class Solicitud extends CI_Controller {
         $this->load->view('solicitud/solicitudSinCliente');
         $this->load->view('layout/default/footer');
     }
-    public function pasos()
-    {
-        $this->load->view('layout/default/header');
-        $this->load->view('layout/default/left-sidebar');
-        $this->load->view('cotizar/paso3');
-        $this->load->view('layout/default/footer');
-    }
 
-    public function cotizar()
+    public function listaPendientes()
     {
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
-        $this->load->view('cotizar/cotizar');
+        $this->load->view('solicitud/solicitudConCliente');
         $this->load->view('layout/default/footer');
     }
-     public function paso2()
-    {
-        $this->load->view('layout/default/header');
-        $this->load->view('layout/default/left-sidebar');
-        $this->load->view('cotizar/paso2');
-        $this->load->view('layout/default/footer');
-    }
-
 
 
 }

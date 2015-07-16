@@ -5,7 +5,7 @@
       <div class="container">
          <div class="row">
             <div class="col s12 m12 l12">
-               <h1 class="breadcrumbs-title"><?=label('tituloListaSolicitidesSinCliente');?></h1>
+               <h1 class="breadcrumbs-title"><?=label('tituloListaSolicitidesConCliente');?></h1>
             </div>
          </div>
       </div>
