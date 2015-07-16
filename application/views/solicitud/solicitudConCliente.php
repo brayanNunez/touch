@@ -51,7 +51,7 @@
                                              <td>25-10-2015</td>
                                              <td>Necesito una cotización para una fiesta</td>
                                              <td>
-                                                <a class="modal-trigger icono-edicion" href="#editarContacto" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                <a class="modal-trigger icono-edicion" href="<?=base_url()?>solicitud/ver_solicitud" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
                                                    <i class="mdi-editor-mode-edit"></i>
                                                 </a>
                                                             <!--                                                            <a class="modal-trigger" href="#eliminarContacto">--><?//=label('eliminar');?><!--</a>-->
