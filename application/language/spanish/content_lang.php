@@ -21,6 +21,7 @@
     $lang['confirmarEliminarlineaDetalle'] = '¿Realmente desea eliminar la linea de detalle seleccionada?';
     $lang['confirmarEliminarFinanciamiento'] = '¿Realmente desea eliminar el financiamiento seleccionada?';
     $lang['confirmarEliminarMoneda'] = '¿Realmente desea eliminar la moneda seleccionada?';
+    $lang['confirmarEliminarSolicitud'] = '¿Realmente desea eliminar la solicitud de cotización?';
 
 //tipos de salario
     $lang['horas'] = 'Por horas';
@@ -46,6 +47,7 @@
 	$lang['tituloCotizacion'] = 'Cotización';
 	$lang['tituloFormularioCliente'] = 'Agregar cliente';
 	$lang['tituloFormularioClienteEditar'] = 'Editar cliente';
+	$lang['tituloFormularioSolicitudes'] = 'Solitud de cotización';
 	$lang['tituloFormularioEmpleado'] = 'Agregar empleado';
 	$lang['tituloFormularioEmpleadoEditar'] = 'Editar empleado';
 	$lang['tituloFormularioProveedor'] = 'Agregar proveedor';
@@ -140,6 +142,20 @@
 	$lang['agregarServicio'] = 'Servicio';
 	$lang['agregarEmpleado'] = 'Agregar Empleado';
 	$lang['agregarProveedor'] = 'Agregar Proveedor';
+
+//Formulario de solicitudes
+    $lang['formSolicitud_nombre'] = 'Nombre';
+    $lang['formSolicitud_correo'] = 'Correo electrónico';
+    $lang['formSolicitud_telefono'] = 'Número telefónico';
+    $lang['formSolicitud_fecha'] = 'Fecha de la solicitud';
+    $lang['formSolicitud_detalle'] = 'Detalle de la solicitud';
+    $lang['formSolicitud_datosAdicionales'] = 'Datos adicionales';
+    $lang['formSolicitud_agregarCliente'] = 'Agregar cliente';
+    $lang['formSolicitud_iniciar'] = 'Iniciar cotización';
+    $lang['formSolicitud_tablaNombre'] = 'Nombre';
+    $lang['formSolicitud_tablaPrecio'] = 'Precio';
+    $lang['formSolicitud_tablaCantidad'] = 'Cantidad';
+    $lang['formSolicitud_tablaTotal'] = 'Total';
 
 //formulario cliente
     $lang['Cliente_tablaNombre'] = 'Nombre';

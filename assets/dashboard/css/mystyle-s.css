@@ -10,6 +10,7 @@ input:focus { outline: 0; }
 .lista-elementos { padding: 1%; }
 .lista-elementos div.agregar_nuevo a.btn { margin: 2%; }
 .envio-formulario button.btn { display: block; float: none !important; margin: 0 auto !important; width: 60%; }
+.envio-formulario a { display: block; text-align: center; }
 .reporte-generar a.btn { width: 90%; display: block; margin: 0 auto; }
 a.icono-edicion { color: #225264; margin: 0% 5%; }
 div.search { margin-top: 0%; }
