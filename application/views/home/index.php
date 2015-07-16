@@ -11,7 +11,7 @@
                             <h1 class="mb40 mb-xs-16 large">Keep in Touch!&nbsp;</h1>
                             <h6 class="uppercase mb16">  Clientes, Cotizaciones, Facturas y más</h6>
                             <p class="lead mb40"> </p>
-                            <a class="btn btn-lg" href="#">Pruébalo gratis</a>
+                            <a class="btn btn-lg" href="<?=base_url()?>inicio">Pruébalo gratis</a>
                         </div>
                     </div>
 

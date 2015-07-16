@@ -46,7 +46,7 @@
                                         </div>
 
                                         <div class="input-field col s12">
-                                            <button class="btn waves-effect waves-light right" type="submit" name="action"><?=label('formEmbed_enviar');?>
+                                            <button class="btn btn-sm right" type="submit" name="action"><?=label('formEmbed_enviar');?>
                                                 <i class="mdi-content-send right"></i>
                                             </button>
                                         </div>

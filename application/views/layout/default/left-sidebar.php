@@ -27,20 +27,42 @@
                     </li>
                     <li class="bold"><a href="<?=base_url()?>inicio" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> <?=label('inicio');?></a>
                     </li>
-                    <li class="bold"><a href="<?=base_url()?>cotizacion" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> <?=label('cotizaciones');?> <span class="new badge">4</span></a>
-                    </li>
-                    <li class="bold"><a href="<?=base_url();?>servicios/" class="waves-effect waves-cyan"><i class="mdi-action-favorite"></i> <?=label('servicios');?></a>
-                    </li>
                     <li class="no-padding">
                         <ul class="collapsible collapsible-accordion">
+                            <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-invert-colors"></i> <?=label('cotizaciones');?></a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <li><a href="<?=base_url();?>cotizacion/general"><?=label('agregarCotizacion');?></a>
+                                        </li>
+                                        <li><a href="<?=base_url();?>cotizacion"><?=label('listarCotizacion');?></a>
+                                        </li>
+                                        <li><a href="<?=base_url();?>cotizacion/reporte"><?=label('listarReporte');?></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-invert-colors"></i> <?=label('clientes');?></a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <li><a href="<?=base_url();?>clientes/agregar"><?=label('agregarCliente');?></a>
+                                        </li>
+                                        <li><a href="<?=base_url();?>clientes"><?=label('listarCliente');?></a>
+                                        </li>
+                                        <li><a href="<?=base_url();?>clientes/reporte"><?=label('listarReporte');?></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="bold"><a href="<?=base_url();?>proveedores/" class="waves-effect waves-cyan"><i class="mdi-action-favorite"></i> <?=label('proveedores');?></a>
+                            </li>
+                            <li class="bold"><a href="<?=base_url();?>servicios/" class="waves-effect waves-cyan"><i class="mdi-action-favorite"></i> <?=label('servicios');?></a>
+                            </li>
                             <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-invert-colors"></i> <?=label('productos');?></a>
                                 <div class="collapsible-body">
                                     <ul>
                                         <li><a href="<?=base_url();?>productos/agregar"><?=label('agregarP');?></a>
-                                        </li>                                        
-                                        <li><a href="<?=base_url();?>productos/"><?=label('listarP');?></a>
                                         </li>
-                                       
+                                        <li><a href="<?=base_url();?>productos/"><?=label('listarP');?></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -54,17 +76,24 @@
                                         </li>
                                         <li><a href="<?=base_url()?>empleados"><?=label('empleados');?></a>
                                         </li>
-                                        <li><a href="<?=base_url()?>proveedores"><?=label('proveedores');?></a>
-                                        </li>
                                         <li><a href="<?=base_url()?>tiposMoneda"><?=label('monedas');?></a>
                                         </li>
                                         <li><a href="<?=base_url()?>usuarios"><?=label('usuarios');?></a>
-                                        </li>  
+                                        </li>
                                         <li><a href="<?=base_url();?>financiamiento"><?=label('financiamiento');?></a>
-                                        </li>   
+                                        </li>
                                         <li><a href="#"><?=label('gastos');?></a>
-                                        </li>                                       
-                                        
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-invert-colors"></i> <?=label('reportes');?></a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <li><a href="<?=base_url();?>reporte/"><?=label('reportesCotizacion');?></a>
+                                        </li>
+                                        <li><a href="<?=base_url();?>clientes/reporte"><?=label('reportesCliente');?></a>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>

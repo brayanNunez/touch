@@ -49,7 +49,6 @@
                 <span class="sub">hello@touchcr.com</span>
             </div>
             <div class="module right">
-                <a class="btn btn-sm" href="<?=base_url()?>welcome/faq">FAQ</a>
                 <a class="btn btn-sm" href="<?=base_url()?>welcome/registro">REGISTRARSE</a>
                 <a class="btn btn-sm" href="<?=base_url()?>inicio">Ingresar</a>
             </div>
@@ -68,7 +67,7 @@
                 <div class="module left">
                     <ul class="menu">
                         <li>
-                            <a href="#"> </a>
+                            <a href="<?=base_url()?>welcome/faq">FAQ</a>
                         </li>
                         <li class="has-dropdown">
                             <a href="#">
@@ -80,27 +79,29 @@
                                             <span class="title">touch!</span>
                                         </li>
                                         <li>
-                                            <a href="#">Qué es Touch? <br></a>
-                                        </li><li>
-                                            <a href="#">CÓMO FUNCIONA?<br></a>
-                                        </li><li>
-                                            <a href="#">BENEFICIOS<br>&nbsp;<br></a>
+                                            <a href="<?=base_url()?>welcome/que">Qué es Touch? <br></a>
+                                        </li>
+                                        <li>
+                                            <a href="<?=base_url()?>welcome/quienes">¿Quiénes lo usan?<br></a>
+                                        </li>
+                                        <li>
+                                            <a href="<?=base_url()?>welcome/prensa">Prensa<br>&nbsp;<br></a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <ul>
-                                        <li>
-                                            <span class="title"> </span>
-                                        </li>
-                                        <li>
-                                            <a href="#">Cuánto debo pagar?<br></a>
-                                        </li><li>
-                                            <a href="#">Tipos de &nbsp;planes<br></a>
-                                        </li><li>
-                                            <a href="#">Métodos de pago?<br></a>
-                                        </li>
-                                    </ul>
+<!--                                    <ul>-->
+<!--                                        <li>-->
+<!--                                            <span class="title"> </span>-->
+<!--                                        </li>-->
+<!--                                        <li>-->
+<!--                                            <a href="#">Cuánto debo pagar?<br></a>-->
+<!--                                        </li><li>-->
+<!--                                            <a href="#">Tipos de &nbsp;planes<br></a>-->
+<!--                                        </li><li>-->
+<!--                                            <a href="#">Métodos de pago?<br></a>-->
+<!--                                        </li>-->
+<!--                                    </ul>-->
                                 </li>
                             </ul>
                         </li>

@@ -10,6 +10,7 @@
                         <ul>
                             <li><a href="<?=base_url()?>welcome/que">¿Qué es?</a></li>
                             <li><a href="<?=base_url()?>welcome/como">¿Cómo funciona?</a></li>
+                            <li><a href="<?=base_url()?>welcome/quienes">¿Quiénes lo usan?</a></li>
                             <li><a href="<?=base_url()?>welcome/beneficios">Beneficios</a></li>
                             <li><a href="<?=base_url()?>welcome/precios">Precios</a></li>
                             <li><a href="<?=base_url()?>welcome/faq">FAQ</a></li>

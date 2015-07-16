@@ -25,6 +25,13 @@ class Welcome extends CI_Controller {
         $this->load->view('home/footer');
     }
 
+    public function quienes()
+    {
+        $this->load->view('home/header');
+        $this->load->view('home/quienes-usan');
+        $this->load->view('home/footer');
+    }
+
     public function como()
     {
         $this->load->view('home/header');
@@ -68,8 +75,8 @@ class Welcome extends CI_Controller {
     }
 
     public function registro() {
-        $this->load->view('home/header_2');
-        $this->load->view('mantenimiento/formularios/registro');
-        $this->load->view('home/footer_2');
+        $this->load->view('embed/header');
+        $this->load->view('home/registro');
+        $this->load->view('embed/footer');
     }
 }
