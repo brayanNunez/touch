@@ -28,7 +28,8 @@
     $lang['quincena'] = 'Quincenal';
     $lang['mes'] = 'Mensual';
 //titulos
-    $lang['tituloReporte'] = 'Reportes';
+    $lang['tituloReporte'] = 'Reportes de la empresa';
+    $lang['tituloReporteClientes'] = 'Reportes de clientes';
     $lang['tituloFormularioPlan'] = 'Plan';
     $lang['tituloListaPlanes'] = 'Lista de planes';
     $lang['tituloListaPagos'] = 'Lista de pagos';

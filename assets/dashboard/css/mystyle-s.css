@@ -10,6 +10,7 @@ input:focus { outline: 0; }
 .lista-elementos { padding: 1%; }
 .lista-elementos div.agregar_nuevo a.btn { margin: 2%; }
 .envio-formulario button.btn { display: block; float: none !important; margin: 0 auto !important; width: 60%; }
+.reporte-generar a.btn { width: 90%; display: block; margin: 0 auto; }
 
 .modal div.modal-header { background-color: #009966; }
 .modal div.modal-header p { font-size: xx-large; text-align: center; padding-top: 10px; }

@@ -30,6 +30,13 @@ class Clientes extends CI_Controller {
         $this->load->view('mantenimiento/formularios/clientes_editar');
         $this->load->view('layout/default/footer');
     }
+    public function reporte()
+    {
+        $this->load->view('layout/default/header');
+        $this->load->view('layout/default/left-sidebar');
+        $this->load->view('reportes/reporte_cliente');
+        $this->load->view('layout/default/footer');
+    }
 }
 
 ?>
