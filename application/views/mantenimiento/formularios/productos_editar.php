@@ -45,7 +45,7 @@
                                                 <div class="file-field input-field col s12">
                                                     <input class="file-path validate" type="text"/>
                                                     <div class="btn">
-                                                        <span><?=label('formProducto_examinar') ?></span>
+                                                        <span><i class="mdi-action-search"></i></span>
                                                         <input type="file" />
                                                     </div>
                                                 </div>
@@ -66,28 +66,42 @@
                                                         <tr>
                                                             <td>Pantalla 35"</td>
                                                             <td>
-                                                                <a class="modal-trigger" href="#editarCaracteristica"><?=label('editar');?></a>
-                                                                <a class="modal-trigger" href="#eliminarCaracteristica"><?=label('eliminar');?></a>
+                                                                <a class="modal-trigger" href="#editarCaracteristica">
+                                                                    <i class="mdi-image-edit"></i>
+                                                                </a>
+                                                                <a class="modal-trigger" href="#eliminarCaracteristica">
+                                                                    <i class="mdi-action-delete"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>HDD 2TB</td>
                                                             <td>
-                                                                <a class="modal-trigger" href="#editarCaracteristica"><?=label('editar');?></a>
-                                                                <a class="modal-trigger" href="#eliminarCaracteristica"><?=label('eliminar');?></a>
+                                                                <a class="modal-trigger" href="#editarCaracteristica">
+                                                                    <i class="mdi-image-edit"></i>
+                                                                </a>
+                                                                <a class="modal-trigger" href="#eliminarCaracteristica">
+                                                                    <i class="mdi-action-delete"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>Procesador Intel Core I7</td>
                                                             <td>
-                                                                <a class="modal-trigger" href="#editarCaracteristica"><?=label('editar');?></a>
-                                                                <a class="modal-trigger" href="#eliminarCaracteristica"><?=label('eliminar');?></a>
+                                                                <a class="modal-trigger" href="#editarCaracteristica">
+                                                                    <i class="mdi-image-edit"></i>
+                                                                </a>
+                                                                <a class="modal-trigger" href="#eliminarCaracteristica">
+                                                                    <i class="mdi-action-delete"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
                                             <br />
-                                            <a href="#agregarCaracteristica" class="btn btn-default modal-trigger"><?=label('formProducto_nueva');?></a>
+                                            <a href="#agregarCaracteristica" class="btn btn-default modal-trigger">
+                                                <i class="mdi-content-add"></i>
+                                            </a>
                                             <hr />
                                         </div>
 

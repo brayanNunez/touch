@@ -538,10 +538,10 @@
                         <a class="btn-floating btn-large red" href="<?=base_url();?>cotizacion/cotizar">
                           <i class="large mdi-editor-mode-edit"></i>
                         </a>
-<!--                        <ul>-->
-<!--                          -->
-<!--                          <li><a href="#" class="btn-floating blue"><i class="large mdi-communication-email"></i></a></li>-->
-<!--                        </ul>-->
+<!--                                <ul>-->
+<!--                                  -->
+<!--                                  <li><a href="#" class="btn-floating blue"><i class="large mdi-communication-email"></i></a></li>-->
+<!--                                </ul>-->
                     </div>
                     <!-- Floating Action Button -->
 
