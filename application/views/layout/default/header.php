@@ -88,6 +88,11 @@
                 <div class="nav-wrapper">
                     <h1 class="logo-wrapper"><a href="<?=base_url()?>inicio" class="brand-logo darken-1"><img src="<?=base_url()?>assets/dashboard/images/materialize-logo.png" alt="materialize logo"></a> <span class="logo-text">Touch!</span></h1>
                     <ul class="right hide-on-med-and-down">
+                        <li>
+                            <a class="btn-floating btn-large red" href="<?=base_url();?>cotizacion/cotizar">
+                                <i class="large mdi-editor-mode-edit"></i>
+                            </a>
+                        </li>
                         <li class="search-out">
                             <input type="text" class="search-out-text">
                         </li>

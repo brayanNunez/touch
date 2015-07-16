@@ -22,7 +22,7 @@
                     <div id="submit-button" class="section">
                         <div class="row">
                             <div class="col s12 m12 l12">
-                                <div class="card" id="listaPlanes">
+                                <div class="card lista-elementos" id="listaPlanes">
                                     <div id="table-datatables">
                                         <div class="row">
                                             <div class="col s12 m12 l12">

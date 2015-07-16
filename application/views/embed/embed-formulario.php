@@ -45,9 +45,8 @@
                                             <label for="embed_detalle"><?=label('formEmbed_detalle');?></label>
                                         </div>
 
-                                        <div class="input-field col s12">
+                                        <div class="input-field col s12 envio-formulario">
                                             <button class="btn btn-sm right" type="submit" name="action"><?=label('formEmbed_enviar');?>
-                                                <i class="mdi-content-send right"></i>
                                             </button>
                                         </div>
                                     </div>

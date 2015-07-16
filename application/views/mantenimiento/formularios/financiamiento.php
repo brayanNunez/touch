@@ -33,9 +33,8 @@
                                             <label for="financiamiento_descripcion"><?=label('formFinanciamiento_descripcion');?></label>
                                         </div>
 
-                                        <div class="input-field col s12">
+                                        <div class="input-field col s12 envio-formulario">
                                             <button class="btn waves-effect waves-light right" type="submit" name="action"><?=label('formFinanciamiento_agregar');?>
-                                                <i class="mdi-content-send right"></i>
                                             </button>
                                         </div>
                                     </div>

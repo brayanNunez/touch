@@ -338,7 +338,8 @@
                                            
 <!--                                                <p><i class="mdi-action-perm-identity cyan-text text-darken-2"></i> Reporte x</p>-->
 <!--                                                <p><i class="mdi-action-perm-identity cyan-text text-darken-2"></i> Reporte y</p>-->
-                                                <a href="<?=base_url()?>reporte"><p><i class="mdi-action-perm-identity cyan-text text-darken-2"></i> Todos los reportes</p></a>
+                                                <a href="<?=base_url()?>reporte"><p><i class="mdi-action-perm-identity cyan-text text-darken-2"></i>Reportes de cotización</p></a>
+                                                <a href="<?=base_url()?>clientes/reporte"><p><i class="mdi-action-perm-identity cyan-text text-darken-2"></i>Reportes de clientes</p></a>
                                                 
                                                
                                             </div>

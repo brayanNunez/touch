@@ -213,7 +213,7 @@
                                                 <p> Texto generado para pegar en el sitio</p>
                                             </div>
                                             <span class="input-group-btn">
-                                                <button class="btn btn-blue" type="button"><?=label('copiarCodigo') ?></button>
+                                                <a href="<?=base_url();?>embed/embedFormulario" class="btn btn-blue" type="button"><?=label('copiarCodigo') ?></a>
                                             </span>
                                         </div>
 

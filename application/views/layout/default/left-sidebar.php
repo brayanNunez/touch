@@ -97,7 +97,7 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li class="bold"><a href="<?=base_url();?>embed" class="waves-effect waves-cyan"><i class="mdi-device-now-widgets"></i> <?=label('avanzado');?> <span class="new badge"></span></a>
+                            <li class="bold"><a href="<?=base_url();?>embed" class="waves-effect waves-cyan"><i class="mdi-device-now-widgets"></i> <?=label('avanzado');?></a>
                             </li>
                         </ul>
                     </li>  
@@ -110,25 +110,25 @@
 <!--                    <li><a href="#"><i class="mdi-action-swap-vert-circle"></i> --><?//=label('agregarProduto_Servicio');?><!--</a>-->
 <!--                    </li>-->
 
-                    <li class="no-padding">
-                        <ul class="collapsible collapsible-accordion">
-                            <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-swap-vert-circle"></i> <?=label('agregarProduto_Servicio');?></a>
-                                <div class="collapsible-body">
-                                    <ul>
-                                        <li><a href="<?=base_url();?>productos/agregar"><?=label('agregarProducto');?></a>
-                                        </li>
-                                        <li><a href="<?=base_url();?>servicios/agregar"><?=label('agregarServicio');?></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li><a href="<?=base_url()?>empleados/agregar"><i class="mdi-action-swap-vert-circle"></i> <?=label('agregarEmpleado');?></a>
-                    </li> 
-                    <li><a href="<?=base_url()?>proveedores/agregar"><i class="mdi-action-swap-vert-circle"></i> <?=label('agregarProveedor');?></a>
-                    </li>                    
+<!--                    <li class="no-padding">-->
+<!--                        <ul class="collapsible collapsible-accordion">-->
+<!--                            <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-swap-vert-circle"></i> --><?//=label('agregarProduto_Servicio');?><!--</a>-->
+<!--                                <div class="collapsible-body">-->
+<!--                                    <ul>-->
+<!--                                        <li><a href="--><?//=base_url();?><!--productos/agregar">--><?//=label('agregarProducto');?><!--</a>-->
+<!--                                        </li>-->
+<!--                                        <li><a href="--><?//=base_url();?><!--servicios/agregar">--><?//=label('agregarServicio');?><!--</a>-->
+<!--                                        </li>-->
+<!--                                    </ul>-->
+<!--                                </div>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+<!---->
+<!--                    <li><a href="--><?//=base_url()?><!--empleados/agregar"><i class="mdi-action-swap-vert-circle"></i> --><?//=label('agregarEmpleado');?><!--</a>-->
+<!--                    </li> -->
+<!--                    <li><a href="--><?//=base_url()?><!--proveedores/agregar"><i class="mdi-action-swap-vert-circle"></i> --><?//=label('agregarProveedor');?><!--</a>-->
+<!--                    </li>                    -->
                     
                 </ul>
                 <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only darken-2"><i class="mdi-navigation-menu" ></i></a>

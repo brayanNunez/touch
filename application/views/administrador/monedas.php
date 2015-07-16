@@ -33,9 +33,8 @@
                                             <label for="moneda_signo"><?=label('formMoneda_signo');?></label>
                                         </div>
 
-                                        <div class="input-field col s12">
+                                        <div class="input-field col s12 envio-formulario">
                                             <button class="btn waves-effect waves-light right" type="submit" name="action"><?=label('formMoneda_agregar');?>
-                                                <i class="mdi-content-send right"></i>
                                             </button>
                                         </div>
                                     </div>
