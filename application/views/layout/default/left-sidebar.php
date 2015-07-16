@@ -70,8 +70,8 @@
                             <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-image-palette"></i> <?=label('administración');?></a>
                                 <div class="collapsible-body">
                                     <ul>
-                                        <li><a href="#"><?=label('costos');?></a>
-                                        </li>
+<!--                                        <li><a href="#">--><?//=label('costos');?><!--</a>-->
+<!--                                        </li>-->
                                         <li><a href="<?=base_url()?>clientes"><?=label('clientes');?></a>
                                         </li>
                                         <li><a href="<?=base_url()?>empleados"><?=label('empleados');?></a>
@@ -82,7 +82,7 @@
                                         </li>
                                         <li><a href="<?=base_url();?>financiamiento"><?=label('financiamiento');?></a>
                                         </li>
-                                        <li><a href="#"><?=label('gastos');?></a>
+                                        <li><a href="<?=base_url();?>gastos"><?=label('gastos');?></a>
                                         </li>
                                     </ul>
                                 </div>

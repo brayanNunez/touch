@@ -13,6 +13,7 @@
 	$lang['confirmarEliminarProveedor'] = '¿Realmente desea eliminar el proveedor seleccionado?';
 	$lang['confirmarEliminarCliente'] = '¿Realmente desea eliminar el cliente seleccionado?';
 	$lang['confirmarEliminarTipoMoneda'] = '¿Realmente desea eliminar el tipo de moneda seleccionado?';
+    $lang['confirmarEliminarGasto'] = '¿Realmente desea eliminar el gasto adicional seleccionado?';
 	$lang['confirmarEliminarUsuario'] = '¿Realmente desea eliminar el usuario seleccionado?';
 	$lang['confirmarEliminarCaracteristica'] = '¿Realmente desea eliminar la característica seleccionada?';
 	$lang['confirmarEliminarElementoServicio'] = '¿Realmente desea eliminar el elemento seleccionado?';
@@ -63,6 +64,16 @@
 	$lang['tituloClientes'] = 'Clientes';
 	$lang['tituloUsuarios'] = 'Usuarios';
 
+//Gastos adicionales
+    $lang['tituloGastos'] = 'Gastos adicionales';
+    $lang['tituloGastos_nombre'] = 'Nombre';
+    $lang['tituloGastos_monto'] = 'Monto';
+    $lang['tituloGastos_opciones'] = 'Opciones';
+    $lang['tituloGastos_nuevo'] = '+';
+    $lang['formGastos_nombre'] = 'Nombre del gasto';
+    $lang['formGastos_monto'] = 'Monto del gasto';
+
+//Tipos de moneda
 	$lang['tituloTiposMoneda'] = 'Tipos de moneda';
 	$lang['tiposMoneda_defecto'] = 'Tipo de moneda por defecto';
 	$lang['tiposMoneda_selecionarUno'] = 'Seleccione uno';
