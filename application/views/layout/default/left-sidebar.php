@@ -15,7 +15,7 @@
                                     <li><a href="#"><i class="mdi-communication-live-help"></i> Ayuda</a>
                                     </li>
                                     <li class="divider"></li>
-                                    <li><a href="#"><i class="mdi-action-lock-outline"></i> Pagos</a>
+                                    <li><a href="<?=base_url();?>pagos"><i class="mdi-action-lock-outline"></i> Pagos</a>
                                     </li>
                                     <li><a href="#"><i class="mdi-hardware-keyboard-tab"></i> Logout</a>
                                     </li>
@@ -72,17 +72,26 @@
                                     <ul>
 <!--                                        <li><a href="#">--><?//=label('costos');?><!--</a>-->
 <!--                                        </li>-->
-                                        <li><a href="<?=base_url()?>clientes"><?=label('clientes');?></a>
+                                        <li>
+                                            <a href="<?=base_url()?>clientes"><?=label('clientes');?></a>
                                         </li>
-                                        <li><a href="<?=base_url()?>empleados"><?=label('empleados');?></a>
+                                        <li>
+                                            <a href="<?=base_url()?>empleados"><?=label('empleados');?></a>
                                         </li>
-                                        <li><a href="<?=base_url()?>tiposMoneda"><?=label('monedas');?></a>
+                                        <li>
+                                            <a href="<?=base_url()?>tiposMoneda"><?=label('monedas');?></a>
                                         </li>
-                                        <li><a href="<?=base_url()?>usuarios"><?=label('usuarios');?></a>
+                                        <li>
+                                            <a href="<?=base_url()?>usuarios"><?=label('usuarios');?></a>
                                         </li>
-                                        <li><a href="<?=base_url();?>financiamiento"><?=label('financiamiento');?></a>
+                                        <li>
+                                            <a href="<?=base_url();?>financiamiento"><?=label('financiamiento');?></a>
                                         </li>
-                                        <li><a href="<?=base_url();?>gastos"><?=label('gastos');?></a>
+                                        <li>
+                                            <a href="<?=base_url();?>gastos"><?=label('gastos');?></a>
+                                        </li>
+                                        <li>
+                                            <a href="<?=base_url();?>pagos"><?=label('pagos');?></a>
                                         </li>
                                     </ul>
                                 </div>
