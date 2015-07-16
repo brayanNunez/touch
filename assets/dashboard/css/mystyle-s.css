@@ -11,10 +11,11 @@ input:focus { outline: 0; }
 .lista-elementos div.agregar_nuevo a.btn { margin: 2%; }
 .envio-formulario button.btn { display: block; float: none !important; margin: 0 auto !important; width: 60%; }
 .reporte-generar a.btn { width: 90%; display: block; margin: 0 auto; }
+a.icono-edicion { color: #225264; margin: 0% 5%; }
+div.search { margin-top: 0%; }
+div#table { margin-top: 3%; }
 
 .modal div.modal-header { background-color: #009966; }
 .modal div.modal-header p { font-size: xx-large; text-align: center; padding-top: 10px; }
-/*.modal div.modal-content p { font-size: large; } */
-/*mae le comente esa linea de arriba porque me esta jodiendo un cosa*/
 .modal div.modal-footer a { color: #000000; font-weight: bold; }
 

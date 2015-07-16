@@ -57,15 +57,27 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>Colón</td>
-                                                            <td><a class="modal-trigger" href="#eliminarTipo"><?=label('eliminar')?></a></td>
+                                                            <td>
+                                                                <a class="modal-trigger icono-edicion" href="#eliminarTipo" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                                    <i class="mdi-action-delete"></i>
+                                                                </a>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td>Dólar</td>
-                                                            <td><a class="modal-trigger" href="#eliminarTipo"><?=label('eliminar')?></a></td>
+                                                            <td>
+                                                                <a class="modal-trigger icono-edicion" href="#eliminarTipo" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                                    <i class="mdi-action-delete"></i>
+                                                                </a>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td>Euro</td>
-                                                            <td><a class="modal-trigger" href="#eliminarTipo"><?=label('eliminar')?></a></td>
+                                                            <td>
+                                                                <a class="modal-trigger icono-edicion" href="#eliminarTipo" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                                    <i class="mdi-action-delete"></i>
+                                                                </a>
+                                                            </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

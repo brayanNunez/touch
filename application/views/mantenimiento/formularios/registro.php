@@ -57,8 +57,8 @@
                                             <label for="registro_fotografia"><?=label('formRegistro_fotografia');?></label>
                                             <div class="file-field input-field col s12">
                                                 <input class="file-path validate" type="text"/>
-                                                <div class="btn">
-                                                    <span><?=label('formRegistro_examinar') ?></span>
+                                                <div class="btn" data-toggle="tooltip" title="<?=label('tooltip_examinar')?>">
+                                                    <span><i class="mdi-action-search"></i></span>
                                                     <input type="file" />
                                                 </div>
                                             </div>

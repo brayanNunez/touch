@@ -45,8 +45,12 @@
                                                             <td><a href="<?=base_url()?>usuarios/editar">Juan</a></td>
                                                             <td><a href="<?=base_url()?>usuarios/editar">juan@gmail.com</a></td>
                                                             <td>
-                                                                <a href="<?=base_url()?>usuarios/editar"><?=label('editar');?></a>
-                                                                <a class="modal-trigger" href="#eliminarUsuario"><?=label('eliminar');?></a>
+                                                                <a class="icono-edicion" href="<?=base_url()?>usuarios/editar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                                    <i class="mdi-editor-mode-edit"></i>
+                                                                </a>
+                                                                <a class="modal-trigger icono-edicion" href="#eliminarUsuario" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                                    <i class="mdi-action-delete"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -54,8 +58,12 @@
                                                             <td><a href="<?=base_url()?>usuarios/editar">Maria</a></td>
                                                             <td><a href="<?=base_url()?>usuarios/editar">maria@gmail.com</a></td>
                                                             <td>
-                                                                <a href="<?=base_url()?>usuarios/editar"><?=label('editar');?></a>
-                                                                <a class="modal-trigger" href="#eliminarUsuario"><?=label('eliminar');?></a>
+                                                                <a class="icono-edicion" href="<?=base_url()?>usuarios/editar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                                    <i class="mdi-editor-mode-edit"></i>
+                                                                </a>
+                                                                <a class="modal-trigger icono-edicion" href="#eliminarUsuario" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                                    <i class="mdi-action-delete"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -63,8 +71,12 @@
                                                             <td><a href="<?=base_url()?>usuarios/editar">Pepe</a></td>
                                                             <td><a href="<?=base_url()?>usuarios/editar">pepe@gmail.com</a></td>
                                                             <td>
-                                                                <a href="<?=base_url()?>usuarios/editar"><?=label('editar');?></a>
-                                                                <a class="modal-trigger" href="#eliminarUsuario"><?=label('eliminar');?></a>
+                                                                <a class="icono-edicion" href="<?=base_url()?>usuarios/editar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                                    <i class="mdi-editor-mode-edit"></i>
+                                                                </a>
+                                                                <a class="modal-trigger icono-edicion" href="#eliminarUsuario" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                                    <i class="mdi-action-delete"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -72,8 +84,12 @@
                                                             <td><a href="<?=base_url()?>usuarios/editar">Alberto</a></td>
                                                             <td><a href="<?=base_url()?>usuarios/editar">alberto@gmail.com</a></td>
                                                             <td>
-                                                                <a href="<?=base_url()?>usuarios/editar"><?=label('editar');?></a>
-                                                                <a class="modal-trigger" href="#eliminarUsuario"><?=label('eliminar');?></a>
+                                                                <a class="icono-edicion" href="<?=base_url()?>usuarios/editar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                                    <i class="mdi-editor-mode-edit"></i>
+                                                                </a>
+                                                                <a class="modal-trigger icono-edicion" href="#eliminarUsuario" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                                    <i class="mdi-action-delete"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                     </tbody>

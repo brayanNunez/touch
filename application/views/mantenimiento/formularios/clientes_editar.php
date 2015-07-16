@@ -78,9 +78,13 @@
                                                         <td>maria@gmail.com</td>
                                                         <td>
                                                             <!--                                                        <a class="modal-trigger" href="#editarContacto">--><?//=label('editar');?><!--</a>-->
-                                                            <a class="modal-trigger" href="#editarContacto"><i class="mdi-editor-mode-edit"></i></a>
+                                                            <a class="modal-trigger icono-edicion" href="#editarContacto" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                                <i class="mdi-editor-mode-edit"></i>
+                                                            </a>
                                                             <!--                                                            <a class="modal-trigger" href="#eliminarContacto">--><?//=label('eliminar');?><!--</a>-->
-                                                            <a class="modal-trigger" href="#eliminarContacto"><i class="mdi-action-delete"></i></a>
+                                                            <a class="modal-trigger icono-edicion" href="#eliminarContacto" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                                <i class="mdi-action-delete"></i>
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -88,19 +92,27 @@
                                                         <td>juan@gmail.com</td>
                                                         <td>
                                                             <!--                                                        <a class="modal-trigger" href="#editarContacto">--><?//=label('editar');?><!--</a>-->
-                                                            <a class="modal-trigger" href="#editarContacto"><i class="mdi-editor-mode-edit"></i></a>
+                                                            <a class="modal-trigger icono-edicion" href="#editarContacto" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                                <i class="mdi-editor-mode-edit"></i>
+                                                            </a>
                                                             <!--                                                            <a class="modal-trigger" href="#eliminarContacto">--><?//=label('eliminar');?><!--</a>-->
-                                                            <a class="modal-trigger" href="#eliminarContacto"><i class="mdi-action-delete"></i></a>
+                                                            <a class="modal-trigger icono-edicion" href="#eliminarContacto" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                                <i class="mdi-action-delete"></i>
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>Jose Mora</td>
                                                         <td>jose@gmail.com</td>
                                                         <td>
-<!--                                                        <a class="modal-trigger" href="#editarContacto">--><?//=label('editar');?><!--</a>-->
-                                                            <a class="modal-trigger" href="#editarContacto"><i class="mdi-editor-mode-edit"></i></a>
-<!--                                                            <a class="modal-trigger" href="#eliminarContacto">--><?//=label('eliminar');?><!--</a>-->
-                                                            <a class="modal-trigger" href="#eliminarContacto"><i class="mdi-action-delete"></i></a>
+                                                            <!--                                                        <a class="modal-trigger" href="#editarContacto">--><?//=label('editar');?><!--</a>-->
+                                                            <a class="modal-trigger icono-edicion" href="#editarContacto" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                                <i class="mdi-editor-mode-edit"></i>
+                                                            </a>
+                                                            <!--                                                            <a class="modal-trigger" href="#eliminarContacto">--><?//=label('eliminar');?><!--</a>-->
+                                                            <a class="modal-trigger icono-edicion" href="#eliminarContacto" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                                <i class="mdi-action-delete"></i>
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                 </tbody>

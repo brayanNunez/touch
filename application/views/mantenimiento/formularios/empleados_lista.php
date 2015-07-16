@@ -47,8 +47,12 @@
                                                             <td>11-235-689</td>
                                                             <td>Programador, Bases de datos</td>
                                                             <td>
-                                                                <a href="<?=base_url()?>empleados/editar"><?=label('editar');?></a>
-                                                                <a class="modal-trigger" href="#eliminarEmpleado"><?=label('eliminar');?></a>
+                                                                <a class="icono-edicion" href="<?=base_url()?>empleados/editar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                                    <i class="mdi-editor-mode-edit"></i>
+                                                                </a>
+                                                                <a class="modal-trigger icono-edicion" href="#eliminarEmpleado" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                                    <i class="mdi-action-delete"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -57,8 +61,12 @@
                                                             <td>2-245-678</td>
                                                             <td>Programador, Bases de datos</td>
                                                             <td>
-                                                                <a href="<?=base_url()?>empleados/editar"><?=label('editar');?></a>
-                                                                <a class="modal-trigger" href="#eliminarEmpleado"><?=label('eliminar');?></a>
+                                                                <a class="icono-edicion" href="<?=base_url()?>empleados/editar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                                    <i class="mdi-editor-mode-edit"></i>
+                                                                </a>
+                                                                <a class="modal-trigger icono-edicion" href="#eliminarEmpleado" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                                    <i class="mdi-action-delete"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -67,8 +75,12 @@
                                                             <td>2-723-327</td>
                                                             <td>Programador, Bases de datos</td>
                                                             <td>
-                                                                <a href="<?=base_url()?>empleados/editar"><?=label('editar');?></a>
-                                                                <a class="modal-trigger" href="#eliminarEmpleado"><?=label('eliminar');?></a>
+                                                                <a class="icono-edicion" href="<?=base_url()?>empleados/editar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                                    <i class="mdi-editor-mode-edit"></i>
+                                                                </a>
+                                                                <a class="modal-trigger icono-edicion" href="#eliminarEmpleado" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                                    <i class="mdi-action-delete"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -77,8 +89,12 @@
                                                             <td>2-897-231</td>
                                                             <td>Programador, Bases de datos</td>
                                                             <td>
-                                                                <a href="<?=base_url()?>empleados/editar"><?=label('editar');?></a>
-                                                                <a class="modal-trigger" href="#eliminarEmpleado"><?=label('eliminar');?></a>
+                                                                <a class="icono-edicion" href="<?=base_url()?>empleados/editar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                                    <i class="mdi-editor-mode-edit"></i>
+                                                                </a>
+                                                                <a class="modal-trigger icono-edicion" href="#eliminarEmpleado" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                                    <i class="mdi-action-delete"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                     </tbody>

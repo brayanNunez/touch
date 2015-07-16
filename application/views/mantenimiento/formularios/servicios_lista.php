@@ -47,8 +47,12 @@
                                                             <td>Aplicación móvil para SO android</td>
                                                             <td>$500</td>
                                                             <td>
-                                                                <a href="<?=base_url()?>servicios/editar"><?=label('editar');?></a>
-                                                                <a class="modal-trigger" href="#eliminarServicio"><?=label('eliminar');?></a>
+                                                                <a class="icono-edicion" href="<?=base_url()?>servicios/editar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                                    <i class="mdi-editor-mode-edit"></i>
+                                                                </a>
+                                                                <a class="modal-trigger icono-edicion" href="#eliminarServicio" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                                    <i class="mdi-action-delete"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -57,8 +61,12 @@
                                                             <td>Servicio de hosting por un mes</td>
                                                             <td>$70</td>
                                                             <td>
-                                                                <a href="<?=base_url()?>servicios/editar"><?=label('editar');?></a>
-                                                                <a class="modal-trigger" href="#eliminarServicio"><?=label('eliminar');?></a>
+                                                                <a class="icono-edicion" href="<?=base_url()?>servicios/editar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                                    <i class="mdi-editor-mode-edit"></i>
+                                                                </a>
+                                                                <a class="modal-trigger icono-edicion" href="#eliminarServicio" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                                    <i class="mdi-action-delete"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -67,8 +75,12 @@
                                                             <td>Sitio de cotizaciones en linea</td>
                                                             <td>$20.000</td>
                                                             <td>
-                                                                <a href="<?=base_url()?>servicios/editar"><?=label('editar');?></a>
-                                                                <a class="modal-trigger" href="#eliminarServicio"><?=label('eliminar');?></a>
+                                                                <a class="icono-edicion" href="<?=base_url()?>servicios/editar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                                    <i class="mdi-editor-mode-edit"></i>
+                                                                </a>
+                                                                <a class="modal-trigger icono-edicion" href="#eliminarServicio" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                                    <i class="mdi-action-delete"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                     </tbody>

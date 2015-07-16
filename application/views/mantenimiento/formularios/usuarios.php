@@ -121,8 +121,8 @@
                                             <label for="usuario_fotografia"><?=label('formUsuario_fotografia');?></label>
                                             <div class="file-field input-field col s12">
                                                 <input class="file-path validate" type="text"/>
-                                                <div class="btn">
-                                                    <span><?=label('formUsuario_examinar') ?></span>
+                                                <div class="btn" data-toggle="tooltip" title="<?=label('tooltip_examinar')?>">
+                                                    <span><i class="mdi-action-search"></i></span>
                                                     <input type="file" />
                                                 </div>
                                             </div>
