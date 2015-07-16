@@ -40,8 +40,8 @@
                                             <label for="servicio_imagen"><?=label('formServicio_imagen');?></label>
                                             <div class="file-field input-field col s12">
                                                 <input class="file-path validate" type="text"/>
-                                                <div class="btn">
-                                                    <span><?=label('formServicio_examinar') ?></span>
+                                                <div class="btn" data-toggle="tooltip" title="<?=label('tooltip_examinar')?>">
+                                                    <span><i class="mdi-action-search"></i></span>
                                                     <input type="file" />
                                                 </div>
                                             </div>
@@ -86,8 +86,12 @@
                                                         </td>
                                                         <td>$300</td>
                                                         <td>
-                                                            <a class="modal-trigger" href="#editar"><?=label('editar');?></a>
-                                                            <a class="modal-trigger" href="#eliminarElemento"><?=label('eliminar');?></a>
+                                                            <a class="modal-trigger icono-edicion" href="#editar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                                <i class="mdi-editor-mode-edit"></i>
+                                                            </a>
+                                                            <a class="modal-trigger icono-edicion" href="#eliminarElemento" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                                <i class="mdi-action-delete"></i>
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -95,8 +99,12 @@
                                                         <td><input type="number" min="0" value="2"></td>
                                                         <td>$500</td>
                                                         <td>
-                                                            <a class="modal-trigger" href="#editar"><?=label('editar');?></a>
-                                                            <a class="modal-trigger" href="#eliminarElemento"><?=label('eliminar');?></a>
+                                                            <a class="modal-trigger icono-edicion" href="#editar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                                <i class="mdi-editor-mode-edit"></i>
+                                                            </a>
+                                                            <a class="modal-trigger icono-edicion" href="#eliminarElemento" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                                <i class="mdi-action-delete"></i>
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -104,14 +112,18 @@
                                                         <td><input type="number" min="0" value="2"></td>
                                                         <td>$1000</td>
                                                         <td>
-                                                            <a class="modal-trigger" href="#editar"><?=label('editar');?></a>
-                                                            <a class="modal-trigger" href="#eliminarElemento"><?=label('eliminar');?></a>
+                                                            <a class="modal-trigger icono-edicion" href="#editar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                                <i class="mdi-editor-mode-edit"></i>
+                                                            </a>
+                                                            <a class="modal-trigger icono-edicion" href="#eliminarElemento" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                                <i class="mdi-action-delete"></i>
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                             <br />
-                                            <a href="#agregar" class="btn btn-default modal-trigger"><?=label('formServicio_nueva');?></a>
+                                            <a href="#agregar" class="btn btn-default modal-trigger"><?=label('formServicio_nuevaPersona');?></a>
                                             <hr />
                                         </div>
 
@@ -226,7 +238,7 @@
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>
-<div id="editar" class="modal">
+<div id="<?=label('tooltip_verEditar')?>" class="modal">
     <div class="modal-header">
         <p><?=label('nombreSistema');?></p>
     </div>

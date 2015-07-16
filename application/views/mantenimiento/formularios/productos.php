@@ -44,7 +44,7 @@
                                             <label for="producto_imagen"><?=label('formProducto_imagen');?></label>
                                             <div class="file-field input-field col s12">
                                                 <input class="file-path validate" type="text"/>
-                                                <div class="btn">
+                                                <div class="btn" data-toggle="tooltip" title="<?=label('tooltip_examinar')?>">
                                                     <span><i class="mdi-action-search"></i></span>
                                                     <input type="file" />
                                                 </div>
@@ -62,14 +62,20 @@
                                                         <th><?=label('formProducto_caracteristicasOpciones');?></th>
                                                     </tr>
                                                 </thead>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th><?=label('formProducto_caracteristicasDescripcion');?></th>
+                                                        <th><?=label('formProducto_caracteristicasOpciones');?></th>
+                                                    </tr>
+                                                </tfoot>
                                                 <tbody>
                                                     <tr>
                                                         <td>Pantalla 35"</td>
                                                         <td>
-                                                            <a class="modal-trigger" href="#editarCaracteristica">
-                                                                <i class="mdi-image-edit"></i>
+                                                            <a class="modal-trigger icono-edicion" href="#editarCaracteristica" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                                <i class="mdi-editor-mode-edit"></i>
                                                             </a>
-                                                            <a class="modal-trigger" href="#eliminarCaracteristica">
+                                                            <a class="modal-trigger icono-edicion" href="#eliminarCaracteristica" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
                                                                 <i class="mdi-action-delete"></i>
                                                             </a>
                                                         </td>
@@ -77,10 +83,10 @@
                                                     <tr>
                                                         <td>HDD 2TB</td>
                                                         <td>
-                                                            <a class="modal-trigger" href="#editarCaracteristica">
-                                                                <i class="mdi-image-edit"></i>
+                                                            <a class="modal-trigger icono-edicion" href="#editarCaracteristica" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                                <i class="mdi-editor-mode-edit"></i>
                                                             </a>
-                                                            <a class="modal-trigger" href="#eliminarCaracteristica">
+                                                            <a class="modal-trigger icono-edicion" href="#eliminarCaracteristica" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
                                                                 <i class="mdi-action-delete"></i>
                                                             </a>
                                                         </td>
@@ -88,10 +94,10 @@
                                                     <tr>
                                                         <td>Procesador Intel Core I7</td>
                                                         <td>
-                                                            <a class="modal-trigger" href="#editarCaracteristica">
-                                                                <i class="mdi-image-edit"></i>
+                                                            <a class="modal-trigger icono-edicion" href="#editarCaracteristica" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                                <i class="mdi-editor-mode-edit"></i>
                                                             </a>
-                                                            <a class="modal-trigger" href="#eliminarCaracteristica">
+                                                            <a class="modal-trigger icono-edicion" href="#eliminarCaracteristica" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
                                                                 <i class="mdi-action-delete"></i>
                                                             </a>
                                                         </td>
@@ -100,7 +106,7 @@
                                             </table>
                                             <br />
                                             <a href="#agregarCaracteristica" class="btn btn-default modal-trigger">
-                                                <i class="mdi-content-add"></i>
+                                                <?=label('formProducto_nuevaCaracteristica')?>
                                             </a>
                                             <hr />
                                         </div>

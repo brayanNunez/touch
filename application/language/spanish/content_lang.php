@@ -80,7 +80,7 @@
 	$lang['tiposMoneda_permitidos'] = 'Tipos de moneda permitidos en las cotizaciones';
 	$lang['tiposMoneda_nombre'] = 'Moneda';
 	$lang['tiposMoneda_opciones'] = 'Opciones';
-	$lang['tiposMoneda_nuevo'] = '+';
+	$lang['tiposMoneda_nuevo'] = 'Nuevo tipo de moneda';
 
 //columnas tabla de cotizaciones 
 	$lang['tablaCotizaciones_codigo'] = 'Código';
@@ -98,8 +98,8 @@
 	$lang['editar'] = 'Editar';
 	$lang['duplicar'] = 'Duplicar';
 	$lang['finalizar'] = 'Finalizar';
-	$lang['on'] = 'On';
-	$lang['off'] = 'Off';
+	$lang['on'] = 'Activo';
+	$lang['off'] = 'Inactivo';
 	$lang['loguear'] = 'Ingresar';
 	$lang['annadir'] = 'Añadir';
 	$lang['recordar'] = 'Recordarme';
@@ -191,6 +191,7 @@
     $lang['formEmpleado_descripcion'] = 'Descripción';
     $lang['formEmpleado_salarios'] = 'Salarios';
     $lang['formEmpleado_nuevaPalabra'] = 'Nueva palabra clave';
+    $lang['formEmpleado_nuevoSalario'] = 'Nuevo salario';
     $lang['formEmpleado_agregar'] = 'Agregar';
     $lang['formEmpleado_salariosTipo'] = 'Agregar';
     $lang['formEmpleado_salariosMonto'] = 'Agregar';
@@ -219,6 +220,7 @@
     $lang['formProveedor_descripcion'] = 'Descripción';
     $lang['formProveedor_salarios'] = 'Salarios';
     $lang['formProveedor_nuevaPalabra'] = 'Nueva palabra clave';
+    $lang['formProveedor_nuevoSalario'] = 'Nuevo salario';
     $lang['formProveedor_agregar'] = 'Agregar';
     $lang['formProveedor_salariosTipo'] = 'Agregar';
     $lang['formProveedor_salariosMonto'] = 'Agregar';
@@ -279,7 +281,7 @@
     $lang['formServicio_gastosCantidad'] = 'Cantidad';
     $lang['formServicio_gastosSubtotal'] = 'Sub-total';
     $lang['formServicio_gastosOpciones'] = 'Opciones';
-    $lang['formServicio_nueva'] = '+';
+    $lang['formServicio_nuevaPersona'] = 'Nueva persona';
     $lang['formServicio_utilidad'] = 'Utilidad';
     $lang['formServicio_total'] = 'Total';
     $lang['formServicio_enviar'] = 'Agregar servicio';
@@ -298,29 +300,29 @@
     $lang['formServicio_nuevaPersonaSalarioMonto'] = 'Monto';
 
 //Formulario de producto
-$lang['Producto_agregarNuevo'] = 'Agregar producto';
-$lang['Producto_tipo'] = 'Tipo de elemento';
-$lang['Producto_categorias'] = 'Categorías';
-$lang['Producto_categoriaNombre'] = 'Nombre de la categoría';
-$lang['Producto_tablaNombre'] = 'Nombre';
-$lang['Producto_tablaCodigo'] = 'Código';
-$lang['Producto_tablaDescripcion'] = 'Descripción';
-$lang['Producto_tablaPrecio'] = 'Precio';
-$lang['Producto_tablaOpciones'] = 'Opciones';
-$lang['Producto_tablaBusqueda'] = 'Buscar: ';
-$lang['Producto_productos'] = 'Productos';
-$lang['formProducto_codigo'] = 'Código';
-$lang['formProducto_nombre'] = 'Nombre';
-$lang['formProducto_descripcion'] = 'Descripción';
-$lang['formProducto_precio'] = 'Precio';
-$lang['formProducto_imagen'] = 'Imagen';
-$lang['formProducto_examinar'] = 'Ex';
-$lang['formProducto_caracteristicas'] = 'Características';
-$lang['formProducto_caracteristicasDescripcion'] = 'Descripción';
-$lang['formProducto_caracteristicasOpciones'] = 'Opciones';
-$lang['formProducto_nueva'] = 'Nueva';
-$lang['formProducto_enviar'] = 'Agregar producto';
-$lang['formProducto_editar'] = 'Guardar cambios';
+    $lang['Producto_agregarNuevo'] = 'Agregar producto';
+    $lang['Producto_tipo'] = 'Tipo de elemento';
+    $lang['Producto_categorias'] = 'Categorías';
+    $lang['Producto_categoriaNombre'] = 'Nombre de la categoría';
+    $lang['Producto_tablaNombre'] = 'Nombre';
+    $lang['Producto_tablaCodigo'] = 'Código';
+    $lang['Producto_tablaDescripcion'] = 'Descripción';
+    $lang['Producto_tablaPrecio'] = 'Precio';
+    $lang['Producto_tablaOpciones'] = 'Opciones';
+    $lang['Producto_tablaBusqueda'] = 'Buscar: ';
+    $lang['Producto_productos'] = 'Productos';
+    $lang['formProducto_codigo'] = 'Código';
+    $lang['formProducto_nombre'] = 'Nombre';
+    $lang['formProducto_descripcion'] = 'Descripción';
+    $lang['formProducto_precio'] = 'Precio';
+    $lang['formProducto_imagen'] = 'Imagen';
+    $lang['formProducto_examinar'] = 'Ex';
+    $lang['formProducto_caracteristicas'] = 'Características';
+    $lang['formProducto_caracteristicasDescripcion'] = 'Descripción';
+    $lang['formProducto_caracteristicasOpciones'] = 'Opciones';
+    $lang['formProducto_nuevaCaracteristica'] = 'Nueva característica';
+    $lang['formProducto_enviar'] = 'Agregar producto';
+    $lang['formProducto_editar'] = 'Guardar cambios';
 
 
 $lang['agregar_nuevo'] = 'Agregar nuevo';
@@ -397,4 +399,12 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['formFinanciamiento_nombre '] = 'Nombre';
     $lang['formFinanciamiento_descripcion '] = 'Descripción';
     $lang['formFinanciamiento_agregar '] = 'Agregar';
+
+//Tool tips
+    $lang['tooltip_verEditar'] = 'Ver / Editar';
+    $lang['tooltip_annadir'] = 'Añadir';
+    $lang['tooltip_duplicar'] = 'Duplicar';
+    $lang['tooltip_finalizar'] = 'Finalizar';
+    $lang['tooltip_examinar'] = 'Examinar';
+    $lang['tooltip_eliminar'] = 'Eliminar';
 ?>

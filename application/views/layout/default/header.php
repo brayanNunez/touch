@@ -21,7 +21,6 @@
     <meta name="msapplication-TileImage" content="<?=base_url()?>assets/dashboard/images/favicon/mstile-144x144.png">
     <!-- For Windows Phone -->
 
-
     <!-- CORE CSS-->    
     <link href="<?=base_url()?>assets/dashboard/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="<?=base_url()?>assets/dashboard/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
@@ -45,6 +44,11 @@
             }
         }
     </script>
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
     <link href="<?= base_url() ?>assets/dashboard/css/jquery.treetable.css" media="all" rel="stylesheet" type="text/css" />
     <link href="<?= base_url() ?>assets/dashboard/css/mystyle-s.css" media="all" rel="stylesheet" type="text/css" />
     <link href="<?= base_url() ?>assets/dashboard/css/mystyle-j.css" media="all" rel="stylesheet" type="text/css" />
@@ -64,9 +68,6 @@
     <link rel="stylesheet" href="<?=base_url()?>assets/dashboard/css/jquery-ui.min.css">
     
     <script src="<?=base_url()?>assets/dashboard/js/jquery-ui.js"></script>
-
-
-
 
 </head>
 

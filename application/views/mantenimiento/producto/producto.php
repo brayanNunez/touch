@@ -47,8 +47,12 @@
                                                     <td></td>
                                                     <td></td>
                                                     <td>
-                                                        <a class="modal-trigger" href="#editarCategoría"><?=label('editar');?></a>
-                                                        <a class="modal-trigger" href="#agregarCategoría" ><?=label('annadir') ?></a>
+                                                        <a class="modal-trigger icono-edicion" href="#agregarCategoría" data-toggle="tooltip" title="<?=label('tooltip_annadir')?>">
+                                                            <i class="mdi-content-add"></i>
+                                                        </a>
+                                                        <a class="modal-trigger icono-edicion" href="#editarCategoría" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                            <i class="mdi-editor-mode-edit"></i>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                                 <tr data-tt-id="2" data-tt-parent-id="1">
@@ -57,9 +61,15 @@
                                                     <td></td>
                                                     <td></td>
                                                     <td>
-                                                        <a class="modal-trigger" href="#editarCategoría"><?=label('editar');?></a>
-                                                        <a class="modal-trigger" href="#eliminarElemento"><?=label('eliminar');?></a>
-                                                        <a class="modal-trigger" href="<?=base_url()?>productos/agregar"><?=label('annadir') ?></a>
+                                                        <a class="modal-trigger icono-edicion" href="<?=base_url()?>productos/agregar" data-toggle="tooltip" title="<?=label('tooltip_annadir')?>">
+                                                            <i class="mdi-content-add"></i>
+                                                        </a>
+                                                        <a class="modal-trigger icono-edicion" href="#editarCategoría"  data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                            <i class="mdi-editor-mode-edit"></i>
+                                                        </a>
+                                                        <a class="modal-trigger icono-edicion" href="#eliminarElemento" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                            <i class="mdi-action-delete"></i>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                                 <tr data-tt-id="3" data-tt-parent-id="2">
@@ -68,8 +78,12 @@
                                                     <td>Paquete de 2 Kg</td>
                                                     <td>$2</td>
                                                     <td>
-                                                        <a href="<?=base_url()?>productos/editar"><?=label('editar');?></a>
-                                                        <a class="modal-trigger" href="#eliminarElemento"><?=label('eliminar');?></a>
+                                                        <a class="icono-edicion" href="<?=base_url()?>productos/editar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                            <i class="mdi-editor-mode-edit"></i>
+                                                        </a>
+                                                        <a class="modal-trigger icono-edicion" href="#eliminarElemento" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                            <i class="mdi-action-delete"></i>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                                 <tr data-tt-id="4" data-tt-parent-id="1">
@@ -78,9 +92,15 @@
                                                     <td></td>
                                                     <td></td>
                                                     <td>
-                                                        <a class="modal-trigger" href="#editarCategoría"><?=label('editar');?></a>
-                                                        <a class="modal-trigger" href="#eliminarElemento"><?=label('eliminar');?></a>
-                                                        <a class="modal-trigger" href="#agregarCategoría"><?=label('annadir') ?></a>
+                                                        <a class="modal-trigger icono-edicion" href="#agregarCategoría" data-toggle="tooltip" title="<?=label('tooltip_annadir')?>">
+                                                            <i class="mdi-content-add"></i>
+                                                        </a>
+                                                        <a class="modal-trigger icono-edicion" href="#editarCategoría" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                            <i class="mdi-editor-mode-edit"></i>
+                                                        </a>
+                                                        <a class="modal-trigger icono-edicion" href="#eliminarElemento" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                            <i class="mdi-action-delete"></i>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                                 <tr data-tt-id="5" data-tt-parent-id="4">
@@ -89,9 +109,15 @@
                                                     <td></td>
                                                     <td></td>
                                                     <td>
-                                                        <a class="modal-trigger" href="#editarCategoría""><?=label('editar');?></a>
-                                                        <a class="modal-trigger" href="#eliminarElemento"><?=label('eliminar');?></a>
-                                                        <a class="modal-trigger" href="<?=base_url()?>productos/agregar"><?=label('annadir') ?></a>
+                                                        <a class="modal-trigger icono-edicion" href="<?=base_url()?>productos/agregar" data-toggle="tooltip" title="<?=label('tooltip_annadir')?>">
+                                                            <i class="mdi-content-add"></i>
+                                                        </a>
+                                                        <a class="modal-trigger icono-edicion" href="#editarCategoría" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                            <i class="mdi-editor-mode-edit"></i>
+                                                        </a>
+                                                        <a class="modal-trigger icono-edicion" href="#eliminarElemento" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                            <i class="mdi-action-delete"></i>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                                 <tr data-tt-id="6" data-tt-parent-id="5">
@@ -100,8 +126,12 @@
                                                     <td>Envase de 2 litros</td>
                                                     <td>$3</td>
                                                     <td>
-                                                        <a href="<?=base_url()?>productos/editar"><?=label('editar');?></a>
-                                                        <a class="modal-trigger" href="#eliminarElemento"><?=label('eliminar');?></a>
+                                                        <a class="icono-edicion" href="<?=base_url()?>productos/editar"  data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                            <i class="mdi-editor-mode-edit"></i>
+                                                        </a>
+                                                        <a class="modal-trigger icono-edicion" href="#eliminarElemento" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                            <i class="mdi-action-delete"></i>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                                 <tr data-tt-id="7" data-tt-parent-id="5">
@@ -110,8 +140,12 @@
                                                     <td>Envase de 1.5 litros</td>
                                                     <td>$2</td>
                                                     <td>
-                                                        <a href="<?=base_url()?>productos/editar""><?=label('editar');?></a>
-                                                        <a class="modal-trigger" href="#eliminarElemento"><?=label('eliminar');?></a>
+                                                        <a class="icono-edicion" href="<?=base_url()?>productos/editar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                            <i class="mdi-editor-mode-edit"></i>
+                                                        </a>
+                                                        <a class="modal-trigger icono-edicion" href="#eliminarElemento" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                            <i class="mdi-action-delete"></i>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                                 <tr data-tt-id="8" data-tt-parent-id="4">
@@ -120,9 +154,15 @@
                                                     <td></td>
                                                     <td></td>
                                                     <td>
-                                                        <a class="modal-trigger" href="#editarCategoría"><?=label('editar');?></a>
-                                                        <a class="modal-trigger" href="#eliminarElemento"><?=label('eliminar');?></a>
-                                                        <a class="modal-trigger" href="<?=base_url()?>productos/agregar"><?=label('annadir') ?></a>
+                                                        <a class="modal-trigger icono-edicion" href="<?=base_url()?>productos/agregar" data-toggle="tooltip" title="<?=label('tooltip_annadir')?>">
+                                                            <i class="mdi-content-add"></i>
+                                                        </a>
+                                                        <a class="modal-trigger icono-edicion" href="#editarCategoría"  data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                            <i class="mdi-editor-mode-edit"></i>
+                                                        </a>
+                                                        <a class="modal-trigger icono-edicion" href="#eliminarElemento" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                            <i class="mdi-action-delete"></i>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                                 <tr data-tt-id="9" data-tt-parent-id="8">
@@ -131,8 +171,12 @@
                                                     <td>Envase de 1 litro</td>
                                                     <td>$1</td>
                                                     <td>
-                                                        <a href="<?=base_url()?>productos/editar"><?=label('editar');?></a>
-                                                        <a class="modal-trigger" href="#eliminarElemento"><?=label('eliminar');?></a>
+                                                        <a class="icono-edicion" href="<?=base_url()?>productos/editar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                            <i class="mdi-editor-mode-edit"></i>
+                                                        </a>
+                                                        <a class="modal-trigger icono-edicion" href="#eliminarElemento" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                            <i class="mdi-action-delete"></i>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                                 <tr data-tt-id="10" data-tt-parent-id="8">
@@ -141,8 +185,12 @@
                                                     <td>Envase de 3 litros</td>
                                                     <td>$3</td>
                                                     <td>
-                                                        <a href="<?=base_url()?>productos/editar"><?=label('editar');?></a>
-                                                        <a class="modal-trigger" href="#eliminarElemento"><?=label('eliminar');?></a>
+                                                        <a class="icono-edicion" href="<?=base_url()?>productos/editar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                            <i class="mdi-editor-mode-edit"></i>
+                                                        </a>
+                                                        <a class="modal-trigger icono-edicion" href="#eliminarElemento" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                            <i class="mdi-action-delete"></i>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                             </tbody>

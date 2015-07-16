@@ -45,24 +45,36 @@
                                                             <td>Transporte</td>
                                                             <td>$1000</td>
                                                             <td>
-                                                                <a class="modal-trigger" href="#editarGasto"><?=label('editar')?></a>
-                                                                <a class="modal-trigger" href="#eliminarGasto"><?=label('eliminar')?></a>
+                                                                <a class="modal-trigger icono-edicion" href="#editarGasto" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                                    <i class="mdi-editor-mode-edit"></i>
+                                                                </a>
+                                                                <a class="modal-trigger icono-edicion" href="#eliminarGasto" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                                    <i class="mdi-action-delete"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>Viaje a USA</td>
                                                             <td>$500</td>
                                                             <td>
-                                                                <a class="modal-trigger" href="#editarGasto"><?=label('editar')?></a>
-                                                                <a class="modal-trigger" href="#eliminarGasto"><?=label('eliminar')?></a>
+                                                                <a class="modal-trigger icono-edicion" href="#editarGasto" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                                    <i class="mdi-editor-mode-edit"></i>
+                                                                </a>
+                                                                <a class="modal-trigger icono-edicion" href="#eliminarGasto" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                                    <i class="mdi-action-delete"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>Licencia VS 2013</td>
                                                             <td>$10000</td>
                                                             <td>
-                                                                <a class="modal-trigger" href="#editarGasto"><?=label('editar')?></a>
-                                                                <a class="modal-trigger" href="#eliminarGasto"><?=label('eliminar')?></a>
+                                                                <a class="modal-trigger icono-edicion" href="#editarGasto" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                                    <i class="mdi-editor-mode-edit"></i>
+                                                                </a>
+                                                                <a class="modal-trigger icono-edicion" href="#eliminarGasto" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                                    <i class="mdi-action-delete"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                     </tbody>

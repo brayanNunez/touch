@@ -214,9 +214,15 @@
                                           <td>$300</td>
                                           <td>Finalizada</td>
                                           <td>
-                                             <a class="btn_duplicar modal-trigger" href="#duplicar"><?=label('duplicar');?></a>
-                                             <a class="btn_ver" href="<?=base_url()?>cotizacion/cotizar"><?=label('ver');?></a>
-                                             <a class="btn_eliminar modal-trigger" href="#Elminar"><?=label('eliminar');?></a>
+                                             <a class="btn_duplicar modal-trigger icono-edicion" href="#" data-toggle="tooltip" title="<?=label('tooltip_duplicar')?>">
+                                                <i class="mdi-content-content-copy"></i>
+                                             </a>
+                                             <a class="btn_ver icono-edicion" href="<?=base_url()?>cotizacion/cotizar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                <i class="mdi-editor-mode-edit"></i>
+                                             </a>
+                                             <a class="btn_eliminar modal-trigger icono-edicion" href="#" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                <i class="mdi-action-delete"></i>
+                                             </a>
                                           </td>
                                        </tr>
                                        <tr>
@@ -226,10 +232,15 @@
                                           <td>$100</td>
                                           <td>Enviada</td>
                                           <td>
-                                             <a  class="btn_duplicar modal-trigger" href="#duplicar"><?=label('duplicar');?></a>
-                                             <a class="btn_ver" href="<?=base_url()?>cotizacion/cotizar"><?=label('ver');?></a>
-                                             <a class="btn_finalizar modal-trigger" href="#finalizar"><?=label('finalizar');?></a>
-                                             <a class="btn_eliminar modal-trigger" href="#Elminar"><?=label('eliminar');?></a>
+                                             <a class="btn_duplicar modal-trigger icono-edicion" href="#" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                <i class="mdi-content-content-copy"></i>
+                                             </a>
+                                             <a class="btn_ver icono-edicion" href="<?=base_url()?>cotizacion/cotizar" data-toggle="tooltip" title="<?=label('tooltip_duplicar')?>">
+                                                <i class="mdi-editor-mode-edit"></i>
+                                             </a>
+                                             <a class="btn_eliminar modal-trigger icono-edicion" href="#" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                <i class="mdi-action-delete"></i>
+                                             </a>
                                           </td>
                                        </tr>
                                     </tbody>

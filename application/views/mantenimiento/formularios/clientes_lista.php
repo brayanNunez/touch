@@ -51,8 +51,13 @@
                                                             <td>coopedospinos@gmail.com</td>
                                                             <td><a href="<?=base_url()?>usuarios/editar">Juan</a></td>
                                                             <td>
-                                                                <a href="<?=base_url()?>clientes/editar"><?=label('editar');?></a>
-                                                                <a class="modal-trigger" href="#eliminarCliente"><?=label('eliminar');?></a>
+                                                                <a class="icono-edicion" href="<?=base_url()?>clientes/editar"
+                                                                   data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                                    <i class="mdi-editor-mode-edit"></i>
+                                                                </a>
+                                                                <a class="modal-trigger icono-edicion" href="#eliminarCliente" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                                    <i class="mdi-action-delete"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -63,8 +68,12 @@
                                                             <td>emanuel@gmail.com</td>
                                                             <td><a href="<?=base_url()?>usuarios/editar">Maria</a></td>
                                                             <td>
-                                                                <a href="<?=base_url()?>clientes/editar"><?=label('editar');?></a>
-                                                                <a class="modal-trigger" href="#eliminarCliente"><?=label('eliminar');?></a>
+                                                                <a class="icono-edicion" href="<?=base_url()?>clientes/editar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                                    <i class="mdi-editor-mode-edit"></i>
+                                                                </a>
+                                                                <a class="modal-trigger icono-edicion" href="#eliminarCliente" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                                    <i class="mdi-action-delete"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -75,8 +84,12 @@
                                                             <td>pipasa@gmail.com</td>
                                                             <td><a href="<?=base_url()?>usuarios/editar">Maria</a></td>
                                                             <td>
-                                                                <a href="<?=base_url()?>clientes/editar"><?=label('editar');?></a>
-                                                                <a class="modal-trigger" href="#eliminarCliente"><?=label('eliminar');?></a>
+                                                                <a class="icono-edicion" href="<?=base_url()?>clientes/editar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                                    <i class="mdi-editor-mode-edit"></i>
+                                                                </a>
+                                                                <a class="modal-trigger icono-edicion" href="#eliminarCliente" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                                    <i class="mdi-action-delete"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -87,8 +100,12 @@
                                                             <td>julia@gmail.com</td>
                                                             <td><a href="<?=base_url()?>usuarios/editar">Juan</a></td>
                                                             <td>
-                                                                <a href="<?=base_url()?>clientes/editar"><?=label('editar');?></a>
-                                                                <a class="modal-trigger" href="#eliminarCliente"><?=label('eliminar');?></a>
+                                                                <a class="icono-edicion" href="<?=base_url()?>clientes/editar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                                                                    <i class="mdi-editor-mode-edit"></i>
+                                                                </a>
+                                                                <a class="modal-trigger icono-edicion" href="#eliminarCliente" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                                    <i class="mdi-action-delete"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                     </tbody>
