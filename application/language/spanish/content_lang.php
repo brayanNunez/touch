@@ -34,6 +34,7 @@
     $lang['quincena'] = 'Quincenal';
     $lang['mes'] = 'Mensual';
 //titulos
+    $lang['tituloPagos'] = 'Pagos al sistema';
     $lang['tituloReporte'] = 'Reportes de la empresa';
     $lang['tituloReporteClientes'] = 'Reportes de clientes';
     $lang['tituloFormularioPlan'] = 'Plan';
@@ -46,7 +47,7 @@
     $lang['tituloCotizarEmbed'] = 'Realizar cotización';
     $lang['tituloProductoEmbed'] = 'Detalles del artículo';
     $lang['tituloFormularioFinanciamiento'] = 'Financiamiento';
-    $lang['tituloListaFinanciamiento'] = 'Lista de financiamientos';
+    $lang['tituloListaFinanciamiento'] = 'Lista de financiamientos disponibles';
 	$lang['tituloListaCotizaciones'] = 'Lista de cotizaciones';
 	$lang['tituloCotizacion'] = 'Cotización';
 	$lang['tituloFormularioCliente'] = 'Agregar cliente';
@@ -383,11 +384,23 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['tablaPlanes_beneficios'] = 'Beneficios';
     $lang['tablaPlanes_opciones'] = 'Opciones';
 
+    //Pagos
+    $lang['datosDelServicio'] = 'Datos del Servicio';
+    $lang['monto_mensual'] = 'Monto mensual';
+    $lang['tipo_plan'] = 'Tipo de plan';
+    $lang['fecha_pago'] = 'Fecha de último pago';
+    $lang['estado_pago'] = 'Estado';
+    $lang['lista_pagos_pendientes'] = 'Lista de pagos pendientes';
+    $lang['pagar_servicio'] = 'Pagar servicio';
+    $lang['lista_pagos_recientes'] = 'Lista de pagos recientes';
+
+
+
     //tabla de pagos
     $lang['pagos'] = 'Pagos';
     $lang['tablaPagos_empresa'] = 'Empresa';
     $lang['tablaPagos_fecha'] = 'Fecha';
-    $lang['tablaPagos_pago'] = 'Monto';
+    $lang['tablaPagos_monto'] = 'Monto';
     $lang['tablaPagos_opciones'] = 'Opciones';
     $lang['ver_comprobante'] = 'Ver comprobante';
     $lang['mostrarComprobante'] = 'Comprobante del pago';
@@ -424,10 +437,14 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['formEmbedProducto_cerrar'] = 'Cerrar';
 
     //Formulario financiamiento
-    $lang['financiamientoNuevo '] = 'Agregar nuevo';
-    $lang['formFinanciamiento_nombre '] = 'Nombre';
-    $lang['formFinanciamiento_descripcion '] = 'Descripción';
-    $lang['formFinanciamiento_agregar '] = 'Agregar';
+    $lang['financiamientoNuevo'] = 'Agregar nuevo';
+    $lang['formFinanciamiento_nombre'] = 'Nombre';
+    $lang['formFinanciamiento_descripcion'] = 'Descripción';
+    $lang['formFinanciamiento_agregar'] = 'Agregar';
+
+    //tabla financiamiento
+    $lang['tablaFinanciamiento_nombre'] = 'Nombre';
+    $lang['tablaFinanciamiento_descripcion'] = 'Descripción';
 
 //Tool tips
     $lang['tooltip_verEditar'] = 'Ver / Editar';

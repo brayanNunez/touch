@@ -19,3 +19,5 @@ input[type="text"], input[type="password"] {  height: 43px;  }
 .bloque-embed-cliente{  margin-bottom: 50px;  }
 
 .bloque-home-nosotros a{ text-decoration: none; color: #FFFFFF !important;}
+
+.captcha p{ border-radius: 5px; background-color: #cccccc}

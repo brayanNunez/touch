@@ -25,7 +25,7 @@
                                             <h5><?=label('datosDelServicio');?></h5>
                                             <div class="input-field col s12 m6 l6">
                                                 <div class="input-field col s12">
-                                                    <input id="monto_mensual" type="text" value="$20">
+                                                    <input id="monto_mensual" type="text" value="$20" readonly>
                                                     <label for="monto_mensual"><?=label('monto_mensual');?></label>
                                                 </div>
                                             </div>
@@ -42,13 +42,13 @@
                                         <div class="row">
                                             <div class="input-field col s12 m6 l6">
                                                 <div class="input-field col s12">
-                                                    <input id="fecha_pago" type="text" value="18/06/2015">
+                                                    <input id="fecha_pago" type="text" value="18/06/2015" readonly>
                                                     <label for="fecha_pago"><?=label('fecha_pago');?></label>
                                                 </div>
                                             </div>
                                             <div class="input-field col s12 m6 l6">
                                                 <div class="input-field col s12">
-                                                    <input id="estado_pago" type="text" value="Al día">
+                                                    <input id="estado_pago" type="text" value="Moroso" readonly>
                                                     <label for="estado_pago"><?=label('estado_pago');?></label>
                                                 </div>
                                             </div>

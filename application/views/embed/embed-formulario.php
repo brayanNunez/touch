@@ -1,3 +1,5 @@
+
+
 <!-- START CONTENT  -->
 
 <section id="content">
@@ -43,6 +45,13 @@
                                         <div class="input-field col s12">
                                             <textarea id="embed_detalle" class="materialize-textarea" length="250"></textarea>
                                             <label for="embed_detalle"><?=label('formEmbed_detalle');?></label>
+                                        </div>
+
+                                        <div class="col sm12 md12">
+                                            <div class="captcha">
+                                                <p>FSDFOF</p>
+                                            </div>
+                                            <input type="text" name=""/><label for="">Ingrese el captcha</label>
                                         </div>
 
                                         <div class="input-field col s12 envio-formulario">

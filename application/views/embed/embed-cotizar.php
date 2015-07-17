@@ -135,9 +135,8 @@
                                                 <label for="embed_telefono"><?=label('formEmbed_telefono');?></label>
                                             </div>
 
-                                            <div class="input-field col s12">
-                                                <button class="btn waves-effect waves-light right" type="submit" name="action"><?=label('formEmbed_enviar');?>
-                                                    <i class="mdi-content-send right"></i>
+                                            <div class="input-field col s12 envio-formulario">
+                                                <button class="btn btn-sm right" type="submit" name="action"><?=label('formEmbed_enviar');?>
                                                 </button>
                                             </div>
 
