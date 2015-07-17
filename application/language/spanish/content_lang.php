@@ -135,13 +135,18 @@
 //Menu izquierdo 
 	$lang['inicio'] = 'Inicio';
 	$lang['cotizaciones'] = 'Cotizaciones';
+$lang['listarCotizacion'] = 'Lista de cotizaciones';
+$lang['listarReporteCot'] = 'Reporte de cotizaciones';
 	$lang['servicios'] = 'Servicios';
 	$lang['productos'] = 'Productos';
 	$lang['agregarP'] = 'Agregar';
-	$lang['listarP'] = 'Listar';
+	$lang['listarP'] = 'Lista de productos';
 	$lang['administración'] = 'Administración';
 	$lang['costos'] = 'Costos';
 	$lang['clientes'] = 'Clientes';
+	$lang['agregarCliente'] = 'Agregar';
+	$lang['listarCliente'] = 'Lista de clientes';
+	$lang['listarReporteCli'] = 'Reporte de clientes';
 	$lang['empleados'] = 'Empleados';
 	$lang['proveedores'] = 'Proveedores';
 	$lang['monedas'] = 'Monedas';
@@ -156,6 +161,7 @@
 	$lang['agregarServicio'] = 'Servicio';
 	$lang['agregarEmpleado'] = 'Agregar Empleado';
 	$lang['agregarProveedor'] = 'Agregar Proveedor';
+	$lang['reportes'] = 'Reportes';
 
 //Formulario de solicitudes
     $lang['formSolicitud_nombre'] = 'Nombre';

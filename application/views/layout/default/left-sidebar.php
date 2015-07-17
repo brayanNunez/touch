@@ -36,7 +36,7 @@
                                         </li>
                                         <li><a href="<?=base_url();?>cotizacion"><?=label('listarCotizacion');?></a>
                                         </li>
-                                        <li><a href="<?=base_url();?>cotizacion/reporte"><?=label('listarReporte');?></a>
+                                        <li><a href="<?=base_url();?>cotizacion/reporte"><?=label('listarReporteCot');?></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -48,7 +48,7 @@
                                         </li>
                                         <li><a href="<?=base_url();?>clientes"><?=label('listarCliente');?></a>
                                         </li>
-                                        <li><a href="<?=base_url();?>clientes/reporte"><?=label('listarReporte');?></a>
+                                        <li><a href="<?=base_url();?>clientes/reporte"><?=label('listarReporteCli');?></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -99,9 +99,9 @@
                             <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-trending-up"></i> <?=label('reportes');?></a>
                                 <div class="collapsible-body">
                                     <ul>
-                                        <li><a href="<?=base_url();?>reporte/"><?=label('reportesCotizacion');?></a>
+                                        <li><a href="<?=base_url();?>reporte/"><?=label('listarReporteCot');?></a>
                                         </li>
-                                        <li><a href="<?=base_url();?>clientes/reporte"><?=label('reportesCliente');?></a>
+                                        <li><a href="<?=base_url();?>clientes/reporte"><?=label('listarReporteCli');?></a>
                                         </li>
                                     </ul>
                                 </div>
