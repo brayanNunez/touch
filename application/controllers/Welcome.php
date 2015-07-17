@@ -73,10 +73,14 @@ class Welcome extends CI_Controller {
         $this->load->view('home/terminos-condiciones');
         $this->load->view('home/footer');
     }
-
     public function registro() {
-        $this->load->view('embed/header');
-        $this->load->view('home/registro');
-        $this->load->view('embed/footer');
+        $this->load->view('home/header_2');
+        $this->load->view('mantenimiento/formularios/registro');
+        $this->load->view('home/footer_2');
+    }
+    public function registro2() {
+        $this->load->view('home/header_2');
+        $this->load->view('mantenimiento/formularios/registro');
+        $this->load->view('home/footer_2');
     }
 }
