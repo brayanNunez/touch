@@ -23,7 +23,9 @@ div#table { margin-top: 3%; }
 section.registro-content { padding-top: 0% !important; }
 div.menu-nosotros { color: #666; }
 ul.menu li.nosotros { color: #666 !important; padding-right: 5px !important; }
-a.boton-registro { background-color: white; border: 2px solid #47b475; line-height: 27px; box-shadow: none; }
+a.boton-registro { background-color: white; border: 2px solid #47b475; line-height: 27px; box-shadow: none; color: #47b475 !important; }
 .registrar { background-color: #47b475; }
 input.campo-registro:focus { outline: 0; }
 a.footer-link { color: white !important; }
+div#login-page { width: 35% !important; max-height: 75% !important; }
+section.slider-inicio { position: relative !important; }

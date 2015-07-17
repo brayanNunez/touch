@@ -61,6 +61,32 @@
         </section>
     </div>
 
+        <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/materialize.min.js"></script>
+        <!--scrollbar-->
+        <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+        <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/plugins/material-preloader/materialPreloader.js"></script>
+
+        <!-- chartist -->
+        <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/plugins/chartist-js/chartist.min.js"></script>
+
+        <!-- data-tables -->
+        <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/plugins/data-tables/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/plugins/data-tables/data-tables-script.js"></script>
+
+        <!-- chartjs -->
+        <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/plugins/chartjs/chart.min.js"></script>
+        <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/plugins/chartjs/chart-script.js"></script>
+
+        <!-- sparkline -->
+        <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/plugins/sparkline/jquery.sparkline.min.js"></script>
+        <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/plugins/sparkline/sparkline-script.js"></script>
+
+        <!--jvectormap-->
+        <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+        <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+        <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/plugins/jvectormap/vectormap-script.js"></script>
+
+        <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/plugins.js"></script>
 
         <script src="<?=base_url()?>assets/js/jquery.min.js"></script>
         <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
@@ -74,6 +100,53 @@
         <script src="<?=base_url()?>assets/js/smooth-scroll.min.js"></script>
         <script src="<?=base_url()?>assets/js/parallax.js"></script>
         <script src="<?=base_url()?>assets/js/scripts.js"></script>
+
+        <div id="login-page" class="modal fade in">
+            <div class="col s12 z-depth-4 card-panel" style="box-shadow: none; margin: 0px; padding-bottom: 0px; ">
+                <form class="login-form" style="width: auto; ">
+                    <div class="row">
+                        <div class="input-field col s12 center">
+                            <img src="<?=base_url()?>assets/img/to.png" alt="Touch!">
+                            <p class="center login-form-text"><?=label('nombreSistema');?></p>
+                        </div>
+                    </div>
+                    <div class="row margin">
+                        <div class="input-field col s12">
+                            <i class="mdi-social-person-outline prefix"></i>
+                            <input id="username" type="text">
+                            <label for="username" class="center-align"><?=label('login_username');?></label>
+                        </div>
+                    </div>
+                    <div class="row margin">
+                        <div class="input-field col s12">
+                            <i class="mdi-action-lock-outline prefix"></i>
+                            <input id="password" type="password">
+                            <label for="password"><?=label('login_password');?></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m12 l12  login-text">
+                            <input type="checkbox" id="remember-me" />
+                            <label for="remember-me"><?=label('recordar')?></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <a href="<?=base_url()?>inicio" class="btn waves-effect waves-light col s12"><?=label('loguear')?></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6 m6 l6">
+                            <p class="margin medium-small"><a href="<?=base_url()?>welcome/registro"><?=label('registrar')?></a></p>
+                        </div>
+                        <div class="input-field col s6 m6 l6">
+                            <p class="margin right-align medium-small"><a href="page-forgot-password.html"><?=label('contrasena_olvido')?></a></p>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
 
     </body>
 </html>

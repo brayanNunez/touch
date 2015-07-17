@@ -1,5 +1,5 @@
 
-    <section class="cover fullscreen image-slider slider-all-controls controls-inside parallax">
+    <section class="cover fullscreen image-slider slider-all-controls controls-inside parallax slider-inicio">
         <ul class="slides">
             <li class="overlay image-bg">
                 <div class="background-image-holder">
