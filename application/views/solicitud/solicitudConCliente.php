@@ -5,7 +5,7 @@
       <div class="container">
          <div class="row">
             <div class="col s12 m12 l12">
-               <h1 class="breadcrumbs-title"><?=label('tituloListaSolicitidesConCliente');?></h1>
+               <h1 class="breadcrumbs-title"><?=label('tituloListaSolicitudesConCliente');?></h1>
             </div>
          </div>
       </div>
@@ -31,7 +31,7 @@
                                              <th><?=label('tablaSolicitudes_nombre');?></th>
                                              <th><?=label('tablaSolicitudes_correo');?></th>
                                              <th><?=label('tablaSolicitudes_fecha');?></th>
-                                             <th><?=label('tablaSolicitudes_descrpcion');?></th>
+                                             <th><?=label('tablaSolicitudes_descripcion');?></th>
                                              <th><?=label('tablaSolicitudes_opciones');?></th>
                                           </tr>
                                        </thead>
@@ -40,7 +40,7 @@
                                              <th><?=label('tablaSolicitudes_nombre');?></th>
                                              <th><?=label('tablaSolicitudes_correo');?></th>
                                              <th><?=label('tablaSolicitudes_fecha');?></th>
-                                             <th><?=label('tablaSolicitudes_descrpcion');?></th>
+                                             <th><?=label('tablaSolicitudes_descripcion');?></th>
                                              <th><?=label('tablaSolicitudes_opciones');?></th>
                                           </tr>
                                        </tfoot>

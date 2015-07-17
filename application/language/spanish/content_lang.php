@@ -23,6 +23,10 @@
     $lang['confirmarEliminarMoneda'] = '¿Realmente desea eliminar la moneda seleccionada?';
     $lang['confirmarEliminarSolicitud'] = '¿Realmente desea eliminar la solicitud de cotización?';
 
+    
+    
+
+
 //tipos de salario
     $lang['horas'] = 'Por horas';
     $lang['dia'] = 'Diario';
@@ -65,6 +69,8 @@
 	$lang['tituloProveedores'] = 'Proveedores';
 	$lang['tituloClientes'] = 'Clientes';
 	$lang['tituloUsuarios'] = 'Usuarios';
+    $lang['tituloListaSolicitudesConCliente'] = 'Solicitudes pendientes';
+    $lang['tituloListaSolicitudesSinCliente'] = 'Solicitudes de nuevos clientes';
 
 //Gastos adicionales
     $lang['tituloGastos'] = 'Gastos adicionales';
@@ -91,7 +97,14 @@
 	$lang['tablaCotizaciones_monto'] = 'Monto';
 	$lang['tablaCotizaciones_estado'] = 'Estado';
 	$lang['tablaCotizaciones_opciones'] = 'Opciones';
-	
+
+//columnas tabla de solicitudes
+    $lang['tablaSolicitudes_nombre'] = 'Nombre';
+    $lang['tablaSolicitudes_correo'] = 'Correo';
+    $lang['tablaSolicitudes_fecha'] = 'Fecha';
+    $lang['tablaSolicitudes_descripcion'] = 'Descrpción';
+    $lang['tablaSolicitudes_opciones'] = 'Opciones';
+
 // texto de los botones
 	$lang['aceptar'] = 'Aceptar';
 	$lang['cancelar'] = 'Cancelar';
