@@ -15,32 +15,32 @@
 	float: left;
 }
 
-.listaHojas{
-    /*float: left;*/
+/*.listaHojas{
 	width: 1137.98px;
 	height: 1555px;
-	/*left: auto;
-	right: auto;*/
-    /*position: absolute;*/
     float: left;
-    /*overflow-x: scroll;*/
+}*/
+.listaHojas{
+	width: 900px;
+	height: 1230px; 
+    float: left;
 }
 
 #encabezado{
 	padding: 2%;
 	width: 100%;
-	height: 16%;    /*%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+	height: 17%;    /*%%%%%%%%%%%%%%%%%%%%%%%%%%*/
 	background-color: red;
 }
 
 #encabezado .imagen{
 	width: 100%;
-	height: 150px;
+	height: 100%;
 }
 
 #encabezado #logo{
-	width: 150px;
-	height: 100%;
+	width: 118px;
+	height: 118px;
 	float: left;
 }
 
@@ -55,7 +55,7 @@
 
 #encabezado #datosEncabezado .datos{
  color: white;
- font-size: 20px;
+ font-size: 15px;
  /*height: 100%;*/
  /*padding: 5px;*/
 }
@@ -71,7 +71,7 @@
 }
 
 #nombreEmpresa {
-	font-size: 25px;
+	font-size: 20px;
 }
 
 .barra-horizontal {
@@ -85,7 +85,7 @@
 
 #detalle{
 	width: 100%;
-	height: 39%;    /*%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+	height: 38%;    /*%%%%%%%%%%%%%%%%%%%%%%%%%%*/
 	background-color: white;
 }
 #barra2{
@@ -93,7 +93,7 @@
 }
 
 #informacion{
-	height: 29%;    /*%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+	height: 28%;    /*%%%%%%%%%%%%%%%%%%%%%%%%%%*/
 	background-color: red;
 	padding: 2%;
 }
@@ -103,7 +103,7 @@
 
 #informacion .datos{
 	color: white;
-	 font-size: 20px;
+	 font-size: 15px;
 	 /*height: 100%;*/
 	 padding: 5px;
 }
@@ -114,7 +114,7 @@
 
 #footerCotizacion{
 	width: 100%;
-	height: 9%;    /*%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+	height: 10%;    /*%%%%%%%%%%%%%%%%%%%%%%%%%%*/
 	background-color: #FAAC58;
 	padding: 2%;
 }
@@ -132,12 +132,12 @@
 
 #footerCotizacion .imagen{
 	width: 100%;
-	height: 100px;
+	height: 100%;
 }
 
 #footerCotizacion #logo{
-	width: 100px;
-	height: 100%;
+	width: 79px;
+	height: 79px;
 	float: left;
 }
 
@@ -152,7 +152,7 @@
 
 #footerCotizacion #datosFooter .datos{
  color: white;
- font-size: 20px;
+ font-size: 15px;
  /*height: 100%;*/
  /*padding: 5px;*/
 }
@@ -182,7 +182,7 @@
 	width: 96%;
 	margin: 2% 2%;
 	text-align: center;
-	font-size: 22px;
+	font-size: 15px;
 }
 
 #datallesCotizacion img{
@@ -199,7 +199,7 @@
 
 #resultadoCotizacion{
 	margin-right: 2%;
-	font-size: 22px;
+	font-size: 15px;
 }
 
 p{
@@ -358,3 +358,4 @@ p{
 #botonGenerarReporte{
 	width: 100%;
 }
+
