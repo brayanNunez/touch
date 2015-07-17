@@ -212,9 +212,10 @@
                                             <div class="bloque-embed-codigo-generado">
                                                 <p> Texto generado para pegar en el sitio</p>
                                             </div>
-                                            <span class="input-group-btn">
-                                                <a href="<?=base_url();?>embed/embedFormulario" class="btn btn-blue" type="button"><?=label('copiarCodigo') ?></a>
-                                            </span>
+                                        </div>
+                                        <div class="input-field col s12 envio-formulario">
+                                            <a href="<?=base_url()?>embed/embedFormulario" class="btn waves-effect waves-light right" ><?=label('copiarCodigo');?>
+                                            </a>
                                         </div>
 
                                     </div>

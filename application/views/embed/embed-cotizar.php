@@ -135,6 +135,13 @@
                                                 <label for="embed_telefono"><?=label('formEmbed_telefono');?></label>
                                             </div>
 
+                                            <div class="col sm12 md12 bloque-captcha">
+                                                <div class="captcha">
+                                                    <img class="responsive-img" src="<?=base_url()?>assets/dashboard/images/captcha.png" alt=""/>
+                                                </div>
+                                                <input type="text" name=""/><label for="">Ingrese el captcha</label>
+                                            </div>
+
                                             <div class="input-field col s12 envio-formulario">
                                                 <button class="btn btn-sm right" type="submit" name="action"><?=label('formEmbed_enviar');?>
                                                 </button>

@@ -47,9 +47,9 @@
                                             <label for="embed_detalle"><?=label('formEmbed_detalle');?></label>
                                         </div>
 
-                                        <div class="col sm12 md12">
+                                        <div class="col sm12 md12 bloque-captcha">
                                             <div class="captcha">
-                                                <p>FSDFOF</p>
+                                                <img class="responsive-img" src="<?=base_url()?>assets/dashboard/images/captcha.png" alt=""/>
                                             </div>
                                             <input type="text" name=""/><label for="">Ingrese el captcha</label>
                                         </div>

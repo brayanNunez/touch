@@ -31,12 +31,12 @@
                                         </div>
                                         <div class="input-field col s12">
                                             <input id="registro_correo" class="campo-registro" type="email"
-                                                placeholder="Escriba su correo electrónico">
+                                                placeholder="Escriba su correo electrï¿½nico">
                                             <label for="registro_correo" class="active"><?=label('formRegistro_correo');?></label>
                                         </div>
                                         <div class="input-field col s12">
                                             <input id="registro_telefono" class="campo-registro" type="text"
-                                                placeholder="Escriba su número de teléfono">
+                                                placeholder="Escriba su nï¿½mero de telï¿½fono">
                                             <label for="registro_telefono" class="active"><?=label('formRegistro_telefono');?></label>
                                         </div>
                                         <div class="input-field col s12">
@@ -51,12 +51,12 @@
                                         </div>
                                         <div class="input-field col s12">
                                             <input id="registro_contrasena" class="campo-registro" type="password"
-                                                placeholder="Escriba su contraseña">
+                                                placeholder="Escriba su contraseï¿½a">
                                             <label for="registro_contrasena" class="active"><?=label('formRegistro_contrasena');?></label>
                                         </div>
                                         <div class="input-field col s12">
                                             <input id="registro_contrasenaConfirm" class="campo-registro" type="password"
-                                                placeholder="Confirme su contraseña">
+                                                placeholder="Confirme su contraseï¿½a">
                                             <label for="registro_contrasenaConfirm" class="active"><?=label('formRegistro_contrasenaConfirm');?></label>
                                         </div>
                                         <div class="file-field col s12">
@@ -69,6 +69,12 @@
                                                     <input class="file-path" type="file" />
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="col sm12 md12 bloque-captcha">
+                                            <div class="captcha">
+                                                <img class="responsive-img" src="<?=base_url()?>assets/dashboard/images/captcha.png" alt=""/>
+                                            </div>
+                                            <input type="text" name=""/><label for="">Ingrese el captcha</label>
                                         </div>
                                         <div class="input-field col s12 envio-formulario">
                                             <button class="btn btn-filled registrar" type="submit" name="action"><?=label('formRegistro_crearPerfil');?>
