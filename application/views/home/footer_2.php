@@ -1,7 +1,6 @@
         <section class="bg-dark bg-secondary">
-            <div class="container">
-
-
+            <div class="container"
+                 style="width: 1170px !important; margin-right: auto !important; margin-left: auto !important;">
 
                 <div class="row home">
                     <div class="col-md-3 col-sm-6 mb-xs-24">
