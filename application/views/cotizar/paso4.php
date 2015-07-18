@@ -148,12 +148,19 @@
                                        <p>Esta cotización ha sido desarrollada en la plataforma: touchcr.com</p>
                                     </div>
                                  </div>
+                                 <div style="margin-bottom: 10px;" class="row" id="zonaDescarga">
+                                    <a class="dropdown-button btn-floating right waves-effect waves-light " href="#!" data-activates="dropdown2"><i class="mdi-editor-vertical-align-bottom"></i></a>
+                                 </div>
+
                               </div>
                            </div>
                            <div class="row" >
                               <div class="input-field col s12 m4 l3">
                                  <a href="#enviar" id="btnEnviar" class=" left btn btn-default modal-trigger">Enviar</a>
                               </div>
+
+
+
 
                            </div>
 

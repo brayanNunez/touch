@@ -212,6 +212,7 @@
                                         <div class="col-sm-12 col-md-12">
                                             <p>Código del embed generado</p>
                                             <div class="bloque-embed-codigo-generado">
+                                            
                                                 <p>http://localhost/Proyectos/touch/embed/embedCotizar</p>
                                             </div>
                                         </div>

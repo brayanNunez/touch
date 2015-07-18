@@ -150,9 +150,20 @@
                                  </table>
                               </div>
                            </div>
+                        
+
                         </div>
 
+
+
                      </div>
+                      <a class="dropdown-button btn-floating  waves-effect waves-light " href="#!" data-activates="dropdown2"><i class="mdi-editor-vertical-align-bottom"></i></a>
+                          <ul id="dropdown2" class="dropdown-content">
+                            <li><a href="#!" class="-text">Excel</a>
+                            </li>
+                            <li><a href="#!" class="-text">PDF</a>
+                            </li>
+                        </ul>
                   </div>
                </div>
             </div>
