@@ -287,18 +287,19 @@
 <div id="eliminarContacto" class="modal">
     <div class="modal-header">
         <p><?=label('nombreSistema');?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
         <p><?=label('confirmarEliminarContacto');?></p>
     </div>
     <div class="modal-footer black-text">
-        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>
 <div id="editarContacto" class="modal">
     <div class="modal-header">
         <p><?=label('nombreSistema');?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
         <div class="input-field col s12">
@@ -311,13 +312,13 @@
         </div>
     </div>
     <div class="modal-footer">
-        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>
 <div id="agregar" class="modal">
     <div class="modal-header">
         <p><?=label('nombreSistema');?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
         <div class="input-field col s12">
@@ -330,7 +331,6 @@
         </div>
     </div>
     <div class="modal-footer">
-        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>

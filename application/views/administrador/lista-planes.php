@@ -93,24 +93,21 @@
 <div id="Editar" class="modal">
     <div class="modal-header">
         <p><?=label('nombreSistema');?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-
         <div class="input-field col s12">
             <input id="plan_nombre" type="text" value="Básico">
             <label for="plan_nombre"><?=label('formPlan_nombre');?></label>
         </div>
-
         <div class="input-field col s12">
             <textarea id="plan_descripcion" class="materialize-textarea" length="120"></textarea>
             <label for="plan_descripcion"><?=label('formPlan_descripcion');?></label>
         </div>
-
         <div class="input-field col s12">
             <input id="plan_costo" type="text" value="$15">
             <label for="plan_costo"><?=label('formPlan_costo');?></label>
         </div>
-
         <p>Seleccione los beneficios</p>
         <div class="input-field col s12">
             <input id="plan_beneficio1" type="checkbox" checked></textarea>
@@ -128,10 +125,8 @@
             <input id="plan_beneficio4" type="checkbox"></textarea>
             <label for="plan_beneficio4"><?=label('formPlan_beneficio4');?></label>
         </div>
-
     </div>
     <div class="modal-footer">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('cancelar');?></a>
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>

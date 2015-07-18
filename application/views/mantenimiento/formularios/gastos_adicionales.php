@@ -20,12 +20,15 @@
                 <div class="col s12 m12 l12">
                     <div id="submit-button" class="section">
                         <div class="row">
-                            <div class="col s12 m12 l8">
-                                <form class="col s12">
-                                    <div class="row">
-                                        <div class="col s12 m12 l12" style="margin-top: 5%; padding: 0%; ">
-                                            <div class="col s12">
+                            <div class="col s12 m12 l12">
+                                <div class="card lista-elementos">
+                                    <div id="table-datatables">
+                                        <div class="row">
+                                            <div class="col s12 m12 l12">
                                                 <table id="data-table-simple" class="responsive-table display" cellspacing="0">
+                                                    <div class="agregar_nuevo">
+                                                        <a href="#agregarGasto" class="btn modal-trigger"><?=label('tituloGastos_nuevo');?></a>
+                                                    </div>
                                                     <thead>
                                                         <tr>
                                                             <th><?=label('tituloGastos_nombre');?></th>
@@ -79,13 +82,10 @@
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                <div class="input-field col s12">
-                                                    <a href="#agregarGasto" class="btn modal-trigger"><?=label('tituloGastos_nuevo');?></a>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -102,18 +102,19 @@
 <div id="eliminarGasto" class="modal">
     <div class="modal-header">
         <p><?=label('nombreSistema');?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
         <p><?=label('confirmarEliminarGasto');?></p>
     </div>
     <div class="modal-footer black-text">
-        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>
 <div id="agregarGasto" class="modal">
     <div class="modal-header">
         <p><?=label('nombreSistema');?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
         <div class="input-field col s12">
@@ -126,13 +127,13 @@
         </div>
     </div>
     <div class="modal-footer">
-        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>
 <div id="editarGasto" class="modal">
     <div class="modal-header">
         <p><?=label('nombreSistema');?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
         <div class="input-field col s12">
@@ -145,7 +146,6 @@
         </div>
     </div>
     <div class="modal-footer">
-        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>

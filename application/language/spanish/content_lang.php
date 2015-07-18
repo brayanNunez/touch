@@ -85,7 +85,7 @@
     $lang['tituloGastos_nombre'] = 'Nombre';
     $lang['tituloGastos_monto'] = 'Monto';
     $lang['tituloGastos_opciones'] = 'Opciones';
-    $lang['tituloGastos_nuevo'] = '+';
+    $lang['tituloGastos_nuevo'] = 'Agregar nuevo';
     $lang['formGastos_nombre'] = 'Nombre del gasto';
     $lang['formGastos_monto'] = 'Monto del gasto';
 
@@ -338,7 +338,7 @@ $lang['listarReporteCot'] = 'Reporte de cotizaciones';
     $lang['formServicio_gastosCantidad'] = 'Cantidad';
     $lang['formServicio_gastosSubtotal'] = 'Sub-total';
     $lang['formServicio_gastosOpciones'] = 'Opciones';
-    $lang['formServicio_nuevaPersona'] = 'Nueva persona';
+    $lang['formServicio_nuevaPersona'] = 'Nuevo gasto';
     $lang['formServicio_utilidad'] = 'Utilidad';
     $lang['formServicio_total'] = 'Total';
     $lang['formServicio_enviar'] = 'Agregar servicio';
