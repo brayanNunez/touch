@@ -84,6 +84,7 @@
 }
 
 #detalle{
+	overflow-y: scroll;
 	width: 100%;
 	height: 38%;    /*%%%%%%%%%%%%%%%%%%%%%%%%%%*/
 	background-color: white;
@@ -185,6 +186,14 @@
 	font-size: 15px;
 }
 
+#editarLineas{
+    position: relative;
+	bottom: -250px;
+
+}
+#contenedorDetalle{
+
+}
 #datallesCotizacion img{
 	width: 80%;
 	/*height: 100%;*/
