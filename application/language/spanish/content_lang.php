@@ -440,8 +440,8 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['monedaNuevo'] = 'Agregar nuevo';
 
     //Generar embed
-    $lang['incluir '] = 'Incluir productos/servicios';
-    $lang['noIncluir '] = 'No incluir productos/servicios';
+    $lang['incluir'] = 'Incluir productos/servicios';
+    $lang['noIncluir'] = 'No incluir productos/servicios';
     $lang['si'] = 'Sí';
     $lang['no'] = 'No';
     $lang['vertical'] = 'Vertical';
@@ -449,10 +449,10 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['copiarCodigo'] = 'Copiar código';
 
     //Embed
-    $lang['formEmbed_cliente1 '] = 'Dato adicional 1';
-    $lang['formEmbed_cliente2 '] = 'Dato adicional 2';
-    $lang['formEmbed_cliente3 '] = 'Dato adicional 3';
-    $lang['formEmbed_cliente4 '] = 'Dato adicional 4';
+    // $lang['formEmbed_cliente1 '] = 'Dato adicional 1';
+    // $lang['formEmbed_cliente2 '] = 'Dato adicional 2';
+    // $lang['formEmbed_cliente3 '] = 'Dato adicional 3';
+    // $lang['formEmbed_cliente4 '] = 'Dato adicional 4';esto no son datos fijos
     $lang['formEmbed_enviar'] = 'Enviar';
     $lang['formEmbed_correo'] = 'Correo electrónico';
     $lang['formEmbed_nombre'] = 'Nombre completo';

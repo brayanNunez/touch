@@ -28,14 +28,14 @@
                                             <p>Tipo de formulario</p>
                                             <select onChange="embed(this)">
                                                 <option value="">Seleccionar</option>
-                                                <option value="1"><?=label('incluir') ?></option>
-                                                <option value="2"><?=label('noIncluir') ?></option>
+                                                <option value="1"><?=label('incluir');?></option>
+                                                <option value="2"><?=label('noIncluir');?></option>
                                             </select>
                                         </div>
 
                                     <div id="embedCategoria">
                                         <div id="tableHeader">
-                                            <div class="dataTables_filter search">
+                                            <div class="dataTables_filter search left">
                                                 <label>
                                                     <?=label('Producto_tablaBusqueda');?>
                                                     <input id="search" type="search" aria-controls="data-table-simple">
@@ -167,29 +167,31 @@
                                         }
                                     </script>
 
-                                        <div class="col-sm-12 col-md-12 bloque-embed-cliente">
+                                        <div class="col-sm-12 bloque-embed-cliente">
                                             <div class="col-md-6">
                                                 <p>Seleccione los espacios del cliente que desea mostrar</p>
                                             </div>
                                             <div class="input-field col s12">
-                                                <input id="embed_cliente1" type="checkbox">
-                                                <label for="embed_cliente1"><?=label('Dato adicional 1');?></label>
+                                                <input type="checkbox" class="filled-in" id="campoMostrar1" checked="checked">
+                                                <label for="campoMostrar1">Nombre</label>
                                             </div>
                                             <div class="input-field col s12">
-                                                <input id="embed_cliente2" type="checkbox">
-                                                <label for="embed_cliente2"><?=label('Dato adicional 2');?></label>
+                                                <input type="checkbox" class="filled-in" id="campoMostrar2" checked="checked">
+                                                <label for="campoMostrar2">Teléfono</label>
                                             </div>
                                             <div class="input-field col s12">
-                                                <input id="embed_cliente3" type="checkbox">
-                                                <label for="embed_cliente3"><?=label('Dato adicional 3');?></label>
+                                                <input type="checkbox" class="filled-in" id="campoMostrar3" checked="checked">
+                                                <label for="campoMostrar3">Correo</label>
                                             </div>
                                             <div class="input-field col s12">
-                                                <input id="embed_cliente4" type="checkbox">
-                                                <label for="embed_cliente4"><?=label('Dato adicional 4');?></label>
+                                                <input type="checkbox" class="filled-in" id="campoMostrar4" checked="checked">
+                                                <label for="campoMostrar4">Dirección</label>
                                             </div>
+                                            <p>.</p>
                                         </div>
 
-                                        <div id="embedPrecio" class="col-sm-12 col-md-12">
+
+                                        <div id="embedPrecio" class="col-sm-12">
                                             <p>¿Desea mostrar el precio de los productos/servicios?</p>
                                             <select>
                                                 <option value="">Seleccionar</option>
@@ -210,7 +212,7 @@
                                         <div class="col-sm-12 col-md-12">
                                             <p>Código del embed generado</p>
                                             <div class="bloque-embed-codigo-generado">
-                                                <p> Texto generado para pegar en el sitio</p>
+                                                <p>http://localhost/Proyectos/touch/embed/embedCotizar</p>
                                             </div>
                                         </div>
                                         <div class="input-field col s12 envio-formulario">
