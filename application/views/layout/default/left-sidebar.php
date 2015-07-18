@@ -36,7 +36,7 @@
                                         </li>
                                         <li><a href="<?=base_url();?>cotizacion"><?=label('listarCotizacion');?></a>
                                         </li>
-                                        <li><a href="<?=base_url();?>cotizacion/reporte"><?=label('listarReporteCot');?></a>
+                                        <li><a href="<?=base_url();?>reporte"><?=label('listarReporteCot');?></a>
                                         </li>
                                     </ul>
                                 </div>
