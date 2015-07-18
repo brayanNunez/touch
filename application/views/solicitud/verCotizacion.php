@@ -5,7 +5,7 @@
       <div class="container">
          <div class="row">
             <div class="col s12 m12 l12">
-               <h5 class="breadcrumbs-title">Diseño</h5>
+               <h5 class="breadcrumbs-title"><?=label('tituloAprobarEnvioCliente');?></h5>
             </div>
          </div>
       </div>
@@ -196,7 +196,7 @@
 
       <div class="input-field col s12">
          <textarea id="message" class="materialize-textarea" style="height: 24px;"></textarea>
-         <label for="message" class=""><?=label('comentarioRechaza');?></label>
+         <label for="message" class="">Motivo</label>
       </div>
 
 

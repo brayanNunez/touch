@@ -22,8 +22,9 @@
     $lang['confirmarEliminarFinanciamiento'] = '¿Realmente desea eliminar el financiamiento seleccionada?';
     $lang['confirmarEliminarMoneda'] = '¿Realmente desea eliminar la moneda seleccionada?';
     $lang['confirmarEliminarSolicitud'] = '¿Realmente desea eliminar la solicitud de cotización?';
+    $lang['confirmarEnvioCliente'] = '¿Realmente desea aprobar la cotización y enviarla al cliente?';
+    $lang['motivoRechaza'] = 'Agregue el motivo por el cual rechaza esta cotización';
 
-    
     
 
 
@@ -71,7 +72,13 @@
 	$lang['tituloClientes'] = 'Clientes';
 	$lang['tituloUsuarios'] = 'Usuarios';
     $lang['tituloListaSolicitudesConCliente'] = 'Solicitudes pendientes';
-    $lang['tituloListaSolicitudesSinCliente'] = 'Solicitudes de nuevos clientes';
+    $lang['tituloListaSolicitudesSinCliente'] = 'Solicitudes de nuevos clientes'; 
+    $lang['tituloListaPorAprobar'] = 'Cotizaciones pendientes por revisar';
+    $lang['tituloAprobarEnvioCliente'] = 'Revisar Cotización';
+
+
+
+    
 
 //Gastos adicionales
     $lang['tituloGastos'] = 'Gastos adicionales';
@@ -106,6 +113,16 @@
     $lang['tablaSolicitudes_descripcion'] = 'Descrpción';
     $lang['tablaSolicitudes_opciones'] = 'Opciones';
 
+//columnas tabla de solicitudes
+    $lang['tablaPorAbrobar_cliente'] = 'Cliente';
+    $lang['tablaPorAbrobar_monto'] = 'Monto';
+    $lang['tablaPorAbrobar_fecha'] = 'Fecha';
+    $lang['tablaPorAbrobar_opciones'] = 'Opciones';
+
+
+
+
+
 // texto de los botones
 	$lang['aceptar'] = 'Aceptar';
 	$lang['cancelar'] = 'Cancelar';
@@ -122,6 +139,9 @@
 	$lang['registrar'] = 'Registrar';
 	$lang['contrasena_olvido'] = '¿Olvidó su contraseña?';
     $lang['editarContenido'] = 'Editar contenido';
+    $lang['aprobarEnvioCliente'] = 'Aprobar';
+
+
 
 //comentarios de una cotizacion
 	$lang['comentar'] = 'Comentar';
@@ -460,4 +480,5 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['tooltip_finalizar'] = 'Finalizar';
     $lang['tooltip_examinar'] = 'Examinar';
     $lang['tooltip_eliminar'] = 'Eliminar';
+    $lang['tooltip_revisar'] = 'Revisar';
 ?>
