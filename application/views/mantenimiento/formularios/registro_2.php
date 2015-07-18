@@ -64,15 +64,17 @@
                                             <label for="registro_fotografia"><?=label('formRegistro_fotografia');?></label>
                                             <div class="file-field input-field col s12">
                                                 <input class="file-path validate campo-registro" type="text"/>
-                                                <div class="btn" data-toggle="tooltip" title="<?=label('tooltip_examinar')?>"
-                                                    style="border-radius: 0px !important; min-width: 13%;">
+                                                <div class="btn btn-filled registrar" data-toggle="tooltip" title="<?=label('tooltip_examinar')?>">
                                                     <span><i class="mdi-action-search"></i></span>
-                                                    <input type="file" />
+                                                    <input class="file-path" type="file" />
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="input-field col s12 campo-captcha">
-                                            <input type="text" id="defaultReal" name="defaultReal" class="campo-registro">
+                                        <div class="col sm12 md12 bloque-captcha">
+                                            <div class="captcha">
+                                                <img class="responsive-img" src="<?=base_url()?>assets/dashboard/images/captcha.png" alt=""/>
+                                            </div>
+                                            <input type="text" name=""/><label for="">Ingrese el captcha</label>
                                         </div>
                                         <div class="input-field col s12 envio-formulario">
                                             <button class="btn btn-filled registrar" type="submit" name="action"><?=label('formRegistro_crearPerfil');?>
@@ -89,4 +91,58 @@
     </div>
     <!--end container-->
 </section>
-<!-- END CONTENT-->
+<!-- END CONTENT
+
+
+<!-- lista modals -->
+<div id="eliminar" class="modal">
+    <div class="modal-header">
+        <p><?=label('nombreSistema');?></p>
+    </div>
+    <div class="modal-content">
+        <p><?=label('confirmarEliminarContacto');?></p>
+    </div>
+    <div class="modal-footer black-text">
+        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+    </div>
+</div>
+<div id="editar" class="modal">
+    <div class="modal-header">
+        <p><?=label('nombreSistema');?></p>
+    </div>
+    <div class="modal-content">
+        <div class="input-field col s12">
+            <input id="client_code" type="text" value="Maria Rodriguez">
+            <label for="client_code"><?=label('formCliente_nombreContacto');?></label>
+        </div>
+        <div class="input-field col s12">
+            <input id="client_code" type="text" value="maria@gmail.com">
+            <label for="client_code"><?=label('formCliente_correoContacto');?></label>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+    </div>
+</div>
+<div id="agregar" class="modal">
+    <div class="modal-header">
+        <p><?=label('nombreSistema');?></p>
+    </div>
+    <div class="modal-content">
+        <div class="input-field col s12">
+            <input id="client_code" type="text" value="">
+            <label for="client_code"><?=label('formCliente_nombreContacto');?></label>
+        </div>
+        <div class="input-field col s12">
+            <input id="client_code" type="text" value="">
+            <label for="client_code"><?=label('formCliente_correoContacto');?></label>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+    </div>
+</div>
+<!-- Fin lista modals -->

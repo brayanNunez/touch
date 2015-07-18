@@ -20,6 +20,8 @@
     <link href="<?=base_url()?>assets/dashboard/css/mystyle.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="<?= base_url() ?>assets/dashboard/css/mystyle-s.css" media="all" rel="stylesheet" type="text/css" />
 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
 </head>
 <body class="btn-rounded">
 

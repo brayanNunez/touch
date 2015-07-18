@@ -39,3 +39,5 @@ li.nosotros ul.mega-menu { background: white !important; }
 li.nosotros ul.mega-menu span.title { font-size: initial; color:black; }
 li.nosotros ul.mega-menu a.nosotros-opcion { color:black; }
 div.modal-header a.cerrar-modal { color: white; position: fixed; top: 0; right: 0; padding: 5px 10px 0px 10px; background-color: #C75050; }
+div.realperson-text { text-align: center !important; }
+div.campo-captcha { margin-top: 6% !important; }
