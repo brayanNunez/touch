@@ -52,7 +52,7 @@
                             <a href="<?=base_url()?>welcome/faq">FAQ</a>
                         </li>
                         <li class="has-dropdown nosotros">
-                            <a>nosotros</a>
+                            <a class="nav-nosotros" >nosotros</a>
                             <ul class="mega-menu">
                                 <li>
                                     <span class="title">touch!</span>

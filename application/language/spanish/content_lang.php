@@ -207,6 +207,7 @@ $lang['listarReporteCot'] = 'Reporte de cotizaciones';
 	$lang['formCliente_nuevoGusto'] = 'Nuevo gusto';
 	$lang['formCliente_mediosContacto'] = 'Medios de contacto';
 	$lang['formCliente_medio'] = 'Medio';
+	$lang['formCliente_agregarNuevo'] = 'Agregar';
 	$lang['formCliente_estadoMedio'] = 'Estado';
 	$lang['formCliente_nuevoMedio'] = 'Nuevo medio';
 	$lang['formCliente_cotizador'] = 'Cotizador';

@@ -183,7 +183,7 @@
                                                     <label for="cliente_nuevoGusto"><?=label('formCliente_nuevoGusto');?></label>
                                                 </div>
                                                 <div class="input-field col s4">
-                                                    <a href="#" class="btn btn-default"><?=label('formCliente_agregar');?></a>
+                                                    <a href="#" class="btn btn-default"><?=label('formCliente_agregarNuevo');?></a>
                                                 </div>
                                             </div>
                                             <hr />
@@ -250,7 +250,7 @@
                                                     <label for="cliente_nuevoMedio"><?=label('formCliente_nuevoMedio');?></label>
                                                 </div>
                                                 <div class="input-field col s4">
-                                                    <a href="#" class="btn btn-default"><?=label('formCliente_agregar');?></a>
+                                                    <a href="#" class="btn btn-default"><?=label('formCliente_agregarNuevo');?></a>
                                                 </div>
                                             </div>
                                             <hr />

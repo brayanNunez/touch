@@ -34,6 +34,8 @@ a.boton-claro { background-color: transparent !important; height: 50px !importan
 a.boton-normal { background-color: #47b475 !important; height: 50px !important; line-height: 50px !important; }
 div.imagen-inicio img { margin-left: 4% !important; }
 div.texto-slider { margin-left: 5% !important; }
+li.nosotros:hover { background-color: transparent !important; }
 li.nosotros ul.mega-menu { background: white !important; }
 li.nosotros ul.mega-menu span.title { font-size: initial; color:black; }
 li.nosotros ul.mega-menu a.nosotros-opcion { color:black; }
+div.modal-header a.cerrar-modal { color: white; position: fixed; top: 0; right: 0; padding: 5px 10px 0px 10px; background-color: #C75050; }
