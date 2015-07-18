@@ -28,6 +28,21 @@ class Solicitud extends CI_Controller {
         $this->load->view('solicitud/solicitudConCliente');
         $this->load->view('layout/default/footer');
     }
+
+    public function porAbrobar()
+    {
+        $this->load->view('layout/default/header');
+        $this->load->view('layout/default/left-sidebar');
+        $this->load->view('solicitud/listaAprobar');
+        $this->load->view('layout/default/footer');
+    }
+    public function ver()
+    {
+        $this->load->view('layout/default/header');
+        $this->load->view('layout/default/left-sidebar');
+        $this->load->view('solicitud/verCotizacion');
+        $this->load->view('layout/default/footer');
+    }
     public function ver_solicitud()
     {
         $this->load->view('layout/default/header');

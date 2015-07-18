@@ -117,7 +117,7 @@
                         <ul id="dropdown1" class="dropdown-content">
                             <li><a href="<?=base_url();?>cotizacion" class="-text">Revisadas 3</a>
                             </li>
-                            <li><a href="#!" class="-text">Pendientes 2</a>
+                            <li><a href="<?=base_url();?>Solicitud/porAbrobar" class="-text">Pendientes 2</a>
                             </li>
                             <li><a href="<?=base_url();?>cotizacion" class="-text">Rechazadas 2</a>
                             </li>

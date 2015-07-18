@@ -1,3 +1,4 @@
+
 <!-- START CONTENT -->
 <section id="content">
    <!--start container-->
@@ -116,7 +117,7 @@
          </div>
          <div class="barra-horizontal" id="barra1">
          </div>
-         <div id="detalle">
+         <div id="detalleVista">
             <div id="datallesCotizacion">
                <table style="width:100%">
                   <tr>

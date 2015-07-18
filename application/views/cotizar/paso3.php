@@ -66,51 +66,56 @@
                                     <i class="mdi-editor-mode-edit"></i>
                                     </a>
                                     
-                                    
+                                    <!-- <div id="contenedorDetalle"> -->
                                        <div id="detalle">
+                                          <div id="contenedorDetalle">
+                                             <div id="datallesCotizacion">
+                                                <table style="width:100%">
 
-                                          <div id="datallesCotizacion">
-                                             <table style="width:100%">
+                                                   <tr>
+                                                      <th>Nombre</th>
+                                                      <th>Precio</th>
+                                                      <th>Cantidad</th>
+                                                      <th>Imagen</th>
+                                                      <th>Sub-total
+                                                      <a id="editarLineas" onclick="darclick(2);" class="btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
+                                                         <i class="mdi-editor-mode-edit"></i>
+                                                      </a>
+                                                      </th>
+                                                   </tr>
+                                                   <tr>
+                                                      <td>Almuerzo</td>
+                                                      <td>$6</td>
+                                                      <td>20</td>
+                                                      <td><img src="<?=base_url()?>assets/dashboard/images/almuerzo.jpg"></td>
+                                                      <td>$120</td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td>Fresco</td>
+                                                      <td>$1</td>
+                                                      <td>20</td>
+                                                      <td></td>
+                                                      <td>$20</td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td>Música</td>
+                                                      <td>$30</td>
+                                                      <td></td>
+                                                      <td><img src="<?=base_url()?>assets/dashboard/images/musica.jpg"></td>
+                                                      <td>$30</td>
+                                                   </tr>
+                                                  
 
-                                                <tr>
-                                                   <th>Nombre</th>
-                                                   <th>Precio</th>
-                                                   <th>Cantidad</th>
-                                                   <th>Imagen</th>
-                                                   <th>Sub-total
-                                                   <a id="editarLineas" onclick="darclick(2);" class="btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
-                                                      <i class="mdi-editor-mode-edit"></i>
-                                                   </a>
-                                                   </th>
-                                                </tr>
-                                                <tr>
-                                                   <td>Almuerzo</td>
-                                                   <td>$6</td>
-                                                   <td>20</td>
-                                                   <td><img src="<?=base_url()?>assets/dashboard/images/almuerzo.jpg"></td>
-                                                   <td>$120</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>Fresco</td>
-                                                   <td>$1</td>
-                                                   <td>20</td>
-                                                   <td></td>
-                                                   <td>$20</td>
-                                                </tr>
-                                                <td>Música</td>
-                                                <td>$30</td>
-                                                <td></td>
-                                                <td><img src="<?=base_url()?>assets/dashboard/images/musica.jpg"></td>
-                                                <td>$30</td>
-                                                </tr>
-                                             </table>
-                                          </div>
-                                          <div id="resultadoCotizacion">
-                                             <p>Impuesto: 13%</p>
-                                             <p>Descuento: 10%</p>
-                                             <p>Total: $170</p>
+                                                </table>
+                                             </div>
+                                             <div id="resultadoCotizacion">
+                                                <p>Impuesto: 13%</p>
+                                                <p>Descuento: 10%</p>
+                                                <p>Total: $170</p>
+                                             </div>
                                           </div>
                                        </div>
+                                    <!-- </div> -->
 
                                     <div class="barra-horizontal" id="barra2">
                                     </div>
