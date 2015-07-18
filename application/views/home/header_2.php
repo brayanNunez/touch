@@ -95,24 +95,19 @@
                             <a href="<?=base_url()?>welcome/faq">FAQ</a>
                         </li>
                         <li class="has-dropdown nosotros">
-                            <a href="#">
-                                nosotros</a>
+                            <a>nosotros</a>
                             <ul class="mega-menu">
                                 <li>
-                                    <ul>
-                                        <li>
-                                            <span class="title">touch!</span>
-                                        </li>
-                                        <li>
-                                            <a href="<?=base_url()?>welcome/que">Qué es Touch? <br></a>
-                                        </li>
-                                        <li>
-                                            <a href="<?=base_url()?>welcome/quienes">¿Quiénes lo usan?<br></a>
-                                        </li>
-                                        <li>
-                                            <a href="<?=base_url()?>welcome/prensa">Prensa<br>&nbsp;<br></a>
-                                        </li>
-                                    </ul>
+                                    <span class="title">touch!</span>
+                                </li>
+                                <li>
+                                    <a href="<?=base_url()?>welcome/que" class="nosotros-opcion">Qué es Touch? <br></a>
+                                </li>
+                                <li>
+                                    <a href="<?=base_url()?>welcome/quienes" class="nosotros-opcion">¿Quiénes lo usan?<br></a>
+                                </li>
+                                <li>
+                                    <a href="<?=base_url()?>welcome/prensa" class="nosotros-opcion">Prensa<br>&nbsp;<br></a>
                                 </li>
                             </ul>
                         </li>
