@@ -34,8 +34,15 @@
     <link href="<?= base_url() ?>assets/dashboard/css/mystyle-s.css" media="all" rel="stylesheet" type="text/css" />
     <link href="<?= base_url() ?>assets/dashboard/css/mystyle-j.css" media="all" rel="stylesheet" type="text/css" />
 
-
-
+    <link rel="stylesheet" href="<?=base_url()?>assets/dashboard/css/jquery.realperson.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="<?=base_url()?>assets/dashboard/js/jquery.plugin.js"></script>
+    <script src="<?=base_url()?>assets/dashboard/js/jquery.realperson.js"></script>
+    <script>
+        $(function() {
+            $('#defaultReal').realperson();
+        });
+    </script>
 
 </head>
 
