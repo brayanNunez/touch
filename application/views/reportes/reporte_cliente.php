@@ -19,7 +19,7 @@
             <div id="submit-button" class="section">
                <div class="row">
                   <div class="col s12 m12 l12">
-                     <div class="" id="card-reporte">
+                     <div class="card" id="card-reporte">
 	                    <div id="formGeneral" class="section">
 	                        <div class="row">
 	                           <div class="input-field col s12 m3 l3">
@@ -249,6 +249,13 @@
                            </div>
                         </div>
                      </div>
+                     <a class="dropdown-button btn-floating  waves-effect waves-light " href="#!" data-activates="dropdown2"><i class="mdi-editor-vertical-align-bottom"></i></a>
+                          <ul id="dropdown2" class="dropdown-content">
+                            <li><a href="#!" class="-text">Excel</a>
+                            </li>
+                            <li><a href="#!" class="-text">PDF</a>
+                            </li>
+                        </ul>
                   </div>
                </div>
             </div>
