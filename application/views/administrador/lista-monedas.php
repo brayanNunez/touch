@@ -99,36 +99,31 @@
 <div id="Editar" class="modal">
     <div class="modal-header">
         <p><?=label('nombreSistema');?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-
         <div class="input-field col s12">
             <input id="moneda_nombre" type="text" value="Dólar">
             <label for="moneda_nombre"><?=label('formMoneda_nombre');?></label>
         </div>
-
         <div class="input-field col s12">
             <input id="moneda_signo" type="text" value="$">
             <label for="moneda_signo"><?=label('formMoneda_signo');?></label>
         </div>
-
     </div>
     <div class="modal-footer">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('cancelar');?></a>
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>
-
 <div id="Eliminar" class="modal">
-
     <div class="modal-header">
         <p><?=label('nombreSistema');?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
         <p><?=label('confirmarEliminarMoneda');?></p>
     </div>
     <div class="modal-footer">
-        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>

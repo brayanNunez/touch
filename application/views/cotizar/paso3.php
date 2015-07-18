@@ -183,6 +183,7 @@
 <div id="modalEncabezado" class="modal">
    <div class="modal-header">
       <p><?=label('nombreSistema');?></p>
+      <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
    </div>
    <div class="modal-content">
       <div class="row">
@@ -244,13 +245,13 @@
       </div>
    </div>
    <div class="modal-footer">
-      <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
       <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
    </div>
 </div>
 <div id="modalCuerpo" class="modal">
    <div class="modal-header">
       <p><?=label('nombreSistema');?></p>
+      <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
    </div>
    <div class="modal-content">
       <div class="row">
@@ -288,13 +289,13 @@
       </div>
    </div>
    <div class="modal-footer">
-      <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
       <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
    </div>
 </div>
 <div id="modalInformacion" class="modal">
    <div class="modal-header">
       <p><?=label('nombreSistema');?></p>
+      <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
    </div>
    <div class="modal-content">
       <div class="row">
@@ -345,13 +346,13 @@
       </div>
    </div>
    <div class="modal-footer">
-      <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
       <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
    </div>
 </div>
 <div id="modalFooter" class="modal">
    <div class="modal-header">
       <p><?=label('nombreSistema');?></p>
+      <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
    </div>
    <div class="modal-content">
       <div class="row">
@@ -394,7 +395,6 @@
       </div>
    </div>
    <div class="modal-footer">
-      <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
       <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
    </div>
 </div>

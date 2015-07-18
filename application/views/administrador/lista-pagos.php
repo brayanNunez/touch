@@ -98,6 +98,7 @@
 <div id="verComprobante" class="modal">
     <div class="modal-header">
         <p><?=label('nombreSistema');?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
         <p><?=label('mostrarComprobante');?></p>

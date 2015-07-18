@@ -109,36 +109,36 @@
 <div id="Elminar" class="modal">
    <div class="modal-header">
       <p><?=label('nombreSistema');?></p>
+      <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
    </div>
    <div class="modal-content">
       <p><?=label('confirmarEliminarCotizacion');?></p>
    </div>
    <div class="modal-footer">
-      <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
       <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
    </div>
 </div>
 <div id="finalizar" class="modal">
    <div class="modal-header">
       <p><?=label('nombreSistema');?></p>
+      <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
    </div>
    <div class="modal-content">
       <p><?=label('confirmarFinalizarCotizacion');?></p>
    </div>
    <div class="modal-footer">
-      <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
       <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
    </div>
 </div>
 <div id="duplicar" class="modal">
    <div class="modal-header">
       <p><?=label('nombreSistema');?></p>
+      <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
    </div>
    <div class="modal-content">
       <p><?=label('confirmarDuplicarCotizacion');?></p>
    </div>
    <div class="modal-footer">
-      <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
       <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
    </div>
 </div>

@@ -45,7 +45,7 @@
                                                     <label for="otra_palabra"><?=label('formEmpleado_nuevaPalabra');?></label>
                                                 </div>
                                                 <div class="input-field col s4">
-                                                    <a href="#" class="btn btn-default modal-trigger"><?=label('formEmpleado_agregar');?></a>
+                                                    <a href="" class="btn btn-default"><?=label('formEmpleado_agregar');?></a>
                                                 </div>
                                             </div>
                                             <hr />
@@ -142,6 +142,7 @@
 <div id="agregarPalabra" class="modal">
     <div class="modal-header">
         <p><?=label('nombreSistema');?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
         <div class="input-field col s12">
@@ -150,13 +151,13 @@
         </div>
     </div>
     <div class="modal-footer">
-        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>
 <div id="agregarSalario" class="modal">
     <div class="modal-header">
         <p><?=label('nombreSistema');?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
         <div class="input-field col s12">
@@ -176,13 +177,13 @@
         </div>
     </div>
     <div class="modal-footer">
-        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>
 <div id="editarSalario" class="modal">
     <div class="modal-header">
         <p><?=label('nombreSistema');?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
         <div class="input-field col s12">
@@ -201,19 +202,18 @@
         </div>
     </div>
     <div class="modal-footer">
-        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>
 <div id="eliminarSalario" class="modal">
     <div class="modal-header">
         <p><?=label('nombreSistema');?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
         <p><?=label('confirmarEliminarSalario');?></p>
     </div>
     <div class="modal-footer black-text">
-        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>

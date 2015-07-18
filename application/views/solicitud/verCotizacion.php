@@ -175,34 +175,28 @@
 <div id="enviar" class="modal">
    <div class="modal-header">
       <p><?=label('nombreSistema');?></p>
+      <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
    </div>
    <div class="modal-content">
       <?=label('confirmarEnvioCliente');?>
    </div>
    <div class="modal-footer">
-      <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
       <a href="<?=base_url()?>Solicitud/porAbrobar" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
    </div>
 </div>
-
-
-<div id="rechazar" class="modal">
+ <div id="rechazar" class="modal">
    <div class="modal-header">
       <p><?=label('nombreSistema');?></p>
+      <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
    </div>
    <div class="modal-content">
       <?=label('motivoRechaza');?>
-
-
       <div class="input-field col s12">
          <textarea id="message" class="materialize-textarea" style="height: 24px;"></textarea>
          <label for="message" class="">Motivo</label>
       </div>
-
-
    </div>
    <div class="modal-footer">
-      <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"><?=label('cancelar');?></a>
       <a href="<?=base_url()?>Solicitud/porAbrobar" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
    </div>
 </div>
