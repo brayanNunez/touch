@@ -48,10 +48,8 @@
                                               <td>$300</td>
                                               <td>4/3/2015</td>
                                               <td>
-                                                  <a class="icono-edicion" href="<?=base_url()?>Solicitud/ver"
-                                                     data-toggle="tooltip" title="<?=label('tooltip_revisar')?>">
-                                                      <!-- <i class="mdi-editor-mode-edit"></i> -->
-                                                      Revisar
+                                                  <a class="icono-edicion" href="<?=base_url()?>Solicitud/ver" data-toggle="tooltip" title="<?=label('tooltip_revisar')?>">
+                                                       <i class="mdi-action-visibility"></i>
                                                   </a>
                                               </td>
                                           </tr>
@@ -60,10 +58,8 @@
                                               <td>$200</td>
                                               <td>6/3/2015</td>
                                               <td>
-                                                  <a class="icono-edicion" href="<?=base_url()?>Solicitud/ver"
-                                                     data-toggle="tooltip" title="<?=label('tooltip_revisar')?>">
-                                                      <!-- <i class="mdi-editor-mode-edit"></i> -->
-                                                      Revisar
+                                                  <a class="icono-edicion" href="<?=base_url()?>Solicitud/ver" data-toggle="tooltip" title="<?=label('tooltip_revisar')?>">
+                                                      <i class="mdi-action-visibility"></i>
                                                   </a>
                                               </td>
                                           </tr>
