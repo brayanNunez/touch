@@ -481,4 +481,7 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['tooltip_examinar'] = 'Examinar';
     $lang['tooltip_eliminar'] = 'Eliminar';
     $lang['tooltip_revisar'] = 'Revisar';
+
+//Captcha
+    $lang['cambiar_captcha'] = 'Cambiar captcha';
 ?>
