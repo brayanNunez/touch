@@ -275,7 +275,7 @@
                                     </div>
 
                                     <div class="card lista-elementos" id="listaCotizacionesCliente">
-                                    <p>Lista de cotizaciones realizadas a este cliente</p>
+                                     <p>Lista de cotizaciones realizadas a este cliente</p>
                                         <table id="data-table-simple" class="responsive-table display" cellspacing="0">
                                             <thead>
                                                <tr>
