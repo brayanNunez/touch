@@ -54,7 +54,7 @@
                                        <tr>
                                           <td>MRR-001</td>
                                           <td>2009/01/12</td>
-                                          <td><a href="">Dos Pinos</a></td>
+                                          <td><a href="<?=base_url()?>clientes/editar">Dos Pinos</a></td>
                                           <td>$300</td>
                                           <td>Finalizada</td>
                                           <td>
@@ -72,7 +72,7 @@
                                        <tr>
                                           <td>MRR-002</td>
                                           <td>2015/01/12</td>
-                                          <td><a href="">Juan Carlos Rojas</a></td>
+                                          <td><a href="<?=base_url()?>clientes/editar">Juan Carlos Rojas</a></td>
                                           <td>$100</td>
                                           <td>Enviada</td>
                                           <td>

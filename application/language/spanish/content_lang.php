@@ -156,7 +156,7 @@
 	$lang['inicio'] = 'Inicio';
 	$lang['cotizaciones'] = 'Cotizaciones';
 $lang['listarCotizacion'] = 'Lista de cotizaciones';
-$lang['listarReporteCot'] = 'Reportes de cotizaciones';
+$lang['listarReporteCot'] = 'Reportes cotizaciones';
 	$lang['servicios'] = 'Servicios';
 	$lang['productos'] = 'Productos';
 	$lang['agregarP'] = 'Agregar producto';

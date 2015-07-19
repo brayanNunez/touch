@@ -135,7 +135,7 @@
                             <p class="margin medium-small"><a href="<?=base_url()?>welcome/registro"><?=label('registrar')?></a></p>
                         </div>
                         <div class="input-field col s6 m6 l6">
-                            <p class="margin right-align medium-small"><a href="page-forgot-password.html"><?=label('contrasena_olvido')?></a></p>
+                            <p class="margin right-align medium-small"><a href=""><?=label('contrasena_olvido')?></a></p>
                         </div>
                     </div>
 
