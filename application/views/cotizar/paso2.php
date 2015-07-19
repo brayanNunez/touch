@@ -671,8 +671,8 @@ $(function(){
             "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
             "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
             "noCheck": {name: "No mostrar esta columna", icon: "delete"},
-            "check": {name: "Mostrar esta columna", icon: "delete"},
-            "Salir": {name: "Salir", icon: "quit"}
+            "check": {name: "Mostrar esta columna", icon: "quit"}
+            // "Salir": {name: "Salir", icon: "quit"}
         }
     });
     
@@ -699,8 +699,8 @@ $(function(){
             "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
             "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
             "noCheck": {name: "No mostrar esta columna", icon: "delete"},
-            "check": {name: "Mostrar esta columna", icon: "delete"},
-            "Salir": {name: "Salir", icon: "quit"}
+            "check": {name: "Mostrar esta columna", icon: "quit"}
+            // "Salir": {name: "Salir", icon: "quit"}
         }
     });
     
@@ -727,8 +727,8 @@ $(function(){
             "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
             "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
             "noCheck": {name: "No mostrar esta columna", icon: "delete"},
-            "check": {name: "Mostrar esta columna", icon: "delete"},
-            "Salir": {name: "Salir", icon: "quit"}
+            "check": {name: "Mostrar esta columna", icon: "quit"}
+            // "Salir": {name: "Salir", icon: "quit"}
         }
     });
     
@@ -755,8 +755,8 @@ $(function(){
             "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
             "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
             "noCheck": {name: "No mostrar esta columna", icon: "delete"},
-            "check": {name: "Mostrar esta columna", icon: "delete"},
-            "Salir": {name: "Salir", icon: "quit"}
+            "check": {name: "Mostrar esta columna", icon: "quit"}
+            // "Salir": {name: "Salir", icon: "quit"}
         }
     });
     
@@ -783,8 +783,8 @@ $(function(){
             "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
             "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
             "noCheck": {name: "No mostrar esta columna", icon: "delete"},
-            "check": {name: "Mostrar esta columna", icon: "delete"},
-            "Salir": {name: "Salir", icon: "quit"}
+            "check": {name: "Mostrar esta columna", icon: "quit"}
+            // "Salir": {name: "Salir", icon: "quit"}
         }
     });
     
@@ -811,8 +811,8 @@ $(function(){
             "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
             "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
             "noCheck": {name: "No mostrar esta columna", icon: "delete"},
-            "check": {name: "Mostrar esta columna", icon: "delete"},
-            "Salir": {name: "Salir", icon: "quit"}
+            "check": {name: "Mostrar esta columna", icon: "quit"}
+            // "Salir": {name: "Salir", icon: "quit"}
         }
     });
     
@@ -839,8 +839,8 @@ $(function(){
             "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
             "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
             "noCheck": {name: "No mostrar esta columna", icon: "delete"},
-            "check": {name: "Mostrar esta columna", icon: "delete"},
-            "Salir": {name: "Salir", icon: "quit"}
+            "check": {name: "Mostrar esta columna", icon: "quit"}
+            // "Salir": {name: "Salir", icon: "quit"}
         }
     });
     
@@ -867,8 +867,8 @@ $(function(){
             "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
             "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
             "noCheck": {name: "No mostrar esta columna", icon: "delete"},
-            "check": {name: "Mostrar esta columna", icon: "delete"},
-            "Salir": {name: "Salir", icon: "quit"}
+            "check": {name: "Mostrar esta columna", icon: "quit"}
+            // "Salir": {name: "Salir", icon: "quit"}
         }
     });
     
@@ -896,8 +896,8 @@ $(function(){
             "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
             "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
             "noCheck": {name: "No mostrar esta columna", icon: "delete"},
-            "check": {name: "Mostrar esta columna", icon: "delete"},
-            "Salir": {name: "Salir", icon: "quit"}
+            "check": {name: "Mostrar esta columna", icon: "quit"}
+            // "Salir": {name: "Salir", icon: "quit"}
         }
     });
     
