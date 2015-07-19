@@ -279,7 +279,9 @@
                                                 </td>
                                                 <td>
                                                    <div class="col s12 m12 l12 celdaBoton">
-                                                      <a class="btn_eliminar modal-trigger" href="#Elminar"><?=label('eliminar');?></a>
+                                                      <a class="btn_eliminar modal-trigger icono-edicion" href="#Elminar" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                         <i class="mdi-action-delete"></i>
+                                                      </a>
                                                    </div>
                                                 </td>
                                              </tr>
@@ -394,7 +396,9 @@
                                                 </td>
                                                 <td>
                                                    <div class="col s12 m12 l12 celdaBoton">
-                                                      <a class="btn_eliminar modal-trigger" href="#Elminar"><?=label('eliminar');?></a>
+                                                      <a class="btn_eliminar modal-trigger icono-edicion" href="#Elminar" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                         <i class="mdi-action-delete"></i>
+                                                      </a>
                                                    </div>
                                                 </td>
                                              </tr>
@@ -509,7 +513,9 @@
                                                 </td>
                                                 <td>
                                                    <div class="col s12 m12 l12 celdaBoton">
-                                                      <a class="btn_eliminar modal-trigger" href="#Elminar"><?=label('eliminar');?></a>
+                                                      <a class="btn_eliminar modal-trigger icono-edicion" href="#Elminar" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                                         <i class="mdi-action-delete"></i>
+                                                      </a>
                                                    </div>
                                                 </td>
                                              </tr>
