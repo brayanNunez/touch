@@ -41,27 +41,28 @@
                               <div id="paso1" class="card card-ContenidoPasos col s12">
                                 <?php $this->load->view('cotizar/paso1'); ?>
                                  <div class="atras_adelante">
-                                    <a class="siguiente right" href="#" onclick="darclick(2);"><?=label('siguiente');?></a>
+                                    <a class="siguiente right" href="#" onclick="darclick(2);"><i class="mdi-image-navigate-next medium"></i></a>
+
                                  </div>
                               </div>
                               <div id="paso2" class="card card-ContenidoPasos col s12">
                                  <?php $this->load->view('cotizar/paso2'); ?>
                                  <div class="atras_adelante">
-                                    <a class="siguiente right" href="#" onclick="darclick(3);"><?=label('siguiente');?></a>
-                                    <a class="anterior left" href="#" onclick="darclick(1);"><?=label('anterior');?></a>
+                                    <a class="siguiente right" href="#" onclick="darclick(3);"><i class="mdi-image-navigate-next medium"></i></a>
+                                    <a class="anterior left" href="#" onclick="darclick(1);"><i class="mdi-image-navigate-before medium"></i></a>
                                  </div>
                               </div>
                               <div id="paso3" class="card card-ContenidoPasos col s12">
                                  <?php $this->load->view('cotizar/paso3'); ?>
                                  <div class="atras_adelante">
-                                    <a class="siguiente right" href="#" onclick="darclick(4);"><?=label('siguiente');?></a>
-                                    <a class="anterior left" href="#" onclick="darclick(2);"><?=label('anterior');?></a>
+                                    <a class="siguiente right" href="#" onclick="darclick(4);"><i class="mdi-image-navigate-next medium"></i></a>
+                                    <a class="anterior left" href="#" onclick="darclick(2);"><i class="mdi-image-navigate-before medium"></i></a>
                                  </div>
                               </div>
                               <div id="paso4" class="card card-ContenidoPasos col s12">
                                  <?php $this->load->view('cotizar/paso4'); ?>
                                  <div class="atras_adelante">
-                                    <a class="anterior" class="left" href="#" onclick="darclick(3);"><?=label('anterior');?></a>
+                                    <a class="anterior" class="left" href="#" onclick="darclick(3);"><i class="mdi-image-navigate-before medium"></i></a>
                                  </div>
                               </div>
                            </div>

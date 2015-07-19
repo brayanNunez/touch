@@ -150,7 +150,7 @@
     <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/materialize.min.js"></script>
     <!--scrollbar-->
     <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-  
+    <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/plugins/material-preloader/materialPreloader.js"></script>   
 
     <!-- chartist -->
     <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/plugins/chartist-js/chartist.min.js"></script>   

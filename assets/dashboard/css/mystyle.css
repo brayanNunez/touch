@@ -378,3 +378,8 @@ p{
 #listaCotizacionesCliente, #listaCotizacionesCotizador{
 margin-top: 2%;
 }
+
+
+.siguiente,.anterior{
+	color: #57923f;
+}
