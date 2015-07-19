@@ -31,12 +31,12 @@
                                         </div>
                                         <div class="input-field col s12">
                                             <input id="registro_correo" class="campo-registro" type="email"
-                                                placeholder="Escriba su correo electr�nico">
+                                                placeholder="Escriba su correo electrónico">
                                             <label for="registro_correo" class="active"><?=label('formRegistro_correo');?></label>
                                         </div>
                                         <div class="input-field col s12">
                                             <input id="registro_telefono" class="campo-registro" type="text"
-                                                placeholder="Escriba su n�mero de tel�fono">
+                                                placeholder="Escriba su número de teléfono">
                                             <label for="registro_telefono" class="active"><?=label('formRegistro_telefono');?></label>
                                         </div>
                                         <div class="input-field col s12">
@@ -51,12 +51,12 @@
                                         </div>
                                         <div class="input-field col s12">
                                             <input id="registro_contrasena" class="campo-registro" type="password"
-                                                placeholder="Escriba su contrase�a">
+                                                placeholder="Escriba su contraseña">
                                             <label for="registro_contrasena" class="active"><?=label('formRegistro_contrasena');?></label>
                                         </div>
                                         <div class="input-field col s12">
                                             <input id="registro_contrasenaConfirm" class="campo-registro" type="password"
-                                                placeholder="Confirme su contrase�a">
+                                                placeholder="Confirme su contraseña">
                                             <label for="registro_contrasenaConfirm" class="active"><?=label('formRegistro_contrasenaConfirm');?></label>
                                         </div>
                                         <div class="file-field col s12">
