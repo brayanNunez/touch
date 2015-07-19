@@ -63,6 +63,23 @@
                                             <input id="cliente_telefono" type="text" value="2456-8945">
                                             <label for="cliente_telefono"><?=label('formCliente_telefonoFijo');?></label>
                                         </div>
+
+                                        <div class="input-field col s12">
+                                            <textarea id="cliente_comentarios" class="materialize-textarea" length="120">Cliente frecuente</textarea>
+                                            <label for="cliente_comentarios"><?=label('formCliente_comentarios');?></label>
+                                        </div>
+                                        <div class="file-field col s12">
+                                            <br />
+                                            <label for="cliente_archivo"><?=label('formCliente_archivo');?></label>
+                                            <div class="file-field input-field col s12">
+                                                <input class="file-path validate" type="text" value="imagen.png"/>
+                                                <div class="btn" data-toggle="tooltip" title="<?=label('tooltip_examinar')?>">
+                                                    <span><i class="mdi-action-search"></i></span>
+                                                    <input type="file" />
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div class="input-field col s12">
                                             <label><?=label('formCliente_Contactos');?></label>
                                             <br />
