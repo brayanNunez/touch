@@ -374,3 +374,7 @@ p{
 #botonGenerarReporte{
 	width: 100%;
 }
+
+#listaCotizacionesCliente, #listaCotizacionesCotizador{
+margin-top: 2%;
+}

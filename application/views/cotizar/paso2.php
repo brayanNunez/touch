@@ -517,7 +517,7 @@
                                        </table>
                                     </div>
                                     <br>
-                                    <a href="#" class="btn btn-default">Nueva</a>
+                                    <a href="#" class="btn btn-default">Nueva linea de detalle</a>
                                     <div id="resultadoDetalles" class="col s12 m12 l12">
                                        <div class="input-field col s12 m6 l3">
                                           <div class="input-field col s12">
@@ -546,10 +546,10 @@
                                     </div>
                                     <div class="row">
                                        <div class="input-field col s12 m6 l4">
-                                          <a href="<?=base_url();?>productos/agregar" class=" left btn btn-default modal-trigger agregarElementos">Agregar producto</a>
+                                          <a href="<?=base_url();?>productos/agregar" class=" left btn btn-default modal-trigger agregarElementos">Agregar nuevo producto</a>
                                        </div>
                                        <div class="input-field col s12 m6 l4 ">
-                                          <a href="<?=base_url();?>servicios/agregar" class=" left btn btn-default modal-trigger agregarElementos">Agregar servicio</a>
+                                          <a href="<?=base_url();?>servicios/agregar" class=" left btn btn-default modal-trigger agregarElementos">Agregar nuevo servicio</a>
                                        </div>
                                     </div>
                                  </div>
