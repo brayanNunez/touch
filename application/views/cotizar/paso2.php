@@ -23,6 +23,11 @@
                   <div class="row">
                      <div class="col s12 m12 l12">
                         <div class="card" id="card-paso1"> -->
+
+
+
+
+
                            <div id="centered-table">
                               <!--  <h4 class="header">Centered Table</h4> -->
                               <div class="row">
@@ -35,117 +40,123 @@
                                     <!-- <label class="input-field" for="tags"></label -->
                                     <!-- </div> -->
 
+                                   <!--  <div class="context-menu-one box menu-1">
+                                        <strong>right click me</strong>
+                                    </div> -->
+
+
+
                                     <div id="contenerdorTablaDetalles">
                                        <table class="centered">
                                           <thead>
                                              <tr>
-                                                <th id="columna1" data-field="id">
+                                                <th class="context-menu-miItem box" id="columna1" data-field="id">
                                                    <row>
-                                                      <div class="col s12 m12 l12">
+                                                      <!-- <div class="col s12 m12 l12">
                                                          <input onclick="check('item', this)" type="checkbox" id="item0" checked>
                                                          <label  class="ver" for="item0">
                                                          </label>
-                                                      </div>
+                                                      </div> -->
                                                       <div class="col s12 m12 l12 celdaTitulo">Item</div>
                                                    </row>
                                                 </th>
-                                                <th data-field="id">
+                                                <th class="context-menu-nombre box" data-field="id">
                                                    <row>
-                                                      <div class="col s12 m12 l12">
+                                                      <!-- <div class="col s12 m12 l12">
                                                          <input onclick="check('nombre', this)" type="checkbox" id="nombre0" checked>
                                                          <label class="ver" for="nombre0">
                                                          </label>
-                                                      </div>
+                                                      </div> -->
                                                       <div class="col s12 m12 l12 celdaTitulo">
                                                          Nombre
                                                       </div>
                                                    </row>
                                                 </th>
-                                                <th data-field="id">
+                                                <th class="context-menu-descripcion box" data-field="id">
                                                    <row>
-                                                      <div class="col s12 m12 l12">
+                                                      <!-- <div class="col s12 m12 l12">
                                                          <input onclick="check('descripcion', this)" type="checkbox" id="descripcion0" checked>
                                                          <label class="ver" for="descripcion0">
                                                          </label>
-                                                      </div>
+                                                      </div> -->
                                                       <div class="col s12 m12 l12 celdaTitulo">
                                                          Descripción
                                                       </div>
                                                    </row>
                                                 </th>
-                                                <th data-field="id">
+                                                <th class="context-menu-imagen box" data-field="id">
                                                    <row>
-                                                      <div class="col s12 m12 l12">
+                                                      <!-- <div class="col s12 m12 l12">
                                                          <input onclick="check('imagen', this)" type="checkbox" id="imagen0" checked>
                                                          <label class="ver" for="imagen0">
                                                          </label>
-                                                      </div>
+                                                      </div> -->
                                                       <div class="col s12 m12 l12 celdaTitulo">
                                                          Imagen
                                                       </div>
                                                    </row>
                                                 </th>
-                                                <th data-field="id">
+                                                <th class="context-menu-precio box" data-field="id">
                                                    <row>
-                                                      <div class="col s12 m12 l12">
+                                                      <!-- <div class="col s12 m12 l12">
                                                          <input onclick="check('precio', this)" type="checkbox" id="precio0" checked>
                                                          <label class="ver" for="precio0">
                                                          </label>
-                                                      </div>
+                                                      </div> -->
                                                       <div class="col s12 m12 l12 celdaTitulo">
                                                          Precio unitario
                                                       </div>
                                                    </row>
                                                 </th>
-                                                <th data-field="id">
+                                                <th class="context-menu-cantidad box" data-field="id">
                                                    <row>
-                                                      <div class="col s12 m12 l12">
+                                                      <!-- <div class="col s12 m12 l12">
                                                          <input onclick="check('cantidad', this)" type="checkbox" id="cantidad0" checked>
                                                          <label class="ver" for="cantidad0">
                                                          </label>
-                                                      </div>
+                                                      </div> -->
                                                       <div class="col s12 m12 l12 celdaTitulo">
                                                          Cantidad
                                                       </div>
                                                    </row>
                                                 </th>
-                                                <th data-field="id">
+                                                <th class="context-menu-impuestoVenta box" data-field="id">
                                                    <row>
-                                                      <div class="col s12 m12 l12">
+                                                      <!-- <div class="col s12 m12 l12">
                                                          <input onclick="check('impuestoVenta', this)" type="checkbox" id="impuestoVenta0" checked>
                                                          <label class="ver" for="impuestoVenta0">
                                                          </label>
-                                                      </div>
+                                                      </div> -->
                                                       <div class="col s12 m12 l12 celdaTitulo">
                                                          Impuesto de venta
                                                       </div>
                                                    </row>
                                                 </th>
-                                                <th data-field="id">
+                                                <th class="context-menu-utilidad box" data-field="id">
                                                    <row>
-                                                      <div class="col s12 m12 l12">
+                                                      <!-- <div class="col s12 m12 l12">
                                                          <input onclick="check('utilidad', this)" type="checkbox" id="utilidad0" checked>
                                                          <label class="ver" for="utilidad0">
                                                          </label>
-                                                      </div>
+                                                      </div> -->
                                                       <div class="col s12 m12 l12 celdaTitulo">
                                                          Utilidad
                                                       </div>
                                                    </row>
                                                 </th>
-                                                <th data-field="id">
+                                                <th class="context-menu-subTotal box" data-field="id">
                                                    <row>
-                                                      <div class="col s12 m12 l12">
+                                                      <!-- <div class="col s12 m12 l12">
                                                          <input onclick="check('subTotal', this)" type="checkbox" id="subTotal0" checked>
                                                          <label class="ver" for="subTotal0">
                                                          </label>
-                                                      </div>
+                                                      </div> -->
                                                       <div class="col s12 m12 l12 celdaTitulo">
                                                          SubTotal
                                                       </div>
                                                    </row>
                                                 </th>
-                                                <th data-field="id">
+                                                <th class="" data-field="id">
                                                    <row>
                                                       <div class="col s12 m12 l12">
                                                          <!-- <input type="checkbox" id="subTotal0" checked>
@@ -588,6 +599,24 @@
      };
    }
 </script>
+
+<script>
+   function check(nombre) {
+     var lista = document.getElementsByClassName(nombre);
+         for (var i = 0; i < lista.length; i++) {
+           lista[i].checked = true;
+         };
+   }
+   function quitarCheck(nombre) {
+     var lista = document.getElementsByClassName(nombre);
+         for (var i = 0; i < lista.length; i++) {
+           lista[i].checked = false;
+         };
+   }
+
+
+</script>
+
 <script>
    $(function() {
      var availableTags = [
@@ -619,6 +648,269 @@
      });
    });
 </script>
+
+
+
+
+ <script type="text/javascript" class="showcase">
+$(function(){
+    $.contextMenu({
+        selector: '.context-menu-miItem', 
+        callback: function(key, options) {
+            if (key=='check') {
+               check('item');
+            };
+            
+            if (key=='noCheck') {
+               quitarCheck('item');
+            };
+            
+            // window.console && console.log(m) || alert(m); 
+        },
+        items: {
+            "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
+            "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
+            "noCheck": {name: "No mostrar esta columna", icon: "delete"},
+            "check": {name: "Mostrar esta columna", icon: "delete"},
+            "Salir": {name: "Salir", icon: "quit"}
+        }
+    });
+    
+    $('.context-menu-miItem').on('click', function(e){
+        console.log('clicked', this);
+    })
+});
+
+$(function(){
+    $.contextMenu({
+        selector: '.context-menu-nombre', 
+        callback: function(key, options) {
+            if (key=='check') {
+               check('nombre');
+            };
+            
+            if (key=='noCheck') {
+               quitarCheck('nombre');
+            };
+            
+            // window.console && console.log(m) || alert(m); 
+        },
+        items: {
+            "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
+            "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
+            "noCheck": {name: "No mostrar esta columna", icon: "delete"},
+            "check": {name: "Mostrar esta columna", icon: "delete"},
+            "Salir": {name: "Salir", icon: "quit"}
+        }
+    });
+    
+    $('.context-menu-nombre').on('click', function(e){
+        console.log('clicked', this);
+    })
+});
+
+$(function(){
+    $.contextMenu({
+        selector: '.context-menu-descripcion', 
+        callback: function(key, options) {
+            if (key=='check') {
+               check('descripcion');
+            };
+            
+            if (key=='noCheck') {
+               quitarCheck('descripcion');
+            };
+            
+            // window.console && console.log(m) || alert(m); 
+        },
+        items: {
+            "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
+            "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
+            "noCheck": {name: "No mostrar esta columna", icon: "delete"},
+            "check": {name: "Mostrar esta columna", icon: "delete"},
+            "Salir": {name: "Salir", icon: "quit"}
+        }
+    });
+    
+    $('.context-menu-descripcion').on('click', function(e){
+        console.log('clicked', this);
+    })
+});
+
+$(function(){
+    $.contextMenu({
+        selector: '.context-menu-imagen', 
+        callback: function(key, options) {
+            if (key=='check') {
+               check('imagen');
+            };
+            
+            if (key=='noCheck') {
+               quitarCheck('imagen');
+            };
+            
+            // window.console && console.log(m) || alert(m); 
+        },
+        items: {
+            "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
+            "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
+            "noCheck": {name: "No mostrar esta columna", icon: "delete"},
+            "check": {name: "Mostrar esta columna", icon: "delete"},
+            "Salir": {name: "Salir", icon: "quit"}
+        }
+    });
+    
+    $('.context-menu-imagen').on('click', function(e){
+        console.log('clicked', this);
+    })
+});
+
+$(function(){
+    $.contextMenu({
+        selector: '.context-menu-precio', 
+        callback: function(key, options) {
+            if (key=='check') {
+               check('precio');
+            };
+            
+            if (key=='noCheck') {
+               quitarCheck('precio');
+            };
+            
+            // window.console && console.log(m) || alert(m); 
+        },
+        items: {
+            "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
+            "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
+            "noCheck": {name: "No mostrar esta columna", icon: "delete"},
+            "check": {name: "Mostrar esta columna", icon: "delete"},
+            "Salir": {name: "Salir", icon: "quit"}
+        }
+    });
+    
+    $('.context-menu-precio').on('click', function(e){
+        console.log('clicked', this);
+    })
+});
+
+$(function(){
+    $.contextMenu({
+        selector: '.context-menu-cantidad', 
+        callback: function(key, options) {
+            if (key=='check') {
+               check('cantidad');
+            };
+            
+            if (key=='noCheck') {
+               quitarCheck('cantidad');
+            };
+            
+            // window.console && console.log(m) || alert(m); 
+        },
+        items: {
+            "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
+            "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
+            "noCheck": {name: "No mostrar esta columna", icon: "delete"},
+            "check": {name: "Mostrar esta columna", icon: "delete"},
+            "Salir": {name: "Salir", icon: "quit"}
+        }
+    });
+    
+    $('.context-menu-cantidad').on('click', function(e){
+        console.log('clicked', this);
+    })
+});
+
+$(function(){
+    $.contextMenu({
+        selector: '.context-menu-impuestoVenta', 
+        callback: function(key, options) {
+            if (key=='check') {
+               check('impuestoVenta');
+            };
+            
+            if (key=='noCheck') {
+               quitarCheck('impuestoVenta');
+            };
+            
+            // window.console && console.log(m) || alert(m); 
+        },
+        items: {
+            "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
+            "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
+            "noCheck": {name: "No mostrar esta columna", icon: "delete"},
+            "check": {name: "Mostrar esta columna", icon: "delete"},
+            "Salir": {name: "Salir", icon: "quit"}
+        }
+    });
+    
+    $('.context-menu-impuestoVenta').on('click', function(e){
+        console.log('clicked', this);
+    })
+});
+
+$(function(){
+    $.contextMenu({
+        selector: '.context-menu-utilidad', 
+        callback: function(key, options) {
+            if (key=='check') {
+               check('utilidad');
+            };
+            
+            if (key=='noCheck') {
+               quitarCheck('utilidad');
+            };
+            
+            // window.console && console.log(m) || alert(m); 
+        },
+        items: {
+            "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
+            "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
+            "noCheck": {name: "No mostrar esta columna", icon: "delete"},
+            "check": {name: "Mostrar esta columna", icon: "delete"},
+            "Salir": {name: "Salir", icon: "quit"}
+        }
+    });
+    
+    $('.context-menu-utilidad').on('click', function(e){
+        console.log('clicked', this);
+    })
+});
+
+
+$(function(){
+    $.contextMenu({
+        selector: '.context-menu-subTotal', 
+        callback: function(key, options) {
+            if (key=='check') {
+               check('subTotal');
+            };
+            
+            if (key=='noCheck') {
+               quitarCheck('subTotal');
+            };
+            
+            // window.console && console.log(m) || alert(m); 
+        },
+        items: {
+            "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
+            "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
+            "noCheck": {name: "No mostrar esta columna", icon: "delete"},
+            "check": {name: "Mostrar esta columna", icon: "delete"},
+            "Salir": {name: "Salir", icon: "quit"}
+        }
+    });
+    
+    $('.context-menu-subTotal').on('click', function(e){
+        console.log('clicked', this);
+    })
+});
+
+
+
+    </script>
+
+
 <div id="Elminar" class="modal">
    <div class="modal-header">
       <p><?=label('nombreSistema');?></p>
