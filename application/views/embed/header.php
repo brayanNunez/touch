@@ -40,7 +40,7 @@
     <script src="<?=base_url()?>assets/dashboard/js/jquery.realperson.js"></script>
     <script>
         $(function() {
-            $('#defaultReal').realperson({length: 8, regenerate: '<?=label("cambiar_captcha")?>'});
+            $('#defaultReal').realperson({length: 6, regenerate: '<?=label("cambiar_captcha")?>'});
         });
     </script>
 
