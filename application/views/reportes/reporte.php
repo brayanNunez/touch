@@ -31,7 +31,7 @@
 	                           </div>
 	                           <div class="input-field col s12 m3 l3">
 	                              <div class="input-field col s12">
-	                              	Hasta
+	                              	Hasta:
 	                                 <input id="last_name" type="date">
 	                                 <!-- <label for="last_name" class="">Número</label> -->
 	                              </div>
@@ -40,43 +40,49 @@
 	                           	 <div class="input-field col s12 m6 l6">
 	                           	 <br>
 	                              <select class="input-field col s12">
-	                                 <option value="" disabled selected>Estado</option>
-	                                 <option value="1">Todos</option>
+<!--	                                 <option value="" disabled selected>Estado</option>-->
+	                                 <option value="1" selected>Todos</option>
 	                                 <option value="2">Enviada</option>
 	                                 <option value="3">Finalizada</option>
 	                                 <option value="4">Rechazada</option>
 	                              </select>
-	                              <label>Seleccione el estado</label>
+	                              <label>Estado de la cotización</label>
 	                           </div>
-
-	                        </div>
-	                        
-	                        <div class="row">
-	                           <div class="input-field col s12 m6 l6">
+	                           <div class="input-field col s12 m4 l4">
 	                              <select class="input-field col s12">
-	                                 <option value="" disabled selected>Cliente</option>
-	                                 <option value="1">Todos</option>
+<!--	                                 <option value="" disabled selected>Cliente</option>-->
+	                                 <option value="1" selected>Todos</option>
 	                                 <option value="2">Juan Alfaro Alfaro</option>
 	                                 <option value="3">Diego Rojas</option>
 	                              </select>
-	                              <label>Seleccione el cliente</label>
+	                              <label>Clientes</label>
 	                           </div>
-	                           <div class="input-field col s12 m6 l6">
+	                           <div class="input-field col s12 m4 l4">
 	                              <select class="input-field col s12">
-	                                 <option value="" disabled selected>Empleado</option>
-	                                 <option value="1">Todos</option>
+<!--	                                 <option value="" disabled selected>Empleados</option>-->
+	                                 <option value="1" selected>Todos</option>
 	                                 <option value="2">Juan Carlos Porras</option>
 	                                 <option value="3">Ana Bolaños Rojas</option>
 	                              </select>
-	                              <label>Seleccione el cotizador</label>
+	                              <label>Vendedores</label>
 	                           </div>
+                               <div class="input-field col s12 m4 l4">
+                                  <select id="reporte-cliente" class="input-field col s12">
+<!--                                     <option value="" disabled selected>Outsourcing</option>-->
+                                     <option value="1" selected>Todos</option>
+                                     <option value="2">Transportes Rojas</option>
+                                     <option value="3">Música en vivo</option>
+                                  </select>
+                                  <label for="reporte-cliente">Proveedores</label>
+                               </div>
 	                        </div>
 	                    </div>
-	                    <hr>
-	                    <a id="botonGenerarReporte" href="#" class="btn btn-default">Generar reporte</a>
-	                    <hr>
+      	                <div class="section reporte-generar">
+                           <a href="#" class="btn btn-default">Generar reporte</a>
+	                    </div>
+                        <hr>
 
-	                    <div id="table-datatables">
+	                    <div id="table-datatables" style="margin-top: 3%;">
                            <!-- <h4 class="header">DataTables example</h4> -->
                            <div class="row">
                               <!-- <div class="col s12 m4 l3">

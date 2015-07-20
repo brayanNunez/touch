@@ -22,46 +22,59 @@
                      <div class="card" id="card-reporte">
 	                    <div id="formGeneral" class="section">
 	                        <div class="row">
-	                           <div class="input-field col s12 m3 l3">
-	                              <div class="input-field col s12">
-                                     <input id="reporte-desde" type="date" class="datepicker">
-                                     <label for="reporte-desde"><?=label('Desde');?></label>
-	                              </div>
-	                           </div>
-	                           <div class="input-field col s12 m3 l3">
-	                              <div class="input-field col s12">
-                                     <input type="date" class="datepicker">
-                                     <label for=""><?=label('Hasta');?></label>
-	                              </div>
-	                           </div>
+                               <div class="input-field col s12 m3 l3">
+                                  <div class="input-field col s12">
+                                     Desde:
+                                     <input id="last_name" type="date">
+                                     <!-- <label for="last_name" class="">aaaaa</label> -->
+                                  </div>
+                               </div>
+                               <div class="input-field col s12 m3 l3">
+                                  <div class="input-field col s12">
+                                     Hasta:
+                                     <input id="last_name" type="date">
+                                     <!-- <label for="last_name" class="">Número</label> -->
+                                  </div>
+                               </div>
+
                                <div class="input-field col s12 m6 l6">
-                                  <select id="reporte-estado" class="input-field col s12">
-	                                 <option value="" disabled selected>Estado</option>
-	                                 <option value="1">Todos</option>
-	                                 <option value="2">Enviada</option>
-	                                 <option value="3">Finalizada</option>
-	                                 <option value="4">Rechazada</option>
-	                              </select>
-	                              <label for="reporte-estado">Seleccione uno</label>
-	                           </div>
-	                           <div class="input-field col s12 m6 l6">
-	                              <select id="reporte-cliente" class="input-field col s12">
-	                                 <option value="" disabled selected>Outsourcing</option>
-	                                 <option value="1">Todos</option>
-	                                 <option value="2">Transportes Rojas</option>
-	                                 <option value="3">Música en vivo</option>
-	                              </select>
-	                              <label for="reporte-cliente">Seleccione uno</label>
-	                           </div>
-	                           <div class="input-field col s12 m6 l6">
-	                              <select id="reporte-cotizador" class="input-field col s12">
-	                                 <option value="" disabled selected>Empleado</option>
-	                                 <option value="1">Todos</option>
-	                                 <option value="2">Juan Carlos Porras</option>
-	                                 <option value="3">Ana Bolaños Rojas</option>
-	                              </select>
-	                              <label for="reporte-cotizador">Seleccione uno</label>
-	                           </div>
+                                  <br>
+                                  <select class="input-field col s12">
+                                     <!--	                                 <option value="" disabled selected>Estado</option>-->
+                                     <option value="1" selected>Todos</option>
+                                     <option value="2">Enviada</option>
+                                     <option value="3">Finalizada</option>
+                                     <option value="4">Rechazada</option>
+                                  </select>
+                                  <label>Estado de la cotización</label>
+                               </div>
+                               <div class="input-field col s12 m4 l4">
+                                  <select class="input-field col s12">
+                                     <!--	                                 <option value="" disabled selected>Cliente</option>-->
+                                     <option value="1" selected>Todos</option>
+                                     <option value="2">Juan Alfaro Alfaro</option>
+                                     <option value="3">Diego Rojas</option>
+                                  </select>
+                                  <label>Clientes</label>
+                               </div>
+                               <div class="input-field col s12 m4 l4">
+                                  <select class="input-field col s12">
+                                     <!--	                                 <option value="" disabled selected>Empleados</option>-->
+                                     <option value="1" selected>Todos</option>
+                                     <option value="2">Juan Carlos Porras</option>
+                                     <option value="3">Ana Bolaños Rojas</option>
+                                  </select>
+                                  <label>Vendedores</label>
+                               </div>
+                               <div class="input-field col s12 m4 l4">
+                                  <select id="reporte-cliente" class="input-field col s12">
+                                     <!--                                     <option value="" disabled selected>Outsourcing</option>-->
+                                     <option value="1" selected>Todos</option>
+                                     <option value="2">Transportes Rojas</option>
+                                     <option value="3">Música en vivo</option>
+                                  </select>
+                                  <label for="reporte-cliente">Proveedores</label>
+                               </div>
                                <div class="input-field col s12 m6 l6">
                                   <label><?=label('formCliente_gustos_preferencias');?></label>
                                   <br />
@@ -237,6 +250,9 @@
                                              </a>
                                              <a class="btn_ver icono-edicion" href="<?=base_url()?>cotizacion/cotizar" data-toggle="tooltip" title="<?=label('tooltip_duplicar')?>">
                                                 <i class="mdi-editor-mode-edit"></i>
+                                             </a>
+                                             <a class="btn_finalizar modal-trigger icono-edicion" href="#" data-toggle="tooltip" title="<?=label('tooltip_finalizar')?>">
+                                                <i class="mdi-action-done"></i>
                                              </a>
                                              <a class="btn_eliminar modal-trigger icono-edicion" href="#" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
                                                 <i class="mdi-action-delete"></i>
