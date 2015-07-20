@@ -21,7 +21,7 @@
                                     </li>
                                 </ul>
                                 <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown">Emanuel Conejo &darr;<i class="mdi-navigation-arrow-drop-down right"></i></a>
-                                <p class="user-roal">Administrator</p>
+                                <p class="user-roal">Administrador</p>
                             </div>
                         </div>
                     </li>
