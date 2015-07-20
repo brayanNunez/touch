@@ -210,11 +210,12 @@
                                         </div>
 
                                         <div class="col-sm-12 col-md-12">
-                                            <p>Código del embed generado</p>
+                                            <!--<p>Código del embed generado</p>
                                             <div class="bloque-embed-codigo-generado">
-                                            
                                                 <p>http://localhost/Proyectos/touch/embed/embedCotizar</p>
-                                            </div>
+                                            </div>-->
+                                            <textarea class="bloque-embed-codigo-generado" readonly style="height:80px;"><a class="embedly-card" href="http://mrrabbit.cr/clientes/touch/inicio">Touch!</a><script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
+                                            </textarea>
                                         </div>
                                         <div class="input-field col s12 envio-formulario">
                                             <a href="<?=base_url()?>embed/embedCotizar" class="btn waves-effect waves-light right" ><?=label('copiarCodigo');?>
