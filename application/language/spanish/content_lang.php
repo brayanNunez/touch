@@ -203,7 +203,7 @@ $lang['listarReporteCot'] = 'Reportes cotizaciones';
     $lang['Cliente_tablaTipo'] = 'Identificación';
     $lang['Cliente_tablaTelefono'] = 'Teléfono';
     $lang['Cliente_tablaCorreo'] = 'Correo electrónico';
-    $lang['Cliente_tablaCotizador'] = 'Cotizador';
+    $lang['Cliente_tablaCotizador'] = 'Vendedor';
     $lang['Cliente_tablaOpciones'] = 'Opciones';
     $lang['Cliente_nuevo'] = 'Agregar nuevo';
 	$lang['formCliente_tipoPersona'] = 'Tipo de persona';
@@ -230,7 +230,7 @@ $lang['listarReporteCot'] = 'Reportes cotizaciones';
 	$lang['formCliente_agregarNuevo'] = 'Agregar';
 	$lang['formCliente_estadoMedio'] = 'Estado';
 	$lang['formCliente_nuevoMedio'] = 'Nuevo medio';
-	$lang['formCliente_cotizador'] = 'Cotizador';
+	$lang['formCliente_cotizador'] = 'Vendedor';
 	$lang['formCliente_comentarios'] = 'Comentarios';
 	$lang['formCliente_archivo'] = 'Archivo';
 
