@@ -21,7 +21,7 @@
                 <div class="col s12 m12 l12">
                     <div id="submit-button" class="section">
                         <div class="row">
-                            <div class="col s12 m12 l8">
+                            <div class="col s12 m8 l8 offset-m2 offset-l2">
                                 <form class="col s12">
                                     <div class="row">
 
@@ -70,9 +70,7 @@
                                         </div>
 
                                         <div class="input-field col s12 envio-formulario">
-                                           <!--  <a href="<?= base_url() ?>embed/embedCotizar"> -->
-                                            <button class="btn waves-effect waves-light right" type="" name="action"><?=label('formEmbedProducto_cerrar');?>
-                                            </button>
+                                            <a class="btn waves-effect waves-light center" href="<?= base_url() ?>embed/embedCotizar"><?=label('formEmbedProducto_cerrar');?></a>
                                         </div>
 
                                     </div>

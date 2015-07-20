@@ -44,7 +44,7 @@
                                                         <div id="table-datatables">
                                                             <div id="table-embed" class="row">
                                                                 <div class="col s12 m12 l12">
-                                                                    <table id="data-table-simple" class="responsive-table display" cellspacing="0">
+                                                                    <table id="data-table-simple" class="table table-striped display" cellspacing="0">
                                                                         <thead>
                                                                         <tr>
                                                                             <th><?=label('ListaEmbed_tablaNombre');?></th>
