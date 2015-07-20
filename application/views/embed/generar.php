@@ -217,7 +217,7 @@
                                             </div>
                                         </div>
                                         <div class="input-field col s12 envio-formulario">
-                                            <a href="<?=base_url()?>embed/embedFormulario" class="btn waves-effect waves-light right" ><?=label('copiarCodigo');?>
+                                            <a href="<?=base_url()?>embed/embedCotizar" class="btn waves-effect waves-light right" ><?=label('copiarCodigo');?>
                                             </a>
                                         </div>
 

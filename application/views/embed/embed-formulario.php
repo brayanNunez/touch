@@ -23,7 +23,7 @@
                 <div class="col s12 m12 l12">
                     <div id="submit-button" class="section">
                         <div class="row">
-                            <div class="col s12 m12 l8">
+                            <div class="col s12 m8 l8 offset-m2 offset-l2">
                                 <form class="col s12">
                                     <div class="row">
 
@@ -47,11 +47,8 @@
                                             <label for="embed_detalle"><?=label('formEmbed_detalle');?></label>
                                         </div>
 
-                                        <div class="col sm12 md12 bloque-captcha">
-                                            <div class="captcha">
-                                                <img class="responsive-img" src="<?=base_url()?>assets/dashboard/images/captcha.png" alt=""/>
-                                            </div>
-                                            <input type="text" name=""/><label for="">Ingrese el captcha</label>
+                                        <div class="input-field col s12 campo-captcha">
+                                            <input type="text" id="defaultReal" name="defaultReal" class="campo-registro">
                                         </div>
 
                                         <div class="input-field col s12 envio-formulario">
