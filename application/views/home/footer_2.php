@@ -121,7 +121,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12 m12 l12  login-text">
-                            <input type="checkbox" id="remember-me" />
+                            <input class="filled-in" type="checkbox" id="remember-me" />
                             <label for="remember-me"><?=label('recordar')?></label>
                         </div>
                     </div>

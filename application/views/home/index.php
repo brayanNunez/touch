@@ -40,7 +40,7 @@
 
     </section>
 
-    <section>
+    <section class="number-users">
         <div class="container">
             <div class="row mb40 mb-xs-0">
                 <div class="col-sm-12 text-center">
@@ -150,7 +150,7 @@
                         <input type="text" class="campo-registro" name="name" placeholder="Nombre">
                         <input type="text" class="campo-registro" name="email" placeholder="Correo electrónico">
                         <textarea class="campo-registro" name="message" placeholder="Message"></textarea>
-                        <input type="submit" value="Enviar">
+                        <input id="send-message" type="submit" value="Enviar">
                     </form>
                 </div>
             </div>

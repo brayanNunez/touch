@@ -28,6 +28,8 @@ a.boton-registro { background-color: white; border: 2px solid #47b475; line-heig
 input.campo-registro:focus { outline: 0; }
 a.footer-link { color: white !important; }
 div#login-page { width: 35% !important; max-height: 75% !important; }
+div#login-page input#username:focus { outline: none; }
+div#login-page input#password:focus { outline: none; }
 section.slider-inicio { position: relative !important; height: 577px !important; }
 /*div.pricing-table a.btn { background-color: #47b475 !important; }*/
 a.boton-claro { background-color: transparent !important; height: 50px !important; line-height: 50px !important; }
@@ -42,4 +44,35 @@ div.modal-header a.cerrar-modal { color: white; position: fixed; top: 0; right: 
 div.realperson-text { text-align: center !important; min-height: 35px; }
 div.campo-captcha { margin-top: 6% !important; }
 div.realperson-regen { font-size: initial; margin-top: 10px; color: blue; }
-/*div.realperson-text { min-height: 21px; max-width: 300px; display: block; margin: 0 auto; }*/
+div.realperson-text { display: block; margin: 0 auto; }
+
+@media (max-width: 480px) {
+    section.slider-inicio { height:auto !important; /*margin-top: 43px !important;*/ }
+    /*div.nav-bar.nav-open { height: 150px; }*/
+    div.mobile-toggle { border: none !important; }
+    div.mobile-toggle i.ti-menu { color: #666 !important; }
+    div.module-group.right { background-color: #a8a8a8; color: white; }
+    ul.mega-menu { position: fixed !important; }
+    div.imagen-inicio img { margin-left: 0% !important; }
+    section.bg-primary { padding-top: 5%; }
+    section.number-users { padding: 5% 0%; }
+    div.nav-utility div.module { padding: 0% 1%; }
+    div.nav-utility div.module.right a.btn { padding: 0px 2px !important; border-radius: 15px !important; border: none; font-size: 9px; }
+    section#planes { padding: 5% 0%; }
+    section#planes div.container div.row div.text-center p { margin-bottom: 5%; }
+    section#planes div.container div.row div.pricing-table { padding: 10px 32px; }
+    section#contacto { padding: 5% 0%; }
+    section#contacto textarea { height: 80px; padding: 0%; border-bottom: 1px solid #777777;}
+    section#contacto textarea:focus { outline: 0px; border-bottom: 2px solid black; }
+    input#send-message { width: 75%; display: block; margin: 0 auto; margin-top: 20px; border-radius: 50px !important; }
+    section.bg-dark.bg-secondary { padding: 5% 0%; }
+    section.bg-dark.bg-secondary div.row.home i { margin: 20px 0px 20px 45%; }
+    section.bg-dark.bg-secondary div.row.home h6 { text-align: center; }
+    section.bg-dark.bg-secondary div.row.home ul { text-align: center; margin-top: 20px; }
+    div#login-page { width: 95% !important; top: 0% !important; }
+    nav#nav-principal { height: 100px; }
+    div.realperson-text br { display: block; }
+    .file-field input.file-path { margin-left: 22% !important; width: 85% !important; }
+    div.file-field div.btn { min-width: 30px !important; width: 40px; height: 40px; padding: 5px 5px; top: 0; }
+    div.file-field div.btn i { height: 5px; margin-top: -5px; }
+}

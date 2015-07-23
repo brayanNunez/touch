@@ -60,7 +60,7 @@
     <script src="<?=base_url()?>assets/dashboard/js/jquery.realperson.js"></script>
     <script>
         $(function() {
-            $('#defaultReal').realperson({length: 8, regenerate: '<?=label("cambiar_captcha")?>'});
+            $('#defaultReal').realperson({length: 6, regenerate: '<?=label("cambiar_captcha")?>'});
         });
     </script>
 
@@ -77,7 +77,7 @@
 <!--     End Page Loading-->
 
 <div class="nav-container">
-    <nav style="background-color: white; box-shadow: none;">
+    <nav id="nav-principal" style="background-color: white; box-shadow: none;">
         <div class="nav-utility">
             <div class="module left menu-nosotros">
                 <i class="ti-email">&nbsp;</i>
@@ -105,7 +105,7 @@
                             <a href="<?=base_url()?>welcome/faq">FAQ</a>
                         </li>
                         <li class="has-dropdown nosotros">
-                            <a>nosotros</a>
+                            <a class="nav-nosotros">nosotros</a>
                             <ul class="mega-menu">
                                 <li>
                                     <span class="title">touch!</span>

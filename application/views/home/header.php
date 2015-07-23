@@ -26,7 +26,7 @@
 <body class="btn-rounded">
 
 <div class="nav-container">
-    <nav style="background-color: white; box-shadow: none;">
+    <nav id="nav-principal" style="background-color: white; box-shadow: none;">
         <div class="nav-utility">
             <div class="module left menu-nosotros">
                 <i class="ti-email">&nbsp;</i>
@@ -54,7 +54,7 @@
                             <a href="<?=base_url()?>welcome/faq">FAQ</a>
                         </li>
                         <li class="has-dropdown nosotros">
-                            <a class="nav-nosotros" >nosotros</a>
+                            <a class="nav-nosotros">nosotros</a>
                             <ul class="mega-menu">
                                 <li>
                                     <span class="title">touch!</span>
