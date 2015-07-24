@@ -3,7 +3,7 @@
                  style="width: 1170px !important; margin-right: auto !important; margin-left: auto !important;">
 
                 <div class="row home">
-                    <div class="col-md-3 col-sm-6 mb-xs-24">
+                    <div class="col-md-3 col-sm-3 mb-xs-24">
                         <i class="icon mb32 ti-pie-chart"></i>
                         <h6 class="uppercase">Sobre Touch!</h6>
                         <ul>
@@ -16,7 +16,7 @@
                             <li><a class="footer-link" href="<?=base_url()?>welcome/terminos">Términos y condiciones de uso</a></li>
                         </ul>
                     </div>
-                    <div class="col-md-3 col-sm-6 mb-xs-24">
+                    <div class="col-md-3 col-sm-3 mb-xs-24">
                         <i class="icon mb32 ti-announcement"></i>
                         <h6 class="uppercase">PLANES</h6>
                         <ul>
@@ -25,7 +25,7 @@
                             <li><a class="footer-link" href="<?=base_url()?>welcome/index/#planes">Médotos de pago</a></li>
                         </ul>
                     </div>
-                    <div class="col-md-3 col-sm-6 mb-xs-24">
+                    <div class="col-md-3 col-sm-3 mb-xs-24">
                         <i class="icon mb32 ti-menu-alt"></i>
                         <h6 class="uppercase">Beneficios Touch!</h6>
                         <ul>
@@ -37,7 +37,7 @@
                             <li>Mucho más...</li>
                         </ul>
                     </div>
-                    <div class="col-md-3 col-sm-6 mb-xs-24">
+                    <div class="col-md-3 col-sm-3 mb-xs-24">
                         <i class="icon mb32 ti-info-alt"></i>
                         <h6 class="uppercase"><a class="footer-link" href="<?=base_url()?>welcome/index/#contacto">Contáctenos</a></h6>
                         <ul>

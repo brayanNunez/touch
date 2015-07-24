@@ -77,7 +77,7 @@
             </div>
 
             <div class="row">
-                <div class="col-md-4 col-sm-6">
+                <div class="col-md-4 col-sm-4">
                     <div class="pricing-table pt-2 text-center">
                         <h5 class="uppercase">30 días gratis</h5>
                         <span class="price">$0</span>
@@ -92,7 +92,7 @@
                     </div>
 
                 </div>
-                <div class="col-md-4 col-sm-6">
+                <div class="col-md-4 col-sm-4">
                     <div class="pricing-table pt-2 boxed text-center">
                         <h5 class="uppercase">Básico</h5>
                         <span class="price">$12</span>
@@ -107,7 +107,7 @@
                     </div>
 
                 </div>
-                <div class="col-md-4 col-sm-6">
+                <div class="col-md-4 col-sm-4">
                     <div class="pricing-table pt-2 emphasis text-center">
                         <h5 class="uppercase">avanzado</h5>
                         <span class="price">$22</span>
@@ -132,7 +132,7 @@
     <section id="contacto">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 col-md-5" style="margin-left: 5% !important;">
+                <div class="col-xs-8 col-sm-4 col-md-5 col-xs-offset-2 col-sm-offset-1 col-md-offset-1" style="text-align: center;">
                     <h4 class="uppercase">Keep in Touch!</h4>
                     <p>
                         Estaremos muy felices y atentos esperando tu contacto</p>
@@ -142,7 +142,7 @@
                     <p><strong>C:</strong> hello@touchcr.com &nbsp; &nbsp; &nbsp;<br><strong>T:</strong> +506 24542407 &nbsp; &nbsp; &nbsp;<br>
                     </p>
                 </div>
-                <div class="col-sm-6 col-md-5 col-md-offset-1">
+                <div class="col-xs-10 col-sm-6 col-md-5 col-xs-offset-1 col-sm-offset-1 col-md-offset-1" style="margin-top: 3%;">
                     <form class="form-email" data-success="Excelente! Estaremos en contacto pronto! Keep in Touch!" data-error="Debes ingresar la información solicitada!" success-redirect="hello@touchcr.com">
 <!--                        <input type="text" class="validate-required" name="name" placeholder="Nombre">-->
 <!--                        <input type="text" class="validate-required validate-email" name="email" placeholder="Correo electrónico">-->
