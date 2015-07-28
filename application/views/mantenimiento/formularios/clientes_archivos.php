@@ -1,4 +1,4 @@
-<div id="tableHeader">
+<div id="tableHeader" style="margin-bottom: 2%;">
     <div class="new-file">
         <a href="#agregarArchivo" class="btn btn-default modal-trigger"><?=label('clientes_archivoNuevo');?></a>
     </div>
