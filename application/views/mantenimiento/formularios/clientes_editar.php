@@ -7,7 +7,6 @@
             <div class="row">
                 <div class="col s12 m12 l12">
                     <h1 class="breadcrumbs-title"><?=label('tituloFormularioClienteEditar');?></h1>
-
                 </div>
             </div>
         </div>
@@ -22,14 +21,11 @@
                     <div id="submit-button" class="section">
                         <div class="row">
                             <div class="col s12 m12 l8">
-
-                                
-                                
                                 <form class="col s12">
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <select>
-                                                <option value="" selected disabled><?=label('formCliente_seleccioneUno');?></option>
+                                                <option value="" disabled><?=label('formCliente_seleccioneUno');?></option>
                                                 <option value="1"><?=label('formCliente_fisica');?></option>
                                                 <option value="2" selected><?=label('formCliente_juridica');?></option>
                                             </select>
@@ -290,79 +286,7 @@
                                             </button>
                                         </div>
                                     </div>
-
-                                    <div class="card lista-elementos" id="listaCotizacionesCliente">
-                                     <p>Lista de cotizaciones realizadas a este cliente</p>
-                                        <table id="data-table-simple" class="responsive-table display" cellspacing="0">
-                                            <thead>
-                                               <tr>
-                                                  <th><?=label('tablaCotizaciones_codigo');?></th>
-                                                  <th><?=label('tablaCotizaciones_fecha');?></th>
-                                                  <th><?=label('tablaCotizaciones_cliente');?></th>
-                                                  <th><?=label('tablaCotizaciones_monto');?></th>
-                                                  <th><?=label('tablaCotizaciones_estado');?></th>
-                                                  <th><?=label('tablaCotizaciones_opciones');?></th>
-                                               </tr>
-                                            </thead>
-                                            <tfoot>
-                                               <tr>
-                                                  <th><?=label('tablaCotizaciones_codigo');?></th>
-                                                  <th><?=label('tablaCotizaciones_fecha');?></th>
-                                                  <th><?=label('tablaCotizaciones_cliente');?></th>
-                                                  <th><?=label('tablaCotizaciones_monto');?></th>
-                                                  <th><?=label('tablaCotizaciones_estado');?></th>
-                                                  <th><?=label('tablaCotizaciones_opciones');?></th>
-                                               </tr>
-                                            </tfoot>
-                                            <tbody>
-                                               <tr>
-                                                  <td>MRR-001</td>
-                                                  <td>2009/01/12</td>
-                                                  <td><a href="">Dos Pinos</a></td>
-                                                  <td>$300</td>
-                                                  <td>Finalizada</td>
-                                                  <td>
-                                                     <a class="btn_duplicar modal-trigger icono-edicion" href="#duplicar" data-toggle="tooltip" title="<?=label('tooltip_duplicar')?>">
-                                                        <i class="mdi-content-content-copy"></i>
-                                                     </a>
-                                                     <a class="btn_ver icono-edicion" href="<?=base_url()?>cotizacion/cotizar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
-                                                        <i class="mdi-editor-mode-edit"></i>
-                                                     </a>
-                                                     <a class="btn_eliminar modal-trigger icono-edicion" href="#Elminar" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
-                                                        <i class="mdi-action-delete"></i>
-                                                     </a>
-                                                  </td>
-                                               </tr>
-                                               <tr>
-                                                  <td>MRR-002</td>
-                                                  <td>2015/01/12</td>
-                                                  <td><a href="">Dos Pinos</a></td>
-                                                  <td>$100</td>
-                                                  <td>Enviada</td>
-                                                  <td>
-                                                     <a  class="btn_duplicar modal-trigger icono-edicion" href="#duplicar" data-toggle="tooltip" title="<?=label('tooltip_duplicar')?>">
-                                                        <i class="mdi-content-content-copy"></i>
-                                                     </a>
-                                                     <a class="btn_ver icono-edicion" href="<?=base_url()?>cotizacion/cotizar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
-                                                        <i class="mdi-editor-mode-edit"></i>
-                                                     </a>
-                                                     <a class="btn_finalizar modal-trigger icono-edicion" href="#finalizar" data-toggle="tooltip" title="<?=label('tooltip_finalizar')?>">
-                                                        <i class="mdi-action-done"></i>
-                                                     </a>
-                                                     <a class="btn_eliminar modal-trigger icono-edicion" href="#Elminar" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
-                                                        <i class="mdi-action-delete"></i>
-                                                     </a>
-                                                  </td>
-                                               </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
                                 </form>
-                                
-
-
-
-
                             </div>
                         </div>
                     </div>
@@ -372,7 +296,7 @@
     </div>
     <!--end container-->
 </section>
-<!-- END CONTENT
+<!-- END CONTENT -->
 
 
 <!-- lista modals -->
@@ -426,4 +350,4 @@
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>
-<!-- Fin lista modals
+<!-- Fin lista modals-->

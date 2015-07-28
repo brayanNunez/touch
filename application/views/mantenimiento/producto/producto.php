@@ -23,10 +23,8 @@
                                 <div id="card_productos" class="card">
                                     <div id="tableHeader">
                                         <div class="dataTables_filter search">
-                                            <label>
-                                                <?=label('Producto_tablaBusqueda');?>
-                                                <input id="search" type="search" aria-controls="data-table-simple">
-                                            </label>
+                                            <label><?=label('Producto_tablaBusqueda');?></label>
+                                            <input id="search" type="search" aria-controls="data-table-simple">
                                         </div>
                                     </div>
                                     <div id="table">
@@ -239,7 +237,6 @@
                                         });
                                         $(document).ready(function() {
                                             $('#search').keyup(function() {
-                                                debugger;
                                                 searchTable($(this).val());
                                             });
                                         });

@@ -140,3 +140,9 @@ section#contacto textarea:focus { outline: 0px; border-bottom: 2px solid black; 
     div.file-field div.btn { min-width: 30px !important; width: 40px; height: 40px; padding: 5px 5px; top: 0; }
     div.file-field div.btn i { height: 5px; margin-top: -5px; }
 }
+#files tbody td { padding: 1.5% 3%; text-align: left; }
+div.new-file { float: left; margin: 3%; }
+div.search label { float: right; margin: 3%; }
+ul.cliente-info li { width: 33.33333% !important; }
+ul.cliente-info li a { background-color: #009966; }
+li.tab-central { border-left: 3px solid white; border-right: 3px solid white; }

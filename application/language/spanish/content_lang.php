@@ -486,4 +486,16 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
 
 //Captcha
     $lang['cambiar_captcha'] = 'Cambiar captcha';
+
+//Clientes editar
+    $lang['clientes_info'] = 'Información del cliente';
+    $lang['clientes_editar'] = 'Información';
+    $lang['clientes_archivos'] = 'Archivos';
+    $lang['clientes_cotizaciones'] = 'Cotizaciones';
+    $lang['clientes_buscar'] = 'Buscar: ';
+    $lang['clientes_tablaArchivo'] = 'Nombre del archivo';
+    $lang['clientes_tablaOpciones'] = 'Opciones';
+    $lang['clientes_archivoNuevo'] = 'Agregar nuevo archivo';
+    $lang['tooltip_descargarArchivo'] = 'Descargar';
+
 ?>
