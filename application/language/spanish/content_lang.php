@@ -504,4 +504,7 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['olvidarContrasenna_correo'] = 'Correo electrónico';
     $lang['olvidarContrasenna_enviar'] = 'Enviar';
 
+//Comentario importante DatePicker
+//La ruta para modificar el archivo con el idioma del mismo es assets/dashboard/js/materialize.min.js
+
 ?>
