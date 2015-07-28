@@ -97,7 +97,7 @@
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <p><?=label('');?>Lo quiere eliminar??????</p>
+        <p><?=label('clientes_archivoEliminar');?></p>
     </div>
     <div class="modal-footer black-text">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>

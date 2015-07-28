@@ -157,17 +157,17 @@
                     </div>
                     <div class="row" style="margin-bottom: 0;">
                         <div class="input-field col s12" >
-                            <h6>Digite un correo para resetear la contrasenna</h6>
+                            <h6><?=label('olvidarContrasenna_mensaje');?></h6>
                         </div>
                         <div class="input-field col s12">
                             <i class="mdi-content-mail prefix"></i>
                             <input id="email-forgot" type="email">
-                            <label for="email-forgot"><?=label('');?>Correo</label>
+                            <label for="email-forgot"><?=label('olvidarContrasenna_correo');?></label>
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 0;">
                         <div class="input-field col s12">
-                            <a href="" class="btn btn-logueo waves-effect waves-light col s12"><?=label('')?>Enviar</a>
+                            <a href="" class="btn btn-logueo waves-effect waves-light col s12"><?=label('olvidarContrasenna_enviar')?></a>
                         </div>
                     </div>
                 </form>

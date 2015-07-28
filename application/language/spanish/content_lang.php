@@ -496,6 +496,12 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['clientes_tablaArchivo'] = 'Nombre del archivo';
     $lang['clientes_tablaOpciones'] = 'Opciones';
     $lang['clientes_archivoNuevo'] = 'Agregar nuevo archivo';
+    $lang['clientes_archivoEliminar'] = '¿Realmente desea eliminar el archivo seleccionado?';
     $lang['tooltip_descargarArchivo'] = 'Descargar';
+
+//Olvidar contrasenna
+    $lang['olvidarContrasenna_mensaje'] = 'Digite una dirección de correo electrónico para poder reestablecer la contraseña de su cuenta';
+    $lang['olvidarContrasenna_correo'] = 'Correo electrónico';
+    $lang['olvidarContrasenna_enviar'] = 'Enviar';
 
 ?>
