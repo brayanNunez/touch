@@ -276,9 +276,9 @@
                                         <div class="input-field col s12">
                                             <select>
                                                 <option value="" disabled selected><?=label('formCliente_seleccioneUno');?></option>
-                                                <option value="1">Pepe</option>
-                                                <option value="2">Juan</option>
-                                                <option value="3">Maria</option>
+                                                <option value="1">Pedro Perez</option>
+                                                <option value="2">Juan Martinez</option>
+                                                <option value="3">Maria Castro</option>
                                             </select>
                                             <label for="cliente_cotizador"><?=label('formCliente_cotizador');?></label>
                                         </div>

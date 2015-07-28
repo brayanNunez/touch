@@ -102,7 +102,6 @@
                     <div class="row">
                         <div class="input-field col s12 center">
                             <img src="<?=base_url()?>assets/img/to.png" alt="Touch!">
-                            <p class="center login-form-text"><?=label('nombreSistema');?></p>
                         </div>
                     </div>
                     <div class="row margin">
@@ -125,9 +124,11 @@
                             <label for="remember-me"><?=label('recordar')?></label>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" style="margin-bottom: 0;">
                         <div class="input-field col s12">
-                            <a href="<?=base_url()?>inicio" class="btn waves-effect waves-light col s12"><?=label('loguear')?></a>
+                            <a href="<?=base_url()?>inicio" class="btn btn-logueo waves-effect waves-light col s12" style="margin-bottom: 10px">
+                                <?=label('loguear')?>
+                            </a>
                         </div>
                     </div>
                     <div class="row">
@@ -135,10 +136,40 @@
                             <p class="margin medium-small"><a href="<?=base_url()?>welcome/registro"><?=label('registrar')?></a></p>
                         </div>
                         <div class="input-field col s6 m6 l6">
-                            <p class="margin right-align medium-small"><a href=""><?=label('contrasena_olvido')?></a></p>
+                            <p class="margin right-align medium-small">
+                                <a class="modal-trigger" href="#forgot-password" onclick="document.getElementById('login-page').style.display = 'none';">
+                                    <?=label('contrasena_olvido')?>
+                                </a>
+                            </p>
                         </div>
                     </div>
 
+                </form>
+            </div>
+        </div>
+        <div id="forgot-password" class="modal fade in">
+            <div class="col s12 z-depth-4 card-panel" style="box-shadow: none; margin: 0px; padding-bottom: 0px; ">
+                <form class="login-form" style="width: auto; ">
+                    <div class="row" style="margin-bottom: 0;">
+                        <div class="input-field col s12 center">
+                            <img src="<?=base_url()?>assets/img/to.png" alt="Touch!">
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 0;">
+                        <div class="input-field col s12" >
+                            <h6>Digite un correo para resetear la contrasenna</h6>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="mdi-content-mail prefix"></i>
+                            <input id="email-forgot" type="email">
+                            <label for="email-forgot"><?=label('');?>Correo</label>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 0;">
+                        <div class="input-field col s12">
+                            <a href="" class="btn btn-logueo waves-effect waves-light col s12"><?=label('')?>Enviar</a>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
