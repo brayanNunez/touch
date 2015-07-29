@@ -489,7 +489,8 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
 
 //Clientes editar
     $lang['clientes_info'] = 'Información del cliente';
-    $lang['clientes_editar'] = 'Información';
+    $lang['clientes_ver'] = 'Información';
+    $lang['clientes_editar'] = 'Editar datos';
     $lang['clientes_archivos'] = 'Archivos';
     $lang['clientes_cotizaciones'] = 'Cotizaciones';
     $lang['clientes_buscar'] = 'Buscar: ';
