@@ -31,7 +31,7 @@
                                                         <?=label('clientes_ver');?></a>
                                                 </li>
                                                 <li class="tab-interior tab col s3">
-                                                    <a class="white-text darken-1 waves-effect waves-light active"
+                                                    <a class="white-text darken-1 waves-effect waves-light"
                                                        id="cliente-informacion" href="#tab-edicion"><i class="mdi-editor-mode-edit"></i>
                                                         <?=label('clientes_editar');?></a>
                                                 </li>

@@ -27,7 +27,7 @@ class Usuarios extends CI_Controller {
     {
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
-        $this->load->view('mantenimiento/formularios/usuarios_editar');
+        $this->load->view('mantenimiento/formularios/usuarios_info');
         $this->load->view('layout/default/footer');
     }
 }
