@@ -1,4 +1,4 @@
-<!-- START CONTENT  -->
+<!-- START CONTENT   -->
 
 <section id="content">
     <!--start breadcrumbs-->
@@ -38,18 +38,15 @@
 
                                         <div class="input-field col s12">
                                             <label for="empleado_palabras"><?=label('formEmpleado_palabrasClave');?></label>
-                                            <input id="empleado_palabras" type="text" value="Programador, Bases de datos">
-                                            <div class="input-field col s12">
-                                                <div class="input-field col s8">
-                                                    <input id="otra_palabra" type="text">
-                                                    <label for="otra_palabra"><?=label('formEmpleado_nuevaPalabra');?></label>
-                                                </div>
-                                                <div class="input-field col s4">
-                                                    <a href="" class="btn btn-default"><?=label('formEmpleado_agregar');?></a>
-                                                </div>
-                                            </div>
-                                            <hr />
+                                            <br>
+                                            <input id="empleado_palabras" type="text" value="palabra1,palabra2,palabra3,palabra4,palabra5" data-role="tagsinput" />
                                         </div>
+
+                                        <!-- <div class="input-field col s12"> -->
+                                            
+                                            <!-- <input type="text" value="palabra1,palabra2,palabra3,palabra4,palabra5" data-role="tagsinput" /> -->
+                                            
+                                        <!-- </div> -->
 
                                         <div class="input-field col s12">
                                             <input id="empleado_fechaNacimiento" type="date" class="datepicker" value="18-06-1994">
@@ -217,4 +214,4 @@
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>
-<!-- Fin lista modals -->
+<!-- Fin lista modals

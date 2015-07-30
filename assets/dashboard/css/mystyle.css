@@ -383,3 +383,14 @@ margin-top: 2%;
 .siguiente,.anterior{
 	color: #57923f;
 }
+
+.label-info{
+	background-color: #57923f;
+	
+	border-radius: 3px;
+	padding: .2em .6em .3em;
+}
+
+.bootstrap-tagsinput {
+	    min-width: 50%;
+}

@@ -74,6 +74,12 @@
      <script src="<?=base_url()?>assets/dashboard/js/jquery.contextMenu.js" type="text/javascript"></script>
     <link href="<?= base_url() ?>assets/dashboard/css/jquery.contextMenu.css" rel="stylesheet" type="text/css" />
 
+
+   <!-- js y css necesario para los tags de palabras nuevas -->
+   <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/bootstrap-tagsinput.min.js"></script>
+    <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/app_bs3.js"></script>
+    <link href="<?= base_url() ?>assets/dashboard/css/bootstrap-tagsinput.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
 </head>
 
 <body>
