@@ -110,15 +110,15 @@
                                                         </tr>
                                                     </tbody>
                                                     <tfoot>
-                                                        <tr>
-                                                            <th><?=label('Cliente_tablaCodigo');?></th>
-                                                            <th><?=label('Cliente_tablaTipo');?></th>
-                                                            <th><?=label('Cliente_tablaNombre');?></th>
-                                                            <th><?=label('Cliente_tablaTelefono');?></th>
-                                                            <th><?=label('Cliente_tablaCorreo');?></th>
-                                                            <th><?=label('Cliente_tablaCotizador');?></th>
-                                                            <th><?=label('Cliente_tablaOpciones');?></th>
-                                                        </tr>
+<!--                                                        <tr>-->
+<!--                                                            <th>--><?//=label('Cliente_tablaCodigo');?><!--</th>-->
+<!--                                                            <th>--><?//=label('Cliente_tablaTipo');?><!--</th>-->
+<!--                                                            <th>--><?//=label('Cliente_tablaNombre');?><!--</th>-->
+<!--                                                            <th>--><?//=label('Cliente_tablaTelefono');?><!--</th>-->
+<!--                                                            <th>--><?//=label('Cliente_tablaCorreo');?><!--</th>-->
+<!--                                                            <th>--><?//=label('Cliente_tablaCotizador');?><!--</th>-->
+<!--                                                            <th>--><?//=label('Cliente_tablaOpciones');?><!--</th>-->
+<!--                                                        </tr>-->
                                                     </tfoot>
                                                 </table>
                                             </div>

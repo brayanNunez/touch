@@ -40,12 +40,12 @@
                                                     </thead>
 
                                                     <tfoot>
-                                                    <tr>
-                                                        <th><?=label('tablaPlanes_nombre');?></th>
-                                                        <th><?=label('tablaPlanes_costo');?></th>
-                                                        <th><?=label('tablaPlanes_beneficios');?></th>
-                                                        <th><?=label('tablaPlanes_opciones');?></th>
-                                                    </tr>
+<!--                                                    <tr>-->
+<!--                                                        <th>--><?//=label('tablaPlanes_nombre');?><!--</th>-->
+<!--                                                        <th>--><?//=label('tablaPlanes_costo');?><!--</th>-->
+<!--                                                        <th>--><?//=label('tablaPlanes_beneficios');?><!--</th>-->
+<!--                                                        <th>--><?//=label('tablaPlanes_opciones');?><!--</th>-->
+<!--                                                    </tr>-->
                                                     </tfoot>
 
                                                     <tbody>

@@ -53,10 +53,10 @@
                                                         </tr>
                                                     </thead>
                                                     <tfoot>
-                                                        <tr>
-                                                            <th><?=label('tiposMoneda_nombre');?></th>
-                                                            <th><?=label('tiposMoneda_opciones');?></th>
-                                                        </tr>
+<!--                                                        <tr>-->
+<!--                                                            <th>--><?//=label('tiposMoneda_nombre');?><!--</th>-->
+<!--                                                            <th>--><?//=label('tiposMoneda_opciones');?><!--</th>-->
+<!--                                                        </tr>-->
                                                     </tfoot>
                                                     <tbody>
                                                         <tr>

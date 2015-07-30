@@ -37,12 +37,12 @@
                                                     </thead>
 
                                                     <tfoot>
-                                                    <tr>
-                                                        <th><?=label('tablaPagos_empresa');?></th>
-                                                        <th><?=label('tablaPagos_fecha');?></th>
-                                                        <th><?=label('tablaPagos_pago');?></th>
-                                                        <th><?=label('tablaPagos_opciones');?></th>
-                                                    </tr>
+<!--                                                    <tr>-->
+<!--                                                        <th>--><?//=label('tablaPagos_empresa');?><!--</th>-->
+<!--                                                        <th>--><?//=label('tablaPagos_fecha');?><!--</th>-->
+<!--                                                        <th>--><?//=label('tablaPagos_pago');?><!--</th>-->
+<!--                                                        <th>--><?//=label('tablaPagos_opciones');?><!--</th>-->
+<!--                                                    </tr>-->
                                                     </tfoot>
 
                                                     <tbody>

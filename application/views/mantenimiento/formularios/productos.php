@@ -63,10 +63,10 @@
                                                     </tr>
                                                 </thead>
                                                 <tfoot>
-                                                    <tr>
-                                                        <th><?=label('formProducto_caracteristicasDescripcion');?></th>
-                                                        <th><?=label('formProducto_caracteristicasOpciones');?></th>
-                                                    </tr>
+<!--                                                    <tr>-->
+<!--                                                        <th>--><?//=label('formProducto_caracteristicasDescripcion');?><!--</th>-->
+<!--                                                        <th>--><?//=label('formProducto_caracteristicasOpciones');?><!--</th>-->
+<!--                                                    </tr>-->
                                                 </tfoot>
                                                 <tbody>
                                                     <tr>

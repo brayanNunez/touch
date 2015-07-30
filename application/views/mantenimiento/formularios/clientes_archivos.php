@@ -51,10 +51,10 @@
             </tr>
         </tbody>
         <tfoot>
-            <tr>
-                <th><?=label('clientes_tablaArchivo')?></th>
-                <th><?=label('clientes_tablaOpciones')?></th>
-            </tr>
+<!--            <tr>-->
+<!--                <th>--><?//=label('clientes_tablaArchivo')?><!--</th>-->
+<!--                <th>--><?//=label('clientes_tablaOpciones')?><!--</th>-->
+<!--            </tr>-->
         </tfoot>
     </table>
 </div>

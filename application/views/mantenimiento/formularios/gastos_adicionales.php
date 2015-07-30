@@ -37,11 +37,11 @@
                                                         </tr>
                                                     </thead>
                                                     <tfoot>
-                                                        <tr>
-                                                            <th><?=label('tituloGastos_nombre');?></th>
-                                                            <th><?=label('tituloGastos_monto');?></th>
-                                                            <th><?=label('tituloGastos_opciones');?></th>
-                                                        </tr>
+<!--                                                        <tr>-->
+<!--                                                            <th>--><?//=label('tituloGastos_nombre');?><!--</th>-->
+<!--                                                            <th>--><?//=label('tituloGastos_monto');?><!--</th>-->
+<!--                                                            <th>--><?//=label('tituloGastos_opciones');?><!--</th>-->
+<!--                                                        </tr>-->
                                                     </tfoot>
                                                     <tbody>
                                                         <tr>

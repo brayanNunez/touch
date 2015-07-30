@@ -99,13 +99,13 @@
                                                         </tr>
                                                     </tbody>
                                                     <tfoot>
-                                                        <tr>
-                                                            <th><?=label('Empleado_tablaCodigo');?></th>
-                                                            <th><?=label('Empleado_tablaNombre');?></th>
-                                                            <th><?=label('Empleado_tablaIdentificacion');?></th>
-                                                            <th><?=label('Empleado_tablaPalabras');?></th>
-                                                            <th><?=label('Empleado_tablaOpciones');?></th>
-                                                        </tr>
+<!--                                                        <tr>-->
+<!--                                                            <th>--><?//=label('Empleado_tablaCodigo');?><!--</th>-->
+<!--                                                            <th>--><?//=label('Empleado_tablaNombre');?><!--</th>-->
+<!--                                                            <th>--><?//=label('Empleado_tablaIdentificacion');?><!--</th>-->
+<!--                                                            <th>--><?//=label('Empleado_tablaPalabras');?><!--</th>-->
+<!--                                                            <th>--><?//=label('Empleado_tablaOpciones');?><!--</th>-->
+<!--                                                        </tr>-->
                                                     </tfoot>
                                                 </table>
                                             </div>

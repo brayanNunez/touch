@@ -110,9 +110,9 @@
                                                     </tr>
                                                 </tbody>
                                                 <tfoot>
-                                                    <tr>
-                                                        <th><?=label('Producto_tablaNombre')?></th>
-                                                    </tr>
+<!--                                                    <tr>-->
+<!--                                                        <th>--><?//=label('Producto_tablaNombre')?><!--</th>-->
+<!--                                                    </tr>-->
                                                 </tfoot>
                                             </table>
                                         </div>

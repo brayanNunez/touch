@@ -85,13 +85,13 @@
                                                         </tr>
                                                     </tbody>
                                                     <tfoot>
-                                                        <tr>
-                                                            <th><?=label('Servicio_tablaCodigo');?></th>
-                                                            <th><?=label('Servicio_tablaNombre');?></th>
-                                                            <th><?=label('Servicio_tablaDescripcion');?></th>
-                                                            <th><?=label('Servicio_tablaPrecio');?></th>
-                                                            <th><?=label('Servicio_tablaOpciones');?></th>
-                                                        </tr>
+<!--                                                        <tr>-->
+<!--                                                            <th>--><?//=label('Servicio_tablaCodigo');?><!--</th>-->
+<!--                                                            <th>--><?//=label('Servicio_tablaNombre');?><!--</th>-->
+<!--                                                            <th>--><?//=label('Servicio_tablaDescripcion');?><!--</th>-->
+<!--                                                            <th>--><?//=label('Servicio_tablaPrecio');?><!--</th>-->
+<!--                                                            <th>--><?//=label('Servicio_tablaOpciones');?><!--</th>-->
+<!--                                                        </tr>-->
                                                     </tfoot>
                                                 </table>
                                             </div>

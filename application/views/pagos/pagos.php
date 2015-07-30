@@ -89,10 +89,10 @@
                                                     </tr>
                                                     </thead>
                                                     <tfoot>
-                                                    <tr>
-                                                        <th><?=label('tablaPagos_fecha');?></th>
-                                                        <th><?=label('tablaPagos_monto');?></th>
-                                                    </tr>
+<!--                                                    <tr>-->
+<!--                                                        <th>--><?//=label('tablaPagos_fecha');?><!--</th>-->
+<!--                                                        <th>--><?//=label('tablaPagos_monto');?><!--</th>-->
+<!--                                                    </tr>-->
                                                     </tfoot>
                                                     <tbody>
                                                     <tr>

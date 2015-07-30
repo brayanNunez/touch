@@ -15,7 +15,6 @@
         </div>
         <!--breadcrumbs end-->
 
-
     <div class="container">
         <div id="chart-dashboard">
             <div class="row">
@@ -94,12 +93,12 @@
                                                         </tr>
                                                     </tbody>
                                                     <tfoot>
-                                                        <tr>
-                                                            <th><?=label('Usuario_tablaIdentificacion');?></th>
-                                                            <th><?=label('Usuario_tablaNombre');?></th>
-                                                            <th><?=label('Usuario_tablaCorreo');?></th>
-                                                            <th><?=label('Usuario_tablaOpciones');?></th>
-                                                        </tr>
+<!--                                                        <tr>-->
+<!--                                                            <th>--><?//=label('Usuario_tablaIdentificacion');?><!--</th>-->
+<!--                                                            <th>--><?//=label('Usuario_tablaNombre');?><!--</th>-->
+<!--                                                            <th>--><?//=label('Usuario_tablaCorreo');?><!--</th>-->
+<!--                                                            <th>--><?//=label('Usuario_tablaOpciones');?><!--</th>-->
+<!--                                                        </tr>-->
                                                     </tfoot>
                                                 </table>
                                             </div>

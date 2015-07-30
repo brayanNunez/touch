@@ -35,12 +35,12 @@
                                           </tr>
                                        </thead>
                                        <tfoot>
-                                          <tr>
-                                             <th><?=label('tablaPorAbrobar_cliente');?></th>
-                                             <th><?=label('tablaPorAbrobar_monto');?></th>
-                                             <th><?=label('tablaPorAbrobar_fecha');?></th>
-                                             <th><?=label('tablaPorAbrobar_opciones');?></th>
-                                          </tr>
+<!--                                          <tr>-->
+<!--                                             <th>--><?//=label('tablaPorAbrobar_cliente');?><!--</th>-->
+<!--                                             <th>--><?//=label('tablaPorAbrobar_monto');?><!--</th>-->
+<!--                                             <th>--><?//=label('tablaPorAbrobar_fecha');?><!--</th>-->
+<!--                                             <th>--><?//=label('tablaPorAbrobar_opciones');?><!--</th>-->
+<!--                                          </tr>-->
                                        </tfoot>
                                        <tbody>
                                           <tr>

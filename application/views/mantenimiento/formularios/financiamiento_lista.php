@@ -38,11 +38,11 @@
                                                     </tr>
                                                     </thead>
                                                     <tfoot>
-                                                    <tr>
-                                                        <th><?=label('tablaFinanciamiento_nombre');?></th>
-                                                        <th><?=label('tablaFinanciamiento_descripcion');?></th>
-                                                        <th><?=label('tablaPlanes_opciones');?></th>
-                                                    </tr>
+<!--                                                    <tr>-->
+<!--                                                        <th>--><?//=label('tablaFinanciamiento_nombre');?><!--</th>-->
+<!--                                                        <th>--><?//=label('tablaFinanciamiento_descripcion');?><!--</th>-->
+<!--                                                        <th>--><?//=label('tablaPlanes_opciones');?><!--</th>-->
+<!--                                                    </tr>-->
                                                     </tfoot>
 
                                                     <tbody>

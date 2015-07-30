@@ -193,13 +193,13 @@
                                                 </tr>
                                             </tbody>
                                             <tfoot>
-                                                <tr>
-                                                    <th><?=label('Producto_tablaNombre')?></th>
-                                                    <th><?=label('Producto_tablaCodigo')?></th>
-                                                    <th><?=label('Producto_tablaDescripcion')?></th>
-                                                    <th><?=label('Producto_tablaPrecio')?></th>
-                                                    <th><?=label('Producto_tablaOpciones')?></th>
-                                                </tr>
+<!--                                                <tr>-->
+<!--                                                    <th>--><?//=label('Producto_tablaNombre')?><!--</th>-->
+<!--                                                    <th>--><?//=label('Producto_tablaCodigo')?><!--</th>-->
+<!--                                                    <th>--><?//=label('Producto_tablaDescripcion')?><!--</th>-->
+<!--                                                    <th>--><?//=label('Producto_tablaPrecio')?><!--</th>-->
+<!--                                                    <th>--><?//=label('Producto_tablaOpciones')?><!--</th>-->
+<!--                                                </tr>-->
                                             </tfoot>
                                         </table>
                                     </div>

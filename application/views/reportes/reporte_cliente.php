@@ -210,14 +210,14 @@
                                        </tr>
                                     </thead>
                                     <tfoot>
-                                       <tr>
-                                          <th><?=label('tablaCotizaciones_codigo');?></th>
-                                          <th><?=label('tablaCotizaciones_fecha');?></th>
-                                          <th><?=label('tablaCotizaciones_cliente');?></th>
-                                          <th><?=label('tablaCotizaciones_monto');?></th>
-                                          <th><?=label('tablaCotizaciones_estado');?></th>
-                                          <th><?=label('tablaCotizaciones_opciones');?></th>
-                                       </tr>
+<!--                                       <tr>-->
+<!--                                          <th>--><?//=label('tablaCotizaciones_codigo');?><!--</th>-->
+<!--                                          <th>--><?//=label('tablaCotizaciones_fecha');?><!--</th>-->
+<!--                                          <th>--><?//=label('tablaCotizaciones_cliente');?><!--</th>-->
+<!--                                          <th>--><?//=label('tablaCotizaciones_monto');?><!--</th>-->
+<!--                                          <th>--><?//=label('tablaCotizaciones_estado');?><!--</th>-->
+<!--                                          <th>--><?//=label('tablaCotizaciones_opciones');?><!--</th>-->
+<!--                                       </tr>-->
                                     </tfoot>
                                     <tbody>
                                        <tr>

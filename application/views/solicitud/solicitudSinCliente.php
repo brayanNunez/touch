@@ -36,13 +36,13 @@
                                           </tr>
                                        </thead>
                                        <tfoot>
-                                          <tr>
-                                             <th><?=label('tablaSolicitudes_nombre');?></th>
-                                             <th><?=label('tablaSolicitudes_correo');?></th>
-                                             <th><?=label('tablaSolicitudes_fecha');?></th>
-                                             <th><?=label('tablaSolicitudes_descripcion');?></th>
-                                             <th><?=label('tablaSolicitudes_opciones');?></th>
-                                          </tr>
+<!--                                          <tr>-->
+<!--                                             <th>--><?//=label('tablaSolicitudes_nombre');?><!--</th>-->
+<!--                                             <th>--><?//=label('tablaSolicitudes_correo');?><!--</th>-->
+<!--                                             <th>--><?//=label('tablaSolicitudes_fecha');?><!--</th>-->
+<!--                                             <th>--><?//=label('tablaSolicitudes_descripcion');?><!--</th>-->
+<!--                                             <th>--><?//=label('tablaSolicitudes_opciones');?><!--</th>-->
+<!--                                          </tr>-->
                                        </tfoot>
                                        <tbody>
                                           <tr>

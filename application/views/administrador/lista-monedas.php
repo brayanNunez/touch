@@ -39,11 +39,11 @@
                                                     </thead>
 
                                                     <tfoot>
-                                                    <tr>
-                                                        <th><?=label('tablaMonedas_nombre');?></th>
-                                                        <th><?=label('tablaMonedas_signo');?></th>
-                                                        <th><?=label('tablaMonedas_opciones');?></th>
-                                                    </tr>
+<!--                                                    <tr>-->
+<!--                                                        <th>--><?//=label('tablaMonedas_nombre');?><!--</th>-->
+<!--                                                        <th>--><?//=label('tablaMonedas_signo');?><!--</th>-->
+<!--                                                        <th>--><?//=label('tablaMonedas_opciones');?><!--</th>-->
+<!--                                                    </tr>-->
                                                     </tfoot>
 
                                                     <tbody>

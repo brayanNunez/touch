@@ -99,13 +99,13 @@
                                                         </tr>
                                                     </tbody>
                                                     <tfoot>
-                                                        <tr>
-                                                            <th><?=label('Proveedor_tablaCodigo');?></th>
-                                                            <th><?=label('Proveedor_tablaNombre');?></th>
-                                                            <th><?=label('Proveedor_tablaIdentificacion');?></th>
-                                                            <th><?=label('Proveedor_tablaDescripcion');?></th>
-                                                            <th><?=label('Proveedor_tablaOpciones');?></th>
-                                                        </tr>
+<!--                                                        <tr>-->
+<!--                                                            <th>--><?//=label('Proveedor_tablaCodigo');?><!--</th>-->
+<!--                                                            <th>--><?//=label('Proveedor_tablaNombre');?><!--</th>-->
+<!--                                                            <th>--><?//=label('Proveedor_tablaIdentificacion');?><!--</th>-->
+<!--                                                            <th>--><?//=label('Proveedor_tablaDescripcion');?><!--</th>-->
+<!--                                                            <th>--><?//=label('Proveedor_tablaOpciones');?><!--</th>-->
+<!--                                                        </tr>-->
                                                     </tfoot>
                                                 </table>
                                             </div>
