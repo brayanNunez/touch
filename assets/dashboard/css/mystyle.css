@@ -384,13 +384,45 @@ margin-top: 2%;
 	color: #57923f;
 }
 
-.label-info{
-	background-color: #57923f;
-	
-	border-radius: 3px;
-	padding: .2em .6em .3em;
-}
+
 
 .bootstrap-tagsinput {
 	    min-width: 50%;
+	    /*padding-top: 10px !important;*/
+	    line-height: 1.42857143;
+}
+
+
+
+.label-info {
+    background-color: #5bc0de;
+}
+
+.label {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+
+input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+input, optgroup, select, textarea {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+}
+
+.inputTag {
+	padding-left: 10.5px;
 }

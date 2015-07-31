@@ -1,3 +1,7 @@
+$(document).on('ready', function(){
+
+
+
 var citynames = new Bloodhound({
   datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
   queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -93,3 +97,11 @@ elt.tagsinput('add', { "value": 13, "text": "Cairo"       , "continent": "Africa
 
 // HACK: overrule hardcoded display inline-block of typeahead.js
 $(".twitter-typeahead").css('display', 'inline');
+
+
+
+
+
+})
+
+

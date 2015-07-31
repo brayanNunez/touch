@@ -36,11 +36,29 @@
                                             <label for="empleado_nombre"><?=label('formEmpleado_nombre');?></label>
                                         </div>
 
-                                        <div class="input-field col s12">
+                                        <div class="inputTag col s12">
+
                                             <label for="empleado_palabras"><?=label('formEmpleado_palabrasClave');?></label>
-                                            <br>
-                                            <input id="empleado_palabras" type="text" value="palabra1,palabra2,palabra3,palabra4,palabra5" data-role="tagsinput" />
+
+                                            <input placeholder="<?=label('formEmpleado_anadirPalabraClave');?>" id="empleado_palabras" type="text" value="palabra1,palabra2,palabra3,palabra4,palabra5" data-role="tagsinput" />
+                                            
                                         </div>
+
+                                        <div class="inputTag col s12">
+                                            <label for="vendedoresCliente"><?=label('formEmpleado_palabrasClave');?></label>
+                                            <br>
+                                            <div id="vendedoresCliente" class="example example_objects_as_tags">
+                                              <div class="bs-example">
+                                                <input placeholder="<?=label('formEmpleado_anadirVendedor');?>" type="text"  />
+                                              </div>
+                                        </div>
+
+
+                                            
+                                            
+                                        </div>
+
+                                        
 
                                         <!-- <div class="input-field col s12"> -->
                                             
