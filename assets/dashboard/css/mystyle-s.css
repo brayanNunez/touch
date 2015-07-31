@@ -163,3 +163,6 @@ li.disabled { background-color: #a8a8a8 !important; }
 
 a.siguiente, a.anterior { font-size: x-large; font-weight: bold; }
 a.anterior i, a.siguiente i { vertical-align: middle }
+
+div.fixed-action-btn ul { left: inherit; bottom: 50px; }
+div.fixed-action-btn ul li a { width: 150px; height: auto; border-radius: 0%; background-color: white; color: black; }

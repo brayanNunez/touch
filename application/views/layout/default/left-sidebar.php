@@ -72,9 +72,9 @@
                                     <ul>
 <!--                                        <li><a href="#">--><?//=label('costos');?><!--</a>-->
 <!--                                        </li>-->
-                                        <li>
-                                            <a href="<?=base_url()?>clientes"><?=label('clientes');?></a>
-                                        </li>
+<!--                                        <li>-->
+<!--                                            <a href="--><?//=base_url()?><!--clientes">--><?//=label('clientes');?><!--</a>-->
+<!--                                        </li>-->
                                         <li>
                                             <a href="<?=base_url()?>empleados"><?=label('empleados');?></a>
                                         </li>

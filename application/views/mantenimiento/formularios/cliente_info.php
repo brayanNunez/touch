@@ -59,6 +59,21 @@
                                             </div>
                                             <div id="tab-cotizaciones" class="card col s12">
                                                 <?php $this->load->view('mantenimiento/formularios/clientes_cotizaciones'); ?>
+                                                <!-- Floating Action Button -->
+<!--                                                    <div class="fixed-action-btn" style="">-->
+<!--                                                        <a class="btn-floating btn-large red" href="">-->
+<!--                                                            <i class="large mdi-file-file-download"></i>-->
+<!--                                                        </a>-->
+<!--                                                        <ul>-->
+<!--                                                            <li>-->
+<!--                                                                <a href="#" class="btn-floating">Excel</a>-->
+<!--                                                            </li>-->
+<!--                                                            <li>-->
+<!--                                                                <a href="#" class="btn-floating">PDF</a>-->
+<!--                                                            </li>-->
+<!--                                                        </ul>-->
+<!--                                                    </div>-->
+                                                <!-- Floating Action Button -->
                                             </div>
                                         </div>
                                     </div>

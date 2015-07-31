@@ -100,16 +100,11 @@
                 <div class="nav-wrapper">
                     <h1 class="logo-wrapper"><a href="<?=base_url()?>inicio" class="brand-logo darken-1"><img src="<?=base_url()?>assets/dashboard/images/materialize-logo.png" alt="materialize logo"></a> <span class="logo-text">Touch!</span></h1>
                     <ul class="right hide-on-med-and-down">
-
-                        
-
-
-                        
                         <li>
                             <!-- <a class="btn-floating btn-large red" href="<?=base_url();?>cotizacion/cotizar">
                                 <i class="large mdi-editor-mode-edit"></i>
                             </a> -->
-                            <a class="" href="<?=base_url();?>cotizacion/cotizar">
+                            <a class="" href="<?=base_url();?>cotizacion/cotizar" data-toggle="tooltip" title="<?=label('tooltip_cotizar')?>">
                                 <i class="mdi-editor-mode-edit"></i>
                             </a>
                         </li>
@@ -119,11 +114,15 @@
                         <li>
                             <a href="#login-page" class="modal-trigger waves-effect waves-block waves-light show-search"><i class="mdi-action-search"></i></a>
                         </li> -->
-                        <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen"><i class="mdi-action-settings-overscan"></i></a>
+                        <li>
+                            <a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen" data-toggle="tooltip" title="<?=label('tooltip_pantallaCompleta')?>">
+                                <i class="mdi-action-settings-overscan"></i>
+                            </a>
                         </li>
-
-
-                        <li><a style="width: 170px;" class="dropdown-button" data-activates="dropdown1" href="javascript:void(0);" class="waves-effect waves-block waves-light"><i class="mdi-social-notifications">9</i></a>
+                        <li><a style="width: 170px;" class="dropdown-button" data-activates="dropdown1" href="javascript:void(0);"
+                               class="waves-effect waves-block waves-light" data-toggle="tooltip" title="<?=label('tooltip_notificaciones')?>">
+                                <i class="mdi-social-notifications">9</i>
+                            </a>
                         </li>
                         <ul id="dropdown1" class="dropdown-content">
                             <li><a href="<?=base_url();?>cotizacion" class="-text">Revisadas 3</a>

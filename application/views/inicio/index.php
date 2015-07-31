@@ -362,15 +362,71 @@
                            
 
                             <!-- Floating Action Button -->
+<!--                                <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">-->
+<!--                                    <a class="btn-floating btn-large red" href="--><?//=base_url();?><!--cotizacion/cotizar">-->
+<!--                                      <i class="large mdi-editor-mode-edit"></i>-->
+<!--                                    </a>-->
+<!--    <!--                                <ul>-->-->
+<!--    <!--                                  -->-->
+<!--    <!--                                  <li><a href="#" class="btn-floating blue"><i class="large mdi-communication-email"></i></a></li>-->-->
+<!--    <!--                                </ul>-->-->
+<!--                                </div>-->
+                            <!-- Floating Action Button -->
+
+                            <!-- Floating Action Button -->
                             <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-                                <a class="btn-floating btn-large red" href="<?=base_url();?>cotizacion/cotizar">
-                                  <i class="large mdi-editor-mode-edit"></i>
+                                <a class="btn-floating btn-large red" href="">
+                                    <i class="large mdi-content-add"></i>
                                 </a>
-<!--                                <ul>-->
-<!--                                  -->
-<!--                                  <li><a href="#" class="btn-floating blue"><i class="large mdi-communication-email"></i></a></li>-->
-<!--                                </ul>-->
+                                <ul>
+                                    <li>
+                                        <a href="<?=base_url();?>cotizacion/cotizar" class="btn-floating">
+                                            <?=label('agregarCotizacion');?>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?=base_url();?>clientes/agregar" class="btn-floating">
+                                            <?=label('agregarCliente');?>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?=base_url();?>proveedores/agregar" class="btn-floating">
+                                            <?=label('agregarProveedor');?>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?=base_url();?>empleados/agregar" class="btn-floating">
+                                            <?=label('agregarEmpleado');?>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?=base_url();?>productos/agregar" class="btn-floating">
+                                            <?=label('agregarP');?>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?=base_url();?>servicios/agregar" class="btn-floating">
+                                            <?=label('agregarS');?>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
+                            <!-- Floating Action Button -->
+
+                            <!-- Floating Action Button -->
+<!--                                <div class="fixed-action-btn" style="bottom: 45px; right: 160px;">-->
+<!--                                    <a class="btn-floating btn-large red" href="">-->
+<!--                                        <i class="large mdi-file-file-download"></i>-->
+<!--                                    </a>-->
+<!--                                    <ul>-->
+<!--                                        <li>-->
+<!--                                            <a href="#" class="btn-floating">Excel</a>-->
+<!--                                        </li>-->
+<!--                                        <li>-->
+<!--                                            <a href="#" class="btn-floating">PDF</a>-->
+<!--                                        </li>-->
+<!--                                    </ul>-->
+<!--                                </div>-->
                             <!-- Floating Action Button -->
 
                         </div>

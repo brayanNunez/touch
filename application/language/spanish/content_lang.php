@@ -155,18 +155,18 @@
 	$lang['pasoSiguiente'] = 'Siguiente';
 
 //Menu izquierdo 
-	$lang['inicio'] = 'Inicio';
+	$lang['inicio'] = 'Panel Principal';
 	$lang['cotizaciones'] = 'Cotizaciones';
 $lang['listarCotizacion'] = 'Lista de cotizaciones';
 $lang['listarReporteCot'] = 'Reportes cotizaciones';
 	$lang['servicios'] = 'Servicios';
 	$lang['productos'] = 'Productos';
-	$lang['agregarP'] = 'Agregar producto';
+	$lang['agregarP'] = 'Agregar Producto';
 	$lang['listarP'] = 'Lista de productos';
 	$lang['administración'] = 'Administración';
 	$lang['costos'] = 'Costos';
 	$lang['clientes'] = 'Clientes';
-	$lang['agregarCliente'] = 'Agregar cliente';
+	$lang['agregarCliente'] = 'Agregar Cliente';
 	$lang['listarCliente'] = 'Lista de clientes';
 	$lang['listarReporteCli'] = 'Reportes de clientes';
 	$lang['empleados'] = 'Empleados';
@@ -177,12 +177,13 @@ $lang['listarReporteCot'] = 'Reportes cotizaciones';
 	$lang['gastos'] = 'Gastos';
 	$lang['avanzado'] = 'Avanzado';
 	$lang['masOpciones'] = 'MÁS OPCIONES';
-	$lang['agregarCotizacion'] = 'Agregar cotización';
+	$lang['agregarCotizacion'] = 'Crear cotización';
 	$lang['agregarProduto_Servicio'] = 'Agregar Producto/Servicio';
 	$lang['agregarProducto'] = 'Producto';
 	$lang['agregarServicio'] = 'Servicio';
 	$lang['agregarEmpleado'] = 'Agregar Empleado';
 	$lang['agregarProveedor'] = 'Agregar Proveedor';
+	$lang['agregarS'] = 'Agregar Servicio';
 	$lang['reportes'] = 'Reportes';
 
 //Formulario de solicitudes
@@ -485,6 +486,9 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['tooltip_examinar'] = 'Examinar';
     $lang['tooltip_eliminar'] = 'Eliminar';
     $lang['tooltip_revisar'] = 'Revisar';
+    $lang['tooltip_cotizar'] = 'Crear cotización';
+    $lang['tooltip_pantallaCompleta'] = 'Pantalla completa';
+    $lang['tooltip_notificaciones'] = 'Notificaciones';
 
 //Captcha
     $lang['cambiar_captcha'] = 'Cambiar captcha';
