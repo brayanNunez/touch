@@ -151,6 +151,8 @@
 	$lang['paso2'] = '2 Detalle';
 	$lang['paso3'] = '3 Diseño';
 	$lang['paso4'] = '4 Finalizar';
+	$lang['pasoAnterior'] = 'Atras';
+	$lang['pasoSiguiente'] = 'Siguiente';
 
 //Menu izquierdo 
 	$lang['inicio'] = 'Inicio';

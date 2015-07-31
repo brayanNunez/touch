@@ -160,3 +160,6 @@ ul.usuario-info li { width: 50% !important; }
 ul.usuario-info li a { background-color: #009966; }
 li.tab-interior { border-left: 3px solid white; }
 li.disabled { background-color: #a8a8a8 !important; }
+
+a.siguiente, a.anterior { font-size: x-large; font-weight: bold; }
+a.anterior i, a.siguiente i { vertical-align: middle }
