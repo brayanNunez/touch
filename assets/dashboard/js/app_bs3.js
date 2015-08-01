@@ -51,11 +51,11 @@ elt.tagsinput({
   }
 });
 
-elt.tagsinput('add', { "value": 1 , "text": "Amsterdam"   , "continent": "Europe"    });
-elt.tagsinput('add', { "value": 4 , "text": "Washington"  , "continent": "America"   });
-elt.tagsinput('add', { "value": 7 , "text": "Sydney"      , "continent": "Australia" });
-elt.tagsinput('add', { "value": 10, "text": "Beijing"     , "continent": "Asia"      });
-elt.tagsinput('add', { "value": 13, "text": "Cairo"       , "continent": "Africa"    });
+elt.tagsinput('add', { "value": 1 , "text": "Brayan Nuñez Rojas"   , "continent": "Europe"    });
+elt.tagsinput('add', { "value": 4 , "text": "Anthony Nuñez Rojas"  , "continent": "America"   });
+elt.tagsinput('add', { "value": 7 , "text": "Maria Perez Salas"      , "continent": "Australia" });
+elt.tagsinput('add', { "value": 10, "text": "Carlos David Rojas"     , "continent": "Asia"      });
+elt.tagsinput('add', { "value": 13, "text": "Diego Alfaro Rojas"       , "continent": "Africa"    });
 
 /**
  * Categorizing tags
@@ -91,11 +91,11 @@ elt.tagsinput({
    }
   ]
 });
-elt.tagsinput('add', { "value": 1 , "text": "Amsterdam"   , "continent": "Europe"    });
-elt.tagsinput('add', { "value": 4 , "text": "Washington"  , "continent": "America"   });
-elt.tagsinput('add', { "value": 7 , "text": "Sydney"      , "continent": "Australia" });
-elt.tagsinput('add', { "value": 10, "text": "Beijing"     , "continent": "Asia"      });
-elt.tagsinput('add', { "value": 13, "text": "Cairo"       , "continent": "Africa"    });
+elt.tagsinput('add', { "value": 1 , "text": "Brayan Nuñez Rojas"   , "continent": "Europe"    });
+elt.tagsinput('add', { "value": 4 , "text": "Anthony Nuñez Rojas"  , "continent": "America"   });
+elt.tagsinput('add', { "value": 7 , "text": "Maria Perez Salas"      , "continent": "Australia" });
+elt.tagsinput('add', { "value": 10, "text": "Carlos David Rojas"     , "continent": "Asia"      });
+elt.tagsinput('add', { "value": 13, "text": "Diego Alfaro Rojas"       , "continent": "Africa"    });
 
 // HACK: overrule hardcoded display inline-block of typeahead.js
 $(".twitter-typeahead").css('display', 'inline');
