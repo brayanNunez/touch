@@ -18,8 +18,10 @@ citynames.initialize();
 var cities = new Bloodhound({
   datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
   queryTokenizer: Bloodhound.tokenizers.whitespace,
-  prefetch: 'assets/cities.json'
+  // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/cities.json'
+  prefetch: 'http://localhost/Proyectos/touch/Cotizacion/enviarJson'
 });
+
 cities.initialize();
 
 /**

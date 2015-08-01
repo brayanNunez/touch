@@ -395,13 +395,13 @@ margin-top: 2%;
 
 
 .label-info {
-    background-color: #5bc0de;
+    background-color: #57923f;
 }
 
 .label {
     display: inline;
     padding: .2em .6em .3em;
-    font-size: 75%;
+    font-size: 85%;
     font-weight: 700;
     line-height: 1;
     color: #fff;

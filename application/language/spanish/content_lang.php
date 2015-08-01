@@ -296,6 +296,8 @@ $lang['listarReporteCot'] = 'Reportes cotizaciones';
     $lang['formProveedor_editar'] = 'Guardar cambios';
     $lang['formProveedor_salarioTipo'] = 'Tipo';
     $lang['formProveedor_salarioMonto'] = 'Monto';
+    $lang['formProveedor_palabrasClave'] = 'Palabras clave';
+    $lang['formProveedor_anadirPalabraClave'] = 'Añadir palabra';
 
 //Formulario de usuarios
     $lang['Usuario_tablaNombre'] = 'Nombre';

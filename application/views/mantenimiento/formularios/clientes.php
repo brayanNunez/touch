@@ -288,7 +288,7 @@ START CONTENT  -->
                                             <br>
                                             <div id="vendedoresCliente" class="example example_objects_as_tags">
                                               <div class="bs-example">
-                                                <input placeholder="<?=label('formEmpleado_anadirVendedor');?>" type="text"  />
+                                                <input placeholder="<?=label('formCliente_anadirVendedor');?>" type="text"  />
                                               </div>
                                         </div>
 
