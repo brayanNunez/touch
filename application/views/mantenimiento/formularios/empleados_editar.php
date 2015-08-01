@@ -44,14 +44,7 @@
                                             
                                         </div>
 
-                                        <div class="inputTag col s12">
-                                            <label for="vendedoresCliente"><?=label('formEmpleado_palabrasClave');?></label>
-                                            <br>
-                                            <div id="vendedoresCliente" class="example example_objects_as_tags">
-                                              <div class="bs-example">
-                                                <input placeholder="<?=label('formEmpleado_anadirVendedor');?>" type="text"  />
-                                              </div>
-                                        </div>
+                                        
 
 
                                             

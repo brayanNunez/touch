@@ -1,4 +1,4 @@
-<!-- START CONTENT  -->
+START CONTENT  -->
 
 <section id="content">
     <!--start breadcrumbs-->
@@ -273,7 +273,7 @@
                                             <hr />
                                             <br />
                                         </div>
-                                        <div class="input-field col s12">
+                                        <!-- <div class="input-field col s12">
                                             <select>
                                                 <option value="" disabled selected><?=label('formCliente_seleccioneUno');?></option>
                                                 <option value="1">Pedro Perez</option>
@@ -281,7 +281,17 @@
                                                 <option value="3">Maria Castro</option>
                                             </select>
                                             <label for="cliente_cotizador"><?=label('formCliente_cotizador');?></label>
+                                        </div> -->
+                                        
+                                        <div class="inputTag col s12">
+                                            <label for="vendedoresCliente"><?=label('formCliente_cotizador');?></label>
+                                            <br>
+                                            <div id="vendedoresCliente" class="example example_objects_as_tags">
+                                              <div class="bs-example">
+                                                <input placeholder="<?=label('formEmpleado_anadirVendedor');?>" type="text"  />
+                                              </div>
                                         </div>
+
                                         <div class="input-field col s12 envio-formulario">
                                             <button class="btn waves-effect waves-light right" type="submit" name="action"><?=label('formCliente_enviar');?>
                                             </button>
@@ -351,4 +361,4 @@
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>
-<!-- Fin lista modals -->
+<!-- Fin lista modals

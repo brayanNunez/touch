@@ -206,7 +206,7 @@ $lang['listarReporteCot'] = 'Reportes cotizaciones';
     $lang['Cliente_tablaTipo'] = 'Identificación';
     $lang['Cliente_tablaTelefono'] = 'Teléfono';
     $lang['Cliente_tablaCorreo'] = 'Correo electrónico';
-    $lang['Cliente_tablaCotizador'] = 'Vendedor';
+    $lang['Cliente_tablaCotizador'] = 'Vendedores';
     $lang['Cliente_tablaOpciones'] = 'Opciones';
     $lang['Cliente_nuevo'] = 'Agregar nuevo';
 	$lang['formCliente_tipoPersona'] = 'Tipo de persona';
@@ -233,9 +233,10 @@ $lang['listarReporteCot'] = 'Reportes cotizaciones';
 	$lang['formCliente_agregarNuevo'] = 'Agregar';
 	$lang['formCliente_estadoMedio'] = 'Estado';
 	$lang['formCliente_nuevoMedio'] = 'Nuevo medio';
-	$lang['formCliente_cotizador'] = 'Vendedor';
+	$lang['formCliente_cotizador'] = 'Vendedores';
 	$lang['formCliente_comentarios'] = 'Comentarios';
 	$lang['formCliente_archivo'] = 'Archivo';
+    $lang['formCliente_anadirVendedor'] = 'Añadir vendedor';
 
 //Formulario de empleados
     $lang['Empleado_tablaNombre'] = 'Nombre';
@@ -263,6 +264,10 @@ $lang['listarReporteCot'] = 'Reportes cotizaciones';
     $lang['formEmpleado_palabraNombre'] = 'Ocupación';
     $lang['formEmpleado_salarioTipo'] = 'Tipo';
     $lang['formEmpleado_salarioMonto'] = 'Monto';
+    $lang['formEmpleado_anadirPalabraClave'] = 'Añadir palabra';
+   
+
+
 
 //Formulario de proveedores
     $lang['Proveedor_tablaNombre'] = 'Nombre';

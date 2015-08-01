@@ -183,10 +183,23 @@
                  <hr />
                  <br />
              </div>
-             <div class="input-field col s12">
+             <!-- <div class="input-field col s12">
                  <input id="cliente_cotizador" type="text" value="Juan Martinez" readonly>
                  <label for="cliente_cotizador"><?=label('formCliente_cotizador');?></label>
-             </div>
+             </div> -->
+
+             <div class="inputTag col s12">
+                <label for="vendedoresCliente"><?=label('formCliente_cotizador');?></label>
+                <br>
+                <div id="vendedoresCliente" class="example example_objects_as_tags">
+                  <div class="bs-example">
+                    <input  placeholder="<?=label('formCliente_anadirVendedor');?>" type="text"  />
+                  </div>
+                </div>
+                <br>
+            </div>
+
+
          </div>
      </form>
  </div>
