@@ -3,7 +3,7 @@
 
         <div class="row col-sm-12 col-md-12 bloque-home2">
             <div class="col-sm-6 col-md-6 text-center ">
-                <h4 class="uppercase mb16">Preguntas frecuentes</h4>
+                <h4 class="uppercase mb16"><?=label('faq2');?></h4>
             </div>
 
             <div class="input-group col-sm-5 col-md-5" >

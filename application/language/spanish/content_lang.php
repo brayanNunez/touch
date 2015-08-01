@@ -531,6 +531,7 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['ingresar'] = 'Ingresar';
     $lang['queEsTouch'] = '¿Qué es Touch!?';
     $lang['faq'] = 'FAQ';
+    $lang['faq2'] = 'Preguntas frecuentes';
     $lang['nosotros'] = 'Nosotros';
     $lang['quienesLoUsan'] = '¿Quiénes lo usan?';
     $lang['prensa'] = 'Prensa';
@@ -575,10 +576,5 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['iniciar'] = 'Iniciar';
     $lang['pagosEnLinea'] = 'Pagos en línea';
     $lang['textoContacto'] = 'Estaremos muy felices y atentos esperando tu contacto';
-    $lang[''] = '';
-    $lang[''] = '';
-    $lang[''] = '';
-
-
 
 ?>
