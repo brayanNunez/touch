@@ -1,4 +1,14 @@
 <?php
+//Comentario importante DatePicker
+//La ruta para modificar el archivo con el idioma del mismo es assets/dashboard/js/materialize.min.js
+
+//Para modificar las palabras de las tablas debe modificar el archivo jquery.dataTables.js 
+//ubicado en la ruta assets\dashboard\js\plugins\data-tables\js posteriormente debe comprimirlo para que su extension sea .min.js ya que 
+//el archivo que utiliza la aplicacion es el jquery.dataTables.min.js
+
+
+
+
 	$lang['nombreSistema'] = 'Touch!';
 
 //mensajes 
@@ -523,8 +533,6 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['usuarios_verEditar'] = 'Ver / Editar información';
     $lang['usuarios_cotizaciones'] = 'Cotizaciones';
 
-//Comentario importante DatePicker
-//La ruta para modificar el archivo con el idioma del mismo es assets/dashboard/js/materialize.min.js
 
 //landing page
     $lang['correoInicio'] = 'hello@touchcr.com';
