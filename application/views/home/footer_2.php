@@ -5,44 +5,45 @@
                 <div class="row home">
                     <div class="col-md-3 col-sm-3 mb-xs-24">
                         <i class="icon mb32 ti-pie-chart"></i>
-                        <h6 class="uppercase">Sobre Touch!</h6>
+                        <h6 class="uppercase"><?=label('sobreTouch');?></h6>
                         <ul>
-                            <li><a class="footer-link" href="<?=base_url()?>welcome/que">¿Qué es?</a></li>
-                            <li><a class="footer-link" href="<?=base_url()?>welcome/como">¿Cómo funciona?</a></li>
-                            <li><a class="footer-link" href="<?=base_url()?>welcome/beneficios">Beneficios</a></li>
-                            <li><a class="footer-link" href="<?=base_url()?>welcome/precios">Precios</a></li>
-                            <li><a class="footer-link" href="<?=base_url()?>welcome/faq">FAQ</a></li>
-                            <li><a class="footer-link" href="<?=base_url()?>welcome/prensa">Prensa</a></li>
-                            <li><a class="footer-link" href="<?=base_url()?>welcome/terminos">Términos y condiciones de uso</a></li>
+                            <li><a class="footer-link" href="<?=base_url()?>welcome/que"><?=label('queEsTouch');?></a></li>
+                            <li><a class="footer-link" href="<?=base_url()?>welcome/como"><?=label('comoFunciona');?></a></li>
+                            <li><a class="footer-link" href="<?=base_url()?>welcome/quienes"><?=label('quienesLoUsan');?></a></li>
+                            <li><a class="footer-link" href="<?=base_url()?>welcome/beneficios"><?=label('beneficios');?></a></li>
+                            <li><a class="footer-link" href="<?=base_url()?>welcome/precios"><?=label('precios');?></a></li>
+                            <li><a class="footer-link" href="<?=base_url()?>welcome/faq"><?=label('faq');?></a></li>
+                            <li><a class="footer-link" href="<?=base_url()?>welcome/prensa"><?=label('prensa');?></a></li>
+                            <li><a class="footer-link" href="<?=base_url()?>welcome/terminos"><?=label('terminosCondiciones');?></a></li>
                         </ul>
                     </div>
                     <div class="col-md-3 col-sm-3 mb-xs-24">
                         <i class="icon mb32 ti-announcement"></i>
-                        <h6 class="uppercase">PLANES</h6>
+                        <h6 class="uppercase"><?=label('planes');?></h6>
                         <ul>
-                            <li><a class="footer-link" href="<?=base_url()?>welcome/index/#planes">¿Cuánto debo pagar?</a></li>
-                            <li><a class="footer-link" href="<?=base_url()?>welcome/index/#planes">Tipos de planes</a></li>
-                            <li><a class="footer-link" href="<?=base_url()?>welcome/index/#planes">Médotos de pago</a></li>
+                            <li><a class="footer-link" href="<?=base_url()?>welcome/index/#planes"><?=label('cuantoDeboPagar');?></a></li>
+                            <li><a class="footer-link" href="<?=base_url()?>welcome/index/#planes"><?=label('tiposDePlanes');?></a></li>
+                            <li><a class="footer-link" href="<?=base_url()?>welcome/index/#planes"><?=label('metodosDePago');?></a></li>
                         </ul>
                     </div>
                     <div class="col-md-3 col-sm-3 mb-xs-24">
                         <i class="icon mb32 ti-menu-alt"></i>
-                        <h6 class="uppercase">Beneficios Touch!</h6>
+                        <h6 class="uppercase"><?=label('beneficios');?></h6>
                         <ul>
-                            <li>Realizar cotizaciones</li>
-                            <li>Cuidar de tus clientes</li>
-                            <li>Manejar tus proveedores</li>
-                            <li>Administrar tus empleados</li>
-                            <li>Mantener segura tu información</li>
-                            <li>Mucho más...</li>
+                            <li><?=label('realizarCotizaciones');?></li>
+                            <li><?=label('cuidarCotizaciones');?></li>
+                            <li><?=label('manejarProveedores');?></li>
+                            <li><?=label('administrarEmpleados');?></li>
+                            <li><?=label('mantenerSeguraInformacion');?></li>
+                            <li><?=label('muchoMas');?></li>
                         </ul>
                     </div>
                     <div class="col-md-3 col-sm-3 mb-xs-24">
                         <i class="icon mb32 ti-info-alt"></i>
-                        <h6 class="uppercase"><a class="footer-link" href="<?=base_url()?>welcome/index/#contacto">Contáctenos</a></h6>
+                        <h6 class="uppercase"><a class="footer-link" href="<?=base_url()?>welcome/index/#contacto"><?=label('contactenos');?></a></h6>
                         <ul>
-                            <li>hello@touchcr.com</li>
-                            <li>+506-24542407</li>
+                            <li><?=label('correoInicio');?></li>
+                            <li><?=label('telefonoInicio');?></li>
                         </ul>
                     </div>
                 </div>

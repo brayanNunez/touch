@@ -524,4 +524,61 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
 //Comentario importante DatePicker
 //La ruta para modificar el archivo con el idioma del mismo es assets/dashboard/js/materialize.min.js
 
+//landing page
+    $lang['correoInicio'] = 'hello@touchcr.com';
+    $lang['nombreInicio'] = 'touch!';
+    $lang['registrarse'] = 'Registrarse';
+    $lang['ingresar'] = 'Ingresar';
+    $lang['queEsTouch'] = '¿Qué es Touch!?';
+    $lang['faq'] = 'FAQ';
+    $lang['nosotros'] = 'Nosotros';
+    $lang['quienesLoUsan'] = '¿Quiénes lo usan?';
+    $lang['prensa'] = 'Prensa';
+    $lang['sobreTouch'] = 'Sobre Touch!';
+    $lang['comoFunciona'] = '¿Cómo funciona?';
+    $lang['beneficios'] = 'Beneficios';
+    $lang['precios'] = 'Precios';
+    $lang['prensa'] = 'Prensa';
+    $lang['terminosCondiciones'] = 'Términos y condiciones de uso';
+    $lang['planes'] = 'Planes';
+    $lang['cuantoDeboPagar'] = '¿Cuánto debo pagar?';
+    $lang['tiposDePlanes'] = 'Tipos de planes';
+    $lang['metodosDePago'] = 'Médotos de pago';
+    $lang['beneficios'] = 'Beneficios Touch!';
+    $lang['realizarCotizaciones'] = 'Realizar cotizaciones';
+    $lang['cuidarCotizaciones'] = 'Cuidar tus cotizaciones';
+    $lang['manejarProveedores'] = 'Manejar tus proveedores';
+    $lang['administrarEmpleados'] = 'Administrar tus empleados';
+    $lang['mantenerSeguraInformacion'] = 'Mantener segura tu información';
+    $lang['muchoMas'] = 'Mucho más...';
+    $lang['contactenos'] = 'Contáctenos';
+    $lang['telefonoInicio'] = '+506-24542407';
+    $lang['slogan'] = 'Keep in Touch!';
+    $lang['textoPrincipal'] = 'Toda la información de su empresa a su alcance.  Clientes, Cotizaciones, Facturas entre otras. ';
+    $lang['pruebeloGratis'] = 'Pruébelo gratis';
+    $lang['conTouch'] = 'Con Touch!';
+    $lang['textoSecundario'] = 'Podrá controlar sus cotizaciones, clientes, empleados, proveedores entre otras opciones';
+    $lang['numeroEmpresas'] = '10,000+';
+    $lang['empresasUtilizandoTouch'] = 'EMPRESAS UTILIZANDO TOUCH!';
+    $lang['numeroCotizaciones'] = '121.291+';
+    $lang['cotizacionesEnviadas'] = 'COTIZACIONES ENVIADAS A TRAVÉS DE TOUCH!';
+    $lang['textoPlan'] = 'Selecciona el plan Touch! que más te se adapte a tu negocio:';
+    $lang['nombrePlan1'] = 'Prueba';
+    $lang['montoPlan1'] = '$0';
+    $lang['tiempoPlan1'] = '30 días gratis';
+    $lang['nombrePlan2'] = 'Básico';
+    $lang['montoPlan2'] = '$12';
+    $lang['tiempoPlan2'] = 'Mensual';
+    $lang['nombrePlan3'] = 'Avanzado';
+    $lang['montoPlan3'] = '$22';
+    $lang['tiempoPlan3'] = 'Mensual';
+    $lang['iniciar'] = 'Iniciar';
+    $lang['pagosEnLinea'] = 'Pagos en línea';
+    $lang['textoContacto'] = 'Estaremos muy felices y atentos esperando tu contacto';
+    $lang[''] = '';
+    $lang[''] = '';
+    $lang[''] = '';
+
+
+
 ?>

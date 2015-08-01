@@ -30,11 +30,11 @@
         <div class="nav-utility">
             <div class="module left menu-nosotros">
                 <i class="ti-email">&nbsp;</i>
-                <span class="sub">hello@touchcr.com</span>
+                <span class="sub"><?=label('correoInicio');?></span>
             </div>
             <div class="module right">
-                <a class="btn btn-sm boton-registro" href="<?=base_url()?>welcome/registro">REGISTRARSE</a>
-                <a href="#login-page" class="btn btn-sm boton-registro modal-trigger">Ingresar</a>
+                <a class="btn btn-sm boton-registro" href="<?=base_url()?>welcome/registro"><?=label('registrarse');?></a>
+                <a href="#login-page" class="btn btn-sm boton-registro modal-trigger"><?=label('ingresar');?></a>
             </div>
         </div>
         <div class="nav-bar">
@@ -51,22 +51,22 @@
                 <div class="module left">
                     <ul class="menu">
                         <li style="margin-right: 0%;">
-                            <a href="<?=base_url()?>welcome/faq">FAQ</a>
+                            <a href="<?=base_url()?>welcome/faq"><?=label('faq');?></a>
                         </li>
                         <li class="has-dropdown nosotros">
-                            <a class="nav-nosotros">nosotros</a>
+                            <a class="nav-nosotros"><?=label('nosotros');?></a>
                             <ul class="mega-menu">
                                 <li>
-                                    <span class="title">touch!</span>
+                                    <span class="title"><?=label('nombreInicio');?></span>
                                 </li>
                                 <li>
-                                    <a href="<?=base_url()?>welcome/que" class="nosotros-opcion">Qué es Touch? <br></a>
+                                    <a href="<?=base_url()?>welcome/que" class="nosotros-opcion"><?=label('queEsTouch');?><br></a>
                                 </li>
                                 <li>
-                                    <a href="<?=base_url()?>welcome/quienes" class="nosotros-opcion">¿Quiénes lo usan?<br></a>
+                                    <a href="<?=base_url()?>welcome/quienes" class="nosotros-opcion"><?=label('quienesLoUsan');?><br></a>
                                 </li>
                                 <li>
-                                    <a href="<?=base_url()?>welcome/prensa" class="nosotros-opcion">Prensa<br>&nbsp;<br></a>
+                                    <a href="<?=base_url()?>welcome/prensa" class="nosotros-opcion"><?=label('prensa');?><br>&nbsp;<br></a>
                                 </li>
                             </ul>
                         </li>
