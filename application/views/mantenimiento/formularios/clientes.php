@@ -77,6 +77,16 @@ START CONTENT  -->
                                             </div>
                                         </div>
 
+                                        <div class="inputTag col s12">
+                                            <label for="vendedoresCliente"><?=label('formCliente_cotizador');?></label>
+                                            <br>
+                                            <div id="vendedoresCliente" class="example example_objects_as_tags">
+                                              <div class="bs-example">
+                                                <input placeholder="<?=label('formCliente_anadirVendedor');?>" type="text"  />
+                                              </div>
+                                        </div>
+
+
                                         <div class="input-field col s12">
                                             <label><?=label('formCliente_Contactos');?></label>
                                             <br />
@@ -283,15 +293,7 @@ START CONTENT  -->
                                             <label for="cliente_cotizador"><?=label('formCliente_cotizador');?></label>
                                         </div> -->
                                         
-                                        <div class="inputTag col s12">
-                                            <label for="vendedoresCliente"><?=label('formCliente_cotizador');?></label>
-                                            <br>
-                                            <div id="vendedoresCliente" class="example example_objects_as_tags">
-                                              <div class="bs-example">
-                                                <input placeholder="<?=label('formCliente_anadirVendedor');?>" type="text"  />
-                                              </div>
-                                        </div>
-
+                                        
                                         <div class="input-field col s12 envio-formulario">
                                             <button class="btn waves-effect waves-light right" type="submit" name="action"><?=label('formCliente_enviar');?>
                                             </button>
