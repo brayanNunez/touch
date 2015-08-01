@@ -45,6 +45,14 @@
         }
     </script>
     <script>
+        //Funcion del menu de opciones
+        $(function() {
+            $(".menu-opciones-tabla").menu({
+                icons: { submenu: "ui-icon-carat-1-s" }
+            });
+        });
+    </script>
+    <script>
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();
         });
@@ -64,11 +72,12 @@
       <link href="<?=base_url()?>assets/dashboard/js/plugins/data-tables/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 
 
-     <!-- js necesario para autocompletar en las lineas de detalle -->
+    <!-- js necesario para autocompletar en las lineas de detalle -->
     <link rel="stylesheet" href="<?=base_url()?>assets/dashboard/css/jquery-ui.min.css">
-    
     <script src="<?=base_url()?>assets/dashboard/js/jquery-ui.js"></script>
 
+    <!-- js necesario para el menu de opciones-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
     <!-- js y css para menu contextual -->
      <script src="<?=base_url()?>assets/dashboard/js/jquery.contextMenu.js" type="text/javascript"></script>
