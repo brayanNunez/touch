@@ -199,6 +199,15 @@
                            <div class="row">
                               <div class="col s12 m12 l12">
                                  <table id="data-table-simple" class="responsive-table display" cellspacing="0">
+                              <div align="right">
+                                <a class="dropdown-button btn-floating  waves-effect waves-light " href="#!" data-toggle="tooltip" title="<?=label('Descargar reporte')?>" data-activates="dropdown2"><i class="mdi-editor-vertical-align-bottom"></i></a>
+                                  <ul id="dropdown2" class="dropdown-content">
+                                    <li><a href="#!" class="-text">Excel</a>
+                                    </li>
+                                    <li><a href="#!" class="-text">PDF</a>
+                                    </li>
+                                  </ul>
+                              </div>
                                     <thead>
                                        <tr>
                                           <th><?=label('tablaCotizaciones_codigo');?></th>
@@ -265,13 +274,6 @@
                            </div>
                         </div>
                      </div>
-                     <a class="dropdown-button btn-floating  waves-effect waves-light " href="#!" data-activates="dropdown2"><i class="mdi-editor-vertical-align-bottom"></i></a>
-                          <ul id="dropdown2" class="dropdown-content">
-                            <li><a href="#!" class="-text">Excel</a>
-                            </li>
-                            <li><a href="#!" class="-text">PDF</a>
-                            </li>
-                        </ul>
                   </div>
                </div>
             </div>
