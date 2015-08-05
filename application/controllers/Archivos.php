@@ -20,19 +20,20 @@ class Archivos extends CI_Controller {
             if (!$this->upload->do_upload()) {
                 //echo $this->upload->display_errors();
                 $error = array('error' => $this->upload->display_errors());
-                $this->load->view('upload_form', $error);
+//                $this->load->view('upload_form', $error);
+                redirect(base_url().'clientes/editar');
             } else {
-//                $data=$this->upload->data();
-//                $file=array(
-//                    'img_name'=>$data['raw_name'],
-//                    'thumb_name'=>'thumb',
-//                    'ext'=>$data['file_ext'],
-//                    'upload_date'=>time()
-//                );
+                $data=$this->upload->data();
+                $file=array(
+                    'file_name'=>$data['raw_name'],
+                    'file_ext'=>$data['file_ext'],
+                    'file_size'=>$data['file_size'],
+                    'file_date'=>''
+                );
 //                //$this->upload_model->add_image($file);
                 $data = array('upload_data' => $this->upload->data());
                 //$this->load->view('upload_success', $data);
-                redirect(base_url().'clientes/editar#tab-archivos');
+                redirect(base_url().'clientes/editar');
             }
         } else {
             redirect(base_url().'clientes/editar');

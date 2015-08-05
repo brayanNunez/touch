@@ -11,9 +11,11 @@
     <table id="files" class="table table-responsive striped" data-search="true">
         <thead>
             <tr>
-                <th><?=label('clientes_tablaArchivo')?></th>
-                <th><?=label('clientes_tablaDescripcion')?></th>
-                <th><?=label('clientes_tablaOpciones')?></th>
+                <th><?=label('clientes_archivosNombre')?></th>
+                <th><?=label('clientes_archivosDescripcion')?></th>
+                <th><?=label('clientes_archivosPeso')?></th>
+                <th><?=label('clientes_archivosFecha')?></th>
+                <th><?=label('clientes_archivosOpciones')?></th>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +29,12 @@
                         </td>
                         <td>
                             <p><?= $file['file_description']; ?></p>
+                        </td>
+                        <td>
+                            <p><?= $file['file_size']; ?></p>
+                        </td>
+                        <td>
+                            <p><?= $file['file_date']; ?></p>
                         </td>
                         <td>
                             <a class="icono-edicion" href="<?=base_url().'files/'.$file['file_name'].''.$file['file_ext']; ?>"
