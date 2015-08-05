@@ -518,10 +518,11 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['clientes_cotizaciones'] = 'Cotizaciones';
     $lang['clientes_buscar'] = 'Buscar: ';
     $lang['clientes_tablaArchivo'] = 'Nombre del archivo';
+    $lang['clientes_tablaDescripcion'] = 'Descripción';
     $lang['clientes_tablaOpciones'] = 'Opciones';
     $lang['clientes_archivoNuevo'] = 'Agregar nuevo archivo';
     $lang['clientes_archivoEliminar'] = '¿Realmente desea eliminar el archivo seleccionado?';
-    $lang['tooltip_descargarArchivo'] = 'Descargar';
+    $lang['tooltip_descargarArchivo'] = 'Abrir archivo en otra pestaña';
 
 //Olvidar contrasenna
     $lang['olvidarContrasenna_mensaje'] = 'Digite una dirección de correo electrónico para poder reestablecer la contraseña de su cuenta';
@@ -586,5 +587,8 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['iniciar'] = 'Iniciar';
     $lang['pagosEnLinea'] = 'Pagos en línea';
     $lang['textoContacto'] = 'Estaremos muy felices y atentos esperando tu contacto';
+
+    $lang['archivo_descripcion'] = 'Descripción del archivo';
+    $lang['archivo_upload'] = 'Subir archivo';
 
 ?>

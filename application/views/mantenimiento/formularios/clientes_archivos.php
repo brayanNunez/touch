@@ -12,43 +12,34 @@
         <thead>
             <tr>
                 <th><?=label('clientes_tablaArchivo')?></th>
+                <th><?=label('clientes_tablaDescripcion')?></th>
                 <th><?=label('clientes_tablaOpciones')?></th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td><a href="#">imagen-cliente1.jpg</a></td>
-                <td>
-                    <a class="icono-edicion" href="" data-toggle="tooltip" title="<?=label('tooltip_descargarArchivo')?>">
-                        <i class="mdi-file-file-download"></i>
-                    </a>
-                    <a class="modal-trigger icono-edicion" href="#eliminarArchivo" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
-                        <i class="mdi-action-delete"></i>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td><a href="#">contrato1-cliente.jpg</a></td>
-                <td>
-                    <a class="icono-edicion" href="" data-toggle="tooltip" title="<?=label('tooltip_descargarArchivo')?>">
-                        <i class="mdi-file-file-download"></i>
-                    </a>
-                    <a class="modal-trigger icono-edicion" href="#eliminarArchivo" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
-                        <i class="mdi-action-delete"></i>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td><a href="#">contrato2-cliente.jpg</a></td>
-                <td>
-                    <a class="icono-edicion" href="" data-toggle="tooltip" title="<?=label('tooltip_descargarArchivo')?>">
-                        <i class="mdi-file-file-download"></i>
-                    </a>
-                    <a class="modal-trigger icono-edicion" href="#eliminarArchivo" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
-                        <i class="mdi-action-delete"></i>
-                    </a>
-                </td>
-            </tr>
+            <?php if($archivos): ?>
+                <?php foreach($archivos as $file): ?>
+                    <tr>
+                        <td>
+                            <a href="<?=base_url().'files/'.$file['file_name'].''.$file['file_ext']; ?>" target="_blank">
+                                <?= $file['file_name'].''.$file['file_ext']; ?>
+                            </a>
+                        </td>
+                        <td>
+                            <p><?= $file['file_description']; ?></p>
+                        </td>
+                        <td>
+                            <a class="icono-edicion" href="<?=base_url().'files/'.$file['file_name'].''.$file['file_ext']; ?>"
+                               target="_blank" data-toggle="tooltip" title="<?=label('tooltip_descargarArchivo')?>">
+                                <i class="mdi-action-open-in-new"></i>
+                            </a>
+                            <a class="modal-trigger icono-edicion" href="#eliminarArchivo" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                                <i class="mdi-action-delete"></i>
+                            </a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </tbody>
         <tfoot>
 <!--            <tr>-->
@@ -110,17 +101,26 @@
     </div>
     <div class="modal-content">
         <div class="file-field col s12">
-            <label for="cliente_archivo"><?=label('formCliente_archivo');?></label>
+<!--            <label for="cliente_archivo">--><?//=label('formCliente_archivo');?><!--</label>-->
             <div class="file-field input-field col s12">
-                <input class="file-path validate" type="text" />
-                <div class="btn" data-toggle="tooltip" title="<?=label('tooltip_examinar')?>">
-                    <span><i class="mdi-action-search"></i></span>
-                    <input type="file" />
-                </div>
+                <?php $this->load->helper('form'); ?>
+                <?php echo form_open_multipart(base_url().'archivos/do_upload');?>
+                    <input class="file-path validate" type="text" disabled />
+                    <div class="btn" data-toggle="tooltip" title="<?=label('tooltip_examinar')?>">
+                        <span><i class="mdi-action-search"></i></span>
+                        <input type="file" name="userfile" />
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="archivo_descripcion" class="materialize-textarea" length="120"></textarea>
+                        <label for="archivo_descripcion"><?=label('archivo_descripcion');?></label>
+                    </div>
+                    <input id="subir_archivo" class="btn" type="submit" value="<?=label('archivo_upload');?>" name="upload" />
+                </form>
             </div>
+
         </div>
     </div>
     <div class="modal-footer black-text">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+        <a href="#" class="btn-flat modal-close"></a>
     </div>
 </div>

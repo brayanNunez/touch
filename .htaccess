@@ -2,6 +2,7 @@ Options FollowSymLinks
 <IfModule mod_rewrite.c>
     RewriteEngine on
 
+    RewriteCond $1 !^(public|files)
     RewriteCond $1 !^(public|assets)
     RewriteCond %{REQUEST_FILNAME} !-f
     RewriteCond %{REQUEST_FILNAME} !-d

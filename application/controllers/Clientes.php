@@ -25,9 +25,23 @@ class Clientes extends CI_Controller {
     }
     public function editar()
     {
+        $data['archivos'] = array();
+        $data['archivos'][] = array('file_name' => 'archivo1', 'file_ext' => '.jpg','file_date' => '2015/08/04',
+            'file_description' => 'Primer archivo del cliente');
+        $data['archivos'][] = array('file_name' => 'archivo2', 'file_ext' => '.pdf', 'file_date' => '2015/08/04',
+            'file_description' => 'Segundo archivo del cliente');
+        $data['archivos'][] = array('file_name' => 'archivo3', 'file_ext' => '.jpg', 'file_date' => '2015/08/04',
+            'file_description' => 'Tercer archivo del cliente');
+        $data['archivos'][] = array('file_name' => 'archivo4', 'file_ext' => '.docx', 'file_date' => '2015/08/04',
+            'file_description' => 'Cuarto archivo del cliente');
+        $data['archivos'][] = array('file_name' => 'archivo5', 'file_ext' => '.jpg', 'file_date' => '2015/08/04',
+            'file_description' => 'Quinto archivo del cliente');
+        $data['archivos'][] = array('file_name' => 'archivo6', 'file_ext' => '.pdf', 'file_date' => '2015/08/04',
+            'file_description' => 'Sexto archivo del cliente');
+
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
-        $this->load->view('mantenimiento/formularios/cliente_info');
+        $this->load->view('mantenimiento/formularios/cliente_info', $data);
         $this->load->view('layout/default/footer');
     }
     public function reporte()

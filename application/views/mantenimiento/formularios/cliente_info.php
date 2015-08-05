@@ -55,7 +55,7 @@
                                                 <?php $this->load->view('mantenimiento/formularios/clientes_editar'); ?>
                                             </div>
                                             <div id="tab-archivos" class="card col s12">
-                                                <?php $this->load->view('mantenimiento/formularios/clientes_archivos'); ?>
+                                                <?php $this->load->view('mantenimiento/formularios/clientes_archivos', $archivos); ?>
                                             </div>
                                             <div id="tab-cotizaciones" class="card col s12">
                                                 <?php $this->load->view('mantenimiento/formularios/clientes_cotizaciones'); ?>
