@@ -84,7 +84,7 @@
 </div>
 <script>
     $(document).ready(function() {
-        $('.deleteall').on("click", function(event){
+        $('#botonElimnar').on("click", function(event){
             var tb = $(this).attr('title');
             var sel = false;
             var ch = $('#'+tb).find('tbody input[type=checkbox]');
@@ -164,7 +164,9 @@
         <p><?=label('clientes_archivosSeleccionadosEliminar');?></p>
     </div>
     <div class="modal-footer black-text">
-        <a href="#" class="deleteall waves-effect waves-red btn-flat modal-action modal-close" title="files"><?=label('aceptar');?></a>
+        <div id="botonElimnar" title="files">
+            <a href="#" class="deleteall waves-effect waves-red btn-flat modal-action modal-close" ><?=label('aceptar');?></a>
+        </div>
     </div>
 </div>
 <div id="agregarArchivo" class="modal">
