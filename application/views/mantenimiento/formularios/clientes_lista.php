@@ -2,19 +2,17 @@
 
  <section id="content">
 
-    <!--start container-->
-        <div id="breadcrumbs-wrapper" class=" grey lighten-3">
-          <div class="container">
-            <div class="row">
-              <div class="col s12 m12 l12">
-                <h1 class="breadcrumbs-title"><?=label('tituloClientes');?></h1>
-                
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--breadcrumbs end-->
-
+     <!--start container-->
+     <div id="breadcrumbs-wrapper" class=" grey lighten-3">
+         <div class="container">
+             <div class="row">
+                 <div class="col s12 m12 l12">
+                     <h1 class="breadcrumbs-title"><?=label('tituloClientes');?></h1>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <!--breadcrumbs end-->
 
     <div class="container">
         <div id="chart-dashboard">

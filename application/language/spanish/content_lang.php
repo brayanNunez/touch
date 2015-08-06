@@ -213,7 +213,7 @@ $lang['listarReporteCot'] = 'Reportes cotizaciones';
 //formulario cliente
     $lang['Cliente_tablaNombre'] = 'Nombre';
     $lang['Cliente_tablaCodigo'] = 'Código';
-    $lang['Cliente_tablaTipo'] = 'Identificación';
+    $lang['Cliente_tablaTipo'] = 'Tipo';
     $lang['Cliente_tablaTelefono'] = 'Teléfono';
     $lang['Cliente_tablaCorreo'] = 'Correo electrónico';
     $lang['Cliente_tablaCotizador'] = 'Vendedores';
@@ -522,8 +522,10 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['clientes_archivosPeso'] = 'Tamaño';
     $lang['clientes_archivosFecha'] = 'Fecha';
     $lang['clientes_archivosOpciones'] = 'Opciones';
+    $lang['clientes_archivos_accionEliminar'] = 'Eliminar archivos seleccionados';
     $lang['clientes_archivoNuevo'] = 'Agregar nuevo archivo';
     $lang['clientes_archivoEliminar'] = '¿Realmente desea eliminar el archivo seleccionado?';
+    $lang['clientes_archivosSeleccionadosEliminar'] = '¿Realmente desea eliminar los archivos seleccionados?';
     $lang['tooltip_descargarArchivo'] = 'Abrir archivo en otra pestaña';
 
 //Olvidar contrasenna
