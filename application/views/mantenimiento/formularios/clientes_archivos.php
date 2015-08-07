@@ -15,8 +15,8 @@
                     <input class="filled-in checkall" type="checkbox" id="checkbox-all" onclick="toggleChecked(this.checked)"/>
                     <label for="checkbox-all"></label>
                 </th>
-                <th><?=label('clientes_archivosNombre')?></th>
-                <th><?=label('clientes_archivosDescripcion')?></th>
+                <th style="width: 20%;"><?=label('clientes_archivosNombre')?></th>
+                <th style="width: 30%;"><?=label('clientes_archivosDescripcion')?></th>
                 <th><?=label('clientes_archivosPeso')?></th>
                 <th><?=label('clientes_archivosFecha')?></th>
                 <th><?=label('clientes_archivosOpciones')?></th>

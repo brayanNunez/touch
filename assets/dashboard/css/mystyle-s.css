@@ -175,6 +175,7 @@ div.search label { float: left; }
 .ui-menu { width: 150px; }
 ul.ui-menu, ul.ui-menu:hover, ul.ui-menu li.ui-menu-item, ul.ui-menu li.ui-menu-item:hover { border: none; }
 
+ul.ui-menu.menu-opciones-tabla { background: transparent !important; }
 ul.ui-menu.menu-opciones-tabla li ul.ui-menu li.ui-menu-item { background: #c2c0c2 !important; }
 ul.ui-menu.menu-opciones-tabla:hover { background: #e6e6e6 !important; }
 ul.ui-menu.menu-opciones-tabla li ul.ui-menu li.ui-menu-item:hover { background: #a8a8a8 !important; }
