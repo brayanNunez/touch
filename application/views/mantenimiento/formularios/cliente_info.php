@@ -32,8 +32,8 @@
                                                 </li>
                                                 <li class="tab-interior tab col s3">
                                                     <a class="white-text darken-1 waves-effect waves-light"
-                                                       id="cliente-informacion" href="#tab-edicion"><i class="mdi-editor-mode-edit"></i>
-                                                        <?=label('clientes_editar');?></a>
+                                                       id="cliente-informacion" href="#tab-cotizaciones"><i class="mdi-editor-format-list-numbered"></i>
+                                                        <?=label('clientes_cotizaciones');?></a>
                                                 </li>
                                                 <li class="tab-interior tab col s3">
                                                     <a class="white-text darken-1 waves-effect waves-light"
@@ -42,8 +42,8 @@
                                                 </li>
                                                 <li class="tab-interior tab col s3">
                                                     <a class="white-text darken-1 waves-effect waves-light"
-                                                       id="cliente-informacion" href="#tab-cotizaciones"><i class="mdi-editor-format-list-numbered"></i>
-                                                        <?=label('clientes_cotizaciones');?></a>
+                                                       id="cliente-informacion" href="#tab-edicion"><i class="mdi-editor-mode-edit"></i>
+                                                        <?=label('clientes_editar');?></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -59,21 +59,6 @@
                                             </div>
                                             <div id="tab-cotizaciones" class="card col s12">
                                                 <?php $this->load->view('mantenimiento/formularios/clientes_cotizaciones'); ?>
-                                                <!-- Floating Action Button -->
-<!--                                                    <div class="fixed-action-btn" style="">-->
-<!--                                                        <a class="btn-floating btn-large red" href="">-->
-<!--                                                            <i class="large mdi-file-file-download"></i>-->
-<!--                                                        </a>-->
-<!--                                                        <ul>-->
-<!--                                                            <li>-->
-<!--                                                                <a href="#" class="btn-floating">Excel</a>-->
-<!--                                                            </li>-->
-<!--                                                            <li>-->
-<!--                                                                <a href="#" class="btn-floating">PDF</a>-->
-<!--                                                            </li>-->
-<!--                                                        </ul>-->
-<!--                                                    </div>-->
-                                                <!-- Floating Action Button -->
                                             </div>
                                         </div>
                                     </div>

@@ -1,87 +1,69 @@
-<div id="tableHeader" style="margin-bottom: 2%;">
-    <div class="new-file">
-        <a href="#agregarArchivo" class="btn btn-default modal-trigger"><?=label('clientes_archivoNuevo');?></a>
-    </div>
-    <div class="dataTables_filter search">
-        <label><?=label('clientes_buscar');?></label>
-        <input id="search" type="search" aria-controls="data-table-simple">
-    </div>
-</div>
-<div>
-    <table id="files" class="table table-responsive striped" data-search="true">
-        <thead>
-            <tr>
-                <th style="text-align: center;">
-                    <input class="filled-in checkall" type="checkbox" id="checkbox-all" onclick="toggleChecked(this.checked)"/>
-                    <label for="checkbox-all"></label>
-                </th>
-                <th style="width: 20%;"><?=label('clientes_archivosNombre')?></th>
-                <th style="width: 30%;"><?=label('clientes_archivosDescripcion')?></th>
-                <th><?=label('clientes_archivosPeso')?></th>
-                <th><?=label('clientes_archivosFecha')?></th>
-                <th><?=label('clientes_archivosOpciones')?></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if($archivos): ?>
-                <?php foreach($archivos as $file): ?>
-                    <tr>
-                        <td style="text-align: center;">
-                            <input type="checkbox" class="filled-in checkbox" id="checkbox_<?=$file['file_name'];?>" />
-                            <label for="checkbox_<?=$file['file_name'];?>"></label>
-                        </td>
-                        <td>
-                            <a href="<?=base_url().'files/'.$file['file_name'].''.$file['file_ext']; ?>" target="_blank">
-                                <?= $file['file_name'].''.$file['file_ext']; ?>
-                            </a>
-                        </td>
-                        <td>
-                            <p><?= $file['file_description']; ?></p>
-                        </td>
-                        <td>
-                            <p><?= $file['file_size']; ?></p>
-                        </td>
-                        <td>
-                            <p><?= $file['file_date']; ?></p>
-                        </td>
-                        <td>
-                            <ul class="menu-opciones-tabla">
-                                <li>Seleccione uno
-                                    <ul>
-                                        <li>
-                                            <a href="<?=base_url().'files/'.$file['file_name'].''.$file['file_ext'];?>" target="_blank">
-                                                Abrir
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="modal-trigger" href="#eliminarArchivo">
-                                                Eliminar
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-<!--                            <a class="icono-edicion" href="--><?//=base_url().'files/'.$file['file_name'].''.$file['file_ext']; ?><!--"-->
-<!--                               target="_blank" data-toggle="tooltip" title="--><?//=label('tooltip_descargarArchivo')?><!--">-->
-<!--                                <i class="mdi-action-open-in-new"></i>-->
-<!--                            </a>-->
-<!--                            <a class="modal-trigger icono-edicion" href="#eliminarArchivo" data-toggle="tooltip" title="--><?//=label('tooltip_eliminar')?><!--">-->
-<!--                                <i class="mdi-action-delete"></i>-->
-<!--                            </a>-->
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
+<table id="files" class="data-table-information responsive-table display">
+    <thead>
+        <tr>
+            <th style="text-align: center;">
+                <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all" onclick="toggleChecked(this.checked)"/>
+                <label for="checkbox-all"></label>
+            </th>
+            <th ><?=label('clientes_archivosNombre')?></th>
+            <th><?=label('clientes_archivosDescripcion')?></th>
+            <th><?=label('clientes_archivosPeso')?></th>
+            <th><?=label('clientes_archivosFecha')?></th>
+            <th><?=label('clientes_archivosOpciones')?></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php if($archivos): ?>
+            <?php foreach($archivos as $file): ?>
                 <tr>
-                    <td colspan="6">
-                        <a href="#eliminarArchivosSeleccionados" class="modal-trigger accion-seleccionados">
-                            <?=label('clientes_archivos_accionEliminar')?>
+                    <td style="text-align: center;">
+                        <input type="checkbox" class="filled-in checkbox" id="checkbox_<?=$file['file_name'];?>" />
+                        <label for="checkbox_<?=$file['file_name'];?>"></label>
+                    </td>
+                    <td>
+                        <a href="<?=base_url().'files/'.$file['file_name'].''.$file['file_ext']; ?>" target="_blank">
+                            <?= $file['file_name'].''.$file['file_ext']; ?>
+                        </a>
+                    </td>
+                    <td>
+                        <p><?= $file['file_description']; ?></p>
+                    </td>
+                    <td>
+                        <p><?= $file['file_size']; ?></p>
+                    </td>
+                    <td>
+                        <p><?= $file['file_date']; ?></p>
+                    </td>
+                    <td>
+                        <ul id="dropdown-<?= $file['file_name']; ?>" class="dropdown-content">
+                            <li><a href="<?=base_url().'files/'.$file['file_name'].''.$file['file_ext']; ?>" class="-text"
+                                    target="_blank">Abrir</a>
+                            </li>
+                            <li><a href="#eliminarArchivo" class="-text modal-trigger">Eliminar</a>
+                            </li>
+                        </ul>
+                        <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-<?= $file['file_name']; ?>">
+                            Seleccionar<i class="mdi-navigation-arrow-drop-down"></i>
                         </a>
                     </td>
                 </tr>
-            <?php endif; ?>
-        </tbody>
-    </table>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </tbody>
+</table>
+
+<div>
+    <ul id="dropdown-opciones-seleccionados" class="dropdown-content">
+        <li>
+            <a href="#eliminarArchivosSeleccionados" class="modal-trigger accion-seleccionados -text">Eliminar</a>
+        </li>
+    </ul>
+    <a id="opciones-seleccionados" class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
+       data-activates="dropdown-opciones-seleccionados" style="display: none;">
+        Seleccionar<i class="mdi-navigation-arrow-drop-down"></i>
+    </a>
 </div>
+
 <script>
     $(document).ready(function() {
         $('#botonElimnar').on("click", function(event){
@@ -110,6 +92,16 @@
                 $('.checkbox').each(function() {
                     this.checked = false;
                 });
+            }
+        });
+    });
+    $(document).ready(function(){
+        $('.checkbox').click(function(event) {
+            var marcados = $('.checkbox:checked').size();
+            if(marcados >= 1) {
+                document.getElementById('opciones-seleccionados').style.display = 'block';
+            } else {
+                document.getElementById('opciones-seleccionados').style.display = 'none';
             }
         });
     });

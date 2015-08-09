@@ -63,8 +63,7 @@ input#send-message:hover { background-color: #09856e; border: 2px solid #09856e;
 section#planes div.container div.row div.pricing-table a.btn-filled {  }
 
 @media only screen and (max-width: 992px) {
-    section.slider-inicio { height:auto !important; /*margin-top: 43px !important;*/ }
-    /*div.nav-bar.nav-open { height: 150px; }*/
+    section.slider-inicio { height:auto !important; }
     div.mobile-toggle { border: none !important; }
     div.mobile-toggle i.ti-menu { color: #666 !important; }
     div.module-group.right { background-color: #a8a8a8; color: white; }
@@ -73,16 +72,9 @@ section#planes div.container div.row div.pricing-table a.btn-filled {  }
     section.bg-primary { padding-top: 5%; }
     section.number-users { padding: 5% 0%; }
     div.nav-utility div.module { padding: 0% 1%; }
-    /*div.nav-utility div.module.right a.btn { padding: 0px 2px !important; border-radius: 15px !important; border: none; font-size: 9px; }*/
     section#planes { padding: 5% 0%; }
     section#planes div.container div.row div.text-center p { margin-bottom: 5%; }
     section#planes div.container div.row div.pricing-table { padding: 10px 32px; }
-    /*section#contacto textarea { height: 80px; padding: 0%; border-bottom: 1px solid #777777;}*/
-    /*section#contacto textarea:focus { outline: 0px; border-bottom: 2px solid black; }*/
-    /*input#send-message { width: 75%; display: block; margin: 0 auto; margin-top: 20px; border-radius: 50px !important; }*/
-    /*section.bg-dark.bg-secondary div.row.home i { margin: 20px 0px 20px 35%; }*/
-    /*section.bg-dark.bg-secondary div.row.home h6 { text-align: center; }*/
-    /*section.bg-dark.bg-secondary div.row.home ul { text-align: center; margin-top: 20px; }*/
     div#login-page { width: 380px !important; top: 0% !important; }
     nav#nav-principal { height: 100px; }
     div.realperson-text br { display: block; }
@@ -92,29 +84,22 @@ section#planes div.container div.row div.pricing-table a.btn-filled {  }
     .btn-lg { min-width: 150px !important; }
 }
 @media only screen and (max-width: 768px) {
-    section.slider-inicio { height:auto !important; /*margin-top: 43px !important;*/ }
-    /*div.nav-bar.nav-open { height: 150px; }*/
+    section.slider-inicio { height:auto !important; }
     div.mobile-toggle { border: none !important; }
     div.mobile-toggle i.ti-menu { color: #666 !important; }
     div.module-group.right { background-color: #a8a8a8; color: white; }
     ul.mega-menu { position: fixed !important; }
-    div.imagen-inicio img { margin-left: 0% !important; }
+    div.imagen-inicio img { margin-left: 0 !important; }
     section.bg-primary { padding-top: 5%; }
-    section.number-users { padding: 5% 0%; }
-    div.nav-utility div.module { padding: 0% 1%; }
-    /*div.nav-utility div.module.right a.btn { padding: 0px 2px !important; border-radius: 15px !important; border: none; font-size: 9px; }*/
+    section.number-users { padding: 5% 0; }
+    div.nav-utility div.module { padding: 0 1%; }
     div.nav-utility div.module.right a.btn { padding: 0 10px !important; }
-    section#planes { padding: 5% 0%; }
+    section#planes { padding: 5% 0; }
     section#planes div.container div.row div.text-center p { margin-bottom: 5%; }
     section#planes div.container div.row div.pricing-table { padding: 10px 32px; }
-    section#contacto { padding: 5% 0%; }
-    /*section#contacto textarea { height: 80px; padding: 0%; border-bottom: 1px solid #777777;}*/
-    /*section#contacto textarea:focus { outline: 0px; border-bottom: 2px solid black; }*/
-    /*input#send-message { width: 75%; display: block; margin: 0 auto; margin-top: 20px; border-radius: 50px !important; }*/
-    section.bg-dark.bg-secondary div.row.home i { margin: 20px 0px 20px 45%; }
-    /*section.bg-dark.bg-secondary div.row.home h6 { text-align: center; }*/
-    /*section.bg-dark.bg-secondary div.row.home ul { text-align: center; margin-top: 20px; }*/
-    div#login-page { width: 380px !important; top: 0% !important; }
+    section#contacto { padding: 5% 0; }
+    section.bg-dark.bg-secondary div.row.home i { margin: 20px 0 20px 45%; }
+    div#login-page { width: 380px !important; top: 0 !important; }
     nav#nav-principal { height: 100px; }
     div.realperson-text br { display: block; }
     .file-field input.file-path { margin-left: 22% !important; width: 85% !important; }
@@ -122,8 +107,7 @@ section#planes div.container div.row div.pricing-table a.btn-filled {  }
     div.file-field div.btn i { height: 5px; margin-top: -5px; }
 }
 @media only screen and (max-width: 480px) {
-    section.slider-inicio { height:auto !important; /*margin-top: 43px !important;*/ }
-    /*div.nav-bar.nav-open { height: 150px; }*/
+    section.slider-inicio { height:auto !important; }
     div.mobile-toggle { border: none !important; }
     div.mobile-toggle i.ti-menu { color: #666 !important; }
     div.module-group.right { background-color: #a8a8a8; color: white; }
@@ -137,13 +121,7 @@ section#planes div.container div.row div.pricing-table a.btn-filled {  }
     section#planes div.container div.row div.text-center p { margin-bottom: 5%; }
     section#planes div.container div.row div.pricing-table { padding: 10px 32px; }
     section#contacto { padding: 5% 0%; }
-    /*section#contacto textarea { height: 80px; padding: 0%; border-bottom: 1px solid #777777;}*/
-    /*section#contacto textarea:focus { outline: 0px; border-bottom: 2px solid black; }*/
-    /*input#send-message { width: 75%; display: block; margin: 0 auto; margin-top: 20px; border-radius: 50px !important; }*/
-    /*section.bg-dark.bg-secondary { padding: 5% 0%; }*/
     section.bg-dark.bg-secondary div.row.home i { margin: 20px 0px 20px 40%; }
-    /*section.bg-dark.bg-secondary div.row.home h6 { text-align: center; }*/
-    /*section.bg-dark.bg-secondary div.row.home ul { text-align: center; margin-top: 20px; }*/
     div#login-page { width: 95% !important; top: 0% !important; }
     nav#nav-principal { height: 100px; }
     div.realperson-text br { display: block; }
@@ -151,7 +129,8 @@ section#planes div.container div.row div.pricing-table a.btn-filled {  }
     div.file-field div.btn { min-width: 30px !important; width: 40px; height: 40px; padding: 5px 5px; top: 0; }
     div.file-field div.btn i { height: 5px; margin-top: -5px; }
 }
-#files tbody td { padding: 1.5% 3%; text-align: left; }
+#files th, td { width: auto !important; }
+#files tbody td { padding: 1.5% 1%; text-align: left; }
 div.new-file { float: left; margin: 3% 3% 0% 3%; }
 
 ul.cliente-info li { width: 25% !important; }
@@ -167,25 +146,14 @@ a.anterior i, a.siguiente i { vertical-align: middle }
 div.fixed-action-btn ul { left: inherit; bottom: 50px; }
 div.fixed-action-btn ul li a { width: 150px; height: auto; border-radius: 0%; background-color: white; color: black; }
 
-div#data-table-simple_filter { text-align: left; }
+div.dataTables_filter { text-align: left !important; }
 /*div#data-table-simple_filter input { text-align: right; }*/
 div.search label { float: left; }
 /*div.search input { text-align: right; }*/
 
-.ui-menu { width: 150px; }
-ul.ui-menu, ul.ui-menu:hover, ul.ui-menu li.ui-menu-item, ul.ui-menu li.ui-menu-item:hover { border: none; }
-
-ul.ui-menu.menu-opciones-tabla { background: transparent !important; }
-ul.ui-menu.menu-opciones-tabla li ul.ui-menu li.ui-menu-item { background: #c2c0c2 !important; }
-ul.ui-menu.menu-opciones-tabla:hover { background: #e6e6e6 !important; }
-ul.ui-menu.menu-opciones-tabla li ul.ui-menu li.ui-menu-item:hover { background: #a8a8a8 !important; }
-ul.ui-menu.menu-opciones-tabla li.ui-menu-item { background: transparent !important; }
-ul.ui-menu.menu-opciones-tabla a { padding-right: 70%; }
-
-ul.ui-menu li ul { top: 30px !important; left: 0 !important; }
-ul.ui-menu li ul li { background-color: #c2c0c2; border-bottom: 1px solid #a8a8a8; }
-.ui-menu .ui-state-default, .ui-menu .ui-state-focus, .ui-menu .ui-state-active { margin: 0 !important; }
-
 input#subir_archivo { position: inherit; margin-top: 3%; width: 50%; }
 
-a.accion-seleccionados { color: green; font-size: large; font-weight: bold; text-decoration: underline; }
+a.boton-opciones { padding: 0 20px; background-color: #47b475 !important; }
+a.boton-opciones i { padding-left: 15px; }
+
+a#opciones-seleccionados { position: absolute; top: 4%; right: 250px; }

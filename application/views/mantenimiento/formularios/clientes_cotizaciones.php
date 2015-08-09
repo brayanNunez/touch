@@ -1,4 +1,4 @@
-<table id="data-table-simple" class="responsive-table display" cellspacing="0">
+<table class="data-table-information responsive-table display" cellspacing="0">
      <thead>
          <tr>
              <th><?=label('tablaCotizaciones_codigo');?></th>
