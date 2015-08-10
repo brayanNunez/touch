@@ -84,7 +84,7 @@
     $lang['tituloListaSolicitudesConCliente'] = 'Solicitudes pendientes';
     $lang['tituloListaSolicitudesSinCliente'] = 'Solicitudes de nuevos clientes'; 
     $lang['tituloListaPorAprobar'] = 'Cotizaciones pendientes por revisar';
-    $lang['tituloAprobarEnvioCliente'] = 'Revisar Cotización';
+    $lang['tituloAprobarEnvioCliente'] = 'Revisar cotización';
 
 
 
@@ -165,18 +165,18 @@
 	$lang['pasoSiguiente'] = 'Siguiente';
 
 //Menu izquierdo 
-	$lang['inicio'] = 'Panel Principal';
+	$lang['inicio'] = 'Panel principal';
 	$lang['cotizaciones'] = 'Cotizaciones';
 $lang['listarCotizacion'] = 'Lista de cotizaciones';
 $lang['listarReporteCot'] = 'Reportes cotizaciones';
 	$lang['servicios'] = 'Servicios';
 	$lang['productos'] = 'Productos';
-	$lang['agregarP'] = 'Agregar Producto';
+	$lang['agregarP'] = 'Agregar producto';
 	$lang['listarP'] = 'Lista de productos';
 	$lang['administración'] = 'Administración';
 	$lang['costos'] = 'Costos';
 	$lang['clientes'] = 'Clientes';
-	$lang['agregarCliente'] = 'Agregar Cliente';
+	$lang['agregarCliente'] = 'Agregar cliente';
 	$lang['listarCliente'] = 'Lista de clientes';
 	$lang['listarReporteCli'] = 'Reportes de clientes';
 	$lang['empleados'] = 'Empleados';
@@ -188,12 +188,12 @@ $lang['listarReporteCot'] = 'Reportes cotizaciones';
 	$lang['avanzado'] = 'Avanzado';
 	$lang['masOpciones'] = 'MÁS OPCIONES';
 	$lang['agregarCotizacion'] = 'Crear cotización';
-	$lang['agregarProduto_Servicio'] = 'Agregar Producto/Servicio';
+	$lang['agregarProduto_Servicio'] = 'Agregar producto/servicio';
 	$lang['agregarProducto'] = 'Producto';
 	$lang['agregarServicio'] = 'Servicio';
-	$lang['agregarEmpleado'] = 'Agregar Empleado';
-	$lang['agregarProveedor'] = 'Agregar Proveedor';
-	$lang['agregarS'] = 'Agregar Servicio';
+	$lang['agregarEmpleado'] = 'Agregar empleado';
+	$lang['agregarProveedor'] = 'Agregar proveedor';
+	$lang['agregarS'] = 'Agregar servicio';
 	$lang['reportes'] = 'Reportes';
 
 //Formulario de solicitudes
@@ -434,7 +434,7 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['tablaPlanes_opciones'] = 'Opciones';
 
     //Pagos
-    $lang['datosDelServicio'] = 'Datos del Servicio';
+    $lang['datosDelServicio'] = 'Datos del servicio';
     $lang['monto_mensual'] = 'Monto mensual';
     $lang['tipo_plan'] = 'Tipo de plan';
     $lang['fecha_pago'] = 'Fecha de último pago';
@@ -471,10 +471,6 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['copiarCodigo'] = 'Copiar código';
 
     //Embed
-    // $lang['formEmbed_cliente1 '] = 'Dato adicional 1';
-    // $lang['formEmbed_cliente2 '] = 'Dato adicional 2';
-    // $lang['formEmbed_cliente3 '] = 'Dato adicional 3';
-    // $lang['formEmbed_cliente4 '] = 'Dato adicional 4';esto no son datos fijos
     $lang['formEmbed_enviar'] = 'Enviar';
     $lang['formEmbed_correo'] = 'Correo electrónico';
     $lang['formEmbed_nombre'] = 'Nombre completo';
