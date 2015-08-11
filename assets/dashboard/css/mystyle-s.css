@@ -157,3 +157,19 @@ a.boton-opciones { padding: 0 20px; background-color: #47b475 !important; }
 a.boton-opciones i { padding-left: 15px; }
 
 a#opciones-seleccionados { position: absolute; top: 4%; right: 250px; }
+
+/* WebKit, Blink, Edge */
+::-webkit-input-placeholder { color: inherit; font-weight: normal; text-transform: none; font-size: 14px; font-family: Arial, Helvetica, sans-serif; }
+/* Mozilla Firefox 4 to 18 */
+:-moz-placeholder { color: inherit; opacity: 1; font-weight: normal; text-transform: none; font-size: 14px; }
+/* Mozilla Firefox 19+ */
+::-moz-placeholder { color: inherit; opacity: 1; font-weight: normal; text-transform: none; font-size: 14px; }
+/* Internet Explorer 10-11 */
+:-ms-input-placeholder { color: inherit; font-weight: normal; text-transform: none; font-size: 14px; }
+
+div.country-select div.select-wrapper input.select-dropdown { font-size: 15px !important; font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.8px; }
+
+a#busqueda-avanzada-cliente { position: absolute; right: 50px; top: 165px; font-size: smaller; z-index: 10; }
+div#busquedaAvanzada { width: 70%; }
+div#busquedaAvanzada div.modal-content { padding: 0 24px; }
+label#fecha-desde, label#fecha-hasta { left: 0; top: -29px; font-size: 0.8rem; }
