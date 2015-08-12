@@ -107,8 +107,26 @@
     });
     $(document).ready(function() {
         $('.boton-opciones').on('click', function(event) {
-//            alert('Me cago en Claret');
-            alert($(this).attr(''));
+                // alert(event.type);
+             //e.preventDefault();
+             
+              var elementoActivo = $(this).siblings('ul.active');
+              if (elementoActivo.length>0) {
+                var estado = elementoActivo.css("display");
+                if (estado == "block") {
+                    elementoActivo.css("display", "none");
+                    elementoActivo.style.display='none';
+                } else{
+                    elementoActivo.css("display", "block");
+                    elementoActivo.style.display='block';
+                };
+                
+
+                
+              } 
+
+
+
         });
     });
 </script>
