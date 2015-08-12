@@ -105,6 +105,12 @@
             }
         });
     });
+    $(document).ready(function() {
+        $('.boton-opciones').on('click', function(event) {
+//            alert('Me cago en Claret');
+            alert($(this).attr(''));
+        });
+    });
 </script>
 <script>
     function searchTable(inputVal) {
@@ -183,10 +189,20 @@
                     <input id="subir_archivo" class="btn" type="submit" value="<?=label('archivo_upload');?>" name="upload" />
                 </form>
             </div>
-
         </div>
     </div>
     <div class="modal-footer black-text">
         <a href="#" class="btn-flat modal-close"></a>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
