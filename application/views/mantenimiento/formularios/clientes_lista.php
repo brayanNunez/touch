@@ -32,6 +32,10 @@
                                                     <a id="busqueda-avanzada-cliente" href="#busquedaAvanzada" class="modal-trigger">Busqueda avanzada</a>
                                                     <thead>
                                                         <tr>
+                                                            <th style="text-align: center;">
+                                                                <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all" onclick="toggleChecked(this.checked)"/>
+                                                                <label for="checkbox-all"></label>
+                                                            </th>
                                                             <th><?=label('Cliente_tablaCodigo');?></th>
                                                             <th><?=label('Cliente_tablaTipo');?></th>
                                                             <th><?=label('Cliente_tablaNombre');?></th>
@@ -43,6 +47,10 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr>
+                                                            <td style="text-align: center;">
+                                                                <input type="checkbox" class="filled-in checkbox" id="checkbox_cliente1" />
+                                                                <label for="checkbox_cliente1"></label>
+                                                            </td>
                                                             <td>0001</td>
                                                             <td>Jurídico</td>
                                                             <td><a href="<?=base_url()?>clientes/editar">Dos Pinos S.A.</a></td>
@@ -50,21 +58,22 @@
                                                             <td>coopedospinos@gmail.com</td>
                                                             <td><a href="<?=base_url()?>usuarios/editar">Juan</a></td>
                                                             <td>
-                                                                <ul class="menu-opciones-tabla">
-                                                                    <li>Seleccione uno
-                                                                        <ul>
-                                                                            <li>
-                                                                                <a class="modal-trigger" href="#eliminarCliente">Eliminar</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="<?=base_url()?>clientes/editar">Editar</a>
-                                                                            </li>
-                                                                        </ul>
+                                                                <ul id="dropdown-cliente1" class="dropdown-content">
+                                                                    <li><a href="<?=base_url(); ?>clientes/editar" class="-text">Editar</a>
+                                                                    </li>
+                                                                    <li><a href="#eliminarCliente" class="-text modal-trigger">Eliminar</a>
                                                                     </li>
                                                                 </ul>
+                                                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-cliente1">
+                                                                    Seleccionar<i class="mdi-navigation-arrow-drop-down"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                         <tr>
+                                                            <td style="text-align: center;">
+                                                                <input type="checkbox" class="filled-in checkbox" id="checkbox_cliente2" />
+                                                                <label for="checkbox_cliente2"></label>
+                                                            </td>
                                                             <td>0002</td>
                                                             <td>Físico</td>
                                                             <td><a href="<?=base_url()?>clientes/editar">Emanuel Conejo R.</a></td>
@@ -72,21 +81,22 @@
                                                             <td>emanuel@gmail.com</td>
                                                             <td><a href="<?=base_url()?>usuarios/editar">Maria</a></td>
                                                             <td>
-                                                                <ul class="menu-opciones-tabla">
-                                                                    <li>Seleccione uno
-                                                                        <ul>
-                                                                            <li>
-                                                                                <a class="modal-trigger" href="#eliminarCliente">Eliminar</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="<?=base_url()?>clientes/editar">Editar</a>
-                                                                            </li>
-                                                                        </ul>
+                                                                <ul id="dropdown-cliente2" class="dropdown-content">
+                                                                    <li><a href="<?=base_url(); ?>clientes/editar" class="-text">Editar</a>
+                                                                    </li>
+                                                                    <li><a href="#eliminarCliente" class="-text modal-trigger">Eliminar</a>
                                                                     </li>
                                                                 </ul>
+                                                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-cliente2">
+                                                                    Seleccionar<i class="mdi-navigation-arrow-drop-down"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                         <tr>
+                                                            <td style="text-align: center;">
+                                                                <input type="checkbox" class="filled-in checkbox" id="checkbox_cliente3" />
+                                                                <label for="checkbox_cliente3"></label>
+                                                            </td>
                                                             <td>0003</td>
                                                             <td>Jurídico</td>
                                                             <td><a href="<?=base_url()?>clientes/editar">Pipasa S.A.</a></td>
@@ -94,21 +104,22 @@
                                                             <td>pipasa@gmail.com</td>
                                                             <td><a href="<?=base_url()?>usuarios/editar">Maria</a></td>
                                                             <td>
-                                                                <ul class="menu-opciones-tabla">
-                                                                    <li>Seleccione uno
-                                                                        <ul>
-                                                                            <li>
-                                                                                <a class="modal-trigger" href="#eliminarCliente">Eliminar</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="<?=base_url()?>clientes/editar">Editar</a>
-                                                                            </li>
-                                                                        </ul>
+                                                                <ul id="dropdown-cliente3" class="dropdown-content">
+                                                                    <li><a href="<?=base_url(); ?>clientes/editar" class="-text">Editar</a>
+                                                                    </li>
+                                                                    <li><a href="#eliminarCliente" class="-text modal-trigger">Eliminar</a>
                                                                     </li>
                                                                 </ul>
+                                                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-cliente3">
+                                                                    Seleccionar<i class="mdi-navigation-arrow-drop-down"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                         <tr>
+                                                            <td style="text-align: center;">
+                                                                <input type="checkbox" class="filled-in checkbox" id="checkbox_cliente4" />
+                                                                <label for="checkbox_cliente4"></label>
+                                                            </td>
                                                             <td>0004</td>
                                                             <td>Físico</td>
                                                             <td><a href="<?=base_url()?>clientes/editar">Julia Bolaños E.</a></td>
@@ -116,18 +127,15 @@
                                                             <td>julia@gmail.com</td>
                                                             <td><a href="<?=base_url()?>usuarios/editar">Juan</a></td>
                                                             <td>
-                                                                <ul class="menu-opciones-tabla">
-                                                                    <li>Seleccione uno
-                                                                        <ul>
-                                                                            <li>
-                                                                                <a class="modal-trigger" href="#eliminarCliente">Eliminar</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="<?=base_url()?>clientes/editar">Editar</a>
-                                                                            </li>
-                                                                        </ul>
+                                                                <ul id="dropdown-cliente4" class="dropdown-content">
+                                                                    <li><a href="<?=base_url(); ?>clientes/editar" class="-text">Editar</a>
+                                                                    </li>
+                                                                    <li><a href="#eliminarCliente" class="-text modal-trigger">Eliminar</a>
                                                                     </li>
                                                                 </ul>
+                                                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-cliente4">
+                                                                    Seleccionar<i class="mdi-navigation-arrow-drop-down"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -351,3 +359,19 @@
     </div>
 </div>
 <!--Fin lista modals -->
+
+<script>
+    $(document).ready(function(){
+        $('#checkbox-all').click(function(event) {
+            if(this.checked) {
+                $('.checkbox').each(function() {
+                    this.checked = true;
+                });
+            } else {
+                $('.checkbox').each(function() {
+                    this.checked = false;
+                });
+            }
+        });
+    });
+</script>
