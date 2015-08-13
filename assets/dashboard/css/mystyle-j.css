@@ -18,7 +18,9 @@ input[type="text"], input[type="password"] {  height: 43px;  }
 
 .bloque-home-nosotros a{ text-decoration: none; color: #FFFFFF !important;}
 
-div.fixed-action-btn ul li a span i{ color: black; vertical-align: middle; text-align: right;}
+div.fixed-action-btn ul li a span i{ color: black; vertical-align: middle; float: left; margin-left: 7px; margin-right: 7px;}
 
-div.fixed-action-btn ul li a { width: 160px;}
+div.fixed-action-btn ul li a { width: 165px;}
+
+.fixed-action-btn ul { text-align: left;}
 
