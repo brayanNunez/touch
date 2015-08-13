@@ -75,36 +75,6 @@
 <!-- END CONTENT-->
 
 <script>
-    $(document).ready(function() {
-        $('#botonElimnar').on("click", function(event){
-            var tb = $(this).attr('title');
-            var sel = false;
-            var ch = $('#'+tb).find('tbody input[type=checkbox]');
-            ch.each(function(){
-                var $this = $(this);
-                if($this.is(':checked')) {
-                    sel = true;
-                    $this.parents('tr').fadeOut(function(){
-                        $this.remove();
-                    });
-                }
-            });
-            return false;
-        });
-    });
-    $(document).ready(function(){
-        $('#checkbox-all').click(function(event) {
-            if(this.checked) {
-                $('.checkbox').each(function() {
-                    this.checked = true;
-                });
-            } else {
-                $('.checkbox').each(function() {
-                    this.checked = false;
-                });
-            }
-        });
-    });
     $(document).ready(function(){
         $('.checkbox').click(function(event) {
             var marcados = $('.checkbox:checked').size();

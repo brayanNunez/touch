@@ -7,8 +7,8 @@
     <thead>
         <tr>
             <th style="text-align: center;">
-                <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all" onclick="toggleChecked(this.checked)"/>
-                <label for="checkbox-all"></label>
+                <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all-files" onclick="toggleChecked(this.checked)"/>
+                <label for="checkbox-all-files"></label>
             </th>
             <th ><?=label('clientes_archivosNombre')?></th>
             <th><?=label('clientes_archivosDescripcion')?></th>
@@ -22,7 +22,7 @@
             <?php foreach($archivos as $file): ?>
                 <tr>
                     <td style="text-align: center;">
-                        <input type="checkbox" class="filled-in checkbox" id="checkbox_<?=$file['file_name'];?>" />
+                        <input type="checkbox" class="filled-in checkbox checkbox-file" id="checkbox_<?=$file['file_name'];?>" />
                         <label for="checkbox_<?=$file['file_name'];?>"></label>
                     </td>
                     <td>
@@ -59,7 +59,7 @@
     </tbody>
 </table>
 
-<div>
+<div class="tabla-conAgregar">
     <a id="opciones-seleccionados-delete" class="modal-trigger waves-effect black-text opciones-seleccionados" style="display: none;"
        href="#eliminarArchivosSeleccionados" data-toggle="tooltip" title="<?=label('opciones_seleccionadosEliminar')?>">
         <i class="mdi-action-delete icono-opciones-varios"></i>
@@ -68,7 +68,7 @@
        href="#" data-toggle="tooltip" title="<?=label('opciones_seleccionadosImprimir')?>">
         <i class="mdi-action-print icono-opciones-varios"></i>
     </a>
-    <ul id="dropdown-exportar" class="dropdown-content">
+    <ul id="dropdown-exportar-files" class="dropdown-content">
         <li>
             <a href="#" class="-text"><?=label('opciones_seleccionadosExportarPdf')?></a>
         </li>
@@ -77,10 +77,43 @@
         </li>
     </ul>
     <a id="opciones-seleccionados-export" class="boton-opciones black-text opciones-seleccionados dropdown-button" style="display: none;"
-       href="#" data-toggle="tooltip" title="<?=label('opciones_seleccionadosExportar')?>" data-activates="dropdown-exportar">
+       href="#" data-toggle="tooltip" title="<?=label('opciones_seleccionadosExportar')?>" data-activates="dropdown-exportar-files">
         <i class="mdi-file-file-download icono-opciones-varios"></i>
     </a>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('#botonEliminarArchivosSeleccionados').on("click", function(event){
+            var tb = $(this).attr('title');
+            var sel = false;
+            var ch = $('#'+tb).find('tbody input[type=checkbox]');
+            ch.each(function(){
+                var $this = $(this);
+                if($this.is(':checked')) {
+                    sel = true;
+                    $this.parents('tr').fadeOut(function(){
+                        $this.remove();
+                    });
+                }
+            });
+            return false;
+        });
+    });
+    $(document).ready(function(){
+        $('#checkbox-all-files').click(function(event) {
+            if(this.checked) {
+                $('.checkbox-file').each(function() {
+                    this.checked = true;
+                });
+            } else {
+                $('.checkbox-file').each(function() {
+                    this.checked = false;
+                });
+            }
+        });
+    });
+</script>
 
 <div id="eliminarArchivo" class="modal">
     <div class="modal-header">
@@ -103,7 +136,7 @@
         <p><?=label('clientes_archivosSeleccionadosEliminar');?></p>
     </div>
     <div class="modal-footer black-text">
-        <div id="botonElimnar" title="files">
+        <div id="botonEliminarArchivosSeleccionados" title="files">
             <a href="#" class="deleteall waves-effect waves-red btn-flat modal-action modal-close" ><?=label('aceptar');?></a>
         </div>
     </div>

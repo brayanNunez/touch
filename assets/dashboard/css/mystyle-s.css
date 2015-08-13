@@ -172,7 +172,10 @@ div#busquedaAvanzada { width: 70%; }
 div#busquedaAvanzada div.modal-content { padding: 0 24px; }
 label#fecha-desde, label#fecha-hasta { left: 0; top: -29px; font-size: 0.8rem; }
 
-a#opciones-seleccionados-delete { position: absolute; top: 18%; right: 440px; }
-a#opciones-seleccionados-print { position: absolute; top: 18%; right: 525px; }
-a#opciones-seleccionados-export { position: absolute; top: 18%; right: 610px; padding: 0 !important; background-color: transparent !important; }
+div.tabla-conAgregar a#opciones-seleccionados-delete { position: absolute; top: 18%; right: 440px; }
+div.tabla-conAgregar a#opciones-seleccionados-print { position: absolute; top: 18%; right: 525px; }
+div.tabla-conAgregar a#opciones-seleccionados-export { position: absolute; top: 18%; right: 610px; padding: 0 !important; background-color: transparent !important; }
+div.tabla-sinAgregar a#opciones-seleccionados-delete { position: absolute; top: 9%; right: 440px; }
+div.tabla-sinAgregar a#opciones-seleccionados-print { position: absolute; top: 9%; right: 525px; }
+div.tabla-sinAgregar a#opciones-seleccionados-export { position: absolute; top: 9%; right: 610px; padding: 0 !important; background-color: transparent !important; }
 i.icono-opciones-varios { font-size: 40px; }

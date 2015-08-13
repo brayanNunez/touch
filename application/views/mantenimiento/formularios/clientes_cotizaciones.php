@@ -2,8 +2,8 @@
     <thead>
         <tr>
             <th style="text-align: center;">
-                <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all" onclick="toggleChecked(this.checked)"/>
-                <label for="checkbox-all"></label>
+                <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all-cotizaciones" onclick="toggleChecked(this.checked)"/>
+                <label for="checkbox-all-cotizaciones"></label>
             </th>
             <th><?=label('tablaCotizaciones_codigo');?></th>
             <th><?=label('tablaCotizaciones_fecha');?></th>
@@ -16,7 +16,7 @@
     <tbody>
         <tr>
             <td style="text-align: center;">
-                <input type="checkbox" class="filled-in checkbox" id="checkbox_cliente1_cotizacion1" />
+                <input type="checkbox" class="filled-in checkbox checkbox-cotizacion" id="checkbox_cliente1_cotizacion1" />
                 <label for="checkbox_cliente1_cotizacion1"></label>
             </td>
             <td>MRR-001</td>
@@ -49,7 +49,7 @@
         </tr>
         <tr>
             <td style="text-align: center;">
-                <input type="checkbox" class="filled-in checkbox" id="checkbox_cliente1_cotizacion2" />
+                <input type="checkbox" class="filled-in checkbox checkbox-cotizacion" id="checkbox_cliente1_cotizacion2" />
                 <label for="checkbox_cliente1_cotizacion2"></label>
             </td>
             <td>MRR-002</td>
@@ -82,7 +82,7 @@
         </tr>
         <tr>
             <td style="text-align: center;">
-                <input type="checkbox" class="filled-in checkbox" id="checkbox_cliente1_cotizacion3" />
+                <input type="checkbox" class="filled-in checkbox checkbox-cotizacion" id="checkbox_cliente1_cotizacion3" />
                 <label for="checkbox_cliente1_cotizacion3"></label>
             </td>
             <td>MRR-003</td>
@@ -115,7 +115,7 @@
         </tr>
         <tr>
             <td style="text-align: center;">
-                <input type="checkbox" class="filled-in checkbox" id="checkbox_cliente1_cotizacion4" />
+                <input type="checkbox" class="filled-in checkbox checkbox-cotizacion" id="checkbox_cliente1_cotizacion4" />
                 <label for="checkbox_cliente1_cotizacion4"></label>
             </td>
             <td>MRR-004</td>
@@ -149,7 +149,7 @@
     </tbody>
 </table>
 
-<div>
+<div class="tabla-sinAgregar">
     <a id="opciones-seleccionados-delete" class="modal-trigger waves-effect black-text opciones-seleccionados" style="display: none;"
        href="#eliminarCotizacionesSeleccionadas" data-toggle="tooltip" title="<?=label('opciones_seleccionadosEliminar')?>">
         <i class="mdi-action-delete icono-opciones-varios"></i>
@@ -171,6 +171,39 @@
         <i class="mdi-file-file-download icono-opciones-varios"></i>
     </a>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('#botonEliminarCotizacionesSeleccionadas').on("click", function(event){
+            var tb = $(this).attr('title');
+            var sel = false;
+            var ch = $('#'+tb).find('tbody input[type=checkbox]');
+            ch.each(function(){
+                var $this = $(this);
+                if($this.is(':checked')) {
+                    sel = true;
+                    $this.parents('tr').fadeOut(function(){
+                        $this.remove();
+                    });
+                }
+            });
+            return false;
+        });
+    });
+    $(document).ready(function(){
+        $('#checkbox-all-cotizaciones').click(function(event) {
+            if(this.checked) {
+                $('.checkbox-cotizacion').each(function() {
+                    this.checked = true;
+                });
+            } else {
+                $('.checkbox-cotizacion').each(function() {
+                    this.checked = false;
+                });
+            }
+        });
+    });
+</script>
 
 <!-- lista modals -->
 <div id="eliminarCotizacion" class="modal">
@@ -218,7 +251,7 @@
         <p><?=label('clientes_archivosSeleccionadosEliminar');?></p>
     </div>
     <div class="modal-footer black-text">
-        <div id="botonElimnar" title="cliente1-cotizaciones">
+        <div id="botonEliminarCotizacionesSeleccionadas" title="cliente1-cotizaciones">
             <a href="#" class="deleteall waves-effect waves-red btn-flat modal-action modal-close" ><?=label('aceptar');?></a>
         </div>
     </div>

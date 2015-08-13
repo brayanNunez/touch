@@ -148,7 +148,7 @@
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                <div>
+                                                <div class="tabla-conAgregar">
                                                     <a id="opciones-seleccionados-delete" class="modal-trigger waves-effect black-text opciones-seleccionados" style="display: none;"
                                                        href="#eliminarElementosSeleccionados" data-toggle="tooltip" title="<?=label('opciones_seleccionadosEliminar')?>">
                                                         <i class="mdi-action-delete icono-opciones-varios"></i>
