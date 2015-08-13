@@ -25,7 +25,7 @@
                                     <div id="table-datatables">
                                         <div class="row">
                                             <div class="col s12 m12 l12">
-                                                <table id="data-table-simple" class="responsive-table display" cellspacing="0">
+                                                <table id="clients" class="data-table-information responsive-table display" cellspacing="0">
                                                     <div class="agregar_nuevo">
                                                         <a href="<?=base_url()?>clientes/agregar" class="btn btn-default"><?=label('agregar_nuevo');?></a>
                                                     </div>
@@ -147,18 +147,29 @@
                                                             </td>
                                                         </tr>
                                                     </tbody>
-                                                    <tfoot>
-<!--                                                        <tr>-->
-<!--                                                            <th>--><?//=label('Cliente_tablaCodigo');?><!--</th>-->
-<!--                                                            <th>--><?//=label('Cliente_tablaTipo');?><!--</th>-->
-<!--                                                            <th>--><?//=label('Cliente_tablaNombre');?><!--</th>-->
-<!--                                                            <th>--><?//=label('Cliente_tablaTelefono');?><!--</th>-->
-<!--                                                            <th>--><?//=label('Cliente_tablaCorreo');?><!--</th>-->
-<!--                                                            <th>--><?//=label('Cliente_tablaCotizador');?><!--</th>-->
-<!--                                                            <th>--><?//=label('Cliente_tablaOpciones');?><!--</th>-->
-<!--                                                        </tr>-->
-                                                    </tfoot>
                                                 </table>
+                                                <div>
+                                                    <a id="opciones-seleccionados-delete" class="modal-trigger waves-effect black-text opciones-seleccionados" style="display: none;"
+                                                       href="#eliminarElementosSeleccionados" data-toggle="tooltip" title="<?=label('opciones_seleccionadosEliminar')?>">
+                                                        <i class="mdi-action-delete icono-opciones-varios"></i>
+                                                    </a>
+                                                    <a id="opciones-seleccionados-print" class="waves-effect black-text opciones-seleccionados" style="display: none;"
+                                                       href="#" data-toggle="tooltip" title="<?=label('opciones_seleccionadosImprimir')?>">
+                                                        <i class="mdi-action-print icono-opciones-varios"></i>
+                                                    </a>
+                                                    <ul id="dropdown-exportar" class="dropdown-content">
+                                                        <li>
+                                                            <a href="#" class="-text"><?=label('opciones_seleccionadosExportarPdf')?></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="-text"><?=label('opciones_seleccionadosExportarExcel')?></a>
+                                                        </li>
+                                                    </ul>
+                                                    <a id="opciones-seleccionados-export" class="boton-opciones black-text opciones-seleccionados dropdown-button" style="display: none;"
+                                                       href="#" data-toggle="tooltip" title="<?=label('opciones_seleccionadosExportar')?>" data-activates="dropdown-exportar">
+                                                        <i class="mdi-file-file-download icono-opciones-varios"></i>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -175,6 +186,23 @@
 <!-- END CONTENT-->
 
 <script>
+    $(document).ready(function() {
+        $('#botonElimnar').on("click", function(event){
+            var tb = $(this).attr('title');
+            var sel = false;
+            var ch = $('#'+tb).find('tbody input[type=checkbox]');
+            ch.each(function(){
+                var $this = $(this);
+                if($this.is(':checked')) {
+                    sel = true;
+                    $this.parents('tr').fadeOut(function(){
+                        $this.remove();
+                    });
+                }
+            });
+            return false;
+        });
+    });
     $(document).ready(function(){
         $('#checkbox-all').click(function(event) {
             if(this.checked) {
@@ -185,6 +213,42 @@
                 $('.checkbox').each(function() {
                     this.checked = false;
                 });
+            }
+        });
+    });
+    $(document).ready(function(){
+        $('.checkbox').click(function(event) {
+            var marcados = $('.checkbox:checked').size();
+            if(marcados >= 1) {
+                var elems = document.getElementsByClassName('opciones-seleccionados');
+                var e;
+                for(e in elems) {
+                    elems[e].style.display = 'block';
+                }
+            } else {
+                var elems = document.getElementsByClassName('opciones-seleccionados');
+                var e;
+                for(e in elems) {
+                    elems[e].style.display = 'none';
+                }
+            }
+        });
+    });
+    $(document).ready(function() {
+        $('.boton-opciones').on('click', function(event) {
+            // alert(event.type);
+            //e.preventDefault();
+
+            var elementoActivo = $(this).siblings('ul.active');
+            if (elementoActivo.length>0) {
+                var estado = elementoActivo.css("display");
+                if (estado == "block") {
+                    elementoActivo.css("display", "none");
+                    elementoActivo.style.display='none';
+                } else {
+                    elementoActivo.css("display", "block");
+                    elementoActivo.style.display='block';
+                }
             }
         });
     });
@@ -201,6 +265,20 @@
     </div>
     <div class="modal-footer black-text">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+    </div>
+</div>
+<div id="eliminarElementosSeleccionados" class="modal">
+    <div class="modal-header">
+        <p><?=label('nombreSistema');?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?=label('clientes_archivosSeleccionadosEliminar');?></p>
+    </div>
+    <div class="modal-footer black-text">
+        <div id="botonElimnar" title="clients">
+            <a href="#" class="deleteall waves-effect waves-red btn-flat modal-action modal-close" ><?=label('aceptar');?></a>
+        </div>
     </div>
 </div>
 <div id="busquedaAvanzada" class="modal">
