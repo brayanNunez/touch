@@ -116,6 +116,11 @@
 	$lang['tablaCotizaciones_estado'] = 'Estado';
 	$lang['tablaCotizaciones_opciones'] = 'Opciones';
 
+    $lang['tablaCotizaciones_opcionDuplicar'] = 'Duplicar';
+    $lang['tablaCotizaciones_opcionVerEditar'] = 'Ver / Editar';
+    $lang['tablaCotizaciones_opcionFinalizar'] = 'Finalizar';
+    $lang['tablaCotizaciones_opcionEliminar'] = 'Eliminar';
+
 //columnas tabla de solicitudes
     $lang['tablaSolicitudes_nombre'] = 'Nombre';
     $lang['tablaSolicitudes_correo'] = 'Correo';
@@ -511,7 +516,7 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['menuOpciones_eliminar'] = 'Eliminar';
     $lang['menuOpciones_abrir'] = 'Abrir';
     $lang['opciones_seleccionadosEliminar'] = 'Eliminar los elementos seleccionados';
-    $lang['opciones_seleccionadosImprimir'] = 'Imprimir los elementos seleccioandos';
+    $lang['opciones_seleccionadosImprimir'] = 'Imprimir los elementos seleccionados';
     $lang['opciones_seleccionadosExportar'] = 'Exportar los elementos seleccionados';
     $lang['opciones_seleccionadosExportarPdf'] = 'Pdf';
     $lang['opciones_seleccionadosExportarExcel'] = 'Excel';
