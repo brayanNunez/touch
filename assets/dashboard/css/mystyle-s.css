@@ -156,8 +156,6 @@ input#subir_archivo { position: inherit; margin-top: 3%; width: 50%; }
 a.boton-opciones { padding: 0 20px; background-color: #47b475 !important; }
 a.boton-opciones i { padding-left: 15px; }
 
-a#opciones-seleccionados { position: absolute; top: 4%; right: 250px; }
-
 /* WebKit, Blink, Edge */
 ::-webkit-input-placeholder { color: inherit; font-weight: normal; text-transform: none; font-size: 14px; font-family: Arial, Helvetica, sans-serif; }
 /* Mozilla Firefox 4 to 18 */
@@ -173,3 +171,8 @@ a#busqueda-avanzada-cliente { position: absolute; right: 50px; top: 165px; font-
 div#busquedaAvanzada { width: 70%; }
 div#busquedaAvanzada div.modal-content { padding: 0 24px; }
 label#fecha-desde, label#fecha-hasta { left: 0; top: -29px; font-size: 0.8rem; }
+
+a#opciones-seleccionados-delete { position: absolute; top: 18%; right: 440px; }
+a#opciones-seleccionados-print { position: absolute; top: 18%; right: 525px; }
+a#opciones-seleccionados-export { position: absolute; top: 18%; right: 610px; padding: 0 !important; background-color: transparent !important; }
+i.icono-opciones-varios { font-size: 40px; }

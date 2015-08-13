@@ -502,11 +502,25 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['tooltip_cotizar'] = 'Crear cotización';
     $lang['tooltip_pantallaCompleta'] = 'Pantalla completa';
     $lang['tooltip_notificaciones'] = 'Notificaciones';
+    $lang['tooltip_eliminarSeleccionados'] = 'Eliminar los elementos seleccionados';
+    $lang['tooltip_imprimirSeleccionados'] = 'Imprimir los elementos seleccionados';
+    $lang['tooltip_exportarSeleccionados'] = 'Exportar los elementos seleccionados';
+
+    $lang['menuOpciones_seleccionar'] = 'Seleccionar';
+    $lang['menuOpciones_editar'] = 'Editar';
+    $lang['menuOpciones_eliminar'] = 'Eliminar';
+    $lang['menuOpciones_abrir'] = 'Abrir';
+    $lang['opciones_seleccionadosEliminar'] = 'Eliminar los elementos seleccionados';
+    $lang['opciones_seleccionadosImprimir'] = 'Imprimir los elementos seleccioandos';
+    $lang['opciones_seleccionadosExportar'] = 'Exportar los elementos seleccionados';
+    $lang['opciones_seleccionadosExportarPdf'] = 'Pdf';
+    $lang['opciones_seleccionadosExportarExcel'] = 'Excel';
 
 //Captcha
     $lang['cambiar_captcha'] = 'Cambiar captcha';
 
 //Clientes editar
+    $lang['clientes_busquedaAvanzada'] = 'Búsqueda avanzada';
     $lang['clientes_info'] = 'Información del cliente';
     $lang['clientes_ver'] = 'Información';
     $lang['clientes_editar'] = 'Editar datos';
@@ -523,6 +537,8 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['clientes_archivoEliminar'] = '¿Realmente desea eliminar el archivo seleccionado?';
     $lang['clientes_archivosSeleccionadosEliminar'] = '¿Realmente desea eliminar los archivos seleccionados?';
     $lang['tooltip_descargarArchivo'] = 'Abrir archivo en otra pestaña';
+    $lang['clientes_busquedaDesde'] = 'Desde: ';
+    $lang['clientes_busquedaHasta'] = 'Hasta: ';
 
 //Olvidar contrasenna
     $lang['olvidarContrasenna_mensaje'] = 'Digite una dirección de correo electrónico para poder reestablecer la contraseña de su cuenta';

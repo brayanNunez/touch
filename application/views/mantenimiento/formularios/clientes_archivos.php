@@ -1,3 +1,8 @@
+<div id="tableHeader" style="margin-bottom: 2%;">
+    <div class="new-file">
+        <a href="#agregarArchivo" class="btn btn-default modal-trigger"><?=label('clientes_archivoNuevo')?></a>
+    </div>
+</div>
 <table id="files" class="data-table-information responsive-table display">
     <thead>
         <tr>
@@ -37,13 +42,13 @@
                     <td>
                         <ul id="dropdown-<?= $file['file_name']; ?>" class="dropdown-content">
                             <li><a href="<?=base_url().'files/'.$file['file_name'].''.$file['file_ext']; ?>" class="-text"
-                                    target="_blank">Abrir</a>
+                                    target="_blank"><?=label('menuOpciones_abrir')?></a>
                             </li>
-                            <li><a href="#eliminarArchivo" class="-text modal-trigger">Eliminar</a>
+                            <li><a href="#eliminarArchivo" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
                             </li>
                         </ul>
                         <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-<?= $file['file_name']; ?>">
-                            Seleccionar<i class="mdi-navigation-arrow-drop-down"></i>
+                            <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
                         </a>
                     </td>
                 </tr>
@@ -53,14 +58,25 @@
 </table>
 
 <div>
-    <ul id="dropdown-opciones-seleccionados" class="dropdown-content">
+    <a id="opciones-seleccionados-delete" class="modal-trigger waves-effect black-text opciones-seleccionados" style="display: none;"
+       href="#eliminarArchivosSeleccionados" data-toggle="tooltip" title="<?=label('opciones_seleccionadosEliminar')?>">
+        <i class="mdi-action-delete icono-opciones-varios"></i>
+    </a>
+    <a id="opciones-seleccionados-print" class="waves-effect black-text opciones-seleccionados" style="display: none;"
+       href="#" data-toggle="tooltip" title="<?=label('opciones_seleccionadosImprimir')?>">
+        <i class="mdi-action-print icono-opciones-varios"></i>
+    </a>
+    <ul id="dropdown-exportar" class="dropdown-content">
         <li>
-            <a href="#eliminarArchivosSeleccionados" class="modal-trigger accion-seleccionados -text">Eliminar</a>
+            <a href="#" class="-text"><?=label('opciones_seleccionadosExportarPdf')?></a>
+        </li>
+        <li>
+            <a href="#" class="-text"><?=label('opciones_seleccionadosExportarExcel')?></a>
         </li>
     </ul>
-    <a id="opciones-seleccionados" class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-       data-activates="dropdown-opciones-seleccionados" style="display: none;">
-        Seleccionar<i class="mdi-navigation-arrow-drop-down"></i>
+    <a id="opciones-seleccionados-export" class="boton-opciones black-text opciones-seleccionados dropdown-button" style="display: none;"
+       href="#" data-toggle="tooltip" title="<?=label('opciones_seleccionadosExportar')?>" data-activates="dropdown-exportar">
+        <i class="mdi-file-file-download icono-opciones-varios"></i>
     </a>
 </div>
 
@@ -99,34 +115,36 @@
         $('.checkbox').click(function(event) {
             var marcados = $('.checkbox:checked').size();
             if(marcados >= 1) {
-                document.getElementById('opciones-seleccionados').style.display = 'block';
+                var elems = document.getElementsByClassName('opciones-seleccionados');
+                var e;
+                for(e in elems) {
+                    elems[e].style.display = 'block';
+                }
             } else {
-                document.getElementById('opciones-seleccionados').style.display = 'none';
+                var elems = document.getElementsByClassName('opciones-seleccionados');
+                var e;
+                for(e in elems) {
+                    elems[e].style.display = 'none';
+                }
             }
         });
     });
     $(document).ready(function() {
         $('.boton-opciones').on('click', function(event) {
-                // alert(event.type);
-             //e.preventDefault();
-             
-              var elementoActivo = $(this).siblings('ul.active');
-              if (elementoActivo.length>0) {
+            // alert(event.type);
+            //e.preventDefault();
+
+            var elementoActivo = $(this).siblings('ul.active');
+            if (elementoActivo.length>0) {
                 var estado = elementoActivo.css("display");
                 if (estado == "block") {
                     elementoActivo.css("display", "none");
                     elementoActivo.style.display='none';
-                } else{
+                } else {
                     elementoActivo.css("display", "block");
                     elementoActivo.style.display='block';
-                };
-                
-
-                
-              } 
-
-
-
+                }
+            }
         });
     });
 </script>

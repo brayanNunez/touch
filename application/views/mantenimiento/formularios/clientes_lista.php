@@ -29,7 +29,7 @@
                                                     <div class="agregar_nuevo">
                                                         <a href="<?=base_url()?>clientes/agregar" class="btn btn-default"><?=label('agregar_nuevo');?></a>
                                                     </div>
-                                                    <a id="busqueda-avanzada-cliente" href="#busquedaAvanzada" class="modal-trigger">Busqueda avanzada</a>
+                                                    <a id="busqueda-avanzada-cliente" href="#busquedaAvanzada" class="modal-trigger"><?=label('clientes_busquedaAvanzada')?></a>
                                                     <thead>
                                                         <tr>
                                                             <th style="text-align: center;">
@@ -59,13 +59,15 @@
                                                             <td><a href="<?=base_url()?>usuarios/editar">Juan</a></td>
                                                             <td>
                                                                 <ul id="dropdown-cliente1" class="dropdown-content">
-                                                                    <li><a href="<?=base_url(); ?>clientes/editar" class="-text">Editar</a>
+                                                                    <li>
+                                                                        <a href="<?=base_url(); ?>clientes/editar" class="-text"><?=label('menuOpciones_editar')?></a>
                                                                     </li>
-                                                                    <li><a href="#eliminarCliente" class="-text modal-trigger">Eliminar</a>
+                                                                    <li>
+                                                                        <a href="#eliminarCliente" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
                                                                     </li>
                                                                 </ul>
                                                                 <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-cliente1">
-                                                                    Seleccionar<i class="mdi-navigation-arrow-drop-down"></i>
+                                                                    <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
                                                                 </a>
                                                             </td>
                                                         </tr>
@@ -82,13 +84,15 @@
                                                             <td><a href="<?=base_url()?>usuarios/editar">Maria</a></td>
                                                             <td>
                                                                 <ul id="dropdown-cliente2" class="dropdown-content">
-                                                                    <li><a href="<?=base_url(); ?>clientes/editar" class="-text">Editar</a>
+                                                                    <li>
+                                                                        <a href="<?=base_url(); ?>clientes/editar" class="-text"><?=label('menuOpciones_editar')?></a>
                                                                     </li>
-                                                                    <li><a href="#eliminarCliente" class="-text modal-trigger">Eliminar</a>
+                                                                    <li>
+                                                                        <a href="#eliminarCliente" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
                                                                     </li>
                                                                 </ul>
                                                                 <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-cliente2">
-                                                                    Seleccionar<i class="mdi-navigation-arrow-drop-down"></i>
+                                                                    <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
                                                                 </a>
                                                             </td>
                                                         </tr>
@@ -105,13 +109,15 @@
                                                             <td><a href="<?=base_url()?>usuarios/editar">Maria</a></td>
                                                             <td>
                                                                 <ul id="dropdown-cliente3" class="dropdown-content">
-                                                                    <li><a href="<?=base_url(); ?>clientes/editar" class="-text">Editar</a>
+                                                                    <li>
+                                                                        <a href="<?=base_url(); ?>clientes/editar" class="-text"><?=label('menuOpciones_editar')?></a>
                                                                     </li>
-                                                                    <li><a href="#eliminarCliente" class="-text modal-trigger">Eliminar</a>
+                                                                    <li>
+                                                                        <a href="#eliminarCliente" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
                                                                     </li>
                                                                 </ul>
                                                                 <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-cliente3">
-                                                                    Seleccionar<i class="mdi-navigation-arrow-drop-down"></i>
+                                                                    <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
                                                                 </a>
                                                             </td>
                                                         </tr>
@@ -128,13 +134,15 @@
                                                             <td><a href="<?=base_url()?>usuarios/editar">Juan</a></td>
                                                             <td>
                                                                 <ul id="dropdown-cliente4" class="dropdown-content">
-                                                                    <li><a href="<?=base_url(); ?>clientes/editar" class="-text">Editar</a>
+                                                                    <li>
+                                                                        <a href="<?=base_url(); ?>clientes/editar" class="-text"><?=label('menuOpciones_editar')?></a>
                                                                     </li>
-                                                                    <li><a href="#eliminarCliente" class="-text modal-trigger">Eliminar</a>
+                                                                    <li>
+                                                                        <a href="#eliminarCliente" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
                                                                     </li>
                                                                 </ul>
                                                                 <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-cliente4">
-                                                                    Seleccionar<i class="mdi-navigation-arrow-drop-down"></i>
+                                                                    <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
                                                                 </a>
                                                             </td>
                                                         </tr>
@@ -166,6 +174,22 @@
 </section>
 <!-- END CONTENT-->
 
+<script>
+    $(document).ready(function(){
+        $('#checkbox-all').click(function(event) {
+            if(this.checked) {
+                $('.checkbox').each(function() {
+                    this.checked = true;
+                });
+            } else {
+                $('.checkbox').each(function() {
+                    this.checked = false;
+                });
+            }
+        });
+    });
+</script>
+
 <!-- lista modals -->
 <div id="eliminarCliente" class="modal">
     <div class="modal-header">
@@ -190,13 +214,13 @@
                 <div class="input-field col s12 m3 l3">
                     <div class="input-field col s12">
                         <input id="busqueda-fecha-desde" type="date">
-                         <label id="fecha-desde" for="busqueda-fecha-desde" class="">Desde: </label>
+                         <label id="fecha-desde" for="busqueda-fecha-desde" class=""><?=label('clientes_busquedaDesde')?></label>
                     </div>
                 </div>
                 <div class="input-field col s12 m3 l3">
                     <div class="input-field col s12">
                         <input id="busqueda-fecha-hasta" type="date">
-                        <label id="fecha-hasta" for="busqueda-fecha-hasta" class="">Hasta: </label>
+                        <label id="fecha-hasta" for="busqueda-fecha-hasta" class=""><?=label('clientes_busquedaHasta')?></label>
                     </div>
                 </div>
 
@@ -359,19 +383,3 @@
     </div>
 </div>
 <!--Fin lista modals -->
-
-<script>
-    $(document).ready(function(){
-        $('#checkbox-all').click(function(event) {
-            if(this.checked) {
-                $('.checkbox').each(function() {
-                    this.checked = true;
-                });
-            } else {
-                $('.checkbox').each(function() {
-                    this.checked = false;
-                });
-            }
-        });
-    });
-</script>
