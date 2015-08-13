@@ -16,7 +16,9 @@ input[type="text"], input[type="password"] {  height: 43px;  }
 
 #table-embed{  overflow-y: scroll;  max-height: 300px;  }
 
-/*.bloque-embed-cliente{  margin-bottom: 50px;  }*/
-
 .bloque-home-nosotros a{ text-decoration: none; color: #FFFFFF !important;}
+
+div.fixed-action-btn ul li a span i{ color: black; vertical-align: middle; text-align: right;}
+
+div.fixed-action-btn ul li a { width: 160px;}
 
