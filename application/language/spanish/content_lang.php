@@ -33,6 +33,8 @@
     $lang['confirmarEliminarMoneda'] = '¿Realmente desea eliminar la moneda seleccionada?';
     $lang['confirmarEliminarSolicitud'] = '¿Realmente desea eliminar la solicitud de cotización?';
     $lang['confirmarEnvioCliente'] = '¿Realmente desea aprobar la cotización y enviarla al cliente?';
+    $lang['confirmarEliminarImpuesto'] = '¿Realmente desea eliminar el impuesto seleccionado?';
+    $lang['confirmarEliminarUnidad'] = '¿Realmente desea eliminar la unidad seleccionada?';
     $lang['motivoRechaza'] = 'Agregue el motivo por el cual rechaza esta cotización';
 
     
@@ -44,6 +46,7 @@
     $lang['semana'] = 'Semanal';
     $lang['quincena'] = 'Quincenal';
     $lang['mes'] = 'Mensual';
+    
 //titulos
     $lang['tituloPagos'] = 'Pagos al sistema';
     $lang['tituloReporte'] = 'Reportes de la empresa';
@@ -60,7 +63,9 @@
     $lang['tituloFormularioFinanciamiento'] = 'Financiamiento';
     $lang['tituloListaFinanciamiento'] = 'Lista de financiamientos disponibles';
 	$lang['tituloListaCotizaciones'] = 'Lista de cotizaciones';
-	$lang['tituloCotizacion'] = 'Cotización';
+    $lang['tituloListaImpuesto'] = 'Lista de impuestos';
+    $lang['tituloListaUnidad'] = 'Lista de unidades';
+    $lang['tituloCotizacion'] = 'Cotización';
 	$lang['tituloFormularioCliente'] = 'Agregar cliente';
 	$lang['tituloFormularioClienteEditar'] = 'Editar cliente';
 	$lang['tituloFormularioSolicitudes'] = 'Solitud de cotización';
@@ -75,6 +80,7 @@
 	$lang['tituloFormularioServicioEditar'] = 'Editar servicio';
 	$lang['tituloFormularioProducto'] = 'Agregar producto';
 	$lang['tituloFormularioProductoEditar'] = 'Editar producto';
+    $lang['tituloFormularioImpuesto'] = 'Agregar impuesto';
 	$lang['tituloProducto'] = 'Productos';
 	$lang['tituloServicios'] = 'Servicios';
 	$lang['tituloEmpleados'] = 'Empleados';
@@ -88,6 +94,23 @@
 
 
 
+//tabla de impuestos    
+    $lang['formImpuesto_nombre'] = 'Nombre';
+    $lang['formImpuesto_descripcion'] = 'Descripción';
+    $lang['formImpuesto_valor'] = 'Valor';
+    $lang['formImpuesto_agregar'] = 'Agregar';
+    $lang['impuestoNuevo'] = 'Agregar nuevo';
+    $lang['tablaImpuesto_nombre'] = 'Nombre';
+    $lang['tablaImpuesto_descripcion'] = 'Descripción';
+    $lang['tablaImpuesto_valor'] = 'Valor';
+    $lang['impuestoNuevo'] = 'Agregar nuevo';
+    $lang['impuesto'] = 'Impuestos';
+    
+//tabla de unidades
+    $lang['unidadNueva'] = 'Agregar nuevo';
+    $lang['tablaUnidad_nombre'] = 'Nombre';
+    $lang['formUnidad_nombre'] = 'Nombre';
+    $lang['unidad'] = 'Unidades';
     
 
 //Gastos adicionales

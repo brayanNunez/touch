@@ -93,6 +93,12 @@
                                         <li>
                                             <a href="<?=base_url();?>pagos"><?=label('pagos');?></a>
                                         </li>
+                                        <li>
+                                            <a href="<?=base_url();?>impuesto"><?=label('impuesto');?></a>
+                                        </li>
+                                        <li>
+                                            <a href="<?=base_url();?>unidad"><?=label('unidad');?></a>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>
