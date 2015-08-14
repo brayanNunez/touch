@@ -35,7 +35,7 @@ div#login-page input#username:focus { outline: none; }
 div#login-page input#password:focus { outline: none; }
 a.btn-logueo { background-color: #009966 !important; color: white !important; }
 a.btn-logueo:hover { background-color: #09856e !important; }
-section.slider-inicio { position: relative !important; height: 577px !important; }
+section.slider-inicio { z-index: 1 !important; position: relative !important; height: 577px !important; }
 /*div.pricing-table a.btn { background-color: #47b475 !important; }*/
 a.boton-claro { background-color: transparent !important; height: 50px !important; line-height: 50px !important; }
 a.boton-claro:hover { background-color: #009966 !important; border: 2px solid #47b475; color: white !important; }
@@ -66,8 +66,8 @@ section#planes div.container div.row div.pricing-table a.btn-filled {  }
     section.slider-inicio { height:auto !important; }
     div.mobile-toggle { border: none !important; }
     div.mobile-toggle i.ti-menu { color: #666 !important; }
-    div.module-group.right { background-color: #a8a8a8; color: white; }
-    ul.mega-menu { position: fixed !important; }
+    div.module-group.right { z-index: 100 !important; position: relative; background-color: #a8a8a8; color: white; }
+    ul.mega-menu { position: relative !important; }
     div.imagen-inicio img { margin-left: 0% !important; }
     section.bg-primary { padding-top: 5%; }
     section.number-users { padding: 5% 0%; }
@@ -87,8 +87,8 @@ section#planes div.container div.row div.pricing-table a.btn-filled {  }
     section.slider-inicio { height:auto !important; }
     div.mobile-toggle { border: none !important; }
     div.mobile-toggle i.ti-menu { color: #666 !important; }
-    div.module-group.right { background-color: #a8a8a8; color: white; }
-    ul.mega-menu { position: fixed !important; }
+    div.module-group.right { z-index: 100 !important; position: relative; background-color: #a8a8a8; color: white; }
+    ul.mega-menu { position: relative !important; }
     div.imagen-inicio img { margin-left: 0 !important; }
     section.bg-primary { padding-top: 5%; }
     section.number-users { padding: 5% 0; }
@@ -110,8 +110,8 @@ section#planes div.container div.row div.pricing-table a.btn-filled {  }
     section.slider-inicio { height:auto !important; }
     div.mobile-toggle { border: none !important; }
     div.mobile-toggle i.ti-menu { color: #666 !important; }
-    div.module-group.right { background-color: #a8a8a8; color: white; }
-    ul.mega-menu { position: fixed !important; }
+    div.module-group.right { z-index: 100 !important; position: relative; background-color: #a8a8a8; color: white; }
+    ul.mega-menu { position: relative !important; }
     div.imagen-inicio img { margin-left: 0% !important; }
     section.bg-primary { padding-top: 5%; }
     section.number-users { padding: 5% 0%; }
