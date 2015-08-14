@@ -75,29 +75,8 @@
 <!-- END CONTENT-->
 
 <script>
-    $(document).ready(function(){
-        $('.checkbox').click(function(event) {
-            var marcados = $('.checkbox:checked').size();
-            if(marcados >= 1) {
-                var elems = document.getElementsByClassName('opciones-seleccionados');
-                var e;
-                for(e in elems) {
-                    elems[e].style.display = 'block';
-                }
-            } else {
-                var elems = document.getElementsByClassName('opciones-seleccionados');
-                var e;
-                for(e in elems) {
-                    elems[e].style.display = 'none';
-                }
-            }
-        });
-    });
     $(document).ready(function() {
         $('.boton-opciones').on('click', function(event) {
-            // alert(event.type);
-            //e.preventDefault();
-
             var elementoActivo = $(this).siblings('ul.active');
             if (elementoActivo.length>0) {
                 var estado = elementoActivo.css("display");

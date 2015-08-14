@@ -22,7 +22,7 @@
             <?php foreach($archivos as $file): ?>
                 <tr>
                     <td style="text-align: center;">
-                        <input type="checkbox" class="filled-in checkbox checkbox-file" id="checkbox_<?=$file['file_name'];?>" />
+                        <input type="checkbox" class="filled-in checkbox-file" id="checkbox_<?=$file['file_name'];?>" />
                         <label for="checkbox_<?=$file['file_name'];?>"></label>
                     </td>
                     <td>
@@ -60,11 +60,11 @@
 </table>
 
 <div class="tabla-conAgregar">
-    <a id="opciones-seleccionados-delete" class="modal-trigger waves-effect black-text opciones-seleccionados" style="display: none;"
+    <a id="opciones-seleccionados-delete" class="modal-trigger waves-effect black-text opciones-seleccionados-archivos" style="display: none;"
        href="#eliminarArchivosSeleccionados" data-toggle="tooltip" title="<?=label('opciones_seleccionadosEliminar')?>">
         <i class="mdi-action-delete icono-opciones-varios"></i>
     </a>
-    <a id="opciones-seleccionados-print" class="waves-effect black-text opciones-seleccionados" style="display: none;"
+    <a id="opciones-seleccionados-print" class="waves-effect black-text opciones-seleccionados-archivos" style="display: none;"
        href="#" data-toggle="tooltip" title="<?=label('opciones_seleccionadosImprimir')?>">
         <i class="mdi-action-print icono-opciones-varios"></i>
     </a>
@@ -76,7 +76,7 @@
             <a href="#" class="-text"><?=label('opciones_seleccionadosExportarExcel')?></a>
         </li>
     </ul>
-    <a id="opciones-seleccionados-export" class="boton-opciones black-text opciones-seleccionados dropdown-button" style="display: none;"
+    <a id="opciones-seleccionados-export" class="boton-opciones black-text opciones-seleccionados-archivos dropdown-button" style="display: none;"
        href="#" data-toggle="tooltip" title="<?=label('opciones_seleccionadosExportar')?>" data-activates="dropdown-exportar-files">
         <i class="mdi-file-file-download icono-opciones-varios"></i>
     </a>
@@ -101,6 +101,24 @@
         });
     });
     $(document).ready(function(){
+        $('.checkbox-file').click(function(event) {
+            var marcados = $('.checkbox-file:checked').size();
+            if(marcados >= 1) {
+                var elems = document.getElementsByClassName('opciones-seleccionados-archivos');
+                var e;
+                for(e in elems) {
+                    elems[e].style.display = 'block';
+                }
+            } else {
+                var elems = document.getElementsByClassName('opciones-seleccionados-archivos');
+                var e;
+                for(e in elems) {
+                    elems[e].style.display = 'none';
+                }
+            }
+        });
+    });
+    $(document).ready(function(){
         $('#checkbox-all-files').click(function(event) {
             if(this.checked) {
                 $('.checkbox-file').each(function() {
@@ -110,6 +128,20 @@
                 $('.checkbox-file').each(function() {
                     this.checked = false;
                 });
+            }
+            var marcados = $('.checkbox-file:checked').size();
+            if(marcados >= 1) {
+                var elems = document.getElementsByClassName('opciones-seleccionados-archivos');
+                var e;
+                for(e in elems) {
+                    elems[e].style.display = 'block';
+                }
+            } else {
+                var elems = document.getElementsByClassName('opciones-seleccionados-archivos');
+                var e;
+                for(e in elems) {
+                    elems[e].style.display = 'none';
+                }
             }
         });
     });

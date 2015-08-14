@@ -150,11 +150,11 @@
 </table>
 
 <div class="tabla-sinAgregar">
-    <a id="opciones-seleccionados-delete" class="modal-trigger waves-effect black-text opciones-seleccionados" style="display: none;"
+    <a id="opciones-seleccionados-delete" class="modal-trigger waves-effect black-text opciones-seleccionados-cotizaciones" style="display: none;"
        href="#eliminarCotizacionesSeleccionadas" data-toggle="tooltip" title="<?=label('opciones_seleccionadosEliminar')?>">
         <i class="mdi-action-delete icono-opciones-varios"></i>
     </a>
-    <a id="opciones-seleccionados-print" class="waves-effect black-text opciones-seleccionados" style="display: none;"
+    <a id="opciones-seleccionados-print" class="waves-effect black-text opciones-seleccionados-cotizaciones" style="display: none;"
        href="#" data-toggle="tooltip" title="<?=label('opciones_seleccionadosImprimir')?>">
         <i class="mdi-action-print icono-opciones-varios"></i>
     </a>
@@ -166,7 +166,7 @@
             <a href="#" class="-text"><?=label('opciones_seleccionadosExportarExcel')?></a>
         </li>
     </ul>
-    <a id="opciones-seleccionados-export" class="boton-opciones black-text opciones-seleccionados dropdown-button" style="display: none;"
+    <a id="opciones-seleccionados-export" class="boton-opciones black-text opciones-seleccionados-cotizaciones dropdown-button" style="display: none;"
        href="#" data-toggle="tooltip" title="<?=label('opciones_seleccionadosExportar')?>" data-activates="dropdown-exportar">
         <i class="mdi-file-file-download icono-opciones-varios"></i>
     </a>
@@ -191,6 +191,24 @@
         });
     });
     $(document).ready(function(){
+        $('.checkbox-cotizacion').click(function(event) {
+            var marcados = $('.checkbox-cotizacion:checked').size();
+            if(marcados >= 1) {
+                var elems = document.getElementsByClassName('opciones-seleccionados-cotizaciones');
+                var e;
+                for(e in elems) {
+                    elems[e].style.display = 'block';
+                }
+            } else {
+                var elems = document.getElementsByClassName('opciones-seleccionados-cotizaciones');
+                var e;
+                for(e in elems) {
+                    elems[e].style.display = 'none';
+                }
+            }
+        });
+    });
+    $(document).ready(function(){
         $('#checkbox-all-cotizaciones').click(function(event) {
             if(this.checked) {
                 $('.checkbox-cotizacion').each(function() {
@@ -200,6 +218,20 @@
                 $('.checkbox-cotizacion').each(function() {
                     this.checked = false;
                 });
+            }
+            var marcados = $('.checkbox-cotizacion:checked').size();
+            if(marcados >= 1) {
+                var elems = document.getElementsByClassName('opciones-seleccionados-cotizaciones');
+                var e;
+                for(e in elems) {
+                    elems[e].style.display = 'block';
+                }
+            } else {
+                var elems = document.getElementsByClassName('opciones-seleccionados-cotizaciones');
+                var e;
+                for(e in elems) {
+                    elems[e].style.display = 'none';
+                }
             }
         });
     });
