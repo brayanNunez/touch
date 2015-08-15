@@ -90,9 +90,12 @@ a#opciones-seleccionados-export { padding: 0 !important; margin: 0 15px 0 0; bac
     .btn-lg { min-width: 150px !important; }
     table.data-table-information th { width: auto !important; }
     table.data-table-information tbody td { padding: 10px 1% !important; }
+    table.data-table-information tbody tr td:last-child { padding: 0 1% 4px 1% !important; }
     table.data-table-information p { margin: 0 !important; }
     ul.menu li a { color: white; padding-right: 100% !important; }
     .has-dropdown:after { color: white !important; }
+    table.data-table-information tbody tr:first-child td { border-top: 1px solid #ddd !important; }
+    table.data-table-information tbody tr td ul.dropdown-content { position: static !important; }
 }
 @media only screen and (max-width: 768px) {
     section.slider-inicio { height:auto !important; }
@@ -118,9 +121,12 @@ a#opciones-seleccionados-export { padding: 0 !important; margin: 0 15px 0 0; bac
     div.file-field div.btn i { height: 5px; margin-top: -5px; }
     table.data-table-information th { width: auto !important; }
     table.data-table-information tbody td { padding: 10px 1%; }
+    table.data-table-information tbody tr td:last-child { padding: 0 1% 4px 1% !important; }
     table.data-table-information p { margin: 0; }
     ul.menu li a { color: white !important; padding-right: 100%; }
     .has-dropdown:after { color: white !important; }
+    table.data-table-information tbody tr:first-child td { border-top: 1px solid #ddd !important; }
+    table.data-table-information tbody tr td ul.dropdown-content { position: static !important; }
 }
 @media only screen and (max-width: 480px) {
     section.slider-inicio { height:auto !important; }
@@ -146,9 +152,12 @@ a#opciones-seleccionados-export { padding: 0 !important; margin: 0 15px 0 0; bac
     div.file-field div.btn i { height: 5px; margin-top: -5px; }
     table.data-table-information th { width: auto !important; }
     table.data-table-information tbody td { padding: 10px 1%; }
+    table.data-table-information tbody tr td:last-child { padding: 0 1% 4px 1% !important; }
     table.data-table-information p { margin: 0; }
     ul.menu li a { color: white !important; padding-right: 100%; }
     .has-dropdown:after { color: white !important; }
+    table.data-table-information tbody tr:first-child td { border-top: 1px solid #ddd !important; }
+    table.data-table-information tbody tr td ul.dropdown-content { position: static !important; }
 }
 
 #files th, td { width: auto !important; }
