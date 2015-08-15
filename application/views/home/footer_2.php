@@ -98,7 +98,7 @@
         <script type="text/javascript" src="<?=base_url()?>assets/dashboard/js/plugins.js"></script>
 
         <div id="login-page" class="modal fade in">
-            <div class="col s12 z-depth-4 card-panel" style="box-shadow: none; margin: 0px; padding-bottom: 0px; ">
+            <div class="col s12 z-depth-4 card-panel">
                 <form class="login-form" style="width: auto; ">
                     <div class="row">
                         <div class="input-field col s12 center">
@@ -126,17 +126,17 @@
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 0;">
-                        <div class="input-field col s12">
-                            <a href="<?=base_url()?>inicio" class="btn btn-logueo waves-effect waves-light col s12" style="margin-bottom: 10px">
+                        <div class="input-field col s12 campo-btn-logueo">
+                            <a href="<?=base_url()?>inicio" class="btn btn-logueo waves-effect waves-light col s12">
                                 <?=label('loguear')?>
                             </a>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field col s6 m6 l6">
+                        <div class="input-field col s6 m6 l6 btn-login-registro">
                             <p class="margin medium-small"><a href="<?=base_url()?>welcome/registro"><?=label('registrar')?></a></p>
                         </div>
-                        <div class="input-field col s6 m6 l6">
+                        <div class="input-field col s6 m6 l6 btn-login-forgot">
                             <p class="margin right-align medium-small">
                                 <a class="modal-trigger" href="#forgot-password" onclick="document.getElementById('login-page').style.display = 'none';">
                                     <?=label('contrasena_olvido')?>
