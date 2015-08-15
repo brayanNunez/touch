@@ -38,7 +38,7 @@ a.btn-logueo:hover { background-color: #09856e !important; }
 section.slider-inicio { z-index: 1 !important; position: relative !important; height: 577px !important; }
 /*div.pricing-table a.btn { background-color: #47b475 !important; }*/
 a.boton-claro { background-color: transparent !important; height: 50px !important; line-height: 50px !important; }
-a.boton-claro:hover { background-color: #009966 !important; border: 2px solid #47b475; color: white !important; }
+a.boton-claro:hover { background-color: #666 !important; border: 2px solid #47b475; color: white !important; }
 a.boton-normal { background-color: #47b475 !important; height: 50px !important; line-height: 50px !important; }
 a.boton-normal:hover { background-color: white !important; border: 2px solid #47b475; color: #47b475 !important; }
 div.imagen-inicio img { margin-left: 4% !important; }
@@ -46,7 +46,7 @@ div.texto-slider { margin-left: 5% !important; }
 li.nosotros:hover { background-color: transparent !important; }
 li.nosotros ul.mega-menu { background: white !important; }
 li.nosotros ul.mega-menu span.title { font-size: initial; color:black; }
-li.nosotros ul.mega-menu a.nosotros-opcion { color:black; }
+li.nosotros ul.mega-menu a.nosotros-opcion { color:black !important; }
 div.modal-header a.cerrar-modal { color: white; position: fixed; top: 0; right: 0; padding: 5px 10px 0px 10px; background-color: #C75050; }
 div.realperson-text { text-align: center !important; min-height: 35px; }
 div.campo-captcha { margin-top: 6% !important; }
@@ -61,6 +61,12 @@ section#contacto textarea:focus { outline: 0px; border-bottom: 2px solid black; 
 input#send-message { width: 75%; display: block; margin: 0 auto; margin-top: 4%; border-radius: 50px !important; }
 input#send-message:hover { background-color: #09856e; border: 2px solid #09856e; }
 section#planes div.container div.row div.pricing-table a.btn-filled {  }
+
+div.tabla-conAgregar { position: absolute; top: 19%; left: 35%; }
+div.tabla-conAgregar a { float: left; margin: 0 15px; }
+div.tabla-sinAgregar { position: absolute; top: 10%; left: 35%; }
+div.tabla-sinAgregar a { float: left; margin: 0 15px; }
+a#opciones-seleccionados-export { padding: 0 !important; margin: 0 15px 0 0; background-color: transparent !important; }
 
 @media only screen and (max-width: 992px) {
     section.slider-inicio { height:auto !important; }
@@ -85,6 +91,8 @@ section#planes div.container div.row div.pricing-table a.btn-filled {  }
     table.data-table-information th { width: auto !important; }
     table.data-table-information tbody td { padding: 10px 1% !important; }
     table.data-table-information p { margin: 0 !important; }
+    ul.menu li a { color: white; padding-right: 100% !important; }
+    .has-dropdown:after { color: white !important; }
 }
 @media only screen and (max-width: 768px) {
     section.slider-inicio { height:auto !important; }
@@ -111,6 +119,8 @@ section#planes div.container div.row div.pricing-table a.btn-filled {  }
     table.data-table-information th { width: auto !important; }
     table.data-table-information tbody td { padding: 10px 1%; }
     table.data-table-information p { margin: 0; }
+    ul.menu li a { color: white !important; padding-right: 100%; }
+    .has-dropdown:after { color: white !important; }
 }
 @media only screen and (max-width: 480px) {
     section.slider-inicio { height:auto !important; }
@@ -122,7 +132,7 @@ section#planes div.container div.row div.pricing-table a.btn-filled {  }
     section.bg-primary { padding-top: 5%; }
     section.number-users { padding: 5% 0%; }
     div.nav-utility div.module { padding: 0% 1%; }
-    div.nav-utility div.module.right a.btn { padding: 0px 2px !important; border-radius: 1px !important; border: none; font-size: 9px; }
+    div.nav-utility div.module.right a.btn { padding: 0px 6px !important; border: 2px solid #47b475; border-radius: 50px !important; font-size: 9px; }
     section#planes { padding: 5% 0%; }
     section#planes div.container div.row div.text-center p { margin-bottom: 5%; }
     section#planes div.container div.row div.pricing-table { padding: 10px 32px; }
@@ -137,6 +147,8 @@ section#planes div.container div.row div.pricing-table a.btn-filled {  }
     table.data-table-information th { width: auto !important; }
     table.data-table-information tbody td { padding: 10px 1%; }
     table.data-table-information p { margin: 0; }
+    ul.menu li a { color: white !important; padding-right: 100%; }
+    .has-dropdown:after { color: white !important; }
 }
 
 #files th, td { width: auto !important; }
@@ -182,10 +194,10 @@ div#busquedaAvanzada { width: 70%; }
 div#busquedaAvanzada div.modal-content { padding: 0 24px; }
 label#fecha-desde, label#fecha-hasta { left: 0; top: -29px; font-size: 0.8rem; }
 
-div.tabla-conAgregar a#opciones-seleccionados-delete { position: absolute; top: 18%; right: 440px; }
-div.tabla-conAgregar a#opciones-seleccionados-print { position: absolute; top: 18%; right: 525px; }
-div.tabla-conAgregar a#opciones-seleccionados-export { position: absolute; top: 18%; right: 610px; padding: 0 !important; background-color: transparent !important; }
-div.tabla-sinAgregar a#opciones-seleccionados-delete { position: absolute; top: 9%; right: 440px; }
-div.tabla-sinAgregar a#opciones-seleccionados-print { position: absolute; top: 9%; right: 525px; }
-div.tabla-sinAgregar a#opciones-seleccionados-export { position: absolute; top: 9%; right: 610px; padding: 0 !important; background-color: transparent !important; }
+/*div.tabla-conAgregar a#opciones-seleccionados-delete { position: absolute; top: 18%; right: 440px; }*/
+/*div.tabla-conAgregar a#opciones-seleccionados-print { position: absolute; top: 18%; right: 525px; }*/
+/*div.tabla-conAgregar a#opciones-seleccionados-export { position: absolute; top: 18%; right: 610px; padding: 0 !important; background-color: transparent !important; }*/
+/*div.tabla-sinAgregar a#opciones-seleccionados-delete { position: absolute; top: 9%; right: 440px; }*/
+/*div.tabla-sinAgregar a#opciones-seleccionados-print { position: absolute; top: 9%; right: 525px; }*/
+/*div.tabla-sinAgregar a#opciones-seleccionados-export { position: absolute; top: 9%; right: 610px; padding: 0 !important; background-color: transparent !important; }*/
 i.icono-opciones-varios { font-size: 40px; }

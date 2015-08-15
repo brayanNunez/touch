@@ -84,10 +84,14 @@
                         <p class="lead"><?=label('tiempoPlan1');?></p>
                         <a class="btn btn-filled btn-lg boton-normal" href="#"><?=label('iniciar');?></a>
                         <ul>
-                            <li>Clientes <br>Cotizaciones <br>Productos <br>Proveedores<br>Proveedores<br>Proveedores<br>Proveedores<br>&lt;Embed?&nbsp; </li>
-                            <li> </li>
-                            <li> </li>
-                            <li> </li>
+                            <li>Clientes</li>
+                            <li>Cotizaciones</li>
+                            <li>Productos</li>
+                            <li>Proveedores</li>
+                            <li>Proveedores</li>
+                            <li>Proveedores</li>
+                            <li>Proveedores</li>
+                            <li>&lt;Embed&gt;</li>
                         </ul>
                     </div>
 
@@ -99,10 +103,14 @@
                         <p class="lead"><?=label('tiempoPlan2');?></p>
                         <a class="btn btn-filled btn-lg boton-normal" href="#"><?=label('iniciar');?></a>
                         <ul>
-                            <li>Clientes <br>Cotizaciones <br>Productos <br>Proveedores<br>Proveedores<br>Proveedores<br>Proveedores<br>&lt;Embed&gt;<br></li>
-                            <li> </li>
-                            <li> </li>
-                            <li> </li>
+                            <li>Clientes</li>
+                            <li>Cotizaciones</li>
+                            <li>Productos</li>
+                            <li>Proveedores</li>
+                            <li>Proveedores</li>
+                            <li>Proveedores</li>
+                            <li>Proveedores</li>
+                            <li>&lt;Embed&gt;</li>
                         </ul>
                     </div>
 
@@ -112,13 +120,18 @@
                         <h5 class="uppercase"><?=label('nombrePlan3');?></h5>
                         <span class="price"><?=label('montoPlan3');?></span>
                         <p class="lead"><?=label('tiempoPlan3');?></p>
-                        <a class="btn btn-white btn-lg boton-normal" href="#" style="border: 2px solid white"><?=label('iniciar');?>Iniciar</a>
+                        <a class="btn btn-white btn-lg boton-normal" href="#" style="border: 2px solid white"><?=label('iniciar');?></a>
                         <ul>
-                            <li>
-                                <strong>Clientes <br>Cotizaciones <br>Productos <br>Proveedores<br>Proveedores<br>Proveedores<br>Proveedores<br>&lt;Embed&gt;&nbsp;&nbsp;<br>Factura digital</strong></li>
+                            <li><b>Clientes</b></li>
+                            <li><b>Cotizaciones</b></li>
+                            <li><b>Productos</b></li>
+                            <li><b>Proveedores</b></li>
+                            <li><b>Proveedores</b></li>
+                            <li><b>Proveedores</b></li>
+                            <li><b>Proveedores</b></li>
+                            <li><b>&lt;Embed&gt;</b></li>
+                            <li><b>Factura digital</b></li>
                             <li><b><?=label('pagosEnLinea');?></b></li>
-                            <li><br></li>
-                            <li> </li>
                         </ul>
                     </div>
 
