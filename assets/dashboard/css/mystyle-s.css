@@ -82,6 +82,9 @@ section#planes div.container div.row div.pricing-table a.btn-filled {  }
     div.file-field div.btn { min-width: 30px !important; width: 40px; height: 40px; padding: 5px 5px; top: 0; }
     div.file-field div.btn i { height: 5px; margin-top: -5px; }
     .btn-lg { min-width: 150px !important; }
+    table.data-table-information th { width: auto !important; }
+    table.data-table-information tbody td { padding: 10px 1% !important; }
+    table.data-table-information p { margin: 0 !important; }
 }
 @media only screen and (max-width: 768px) {
     section.slider-inicio { height:auto !important; }
@@ -105,6 +108,9 @@ section#planes div.container div.row div.pricing-table a.btn-filled {  }
     .file-field input.file-path { margin-left: 22% !important; width: 85% !important; }
     div.file-field div.btn { min-width: 30px !important; width: 40px; height: 40px; padding: 5px 5px; top: 0; }
     div.file-field div.btn i { height: 5px; margin-top: -5px; }
+    table.data-table-information th { width: auto !important; }
+    table.data-table-information tbody td { padding: 10px 1%; }
+    table.data-table-information p { margin: 0; }
 }
 @media only screen and (max-width: 480px) {
     section.slider-inicio { height:auto !important; }
@@ -128,7 +134,11 @@ section#planes div.container div.row div.pricing-table a.btn-filled {  }
     .file-field input.file-path { margin-left: 22% !important; width: 85% !important; }
     div.file-field div.btn { min-width: 30px !important; width: 40px; height: 40px; padding: 5px 5px; top: 0; }
     div.file-field div.btn i { height: 5px; margin-top: -5px; }
+    table.data-table-information th { width: auto !important; }
+    table.data-table-information tbody td { padding: 10px 1%; }
+    table.data-table-information p { margin: 0; }
 }
+
 #files th, td { width: auto !important; }
 #files tbody td { padding: 1.5% 1%; text-align: left; }
 div.new-file { float: left; margin: 3% 3% 0% 3%; }
