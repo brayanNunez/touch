@@ -174,7 +174,7 @@
 	$lang['loguear'] = 'Ingresar';
 	$lang['annadir'] = 'Añadir';
 	$lang['recordar'] = 'Recordarme';
-	$lang['registrar'] = 'Registrar';
+	$lang['registrar'] = 'Registrarse';
 	$lang['contrasena_olvido'] = '¿Olvidó su contraseña?';
     $lang['editarContenido'] = 'Editar contenido';
     $lang['aprobarEnvioCliente'] = 'Aprobar';

@@ -132,16 +132,18 @@
                             </a>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="input-field col s6 m6 l6 btn-login-registro">
-                            <p class="margin medium-small"><a href="<?=base_url()?>welcome/registro"><?=label('registrar')?></a></p>
+                    <div class="row" style="margin-bottom: 0;">
+                        <div class="input-field col s4 m4 l4 btn-login-registro">
+<!--                            <p class="margin medium-small">-->
+                            <a href="<?=base_url()?>welcome/registro"><?=label('registrar')?></a>
+<!--                            </p>-->
                         </div>
-                        <div class="input-field col s6 m6 l6 btn-login-forgot">
-                            <p class="margin right-align medium-small">
-                                <a class="modal-trigger" href="#forgot-password" onclick="document.getElementById('login-page').style.display = 'none';">
-                                    <?=label('contrasena_olvido')?>
-                                </a>
-                            </p>
+                        <div class="input-field col s8 m8 l8 btn-login-forgot">
+<!--                            <p class="margin right-align medium-small">-->
+                            <a class="modal-trigger" href="#forgot-password" onclick="document.getElementById('login-page').style.display = 'none';">
+                                <?=label('contrasena_olvido')?>
+                            </a>
+<!--                            </p>-->
                         </div>
                     </div>
 

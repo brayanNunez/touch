@@ -28,7 +28,8 @@ a.boton-registro:hover { background-color: #47b475; color: white !important; }
 .registrar { background-color: #09856e; }
 input.campo-registro:focus { outline: 0; }
 a.footer-link { color: white !important; }
-div#login-page { width: 35% !important; max-height: 63% !important; top: 0; }
+div#login-page { width: 380px !important; max-height: 414px !important; top: 0 !important; }
+div#login-page div.card-panel { margin: 0; padding-top: 18px; }
 div#forgot-password { width: 35% !important; max-height: 45% !important; }
 div#forgot-password input#email-forgot:focus { outline: none; }
 div#login-page input#username:focus { outline: none; }
@@ -112,7 +113,11 @@ div#busquedaAvanzada div.modal-content { padding: 0 24px; }
 label#fecha-desde, label#fecha-hasta { left: 0; top: -29px; font-size: 0.8rem; }
 
 i.icono-opciones-varios { font-size: 40px; }
-a.btn-logueo
+div.btn-login-forgot a { float: right; }
+
+@media only screen and (max-width: 1200px) {
+    div#login-page { width: 380px !important; max-height: 408px !important; top: 0 !important; }
+}
 
 @media only screen and (max-width: 992px) {
     section.slider-inicio { height:auto !important; }
@@ -127,7 +132,7 @@ a.btn-logueo
     section#planes { padding: 5% 0%; }
     section#planes div.container div.row div.text-center p { margin-bottom: 5%; }
     section#planes div.container div.row div.pricing-table { padding: 10px 32px; }
-    div#login-page { width: 380px !important; top: 0 !important; }
+    div#login-page { width: 380px !important; max-height: 405px !important; top: 0 !important; }
     nav#nav-principal { height: 100px; }
     div.realperson-text br { display: block; }
     .file-field input.file-path { margin-left: 22% !important; width: 85% !important; }
@@ -159,7 +164,7 @@ a.btn-logueo
     section#planes div.container div.row div.pricing-table { padding: 10px 32px; }
     section#contacto { padding: 5% 0; }
     section.bg-dark.bg-secondary div.row.home i { margin: 20px 0 20px 45%; }
-    div#login-page { width: 380px !important; top: 0 !important; }
+    div#login-page { width: 380px !important; max-height: 405px !important; top: 0 !important; }
     nav#nav-principal { height: 100px; }
     div.realperson-text br { display: block; }
     .file-field input.file-path { margin-left: 22% !important; width: 85% !important; }
@@ -184,7 +189,7 @@ a.btn-logueo
     section.bg-primary { padding-top: 5%; }
     section.number-users { padding: 5% 0%; }
     div.nav-utility div.module { padding: 0% 1%; }
-    div.nav-utility div.module.right a.btn { padding: 0 4px !important; border: 2px solid #47b475; border-radius: 50px !important; font-size: 9px; }
+    div.nav-utility div.module.right a.btn { padding: 0 2px !important; border: 2px solid #47b475; border-radius: 50px !important; font-size: 9px; }
     section#planes { padding: 5% 0%; }
     section#planes div.container div.row div.text-center p { margin-bottom: 5%; }
     section#planes div.container div.row div.pricing-table { padding: 10px 32px; }
@@ -213,8 +218,10 @@ a.btn-logueo
     /* Internet Explorer 10-11 */
     :-ms-input-placeholder { color: inherit; font-weight: normal; text-transform: none; font-size: 12px; }
     div.country-select div.select-wrapper input.select-dropdown { font-size: 12px !important; font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.8px; }
-    div#login-page { margin: 0 auto; top: 10% !important; max-height: 80% !important; }
+    div#login-page { margin: 0 auto; top: 10% !important; max-height: 355px !important; }
     div#login-page div.card-panel { box-shadow: none; margin: 0; padding-bottom: 0; padding-top: 0; }
     div.campo-btn-logueo { margin-top: 0; }
     div.btn-login-registro, div.btn-login-forgot { margin-top: 7px; }
+    div.btn-login-registro a { float: left; font-size: smaller; }
+    div.btn-login-forgot a { float: right; font-size: smaller; }
 }
