@@ -1,4 +1,4 @@
-START CONTENT  -->
+<!--START CONTENT  -->
 
 <section id="content">
     <!--start breadcrumbs-->
@@ -283,16 +283,15 @@ START CONTENT  -->
                                             <hr />
                                             <br />
                                         </div>
-                                        <!-- <div class="input-field col s12">
-                                            <select>
-                                                <option value="" disabled selected><?=label('formCliente_seleccioneUno');?></option>
-                                                <option value="1">Pedro Perez</option>
-                                                <option value="2">Juan Martinez</option>
-                                                <option value="3">Maria Castro</option>
-                                            </select>
-                                            <label for="cliente_cotizador"><?=label('formCliente_cotizador');?></label>
-                                        </div> -->
-                                        
+<!--                                        <div class="input-field col s12">-->
+<!--                                            <select>-->
+<!--                                                <option value="" disabled selected>--><?//=label('formCliente_seleccioneUno');?><!--</option>-->
+<!--                                                <option value="1">Pedro Perez</option>-->
+<!--                                                <option value="2">Juan Martinez</option>-->
+<!--                                                <option value="3">Maria Castro</option>-->
+<!--                                            </select>-->
+<!--                                            <label for="cliente_cotizador">--><?//=label('formCliente_cotizador');?><!--</label>-->
+<!--                                        </div>-->
                                         
                                         <div class="input-field col s12 envio-formulario">
                                             <button class="btn waves-effect waves-light right" type="submit" name="action"><?=label('formCliente_enviar');?>
@@ -309,7 +308,7 @@ START CONTENT  -->
     </div>
     <!--end container-->
 </section>
-<!-- END CONTENT
+<!-- END CONTENT-->
 
 
 <!-- lista modals -->
@@ -363,4 +362,4 @@ START CONTENT  -->
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>
-<!-- Fin lista modals
+<!-- Fin lista modals-->

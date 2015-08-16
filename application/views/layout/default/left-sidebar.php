@@ -44,12 +44,15 @@
                             <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-social-person"></i> <?=label('clientes');?></a>
                                 <div class="collapsible-body">
                                     <ul>
-                                        <li><a href="<?=base_url();?>clientes/agregar"><?=label('agregarCliente');?></a>
+                                        <li>
+                                            <a href="<?=base_url();?>clientes/agregar"><?=label('agregarCliente');?></a>
                                         </li>
-                                        <li><a href="<?=base_url();?>clientes"><?=label('listarCliente');?></a>
+                                        <li>
+                                            <a href="<?=base_url();?>clientes"><?=label('listarCliente');?></a>
                                         </li>
-                                        <li><a href="<?=base_url();?>clientes/reporte"><?=label('listarReporteCli');?></a>
-                                        </li>
+<!--                                        <li>-->
+<!--                                            <a href="--><?//=base_url();?><!--clientes/reporte">--><?//=label('listarReporteCli');?><!--</a>-->
+<!--                                        </li>-->
                                     </ul>
                                 </div>
                             </li>

@@ -44,27 +44,24 @@
                                             <label for="proveedor_nombre"><?=label('formProveedor_nombre');?></label>
                                         </div>
 
-                                        <!-- <div class="input-field col s12">
-                                            <label for="proveedor_palabras"><?=label('formProveedor_palabrasClave');?></label>
-                                            <input id="proveedor_palabras" type="text" value="Diseño">
-                                            <div class="input-field col s12">
-                                                <div class="input-field col s8">
-                                                    <input id="otra_palabra" type="text">
-                                                    <label for="otra_palabra"><?=label('formProveedor_nuevaPalabra');?></label>
-                                                </div>
-                                                <div class="input-field col s4">
-                                                    <a href="#" class="btn btn-default"><?=label('formProveedor_agregar');?></a>
-                                                </div>
-                                            </div>
-                                            <hr />
-                                        </div>
- -->
+<!--                                        <div class="input-field col s12">-->
+<!--                                            <label for="proveedor_palabras">--><?//=label('formProveedor_palabrasClave');?><!--</label>-->
+<!--                                            <input id="proveedor_palabras" type="text" value="Diseño">-->
+<!--                                            <div class="input-field col s12">-->
+<!--                                                <div class="input-field col s8">-->
+<!--                                                    <input id="otra_palabra" type="text">-->
+<!--                                                    <label for="otra_palabra">--><?//=label('formProveedor_nuevaPalabra');?><!--</label>-->
+<!--                                                </div>-->
+<!--                                                <div class="input-field col s4">-->
+<!--                                                    <a href="#" class="btn btn-default">--><?//=label('formProveedor_agregar');?><!--</a>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <hr />-->
+<!--                                        </div>-->
+
                                         <div class="inputTag col s12">
-
                                             <label for="empleado_palabras"><?=label('formProveedor_palabrasClave');?></label>
-
                                             <input placeholder="<?=label('formProveedor_anadirPalabraClave');?>" id="empleado_palabras" type="text" value="Palabra1, Palabra2" data-role="tagsinput" />
-                                            
                                         </div>
 
                                         <div class="input-field col s12">
@@ -143,7 +140,7 @@
     </div>
     <!--end container-->
 </section>
-<!-- END CONTENT
+<!-- END CONTENT-->
 
 
 <!-- lista modals -->
@@ -210,4 +207,4 @@
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>
-<!-- Fin lista modals
+<!-- Fin lista modals-->
