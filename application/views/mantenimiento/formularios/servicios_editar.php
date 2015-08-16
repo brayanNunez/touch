@@ -54,7 +54,6 @@
                                             <a href="#gastoNuevo" class="modal-trigger">Nuevo gasto </a>|
                                             <a href="#agregarPersona" class="modal-trigger"> Nueva persona</a>
                                             <br />
-<!--                                            <br />-->
                                             <table class="table striped">
                                                 <thead>
                                                     <tr>
@@ -151,7 +150,7 @@
     </div>
     <!--end container-->
 </section>
-<!-- END CONTENT
+<!-- END CONTENT-->
 
 
 <!-- lista modals -->
