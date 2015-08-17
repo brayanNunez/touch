@@ -30,7 +30,7 @@ input.campo-registro:focus { outline: 0; }
 a.footer-link { color: white !important; }
 div#login-page { width: 380px !important; max-height: 414px !important; top: 0 !important; }
 div#login-page div.card-panel { margin: 0; padding-top: 18px; }
-div#forgot-password { width: 35% !important; max-height: 45% !important; }
+div#forgot-password { width: 55% !important; max-height: 300px !important; top: 0 !important; }
 div#forgot-password input#email-forgot:focus { outline: none; }
 div#login-page input#username:focus { outline: none; }
 div#login-page input#password:focus { outline: none; }
@@ -192,6 +192,7 @@ div.btn-login-forgot a { float: right; }
     div.tabla-sinAgregar a { float: left; margin: 0 0 0 15px; }
     div.tabla-sinAgregar a i { font-size: 30px; }
     a#opciones-seleccionados-export { padding: 0 !important; margin: 0; background-color: transparent !important; }
+    div#forgot-password { width: 80% !important; max-height: 300px !important; top: 0 !important; }
 }
 
 @media only screen and (max-width: 640px) {
@@ -271,4 +272,5 @@ div.btn-login-forgot a { float: right; }
     div.tabla-sinAgregar a { float: left; margin: 0 0 0 15px; }
     div.tabla-sinAgregar a i { font-size: 30px; }
     a#opciones-seleccionados-export { padding: 0 !important; margin: 0; background-color: transparent !important; }
+    div#forgot-password { width: 90% !important; max-height: 310px !important; top: 0 !important; }
 }
