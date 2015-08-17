@@ -102,7 +102,7 @@
                         <div class="row">
                            <div class="input-field col s12 m6 l6">
                               <select class="input-field col s12">
-                                 <option value="" disabled selected>Valido por</option>
+                                 <option value="" disabled selected>Válido por</option>
                                  <option value="1">1 mes</option>
                                  <option value="1">1.5 meses</option>
                                  <option value="2">2 meses</option>

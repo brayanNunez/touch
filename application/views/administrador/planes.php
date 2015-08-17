@@ -34,7 +34,7 @@
                                         </div>
 
                                         <div class="input-field col s12">
-                                            <input id="plan_costo" type="text">
+                                            <input id="plan_costo" type="number">
                                             <label for="plan_costo"><?=label('formPlan_costo');?></label>
                                         </div>
 

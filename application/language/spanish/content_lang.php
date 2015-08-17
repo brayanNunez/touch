@@ -29,7 +29,7 @@
 	$lang['confirmarEliminarElementoServicio'] = '¿Realmente desea eliminar el elemento seleccionado?';
 	$lang['confirmarEditarEmpleado'] = '¿Realmente desea guardar los cambios realizados?';
     $lang['confirmarEliminarlineaDetalle'] = '¿Realmente desea eliminar la linea de detalle seleccionada?';
-    $lang['confirmarEliminarFinanciamiento'] = '¿Realmente desea eliminar el financiamiento seleccionada?';
+    $lang['confirmarEliminarFinanciamiento'] = '¿Realmente desea eliminar la forma de pago seleccionada?';
     $lang['confirmarEliminarMoneda'] = '¿Realmente desea eliminar la moneda seleccionada?';
     $lang['confirmarEliminarSolicitud'] = '¿Realmente desea eliminar la solicitud de cotización?';
     $lang['confirmarEnvioCliente'] = '¿Realmente desea aprobar la cotización y enviarla al cliente?';
@@ -60,8 +60,8 @@
     $lang['tituloFormularioEmbed'] = 'Solicitud de cotización';
     $lang['tituloCotizarEmbed'] = 'Realizar cotización';
     $lang['tituloProductoEmbed'] = 'Detalles del artículo';
-    $lang['tituloFormularioFinanciamiento'] = 'Financiamiento';
-    $lang['tituloListaFinanciamiento'] = 'Lista de financiamientos disponibles';
+    $lang['tituloFormularioFinanciamiento'] = 'Forma de pago';
+    $lang['tituloListaFinanciamiento'] = 'Lista de formas de pago disponibles';
 	$lang['tituloListaCotizaciones'] = 'Lista de cotizaciones';
     $lang['tituloListaImpuesto'] = 'Lista de impuestos';
     $lang['tituloListaUnidad'] = 'Lista de unidades';
@@ -189,7 +189,7 @@
 	$lang['paso2'] = '2 Detalle';
 	$lang['paso3'] = '3 Diseño';
 	$lang['paso4'] = '4 Finalizar';
-	$lang['pasoAnterior'] = 'Atras';
+	$lang['pasoAnterior'] = 'Atrás';
 	$lang['pasoSiguiente'] = 'Siguiente';
 
 //Menu izquierdo 
@@ -211,7 +211,7 @@ $lang['listarReporteCot'] = 'Reportes cotizaciones';
 	$lang['proveedores'] = 'Proveedores';
 	$lang['monedas'] = 'Monedas';
 	$lang['usuarios'] = 'Usuarios';
-	$lang['financiamiento'] = 'Financiamiento';
+	$lang['financiamiento'] = 'Formas de pago';
 	$lang['gastos'] = 'Gastos';
 	$lang['avanzado'] = 'Avanzado';
 	$lang['masOpciones'] = 'MÁS OPCIONES';
@@ -534,7 +534,7 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['tooltip_imprimirSeleccionados'] = 'Imprimir los elementos seleccionados';
     $lang['tooltip_exportarSeleccionados'] = 'Exportar los elementos seleccionados';
 
-    $lang['menuOpciones_seleccionar'] = 'Seleccionar';
+    $lang['menuOpciones_seleccionar'] = 'Opciones';
     $lang['menuOpciones_editar'] = 'Editar';
     $lang['menuOpciones_eliminar'] = 'Eliminar';
     $lang['menuOpciones_abrir'] = 'Abrir';

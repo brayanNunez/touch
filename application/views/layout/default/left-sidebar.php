@@ -29,6 +29,26 @@
                     </li>
                     <li class="no-padding">
                         <ul class="collapsible collapsible-accordion">
+
+                            <li class="bold"><a href="<?=base_url();?>clientes" class="waves-effect waves-cyan"><i class="mdi-social-person"></i> <?=label('clientes');?></a>
+                            </li>
+
+                            <li class="bold"><a href="<?=base_url();?>proveedores/" class="waves-effect waves-cyan"><i class="mdi-action-account-child"></i> <?=label('proveedores');?></a>
+                            </li>           
+                            
+                            <li class="bold"><a href="<?=base_url();?>servicios/" class="waves-effect waves-cyan"><i class="mdi-maps-beenhere"></i> <?=label('servicios');?></a>
+                            </li>
+                            <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-communication-vpn-key"></i> <?=label('productos');?></a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <li><a href="<?=base_url();?>productos/agregar"><?=label('agregarP');?></a>
+                                        </li>
+                                        <li><a href="<?=base_url();?>productos/"><?=label('listarP');?></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
                             <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-editor-format-list-numbered"></i> <?=label('cotizaciones');?></a>
                                 <div class="collapsible-body">
                                     <ul>
@@ -44,46 +64,18 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-social-person"></i> <?=label('clientes');?></a>
-                                <div class="collapsible-body">
-                                    <ul>
-                                        <li>
-                                            <a href="<?=base_url();?>clientes/agregar"><?=label('agregarCliente');?></a>
-                                        </li>
-                                        <li>
-                                            <a href="<?=base_url();?>clientes"><?=label('listarCliente');?></a>
-                                        </li>
-<!--                                        <li>-->
-<!--                                            <a href="--><?//=base_url();?><!--clientes/reporte">--><?//=label('listarReporteCli');?><!--</a>-->
-<!--                                        </li>-->
-                                    </ul>
-                                </div>
+
+                            <li class="bold">
+                                <a href="<?=base_url()?>empleados" class="waves-effect waves-cyan"><i class="mdi-action-perm-identity"></i><?=label('empleados');?></a>
                             </li>
-                            <li class="bold"><a href="<?=base_url();?>proveedores/" class="waves-effect waves-cyan"><i class="mdi-action-account-child"></i> <?=label('proveedores');?></a>
+
+                            <li class="bold">
+                                <a href="<?=base_url();?>gastos" class="waves-effect waves-cyan"><i class="mdi-action-subject"></i><?=label('gastos');?></a>
                             </li>
-                            <li class="bold"><a href="<?=base_url();?>servicios/" class="waves-effect waves-cyan"><i class="mdi-maps-beenhere"></i> <?=label('servicios');?></a>
-                            </li>
-                            <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-communication-vpn-key"></i> <?=label('productos');?></a>
-                                <div class="collapsible-body">
-                                    <ul>
-                                        <li><a href="<?=base_url();?>productos/agregar"><?=label('agregarP');?></a>
-                                        </li>
-                                        <li><a href="<?=base_url();?>productos/"><?=label('listarP');?></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
+
                             <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-action-settings-applications"></i> <?=label('administración');?></a>
                                 <div class="collapsible-body">
                                     <ul>
-<!--                                        <li><a href="#">--><?//=label('costos');?><!--</a>-->
-<!--                                        </li>-->
-<!--                                        <li>-->
-<!--                                            <a href="--><?//=base_url()?><!--clientes">--><?//=label('clientes');?><!--</a>-->
-<!--                                        </li>-->
-                                        <li>
-                                            <a href="<?=base_url()?>empleados"><?=label('empleados');?></a>
-                                        </li>
                                         <li>
                                             <a href="<?=base_url()?>tiposMoneda"><?=label('monedas');?></a>
                                         </li>
@@ -92,9 +84,6 @@
                                         </li>
                                         <li>
                                             <a href="<?=base_url();?>financiamiento"><?=label('financiamiento');?></a>
-                                        </li>
-                                        <li>
-                                            <a href="<?=base_url();?>gastos"><?=label('gastos');?></a>
                                         </li>
                                         <li>
                                             <a href="<?=base_url();?>pagos"><?=label('pagos');?></a>
@@ -108,7 +97,7 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-trending-up"></i> <?=label('reportes');?></a>
+                            <!-- <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-trending-up"></i> <?=label('reportes');?></a>
                                 <div class="collapsible-body">
                                     <ul>
                                         <li><a href="<?=base_url();?>reporte/"><?=label('listarReporteCot');?></a>
@@ -117,7 +106,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </li>
+                            </li> -->
                             <li class="bold"><a href="<?=base_url();?>embed" class="waves-effect waves-cyan"><i class="mdi-action-settings-ethernet"></i> <?=label('avanzado');?></a>
                             </li>
                         </ul>
