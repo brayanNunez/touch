@@ -32,12 +32,15 @@
                             <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-editor-format-list-numbered"></i> <?=label('cotizaciones');?></a>
                                 <div class="collapsible-body">
                                     <ul>
-                                        <li><a href="<?=base_url();?>cotizacion/general"><?=label('agregarCotizacion');?></a>
+                                        <li>
+                                            <a href="<?=base_url();?>cotizacion/general"><?=label('agregarCotizacion');?></a>
                                         </li>
-                                        <li><a href="<?=base_url();?>cotizacion"><?=label('listarCotizacion');?></a>
+                                        <li>
+                                            <a href="<?=base_url();?>cotizacion"><?=label('listarCotizacion');?></a>
                                         </li>
-                                        <li><a href="<?=base_url();?>reporte"><?=label('listarReporteCot');?></a>
-                                        </li>
+<!--                                        <li>-->
+<!--                                            <a href="--><?//=base_url();?><!--reporte">--><?//=label('listarReporteCot');?><!--</a>-->
+<!--                                        </li>-->
                                     </ul>
                                 </div>
                             </li>

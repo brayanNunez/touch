@@ -8,7 +8,7 @@ input:focus { outline: 0; }
 #example tbody td { text-align: left; padding-left: 10px; }
 .file-field input.file-path { margin-left: 15% !important; width: 87% !important; }
 .lista-elementos { padding: 1%; }
-.lista-elementos div.agregar_nuevo a.btn { margin: 2%; }
+div.agregar_nuevo a.btn { margin: 2%; }
 .envio-formulario button.btn { display: block; float: none !important; margin: 0 auto !important; width: 60%; }
 .envio-formulario a { display: block; text-align: center; }
 .reporte-generar a.btn { width: 90%; display: block; margin: 0 auto; }
@@ -109,6 +109,7 @@ a.boton-opciones i { padding-left: 15px; }
 div.country-select div.select-wrapper input.select-dropdown { font-size: 15px !important; font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.8px; }
 
 a#busqueda-avanzada-cliente { position: absolute; right: 50px; top: 165px; font-size: smaller; z-index: 10; }
+a#busqueda-avanzada-cotizaciones { position: absolute; right: 50px; top: 90px; font-size: smaller; z-index: 10; }
 div#busquedaAvanzada { width: 70%; }
 div#busquedaAvanzada div.modal-content { padding: 0 24px; }
 label#fecha-desde, label#fecha-hasta { left: 0; top: -29px; font-size: 0.8rem; }
@@ -148,6 +149,8 @@ div.btn-login-forgot a { float: right; }
     .has-dropdown:after { color: white !important; }
     table.data-table-information tbody tr:first-child td { border-top: 1px solid #ddd !important; }
     table.data-table-information tbody tr td ul.dropdown-content { position: static !important; }
+    a#busqueda-avanzada-cliente { position: absolute; right: 50px; top: 152px; font-size: smaller; z-index: 10; }
+    a#busqueda-avanzada-cotizaciones { position: absolute; right: 50px; top: 85px; font-size: smaller; z-index: 10; }
 }
 @media only screen and (max-width: 768px) {
     /*section.slider-inicio { height:auto !important; }*/
@@ -179,7 +182,34 @@ div.btn-login-forgot a { float: right; }
     .has-dropdown:after { color: white !important; }
     table.data-table-information tbody tr:first-child td { border-top: 1px solid #ddd !important; }
     table.data-table-information tbody tr td ul.dropdown-content { position: static !important; }
+    a#busqueda-avanzada-cliente { position: absolute; right: 50px; top: 145px; font-size: smaller; z-index: 10; }
+    a#busqueda-avanzada-cotizaciones { position: absolute; right: 50px; top: 82px; font-size: smaller; z-index: 10; }
+
+    div.tabla-conAgregar { position: absolute; top: 105px; left: 36%; }
+    div.tabla-conAgregar a { float: left; margin: 0 0 0 15px; }
+    div.tabla-conAgregar a i { font-size: 30px; }
+    div.tabla-sinAgregar { position: absolute; top: 50px; left: 36%; }
+    div.tabla-sinAgregar a { float: left; margin: 0 0 0 15px; }
+    div.tabla-sinAgregar a i { font-size: 30px; }
+    a#opciones-seleccionados-export { padding: 0 !important; margin: 0; background-color: transparent !important; }
 }
+
+@media only screen and (max-width: 640px) {
+    div.dataTables_filter { margin-bottom: 5rem; }
+    a#busqueda-avanzada-cliente { position: absolute; left: 2%; right: 50%; top: 265px; font-size: inherit; z-index: 10; }
+    a#busqueda-avanzada-cotizaciones { position: absolute; left: 2%; right: 50%; top: 213px; font-size: inherit; z-index: 10; }
+
+    div.tabla-conAgregar.tabla-busqueda-reporte { position: absolute; top: 260px; left: 47%; }
+    div.tabla-sinAgregar.tabla-busqueda-reporte { position: absolute; top: 208px; left: 47%; }
+    div.tabla-conAgregar { position: absolute; top: 260px; left: 28%; }
+    div.tabla-conAgregar a { float: left; margin: 0 0 0 15px; }
+    div.tabla-conAgregar a i { font-size: 30px; }
+    div.tabla-sinAgregar { position: absolute; top: 208px; left: 28%; }
+    div.tabla-sinAgregar a { float: left; margin: 0 0 0 15px; }
+    div.tabla-sinAgregar a i { font-size: 30px; }
+    a#opciones-seleccionados-export { padding: 0 !important; margin: 0; background-color: transparent !important; }
+}
+
 @media only screen and (max-width: 480px) {
     /*section.slider-inicio { height:auto !important; }*/
     div.mobile-toggle { border: none !important; }
@@ -227,4 +257,18 @@ div.btn-login-forgot a { float: right; }
     div.btn-login-forgot a { float: right; font-size: smaller; }
     div.menu-nosotros span.sub { font-size: 11px !important; }
     input#send-message { font-size: small; }
+    div.dataTables_filter { margin-bottom: 5rem; }
+
+    a#busqueda-avanzada-cliente { position: absolute; left: 2%; right: 50%; top: 252px; font-size: inherit; z-index: 10; }
+    a#busqueda-avanzada-cotizaciones { position: absolute; left: 2%; right: 50%; top: 207px; font-size: inherit; z-index: 10; }
+
+    div.tabla-conAgregar.tabla-busqueda-reporte { position: absolute; top: 249px; left: 47%; }
+    div.tabla-sinAgregar.tabla-busqueda-reporte { position: absolute; top: 200px; left: 47%; }
+    div.tabla-conAgregar { position: absolute; top: 249px; left: 28%; }
+    div.tabla-conAgregar a { float: left; margin: 0 0 0 15px; }
+    div.tabla-conAgregar a i { font-size: 30px; }
+    div.tabla-sinAgregar { position: absolute; top: 200px; left: 28%; }
+    div.tabla-sinAgregar a { float: left; margin: 0 0 0 15px; }
+    div.tabla-sinAgregar a i { font-size: 30px; }
+    a#opciones-seleccionados-export { padding: 0 !important; margin: 0; background-color: transparent !important; }
 }

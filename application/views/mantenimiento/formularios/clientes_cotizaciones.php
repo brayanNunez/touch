@@ -27,17 +27,17 @@
             <td>
                 <ul id="dropdown-cotizacion1" class="dropdown-content">
                     <li>
-                        <a class="btn_duplicar modal-trigger icono-edicion" href="#duplicarCotizacion" data-toggle="tooltip" title="<?=label('tooltip_duplicar')?>">
+                        <a class="btn_duplicar modal-trigger icono-edicion" href="#duplicarCotizacion" >
                             <?=label('tablaCotizaciones_opcionDuplicar')?>
                         </a>
                     </li>
                     <li>
-                        <a class="btn_ver icono-edicion" href="<?=base_url()?>cotizacion/cotizar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                        <a class="btn_ver icono-edicion" href="<?=base_url()?>cotizacion/cotizar" >
                             <?=label('tablaCotizaciones_opcionVerEditar')?>
                         </a>
                     </li>
                     <li>
-                        <a class="btn_eliminar modal-trigger icono-edicion" href="#eliminarCotizacion" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                        <a class="btn_eliminar modal-trigger icono-edicion" href="#eliminarCotizacion" >
                             <?=label('tablaCotizaciones_opcionEliminar')?>
                         </a>
                     </li>
@@ -60,17 +60,22 @@
             <td>
                 <ul id="dropdown-cotizacion2" class="dropdown-content">
                     <li>
-                        <a class="btn_duplicar modal-trigger icono-edicion" href="#duplicarCotizacion" data-toggle="tooltip" title="<?=label('tooltip_duplicar')?>">
+                        <a class="btn_duplicar modal-trigger icono-edicion" href="#duplicarCotizacion" >
                             <?=label('tablaCotizaciones_opcionDuplicar')?>
                         </a>
                     </li>
                     <li>
-                        <a class="btn_ver icono-edicion" href="<?=base_url()?>cotizacion/cotizar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                        <a class="btn_ver icono-edicion" href="<?=base_url()?>cotizacion/cotizar" >
                             <?=label('tablaCotizaciones_opcionVerEditar')?>
                         </a>
                     </li>
                     <li>
-                        <a class="btn_eliminar modal-trigger icono-edicion" href="#eliminarCotizacion" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                        <a class="btn_ver icono-edicion" href="<?=base_url()?>cotizacion/cotizar" >
+                            <?=label('tablaCotizaciones_opcionEliminar')?>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="btn_eliminar modal-trigger icono-edicion" href="#eliminarCotizacion" >
                             <?=label('tablaCotizaciones_opcionEliminar')?>
                         </a>
                     </li>
@@ -93,17 +98,17 @@
             <td>
                 <ul id="dropdown-cotizacion3" class="dropdown-content">
                     <li>
-                        <a class="btn_duplicar modal-trigger icono-edicion" href="#duplicarCotizacion" data-toggle="tooltip" title="<?=label('tooltip_duplicar')?>">
+                        <a class="btn_duplicar modal-trigger icono-edicion" href="#duplicarCotizacion" >
                             <?=label('tablaCotizaciones_opcionDuplicar')?>
                         </a>
                     </li>
                     <li>
-                        <a class="btn_ver icono-edicion" href="<?=base_url()?>cotizacion/cotizar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                        <a class="btn_ver icono-edicion" href="<?=base_url()?>cotizacion/cotizar" >
                             <?=label('tablaCotizaciones_opcionVerEditar')?>
                         </a>
                     </li>
                     <li>
-                        <a class="btn_eliminar modal-trigger icono-edicion" href="#eliminarCotizacion" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                        <a class="btn_eliminar modal-trigger icono-edicion" href="#eliminarCotizacion" >
                             <?=label('tablaCotizaciones_opcionEliminar')?>
                         </a>
                     </li>
@@ -126,17 +131,22 @@
             <td>
                 <ul id="dropdown-cotizacion4" class="dropdown-content">
                     <li>
-                        <a class="btn_duplicar modal-trigger icono-edicion" href="#duplicarCotizacion" data-toggle="tooltip" title="<?=label('tooltip_duplicar')?>">
+                        <a class="btn_duplicar modal-trigger icono-edicion" href="#duplicarCotizacion" >
                             <?=label('tablaCotizaciones_opcionDuplicar')?>
                         </a>
                     </li>
                     <li>
-                        <a class="btn_ver icono-edicion" href="<?=base_url()?>cotizacion/cotizar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
+                        <a class="btn_ver icono-edicion" href="<?=base_url()?>cotizacion/cotizar" >
                             <?=label('tablaCotizaciones_opcionVerEditar')?>
                         </a>
                     </li>
                     <li>
-                        <a class="btn_eliminar modal-trigger icono-edicion" href="#eliminarCotizacion" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
+                        <a class="btn_ver icono-edicion" href="<?=base_url()?>cotizacion/cotizar" >
+                            <?=label('tablaCotizaciones_opcionEliminar')?>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="btn_eliminar modal-trigger icono-edicion" href="#eliminarCotizacion" >
                             <?=label('tablaCotizaciones_opcionEliminar')?>
                         </a>
                     </li>
@@ -173,6 +183,23 @@
 </div>
 
 <script>
+    $(window).load(function() {
+        var marcados = $('.checkbox-cotizacion:checked').size();
+        if(marcados >= 1) {
+            var elems = document.getElementsByClassName('opciones-seleccionados-cotizaciones');
+            var e;
+            for(e in elems) {
+                elems[e].style.display = 'block';
+            }
+        } else {
+            var elems = document.getElementsByClassName('opciones-seleccionados-cotizaciones');
+            var e;
+            for(e in elems) {
+                elems[e].style.display = 'none';
+            }
+        }
+        document.getElementById('checkbox-all').checked = false;
+    });
     $(document).ready(function() {
         $('#botonEliminarCotizacionesSeleccionadas').on("click", function(event){
             var tb = $(this).attr('title');

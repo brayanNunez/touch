@@ -1,9 +1,12 @@
-<div id="tableHeader" style="margin-bottom: 2%;">
-    <div class="new-file">
+<!--<div id="tableHeader" style="margin-bottom: 2%;">-->
+<!--    <div class="new-file">-->
+<!--        <a href="#agregarArchivo" class="btn btn-default modal-trigger">--><?//=label('clientes_archivoNuevo')?><!--</a>-->
+<!--    </div>-->
+<!--</div>-->
+<table id="files" class="data-table-information responsive-table display">
+    <div class="agregar_nuevo">
         <a href="#agregarArchivo" class="btn btn-default modal-trigger"><?=label('clientes_archivoNuevo')?></a>
     </div>
-</div>
-<table id="files" class="data-table-information responsive-table display">
     <thead>
         <tr>
             <th style="text-align: center;">
@@ -83,6 +86,23 @@
 </div>
 
 <script>
+    $(window).load(function() {
+        var marcados = $('.checkbox-file:checked').size();
+        if(marcados >= 1) {
+            var elems = document.getElementsByClassName('opciones-seleccionados-archivos');
+            var e;
+            for(e in elems) {
+                elems[e].style.display = 'block';
+            }
+        } else {
+            var elems = document.getElementsByClassName('opciones-seleccionados-archivos');
+            var e;
+            for(e in elems) {
+                elems[e].style.display = 'none';
+            }
+        }
+        document.getElementById('checkbox-all').checked = false;
+    });
     $(document).ready(function() {
         $('#botonEliminarArchivosSeleccionados').on("click", function(event){
             var tb = $(this).attr('title');

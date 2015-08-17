@@ -148,7 +148,7 @@
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                <div class="tabla-conAgregar">
+                                                <div class="tabla-conAgregar tabla-busqueda-reporte">
                                                     <a id="opciones-seleccionados-delete" class="modal-trigger waves-effect black-text opciones-seleccionados" style="display: none;"
                                                        href="#eliminarElementosSeleccionados" data-toggle="tooltip" title="<?=label('opciones_seleccionadosEliminar')?>">
                                                         <i class="mdi-action-delete icono-opciones-varios"></i>
@@ -186,6 +186,23 @@
 <!-- END CONTENT-->
 
 <script>
+    $(window).load(function() {
+        var marcados = $('.checkbox:checked').size();
+        if(marcados >= 1) {
+            var elems = document.getElementsByClassName('opciones-seleccionados');
+            var e;
+            for(e in elems) {
+                elems[e].style.display = 'block';
+            }
+        } else {
+            var elems = document.getElementsByClassName('opciones-seleccionados');
+            var e;
+            for(e in elems) {
+                elems[e].style.display = 'none';
+            }
+        }
+        document.getElementById('checkbox-all').checked = false;
+    });
     $(document).ready(function() {
         $('#botonElimnar').on("click", function(event){
             var tb = $(this).attr('title');
