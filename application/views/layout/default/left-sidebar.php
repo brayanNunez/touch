@@ -73,7 +73,7 @@
                                 <a href="<?=base_url();?>gastos" class="waves-effect waves-cyan"><i class="mdi-action-subject"></i><?=label('gastos');?></a>
                             </li>
 
-                            <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-action-settings-applications"></i> <?=label('administración');?></a>
+                            <!--<li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-action-settings-applications"></i> <?=label('administración');?></a>
                                 <div class="collapsible-body">
                                     <ul>
                                         <li>
@@ -96,7 +96,8 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </li>
+                            </li>-->
+                            
                             <!-- <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-trending-up"></i> <?=label('reportes');?></a>
                                 <div class="collapsible-body">
                                     <ul>

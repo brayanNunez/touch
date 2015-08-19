@@ -148,6 +148,11 @@
                                                         </tr>
                                                     </tbody>
                                                 </table>
+
+                                                <?php
+                                                $this->load->view('layout/default/menu-descargar.php');
+                                                ?>
+
                                                 <div class="tabla-conAgregar tabla-busqueda-reporte">
                                                     <a id="opciones-seleccionados-delete" class="modal-trigger waves-effect black-text opciones-seleccionados" style="display: none;"
                                                        href="#eliminarElementosSeleccionados" data-toggle="tooltip" title="<?=label('opciones_seleccionadosEliminar')?>">
@@ -181,6 +186,11 @@
             </div>
         </div>
     </div>
+
+    <?php
+    $this->load->view('layout/default/menu-crear.php');
+    ?>
+
 <!--end container-->
 </section>
 <!-- END CONTENT-->

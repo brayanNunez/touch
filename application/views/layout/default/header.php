@@ -111,14 +111,41 @@
                 <div class="nav-wrapper">
                     <h1 class="logo-wrapper"><a href="<?=base_url()?>inicio" class="brand-logo darken-1"><img src="<?=base_url()?>assets/dashboard/images/materialize-logo.png" alt="materialize logo"></a> <span class="logo-text">Touch!</span></h1>
                     <ul class="right hide-on-med-and-down">
-                        <li>
-                            <!-- <a class="btn-floating btn-large red" href="<?=base_url();?>cotizacion/cotizar">
+
+                        <li><a style="width: 135px;" class="dropdown-button" data-activates="dropdown3" href="javascript:void(0);"
+                               class="waves-effect waves-block waves-light" data-toggle="tooltip" title="<?=label('tooltip_configuracion')?>">
+                                <i style="margin-left: 75px;" class="mdi-action-settings-applications"></i>
+                            </a>
+                        </li>
+                        <ul id="dropdown3" class="dropdown-content">
+                            <li>
+                                <a href="<?=base_url()?>tiposMoneda"><?=label('monedas');?></a>
+                            </li>
+                            <li>
+                                <a href="<?=base_url()?>usuarios"><?=label('usuarios');?></a>
+                            </li>
+                            <li>
+                                <a href="<?=base_url();?>financiamiento"><?=label('financiamiento');?></a>
+                            </li>
+                            <li>
+                                <a href="<?=base_url();?>pagos"><?=label('pagos');?></a>
+                            </li>
+                            <li>
+                                <a href="<?=base_url();?>impuesto"><?=label('impuesto');?></a>
+                            </li>
+                            <li>
+                                <a href="<?=base_url();?>unidad"><?=label('unidad');?></a>
+                            </li>
+                        </ul>
+
+                        <!--<li>
+                            <a class="btn-floating btn-large red" href="<?=base_url();?>cotizacion/cotizar">
                                 <i class="large mdi-editor-mode-edit"></i>
-                            </a> -->
+                            </a>
                             <a class="" href="<?=base_url();?>cotizacion/cotizar" data-toggle="tooltip" title="<?=label('tooltip_cotizar')?>">
                                 <i class="mdi-editor-mode-edit"></i>
                             </a>
-                        </li>
+                        </li> -->
                         <!-- <li class="search-out">
                             <input type="text" class="search-out-text">
                         </li>

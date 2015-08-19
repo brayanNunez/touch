@@ -26,6 +26,9 @@
                               <div class="row">
                                  <div class="col s12 m12 l12">
                                     <table id="tabla-cotizaciones-lista" class="data-table-information responsive-table display" cellspacing="0">
+                                       <div class="agregar_nuevo">
+                                            <a href="<?=base_url()?>cotizacion/cotizar" class="btn btn-default"><?=label('agregarCotizacion');?></a>
+                                        </div>
                                        <a id="busqueda-avanzada-cotizaciones" href="#busquedaAvanzada" class="modal-trigger"><?=label('clientes_busquedaAvanzada')?></a>
                                        <thead>
                                           <tr>
@@ -224,6 +227,11 @@
                                           </tr>
                                        </tbody>
                                     </table>
+
+                                    <?php
+                                    $this->load->view('layout/default/menu-descargar.php');
+                                    ?>
+
                                     <div class="tabla-sinAgregar tabla-busqueda-reporte">
                                        <a id="opciones-seleccionados-delete" class="modal-trigger waves-effect black-text opciones-seleccionados" style="display: none;"
                                           href="#eliminarElementosSeleccionados" data-toggle="tooltip" title="<?=label('opciones_seleccionadosEliminar')?>">
