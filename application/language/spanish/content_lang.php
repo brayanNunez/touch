@@ -532,7 +532,7 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['tooltip_notificaciones'] = 'Notificaciones';
     $lang['tooltip_eliminarSeleccionados'] = 'Eliminar los elementos seleccionados';
     $lang['tooltip_imprimirSeleccionados'] = 'Imprimir los elementos seleccionados';
-    $lang['tooltip_exportarSeleccionados'] = 'Exportar los elementos seleccionados';
+    $lang['tooltip_exportarSeleccionados'] = 'Exportar tabla';
 
     $lang['menuOpciones_seleccionar'] = 'Opciones';
     $lang['menuOpciones_editar'] = 'Editar';
@@ -540,7 +540,7 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['menuOpciones_abrir'] = 'Abrir';
     $lang['opciones_seleccionadosEliminar'] = 'Eliminar los elementos seleccionados';
     $lang['opciones_seleccionadosImprimir'] = 'Imprimir los elementos seleccionados';
-    $lang['opciones_seleccionadosExportar'] = 'Exportar los elementos seleccionados';
+    $lang['opciones_seleccionadosExportar'] = 'Exportar tabla';
     $lang['opciones_seleccionadosExportarPdf'] = 'Pdf';
     $lang['opciones_seleccionadosExportarExcel'] = 'Excel';
 

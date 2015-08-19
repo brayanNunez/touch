@@ -149,11 +149,7 @@
                                                     </tbody>
                                                 </table>
                                                 <div class="tabla-conAgregar tabla-busqueda-reporte">
-                                                    <a id="opciones-seleccionados-delete" class="modal-trigger waves-effect black-text opciones-seleccionados" style="display: none;"
-                                                       href="#eliminarElementosSeleccionados" data-toggle="tooltip" title="<?=label('opciones_seleccionadosEliminar')?>">
-                                                        <i class="mdi-action-delete icono-opciones-varios"></i>
-                                                    </a>
-                                                    <a id="opciones-seleccionados-print" class="waves-effect black-text opciones-seleccionados" style="display: none;"
+                                                    <a id="opciones-seleccionados-print" class="waves-effect black-text opciones-seleccionados option-print-table" style="display: none;"
                                                        href="#" data-toggle="tooltip" title="<?=label('opciones_seleccionadosImprimir')?>">
                                                         <i class="mdi-action-print icono-opciones-varios"></i>
                                                     </a>
@@ -165,9 +161,13 @@
                                                             <a href="#" class="-text"><?=label('opciones_seleccionadosExportarExcel')?></a>
                                                         </li>
                                                     </ul>
-                                                    <a id="opciones-seleccionados-export" class="boton-opciones black-text opciones-seleccionados dropdown-button" style="display: none;"
+                                                    <a id="opciones-seleccionados-export" class="boton-opciones black-text dropdown-button option-export-table"
                                                        href="#" data-toggle="tooltip" title="<?=label('opciones_seleccionadosExportar')?>" data-activates="dropdown-exportar">
                                                         <i class="mdi-file-file-download icono-opciones-varios"></i>
+                                                    </a>
+                                                    <a id="opciones-seleccionados-delete" class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements" style="display: none;"
+                                                       href="#eliminarElementosSeleccionados" data-toggle="tooltip" title="<?=label('opciones_seleccionadosEliminar')?>">
+                                                        <i class="mdi-action-delete icono-opciones-varios"></i>
                                                     </a>
                                                 </div>
                                             </div>

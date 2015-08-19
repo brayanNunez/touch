@@ -4,7 +4,7 @@ input:focus { outline: 0; }
 .popup-position { display: none; position: fixed; top: 0; left: 0; background-color: rgba(0,0,0,0.7); width: 100%; height: 100%; }
 .popup-wrapper { width: 360px; margin: 70px auto; text-align: left; }
 .popup-container { background-color: white; padding: 20px; border-radius: 5px; }
-.mb0 { margin: 7px 0px; width: 100% }
+.mb0 { margin: 7px 0; width: 100% }
 #example tbody td { text-align: left; padding-left: 10px; }
 .file-field input.file-path { margin-left: 15% !important; width: 87% !important; }
 .lista-elementos { padding: 1%; }
@@ -12,15 +12,15 @@ div.agregar_nuevo a.btn { margin: 2%; }
 .envio-formulario button.btn { display: block; float: none !important; margin: 0 auto !important; width: 60%; }
 .envio-formulario a { display: block; text-align: center; }
 .reporte-generar a.btn { width: 90%; display: block; margin: 0 auto; }
-a.icono-edicion { color: #225264; margin: 0% 5%; }
-div.search { margin-top: 0%; }
+a.icono-edicion { color: #225264; margin: 0 5%; }
+div.search { margin-top: 0; }
 div#table { margin-top: 3%; }
 
 .modal div.modal-header { background-color: #009966; }
 .modal div.modal-header p { font-size: xx-large; text-align: center; padding-top: 10px; }
 .modal div.modal-footer a { color: #000000; font-weight: bold; }
 
-section.registro-content { padding-top: 0% !important; }
+section.registro-content { padding-top: 0 !important; }
 div.menu-nosotros { color: #666; }
 ul.menu li.nosotros { color: #666 !important; padding-right: 5px !important; }
 a.boton-registro { background-color: white; border: 2px solid #47b475; line-height: 27px; box-shadow: none; color: #47b475 !important; }
@@ -49,30 +49,24 @@ li.nosotros:hover { background-color: transparent !important; }
 li.nosotros ul.mega-menu { background: white !important; }
 li.nosotros ul.mega-menu span.title { font-size: initial; color:black; }
 li.nosotros ul.mega-menu a.nosotros-opcion { color:black !important; padding-right: 70%; }
-div.modal-header a.cerrar-modal { color: white; position: fixed; top: 0; right: 0; padding: 5px 10px 0px 10px; background-color: #C75050; }
+div.modal-header a.cerrar-modal { color: white; position: fixed; top: 0; right: 0; padding: 5px 10px 0 10px; background-color: #C75050; }
 div.realperson-text { text-align: center !important; min-height: 35px; }
 div.campo-captcha { margin-top: 6% !important; }
 div.realperson-regen { font-size: initial; margin-top: 10px; color: blue; }
 div.realperson-text { display: block; margin: 0 auto; }
-section.bg-dark.bg-secondary { padding: 10px 0%; }
-section.bg-dark.bg-secondary div.row.home i { margin: 20px 0px 20px 35%; }
+section.bg-dark.bg-secondary { padding: 10px 0; }
+section.bg-dark.bg-secondary div.row.home i { margin: 20px 0 20px 35%; }
 section.bg-dark.bg-secondary div.row.home h6 { text-align: center; }
 section.bg-dark.bg-secondary div.row.home ul { text-align: center; margin-top: 20px; }
-section#contacto textarea { height: 80px; padding: 0%; border-bottom: 1px solid #777777;}
-section#contacto textarea:focus { outline: 0px; border-bottom: 2px solid black; }
+section#contacto textarea { height: 80px; padding: 0; border-bottom: 1px solid #777777;}
+section#contacto textarea:focus { outline: 0; border-bottom: 2px solid black; }
 input#send-message { width: 75%; display: block; margin: 0 auto; margin-top: 4%; border-radius: 50px !important; font-size: initial; }
 input#send-message:hover { background-color: #09856e; border: 2px solid #09856e; }
 section#planes div.container div.row div.pricing-table a.btn-filled {  }
 
-div.tabla-conAgregar { position: absolute; top: 19%; left: 35%; }
-div.tabla-conAgregar a { float: left; margin: 0 15px; }
-div.tabla-sinAgregar { position: absolute; top: 10%; left: 35%; }
-div.tabla-sinAgregar a { float: left; margin: 0 15px; }
-a#opciones-seleccionados-export { padding: 0 !important; margin: 0 15px 0 0; background-color: transparent !important; }
-
 #files th, td { width: auto !important; }
 #files tbody td { padding: 1.5% 1%; text-align: left; }
-div.new-file { float: left; margin: 3% 3% 0% 3%; }
+div.new-file { float: left; margin: 3% 3% 0 3%; }
 
 ul.cliente-info li { width: 25% !important; }
 ul.cliente-info li a { background-color: #009966; }
@@ -85,7 +79,7 @@ a.siguiente, a.anterior { font-size: x-large; font-weight: bold; }
 a.anterior i, a.siguiente i { vertical-align: middle }
 
 div.fixed-action-btn ul { left: inherit; bottom: 50px; }
-div.fixed-action-btn ul li a { width: 150px; height: auto; border-radius: 0%; background-color: white; color: black; }
+div.fixed-action-btn ul li a { width: 150px; height: auto; border-radius: 0; background-color: white; color: black; }
 
 div.dataTables_filter { text-align: left !important; }
 /*div#data-table-simple_filter input { text-align: right; }*/
@@ -112,6 +106,7 @@ a#busqueda-avanzada-cliente { position: absolute; right: 50px; top: 165px; font-
 a#busqueda-avanzada-cotizaciones { position: absolute; right: 50px; top: 90px; font-size: smaller; z-index: 10; }
 div#busquedaAvanzada { width: 70%; }
 div#busquedaAvanzada div.modal-content { padding: 0 24px; }
+
 label#fecha-desde, label#fecha-hasta { left: 0; top: -29px; font-size: 0.8rem; }
 
 i.icono-opciones-varios { font-size: 40px; }
@@ -119,21 +114,34 @@ div.btn-login-forgot a { float: right; }
 
 .card { overflow: visible !important; }
 
+div.dataTables_length, div.dataTables_filter { width: 200px; }
+div.dataTables_filter input { margin-left: 0 !important; }
+div.tabla-conAgregar { position: absolute; top: 19%; left: 50%; width: 180px; margin-left: -90px; }
+div.tabla-sinAgregar { position: absolute; top: 10%; left: 50%; width: 180px; margin-left: -90px; }
+div.tabla-conAgregar a.option-delete-elements, div.tabla-sinAgregar a.option-delete-elements { float: left; margin-right: 0; }
+div.tabla-conAgregar a.option-print-table, div.tabla-sinAgregar a.option-print-table { float: left; margin-right: 30px; }
+div.tabla-conAgregar a.option-export-table, div.tabla-sinAgregar a.option-export-table { float: left; padding: 0 !important; margin-right: 30px; background-color: transparent !important; }
+div.tabla-conAgregar a.option-export-table i, div.tabla-sinAgregar a.option-export-table i { padding: 0; }
+
 @media only screen and (max-width: 1200px) {
+    /*ul#slide-out { left: 0 !important; }*/
     div#login-page { width: 380px !important; max-height: 408px !important; top: 0 !important; }
+    a#busqueda-avanzada-cliente { position: absolute; right: 50px; top: 155px; font-size: smaller; z-index: 10; }
+    a#busqueda-avanzada-cotizaciones { position: absolute; right: 50px; top: 90px; font-size: smaller; z-index: 10; }
 }
 
 @media only screen and (max-width: 992px) {
+    /*ul#slide-out { left: -250px; }*/
     /*section.slider-inicio { height:auto !important; }*/
     div.mobile-toggle { border: none !important; }
     div.mobile-toggle i.ti-menu { color: #666 !important; }
     div.module-group.right { z-index: 100 !important; position: relative; background-color: #a8a8a8; color: white; }
     ul.mega-menu { position: relative !important; }
-    div.imagen-inicio img { margin-left: 0% !important; }
+    div.imagen-inicio img { margin-left: 0 !important; }
     section.bg-primary { padding-top: 5%; }
-    section.number-users { padding: 5% 0%; }
-    div.nav-utility div.module { padding: 0% 1%; }
-    section#planes { padding: 5% 0%; }
+    section.number-users { padding: 5% 0; }
+    div.nav-utility div.module { padding: 0 1%; }
+    section#planes { padding: 5% 0; }
     section#planes div.container div.row div.text-center p { margin-bottom: 5%; }
     section#planes div.container div.row div.pricing-table { padding: 10px 32px; }
     div#login-page { width: 380px !important; max-height: 405px !important; top: 0 !important; }
@@ -153,7 +161,11 @@ div.btn-login-forgot a { float: right; }
     table.data-table-information tbody tr td ul.dropdown-content { position: static !important; }
     a#busqueda-avanzada-cliente { position: absolute; right: 50px; top: 152px; font-size: smaller; z-index: 10; }
     a#busqueda-avanzada-cotizaciones { position: absolute; right: 50px; top: 85px; font-size: smaller; z-index: 10; }
+
+    div.tabla-conAgregar { position: absolute; top: 17%; left: 50%; width: 180px; margin-left: -90px; }
+    div.tabla-sinAgregar { position: absolute; top: 8%; left: 50%; width: 180px; margin-left: -90px; }
 }
+
 @media only screen and (max-width: 768px) {
     /*section.slider-inicio { height:auto !important; }*/
     div.mobile-toggle { border: none !important; }
@@ -187,30 +199,34 @@ div.btn-login-forgot a { float: right; }
     a#busqueda-avanzada-cliente { position: absolute; right: 50px; top: 145px; font-size: smaller; z-index: 10; }
     a#busqueda-avanzada-cotizaciones { position: absolute; right: 50px; top: 82px; font-size: smaller; z-index: 10; }
 
-    div.tabla-conAgregar { position: absolute; top: 105px; left: 36%; }
-    div.tabla-conAgregar a { float: left; margin: 0 0 0 15px; }
-    div.tabla-conAgregar a i { font-size: 30px; }
-    div.tabla-sinAgregar { position: absolute; top: 50px; left: 36%; }
-    div.tabla-sinAgregar a { float: left; margin: 0 0 0 15px; }
-    div.tabla-sinAgregar a i { font-size: 30px; }
-    a#opciones-seleccionados-export { padding: 0 !important; margin: 0; background-color: transparent !important; }
+    div.tabla-conAgregar { position: absolute; top: 105px; left: 50%; width: 150px; margin-left: -75px; }
+    div.tabla-sinAgregar { position: absolute; top: 50px; left: 50%; width: 150px; margin-left: -75px; }
+    div.tabla-conAgregar a i, div.tabla-sinAgregar a i { font-size: 30px; }
+    div.tabla-conAgregar a.option-delete-elements, div.tabla-sinAgregar a.option-delete-elements { float: left; margin-right: 0; }
+    div.tabla-conAgregar a.option-print-table, div.tabla-sinAgregar a.option-print-table { float: left; margin-right: 30px; }
+    div.tabla-conAgregar a.option-export-table, div.tabla-sinAgregar a.option-export-table { float: left; padding: 0 !important; margin-right: 30px; background-color: transparent !important; }
+    div.tabla-conAgregar a.option-export-table i, div.tabla-sinAgregar a.option-export-table i { padding: 0; }
+
+    ul#dropdown-exportar { width: 100px !important; }
+
     div#forgot-password { width: 80% !important; max-height: 300px !important; top: 0 !important; }
 }
 
 @media only screen and (max-width: 640px) {
     div.dataTables_filter { margin-bottom: 5rem; }
-    a#busqueda-avanzada-cliente { position: absolute; left: 2%; right: 50%; top: 265px; font-size: inherit; z-index: 10; }
-    a#busqueda-avanzada-cotizaciones { position: absolute; left: 2%; right: 50%; top: 213px; font-size: inherit; z-index: 10; }
+    a#busqueda-avanzada-cliente { position: absolute; left: 2%; right: 68%; top: 265px; font-size: inherit; z-index: 10; }
+    a#busqueda-avanzada-cotizaciones { position: absolute; left: 2%; right: 68%; top: 213px; font-size: inherit; z-index: 10; }
 
-    div.tabla-conAgregar.tabla-busqueda-reporte { position: absolute; top: 260px; left: 47%; }
-    div.tabla-sinAgregar.tabla-busqueda-reporte { position: absolute; top: 208px; left: 47%; }
-    div.tabla-conAgregar { position: absolute; top: 260px; left: 28%; }
-    div.tabla-conAgregar a { float: left; margin: 0 0 0 15px; }
-    div.tabla-conAgregar a i { font-size: 30px; }
-    div.tabla-sinAgregar { position: absolute; top: 208px; left: 28%; }
-    div.tabla-sinAgregar a { float: left; margin: 0 0 0 15px; }
-    div.tabla-sinAgregar a i { font-size: 30px; }
-    a#opciones-seleccionados-export { padding: 0 !important; margin: 0; background-color: transparent !important; }
+    div.dataTables_length, div.dataTables_filter { width: auto; }
+    div.tabla-conAgregar { position: absolute; top: 260px; left: 50%; width: 150px; margin-left: -75px; }
+    div.tabla-sinAgregar { position: absolute; top: 208px; left: 50%; width: 150px; margin-left: -75px; }
+    div.tabla-conAgregar.tabla-busqueda-reporte { position: absolute; top: 260px; left: 65%; width: 150px; margin-left: -75px; }
+    div.tabla-sinAgregar.tabla-busqueda-reporte { position: absolute; top: 208px; left: 65%; width: 150px; margin-left: -75px; }
+    div.tabla-conAgregar a i, div.tabla-sinAgregar a i { font-size: 30px; }
+    div.tabla-conAgregar a.option-delete-elements, div.tabla-sinAgregar a.option-delete-elements { float: left; margin-right: 0; }
+    div.tabla-conAgregar a.option-print-table, div.tabla-sinAgregar a.option-print-table { float: left; margin-right: 15px; }
+    div.tabla-conAgregar a.option-export-table, div.tabla-sinAgregar a.option-export-table { float: left; padding: 0 !important; margin-right: 15px; background-color: transparent !important; }
+    div.tabla-conAgregar a.option-export-table i, div.tabla-sinAgregar a.option-export-table i { padding: 0; }
 }
 
 @media only screen and (max-width: 480px) {
@@ -219,16 +235,16 @@ div.btn-login-forgot a { float: right; }
     div.mobile-toggle i.ti-menu { color: #666 !important; }
     div.module-group.right { z-index: 100 !important; position: relative; background-color: #a8a8a8; color: white; }
     ul.mega-menu { position: relative !important; }
-    div.imagen-inicio img { margin-left: 0% !important; }
+    div.imagen-inicio img { margin-left: 0 !important; }
     section.bg-primary { padding-top: 5%; }
-    section.number-users { padding: 5% 0%; }
-    div.nav-utility div.module { padding: 0% 1%; }
+    section.number-users { padding: 5% 0; }
+    div.nav-utility div.module { padding: 0 1%; }
     div.nav-utility div.module.right a.btn { letter-spacing: 0; padding: 0 7px !important; border: 2px solid #47b475; border-radius: 50px !important; font-size: 9px; }
-    section#planes { padding: 5% 0%; }
+    section#planes { padding: 5% 0; }
     section#planes div.container div.row div.text-center p { margin-bottom: 5%; }
     section#planes div.container div.row div.pricing-table { padding: 10px 32px; }
-    section#contacto { padding: 5% 0%; }
-    section.bg-dark.bg-secondary div.row.home i { margin: 20px 0px 20px 40%; }
+    section#contacto { padding: 5% 0; }
+    section.bg-dark.bg-secondary div.row.home i { margin: 20px 0 20px 40%; }
     div#login-page { width: 95% !important; top: 0 !important; }
     nav#nav-principal { height: 100px; }
     div.realperson-text br { display: block; }
@@ -262,17 +278,19 @@ div.btn-login-forgot a { float: right; }
     input#send-message { font-size: small; }
     div.dataTables_filter { margin-bottom: 5rem; }
 
-    a#busqueda-avanzada-cliente { position: absolute; left: 2%; right: 50%; top: 252px; font-size: inherit; z-index: 10; }
-    a#busqueda-avanzada-cotizaciones { position: absolute; left: 2%; right: 50%; top: 207px; font-size: inherit; z-index: 10; }
+    a#busqueda-avanzada-cliente { width: 123px; position: absolute; left: 2%; top: 252px; font-size: small; z-index: 10; }
+    a#busqueda-avanzada-cotizaciones { width: 123px; position: absolute; left: 2%; top: 207px; font-size: small; z-index: 10; }
 
-    div.tabla-conAgregar.tabla-busqueda-reporte { position: absolute; top: 249px; left: 47%; }
-    div.tabla-sinAgregar.tabla-busqueda-reporte { position: absolute; top: 200px; left: 47%; }
-    div.tabla-conAgregar { position: absolute; top: 249px; left: 28%; }
-    div.tabla-conAgregar a { float: left; margin: 0 0 0 15px; }
-    div.tabla-conAgregar a i { font-size: 30px; }
-    div.tabla-sinAgregar { position: absolute; top: 200px; left: 28%; }
-    div.tabla-sinAgregar a { float: left; margin: 0 0 0 15px; }
-    div.tabla-sinAgregar a i { font-size: 30px; }
-    a#opciones-seleccionados-export { padding: 0 !important; margin: 0; background-color: transparent !important; }
+    div.dataTables_length, div.dataTables_filter { width: auto; }
+    div.tabla-conAgregar { position: absolute; top: 249px; left: 50%; width: 120px; margin-left: -60px; }
+    div.tabla-sinAgregar { position: absolute; top: 200px; left: 50%; width: 120px; margin-left: -60px; }
+    div.tabla-conAgregar.tabla-busqueda-reporte { position: absolute; top: 249px; left: 70%; width: 120px; margin-left: -60px; }
+    div.tabla-sinAgregar.tabla-busqueda-reporte { position: absolute; top: 200px; left: 70%; width: 120px; margin-left: -60px; }
+    div.tabla-conAgregar a i, div.tabla-sinAgregar a i { font-size: 30px; }
+    div.tabla-conAgregar a.option-delete-elements, div.tabla-sinAgregar a.option-delete-elements { float: left; margin-right: 0; }
+    div.tabla-conAgregar a.option-print-table, div.tabla-sinAgregar a.option-print-table { float: left; margin-right: 15px; }
+    div.tabla-conAgregar a.option-export-table, div.tabla-sinAgregar a.option-export-table { float: left; padding: 0 !important; margin-right: 15px; background-color: transparent !important; }
+    div.tabla-conAgregar a.option-export-table i, div.tabla-sinAgregar a.option-export-table i { padding: 0; }
+
     div#forgot-password { width: 90% !important; max-height: 310px !important; top: 0 !important; }
 }
