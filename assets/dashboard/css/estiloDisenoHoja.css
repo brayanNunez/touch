@@ -1,0 +1,367 @@
+
+
+	@page {
+
+            margin: 0px, 0px, 0px, 0px;
+            
+        }
+
+
+#contenedorHoja{
+	box-sizing: content-box;
+	width: 794px;
+	height: 1117px;
+	
+	background: gray;
+	padding: 100px; 
+	/*float: left;*/
+
+}
+
+#hoja{
+	box-shadow: 10px 10px 5px #000000;
+	background: #58FAF4;
+	width:794px;
+}
+
+#hojaPDF {
+    background: red;
+	width:100%;
+    height:100%;
+    padding-top: 50px;
+}
+
+
+#headerDiseno{
+	position: relative;
+	left: 0px;
+	/*top: -50px;*/
+	top: -50px;
+
+}
+
+/*los que tienen el #hoja se aplican solo a la vista en html
+ya que cuando se envia el html para convertirlo a PDF se elimina esta
+etiqueta*/
+#hoja #headerDiseno{ 
+	top: 0px;
+
+}
+
+#hoja #footerDiseno{ 
+	bottom: 0px;
+	position: relative;
+}
+#hoja #contenidoDiseno{
+	top: 0px;
+	overflow-y: scroll;
+	/*height: 300px;*/
+}
+
+#hoja #informacionSistema{
+	position: relative;
+	/*background: red;*/
+}
+
+
+#headerDiseno p{
+	/*text-align: justify;*/
+	/*margin-bottom: 10px;
+	font-weight: lighter;
+	height: 19.6px;*/
+
+}
+#footerDiseno p{
+	/*margin-bottom: 10px;
+	font-weight: lighter;
+	height: 19.6px;*/
+}
+
+
+
+#informacionSistema .numeracion:after{
+	content: counter(page, lower-alpha);
+}
+
+#footerDiseno{
+	/*height: 271px ;*/
+
+	position: fixed;
+	/*position: absolute;*/
+	left: 0px;
+	/*bottom: -150px;*/
+	bottom: 20px;
+	/*margin-bottom: 20px;*/
+
+	/*background: red;*/
+	width: 794px;
+	font-family: courier;
+	font-style: italic;
+	/*margin-top: 300px;*/
+
+/*
+	vertical-align: bottom;
+	display: inline-block;*/
+	
+}
+
+
+
+#prefooter{
+	width: 200px;
+	/*height: 115px;*/
+	/*background: red;*/
+	/*position: inherit;*/
+}
+
+/*#hoja #contenidoDiseno{
+	width: 794px;
+}*/
+#contenidoDiseno{
+	padding: 50px;
+
+	width: 694px;
+	position: relative;
+
+	top: -50px;
+}
+
+#encabezado{
+	 
+	padding: 15px;
+	width: 764px;
+	min-height: 50px;   
+	background-color: red;
+	 color: white;
+	font-family: arial;
+	font-style: italic;
+	/*display: inline-block;*/
+}
+
+#encabezado .imagen{
+	width: 148px;
+	height: 148px;
+}
+
+#encabezado #logo{
+	margin: 0;
+	width: 148px;
+	height: 148px;
+	display: inline-block;
+	/*background-color: green;*/
+
+}
+
+#encabezado #datosEncabezado{
+	margin-left: 7px;
+	width: 598px;
+	display: inline-block;
+	vertical-align: top;
+	/*background-color: yellow;*/
+	
+}
+
+#encabezado #datosEncabezado .datos{
+
+
+ font-size: 17px;
+
+}
+
+#encabezado #datosEncabezado #datos1{
+	/*font-family: monospace;*/
+	width: 431.18px;
+	display: inline-block;
+	/*margin-left: 2%;*/
+	/*background-color: red;*/
+	/*4.35 bien*/
+}
+#encabezado #datosEncabezado #datos2{
+	vertical-align: top;
+	width: 161px;
+	display: inline-block;
+}
+
+#nombreEmpresa {
+	font-size: 20px;
+	/*margin-bottom: 20px;
+	background: blue;*/
+}
+
+.barra-horizontal {
+	width: 794px;
+	height: 10px;    /*%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+
+}
+#barra1{
+	background-color: #585858;
+}
+
+
+/*#hoja #footerCotizacion{
+	width: 794px;
+	
+}*/
+
+#footerCotizacion{
+	padding: 15px;
+	width: 764px;
+	height: 120px; 
+	background-color: red;
+	 color: white;
+	
+}
+
+#informacionSistema{
+	width: 794px;
+	height: 20px;    /*%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+	/*background-color: blue;*/
+	text-align: center;
+	/*padding: 4px;*/
+
+	position: fixed;
+	bottom: 0px;
+}
+
+
+
+
+#footerCotizacion .imagen{
+	width: 79px;
+	height: 79px;
+}
+
+#footerCotizacion #logo{
+	width: 79px;
+	height: 79px;
+	float: left;
+	display: inline-block;
+	/*background: red;*/
+}
+
+#footerCotizacion #datosFooter{
+	margin: 0px 7px;
+	width: 87%;
+	/*height: 100%;*/
+	/*background-color: blue;*/
+	/*float: left;*/
+	display: inline-block;
+
+
+}
+
+#footerCotizacion #datosFooter .datos{
+ font-size: 17px;
+}
+
+#footerCotizacion #datosFooter #datos1{
+	width: 58%;
+	/*float: left;*/
+	margin-left: 2%;
+	display: inline-block;
+	/*background: blue;*/
+}
+#footerCotizacion #datosFooter #datos2{
+	width: 38%;
+	/*float: right;*/
+	display: inline-block;
+	vertical-align: top;
+	/*background: green;*/
+}
+
+
+
+
+#detalle{
+	overflow-y: scroll;
+	width: 100%;
+	height: 38%;    /*%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+	background-color: white;
+}
+#detalleVista{
+	width: 100%;
+	height: 38%;    /*%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+	background-color: white;
+
+}
+#datallesCotizacion{
+	width: 96%;
+	margin: 3% 2%;
+	text-align: center;
+	font-size: 15px;
+}
+#barra2{
+		background-color: #585858;
+}
+
+/*#hoja #informacion{
+	width: 794px; 
+}*/
+
+#informacion{
+	padding: 15px;
+	width: 764px; 
+	 color: white;
+	 font-family: helvetica ;
+}
+#barra3{
+		background-color: #585858;
+}
+
+#informacion .datos{
+	color: white;
+	 font-size: 15px;
+	 /*height: 100%;*/
+	 padding: 5px;
+}
+
+#nombreFirma{
+	margin-left: 10%;
+}
+/*td {
+    background-color: #f6f6f6;
+    border-bottom: 0.9px solid #ddd;
+}*/
+
+ table, th, td {
+ 	width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+ th, td {
+    padding: 5px;
+    width: 15%;/*
+    height: 2%;*/
+    text-align: center;
+}
+
+
+
+#editarLineas{
+    position: relative;
+	bottom: -250px;
+
+}
+#contenedorDetalle{
+
+}
+#datallesCotizacion img{
+	width: 80%;
+	/*height: 100%;*/
+	margin: auto;
+}
+#resultadoCotizacion{
+	width: 18%;
+	height: 130px;
+	float: right;
+	margin-right: 2%;
+}
+
+#resultadoCotizacion{
+	margin-right: 2%;
+	font-size: 15px;
+}
+
+p{
+    margin: 0 0 10px;
+}

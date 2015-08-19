@@ -7,7 +7,6 @@
             <div class="row">
                 <div class="col s12 m12 l12">
                     <h1 class="breadcrumbs-title"><?=label('tituloFormularioUsuario');?></h1>
-
                 </div>
             </div>
         </div>
@@ -143,7 +142,7 @@
     </div>
     <!--end container-->
 </section>
-<!-- END CONTENT
+<!-- END CONTENT-->
 
 
 <!-- lista modals -->

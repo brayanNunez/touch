@@ -62,12 +62,6 @@
                                                         <th><?=label('formProducto_caracteristicasOpciones');?></th>
                                                     </tr>
                                                 </thead>
-                                                <tfoot>
-<!--                                                    <tr>-->
-<!--                                                        <th>--><?//=label('formProducto_caracteristicasDescripcion');?><!--</th>-->
-<!--                                                        <th>--><?//=label('formProducto_caracteristicasOpciones');?><!--</th>-->
-<!--                                                    </tr>-->
-                                                </tfoot>
                                                 <tbody>
                                                     <tr>
                                                         <td>Pantalla 35"</td>
@@ -126,7 +120,7 @@
     </div>
     <!--end container-->
 </section>
-<!-- END CONTENT
+<!-- END CONTENT-->
 
 
 <!-- lista modals -->

@@ -1,4 +1,4 @@
-START CONTENT  -->
+<!--START CONTENT -->
 
 <section id="content">
     <!--start breadcrumbs-->
@@ -36,20 +36,21 @@ START CONTENT  -->
                                             <label for="empleado_nombre"><?=label('formEmpleado_nombre');?></label>
                                         </div>
 
-                                        <!-- <div class="input-field col s12">
-                                            <label for="empleado_palabras"><?=label('formEmpleado_palabrasClave');?></label>
-                                            <input id="empleado_palabras" type="text">
-                                            <div class="input-field col s12">
-                                                <div class="input-field col s8">
-                                                    <input id="otra_palabra" type="text">
-                                                    <label for="otra_palabra"><?=label('formEmpleado_nuevaPalabra');?></label>
-                                                </div>
-                                                <div class="input-field col s4">
-                                                    <a href="" class="btn btn-default"><?=label('formEmpleado_agregar');?></a>
-                                                </div>
-                                            </div>
-                                            <hr />
-                                        </div> -->
+<!--                                        <div class="input-field col s12">-->
+<!--                                            <label for="empleado_palabras">--><?//=label('formEmpleado_palabrasClave');?><!--</label>-->
+<!--                                            <input id="empleado_palabras" type="text">-->
+<!--                                            <div class="input-field col s12">-->
+<!--                                                <div class="input-field col s8">-->
+<!--                                                    <input id="otra_palabra" type="text">-->
+<!--                                                    <label for="otra_palabra">--><?//=label('formEmpleado_nuevaPalabra');?><!--</label>-->
+<!--                                                </div>-->
+<!--                                                <div class="input-field col s4">-->
+<!--                                                    <a href="" class="btn btn-default">--><?//=label('formEmpleado_agregar');?><!--</a>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <hr />-->
+<!--                                        </div> -->
+
                                         <div class="inputTag col s12">
 
                                             <label for="empleado_palabras"><?=label('formEmpleado_palabrasClave');?></label>
@@ -142,7 +143,7 @@ START CONTENT  -->
     </div>
     <!--end container-->
 </section>
-<!-- END CONTENT
+<!-- END CONTENT-->
 
 
 <!-- lista modals -->
@@ -224,4 +225,7 @@ START CONTENT  -->
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>
-<!-- Fin lista modals
+<!-- Fin lista modals-->
+<!-- Fin lista modals-->
+<!-- Fin lista modals-->
+<!-- Fin lista modals-->

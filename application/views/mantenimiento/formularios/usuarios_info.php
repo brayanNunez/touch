@@ -27,11 +27,13 @@
                                             <ul class="tabs tab-demo-active z-depth-1 usuario-info">
                                                 <li class="tab col s3">
                                                     <a class="white-text darken-1 waves-effect waves-light active" href="#tab-informacion">
-                                                        <i class="mdi-action-perm-identity"></i><?=label('usuarios_verEditar');?></a>
+                                                        <i class="mdi-action-perm-identity"></i><?=label('usuarios_verEditar');?>
+                                                    </a>
                                                 </li>
                                                 <li class="tab-interior tab col s3">
                                                     <a class="white-text darken-1 waves-effect waves-light" href="#tab-cotizaciones">
-                                                        <i class="mdi-editor-format-list-numbered"></i><?=label('usuarios_cotizaciones');?></a>
+                                                        <i class="mdi-editor-format-list-numbered"></i><?=label('usuarios_cotizaciones');?>
+                                                    </a>
                                                 </li>
                                             </ul>
                                         </div>
