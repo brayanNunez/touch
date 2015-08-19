@@ -1,11 +1,11 @@
-.hoja{
+/*.hoja{
 	width: 90%;
 	height: 90%;
 	background-color: white;
 	margin: 5% auto;
 	box-shadow: 10px 10px 5px #444444;
 
-}
+}*/
 #barraEditar{
 	width: 2%;
 	height: 90%;
@@ -20,20 +20,20 @@
 	height: 1555px;
     float: left;
 }*/
-.listaHojas{
+/*.listaHojas{
 	width: 900px;
 	height: 1230px; 
     float: left;
-}
+}*/
 
-#encabezado{
+/*#encabezado{
 	padding: 2%;
 	width: 100%;
-	height: 17%;    /*%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+	height: 17%;   
 	background-color: red;
-}
+}*/
 
-#encabezado .imagen{
+/*#encabezado .imagen{
 	width: 100%;
 	height: 100%;
 }
@@ -48,16 +48,13 @@
 	margin: 0 7px;
 	width: 75%;
 	height: 100%;
-	/*background-color: blue;*/
 	float: left;
 
-}
+}*/
 
-#encabezado #datosEncabezado .datos{
+/*#encabezado #datosEncabezado .datos{
  color: white;
  font-size: 15px;
- /*height: 100%;*/
- /*padding: 5px;*/
 }
 
 #encabezado #datosEncabezado #datos1{
@@ -76,7 +73,7 @@
 
 .barra-horizontal {
 	width: 100%;
-	height: 1%;    /*%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+	height: 1%;   
 
 }
 #barra1{
@@ -86,12 +83,12 @@
 #detalle{
 	overflow-y: scroll;
 	width: 100%;
-	height: 38%;    /*%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+	height: 38%;    
 	background-color: white;
-}
-#detalleVista{
+}*/
+/*#detalleVista{
 	width: 100%;
-	height: 38%;    /*%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+	height: 38%;    
 	background-color: white;
 
 }
@@ -106,7 +103,7 @@
 }
 
 #informacion{
-	height: 28%;    /*%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+	height: 28%;    
 	background-color: red;
 	padding: 2%;
 }
@@ -117,24 +114,23 @@
 #informacion .datos{
 	color: white;
 	 font-size: 15px;
-	 /*height: 100%;*/
 	 padding: 5px;
-}
+}*/
 
-#nombreFirma{
+/*#nombreFirma{
 	margin-left: 10%;
 }
 
 #footerCotizacion{
 	width: 100%;
-	height: 10%;    /*%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+	height: 10%;    
 	background-color: #FAAC58;
 	padding: 2%;
 }
 
 #informacionSistema{
 	width: 100%;
-	height: 2%;    /*%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+	height: 2%;    
 	background-color: white;
 	text-align: center;
 	padding: 4px;
@@ -158,7 +154,6 @@
 	margin: 0 7px;
 	width: 80%;
 	height: 100%;
-	/*background-color: blue;*/
 	float: left;
 
 }
@@ -166,11 +161,10 @@
 #footerCotizacion #datosFooter .datos{
  color: white;
  font-size: 15px;
- /*height: 100%;*/
- /*padding: 5px;*/
-}
+ padding: 5px;
+}*/
 
-#footerCotizacion #datosFooter #datos1{
+/*#footerCotizacion #datosFooter #datos1{
 	width: 48%;
 	float: left;
 	margin-left: 2%;
@@ -186,13 +180,12 @@
 }
 .listaHojas th, td {
     padding: 5px;
-    width: 15%;/*
-    height: 2%;*/
+    width: 15%;
     text-align: center;
-}
+}*/
 
 
-
+/*
 #editarLineas{
     position: relative;
 	bottom: -250px;
@@ -203,7 +196,6 @@
 }
 #datallesCotizacion img{
 	width: 80%;
-	/*height: 100%;*/
 	margin: auto;
 }
 #resultadoCotizacion{
@@ -216,11 +208,9 @@
 #resultadoCotizacion{
 	margin-right: 2%;
 	font-size: 15px;
-}
+}*/
 
-p{
-    margin: 0 0 10px;
-}
+
 
 #paso3, #paso4{
 		/*overflow-x: scroll;*/
@@ -314,10 +304,10 @@ p{
 	margin-top: 14.5px;
 }
 
-.contenedorHoja{
+/*.contenedorHoja{
 	overflow-x: scroll;
 	background-color: grey;
-}
+}*/
 
 .ver {
 		width: 100%;
@@ -327,7 +317,6 @@ p{
 }
 
 .celda{
-	/*width: 100%;*/
 	height:58px;
 }
 
@@ -340,16 +329,13 @@ p{
 	margin-top: 5px;
 }
 
-#contenerdorTablaDetalles{
+/*#contenerdorTablaDetalles{
 	overflow-x: scroll;
-}
-
+}*/
+/*
 #resultadoDetalles {
-	/*width: 100%;*/
-	/*background-color: red;*/
 	float: right;
-	/*height: 30px;*/
-}
+}*/
 
 .agregarElementos {
 	margin: 1%;

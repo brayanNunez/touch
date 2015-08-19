@@ -91,6 +91,15 @@
     <link href="<?= base_url() ?>assets/dashboard/css/bootstrap-tagsinput.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="<?= base_url() ?>assets/dashboard/css/app.css">
     <!-- <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
+
+
+
+
+    <!-- css necesario para estilo de la hoja de diseno -->
+    <link rel="stylesheet" href="<?= base_url() ?>assets/dashboard/css/estiloDisenoHoja.css">
+
+
+
 </head>
 
 <body>
