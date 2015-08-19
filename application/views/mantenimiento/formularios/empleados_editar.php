@@ -44,25 +44,20 @@
                                             
                                         </div>
 
-                                        <!-- <div class="inputTag col s12">
-                                            <label for="vendedoresCliente"><?=label('formCliente_cotizador');?></label>
-                                            <br>
-                                            <div id="vendedoresCliente" class="example example_objects_as_tags">
-                                              <div class="bs-example">
-                                                <input  placeholder="<?=label('formCliente_anadirVendedor');?>" type="text"  />
-                                              </div>
-                                            </div>
-                                            <br>
-                                        </div> -->
+<!--                                        <div class="inputTag col s12">-->
+<!--                                            <label for="vendedoresCliente">--><?//=label('formCliente_cotizador');?><!--</label>-->
+<!--                                            <br>-->
+<!--                                            <div id="vendedoresCliente" class="example example_objects_as_tags">-->
+<!--                                              <div class="bs-example">-->
+<!--                                                <input  placeholder="--><?//=label('formCliente_anadirVendedor');?><!--" type="text"  />-->
+<!--                                              </div>-->
+<!--                                            </div>-->
+<!--                                            <br>-->
+<!--                                        </div> -->
 
-
-                                        
-
-                                        <!-- <div class="input-field col s12"> -->
-                                            
-                                            <!-- <input type="text" value="palabra1,palabra2,palabra3,palabra4,palabra5" data-role="tagsinput" /> -->
-                                            
-                                        <!-- </div> -->
+<!--                                         <div class="input-field col s12"> -->
+<!--                                             <input type="text" value="palabra1,palabra2,palabra3,palabra4,palabra5" data-role="tagsinput" /> -->
+<!--                                         </div> -->
 
                                         <div class="input-field col s12">
                                             <input id="empleado_fechaNacimiento" type="date" class="datepicker" value="18-06-1994">
@@ -148,7 +143,7 @@
     </div>
     <!--end container-->
 </section>
-<!-- END CONTENT
+<!-- END CONTENT-->
 
 
 <!-- lista modals -->
@@ -230,4 +225,4 @@
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>
-<!-- Fin lista modals
+<!-- Fin lista modals-->
