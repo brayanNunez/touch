@@ -28,7 +28,7 @@ div.fixed-action-btn ul li a { width: 165px;}
 	right: 23px;
 	bottom: 23px;
 	position: fixed;
-	padding-top: 15px;
+	padding-top: 20px;
 	margin-bottom: 0px;
 	z-index: 998;
 }
@@ -44,6 +44,7 @@ div.fixed-action-btn ul li a { width: 165px;}
 
 #menu-crear:hover .menu-crear{
 	display: block;
+	transition: all 0.3s ease 0s;
 }
 
 .menu-crear{
@@ -77,7 +78,6 @@ color: #FFF;
 position: relative;
 overflow: hidden;
 z-index: 1;
-line-height: 37px;
 border-radius: 50%;
 width: 55px;
 height: 55px;
