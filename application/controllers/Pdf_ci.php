@@ -52,7 +52,7 @@ class Pdf_ci extends CI_Controller
         // $this->html2pdf->html(utf8_decode($this->load->view('index', $data, true)));
         $this->html2pdf->html(utf8_decode($htmlEntrada));
         //si el pdf se guarda correctamente lo mostramos en pantalla
-        if($this->html2pdf->create('save')) 
+        if($this->html2pdf->create()) 
         {
             
              $this->show();
