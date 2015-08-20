@@ -24,22 +24,52 @@ div.fixed-action-btn ul li a { width: 165px;}
 
 .fixed-action-btn ul { text-align: left;}
 
-.menu-crear{
+#menu-crear{
 	right: 23px;
-bottom: 23px;
-position: fixed;
-padding-top: 15px;
-margin-bottom: 0px;
-z-index: 998;
+	bottom: 23px;
+	position: fixed;
+	padding-top: 15px;
+	margin-bottom: 0px;
+	z-index: 998;
 }
 
-.menu-crear ul{
-	left: 0px;
-right: 0px;
-text-align: center;
-position: absolute;
-bottom: 64px;
+#menu-crear ul{
+	right: 0px;
+	text-align: center;
+	position: absolute;
+    left: inherit;
+    bottom: 50px;
+    margin-right: 15px;
 }
+
+#menu-crear:hover .menu-crear{
+	display: block;
+}
+
+.menu-crear{
+	display: none;
+	width: 150px;
+    height: auto;
+    border-radius: 0;
+    background-color: white;
+    color: black;
+    text-align: left;
+}
+
+.menu-crear li{
+	margin-bottom: 15px;
+   list-style-type: none;
+}
+
+.menu-crear li a{
+    width: 165px;
+    height: auto;
+    border-radius: 0;
+    background-color: white;
+    color: black;
+}
+
+.menu-crear li a span i{ color: black; vertical-align: middle; float: left; margin-left: 7px; margin-right: 7px;}
 
 .btn-opciones{
 	display: inline-block;
@@ -58,7 +88,5 @@ vertical-align: middle;
 transition: all 0.3s ease 0s;
 }
 
-.btn-opciones li:hover > ul{
-	display: block;
-}
+
 

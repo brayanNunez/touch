@@ -31,11 +31,11 @@
     </ul>
 </div> -->
 
-<div class="menu-crear" style="bottom: 45px; right: 24px;">
+<div id="menu-crear" style="bottom: 45px; right: 24px;">
     <a class="btn-opciones btn-large red" href="">
         <i class="large mdi-content-add"></i>
     </a>
-    <ul>
+    <ul class="menu-crear">
         <li>
             <a href="<?=base_url();?>servicios/agregar" class="btn-floating">
                 <span><i class="mdi-maps-beenhere"></i><?=label('agregarS');?></span>
