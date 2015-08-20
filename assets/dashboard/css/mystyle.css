@@ -412,3 +412,10 @@ input, optgroup, select, textarea {
 .inputTag {
 	padding-left: 10.5px;
 }
+
+.editarExterno{
+	margin-left: 800px;
+	top: initial;
+	position: absolute;
+	right: initial;
+}
