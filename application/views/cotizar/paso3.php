@@ -38,6 +38,9 @@
                               <button>CREAR</button>
                               <div id="inset_form"></div>
                               <div id="contenedorHoja">
+                              <a id="editarEncabezado" href="#modalEncabezado" class="editarExterno modal-trigger btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
+                                 <i class="mdi-editor-mode-edit"></i>
+                              </a>
                                  <div id="hoja">
                                     <div id="headerDiseno">
                                        <div id="encabezado">
@@ -60,9 +63,15 @@
                                              </div>
                                           </div>
                                        </div>
+                                       
                                        <div class="barra-horizontal" id="barra1">
                                        </div>
                                     </div>
+
+                                     <a id="editarCuerpo" href="#modalCuerpo" class="editarExterno modal-trigger btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
+                                       <i class="mdi-editor-mode-edit"></i>
+                                    </a>
+
                                     <div id="cuerpoDocumento">
                                        <div id="contenidoDiseno">
                                           <table >
@@ -86,300 +95,127 @@
                                                    <td>January</td>
                                                    <td>$100</td>
                                                 </tr>
-                                                 <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
+                                                
                                                 <tr>
                                                    <td>January</td>
                                                    <td>$100</td>
                                                 </tr>
-                                                 <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
+                                                <tr>
+                                                   <td>February</td>
+                                                   <td>$800000</td>
                                                 </tr>
-                                                 
-                                                 <tr>
+                                                <tr>
                                                    <td>January</td>
                                                    <td>$100</td>
                                                 </tr>
                                                  <tr>
                                                    <td>January</td>
                                                    <td>$100</td>
-                                                </tr>
-                                                 <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                 <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                 <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>January</td>
-                                                   <td>$100</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
-                                                </tr>
-                                                <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
                                                 </tr>
                                                 
                                                 <tr>
-                                                   <td>February</td>
-                                                   <td>$80</td>
+                                                   <td>January</td>
+                                                   <td>$100</td>
                                                 </tr>
+                                                <tr>
+                                                   <td>February</td>
+                                                   <td>$800000</td>
+                                                </tr>
+                                                <tr>
+                                                   <td>January</td>
+                                                   <td>$100</td>
+                                                </tr>
+                                                 <tr>
+                                                   <td>January</td>
+                                                   <td>$100</td>
+                                                </tr>
+                                                
                                                 <tr>
                                                    <td>January</td>
                                                    <td>$100</td>
                                                 </tr>
                                                 <tr>
                                                    <td>February</td>
-                                                   <td>$80</td>
+                                                   <td>$800000</td>
                                                 </tr>
+                                                <tr>
+                                                   <td>January</td>
+                                                   <td>$100</td>
+                                                </tr>
+                                                 <tr>
+                                                   <td>January</td>
+                                                   <td>$100</td>
+                                                </tr>
+                                                
                                                 <tr>
                                                    <td>January</td>
                                                    <td>$100</td>
                                                 </tr>
                                                 <tr>
                                                    <td>February</td>
-                                                   <td>$80</td>
+                                                   <td>$800000</td>
                                                 </tr>
+                                                <tr>
+                                                   <td>January</td>
+                                                   <td>$100</td>
+                                                </tr>
+                                                 <tr>
+                                                   <td>January</td>
+                                                   <td>$100</td>
+                                                </tr>
+                                                
+                                                <tr>
+                                                   <td>January</td>
+                                                   <td>$100</td>
+                                                </tr>
+                                                <tr>
+                                                   <td>January</td>
+                                                   <td>$100</td>
+                                                </tr>
+                                                
+                                                <tr>
+                                                   <td>January</td>
+                                                   <td>$100</td>
+                                                </tr>
+                                                <tr>
+                                                   <td>February</td>
+                                                   <td>$800000</td>
+                                                </tr>
+                                                <tr>
+                                                   <td>January</td>
+                                                   <td>$100</td>
+                                                </tr>
+                                                 <tr>
+                                                   <td>January</td>
+                                                   <td>$100</td>
+                                                </tr>
+                                                
+                                                <tr>
+                                                   <td>January</td>
+                                                   <td>$100</td>
+                                                </tr>
+                                                <tr>
+                                                   <td>January</td>
+                                                   <td>$100</td>
+                                                </tr>
+                                                
+                                                <tr>
+                                                   <td>January</td>
+                                                   <td>$100</td>
+                                                </tr>
+                                                <tr>
+                                                   <td>February</td>
+                                                   <td>$800000</td>
+                                                </tr>
+                                                <tr>
+                                                   <td>January</td>
+                                                   <td>$100</td>
+                                                </tr>
+                                                 <tr>
+                                                   <td>January</td>
+                                                   <td>$100</td>
+                                                </tr>
+                                                
                                                 <tr>
                                                    <td>January</td>
                                                    <td>$100</td>
@@ -403,8 +239,10 @@
                                           
                                           
                                           
-                                           <div class="barra-horizontal" id="barra2">
-                                          </div>
+                                           <div class="barra-horizontal" id="barra2"></div>
+                                          <a id="editarInformacion" href="#modalInformacion" class="editarExterno modal-trigger btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
+                                             <i class="mdi-editor-mode-edit"></i>
+                                          </a>
                                           <div id="informacion">
 
                                                  <p>Forma de pago: 50% primer mes, 50% segundo mes.</p>
@@ -422,6 +260,9 @@
 
                                           <div class="barra-horizontal" id="barra3">
                                           </div>
+                                          <a id="editarEncabezado" href="#modalFooter" class="editarExterno modal-trigger btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
+                                             <i class="mdi-editor-mode-edit"></i>
+                                          </a>
                                           <div id="footerCotizacion">
                                              <div id="logo">
                                                 <img class="imagen" src="<?=base_url()?>assets/dashboard/images/sombrero.png"/>
@@ -518,13 +359,13 @@
                </div>
                <div class="row col s12 m6 l6">
                   <div class="inputModals input-field col s12">
-                     <p>Color de fondo: <input class=""  type="color" id="myColor1"> </p>
+                     <p>Color de fondo: <input class="colorFondo"  type="color" id="myColor1"> </p>
                   </div>
                   <div class="inputModals input-field col s12">
-                     <p>Color de letra: <input class=""  type="color" id="myColor2"></p>
+                     <p>Color de letra: <input class="colorLetra"  type="color" id="myColor2"></p>
                   </div>
                   <div class="inputModals input-field col s12">
-                     <p>Color de barra horizontal: <input class=""  type="color" id="myColor3"></p>
+                     <p>Color de barra horizontal: <input class="colorBarra"  type="color" id="myColor3"></p>
                   </div>
                   <div class="input-field col s12">
                      <textarea id="message" class="materialize-textarea" style="height: 24px;"></textarea>
@@ -536,7 +377,9 @@
       </div>
    </div>
    <div class="modal-footer">
-      <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+      <div class="aplicarCambios">
+         <a href="#" class="waves-effect btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+      </div>
    </div>
 </div>
 <div id="modalCuerpo" class="modal">
@@ -566,13 +409,13 @@
                </div>
                <div class="row col s12 m6 l6">
                   <div class="inputModals input-field col s12">
-                     <p>Color de fondo: <input class=""  type="color" id="myColor1"> </p>
+                     <p>Color de fondo: <input class="colorFondo"  type="color" id="myColor1"> </p>
                   </div>
                   <div class="inputModals input-field col s12">
-                     <p>Color de letra: <input class=""  type="color" id="myColor2"></p>
+                     <p>Color de letra: <input class="colorLetra"  type="color" id="myColor2"></p>
                   </div>
                   <div class="inputModals input-field col s12">
-                     <p>Color de barra horizontal: <input class=""  type="color" id="myColor3"></p>
+                     <p>Color de barra horizontal: <input class="colorBarra"  type="color" id="myColor3"></p>
                   </div>
                </div>
             </form>
@@ -580,7 +423,9 @@
       </div>
    </div>
    <div class="modal-footer">
-      <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+      <div class="aplicarCambios">
+         <a href="#" class="waves-effect btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+      </div>
    </div>
 </div>
 <div id="modalInformacion" class="modal">
@@ -619,13 +464,13 @@
                </div>
                <div class="row col s12 m6 l6">
                   <div class="inputModals input-field col s12">
-                     <p>Color de fondo: <input class=""  type="color" id="myColor1"> </p>
+                     <p>Color de fondo: <input class="colorFondo"  type="color" id="myColor1"> </p>
                   </div>
                   <div class="inputModals input-field col s12">
-                     <p>Color de letra: <input class=""  type="color" id="myColor2"></p>
+                     <p>Color de letra: <input class="colorLetra"  type="color" id="myColor2"></p>
                   </div>
                   <div class="inputModals input-field col s12">
-                     <p>Color de barra horizontal: <input class=""  type="color" id="myColor3"></p>
+                     <p>Color de barra horizontal: <input class="colorBarra"  type="color" id="myColor3"></p>
                   </div>
                   <div class="input-field col s12">
                      <textarea id="message" class="materialize-textarea" style="height: 24px;"></textarea>
@@ -637,7 +482,9 @@
       </div>
    </div>
    <div class="modal-footer">
-      <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+      <div class="aplicarCambios">
+         <a href="#" class="waves-effect btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+      </div>
    </div>
 </div>
 <div id="modalFooter" class="modal">
@@ -671,10 +518,10 @@
                </div>
                <div class="row col s12 m6 l6">
                   <div class="inputModals input-field col s12">
-                     <p>Color de fondo: <input class=""  type="color" id="myColor1"> </p>
+                     <p>Color de fondo: <input class="colorFondo"  type="color" id="myColor1"> </p>
                   </div>
                   <div class="inputModals input-field col s12">
-                     <p>Color de letra: <input class=""  type="color" id="myColor2"></p>
+                     <p>Color de letra: <input class="colorLetra"  type="color" id="myColor2"></p>
                   </div>
                   <div class="input-field col s12">
                      <textarea id="message" class="materialize-textarea" style="height: 24px;"></textarea>
@@ -686,7 +533,9 @@
       </div>
    </div>
    <div class="modal-footer">
-      <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+      <div class="aplicarCambios">
+         <a href="#" class="waves-effect btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+      </div>
    </div>
 </div>
 
@@ -707,12 +556,57 @@
 
             var paddingBottom = $('#contenidoDiseno').css("padding-bottom").replace("px", "");
            var resultado = tamanoHojaHTML-header-footer-informacionSistema - paddingTop - paddingBottom;
-           $('#contenidoDiseno').height(271);
-            alert(tamanoHojaHTML);
+           $('#contenidoDiseno').height(300);
       }
 
-      $("#botonPaso3").on('click', function(){
-         
+
+       
+
+      $(document).on('ready', function(){
+
+         $('#modalEncabezado .aplicarCambios').click(function(){
+              var colorFondo = $('#modalEncabezado .colorFondo').val();
+              $('#encabezado').css("background", colorFondo);
+
+              var colorLetra = $('#modalEncabezado .colorLetra').val();
+              $('#encabezado').css("color", colorLetra);
+
+              var colorBarra = $('#modalEncabezado .colorBarra').val();
+              $('#barra1').css("background", colorBarra);
+         });
+
+         $('#modalCuerpo .aplicarCambios').click(function(){
+              var colorFondo = $('#modalCuerpo .colorFondo').val();
+              $('#hoja').css("background", colorFondo);
+
+              var colorLetra = $('#modalCuerpo .colorLetra').val();
+              $('#hoja').css("color", colorLetra);
+
+              var colorBarra = $('#modalCuerpo .colorBarra').val();
+              $('#barra2').css("background", colorBarra);
+         });
+
+         $('#modalInformacion .aplicarCambios').click(function(){
+              var colorFondo = $('#modalInformacion .colorFondo').val();
+              $('#informacion').css("background", colorFondo);
+
+              var colorLetra = $('#modalInformacion .colorLetra').val();
+              $('#informacion').css("color", colorLetra);
+
+              var colorBarra = $('#modalInformacion .colorBarra').val();
+              $('#barra3').css("background", colorBarra);
+         });
+
+          $('#modalFooter .aplicarCambios').click(function(){
+              var colorFondo = $('#modalFooter .colorFondo').val();
+              $('#footerCotizacion').css("background", colorFondo);
+
+              var colorLetra = $('#modalFooter .colorLetra').val();
+              $('#footerCotizacion').css("color", colorLetra);
+
+              
+         });
+
            $('#encabezado').css("background", "red");
            $('#hoja').css("background", "white");
            $('#hoja').css("color", "#8A0829");
@@ -723,8 +617,10 @@
            $('#barra3').css("background", "black");
            $('#footerCotizacion').css("background", "red");
            $('#footerCotizacion').css("color", "white");
-            $('#informacion').css("background", "orange");
+           $('#informacion').css("background", "orange");
            $('#informacion').css("color", "white");
+
+
            alert($('#headerDiseno').height());
            recalcularAlturaContenido();
          
@@ -737,6 +633,8 @@
              var height = $('#informacion').css("height");
              $('#informacion').css("height", height);
               alert(height);
+
+              $('.editarExterno').css("display","none");
 
              
 
@@ -757,6 +655,7 @@
              $('#footerDiseno').css("height", "");
              $('#informacion').css("height", "");
              $('#prefooter').css("height", "");
+              $('.editarExterno').css("display","");
          
            });
          

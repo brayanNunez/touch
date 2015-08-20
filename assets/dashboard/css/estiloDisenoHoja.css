@@ -206,7 +206,7 @@ etiqueta*/
 #footerCotizacion{
 	padding: 15px;
 	width: 764px;
-	height: 120px; 
+	height: 90px; 
 	background-color: red;
 	 color: white;
 	
@@ -323,12 +323,12 @@ etiqueta*/
     border-bottom: 0.9px solid #ddd;
 }*/
 
- table, th, td {
+ #contenidoDiseno table, #contenidoDiseno th, #contenidoDiseno td {
  	width: 100%;
     border: 1px solid black;
     border-collapse: collapse;
 }
- th, td {
+ #contenidoDiseno th, #contenidoDiseno td {
     padding: 5px;
     width: 15%;/*
     height: 2%;*/
