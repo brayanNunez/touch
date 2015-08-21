@@ -84,6 +84,10 @@
 
 
  <script type="text/javascript">
+
+
+
+
     function darclick(paso){ 
     
     var obj=document.getElementById('botonPaso' + paso);

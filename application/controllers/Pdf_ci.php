@@ -1,5 +1,4 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
- 
 class Pdf_ci extends CI_Controller 
 {
 
@@ -52,13 +51,27 @@ class Pdf_ci extends CI_Controller
         // $this->html2pdf->html(utf8_decode($this->load->view('index', $data, true)));
         $this->html2pdf->html(utf8_decode($htmlEntrada));
         //si el pdf se guarda correctamente lo mostramos en pantalla
-        if($this->html2pdf->create()) 
-        {
-            
-             $this->show();
-            
-            
-        }
+        
+            if($path = $this->html2pdf->create('save')) 
+            {
+
+                $this->load->library('email');
+     
+                $this->email->from('brayannr@hotmail.es', 'Brayan');
+                $this->email->to('brayan.nunez@ucrso.info'); 
+                // $this->email->cc('jose.rodriguez@ucrso.info'); 
+                
+                $this->email->subject('Email PDF Test');
+                $this->email->message('Testing the email a freshly created PDF');    
+     
+                $this->email->attach($path);
+     
+                $this->email->send();
+                $this->html2pdf->create();
+                echo "El email ha sido enviado correctamente";
+                            
+            }
+        
         }
         
     } 
@@ -87,12 +100,12 @@ class Pdf_ci extends CI_Controller
         
         //hacemos que coja la vista como datos a imprimir
         //importante utf8_decode para mostrar bien las tildes, ñ y demás
-         $this->html2pdf->html(utf8_decode($this->load->view('basura', $data, true)));
+         $this->html2pdf->html("<h1>hola mundo<h1>");
         // $this->html2pdf->html(utf8_decode($htmlEntrada));
         //si el pdf se guarda correctamente lo mostramos en pantalla
-        if($this->html2pdf->create('save')) 
+        if($this->html2pdf->create()) 
         {
-            $this->show();
+            // $this->show();
         // }
         }
         
@@ -117,8 +130,6 @@ class Pdf_ci extends CI_Controller
                 header("Content-Type: application/pdf"); 
                 header("Content-Transfer-Encoding: binary"); 
                 header('Content-Length: '. filesize($route)); 
-
-
                 readfile($route);
             }
         }    
@@ -168,7 +179,7 @@ class Pdf_ci extends CI_Controller
         
         //hacemos que coja la vista como datos a imprimir
         //importante utf8_decode para mostrar bien las tildes, ñ y demás
-        $this->html2pdf->html(utf8_decode($this->load->view('basura', $data, true)));
+        $this->html2pdf->html(utf8_decode("<h1>Prueba correo</h1>"));
 
 
         //Check that the PDF was created before we send it
@@ -179,6 +190,7 @@ class Pdf_ci extends CI_Controller
  
             $this->email->from('brayannr@hotmail.es', 'Brayan');
             $this->email->to('brayan.nunez@ucrso.info'); 
+            $this->email->cc('brayan.nunez@ucrso.info'); 
             
             $this->email->subject('Email PDF Test');
             $this->email->message('Testing the email a freshly created PDF');    
@@ -193,5 +205,3 @@ class Pdf_ci extends CI_Controller
         
     } 
 }
-/* End of file pdf_ci.php */
-/* Location: ./application/controllers/pdf_ci.php */

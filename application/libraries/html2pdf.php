@@ -1,5 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); 
-
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Html2pdf {
 
     var $html;
@@ -116,31 +115,23 @@ class Html2pdf {
 	 */	
 	function create($mode = 'download') 
 	{
-	    
    		if (is_null($this->html)) {
 			show_error("HTML is not set");
 		}
-	    
    		if (is_null($this->path)) {
 			show_error("Path is not set");
 		}
-	    
    		if (is_null($this->paper_size)) {
 			show_error("Paper size not set");
 		}
-		
 		if (is_null($this->orientation)) {
 			show_error("Orientation not set");
 		}
-	    
-	    //Load the DOMPDF libary
-	    require_once("dompdf/dompdf_config.inc.php");
-	    
+	    require_once("dompdf/dompdf_config.inc.php"); 
 	    $dompdf = new DOMPDF();
 	    $dompdf->load_html($this->html);
 	    $dompdf->set_paper($this->paper_size, $this->orientation);
 	    $dompdf->render();
-	    
 	    if($mode == 'save') {
     	    $this->CI->load->helper('file');
 		    if(write_file($this->path.$this->filename, $dompdf->output())) {
@@ -149,7 +140,6 @@ class Html2pdf {
 				show_error("PDF could not be written to the path");
 		    }
 		} else {
-			
 			if($dompdf->stream($this->filename)) {
 				return TRUE;
 			} else {
@@ -157,7 +147,4 @@ class Html2pdf {
 			}
 	    }
 	}
-	
 }
-
-/* End of file Html2pdf.php */
