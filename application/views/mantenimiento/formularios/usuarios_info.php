@@ -55,5 +55,10 @@
         </div>
     </div>
     <!--end container-->
+    
+    <?php
+    $this->load->view('layout/default/menu-crear.php');
+    ?>
+
 </section>
 <!-- END CONTENT-->
