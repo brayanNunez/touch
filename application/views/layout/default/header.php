@@ -155,7 +155,7 @@
                         
                         
                         <li>
-                            <a class="dropdown-button" href="#!" data-activates="listaNotificaciones">
+                            <a class="dropdown-button" href="#!" data-activates="listaNotificaciones" title="<?=label('tooltip_notificaciones')?>">
                                 <i class="mdi-social-notifications">9</i>
                             </a>
                         </li>
