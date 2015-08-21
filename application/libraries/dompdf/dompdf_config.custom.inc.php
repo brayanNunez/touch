@@ -1,4 +1,4 @@
- <?php 
+<?php 
 define("DOMPDF_TEMP_DIR", "/tmp");
 //define("DOMPDF_CHROOT", DOMPDF_DIR);
 //define("DOMPDF_UNICODE_ENABLED", false);
@@ -22,5 +22,4 @@ define("DOMPDF_ENABLE_JAVASCRIPT", true);
 //define("DOMPDF_FONT_HEIGHT_RATIO", 0.9);
 //define("DEBUG_LAYOUT_PADDINGBOX", false);
 //define("DOMPDF_LOG_OUTPUT_FILE", DOMPDF_FONT_DIR."log.htm");
-
  

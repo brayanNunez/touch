@@ -1,6 +1,6 @@
 <section id="content">
 
-<!-- start breadcrumbs-->
+    <!-- start breadcrumbs-->
     <div id="breadcrumbs-wrapper" class=" grey lighten-3">
         <div class="container">
             <div class="row">
@@ -10,9 +10,9 @@
             </div>
         </div>
     </div>
-<!--breadcrumbs end-->
+    <!--breadcrumbs end-->
 
-<!--start container-->
+    <!--start container-->
     <div class="container">
         <div id="chart-dashboard">
             <div class="row">
@@ -27,8 +27,8 @@
                                             <input id="search" type="search" aria-controls="data-table-simple">
                                         </div>
                                     </div>
-                                    <div id="table">
-                                        <table id="productos-tabla-lista" class="responsive-table display striped" cellspacing="0" data-search="true">
+                                    <div id="table" class="table-responsive">
+                                        <table id="productos-tabla-lista" class="table display striped" cellspacing="0" data-search="true">
                                             <thead>
                                                 <tr>
                                                     <th style="text-align: center;">
@@ -48,16 +48,21 @@
                                                         <input type="checkbox" class="filled-in checkbox" id="checkbox_producto1" />
                                                         <label for="checkbox_producto1"></label>
                                                     </td>
-                                                    <td>Productos</td>
+                                                    <td><span class="nivel1">Productos</span></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td>
-                                                        <a class="modal-trigger icono-edicion" href="#agregarCategoría" data-toggle="tooltip" title="<?=label('tooltip_annadir')?>">
-                                                            <i class="mdi-content-add"></i>
-                                                        </a>
-                                                        <a class="modal-trigger icono-edicion" href="#editarCategoría" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
-                                                            <i class="mdi-editor-mode-edit"></i>
+                                                        <ul id="dropdown-producto1" class="dropdown-content">
+                                                            <li>
+                                                                <a href="#agregarCategoría" class="-text modal-trigger"><?=label('menuOpciones_agregarCategoria')?></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#editarCategoría" class="-text modal-trigger"><?=label('menuOpciones_editar')?></a>
+                                                            </li>
+                                                        </ul>
+                                                        <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-producto1">
+                                                            <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -66,19 +71,24 @@
                                                         <input type="checkbox" class="filled-in checkbox" id="checkbox_producto2" />
                                                         <label for="checkbox_producto2"></label>
                                                     </td>
-                                                    <td><span style="margin-left: 20px">Alimentacion</span></td>
+                                                    <td><span class="nivel2">Alimentacion</span></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td>
-                                                        <a class="modal-trigger icono-edicion" href="<?=base_url()?>productos/agregar" data-toggle="tooltip" title="<?=label('tooltip_annadir')?>">
-                                                            <i class="mdi-content-add"></i>
-                                                        </a>
-                                                        <a class="modal-trigger icono-edicion" href="#editarCategoría"  data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
-                                                            <i class="mdi-editor-mode-edit"></i>
-                                                        </a>
-                                                        <a class="modal-trigger icono-edicion" href="#eliminarElemento" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
-                                                            <i class="mdi-action-delete"></i>
+                                                        <ul id="dropdown-producto2" class="dropdown-content">
+                                                            <li>
+                                                                <a href="<?=base_url()?>productos/agregar" class="-text"><?=label('menuOpciones_agregarProducto')?></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#editarCategoría" class="-text modal-trigger"><?=label('menuOpciones_editar')?></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#eliminarElemento" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
+                                                            </li>
+                                                        </ul>
+                                                        <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-producto2">
+                                                            <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -87,16 +97,23 @@
                                                         <input type="checkbox" class="filled-in checkbox" id="checkbox_producto3" />
                                                         <label for="checkbox_producto3"></label>
                                                     </td>
-                                                    <td><a href="<?=base_url()?>productos/editar">Arroz</a></td>
+                                                    <td>
+                                                        <span class="nivel3"><a href="<?=base_url()?>productos/editar">Arroz</a></span>
+                                                    </td>
                                                     <td>00005</td>
                                                     <td>Paquete de 2 Kg</td>
                                                     <td>$2</td>
                                                     <td>
-                                                        <a class="icono-edicion" href="<?=base_url()?>productos/editar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
-                                                            <i class="mdi-editor-mode-edit"></i>
-                                                        </a>
-                                                        <a class="modal-trigger icono-edicion" href="#eliminarElemento" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
-                                                            <i class="mdi-action-delete"></i>
+                                                        <ul id="dropdown-producto3" class="dropdown-content">
+                                                            <li>
+                                                                <a href="<?=base_url()?>productos/editar" class="-text"><?=label('menuOpciones_editar')?></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#eliminarElemento" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
+                                                            </li>
+                                                        </ul>
+                                                        <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-producto3">
+                                                            <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -105,19 +122,24 @@
                                                         <input type="checkbox" class="filled-in checkbox" id="checkbox_producto4" />
                                                         <label for="checkbox_producto4"></label>
                                                     </td>
-                                                    <td><span style="margin-left: 20px">Bebidas</span></td>
+                                                    <td><span class="nivel2">Bebidas</span></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td>
-                                                        <a class="modal-trigger icono-edicion" href="#agregarCategoría" data-toggle="tooltip" title="<?=label('tooltip_annadir')?>">
-                                                            <i class="mdi-content-add"></i>
-                                                        </a>
-                                                        <a class="modal-trigger icono-edicion" href="#editarCategoría" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
-                                                            <i class="mdi-editor-mode-edit"></i>
-                                                        </a>
-                                                        <a class="modal-trigger icono-edicion" href="#eliminarElemento" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
-                                                            <i class="mdi-action-delete"></i>
+                                                        <ul id="dropdown-producto4" class="dropdown-content">
+                                                            <li>
+                                                                <a href="#agregarCategoría" class="-text modal-trigger"><?=label('menuOpciones_agregarProducto')?></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#editarCategoría" class="-text modal-trigger"><?=label('menuOpciones_editar')?></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#eliminarElemento" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
+                                                            </li>
+                                                        </ul>
+                                                        <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-producto4">
+                                                            <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -126,19 +148,24 @@
                                                         <input type="checkbox" class="filled-in checkbox" id="checkbox_producto5" />
                                                         <label for="checkbox_producto5"></label>
                                                     </td>
-                                                    <td><span style="margin-left: 20px">Gaseosas</span></td>
+                                                    <td><span class="nivel3">Gaseosas</span></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td>
-                                                        <a class="modal-trigger icono-edicion" href="<?=base_url()?>productos/agregar" data-toggle="tooltip" title="<?=label('tooltip_annadir')?>">
-                                                            <i class="mdi-content-add"></i>
-                                                        </a>
-                                                        <a class="modal-trigger icono-edicion" href="#editarCategoría" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
-                                                            <i class="mdi-editor-mode-edit"></i>
-                                                        </a>
-                                                        <a class="modal-trigger icono-edicion" href="#eliminarElemento" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
-                                                            <i class="mdi-action-delete"></i>
+                                                        <ul id="dropdown-producto5" class="dropdown-content">
+                                                            <li>
+                                                                <a href="<?=base_url()?>productos/agregar" class="-text"><?=label('menuOpciones_agregarProducto')?></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#editarCategoría" class="-text modal-trigger"><?=label('menuOpciones_editar')?></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#eliminarElemento" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
+                                                            </li>
+                                                        </ul>
+                                                        <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-producto5">
+                                                            <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -147,16 +174,23 @@
                                                         <input type="checkbox" class="filled-in checkbox" id="checkbox_producto6" />
                                                         <label for="checkbox_producto6"></label>
                                                     </td>
-                                                    <td><a href="<?=base_url()?>productos/editar">Coca Cola</a></td>
+                                                    <td>
+                                                        <span class="nivel4"><a href="<?=base_url()?>productos/editar">Coca Cola</a></span>
+                                                    </td>
                                                     <td>00006</td>
                                                     <td>Envase de 2 litros</td>
                                                     <td>$3</td>
                                                     <td>
-                                                        <a class="icono-edicion" href="<?=base_url()?>productos/editar"  data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
-                                                            <i class="mdi-editor-mode-edit"></i>
-                                                        </a>
-                                                        <a class="modal-trigger icono-edicion" href="#eliminarElemento" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
-                                                            <i class="mdi-action-delete"></i>
+                                                        <ul id="dropdown-producto6" class="dropdown-content">
+                                                            <li>
+                                                                <a href="<?=base_url()?>productos/editar" class="-text"><?=label('menuOpciones_editar')?></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#eliminarElemento" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
+                                                            </li>
+                                                        </ul>
+                                                        <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-producto6">
+                                                            <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -165,16 +199,23 @@
                                                         <input type="checkbox" class="filled-in checkbox" id="checkbox_producto7" />
                                                         <label for="checkbox_producto7"></label>
                                                     </td>
-                                                    <td><a href="<?=base_url()?>productos/editar">Fanta</a></td>
+                                                    <td>
+                                                        <span class="nivel4"><a href="<?=base_url()?>productos/editar">Fanta</a></span>
+                                                    </td>
                                                     <td>00007</td>
                                                     <td>Envase de 1.5 litros</td>
                                                     <td>$2</td>
                                                     <td>
-                                                        <a class="icono-edicion" href="<?=base_url()?>productos/editar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
-                                                            <i class="mdi-editor-mode-edit"></i>
-                                                        </a>
-                                                        <a class="modal-trigger icono-edicion" href="#eliminarElemento" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
-                                                            <i class="mdi-action-delete"></i>
+                                                        <ul id="dropdown-producto7" class="dropdown-content">
+                                                            <li>
+                                                                <a href="<?=base_url()?>productos/editar" class="-text"><?=label('menuOpciones_editar')?></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#eliminarElemento" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
+                                                            </li>
+                                                        </ul>
+                                                        <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-producto7">
+                                                            <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -183,19 +224,24 @@
                                                         <input type="checkbox" class="filled-in checkbox" id="checkbox_producto8" />
                                                         <label for="checkbox_producto8"></label>
                                                     </td>
-                                                    <td><span style="margin-left: 20px">Naturales</span></td>
+                                                    <td><span class="nivel3">Naturales</span></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td>
-                                                        <a class="modal-trigger icono-edicion" href="<?=base_url()?>productos/agregar" data-toggle="tooltip" title="<?=label('tooltip_annadir')?>">
-                                                            <i class="mdi-content-add"></i>
-                                                        </a>
-                                                        <a class="modal-trigger icono-edicion" href="#editarCategoría"  data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
-                                                            <i class="mdi-editor-mode-edit"></i>
-                                                        </a>
-                                                        <a class="modal-trigger icono-edicion" href="#eliminarElemento" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
-                                                            <i class="mdi-action-delete"></i>
+                                                        <ul id="dropdown-producto8" class="dropdown-content">
+                                                            <li>
+                                                                <a href="<?=base_url()?>productos/agregar" class="-text"><?=label('menuOpciones_agregarProducto')?></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#editarCategoría" class="-text modal-trigger"><?=label('menuOpciones_editar')?></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#eliminarElemento" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
+                                                            </li>
+                                                        </ul>
+                                                        <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-producto8">
+                                                            <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -204,16 +250,23 @@
                                                         <input type="checkbox" class="filled-in checkbox" id="checkbox_producto9" />
                                                         <label for="checkbox_producto9"></label>
                                                     </td>
-                                                    <td><a href="<?=base_url()?>productos/editar">Te frio</a></td>
+                                                    <td>
+                                                        <span class="nivel4"><a href="<?=base_url()?>productos/editar">Te frio</a></span>
+                                                    </td>
                                                     <td>00008</td>
                                                     <td>Envase de 1 litro</td>
                                                     <td>$1</td>
                                                     <td>
-                                                        <a class="icono-edicion" href="<?=base_url()?>productos/editar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
-                                                            <i class="mdi-editor-mode-edit"></i>
-                                                        </a>
-                                                        <a class="modal-trigger icono-edicion" href="#eliminarElemento" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
-                                                            <i class="mdi-action-delete"></i>
+                                                        <ul id="dropdown-producto9" class="dropdown-content">
+                                                            <li>
+                                                                <a href="<?=base_url()?>productos/editar" class="-text"><?=label('menuOpciones_editar')?></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#eliminarElemento" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
+                                                            </li>
+                                                        </ul>
+                                                        <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-producto9">
+                                                            <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -222,22 +275,29 @@
                                                         <input type="checkbox" class="filled-in checkbox" id="checkbox_producto10" />
                                                         <label for="checkbox_producto10"></label>
                                                     </td>
-                                                    <td><a href="<?=base_url()?>productos/editar">Mora</a></td>
+                                                    <td>
+                                                        <span class="nivel4"><a href="<?=base_url()?>productos/editar">Mora</a></span>
+                                                    </td>
                                                     <td>00009</td>
                                                     <td>Envase de 3 litros</td>
                                                     <td>$3</td>
                                                     <td>
-                                                        <a class="icono-edicion" href="<?=base_url()?>productos/editar" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
-                                                            <i class="mdi-editor-mode-edit"></i>
-                                                        </a>
-                                                        <a class="modal-trigger icono-edicion" href="#eliminarElemento" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
-                                                            <i class="mdi-action-delete"></i>
+                                                        <ul id="dropdown-producto10" class="dropdown-content">
+                                                            <li>
+                                                                <a href="<?=base_url()?>productos/editar" class="-text"><?=label('menuOpciones_editar')?></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#eliminarElemento" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
+                                                            </li>
+                                                        </ul>
+                                                        <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-producto10">
+                                                            <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <div class="tabla-sinAgregar">
+                                        <div class="tabla-sinAgregar tabla-productos-opciones">
                                             <a id="opciones-seleccionados-print" class="waves-effect black-text opciones-seleccionados option-print-table" style="display: none;"
                                                href="#" data-toggle="tooltip" title="<?=label('opciones_seleccionadosImprimir')?>">
                                                 <i class="mdi-action-print icono-opciones-varios"></i>
@@ -268,7 +328,7 @@
             </div>
         </div>
     </div>
-<!--end container-->
+    <!--end container-->
 
 </section>
 <!-- END CONTENT-->
@@ -468,7 +528,7 @@
         <p><?=label('clientes_archivosSeleccionadosEliminar');?></p>
     </div>
     <div class="modal-footer black-text">
-        <div id="botonElimnar" title="clients">
+        <div id="botonElimnar" title="productos-tabla-lista">
             <a href="#" class="deleteall waves-effect waves-red btn-flat modal-action modal-close" ><?=label('aceptar');?></a>
         </div>
     </div>

@@ -409,6 +409,7 @@ input, optgroup, select, textarea {
     color: inherit;
 }
 
+
 .inputTag {
 	padding-left: 10.5px;
 }
@@ -418,4 +419,12 @@ input, optgroup, select, textarea {
 	top: initial;
 	position: absolute;
 	right: initial;
+}
+
+#listaNotificaciones{
+	width: 160px !important;
+}
+
+#listaConfiguracion{
+	width: 160px !important;
 }
