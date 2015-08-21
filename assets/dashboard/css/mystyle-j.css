@@ -44,7 +44,6 @@ div.fixed-action-btn ul li a { width: 165px;}
 
 #menu-crear:hover .menu-crear{
 	display: block;
-	transition: all 0.3s ease 0s;
 }
 
 .menu-crear{
@@ -52,14 +51,14 @@ div.fixed-action-btn ul li a { width: 165px;}
 	width: 150px;
     height: auto;
     border-radius: 0;
-    background-color: white;
+    background-color: transparent;
     color: black;
     text-align: left;
 }
 
 .menu-crear li{
 	margin-bottom: 15px;
-   list-style-type: none;
+  	list-style-type: none;
 }
 
 .menu-crear li a{
@@ -74,18 +73,18 @@ div.fixed-action-btn ul li a { width: 165px;}
 
 .btn-opciones{
 	display: inline-block;
-color: #FFF;
-position: relative;
-overflow: hidden;
-z-index: 1;
-border-radius: 50%;
-width: 55px;
-height: 55px;
-padding: 0px;
-background-color: #225264;
-cursor: pointer;
-vertical-align: middle;
-transition: all 0.3s ease 0s;
+	color: #FFF;
+	position: relative;
+	overflow: hidden;
+	z-index: 1;
+	border-radius: 50%;
+	width: 55px;
+	height: 55px;
+	padding: 0px;
+	background-color: #225264;
+	cursor: pointer;
+	vertical-align: middle;
+    transition: height .3s ease 1s;
 }
 
 

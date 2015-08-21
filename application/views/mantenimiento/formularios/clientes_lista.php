@@ -149,10 +149,6 @@
                                                     </tbody>
                                                 </table>
 
-                                                <?php
-                                                $this->load->view('layout/default/menu-descargar.php');
-                                                ?>
-
                                                 <div class="tabla-conAgregar tabla-busqueda-reporte">
                                                     <a id="opciones-seleccionados-print" class="waves-effect black-text opciones-seleccionados option-print-table" style="display: none;"
                                                        href="#" data-toggle="tooltip" title="<?=label('opciones_seleccionadosImprimir')?>">

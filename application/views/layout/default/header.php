@@ -44,6 +44,7 @@
             }
         }
     </script>
+
     <script>
         //Funcion del menu de opciones
         $(function() {
