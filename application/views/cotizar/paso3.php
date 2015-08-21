@@ -44,22 +44,22 @@
    <div id="hoja">
       <div id="headerDiseno">
          <div id="encabezado">
-            <div id="logo">
+            <div id="logo" class="box">
                <img class="imagen" src="<?=base_url()?>assets/dashboard/images/sombrero.png"/>
             </div>
             <div id="datosEncabezado">
                <div class="datos" id="datos1">
                   <div></div>
-                  <p id="nombreEmpresa">Mr Rabbit</p>
-                  <p>Código de cotización: MR-123</p>
-                  <p>Cliente: faytur</p>
-                  <p>Atención: Juan Carlos Rodríguez Salas sasassasassq lkmds sdflkm dsfklm sdflkmd</p>
-                  <p>Vendedor: Brayan Nuñez Rojas</p>
+                  <p class="box" id="nombreEmpresa">Mr Rabbit</p>
+                  <p class="box" id="codigoCotizacion">Código de cotización: MR-123</p>
+                  <p class="box" id="cliente">Cliente: faytur</p>
+                  <p class="box" id="atencion">Atención: Juan Carlos Rodríguez Salas sasassasassq lkmds sdflkm dsfklm sdflkmd</p>
+                  <p class="box" id="vendedor">Vendedor: Brayan Nuñez Rojas</p>
                </div>
                <div class="datos" id="datos2">
                   <div></div>
-                  <p>Fecha: 24/06/2015</p>
-                  <p>Hora: 09:45 am</p>
+                  <p class="box" id="fecha">Fecha: 24/06/2015</p>
+                  <p class="box" id="hora">Hora: 09:45 am</p>
                </div>
             </div>
          </div>
@@ -226,11 +226,10 @@
             <i class="mdi-editor-mode-edit"></i>
             </a>
             <div id="informacion">
-               <p>Forma de pago: 50% primer mes, 50% segundo mes.</p>
-               <p>Válido por: 1,5 meses</p>
-               <p id="info_detalle">Detalle: Por las especificaciones del equipo, es posible que existan variantes entre impresiones sin que esto represente para nosotros problemas de calidad. La presente oferta tiene una validéz de 15 días naturales a partir de esta fecha. </p>
-               <p id="info_nota">Nota: El cliente se hace responsable por el cumplimiento de las legislaciones vigentes en materia de contenido y producto de las etiquetas solicitadas, y exime a Mr Rabbit de cualquier responsabilidad en ese sentido.</p>
-               <div id="firma">
+               <p class="box" id="formaPago">Forma de pago: 50% primer mes, 50% segundo mes.</p>
+               <p class="box" id="validez">Válido por: 1,5 meses</p>
+               <p class="box" id="informacionDetalle">Detalle: Por las especificaciones del equipo, es posible que existan variantes entre impresiones sin que esto represente para nosotros problemas de calidad. La presente oferta tiene una validéz de 15 días naturales a partir de esta fecha. </p>
+               <div class="box" id="firma">
                   <p>Firma:__________________________</p>
                   <p id="nombreFirma">Emanuel Conejo</p>
                </div>
@@ -241,15 +240,15 @@
             <i class="mdi-editor-mode-edit"></i>
             </a>
             <div id="footerCotizacion">
-               <div id="logo">
+               <div class="box" id="logo">
                   <img class="imagen" src="<?=base_url()?>assets/dashboard/images/sombrero.png"/>
                </div>
                <div id="datosFooter">
                   <div class="datos" id="datos1">
                      <div></div>
-                     <p>Teléfono: 2494-33-44</p>
-                     <p>Sitio web: www.mrrabbit.cr</p>
-                     <p>Correo: info@mrrabbit.cr</p>
+                     <p class="box" id="telefono">Teléfono: 2494-33-44</p>
+                     <p class="box" id="sitio">Sitio web: www.mrrabbit.cr</p>
+                     <p class="box" id="correo">Correo: info@mrrabbit.cr</p>
                   </div>
                   <div class="datos" id="datos2">
                      <div></div>
@@ -296,35 +295,35 @@
                <div class="row col s12 m6 l6">
                   <div class="listaCecksModals">
                      <p>
-                        <input type="checkbox" class="filled-in" id="filled-in-box1" checked="checked">
+                        <input name="checksEncabezado" value="nombreEmpresa" type="checkbox" class="filled-in" id="filled-in-box1" checked="checked">
                         <label for="filled-in-box1">Nombre de la empresa</label>
                      </p>
                      <p>
-                        <input type="checkbox" class="filled-in" id="filled-in-box2" checked="checked">
+                        <input name="checksEncabezado" value="codigoCotizacion" type="checkbox" class="filled-in" id="filled-in-box2" checked="checked">
                         <label for="filled-in-box2">Código de cotización</label>
                      </p>
                      <p>
-                        <input type="checkbox" class="filled-in" id="filled-in-box3" checked="checked">
+                        <input name="checksEncabezado" value="cliente" type="checkbox" class="filled-in" id="filled-in-box3" checked="checked">
                         <label for="filled-in-box3">Cliente</label>
                      </p>
                      <p>
-                        <input type="checkbox" class="filled-in" id="filled-in-box4" checked="checked">
+                        <input name="checksEncabezado" value="atencion" type="checkbox" class="filled-in" id="filled-in-box4" checked="checked">
                         <label for="filled-in-box4">Atención</label>
                      </p>
                      <p>
-                        <input type="checkbox" class="filled-in" id="filled-in-box5" checked="checked">
-                        <label for="filled-in-box5">Cotizador</label>
+                        <input name="checksEncabezado" value="vendedor" type="checkbox" class="filled-in" id="filled-in-box5" checked="checked">
+                        <label for="filled-in-box5">Vendedor</label>
                      </p>
                      <p>
-                        <input type="checkbox" class="filled-in" id="filled-in-box6" checked="checked">
+                        <input name="checksEncabezado" value="fecha" type="checkbox" class="filled-in" id="filled-in-box6" checked="checked">
                         <label for="filled-in-box6">Fecha</label>
                      </p>
                      <p>
-                        <input type="checkbox" class="filled-in" id="filled-in-box7" checked="checked">
+                        <input name="checksEncabezado" value="hora" type="checkbox" class="filled-in" id="filled-in-box7" checked="checked">
                         <label for="filled-in-box7">Hora</label>
                      </p>
                      <p>
-                        <input type="checkbox" class="filled-in" id="filled-in-box8" checked="checked">
+                        <input name="checksEncabezado" value="logo" type="checkbox" class="filled-in" id="filled-in-box8" checked="checked">
                         <label for="filled-in-box8">Imagen</label>
                      </p>
                   </div>
@@ -412,19 +411,21 @@
                <div class="row col s12 m6 l6">
                   <div class="listaCecksModals">
                      <p>
-                        <input type="checkbox" class="filled-in" id="informacionfilled-in-box1" checked="checked">
+                        <input name="checksInformacion" value="formaPago" type="checkbox" class="filled-in" id="informacionfilled-in-box1" checked="checked">
                         <label for="informacionfilled-in-box1">Forma de pago</label>
                      </p>
                      <p>
-                        <input type="checkbox" class="filled-in" id="informacionfilled-in-box2" checked="checked">
+                        <input name="checksInformacion" value="validez" type="checkbox" class="filled-in" id="informacionfilled-in-box2" checked="checked">
                         <label for="informacionfilled-in-box2">Vlidez</label>
                      </p>
                      <p>
-                        <input type="checkbox" class="filled-in" id="informacionfilled-in-box3" checked="checked">
+                        <input name="checksInformacion" value="informacionDetalle" type="checkbox" class="filled-in" id="informacionfilled-in-box3" checked="checked">
                         <label for="informacionfilled-in-box3">Detalle</label>
                      </p>
+
+                     
                      <p>
-                        <input type="checkbox" class="filled-in" id="informacionfilled-in-box4" checked="checked">
+                        <input name="checksInformacion" value="firma" type="checkbox" class="filled-in" id="informacionfilled-in-box4" checked="checked">
                         <label for="informacionfilled-in-box4">Firma</label>
                      </p>
                      <div class="file-field input-field col s12">
@@ -471,19 +472,19 @@
                <div class="row col s12 m6 l6">
                   <div class="listaCecksModals">
                      <p>
-                        <input type="checkbox" class="filled-in" id="footerfilled-in-box1" checked="checked">
+                        <input name="checksFooter" value="telefono" type="checkbox" class="filled-in" id="footerfilled-in-box1" checked="checked">
                         <label for="footerfilled-in-box1">Teléfono</label>
                      </p>
                      <p>
-                        <input type="checkbox" class="filled-in" id="footerfilled-in-box2" checked="checked">
+                        <input name="checksFooter" value="sitio" type="checkbox" class="filled-in" id="footerfilled-in-box2" checked="checked">
                         <label for="footerfilled-in-box2">Sitio web</label>
                      </p>
                      <p>
-                        <input type="checkbox" class="filled-in" id="footerfilled-in-box3" checked="checked">
+                        <input name="checksFooter" value="correo" type="checkbox" class="filled-in" id="footerfilled-in-box3" checked="checked">
                         <label for="footerfilled-in-box3">Correo</label>
                      </p>
                      <p>
-                        <input type="checkbox" class="filled-in" id="footerfilled-in-box4" checked="checked">
+                        <input name="checksFooter" value="logo" type="checkbox" class="filled-in" id="footerfilled-in-box4" checked="checked">
                         <label for="footerfilled-in-box4">Imagen</label>
                      </p>
                   </div>
@@ -539,6 +540,20 @@
    
            var colorBarra = $('#modalEncabezado .colorBarra').val();
            $('#barra1').css("background", colorBarra);
+
+
+           $('#encabezado .box').each(function(){
+             $(this).hide();
+            })
+
+            var seleccionados = $('input[name=checksEncabezado]:checked');
+            if (seleccionados.length>0) {
+               seleccionados.each(function(){
+                  $('#encabezado .box#' + $(this).val()).show();
+               });
+            } 
+
+
       });
    
       $('#modalCuerpo .aplicarCambios').click(function(){
@@ -550,6 +565,9 @@
    
            var colorBarra = $('#modalCuerpo .colorBarra').val();
            $('#barra2').css("background", colorBarra);
+
+
+
       });
    
       $('#modalInformacion .aplicarCambios').click(function(){
@@ -561,6 +579,20 @@
    
            var colorBarra = $('#modalInformacion .colorBarra').val();
            $('#barra3').css("background", colorBarra);
+
+
+           $('#informacion .box').each(function(){
+             $(this).hide();
+            })
+
+            var seleccionados = $('input[name=checksInformacion]:checked');
+            if (seleccionados.length>0) {
+               seleccionados.each(function(){
+                  $('#informacion .box#' + $(this).val()).show();
+               });
+            } 
+
+
       });
    
        $('#modalFooter .aplicarCambios').click(function(){
@@ -570,7 +602,16 @@
            var colorLetra = $('#modalFooter .colorLetra').val();
            $('#footerCotizacion').css("color", colorLetra);
    
-           
+           $('#footerCotizacion .box').each(function(){
+             $(this).hide();
+            })
+
+            var seleccionados = $('input[name=checksFooter]:checked');
+            if (seleccionados.length>0) {
+               seleccionados.each(function(){
+                  $('#footerCotizacion .box#' + $(this).val()).show();
+               });
+            } 
       });
    
         $('#encabezado').css("background", "red");
