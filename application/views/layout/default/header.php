@@ -122,12 +122,68 @@
                     <h1 class="logo-wrapper"><a href="<?=base_url()?>inicio" class="brand-logo darken-1"><img src="<?=base_url()?>assets/dashboard/images/materialize-logo.png" alt="materialize logo"></a> <span class="logo-text">Touch!</span></h1>
                     <ul class="right hide-on-med-and-down">
 
-                        <li><a style="width: 135px;" class="dropdown-button" data-activates="dropdown3" href="javascript:void(0);"
+                        
+                        
+
+                        <!--<li>
+                            <a class="btn-floating btn-large red" href="<?=base_url();?>cotizacion/cotizar">
+                                <i class="large mdi-editor-mode-edit"></i>
+                            </a>
+                            <a class="" href="<?=base_url();?>cotizacion/cotizar" data-toggle="tooltip" title="<?=label('tooltip_cotizar')?>">
+                                <i class="mdi-editor-mode-edit"></i>
+                            </a>
+                        </li> -->
+                        <!-- <li class="search-out">
+                            <input type="text" class="search-out-text">
+                        </li>
+                        <li>
+                            <a href="#login-page" class="modal-trigger waves-effect waves-block waves-light show-search"><i class="mdi-action-search"></i></a>
+                        </li> -->
+                        <!-- <li><a style="width: 135px;" class="dropdown-button" data-activates="dropdown3" href="javascript:void(0);"
                                class="waves-effect waves-block waves-light" data-toggle="tooltip" title="<?=label('tooltip_configuracion')?>">
                                 <i style="margin-left: 75px;" class="mdi-action-settings-applications"></i>
                             </a>
+                        </li> -->
+
+                        <li>
+                            <a class="dropdown-button" href="#!" data-activates="listaConfiguracion" title="<?=label('tooltip_configuracion')?>">
+                                <i class="mdi-action-settings-applications"></i>
+                            </a>
                         </li>
-                        <ul id="dropdown3" class="dropdown-content">
+
+
+                        
+                        
+                        <li>
+                            <a class="dropdown-button" href="#!" data-activates="listaNotificaciones">
+                                <i class="mdi-social-notifications">9</i>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen" data-toggle="tooltip" title="<?=label('tooltip_pantallaCompleta')?>">
+                                <i class="mdi-action-settings-overscan"></i>
+                            </a>
+                        </li>
+
+
+
+                        <ul id="listaNotificaciones" class="dropdown-content active" style="width: 250px; position: absolute; top: 622.250010172526px; left: 2182.9375px; opacity: 1; display: block;">
+                            <li><a href="<?=base_url();?>cotizacion" class="-text">Revisadas 3</a>
+                            </li>
+                            <li><a href="<?=base_url();?>Solicitud/porAbrobar" class="-text">Pendientes 2</a>
+                            </li>
+                            <li><a href="<?=base_url();?>cotizacion" class="-text">Rechazadas 2</a>
+                            </li>
+
+                            </li>
+                            <li><a href="<?=base_url();?>Solicitud/listaAsignar" class="-text">Nuevo cliente 1</a>
+                            </li>
+                            </li>
+                            <li><a href="<?=base_url();?>Solicitud/listaPendientes" class="-text">Solicitudes 1</a>
+                          </ul>
+
+                          <ul id="listaConfiguracion" class="dropdown-content">
                             <li>
                                 <a href="<?=base_url()?>tiposMoneda"><?=label('monedas');?></a>
                             </li>
@@ -145,46 +201,6 @@
                             </li>
                             <li>
                                 <a href="<?=base_url();?>unidad"><?=label('unidad');?></a>
-                            </li>
-                        </ul>
-
-                        <!--<li>
-                            <a class="btn-floating btn-large red" href="<?=base_url();?>cotizacion/cotizar">
-                                <i class="large mdi-editor-mode-edit"></i>
-                            </a>
-                            <a class="" href="<?=base_url();?>cotizacion/cotizar" data-toggle="tooltip" title="<?=label('tooltip_cotizar')?>">
-                                <i class="mdi-editor-mode-edit"></i>
-                            </a>
-                        </li> -->
-                        <!-- <li class="search-out">
-                            <input type="text" class="search-out-text">
-                        </li>
-                        <li>
-                            <a href="#login-page" class="modal-trigger waves-effect waves-block waves-light show-search"><i class="mdi-action-search"></i></a>
-                        </li> -->
-                        <li>
-                            <a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen" data-toggle="tooltip" title="<?=label('tooltip_pantallaCompleta')?>">
-                                <i class="mdi-action-settings-overscan"></i>
-                            </a>
-                        </li>
-                        <li><a style="width: 170px;" class="dropdown-button" data-activates="dropdown1" href="javascript:void(0);"
-                               class="waves-effect waves-block waves-light" data-toggle="tooltip" title="<?=label('tooltip_notificaciones')?>">
-                                <i class="mdi-social-notifications">9</i>
-                            </a>
-                        </li>
-                        <ul id="dropdown1" class="dropdown-content">
-                            <li><a href="<?=base_url();?>cotizacion" class="-text">Revisadas 3</a>
-                            </li>
-                            <li><a href="<?=base_url();?>Solicitud/porAbrobar" class="-text">Pendientes 2</a>
-                            </li>
-                            <li><a href="<?=base_url();?>cotizacion" class="-text">Rechazadas 2</a>
-                            </li>
-
-                            </li>
-                            <li><a href="<?=base_url();?>Solicitud/listaAsignar" class="-text">Nuevo cliente 1</a>
-                            </li>
-                            </li>
-                            <li><a href="<?=base_url();?>Solicitud/listaPendientes" class="-text">Solicitudes 1</a>
                             </li>
                         </ul>
                         
