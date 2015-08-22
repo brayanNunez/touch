@@ -51,7 +51,7 @@ class Cotizacion extends CI_Controller {
     public function enviarJson()
     {
         $json = '[ { "value": 1 , "text": "Brayan Nuñez Rojas"   , "continent": "Europe"    },
-  { "value": 2 , "text": "Esteban Nuñez Rojas"      , "continent": "Europe"    },
+  { "value": 2 , "text": "Esteban Jose Nuñez Rojas"      , "continent": "Europe"    },
   { "value": 3 , "text": "Josue Nuñez Rojas"       , "continent": "Europe"    },
   { "value": 4 , "text": "Anthony Nuñez Rojas"  , "continent": "America"   },
   { "value": 5 , "text": "Andrey Nuñez Rojas" , "continent": "America"   },
@@ -65,6 +65,41 @@ class Cotizacion extends CI_Controller {
   { "value": 13, "text": "Diego Alfaro Rojas"       , "continent": "Africa"    },
   { "value": 14, "text": "Bernardita Rojas Bolaños"   , "continent": "Africa"    },
   { "value": 15, "text": "Rodolfo Nuñez Rodriguez"    , "continent": "Africa"    }
+]';
+        echo $json;
+    }
+
+
+
+public function jsonContactos()
+    {
+        $json = '[ "Facebook",
+  "TV",
+  "Radio",
+  "Periódico"
+]';
+        echo $json;
+    }
+
+     public function jsonGustos()
+    {
+        $json = '[ "Música",
+  "Fútbol",
+  "Paris",
+  "Naturaleza",
+  "New York",
+  "Deportes extremos",
+  "Playa",
+  "Deportes acuaticos",
+  "Historia",
+  "Ciencias",
+  "Viajar",
+  "Lotería",
+  "Adidas",
+  "Nike",
+  "Pan salado",
+  "Europa",
+  "Patinetas"
 ]';
         echo $json;
     }
