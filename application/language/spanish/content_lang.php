@@ -36,6 +36,9 @@
     $lang['confirmarEliminarImpuesto'] = '¿Realmente desea eliminar el impuesto seleccionado?';
     $lang['confirmarEliminarUnidad'] = '¿Realmente desea eliminar la unidad seleccionada?';
     $lang['motivoRechaza'] = 'Agregue el motivo por el cual rechaza esta cotización';
+    $lang['confirmarGuardarDescargar'] = '¿Realmente desea guardar y descargar la cotización en proceso?';
+    $lang['confirmarGuardarCerrar'] = '¿Realmente desea guardar y cerrar la cotización en proceso?';
+    $lang['confirmarCancelarCotizacion'] = '¿Realmente desea cancelar la cotización en proceso?';
 
     
 
@@ -178,7 +181,10 @@
 	$lang['contrasena_olvido'] = '¿Olvidó su contraseña?';
     $lang['editarContenido'] = 'Editar contenido';
     $lang['aprobarEnvioCliente'] = 'Aprobar';
-
+    $lang['guardarEnviar'] = 'Guardar y enviar';
+    $lang['guardarDescargar'] = 'Guardar y descargar';
+    $lang['guardarCerrar'] = 'Guardar y cerrar';
+    $lang['cancelarCot'] = 'Cancelar cotización';
 
 
 //comentarios de una cotizacion
@@ -534,6 +540,10 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['tooltip_eliminarSeleccionados'] = 'Eliminar los elementos seleccionados';
     $lang['tooltip_imprimirSeleccionados'] = 'Imprimir los elementos seleccionados';
     $lang['tooltip_exportarSeleccionados'] = 'Exportar tabla';
+    $lang['tooltip_guardarEnviar'] = 'Guardar y enviar';
+    $lang['tooltip_guardarDescargar'] = 'Guardar y descargar';
+    $lang['tooltip_guardarCerrar'] = 'Guardar y cerrar';
+    $lang['tooltip_cancelarCot'] = 'Cancelar cotización';
 
     $lang['menuOpciones_seleccionar'] = 'Opciones';
     $lang['menuOpciones_editar'] = 'Editar';
