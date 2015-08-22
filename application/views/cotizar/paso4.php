@@ -56,7 +56,7 @@
                                  </div>
                               </div>
                               <div class="input-field col s12 m6 l3">
-                                 <div class="input-field col s12">
+                                 <div class="input-field col s12 opt-finalizar-cancelar">
                                     <a href="#cancelar-cot" id="btnCancelarCot" class="modal-trigger opt-finalizar" title="<?=label('tooltip_cancelarCot');?>"><?=label('cancelarCot');?></a>
                                  </div>
                               </div>
