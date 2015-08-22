@@ -48,6 +48,28 @@
                 </div>
                 <br>
             </div>
+
+            <div class="inputTag col s12">
+                <label for="vendedoresCliente"><?=label('formCliente_gustos_preferencias');?></label>
+                <br>
+                <div class="example example_typeahead">
+                  <div class="bs-example">
+                    <input placeholder="<?=label('formCliente_anadirGusto');?>" type="text" value="Música,Fútbol" />
+                  </div>
+                </div>
+                <br>
+            </div>
+
+            <div class="inputTag col s12">
+                <label for="vendedoresCliente"><?=label('formCliente_mediosContacto');?></label>
+                <br>
+                <div class="example mediosContacto">
+                  <div class="bs-example">
+                    <input placeholder="<?=label('formCliente_anadirMedio');?>" type="text" value="Radio,TV" />
+                  </div>
+                </div>
+                <br>
+            </div>
             
              <div class="input-field col s12">
                  <label><?=label('formCliente_Contactos');?></label>
@@ -78,7 +100,7 @@
                  <br />
                  <hr />
              </div>
-             <div class="input-field col s12">
+             <!-- <div class="input-field col s12">
                  <label><?=label('formCliente_gustos_preferencias');?></label>
                  <br />
                  <br />
@@ -194,7 +216,7 @@
                  </table>
                  <hr />
                  <br />
-             </div>
+             </div> -->
              <!-- <div class="input-field col s12">
                  <input id="cliente_cotizador" type="text" value="Juan Martinez" readonly>
                  <label for="cliente_cotizador"><?=label('formCliente_cotizador');?></label>

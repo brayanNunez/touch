@@ -52,6 +52,28 @@
                 </div>
                 <br>
             </div>
+            <div class="inputTag col s12">
+                <label for="vendedoresCliente"><?=label('formCliente_gustos_preferencias');?></label>
+                <br>
+                <div class="example example_typeahead">
+                  <div class="bs-example">
+                    <input placeholder="<?=label('formCliente_anadirGusto');?>" type="text" value="Música,Fútbol" />
+                  </div>
+                </div>
+                <br>
+            </div>
+
+            <div class="inputTag col s12">
+                <label for="vendedoresCliente"><?=label('formCliente_mediosContacto');?></label>
+                <br>
+                <div class="example mediosContacto">
+                  <div class="bs-example">
+                    <input placeholder="<?=label('formCliente_anadirMedio');?>" type="text" value="Radio,TV" />
+                  </div>
+                </div>
+                <br>
+            </div>
+
              <div class="input-field col s12">
                  <label><?=label('formCliente_Contactos');?></label>
                  <br />
@@ -113,34 +135,6 @@
                  <a href="#agregar" class="btn btn-default modal-trigger"><?=label('formCliente_agregar');?></a>
                  <hr />
              </div>
-
-
-            <div class="inputTag col s12">
-                <label for="vendedoresCliente"><?=label('formCliente_gustos_preferencias');?></label>
-                <br>
-                <div class="example example_typeahead">
-                  <div class="bs-example">
-                    <input placeholder="<?=label('formCliente_anadirVendedor');?>" type="text" value="Música, Fútbol" />
-                  </div>
-                </div>
-                <br>
-            </div>
-
-            <div class="inputTag col s12">
-                <label for="vendedoresCliente"><?=label('formCliente_mediosContacto');?></label>
-                <br>
-                <div class="example mediosContacto">
-                  <div class="bs-example">
-                    <input placeholder="<?=label('formCliente_anadirVendedor');?>" type="text" value="Radio,TV" />
-                  </div>
-                </div>
-                <br>
-            </div>
-
-
-
-
-            
 
 
 

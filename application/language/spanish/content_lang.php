@@ -276,11 +276,13 @@ $lang['listarReporteCot'] = 'Reportes cotizaciones';
 	$lang['formCliente_medio'] = 'Medio';
 	$lang['formCliente_agregarNuevo'] = 'Agregar';
 	$lang['formCliente_estadoMedio'] = 'Estado';
-	$lang['formCliente_nuevoMedio'] = 'Nuevo medio';
+	// $lang['formCliente_nuevoMedio'] = 'Nuevo medio';
 	$lang['formCliente_cotizador'] = 'Vendedores';
 	$lang['formCliente_comentarios'] = 'Comentarios';
 	$lang['formCliente_archivo'] = 'Archivo';
     $lang['formCliente_anadirVendedor'] = 'Añadir vendedor';
+    $lang['formCliente_anadirGusto'] = 'Añadir gusto';
+    $lang['formCliente_anadirMedio'] = 'Añadir medio';
 
 //Formulario de empleados
     $lang['Empleado_tablaNombre'] = 'Nombre';
