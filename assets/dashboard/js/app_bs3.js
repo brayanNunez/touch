@@ -19,23 +19,85 @@ var cities = new Bloodhound({
   datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
   queryTokenizer: Bloodhound.tokenizers.whitespace,
   // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/cities.json'
-  prefetch: 'http://localhost/Proyectos/touch/Cotizacion/enviarJson'
+  prefetch: {
+     url: 'http://localhost/Proyectos/touch/Cotizacion/enviarJson',
+        ttl: 1000
+  } 
 });
 
 cities.initialize();
 
+
+var gustos = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/gustos.json'
+  prefetch: {
+    url: 'http://localhost/Proyectos/touch/Cotizacion/jsonGustos',
+        ttl: 1000,
+    filter: function(list) {
+      return $.map(list, function(cityname) {
+        return { name: cityname }; });
+    }
+  } 
+});
+
+gustos.initialize();
+
+
+var mediosContacto = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/gustos.json'
+  prefetch: {
+    url: 'http://localhost/Proyectos/touch/Cotizacion/jsonContactos',
+        ttl: 1000,
+    filter: function(list) {
+      return $.map(list, function(cityname) {
+        return { name: cityname }; });
+    }
+  } 
+});
+
+mediosContacto.initialize();
+
 /**
  * Typeahead
  */
+// var elt = $('.example_typeahead > > input');
+// elt.tagsinput({
+//   typeaheadjs: {
+//     name: 'gustos',
+//     displayKey: 'gustos',
+//     valueKey: 'gustos',
+//     source: gustos.ttAdapter()
+//   }
+// });
+
 var elt = $('.example_typeahead > > input');
 elt.tagsinput({
   typeaheadjs: {
     name: 'citynames',
     displayKey: 'name',
     valueKey: 'name',
-    source: citynames.ttAdapter()
+    source: gustos.ttAdapter()
   }
 });
+
+
+var elt = $('.mediosContacto > > input');
+elt.tagsinput({
+  typeaheadjs: {
+    name: 'citynames',
+    displayKey: 'name',
+    valueKey: 'name',
+    source: mediosContacto.ttAdapter()
+  }
+});
+
+
+
+
 
 /**
  * Objects as tags
