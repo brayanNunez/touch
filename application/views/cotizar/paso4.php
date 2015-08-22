@@ -38,27 +38,26 @@
                               
                            </iframe>
 
-                           <div class="row">
-                              <div class="col s12 m12 l12">
-                                 <div class="input-field col s12 m6 l3">
-                                    <div class="input-field col s12">
-                                       <a href="#guardar-enviar" id="btnGuardarEnviar" class="left btn btn-default modal-trigger" title="<?=label('tooltip_guardarEnviar');?>"><?=label('guardarEnviar');?></a>
-                                    </div>
+                           
+                           <div class="col s12 m12 l12">
+                              <div class="input-field col s12 m6 l3">
+                                 <div class="input-field col s12">
+                                    <a href="#guardar-enviar" id="btnGuardarEnviar" class="left btn btn-default modal-trigger opt-finalizar" title="<?=label('tooltip_guardarEnviar');?>"><?=label('guardarEnviar');?></a>
                                  </div>
-                                 <div class="input-field col s12 m6 l3">
-                                    <div class="input-field col s12">
-                                       <a href="#guardar-descargar" id="btnGuardarDescargar" class="left btn btn-default modal-trigger" title="<?=label('tooltip_guardarDescargar');?>"><?=label('guardarDescargar');?></a>
-                                    </div>
+                              </div>
+                              <div class="input-field col s12 m6 l3">
+                                 <div class="input-field col s12">
+                                    <a href="#guardar-descargar" id="btnGuardarDescargar" class="left btn btn-default modal-trigger opt-finalizar" title="<?=label('tooltip_guardarDescargar');?>"><?=label('guardarDescargar');?></a>
                                  </div>
-                                 <div class="input-field col s12 m6 l3">
-                                    <div class="input-field col s12">
-                                       <a href="#guardar-cerrar" id="btnGuardarCerrar" class="left btn btn-default modal-trigger" title="<?=label('tooltip_guardarCerrar');?>"><?=label('guardarCerrar');?></a>
-                                    </div>
+                              </div>
+                              <div class="input-field col s12 m6 l3">
+                                 <div class="input-field col s12">
+                                    <a href="#guardar-cerrar" id="btnGuardarCerrar" class="left btn btn-default modal-trigger opt-finalizar" title="<?=label('tooltip_guardarCerrar');?>"><?=label('guardarCerrar');?></a>
                                  </div>
-                                 <div class="input-field col s12 m6 l3">
-                                    <div class="input-field col s12">
-                                       <a href="#cancelar-cot" id="btnCancelarCot" class="modal-trigger" title="<?=label('tooltip_cancelarCot');?>"><?=label('cancelarCot');?></a>
-                                    </div>
+                              </div>
+                              <div class="input-field col s12 m6 l3">
+                                 <div class="input-field col s12">
+                                    <a href="#cancelar-cot" id="btnCancelarCot" class="modal-trigger opt-finalizar" title="<?=label('tooltip_cancelarCot');?>"><?=label('cancelarCot');?></a>
                                  </div>
                               </div>
                            </div>
