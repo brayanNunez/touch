@@ -46,7 +46,7 @@
                                                                 <input type="checkbox" class="filled-in checkbox" id="checkbox_forma1" />
                                                                 <label for="checkbox_forma1"></label>
                                                             </td>
-                                                            <td><a href="#">Contado</a></td>
+                                                            <td><a href="#Editar" class="modal-trigger">Contado</a></td>
                                                             <td>Se paga todo en un momento</td>
                                                             <td>
                                                                 <ul id="dropdown-forma1" class="dropdown-content">
@@ -67,7 +67,7 @@
                                                                 <input type="checkbox" class="filled-in checkbox" id="checkbox_forma2" />
                                                                 <label for="checkbox_forma2"></label>
                                                             </td>
-                                                            <td><a href="#">50-50</a></td>
+                                                            <td><a href="#Editar" class="modal-trigger">50-50</a></td>
                                                             <td>Se paga la mitad al inicio y se cancela al final</td>
                                                             <td>
                                                                 <ul id="dropdown-forma2" class="dropdown-content">
@@ -88,7 +88,7 @@
                                                                 <input type="checkbox" class="filled-in checkbox" id="checkbox_forma3" />
                                                                 <label for="checkbox_forma3"></label>
                                                             </td>
-                                                            <td><a href="#">Entrega</a></td>
+                                                            <td><a href="#Editar" class="modal-trigger">Entrega</a></td>
                                                             <td>Se paga todo al final</td>
                                                             <td>
                                                                 <ul id="dropdown-forma3" class="dropdown-content">
@@ -107,7 +107,7 @@
                                                     </tbody>
                                                 </table>
                                                 <div class="tabla-conAgregar">
-                                                    <a id="opciones-seleccionados-print" class="waves-effect black-text opciones-seleccionados option-print-table" style="display: none;"
+                                                    <a id="opciones-seleccionados-print" class="waves-effect black-text opciones-seleccionados option-print-table" style="visibility: hidden;"
                                                        href="#" data-toggle="tooltip" title="<?=label('opciones_seleccionadosImprimir')?>">
                                                         <i class="mdi-action-print icono-opciones-varios"></i>
                                                     </a>
@@ -123,7 +123,7 @@
                                                        href="#" data-toggle="tooltip" title="<?=label('opciones_seleccionadosExportar')?>" data-activates="dropdown-exportar">
                                                         <i class="mdi-file-file-download icono-opciones-varios"></i>
                                                     </a>
-                                                    <a id="opciones-seleccionados-delete" class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements" style="display: none;"
+                                                    <a id="opciones-seleccionados-delete" class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements" style="visibility: hidden;"
                                                        href="#eliminarElementosSeleccionados" data-toggle="tooltip" title="<?=label('opciones_seleccionadosEliminar')?>">
                                                         <i class="mdi-action-delete icono-opciones-varios"></i>
                                                     </a>
@@ -155,13 +155,13 @@
             var elems = document.getElementsByClassName('opciones-seleccionados');
             var e;
             for(e in elems) {
-                elems[e].style.display = 'block';
+                elems[e].style.visibility = 'visible';
             }
         } else {
             var elems = document.getElementsByClassName('opciones-seleccionados');
             var e;
             for(e in elems) {
-                elems[e].style.display = 'none';
+                elems[e].style.visibility = 'hidden';
             }
         }
         document.getElementById('checkbox-all').checked = false;
@@ -203,13 +203,13 @@
                 var elems = document.getElementsByClassName('opciones-seleccionados');
                 var e;
                 for(e in elems) {
-                    elems[e].style.display = 'block';
+                    elems[e].style.visibility = 'visible';
                 }
             } else {
                 var elems = document.getElementsByClassName('opciones-seleccionados');
                 var e;
                 for(e in elems) {
-                    elems[e].style.display = 'none';
+                    elems[e].style.visibility = 'hidden';
                 }
             }
         });

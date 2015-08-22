@@ -52,11 +52,8 @@
 <!--                                        </div> -->
 
                                         <div class="inputTag col s12">
-
                                             <label for="empleado_palabras"><?=label('formEmpleado_palabrasClave');?></label>
-
                                             <input placeholder="<?=label('formEmpleado_anadirPalabraClave');?>" id="empleado_palabras" type="text" value="" data-role="tagsinput" />
-                                            
                                         </div>
 
                                         <div class="input-field col s12">
@@ -76,9 +73,13 @@
                                             <label><?=label('formEmpleado_salarios');?></label>
                                             <br />
                                             <br />
-                                            <table class="table striped">
+                                            <table id="empleados1-salarios" class="table striped">
                                                 <thead>
                                                     <tr>
+                                                        <th style="text-align: center;">
+                                                            <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all" onclick="toggleChecked(this.checked)"/>
+                                                            <label for="checkbox-all"></label>
+                                                        </th>
                                                         <th><?=label('formEmpleado_salariosTipo');?></th>
                                                         <th><?=label('formEmpleado_salariosMonto');?></th>
                                                         <th><?=label('formEmpleado_salariosOpciones');?></th>
@@ -86,45 +87,81 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
+                                                        <td style="text-align: center;">
+                                                            <input type="checkbox" class="filled-in checkbox" id="checkbox_empleado1_salario1" />
+                                                            <label for="checkbox_empleado1_salario1"></label>
+                                                        </td>
                                                         <td>Por hora</td>
                                                         <td>$10</td>
                                                         <td>
-                                                            <a class="modal-trigger icono-edicion" href="#editarSalario" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
-                                                                <i class="mdi-editor-mode-edit"></i>
-                                                            </a>
-                                                            <a class="modal-trigger icono-edicion" href="#eliminarSalario" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
-                                                                <i class="mdi-action-delete"></i>
+                                                            <ul id="dropdown-empleado1-salario1" class="dropdown-content">
+                                                                <li>
+                                                                    <a href="#editarSalario" class="-text modal-trigger"><?=label('menuOpciones_editar')?></a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#eliminarSalario" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
+                                                                </li>
+                                                            </ul>
+                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-empleado1-salario1">
+                                                                <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
                                                             </a>
                                                         </td>
                                                     </tr>
                                                     <tr>
+                                                        <td style="text-align: center;">
+                                                            <input type="checkbox" class="filled-in checkbox" id="checkbox_empleado1_salario1" />
+                                                            <label for="checkbox_empleado1_salario1"></label>
+                                                        </td>
                                                         <td>Por día</td>
                                                         <td>$80</td>
                                                         <td>
-                                                            <a class="modal-trigger icono-edicion" href="#editarSalario" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
-                                                                <i class="mdi-editor-mode-edit"></i>
-                                                            </a>
-                                                            <a class="modal-trigger icono-edicion" href="#eliminarSalario" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
-                                                                <i class="mdi-action-delete"></i>
+                                                            <ul id="dropdown-empleado1-salario1" class="dropdown-content">
+                                                                <li>
+                                                                    <a href="#editarSalario" class="-text modal-trigger"><?=label('menuOpciones_editar')?></a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#eliminarSalario" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
+                                                                </li>
+                                                            </ul>
+                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-empleado1-salario1">
+                                                                <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
                                                             </a>
                                                         </td>
                                                     </tr>
                                                     <tr>
+                                                        <td style="text-align: center;">
+                                                            <input type="checkbox" class="filled-in checkbox" id="checkbox_empleado1_salario1" />
+                                                            <label for="checkbox_empleado1_salario1"></label>
+                                                        </td>
                                                         <td>Mensual</td>
                                                         <td>$1400</td>
                                                         <td>
-                                                            <a class="modal-trigger icono-edicion" href="#editarSalario" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
-                                                                <i class="mdi-editor-mode-edit"></i>
-                                                            </a>
-                                                            <a class="modal-trigger icono-edicion" href="#eliminarSalario" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
-                                                                <i class="mdi-action-delete"></i>
+                                                            <ul id="dropdown-empleado1-salario1" class="dropdown-content">
+                                                                <li>
+                                                                    <a href="#editarSalario" class="-text modal-trigger"><?=label('menuOpciones_editar')?></a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#eliminarSalario" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
+                                                                </li>
+                                                            </ul>
+                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-empleado1-salario1">
+                                                                <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
                                                             </a>
                                                         </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                             <br />
-                                            <a href="#agregarSalario" class="btn btn-default modal-trigger"><?=label('formEmpleado_nuevoSalario');?></a>
+                                            <div>
+                                                <a href="#agregarSalario" class="btn btn-default modal-trigger"><?=label('formEmpleado_nuevoSalario');?></a>
+
+                                                <div class="tabla-conAgregar tabla-salarios-empleado">
+                                                    <a id="opciones-seleccionados-delete" class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements" style="visibility: hidden;"
+                                                       href="#eliminarElementosSeleccionados" data-toggle="tooltip" title="<?=label('opciones_seleccionadosEliminar')?>">
+                                                        <i class="mdi-action-delete icono-opciones-varios"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
                                             <hr />
                                         </div>
 
@@ -150,6 +187,91 @@
 </section>
 <!-- END CONTENT-->
 
+<script>
+    $(window).load(function() {
+        var marcados = $('.checkbox:checked').size();
+        if(marcados >= 1) {
+            var elems = document.getElementsByClassName('opciones-seleccionados');
+            var e;
+            for(e in elems) {
+                elems[e].style.visibility = 'visible';
+            }
+        } else {
+            var elems = document.getElementsByClassName('opciones-seleccionados');
+            var e;
+            for(e in elems) {
+                elems[e].style.visibility = 'hidden';
+            }
+        }
+        document.getElementById('checkbox-all').checked = false;
+    });
+    $(document).ready(function() {
+        $('#botonElimnar').on("click", function(event){
+            var tb = $(this).attr('title');
+            var sel = false;
+            var ch = $('#'+tb).find('tbody input[type=checkbox]');
+            ch.each(function(){
+                var $this = $(this);
+                if($this.is(':checked')) {
+                    sel = true;
+                    $this.parents('tr').fadeOut(function(){
+                        $this.remove();
+                    });
+                }
+            });
+            return false;
+        });
+    });
+    $(document).ready(function(){
+        $('#checkbox-all').click(function(event) {
+            if(this.checked) {
+                $('.checkbox').each(function() {
+                    this.checked = true;
+                });
+            } else {
+                $('.checkbox').each(function() {
+                    this.checked = false;
+                });
+            }
+        });
+    });
+    $(document).ready(function(){
+        $('.checkbox').click(function(event) {
+            var marcados = $('.checkbox:checked').size();
+            if(marcados >= 1) {
+                var elems = document.getElementsByClassName('opciones-seleccionados');
+                var e;
+                for(e in elems) {
+                    elems[e].style.visibility = 'visible';
+                }
+            } else {
+                var elems = document.getElementsByClassName('opciones-seleccionados');
+                var e;
+                for(e in elems) {
+                    elems[e].style.visibility = 'hidden';
+                }
+            }
+        });
+    });
+    $(document).ready(function() {
+        $('.boton-opciones').on('click', function(event) {
+            // alert(event.type);
+            //e.preventDefault();
+
+            var elementoActivo = $(this).siblings('ul.active');
+            if (elementoActivo.length>0) {
+                var estado = elementoActivo.css("display");
+                if (estado == "block") {
+                    elementoActivo.css("display", "none");
+                    elementoActivo.style.display='none';
+                } else {
+                    elementoActivo.css("display", "block");
+                    elementoActivo.style.display='block';
+                }
+            }
+        });
+    });
+</script>
 
 <!-- lista modals -->
 <div id="agregarPalabra" class="modal">
@@ -230,7 +352,18 @@
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>
-<!-- Fin lista modals-->
-<!-- Fin lista modals-->
-<!-- Fin lista modals-->
+<div id="eliminarElementosSeleccionados" class="modal">
+    <div class="modal-header">
+        <p><?=label('nombreSistema');?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?=label('clientes_archivosSeleccionadosEliminar');?></p>
+    </div>
+    <div class="modal-footer black-text">
+        <div id="botonElimnar" title="empleados1-salarios">
+            <a href="#" class="deleteall waves-effect waves-red btn-flat modal-action modal-close" ><?=label('aceptar');?></a>
+        </div>
+    </div>
+</div>
 <!-- Fin lista modals-->

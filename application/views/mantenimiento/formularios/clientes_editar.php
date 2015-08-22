@@ -79,9 +79,13 @@
                  <label><?=label('formCliente_Contactos');?></label>
                  <br />
                  <br />
-                 <table class="table striped">
+                 <table id="cliente1-contactos" class="table striped">
                      <thead>
                      <tr>
+                         <th style="text-align: center;">
+                             <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all" onclick="toggleChecked(this.checked)"/>
+                             <label for="checkbox-all"></label>
+                         </th>
                          <th><?=label('formCliente_nombreContacto');?></th>
                          <th><?=label('formCliente_correoContacto');?></th>
                          <th><?=label('formCliente_opcionesContacto');?></th>
@@ -89,55 +93,82 @@
                      </thead>
                      <tbody>
                      <tr>
+                         <td style="text-align: center;">
+                             <input type="checkbox" class="filled-in checkbox" id="checkbox_cliente1_contacto1" />
+                             <label for="checkbox_cliente1_contacto1"></label>
+                         </td>
                          <td>Maria Rodriguez</td>
                          <td>maria@gmail.com</td>
                          <td>
-                             <!--                                                        <a class="modal-trigger" href="#editarContacto">--><?//=label('editar');?><!--</a>-->
-                             <a class="modal-trigger icono-edicion" href="#editarContacto" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
-                                 <i class="mdi-editor-mode-edit"></i>
-                             </a>
-                             <!--                                                            <a class="modal-trigger" href="#eliminarContacto">--><?//=label('eliminar');?><!--</a>-->
-                             <a class="modal-trigger icono-edicion" href="#eliminarContacto" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
-                                 <i class="mdi-action-delete"></i>
+                             <ul id="dropdown-cliente1-contacto1" class="dropdown-content">
+                                 <li>
+                                     <a href="#editarContacto" class="-text modal-trigger"><?=label('menuOpciones_editar')?></a>
+                                 </li>
+                                 <li>
+                                     <a href="#eliminarContacto" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
+                                 </li>
+                             </ul>
+                             <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-cliente1-contacto1">
+                                 <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
                              </a>
                          </td>
                      </tr>
                      <tr>
+                         <td style="text-align: center;">
+                             <input type="checkbox" class="filled-in checkbox" id="checkbox_cliente1_contacto2" />
+                             <label for="checkbox_cliente1_contacto2"></label>
+                         </td>
                          <td>Juan Perez</td>
                          <td>juan@gmail.com</td>
                          <td>
-                             <!--                                                        <a class="modal-trigger" href="#editarContacto">--><?//=label('editar');?><!--</a>-->
-                             <a class="modal-trigger icono-edicion" href="#editarContacto" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
-                                 <i class="mdi-editor-mode-edit"></i>
-                             </a>
-                             <!--                                                            <a class="modal-trigger" href="#eliminarContacto">--><?//=label('eliminar');?><!--</a>-->
-                             <a class="modal-trigger icono-edicion" href="#eliminarContacto" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
-                                 <i class="mdi-action-delete"></i>
+                             <ul id="dropdown-cliente1-contacto2" class="dropdown-content">
+                                 <li>
+                                     <a href="#editarContacto" class="-text modal-trigger"><?=label('menuOpciones_editar')?></a>
+                                 </li>
+                                 <li>
+                                     <a href="#eliminarContacto" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
+                                 </li>
+                             </ul>
+                             <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-cliente1-contacto2">
+                                 <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
                              </a>
                          </td>
                      </tr>
                      <tr>
+                         <td style="text-align: center;">
+                             <input type="checkbox" class="filled-in checkbox" id="checkbox_cliente1_contacto3" />
+                             <label for="checkbox_cliente1_contacto3"></label>
+                         </td>
                          <td>Jose Mora</td>
                          <td>jose@gmail.com</td>
                          <td>
-                             <!--                                                        <a class="modal-trigger" href="#editarContacto">--><?//=label('editar');?><!--</a>-->
-                             <a class="modal-trigger icono-edicion" href="#editarContacto" data-toggle="tooltip" title="<?=label('tooltip_verEditar')?>">
-                                 <i class="mdi-editor-mode-edit"></i>
-                             </a>
-                             <!--                                                            <a class="modal-trigger" href="#eliminarContacto">--><?//=label('eliminar');?><!--</a>-->
-                             <a class="modal-trigger icono-edicion" href="#eliminarContacto" data-toggle="tooltip" title="<?=label('tooltip_eliminar')?>">
-                                 <i class="mdi-action-delete"></i>
+                             <ul id="dropdown-cliente1-contacto3" class="dropdown-content">
+                                 <li>
+                                     <a href="#editarContacto" class="-text modal-trigger"><?=label('menuOpciones_editar')?></a>
+                                 </li>
+                                 <li>
+                                     <a href="#eliminarContacto" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
+                                 </li>
+                             </ul>
+                             <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-cliente1-contacto3">
+                                 <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
                              </a>
                          </td>
                      </tr>
                      </tbody>
                  </table>
                  <br />
-                 <a href="#agregar" class="btn btn-default modal-trigger"><?=label('formCliente_agregar');?></a>
+                 <div>
+                     <a href="#agregar" class="btn btn-default modal-trigger"><?=label('formCliente_agregar');?></a>
+                     <div class="tabla-conAgregar tabla-contactos-cliente">
+                         <a id="opciones-seleccionados-delete" class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements" style="visibility: hidden;"
+                            href="#eliminarElementosSeleccionados" data-toggle="tooltip" title="<?=label('opciones_seleccionadosEliminar')?>">
+                             <i class="mdi-action-delete icono-opciones-varios"></i>
+                         </a>
+                     </div>
+                 </div>
                  <hr />
              </div>
-
-
 
             <!--  <div class="input-field col s12">
                  <label><?=label('formCliente_gustos_preferencias');?></label>
@@ -206,6 +237,7 @@
                  </div>
                  <hr />
              </div> -->
+
             <!--  <div class="input-field col s12">
                  <label><?=label('formCliente_mediosContacto');?></label>
                  <br />
@@ -274,6 +306,7 @@
                  <hr />
                  <br />
              </div> -->
+
              <!-- <div class="input-field col s12">
                  <select>
                      <option value="" disabled><?=label('formCliente_seleccioneUno');?></option>
@@ -283,9 +316,7 @@
                  </select>
                  <label for="cliente_cotizador"><?=label('formCliente_cotizador');?></label>
              </div> -->
-             
-             
-             
+
              <div class="input-field col s12 envio-formulario">
                  <button class="btn waves-effect waves-light right" type="submit" name="action"><?=label('formCliente_editar');?>
                  </button>
@@ -293,6 +324,92 @@
          </div>
      </form>
  </div>
+
+ <script>
+     $(window).load(function() {
+         var marcados = $('.checkbox:checked').size();
+         if(marcados >= 1) {
+             var elems = document.getElementsByClassName('opciones-seleccionados');
+             var e;
+             for(e in elems) {
+                 elems[e].style.visibility = 'visible';
+             }
+         } else {
+             var elems = document.getElementsByClassName('opciones-seleccionados');
+             var e;
+             for(e in elems) {
+                 elems[e].style.visibility = 'hidden';
+             }
+         }
+         document.getElementById('checkbox-all').checked = false;
+     });
+     $(document).ready(function() {
+         $('#botonElimnar').on("click", function(event){
+             var tb = $(this).attr('title');
+             var sel = false;
+             var ch = $('#'+tb).find('tbody input[type=checkbox]');
+             ch.each(function(){
+                 var $this = $(this);
+                 if($this.is(':checked')) {
+                     sel = true;
+                     $this.parents('tr').fadeOut(function(){
+                         $this.remove();
+                     });
+                 }
+             });
+             return false;
+         });
+     });
+     $(document).ready(function(){
+         $('#checkbox-all').click(function(event) {
+             if(this.checked) {
+                 $('.checkbox').each(function() {
+                     this.checked = true;
+                 });
+             } else {
+                 $('.checkbox').each(function() {
+                     this.checked = false;
+                 });
+             }
+         });
+     });
+     $(document).ready(function(){
+         $('.checkbox').click(function(event) {
+             var marcados = $('.checkbox:checked').size();
+             if(marcados >= 1) {
+                 var elems = document.getElementsByClassName('opciones-seleccionados');
+                 var e;
+                 for(e in elems) {
+                     elems[e].style.visibility = 'visible';
+                 }
+             } else {
+                 var elems = document.getElementsByClassName('opciones-seleccionados');
+                 var e;
+                 for(e in elems) {
+                     elems[e].style.visibility = 'hidden';
+                 }
+             }
+         });
+     });
+     $(document).ready(function() {
+         $('.boton-opciones').on('click', function(event) {
+             // alert(event.type);
+             //e.preventDefault();
+
+             var elementoActivo = $(this).siblings('ul.active');
+             if (elementoActivo.length>0) {
+                 var estado = elementoActivo.css("display");
+                 if (estado == "block") {
+                     elementoActivo.css("display", "none");
+                     elementoActivo.style.display='none';
+                 } else {
+                     elementoActivo.css("display", "block");
+                     elementoActivo.style.display='block';
+                 }
+             }
+         });
+     });
+ </script>
 
 <!-- lista modals -->
 <div id="eliminarContacto" class="modal">
@@ -345,4 +462,18 @@
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>
+ <div id="eliminarElementosSeleccionados" class="modal">
+     <div class="modal-header">
+         <p><?=label('nombreSistema');?></p>
+         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+     </div>
+     <div class="modal-content">
+         <p><?=label('clientes_archivosSeleccionadosEliminar');?></p>
+     </div>
+     <div class="modal-footer black-text">
+         <div id="botonElimnar" title="cliente1-contactos">
+             <a href="#" class="deleteall waves-effect waves-red btn-flat modal-action modal-close" ><?=label('aceptar');?></a>
+         </div>
+     </div>
+ </div>
 <!-- Fin lista modals-->

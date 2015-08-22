@@ -29,7 +29,7 @@
                                                     <div class="agregar_nuevo">
                                                         <a href="<?=base_url()?>clientes/agregar" class="btn btn-default"><?=label('agregar_nuevo');?></a>
                                                     </div>
-                                                    <a id="busqueda-avanzada-cliente" href="#busquedaAvanzada" class="modal-trigger"><?=label('clientes_busquedaAvanzada')?></a>
+                                                    <a id="busqueda-avanzada-agregar" href="#busquedaAvanzada" class="modal-trigger"><?=label('clientes_busquedaAvanzada')?></a>
                                                     <thead>
                                                         <tr>
                                                             <th style="text-align: center;">
@@ -150,7 +150,7 @@
                                                 </table>
 
                                                 <div class="tabla-conAgregar tabla-busqueda-reporte">
-                                                    <a id="opciones-seleccionados-print" class="waves-effect black-text opciones-seleccionados option-print-table" style="display: none;"
+                                                    <a id="opciones-seleccionados-print" class="waves-effect black-text opciones-seleccionados option-print-table" style="visibility: ;"
                                                        href="#" data-toggle="tooltip" title="<?=label('opciones_seleccionadosImprimir')?>">
                                                         <i class="mdi-action-print icono-opciones-varios"></i>
                                                     </a>

@@ -29,7 +29,7 @@
                                        <div class="agregar_nuevo">
                                             <a href="<?=base_url()?>cotizacion/cotizar" class="btn btn-default"><?=label('agregarCotizacion');?></a>
                                         </div>
-                                       <a id="busqueda-avanzada-cotizaciones" href="#busquedaAvanzada" class="modal-trigger"><?=label('clientes_busquedaAvanzada')?></a>
+                                       <a id="busqueda-avanzada-agregar" href="#busquedaAvanzada" class="modal-trigger"><?=label('clientes_busquedaAvanzada')?></a>
                                        <thead>
                                           <tr>
                                              <th style="text-align: center;">
@@ -232,8 +232,8 @@
                                     $this->load->view('layout/default/menu-descargar.php');
                                     ?>
 
-                                    <div class="tabla-sinAgregar tabla-busqueda-reporte">
-                                       <a id="opciones-seleccionados-print" class="waves-effect black-text opciones-seleccionados option-print-table" style="display: none;"
+                                    <div class="tabla-conAgregar tabla-busqueda-reporte">
+                                       <a id="opciones-seleccionados-print" class="waves-effect black-text opciones-seleccionados option-print-table" style="visibility: hidden;"
                                           href="#" data-toggle="tooltip" title="<?=label('opciones_seleccionadosImprimir')?>">
                                           <i class="mdi-action-print icono-opciones-varios"></i>
                                        </a>
@@ -249,7 +249,7 @@
                                           href="#" data-toggle="tooltip" title="<?=label('opciones_seleccionadosExportar')?>" data-activates="dropdown-exportar">
                                           <i class="mdi-file-file-download icono-opciones-varios"></i>
                                        </a>
-                                       <a id="opciones-seleccionados-delete" class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements" style="display: none;"
+                                       <a id="opciones-seleccionados-delete" class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements" style="visibility: hidden;"
                                           href="#eliminarElementosSeleccionados" data-toggle="tooltip" title="<?=label('opciones_seleccionadosEliminar')?>">
                                           <i class="mdi-action-delete icono-opciones-varios"></i>
                                        </a>
@@ -281,13 +281,13 @@
          var elems = document.getElementsByClassName('opciones-seleccionados');
          var e;
          for(e in elems) {
-            elems[e].style.display = 'block';
+            elems[e].style.visibility = 'visible';
          }
       } else {
          var elems = document.getElementsByClassName('opciones-seleccionados');
          var e;
          for(e in elems) {
-            elems[e].style.display = 'none';
+            elems[e].style.visibility = 'hidden';
          }
       }
       document.getElementById('checkbox-all').checked = false;
@@ -329,13 +329,13 @@
             var elems = document.getElementsByClassName('opciones-seleccionados');
             var e;
             for(e in elems) {
-               elems[e].style.display = 'block';
+               elems[e].style.visibility = 'visible';
             }
          } else {
             var elems = document.getElementsByClassName('opciones-seleccionados');
             var e;
             for(e in elems) {
-               elems[e].style.display = 'none';
+               elems[e].style.visibility = 'hidden';
             }
          }
       });
