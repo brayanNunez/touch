@@ -41,7 +41,7 @@
              <div class="inputTag col s12">
                 <label for="vendedoresCliente"><?=label('formCliente_cotizador');?></label>
                 <br>
-                <div id="vendedoresCliente" class="example example_objects_as_tags">
+                <div id="vendedoresCliente" class="example tags_vendedores">
                   <div class="bs-example">
                     <input  placeholder="<?=label('formCliente_anadirVendedor');?>" type="text"  />
                   </div>
@@ -50,9 +50,9 @@
             </div>
 
             <div class="inputTag col s12">
-                <label for="vendedoresCliente"><?=label('formCliente_gustos_preferencias');?></label>
+                <label for="gustosCliente"><?=label('formCliente_gustos_preferencias');?></label>
                 <br>
-                <div class="example example_typeahead">
+                <div id="gustosCliente" class="example tags_gustosCliente">
                   <div class="bs-example">
                     <input placeholder="<?=label('formCliente_anadirGusto');?>" type="text" value="Música,Fútbol" />
                   </div>
@@ -61,15 +61,27 @@
             </div>
 
             <div class="inputTag col s12">
-                <label for="vendedoresCliente"><?=label('formCliente_mediosContacto');?></label>
+                <label for="mediosCliente"><?=label('formCliente_mediosContacto');?></label>
                 <br>
-                <div class="example mediosContacto">
+                <div id="mediosCliente" class="example tags_mediosContacto">
                   <div class="bs-example">
                     <input placeholder="<?=label('formCliente_anadirMedio');?>" type="text" value="Radio,TV" />
                   </div>
                 </div>
                 <br>
             </div>
+
+
+           <!--   <div class="inputTag col s12">
+                <label for="vendedoresCliente">PRUEBA</label>
+                <br>
+                <div class="example prueba">
+                  <div class="bs-example">
+                    <input placeholder="<?=label('formCliente_anadirMedio');?>" type="text" value="Radio,TV" />
+                  </div>
+                </div>
+                <br>
+            </div> -->
             
              <div class="input-field col s12">
                  <label><?=label('formCliente_Contactos');?></label>

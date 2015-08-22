@@ -48,10 +48,10 @@ class Cotizacion extends CI_Controller {
         $this->load->view('layout/default/footer');
     }
 
-    public function enviarJson()
+    public function jsonVendedores()
     {
         $json = '[ { "value": 1 , "text": "Brayan Nuñez Rojas"   , "continent": "Europe"    },
-  { "value": 2 , "text": "Esteban Jose Nuñez Rojas"      , "continent": "Europe"    },
+  { "value": 2 , "text": "Esteban Nuñez Rojas"      , "continent": "Europe"    },
   { "value": 3 , "text": "Josue Nuñez Rojas"       , "continent": "Europe"    },
   { "value": 4 , "text": "Anthony Nuñez Rojas"  , "continent": "America"   },
   { "value": 5 , "text": "Andrey Nuñez Rojas" , "continent": "America"   },
@@ -103,6 +103,7 @@ public function jsonContactos()
 ]';
         echo $json;
     }
+
 
 
 
