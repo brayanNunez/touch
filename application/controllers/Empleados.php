@@ -58,7 +58,8 @@ class Empleados extends CI_Controller {
         } else{
             echo "Correcto<br>";
             if ($resultado === -1) {
-            echo "No retorno nada";
+            //No retorno nada
+                
             } else {
                  echo $resultado->nombreCompleto;
              }

@@ -38,7 +38,6 @@ class Empleado_model extends CI_Model
       {
          $this->db->trans_rollback();
          return false;
-         
       }else{
          $this->db->trans_commit();
          if($query->num_rows() > 0 )
