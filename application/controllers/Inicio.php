@@ -3,12 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Inicio extends CI_Controller {
 
-    
     function __construct()
     {
         parent::__construct();
         $this->lang->load('content');
-       
     }
     
     public function index()
@@ -18,4 +16,5 @@ class Inicio extends CI_Controller {
         $this->load->view('inicio/index.php');
         $this->load->view('layout/default/footer');
     }
+
 }

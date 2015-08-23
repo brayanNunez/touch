@@ -13,23 +13,26 @@ class Proveedores extends CI_Controller {
     {
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
-        $this->load->view('mantenimiento/formularios/proveedores_lista');
+        $this->load->view('proveedores/proveedores_lista');
         $this->load->view('layout/default/footer');
     }
+
     public function agregar()
     {
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
-        $this->load->view('mantenimiento/formularios/proveedores');
+        $this->load->view('proveedores/proveedores');
         $this->load->view('layout/default/footer');
     }
+
     public function editar()
     {
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
-        $this->load->view('mantenimiento/formularios/proveedores_editar');
+        $this->load->view('proveedores/proveedores_editar');
         $this->load->view('layout/default/footer');
     }
+
 }
 
 ?>

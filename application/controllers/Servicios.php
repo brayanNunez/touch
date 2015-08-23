@@ -13,23 +13,26 @@ class Servicios extends CI_Controller {
     {
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
-        $this->load->view('mantenimiento/formularios/servicios_lista');
+        $this->load->view('servicios/servicios_lista');
         $this->load->view('layout/default/footer');
     }
+
     public function agregar()
     {
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
-        $this->load->view('mantenimiento/formularios/servicios');
+        $this->load->view('servicios/servicios');
         $this->load->view('layout/default/footer');
     }
+
     public function editar()
     {
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
-        $this->load->view('mantenimiento/formularios/servicios_editar');
+        $this->load->view('servicios/servicios_editar');
         $this->load->view('layout/default/footer');
     }
+
 }
 
 ?>

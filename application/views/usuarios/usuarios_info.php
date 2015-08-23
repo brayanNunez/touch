@@ -39,10 +39,10 @@
                                         </div>
                                         <div class="col s12">
                                             <div id="tab-informacion" class="card col s12">
-                                                <?php $this->load->view('mantenimiento/formularios/usuarios_editar'); ?>
+                                                <?php $this->load->view('usuarios/usuarios_editar'); ?>
                                             </div>
                                             <div id="tab-cotizaciones" class="card col s12">
-                                                <?php $this->load->view('mantenimiento/formularios/usuarios_cotizaciones'); ?>
+                                                <?php $this->load->view('usuarios/usuarios_cotizaciones'); ?>
                                             </div>
                                         </div>
                                     </div>

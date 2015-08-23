@@ -58,4 +58,5 @@ class Administrador extends CI_Controller
         $this->load->view('administrador/planes');
         $this->load->view('layout/default/footer');
     }
+
 }

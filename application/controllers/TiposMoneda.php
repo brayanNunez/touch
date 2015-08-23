@@ -13,7 +13,7 @@ class TiposMoneda extends CI_Controller {
     {
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
-        $this->load->view('mantenimiento/formularios/tipos_moneda');
+        $this->load->view('monedas/tipos_moneda');
         $this->load->view('layout/default/footer');
     }
 }

@@ -49,16 +49,16 @@
                                         </div>
                                         <div class="col s12">
                                             <div id="tab-informacion" class="card col s12">
-                                                <?php $this->load->view('mantenimiento/formularios/clientes_ver'); ?>
+                                                <?php $this->load->view('clientes/clientes_ver'); ?>
                                             </div>
                                             <div id="tab-edicion" class="card col s12">
-                                                <?php $this->load->view('mantenimiento/formularios/clientes_editar'); ?>
+                                                <?php $this->load->view('clientes/clientes_editar'); ?>
                                             </div>
                                             <div id="tab-archivos" class="card col s12">
-                                                <?php $this->load->view('mantenimiento/formularios/clientes_archivos', $archivos); ?>
+                                                <?php $this->load->view('clientes/clientes_archivos', $archivos); ?>
                                             </div>
                                             <div id="tab-cotizaciones" class="card col s12">
-                                                <?php $this->load->view('mantenimiento/formularios/clientes_cotizaciones'); ?>
+                                                <?php $this->load->view('clientes/clientes_cotizaciones'); ?>
                                             </div>
                                         </div>
                                     </div>

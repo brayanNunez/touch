@@ -6,9 +6,11 @@ class Archivos extends CI_Controller {
     function __construct() {
         parent::__construct();
     }
+
     function index() {
         //$this->load->view('upload_form', array('error' => ' ' ));
     }
+
     function do_upload() {
         if($this->input->post('upload')) {
             $config['upload_path'] = './files/';
@@ -39,6 +41,7 @@ class Archivos extends CI_Controller {
             redirect(base_url().'clientes/editar');
         }
     }
+
     function files() {
         $data['archivos'] = $this->upload_model->view_files();
         $this->load->view('list_files', $data);

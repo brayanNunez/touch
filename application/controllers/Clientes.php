@@ -13,16 +13,18 @@ class Clientes extends CI_Controller {
     {
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
-        $this->load->view('mantenimiento/formularios/clientes_lista');
+        $this->load->view('clientes/clientes_lista');
         $this->load->view('layout/default/footer');
     }
+
     public function agregar()
     {
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
-        $this->load->view('mantenimiento/formularios/clientes');
+        $this->load->view('clientes/clientes');
         $this->load->view('layout/default/footer');
     }
+
     public function editar()
     {
         $data['archivos'] = array();
@@ -41,9 +43,10 @@ class Clientes extends CI_Controller {
 
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
-        $this->load->view('mantenimiento/formularios/cliente_info', $data);
+        $this->load->view('clientes/cliente_info', $data);
         $this->load->view('layout/default/footer');
     }
+
     public function reporte()
     {
         $this->load->view('layout/default/header');
@@ -51,6 +54,7 @@ class Clientes extends CI_Controller {
         $this->load->view('reportes/reporte_cliente');
         $this->load->view('layout/default/footer');
     }
+
 }
 
 ?>

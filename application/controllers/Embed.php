@@ -8,7 +8,6 @@ class Embed extends CI_Controller
     {
         parent::__construct();
         $this->lang->load('content');
-
     }
 
     public function index()

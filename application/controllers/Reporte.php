@@ -7,9 +7,7 @@ class Reporte extends CI_Controller {
     {
         parent::__construct();
         $this->lang->load('content');
-       
     }
-
 
     public function index()
     {
@@ -18,6 +16,5 @@ class Reporte extends CI_Controller {
         $this->load->view('reportes/reporte');
         $this->load->view('layout/default/footer');
     }
-    
 
 }

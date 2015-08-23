@@ -109,7 +109,7 @@
                                                             </tr>
                                                         </tbody>
                                                     </table>
-                                                    <div class="tabla-conAgregar">
+                                                    <div class="tabla-conAgregar tabla-opciones-monedas">
                                                         <a id="opciones-seleccionados-print" class="waves-effect black-text opciones-seleccionados option-print-table" style="visibility: hidden;"
                                                            href="#" data-toggle="tooltip" title="<?=label('opciones_seleccionadosImprimir')?>">
                                                             <i class="mdi-action-print icono-opciones-varios"></i>
