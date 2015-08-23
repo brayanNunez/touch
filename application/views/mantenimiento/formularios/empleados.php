@@ -115,7 +115,7 @@
                                                         <td>Por día</td>
                                                         <td>$80</td>
                                                         <td>
-                                                            <ul id="dropdown-empleado1-salario1" class="dropdown-content">
+                                                            <ul id="dropdown-empleado1-salario2" class="dropdown-content">
                                                                 <li>
                                                                     <a href="#editarSalario" class="-text modal-trigger"><?=label('menuOpciones_editar')?></a>
                                                                 </li>
@@ -123,7 +123,7 @@
                                                                     <a href="#eliminarSalario" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
                                                                 </li>
                                                             </ul>
-                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-empleado1-salario1">
+                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-empleado1-salario2">
                                                                 <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
                                                             </a>
                                                         </td>
@@ -136,7 +136,7 @@
                                                         <td>Mensual</td>
                                                         <td>$1400</td>
                                                         <td>
-                                                            <ul id="dropdown-empleado1-salario1" class="dropdown-content">
+                                                            <ul id="dropdown-empleado1-salario3" class="dropdown-content">
                                                                 <li>
                                                                     <a href="#editarSalario" class="-text modal-trigger"><?=label('menuOpciones_editar')?></a>
                                                                 </li>
@@ -144,7 +144,7 @@
                                                                     <a href="#eliminarSalario" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
                                                                 </li>
                                                             </ul>
-                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-empleado1-salario1">
+                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-empleado1-salario3">
                                                                 <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
                                                             </a>
                                                         </td>

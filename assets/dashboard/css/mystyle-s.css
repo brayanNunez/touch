@@ -142,6 +142,10 @@ table#empleados1-salarios thead th label, table#cliente1-contactos tbody td labe
 div.tabla-salarios-empleado { left: 60%; bottom: 4%; top: unset; width: auto; }
 table#proveedor1-salarios thead th label, table#cliente1-contactos tbody td label { top: 0; }
 div.tabla-salarios-proveedor { left: 60%; bottom: 4%; top: unset; width: auto; }
+table#servicio1-gastos thead th label, table#servicio1-gastos tbody td label { top: 0; }
+div.tabla-gastos-servicio { left: 60%; bottom: unset; top: 8%; width: auto; }
+table#producto1-caracteristicas thead th label, table#cliente1-contactos tbody td label { top: 0; }
+div.tabla-caracteristicas-producto { left: 60%; bottom: 4%; top: unset; width: auto; }
 
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/
