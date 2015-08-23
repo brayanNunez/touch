@@ -7,6 +7,7 @@ class Usuarios extends CI_Controller {
     {
         parent::__construct();
         $this->lang->load('content');
+        $this->load->model('Usuario_model');
     }
 
     public function index()
@@ -29,6 +30,13 @@ class Usuarios extends CI_Controller {
         $this->load->view('layout/default/left-sidebar');
         $this->load->view('mantenimiento/formularios/usuarios_info');
         $this->load->view('layout/default/footer');
+    }
+
+
+    public function existeUsuario(){
+        $usuario = "brayan22";
+        echo $this->Usuario_model->usuario_login($usuario);
+
     }
 }
 
