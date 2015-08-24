@@ -1,4 +1,4 @@
-<!-- START CONTENT   -->
+<!--START CONTENT -->
 
 <section id="content">
     <!--start breadcrumbs-->
@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 m12 l12">
-                    <h1 class="breadcrumbs-title"><?=label('tituloFormularioEmpleadoEditar');?></h1>
+                    <h1 class="breadcrumbs-title"><?=label('tituloFormularioEmpleado');?></h1>
                 </div>
             </div>
         </div>
@@ -21,54 +21,52 @@
                     <div id="submit-button" class="section">
                         <div class="row">
                             <div class="col s12 m12 l8">
-                                <form class="col s12">
+                                <form class="col s12" action="<?=base_url()?>empleados/insertar" method="POST">
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <input id="empleado_codigo" type="text" value="0001">
+                                            <input id="empleado_codigo" name="empleado_codigo" type="text">
                                             <label for="empleado_codigo"><?=label('formEmpleado_codigo');?></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input id="empleado_id" type="text" value="11-356-689">
+                                            <input id="empleado_id" name="empleado_id" type="text">
                                             <label for="empleado_id"><?=label('formEmpleado_identificacion');?></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input id="empleado_nombre" type="text" value="Jorge Arias C.">
+                                            <input id="empleado_nombre" name="empleado_nombre"  type="text">
                                             <label for="empleado_nombre"><?=label('formEmpleado_nombre');?></label>
                                         </div>
 
-                                        <div class="inputTag col s12">
-
-                                            <label for="empleado_palabras"><?=label('formEmpleado_palabrasClave');?></label>
-
-                                            <input placeholder="<?=label('formEmpleado_anadirPalabraClave');?>" id="empleado_palabras" type="text" value="palabra1,palabra2,palabra3,palabra4,palabra5" data-role="tagsinput" />
-                                            
-                                        </div>
-
-<!--                                        <div class="inputTag col s12">-->
-<!--                                            <label for="vendedoresCliente">--><?//=label('formCliente_cotizador');?><!--</label>-->
-<!--                                            <br>-->
-<!--                                            <div id="vendedoresCliente" class="example example_objects_as_tags">-->
-<!--                                              <div class="bs-example">-->
-<!--                                                <input  placeholder="--><?//=label('formCliente_anadirVendedor');?><!--" type="text"  />-->
-<!--                                              </div>-->
+<!--                                        <div class="input-field col s12">-->
+<!--                                            <label for="empleado_palabras">--><?//=label('formEmpleado_palabrasClave');?><!--</label>-->
+<!--                                            <input id="empleado_palabras" type="text">-->
+<!--                                            <div class="input-field col s12">-->
+<!--                                                <div class="input-field col s8">-->
+<!--                                                    <input id="otra_palabra" type="text">-->
+<!--                                                    <label for="otra_palabra">--><?//=label('formEmpleado_nuevaPalabra');?><!--</label>-->
+<!--                                                </div>-->
+<!--                                                <div class="input-field col s4">-->
+<!--                                                    <a href="" class="btn btn-default">--><?//=label('formEmpleado_agregar');?><!--</a>-->
+<!--                                                </div>-->
 <!--                                            </div>-->
-<!--                                            <br>-->
+<!--                                            <hr />-->
 <!--                                        </div> -->
 
-<!--                                         <div class="input-field col s12"> -->
-<!--                                             <input type="text" value="palabra1,palabra2,palabra3,palabra4,palabra5" data-role="tagsinput" /> -->
-<!--                                         </div> -->
+                                        <div class="inputTag col s12">
+                                            <label for="empleado_palabras"><?=label('formEmpleado_palabrasClave');?></label>
+                                            <input placeholder="<?=label('formEmpleado_anadirPalabraClave');?>" id="empleado_palabras" type="text" value="" data-role="tagsinput" />
+                                        </div>
 
                                         <div class="input-field col s12">
-                                            <input id="empleado_fechaNacimiento" type="date" class="datepicker" value="18-06-1994">
-                                            <label for="empleado_fechaNacimiento"><?=label('formEmpleado_fechaNacimiento');?></label>
+                                            <input name="empleado_fechaNacimiento" type="date" >
+                                            <!-- class="datepicker"  -->
+                                            <label for=""><?=label('formEmpleado_fechaNacimiento');?></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input id="empleado_fechaIngreso" type="date" class="datepicker" value="09-03-2015">
-                                            <label for="empleado_fechaIngreso"><?=label('formEmpleado_fechaIngreso');?></label>
+                                            <input name="empleado_fechaIngreso" type="date">
+                                            <label for=""><?=label('formEmpleado_fechaIngreso');?></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <textarea id="empleado_descripcion" class="materialize-textarea" length="120">Primer empleado</textarea>
+                                            <textarea id="empleado_descripcion" name="empleado_descripcion" class="materialize-textarea" length="120"></textarea>
                                             <label for="empleado_descripcion"><?=label('formEmpleado_descripcion');?></label>
                                         </div>
 
@@ -78,80 +76,80 @@
                                             <br />
                                             <table id="empleados1-salarios" class="table striped">
                                                 <thead>
-                                                <tr>
-                                                    <th style="text-align: center;">
-                                                        <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all" onclick="toggleChecked(this.checked)"/>
-                                                        <label for="checkbox-all"></label>
-                                                    </th>
-                                                    <th><?=label('formEmpleado_salariosTipo');?></th>
-                                                    <th><?=label('formEmpleado_salariosMonto');?></th>
-                                                    <th><?=label('formEmpleado_salariosOpciones');?></th>
-                                                </tr>
+                                                    <tr>
+                                                        <th style="text-align: center;">
+                                                            <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all" onclick="toggleChecked(this.checked)"/>
+                                                            <label for="checkbox-all"></label>
+                                                        </th>
+                                                        <th><?=label('formEmpleado_salariosTipo');?></th>
+                                                        <th><?=label('formEmpleado_salariosMonto');?></th>
+                                                        <th><?=label('formEmpleado_salariosOpciones');?></th>
+                                                    </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr>
-                                                    <td style="text-align: center;">
-                                                        <input type="checkbox" class="filled-in checkbox" id="checkbox_empleado1_salario1" />
-                                                        <label for="checkbox_empleado1_salario1"></label>
-                                                    </td>
-                                                    <td>Por hora</td>
-                                                    <td>$10</td>
-                                                    <td>
-                                                        <ul id="dropdown-empleado1-salario1" class="dropdown-content">
-                                                            <li>
-                                                                <a href="#editarSalario" class="-text modal-trigger"><?=label('menuOpciones_editar')?></a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#eliminarSalario" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
-                                                            </li>
-                                                        </ul>
-                                                        <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-empleado1-salario1">
-                                                            <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="text-align: center;">
-                                                        <input type="checkbox" class="filled-in checkbox" id="checkbox_empleado1_salario1" />
-                                                        <label for="checkbox_empleado1_salario1"></label>
-                                                    </td>
-                                                    <td>Por día</td>
-                                                    <td>$80</td>
-                                                    <td>
-                                                        <ul id="dropdown-empleado1-salario1" class="dropdown-content">
-                                                            <li>
-                                                                <a href="#editarSalario" class="-text modal-trigger"><?=label('menuOpciones_editar')?></a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#eliminarSalario" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
-                                                            </li>
-                                                        </ul>
-                                                        <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-empleado1-salario1">
-                                                            <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="text-align: center;">
-                                                        <input type="checkbox" class="filled-in checkbox" id="checkbox_empleado1_salario1" />
-                                                        <label for="checkbox_empleado1_salario1"></label>
-                                                    </td>
-                                                    <td>Mensual</td>
-                                                    <td>$1400</td>
-                                                    <td>
-                                                        <ul id="dropdown-empleado1-salario1" class="dropdown-content">
-                                                            <li>
-                                                                <a href="#editarSalario" class="-text modal-trigger"><?=label('menuOpciones_editar')?></a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#eliminarSalario" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
-                                                            </li>
-                                                        </ul>
-                                                        <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-empleado1-salario1">
-                                                            <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
+                                                    <tr>
+                                                        <td style="text-align: center;">
+                                                            <input type="checkbox" class="filled-in checkbox" id="checkbox_empleado1_salario1" />
+                                                            <label for="checkbox_empleado1_salario1"></label>
+                                                        </td>
+                                                        <td>Por hora</td>
+                                                        <td>$10</td>
+                                                        <td>
+                                                            <ul id="dropdown-empleado1-salario1" class="dropdown-content">
+                                                                <li>
+                                                                    <a href="#editarSalario" class="-text modal-trigger"><?=label('menuOpciones_editar')?></a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#eliminarSalario" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
+                                                                </li>
+                                                            </ul>
+                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-empleado1-salario1">
+                                                                <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: center;">
+                                                            <input type="checkbox" class="filled-in checkbox" id="checkbox_empleado1_salario1" />
+                                                            <label for="checkbox_empleado1_salario1"></label>
+                                                        </td>
+                                                        <td>Por día</td>
+                                                        <td>$80</td>
+                                                        <td>
+                                                            <ul id="dropdown-empleado1-salario1" class="dropdown-content">
+                                                                <li>
+                                                                    <a href="#editarSalario" class="-text modal-trigger"><?=label('menuOpciones_editar')?></a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#eliminarSalario" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
+                                                                </li>
+                                                            </ul>
+                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-empleado1-salario1">
+                                                                <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: center;">
+                                                            <input type="checkbox" class="filled-in checkbox" id="checkbox_empleado1_salario1" />
+                                                            <label for="checkbox_empleado1_salario1"></label>
+                                                        </td>
+                                                        <td>Mensual</td>
+                                                        <td>$1400</td>
+                                                        <td>
+                                                            <ul id="dropdown-empleado1-salario1" class="dropdown-content">
+                                                                <li>
+                                                                    <a href="#editarSalario" class="-text modal-trigger"><?=label('menuOpciones_editar')?></a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#eliminarSalario" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
+                                                                </li>
+                                                            </ul>
+                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-empleado1-salario1">
+                                                                <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                             <br />
@@ -169,7 +167,7 @@
                                         </div>
 
                                         <div class="input-field col s12 envio-formulario">
-                                            <button class="btn waves-effect waves-light right" type="submit" name="action"><?=label('formEmpleado_editar');?>
+                                            <button class="btn waves-effect waves-light right" type="submit" name="action"><?=label('formEmpleado_enviar');?>
                                             </button>
                                         </div>
                                     </div>
@@ -369,4 +367,4 @@
         </div>
     </div>
 </div>
-<!-- Fin lista modals-->
+<!-- Fin lista modals

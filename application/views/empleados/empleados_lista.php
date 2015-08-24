@@ -44,29 +44,38 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td style="text-align: center;">
-                                                                <input type="checkbox" class="filled-in checkbox" id="checkbox_empleado1" />
-                                                                <label for="checkbox_empleado1"></label>
-                                                            </td>
-                                                            <td>0001</td>
-                                                            <td><a href="<?=base_url()?>empleados/editar">Jorge Arias C.</a></td>
-                                                            <td>11-235-689</td>
-                                                            <td>Programador, Bases de datos</td>
-                                                            <td>
-                                                                <ul id="dropdown-empleado1" class="dropdown-content">
-                                                                    <li>
-                                                                        <a href="<?=base_url(); ?>empleados/editar" class="-text"><?=label('menuOpciones_editar')?></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#eliminarEmpleado" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
-                                                                    </li>
-                                                                </ul>
-                                                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-empleado1">
-                                                                    <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
+
+                                                         <?php
+                                                            if (isset($lista)) {
+                                                                
+                                                            foreach($lista as $fila)
+                                                            {
+                                                            ?>
+                                                                <tr>
+                                                                    <td style="text-align: center;">
+                                                                        <input type="checkbox" class="filled-in checkbox" id="checkbox_empleado1" />
+                                                                        <label for="checkbox_empleado1"></label>
+                                                                    </td>
+                                                                    <td><?=$fila->codigo?></td>
+                                                                    <td><a href="<?=base_url()?>empleados/editar/<?=$fila->idEmpleado?>"><?=$fila->nombreCompleto?></a></td>
+                                                                    <td><?=$fila->identificacion?></td>
+                                                                    <td>Programador, Bases de datos</td>
+                                                                    <td>
+                                                                        <ul id="dropdown-empleado1" class="dropdown-content">
+                                                                            <li>
+                                                                                <a href="<?=base_url();?>empleados/editar" class="-text"><?=label('menuOpciones_editar')?></a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="#eliminarEmpleado" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
+                                                                            </li>
+                                                                        </ul>
+                                                                        <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-empleado1">
+                                                                            <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+<!-- 
+
                                                         <tr>
                                                             <td style="text-align: center;">
                                                                 <input type="checkbox" class="filled-in checkbox" id="checkbox_empleado2" />
@@ -135,7 +144,12 @@
                                                                     <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
                                                                 </a>
                                                             </td>
-                                                        </tr>
+                                                        </tr> -->
+                                                            <?php
+                                                                    }
+                                                                }
+                                                             ?>
+
                                                     </tbody>
                                                 </table>
                                                 <div class="tabla-conAgregar">

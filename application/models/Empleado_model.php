@@ -16,7 +16,6 @@ class Empleado_model extends CI_Model
       $this->db->trans_begin();
 
       $this->db->insert('empleado', $datos);
-      return $this->db->insert_id();
 
       if ($this->db->trans_status() === FALSE)
       {
@@ -43,6 +42,27 @@ class Empleado_model extends CI_Model
          if($query->num_rows() > 0 )
         {
             return $query->row();
+        } else{
+            return -1;
+        }
+      }
+   }
+
+   function cargarTodos(){
+      
+      $this->db->trans_begin();
+      
+      $query = $this->db->get('empleado');
+
+      if ($this->db->trans_status() === FALSE)
+      {
+         $this->db->trans_rollback();
+         return false;
+      }else{
+         $this->db->trans_commit();
+         if($query->num_rows() > 0 )
+        {
+            return $query->result();
         } else{
             return -1;
         }
