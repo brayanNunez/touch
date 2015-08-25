@@ -149,12 +149,14 @@ class Empleados extends CI_Controller {
 
     }
 
-    public function eliminar(){
-       if (!$this->Empleado_model->eliminar(99)) {
+    public function eliminar($id){
+       if (!$this->Empleado_model->eliminar($id)) {
              echo "Error en la transaccion";
         } else {
             echo "Correcto";
+           $this->index();
         }
+
     }
 
     // public function pruebaTransacciones(){
