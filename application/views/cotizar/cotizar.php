@@ -26,13 +26,17 @@
                         <div class="row">
                            <div class="col s12">
                               <ul class="tabs tab-demo z-depth-1">
-                                 <li class="tab col s3"><a id="botonPaso1" class="active" href="#paso1"><?=label('paso1');?></a>
+                                 <li class="tab col s3">
+                                    <a id="botonPaso1" class="tab-paso-cotizacion active" href="#paso1"><?=label('paso1');?></a>
                                  </li>
-                                 <li class="tab col s3"><a id="botonPaso2" href="#paso2"><?=label('paso2');?></a>
+                                 <li class="tab col s3">
+                                    <a id="botonPaso2" class="tab-paso-cotizacion" href="#paso2"><?=label('paso2');?></a>
                                  </li>
-                                 <li class="tab col s3"><a id="botonPaso3" href="#paso3"><?=label('paso3');?></a>
+                                 <li class="tab col s3">
+                                    <a id="botonPaso3" class="tab-paso-cotizacion" href="#paso3"><?=label('paso3');?></a>
                                  </li>
-                                 <li class="tab col s3"><a id="botonPaso4" href="#paso4"><?=label('paso4');?></a>
+                                 <li class="tab col s3">
+                                    <a id="botonPaso4" class="tab-paso-cotizacion" href="#paso4"><?=label('paso4');?></a>
                                  </li>
                               </ul>
                            </div>
@@ -45,7 +49,7 @@
                                  </div>
                               </div>
                               <div id="paso2" class="card card-ContenidoPasos col s12">
-                                 <?php $this->load->view('cotizar/paso2'); ?>
+                                 <?php $this->load->view('cotizar/paso2_2'); ?>
                                  <br />
                                  <div class="atras_adelante">
                                     <a class="siguiente right" href="#" onclick="darclick(3);"><?=label('pasoSiguiente');?><i class="mdi-image-navigate-next medium"></i></a>
