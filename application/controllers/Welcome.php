@@ -1,20 +1,21 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Welcome extends CI_Controller
+{
 
-	function __construct()
+    function __construct()
     {
         parent::__construct();
         $this->lang->load('content');
     }
 
-	public function index()
-	{
+    public function index()
+    {
         $this->load->view('home/header');
         $this->load->view('home/index');
         $this->load->view('home/footer_2');
-	}
+    }
 
     public function que()
     {
@@ -72,7 +73,8 @@ class Welcome extends CI_Controller {
         $this->load->view('home/footer_2');
     }
 
-    public function registro() {
+    public function registro()
+    {
         $this->load->view('home/header_2');
         $this->load->view('home/registro');
         $this->load->view('home/footer_2');

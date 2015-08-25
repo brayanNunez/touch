@@ -1,14 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Inicio extends CI_Controller {
+class Inicio extends CI_Controller
+{
 
     function __construct()
     {
         parent::__construct();
         $this->lang->load('content');
     }
-    
+
     public function index()
     {
         $this->load->view('layout/default/header');

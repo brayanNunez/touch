@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Clientes extends CI_Controller {
+class Clientes extends CI_Controller
+{
 
     function __construct()
     {
@@ -28,7 +29,7 @@ class Clientes extends CI_Controller {
     public function editar()
     {
         $data['archivos'] = array();
-        $data['archivos'][] = array('file_name' => 'archivo1', 'file_ext' => '.png','file_date' => '2015/08/04',
+        $data['archivos'][] = array('file_name' => 'archivo1', 'file_ext' => '.png', 'file_date' => '2015/08/04',
             'file_description' => 'Imagen del cliente', 'file_size' => '13 KB');
         $data['archivos'][] = array('file_name' => 'archivo2', 'file_ext' => '.pdf', 'file_date' => '2015/08/04',
             'file_description' => 'Contrato individual de trabajo', 'file_size' => '187 KB');

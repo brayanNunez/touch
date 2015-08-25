@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Reporte extends CI_Controller {
+class Reporte extends CI_Controller
+{
 
     function __construct()
     {
