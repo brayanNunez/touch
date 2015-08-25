@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 m12 l12">
-                    <h5 class="breadcrumbs-title"><?= label('usuarios_info'); ?></a></h5>
+                    <h5 class="breadcrumbs-title"><?=label('usuarios_info');?></a></h5>
                 </div>
             </div>
         </div>
@@ -26,15 +26,13 @@
                                         <div class="col s12">
                                             <ul class="tabs tab-demo-active z-depth-1 usuario-info">
                                                 <li class="tab col s3">
-                                                    <a class="white-text darken-1 waves-effect waves-light active"
-                                                       href="#tab-informacion">
-                                                        <i class="mdi-action-perm-identity"></i><?= label('usuarios_verEditar'); ?>
+                                                    <a class="white-text darken-1 waves-effect waves-light active" href="#tab-informacion">
+                                                        <i class="mdi-action-perm-identity"></i><?=label('usuarios_verEditar');?>
                                                     </a>
                                                 </li>
                                                 <li class="tab-interior tab col s3">
-                                                    <a class="white-text darken-1 waves-effect waves-light"
-                                                       href="#tab-cotizaciones">
-                                                        <i class="mdi-editor-format-list-numbered"></i><?= label('usuarios_cotizaciones'); ?>
+                                                    <a class="white-text darken-1 waves-effect waves-light" href="#tab-cotizaciones">
+                                                        <i class="mdi-editor-format-list-numbered"></i><?=label('usuarios_cotizaciones');?>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -57,7 +55,7 @@
         </div>
     </div>
     <!--end container-->
-
+    
     <?php
     $this->load->view('layout/default/menu-crear.php');
     ?>

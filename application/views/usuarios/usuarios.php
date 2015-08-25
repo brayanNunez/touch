@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 m12 l12">
-                    <h1 class="breadcrumbs-title"><?= label('tituloFormularioUsuario'); ?></h1>
+                    <h1 class="breadcrumbs-title"><?=label('tituloFormularioUsuario');?></h1>
                 </div>
             </div>
         </div>
@@ -25,117 +25,110 @@
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <input id="usuario_nombre" type="text">
-                                            <label for="usuario_nombre"><?= label('formUsuario_nombre'); ?></label>
+                                            <label for="usuario_nombre"><?=label('formUsuario_nombre');?></label>
                                         </div>
                                         <div class="input-field col s12">
                                             <input id="usuario_correo" type="email">
-                                            <label for="usuario_correo"><?= label('formUsuario_correo'); ?></label>
+                                            <label for="usuario_correo"><?=label('formUsuario_correo');?></label>
                                         </div>
 
                                         <div class="input-field col s12">
-                                            <label><?= label('formUsuario_roles'); ?></label>
-                                            <br/>
-                                            <br/>
+                                            <label><?=label('formUsuario_roles');?></label>
+                                            <br />
+                                            <br />
                                             <table class="table striped">
                                                 <thead>
-                                                <tr>
-                                                    <th><?= label('formUsuario_rol'); ?></th>
-                                                    <th><?= label('formUsuario_rolEstado'); ?></th>
-                                                </tr>
+                                                    <tr>
+                                                        <th><?=label('formUsuario_rol');?></th>
+                                                        <th><?=label('formUsuario_rolEstado');?></th>
+                                                    </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr>
-                                                    <td><?= label('formUsuario_rolAdministrador') ?></td>
-                                                    <td>
-                                                        <div class="switch">
-                                                            <label style="position: relative">
-                                                                <?= label('off'); ?>
-                                                                <input type="checkbox">
-                                                                <span class="lever"></span>
-                                                                <?= label('on'); ?>
-                                                            </label>
-                                                        </div>
-                                                        <br/>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><?= label('formUsuario_rolAprobador') ?></td>
-                                                    <td>
-                                                        <div class="switch">
-                                                            <label style="position: relative">
-                                                                <?= label('off'); ?>
-                                                                <input type="checkbox">
-                                                                <span class="lever"></span>
-                                                                <?= label('on'); ?>
-                                                            </label>
-                                                        </div>
-                                                        <br/>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><?= label('formUsuario_rolCotizador') ?></td>
-                                                    <td>
-                                                        <div class="switch">
-                                                            <label style="position: relative">
-                                                                <?= label('off'); ?>
-                                                                <input type="checkbox">
-                                                                <span class="lever"></span>
-                                                                <?= label('on'); ?>
-                                                            </label>
-                                                        </div>
-                                                        <br/>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><?= label('formUsuario_rolContador') ?></td>
-                                                    <td>
-                                                        <div class="switch">
-                                                            <label style="position: relative">
-                                                                <?= label('off'); ?>
-                                                                <input type="checkbox">
-                                                                <span class="lever"></span>
-                                                                <?= label('on'); ?>
-                                                            </label>
-                                                        </div>
-                                                        <br/>
-                                                    </td>
-                                                </tr>
+                                                    <tr>
+                                                        <td><?=label('formUsuario_rolAdministrador')?></td>
+                                                        <td>
+                                                            <div class="switch">
+                                                                <label style="position: relative">
+                                                                    <?=label('off');?>
+                                                                    <input type="checkbox">
+                                                                    <span class="lever"></span>
+                                                                    <?=label('on');?>
+                                                                </label>
+                                                            </div>
+                                                            <br />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><?=label('formUsuario_rolAprobador')?></td>
+                                                        <td>
+                                                            <div class="switch">
+                                                                <label style="position: relative">
+                                                                    <?=label('off');?>
+                                                                    <input type="checkbox">
+                                                                    <span class="lever"></span>
+                                                                    <?=label('on');?>
+                                                                </label>
+                                                            </div>
+                                                            <br />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><?=label('formUsuario_rolCotizador')?></td>
+                                                        <td>
+                                                            <div class="switch">
+                                                                <label style="position: relative">
+                                                                    <?=label('off');?>
+                                                                    <input type="checkbox">
+                                                                    <span class="lever"></span>
+                                                                    <?=label('on');?>
+                                                                </label>
+                                                            </div>
+                                                            <br />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><?=label('formUsuario_rolContador')?></td>
+                                                        <td>
+                                                            <div class="switch">
+                                                                <label style="position: relative">
+                                                                    <?=label('off');?>
+                                                                    <input type="checkbox">
+                                                                    <span class="lever"></span>
+                                                                    <?=label('on');?>
+                                                                </label>
+                                                            </div>
+                                                            <br />
+                                                        </td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
-                                            <hr/>
-                                            <br/>
+                                            <hr />
+                                            <br />
                                         </div>
 
                                         <div class="input-field col s12">
                                             <input id="usuario_nombreUsuario" type="text">
-                                            <label
-                                                for="usuario_nombreUsuario"><?= label('formUsuario_nombreUsuario'); ?></label>
+                                            <label for="usuario_nombreUsuario"><?=label('formUsuario_nombreUsuario');?></label>
                                         </div>
                                         <div class="input-field col s12">
                                             <input id="usuario_contrasena" type="password">
-                                            <label
-                                                for="usuario_contrasena"><?= label('formUsuario_contrasena'); ?></label>
+                                            <label for="usuario_contrasena"><?=label('formUsuario_contrasena');?></label>
                                         </div>
 
                                         <div class="file-field col s12">
-                                            <br/>
-                                            <label
-                                                for="usuario_fotografia"><?= label('formUsuario_fotografia'); ?></label>
-
+                                            <br />
+                                            <label for="usuario_fotografia"><?=label('formUsuario_fotografia');?></label>
                                             <div class="file-field input-field col s12">
                                                 <input class="file-path validate" type="text"/>
-
-                                                <div class="btn" data-toggle="tooltip"
-                                                     title="<?= label('tooltip_examinar') ?>">
+                                                <div class="btn" data-toggle="tooltip" title="<?=label('tooltip_examinar')?>">
                                                     <span><i class="mdi-action-search"></i></span>
-                                                    <input type="file"/>
+                                                    <input type="file" />
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="input-field col s12 envio-formulario">
-                                            <button class="btn waves-effect waves-light right" type="submit"
-                                                    name="action"><?= label('formUsuario_enviar'); ?>
+                                            <button class="btn waves-effect waves-light right" type="submit" name="action"><?=label('formUsuario_enviar');?>
                                             </button>
                                         </div>
                                     </div>
@@ -148,7 +141,7 @@
         </div>
     </div>
     <!--end container-->
-
+    
     <?php
     $this->load->view('layout/default/menu-crear.php');
     ?>
@@ -160,52 +153,52 @@
 <!-- lista modals -->
 <div id="eliminar" class="modal">
     <div class="modal-header">
-        <p><?= label('nombreSistema'); ?></p>
+        <p><?=label('nombreSistema');?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <p><?= label('confirmarEliminarContacto'); ?></p>
+        <p><?=label('confirmarEliminarContacto');?></p>
     </div>
     <div class="modal-footer black-text">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>
 <div id="editar" class="modal">
     <div class="modal-header">
-        <p><?= label('nombreSistema'); ?></p>
+        <p><?=label('nombreSistema');?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
         <div class="input-field col s12">
             <input id="client_code" type="text" value="Maria Rodriguez">
-            <label for="client_code"><?= label('formCliente_nombreContacto'); ?></label>
+            <label for="client_code"><?=label('formCliente_nombreContacto');?></label>
         </div>
         <div class="input-field col s12">
             <input id="client_code" type="text" value="maria@gmail.com">
-            <label for="client_code"><?= label('formCliente_correoContacto'); ?></label>
+            <label for="client_code"><?=label('formCliente_correoContacto');?></label>
         </div>
     </div>
     <div class="modal-footer">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>
 <div id="agregar" class="modal">
     <div class="modal-header">
-        <p><?= label('nombreSistema'); ?></p>
+        <p><?=label('nombreSistema');?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
         <div class="input-field col s12">
             <input id="client_code" type="text" value="">
-            <label for="client_code"><?= label('formCliente_nombreContacto'); ?></label>
+            <label for="client_code"><?=label('formCliente_nombreContacto');?></label>
         </div>
         <div class="input-field col s12">
             <input id="client_code" type="text" value="">
-            <label for="client_code"><?= label('formCliente_correoContacto'); ?></label>
+            <label for="client_code"><?=label('formCliente_correoContacto');?></label>
         </div>
     </div>
     <div class="modal-footer">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>
 <!-- Fin lista modals -->

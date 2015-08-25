@@ -1,3 +1,5 @@
+
+
 <!-- START CONTENT  -->
 
 <section id="content">
@@ -6,7 +8,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 m12 l12">
-                    <h1 class="breadcrumbs-title"><?= label('tituloFormularioEmbed'); ?></h1>
+                    <h1 class="breadcrumbs-title"><?=label('tituloFormularioEmbed');?></h1>
 
                 </div>
             </div>
@@ -27,33 +29,30 @@
 
                                         <div class="input-field col s12">
                                             <input id="embed_nombre" type="text">
-                                            <label for="embed_nombre"><?= label('formEmbed_nombre'); ?></label>
+                                            <label for="embed_nombre"><?=label('formEmbed_nombre');?></label>
                                         </div>
 
                                         <div class="input-field col s12">
                                             <input id="embed_correo" type="email">
-                                            <label for="embed_correo"><?= label('formEmbed_correo'); ?></label>
+                                            <label for="embed_correo"><?=label('formEmbed_correo');?></label>
                                         </div>
 
                                         <div class="input-field col s12">
                                             <input id="embed_telefono" type="text">
-                                            <label for="embed_telefono"><?= label('formEmbed_telefono'); ?></label>
+                                            <label for="embed_telefono"><?=label('formEmbed_telefono');?></label>
                                         </div>
 
                                         <div class="input-field col s12">
-                                            <textarea id="embed_detalle" class="materialize-textarea"
-                                                      length="250"></textarea>
-                                            <label for="embed_detalle"><?= label('formEmbed_detalle'); ?></label>
+                                            <textarea id="embed_detalle" class="materialize-textarea" length="250"></textarea>
+                                            <label for="embed_detalle"><?=label('formEmbed_detalle');?></label>
                                         </div>
 
                                         <div class="input-field col s12 campo-captcha">
-                                            <input type="text" id="defaultReal" name="defaultReal"
-                                                   class="campo-registro">
+                                            <input type="text" id="defaultReal" name="defaultReal" class="campo-registro">
                                         </div>
 
                                         <div class="input-field col s12 envio-formulario">
-                                            <button class="btn btn-sm right" type="submit"
-                                                    name="action"><?= label('formEmbed_enviar'); ?>
+                                            <button class="btn btn-sm right" type="submit" name="action"><?=label('formEmbed_enviar');?>
                                             </button>
                                         </div>
                                     </div>

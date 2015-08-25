@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 m12 l12">
-                    <h5 class="breadcrumbs-title"><?= label('tituloPagos'); ?></a></h5>
+                    <h5 class="breadcrumbs-title"><?=label('tituloPagos');?></a></h5>
                 </div>
             </div>
         </div>
@@ -22,12 +22,11 @@
                                     <div id="formGeneral" class="section">
 
                                         <div class="row">
-                                            <h5><?= label('datosDelServicio'); ?></h5>
-
+                                            <h5><?=label('datosDelServicio');?></h5>
                                             <div class="input-field col s12 m6 l6">
                                                 <div class="input-field col s12">
                                                     <input id="monto_mensual" type="text" value="$20" readonly>
-                                                    <label for="monto_mensual"><?= label('monto_mensual'); ?></label>
+                                                    <label for="monto_mensual"><?=label('monto_mensual');?></label>
                                                 </div>
                                             </div>
                                             <div class="input-field col s12 m6 l6">
@@ -36,7 +35,7 @@
                                                     <option value="2">Avanzado</option>
                                                     <option value="3">Especial</option>
                                                 </select>
-                                                <label><?= label('tipo_plan'); ?></label>
+                                                <label><?=label('tipo_plan');?></label>
                                             </div>
                                         </div>
 
@@ -44,23 +43,23 @@
                                             <div class="input-field col s12 m6 l6">
                                                 <div class="input-field col s12">
                                                     <input id="fecha_pago" type="text" value="18/06/2015" readonly>
-                                                    <label for="fecha_pago"><?= label('fecha_pago'); ?></label>
+                                                    <label for="fecha_pago"><?=label('fecha_pago');?></label>
                                                 </div>
                                             </div>
                                             <div class="input-field col s12 m6 l6">
                                                 <div class="input-field col s12">
                                                     <input id="estado_pago" type="text" value="Moroso" readonly>
-                                                    <label for="estado_pago"><?= label('estado_pago'); ?></label>
+                                                    <label for="estado_pago"><?=label('estado_pago');?></label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <h5><?= label('lista_pagos_pendientes'); ?></h5>
+                                    <h5><?=label('lista_pagos_pendientes');?></h5>
                                     <table class="table striped">
                                         <thead>
                                         <tr>
-                                            <th><?= label('tablaPagos_fecha'); ?></th>
-                                            <th><?= label('tablaPagos_monto'); ?></th>
+                                            <th><?=label('tablaPagos_fecha');?></th>
+                                            <th><?=label('tablaPagos_monto');?></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -75,28 +74,25 @@
                                         </tbody>
                                     </table>
                                     <div class="section reporte-generar">
-                                        <a href="#" class="btn btn-default"><?= label('pagar_servicio'); ?></a>
+                                        <a href="#" class="btn btn-default"><?=label('pagar_servicio');?></a>
                                     </div>
 
                                     <div id="table-datatables">
                                         <div class="row">
                                             <div class="col s12 m12 l12">
-                                                <h5><?= label('lista_pagos_recientes'); ?></h5>
-                                                <table id="data-table-simple" class="responsive-table display"
-                                                       cellspacing="0">
+                                                <h5><?=label('lista_pagos_recientes');?></h5>
+                                                <table id="data-table-simple" class="responsive-table display" cellspacing="0">
                                                     <thead>
                                                     <tr>
-                                                        <th><?= label('tablaPagos_fecha'); ?></th>
-                                                        <th><?= label('tablaPagos_monto'); ?></th>
+                                                        <th><?=label('tablaPagos_fecha');?></th>
+                                                        <th><?=label('tablaPagos_monto');?></th>
                                                     </tr>
                                                     </thead>
                                                     <tfoot>
-                                                    <!--                                                    <tr>-->
-                                                    <!--                                                        <th>-->
-                                                    <? //=label('tablaPagos_fecha');?><!--</th>-->
-                                                    <!--                                                        <th>-->
-                                                    <? //=label('tablaPagos_monto');?><!--</th>-->
-                                                    <!--                                                    </tr>-->
+<!--                                                    <tr>-->
+<!--                                                        <th>--><?//=label('tablaPagos_fecha');?><!--</th>-->
+<!--                                                        <th>--><?//=label('tablaPagos_monto');?><!--</th>-->
+<!--                                                    </tr>-->
                                                     </tfoot>
                                                     <tbody>
                                                     <tr>
@@ -125,10 +121,10 @@
             </div>
         </div>
         <!--end container-->
-
-        <?php
-        $this->load->view('layout/default/menu-crear.php');
-        ?>
+    
+    <?php
+    $this->load->view('layout/default/menu-crear.php');
+    ?>
 
 </section>
 <!-- END CONTENT-->
