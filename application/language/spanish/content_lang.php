@@ -39,6 +39,7 @@
     $lang['confirmarGuardarDescargar'] = '¿Realmente desea guardar y descargar la cotización en proceso?';
     $lang['confirmarGuardarCerrar'] = '¿Realmente desea guardar y cerrar la cotización en proceso?';
     $lang['confirmarCancelarCotizacion'] = '¿Realmente desea cancelar la cotización en proceso?';
+    $lang['confirmarObtenerPlan'] = '¿Realmente desea obtener el plan?';
 
     
 
@@ -94,7 +95,14 @@
     $lang['tituloListaSolicitudesSinCliente'] = 'Solicitudes de nuevos clientes'; 
     $lang['tituloListaPorAprobar'] = 'Cotizaciones pendientes por revisar';
     $lang['tituloAprobarEnvioCliente'] = 'Revisar cotización';
+    $lang['tituloListaPlan'] = 'Lista de planes';
 
+//tabla de planes
+    $lang['tablaPlan_nombre'] = 'Nombre';
+    $lang['tablaPlan_costo'] = 'Costo';
+    $lang['tablaPlan_beneficios'] = 'Beneficios';
+    $lang['tablaPlan_opciones'] = 'Opciones';
+    $lang['tablaPlan_Obtener'] = 'Obtener plan';
 
 
 //tabla de impuestos    

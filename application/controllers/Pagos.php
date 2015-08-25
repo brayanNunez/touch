@@ -17,4 +17,11 @@ class Pagos extends CI_Controller {
         $this->load->view('layout/default/footer');
     }
 
+    public function listaPlan(){
+        $this->load->view('layout/default/header');
+        $this->load->view('layout/default/left-sidebar');
+        $this->load->view('pagos/lista_planes');
+        $this->load->view('layout/default/footer');
+    }
+
 }
