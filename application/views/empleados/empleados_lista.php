@@ -47,7 +47,7 @@
 
                                                          <?php
                                                             if (isset($lista)) {
-                                                                
+                                                            $contador = 0;
                                                             foreach($lista as $fila)
                                                             {
                                                             ?>
@@ -61,15 +61,15 @@
                                                                     <td><?=$fila->identificacion?></td>
                                                                     <td>Programador, Bases de datos</td>
                                                                     <td>
-                                                                        <ul id="dropdown-empleado1" class="dropdown-content">
+                                                                        <ul id="dropdown-empleado<?=$contador?>" class="dropdown-content">
                                                                             <li>
-                                                                                <a href="<?=base_url();?>empleados/editar" class="-text"><?=label('menuOpciones_editar')?></a>
+                                                                                <a href="<?=base_url()?>empleados/editar/<?=$fila->idEmpleado?>" class="-text"><?=label('menuOpciones_editar')?></a>
                                                                             </li>
                                                                             <li>
-                                                                                <a href="#eliminarEmpleado" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
+                                                                                <a href="#eliminarEmpleado" class="-text modal-trigger confirmarEliminar" data-id-eliminar="<?=$fila->idEmpleado?>"><?=label('menuOpciones_eliminar')?></a>
                                                                             </li>
                                                                         </ul>
-                                                                        <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-empleado1">
+                                                                        <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-empleado<?=$contador++?>">
                                                                             <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
                                                                         </a>
                                                                     </td>
@@ -194,6 +194,22 @@
 </section>
 <!-- END CONTENT-->
 
+
+<!-- script para agregar link al boton aceptar del modal -->
+<script type="text/javascript">
+    $(document).on("ready",function(){
+
+        $('.confirmarEliminar').on('click', function(){
+            var id = $(this).data('id-eliminar');
+             $('#eliminarEmpleado #botonEliminar a').attr('href', "<?=base_url()?>empleados/eliminar/" + id);
+        });
+        
+
+    });
+
+</script>
+
+
 <script>
     $(window).load(function() {
         var marcados = $('.checkbox:checked').size();
@@ -297,10 +313,13 @@
     <div class="modal-content">
         <p><?=label('confirmarEliminarEmpleado');?></p>
     </div>
-    <div class="modal-footer black-text">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+    <div id="botonEliminar" class="modal-footer black-text">
+        <a href="" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
     </div>
 </div>
+
+
+
 <div id="eliminarElementosSeleccionados" class="modal">
     <div class="modal-header">
         <p><?=label('nombreSistema');?></p>
@@ -310,7 +329,7 @@
         <p><?=label('clientes_archivosSeleccionadosEliminar');?></p>
     </div>
     <div class="modal-footer black-text">
-        <div id="botonElimnar" title="empleados-tabla-lista">
+        <div title="empleados-tabla-lista">
             <a href="#" class="deleteall waves-effect waves-red btn-flat modal-action modal-close" ><?=label('aceptar');?></a>
         </div>
     </div>
