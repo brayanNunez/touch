@@ -154,7 +154,7 @@ class Empleados extends CI_Controller {
              echo "Error en la transaccion";
         } else {
             echo "Correcto";
-           $this->index();
+            $this->index();
         }
 
     }
