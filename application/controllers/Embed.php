@@ -18,19 +18,22 @@ class Embed extends CI_Controller
         $this->load->view('layout/default/footer');
     }
 
-    public function embedFormulario(){
+    public function embedFormulario()
+    {
         $this->load->view('embed/header');
         $this->load->view('embed/embed-formulario');
         $this->load->view('embed/footer');
     }
 
-    public function embedCotizar(){
+    public function embedCotizar()
+    {
         $this->load->view('embed/header');
         $this->load->view('embed/embed-cotizar');
         $this->load->view('embed/footer');
     }
 
-    public function embedProducto(){
+    public function embedProducto()
+    {
         $this->load->view('embed/header');
         $this->load->view('embed/embed-producto');
         $this->load->view('embed/footer');

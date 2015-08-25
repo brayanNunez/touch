@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Solicitud extends CI_Controller {
+class Solicitud extends CI_Controller
+{
 
     function __construct()
     {
@@ -9,7 +10,9 @@ class Solicitud extends CI_Controller {
         $this->lang->load('content');
     }
 
-    public function index() { }
+    public function index()
+    {
+    }
 
     public function listaAsignar()
     {

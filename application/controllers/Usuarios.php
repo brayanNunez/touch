@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Usuarios extends CI_Controller {
+class Usuarios extends CI_Controller
+{
 
     function __construct()
     {
@@ -34,7 +35,8 @@ class Usuarios extends CI_Controller {
         $this->load->view('layout/default/footer');
     }
 
-    public function existeUsuario(){
+    public function existeUsuario()
+    {
         $usuario = "brayan22";
         echo $this->Usuario_model->usuario_login($usuario);
     }

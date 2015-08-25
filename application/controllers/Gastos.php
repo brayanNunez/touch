@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Gastos extends CI_Controller {
+class Gastos extends CI_Controller
+{
 
     function __construct()
     {
