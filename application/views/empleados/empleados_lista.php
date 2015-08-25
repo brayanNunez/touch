@@ -1,19 +1,19 @@
 <!-- START CONTENT -->
 
- <section id="content">
+<section id="content">
 
     <!--start container-->
-        <div id="breadcrumbs-wrapper" class=" grey lighten-3">
-          <div class="container">
+    <div id="breadcrumbs-wrapper" class=" grey lighten-3">
+        <div class="container">
             <div class="row">
-              <div class="col s12 m12 l12">
-                <h1 class="breadcrumbs-title"><?=label('tituloEmpleados');?></h1>
-                
-              </div>
+                <div class="col s12 m12 l12">
+                    <h1 class="breadcrumbs-title"><?= label('tituloEmpleados'); ?></h1>
+
+                </div>
             </div>
-          </div>
         </div>
-        <!--breadcrumbs end-->
+    </div>
+    <!--breadcrumbs end-->
 
     <div class="container">
         <div id="chart-dashboard">
@@ -26,55 +26,67 @@
                                     <div id="table-datatables">
                                         <div class="row">
                                             <div class="col s12 m12 l12">
-                                                <table id="empleados-tabla-lista" class="data-table-information responsive-table display" cellspacing="0">
+                                                <table id="empleados-tabla-lista"
+                                                       class="data-table-information responsive-table display"
+                                                       cellspacing="0">
                                                     <div class="agregar_nuevo">
-                                                        <a href="<?=base_url()?>empleados/agregar" class="btn btn-default"><?=label('agregar_nuevo');?></a>
+                                                        <a href="<?= base_url() ?>empleados/agregar"
+                                                           class="btn btn-default"><?= label('agregar_nuevo'); ?></a>
                                                     </div>
                                                     <thead>
-                                                        <tr>
-                                                            <th style="text-align: center;">
-                                                                <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all" onclick="toggleChecked(this.checked)"/>
-                                                                <label for="checkbox-all"></label>
-                                                            </th>
-                                                            <th><?=label('Empleado_tablaCodigo');?></th>
-                                                            <th><?=label('Empleado_tablaNombre');?></th>
-                                                            <th><?=label('Empleado_tablaIdentificacion');?></th>
-                                                            <th><?=label('Empleado_tablaPalabras');?></th>
-                                                            <th><?=label('Empleado_tablaOpciones');?></th>
-                                                        </tr>
+                                                    <tr>
+                                                        <th style="text-align: center;">
+                                                            <input class="filled-in checkbox checkall" type="checkbox"
+                                                                   id="checkbox-all"
+                                                                   onclick="toggleChecked(this.checked)"/>
+                                                            <label for="checkbox-all"></label>
+                                                        </th>
+                                                        <th><?= label('Empleado_tablaCodigo'); ?></th>
+                                                        <th><?= label('Empleado_tablaNombre'); ?></th>
+                                                        <th><?= label('Empleado_tablaIdentificacion'); ?></th>
+                                                        <th><?= label('Empleado_tablaPalabras'); ?></th>
+                                                        <th><?= label('Empleado_tablaOpciones'); ?></th>
+                                                    </tr>
                                                     </thead>
                                                     <tbody>
 
-                                                         <?php
-                                                            if (isset($lista)) {
-                                                                
-                                                            foreach($lista as $fila)
-                                                            {
+                                                    <?php
+                                                    if (isset($lista)) {
+
+                                                        foreach ($lista as $fila) {
                                                             ?>
-                                                                <tr>
-                                                                    <td style="text-align: center;">
-                                                                        <input type="checkbox" class="filled-in checkbox" id="checkbox_empleado1" />
-                                                                        <label for="checkbox_empleado1"></label>
-                                                                    </td>
-                                                                    <td><?=$fila->codigo?></td>
-                                                                    <td><a href="<?=base_url()?>empleados/editar/<?=$fila->idEmpleado?>"><?=$fila->nombreCompleto?></a></td>
-                                                                    <td><?=$fila->identificacion?></td>
-                                                                    <td>Programador, Bases de datos</td>
-                                                                    <td>
-                                                                        <ul id="dropdown-empleado1" class="dropdown-content">
-                                                                            <li>
-                                                                                <a href="<?=base_url();?>empleados/editar" class="-text"><?=label('menuOpciones_editar')?></a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="#eliminarEmpleado" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-empleado1">
-                                                                            <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
-                                                                        </a>
-                                                                    </td>
-                                                                </tr>
-<!-- 
+                                                            <tr>
+                                                                <td style="text-align: center;">
+                                                                    <input type="checkbox" class="filled-in checkbox"
+                                                                           id="checkbox_empleado1"/>
+                                                                    <label for="checkbox_empleado1"></label>
+                                                                </td>
+                                                                <td><?= $fila->codigo ?></td>
+                                                                <td>
+                                                                    <a href="<?= base_url() ?>empleados/editar/<?= $fila->idEmpleado ?>"><?= $fila->nombreCompleto ?></a>
+                                                                </td>
+                                                                <td><?= $fila->identificacion ?></td>
+                                                                <td>Programador, Bases de datos</td>
+                                                                <td>
+                                                                    <ul id="dropdown-empleado1"
+                                                                        class="dropdown-content">
+                                                                        <li>
+                                                                            <a href="<?= base_url(); ?>empleados/editar"
+                                                                               class="-text"><?= label('menuOpciones_editar') ?></a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#eliminarEmpleado"
+                                                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
+                                                                       href="#!" data-activates="dropdown-empleado1">
+                                                                        <?= label('menuOpciones_seleccionar') ?><i
+                                                                            class="mdi-navigation-arrow-drop-down"></i>
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                            <!--
 
                                                         <tr>
                                                             <td style="text-align: center;">
@@ -82,20 +94,20 @@
                                                                 <label for="checkbox_empleado2"></label>
                                                             </td>
                                                             <td>0002</td>
-                                                            <td><a href="<?=base_url()?>empleados/editar">Brayan Núñez R.</a></td>
+                                                            <td><a href="<?= base_url() ?>empleados/editar">Brayan Núñez R.</a></td>
                                                             <td>2-245-678</td>
                                                             <td>Programador, Bases de datos</td>
                                                             <td>
                                                                 <ul id="dropdown-empleado2" class="dropdown-content">
                                                                     <li>
-                                                                        <a href="<?=base_url(); ?>empleados/editar" class="-text"><?=label('menuOpciones_editar')?></a>
+                                                                        <a href="<?= base_url(); ?>empleados/editar" class="-text"><?= label('menuOpciones_editar') ?></a>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="#eliminarEmpleado" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
+                                                                        <a href="#eliminarEmpleado" class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
                                                                     </li>
                                                                 </ul>
                                                                 <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-empleado2">
-                                                                    <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
+                                                                    <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
                                                                 </a>
                                                             </td>
                                                         </tr>
@@ -105,20 +117,20 @@
                                                                 <label for="checkbox_empleado3"></label>
                                                             </td>
                                                             <td>0003</td>
-                                                            <td><a href="<?=base_url()?>empleados/editar">Sebastián Rodríguez B.</a></td>
+                                                            <td><a href="<?= base_url() ?>empleados/editar">Sebastián Rodríguez B.</a></td>
                                                             <td>2-723-327</td>
                                                             <td>Programador, Bases de datos</td>
                                                             <td>
                                                                 <ul id="dropdown-empleado3" class="dropdown-content">
                                                                     <li>
-                                                                        <a href="<?=base_url(); ?>empleados/editar" class="-text"><?=label('menuOpciones_editar')?></a>
+                                                                        <a href="<?= base_url(); ?>empleados/editar" class="-text"><?= label('menuOpciones_editar') ?></a>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="#eliminarEmpleado" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
+                                                                        <a href="#eliminarEmpleado" class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
                                                                     </li>
                                                                 </ul>
                                                                 <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-empleado3">
-                                                                    <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
+                                                                    <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
                                                                 </a>
                                                             </td>
                                                         </tr>
@@ -128,49 +140,60 @@
                                                                 <label for="checkbox_empleado4"></label>
                                                             </td>
                                                             <td>0004</td>
-                                                            <td><a href="<?=base_url()?>empleados/editar">Claret Rojas C.</a></td>
+                                                            <td><a href="<?= base_url() ?>empleados/editar">Claret Rojas C.</a></td>
                                                             <td>2-897-231</td>
                                                             <td>Programador, Bases de datos</td>
                                                             <td>
                                                                 <ul id="dropdown-empleado4" class="dropdown-content">
                                                                     <li>
-                                                                        <a href="<?=base_url(); ?>empleados/editar" class="-text"><?=label('menuOpciones_editar')?></a>
+                                                                        <a href="<?= base_url(); ?>empleados/editar" class="-text"><?= label('menuOpciones_editar') ?></a>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="#eliminarEmpleado" class="-text modal-trigger"><?=label('menuOpciones_eliminar')?></a>
+                                                                        <a href="#eliminarEmpleado" class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
                                                                     </li>
                                                                 </ul>
                                                                 <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-empleado4">
-                                                                    <?=label('menuOpciones_seleccionar')?><i class="mdi-navigation-arrow-drop-down"></i>
+                                                                    <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
                                                                 </a>
                                                             </td>
                                                         </tr> -->
                                                             <?php
-                                                                    }
-                                                                }
-                                                             ?>
+                                                        }
+                                                    }
+                                                    ?>
 
                                                     </tbody>
                                                 </table>
                                                 <div class="tabla-conAgregar">
-                                                    <a id="opciones-seleccionados-print" class="waves-effect black-text opciones-seleccionados option-print-table" style="visibility: hidden;"
-                                                       href="#" data-toggle="tooltip" title="<?=label('opciones_seleccionadosImprimir')?>">
+                                                    <a id="opciones-seleccionados-print"
+                                                       class="waves-effect black-text opciones-seleccionados option-print-table"
+                                                       style="visibility: hidden;"
+                                                       href="#" data-toggle="tooltip"
+                                                       title="<?= label('opciones_seleccionadosImprimir') ?>">
                                                         <i class="mdi-action-print icono-opciones-varios"></i>
                                                     </a>
                                                     <ul id="dropdown-exportar" class="dropdown-content">
                                                         <li>
-                                                            <a href="#" class="-text"><?=label('opciones_seleccionadosExportarPdf')?></a>
+                                                            <a href="#"
+                                                               class="-text"><?= label('opciones_seleccionadosExportarPdf') ?></a>
                                                         </li>
                                                         <li>
-                                                            <a href="#" class="-text"><?=label('opciones_seleccionadosExportarExcel')?></a>
+                                                            <a href="#"
+                                                               class="-text"><?= label('opciones_seleccionadosExportarExcel') ?></a>
                                                         </li>
                                                     </ul>
-                                                    <a id="opciones-seleccionados-export" class="boton-opciones black-text dropdown-button option-export-table"
-                                                       href="#" data-toggle="tooltip" title="<?=label('opciones_seleccionadosExportar')?>" data-activates="dropdown-exportar">
+                                                    <a id="opciones-seleccionados-export"
+                                                       class="boton-opciones black-text dropdown-button option-export-table"
+                                                       href="#" data-toggle="tooltip"
+                                                       title="<?= label('opciones_seleccionadosExportar') ?>"
+                                                       data-activates="dropdown-exportar">
                                                         <i class="mdi-file-file-download icono-opciones-varios"></i>
                                                     </a>
-                                                    <a id="opciones-seleccionados-delete" class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements" style="visibility: hidden;"
-                                                       href="#eliminarElementosSeleccionados" data-toggle="tooltip" title="<?=label('opciones_seleccionadosEliminar')?>">
+                                                    <a id="opciones-seleccionados-delete"
+                                                       class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements"
+                                                       style="visibility: hidden;"
+                                                       href="#eliminarElementosSeleccionados" data-toggle="tooltip"
+                                                       title="<?= label('opciones_seleccionadosEliminar') ?>">
                                                         <i class="mdi-action-delete icono-opciones-varios"></i>
                                                     </a>
                                                 </div>
@@ -185,7 +208,7 @@
             </div>
         </div>
     </div>
-<!--end container-->
+    <!--end container-->
 
     <?php
     $this->load->view('layout/default/menu-crear.php');
@@ -195,12 +218,12 @@
 <!-- END CONTENT-->
 
 <script>
-    $(window).load(function() {
+    $(window).load(function () {
         var marcados = $('.checkbox:checked').size();
-        if(marcados >= 1) {
+        if (marcados >= 1) {
             var elems = document.getElementsByClassName('opciones-seleccionados');
             var e;
-            for(e in elems) {
+            for (e in elems) {
 //                elems[e].style.display = 'block';
                 elems[e].style.visibility = 'visible';
 //                elems[e].css('visibility', 'visible');
@@ -208,7 +231,7 @@
         } else {
             var elems = document.getElementsByClassName('opciones-seleccionados');
             var e;
-            for(e in elems) {
+            for (e in elems) {
 //                elems[e].style.display = 'none';
                 elems[e].style.visibility = 'hidden';
 //                elems[e].css('visibility', 'hidden');
@@ -216,16 +239,16 @@
         }
         document.getElementById('checkbox-all').checked = false;
     });
-    $(document).ready(function() {
-        $('#botonElimnar').on("click", function(event){
+    $(document).ready(function () {
+        $('#botonElimnar').on("click", function (event) {
             var tb = $(this).attr('title');
             var sel = false;
-            var ch = $('#'+tb).find('tbody input[type=checkbox]');
-            ch.each(function(){
+            var ch = $('#' + tb).find('tbody input[type=checkbox]');
+            ch.each(function () {
                 var $this = $(this);
-                if($this.is(':checked')) {
+                if ($this.is(':checked')) {
                     sel = true;
-                    $this.parents('tr').fadeOut(function(){
+                    $this.parents('tr').fadeOut(function () {
                         $this.remove();
                     });
                 }
@@ -233,26 +256,26 @@
             return false;
         });
     });
-    $(document).ready(function(){
-        $('#checkbox-all').click(function(event) {
-            if(this.checked) {
-                $('.checkbox').each(function() {
+    $(document).ready(function () {
+        $('#checkbox-all').click(function (event) {
+            if (this.checked) {
+                $('.checkbox').each(function () {
                     this.checked = true;
                 });
             } else {
-                $('.checkbox').each(function() {
+                $('.checkbox').each(function () {
                     this.checked = false;
                 });
             }
         });
     });
-    $(document).ready(function(){
-        $('.checkbox').click(function(event) {
+    $(document).ready(function () {
+        $('.checkbox').click(function (event) {
             var marcados = $('.checkbox:checked').size();
-            if(marcados >= 1) {
+            if (marcados >= 1) {
                 var elems = document.getElementsByClassName('opciones-seleccionados');
                 var e;
-                for(e in elems) {
+                for (e in elems) {
 //                    elems[e].style.display = 'block';
                     elems[e].style.visibility = 'visible';
 //                elems[e].css('visibility', 'visible');
@@ -260,7 +283,7 @@
             } else {
                 var elems = document.getElementsByClassName('opciones-seleccionados');
                 var e;
-                for(e in elems) {
+                for (e in elems) {
 //                    elems[e].style.display = 'none';
                     elems[e].style.visibility = 'hidden';
 //                elems[e].css('visibility', 'hidden');
@@ -268,20 +291,20 @@
             }
         });
     });
-    $(document).ready(function() {
-        $('.boton-opciones').on('click', function(event) {
+    $(document).ready(function () {
+        $('.boton-opciones').on('click', function (event) {
             // alert(event.type);
             //e.preventDefault();
 
             var elementoActivo = $(this).siblings('ul.active');
-            if (elementoActivo.length>0) {
+            if (elementoActivo.length > 0) {
                 var estado = elementoActivo.css("display");
                 if (estado == "block") {
                     elementoActivo.css("display", "none");
-                    elementoActivo.style.display='none';
+                    elementoActivo.style.display = 'none';
                 } else {
                     elementoActivo.css("display", "block");
-                    elementoActivo.style.display='block';
+                    elementoActivo.style.display = 'block';
                 }
             }
         });
@@ -291,27 +314,28 @@
 <!-- lista modals -->
 <div id="eliminarEmpleado" class="modal">
     <div class="modal-header">
-        <p><?=label('nombreSistema');?></p>
+        <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <p><?=label('confirmarEliminarEmpleado');?></p>
+        <p><?= label('confirmarEliminarEmpleado'); ?></p>
     </div>
     <div class="modal-footer black-text">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
 <div id="eliminarElementosSeleccionados" class="modal">
     <div class="modal-header">
-        <p><?=label('nombreSistema');?></p>
+        <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <p><?=label('clientes_archivosSeleccionadosEliminar');?></p>
+        <p><?= label('clientes_archivosSeleccionadosEliminar'); ?></p>
     </div>
     <div class="modal-footer black-text">
         <div id="botonElimnar" title="empleados-tabla-lista">
-            <a href="#" class="deleteall waves-effect waves-red btn-flat modal-action modal-close" ><?=label('aceptar');?></a>
+            <a href="#"
+               class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
         </div>
     </div>
 </div>
