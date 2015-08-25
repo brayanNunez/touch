@@ -38,7 +38,6 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <h5><?= label('datosDelServicio'); ?></h5>
                                             <div class="input-field col s12 m6 l6">
                                                 <div class="input-field col s12">
                                                     <input id="monto_mensual" type="text" value="$20" readonly>
@@ -50,12 +49,6 @@
                                                     <input id="tipo_plan" type="text" value="Básico" readonly>
                                                     <label><?=label('tipo_plan');?></label>
                                                 </div>
-                                                <select class="input-field col s12">
-                                                    <option value="1" disabled selected>Básico</option>
-                                                    <option value="2">Avanzado</option>
-                                                    <option value="3">Especial</option>
-                                                </select>
-                                                <label><?= label('tipo_plan'); ?></label>
                                             </div>
                                         </div>
 
