@@ -89,12 +89,150 @@ div.fixed-action-btn ul li a { width: 165px;}
 
 .opt-finalizar{
 	width: 100%;
+	font-size: 15px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 .opt-finalizar-cancelar{
 	text-align: center;
 	margin-top: 5%;
 }
+
+.opt-finalizar-cancelar a{
+	font-size: 15px;
+}
+
+/*659  601
+
+@media only screen and (max-width: 1206px) {
+	.opt-finalizar{
+		font-size: 14px;
+	}
+}
+
+@media only screen and (max-width: 1158px) {
+	.opt-finalizar{
+		font-size: 13px;
+	}
+}
+
+@media only screen and (max-width: 1123px) {
+	.opt-finalizar{
+		font-size: 13px;
+	}
+}
+
+@media only screen and (max-width: 1088px) {
+	.opt-finalizar{
+		font-size: 11px;
+	}
+}
+
+@media only screen and (max-width: 992px) {
+	.opt-finalizar{
+		font-size: 15px;
+	}
+}
+
+@media only screen and (max-width: 940px) {
+	.opt-finalizar{
+		font-size: 14px;
+	}
+}
+
+@media only screen and (max-width: 905px) {
+	.opt-finalizar{
+		font-size: 13px;
+	}
+}
+
+@media only screen and (max-width: 870px) {
+	.opt-finalizar{
+		font-size: 12px;
+	}
+}
+
+@media only screen and (max-width: 722px) {
+	.opt-finalizar{
+		font-size: 11px;
+	}
+}
+
+@media only screen and (max-width: 687px) {
+	.opt-finalizar{
+		font-size: 10px;
+	}
+}
+
+@media only screen and (max-width: 651px) {
+	.opt-finalizar{
+		font-size: 9px;
+	}
+}
+
+@media only screen and (max-width: 616px) {
+	.opt-finalizar{
+		font-size: 8px;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.opt-finalizar{
+		font-size: 15px;
+	}
+}
+
+@media only screen and (max-width: 326px) {
+	.opt-finalizar{
+		font-size: 13px;
+	}
+}
+
+@media only screen and (max-width: 302px) {
+	.opt-finalizar{
+		font-size: 11px;
+	}
+}
+
+@media only screen and (max-width: 279px) {
+	.opt-finalizar{
+		font-size: 10px;
+	}
+}*/
+
+
+@media only screen and (max-width: 1200px) {
+	.opt-finalizar{font-size: 11px;}
+	.opt-finalizar-cancelar a{font-size: 11px;}
+}
+
+@media only screen and (max-width: 992px) {
+	.opt-finalizar{font-size: 13px;}
+	.opt-finalizar-cancelar a{font-size: 13px;}
+}
+
+@media only screen and (max-width: 768px) {
+	.opt-finalizar{font-size: 9px;}
+	.opt-finalizar-cancelar a{font-size: 9px;}
+}
+
+@media only screen and (max-width: 640px) {
+	.opt-finalizar{font-size: 8px;}
+	.opt-finalizar-cancelar a{font-size: 8px;}
+}
+
+@media only screen and (max-width: 600px) {
+	.opt-finalizar{font-size: 15px;}
+	.opt-finalizar-cancelar a{font-size: 15px;}
+}
+
+@media only screen and (max-width: 480px) {
+	.opt-finalizar{font-size: 10px;}
+	.opt-finalizar-cancelar a{font-size: 10px;}
+}
+
+
 
 
 

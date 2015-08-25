@@ -31,11 +31,6 @@
                                                     <h5 class="input-field col s12"><?=label('datosDelServicio');?></h5>
                                                 </div>
                                             </div>
-                                            <div class="input-field col s12 m6 l6">
-                                                <div class="input-field col s12">
-                                                    <a href="<?=base_url()?>pagos/listaPlan" class="btn btn-default modal-trigger input-field col s12">Cambiar de plan</a>
-                                                </div>
-                                            </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s12 m6 l6">
@@ -100,6 +95,7 @@
                                                     <tr>
                                                         <th><?= label('tablaPagos_fecha'); ?></th>
                                                         <th><?= label('tablaPagos_monto'); ?></th>
+                                                        <th><?= label('tablaPagos_comprobante'); ?></th>
                                                     </tr>
                                                     </thead>
                                                     <tfoot>
@@ -114,14 +110,17 @@
                                                     <tr>
                                                         <td>18/05/2015</td>
                                                         <td>$20</td>
+                                                        <td><a href="#">Archivo</a></td>
                                                     </tr>
                                                     <tr>
                                                         <td>18/04/2015</td>
                                                         <td>$20</td>
+                                                        <td><a href="#">Archivo</a></td>
                                                     </tr>
                                                     <tr>
                                                         <td>18/03/2015</td>
                                                         <td>$20</td>
+                                                        <td><a href="#">Archivo</a></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>

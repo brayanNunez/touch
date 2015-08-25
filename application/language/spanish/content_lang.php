@@ -486,6 +486,9 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['lista_pagos_pendientes'] = 'Lista de pagos pendientes';
     $lang['pagar_servicio'] = 'Pagar servicio';
     $lang['lista_pagos_recientes'] = 'Lista de pagos recientes';
+    $lang['mensaje_pago'] = 'Ingrese los datos de su tarjeta';
+    $lang['tarjeta_numero'] = 'Número de tarjeta';
+    $lang['tarjeta_expiracion'] = 'Mes y año de expiración';
 
 
 
@@ -494,6 +497,7 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['tablaPagos_empresa'] = 'Empresa';
     $lang['tablaPagos_fecha'] = 'Fecha';
     $lang['tablaPagos_monto'] = 'Monto';
+    $lang['tablaPagos_comprobante'] = 'Comprobante de pago';
     $lang['tablaPagos_opciones'] = 'Opciones';
     $lang['ver_comprobante'] = 'Ver comprobante';
     $lang['mostrarComprobante'] = 'Comprobante del pago';
