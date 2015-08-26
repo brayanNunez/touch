@@ -79,20 +79,12 @@
                                         <!--                                         </div> -->
 
                                         <div class="input-field col s12">
-                                            <input id="empleado_fechaNacimiento" name="empleado_fechaNacimiento"
-                                                   type="date" value='<?php if (isset($resultado)) {
-                                                echo $resultado->fechaNacimiento;
-                                            } ?>'>
-                                            <label
-                                                for="empleado_fechaNacimiento"><?= label('formEmpleado_fechaNacimiento'); ?></label>
+                                            <input id="empleado_fechaNacimiento" type="text" class="datepicker-fecha" value="18-06-1994">
+                                            <label for="empleado_fechaNacimiento"><?= label('formEmpleado_fechaNacimiento'); ?></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input id="empleado_fechaIngreso" name="empleado_fechaIngreso" type="date"
-                                                   value='<?php if (isset($resultado)) {
-                                                       echo $resultado->fechaIngresoEmpresa;
-                                                   } ?>'>
-                                            <label
-                                                for="empleado_fechaIngreso"><?= label('formEmpleado_fechaIngreso'); ?></label>
+                                            <input id="empleado_fechaIngreso" type="text" class="datepicker-fecha" value="09-03-2015">
+                                            <label for="empleado_fechaIngreso"><?= label('formEmpleado_fechaIngreso'); ?></label>
                                         </div>
                                         <div class="input-field col s12">
                                             <textarea id="empleado_descripcion" name="empleado_descripcion"

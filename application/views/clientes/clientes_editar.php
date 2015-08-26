@@ -22,8 +22,8 @@
                 <label for="cliente_id"><?= label('formCliente_identificacion'); ?></label>
             </div>
             <div class="input-field col s12">
-                <input type="date" class="datepicker" value="12-12-1970">
-                <label for=""><?= label('formCliente_fechaNacimiento'); ?></label>
+                <input id="cliente_fechaNacimiento" type="text" class="datepicker-fecha" value="12-12-1970">
+                <label for="cliente_fechaNacimiento"><?= label('formCliente_fechaNacimiento'); ?></label>
             </div>
             <div class="input-field col s12">
                 <input id="cliente_correo" type="email" value="coopedospinos@gmail.com">
@@ -38,8 +38,7 @@
                 <label for="cliente_telefono"><?= label('formCliente_telefonoFijo'); ?></label>
             </div>
             <div class="input-field col s12">
-                <textarea id="cliente_comentarios" class="materialize-textarea"
-                          length="120">Cliente frecuente</textarea>
+                <textarea id="cliente_comentarios" class="materialize-textarea" length="120">Cliente frecuente</textarea>
                 <label for="cliente_comentarios"><?= label('formCliente_comentarios'); ?></label>
             </div>
             <div class="inputTag col s12">

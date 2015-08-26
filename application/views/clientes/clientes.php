@@ -46,8 +46,8 @@
                                             <label for="cliente_id"><?= label('formCliente_identificacion'); ?></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input type="date" class="datepicker">
-                                            <label for=""><?= label('formCliente_fechaNacimiento'); ?></label>
+                                            <input id="cliente_fechaNacimiento" type="text" class="datepicker-fecha">
+                                            <label for="cliente_fechaNacimiento"><?= label('formCliente_fechaNacimiento'); ?></label>
                                         </div>
                                         <div class="input-field col s12">
                                             <input id="cliente_correo" type="email">
@@ -65,8 +65,7 @@
                                         </div>
 
                                         <div class="input-field col s12">
-                                            <textarea id="cliente_comentarios" class="materialize-textarea"
-                                                      length="120"></textarea>
+                                            <textarea id="cliente_comentarios" class="materialize-textarea" length="120"></textarea>
                                             <label
                                                 for="cliente_comentarios"><?= label('formCliente_comentarios'); ?></label>
                                         </div>

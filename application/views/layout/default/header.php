@@ -35,6 +35,7 @@
 
     <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="<?= base_url() ?>assets/dashboard/js/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>assets/dashboard/js/jquery.treetable-ajax-persist.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>assets/dashboard/js/jquery.treetable-3.0.0.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>assets/dashboard/js/persist-min.js"></script>
@@ -48,6 +49,21 @@
                 $("#embedPrecio").hide();
             }
         }
+    </script>
+
+    <script>
+        $(function() {
+            $( ".datepicker-fecha" ).datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: "dd-mm-yy",
+                monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre" ],
+                monthNamesShort: [ "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic" ],
+                dayNames: [ "Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado" ],
+                dayNamesMin: [ "Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa" ],
+                dayNamesShort: [ "Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sab" ]
+            });
+        });
     </script>
 
     <script>
