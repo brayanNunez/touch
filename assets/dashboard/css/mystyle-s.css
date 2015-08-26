@@ -150,6 +150,11 @@ div.tabla-caracteristicas-producto { left: 60%; bottom: 4%; top: unset; width: a
 table#cotizacion1-detalles thead th label, table#cliente1-contactos tbody td label { top: 0; }
 div.tabla-detalles-cotizacion { left: 430px; bottom: 25%; top: unset; width: auto; }
 
+a#cotizacion-agregarAtencion { padding: 0; background-color: transparent; position: absolute; left: 90%; box-shadow: none; top: -15px; }
+
+select.ui-datepicker-month, select.ui-datepicker-year { display: block; padding: 0; height: 25px; float: left; }
+select.ui-datepicker-month { margin: 1px 17px 1px 1px !important; }
+
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/
     div#login-page { width: 380px !important; max-height: 408px !important; top: 0 !important; }
@@ -157,6 +162,7 @@ div.tabla-detalles-cotizacion { left: 430px; bottom: 25%; top: unset; width: aut
     a#busqueda-avanzada-sinAgregar { position: absolute; right: 50px; top: 90px; font-size: smaller; z-index: 10; }
     div.tabla-conAgregar.tabla-opciones-monedas { position: absolute; top: 220px; left: 50%; width: 180px; margin-left: -90px; }
     div.tabla-detalles-cotizacion { left: 430px; bottom: 24%; top: unset; width: auto; }
+    a#cotizacion-agregarAtencion { padding: 0; background-color: transparent; position: absolute; left: 88%; box-shadow: none; top: -15px; }
 }
 
 @media only screen and (max-width: 992px) {
@@ -243,6 +249,7 @@ div.tabla-detalles-cotizacion { left: 430px; bottom: 25%; top: unset; width: aut
     div#forgot-password { width: 80% !important; max-height: 300px !important; top: 0 !important; }
 
     div.tabla-detalles-cotizacion { left: 430px; bottom: 33%; top: unset; width: auto; }
+    a#cotizacion-agregarAtencion { padding: 0; background-color: transparent; position: absolute; left: 85%; box-shadow: none; top: -15px; }
 }
 
 @media only screen and (max-width: 640px) {
@@ -279,6 +286,7 @@ div.tabla-detalles-cotizacion { left: 430px; bottom: 25%; top: unset; width: aut
 
 @media only screen and (max-width: 600px) {
     div.tabla-detalles-cotizacion { left: 430px; bottom: 46%; top: unset; width: auto; }
+    a#cotizacion-agregarAtencion { padding: 0; background-color: transparent; position: absolute; left: 90%; box-shadow: none; top: -15px; }
 }
 
 @media only screen and (max-width: 480px) {
@@ -355,4 +363,6 @@ div.tabla-detalles-cotizacion { left: 430px; bottom: 25%; top: unset; width: aut
     div.tabla-detalles-cotizacion { left: 290px; bottom: 46%; top: unset; width: auto; }
     a.siguiente, a.anterior { font-size: small; font-weight: bold; }
     a.tab-paso-cotizacion { font-size: xx-small; }
+
+    a#cotizacion-agregarAtencion { padding: 0; background-color: transparent; position: absolute; left: 86%; box-shadow: none; top: -15px; }
 }

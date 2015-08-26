@@ -63,13 +63,12 @@
                                         </div>
 
                                         <div class="input-field col s12">
-                                            <input name="empleado_fechaNacimiento" type="date">
-                                            <!-- class="datepicker"  -->
-                                            <label for=""><?= label('formEmpleado_fechaNacimiento'); ?></label>
+                                            <input id="empleado_fechaNacimiento" type="text" class="datepicker-fecha">
+                                            <label for="empleado_fechaNacimiento"><?= label('formEmpleado_fechaNacimiento'); ?></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input name="empleado_fechaIngreso" type="date">
-                                            <label for=""><?= label('formEmpleado_fechaIngreso'); ?></label>
+                                            <input id="empleado_fechaIngreso" type="text" class="datepicker-fecha">
+                                            <label for="empleado_fechaIngreso"><?= label('formEmpleado_fechaIngreso'); ?></label>
                                         </div>
                                         <div class="input-field col s12">
                                             <textarea id="empleado_descripcion" name="empleado_descripcion"

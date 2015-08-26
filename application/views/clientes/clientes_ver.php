@@ -18,8 +18,8 @@
                 <label for="cliente_id"><?= label('formCliente_identificacion'); ?></label>
             </div>
             <div class="input-field col s12">
-                <input type="date" class="datepicker" value="12-12-1970" readonly>
-                <label for=""><?= label('formCliente_fechaNacimiento'); ?></label>
+                <input id="cliente_fechaNacimiento" type="text" class="datepicker-fecha" value="12-12-1970" readonly>
+                <label for="cliente_fechaNacimiento"><?= label('formCliente_fechaNacimiento'); ?></label>
             </div>
             <div class="input-field col s12">
                 <input id="cliente_correo" type="email" value="coopedospinos@gmail.com" readonly>
