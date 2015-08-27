@@ -1,24 +1,68 @@
+<!-- START CONTENT -->
+<!-- <section id="content"> -->
+<!--start container-->
+
+
+<!--    <div id="breadcrumbs-wrapper" class=" grey lighten-3">
+      <div class="container">
+         <div class="row">
+            <div class="col s12 m12 l12">
+               <h5 class="breadcrumbs-title"><?= label('tituloCotizacion'); ?></a></h5>
+            </div>
+         </div>
+      </div>
+   </div> -->
+<!--breadcrumbs end-->
+
+
+<!--  <div class="container">
+    <div id="chart-dashboard">
+       <div class="row">
+          <div class="col s12 m12 l12">
+             <div id="submit-button" class="section">
+                <div class="row">
+                   <div class="col s12 m12 l12">
+                      <div class="card" id="card-paso1"> -->
+
+
 <div id="centered-table">
+    <!--  <h4 class="header">Centered Table</h4> -->
     <div class="row">
+        <!-- <div class="col s12 m4 l3">
+           <p>Add <code class=" language-markup">class="centered"</code> to the table tag to center align all the text in the table</p>
+           </div> -->
         <div class="col s12 m12 l12">
+            <!-- <div class="ui-widget input-field"> -->
             <input type="text" class="tags">
+            <!-- <label class="input-field" for="tags"></label -->
+            <!-- </div> -->
+
+            <!--  <div class="context-menu-one box menu-1">
+                 <strong>right click me</strong>
+             </div> -->
+
 
             <div id="contenerdorTablaDetalles">
-                <table id="cotizacion1-detalles" class="centered">
+                <table class="centered">
                     <thead>
                     <tr>
-                        <th style="text-align: center;">
-                            <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all"
-                                   onclick="toggleChecked(this.checked)"/>
-                            <label for="checkbox-all"></label>
-                        </th>
                         <th class="context-menu-miItem box" id="columna1" data-field="id">
                             <row>
+                                <!-- <div class="col s12 m12 l12">
+                                   <input onclick="check('item', this)" type="checkbox" id="item0" checked>
+                                   <label  class="ver" for="item0">
+                                   </label>
+                                </div> -->
                                 <div class="col s12 m12 l12 celdaTitulo">Item</div>
                             </row>
                         </th>
                         <th class="context-menu-nombre box" data-field="id">
                             <row>
+                                <!-- <div class="col s12 m12 l12">
+                                   <input onclick="check('nombre', this)" type="checkbox" id="nombre0" checked>
+                                   <label class="ver" for="nombre0">
+                                   </label>
+                                </div> -->
                                 <div class="col s12 m12 l12 celdaTitulo">
                                     Nombre
                                 </div>
@@ -26,6 +70,11 @@
                         </th>
                         <th class="context-menu-descripcion box" data-field="id">
                             <row>
+                                <!-- <div class="col s12 m12 l12">
+                                   <input onclick="check('descripcion', this)" type="checkbox" id="descripcion0" checked>
+                                   <label class="ver" for="descripcion0">
+                                   </label>
+                                </div> -->
                                 <div class="col s12 m12 l12 celdaTitulo">
                                     Descripción
                                 </div>
@@ -33,6 +82,11 @@
                         </th>
                         <th class="context-menu-imagen box" data-field="id">
                             <row>
+                                <!-- <div class="col s12 m12 l12">
+                                   <input onclick="check('imagen', this)" type="checkbox" id="imagen0" checked>
+                                   <label class="ver" for="imagen0">
+                                   </label>
+                                </div> -->
                                 <div class="col s12 m12 l12 celdaTitulo">
                                     Imagen
                                 </div>
@@ -40,6 +94,11 @@
                         </th>
                         <th class="context-menu-precio box" data-field="id">
                             <row>
+                                <!-- <div class="col s12 m12 l12">
+                                   <input onclick="check('precio', this)" type="checkbox" id="precio0" checked>
+                                   <label class="ver" for="precio0">
+                                   </label>
+                                </div> -->
                                 <div class="col s12 m12 l12 celdaTitulo">
                                     Precio unitario
                                 </div>
@@ -47,6 +106,11 @@
                         </th>
                         <th class="context-menu-cantidad box" data-field="id">
                             <row>
+                                <!-- <div class="col s12 m12 l12">
+                                   <input onclick="check('cantidad', this)" type="checkbox" id="cantidad0" checked>
+                                   <label class="ver" for="cantidad0">
+                                   </label>
+                                </div> -->
                                 <div class="col s12 m12 l12 celdaTitulo">
                                     Cantidad
                                 </div>
@@ -54,6 +118,11 @@
                         </th>
                         <th class="context-menu-impuestoVenta box" data-field="id">
                             <row>
+                                <!-- <div class="col s12 m12 l12">
+                                   <input onclick="check('impuestoVenta', this)" type="checkbox" id="impuestoVenta0" checked>
+                                   <label class="ver" for="impuestoVenta0">
+                                   </label>
+                                </div> -->
                                 <div class="col s12 m12 l12 celdaTitulo">
                                     Impuesto de venta
                                 </div>
@@ -61,6 +130,11 @@
                         </th>
                         <th class="context-menu-utilidad box" data-field="id">
                             <row>
+                                <!-- <div class="col s12 m12 l12">
+                                   <input onclick="check('utilidad', this)" type="checkbox" id="utilidad0" checked>
+                                   <label class="ver" for="utilidad0">
+                                   </label>
+                                </div> -->
                                 <div class="col s12 m12 l12 celdaTitulo">
                                     Utilidad
                                 </div>
@@ -68,6 +142,11 @@
                         </th>
                         <th class="context-menu-subTotal box" data-field="id">
                             <row>
+                                <!-- <div class="col s12 m12 l12">
+                                   <input onclick="check('subTotal', this)" type="checkbox" id="subTotal0" checked>
+                                   <label class="ver" for="subTotal0">
+                                   </label>
+                                </div> -->
                                 <div class="col s12 m12 l12 celdaTitulo">
                                     SubTotal
                                 </div>
@@ -76,28 +155,27 @@
                         <th class="" data-field="id">
                             <row>
                                 <div class="col s12 m12 l12">
+                                    <!-- <input type="checkbox" id="subTotal0" checked>
+                                       <label class="ver" for="subTotal0">
+                                       </label> -->
                                 </div>
                                 <div class="col s12 m12 l12 celdaTitulo">
                                     Opciones
                                 </div>
                             </row>
                         </th>
-                        <!--                        <th data-field="name">Descripción</th>-->
-                        <!--                        <th data-field="price">Imagen</th>-->
-                        <!--                        <th data-field="price">Precio unitario</th>-->
-                        <!--                        <th data-field="price">cantidad</th>-->
-                        <!--                        <th data-field="price">IV</th>-->
-                        <!--                        <th data-field="price">Utilidad</th>-->
-                        <!--                        <th data-field="price">Subtotal</th>-->
-                        <!--                        <th data-field="price">Opciones</th>-->
+                        <!-- <th data-field="name">Descripción</th>
+                           <th data-field="price">Imagen</th>
+                           <th data-field="price">Precio unitario</th>
+                           <th data-field="price">cantidad</th>
+                           <th data-field="price">IV</th>
+                           <th data-field="price">Utilidad</th>
+                           <th data-field="price">Subtotal</th>
+                           <th data-field="price">Opciones</th> -->
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                        <td style="text-align: center;">
-                            <input type="checkbox" class="filled-in checkbox" id="checkbox_cotizacion1_item1"/>
-                            <label for="checkbox_cotizacion1_item1"></label>
-                        </td>
                         <td>
                             <row>
                                 <div class="col s12 m12 l12">
@@ -208,25 +286,14 @@
                         </td>
                         <td>
                             <div class="col s12 m12 l12 celdaBoton">
-                                <ul id="dropdown-cotizacion1-item1" class="dropdown-content">
-                                    <li>
-                                        <a href="#Elminar"
-                                           class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                    </li>
-                                </ul>
-                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                   data-activates="dropdown-cotizacion1-item1">
-                                    <?= label('menuOpciones_seleccionar') ?><i
-                                        class="mdi-navigation-arrow-drop-down"></i>
+                                <a class="btn_eliminar modal-trigger icono-edicion" href="#Elminar"
+                                   data-toggle="tooltip" title="<?= label('tooltip_eliminar') ?>">
+                                    <i class="mdi-action-delete"></i>
                                 </a>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <td style="text-align: center;">
-                            <input type="checkbox" class="filled-in checkbox" id="checkbox_cotizacion1_item2"/>
-                            <label for="checkbox_cotizacion1_item2"></label>
-                        </td>
                         <td>
                             <row>
                                 <div class="col s12 m12 l12">
@@ -337,25 +404,14 @@
                         </td>
                         <td>
                             <div class="col s12 m12 l12 celdaBoton">
-                                <ul id="dropdown-cotizacion1-item2" class="dropdown-content">
-                                    <li>
-                                        <a href="#Elminar"
-                                           class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                    </li>
-                                </ul>
-                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                   data-activates="dropdown-cotizacion1-item2">
-                                    <?= label('menuOpciones_seleccionar') ?><i
-                                        class="mdi-navigation-arrow-drop-down"></i>
+                                <a class="btn_eliminar modal-trigger icono-edicion" href="#Elminar"
+                                   data-toggle="tooltip" title="<?= label('tooltip_eliminar') ?>">
+                                    <i class="mdi-action-delete"></i>
                                 </a>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <td style="text-align: center;">
-                            <input type="checkbox" class="filled-in checkbox" id="checkbox_cotizacion1_item3"/>
-                            <label for="checkbox_cotizacion1_item3"></label>
-                        </td>
                         <td>
                             <row>
                                 <div class="col s12 m12 l12">
@@ -466,16 +522,9 @@
                         </td>
                         <td>
                             <div class="col s12 m12 l12 celdaBoton">
-                                <ul id="dropdown-cotizacion1-item3" class="dropdown-content">
-                                    <li>
-                                        <a href="#Elminar"
-                                           class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                    </li>
-                                </ul>
-                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                   data-activates="dropdown-cotizacion1-item3">
-                                    <?= label('menuOpciones_seleccionar') ?><i
-                                        class="mdi-navigation-arrow-drop-down"></i>
+                                <a class="btn_eliminar modal-trigger icono-edicion" href="#Elminar"
+                                   data-toggle="tooltip" title="<?= label('tooltip_eliminar') ?>">
+                                    <i class="mdi-action-delete"></i>
                                 </a>
                             </div>
                         </td>
@@ -484,20 +533,8 @@
                 </table>
             </div>
             <br>
+            <a href="#" class="btn btn-default">Nueva linea de detalle</a>
 
-            <div>
-                <a href="#" class="btn btn-default btn-newLine">Nueva linea de detalle</a>
-
-                <div class="tabla-conAgregar tabla-detalles-cotizacion">
-                    <a id="opciones-seleccionados-delete"
-                       class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements"
-                       style="visibility: hidden;"
-                       href="#eliminarElementosSeleccionados" data-toggle="tooltip"
-                       title="<?= label('opciones_seleccionadosEliminar') ?>">
-                        <i class="mdi-action-delete icono-opciones-varios"></i>
-                    </a>
-                </div>
-            </div>
             <div id="resultadoDetalles" class="col s12 m12 l12">
                 <div class="input-field col s12 m6 l3">
                     <div class="input-field col s12">
@@ -524,20 +561,31 @@
                     </div>
                 </div>
             </div>
-            <!--            <div class="row">-->
-            <!--                <div class="input-field col s12 m6 l4">-->
-            <!--                    <a href="-->
-            <? //=base_url();?><!--productos/agregar" class=" left btn btn-default modal-trigger agregarElementos">Agregar nuevo producto</a>-->
-            <!--                </div>-->
-            <!--                <div class="input-field col s12 m6 l4 ">-->
-            <!--                    <a href="-->
-            <? //=base_url();?><!--servicios/agregar" class=" left btn btn-default modal-trigger agregarElementos">Agregar nuevo servicio</a>-->
-            <!--                </div>-->
-            <!--            </div>-->
+            <div class="row">
+                <div class="input-field col s12 m6 l4">
+                    <a href="<?= base_url(); ?>productos/agregar"
+                       class=" left btn btn-default modal-trigger agregarElementos">Agregar nuevo producto</a>
+                </div>
+                <div class="input-field col s12 m6 l4 ">
+                    <a href="<?= base_url(); ?>servicios/agregar"
+                       class=" left btn btn-default modal-trigger agregarElementos">Agregar nuevo servicio</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
+<!-- </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div> -->
+<!--end container-->
+<!-- </section> -->
+<!-- END CONTENT-->
 <script>
     function check(nombre, elemnto) {
         var lista = document.getElementsByClassName(nombre);
@@ -555,6 +603,9 @@
         }
         ;
     }
+</script>
+
+<script>
     function check(nombre) {
         var lista = document.getElementsByClassName(nombre);
         for (var i = 0; i < lista.length; i++) {
@@ -569,6 +620,11 @@
         }
         ;
     }
+
+
+</script>
+
+<script>
     $(function () {
         var availableTags = [
             "Almuerzo",
@@ -600,92 +656,6 @@
     });
 </script>
 
-<!--Funciones de checkboxes y eliminar-->
-<script>
-    $(window).load(function () {
-        var marcados = $('.checkbox:checked').size();
-        if (marcados >= 1) {
-            var elems = document.getElementsByClassName('opciones-seleccionados');
-            var e;
-            for (e in elems) {
-                elems[e].style.visibility = 'visible';
-            }
-        } else {
-            var elems = document.getElementsByClassName('opciones-seleccionados');
-            var e;
-            for (e in elems) {
-                elems[e].style.visibility = 'hidden';
-            }
-        }
-        document.getElementById('checkbox-all').checked = false;
-    });
-    $(document).ready(function () {
-        $('#botonElimnar').on("click", function (event) {
-            var tb = $(this).attr('title');
-            var sel = false;
-            var ch = $('#' + tb).find('tbody input[type=checkbox]');
-            ch.each(function () {
-                var $this = $(this);
-                if ($this.is(':checked')) {
-                    sel = true;
-                    $this.parents('tr').fadeOut(function () {
-                        $this.remove();
-                    });
-                }
-            });
-            return false;
-        });
-    });
-    $(document).ready(function () {
-        $('#checkbox-all').click(function (event) {
-            if (this.checked) {
-                $('.checkbox').each(function () {
-                    this.checked = true;
-                });
-            } else {
-                $('.checkbox').each(function () {
-                    this.checked = false;
-                });
-            }
-        });
-    });
-    $(document).ready(function () {
-        $('.checkbox').click(function (event) {
-            var marcados = $('.checkbox:checked').size();
-            if (marcados >= 1) {
-                var elems = document.getElementsByClassName('opciones-seleccionados');
-                var e;
-                for (e in elems) {
-                    elems[e].style.visibility = 'visible';
-                }
-            } else {
-                var elems = document.getElementsByClassName('opciones-seleccionados');
-                var e;
-                for (e in elems) {
-                    elems[e].style.visibility = 'hidden';
-                }
-            }
-        });
-    });
-    $(document).ready(function () {
-        $('.boton-opciones').on('click', function (event) {
-            // alert(event.type);
-            //e.preventDefault();
-
-            var elementoActivo = $(this).siblings('ul.active');
-            if (elementoActivo.length > 0) {
-                var estado = elementoActivo.css("display");
-                if (estado == "block") {
-                    elementoActivo.css("display", "none");
-                    elementoActivo.style.display = 'none';
-                } else {
-                    elementoActivo.css("display", "block");
-                    elementoActivo.style.display = 'block';
-                }
-            }
-        });
-    });
-</script>
 
 <script type="text/javascript" class="showcase">
     $(function () {
@@ -695,9 +665,13 @@
                 if (key == 'check') {
                     check('item');
                 }
+                ;
+
                 if (key == 'noCheck') {
                     quitarCheck('item');
                 }
+                ;
+
                 // window.console && console.log(m) || alert(m);
             },
             items: {
@@ -708,6 +682,7 @@
                 // "Salir": {name: "Salir", icon: "quit"}
             }
         });
+
         $('.context-menu-miItem').on('click', function (e) {
             console.log('clicked', this);
         })
@@ -720,9 +695,13 @@
                 if (key == 'check') {
                     check('nombre');
                 }
+                ;
+
                 if (key == 'noCheck') {
                     quitarCheck('nombre');
                 }
+                ;
+
                 // window.console && console.log(m) || alert(m);
             },
             items: {
@@ -733,6 +712,7 @@
                 // "Salir": {name: "Salir", icon: "quit"}
             }
         });
+
         $('.context-menu-nombre').on('click', function (e) {
             console.log('clicked', this);
         })
@@ -745,9 +725,13 @@
                 if (key == 'check') {
                     check('descripcion');
                 }
+                ;
+
                 if (key == 'noCheck') {
                     quitarCheck('descripcion');
                 }
+                ;
+
                 // window.console && console.log(m) || alert(m);
             },
             items: {
@@ -758,6 +742,7 @@
                 // "Salir": {name: "Salir", icon: "quit"}
             }
         });
+
         $('.context-menu-descripcion').on('click', function (e) {
             console.log('clicked', this);
         })
@@ -770,9 +755,13 @@
                 if (key == 'check') {
                     check('imagen');
                 }
+                ;
+
                 if (key == 'noCheck') {
                     quitarCheck('imagen');
                 }
+                ;
+
                 // window.console && console.log(m) || alert(m);
             },
             items: {
@@ -783,6 +772,7 @@
                 // "Salir": {name: "Salir", icon: "quit"}
             }
         });
+
         $('.context-menu-imagen').on('click', function (e) {
             console.log('clicked', this);
         })
@@ -795,9 +785,13 @@
                 if (key == 'check') {
                     check('precio');
                 }
+                ;
+
                 if (key == 'noCheck') {
                     quitarCheck('precio');
                 }
+                ;
+
                 // window.console && console.log(m) || alert(m);
             },
             items: {
@@ -808,6 +802,7 @@
                 // "Salir": {name: "Salir", icon: "quit"}
             }
         });
+
         $('.context-menu-precio').on('click', function (e) {
             console.log('clicked', this);
         })
@@ -820,9 +815,13 @@
                 if (key == 'check') {
                     check('cantidad');
                 }
+                ;
+
                 if (key == 'noCheck') {
                     quitarCheck('cantidad');
                 }
+                ;
+
                 // window.console && console.log(m) || alert(m);
             },
             items: {
@@ -833,6 +832,7 @@
                 // "Salir": {name: "Salir", icon: "quit"}
             }
         });
+
         $('.context-menu-cantidad').on('click', function (e) {
             console.log('clicked', this);
         })
@@ -845,9 +845,13 @@
                 if (key == 'check') {
                     check('impuestoVenta');
                 }
+                ;
+
                 if (key == 'noCheck') {
                     quitarCheck('impuestoVenta');
                 }
+                ;
+
                 // window.console && console.log(m) || alert(m);
             },
             items: {
@@ -858,6 +862,7 @@
                 // "Salir": {name: "Salir", icon: "quit"}
             }
         });
+
         $('.context-menu-impuestoVenta').on('click', function (e) {
             console.log('clicked', this);
         })
@@ -870,9 +875,13 @@
                 if (key == 'check') {
                     check('utilidad');
                 }
+                ;
+
                 if (key == 'noCheck') {
                     quitarCheck('utilidad');
                 }
+                ;
+
                 // window.console && console.log(m) || alert(m);
             },
             items: {
@@ -883,10 +892,12 @@
                 // "Salir": {name: "Salir", icon: "quit"}
             }
         });
+
         $('.context-menu-utilidad').on('click', function (e) {
             console.log('clicked', this);
         })
     });
+
 
     $(function () {
         $.contextMenu({
@@ -895,9 +906,13 @@
                 if (key == 'check') {
                     check('subTotal');
                 }
+                ;
+
                 if (key == 'noCheck') {
                     quitarCheck('subTotal');
                 }
+                ;
+
                 // window.console && console.log(m) || alert(m);
             },
             items: {
@@ -908,13 +923,16 @@
                 // "Salir": {name: "Salir", icon: "quit"}
             }
         });
+
         $('.context-menu-subTotal').on('click', function (e) {
             console.log('clicked', this);
         })
     });
+
+
 </script>
 
-<!-- lista modals -->
+
 <div id="Elminar" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
@@ -927,19 +945,3 @@
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
-<div id="eliminarElementosSeleccionados" class="modal">
-    <div class="modal-header">
-        <p><?= label('nombreSistema'); ?></p>
-        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
-    </div>
-    <div class="modal-content">
-        <p><?= label('clientes_archivosSeleccionadosEliminar'); ?></p>
-    </div>
-    <div class="modal-footer black-text">
-        <div id="botonElimnar" title="cotizacion1-detalles">
-            <a href="#"
-               class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
-        </div>
-    </div>
-</div>
-<!-- Fin lista modals -->

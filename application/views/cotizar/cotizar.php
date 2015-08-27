@@ -56,7 +56,7 @@
                                                 </div>
                                             </div>
                                             <div id="paso2" class="card card-ContenidoPasos col s12">
-                                                <?php $this->load->view('cotizar/paso2_2'); ?>
+                                                <?php $this->load->view('cotizar/paso2'); ?>
                                                 <br/>
 
                                                 <div class="atras_adelante">
