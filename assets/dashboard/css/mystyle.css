@@ -428,3 +428,8 @@ input, optgroup, select, textarea {
 #listaConfiguracion{
 	width: 160px !important;
 }
+
+#ui-id-2{
+	display: block !important;
+}
+

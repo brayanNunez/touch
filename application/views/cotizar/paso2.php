@@ -585,6 +585,31 @@
         $(".tags").autocomplete({
             source: availableTags
         });
+
+         $('.tags').bind('autocompleteopen', function(event,data){
+
+          $('<li tabindex="-1" class="ui-menu-item" id=""><a href="....">Agregar producto</a></li>').prependTo('ul.ui-autocomplete');
+       
+        });
+
+        $('.tags').on("input", function(){
+            
+            var primero = "true";
+            $(".ui-menu-item").each(function(index, val) {
+                if (!primero) {
+                    val.remove();
+                } 
+                primero = false;
+              
+            });
+
+            // $('.ui-menu-item').remove();
+            $('#ui-id-2').css('display', 'block');
+
+         });
+           
+           
+
     });
 </script>
 

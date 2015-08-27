@@ -104,4 +104,18 @@ class Cotizacion extends CI_Controller
         echo $json;
     }
 
+    function encryptIt($q) {
+        $cryptKey = 'llave_unica';
+        $qEncoded = rtrim(strtr(base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5($cryptKey), $q, MCRYPT_MODE_CBC, md5(md5($cryptKey)))), '+/', '-_'), '=');
+        echo $qEncoded;
+        return( $qEncoded );
+    }
+
+    function decryptIt($q) {
+        $cryptKey = 'llave_unica';
+        $qDecoded = rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, md5($cryptKey), base64_decode(strtr($q, '-_', '+/')), MCRYPT_MODE_CBC, md5(md5($cryptKey))), "\0");
+        echo $qDecoded;
+        return( $qDecoded );
+    }
+
 }
