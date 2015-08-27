@@ -41,8 +41,9 @@
     $lang['confirmarCancelarCotizacion'] = '¿Realmente desea cancelar la cotización en proceso?';
     $lang['confirmarObtenerPlan'] = '¿Realmente desea obtener el plan?';
 
-    
-
+    $lang['confirmarEliminarProductoServicio'] = '¿Realmente desea eliminar el elemento seleccionado?';
+    $lang['confirmarActivarProductoServicio'] = '¿Realmente desea activar el elemento seleccionado?';
+    $lang['confirmarDesactivarProductoServicio'] = '¿Realmente desea desactivar el elemento seleccionado?';
 
 //tipos de salario
     $lang['horas'] = 'Por horas';
@@ -87,6 +88,7 @@
     $lang['tituloFormularioImpuesto'] = 'Agregar impuesto';
 	$lang['tituloProducto'] = 'Productos';
 	$lang['tituloServicios'] = 'Servicios';
+	$lang['tituloProductosServicios'] = 'Productos y servicios';
 	$lang['tituloEmpleados'] = 'Empleados';
 	$lang['tituloProveedores'] = 'Proveedores';
 	$lang['tituloClientes'] = 'Clientes';
@@ -423,6 +425,33 @@ $lang['listarReporteCot'] = 'Reportes cotizaciones';
     $lang['formServicio_nuevaPersonaSalarioMonto'] = 'Monto';
 
 //Formulario de producto
+    $lang['ProductosServicios_busquedaAvanzada'] = 'Búsqueda avanzada';
+    $lang['ProductosServicios_tablaNombre'] = 'Nombre';
+    $lang['ProductosServicios_tablaCodigo'] = 'Código';
+    $lang['ProductosServicios_tablaDescripcion'] = 'Descripción';
+    $lang['ProductosServicios_tablaCantidad'] = 'Cant.';
+    $lang['ProductosServicios_tablaPrecioUnitario'] = 'Precio unitario';
+    $lang['ProductosServicios_tablaImpuestos'] = 'Impuestos';
+    $lang['ProductosServicios_tablaPrecioFinal'] = 'Precio final';
+    $lang['ProductosServicios_tablaOpciones'] = 'Opciones';
+    $lang['ProductosServicios_nuevo'] = 'Agregar nuevo';
+
+    $lang['ProductosServicios_seleccionarCategorias'] = 'Seleccione las categorías donde desea agregar el producto:';
+    $lang['ProductosServicios_categorias'] = 'Categorías:';
+
+    $lang['busquedaPS_codigo'] = 'Código';
+    $lang['busquedaPS_todos'] = 'Todos';
+    $lang['busquedaPS_productos'] = 'Productos';
+    $lang['busquedaPS_servicios'] = 'Servicios';
+    $lang['busquedaPS_tipo'] = 'Tipo';
+    $lang['busquedaPS_categoria'] = 'Categorías';
+    $lang['busquedaPS_elementos'] = 'Elementos';
+    $lang['busquedaPS_precioDesde'] = 'Precio desde';
+    $lang['busquedaPS_precioHasta'] = 'Precio hasta';
+    $lang['busquedaPS_estado'] = 'Estado';
+    $lang['busquedaPS_impuesto'] = 'Impuesto';
+    $lang['busquedaPS_unidad'] = 'Unidad';
+
     $lang['Producto_agregarNuevo'] = 'Agregar producto';
     $lang['Producto_tipo'] = 'Tipo de elemento';
     $lang['Producto_categorias'] = 'Categorías';
@@ -564,9 +593,14 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['menuOpciones_eliminar'] = 'Eliminar';
     $lang['menuOpciones_abrir'] = 'Abrir';
     $lang['menuOpciones_agregarCategoria'] = 'Agregar categoría';
-    $lang['menuOpciones_agregarProducto'] = 'Agregar producto';
+    $lang['menuOpciones_agregarProducto'] = 'Producto';
+    $lang['menuOpciones_agregarServicio'] = 'Servicio';
+    $lang['menuOpciones_cambiarCategoria'] = 'Cambiar categoría';
+    $lang['menuOpciones_activar'] = 'Activar';
+    $lang['menuOpciones_desactivar'] = 'Desactivar';
     $lang['opciones_seleccionadosEliminar'] = 'Eliminar los elementos seleccionados';
     $lang['opciones_seleccionadosImprimir'] = 'Imprimir los elementos seleccionados';
+    $lang['opciones_seleccionadosCotizar'] = 'Realizar una cotización con los elementos seleccionados';
     $lang['opciones_seleccionadosExportar'] = 'Exportar tabla';
     $lang['opciones_seleccionadosExportarPdf'] = 'Pdf';
     $lang['opciones_seleccionadosExportarExcel'] = 'Excel';
