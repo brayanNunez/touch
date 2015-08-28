@@ -197,6 +197,7 @@
     $lang['guardarDescargar'] = 'Guardar y descargar';
     $lang['guardarCerrar'] = 'Guardar y cerrar';
     $lang['cancelarCot'] = 'Cancelar cotización';
+    $lang['agregarNuevo'] = 'Agregar nuevo';
 
 
 //comentarios de una cotizacion
@@ -209,12 +210,13 @@
 	$lang['paso4'] = '4 Finalizar';
 	$lang['pasoAnterior'] = 'Atrás';
 	$lang['pasoSiguiente'] = 'Siguiente';
+    $lang['paso2_elegirProducto'] = 'Elija un producto';
 
 //Menu izquierdo 
 	$lang['inicio'] = 'Panel principal';
 	$lang['cotizaciones'] = 'Cotizaciones';
-$lang['listarCotizacion'] = 'Lista de cotizaciones';
-$lang['listarReporteCot'] = 'Reportes cotizaciones';
+    $lang['listarCotizacion'] = 'Lista de cotizaciones';
+    $lang['listarReporteCot'] = 'Reportes cotizaciones';
 	$lang['servicios'] = 'Servicios';
 	$lang['productos'] = 'Productos';
 	$lang['agregarP'] = 'Agregar producto';

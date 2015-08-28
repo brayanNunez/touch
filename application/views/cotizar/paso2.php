@@ -1,10 +1,10 @@
 <button onclick="botonEnLista('hola')">prueba</button>
 
 <script type="text/javascript">
-    function botonEnLista(idBoton, nuevoElementoAgregar){
+    function botonEnLista(tipo, idBoton, nuevoElementoAgregar){
         generarAutocompletar(3);
         generarListas();
-        alert(idBoton + " palabra: " + nuevoElementoAgregar);
+        alert("tipo: " +tipo+ " id: " + idBoton + " palabra: " + nuevoElementoAgregar);
     }
 
      function generarAutocompletar(id){
