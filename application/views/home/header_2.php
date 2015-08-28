@@ -75,6 +75,69 @@
         });
     </script>
 
+    <script type="text/javascript">
+        function registro(seleccion) {
+            if (seleccion.value == "1") {
+                $("#informacion-empresa").hide();
+                $("#direccion-empresa").hide();
+                $("#informacion-contacto").hide();
+                $("#informacion-independiente").fadeIn('slow');
+                $("#direccion-independiente").fadeIn('slow');
+            } if (seleccion.value == "2") {
+                $("#informacion-independiente").hide();
+                $("#direccion-independiente").hide();
+                $("#informacion-empresa").fadeIn('slow');
+                $("#direccion-empresa").fadeIn('slow');
+                $("#informacion-contacto").fadeIn('slow');
+            }
+        }
+    </script>
+
+    <script>
+
+        $(document).on('ready',function(){
+            $("#informacion-independiente").hide();
+            $("#direccion-independiente").hide();
+            $("#informacion-empresa").hide();
+            $("#direccion-empresa").hide();
+            $("#informacion-contacto").hide();
+
+
+            //var elem = $('#caja1');
+            //mostrar elemento
+            //$('#btn1').on('click',function(){
+             //   elem.show()
+            //});
+
+            //ocultar elemento
+            //$('#btn2').on('click',function(){
+              //  elem.hide()
+            //});
+
+            //desplazar y ocultar
+            /*$('#btn3').on('click',function(){
+                elem.slideDown(600)
+            });
+
+            //desplazar y mostrar
+            $('#btn4').on('click',function(){
+                elem.slideUp(200)
+            });
+
+            //mostrar con sombra
+            $('#btn5').on('hover',function(){
+                elem.fadeIn('slow')
+            });
+
+            //ocultar con sombra
+            $('#btn6').on('click',function(){
+                elem.fadeOut('fast')
+            });*/
+
+        });
+
+    </script>
+
 </head>
 
 <body class="btn-rounded">
