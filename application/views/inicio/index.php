@@ -387,21 +387,12 @@
 
 
                 <!-- Floating Action Button -->
-                <!--                                <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">-->
-                <!--                                    <a class="btn-floating btn-large red" href="-->
-                <? //=base_url();?><!--cotizacion/cotizar">-->
-                <!--                                      <i class="large mdi-editor-mode-edit"></i>-->
-                <!--                                    </a>-->
-                <!--                                 <ul>-->
-                <!--                                    -->
-                <!--                                    <li><a href="#" class="btn-floating blue"><i class="large mdi-communication-email"></i></a></li>-->
-                
-                <!--                                  </ul>-->
-                <!--                                </div>-->
-                <!-- Floating Action Button -->
-
-                <!-- Floating Action Button -->
-                <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+                <?php
+                    $this->load->view('layout/default/menu-crear.php');
+                ?>
+                <a href="#RegistroIndependiente" class="-text modal-trigger">Completar registro independiente</a>
+                <a href="#RegistroEmpresa" class="-text modal-trigger">Completar registro empresa</a>
+                <!--<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
                     <a class="btn-floating btn-large red" href="">
                         <i class="large mdi-content-add"></i>
                     </a>
@@ -432,23 +423,7 @@
                             </a>
                         </li>
                     </ul>
-                </div>
-                <!-- Floating Action Button -->
-
-                <!-- Floating Action Button -->
-                <!--                                <div class="fixed-action-btn" style="bottom: 45px; right: 160px;">-->
-                <!--                                    <a class="btn-floating btn-large red" href="">-->
-                <!--                                        <i class="large mdi-file-file-download"></i>-->
-                <!--                                    </a>-->
-                <!--                                    <ul>-->
-                <!--                                        <li>-->
-                <!--                                            <a href="#" class="btn-floating">Excel</a>-->
-                <!--                                        </li>-->
-                <!--                                        <li>-->
-                <!--                                            <a href="#" class="btn-floating">PDF</a>-->
-                <!--                                        </li>-->
-                <!--                                    </ul>-->
-                <!--                                </div>-->
+                </div>-->
                 <!-- Floating Action Button -->
 
             </div>
@@ -458,3 +433,223 @@
     <!--end container-->
 </section>
 <!-- END CONTENT -->
+
+<!-- lista modals -->
+<!-- start modal registro independiente -->
+<div id="RegistroIndependiente" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+
+        <div class="input-field col s12">
+            <h7>Termine de completar la información de su perfil</h7>
+        </div>
+
+        <div class="row">
+
+            <div class="file-field col s12">
+                <div class="file-field input-field col s12">
+                    <input id="registro_ImagenIndepediente" class="file-path validate campo-registro" type="text"
+                           placeholder="Foto o logo"/>
+                    <div class="btn" data-toggle="tooltip"
+                         title="<?= label('tooltip_examinar') ?>"
+                         style="border-radius: 0px !important; min-width: 13%;">
+                        <span><i class="mdi-action-search"></i></span>
+                        <input type="file"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-field col s12 m6 l6">
+                <div class="input-field col s12">
+                    <input id="registro_telefonoIndepediente" class="campo-registro" type="text"
+                           placeholder="Teléfono">
+                </div>
+            </div>
+
+            <div class="input-field col s12 m6 l6">
+                <div class="input-field col s12">
+                    <input id="registro_celularIndepediente" class="campo-registro" type="text"
+                           placeholder="Celular">
+                </div>
+            </div>
+
+            <div class="input-field col s12">
+                <input id="registro-fechaNacIndependiente" class="datepicker-fecha" type="text">
+                <label for="registro-fechaNacIndependiente">Fecha de nacimiento</label>
+            </div>
+
+            <div class="input-field col s12">
+                <div class="input-field col s12">
+                    <input id="registro_profesionIndepediente" class="campo-registro" type="text"
+                           placeholder="Profesión">
+                </div>
+            </div>
+
+            <div class="input-field col s12">
+                <select>
+                    <option class="selected-option" selected disabled>Actividad comercial</option>
+                    <option>Trabajador independiente</option>
+                    <option>Empresa</option>
+                </select>
+            </div>
+
+            <div class="input-field col s12">
+                <div class="input-field col s12">
+                    <input id="registro_sitioWebIndepediente" class="campo-registro" type="text"
+                           placeholder="Sitio web">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <div class="input-field col s12 m6 l6">
+            <div class="input-field col s12">
+                <a style="float:left;" href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Ignorar</a>
+            </div>
+        </div>
+        <div class="input-field col s12 m6 l6">
+            <div class="input-field col s12">
+                <a style="float:right;" href="#" class="waves-effect waves-green btn-flat modal-action modal-close">Guardar</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal registro independiente -->
+
+<!-- start modal registro empresa -->
+<div id="RegistroEmpresa" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+
+        <div class="input-field col s12">
+            <h7>Termine de completar la información de su perfil</h7>
+        </div>
+
+        <div class="row">
+
+            <div class="file-field col s12">
+                <div class="file-field input-field col s12">
+                    <input id="registro_ImagenEmpresa" class="file-path validate campo-registro" type="text"
+                           placeholder="Foto o logo"/>
+                    <div class="btn" data-toggle="tooltip"
+                         title="<?= label('tooltip_examinar') ?>"
+                         style="border-radius: 0px !important; min-width: 13%;">
+                        <span><i class="mdi-action-search"></i></span>
+                        <input type="file"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-field col s12">
+                <div class="input-field col s12">
+                    <input id="registro_correoEmpresa" class="campo-registro" type="email"
+                           placeholder="Correo electrónico empresarial">
+                </div>
+            </div>
+
+            <div class="input-field col s12 m6 l6">
+                <div class="input-field col s12">
+                    <input id="registro_telefonoEmpresa" class="campo-registro" type="text"
+                           placeholder="Teléfono">
+                </div>
+            </div>
+
+            <div class="input-field col s12 m6 l6">
+                <div class="input-field col s12">
+                    <input id="registro_celularEmpresa" class="campo-registro" type="text"
+                           placeholder="Celular">
+                </div>
+            </div>
+
+            <div class="input-field col s12">
+                <input id="registro-fechaCreacionEmpresa" class="datepicker-fecha" type="text">
+                <label for="registro-fechaCreacionEmpresa">Fecha de creación</label>
+            </div>
+
+            <div class="input-field col s12">
+                <select>
+                    <option class="selected-option" selected disabled>Tamaño de la empresa</option>
+                    <option>1 a 5</option>
+                    <option>6 a 10</option>
+                    <option>11 a 25</option>
+                    <option>26 a 50</option>
+                    <option>50+</option>
+                    <option>100+</option>
+                    <option>250+</option>
+                    <option>500+</option>
+                </select>
+            </div>
+
+            <div class="input-field col s12">
+                <select>
+                    <option class="selected-option" selected disabled>Actividad comercial</option>
+                    <option>Trabajador independiente</option>
+                    <option>Empresa</option>
+                </select>
+            </div>
+
+            <div class="input-field col s12">
+                <div class="input-field col s12">
+                    <input id="registro_sitioWebEmpresa" class="campo-registro" type="text"
+                           placeholder="Sitio web">
+                </div>
+            </div>
+
+            <div class="input-field col s12">
+                <h7>Datos del contacto (Se recomienda representante legal)</h7>
+            </div>
+
+            <div class="input-field col s12">
+                <div class="input-field col s12">
+                    <input id="registro_contactoPuesto" class="campo-registro" type="text"
+                           placeholder="Puesto">
+                </div>
+            </div>
+
+            <div class="input-field col s12">
+                <input id="registro-fechaNacContacto" class="datepicker-fecha" type="text">
+                <label for="registro-fechaNacContacto">Fecha de nacimiento</label>
+            </div>
+
+            <div class="input-field col s12 m6 l6">
+                <div class="input-field col s12">
+                    <input id="registro_telefonoContacto" class="campo-registro" type="text"
+                           placeholder="Teléfono">
+                </div>
+            </div>
+
+            <div class="input-field col s12 m6 l6">
+                <div class="input-field col s12">
+                    <input id="registro_celularContacto" class="campo-registro" type="text"
+                           placeholder="Celular">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+        <div class="input-field col s12 m6 l6">
+            <div class="input-field col s12">
+                <a style="float:left;" href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Ignorar</a>
+            </div>
+        </div>
+        <div class="input-field col s12 m6 l6">
+            <div class="input-field col s12">
+                <a style="float:right;" href="#" class="waves-effect waves-green btn-flat modal-action modal-close">Guardar</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal registro empresa -->
+
+<!--Fin lista modals -->

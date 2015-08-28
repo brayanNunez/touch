@@ -16,16 +16,15 @@
                                         <div class="input-field col s12 m6 l0">
                                             <div class="input-field col s12">
                                                 <select onChange="registro(this)">
-                                                    <option value="" class="selected-option" selected disabled>Tipo de usuario
-                                                    </option>
-                                                    <option value="1">Trabajador independiente</option>
+                                                    <!--<option value="" class="selected-option" selected disabled>Tipo de usuario</option>-->
+                                                    <option value="1" selected>Trabajador independiente</option>
                                                     <option value="2">Empresa</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="input-field col s12 m6 l0">
                                             <div class="input-field col s12">
-                                                <input id="registro_cedulaIndepediente" class="campo-registro" type="text"
+                                                <input id="registro_cedula" class="campo-registro" type="text"
                                                        placeholder="Cédula">
                                             </div>
                                         </div>

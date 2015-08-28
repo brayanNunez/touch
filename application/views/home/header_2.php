@@ -96,8 +96,8 @@
     <script>
 
         $(document).on('ready',function(){
-            $("#informacion-independiente").hide();
-            $("#direccion-independiente").hide();
+            $("#informacion-independiente").show();
+            $("#direccion-independiente").show();
             $("#informacion-empresa").hide();
             $("#direccion-empresa").hide();
             $("#informacion-contacto").hide();
