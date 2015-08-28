@@ -2,13 +2,22 @@
 
 <script type="text/javascript">
     function botonEnLista(idBoton, nuevoElementoAgregar){
+        generarAutocompletar(3);
+        generarListas();
         alert(idBoton + " palabra: " + nuevoElementoAgregar);
     }
-</script>
 
-<script type="text/javascript">
-    $(document).on("ready", function(){
-
+     function generarAutocompletar(id){
+        var miSelect = $('<select data-tipo="producto" id="botonLista' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso2_elegirProducto"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
+        miSelect.append('<option value=""></option>');
+        miSelect.append('<option value="Uganda">Uganda</option>');
+        miSelect.append('<option value="Ukraine">Ukraine</option>');
+        miSelect.append('<option value="United Arab Emirates">United Arab Emirates</option>');
+        miSelect.append('<option value="United Kingdom">United Kingdom</option>');
+        miSelect.append('<option value="United States">United States</option>');
+        miSelect.append('<option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>');
+        $('#contenedorSelect' + id + '').html(miSelect);
+    }
     function generarListas(){
 
         var config = {'.chosen-select'           : {}}
@@ -16,53 +25,14 @@
             $(selector).chosen(config[selector]);
           }
     }
+</script>
 
-    
+<script type="text/javascript">
+    $(document).on("ready", function(){
 
-
-    function generarAutocompletar(id){
-    var miSelect = $('<select id="botonLista' + id + '" data-placeholder="Choose a Country..." class="chosen-select" style="width:350px;" tabindex="2"></select>');
-    miSelect.append('<option value=""></option>');
-    miSelect.append('<option value="Uganda">Uganda</option>');
-    miSelect.append('<option value="Ukraine">Ukraine</option>');
-    miSelect.append('<option value="United Arab Emirates">United Arab Emirates</option>');
-    miSelect.append('<option value="United Kingdom">United Kingdom</option>');
-    miSelect.append('<option value="United States">United States</option>');
-    miSelect.append('<option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>');
-     $('#contenedorSelect' + id + '').html(miSelect);
-
-
-     var vendedores = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/vendedores.json'
-            prefetch: {
-                url: '<?=base_url()?>Cotizacion/jsonVendedores',
-                ttl: 1000
-            }
-        });
-
-        vendedores.initialize();
-
-        elt = $('.tags_vendedores > > input');
-        elt.tagsinput({
-            itemValue: 'value',
-            itemText: 'text',
-            typeaheadjs: {
-                name: 'vendedores',
-                displayKey: 'text',
-                source: vendedores.ttAdapter()
-            }
-        });
-
-    }
-    generarAutocompletar(1);
-     generarAutocompletar(2);
-      generarAutocompletar(3);
-      generarListas();
-    
-
-     
+        generarAutocompletar(1);
+        generarAutocompletar(2);
+        generarListas();
 
     });
      

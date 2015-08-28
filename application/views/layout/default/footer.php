@@ -192,6 +192,9 @@ Scripts
 <script type="text/javascript" src="<?= base_url() ?>assets/dashboard/js/plugins.js"></script>
 <!-- Toast Notification -->
 
+  <!-- autocompletar con boton dentro -->
+  <script src="<?= base_url()?>assets/dashboard/js/chosen.jquery.js" type="text/javascript"></script>
+
 
 <div id="login-page" class="modal fade in" style="width: 25%; max-height: none; ">
     <div class="col s12 z-depth-4 card-panel" style="box-shadow: none; margin: 0px; padding-bottom: 0px; ">
@@ -246,17 +249,16 @@ Scripts
 </div>
 
 
-    <!-- autocompletar con boton dentro -->
-  <script src="<?= base_url()?>assets/dashboard/js/chosen.jquery.js" type="text/javascript"></script>
+  
   <script type="text/javascript">
 
 
-      $(document).on("ready", function(){
-          var config = {'.chosen-select select'           : {}}
-          for (var selector in config) {
-            $(selector).chosen(config[selector]);
-          }
-      });
+      // $(document).on("ready", function(){
+      //     var config = {'.chosen-select select'           : {}}
+      //     for (var selector in config) {
+      //       $(selector).chosen(config[selector]);
+      //     }
+      // });
 
 
   </script>
