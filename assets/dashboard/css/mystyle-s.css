@@ -164,6 +164,8 @@ table.tabla-categorias tbody tr td label { padding-left: 25px; }
 table.tabla-categorias tbody tr td span.nivel1 { margin-left: 0; }
 table.tabla-categorias tbody tr td span.nivel2 { margin-left: 20px; }
 
+div#agregarCategoria { top: 5% !important; width: 70%; }
+
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/
     div#login-page { width: 380px !important; max-height: 408px !important; top: 0 !important; }

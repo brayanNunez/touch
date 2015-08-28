@@ -25,13 +25,13 @@
                                     <div id="table-datatables">
                                         <div class="row">
                                             <div class="col s12 m12 l12">
+                                                <div class="agregar_nuevo">
+                                                    <a href="#agregarCategoria"
+                                                       class="btn modal-trigger"><?= label('Categorias_nuevo'); ?></a>
+                                                </div>
                                                 <table id="gastos-tabla-lista"
                                                        class="data-table-information responsive-table display"
                                                        cellspacing="0">
-                                                    <div class="agregar_nuevo">
-                                                        <a href="#agregarCategoria"
-                                                           class="btn modal-trigger"><?= label('Categorias_nuevo'); ?></a>
-                                                    </div>
                                                     <thead>
                                                         <tr>
                                                             <th style="text-align: center;">
@@ -325,14 +325,81 @@
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
-    <div class="modal-content">
-        <div class="input-field col s12">
-            <input id="gasto_nombre" type="text">
-            <label for="gasto_nombre"><?= label('formGastos_nombre'); ?></label>
+    <div class="modal-content" style="padding: 0;">
+        <p style="font-size: larger; text-align: left; margin-left: 2%; font-weight: bold;">
+            <?= label('Categorias_nuevo'); ?>
+        </p>
+        <div class="row">
+            <div class="col s12">
+                <div class="input-field col s12 m6 l8">
+                    <input id="gasto_nombre" type="text">
+                    <label for="gasto_nombre"><?= label('Categorias_codigo'); ?></label>
+                </div>
+                <a class="btn" href="#" style="margin-top: 13px;"
+                   onclick="document.getElementById('mediosCliente').style.display = 'block';">
+                    Agregar productos
+                </a>
+            </div>
+            <div class="col s12">
+                <div class="input-field col s12 m6 l8">
+                    <input id="gasto_monto" type="text">
+                    <label for="gasto_monto"><?= label('Categorias_nombre'); ?></label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="inputTag col s12 m6 l8">
+                    <div id="mediosCliente" class="example tags_mediosContacto" style="display: none;">
+                        <div class="bs-example">
+                            <input placeholder="<?= label('Categorias_annadir'); ?>" type="text"
+                                   value="Zapatos de mujer,Zapatos deportivos"/>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                <div class="input-field col s12 m6 l8">
+                    <a class="btn" href="#"
+                       onclick="document.getElementById('nueva-subcategoria').style.display = 'block';">
+                        Agregar subcategoria
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="input-field col s12">
-            <input id="gasto_monto" type="text">
-            <label for="gasto_monto"><?= label('formGastos_monto'); ?></label>
+        <div id="nueva-subcategoria" style="display: none;">
+            <p style="font-size: larger; text-align: left; margin-left: 2%; font-weight: bold;">
+                <?= label('Subcategorias_nuevo'); ?>
+            </p>
+            <div class="row">
+                <div class="col s12">
+                    <div class="input-field col s12 m6 l8">
+                        <input id="gasto_nombre" type="text">
+                        <label for="gasto_nombre"><?= label('Subcategorias_codigo'); ?></label>
+                    </div>
+                    <a class="btn" href="#" style="margin-top: 13px;">Agregar productos</a>
+                </div>
+                <div class="col s12">
+                    <div class="input-field col s12 m6 l8">
+                        <input id="gasto_monto" type="text">
+                        <label for="gasto_monto"><?= label('Subcategorias_nombre'); ?></label>
+                    </div>
+                    <a href="#" style="margin-top: 13px;">
+                        <i class="mdi-action-delete medium" style="color: black;"></i>
+                    </a>
+                </div>
+                <div class="col s12">
+                    <div class="inputTag col s12 m6 l8">
+                        <div id="mediosCliente" class="example tags_mediosContacto">
+                            <div class="bs-example">
+                                <input placeholder="<?= label('Categorias_annadirProducto'); ?>" type="text"
+                                       value=""/>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <div class="input-field col s12 m6 l8">
+                        <a class="btn" href="#" style="">Agregar otra subcategoria</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="modal-footer">
@@ -373,4 +440,33 @@
         </div>
     </div>
 </div>
+
+<script>
+    var mediosContacto = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/gustos.json'
+        prefetch: {
+            url: '<?=base_url()?>Cotizacion/jsonContactos',
+            ttl: 1000,
+            filter: function (list) {
+                return $.map(list, function (mediosContacto) {
+                    return {name: mediosContacto};
+                });
+            }
+        }
+    });
+    mediosContacto.initialize();
+
+    var elt = $('.tags_mediosContacto > > input');
+    elt.tagsinput({
+        typeaheadjs: {
+            name: 'mediosContacto',
+            displayKey: 'name',
+            valueKey: 'name',
+            source: mediosContacto.ttAdapter()
+        }
+    });
+</script>
+
 <!-- Fin lista modals -->
