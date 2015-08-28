@@ -2,13 +2,14 @@
 
 <script type="text/javascript">
     function botonEnLista(tipo, idBoton, nuevoElementoAgregar){
-        generarAutocompletar(3);
+        generarAutocompletarProductoNombre(3);
+        generarAutocompletarProductoItem(3);
         generarListas();
         alert("tipo: " +tipo+ " id: " + idBoton + " palabra: " + nuevoElementoAgregar);
     }
 
-     function generarAutocompletar(id){
-        var miSelect = $('<select data-tipo="producto" id="botonLista' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso2_elegirProducto"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
+     function generarAutocompletarProductoNombre(id){
+        var miSelect = $('<select data-tipo="productoNombre" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso2_elegirProductoNombre"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
         miSelect.append('<option value=""></option>');
         miSelect.append('<option value="Uganda">Uganda</option>');
         miSelect.append('<option value="Ukraine">Ukraine</option>');
@@ -16,7 +17,18 @@
         miSelect.append('<option value="United Kingdom">United Kingdom</option>');
         miSelect.append('<option value="United States">United States</option>');
         miSelect.append('<option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>');
-        $('#contenedorSelect' + id + '').html(miSelect);
+        $('#contenedorSelectProductoNombre' + id + '').html(miSelect);
+    }
+    function generarAutocompletarProductoItem(id){
+        var miSelect = $('<select data-tipo="productoItem" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso2_elegirProductoItem"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
+        miSelect.append('<option value=""></option>');
+        miSelect.append('<option value="Uganda">001</option>');
+        miSelect.append('<option value="Ukraine">002</option>');
+        miSelect.append('<option value="United Arab Emirates">003</option>');
+        miSelect.append('<option value="United Kingdom">123</option>');
+        miSelect.append('<option value="United States">234</option>');
+        miSelect.append('<option value="United States Minor Outlying Islands">458</option>');
+        $('#contenedorSelectProductoItem' + id + '').html(miSelect);
     }
     function generarListas(){
 
@@ -30,8 +42,11 @@
 <script type="text/javascript">
     $(document).on("ready", function(){
 
-        generarAutocompletar(1);
-        generarAutocompletar(2);
+        generarAutocompletarProductoNombre(1);
+        generarAutocompletarProductoNombre(2);
+
+        generarAutocompletarProductoItem(1);
+        generarAutocompletarProductoItem(2);
         generarListas();
 
     });
@@ -150,9 +165,9 @@
                                     <label class="ver" for="item_1">
                                     </label>
                                 </div> -->
-                                <div class="col s12 m12 l12 celda">
-                                    <input value="001" type="text" name="item_1">
-                                </div>
+                                <!-- <div class="col s12 m12 l12 celda"> -->
+                                    <div id="contenedorSelectProductoItem1" class="contenedorSelectProductoItem"></div>
+                                <!-- </div> -->
                             </row>
                         </td>
                         <td>
@@ -162,9 +177,9 @@
                                     <label class="ver" for="nombre_1">
                                     </label>
                                 </div> -->
-                                <div class="col s12 m12 l12 celda">
-                                    <div id="contenedorSelect1" class="contenedorSlect"></div>
-                                    
+                                <!-- <div class="col s12 m12 l12 celda"> -->
+                                    <div id="contenedorSelectProductoNombre1" class="contenedorSelectProductoNombre"></div>
+                                    <!--  -->
                                 </div>
                             </row>
                         </td>
@@ -175,9 +190,9 @@
                                     <label class="ver" for="descripcion_1">
                                     </label>
                                 </div> -->
-                                <div class="col s12 m12 l12 celda">
+                                <!-- <div class="col s12 m12 l12 celda"> -->
                                     <input value="Arroz, ensalada, carne" type="text" name="descripcion_1">
-                                </div>
+                                <!-- </div> -->
                             </row>
                         </td>
                         <td>
@@ -187,9 +202,9 @@
                                     <label class="ver" for="imagen_1">
                                     </label>
                                 </div> -->
-                                <div class="col s12 m12 l12 celda">
+                                <!-- <div class="col s12 m12 l12 celda"> -->
                                     <input value="Almuerzo.jpg" type="text" name="imagen_1" readonly="true">
-                                </div>
+                                <!-- </div> -->
                             </row>
                         </td>
                         <td>
@@ -199,9 +214,9 @@
                                     <label class="ver" for="precio_1">
                                     </label>
                                 </div> -->
-                                <div class="col s12 m12 l12 celda">
+                                <!-- <div class="col s12 m12 l12 celda"> -->
                                     <input value="$6" type="text" name="precio_1">
-                                </div>
+                                <!-- </div> -->
                             </row>
                         </td>
                         <td>
@@ -211,9 +226,9 @@
                                     <label class="ver" for="cantidad_1">
                                     </label>
                                 </div> -->
-                                <div class="col s12 m12 l12 celda">
+                                <!-- <div class="col s12 m12 l12 celda"> -->
                                     <input value="20" type="number" name="cantidad_1">
-                                </div>
+                                <!-- </div> -->
                             </row>
                         </td>
                         <td>
@@ -223,9 +238,9 @@
                                     <label class="ver" for="impuestoVenta_1">
                                     </label>
                                 </div> -->
-                                <div class="col s12 m12 l12 celda">
+                                <!-- <div class="col s12 m12 l12 celda"> -->
                                     <input value="13" type="number" name="impuestoVenta_1">
-                                </div>
+                                <!-- </div> -->
                             </row>
                         </td>
                         <td>
@@ -235,9 +250,9 @@
                                     <label class="ver" for="utilidad_1">
                                     </label>
                                 </div> -->
-                                <div class="col s12 m12 l12 celda">
+                                <!-- <div class="col s12 m12 l12 celda"> -->
                                     <input value="2" type="number" name="utilidad_1">
-                                </div>
+                                <!-- </div> -->
                             </row>
                         </td>
                         <td>
@@ -247,9 +262,9 @@
                                     <label class="ver" for="subTotal_1">
                                     </label>
                                 </div> -->
-                                <div class="col s12 m12 l12 celda">
+                                <!-- <div class="col s12 m12 l12 celda"> -->
                                     <input value="$120" type="text" name="subTotal_1" readonly="true">
-                                </div>
+                                <!-- </div> -->
                             </row>
                         </td>
                         <td>
@@ -280,9 +295,9 @@
                                     <label class="ver" for="item_2">
                                     </label>
                                 </div> -->
-                                <div class="col s12 m12 l12 celda">
-                                    <input value="002" type="text" name="item_2">
-                                </div>
+                                <!-- <div class="col s12 m12 l12 celda"> -->
+                                    <div id="contenedorSelectProductoItem2" class="contenedorSelectProductoItem"></div>
+                                <!-- </div> -->
                             </row>
                         </td>
                         <td>
@@ -292,9 +307,9 @@
                                     <label class="ver" for="nombre_2">
                                     </label>
                                 </div> -->
-                                <div class="col s12 m12 l12 celda">
-                                    <div id="contenedorSelect2" class="contenedorSlect"></div>
-                                    
+                                <!-- <div class="col s12 m12 l12 celda"> -->
+                                    <div id="contenedorSelectProductoNombre2" class="contenedorSelectProductoNombre"></div>
+                                    <!--  -->
                                 </div>
                             </row>
                         </td>
@@ -305,9 +320,9 @@
                                     <label class="ver" for="descripcion_2">
                                     </label>
                                 </div> -->
-                                <div class="col s12 m12 l12 celda">
+                                <!-- <div class="col s12 m12 l12 celda"> -->
                                     <input value="Freso de frutas" type="text" name="descripcion_2">
-                                </div>
+                                <!-- </div> -->
                             </row>
                         </td>
                         <td>
@@ -317,9 +332,9 @@
                                     <label class="ver" for="imagen_2">
                                     </label>
                                 </div> -->
-                                <div class="col s12 m12 l12 celda">
+                                <!-- <div class="col s12 m12 l12 celda"> -->
                                     <input value="fresco.jpg" type="text" name="imagen_2" readonly="true">
-                                </div>
+                                <!-- </div> -->
                             </row>
                         </td>
                         <td>
@@ -329,9 +344,9 @@
                                     <label class="ver" for="precio_2">
                                     </label>
                                 </div> -->
-                                <div class="col s12 m12 l12 celda">
+                                <!-- <div class="col s12 m12 l12 celda"> -->
                                     <input value="$1" type="text" name="precio_2">
-                                </div>
+                                <!-- </div> -->
                             </row>
                         </td>
                         <td>
@@ -341,9 +356,9 @@
                                     <label class="ver" for="cantidad_2">
                                     </label>
                                 </div> -->
-                                <div class="col s12 m12 l12 celda">
+                                <!-- <div class="col s12 m12 l12 celda"> -->
                                     <input value="20" type="number" name="cantidad_2">
-                                </div>
+                                <!-- </div> -->
                             </row>
                         </td>
                         <td>
@@ -353,9 +368,9 @@
                                     <label class="ver" for="impuestoVenta_2">
                                     </label>
                                 </div> -->
-                                <div class="col s12 m12 l12 celda">
+                                <!-- <div class="col s12 m12 l12 celda"> -->
                                     <input value="13" type="number" name="impuestoVenta_2">
-                                </div>
+                                <!-- </div> -->
                             </row>
                         </td>
                         <td>
@@ -365,9 +380,9 @@
                                     <label class="ver" for="utilidad_2">
                                     </label>
                                 </div> -->
-                                <div class="col s12 m12 l12 celda">
+                                <!-- <div class="col s12 m12 l12 celda"> -->
                                     <input value="2" type="number" name="utilidad_2">
-                                </div>
+                                <!-- </div> -->
                             </row>
                         </td>
                         <td>
@@ -377,9 +392,9 @@
                                     <label class="ver" for="subTotal_2">
                                     </label>
                                 </div> -->
-                                <div class="col s12 m12 l12 celda">
+                                <!-- <div class="col s12 m12 l12 celda"> -->
                                     <input value="$20" type="text" name="subTotal_2" readonly="true">
-                                </div>
+                                <!-- </div> -->
                             </row>
                         </td>
                         <td>
@@ -410,9 +425,9 @@
                                     <label class="ver" for="item_3">
                                     </label>
                                 </div> -->
-                                <div class="col s12 m12 l12 celda">
-                                    <input value="003" type="text" name="item_3">
-                                </div>
+                                <!-- <div class="col s12 m12 l12 celda"> -->
+                                    <div id="contenedorSelectProductoItem3" class="contenedorSelectProductoItem"></div>
+                                <!-- </div> -->
                             </row>
                         </td>
                         <td>
@@ -422,9 +437,9 @@
                                     <label class="ver" for="nombre_3">
                                     </label>
                                 </div> -->
-                                <div class="col s12 m12 l12 celda">
-                                    <div id="contenedorSelect3" class="contenedorSlect"></div>
-                            </row>
+                                <!-- <div class="col s12 m12 l12 celda"> -->
+                                    <div id="contenedorSelectProductoNombre3" class="contenedorSelectProductoNombre"></div>
+                            <!-- </row> -->
                         </td>
                         <td>
                             <row>
@@ -433,9 +448,9 @@
                                     <label class="ver" for="descripcion_3">
                                     </label>
                                 </div> -->
-                                <div class="col s12 m12 l12 celda">
+                                <!-- <div class="col s12 m12 l12 celda"> -->
                                     <input value="Música en vivo" type="text" name="descripcion_3">
-                                </div>
+                                <!-- </div> -->
                             </row>
                         </td>
                         <td>
@@ -445,9 +460,9 @@
                                     <label class="ver" for="imagen_3">
                                     </label>
                                 </div> -->
-                                <div class="col s12 m12 l12 celda">
+                                <!-- <div class="col s12 m12 l12 celda"> -->
                                     <input value="musica.jpg" type="text" name="imagen_3" readonly="true">
-                                </div>
+                                <!-- </div> -->
                             </row>
                         </td>
                         <td>
@@ -457,9 +472,9 @@
                                     <label class="ver" for="precio_3">
                                     </label>
                                 </div> -->
-                                <div class="col s12 m12 l12 celda">
+                                <!-- <div class="col s12 m12 l12 celda"> -->
                                     <input value="$200" type="text" name="precio_3">
-                                </div>
+                                <!-- </div> -->
                             </row>
                         </td>
                         <td>
@@ -469,9 +484,9 @@
                                     <label class="ver" for="cantidad_3">
                                     </label>
                                 </div> -->
-                                <div class="col s12 m12 l12 celda">
+                                <!-- <div class="col s12 m12 l12 celda"> -->
                                     <input value="1" type="number" name="cantidad_3">
-                                </div>
+                                <!-- </div> -->
                             </row>
                         </td>
                         <td>
@@ -481,9 +496,9 @@
                                     <label class="ver" for="impuestoVenta_3">
                                     </label>
                                 </div> -->
-                                <div class="col s12 m12 l12 celda">
+                                <!-- <div class="col s12 m12 l12 celda"> -->
                                     <input value="13" type="number" name="impuestoVenta_3">
-                                </div>
+                                <!-- </div> -->
                             </row>
                         </td>
                         <td>
@@ -493,9 +508,9 @@
                                     <label class="ver" for="utilidad_3">
                                     </label>
                                 </div> -->
-                                <div class="col s12 m12 l12 celda">
+                                <!-- <div class="col s12 m12 l12 celda"> -->
                                     <input value="10" type="number" name="utilidad_3">
-                                </div>
+                                <!-- </div> -->
                             </row>
                         </td>
                         <td>
@@ -505,9 +520,9 @@
                                     <label class="ver" for="subTotal_3">
                                     </label>
                                 </div> -->
-                                <div class="col s12 m12 l12 celda">
+                                <!-- <div class="col s12 m12 l12 celda"> -->
                                     <input value="$200" type="text" name="subTotal_3" readonly="true">
-                                </div>
+                                <!-- </div> -->
                             </row>
                         </td>
                         <td>
