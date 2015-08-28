@@ -935,4 +935,180 @@
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
+<div id="agregarCategoria" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content" style="padding: 0;">
+        <p style="font-size: larger; text-align: left; margin-left: 2%; font-weight: bold;">
+            <?= label('Categorias_nuevo'); ?>
+        </p>
+        <div class="row">
+            <div class="col s12">
+                <div class="input-field col s12 m6 l8">
+                    <input id="categoriaPadre_codigo" type="text">
+                    <label for="categoriaPadre_codigo"><?= label('Categorias_codigoNuevo'); ?></label>
+                </div>
+                <div id="btn-agregarProductosC1" class="col s12 m6 l4">
+                    <a class="btn" href="#" style="margin-top: 13px;"
+                       onclick="document.getElementById('productos-categoria1').style.display = 'block';
+                                document.getElementById('btn-agregarProductosC1').style.display = 'none';">
+                        <?= label('Categorias_agregarProductos') ?>
+                    </a>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="input-field col s12 m6 l8">
+                    <input id="categoriaPadre_nombre" type="text">
+                    <label for="categoriaPadre_nombre"><?= label('Categorias_nombreNuevo'); ?></label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div id="productos-categoria1" class="inputTag col s12 m6 l8" style="display: none;">
+                    <div id="mediosCliente" class="example tags_mediosContacto">
+                        <div class="bs-example">
+                            <input placeholder="<?= label('Categorias_annadirProductos'); ?>" type="text"
+                                   value=""/>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                <div id="btn-agregarSubcategoria1" class="input-field col s12 m6 l8">
+                    <a class="btn" href="#"
+                       onclick="document.getElementById('nueva-subcategoria1').style.display = 'block';
+                                document.getElementById('btn-agregarSubcategoria1').style.display = 'none';">
+                        <?= label('Categorias_annadirSubcategoria'); ?>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="nueva-subcategoria1" style="display: none;">
+            <p style="font-size: larger; text-align: left; margin-left: 2%; font-weight: bold;">
+                <?= label('Subcategorias_nuevo'); ?>
+            </p>
+            <div class="row">
+                <div class="col s12">
+                    <div class="input-field col s12 m6 l8">
+                        <input id="subcategoria1_codigo" type="text">
+                        <label for="subcategoria1_codigo"><?= label('Subcategorias_codigo'); ?></label>
+                    </div>
+                    <div id="btn-agregarProductosSC1" class="col s12 m6 l4">
+                        <a class="btn" href="#" style="margin-top: 13px;"
+                           onclick="document.getElementById('productos-subcategoria1').style.display = 'block';
+                                document.getElementById('btn-agregarProductosSC1').style.display = 'none';">
+                            <?= label('Categorias_agregarProductos') ?>
+                        </a>
+                    </div>
+                </div>
+                <div class="col s12">
+                    <div class="input-field col s12 m6 l8">
+                        <input id="subcategoria1_nombre" type="text">
+                        <label for="subcategoria1_nombre"><?= label('Subcategorias_nombre'); ?></label>
+                    </div>
+                    <a href="#" style="margin-top: 13px;" data-toggle="tooltip"
+                       title="<?= label('Subcategorias_eliminar') ?>">
+                        <i class="mdi-action-delete medium" style="color: black;"></i>
+                    </a>
+                </div>
+                <div class="col s12">
+                    <div id="productos-subcategoria1" class="inputTag col s12 m6 l8" style="display: none;">
+                        <div id="mediosCliente" class="example tags_mediosContacto">
+                            <div class="bs-example">
+                                <input placeholder="<?= label('Categorias_annadirProductos'); ?>" type="text"
+                                       value=""/>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <div id="btn-agregarSubcategoria1" class="input-field col s12 m6 l8">
+                        <a class="btn" href="#"
+                           onclick="document.getElementById('nueva-subcategoria2').style.display = 'block';
+                                document.getElementById('btn-agregarSubcategoria1').style.display = 'none';">
+                            <?= label('Categorias_annadirOtraSubcategoria'); ?>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="nueva-subcategoria2" style="display: none;">
+            <p style="font-size: larger; text-align: left; margin-left: 2%; font-weight: bold;">
+                <?= label('Subcategorias_nuevo'); ?>
+            </p>
+            <div class="row">
+                <div class="col s12">
+                    <div class="input-field col s12 m6 l8">
+                        <input id="subcategoria2_codigo" type="text">
+                        <label for="subcategoria2_codigo"><?= label('Subcategorias_codigo'); ?></label>
+                    </div>
+                    <div id="btn-agregarProductosSC2" class="col s12 m6 l4">
+                        <a class="btn" href="#" style="margin-top: 13px;"
+                           onclick="document.getElementById('productos-subcategoria2').style.display = 'block';
+                                document.getElementById('btn-agregarProductosSC2').style.display = 'none';">
+                            <?= label('Categorias_agregarProductos') ?>
+                        </a>
+                    </div>
+                </div>
+                <div class="col s12">
+                    <div class="input-field col s12 m6 l8">
+                        <input id="subcategoria2_nombre" type="text">
+                        <label for="subcategoria2_nombre"><?= label('Subcategorias_nombre'); ?></label>
+                    </div>
+                    <a href="#" style="margin-top: 13px;" data-toggle="tooltip"
+                       title="<?= label('Subcategorias_eliminar') ?>">
+                        <i class="mdi-action-delete medium" style="color: black;"></i>
+                    </a>
+                </div>
+                <div class="col s12">
+                    <div id="productos-subcategoria2" class="inputTag col s12 m6 l8" style="display: none;">
+                        <div id="mediosCliente" class="example tags_mediosContacto">
+                            <div class="bs-example">
+                                <input placeholder="<?= label('Categorias_annadirProductos'); ?>" type="text"
+                                       value=""/>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <div class="input-field col s12 m6 l8">
+                        <a class="btn" href="#" style="">
+                            <?= label('Categorias_annadirOtraSubcategoria'); ?>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
 <!--Fin lista modals -->
+
+<!-- Script para Tags de agregar categoria -->
+<script>
+    var mediosContacto = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/gustos.json'
+        prefetch: {
+            url: '<?=base_url()?>Cotizacion/jsonContactos',
+            ttl: 1000,
+            filter: function (list) {
+                return $.map(list, function (mediosContacto) {
+                    return {name: mediosContacto};
+                });
+            }
+        }
+    });
+    mediosContacto.initialize();
+
+    var elt = $('.tags_mediosContacto > > input');
+    elt.tagsinput({
+        typeaheadjs: {
+            name: 'mediosContacto',
+            displayKey: 'name',
+            valueKey: 'name',
+            source: mediosContacto.ttAdapter()
+        }
+    });
+</script>

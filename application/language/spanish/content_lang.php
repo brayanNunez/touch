@@ -446,7 +446,25 @@
     $lang['Categorias_nuevo'] = 'Agregar nueva categoría';
     $lang['Categorias_codigo'] = 'Código';
     $lang['Categorias_nombre'] = 'Nombre';
+    $lang['Categorias_opciones'] = 'Opciones';$lang['confirmarEliminarSubcategoria'] = '¿Realmente desea eliminar la sub-categoría seleccionada?';
+
+    $lang['Categorias_nuevo'] = 'Agregar nueva categoría';
+    $lang['Categorias_editar'] = 'Editar categoría';
+    $lang['Categorias_ver'] = 'Ver sub-categorías';
+    $lang['Categorias_codigo'] = 'Código';
+    $lang['Categorias_nombre'] = 'Nombre';
+    $lang['Categorias_codigoNuevo'] = 'Código de la categoría';
+    $lang['Categorias_nombreNuevo'] = 'Nombre de la categoría';
     $lang['Categorias_opciones'] = 'Opciones';
+    $lang['Categorias_agregarProductos'] = 'Agregar productos';
+    $lang['Categorias_annadirProductos'] = 'Añadir producto';
+    $lang['Categorias_annadirSubcategoria'] = 'Añadir sub-categoría';
+    $lang['Categorias_annadirOtraSubcategoria'] = 'Añadir otra sub-categoría';
+    $lang['Subcategorias_nuevo'] = 'Agregue la nueva sub-categoría';
+    $lang['Subcategorias_codigo'] = 'Código de la sub-categoría';
+    $lang['Subcategorias_nombre'] = 'Nombre de la sub-categoría';
+    $lang['Subcategorias_eliminar'] = 'Eliminar la sub-categoría';
+    $lang['Subcategorias_guardarCambios'] = 'Guardar';
 
     $lang['busquedaPS_codigo'] = 'Código';
     $lang['busquedaPS_todos'] = 'Todos';

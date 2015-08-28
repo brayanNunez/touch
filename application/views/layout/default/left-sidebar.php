@@ -47,18 +47,18 @@
                 <li class="bold"><a href="<?= base_url(); ?>servicios/" class="waves-effect waves-cyan"><i
                             class="mdi-maps-beenhere"></i> <?= label('tituloProductosServicios'); ?></a>
                 </li>
-                <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i
-                            class="mdi-communication-vpn-key"></i> <?= label('productos'); ?></a>
-
-                    <div class="collapsible-body">
-                        <ul>
-                            <li><a href="<?= base_url(); ?>productos/agregar"><?= label('agregarP'); ?></a>
-                            </li>
-                            <li><a href="<?= base_url(); ?>productos/"><?= label('listarP'); ?></a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+<!--                <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i-->
+<!--                            class="mdi-communication-vpn-key"></i> --><?//= label('productos'); ?><!--</a>-->
+<!---->
+<!--                    <div class="collapsible-body">-->
+<!--                        <ul>-->
+<!--                            <li><a href="--><?//= base_url(); ?><!--productos/agregar">--><?//= label('agregarP'); ?><!--</a>-->
+<!--                            </li>-->
+<!--                            <li><a href="--><?//= base_url(); ?><!--productos/">--><?//= label('listarP'); ?><!--</a>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </li>-->
 
                 <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i
                             class="mdi-editor-format-list-numbered"></i> <?= label('cotizaciones'); ?></a>
