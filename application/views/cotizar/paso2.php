@@ -1,8 +1,8 @@
 <button onclick="botonEnLista('hola')">prueba</button>
 
 <script type="text/javascript">
-    function botonEnLista(idBoton){
-        alert(idBoton);
+    function botonEnLista(idBoton, nuevoElementoAgregar){
+        alert(idBoton + " palabra: " + nuevoElementoAgregar);
     }
 </script>
 
@@ -29,7 +29,7 @@
     miSelect.append('<option value="United Kingdom">United Kingdom</option>');
     miSelect.append('<option value="United States">United States</option>');
     miSelect.append('<option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>');
-     $('#contenedor' + id + '').html(miSelect);
+     $('#contenedorSelect' + id + '').html(miSelect);
 
 
      var vendedores = new Bloodhound({
@@ -193,7 +193,7 @@
                                     </label>
                                 </div> -->
                                 <div class="col s12 m12 l12 celda">
-                                    <div id="contenedor1" class="contenedorSlect"></div>
+                                    <div id="contenedorSelect1" class="contenedorSlect"></div>
                                     
                                 </div>
                             </row>
@@ -323,7 +323,7 @@
                                     </label>
                                 </div> -->
                                 <div class="col s12 m12 l12 celda">
-                                    <div id="contenedor2" class="contenedorSlect"></div>
+                                    <div id="contenedorSelect2" class="contenedorSlect"></div>
                                     
                                 </div>
                             </row>
@@ -453,7 +453,7 @@
                                     </label>
                                 </div> -->
                                 <div class="col s12 m12 l12 celda">
-                                    <div id="contenedor3" class="contenedorSlect"></div>
+                                    <div id="contenedorSelect3" class="contenedorSlect"></div>
                             </row>
                         </td>
                         <td>
