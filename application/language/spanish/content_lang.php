@@ -35,6 +35,7 @@
     $lang['confirmarEnvioCliente'] = '¿Realmente desea aprobar la cotización y enviarla al cliente?';
     $lang['confirmarEliminarImpuesto'] = '¿Realmente desea eliminar el impuesto seleccionado?';
     $lang['confirmarEliminarUnidad'] = '¿Realmente desea eliminar la unidad seleccionada?';
+    $lang['confirmarEliminarCategoria'] = '¿Realmente desea eliminar la categoría seleccionada?';
     $lang['motivoRechaza'] = 'Agregue el motivo por el cual rechaza esta cotización';
     $lang['confirmarGuardarDescargar'] = '¿Realmente desea guardar y descargar la cotización en proceso?';
     $lang['confirmarGuardarCerrar'] = '¿Realmente desea guardar y cerrar la cotización en proceso?';
@@ -89,6 +90,7 @@
 	$lang['tituloProducto'] = 'Productos';
 	$lang['tituloServicios'] = 'Servicios';
 	$lang['tituloProductosServicios'] = 'Productos y servicios';
+	$lang['Categorias_titulo'] = 'Categorías';
 	$lang['tituloEmpleados'] = 'Empleados';
 	$lang['tituloProveedores'] = 'Proveedores';
 	$lang['tituloClientes'] = 'Clientes';
@@ -439,8 +441,19 @@ $lang['listarReporteCot'] = 'Reportes cotizaciones';
     $lang['ProductosServicios_seleccionarCategorias'] = 'Seleccione las categorías donde desea agregar el producto:';
     $lang['ProductosServicios_categorias'] = 'Categorías:';
 
+    $lang['Categorias_nuevo'] = 'Agregar nueva categoría';
+    $lang['Categorias_codigo'] = 'Código';
+    $lang['Categorias_nombre'] = 'Nombre';
+    $lang['Categorias_opciones'] = 'Opciones';
+
     $lang['busquedaPS_codigo'] = 'Código';
     $lang['busquedaPS_todos'] = 'Todos';
+    $lang['busquedaPS_todosTipos'] = 'Todos los tipos';
+    $lang['busquedaPS_todosCategorias'] = 'Todas las categorías';
+    $lang['busquedaPS_todosElementos'] = 'Todos los elementos';
+    $lang['busquedaPS_todosEstados'] = 'Todos los estados';
+    $lang['busquedaPS_todosImpuestos'] = 'Todos los impuestos';
+    $lang['busquedaPS_todosUnidades'] = 'Todas las unidades';
     $lang['busquedaPS_productos'] = 'Productos';
     $lang['busquedaPS_servicios'] = 'Servicios';
     $lang['busquedaPS_tipo'] = 'Tipo';
@@ -598,6 +611,7 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['menuOpciones_cambiarCategoria'] = 'Cambiar categoría';
     $lang['menuOpciones_activar'] = 'Activar';
     $lang['menuOpciones_desactivar'] = 'Desactivar';
+    $lang['menuOpciones_verCategoria'] = 'Ver categoría';
     $lang['opciones_seleccionadosEliminar'] = 'Eliminar los elementos seleccionados';
     $lang['opciones_seleccionadosImprimir'] = 'Imprimir los elementos seleccionados';
     $lang['opciones_seleccionadosCotizar'] = 'Realizar una cotización con los elementos seleccionados';
