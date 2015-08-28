@@ -842,7 +842,7 @@
                     <div class="input-field col s12 m4 l4">
                         <div class="input-field col s12">
                             <select>
-                                <option value="0" selected><?= label('busquedaPS_todos'); ?></option>
+                                <option value="0" selected><?= label('busquedaPS_todosTipos'); ?></option>
                                 <option value="1"><?= label('busquedaPS_productos'); ?></option>
                                 <option value="2"><?= label('busquedaPS_servicios'); ?></option>
                             </select>
@@ -852,7 +852,7 @@
                     <div class="input-field col s12 m4 l4">
                         <div class="input-field col s12">
                             <select>
-                                <option value="0" selected><?= label('busquedaPS_todos'); ?></option>
+                                <option value="0" selected><?= label('busquedaPS_todosCategorias'); ?></option>
                                 <option value="1">TI</option>
                                 <option value="2">Refrescos</option>
                                 <option value="3">Zapatos</option>
@@ -868,7 +868,7 @@
                     <div class="input-field col s12 m6 l6">
                         <div class="input-field col s12">
                             <select>
-                                <option value="0" selected><?= label('busquedaPS_todos'); ?></option>
+                                <option value="0" selected><?= label('busquedaPS_todosElementos'); ?></option>
                                 <option value="1">Coca Cola</option>
                                 <option value="2">Fanta</option>
                                 <option value="3">Tennis Adidas</option>
@@ -896,7 +896,7 @@
                     <div class="input-field col s12 m4 l4">
                         <div class="input-field col s12">
                             <select>
-                                <option value="0" selected><?= label('busquedaPS_todos'); ?></option>
+                                <option value="0" selected><?= label('busquedaPS_todosEstados'); ?></option>
                                 <option value="1">Activos</option>
                                 <option value="2">Innactivos</option>
                             </select>
@@ -906,7 +906,7 @@
                     <div class="input-field col s12 m4 l4">
                         <div class="input-field col s12">
                             <select>
-                                <option value="0" selected><?= label('busquedaPS_todos'); ?></option>
+                                <option value="0" selected><?= label('busquedaPS_todosImpuestos'); ?></option>
                                 <option value="1">Impuesto1</option>
                                 <option value="1">Impuesto2</option>
                                 <option value="1">Impuesto3</option>
@@ -918,7 +918,7 @@
                     <div class="input-field col s12 m4 l4">
                         <div class="input-field col s12">
                             <select>
-                                <option value="0" selected><?= label('busquedaPS_todos'); ?></option>
+                                <option value="0" selected><?= label('busquedaPS_todosUnidades'); ?></option>
                                 <option value="1">Kilos</option>
                                 <option value="2">Litros</option>
                                 <option value="3">Unidades</option>

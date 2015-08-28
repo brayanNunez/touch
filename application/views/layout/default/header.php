@@ -230,6 +230,9 @@
                         <li>
                             <a href="<?= base_url(); ?>unidad"><?= label('unidad'); ?></a>
                         </li>
+                        <li>
+                            <a href="<?= base_url(); ?>categorias"><?= label('Categorias_titulo'); ?></a>
+                        </li>
                     </ul>
 
 

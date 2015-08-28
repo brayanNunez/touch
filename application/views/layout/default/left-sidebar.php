@@ -45,7 +45,7 @@
                 </li>
 
                 <li class="bold"><a href="<?= base_url(); ?>servicios/" class="waves-effect waves-cyan"><i
-                            class="mdi-maps-beenhere"></i> <?= label('servicios'); ?></a>
+                            class="mdi-maps-beenhere"></i> <?= label('tituloProductosServicios'); ?></a>
                 </li>
                 <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i
                             class="mdi-communication-vpn-key"></i> <?= label('productos'); ?></a>
