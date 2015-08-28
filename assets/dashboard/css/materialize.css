@@ -6204,7 +6204,9 @@ select:focus {
 
 button:focus {
   outline: none;
-  background-color: #ff548e; }
+  background-color: #2A8704; 
+  color: white;
+}
 
 label {
   font-size: 0.8rem;

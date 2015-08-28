@@ -15,7 +15,7 @@
    <div id="chart-dashboard">
       <div class="row">
          <div class="col s12 m12 l12">
-            <div id="submit-button" class="section">
+            <div id="submit-button id="crear"" class="section">
                <div class="row">
                   <div class="col s12 ">
                      <div class="card" id="card-diseno"> -->
@@ -35,7 +35,7 @@
     </div>
 </div>
 <!-- <div class="contenedorHoja col s12"> -->
-<button>CREAR</button>
+<button id="crear">CREAR</button>
 <div id="inset_form"></div>
 <div id="contenedorHoja">
     <a id="editarEncabezado" href="#modalEncabezado"
@@ -678,10 +678,10 @@
         $('#informacion').css("color", "white");
 
 
-        alert($('#headerDiseno').height());
+        // alert($('#headerDiseno').height());
         recalcularAlturaContenido();
 
-        $("button").click(function () {
+        $("#crear").click(function () {
             // alert("hola");
             var height = $('#footerDiseno').css("height");
             $('#footerDiseno').css("height", height);

@@ -123,12 +123,17 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/dashboard/css/estiloDisenoHoja.css">
 
 
+    <!-- js y css necesario para chosen de los autocompletar -->
+    <link href="<?= base_url() ?>assets/dashboard/css/chosen/chosen.css" rel="stylesheet" type="text/css"/>
+    <script src="<?= base_url() ?>assets/dashboard/js/chosen.jquery.js" type="text/javascript"></script>
+
+
 </head>
 
 <body>
 
 <!--     Start Page Loading-->
-<!-- <div id="loader-wrapper">
+<!-- <div id="loader-wrapper"> 
     <div id="loader"></div>
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
