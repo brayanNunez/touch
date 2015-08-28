@@ -1,3 +1,11 @@
+<button onclick="botonEnLista('hola')">prueba</button>
+
+<script type="text/javascript">
+    function botonEnLista(idBoton){
+        alert(idBoton);
+    }
+</script>
+
 <script type="text/javascript">
     $(document).on("ready", function(){
 
@@ -9,9 +17,7 @@
           }
     }
 
-    function botonEnLista(idBoton){
-        alert(idBoton);
-    }
+    
 
 
     function generarAutocompletar(id){
