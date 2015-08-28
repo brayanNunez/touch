@@ -34,11 +34,17 @@
     <!-- <link href="http://cdn.datatables.net/1.10.6/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection"> -->
 
     <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+   <!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script> -->
     <script type="text/javascript" src="<?= base_url() ?>assets/dashboard/js/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>assets/dashboard/js/jquery.treetable-ajax-persist.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>assets/dashboard/js/jquery.treetable-3.0.0.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>assets/dashboard/js/persist-min.js"></script>
+
+        <!-- js necesario para autocompletar en las lineas de detalle -->
+    <link rel="stylesheet" href="<?= base_url() ?>assets/dashboard/css/jquery-ui.min.css">
+    <script src="<?= base_url() ?>assets/dashboard/js/jquery-ui.js"></script>
+
+    
     <script type="text/javascript">
         function embed(seleccion) {
             if (seleccion.value == "1") {
@@ -94,13 +100,12 @@
     <link href="<?= base_url() ?>assets/dashboard/js/plugins/chartist-js/chartist.min.css" type="text/css"
           rel="stylesheet" media="screen,projection">
 
-    <link href="<?= base_url() ?>assets/dashboard/js/plugins/data-tables/css/jquery.dataTables.min.css" type="text/css"
+    <link href="<?= base_url() ?>assets/dashboard/js/plugins/data-tables/css/
+    .dataTables.min.css" type="text/css"
           rel="stylesheet" media="screen,projection">
 
 
-    <!-- js necesario para autocompletar en las lineas de detalle -->
-    <link rel="stylesheet" href="<?= base_url() ?>assets/dashboard/css/jquery-ui.min.css">
-    <script src="<?= base_url() ?>assets/dashboard/js/jquery-ui.js"></script>
+
 
     <!-- js necesario para el menu de opciones-->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
