@@ -1,3 +1,72 @@
+<script type="text/javascript">
+    $(document).on("ready", function(){
+
+    function generarListas(){
+
+        var config = {'.chosen-select'           : {}}
+          for (var selector in config) {
+            $(selector).chosen(config[selector]);
+          }
+    }
+
+    function botonEnLista(idBoton){
+        alert(idBoton);
+    }
+
+
+    function generarAutocompletar(id){
+    var miSelect = $('<select id="botonLista' + id + '" data-placeholder="Choose a Country..." class="chosen-select" style="width:350px;" tabindex="2"></select>');
+    miSelect.append('<option value=""></option>');
+    miSelect.append('<option value="Uganda">Uganda</option>');
+    miSelect.append('<option value="Ukraine">Ukraine</option>');
+    miSelect.append('<option value="United Arab Emirates">United Arab Emirates</option>');
+    miSelect.append('<option value="United Kingdom">United Kingdom</option>');
+    miSelect.append('<option value="United States">United States</option>');
+    miSelect.append('<option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>');
+     $('#contenedor' + id + '').html(miSelect);
+
+
+     var vendedores = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/vendedores.json'
+            prefetch: {
+                url: '<?=base_url()?>Cotizacion/jsonVendedores',
+                ttl: 1000
+            }
+        });
+
+        vendedores.initialize();
+
+        elt = $('.tags_vendedores > > input');
+        elt.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'vendedores',
+                displayKey: 'text',
+                source: vendedores.ttAdapter()
+            }
+        });
+
+    }
+    generarAutocompletar(1);
+     generarAutocompletar(2);
+      generarAutocompletar(3);
+      generarListas();
+    
+
+     
+
+    });
+     
+
+</script>
+
+<!-- <button id="myFunction">Vamos tu puedes</button> -->
+
+
+
 <div id="centered-table">
     <div class="row">
         <div class="col s12 m12 l12">
@@ -100,11 +169,11 @@
                         </td>
                         <td>
                             <row>
-                                <div class="col s12 m12 l12">
+                                <!-- <div class="col s12 m12 l12">
                                     <input type="checkbox" id="item_1" class="item" checked>
                                     <label class="ver" for="item_1">
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="col s12 m12 l12 celda">
                                     <input value="001" type="text" name="item_1">
                                 </div>
@@ -112,23 +181,24 @@
                         </td>
                         <td>
                             <row>
-                                <div class="col s12 m12 l12">
+                                <!-- <div class="col s12 m12 l12">
                                     <input type="checkbox" id="nombre_1" class="nombre" checked>
                                     <label class="ver" for="nombre_1">
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="col s12 m12 l12 celda">
-                                    <input value="Almuerzo" type="text" name="nombre_1" class="tags">
+                                    <div id="contenedor1" class="contenedorSlect"></div>
+                                    
                                 </div>
                             </row>
                         </td>
                         <td>
                             <row>
-                                <div class="col s12 m12 l12">
+                                <!-- <div class="col s12 m12 l12">
                                     <input type="checkbox" id="descripcion_1" class="descripcion" checked>
                                     <label class="ver" for="descripcion_1">
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="col s12 m12 l12 celda">
                                     <input value="Arroz, ensalada, carne" type="text" name="descripcion_1">
                                 </div>
@@ -136,11 +206,11 @@
                         </td>
                         <td>
                             <row>
-                                <div class="col s12 m12 l12">
+                                <!-- <div class="col s12 m12 l12">
                                     <input type="checkbox" id="imagen_1" class="imagen" checked>
                                     <label class="ver" for="imagen_1">
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="col s12 m12 l12 celda">
                                     <input value="Almuerzo.jpg" type="text" name="imagen_1" readonly="true">
                                 </div>
@@ -148,11 +218,11 @@
                         </td>
                         <td>
                             <row>
-                                <div class="col s12 m12 l12">
+                                <!-- <div class="col s12 m12 l12">
                                     <input type="checkbox" id="precio_1" class="precio" checked>
                                     <label class="ver" for="precio_1">
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="col s12 m12 l12 celda">
                                     <input value="$6" type="text" name="precio_1">
                                 </div>
@@ -160,11 +230,11 @@
                         </td>
                         <td>
                             <row>
-                                <div class="col s12 m12 l12">
+                                <!-- <div class="col s12 m12 l12">
                                     <input type="checkbox" id="cantidad_1" class="cantidad" checked>
                                     <label class="ver" for="cantidad_1">
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="col s12 m12 l12 celda">
                                     <input value="20" type="number" name="cantidad_1">
                                 </div>
@@ -172,11 +242,11 @@
                         </td>
                         <td>
                             <row>
-                                <div class="col s12 m12 l12">
+                                <!-- <div class="col s12 m12 l12">
                                     <input type="checkbox" id="impuestoVenta_1" class="impuestoVenta" checked>
                                     <label class="ver" for="impuestoVenta_1">
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="col s12 m12 l12 celda">
                                     <input value="13" type="number" name="impuestoVenta_1">
                                 </div>
@@ -184,11 +254,11 @@
                         </td>
                         <td>
                             <row>
-                                <div class="col s12 m12 l12">
+                                <!-- <div class="col s12 m12 l12">
                                     <input type="checkbox" id="utilidad_1" class="utilidad" checked>
                                     <label class="ver" for="utilidad_1">
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="col s12 m12 l12 celda">
                                     <input value="2" type="number" name="utilidad_1">
                                 </div>
@@ -196,11 +266,11 @@
                         </td>
                         <td>
                             <row>
-                                <div class="col s12 m12 l12">
+                                <!-- <div class="col s12 m12 l12">
                                     <input type="checkbox" id="subTotal_1" class="subTotal" checked>
                                     <label class="ver" for="subTotal_1">
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="col s12 m12 l12 celda">
                                     <input value="$120" type="text" name="subTotal_1" readonly="true">
                                 </div>
@@ -229,11 +299,11 @@
                         </td>
                         <td>
                             <row>
-                                <div class="col s12 m12 l12">
+                                <!-- <div class="col s12 m12 l12">
                                     <input type="checkbox" id="item_2" class="item" checked>
                                     <label class="ver" for="item_2">
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="col s12 m12 l12 celda">
                                     <input value="002" type="text" name="item_2">
                                 </div>
@@ -241,23 +311,24 @@
                         </td>
                         <td>
                             <row>
-                                <div class="col s12 m12 l12">
+                                <!-- <div class="col s12 m12 l12">
                                     <input type="checkbox" id="nombre_2" class="nombre" checked>
                                     <label class="ver" for="nombre_2">
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="col s12 m12 l12 celda">
-                                    <input value="Fresco" type="text" name="nombre_2" class="tags">
+                                    <div id="contenedor2" class="contenedorSlect"></div>
+                                    
                                 </div>
                             </row>
                         </td>
                         <td>
                             <row>
-                                <div class="col s12 m12 l12">
+                                <!-- <div class="col s12 m12 l12">
                                     <input type="checkbox" id="descripcion_2" class="descripcion" checked>
                                     <label class="ver" for="descripcion_2">
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="col s12 m12 l12 celda">
                                     <input value="Freso de frutas" type="text" name="descripcion_2">
                                 </div>
@@ -265,11 +336,11 @@
                         </td>
                         <td>
                             <row>
-                                <div class="col s12 m12 l12">
+                                <!-- <div class="col s12 m12 l12">
                                     <input type="checkbox" id="imagen_2" class="imagen" checked>
                                     <label class="ver" for="imagen_2">
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="col s12 m12 l12 celda">
                                     <input value="fresco.jpg" type="text" name="imagen_2" readonly="true">
                                 </div>
@@ -277,11 +348,11 @@
                         </td>
                         <td>
                             <row>
-                                <div class="col s12 m12 l12">
+                                <!-- <div class="col s12 m12 l12">
                                     <input type="checkbox" id="precio_2" class="precio" checked>
                                     <label class="ver" for="precio_2">
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="col s12 m12 l12 celda">
                                     <input value="$1" type="text" name="precio_2">
                                 </div>
@@ -289,11 +360,11 @@
                         </td>
                         <td>
                             <row>
-                                <div class="col s12 m12 l12">
+                                <!-- <div class="col s12 m12 l12">
                                     <input type="checkbox" id="cantidad_2" class="cantidad" checked>
                                     <label class="ver" for="cantidad_2">
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="col s12 m12 l12 celda">
                                     <input value="20" type="number" name="cantidad_2">
                                 </div>
@@ -301,11 +372,11 @@
                         </td>
                         <td>
                             <row>
-                                <div class="col s12 m12 l12">
+                                <!-- <div class="col s12 m12 l12">
                                     <input type="checkbox" id="impuestoVenta_2" class="impuestoVenta" checked>
                                     <label class="ver" for="impuestoVenta_2">
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="col s12 m12 l12 celda">
                                     <input value="13" type="number" name="impuestoVenta_2">
                                 </div>
@@ -313,11 +384,11 @@
                         </td>
                         <td>
                             <row>
-                                <div class="col s12 m12 l12">
+                                <!-- <div class="col s12 m12 l12">
                                     <input type="checkbox" id="utilidad_2" class="utilidad" checked>
                                     <label class="ver" for="utilidad_2">
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="col s12 m12 l12 celda">
                                     <input value="2" type="number" name="utilidad_2">
                                 </div>
@@ -325,11 +396,11 @@
                         </td>
                         <td>
                             <row>
-                                <div class="col s12 m12 l12">
+                                <!-- <div class="col s12 m12 l12">
                                     <input type="checkbox" id="subTotal_2" class="subTotal" checked>
                                     <label class="ver" for="subTotal_2">
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="col s12 m12 l12 celda">
                                     <input value="$20" type="text" name="subTotal_2" readonly="true">
                                 </div>
@@ -358,11 +429,11 @@
                         </td>
                         <td>
                             <row>
-                                <div class="col s12 m12 l12">
+                                <!-- <div class="col s12 m12 l12">
                                     <input type="checkbox" id="item_3" class="item" checked>
                                     <label class="ver" for="item_3">
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="col s12 m12 l12 celda">
                                     <input value="003" type="text" name="item_3">
                                 </div>
@@ -370,23 +441,22 @@
                         </td>
                         <td>
                             <row>
-                                <div class="col s12 m12 l12">
+                                <!-- <div class="col s12 m12 l12">
                                     <input type="checkbox" id="nombre_3" class="nombre" checked>
                                     <label class="ver" for="nombre_3">
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="col s12 m12 l12 celda">
-                                    <input value="Música" type="text" name="nombre_3" class="tags">
-                                </div>
+                                    <div id="contenedor3" class="contenedorSlect"></div>
                             </row>
                         </td>
                         <td>
                             <row>
-                                <div class="col s12 m12 l12">
+                                <!-- <div class="col s12 m12 l12">
                                     <input type="checkbox" id="descripcion_3" class="descripcion" checked>
                                     <label class="ver" for="descripcion_3">
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="col s12 m12 l12 celda">
                                     <input value="Música en vivo" type="text" name="descripcion_3">
                                 </div>
@@ -394,11 +464,11 @@
                         </td>
                         <td>
                             <row>
-                                <div class="col s12 m12 l12">
+                                <!-- <div class="col s12 m12 l12">
                                     <input type="checkbox" id="imagen_3" class="imagen" checked>
                                     <label class="ver" for="imagen_3">
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="col s12 m12 l12 celda">
                                     <input value="musica.jpg" type="text" name="imagen_3" readonly="true">
                                 </div>
@@ -406,11 +476,11 @@
                         </td>
                         <td>
                             <row>
-                                <div class="col s12 m12 l12">
+                                <!-- <div class="col s12 m12 l12">
                                     <input type="checkbox" id="precio_3" class="precio" checked>
                                     <label class="ver" for="precio_3">
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="col s12 m12 l12 celda">
                                     <input value="$200" type="text" name="precio_3">
                                 </div>
@@ -418,11 +488,11 @@
                         </td>
                         <td>
                             <row>
-                                <div class="col s12 m12 l12">
+                                <!-- <div class="col s12 m12 l12">
                                     <input type="checkbox" id="cantidad_3" class="cantidad" checked>
                                     <label class="ver" for="cantidad_3">
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="col s12 m12 l12 celda">
                                     <input value="1" type="number" name="cantidad_3">
                                 </div>
@@ -430,11 +500,11 @@
                         </td>
                         <td>
                             <row>
-                                <div class="col s12 m12 l12">
+                                <!-- <div class="col s12 m12 l12">
                                     <input type="checkbox" id="impuestoVenta_3" class="impuestoVenta" checked>
                                     <label class="ver" for="impuestoVenta_3">
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="col s12 m12 l12 celda">
                                     <input value="13" type="number" name="impuestoVenta_3">
                                 </div>
@@ -442,11 +512,11 @@
                         </td>
                         <td>
                             <row>
-                                <div class="col s12 m12 l12">
+                                <!-- <div class="col s12 m12 l12">
                                     <input type="checkbox" id="utilidad_3" class="utilidad" checked>
                                     <label class="ver" for="utilidad_3">
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="col s12 m12 l12 celda">
                                     <input value="10" type="number" name="utilidad_3">
                                 </div>
@@ -454,11 +524,11 @@
                         </td>
                         <td>
                             <row>
-                                <div class="col s12 m12 l12">
+                                <!-- <div class="col s12 m12 l12">
                                     <input type="checkbox" id="subTotal_3" class="subTotal" checked>
                                     <label class="ver" for="subTotal_3">
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="col s12 m12 l12 celda">
                                     <input value="$200" type="text" name="subTotal_3" readonly="true">
                                 </div>

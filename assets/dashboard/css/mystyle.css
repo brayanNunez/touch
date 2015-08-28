@@ -433,3 +433,20 @@ input, optgroup, select, textarea {
 	display: block !important;
 }
 
+.borrarCssSelect{
+	display: block !important;
+}
+
+.contenedorSlect .chosen-container{
+	width: 200px !important;
+	text-align: left;
+}
+.contenedorSlect .chosen-search input{
+	width: 160px !important;
+}
+
+#botonAutocompletar{
+	width: 100%;
+}
+
+

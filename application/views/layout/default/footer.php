@@ -245,6 +245,22 @@ Scripts
     </div>
 </div>
 
+
+    <!-- autocompletar con boton dentro -->
+  <script src="<?= base_url()?>assets/dashboard/js/chosen.jquery.js" type="text/javascript"></script>
+  <script type="text/javascript">
+
+
+      $(document).on("ready", function(){
+          var config = {'.chosen-select select'           : {}}
+          for (var selector in config) {
+            $(selector).chosen(config[selector]);
+          }
+      });
+
+
+  </script>
+
 </body>
 
 </html>
