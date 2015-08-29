@@ -22,7 +22,7 @@ class Clientes extends CI_Controller
     {
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
-        $this->load->view('clientes/clientes');
+        $this->load->view('clientes/clientes_crear');
         $this->load->view('layout/default/footer');
     }
 

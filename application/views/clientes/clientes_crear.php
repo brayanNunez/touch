@@ -1,0 +1,599 @@
+<!--START CONTENT  -->
+
+<section id="content">
+    <!--start breadcrumbs-->
+    <div id="breadcrumbs-wrapper" class=" grey lighten-3">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <h1 class="breadcrumbs-title"><?= label('tituloFormularioCliente'); ?></h1>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs end-->
+
+    <!--start container-->
+    <div class="container">
+        <div id="chart-dashboard">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <div id="submit-button" class="section">
+                        <div class="row">
+                            <div class="col s12 m12 l10">
+                                <form class="col s12">
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <select>
+                                                <option value="1" selected><?= label('formCliente_fisica'); ?></option>
+                                                <option value="2"><?= label('formCliente_juridica'); ?></option>
+                                            </select>
+                                            <label for="cliente_tipo"><?= label('formCliente_tipoPersona'); ?></label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <select>
+                                                <option value="" selected
+                                                        disabled><?= label('formCliente_seleccioneUno'); ?></option>
+                                                <option value="1">Costa Rica</option>
+                                                <option value="2">Brasil</option>
+                                                <option value="3">USA</option>
+                                                <option value="4">Colombia</option>
+                                                <option value="5">Uruguay</option>
+                                                <option value="6">Chile</option>
+                                            </select>
+                                            <label for="cliente_nacionalidad"><?= label('formCliente_nacionalidad'); ?></label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input id="cliente_id" type="text">
+                                            <label for="cliente_id"><?= label('formCliente_identificacion'); ?></label>
+                                        </div>
+                                        <div>
+                                            <div class="input-field col s12 m4 l4">
+                                                <input id="cliente_apellido1" type="text">
+                                                <label for="cliente_apellido1"><?= label('formCliente_apellido1'); ?></label>
+                                            </div>
+                                            <div class="input-field col s12 m4 l4">
+                                                <input id="cliente_apellido2" type="text">
+                                                <label for="cliente_apellido2"><?= label('formCliente_apellido2'); ?></label>
+                                            </div>
+                                            <div class="input-field col s12 m4 l4">
+                                                <input id="cliente_nombre" type="text">
+                                                <label for="cliente_nombre"><?= label('formCliente_nombre'); ?></label>
+                                            </div>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input id="cliente_correo" type="email">
+                                            <label for="cliente_correo"><?= label('formCliente_correo'); ?></label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input id="cliente_telefonoMovil" type="text">
+                                            <label
+                                                for="cliente_telefonoMovil"><?= label('formCliente_telefonoMovil'); ?></label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input id="cliente_telefono" type="text">
+                                            <label
+                                                for="cliente_telefono"><?= label('formCliente_telefonoFijo'); ?></label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input id="cliente_fechaNacimiento" type="text" class="datepicker-fecha">
+                                            <label for="cliente_fechaNacimiento"><?= label('formCliente_fechaNacimiento'); ?></label>
+                                        </div>
+
+                                        <div class="col s12">
+                                            <ul class="tabs tab-demo-active z-depth-1 cliente-info">
+                                                <li class="tab col s3">
+                                                    <a class="white-text darken-1 waves-effect waves-light active"
+                                                       id="cliente-informacion" href="#tab-direccion"><i
+                                                            class="mdi-action-perm-identity"></i>
+                                                        <?= label('cliente_direccion'); ?></a>
+                                                </li>
+                                                <li class="tab-interior tab col s3">
+                                                    <a class="white-text darken-1 waves-effect waves-light"
+                                                       id="cliente-informacion" href="#tab-contactos"><i
+                                                            class="mdi-editor-format-list-numbered"></i>
+                                                        <?= label('formCliente_Contactos'); ?></a>
+                                                </li>
+                                                <li class="tab-interior tab col s3">
+                                                    <a class="white-text darken-1 waves-effect waves-light"
+                                                       id="cliente-informacion" href="#tab-infoAdicional"><i
+                                                            class="mdi-file-folder-open"></i>
+                                                        <?= label('cliente_infoAdicional'); ?></a>
+                                                </li>
+                                                <li class="tab-interior tab col s3">
+                                                    <a class="white-text darken-1 waves-effect waves-light"
+                                                       id="cliente-informacion" href="#tab-infoFacturacion"><i
+                                                            class="mdi-editor-mode-edit"></i>
+                                                        <?= label('cliente_infoFacturacion'); ?></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col s12">
+                                            <div id="tab-direccion" class="card col s12">
+                                                <div>
+                                                    <div class="input-field col s12 m4 l4">
+                                                        <input id="cliente_direccionPais" type="text">
+                                                        <label for="cliente_direccionPais"><?= label('formCliente_direccionPais'); ?></label>
+                                                    </div>
+                                                    <div class="input-field col s12 m4 l4">
+                                                        <input id="cliente_direccionProvincia" type="text">
+                                                        <label for="cliente_direccionProvincia"><?= label('formCliente_direccionProvincia'); ?></label>
+                                                    </div>
+                                                    <div class="input-field col s12 m4 l4">
+                                                        <input id="cliente_direccionCanton" type="text">
+                                                        <label for="cliente_direccionCanton"><?= label('formCliente_direccionCanton'); ?></label>
+                                                    </div>
+                                                    <div class="input-field col s12 m4 l4">
+                                                        <input id="cliente_direccionDistrito" type="text">
+                                                        <label for="cliente_direccionDistrito"><?= label('formCliente_direccionDistrito'); ?></label>
+                                                    </div>
+                                                    <div class="input-field col s12 m8 l8">
+                                                        <input id="cliente_direccionDomicilio" type="text">
+                                                        <label for="cliente_direccionDomicilio"><?= label('formCliente_direccionDomicilio'); ?></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="tab-contactos" class="card col s12">
+                                                <div class="agregar_nuevo">
+                                                    <a href="#agregarContacto" class="btn btn-default modal-trigger">
+                                                        <?= label('formCliente_agregar'); ?>
+                                                    </a>
+                                                </div>
+                                                <table id="cliente1-contactos" class="data-table-information responsive-table striped">
+                                                    <thead>
+                                                    <tr>
+                                                        <th style="text-align: center;">
+                                                            <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all"
+                                                                   onclick="toggleChecked(this.checked)"/>
+                                                            <label for="checkbox-all"></label>
+                                                        </th>
+                                                        <th><?= label('formCliente_nombreContacto'); ?></th>
+                                                        <th><?= label('formCliente_correoContacto'); ?></th>
+                                                        <th><?= label('formCliente_opcionesContacto'); ?></th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td style="text-align: center;">
+                                                            <input type="checkbox" class="filled-in checkbox" id="checkbox_cliente1_contacto1"/>
+                                                            <label for="checkbox_cliente1_contacto1"></label>
+                                                        </td>
+                                                        <td>Maria Rodriguez</td>
+                                                        <td>maria@gmail.com</td>
+                                                        <td>
+                                                            <ul id="dropdown-cliente1-contacto1" class="dropdown-content">
+                                                                <li>
+                                                                    <a href="#editarContacto"
+                                                                       class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#eliminarContacto"
+                                                                       class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
+                                                                </li>
+                                                            </ul>
+                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
+                                                               data-activates="dropdown-cliente1-contacto1">
+                                                                <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: center;">
+                                                            <input type="checkbox" class="filled-in checkbox" id="checkbox_cliente1_contacto2"/>
+                                                            <label for="checkbox_cliente1_contacto2"></label>
+                                                        </td>
+                                                        <td>Juan Perez</td>
+                                                        <td>juan@gmail.com</td>
+                                                        <td>
+                                                            <ul id="dropdown-cliente1-contacto2" class="dropdown-content">
+                                                                <li>
+                                                                    <a href="#editarContacto"
+                                                                       class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#eliminarContacto"
+                                                                       class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
+                                                                </li>
+                                                            </ul>
+                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
+                                                               data-activates="dropdown-cliente1-contacto2">
+                                                                <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: center;">
+                                                            <input type="checkbox" class="filled-in checkbox" id="checkbox_cliente1_contacto3"/>
+                                                            <label for="checkbox_cliente1_contacto3"></label>
+                                                        </td>
+                                                        <td>Jose Mora</td>
+                                                        <td>jose@gmail.com</td>
+                                                        <td>
+                                                            <ul id="dropdown-cliente1-contacto3" class="dropdown-content">
+                                                                <li>
+                                                                    <a href="#editarContacto"
+                                                                       class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#eliminarContacto"
+                                                                       class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
+                                                                </li>
+                                                            </ul>
+                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
+                                                               data-activates="dropdown-cliente1-contacto3">
+                                                                <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                                <div class="tabla-conAgregar">
+                                                    <a id="opciones-seleccionados-delete"
+                                                       class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements"
+                                                       style="visibility: hidden;"
+                                                       href="#eliminarElementosSeleccionados" data-toggle="tooltip"
+                                                       title="<?= label('opciones_seleccionadosEliminar') ?>">
+                                                        <i class="mdi-action-delete icono-opciones-varios"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div id="tab-infoAdicional" class="card col s12">
+                                                <div class="inputTag col s12">
+                                                    <label for="vendedoresCliente"><?= label('formCliente_cotizador'); ?></label>
+                                                    <br>
+                                                    <div id="vendedoresCliente" class="example tags_vendedores">
+                                                        <div class="bs-example">
+                                                            <input placeholder="<?= label('formCliente_anadirVendedor'); ?>" type="text"/>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                </div>
+                                                <div class="inputTag col s12">
+                                                    <label for="gustosCliente"><?= label('formCliente_gustos_preferencias'); ?></label>
+                                                    <br>
+                                                    <div id="gustosCliente" class="example tags_gustosCliente">
+                                                        <div class="bs-example">
+                                                            <input placeholder="<?= label('formCliente_anadirGusto'); ?>" type="text"
+                                                                   value=""/>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                </div>
+                                                <div class="inputTag col s12">
+                                                    <label for="mediosCliente"><?= label('formCliente_mediosContacto'); ?></label>
+                                                    <br>
+                                                    <div id="mediosCliente" class="example tags_mediosContacto">
+                                                        <div class="bs-example">
+                                                            <input placeholder="<?= label('formCliente_anadirMedio'); ?>" type="text"
+                                                                   value=""/>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                            <div id="tab-infoFacturacion" class="card col s12">
+                                                <div class="input-field col s12">
+                                                    <select>
+                                                        <option value="" selected
+                                                                disabled><?= label('formCliente_seleccioneUno'); ?></option>
+                                                        <option value="1">Adelantado</option>
+                                                        <option value="2">Contado</option>
+                                                        <option value="3">A pagos</option>
+                                                    </select>
+                                                    <label for="cliente_formaPagoFavorita">
+                                                        <?= label('formCliente_formaPagoFavorita'); ?></label>
+                                                </div>
+                                                <div class="input-field col s12">
+                                                    <input id="cliente_descuento" type="text">
+                                                    <label
+                                                        for="cliente_descuento"><?= label('formCliente_descuento'); ?></label>
+                                                </div>
+                                                <div class="input-field col s12">
+                                                    <select>
+                                                        <option value="" selected
+                                                                disabled><?= label('formCliente_seleccioneUno'); ?></option>
+                                                        <option value="1">Dolar</option>
+                                                        <option value="2">Reales</option>
+                                                        <option value="3">Euros</option>
+                                                    </select>
+                                                    <label for="cliente_moneda"><?= label('formCliente_monedaCotizar'); ?></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end container-->
+
+    <?php
+    $this->load->view('layout/default/menu-crear.php');
+    ?>
+
+</section>
+<!-- END CONTENT-->
+
+<script>
+    $(window).load(function () {
+        var marcados = $('.checkbox:checked').size();
+        if (marcados >= 1) {
+            var elems = document.getElementsByClassName('opciones-seleccionados');
+            var e;
+            for (e in elems) {
+                elems[e].style.visibility = 'visible';
+            }
+        } else {
+            var elems = document.getElementsByClassName('opciones-seleccionados');
+            var e;
+            for (e in elems) {
+                elems[e].style.visibility = 'hidden';
+            }
+        }
+        document.getElementById('checkbox-all').checked = false;
+    });
+    $(document).ready(function () {
+        $('#botonElimnar').on("click", function (event) {
+            var tb = $(this).attr('title');
+            var sel = false;
+            var ch = $('#' + tb).find('tbody input[type=checkbox]');
+            ch.each(function () {
+                var $this = $(this);
+                if ($this.is(':checked')) {
+                    sel = true;
+                    $this.parents('tr').fadeOut(function () {
+                        $this.remove();
+                    });
+                }
+            });
+            return false;
+        });
+    });
+    $(document).ready(function () {
+        $('#checkbox-all').click(function (event) {
+            if (this.checked) {
+                $('.checkbox').each(function () {
+                    this.checked = true;
+                });
+            } else {
+                $('.checkbox').each(function () {
+                    this.checked = false;
+                });
+            }
+        });
+    });
+    $(document).ready(function () {
+        $('.checkbox').click(function (event) {
+            var marcados = $('.checkbox:checked').size();
+            if (marcados >= 1) {
+                var elems = document.getElementsByClassName('opciones-seleccionados');
+                var e;
+                for (e in elems) {
+                    elems[e].style.visibility = 'visible';
+                }
+            } else {
+                var elems = document.getElementsByClassName('opciones-seleccionados');
+                var e;
+                for (e in elems) {
+                    elems[e].style.visibility = 'hidden';
+                }
+            }
+        });
+    });
+    $(document).ready(function () {
+        $('.boton-opciones').on('click', function (event) {
+            // alert(event.type);
+            //e.preventDefault();
+
+            var elementoActivo = $(this).siblings('ul.active');
+            if (elementoActivo.length > 0) {
+                var estado = elementoActivo.css("display");
+                if (estado == "block") {
+                    elementoActivo.css("display", "none");
+                    elementoActivo.style.display = 'none';
+                } else {
+                    elementoActivo.css("display", "block");
+                    elementoActivo.style.display = 'block';
+                }
+            }
+        });
+    });
+</script>
+
+<!-- Script para tags -->
+<script>
+    $(document).ready(function () {
+
+        var vendedores = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/vendedores.json'
+            prefetch: {
+                url: '<?=base_url()?>Cotizacion/jsonVendedores',
+                ttl: 1000
+            }
+        });
+
+        vendedores.initialize();
+
+        elt = $('.tags_vendedores > > input');
+        elt.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'vendedores',
+                displayKey: 'text',
+                source: vendedores.ttAdapter()
+            }
+        });
+
+//        elt.tagsinput('add', {"value": 1, "text": "Brayan Nuñez Rojas", "continent": "Europe"});
+//        elt.tagsinput('add', {"value": 4, "text": "Anthony Nuñez Rojas", "continent": "America"});
+//        elt.tagsinput('add', {"value": 7, "text": "Maria Perez Salas", "continent": "Australia"});
+//        elt.tagsinput('add', {"value": 10, "text": "Carlos David Rojas", "continent": "Asia"});
+//        elt.tagsinput('add', {"value": 13, "text": "Diego Alfaro Rojas", "continent": "Africa"});
+
+
+        var gusto = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            prefetch: {
+                url: '<?=base_url()?>Cotizacion/jsonGustos',
+                ttl: 1000,
+                filter: function (list) {
+                    return $.map(list, function (gusto) {
+                        return {name: gusto};
+                    });
+                }
+            }
+        });
+        gusto.initialize();
+
+
+        $('.tags_gustosCliente  > > input').tagsinput({
+            typeaheadjs: {
+                name: 'gusto',
+                displayKey: 'name',
+                valueKey: 'name',
+                source: gusto.ttAdapter()
+            }
+        });
+
+
+        var mediosContacto = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/gustos.json'
+            prefetch: {
+                url: '<?=base_url()?>Cotizacion/jsonContactos',
+                ttl: 1000,
+                filter: function (list) {
+                    return $.map(list, function (mediosContacto) {
+                        return {name: mediosContacto};
+                    });
+                }
+            }
+        });
+        mediosContacto.initialize();
+
+
+        var elt = $('.tags_mediosContacto > > input');
+        elt.tagsinput({
+            typeaheadjs: {
+                name: 'mediosContacto',
+                displayKey: 'name',
+                valueKey: 'name',
+                source: mediosContacto.ttAdapter()
+            }
+        });
+
+
+        $('.boton-opciones').on('click', function (event) {
+            var elementoActivo = $(this).siblings('ul.active');
+            if (elementoActivo.length > 0) {
+                var estado = elementoActivo.css("display");
+                if (estado == "block") {
+                    elementoActivo.css("display", "none");
+                    elementoActivo.style.display = 'none';
+                } else {
+                    elementoActivo.css("display", "block");
+                    elementoActivo.style.display = 'block';
+                }
+            }
+        });
+    });
+</script>
+
+<!-- lista modals -->
+<div id="eliminarContacto" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('confirmarEliminarContacto'); ?></p>
+    </div>
+    <div class="modal-footer black-text">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="editarContacto" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <div class="input-field col s12">
+            <input id="client_code" type="text" value="Maria Rodriguez">
+            <label for="client_code"><?= label('formCliente_nombreContacto'); ?></label>
+        </div>
+        <div class="input-field col s12">
+            <input id="client_code" type="text" value="maria@gmail.com">
+            <label for="client_code"><?= label('formCliente_correoContacto'); ?></label>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="agregarContacto" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <div class="row">
+            <div class="input-field col s12 m4 l4">
+                <input id="cliente_contactoApellido1" type="text">
+                <label for="cliente_contactoApellido1"><?= label('formContacto_apellido1'); ?></label>
+            </div>
+            <div class="input-field col s12 m4 l4">
+                <input id="cliente_contactoApellido2" type="text">
+                <label for="cliente_contactoApellido2"><?= label('formContacto_apellido2'); ?></label>
+            </div>
+            <div class="input-field col s12 m4 l4">
+                <input id="cliente_contactoNombre" type="text">
+                <label for="cliente_contactoNombre"><?= label('formContacto_nombre'); ?></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 m6 l6">
+                <input id="cliente_contactoCorreo" type="email">
+                <label for="cliente_contactoCorreo"><?= label('formContacto_correo'); ?></label>
+            </div>
+            <div class="input-field col s12 m3 l3">
+                <input id="cliente_contactoPuesto" type="text">
+                <label for="cliente_contactoPuesto"><?= label('formContacto_puesto'); ?></label>
+            </div>
+            <div class="input-field col s12 m3 l3">
+                <input id="cliente_contactoTelefono" type="text">
+                <label
+                    for="cliente_contactoTelefono"><?= label('formContacto_telefono'); ?></label>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="eliminarElementosSeleccionados" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('clientes_archivosSeleccionadosEliminar'); ?></p>
+    </div>
+    <div class="modal-footer black-text">
+        <div id="botonElimnar" title="cliente1-contactos">
+            <a href="#"
+               class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        </div>
+    </div>
+</div>
+<!-- Fin lista modals-->

@@ -272,13 +272,11 @@
 	$lang['formCliente_fisica'] = 'Física';
 	$lang['formCliente_juridica'] = 'Jurídica';
 	$lang['formCliente_codigo'] = 'Código';
-	$lang['formCliente_nombre'] = 'Nombre completo';
+	$lang['formCliente_nombre'] = 'Nombre';
 	$lang['formCliente_identificacion'] = 'Identificación';
 	$lang['formCliente_fechaNacimiento'] = 'Fecha de nacimiento';
-	$lang['formCliente_correo'] = 'Correo';
 	$lang['formCliente_telefonoMovil'] = 'Teléfono móvil';
 	$lang['formCliente_telefonoFijo'] = 'Teléfono fijo';
-	$lang['formCliente_Contactos'] = 'Contactos';
 	$lang['formCliente_nombreContacto'] = 'Nombre';
 	$lang['formCliente_correoContacto'] = 'Correo';
 	$lang['formCliente_opcionesContacto'] = 'Opciones';
@@ -297,6 +295,31 @@
     $lang['formCliente_anadirVendedor'] = 'Añadir vendedor';
     $lang['formCliente_anadirGusto'] = 'Añadir gusto';
     $lang['formCliente_anadirMedio'] = 'Añadir medio';
+
+    $lang['formCliente_nacionalidad'] = 'Nacionalidad:';
+    $lang['formCliente_apellido1'] = 'Primer apellido';
+    $lang['formCliente_apellido2'] = 'Segundo apellido';
+    $lang['formCliente_correo'] = 'Correo electrónico';
+    $lang['formCliente_Contactos'] = 'Contactos';
+    $lang['cliente_infoAdicional'] = 'Adicional';
+    $lang['cliente_infoFacturacion'] = 'Cotización';
+    $lang['formCliente_formaPagoFavorita'] = 'Forma de pago preferida';
+    $lang['formCliente_descuento'] = 'Descuento fijo';
+    $lang['formCliente_monedaCotizar'] = 'Cotizar en';
+
+    $lang['cliente_direccion'] = 'Dirección';
+    $lang['formCliente_direccionPais'] = 'País';
+    $lang['formCliente_direccionProvincia'] = 'Provincia';
+    $lang['formCliente_direccionCanton'] = 'Cantón';
+    $lang['formCliente_direccionDistrito'] = 'Distrito';
+    $lang['formCliente_direccionDomicilio'] = 'Domicilio';
+
+    $lang['formContacto_apellido1'] = 'Primer apellido';
+    $lang['formContacto_apellido2'] = 'Segundo apellido';
+    $lang['formContacto_nombre'] = 'Nombre';
+    $lang['formContacto_correo'] = 'Correo electrónico';
+    $lang['formContacto_puesto'] = 'Puesto';
+    $lang['formContacto_telefono'] = 'Teléfono';
 
 //Formulario de empleados
     $lang['Empleado_tablaNombre'] = 'Nombre';
