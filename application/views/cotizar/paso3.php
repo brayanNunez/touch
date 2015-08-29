@@ -84,147 +84,91 @@
                 <table>
                     <thead>
                     <tr>
-                        <th>Producto</th>
+                        <th>Item</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Imagen</th>
+                        <th>Precio unitario</th>
                         <th>Cantidad</th>
+                        <th>Impuesto</th>
+                        <th>Total individual</th>                    
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                        <td>January</td>
-                        <td>$100</td>
+                        <td>001</td>
+                        <td>Un nombre</td>
+                        <td>Una descripción</td>
+                        <td>
+                            <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/almuerzo.jpg"/>
+                        </td>
+                        <td>$50</td>
+                        <td>3</td>
+                        <td>13%</td>
+                        <td>$155</td>
                     </tr>
                     <tr>
-                        <td>January</td>
-                        <td>$100</td>
+                        <td>001</td>
+                        <td>Un nombre</td>
+                        <td>Una descripción</td>
+                        <td>
+                            <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/musica.jpg"/>
+                        </td>
+                        <td>$50</td>
+                        <td>3</td>
+                        <td>13%</td>
+                        <td>$155</td>
                     </tr>
                     <tr>
-                        <td>January</td>
-                        <td>$100</td>
+                        <td>001</td>
+                        <td>Un nombre</td>
+                        <td>Una descripción</td>
+                        <td>
+                            <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/almuerzo.jpg"/>
+                        </td>
+                        <td>$50</td>
+                        <td>3</td>
+                        <td>13%</td>
+                        <td>$155</td>
                     </tr>
                     <tr>
-                        <td>January</td>
-                        <td>$100</td>
+                        <td>001</td>
+                        <td>Un nombre</td>
+                        <td>Una descripción</td>
+                        <td>
+                            <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/musica.jpg"/>
+                        </td>
+                        <td>$50</td>
+                        <td>3</td>
+                        <td>13%</td>
+                        <td>$155</td>
                     </tr>
                     <tr>
-                        <td>February</td>
-                        <td>$800000</td>
+                        <td>001</td>
+                        <td>Un nombre</td>
+                        <td>Una descripción</td>
+                        <td>
+                            <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/almuerzo.jpg"/>
+                        </td>
+                        <td>$50</td>
+                        <td>3</td>
+                        <td>13%</td>
+                        <td>$155</td>
                     </tr>
                     <tr>
-                        <td>January</td>
-                        <td>$100</td>
+                        <td>001</td>
+                        <td>Un nombre</td>
+                        <td>Una descripción</td>
+                        <td>
+                            <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/musica.jpg"/>
+                        </td>
+                        <td>$50</td>
+                        <td>3</td>
+                        <td>13%</td>
+                        <td>$155</td>
                     </tr>
-                    <tr>
-                        <td>January</td>
-                        <td>$100</td>
-                    </tr>
-                    <tr>
-                        <td>January</td>
-                        <td>$100</td>
-                    </tr>
-                    <tr>
-                        <td>February</td>
-                        <td>$800000</td>
-                    </tr>
-                    <tr>
-                        <td>January</td>
-                        <td>$100</td>
-                    </tr>
-                    <tr>
-                        <td>January</td>
-                        <td>$100</td>
-                    </tr>
-                    <tr>
-                        <td>January</td>
-                        <td>$100</td>
-                    </tr>
-                    <tr>
-                        <td>February</td>
-                        <td>$800000</td>
-                    </tr>
-                    <tr>
-                        <td>January</td>
-                        <td>$100</td>
-                    </tr>
-                    <tr>
-                        <td>January</td>
-                        <td>$100</td>
-                    </tr>
-                    <tr>
-                        <td>January</td>
-                        <td>$100</td>
-                    </tr>
-                    <tr>
-                        <td>February</td>
-                        <td>$800000</td>
-                    </tr>
-                    <tr>
-                        <td>January</td>
-                        <td>$100</td>
-                    </tr>
-                    <tr>
-                        <td>January</td>
-                        <td>$100</td>
-                    </tr>
-                    <tr>
-                        <td>January</td>
-                        <td>$100</td>
-                    </tr>
-                    <tr>
-                        <td>January</td>
-                        <td>$100</td>
-                    </tr>
-                    <tr>
-                        <td>January</td>
-                        <td>$100</td>
-                    </tr>
-                    <tr>
-                        <td>February</td>
-                        <td>$800000</td>
-                    </tr>
-                    <tr>
-                        <td>January</td>
-                        <td>$100</td>
-                    </tr>
-                    <tr>
-                        <td>January</td>
-                        <td>$100</td>
-                    </tr>
-                    <tr>
-                        <td>January</td>
-                        <td>$100</td>
-                    </tr>
-                    <tr>
-                        <td>January</td>
-                        <td>$100</td>
-                    </tr>
-                    <tr>
-                        <td>January</td>
-                        <td>$100</td>
-                    </tr>
-                    <tr>
-                        <td>February</td>
-                        <td>$800000</td>
-                    </tr>
-                    <tr>
-                        <td>January</td>
-                        <td>$100</td>
-                    </tr>
-                    <tr>
-                        <td>January</td>
-                        <td>$100</td>
-                    </tr>
-                    <tr>
-                        <td>January</td>
-                        <td>$100</td>
-                    </tr>
-                    <tr>
-                        <td>February</td>
-                        <td>$800000</td>
-                    </tr>
-                    <tr>
-                        <td>February</td>
-                        <td>$800000</td>
-                    </tr>
+
+                    
                     </tbody>
                 </table>
                 <div id="prefooter">
@@ -399,21 +343,72 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <form action="#">
+
+
+
                     <div class="row col s12 m6 l6">
                         <div class="listaCecksModals">
+                            <p>Mostrar las siguientes columnas:</p>
                             <p>
                                 <input type="checkbox" class="filled-in" id="cuerpofilled-in-box1" checked="checked">
-                                <label for="cuerpofilled-in-box1">Impuesto</label>
+                                <label for="cuerpofilled-in-box1">Item</label>
                             </p>
 
                             <p>
                                 <input type="checkbox" class="filled-in" id="cuerpofilled-in-box2" checked="checked">
-                                <label for="cuerpofilled-in-box2">Descuento</label>
+                                <label for="cuerpofilled-in-box2">Nombre</label>
                             </p>
 
                             <p>
                                 <input type="checkbox" class="filled-in" id="cuerpofilled-in-box3" checked="checked">
-                                <label for="cuerpofilled-in-box3">Tolal</label>
+                                <label for="cuerpofilled-in-box3">Descripción</label>
+                            </p>
+
+                            <p>
+                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box3" checked="checked">
+                                <label for="cuerpofilled-in-box4">Imagen</label>
+                            </p>
+
+                            <p>
+                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box5" checked="checked">
+                                <label for="cuerpofilled-in-box5">Precio unitario</label>
+                            </p>
+
+                            <p>
+                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box6" checked="checked">
+                                <label for="cuerpofilled-in-box6">Cantidad</label>
+                            </p>
+
+                            <p>
+                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box7" checked="checked">
+                                <label for="cuerpofilled-in-box7">Impuesto</label>
+                            </p>
+
+                            <p>
+                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box8" checked="checked">
+                                <label for="cuerpofilled-in-box8">Total individual</label>
+                            </p>
+
+                        </div>
+                    </div>
+
+
+                    <div class="row col s12 m6 l6">
+                        <div class="listaCecksModals">
+                            <p>Mostrar los siguientes totales:</p>
+                            <p>
+                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box9" checked="checked">
+                                <label for="cuerpofilled-in-box9">Impuesto</label>
+                            </p>
+
+                            <p>
+                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box10" checked="checked">
+                                <label for="cuerpofilled-in-box10">Descuento</label>
+                            </p>
+
+                            <p>
+                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box11" checked="checked">
+                                <label for="cuerpofilled-in-box11">Tolal</label>
                             </p>
                         </div>
                     </div>

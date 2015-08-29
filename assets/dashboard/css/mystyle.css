@@ -494,3 +494,6 @@ input, optgroup, select, textarea {
 	width: 85% !important;
 }
 
+#contenerdorTablaDetalles{
+	overflow-x: scroll;
+}

@@ -9,7 +9,7 @@
 <div id="centered-table">
     <div class="row">
         <div class="col s12 m12 l12">
-            <input type="text" class="tags">
+            <!-- <input type="text" class="tags"> -->
 
             <div id="contenerdorTablaDetalles">
                 <table id="cotizacion1-detalles" class="centered">

@@ -39,29 +39,29 @@
     </div>
     <div class="row">
         <div class="input-field col s12 m6 l6 inputSelector">            
+            <label for="contenedorSelectFormaPago">Seleccione la forma de pago</label>
+            <br>
+            <div id="contenedorSelectFormaPago">    
+             </div>
+        </div>
+        <div class="input-field col s12 m6 l6 inputSelector">            
             <label for="contenedorSelectMoneda">Seleccione el tipo de moneda</label>
             <br>
             <div id="contenedorSelectMoneda">    
              </div>
         </div>
-
-        <div class="input-field col s12 m6 l6">
-            <input id="moneda-tipoCambio" type="text">
-            <label for="moneda-tipoCambio" class="">Tipo de cambio</label>
-        </div>
+        
     </div>
     <div class="row">
         <div class="input-field col s12 m6 l6">
             <input id="cotizacion-validez" class="datepicker-fecha" type="text">
             <label for="cotizacion-validez">Seleccione el tiempo de válidez</label>
         </div>
-        <div class="input-field col s12 m6 l6 inputSelector">            
-            <label for="contenedorSelectFormaPago">Seleccione la forma de pago</label>
-            <br>
-            <div id="contenedorSelectFormaPago">    
-             </div>
+        <div class="input-field col s12 m6 l6">
+            <input id="moneda-tipoCambio" type="text">
+            <label for="moneda-tipoCambio" class="">Tipo de cambio</label>
         </div>
-        <div class="row">
+    <div class="row">
             <div class="input-field col s12 m12 l12">
                 <div class="input-field col s12" style="margin-top: 0;">
                     <textarea id="message" class="materialize-textarea" style="height: 24px;"></textarea>
