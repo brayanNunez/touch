@@ -65,8 +65,13 @@
                                                 </div>
                                             </div>
                                             <div class="input-field col s12">
-                                                <input id="cliente_correo" type="email">
+                                                <input id="cliente_correo" type="email" style="margin-bottom: 0;">
                                                 <label for="cliente_correo"><?= label('formCliente_correo'); ?></label>
+                                                <input type="checkbox" class="filled-in checkbox"
+                                                       id="checkbox_correoCliente" checked/>
+                                                <label for="checkbox_correoCliente" style="margin-bottom: 20px;">
+                                                    <?= label('formCliente_correoCheck') ?>
+                                                </label>
                                             </div>
                                             <div class="input-field col s12">
                                                 <input id="cliente_telefonoMovil" type="text">
@@ -589,8 +594,13 @@
         </div>
         <div class="row">
             <div class="input-field col s12 m6 l6">
-                <input id="cliente_contactoCorreo" type="email">
-                <label for="cliente_contactoCorreo"><?= label('formContacto_correo'); ?></label>
+                <input id="cliente_contactoCorreo" type="email" style="margin-bottom: 0;">
+                <label for="cliente_contactoCorreo"><?= label('formCliente_correo'); ?></label>
+                <input type="checkbox" class="filled-in checkbox"
+                       id="checkbox_contactoCorreoCliente" />
+                <label for="checkbox_contactoCorreoCliente" style="margin-bottom: 20px;">
+                    <?= label('formCliente_correoCheck') ?>
+                </label>
             </div>
             <div class="input-field col s12 m3 l3">
                 <input id="cliente_contactoPuesto" type="text">
@@ -629,8 +639,13 @@
         </div>
         <div class="row">
             <div class="input-field col s12 m6 l6">
-                <input id="cliente_contactoCorreo_existente" type="email" value="claret@gmail.com">
-                <label for="cliente_contactoCorreo_existente"><?= label('formContacto_correo'); ?></label>
+                <input id="cliente_contactoCorreo_existente" type="email" style="margin-bottom: 0;">
+                <label for="cliente_contactoCorreo_existente"><?= label('formCliente_correo'); ?></label>
+                <input type="checkbox" class="filled-in checkbox"
+                       id="checkbox_contactoCorreoCliente_existente" checked/>
+                <label for="checkbox_contactoCorreoCliente_existente" style="margin-bottom: 20px;">
+                    <?= label('formCliente_correoCheck') ?>
+                </label>
             </div>
             <div class="input-field col s12 m3 l3">
                 <input id="cliente_contactoPuesto_existente" type="text" value="CEO">

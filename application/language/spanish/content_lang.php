@@ -299,7 +299,6 @@
     $lang['formCliente_nacionalidad'] = 'Nacionalidad:';
     $lang['formCliente_apellido1'] = 'Primer apellido';
     $lang['formCliente_apellido2'] = 'Segundo apellido';
-    $lang['formCliente_correo'] = 'Correo electrónico';
     $lang['formCliente_Contactos'] = 'Contactos';
     $lang['cliente_infoAdicional'] = 'Adicional';
     $lang['cliente_infoFacturacion'] = 'Cotización';
@@ -313,6 +312,8 @@
     $lang['formCliente_direccionCanton'] = 'Cantón';
     $lang['formCliente_direccionDistrito'] = 'Distrito';
     $lang['formCliente_direccionDomicilio'] = 'Domicilio';
+    $lang['formCliente_correo'] = 'Correo electrónico';
+    $lang['formCliente_correoCheck'] = 'Enviar facturas a este correo';
 
     $lang['formContacto_apellido1'] = 'Primer apellido';
     $lang['formContacto_apellido2'] = 'Segundo apellido';
