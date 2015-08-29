@@ -480,16 +480,14 @@
             <div class="row">
                 <div class="input-field col s12 m3 l3">
                     <div class="input-field col s12">
-                        <input id="busqueda-fecha-desde" type="date">
-                        <label id="fecha-desde" for="busqueda-fecha-desde"
-                               class=""><?= label('clientes_busquedaDesde') ?></label>
+                        <input id="busqueda-fecha-desde" type="text" class="datepicker-fecha">
+                        <label for="busqueda-fecha-desde" class=""><?= label('clientes_busquedaDesde') ?></label>
                     </div>
                 </div>
                 <div class="input-field col s12 m3 l3">
                     <div class="input-field col s12">
-                        <input id="busqueda-fecha-hasta" type="date">
-                        <label id="fecha-hasta" for="busqueda-fecha-hasta"
-                               class=""><?= label('clientes_busquedaHasta') ?></label>
+                        <input id="busqueda-fecha-hasta" type="text" class="datepicker-fecha">
+                        <label for="busqueda-fecha-hasta" class=""><?= label('clientes_busquedaHasta') ?></label>
                     </div>
                 </div>
 

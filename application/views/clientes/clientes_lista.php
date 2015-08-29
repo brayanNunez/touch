@@ -318,6 +318,110 @@
     });
 </script>
 
+<!-- Script para tags -->
+<script>
+    $(document).ready(function () {
+
+        var vendedores = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/vendedores.json'
+            prefetch: {
+                url: '<?=base_url()?>Cotizacion/jsonVendedores',
+                ttl: 1000
+            }
+        });
+
+        vendedores.initialize();
+
+        elt = $('.tags_vendedores > > input');
+        elt.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'vendedores',
+                displayKey: 'text',
+                source: vendedores.ttAdapter()
+            }
+        });
+
+//        elt.tagsinput('add', {"value": 1, "text": "Brayan Nuñez Rojas", "continent": "Europe"});
+//        elt.tagsinput('add', {"value": 4, "text": "Anthony Nuñez Rojas", "continent": "America"});
+//        elt.tagsinput('add', {"value": 7, "text": "Maria Perez Salas", "continent": "Australia"});
+//        elt.tagsinput('add', {"value": 10, "text": "Carlos David Rojas", "continent": "Asia"});
+//        elt.tagsinput('add', {"value": 13, "text": "Diego Alfaro Rojas", "continent": "Africa"});
+
+
+        var gusto = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            prefetch: {
+                url: '<?=base_url()?>Cotizacion/jsonGustos',
+                ttl: 1000,
+                filter: function (list) {
+                    return $.map(list, function (gusto) {
+                        return {name: gusto};
+                    });
+                }
+            }
+        });
+        gusto.initialize();
+
+
+        $('.tags_gustosCliente  > > input').tagsinput({
+            typeaheadjs: {
+                name: 'gusto',
+                displayKey: 'name',
+                valueKey: 'name',
+                source: gusto.ttAdapter()
+            }
+        });
+
+
+        var mediosContacto = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/gustos.json'
+            prefetch: {
+                url: '<?=base_url()?>Cotizacion/jsonContactos',
+                ttl: 1000,
+                filter: function (list) {
+                    return $.map(list, function (mediosContacto) {
+                        return {name: mediosContacto};
+                    });
+                }
+            }
+        });
+        mediosContacto.initialize();
+
+
+        var elt = $('.tags_mediosContacto > > input');
+        elt.tagsinput({
+            typeaheadjs: {
+                name: 'mediosContacto',
+                displayKey: 'name',
+                valueKey: 'name',
+                source: mediosContacto.ttAdapter()
+            }
+        });
+
+
+        $('.boton-opciones').on('click', function (event) {
+            var elementoActivo = $(this).siblings('ul.active');
+            if (elementoActivo.length > 0) {
+                var estado = elementoActivo.css("display");
+                if (estado == "block") {
+                    elementoActivo.css("display", "none");
+                    elementoActivo.style.display = 'none';
+                } else {
+                    elementoActivo.css("display", "block");
+                    elementoActivo.style.display = 'block';
+                }
+            }
+        });
+    });
+</script>
+
 <!-- lista modals -->
 <div id="eliminarCliente" class="modal">
     <div class="modal-header">
@@ -352,8 +456,8 @@
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <div id="formGeneral" class="section">
-            <div class="row">
+        <div id="formGeneral" class="section" style="padding-bottom: 0;">
+            <div class="row" style="margin-bottom: 0;">
                 <div class="input-field col s12 m3 l3">
                     <div class="input-field col s12">
                         <input id="busqueda-fecha-desde" type="text" class="datepicker-fecha">
@@ -376,7 +480,7 @@
                     </select>
                     <label>Estado de la cotización</label>
                 </div>
-                <div class="input-field col s12 m4 l4">
+                <div class="input-field col s12 m6 l6">
                     <select class="input-field col s12">
                         <option value="1" selected>Todos</option>
                         <option value="2">Juan Alfaro Alfaro</option>
@@ -384,15 +488,7 @@
                     </select>
                     <label>Clientes</label>
                 </div>
-                <div class="input-field col s12 m4 l4">
-                    <select class="input-field col s12">
-                        <option value="1" selected>Todos</option>
-                        <option value="2">Juan Carlos Porras</option>
-                        <option value="3">Ana Bolaños Rojas</option>
-                    </select>
-                    <label>Vendedores</label>
-                </div>
-                <div class="input-field col s12 m4 l4">
+                <div class="input-field col s12 m6 l6">
                     <select id="reporte-cliente" class="input-field col s12">
                         <option value="1" selected>Todos</option>
                         <option value="2">Transportes Rojas</option>
@@ -400,119 +496,45 @@
                     </select>
                     <label for="reporte-cliente">Proveedores</label>
                 </div>
-                <div class="input-field col s12 m6 l6">
-                    <label><?= label('formCliente_gustos_preferencias'); ?></label>
-                    <br/>
-                    <br/>
-                    <table class="table striped">
-                        <thead>
-                        <tr>
-                            <th><?= label('formCliente_gustos'); ?></th>
-                            <th><?= label('formCliente_estado'); ?></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>Preferencia 1</td>
-                            <td>
-                                <div class="switch">
-                                    <label style="position: relative">
-                                        <?= label('off'); ?>
-                                        <input type="checkbox">
-                                        <span class="lever"></span>
-                                        <?= label('on'); ?>
-                                    </label>
-                                </div>
-                                <br/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Preferencia 2</td>
-                            <td>
-                                <div class="switch">
-                                    <label style="position: relative">
-                                        <?= label('off'); ?>
-                                        <input type="checkbox">
-                                        <span class="lever"></span>
-                                        <?= label('on'); ?>
-                                    </label>
-                                </div>
-                                <br/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Preferencia 3</td>
-                            <td>
-                                <div class="switch">
-                                    <label style="position: relative">
-                                        <?= label('off'); ?>
-                                        <input type="checkbox">
-                                        <span class="lever"></span>
-                                        <?= label('on'); ?>
-                                    </label>
-                                </div>
-                                <br/>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                <div class="col s12 m4 l4 tagsInput-div">
+                    <div class="inputTag col s12">
+                        <label for="vendedoresCliente"><?= label('formCliente_cotizador'); ?></label>
+                        <br>
+
+                        <div id="vendedoresCliente" class="example campo-tags tags_vendedores">
+                            <div class="bs-example">
+                                <input placeholder="<?= label('formCliente_anadirVendedor'); ?>" type="text" value="Todos"/>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
                 </div>
-                <div class="input-field col s12 m6 l6">
-                    <label><?= label('formCliente_mediosContacto'); ?></label>
-                    <br/>
-                    <br/>
-                    <table class="table striped">
-                        <thead>
-                        <tr>
-                            <th><?= label('formCliente_medio'); ?></th>
-                            <th><?= label('formCliente_estadoMedio'); ?></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>Medio 1</td>
-                            <td>
-                                <div class="switch">
-                                    <label style="position: relative">
-                                        <?= label('off'); ?>
-                                        <input type="checkbox">
-                                        <span class="lever"></span>
-                                        <?= label('on'); ?>
-                                    </label>
-                                </div>
-                                <br/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Medio 2</td>
-                            <td>
-                                <div class="switch">
-                                    <label style="position: relative">
-                                        <?= label('off'); ?>
-                                        <input type="checkbox">
-                                        <span class="lever"></span>
-                                        <?= label('on'); ?>
-                                    </label>
-                                </div>
-                                <br/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Medio 3</td>
-                            <td>
-                                <div class="switch">
-                                    <label style="position: relative">
-                                        <?= label('off'); ?>
-                                        <input type="checkbox">
-                                        <span class="lever"></span>
-                                        <?= label('on'); ?>
-                                    </label>
-                                </div>
-                                <br/>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                <div class="col s12 m4 l4 tagsInput-div">
+                    <div class="inputTag col s12">
+                        <label for="gustosCliente"><?= label('formCliente_gustos_preferencias'); ?></label>
+                        <br>
+
+                        <div id="gustosCliente" class="example campo-tags tags_gustosCliente">
+                            <div class="bs-example">
+                                <input placeholder="<?= label('formCliente_anadirGusto'); ?>" type="text"
+                                       value="Todos"/>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+                <div class="col s12 m4 l4 tagsInput-div">
+                    <div class="inputTag col s12">
+                        <label for="mediosCliente"><?= label('formCliente_mediosContacto'); ?></label>
+                        <br>
+
+                        <div id="mediosCliente" class="example campo-tags tags_mediosContacto">
+                            <div class="bs-example">
+                                <input placeholder="<?= label('formCliente_anadirMedio'); ?>" type="text" value="Todos"/>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
                 </div>
             </div>
         </div>

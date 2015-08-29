@@ -181,6 +181,10 @@ tr.edicion-subcategoria td div.subcategoria-edicion-opciones a.btn-cancelarSubca
 ul.cliente-info li a.active { color: green !important; background-color: lightgray; }
 
 div#busquedaAvanzada div.select-wrapper + label { top: 0; }
+div.tagsInput-div { margin-top: 15px; }
+div#busquedaAvanzada div.inputTag label { float: left; margin-left: -10px; }
+div#busquedaAvanzada div.inputTag div.campo-tags { margin-top: 10px; }
+div#busquedaAvanzadaPS div.modal-content div.row { margin-bottom: 0; }
 
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/
