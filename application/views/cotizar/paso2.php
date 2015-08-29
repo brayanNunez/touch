@@ -1,58 +1,6 @@
-<button onclick="botonEnLista('hola')">prueba</button>
+<button onclick="agregarFila()">Agregar Fila(boton de prueba)</button>
 
-<script type="text/javascript">
-    function botonEnLista(tipo, idBoton, nuevoElementoAgregar){
-        generarAutocompletarProductoNombre(3);
-        generarAutocompletarProductoItem(3);
-        generarListas();
-        alert("tipo: " +tipo+ " id: " + idBoton + " palabra: " + nuevoElementoAgregar);
-    }
 
-     function generarAutocompletarProductoNombre(id){
-        var miSelect = $('<select data-tipo="productoNombre" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso2_elegirProductoNombre"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
-        miSelect.append('<option value=""></option>');
-        miSelect.append('<option value="Uganda">Uganda</option>');
-        miSelect.append('<option value="Ukraine">Ukraine</option>');
-        miSelect.append('<option value="United Arab Emirates">United Arab Emirates</option>');
-        miSelect.append('<option value="United Kingdom">United Kingdom</option>');
-        miSelect.append('<option value="United States">United States</option>');
-        miSelect.append('<option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>');
-        $('#contenedorSelectProductoNombre' + id + '').html(miSelect);
-    }
-    function generarAutocompletarProductoItem(id){
-        var miSelect = $('<select data-tipo="productoItem" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso2_elegirProductoItem"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
-        miSelect.append('<option value=""></option>');
-        miSelect.append('<option value="Uganda">001</option>');
-        miSelect.append('<option value="Ukraine">002</option>');
-        miSelect.append('<option value="United Arab Emirates">003</option>');
-        miSelect.append('<option value="United Kingdom">123</option>');
-        miSelect.append('<option value="United States">234</option>');
-        miSelect.append('<option value="United States Minor Outlying Islands">458</option>');
-        $('#contenedorSelectProductoItem' + id + '').html(miSelect);
-    }
-    function generarListas(){
-
-        var config = {'.chosen-select'           : {}}
-          for (var selector in config) {
-            $(selector).chosen(config[selector]);
-          }
-    }
-</script>
-
-<script type="text/javascript">
-    $(document).on("ready", function(){
-
-        generarAutocompletarProductoNombre(1);
-        generarAutocompletarProductoNombre(2);
-
-        generarAutocompletarProductoItem(1);
-        generarAutocompletarProductoItem(2);
-        generarListas();
-
-    });
-     
-
-</script>
 
 <!-- <button id="myFunction">Vamos tu puedes</button> -->
 
@@ -588,90 +536,90 @@
 </div>
 
 <script>
-    function check(nombre, elemnto) {
-        var lista = document.getElementsByClassName(nombre);
-        var titulo = document.getElementById(elemnto.id)
-        if (!titulo.checked) {
-            for (var i = 0; i < lista.length; i++) {
-                lista[i].checked = false;
-            }
-            ;
-        } else {
-            for (var i = 0; i < lista.length; i++) {
-                lista[i].checked = true;
-            }
-            ;
-        }
-        ;
-    }
-    function check(nombre) {
-        var lista = document.getElementsByClassName(nombre);
-        for (var i = 0; i < lista.length; i++) {
-            lista[i].checked = true;
-        }
-        ;
-    }
-    function quitarCheck(nombre) {
-        var lista = document.getElementsByClassName(nombre);
-        for (var i = 0; i < lista.length; i++) {
-            lista[i].checked = false;
-        }
-        ;
-    }
-    $(function () {
-        var availableTags = [
-            "Almuerzo",
-            "Fresco",
-            "Hamburguesa",
-            "Música",
-            "Pizza",
-            "Arroz",
-            "Frijoles",
-            "Ensalada",
-            "Carne en salsa",
-            "Pollo",
-            "Bolsa de confites",
-            "Piñata",
-            "Comediante",
-            "Animador",
-            "Comparsa",
-            "Mariachi",
-            "Vino",
-            "Tacos",
-            "Globos",
-            "Payaso",
-            "Quque",
-            "Helado"
-        ];
-        $(".tags").autocomplete({
-            source: availableTags
-        });
+    // function check(nombre, elemnto) {
+    //     var lista = document.getElementsByClassName(nombre);
+    //     var titulo = document.getElementById(elemnto.id)
+    //     if (!titulo.checked) {
+    //         for (var i = 0; i < lista.length; i++) {
+    //             lista[i].checked = false;
+    //         }
+    //         ;
+    //     } else {
+    //         for (var i = 0; i < lista.length; i++) {
+    //             lista[i].checked = true;
+    //         }
+    //         ;
+    //     }
+    //     ;
+    // }
+    // function check(nombre) {
+    //     var lista = document.getElementsByClassName(nombre);
+    //     for (var i = 0; i < lista.length; i++) {
+    //         lista[i].checked = true;
+    //     }
+    //     ;
+    // }
+    // function quitarCheck(nombre) {
+    //     var lista = document.getElementsByClassName(nombre);
+    //     for (var i = 0; i < lista.length; i++) {
+    //         lista[i].checked = false;
+    //     }
+    //     ;
+    // }
+    // $(function () {
+    //     var availableTags = [
+    //         "Almuerzo",
+    //         "Fresco",
+    //         "Hamburguesa",
+    //         "Música",
+    //         "Pizza",
+    //         "Arroz",
+    //         "Frijoles",
+    //         "Ensalada",
+    //         "Carne en salsa",
+    //         "Pollo",
+    //         "Bolsa de confites",
+    //         "Piñata",
+    //         "Comediante",
+    //         "Animador",
+    //         "Comparsa",
+    //         "Mariachi",
+    //         "Vino",
+    //         "Tacos",
+    //         "Globos",
+    //         "Payaso",
+    //         "Quque",
+    //         "Helado"
+    //     ];
+    //     $(".tags").autocomplete({
+    //         source: availableTags
+    //     });
 
-         $('.tags').bind('autocompleteopen', function(event,data){
+    //      $('.tags').bind('autocompleteopen', function(event,data){
 
-          $('<li tabindex="-1" class="ui-menu-item" id=""><a href="....">Agregar producto</a></li>').prependTo('ul.ui-autocomplete');
+    //       $('<li tabindex="-1" class="ui-menu-item" id=""><a href="....">Agregar producto</a></li>').prependTo('ul.ui-autocomplete');
        
-        });
+    //     });
 
-        $('.tags').on("input", function(){
+    //     $('.tags').on("input", function(){
             
-            var primero = "true";
-            $(".ui-menu-item").each(function(index, val) {
-                if (!primero) {
-                    val.remove();
-                } 
-                primero = false;
+    //         var primero = "true";
+    //         $(".ui-menu-item").each(function(index, val) {
+    //             if (!primero) {
+    //                 val.remove();
+    //             } 
+    //             primero = false;
               
-            });
+    //         });
 
-            // $('.ui-menu-item').remove();
-            $('#ui-id-2').css('display', 'block');
+    //         // $('.ui-menu-item').remove();
+    //         $('#ui-id-2').css('display', 'block');
 
-         });
+    //      });
            
            
 
-    });
+    // });
 </script>
 
 <!--Funciones de checkboxes y eliminar-->
@@ -762,230 +710,230 @@
 </script>
 
 <script type="text/javascript" class="showcase">
-    $(function () {
-        $.contextMenu({
-            selector: '.context-menu-miItem',
-            callback: function (key, options) {
-                if (key == 'check') {
-                    check('item');
-                }
-                if (key == 'noCheck') {
-                    quitarCheck('item');
-                }
-                // window.console && console.log(m) || alert(m);
-            },
-            items: {
-                "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
-                "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
-                "noCheck": {name: "No mostrar esta columna", icon: "delete"},
-                "check": {name: "Mostrar esta columna", icon: "quit"}
-                // "Salir": {name: "Salir", icon: "quit"}
-            }
-        });
-        $('.context-menu-miItem').on('click', function (e) {
-            console.log('clicked', this);
-        })
-    });
+    // $(function () {
+    //     $.contextMenu({
+    //         selector: '.context-menu-miItem',
+    //         callback: function (key, options) {
+    //             if (key == 'check') {
+    //                 check('item');
+    //             }
+    //             if (key == 'noCheck') {
+    //                 quitarCheck('item');
+    //             }
+    //             // window.console && console.log(m) || alert(m);
+    //         },
+    //         items: {
+    //             "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
+    //             "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
+    //             "noCheck": {name: "No mostrar esta columna", icon: "delete"},
+    //             "check": {name: "Mostrar esta columna", icon: "quit"}
+    //             // "Salir": {name: "Salir", icon: "quit"}
+    //         }
+    //     });
+    //     $('.context-menu-miItem').on('click', function (e) {
+    //         console.log('clicked', this);
+    //     })
+    // });
 
-    $(function () {
-        $.contextMenu({
-            selector: '.context-menu-nombre',
-            callback: function (key, options) {
-                if (key == 'check') {
-                    check('nombre');
-                }
-                if (key == 'noCheck') {
-                    quitarCheck('nombre');
-                }
-                // window.console && console.log(m) || alert(m);
-            },
-            items: {
-                "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
-                "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
-                "noCheck": {name: "No mostrar esta columna", icon: "delete"},
-                "check": {name: "Mostrar esta columna", icon: "quit"}
-                // "Salir": {name: "Salir", icon: "quit"}
-            }
-        });
-        $('.context-menu-nombre').on('click', function (e) {
-            console.log('clicked', this);
-        })
-    });
+    // $(function () {
+    //     $.contextMenu({
+    //         selector: '.context-menu-nombre',
+    //         callback: function (key, options) {
+    //             if (key == 'check') {
+    //                 check('nombre');
+    //             }
+    //             if (key == 'noCheck') {
+    //                 quitarCheck('nombre');
+    //             }
+    //             // window.console && console.log(m) || alert(m);
+    //         },
+    //         items: {
+    //             "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
+    //             "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
+    //             "noCheck": {name: "No mostrar esta columna", icon: "delete"},
+    //             "check": {name: "Mostrar esta columna", icon: "quit"}
+    //             // "Salir": {name: "Salir", icon: "quit"}
+    //         }
+    //     });
+    //     $('.context-menu-nombre').on('click', function (e) {
+    //         console.log('clicked', this);
+    //     })
+    // });
 
-    $(function () {
-        $.contextMenu({
-            selector: '.context-menu-descripcion',
-            callback: function (key, options) {
-                if (key == 'check') {
-                    check('descripcion');
-                }
-                if (key == 'noCheck') {
-                    quitarCheck('descripcion');
-                }
-                // window.console && console.log(m) || alert(m);
-            },
-            items: {
-                "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
-                "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
-                "noCheck": {name: "No mostrar esta columna", icon: "delete"},
-                "check": {name: "Mostrar esta columna", icon: "quit"}
-                // "Salir": {name: "Salir", icon: "quit"}
-            }
-        });
-        $('.context-menu-descripcion').on('click', function (e) {
-            console.log('clicked', this);
-        })
-    });
+    // $(function () {
+    //     $.contextMenu({
+    //         selector: '.context-menu-descripcion',
+    //         callback: function (key, options) {
+    //             if (key == 'check') {
+    //                 check('descripcion');
+    //             }
+    //             if (key == 'noCheck') {
+    //                 quitarCheck('descripcion');
+    //             }
+    //             // window.console && console.log(m) || alert(m);
+    //         },
+    //         items: {
+    //             "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
+    //             "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
+    //             "noCheck": {name: "No mostrar esta columna", icon: "delete"},
+    //             "check": {name: "Mostrar esta columna", icon: "quit"}
+    //             // "Salir": {name: "Salir", icon: "quit"}
+    //         }
+    //     });
+    //     $('.context-menu-descripcion').on('click', function (e) {
+    //         console.log('clicked', this);
+    //     })
+    // });
 
-    $(function () {
-        $.contextMenu({
-            selector: '.context-menu-imagen',
-            callback: function (key, options) {
-                if (key == 'check') {
-                    check('imagen');
-                }
-                if (key == 'noCheck') {
-                    quitarCheck('imagen');
-                }
-                // window.console && console.log(m) || alert(m);
-            },
-            items: {
-                "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
-                "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
-                "noCheck": {name: "No mostrar esta columna", icon: "delete"},
-                "check": {name: "Mostrar esta columna", icon: "quit"}
-                // "Salir": {name: "Salir", icon: "quit"}
-            }
-        });
-        $('.context-menu-imagen').on('click', function (e) {
-            console.log('clicked', this);
-        })
-    });
+    // $(function () {
+    //     $.contextMenu({
+    //         selector: '.context-menu-imagen',
+    //         callback: function (key, options) {
+    //             if (key == 'check') {
+    //                 check('imagen');
+    //             }
+    //             if (key == 'noCheck') {
+    //                 quitarCheck('imagen');
+    //             }
+    //             // window.console && console.log(m) || alert(m);
+    //         },
+    //         items: {
+    //             "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
+    //             "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
+    //             "noCheck": {name: "No mostrar esta columna", icon: "delete"},
+    //             "check": {name: "Mostrar esta columna", icon: "quit"}
+    //             // "Salir": {name: "Salir", icon: "quit"}
+    //         }
+    //     });
+    //     $('.context-menu-imagen').on('click', function (e) {
+    //         console.log('clicked', this);
+    //     })
+    // });
 
-    $(function () {
-        $.contextMenu({
-            selector: '.context-menu-precio',
-            callback: function (key, options) {
-                if (key == 'check') {
-                    check('precio');
-                }
-                if (key == 'noCheck') {
-                    quitarCheck('precio');
-                }
-                // window.console && console.log(m) || alert(m);
-            },
-            items: {
-                "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
-                "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
-                "noCheck": {name: "No mostrar esta columna", icon: "delete"},
-                "check": {name: "Mostrar esta columna", icon: "quit"}
-                // "Salir": {name: "Salir", icon: "quit"}
-            }
-        });
-        $('.context-menu-precio').on('click', function (e) {
-            console.log('clicked', this);
-        })
-    });
+    // $(function () {
+    //     $.contextMenu({
+    //         selector: '.context-menu-precio',
+    //         callback: function (key, options) {
+    //             if (key == 'check') {
+    //                 check('precio');
+    //             }
+    //             if (key == 'noCheck') {
+    //                 quitarCheck('precio');
+    //             }
+    //             // window.console && console.log(m) || alert(m);
+    //         },
+    //         items: {
+    //             "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
+    //             "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
+    //             "noCheck": {name: "No mostrar esta columna", icon: "delete"},
+    //             "check": {name: "Mostrar esta columna", icon: "quit"}
+    //             // "Salir": {name: "Salir", icon: "quit"}
+    //         }
+    //     });
+    //     $('.context-menu-precio').on('click', function (e) {
+    //         console.log('clicked', this);
+    //     })
+    // });
 
-    $(function () {
-        $.contextMenu({
-            selector: '.context-menu-cantidad',
-            callback: function (key, options) {
-                if (key == 'check') {
-                    check('cantidad');
-                }
-                if (key == 'noCheck') {
-                    quitarCheck('cantidad');
-                }
-                // window.console && console.log(m) || alert(m);
-            },
-            items: {
-                "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
-                "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
-                "noCheck": {name: "No mostrar esta columna", icon: "delete"},
-                "check": {name: "Mostrar esta columna", icon: "quit"}
-                // "Salir": {name: "Salir", icon: "quit"}
-            }
-        });
-        $('.context-menu-cantidad').on('click', function (e) {
-            console.log('clicked', this);
-        })
-    });
+    // $(function () {
+    //     $.contextMenu({
+    //         selector: '.context-menu-cantidad',
+    //         callback: function (key, options) {
+    //             if (key == 'check') {
+    //                 check('cantidad');
+    //             }
+    //             if (key == 'noCheck') {
+    //                 quitarCheck('cantidad');
+    //             }
+    //             // window.console && console.log(m) || alert(m);
+    //         },
+    //         items: {
+    //             "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
+    //             "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
+    //             "noCheck": {name: "No mostrar esta columna", icon: "delete"},
+    //             "check": {name: "Mostrar esta columna", icon: "quit"}
+    //             // "Salir": {name: "Salir", icon: "quit"}
+    //         }
+    //     });
+    //     $('.context-menu-cantidad').on('click', function (e) {
+    //         console.log('clicked', this);
+    //     })
+    // });
 
-    $(function () {
-        $.contextMenu({
-            selector: '.context-menu-impuestoVenta',
-            callback: function (key, options) {
-                if (key == 'check') {
-                    check('impuestoVenta');
-                }
-                if (key == 'noCheck') {
-                    quitarCheck('impuestoVenta');
-                }
-                // window.console && console.log(m) || alert(m);
-            },
-            items: {
-                "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
-                "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
-                "noCheck": {name: "No mostrar esta columna", icon: "delete"},
-                "check": {name: "Mostrar esta columna", icon: "quit"}
-                // "Salir": {name: "Salir", icon: "quit"}
-            }
-        });
-        $('.context-menu-impuestoVenta').on('click', function (e) {
-            console.log('clicked', this);
-        })
-    });
+    // $(function () {
+    //     $.contextMenu({
+    //         selector: '.context-menu-impuestoVenta',
+    //         callback: function (key, options) {
+    //             if (key == 'check') {
+    //                 check('impuestoVenta');
+    //             }
+    //             if (key == 'noCheck') {
+    //                 quitarCheck('impuestoVenta');
+    //             }
+    //             // window.console && console.log(m) || alert(m);
+    //         },
+    //         items: {
+    //             "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
+    //             "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
+    //             "noCheck": {name: "No mostrar esta columna", icon: "delete"},
+    //             "check": {name: "Mostrar esta columna", icon: "quit"}
+    //             // "Salir": {name: "Salir", icon: "quit"}
+    //         }
+    //     });
+    //     $('.context-menu-impuestoVenta').on('click', function (e) {
+    //         console.log('clicked', this);
+    //     })
+    // });
 
-    $(function () {
-        $.contextMenu({
-            selector: '.context-menu-utilidad',
-            callback: function (key, options) {
-                if (key == 'check') {
-                    check('utilidad');
-                }
-                if (key == 'noCheck') {
-                    quitarCheck('utilidad');
-                }
-                // window.console && console.log(m) || alert(m);
-            },
-            items: {
-                "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
-                "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
-                "noCheck": {name: "No mostrar esta columna", icon: "delete"},
-                "check": {name: "Mostrar esta columna", icon: "quit"}
-                // "Salir": {name: "Salir", icon: "quit"}
-            }
-        });
-        $('.context-menu-utilidad').on('click', function (e) {
-            console.log('clicked', this);
-        })
-    });
+    // $(function () {
+    //     $.contextMenu({
+    //         selector: '.context-menu-utilidad',
+    //         callback: function (key, options) {
+    //             if (key == 'check') {
+    //                 check('utilidad');
+    //             }
+    //             if (key == 'noCheck') {
+    //                 quitarCheck('utilidad');
+    //             }
+    //             // window.console && console.log(m) || alert(m);
+    //         },
+    //         items: {
+    //             "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
+    //             "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
+    //             "noCheck": {name: "No mostrar esta columna", icon: "delete"},
+    //             "check": {name: "Mostrar esta columna", icon: "quit"}
+    //             // "Salir": {name: "Salir", icon: "quit"}
+    //         }
+    //     });
+    //     $('.context-menu-utilidad').on('click', function (e) {
+    //         console.log('clicked', this);
+    //     })
+    // });
 
-    $(function () {
-        $.contextMenu({
-            selector: '.context-menu-subTotal',
-            callback: function (key, options) {
-                if (key == 'check') {
-                    check('subTotal');
-                }
-                if (key == 'noCheck') {
-                    quitarCheck('subTotal');
-                }
-                // window.console && console.log(m) || alert(m);
-            },
-            items: {
-                "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
-                "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
-                "noCheck": {name: "No mostrar esta columna", icon: "delete"},
-                "check": {name: "Mostrar esta columna", icon: "quit"}
-                // "Salir": {name: "Salir", icon: "quit"}
-            }
-        });
-        $('.context-menu-subTotal').on('click', function (e) {
-            console.log('clicked', this);
-        })
-    });
+    // $(function () {
+    //     $.contextMenu({
+    //         selector: '.context-menu-subTotal',
+    //         callback: function (key, options) {
+    //             if (key == 'check') {
+    //                 check('subTotal');
+    //             }
+    //             if (key == 'noCheck') {
+    //                 quitarCheck('subTotal');
+    //             }
+    //             // window.console && console.log(m) || alert(m);
+    //         },
+    //         items: {
+    //             "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
+    //             "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
+    //             "noCheck": {name: "No mostrar esta columna", icon: "delete"},
+    //             "check": {name: "Mostrar esta columna", icon: "quit"}
+    //             // "Salir": {name: "Salir", icon: "quit"}
+    //         }
+    //     });
+    //     $('.context-menu-subTotal').on('click', function (e) {
+    //         console.log('clicked', this);
+    //     })
+    // });
 </script>
 
 <!-- lista modals -->

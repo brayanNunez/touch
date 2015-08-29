@@ -457,6 +457,40 @@ input, optgroup, select, textarea {
 	width: 62px !important;
 }
 
+.inputSelector label{
+	top: -2px  !important;
+}
 
 
+#contenedorSelectAtencion .chosen-container{
+	width: 100% !important;
+	text-align: left;
+}
+#contenedorSelectAtencion .chosen-search input{
+	width: 85% !important;
+}
+
+#contenedorSelectCliente .chosen-container{
+	width: 100% !important;
+	text-align: left;
+}
+#contenedorSelectCliente .chosen-search input{
+	width: 85% !important;
+}
+
+#contenedorSelectMoneda .chosen-container{
+	width: 100% !important;
+	text-align: left;
+}
+#contenedorSelectMoneda .chosen-search input{
+	width: 85% !important;
+}
+
+#contenedorSelectFormaPago .chosen-container{
+	width: 100% !important;
+	text-align: left;
+}
+#contenedorSelectFormaPago .chosen-search input{
+	width: 85% !important;
+}
 
