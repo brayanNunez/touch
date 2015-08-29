@@ -338,7 +338,7 @@
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content" style="padding: 0;">
-        <p style="font-size: larger; text-align: left; margin-left: 2%; font-weight: bold;">
+        <p class="titulo-modal">
             <?= label('Categorias_nuevo'); ?>
         </p>
         <div class="row">
@@ -348,7 +348,7 @@
                     <label for="categoriaPadre_codigo"><?= label('Categorias_codigoNuevo'); ?></label>
                 </div>
                 <div id="btn-agregarProductosC1" class="col s12 m6 l4">
-                    <a class="btn" href="#" style="margin-top: 13px;"
+                    <a class="btn btn-agregarProductos-categoria" href="#"
                        onclick="document.getElementById('productos-categoria1').style.display = 'block';
                                 document.getElementById('btn-agregarProductosC1').style.display = 'none';">
                         <?= label('Categorias_agregarProductos') ?>
@@ -381,7 +381,7 @@
             </div>
         </div>
         <div id="nueva-subcategoria1" style="display: none;">
-            <p style="font-size: larger; text-align: left; margin-left: 2%; font-weight: bold;">
+            <p class="titulo-modal">
                 <?= label('Subcategorias_nuevo'); ?>
             </p>
             <div class="row">
@@ -391,7 +391,7 @@
                         <label for="subcategoria1_codigo"><?= label('Subcategorias_codigo'); ?></label>
                     </div>
                     <div id="btn-agregarProductosSC1" class="col s12 m6 l4">
-                        <a class="btn" href="#" style="margin-top: 13px;"
+                        <a class="btn btn-agregarProductos-categoria" href="#"
                            onclick="document.getElementById('productos-subcategoria1').style.display = 'block';
                                 document.getElementById('btn-agregarProductosSC1').style.display = 'none';">
                             <?= label('Categorias_agregarProductos') ?>
@@ -403,9 +403,9 @@
                         <input id="subcategoria1_nombre" type="text">
                         <label for="subcategoria1_nombre"><?= label('Subcategorias_nombre'); ?></label>
                     </div>
-                    <a href="#" style="margin-top: 13px;" data-toggle="tooltip"
+                    <a href="#" class="btn-subcategoria-eliminar" data-toggle="tooltip"
                        title="<?= label('Subcategorias_eliminar') ?>">
-                        <i class="mdi-action-delete medium" style="color: black;"></i>
+                        <i class="mdi-action-delete medium"></i>
                     </a>
                 </div>
                 <div class="col s12">
@@ -418,10 +418,10 @@
                         </div>
                         <br>
                     </div>
-                    <div id="btn-agregarSubcategoria1" class="input-field col s12 m6 l8">
+                    <div id="btn-agregarSubcategoria2" class="input-field col s12 m6 l8">
                         <a class="btn" href="#"
                            onclick="document.getElementById('nueva-subcategoria2').style.display = 'block';
-                                document.getElementById('btn-agregarSubcategoria1').style.display = 'none';">
+                                document.getElementById('btn-agregarSubcategoria2').style.display = 'none';">
                             <?= label('Categorias_annadirOtraSubcategoria'); ?>
                         </a>
                     </div>
@@ -429,7 +429,7 @@
             </div>
         </div>
         <div id="nueva-subcategoria2" style="display: none;">
-            <p style="font-size: larger; text-align: left; margin-left: 2%; font-weight: bold;">
+            <p class="titulo-modal">
                 <?= label('Subcategorias_nuevo'); ?>
             </p>
             <div class="row">
@@ -439,7 +439,7 @@
                         <label for="subcategoria2_codigo"><?= label('Subcategorias_codigo'); ?></label>
                     </div>
                     <div id="btn-agregarProductosSC2" class="col s12 m6 l4">
-                        <a class="btn" href="#" style="margin-top: 13px;"
+                        <a class="btn btn-agregarProductos-categoria" href="#"
                            onclick="document.getElementById('productos-subcategoria2').style.display = 'block';
                                 document.getElementById('btn-agregarProductosSC2').style.display = 'none';">
                             <?= label('Categorias_agregarProductos') ?>
@@ -451,9 +451,9 @@
                         <input id="subcategoria2_nombre" type="text">
                         <label for="subcategoria2_nombre"><?= label('Subcategorias_nombre'); ?></label>
                     </div>
-                    <a href="#" style="margin-top: 13px;" data-toggle="tooltip"
+                    <a href="#" class="btn-subcategoria-eliminar" data-toggle="tooltip"
                        title="<?= label('Subcategorias_eliminar') ?>">
-                        <i class="mdi-action-delete medium" style="color: black;"></i>
+                        <i class="mdi-action-delete medium"></i>
                     </a>
                 </div>
                 <div class="col s12">
@@ -485,7 +485,7 @@
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content" style="padding: 0;">
-        <p style="font-size: larger; text-align: left; margin-left: 2%; font-weight: bold;">
+        <p class="titulo-modal">
             <?= label('Categorias_editar'); ?>
         </p>
         <div class="row">
@@ -494,8 +494,8 @@
                     <input id="categoriaPadre_codigo_existente" type="text" value="0001">
                     <label for="categoriaPadre_codigo_existente"><?= label('Categorias_codigoNuevo'); ?></label>
                 </div>
-                <div id="btn-agregarProductosC1_existente" class="col s12 m6 l4">
-                    <a class="btn" href="#" style="margin-top: 13px; display: none;">
+                <div id="btn-agregarProductosC1_existente" class="col s12 m6 l4" style="display: none;">
+                    <a class="btn btn-agregarProductos-categoria" href="#">
                         <?= label('Categorias_agregarProductos') ?>
                     </a>
                 </div>
@@ -524,7 +524,7 @@
             </div>
         </div>
         <div id="existente-subcategoria1">
-            <p style="font-size: larger; text-align: left; margin-left: 2%; font-weight: bold;">
+            <p class="titulo-modal">
                 <?= label('Subcategorias_nuevo'); ?>
             </p>
             <div class="row">
@@ -534,7 +534,7 @@
                         <label for="existente_subcategoria1_codigo"><?= label('Subcategorias_codigo'); ?></label>
                     </div>
                     <div id="btn-agregarProductosSC1_existente" class="col s12 m6 l4" style="display: none;">
-                        <a class="btn" href="#" style="margin-top: 13px;">
+                        <a class="btn btn-agregarProductos-categoria" href="#">
                             <?= label('Categorias_agregarProductos') ?>
                         </a>
                     </div>
@@ -544,9 +544,9 @@
                         <input id="existente_subcategoria1_nombre" type="text" value="Calzado de mujer">
                         <label for="existente_subcategoria1_nombre"><?= label('Subcategorias_nombre'); ?></label>
                     </div>
-                    <a href="#" style="margin-top: 13px;" data-toggle="tooltip"
+                    <a href="#" class="btn-subcategoria-eliminar" data-toggle="tooltip"
                        title="<?= label('Subcategorias_eliminar') ?>">
-                        <i class="mdi-action-delete medium" style="color: black;"></i>
+                        <i class="mdi-action-delete medium"></i>
                     </a>
                 </div>
                 <div class="col s12">
@@ -568,7 +568,7 @@
             </div>
         </div>
         <div id="existente-subcategoria2">
-            <p style="font-size: larger; text-align: left; margin-left: 2%; font-weight: bold;">
+            <p class="titulo-modal">
                 <?= label('Subcategorias_nuevo'); ?>
             </p>
             <div class="row">
@@ -578,7 +578,7 @@
                         <label for="existente_subcategoria2_codigo"><?= label('Subcategorias_codigo'); ?></label>
                     </div>
                     <div id="btn-agregarProductosSC2_existente" class="col s12 m6 l4" style="display: none;">
-                        <a class="btn" href="#" style="margin-top: 13px;">
+                        <a class="btn btn-agregarProductos-categoria" href="#">
                             <?= label('Categorias_agregarProductos') ?>
                         </a>
                     </div>
@@ -588,9 +588,9 @@
                         <input id="subcategoria2_nombre_existente" type="text" value="Calzado masculino">
                         <label for="subcategoria2_nombre_existente"><?= label('Subcategorias_nombre'); ?></label>
                     </div>
-                    <a href="#" style="margin-top: 13px;" data-toggle="tooltip"
+                    <a href="#" class="btn-subcategoria-eliminar" data-toggle="tooltip"
                        title="<?= label('Subcategorias_eliminar') ?>">
-                        <i class="mdi-action-delete medium" style="color: black;"></i>
+                        <i class="mdi-action-delete medium"></i>
                     </a>
                 </div>
                 <div class="col s12">
@@ -604,7 +604,7 @@
                         <br>
                     </div>
                     <div class="input-field col s12 m6 l8">
-                        <a class="btn" href="#" style="">
+                        <a class="btn" href="#">
                             <?= label('Categorias_annadirOtraSubcategoria'); ?>
                         </a>
                     </div>
@@ -622,7 +622,7 @@
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content" style="padding: 0;">
-        <p style="font-size: larger; text-align: left; margin-left: 2%; font-weight: bold;">
+        <p class="titulo-modal">
             <?= label('Categorias_ver'); ?>
         </p>
         <div class="row">
@@ -643,11 +643,11 @@
                             <td>Calzado</td>
                             <td>
                                 <a id="editar-subcategoria1"
-                                   class="black-text"
+                                   class="black-text editar-subcategoria"
                                    href="#" data-toggle="tooltip"
                                    onclick="mostrarEditar('edicion-subcategoria1')"
                                    title="<?= label('menuOpciones_editar') ?>">
-                                    <i class="mdi-file-file-download"></i>
+                                    <i class="mdi-editor-mode-edit"></i>
                                 </a>
                                 <a id="eliminar-subcategoria1"
                                    class="black-text"
@@ -658,17 +658,17 @@
                             </td>
                         </tr>
                         <tr class="edicion-subcategoria">
-                            <td colspan="3" style="padding: 0;background-color: gainsboro;">
+                            <td colspan="3">
                                 <div id="edicion-subcategoria1" style="display: none;">
-                                    <div class="input-field col s12 m6 l8">
+                                    <div class="input-field col s12 ">
                                         <input id="categoriaPadre_codigo_existente" type="text" value="0001">
                                         <label for="categoriaPadre_codigo_existente"><?= label('Categorias_codigoNuevo'); ?></label>
                                     </div>
-                                    <div class="input-field col s12 m6 l8">
+                                    <div class="input-field col s12">
                                         <input id="categoriaPadre_nombre_existente" type="text" value="Calzado">
                                         <label for="categoriaPadre_nombre_existente"><?= label('Categorias_nombreNuevo'); ?></label>
                                     </div>
-                                    <div id="productos-categoria1_existente" class="inputTag col s12 m6 l8" >
+                                    <div id="productos-categoria1_existente" class="inputTag col s12" >
                                         <div id="mediosCliente" class="example tags_mediosContacto">
                                             <div class="bs-example">
                                                 <input placeholder="<?= label('Categorias_annadirProductos'); ?>" type="text"
@@ -677,10 +677,14 @@
                                         </div>
                                         <br>
                                     </div>
-                                    <div class="input-field col s12 m6 l8" style="margin: 0 0 10px 0;">
-                                        <a class="btn" href="#" style="display: block;margin: 0 auto;width: 70%;"
+                                    <div class="input-field col s12 subcategoria-edicion-opciones">
+                                        <a class="btn btn-guardarSubcategoria" href="#"
                                            onclick="mostrarEditar('edicion-subcategoria1')">
                                             <?= label('Subcategorias_guardarCambios'); ?>
+                                        </a>
+                                        <a class="btn btn-cancelarSubcategoria" href="#"
+                                           onclick="mostrarEditar('edicion-subcategoria1')">
+                                            <?= label('Subcategorias_cancelarCambios'); ?>
                                         </a>
                                     </div>
                                 </div>
@@ -691,11 +695,11 @@
                             <td>Alimentos</td>
                             <td>
                                 <a id="editar-subcategoria2"
-                                   class="black-text"
+                                   class="black-text editar-subcategoria"
                                    href="#" data-toggle="tooltip"
                                    onclick="mostrarEditar('edicion-subcategoria2')"
                                    title="<?= label('menuOpciones_editar') ?>">
-                                    <i class="mdi-file-file-download"></i>
+                                    <i class="mdi-editor-mode-edit"></i>
                                 </a>
                                 <a id="eliminar-subcategoria2"
                                    class="black-text"
@@ -706,17 +710,17 @@
                             </td>
                         </tr>
                         <tr class="edicion-subcategoria">
-                            <td colspan="3" style="padding: 0;background-color: gainsboro;">
+                            <td colspan="3">
                                 <div id="edicion-subcategoria2" style="display: none;">
-                                    <div class="input-field col s12 m6 l8">
+                                    <div class="input-field col s12">
                                         <input id="categoriaPadre_codigo_existente" type="text" value="0002">
                                         <label for="categoriaPadre_codigo_existente"><?= label('Categorias_codigoNuevo'); ?></label>
                                     </div>
-                                    <div class="input-field col s12 m6 l8">
+                                    <div class="input-field col s12">
                                         <input id="categoriaPadre_nombre_existente" type="text" value="Alimentos">
                                         <label for="categoriaPadre_nombre_existente"><?= label('Categorias_nombreNuevo'); ?></label>
                                     </div>
-                                    <div id="productos-categoria1_existente" class="inputTag col s12 m6 l8" >
+                                    <div id="productos-categoria1_existente" class="inputTag col s12" >
                                         <div id="mediosCliente" class="example tags_mediosContacto">
                                             <div class="bs-example">
                                                 <input placeholder="<?= label('Categorias_annadirProductos'); ?>" type="text"
@@ -725,10 +729,14 @@
                                         </div>
                                         <br>
                                     </div>
-                                    <div class="input-field col s12 m6 l8" style="margin: 0 0 10px 0;">
-                                        <a class="btn" href="#" style="display: block;margin: 0 auto;width: 70%;"
+                                    <div class="input-field col s12 subcategoria-edicion-opciones">
+                                        <a class="btn btn-guardarSubcategoria" href="#"
                                            onclick="mostrarEditar('edicion-subcategoria2')">
                                             <?= label('Subcategorias_guardarCambios'); ?>
+                                        </a>
+                                        <a class="btn btn-cancelarSubcategoria" href="#"
+                                           onclick="mostrarEditar('edicion-subcategoria2')">
+                                            <?= label('Subcategorias_cancelarCambios'); ?>
                                         </a>
                                     </div>
                                 </div>
@@ -739,11 +747,11 @@
                             <td>Zapatos de hombre</td>
                             <td>
                                 <a id="editar-subcategoria3"
-                                   class="black-text"
+                                   class="black-text editar-subcategoria"
                                    href="#" data-toggle="tooltip"
                                    onclick="mostrarEditar('edicion-subcategoria3')"
                                    title="<?= label('menuOpciones_editar') ?>">
-                                    <i class="mdi-file-file-download"></i>
+                                    <i class="mdi-editor-mode-edit"></i>
                                 </a>
                                 <a id="eliminar-subcategoria3"
                                    class="black-text"
@@ -754,17 +762,17 @@
                             </td>
                         </tr>
                         <tr class="edicion-subcategoria">
-                            <td colspan="3" style="padding: 0;background-color: gainsboro;">
+                            <td colspan="3">
                                 <div id="edicion-subcategoria3" style="display: none;">
-                                    <div class="input-field col s12 m6 l8">
+                                    <div class="input-field col s12">
                                         <input id="categoriaPadre_codigo_existente" type="text" value="0003">
                                         <label for="categoriaPadre_codigo_existente"><?= label('Categorias_codigoNuevo'); ?></label>
                                     </div>
-                                    <div class="input-field col s12 m6 l8">
+                                    <div class="input-field col s12">
                                         <input id="categoriaPadre_nombre_existente" type="text" value="Zapatos de hombre">
                                         <label for="categoriaPadre_nombre_existente"><?= label('Categorias_nombreNuevo'); ?></label>
                                     </div>
-                                    <div id="productos-categoria1_existente" class="inputTag col s12 m6 l8" >
+                                    <div id="productos-categoria1_existente" class="inputTag col s12" >
                                         <div id="mediosCliente" class="example tags_mediosContacto">
                                             <div class="bs-example">
                                                 <input placeholder="<?= label('Categorias_annadirProductos'); ?>" type="text"
@@ -773,10 +781,14 @@
                                         </div>
                                         <br>
                                     </div>
-                                    <div class="input-field col s12 m6 l8" style="margin: 0 0 10px 0;">
-                                        <a class="btn" href="#" style="display: block;margin: 0 auto;width: 70%;"
+                                    <div class="input-field col s12 subcategoria-edicion-opciones">
+                                        <a class="btn btn-guardarSubcategoria" href="#"
                                            onclick="mostrarEditar('edicion-subcategoria3')">
                                             <?= label('Subcategorias_guardarCambios'); ?>
+                                        </a>
+                                        <a class="btn btn-cancelarSubcategoria" href="#"
+                                           onclick="mostrarEditar('edicion-subcategoria3')">
+                                            <?= label('Subcategorias_cancelarCambios'); ?>
                                         </a>
                                     </div>
                                 </div>
@@ -787,11 +799,11 @@
                             <td>Enlatados</td>
                             <td>
                                 <a id="editar-subcategoria3"
-                                   class="black-text"
+                                   class="black-text editar-subcategoria"
                                    href="#" data-toggle="tooltip"
                                    onclick="mostrarEditar('edicion-subcategoria4')"
                                    title="<?= label('menuOpciones_editar') ?>">
-                                    <i class="mdi-file-file-download"></i>
+                                    <i class="mdi-editor-mode-edit"></i>
                                 </a>
                                 <a id="eliminar-subcategoria3"
                                    class="black-text"
@@ -802,17 +814,17 @@
                             </td>
                         </tr>
                         <tr class="edicion-subcategoria">
-                            <td colspan="3" style="padding: 0;background-color: gainsboro;">
+                            <td colspan="3">
                                 <div id="edicion-subcategoria4" style="display: none;">
-                                    <div class="input-field col s12 m6 l8">
+                                    <div class="input-field col s12">
                                         <input id="categoriaPadre_codigo_existente" type="text" value="0004">
                                         <label for="categoriaPadre_codigo_existente"><?= label('Categorias_codigoNuevo'); ?></label>
                                     </div>
-                                    <div class="input-field col s12 m6 l8">
+                                    <div class="input-field col s12">
                                         <input id="categoriaPadre_nombre_existente" type="text" value="Enlatados">
                                         <label for="categoriaPadre_nombre_existente"><?= label('Categorias_nombreNuevo'); ?></label>
                                     </div>
-                                    <div id="productos-categoria1_existente" class="inputTag col s12 m6 l8" >
+                                    <div id="productos-categoria1_existente" class="inputTag col s12" >
                                         <div id="mediosCliente" class="example tags_mediosContacto">
                                             <div class="bs-example">
                                                 <input placeholder="<?= label('Categorias_annadirProductos'); ?>" type="text"
@@ -821,10 +833,14 @@
                                         </div>
                                         <br>
                                     </div>
-                                    <div class="input-field col s12 m6 l8" style="margin: 0 0 10px 0;">
-                                        <a class="btn" href="#" style="display: block;margin: 0 auto;width: 70%;"
+                                    <div class="input-field col s12 subcategoria-edicion-opciones">
+                                        <a class="btn btn-guardarSubcategoria" href="#"
                                            onclick="mostrarEditar('edicion-subcategoria4')">
                                             <?= label('Subcategorias_guardarCambios'); ?>
+                                        </a>
+                                        <a class="btn btn-cancelarSubcategoria" href="#"
+                                           onclick="mostrarEditar('edicion-subcategoria4')">
+                                            <?= label('Subcategorias_cancelarCambios'); ?>
                                         </a>
                                     </div>
                                 </div>
@@ -832,25 +848,6 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
-            <div class="col s12" style="display: none;">
-                <div class="input-field col s12 m6 l8">
-                    <input id="categoriaPadre_codigo_existente" type="text" value="0001">
-                    <label for="categoriaPadre_codigo_existente"><?= label('Categorias_codigoNuevo'); ?></label>
-                </div>
-                <div class="input-field col s12 m6 l8">
-                    <input id="categoriaPadre_nombre_existente" type="text" value="Calzado">
-                    <label for="categoriaPadre_nombre_existente"><?= label('Categorias_nombreNuevo'); ?></label>
-                </div>
-                <div id="productos-categoria1_existente" class="inputTag col s12 m6 l8" >
-                    <div id="mediosCliente" class="example tags_mediosContacto">
-                        <div class="bs-example">
-                            <input placeholder="<?= label('Categorias_annadirProductos'); ?>" type="text"
-                                   value="Zapatos de mujer,Zapatos deportivos,Zapatos escolares,Tacos,Tennis masculinas"/>
-                        </div>
-                    </div>
-                    <br>
-                </div>
             </div>
         </div>
     </div>

@@ -321,6 +321,12 @@
     $lang['formContacto_puesto'] = 'Puesto';
     $lang['formContacto_telefono'] = 'Teléfono';
 
+    $lang['formCliente_identificacionJuridica'] = 'Cédula jurídica';
+    $lang['formCliente_nombreJuridico'] = 'Nombre (Razón social)';
+    $lang['formCliente_nombreFantasia'] = 'Nombre de fantasía';
+    $lang['formCliente_telefono'] = 'Número telefónico';
+    $lang['formCliente_fax'] = 'Fax';
+
 //Formulario de empleados
     $lang['Empleado_tablaNombre'] = 'Nombre';
     $lang['Empleado_tablaCodigo'] = 'Código';
@@ -488,6 +494,7 @@
     $lang['Subcategorias_nombre'] = 'Nombre de la sub-categoría';
     $lang['Subcategorias_eliminar'] = 'Eliminar la sub-categoría';
     $lang['Subcategorias_guardarCambios'] = 'Guardar';
+    $lang['Subcategorias_cancelarCambios'] = 'Cancelar';
 
     $lang['busquedaPS_codigo'] = 'Código';
     $lang['busquedaPS_todos'] = 'Todos';

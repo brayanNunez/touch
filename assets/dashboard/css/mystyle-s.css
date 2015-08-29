@@ -165,8 +165,22 @@ table.tabla-categorias tbody tr td span.nivel1 { margin-left: 0; }
 table.tabla-categorias tbody tr td span.nivel2 { margin-left: 20px; }
 
 div#agregarCategoria { top: 5% !important; width: 70%; }
+a.editar-subcategoria { margin-right: 10px; }
+
+p.titulo-modal { font-size: larger; text-align: left; margin-left: 2%; font-weight: bold; }
+
+a.btn-agregarProductos-categoria { margin-top: 13px; }
+a.btn-subcategoria-eliminar { margin-top: 13px; }
+a.btn-subcategoria-eliminar i { color: black; }
+
+tr.edicion-subcategoria td { padding: 0;background-color: gainsboro; }
+tr.edicion-subcategoria td div.subcategoria-edicion-opciones { margin: 0 0 10px 0; }
+tr.edicion-subcategoria td div.subcategoria-edicion-opciones a.btn-guardarSubcategoria { width: 30%;margin-left: 35%; }
+tr.edicion-subcategoria td div.subcategoria-edicion-opciones a.btn-cancelarSubcategoria { float: right;background-color: red; }
 
 ul.cliente-info li a.active { color: green !important; background-color: lightgray; }
+
+div#busquedaAvanzada div.select-wrapper + label { top: 0; }
 
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/

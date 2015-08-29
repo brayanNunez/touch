@@ -25,7 +25,7 @@
                                 <form class="col s12">
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <select>
+                                            <select onchange="datosCliente(this)">
                                                 <option value="1" selected><?= label('formCliente_fisica'); ?></option>
                                                 <option value="2"><?= label('formCliente_juridica'); ?></option>
                                             </select>
@@ -44,41 +44,73 @@
                                             </select>
                                             <label for="cliente_nacionalidad"><?= label('formCliente_nacionalidad'); ?></label>
                                         </div>
-                                        <div class="input-field col s12">
-                                            <input id="cliente_id" type="text">
-                                            <label for="cliente_id"><?= label('formCliente_identificacion'); ?></label>
-                                        </div>
-                                        <div>
-                                            <div class="input-field col s12 m4 l4">
-                                                <input id="cliente_apellido1" type="text">
-                                                <label for="cliente_apellido1"><?= label('formCliente_apellido1'); ?></label>
+
+                                        <div id="elementos-cliente-fisico" style="display: block;">
+                                            <div class="input-field col s12">
+                                                <input id="cliente_id" type="text">
+                                                <label for="cliente_id"><?= label('formCliente_identificacion'); ?></label>
                                             </div>
-                                            <div class="input-field col s12 m4 l4">
-                                                <input id="cliente_apellido2" type="text">
-                                                <label for="cliente_apellido2"><?= label('formCliente_apellido2'); ?></label>
+                                            <div>
+                                                <div class="input-field col s12 m4 l4">
+                                                    <input id="cliente_apellido1" type="text">
+                                                    <label for="cliente_apellido1"><?= label('formCliente_apellido1'); ?></label>
+                                                </div>
+                                                <div class="input-field col s12 m4 l4">
+                                                    <input id="cliente_apellido2" type="text">
+                                                    <label for="cliente_apellido2"><?= label('formCliente_apellido2'); ?></label>
+                                                </div>
+                                                <div class="input-field col s12 m4 l4">
+                                                    <input id="cliente_nombre" type="text">
+                                                    <label for="cliente_nombre"><?= label('formCliente_nombre'); ?></label>
+                                                </div>
                                             </div>
-                                            <div class="input-field col s12 m4 l4">
-                                                <input id="cliente_nombre" type="text">
-                                                <label for="cliente_nombre"><?= label('formCliente_nombre'); ?></label>
+                                            <div class="input-field col s12">
+                                                <input id="cliente_correo" type="email">
+                                                <label for="cliente_correo"><?= label('formCliente_correo'); ?></label>
+                                            </div>
+                                            <div class="input-field col s12">
+                                                <input id="cliente_telefonoMovil" type="text">
+                                                <label
+                                                    for="cliente_telefonoMovil"><?= label('formCliente_telefonoMovil'); ?></label>
+                                            </div>
+                                            <div class="input-field col s12">
+                                                <input id="cliente_telefono" type="text">
+                                                <label
+                                                    for="cliente_telefono"><?= label('formCliente_telefonoFijo'); ?></label>
+                                            </div>
+                                            <div class="input-field col s12">
+                                                <input id="cliente_fechaNacimiento" type="text" class="datepicker-fecha">
+                                                <label for="cliente_fechaNacimiento"><?= label('formCliente_fechaNacimiento'); ?></label>
                                             </div>
                                         </div>
-                                        <div class="input-field col s12">
-                                            <input id="cliente_correo" type="email">
-                                            <label for="cliente_correo"><?= label('formCliente_correo'); ?></label>
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <input id="cliente_telefonoMovil" type="text">
-                                            <label
-                                                for="cliente_telefonoMovil"><?= label('formCliente_telefonoMovil'); ?></label>
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <input id="cliente_telefono" type="text">
-                                            <label
-                                                for="cliente_telefono"><?= label('formCliente_telefonoFijo'); ?></label>
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <input id="cliente_fechaNacimiento" type="text" class="datepicker-fecha">
-                                            <label for="cliente_fechaNacimiento"><?= label('formCliente_fechaNacimiento'); ?></label>
+
+                                        <div id="elementos-cliente-juridico" style="display: none;">
+                                            <div class="input-field col s12">
+                                                <input id="clientejuridico_id" type="text">
+                                                <label for="clientejuridico_id"><?= label('formCliente_identificacionJuridica'); ?></label>
+                                            </div>
+                                            <div class="input-field col s12">
+                                                <input id="clientejuridico_nombre" type="text">
+                                                <label for="clientejuridico_nombre"><?= label('formCliente_nombreJuridico'); ?></label>
+                                            </div>
+                                            <div class="input-field col s12">
+                                                <input id="clientejuridico_nombreFantasia" type="text">
+                                                <label for="clientejuridico_nombreFantasia"><?= label('formCliente_nombreFantasia'); ?></label>
+                                            </div>
+                                            <div class="input-field col s12">
+                                                <input id="clientejuridico_correo" type="email">
+                                                <label for="clientejuridico_correo"><?= label('formCliente_correo'); ?></label>
+                                            </div>
+                                            <div class="input-field col s12">
+                                                <input id="clientejuridico_telefono" type="text">
+                                                <label
+                                                    for="clientejuridico_telefono"><?= label('formCliente_telefono'); ?></label>
+                                            </div>
+                                            <div class="input-field col s12">
+                                                <input id="clientejuridico_fax" type="text">
+                                                <label
+                                                    for="clientejuridico_fax"><?= label('formCliente_fax'); ?></label>
+                                            </div>
                                         </div>
 
                                         <div class="col s12">
@@ -509,6 +541,19 @@
     });
 </script>
 
+<!-- Funcion para mostrar elementos -->
+<script>
+    function datosCliente(opcionSeleccionada) {
+        if (opcionSeleccionada.value == "1") {
+            document.getElementById('elementos-cliente-fisico').style.display = 'block';
+            document.getElementById('elementos-cliente-juridico').style.display = 'none';
+        } else {
+            document.getElementById('elementos-cliente-fisico').style.display = 'none';
+            document.getElementById('elementos-cliente-juridico').style.display = 'block';
+        }
+    }
+</script>
+
 <!-- lista modals -->
 <div id="eliminarContacto" class="modal">
     <div class="modal-header">
@@ -519,25 +564,6 @@
         <p><?= label('confirmarEliminarContacto'); ?></p>
     </div>
     <div class="modal-footer black-text">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
-    </div>
-</div>
-<div id="editarContacto" class="modal">
-    <div class="modal-header">
-        <p><?= label('nombreSistema'); ?></p>
-        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
-    </div>
-    <div class="modal-content">
-        <div class="input-field col s12">
-            <input id="client_code" type="text" value="Maria Rodriguez">
-            <label for="client_code"><?= label('formCliente_nombreContacto'); ?></label>
-        </div>
-        <div class="input-field col s12">
-            <input id="client_code" type="text" value="maria@gmail.com">
-            <label for="client_code"><?= label('formCliente_correoContacto'); ?></label>
-        </div>
-    </div>
-    <div class="modal-footer">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
@@ -574,6 +600,46 @@
                 <input id="cliente_contactoTelefono" type="text">
                 <label
                     for="cliente_contactoTelefono"><?= label('formContacto_telefono'); ?></label>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="editarContacto" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <div class="row">
+            <div class="input-field col s12 m4 l4">
+                <input id="cliente_contactoApellido1_existente" type="text" value="Rojas">
+                <label for="cliente_contactoApellido1_existente"><?= label('formContacto_apellido1'); ?></label>
+            </div>
+            <div class="input-field col s12 m4 l4">
+                <input id="cliente_contactoApellido2_existente" type="text" value="Chaves">
+                <label for="cliente_contactoApellido2_existente"><?= label('formContacto_apellido2'); ?></label>
+            </div>
+            <div class="input-field col s12 m4 l4">
+                <input id="cliente_contactoNombre_existente" type="text" value="Claret">
+                <label for="cliente_contactoNombre_existente"><?= label('formContacto_nombre'); ?></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 m6 l6">
+                <input id="cliente_contactoCorreo_existente" type="email" value="claret@gmail.com">
+                <label for="cliente_contactoCorreo_existente"><?= label('formContacto_correo'); ?></label>
+            </div>
+            <div class="input-field col s12 m3 l3">
+                <input id="cliente_contactoPuesto_existente" type="text" value="CEO">
+                <label for="cliente_contactoPuesto_existente"><?= label('formContacto_puesto'); ?></label>
+            </div>
+            <div class="input-field col s12 m3 l3">
+                <input id="cliente_contactoTelefono_existente" type="text" value="8596-7420">
+                <label
+                    for="cliente_contactoTelefono_existente"><?= label('formContacto_telefono'); ?></label>
             </div>
         </div>
     </div>

@@ -356,22 +356,19 @@
             <div class="row">
                 <div class="input-field col s12 m3 l3">
                     <div class="input-field col s12">
-                        <input id="busqueda-fecha-desde" type="date">
-                        <label id="fecha-desde" for="busqueda-fecha-desde"
-                               class=""><?= label('clientes_busquedaDesde') ?></label>
+                        <input id="busqueda-fecha-desde" type="text" class="datepicker-fecha">
+                        <label for="busqueda-fecha-desde"><?= label('clientes_busquedaDesde') ?></label>
                     </div>
                 </div>
                 <div class="input-field col s12 m3 l3">
                     <div class="input-field col s12">
-                        <input id="busqueda-fecha-hasta" type="date">
-                        <label id="fecha-hasta" for="busqueda-fecha-hasta"
-                               class=""><?= label('clientes_busquedaHasta') ?></label>
+                        <input id="busqueda-fecha-hasta" type="text" class="datepicker-fecha">
+                        <label for="busqueda-fecha-hasta"><?= label('clientes_busquedaHasta') ?></label>
                     </div>
                 </div>
 
                 <div class="input-field col s12 m6 l6">
                     <select class="input-field col s12">
-                        <!--	                                 <option value="" disabled selected>Estado</option>-->
                         <option value="1" selected>Todos</option>
                         <option value="2">Enviada</option>
                         <option value="3">Finalizada</option>
@@ -381,7 +378,6 @@
                 </div>
                 <div class="input-field col s12 m4 l4">
                     <select class="input-field col s12">
-                        <!--	                                 <option value="" disabled selected>Cliente</option>-->
                         <option value="1" selected>Todos</option>
                         <option value="2">Juan Alfaro Alfaro</option>
                         <option value="3">Diego Rojas</option>
@@ -390,7 +386,6 @@
                 </div>
                 <div class="input-field col s12 m4 l4">
                     <select class="input-field col s12">
-                        <!--	                                 <option value="" disabled selected>Empleados</option>-->
                         <option value="1" selected>Todos</option>
                         <option value="2">Juan Carlos Porras</option>
                         <option value="3">Ana Bolaños Rojas</option>
@@ -399,7 +394,6 @@
                 </div>
                 <div class="input-field col s12 m4 l4">
                     <select id="reporte-cliente" class="input-field col s12">
-                        <!--                                     <option value="" disabled selected>Outsourcing</option>-->
                         <option value="1" selected>Todos</option>
                         <option value="2">Transportes Rojas</option>
                         <option value="3">Música en vivo</option>
