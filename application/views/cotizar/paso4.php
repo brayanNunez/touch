@@ -34,9 +34,9 @@
       <a href="#modalVistaPrevia" class=" right btn btn-default modal-trigger">Vista previa</a>
    </div>
 </div> -->
-<iframe id="vistaPrevia" width="1000px" height="1000px" src="<?= base_url() ?>files/pdfs/test.pdf">
+<!-- <iframe id="vistaPrevia" width="1000px" height="1000px" src="<?= base_url() ?>files/pdfs/test.pdf">
 
-</iframe>
+</iframe> -->
 
 
 <div class="col s12 m12 l12">

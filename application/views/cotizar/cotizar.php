@@ -106,6 +106,7 @@
         $('#contenedorSelectProductoItem' + id + '').html(miSelect);
     }
     function generarListas(){
+        // alert("generando")
 
         var config = {'.chosen-select'           : {}}
           for (var selector in config) {
@@ -117,6 +118,7 @@
 <script type="text/javascript">
     $(document).on("ready", function(){
 
+
         generarAutocompletarProductoNombre(1);
         generarAutocompletarProductoNombre(2);
 
@@ -127,7 +129,7 @@
         generarAutocompletarAtencion("paso1_atencion");
         generarAutocompletarCliente("paso1_cliente");
         generarAutocompletarMoneda("paso1_moneda");
-         generarAutocompletarFormaPago("paso1_formaPago");
+        generarAutocompletarFormaPago("paso1_formaPago");
 
         generarListas();
 

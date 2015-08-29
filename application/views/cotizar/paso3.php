@@ -688,7 +688,7 @@
         recalcularAlturaContenido();
 
         $("#crear").click(function () {
-            // alert("hola");
+            alert("hola");
             var height = $('#footerDiseno').css("height");
             $('#footerDiseno').css("height", height);
             $('#prefooter').css("height", height);

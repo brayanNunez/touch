@@ -397,17 +397,17 @@ margin-top: 2%;
     border-radius: .25em;
 }
 
-input, select, textarea {
+/*input, select, textarea {
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
-}
+}*/
 
-input, optgroup, select, textarea {
+/*input, optgroup, select, textarea {
     margin: 0;
     font: inherit;
     color: inherit;
-}
+}*/
 
 
 .inputTag {
@@ -459,18 +459,29 @@ input, optgroup, select, textarea {
 
 .inputSelector label{
 	top: -2px  !important;
+	/*color: blue;*/
 }
 
+.chosen-container{
+	width: 100% !important;
+	text-align: left;
+}
+.chosen-select{
+  width: 100% !important;
+}
+.chosen-search input{
+	width: 85% !important;
+}
 
-#contenedorSelectAtencion .chosen-container{
+/*#contenedorSelectAtencion .chosen-container{
 	width: 100% !important;
 	text-align: left;
 }
 #contenedorSelectAtencion .chosen-search input{
 	width: 85% !important;
-}
+}*/
 
-#contenedorSelectCliente .chosen-container{
+/*#contenedorSelectCliente .chosen-container{
 	width: 100% !important;
 	text-align: left;
 }
@@ -492,8 +503,9 @@ input, optgroup, select, textarea {
 }
 #contenedorSelectFormaPago .chosen-search input{
 	width: 85% !important;
-}
+}*/
 
 #contenerdorTablaDetalles{
 	overflow-x: scroll;
 }
+

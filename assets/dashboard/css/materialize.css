@@ -1869,7 +1869,7 @@ button {
  * Correct `select` style inheritance in Firefox.
  */
 button,
-select {
+select:not(.chosen-select){
   text-transform: none; }
 
 /**
@@ -6917,8 +6917,11 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
     top: -14px;
     font-size: 0.8rem; }
 
-select {
-  display: none; }
+select:not(.chosen-select){
+
+  
+  display: none; 
+}
 
 select.browser-default {
   display: block; }
@@ -7117,7 +7120,7 @@ input[type=range]:focus::-ms-fill-upper {
 /***************************
    Text Inputs + Textarea
 ****************************/
-select {
+select:not(.chosen-select){
   background-color: rgba(255, 255, 255, 0.9);
   width: 100%;
   padding: 5px;
