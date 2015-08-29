@@ -212,11 +212,11 @@
 
 
 
-#paso3, #paso4{
-		/*overflow-x: scroll;*/
+/*#paso3, #paso4{
+		overflow-x: scroll;
 		padding: 1%;
 		max-width: 1180px;
-}
+}*/
 
 .ventana{
 	width: 100%;
@@ -304,10 +304,10 @@
 	margin-top: 14.5px;
 }
 
-/*.contenedorHoja{
+#contenedorDisenoHoja{
 	overflow-x: scroll;
-	background-color: grey;
-}*/
+	width: 100%;
+}
 
 .ver {
 		width: 100%;

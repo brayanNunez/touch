@@ -30,213 +30,224 @@
         </select>
         <label>Estilo de plantilla</label>
     </div>
-    <div class="input-field col s4 m7 l7">
+    <!-- <div class="input-field col s4 m7 l7">
         <a href="#modalVistaPrevia" class=" right btn btn-default modal-trigger">Vista previa</a>
-    </div>
+    </div> -->
 </div>
 <!-- <div class="contenedorHoja col s12"> -->
 <button id="crear">CREAR</button>
 <div id="inset_form"></div>
-<div id="contenedorHoja">
-    <a id="editarEncabezado" href="#modalEncabezado"
-       class="editarExterno modal-trigger btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
-        <i class="mdi-editor-mode-edit"></i>
-    </a>
 
-    <div id="hoja">
-        <div id="headerDiseno">
-            <div id="encabezado">
-                <div id="logo" class="box">
-                    <img class="imagen" src="<?= base_url() ?>assets/dashboard/images/sombrero.png"/>
-                </div>
-                <div id="datosEncabezado">
-                    <div class="datos" id="datos1">
-                        <div></div>
-                        <p class="box" id="nombreEmpresa">Mr Rabbit</p>
+<div id="contenedorDisenoHoja">
+    
+    <div id="contenedorHoja">
+        
 
-                        <p class="box" id="codigoCotizacion">Código de cotización: MR-123</p>
-
-                        <p class="box" id="cliente">Cliente: faytur</p>
-
-                        <p class="box" id="atencion">Atención: Juan Carlos Rodríguez Salas sasassasassq lkmds sdflkm
-                            dsfklm sdflkmd</p>
-
-                        <p class="box" id="vendedor">Vendedor: Brayan Nuñez Rojas</p>
-                    </div>
-                    <div class="datos" id="datos2">
-                        <div></div>
-                        <p class="box" id="fecha">Fecha: 24/06/2015</p>
-
-                        <p class="box" id="hora">Hora: 09:45 am</p>
-                    </div>
-                </div>
-            </div>
-            <div class="barra-horizontal" id="barra1">
-            </div>
-        </div>
-        <a id="editarCuerpo" href="#modalCuerpo"
-           class="editarExterno modal-trigger btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
-            <i class="mdi-editor-mode-edit"></i>
-        </a>
-
-        <div id="cuerpoDocumento">
-            <div id="contenidoDiseno">
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Nombre</th>
-                        <th>Descripción</th>
-                        <th>Imagen</th>
-                        <th>Precio unitario</th>
-                        <th>Cantidad</th>
-                        <th>Impuesto</th>
-                        <th>Total individual</th>                    
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>001</td>
-                        <td>Un nombre</td>
-                        <td>Una descripción</td>
-                        <td>
-                            <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/almuerzo.jpg"/>
-                        </td>
-                        <td>$50</td>
-                        <td>3</td>
-                        <td>13%</td>
-                        <td>$155</td>
-                    </tr>
-                    <tr>
-                        <td>001</td>
-                        <td>Un nombre</td>
-                        <td>Una descripción</td>
-                        <td>
-                            <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/musica.jpg"/>
-                        </td>
-                        <td>$50</td>
-                        <td>3</td>
-                        <td>13%</td>
-                        <td>$155</td>
-                    </tr>
-                    <tr>
-                        <td>001</td>
-                        <td>Un nombre</td>
-                        <td>Una descripción</td>
-                        <td>
-                            <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/almuerzo.jpg"/>
-                        </td>
-                        <td>$50</td>
-                        <td>3</td>
-                        <td>13%</td>
-                        <td>$155</td>
-                    </tr>
-                    <tr>
-                        <td>001</td>
-                        <td>Un nombre</td>
-                        <td>Una descripción</td>
-                        <td>
-                            <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/musica.jpg"/>
-                        </td>
-                        <td>$50</td>
-                        <td>3</td>
-                        <td>13%</td>
-                        <td>$155</td>
-                    </tr>
-                    <tr>
-                        <td>001</td>
-                        <td>Un nombre</td>
-                        <td>Una descripción</td>
-                        <td>
-                            <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/almuerzo.jpg"/>
-                        </td>
-                        <td>$50</td>
-                        <td>3</td>
-                        <td>13%</td>
-                        <td>$155</td>
-                    </tr>
-                    <tr>
-                        <td>001</td>
-                        <td>Un nombre</td>
-                        <td>Una descripción</td>
-                        <td>
-                            <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/musica.jpg"/>
-                        </td>
-                        <td>$50</td>
-                        <td>3</td>
-                        <td>13%</td>
-                        <td>$155</td>
-                    </tr>
-
-                    
-                    </tbody>
-                </table>
-                <div id="prefooter">
-                </div>
-            </div>
-            <div id="footerDiseno">
-                <div class="barra-horizontal" id="barra2"></div>
-                <a id="editarInformacion" href="#modalInformacion"
-                   class="editarExterno modal-trigger btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
-                    <i class="mdi-editor-mode-edit"></i>
-                </a>
-
-                <div id="informacion">
-                    <p class="box" id="formaPago">Forma de pago: 50% primer mes, 50% segundo mes.</p>
-
-                    <p class="box" id="validez">Válido por: 1,5 meses</p>
-
-                    <p class="box" id="informacionDetalle">Detalle: Por las especificaciones del equipo, es posible que
-                        existan variantes entre impresiones sin que esto represente para nosotros problemas de calidad.
-                        La presente oferta tiene una validéz de 15 días naturales a partir de esta fecha. </p>
-
-                    <div class="box" id="firma">
-                        <p>Firma:__________________________</p>
-
-                        <p id="nombreFirma">Emanuel Conejo</p>
-                    </div>
-                </div>
-                <div class="barra-horizontal" id="barra3">
-                </div>
-                <a id="editarEncabezado" href="#modalFooter"
-                   class="editarExterno modal-trigger btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
-                    <i class="mdi-editor-mode-edit"></i>
-                </a>
-
-                <div id="footerCotizacion">
-                    <div class="box" id="logo">
+        <div id="hoja">
+            <div id="headerDiseno">
+            <a id="editarEncabezado" href="#modalEncabezado"
+               class="editarExterno modal-trigger btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
+                <i class="mdi-editor-mode-edit"></i>
+            </a>
+                <div id="encabezado">
+                    <div id="logo" class="box">
                         <img class="imagen" src="<?= base_url() ?>assets/dashboard/images/sombrero.png"/>
                     </div>
-                    <div id="datosFooter">
+                    <div id="datosEncabezado">
                         <div class="datos" id="datos1">
                             <div></div>
-                            <p class="box" id="telefono">Teléfono: 2494-33-44</p>
+                            <p class="box" id="nombreEmpresa">Mr Rabbit</p>
 
-                            <p class="box" id="sitio">Sitio web: www.mrrabbit.cr</p>
+                            <p class="box" id="codigoCotizacion">Código de cotización: MR-123</p>
 
-                            <p class="box" id="correo">Correo: info@mrrabbit.cr</p>
+                            <p class="box" id="cliente">Cliente: faytur</p>
+
+                            <p class="box" id="atencion">Atención: Juan Carlos Rodríguez Salas sasassasassq lkmds sdflkm
+                                dsfklm sdflkmd</p>
+
+                            <p class="box" id="vendedor">Vendedor: Brayan Nuñez Rojas</p>
                         </div>
                         <div class="datos" id="datos2">
                             <div></div>
-                            <p>Con el mayor deseo de servirle, me pongo a su entera disposición.</p>
+                            <p class="box" id="fecha">Fecha: 24/06/2015</p>
+
+                            <p class="box" id="hora">Hora: 09:45 am</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="barra-horizontal" id="barra1">
+                </div>
+                <a id="editarCuerpo" href="#modalCuerpo"
+                   class="editarExterno modal-trigger btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
+                    <i class="mdi-editor-mode-edit"></i>
+                </a>
+            </div>
+            
+
+            <div id="cuerpoDocumento">
+
+
+                <div id="contenidoDiseno">
+
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Imagen</th>
+                            <th>Precio unitario</th>
+                            <th>Cantidad</th>
+                            <th>Impuesto</th>
+                            <th>Total individual</th>                    
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>001</td>
+                            <td>Un nombre</td>
+                            <td>Una descripción</td>
+                            <td>
+                                <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/almuerzo.jpg"/>
+                            </td>
+                            <td>$50</td>
+                            <td>3</td>
+                            <td>13%</td>
+                            <td>$155</td>
+                        </tr>
+                        <tr>
+                            <td>001</td>
+                            <td>Un nombre</td>
+                            <td>Una descripción</td>
+                            <td>
+                                <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/musica.jpg"/>
+                            </td>
+                            <td>$50</td>
+                            <td>3</td>
+                            <td>13%</td>
+                            <td>$155</td>
+                        </tr>
+                        <tr>
+                            <td>001</td>
+                            <td>Un nombre</td>
+                            <td>Una descripción</td>
+                            <td>
+                                <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/almuerzo.jpg"/>
+                            </td>
+                            <td>$50</td>
+                            <td>3</td>
+                            <td>13%</td>
+                            <td>$155</td>
+                        </tr>
+                        <tr>
+                            <td>001</td>
+                            <td>Un nombre</td>
+                            <td>Una descripción</td>
+                            <td>
+                                <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/musica.jpg"/>
+                            </td>
+                            <td>$50</td>
+                            <td>3</td>
+                            <td>13%</td>
+                            <td>$155</td>
+                        </tr>
+                        <tr>
+                            <td>001</td>
+                            <td>Un nombre</td>
+                            <td>Una descripción</td>
+                            <td>
+                                <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/almuerzo.jpg"/>
+                            </td>
+                            <td>$50</td>
+                            <td>3</td>
+                            <td>13%</td>
+                            <td>$155</td>
+                        </tr>
+                        <tr>
+                            <td>001</td>
+                            <td>Un nombre</td>
+                            <td>Una descripción</td>
+                            <td>
+                                <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/musica.jpg"/>
+                            </td>
+                            <td>$50</td>
+                            <td>3</td>
+                            <td>13%</td>
+                            <td>$155</td>
+                        </tr>
+
+                        
+                        </tbody>
+                    </table>
+                    <div id="prefooter">
+                    </div>
+                </div>
+                <div id="footerDiseno">
+                    <div class="barra-horizontal" id="barra2"></div>
+                    <a id="editarInformacion" href="#modalInformacion"
+                       class="editarExterno modal-trigger btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
+                        <i class="mdi-editor-mode-edit"></i>
+                    </a>
+
+                    <div id="informacion">
+                        <p class="box" id="formaPago">Forma de pago: 50% primer mes, 50% segundo mes.</p>
+
+                        <p class="box" id="validez">Válido por: 1,5 meses</p>
+
+                        <p class="box" id="informacionDetalle">Detalle: Por las especificaciones del equipo, es posible que
+                            existan variantes entre impresiones sin que esto represente para nosotros problemas de calidad.
+                            La presente oferta tiene una validéz de 15 días naturales a partir de esta fecha. </p>
+
+                        <div class="box" id="firma">
+                            <p>Firma:__________________________</p>
+
+                            <p id="nombreFirma">Emanuel Conejo</p>
+                        </div>
+                    </div>
+                    <div class="barra-horizontal" id="barra3">
+                    </div>
+                    <a id="editarEncabezado" href="#modalFooter"
+                       class="editarExterno modal-trigger btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
+                        <i class="mdi-editor-mode-edit"></i>
+                    </a>
+
+                    <div id="footerCotizacion">
+                        <div class="box" id="logo">
+                            <img class="imagen" src="<?= base_url() ?>assets/dashboard/images/sombrero.png"/>
+                        </div>
+                        <div id="datosFooter">
+                            <div class="datos" id="datos1">
+                                <div></div>
+                                <p class="box" id="telefono">Teléfono: 2494-33-44</p>
+
+                                <p class="box" id="sitio">Sitio web: www.mrrabbit.cr</p>
+
+                                <p class="box" id="correo">Correo: info@mrrabbit.cr</p>
+                            </div>
+                            <div class="datos" id="datos2">
+                                <div></div>
+                                <p>Con el mayor deseo de servirle, me pongo a su entera disposición.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="informacionSistema">
-         <span>
-            <p>Esta cotización ha sido desarrollada en la plataforma: touchcr.com</p>
-         </span>
+            <div id="informacionSistema">
+             <span>
+                <p>Esta cotización ha sido desarrollada en la plataforma: touchcr.com</p>
+             </span>
+            </div>
         </div>
     </div>
+
 </div>
+
 <!-- </div> -->
-<div class="row">
+<!-- <div class="row">
     <div class="input-field col s4 m7 l7">
         <a href="#modalVistaPrevia" class=" left btn btn-default modal-trigger">Vista previa</a>
     </div>
-</div>
+</div> -->
 <!-- </div>
    </div>
    </div>
