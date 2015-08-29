@@ -14,7 +14,8 @@
             window.location.href = "<?= base_url() ?>productos/agregar";
         } 
         if (tipo == "paso1Atencion") {
-            alert("abrir modal de crear atencion");
+            var linkModal = $('<a id="cotizacion-agregarAtencion" class="btn modal-trigger" href="#agregarAtencion" data-toggle="tooltip" title="Agregar nuevo contacto">');   
+            linkModal.trigger('click');
         } 
         if (tipo == "paso1Cliente") {
              window.location.href = "<?= base_url() ?>clientes/agregar";
