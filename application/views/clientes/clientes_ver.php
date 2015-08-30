@@ -1,248 +1,299 @@
-<div class="col s12 m12 l8">
+<div class="col s12 m12 l10">
     <form class="col s12">
         <div class="row">
-            <div class="input-field col s12">
-                <input id="cliente_tipo" type="text" value="<?= label('formCliente_juridica'); ?>" readonly>
-                <label for="cliente_tipo"><?= label('formCliente_tipoPersona'); ?></label>
-            </div>
-            <div class="input-field col s12">
-                <input id="cliente_codigo" type="text" value="0001" readonly>
-                <label for="cliente_codigo"><?= label('formCliente_codigo'); ?></label>
-            </div>
-            <div class="input-field col s12">
-                <input id="cliente_nombre" type="text" value="Dos Pinos" readonly>
-                <label for="cliente_nombre"><?= label('formCliente_nombre'); ?></label>
-            </div>
-            <div class="input-field col s12">
-                <input id="cliente_id" type="text" value="3-123-468-845" readonly>
-                <label for="cliente_id"><?= label('formCliente_identificacion'); ?></label>
-            </div>
-            <div class="input-field col s12">
-                <input id="cliente_fechaNacimiento" type="text" class="datepicker-fecha" value="12-12-1970" readonly>
-                <label for="cliente_fechaNacimiento"><?= label('formCliente_fechaNacimiento'); ?></label>
-            </div>
-            <div class="input-field col s12">
-                <input id="cliente_correo" type="email" value="coopedospinos@gmail.com" readonly>
-                <label for="cliente_correo"><?= label('formCliente_correo'); ?></label>
-            </div>
-            <div class="input-field col s12">
-                <input id="cliente_telefonoMovil" type="text" value="8563-4120" readonly>
-                <label for="cliente_telefonoMovil"><?= label('formCliente_telefonoMovil'); ?></label>
-            </div>
-            <div class="input-field col s12">
-                <input id="cliente_telefono" type="text" value="2456-8945" readonly>
-                <label for="cliente_telefono"><?= label('formCliente_telefonoFijo'); ?></label>
-            </div>
-            <div class="input-field col s12">
-                <textarea id="cliente_comentarios" class="materialize-textarea" length="120"
-                          readonly>Cliente frecuente</textarea>
-                <label for="cliente_comentarios"><?= label('formCliente_comentarios'); ?></label>
-            </div>
-
-            <div class="inputTag col s12">
-                <label for="vendedoresCliente"><?= label('formCliente_cotizador'); ?></label>
-                <br>
-
-                <div id="vendedoresCliente" class="example tags_vendedores">
-                    <div class="bs-example">
-                        <input placeholder="<?= label('formCliente_anadirVendedor'); ?>" type="text"/>
-                    </div>
-                </div>
-                <br>
-            </div>
-
-            <div class="inputTag col s12">
-                <label for="gustosCliente"><?= label('formCliente_gustos_preferencias'); ?></label>
-                <br>
-
-                <div id="gustosCliente" class="example tags_gustosCliente">
-                    <div class="bs-example">
-                        <input placeholder="<?= label('formCliente_anadirGusto'); ?>" type="text"
-                               value="MÃºsica,FÃºtbol"/>
-                    </div>
-                </div>
-                <br>
-            </div>
-
-            <div class="inputTag col s12">
-                <label for="mediosCliente"><?= label('formCliente_mediosContacto'); ?></label>
-                <br>
-
-                <div id="mediosCliente" class="example tags_mediosContacto">
-                    <div class="bs-example">
-                        <input placeholder="<?= label('formCliente_anadirMedio'); ?>" type="text" value="Radio,TV"/>
-                    </div>
-                </div>
-                <br>
-            </div>
-
-
-            <!--   <div class="inputTag col s12">
-                <label for="vendedoresCliente">PRUEBA</label>
-                <br>
-                <div class="example prueba">
-                  <div class="bs-example">
-                    <input placeholder="<?= label('formCliente_anadirMedio'); ?>" type="text" value="Radio,TV" />
-                  </div>
-                </div>
-                <br>
-            </div> -->
-
-            <div class="input-field col s12">
-                <label><?= label('formCliente_Contactos'); ?></label>
-                <br/>
-                <br/>
-                <table class="table striped">
+            <div class="col s12">
+                <table id="cliente1-informacion" class="responsive-table striped">
                     <thead>
-                    <tr>
-                        <th><?= label('formCliente_nombreContacto'); ?></th>
-                        <th><?= label('formCliente_correoContacto'); ?></th>
-                    </tr>
+                        <tr>
+                            <th style="width: 30%;"></th>
+                            <th></th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>Maria Rodriguez</td>
-                        <td>maria@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td>Juan Perez</td>
-                        <td>juan@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td>Jose Mora</td>
-                        <td>jose@gmail.com</td>
-                    </tr>
+                        <tr>
+                            <td><?= label('formCliente_tipoPersona'); ?></td>
+                            <td><?= label('formCliente_fisica'); ?></td>
+                        </tr>
+                        <tr>
+                            <td><?= label('formCliente_nacionalidad'); ?></td>
+                            <td>Costa Rica</td>
+                        </tr>
+                        <tr>
+                            <td><?= label('formCliente_identificacion'); ?></td>
+                            <td>2-723-327</td>
+                        </tr>
+                        <tr>
+                            <td><?= label('formCliente_nombreContacto'); ?></td>
+                            <td>Claret Rojas Chaves</td>
+                        </tr>
+                        <tr>
+                            <td><?= label('formCliente_correo'); ?></td>
+                            <td>claret@gmail.com (Facturas se envian a este correo)</td>
+                        </tr>
+                        <tr>
+                            <td><?= label('formCliente_telefonoMovil'); ?></td>
+                            <td>8956-9865</td>
+                        </tr>
+                        <tr>
+                            <td><?= label('formCliente_telefonoFijo'); ?></td>
+                            <td>2448-5623</td>
+                        </tr>
+                        <tr>
+                            <td><?= label('formCliente_fechaNacimiento'); ?></td>
+                            <td>10-03-1994</td>
+                        </tr>
                     </tbody>
                 </table>
-                <br/>
-                <hr/>
             </div>
-            <!-- <div class="input-field col s12">
-                 <label><?= label('formCliente_gustos_preferencias'); ?></label>
-                 <br />
-                 <br />
-                 <table class="table striped">
-                     <thead>
-                     <tr>
-                         <th><?= label('formCliente_gustos'); ?></th>
-                         <th><?= label('formCliente_estado'); ?></th>
-                     </tr>
-                     </thead>
-                     <tbody>
-                     <tr>
-                         <td>Preferencia 1</td>
-                         <td>
-                             <div class="switch">
-                                 <label style="position: relative">
-                                     <?= label('off'); ?>
-                                     <input type="checkbox">
-                                     <span class="lever"></span>
-                                     <?= label('on'); ?>
-                                 </label>
-                             </div>
-                             <br />
-                         </td>
-                     </tr>
-                     <tr>
-                         <td>Preferencia 2</td>
-                         <td>
-                             <div class="switch">
-                                 <label style="position: relative">
-                                     <?= label('off'); ?>
-                                     <input type="checkbox">
-                                     <span class="lever"></span>
-                                     <?= label('on'); ?>
-                                 </label>
-                             </div>
-                             <br />
-                         </td>
-                     </tr>
-                     <tr>
-                         <td>Preferencia 3</td>
-                         <td>
-                             <div class="switch">
-                                 <label style="position: relative">
-                                     <?= label('off'); ?>
-                                     <input type="checkbox">
-                                     <span class="lever"></span>
-                                     <?= label('on'); ?>
-                                 </label>
-                             </div>
-                             <br />
-                         </td>
-                     </tr>
-                     </tbody>
-                 </table>
-                 <hr />
-             </div>
-             <div class="input-field col s12">
-                 <label><?= label('formCliente_mediosContacto'); ?></label>
-                 <br />
-                 <br />
-                 <table class="table striped">
-                     <thead>
-                     <tr>
-                         <th><?= label('formCliente_medio'); ?></th>
-                         <th><?= label('formCliente_estadoMedio'); ?></th>
-                     </tr>
-                     </thead>
-                     <tbody>
-                     <tr>
-                         <td>Medio 1</td>
-                         <td>
-                             <div class="switch">
-                                 <label style="position: relative">
-                                     <?= label('off'); ?>
-                                     <input type="checkbox">
-                                     <span class="lever"></span>
-                                     <?= label('on'); ?>
-                                 </label>
-                             </div>
-                             <br />
-                         </td>
-                     </tr>
-                     <tr>
-                         <td>Medio 2</td>
-                         <td>
-                             <div class="switch">
-                                 <label style="position: relative">
-                                     <?= label('off'); ?>
-                                     <input type="checkbox">
-                                     <span class="lever"></span>
-                                     <?= label('on'); ?>
-                                 </label>
-                             </div>
-                             <br />
-                         </td>
-                     </tr>
-                     <tr>
-                         <td>Medio 3</td>
-                         <td>
-                             <div class="switch">
-                                 <label style="position: relative">
-                                     <?= label('off'); ?>
-                                     <input type="checkbox">
-                                     <span class="lever"></span>
-                                     <?= label('on'); ?>
-                                 </label>
-                             </div>
-                             <br />
-                         </td>
-                     </tr>
-                     </tbody>
-                 </table>
-                 <hr />
-                 <br />
-             </div> -->
-            <!-- <div class="input-field col s12">
-                 <input id="cliente_cotizador" type="text" value="Juan Martinez" readonly>
-                 <label for="cliente_cotizador"><?= label('formCliente_cotizador'); ?></label>
-             </div> -->
 
+            <div class="col s12" style="margin-top: 20px;">
+                <ul class="tabs tab-demo-active z-depth-1 cliente-info">
+                    <li class="tab col s3">
+                        <a class="white-text darken-1 waves-effect waves-light active"
+                           id="cliente-informacion" href="#tab-direccion"><i
+                                class="mdi-action-perm-identity"></i>
+                            <?= label('cliente_direccion'); ?></a>
+                    </li>
+                    <li class="tab-interior tab col s3">
+                        <a class="white-text darken-1 waves-effect waves-light"
+                           id="cliente-informacion" href="#tab-contactos"><i
+                                class="mdi-editor-format-list-numbered"></i>
+                            <?= label('formCliente_Contactos'); ?></a>
+                    </li>
+                    <li class="tab-interior tab col s3">
+                        <a class="white-text darken-1 waves-effect waves-light"
+                           id="cliente-informacion" href="#tab-infoAdicional"><i
+                                class="mdi-file-folder-open"></i>
+                            <?= label('cliente_infoAdicional'); ?></a>
+                    </li>
+                    <li class="tab-interior tab col s3">
+                        <a class="white-text darken-1 waves-effect waves-light"
+                           id="cliente-informacion" href="#tab-infoFacturacion"><i
+                                class="mdi-editor-mode-edit"></i>
+                            <?= label('cliente_infoFacturacion'); ?></a>
+                    </li>
+                </ul>
+            </div>
 
+            <div class="col s12">
+                <div id="tab-direccion" class="card col s12">
+                    <table id="cliente1-direccion" class="responsive-table striped">
+                        <thead>
+                            <tr>
+                                <th style="width: 30%;"></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><?= label('formCliente_direccionPais'); ?></td>
+                                <td>Costa Rica</td>
+                            </tr>
+                            <tr>
+                                <td><?= label('formCliente_direccionProvincia'); ?></td>
+                                <td>Alajuela</td>
+                            </tr>
+                            <tr>
+                                <td><?= label('formCliente_direccionCanton'); ?></td>
+                                <td>Grecia</td>
+                            </tr>
+                            <tr>
+                                <td><?= label('formCliente_direccionDistrito'); ?></td>
+                                <td>Tacares</td>
+                            </tr>
+                            <tr>
+                                <td><?= label('formCliente_direccionDomicilio'); ?></td>
+                                <td>50 mts norte de la iglesia de la localidad</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="tab-contactos" class="card col s12">
+                    <table id="cliente1-contactos" class="responsive-table striped">
+                        <thead>
+                            <tr>
+                                <th style="width: 40%;"><?= label('formCliente_nombreContacto'); ?></th>
+                                <th><?= label('formCliente_correoContacto'); ?></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Maria Rodriguez</td>
+                                <td>maria@gmail.com</td>
+                            </tr>
+                            <tr>
+                                <td>Juan Perez</td>
+                                <td>juan@gmail.com</td>
+                            </tr>
+                            <tr>
+                                <td>Jose Mora</td>
+                                <td>jose@gmail.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="tab-infoAdicional" class="card col s12">
+                    <table id="cliente1-direccion" class="responsive-table striped">
+                        <thead>
+                            <tr>
+                                <th style="width: 30%;"></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><?= label('formCliente_cotizador'); ?></td>
+                                <td>Brayan Nunez Rojas,
+                                    Anthony Nunez Rojas,
+                                    Maria Perez Salas,
+                                    Carlos David Rojas,
+                                    Diego Alfaro Rojas
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?= label('formCliente_gustos_preferencias'); ?></td>
+                                <td>Futbol, Baseball, Tennis, Golf</td>
+                            </tr>
+                            <tr>
+                                <td><?= label('formCliente_mediosContacto'); ?></td>
+                                <td>TV,Radio,Carteles,Vallas publicitarias</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="tab-infoFacturacion" class="card col s12">
+                    <table id="cliente1-informacion" class="responsive-table striped">
+                        <thead>
+                        <tr>
+                            <th style="width: 30%;"></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><?= label('formCliente_formaPagoFavorita'); ?></td>
+                                <td>A pagos</td>
+                            </tr>
+                            <tr>
+                                <td><?= label('formCliente_descuento'); ?></td>
+                                <td>5%</td>
+                            </tr>
+                            <tr>
+                                <td><?= label('formCliente_monedaCotizar'); ?></td>
+                                <td>Dolar ($)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </form>
 </div>
 
-<!-- lista modals -->
-<!-- Fin lista modals-->
+<?php
+$this->load->view('layout/default/menu-crear.php');
+?>
+
+<!-- Script para tags -->
+<script>
+    $(document).ready(function () {
+
+        var vendedores = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/vendedores.json'
+            prefetch: {
+                url: '<?=base_url()?>Cotizacion/jsonVendedores',
+                ttl: 1000
+            }
+        });
+
+        vendedores.initialize();
+
+        elt = $('.tags_vendedores > > input');
+        elt.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'vendedores',
+                displayKey: 'text',
+                source: vendedores.ttAdapter()
+            }
+        });
+
+//        elt.tagsinput('add', {"value": 1, "text": "Brayan Nuñez Rojas", "continent": "Europe"});
+//        elt.tagsinput('add', {"value": 4, "text": "Anthony Nuñez Rojas", "continent": "America"});
+//        elt.tagsinput('add', {"value": 7, "text": "Maria Perez Salas", "continent": "Australia"});
+//        elt.tagsinput('add', {"value": 10, "text": "Carlos David Rojas", "continent": "Asia"});
+//        elt.tagsinput('add', {"value": 13, "text": "Diego Alfaro Rojas", "continent": "Africa"});
+
+
+        var gusto = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            prefetch: {
+                url: '<?=base_url()?>Cotizacion/jsonGustos',
+                ttl: 1000,
+                filter: function (list) {
+                    return $.map(list, function (gusto) {
+                        return {name: gusto};
+                    });
+                }
+            }
+        });
+        gusto.initialize();
+
+
+        $('.tags_gustosCliente  > > input').tagsinput({
+            typeaheadjs: {
+                name: 'gusto',
+                displayKey: 'name',
+                valueKey: 'name',
+                source: gusto.ttAdapter()
+            }
+        });
+
+
+        var mediosContacto = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/gustos.json'
+            prefetch: {
+                url: '<?=base_url()?>Cotizacion/jsonContactos',
+                ttl: 1000,
+                filter: function (list) {
+                    return $.map(list, function (mediosContacto) {
+                        return {name: mediosContacto};
+                    });
+                }
+            }
+        });
+        mediosContacto.initialize();
+
+
+        var elt = $('.tags_mediosContacto > > input');
+        elt.tagsinput({
+            typeaheadjs: {
+                name: 'mediosContacto',
+                displayKey: 'name',
+                valueKey: 'name',
+                source: mediosContacto.ttAdapter()
+            }
+        });
+
+
+        $('.boton-opciones').on('click', function (event) {
+            var elementoActivo = $(this).siblings('ul.active');
+            if (elementoActivo.length > 0) {
+                var estado = elementoActivo.css("display");
+                if (estado == "block") {
+                    elementoActivo.css("display", "none");
+                    elementoActivo.style.display = 'none';
+                } else {
+                    elementoActivo.css("display", "block");
+                    elementoActivo.style.display = 'block';
+                }
+            }
+        });
+    });
+</script>
