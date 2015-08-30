@@ -187,7 +187,11 @@
                                     </label>
                                 </div> -->
                                 <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <input value="13" type="number" name="impuestoVenta_1">
+                                    <div id="impuestosProducto" class="example tags_Impuestos">
+                                        <div class="bs-example">
+                                            <input placeholder="<?= label('formProducto_anadirImpuesto'); ?>" type="text"/>
+                                        </div>
+                                    </div>
                                 <!-- </div> -->
                             </row>
                         </td>
@@ -317,7 +321,11 @@
                                     </label>
                                 </div> -->
                                 <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <input value="13" type="number" name="impuestoVenta_2">
+                                    <div id="impuestosProducto" class="example tags_Impuestos">
+                                        <div class="bs-example">
+                                            <input placeholder="<?= label('formProducto_anadirImpuesto'); ?>" type="text"/>
+                                        </div>
+                                    </div>
                                 <!-- </div> -->
                             </row>
                         </td>
@@ -445,7 +453,11 @@
                                     </label>
                                 </div> -->
                                 <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <input value="13" type="number" name="impuestoVenta_3">
+                                     <div id="impuestosProducto" class="example tags_Impuestos">
+                                        <div class="bs-example">
+                                            <input placeholder="<?= label('formProducto_anadirImpuesto'); ?>" type="text"/>
+                                        </div>
+                                    </div>
                                 <!-- </div> -->
                             </row>
                         </td>
@@ -706,6 +718,37 @@
                 }
             }
         });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+
+        var Impuestos = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/Impuestos.json'
+            prefetch: {
+                url: '<?=base_url()?>Cotizacion/jsonImpuestos',
+                ttl: 1000
+            }
+        });
+
+        Impuestos.initialize();
+
+        elt = $('.tags_Impuestos > > input');
+        elt.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'Impuestos',
+                displayKey: 'text',
+                source: Impuestos.ttAdapter()
+            }
+        });
+
+        elt.tagsinput('add', {"value": 1, "text": "Impuestos directos", "continent": "Europe"});
+        elt.tagsinput('add', {"value": 2, "text": "Impuestos indirectos", "continent": "America"});
     });
 </script>
 

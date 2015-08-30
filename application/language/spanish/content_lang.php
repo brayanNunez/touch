@@ -212,6 +212,26 @@
 	$lang['pasoSiguiente'] = 'Siguiente';
     $lang['paso2_elegirProducto'] = 'Elija un producto';
 
+   
+    $lang['paso1_elegirFormaPago'] = 'Elegir forma de pago';
+    $lang['paso1_elegirMoneda'] = 'Elegir moneda';
+    $lang['paso1_elegirCliente'] = 'Elegir cliente';
+    $lang['paso1_elegirAtencion'] = 'Elegir atención';
+    $lang['paso2_elegirProductoNombre'] = 'Elegir';
+    $lang['paso2_elegirProductoItem'] = 'Elegir';
+
+
+    $lang['paso1_labelCodido'] = 'Código';
+    $lang['paso1_labelNumero'] = 'Número';
+    $lang['paso1_labelCliente'] = 'Cliente';
+    $lang['paso1_labelContacto'] = 'Atención';
+    $lang['paso1_labelFormaPago'] = 'Forma de pago';
+    $lang['paso1_labelTipoMoneda'] = 'Tipo de moneda';
+    $lang['paso1_labelTiempoVlidez'] = 'Tiempo de validez';
+    $lang['paso1_labelTipoCambio'] = 'Tipo de cambio';
+    $lang['paso1_labelDetalle'] = 'Detalle';
+
+
 //Menu izquierdo 
 	$lang['inicio'] = 'Panel principal';
 	$lang['cotizaciones'] = 'Cotizaciones';
@@ -539,6 +559,8 @@
     $lang['formProducto_nuevaCaracteristica'] = 'Nueva característica';
     $lang['formProducto_enviar'] = 'Agregar producto';
     $lang['formProducto_editar'] = 'Guardar cambios';
+    $lang['formProducto_anadirImpuesto'] = 'Añadir impuesto';
+    $lang['formProducto_impuestos'] = 'Impuestos';
 
 
 $lang['agregar_nuevo'] = 'Agregar nuevo';
