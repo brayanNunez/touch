@@ -65,13 +65,16 @@
                                                 </div>
                                             </div>
                                             <div class="input-field col s12">
-                                                <input id="cliente_correo" type="email" style="margin-bottom: 0;">
-                                                <label for="cliente_correo"><?= label('formCliente_correo'); ?></label>
-                                                <input type="checkbox" class="filled-in checkbox"
-                                                       id="checkbox_correoCliente" checked/>
-                                                <label for="checkbox_correoCliente" style="margin-bottom: 20px;">
-                                                    <?= label('formCliente_correoCheck') ?>
-                                                </label>
+                                                <div>
+                                                    <input id="cliente_correo" type="email" style="margin-bottom: 0;" >
+                                                    <label for="cliente_correo"><?= label('formCliente_correo'); ?></label>
+                                                </div>
+                                                <div style="margin-bottom: 20px;">
+                                                    <input type="checkbox" class="filled-in checkbox" id="checkbox_correoCliente" />
+                                                    <label for="checkbox_correoCliente">
+                                                        <?= label('formCliente_correoCheck') ?>
+                                                    </label>
+                                                </div>
                                             </div>
                                             <div class="input-field col s12">
                                                 <input id="cliente_telefonoMovil" type="text">
@@ -103,8 +106,17 @@
                                                 <label for="clientejuridico_nombreFantasia"><?= label('formCliente_nombreFantasia'); ?></label>
                                             </div>
                                             <div class="input-field col s12">
-                                                <input id="clientejuridico_correo" type="email">
-                                                <label for="clientejuridico_correo"><?= label('formCliente_correo'); ?></label>
+                                                <div>
+                                                    <input id="clientejuridico_correo" type="email">
+                                                    <label for="clientejuridico_correo"><?= label('formCliente_correo'); ?></label>
+                                                </div>
+                                                <div style="margin-bottom: 20px;">
+                                                    <input type="checkbox" class="filled-in checkbox"
+                                                           id="checkbox_correoClientejuridico" />
+                                                    <label for="checkbox_correoClientejuridico">
+                                                        <?= label('formCliente_correoCheck') ?>
+                                                    </label>
+                                                </div>
                                             </div>
                                             <div class="input-field col s12">
                                                 <input id="clientejuridico_telefono" type="text">
@@ -146,6 +158,7 @@
                                                 </li>
                                             </ul>
                                         </div>
+
                                         <div class="col s12">
                                             <div id="tab-direccion" class="card col s12">
                                                 <div>
@@ -179,90 +192,18 @@
                                                 </div>
                                                 <table id="cliente1-contactos" class="data-table-information responsive-table striped">
                                                     <thead>
-                                                    <tr>
-                                                        <th style="text-align: center;">
-                                                            <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all"
-                                                                   onclick="toggleChecked(this.checked)"/>
-                                                            <label for="checkbox-all"></label>
-                                                        </th>
-                                                        <th><?= label('formCliente_nombreContacto'); ?></th>
-                                                        <th><?= label('formCliente_correoContacto'); ?></th>
-                                                        <th><?= label('formCliente_opcionesContacto'); ?></th>
-                                                    </tr>
+                                                        <tr>
+                                                            <th style="text-align: center;">
+                                                                <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all"
+                                                                       onclick="toggleChecked(this.checked)"/>
+                                                                <label for="checkbox-all"></label>
+                                                            </th>
+                                                            <th><?= label('formCliente_nombreContacto'); ?></th>
+                                                            <th><?= label('formCliente_correoContacto'); ?></th>
+                                                            <th><?= label('formCliente_opcionesContacto'); ?></th>
+                                                        </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <tr>
-                                                        <td style="text-align: center;">
-                                                            <input type="checkbox" class="filled-in checkbox" id="checkbox_cliente1_contacto1"/>
-                                                            <label for="checkbox_cliente1_contacto1"></label>
-                                                        </td>
-                                                        <td>Maria Rodriguez</td>
-                                                        <td>maria@gmail.com</td>
-                                                        <td>
-                                                            <ul id="dropdown-cliente1-contacto1" class="dropdown-content">
-                                                                <li>
-                                                                    <a href="#editarContacto"
-                                                                       class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#eliminarContacto"
-                                                                       class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                                </li>
-                                                            </ul>
-                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                                               data-activates="dropdown-cliente1-contacto1">
-                                                                <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="text-align: center;">
-                                                            <input type="checkbox" class="filled-in checkbox" id="checkbox_cliente1_contacto2"/>
-                                                            <label for="checkbox_cliente1_contacto2"></label>
-                                                        </td>
-                                                        <td>Juan Perez</td>
-                                                        <td>juan@gmail.com</td>
-                                                        <td>
-                                                            <ul id="dropdown-cliente1-contacto2" class="dropdown-content">
-                                                                <li>
-                                                                    <a href="#editarContacto"
-                                                                       class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#eliminarContacto"
-                                                                       class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                                </li>
-                                                            </ul>
-                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                                               data-activates="dropdown-cliente1-contacto2">
-                                                                <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="text-align: center;">
-                                                            <input type="checkbox" class="filled-in checkbox" id="checkbox_cliente1_contacto3"/>
-                                                            <label for="checkbox_cliente1_contacto3"></label>
-                                                        </td>
-                                                        <td>Jose Mora</td>
-                                                        <td>jose@gmail.com</td>
-                                                        <td>
-                                                            <ul id="dropdown-cliente1-contacto3" class="dropdown-content">
-                                                                <li>
-                                                                    <a href="#editarContacto"
-                                                                       class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#eliminarContacto"
-                                                                       class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                                </li>
-                                                            </ul>
-                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                                               data-activates="dropdown-cliente1-contacto3">
-                                                                <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
                                                     </tbody>
                                                 </table>
                                                 <div class="tabla-conAgregar">

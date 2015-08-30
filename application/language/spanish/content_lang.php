@@ -277,7 +277,6 @@
 	$lang['formCliente_fechaNacimiento'] = 'Fecha de nacimiento';
 	$lang['formCliente_telefonoMovil'] = 'Teléfono móvil';
 	$lang['formCliente_telefonoFijo'] = 'Teléfono fijo';
-	$lang['formCliente_nombreContacto'] = 'Nombre';
 	$lang['formCliente_correoContacto'] = 'Correo';
 	$lang['formCliente_opcionesContacto'] = 'Opciones';
 	$lang['formCliente_gustos_preferencias'] = 'Gustos y preferencias';
@@ -296,9 +295,10 @@
     $lang['formCliente_anadirGusto'] = 'Añadir gusto';
     $lang['formCliente_anadirMedio'] = 'Añadir medio';
 
-    $lang['formCliente_nacionalidad'] = 'Nacionalidad:';
+    $lang['formCliente_nacionalidad'] = 'Nacionalidad';
     $lang['formCliente_apellido1'] = 'Primer apellido';
     $lang['formCliente_apellido2'] = 'Segundo apellido';
+    $lang['formCliente_nombreContacto'] = 'Nombre completo';
     $lang['formCliente_Contactos'] = 'Contactos';
     $lang['cliente_infoAdicional'] = 'Adicional';
     $lang['cliente_infoFacturacion'] = 'Cotización';
