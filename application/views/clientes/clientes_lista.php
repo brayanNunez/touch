@@ -182,7 +182,7 @@
                                                 <div class="tabla-conAgregar tabla-busqueda-reporte">
                                                     <a id="opciones-seleccionados-print"
                                                        class="waves-effect black-text opciones-seleccionados option-print-table"
-                                                       style="visibility: ;"
+                                                       style="visibility: hidden;"
                                                        href="#" data-toggle="tooltip"
                                                        title="<?= label('opciones_seleccionadosImprimir') ?>">
                                                         <i class="mdi-action-print icono-opciones-varios"></i>
@@ -206,7 +206,7 @@
                                                     </a>
                                                     <a id="opciones-seleccionados-delete"
                                                        class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements"
-                                                       style="display: none;"
+                                                       style="visibility: hidden;"
                                                        href="#eliminarElementosSeleccionados" data-toggle="tooltip"
                                                        title="<?= label('opciones_seleccionadosEliminar') ?>">
                                                         <i class="mdi-action-delete icono-opciones-varios"></i>
@@ -239,13 +239,15 @@
             var elems = document.getElementsByClassName('opciones-seleccionados');
             var e;
             for (e in elems) {
-                elems[e].style.display = 'block';
+//                elems[e].style.display = 'block';
+                elems[e].style.visibility = 'visible';
             }
         } else {
             var elems = document.getElementsByClassName('opciones-seleccionados');
             var e;
             for (e in elems) {
-                elems[e].style.display = 'none';
+//                elems[e].style.display = 'none';
+                elems[e].style.visibility = 'hidden';
             }
         }
         document.getElementById('checkbox-all').checked = false;
@@ -287,13 +289,15 @@
                 var elems = document.getElementsByClassName('opciones-seleccionados');
                 var e;
                 for (e in elems) {
-                    elems[e].style.display = 'block';
+//                elems[e].style.display = 'block';
+                    elems[e].style.visibility = 'visible';
                 }
             } else {
                 var elems = document.getElementsByClassName('opciones-seleccionados');
                 var e;
                 for (e in elems) {
-                    elems[e].style.display = 'none';
+//                elems[e].style.display = 'none';
+                    elems[e].style.visibility = 'hidden';
                 }
             }
         });

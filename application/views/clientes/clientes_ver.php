@@ -190,10 +190,6 @@
     </form>
 </div>
 
-<?php
-$this->load->view('layout/default/menu-crear.php');
-?>
-
 <!-- Script para tags -->
 <script>
     $(document).ready(function () {
@@ -281,19 +277,5 @@ $this->load->view('layout/default/menu-crear.php');
             }
         });
 
-
-        $('.boton-opciones').on('click', function (event) {
-            var elementoActivo = $(this).siblings('ul.active');
-            if (elementoActivo.length > 0) {
-                var estado = elementoActivo.css("display");
-                if (estado == "block") {
-                    elementoActivo.css("display", "none");
-                    elementoActivo.style.display = 'none';
-                } else {
-                    elementoActivo.css("display", "block");
-                    elementoActivo.style.display = 'block';
-                }
-            }
-        });
     });
 </script>

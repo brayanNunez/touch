@@ -1,12 +1,7 @@
-<!--<div id="tableHeader" style="margin-bottom: 2%;">-->
-<!--    <div class="new-file">-->
-<!--        <a href="#agregarArchivo" class="btn btn-default modal-trigger">--><? //=label('clientes_archivoNuevo')?><!--</a>-->
-<!--    </div>-->
-<!--</div>-->
+<div class="agregar_nuevo">
+    <a href="#agregarArchivo" class="btn btn-default modal-trigger"><?= label('clientes_archivoNuevo') ?></a>
+</div>
 <table id="files" class="data-table-information responsive-table display">
-    <div class="agregar_nuevo">
-        <a href="#agregarArchivo" class="btn btn-default modal-trigger"><?= label('clientes_archivoNuevo') ?></a>
-    </div>
     <thead>
     <tr>
         <th style="text-align: center;">
@@ -98,20 +93,19 @@
 <script>
     $(window).load(function () {
         var marcados = $('.checkbox-file:checked').size();
+        var elems = document.getElementsByClassName('opciones-seleccionados-archivos');
         if (marcados >= 1) {
-            var elems = document.getElementsByClassName('opciones-seleccionados-archivos');
-            var e;
-            for (e in elems) {
-                elems[e].style.visibility = 'visible';
+            var e1;
+            for (e1 in elems) {
+                elems[e1].style.visibility = 'visible';
             }
         } else {
-            var elems = document.getElementsByClassName('opciones-seleccionados-archivos');
-            var e;
-            for (e in elems) {
-                elems[e].style.visibility = 'hidden';
+            var e2;
+            for (e2 in elems) {
+                elems[e2].style.visibility = 'hidden';
             }
+            document.getElementById('checkbox-all-files').checked = false;
         }
-        document.getElementById('checkbox-all').checked = false;
     });
     $(document).ready(function () {
         $('#botonEliminarArchivosSeleccionados').on("click", function (event) {
@@ -131,25 +125,7 @@
         });
     });
     $(document).ready(function () {
-        $('.checkbox-file').click(function (event) {
-            var marcados = $('.checkbox-file:checked').size();
-            if (marcados >= 1) {
-                var elems = document.getElementsByClassName('opciones-seleccionados-archivos');
-                var e;
-                for (e in elems) {
-                    elems[e].style.visibility = 'visible';
-                }
-            } else {
-                var elems = document.getElementsByClassName('opciones-seleccionados-archivos');
-                var e;
-                for (e in elems) {
-                    elems[e].style.visibility = 'hidden';
-                }
-            }
-        });
-    });
-    $(document).ready(function () {
-        $('#checkbox-all-files').click(function (event) {
+        $('input#checkbox-all-files').click(function (event) {
             if (this.checked) {
                 $('.checkbox-file').each(function () {
                     this.checked = true;
@@ -160,17 +136,33 @@
                 });
             }
             var marcados = $('.checkbox-file:checked').size();
+            var elems = document.getElementsByClassName('opciones-seleccionados-archivos');
             if (marcados >= 1) {
-                var elems = document.getElementsByClassName('opciones-seleccionados-archivos');
-                var e;
-                for (e in elems) {
-                    elems[e].style.visibility = 'visible';
+                var e1;
+                for (e1 in elems) {
+                    elems[e1].style.visibility = 'visible';
                 }
             } else {
-                var elems = document.getElementsByClassName('opciones-seleccionados-archivos');
-                var e;
-                for (e in elems) {
-                    elems[e].style.visibility = 'hidden';
+                var e2;
+                for (e2 in elems) {
+                    elems[e2].style.visibility = 'hidden';
+                }
+            }
+        });
+    });
+    $(document).ready(function () {
+        $('.checkbox-file').click(function (event) {
+            var marcados = $('.checkbox-file:checked').size();
+            var elems = document.getElementsByClassName('opciones-seleccionados-archivos');
+            if (marcados >= 1) {
+                var e1;
+                for (e1 in elems) {
+                    elems[e1].style.visibility = 'visible';
+                }
+            } else {
+                var e2;
+                for (e2 in elems) {
+                    elems[e2].style.visibility = 'hidden';
                 }
             }
         });

@@ -46,7 +46,7 @@
                         <label for="cliente_correo"><?= label('formCliente_correo'); ?></label>
                     </div>
                     <div style="margin-bottom: 20px;">
-                        <input type="checkbox" class="filled-in checkbox" id="checkbox_correoCliente" checked/>
+                        <input type="checkbox" class="filled-in" id="checkbox_correoCliente" checked/>
                         <label for="checkbox_correoCliente">
                             <?= label('formCliente_correoCheck') ?>
                         </label>
@@ -87,7 +87,7 @@
                         <label for="clientejuridico_correo"><?= label('formCliente_correo'); ?></label>
                     </div>
                     <div style="margin-bottom: 20px;">
-                        <input type="checkbox" class="filled-in checkbox" id="checkbox_correoClientejuridico" checked/>
+                        <input type="checkbox" class="filled-in" id="checkbox_correoClientejuridico" checked/>
                         <label for="checkbox_correoClientejuridico">
                             <?= label('formCliente_correoCheck') ?>
                         </label>
@@ -167,11 +167,11 @@
                             <?= label('formCliente_agregar'); ?>
                         </a>
                     </div>
-                    <table id="cliente1-contactos" class="data-table-information responsive-table striped">
+                    <table id="cliente1-contactos-editar" class="data-table-information responsive-table striped">
                         <thead>
                         <tr>
                             <th style="text-align: center;">
-                                <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all"
+                                <input class="filled-in checkbox-edicion checkall" type="checkbox" id="checkbox-all"
                                        onclick="toggleChecked(this.checked)"/>
                                 <label for="checkbox-all"></label>
                             </th>
@@ -183,7 +183,7 @@
                         <tbody>
                         <tr>
                             <td style="text-align: center;">
-                                <input type="checkbox" class="filled-in checkbox" id="checkbox_cliente1_contacto1"/>
+                                <input type="checkbox" class="filled-in checkbox-edicion" id="checkbox_cliente1_contacto1"/>
                                 <label for="checkbox_cliente1_contacto1"></label>
                             </td>
                             <td>Maria Rodriguez</td>
@@ -207,7 +207,7 @@
                         </tr>
                         <tr>
                             <td style="text-align: center;">
-                                <input type="checkbox" class="filled-in checkbox" id="checkbox_cliente1_contacto2"/>
+                                <input type="checkbox" class="filled-in checkbox-edicion" id="checkbox_cliente1_contacto2"/>
                                 <label for="checkbox_cliente1_contacto2"></label>
                             </td>
                             <td>Juan Perez</td>
@@ -231,7 +231,7 @@
                         </tr>
                         <tr>
                             <td style="text-align: center;">
-                                <input type="checkbox" class="filled-in checkbox" id="checkbox_cliente1_contacto3"/>
+                                <input type="checkbox" class="filled-in checkbox-edicion" id="checkbox_cliente1_contacto3"/>
                                 <label for="checkbox_cliente1_contacto3"></label>
                             </td>
                             <td>Jose Mora</td>
@@ -330,24 +330,19 @@
     </form>
 </div>
 
-<?php
-$this->load->view('layout/default/menu-crear.php');
-?>
-
 <script>
     $(window).load(function () {
-        var marcados = $('.checkbox:checked').size();
+        var marcados = $('.checkbox-edicion:checked').size();
+        var elems = document.getElementsByClassName('opciones-seleccionados');
         if (marcados >= 1) {
-            var elems = document.getElementsByClassName('opciones-seleccionados');
-            var e;
-            for (e in elems) {
-                elems[e].style.visibility = 'visible';
+            var e1;
+            for (e1 in elems) {
+                elems[e1].style.visibility = 'visible';
             }
         } else {
-            var elems = document.getElementsByClassName('opciones-seleccionados');
-            var e;
-            for (e in elems) {
-                elems[e].style.visibility = 'hidden';
+            var e2;
+            for (e2 in elems) {
+                elems[e2].style.visibility = 'hidden';
             }
         }
         document.getElementById('checkbox-all').checked = false;
@@ -372,30 +367,29 @@ $this->load->view('layout/default/menu-crear.php');
     $(document).ready(function () {
         $('#checkbox-all').click(function (event) {
             if (this.checked) {
-                $('.checkbox').each(function () {
+                $('.checkbox-edicion').each(function () {
                     this.checked = true;
                 });
             } else {
-                $('.checkbox').each(function () {
+                $('.checkbox-edicion').each(function () {
                     this.checked = false;
                 });
             }
         });
     });
     $(document).ready(function () {
-        $('.checkbox').click(function (event) {
-            var marcados = $('.checkbox:checked').size();
+        $('.checkbox-edicion').click(function (event) {
+            var marcados = $('.checkbox-edicion:checked').size();
+            var elems = document.getElementsByClassName('opciones-seleccionados');
             if (marcados >= 1) {
-                var elems = document.getElementsByClassName('opciones-seleccionados');
-                var e;
-                for (e in elems) {
-                    elems[e].style.visibility = 'visible';
+                var e1;
+                for (e1 in elems) {
+                    elems[e1].style.visibility = 'visible';
                 }
             } else {
-                var elems = document.getElementsByClassName('opciones-seleccionados');
-                var e;
-                for (e in elems) {
-                    elems[e].style.visibility = 'hidden';
+                var e2;
+                for (e2 in elems) {
+                    elems[e2].style.visibility = 'hidden';
                 }
             }
         });
@@ -486,21 +480,6 @@ $this->load->view('layout/default/menu-crear.php');
                 displayKey: 'name',
                 valueKey: 'name',
                 source: mediosContacto.ttAdapter()
-            }
-        });
-
-
-        $('.boton-opciones').on('click', function (event) {
-            var elementoActivo = $(this).siblings('ul.active');
-            if (elementoActivo.length > 0) {
-                var estado = elementoActivo.css("display");
-                if (estado == "block") {
-                    elementoActivo.css("display", "none");
-                    elementoActivo.style.display = 'none';
-                } else {
-                    elementoActivo.css("display", "block");
-                    elementoActivo.style.display = 'block';
-                }
             }
         });
     });
@@ -599,13 +578,17 @@ $this->load->view('layout/default/menu-crear.php');
         </div>
         <div class="row">
             <div class="input-field col s12 m6 l6">
-                <input id="cliente_contactoCorreo_existente" type="email" style="margin-bottom: 0;">
-                <label for="cliente_contactoCorreo_existente"><?= label('formCliente_correo'); ?></label>
-                <input type="checkbox" class="filled-in checkbox"
-                       id="checkbox_contactoCorreoCliente_existente" checked/>
-                <label for="checkbox_contactoCorreoCliente_existente" style="margin-bottom: 20px;">
-                    <?= label('formCliente_correoCheck') ?>
-                </label>
+                <div>
+                    <input id="cliente_contactoCorreo_existente" type="email" style="margin-bottom: 0;" value="claret@gmail.com">
+                    <label for="cliente_contactoCorreo_existente"><?= label('formCliente_correo'); ?></label>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <input type="checkbox" class="filled-in"
+                           id="checkbox_contactoCorreoCliente_existente" checked/>
+                    <label for="checkbox_contactoCorreoCliente_existente" style="margin-bottom: 20px;">
+                        <?= label('formCliente_correoCheck') ?>
+                    </label>
+                </div>
             </div>
             <div class="input-field col s12 m3 l3">
                 <input id="cliente_contactoPuesto_existente" type="text" value="CEO">
@@ -631,7 +614,7 @@ $this->load->view('layout/default/menu-crear.php');
         <p><?= label('clientes_archivosSeleccionadosEliminar'); ?></p>
     </div>
     <div class="modal-footer black-text">
-        <div id="botonElimnar" title="cliente1-contactos">
+        <div id="botonElimnar" title="cliente1-contactos-editar">
             <a href="#"
                class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
         </div>
