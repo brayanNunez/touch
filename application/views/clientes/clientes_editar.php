@@ -110,26 +110,26 @@
                     <li class="tab col s3">
                         <a class="white-text darken-1 waves-effect waves-light active"
                            id="cliente-informacion" href="#tab-direccion-editar">
-                            <i class="mdi-action-perm-identity"></i>
+                            <i class="mdi-maps-my-location"></i>
                             <?= label('cliente_direccion'); ?>
                         </a>
                     </li>
                     <li class="tab-interior tab col s3">
                         <a class="white-text darken-1 waves-effect waves-light"
                            id="cliente-informacion" href="#tab-contactos-editar"><i
-                                class="mdi-editor-format-list-numbered"></i>
+                                class="mdi-communication-contacts"></i>
                             <?= label('formCliente_Contactos'); ?></a>
                     </li>
                     <li class="tab-interior tab col s3">
                         <a class="white-text darken-1 waves-effect waves-light"
                            id="cliente-informacion" href="#tab-infoAdicional-editar"><i
-                                class="mdi-file-folder-open"></i>
+                                class="mdi-av-queue"></i>
                             <?= label('cliente_infoAdicional'); ?></a>
                     </li>
                     <li class="tab-interior tab col s3">
                         <a class="white-text darken-1 waves-effect waves-light"
                            id="cliente-informacion" href="#tab-infoFacturacion-editar"><i
-                                class="mdi-editor-mode-edit"></i>
+                                class="mdi-editor-format-list-numbered"></i>
                             <?= label('cliente_infoFacturacion'); ?></a>
                     </li>
                 </ul>
@@ -313,6 +313,7 @@
                     <div class="input-field col s12">
                         <input id="cliente_descuento" type="text" value="5">
                         <label for="cliente_descuento"><?= label('formCliente_descuento'); ?></label>
+                        <span class="icono-porcentaje-descuento">%</span>
                     </div>
                     <div class="input-field col s12">
                         <select>
