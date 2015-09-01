@@ -38,19 +38,19 @@
                                         </div>
 
                                         <div class="col s12 m12 l12">
-                                            <div class="input-field col s12 m4 l4">
+                                            <div class="input-field col s12 m8 l4">
                                                 <div class="input-field col s12">
                                                     <input id="registro_nombreIndepediente" class="campo-registro" type="text"
                                                            placeholder="Nombre">
                                                 </div>
                                             </div>
-                                            <div class="input-field col s12 m4 l4">
+                                            <div class="input-field col s12 m8 l4">
                                                 <div class="input-field col s12">
                                                     <input id="registro_primerApellidoIndepediente" class="campo-registro" type="text"
                                                            placeholder="Primer apellido">
                                                 </div>
                                             </div>
-                                            <div class="input-field col s12 m4 l4">
+                                            <div class="input-field col s12 m8 l4">
                                                 <div class="input-field col s12">
                                                     <input id="registro_segundoApellidoIndepediente" class="campo-registro" type="text"
                                                            placeholder="Segundo apellido">
@@ -59,13 +59,13 @@
                                         </div>
 
                                         <div class="col s12 m12 l12">
-                                            <div class="input-field col s12 m6 l0">
+                                            <div class="input-field col s12 m8 l6">
                                                 <div class="input-field col s12">
                                                     <input id="registro_correoIndepediente" class="campo-registro" type="email"
                                                            placeholder="Correo electrónico">
                                                 </div>
                                             </div>
-                                            <div class="input-field col s12 m6 l0">
+                                            <div class="input-field col s12 m8 l6">
                                                 <div class="input-field col s12">
                                                     <input id="registro_confirmarCorreoIndepediente" class="campo-registro" type="email"
                                                            placeholder="Confirmar correo electrónico">
@@ -74,13 +74,13 @@
                                         </div>
 
                                         <div class="col s12 m12 l12">
-                                            <div class="input-field col s12 m6 l0">
+                                            <div class="input-field col s12 m8 l6">
                                                 <div class="input-field col s12">
                                                     <input id="registro_contraseñaIndepediente" class="campo-registro" type="password"
                                                            placeholder="Contraseña">
                                                 </div>
                                             </div>
-                                            <div class="input-field col s12 m6 l0">
+                                            <div class="input-field col s12 m8 l6">
                                                 <div class="input-field col s12">
                                                     <input id="registro_confirmarContraseñaIndepediente" class="campo-registro" type="password"
                                                            placeholder="Confirmar contraseña">
@@ -99,19 +99,19 @@
                                         </div>
 
                                         <div class="col s12 m12 l12">
-                                            <div class="input-field col s12 m4 l4">
+                                            <div class="input-field col s12 m8 l4">
                                                 <div class="input-field col s12">
                                                     <input id="registro_paisIndepediente" class="campo-registro" type="text"
                                                            placeholder="País">
                                                 </div>
                                             </div>
-                                            <div class="input-field col s12 m4 l4">
+                                            <div class="input-field col s12 m8 l4">
                                                 <div class="input-field col s12">
                                                     <input id="registro_provinciaIndepediente" class="campo-registro" type="text"
                                                            placeholder="Provincia">
                                                 </div>
                                             </div>
-                                            <div class="input-field col s12 m4 l4">
+                                            <div class="input-field col s12 m8 l4">
                                                 <div class="input-field col s12">
                                                     <input id="registro_cantonIndepediente" class="campo-registro" type="text"
                                                            placeholder="Cantón">
@@ -120,13 +120,13 @@
                                         </div>
 
                                         <div class="col s12 m12 l12">
-                                            <div class="input-field col s12 m6 l0">
+                                            <div class="input-field col s12 m8 l6">
                                                 <div class="input-field col s12">
                                                     <input id="registro_distritoIndepediente" class="campo-registro" type="text"
                                                            placeholder="Distrito">
                                                 </div>
                                             </div>
-                                            <div class="input-field col s12 m6 l0">
+                                            <div class="input-field col s12 m8 l6">
                                                 <div class="input-field col s12">
                                                     <input id="registro_domicilioIndepediente" class="campo-registro" type="text"
                                                            placeholder="Domicilio">
@@ -145,13 +145,13 @@
                                         </div>
 
                                         <div class="col s12 m12 l12">
-                                            <div class="input-field col s12 m6 l0">
+                                            <div class="input-field col s12 m8 l6">
                                                 <div class="input-field col s12">
                                                     <input id="registro_nombreEmpresa" class="campo-registro" type="text"
                                                            placeholder="Nombre (Razón social)">
                                                 </div>
                                             </div>
-                                            <div class="input-field col s12 m6 l0">
+                                            <div class="input-field col s12 m8 l6">
                                                 <div class="input-field col s12">
                                                     <input id="registro_nombreFantasiaEmpresa" class="campo-registro" type="text"
                                                            placeholder="Nombre de fantasía">
@@ -170,19 +170,19 @@
                                         </div>
 
                                         <div class="col s12 m12 l12">
-                                            <div class="input-field col s12 m4 l4">
+                                            <div class="input-field col s12 m8 l4">
                                                 <div class="input-field col s12">
                                                     <input id="registro_paisEmpresa" class="campo-registro" type="text"
                                                            placeholder="País">
                                                 </div>
                                             </div>
-                                            <div class="input-field col s12 m4 l4">
+                                            <div class="input-field col s12 m8 l4">
                                                 <div class="input-field col s12">
                                                     <input id="registro_provinciaEmpresa" class="campo-registro" type="text"
                                                            placeholder="Provincia">
                                                 </div>
                                             </div>
-                                            <div class="input-field col s12 m4 l4">
+                                            <div class="input-field col s12 m8 l4">
                                                 <div class="input-field col s12">
                                                     <input id="registro_cantonEmpresa" class="campo-registro" type="text"
                                                            placeholder="Cantón">
@@ -191,13 +191,13 @@
                                         </div>
 
                                         <div class="col s12 m12 l12">
-                                            <div class="input-field col s12 m6 l0">
+                                            <div class="input-field col s12 m8 l6">
                                                 <div class="input-field col s12">
                                                     <input id="registro_distritoEmpresa" class="campo-registro" type="text"
                                                            placeholder="Distrito">
                                                 </div>
                                             </div>
-                                            <div class="input-field col s12 m6 l0">
+                                            <div class="input-field col s12 m8 l6">
                                                 <div class="input-field col s12">
                                                     <input id="registro_domicilioEmpresa" class="campo-registro" type="text"
                                                            placeholder="Domicilio">
@@ -224,19 +224,19 @@
                                         </div>
 
                                         <div class="col s12 m12 l12">
-                                            <div class="input-field col s12 m4 l4">
+                                            <div class="input-field col s12 m8 l4">
                                                 <div class="input-field col s12">
                                                     <input id="registro_nombreContacto" class="campo-registro" type="text"
                                                            placeholder="Nombre">
                                                 </div>
                                             </div>
-                                            <div class="input-field col s12 m4 l4">
+                                            <div class="input-field col s12 m8 l4">
                                                 <div class="input-field col s12">
                                                     <input id="registro_primerApellidoContacto" class="campo-registro" type="text"
                                                            placeholder="Primer apellido">
                                                 </div>
                                             </div>
-                                            <div class="input-field col s12 m4 l4">
+                                            <div class="input-field col s12 m8 l4">
                                                 <div class="input-field col s12">
                                                     <input id="registro_segundoApellidoContacto" class="campo-registro" type="text"
                                                            placeholder="Segundo apellido">
@@ -245,13 +245,13 @@
                                         </div>
 
                                         <div class="col s12 m12 l12">
-                                            <div class="input-field col s12 m6 l0">
+                                            <div class="input-field col s12 m8 l6">
                                                 <div class="input-field col s12">
                                                     <input id="registro_correoContacto" class="campo-registro" type="email"
                                                            placeholder="Correo electrónico">
                                                 </div>
                                             </div>
-                                            <div class="input-field col s12 m6 l0">
+                                            <div class="input-field col s12 m8 l6">
                                                 <div class="input-field col s12">
                                                     <input id="registro_confirmarCorreoContacto" class="campo-registro" type="email"
                                                            placeholder="Confirmar correo electrónico">
@@ -260,13 +260,13 @@
                                         </div>
 
                                         <div class="col s12 m12 l12">
-                                            <div class="input-field col s12 m6 l0">
+                                            <div class="input-field col s12 m8 l6">
                                                 <div class="input-field col s12">
                                                     <input id="registro_contraseñaContacto" class="campo-registro" type="password"
                                                            placeholder="Contraseña">
                                                 </div>
                                             </div>
-                                            <div class="input-field col s12 m6 l0">
+                                            <div class="input-field col s12 m8 l6">
                                                 <div class="input-field col s12">
                                                     <input id="registro_confirmarContraseñaContacto" class="campo-registro" type="password"
                                                            placeholder="Confirmar contraseña">

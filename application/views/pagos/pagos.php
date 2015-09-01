@@ -82,7 +82,7 @@
                                         </tbody>
                                     </table>
                                     <div class="section reporte-generar">
-                                        <a href="#" class="btn btn-default"><?= label('pagar_servicio'); ?></a>
+                                        <a href="#Obtener" class="btn btn-default modal-trigger"><?= label('pagar_servicio'); ?></a>
                                     </div>
 
                                     <div id="table-datatables">
@@ -143,4 +143,29 @@
 
 </section>
 <!-- END CONTENT-->
+
+<!-- lista modals -->
+
+<div id="Obtener" class="modal">
+    <div class="modal-header">
+        <p><?=label('nombreSistema');?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('mensaje_pago'); ?></p>
+        <div class="input-field col s12">
+            <input id="tarjeta_numero" type="text">
+            <label for="tarjeta_numero"><?= label('tarjeta_numero'); ?></label>
+        </div>
+
+        <div class="input-field col s12">
+            <input id="tarjeta_expiracion" type="text">
+            <label for="tarjeta_expiracion"><?= label('tarjeta_expiracion'); ?></label>
+        </div>
+    </div>
+    <div class="modal-footer black-text">
+        <a href="<?=base_url()?>pagos" class="waves-effect waves-red btn-flat modal-action modal-close"><?=label('aceptar');?></a>
+    </div>
+</div>
+<!--Fin lista modals -->
 

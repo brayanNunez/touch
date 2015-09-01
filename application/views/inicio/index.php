@@ -508,12 +508,12 @@
     </div>
     <div class="modal-footer">
         <div class="input-field col s12 m6 l6">
-            <div class="input-field col s12">
+            <div class="input-field col s12 opt-modal-registro">
                 <a style="float:left;" href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Ignorar</a>
             </div>
         </div>
         <div class="input-field col s12 m6 l6">
-            <div class="input-field col s12">
+            <div class="input-field col s12 opt-modal-registro">
                 <a style="float:right;" href="#" class="waves-effect waves-green btn-flat modal-action modal-close">Guardar</a>
             </div>
         </div>
@@ -604,7 +604,7 @@
             </div>
 
             <div class="input-field col s12">
-                <h7>Datos del contacto (Se recomienda representante legal)</h7>
+                <h7 style="float: left;">Datos del contacto (Se recomienda representante legal)</h7>
             </div>
 
             <div class="input-field col s12">
@@ -639,13 +639,13 @@
 
     <div class="modal-footer">
         <div class="input-field col s12 m6 l6">
-            <div class="input-field col s12">
-                <a style="float:left;" href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Ignorar</a>
+            <div class="input-field col s12  opt-modal-registro">
+                <a href="#" style="float:left;" class="waves-effect waves-red btn-flat modal-action modal-close">Ignorar</a>
             </div>
         </div>
         <div class="input-field col s12 m6 l6">
-            <div class="input-field col s12">
-                <a style="float:right;" href="#" class="waves-effect waves-green btn-flat modal-action modal-close">Guardar</a>
+            <div class="input-field col s12  opt-modal-registro">
+                <a href="#" style="float:right;" class="waves-effect waves-green btn-flat modal-action modal-close">Guardar</a>
             </div>
         </div>
     </div>
