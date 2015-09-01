@@ -189,6 +189,9 @@ div#busquedaAvanzadaPS div.modal-content div.row { margin-bottom: 0; }
 
 span.icono-porcentaje-descuento { position: absolute; top: 15px; left: 96%; }
 
+a#logo-principal-header { left: 45%; }
+ul#opciones-barra-superior { display: block !important; margin-right: 10px; }
+
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/
     div#login-page { width: 380px !important; max-height: 408px !important; top: 0 !important; }
@@ -293,6 +296,7 @@ span.icono-porcentaje-descuento { position: absolute; top: 15px; left: 96%; }
     a#cotizacion-agregarAtencion { padding: 0; background-color: transparent; position: absolute; left: 85%; box-shadow: none; top: -15px; }
 
     span.icono-porcentaje-descuento { position: absolute; top: 15px; left: 95%; }
+    ul#opciones-barra-superior li a { padding: 0 7px; }
 }
 
 @media only screen and (max-width: 640px) {
@@ -334,6 +338,8 @@ span.icono-porcentaje-descuento { position: absolute; top: 15px; left: 96%; }
     div.tabla-detalles-cotizacion { left: 430px; bottom: 46%; top: unset; width: auto; }
     a#cotizacion-agregarAtencion { padding: 0; background-color: transparent; position: absolute; left: 90%; box-shadow: none; top: -15px; }
     span.icono-porcentaje-descuento { position: absolute; top: 15px; left: 93%; }
+    a#logo-principal-header { left: 43%; }
+    ul#opciones-barra-superior { margin-top: 15px; }
 }
 
 @media only screen and (max-width: 480px) {
@@ -422,4 +428,17 @@ span.icono-porcentaje-descuento { position: absolute; top: 15px; left: 96%; }
     a#cotizacion-agregarAtencion { padding: 0; background-color: transparent; position: absolute; left: 86%; box-shadow: none; top: -15px; }
 
     span.icono-porcentaje-descuento { position: absolute; top: 15px; left: 90%; }
+
+    a#logo-principal-header { left: 43%; }
+    ul#opciones-barra-superior { margin-top: 15px; margin-right: 5px; }
+    ul#opciones-barra-superior li a { padding: 0 5px; }
+    ul#opciones-barra-superior li a i { font-size: 23px; }
+}
+
+@media only screen and (max-width: 360px) {
+    a#logo-principal-header { left: 43%; }
+    a#logo-principal-header img { width: 145px; height: 30px; }
+    ul#opciones-barra-superior { margin-top: 17px; margin-right: 2px; }
+    ul#opciones-barra-superior li a { padding: 0 4px; }
+    ul#opciones-barra-superior li a i { font-size: 23px; }
 }

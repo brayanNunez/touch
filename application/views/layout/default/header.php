@@ -145,10 +145,13 @@
     <div class="navbar-fixed">
         <nav class="touch">
             <div class="nav-wrapper">
-                <h1 class="logo-wrapper"><a href="<?= base_url() ?>inicio" class="brand-logo darken-1"><img
-                            src="<?= base_url() ?>assets/dashboard/images/materialize-logo.png" alt="materialize logo"></a>
-                    <span class="logo-text">Touch!</span></h1>
-                <ul class="right hide-on-med-and-down">
+                <h1 class="logo-wrapper">
+                    <a id="logo-principal-header" href="<?= base_url() ?>inicio" class="brand-logo darken-1">
+                        <img src="<?= base_url() ?>assets/dashboard/images/materialize-logo.png" alt="materialize logo">
+                    </a>
+                    <span class="logo-text">Touch!</span>
+                </h1>
+                <ul id="opciones-barra-superior" class="right hide-on-med-and-down">
 
 
                     <!--<li>
@@ -182,7 +185,7 @@
                     <li>
                         <a class="dropdown-button" href="#!" data-activates="listaNotificaciones"
                            title="<?= label('tooltip_notificaciones') ?>">
-                            <i class="mdi-social-notifications">9</i>
+                            <i class="mdi-social-notifications"></i>
                         </a>
                     </li>
 
