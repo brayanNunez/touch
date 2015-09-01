@@ -279,7 +279,7 @@
         document.getElementById('checkbox-all').checked = false;
     });
     $(document).ready(function () {
-        $('#botonElimnar').on("click", function (event) {
+        $('#botonEliminar').on("click", function (event) {
             var tb = $(this).attr('title');
             var sel = false;
             var ch = $('#' + tb).find('tbody input[type=checkbox]');
@@ -374,11 +374,9 @@
         <p><?= label('clientes_archivosSeleccionadosEliminar'); ?></p>
     </div>
     <div class="modal-footer black-text">
-        <div title="empleados-tabla-lista">
-        <div id="botonEliminar" class="modal-footer black-text">
+        <div id="botonEliminar" class="modal-footer black-text" title="empleados-tabla-lista">
             <a href="#"
                class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
-        </div>
         </div>
     </div>
 </div>

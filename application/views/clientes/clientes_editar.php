@@ -255,7 +255,7 @@
                         </tr>
                         </tbody>
                     </table>
-                    <div class="tabla-conAgregar">
+                    <div class="tabla-conAgregar tabla-opciones-contacto">
                         <a id="opciones-seleccionados-delete"
                            class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements"
                            style="visibility: hidden;"
