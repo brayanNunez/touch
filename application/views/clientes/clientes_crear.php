@@ -70,7 +70,7 @@
                                                     <label for="cliente_correo"><?= label('formCliente_correo'); ?></label>
                                                 </div>
                                                 <div style="margin-bottom: 20px;">
-                                                    <input type="checkbox" class="filled-in checkbox" id="checkbox_correoCliente" />
+                                                    <input type="checkbox" class="filled-in" id="checkbox_correoCliente" />
                                                     <label for="checkbox_correoCliente">
                                                         <?= label('formCliente_correoCheck') ?>
                                                     </label>
@@ -111,7 +111,7 @@
                                                     <label for="clientejuridico_correo"><?= label('formCliente_correo'); ?></label>
                                                 </div>
                                                 <div style="margin-bottom: 20px;">
-                                                    <input type="checkbox" class="filled-in checkbox"
+                                                    <input type="checkbox" class="filled-in"
                                                            id="checkbox_correoClientejuridico" />
                                                     <label for="checkbox_correoClientejuridico">
                                                         <?= label('formCliente_correoCheck') ?>
@@ -206,7 +206,7 @@
                                                     <tbody>
                                                     </tbody>
                                                 </table>
-                                                <div class="tabla-conAgregar">
+                                                <div class="tabla-conAgregar tabla-opciones-contacto">
                                                     <a id="opciones-seleccionados-delete"
                                                        class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements"
                                                        style="visibility: hidden;"
@@ -536,13 +536,16 @@
         </div>
         <div class="row">
             <div class="input-field col s12 m6 l6">
-                <input id="cliente_contactoCorreo" type="email" style="margin-bottom: 0;">
-                <label for="cliente_contactoCorreo"><?= label('formCliente_correo'); ?></label>
-                <input type="checkbox" class="filled-in checkbox"
-                       id="checkbox_contactoCorreoCliente" />
-                <label for="checkbox_contactoCorreoCliente" style="margin-bottom: 20px;">
-                    <?= label('formCliente_correoCheck') ?>
-                </label>
+                <div>
+                    <input id="cliente_contactoCorreo" type="email" style="margin-bottom: 0;">
+                    <label for="cliente_contactoCorreo"><?= label('formCliente_correo'); ?></label>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <input type="checkbox" class="filled-in" id="checkbox_contactoCorreoCliente" />
+                    <label for="checkbox_contactoCorreoCliente" style="margin-bottom: 20px;">
+                        <?= label('formCliente_correoCheck') ?>
+                    </label>
+                </div>
             </div>
             <div class="input-field col s12 m3 l3">
                 <input id="cliente_contactoPuesto" type="text">
@@ -581,13 +584,16 @@
         </div>
         <div class="row">
             <div class="input-field col s12 m6 l6">
-                <input id="cliente_contactoCorreo_existente" type="email" style="margin-bottom: 0;">
-                <label for="cliente_contactoCorreo_existente"><?= label('formCliente_correo'); ?></label>
-                <input type="checkbox" class="filled-in checkbox"
-                       id="checkbox_contactoCorreoCliente_existente" checked/>
-                <label for="checkbox_contactoCorreoCliente_existente" style="margin-bottom: 20px;">
-                    <?= label('formCliente_correoCheck') ?>
-                </label>
+                <div>
+                    <input id="cliente_contactoCorreo_existente" type="email" style="margin-bottom: 0;">
+                    <label for="cliente_contactoCorreo_existente"><?= label('formCliente_correo'); ?></label>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <input type="checkbox" class="filled-in" id="checkbox_contactoCorreoCliente_existente" checked/>
+                    <label for="checkbox_contactoCorreoCliente_existente" style="margin-bottom: 20px;">
+                        <?= label('formCliente_correoCheck') ?>
+                    </label>
+                </div>
             </div>
             <div class="input-field col s12 m3 l3">
                 <input id="cliente_contactoPuesto_existente" type="text" value="CEO">
