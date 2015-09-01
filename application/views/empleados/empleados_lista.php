@@ -51,11 +51,11 @@
                                                     <tbody>
 
                                                     <?php
-                                                    if (isset($lista)) {
+                                                    // if (isset($lista)) {
                                                         $contador = 0;
-                                                        foreach ($lista as $fila) {
+                                                        // foreach ($lista as $fila) {
                                                             ?>
-                                                            <tr>
+                                                            <!-- <tr>
                                                                 <td style="text-align: center;">
                                                                     <input type="checkbox" class="filled-in checkbox"
                                                                            id="checkbox_empleado1"/>
@@ -63,7 +63,7 @@
                                                                 </td>
                                                                 <td><?= $fila->codigo ?></td>
                                                                 <td>
-                                                                    <a href="<?= base_url() ?>empleados/editar/<?= $fila->idEmpleado ?>"><?= $fila->nombreCompleto ?></a>
+                                                                    <a href="<?= base_url() ?>empleados/editar/<?= encryptIt($fila->idEmpleado) ?>"><?= $fila->nombreCompleto ?></a>
                                                                 </td>
                                                                 <td><?= $fila->identificacion ?></td>
                                                                 <td>Programador, Bases de datos</td>
@@ -71,13 +71,13 @@
                                                                     <ul id="dropdown-empleado<?= $contador ?>"
                                                                         class="dropdown-content">
                                                                         <li>
-                                                                            <a href="<?= base_url() ?>empleados/editar/<?= $fila->idEmpleado ?>"
+                                                                            <a href="<?= base_url() ?>empleados/editar/<?= encryptIt($fila->idEmpleado) ?>"
                                                                                class="-text"><?= label('menuOpciones_editar') ?></a>
                                                                         </li>
                                                                         <li>
                                                                             <a href="#eliminarEmpleado"
                                                                                class="-text modal-trigger confirmarEliminar"
-                                                                               data-id-eliminar="<?= $fila->idEmpleado ?>"><?= label('menuOpciones_eliminar') ?></a>
+                                                                               data-id-eliminar="<?= encryptIt($fila->idEmpleado) ?>"><?= label('menuOpciones_eliminar') ?></a>
                                                                         </li>
                                                                     </ul>
                                                                     <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
@@ -87,8 +87,8 @@
                                                                             class="mdi-navigation-arrow-drop-down"></i>
                                                                     </a>
                                                                 </td>
-                                                            </tr>
-                                                            <!--
+                                                            </tr> -->
+                                                            
 
                                                         <tr>
                                                             <td style="text-align: center;">
@@ -158,10 +158,10 @@
                                                                     <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
                                                                 </a>
                                                             </td>
-                                                        </tr> -->
+                                                        </tr> 
                                                             <?php
-                                                        }
-                                                    }
+                                                        // }
+                                                    // }
                                                     ?>
 
                                                     </tbody>
@@ -222,12 +222,33 @@
 
 <!-- script para agregar link al boton aceptar del modal -->
 <script type="text/javascript">
-    $(document).on("ready", function () {
+    $(document).on("ready", function () { 
+
+        var idEliminar = 0;
 
         $('.confirmarEliminar').on('click', function () {
-            var id = $(this).data('id-eliminar');
-            $('#eliminarEmpleado #botonEliminar a').attr('href', "<?=base_url()?>empleados/eliminar/" + id);
+            idEliminar = $(this).data('id-eliminar');
+            // idEliminar = id;
+            // $('#eliminarEmpleado #botonEliminar a').attr('href', "<?=base_url()?>empleados/eliminar/" + id);
         });
+
+         $('#eliminarEmpleado #botonEliminar').on('click', function () {
+            event.preventDefault();
+            // alert(idEliminar);
+            $.ajax({
+                   data: {idEliminar : idEliminar},
+                   url:   '<?=base_url()?>empleados/eliminar',
+                   type:  'post',
+                   // beforeSend: function () {
+                   //         $("#resultado").html("Procesando, espere por favor...");
+                   // },
+                   success:  function (response) {
+                           alert(response);
+                   }
+            });
+         });
+
+
 
 
     });
@@ -338,9 +359,9 @@
     <div class="modal-content">
         <p><?= label('confirmarEliminarEmpleado'); ?></p>
     </div>
-    <div id="botonEliminar" class="modal-footer black-text">
+    <!-- <div id="botonEliminar" class="modal-footer black-text"> -->
         <a href="" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
-    </div>
+    <!-- </div> -->
 </div>
 
 
@@ -354,8 +375,10 @@
     </div>
     <div class="modal-footer black-text">
         <div title="empleados-tabla-lista">
+        <div id="botonEliminar" class="modal-footer black-text">
             <a href="#"
                class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        </div>
         </div>
     </div>
 </div>

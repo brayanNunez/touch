@@ -11,34 +11,46 @@ class Empleados extends CI_Controller
         $this->load->model('Empleado_model');
     }
 
+    // public function index()
+    // {
+    //     $lista = $this->Empleado_model->cargarTodos();
+    //     if ($lista == false) {
+    //         echo "Error en la transaccion";
+    //     } else {
+    //         // echo "Correcto<br>";
+    //         if ($lista === -1) {
+    //              $this->load->view('layout/default/header');
+    //             $this->load->view('layout/default/left-sidebar');
+    //             $this->load->view('empleados/empleados_lista');
+    //             $this->load->view('layout/default/footer');
+    //             //No retorno nada
+    //         } else {
+    //             $data['lista'] = $lista;
+    //             // foreach($lista as $fila)
+    //             // {
+    //             // $data[] = array(
+    //             //     'id_user'       =>      $fila->identificacion,
+    //             //     'nombre'        =>      $fila->nombreCompleto,
+    //             //     'email'         =>      $fila->fechaNacimiento
+    //             //     );
+    //             // }
+
+    //             $this->load->view('layout/default/header');
+    //             $this->load->view('layout/default/left-sidebar');
+    //             $this->load->view('empleados/empleados_lista', $data);
+    //             $this->load->view('layout/default/footer');
+
+    //         }
+    //     }
+
+    // }
     public function index()
     {
-        $lista = $this->Empleado_model->cargarTodos();
-        if ($lista == false) {
-            echo "Error en la transaccion";
-        } else {
-            // echo "Correcto<br>";
-            if ($lista === -1) {
-                //No retorno nada
-            } else {
-                $data['lista'] = $lista;
-                // foreach($lista as $fila)
-                // {
-                // $data[] = array(
-                //     'id_user'       =>      $fila->identificacion,
-                //     'nombre'        =>      $fila->nombreCompleto,
-                //     'email'         =>      $fila->fechaNacimiento
-                //     );
-                // }
 
                 $this->load->view('layout/default/header');
                 $this->load->view('layout/default/left-sidebar');
-                $this->load->view('empleados/empleados_lista', $data);
+                $this->load->view('empleados/empleados_lista');
                 $this->load->view('layout/default/footer');
-
-            }
-        }
-
     }
 
     public function agregar()
@@ -51,7 +63,7 @@ class Empleados extends CI_Controller
 
     public function editar($id)
     {
-        $resultado = $this->Empleado_model->cargar($id);
+        $resultado = $this->Empleado_model->cargar(decryptIt($id)); 
         if ($resultado == false) {
             echo "Error en la transaccion";
         } else {
@@ -76,7 +88,7 @@ class Empleados extends CI_Controller
     public function insertar()
     {
         $datos = array(
-            'idEmpresa' => '3',
+            'idEmpresa' => '5',
             'codigo' => $this->input->post('empleado_codigo'),
             'identificacion' => $this->input->post('empleado_id'),
             'nombreCompleto' => $this->input->post('empleado_nombre'),
@@ -138,7 +150,7 @@ class Empleados extends CI_Controller
     public function modificar($id)
     {
         $data['datos'] = array(
-            'idEmpresa' => '3',
+            'idEmpresa' => '5',
             'codigo' => $this->input->post('empleado_codigo'),
             'identificacion' => $this->input->post('empleado_id'),
             'nombreCompleto' => $this->input->post('empleado_nombre'),
@@ -147,7 +159,8 @@ class Empleados extends CI_Controller
             'descripcion' => $this->input->post('empleado_descripcion'),
             'eliminado' => '0'
         );
-        $data['id'] = $id;
+        // echo $id; exit();
+        $data['id'] = decryptIt($id);
         if (!$this->Empleado_model->modificar($data)) {
             echo "Error en la transaccion";
         } else {
@@ -156,13 +169,15 @@ class Empleados extends CI_Controller
 
     }
 
-    public function eliminar($id)
+    public function eliminar()
     {
-        if (!$this->Empleado_model->eliminar($id)) {
+
+        $id = $_POST['idEliminar'];
+        if (!$this->Empleado_model->eliminar(decryptIt($id))) {
             echo "Error en la transaccion";
         } else {
             echo "Correcto";
-            $this->index();
+            // $this->index();
         }
 
     }

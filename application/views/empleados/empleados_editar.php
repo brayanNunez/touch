@@ -23,7 +23,7 @@
                             <div class="col s12 m12 l8">
                                 <form class="col s12"
                                       action="<?= base_url() ?>empleados/modificar/<?php if (isset($resultado)) {
-                                          echo $resultado->idEmpleado;
+                                          echo encryptIt($resultado->idEmpleado);
                                       } ?>" method="POST">
                                     <div class="row">
                                         <div class="input-field col s12">

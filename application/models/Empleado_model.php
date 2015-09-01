@@ -50,7 +50,6 @@ class Empleado_model extends CI_Model
 
     function cargarTodos()
     {
-
         $this->db->trans_begin();
 
         $query = $this->db->get('empleado');
