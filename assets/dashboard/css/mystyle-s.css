@@ -354,10 +354,6 @@ table.data-table-information tbody tr td.dataTables_empty { padding: 9.6px 1% !i
     ul#opciones-barra-superior { margin-top: 15px; }
 }
 
-@media only screen and (max-width: 495px) {
-    table.data-table-information tbody tr td.dataTables_empty:last-child { padding: 0 1% 2px 1% !important; }
-}
-
 @media only screen and (max-width: 480px) {
     /*section.slider-inicio { height:auto !important; }*/
     div.mobile-toggle { border: none !important; }
@@ -382,8 +378,8 @@ table.data-table-information tbody tr td.dataTables_empty { padding: 9.6px 1% !i
     div.file-field div.btn i { height: 5px; margin-top: -5px; }
     table.data-table-information th { width: auto !important; }
     table.data-table-information tbody td { padding: 10px 1% !important; }
-    table.data-table-information tbody tr td:last-child { padding: 0 1% 2px 1% !important; }
-    /*table.data-table-information tbody tr td.dataTables_empty:last-child { padding: 9.6px 1% !important; }*/
+    table.data-table-information tbody tr td:last-child { padding: 0 1% 4px 1% !important; }
+    table.data-table-information tbody tr td.dataTables_empty:last-child { padding: 9.6px 1% !important; }
     table.data-table-information p { margin: 0; }
     ul.menu li a { color: white !important; padding-right: 100%; }
     .has-dropdown:after { color: white !important; }
