@@ -20,13 +20,30 @@
                 <div class="col s12 m12 l12">
                     <div id="submit-button" class="section">
                         <div class="row">
-                            <div class="col s12 m12 l8">
+                            <div class="col s12 m12 l10">
                                 <form class="col s12">
                                     <div class="row">
-                                        <div class="input-field col s12">
-                                            <input id="usuario_nombre" type="text">
-                                            <label for="usuario_nombre"><?= label('formUsuario_nombre'); ?></label>
+
+                                        <div>
+                                            <div class="input-field col s12 m4 l4">
+                                                <input id="usuario_apellido1" type="text">
+                                                <label for="usuario_apellido1"><?= label('formUsuario_apellido1'); ?></label>
+                                            </div>
+                                            <div class="input-field col s12 m4 l4">
+                                                <input id="usuario_apellido2" type="text">
+                                                <label for="usuario_apellido2"><?= label('formUsuario_apellido2'); ?></label>
+                                            </div>
+                                            <div class="input-field col s12 m4 l4">
+                                                <input id="usuario_nombre" type="text">
+                                                <label for="usuario_nombre"><?= label('formUsuario_nombre'); ?></label>
+                                            </div>
                                         </div>
+
+<!--                                        <div class="input-field col s12">-->
+<!--                                            <input id="usuario_nombre" type="text">-->
+<!--                                            <label for="usuario_nombre">--><?//= label('formUsuario_nombre'); ?><!--</label>-->
+<!--                                        </div>-->
+
                                         <div class="input-field col s12">
                                             <input id="usuario_correo" type="email">
                                             <label for="usuario_correo"><?= label('formUsuario_correo'); ?></label>

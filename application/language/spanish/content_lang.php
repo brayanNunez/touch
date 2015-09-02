@@ -418,6 +418,8 @@
     $lang['Usuario_tablaOpciones'] = 'Opciones';
     $lang['Usuario_nuevo'] = 'Agregar nuevo';
     $lang['formUsuario_nombre'] = 'Nombre';
+    $lang['formUsuario_apellido1'] = 'Primer apellido';
+    $lang['formUsuario_apellido2'] = 'Segundo apellido';
     $lang['formUsuario_correo'] = 'Correo electrónico';
     $lang['formUsuario_nombreUsuario'] = 'Nombre de usuario';
     $lang['formUsuario_contrasena'] = 'Contraseña';
