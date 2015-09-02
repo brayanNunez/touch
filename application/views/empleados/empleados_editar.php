@@ -20,7 +20,7 @@
                 <div class="col s12 m12 l12">
                     <div id="submit-button" class="section">
                         <div class="row">
-                            <div class="col s12 m12 l8">
+                            <div class="col s12 m12 l10">
                                 <form class="col s12"
                                       action="<?= base_url() ?>empleados/modificar/<?php if (isset($resultado)) {
                                           echo encryptIt($resultado->idEmpleado);
@@ -42,6 +42,22 @@
                                                 for="empleado_id"><?= label('formEmpleado_identificacion'); ?></label>
                                         </div>
                                         <div class="input-field col s12">
+
+<!--                                            <div>-->
+<!--                                                <div class="input-field col s12 m4 l4">-->
+<!--                                                    <input id="empleado_apellido1" type="text">-->
+<!--                                                    <label for="empleado_apellido1">--><?//= label('formEmpleado_apellido1'); ?><!--</label>-->
+<!--                                                </div>-->
+<!--                                                <div class="input-field col s12 m4 l4">-->
+<!--                                                    <input id="empleado_apellido2" type="text">-->
+<!--                                                    <label for="empleado_apellido2">--><?//= label('formEmpleado_apellido2'); ?><!--</label>-->
+<!--                                                </div>-->
+<!--                                                <div class="input-field col s12 m4 l4">-->
+<!--                                                    <input id="empleado_nombre" type="text">-->
+<!--                                                    <label for="empleado_nombre">--><?//= label('formEmpleado_nombre'); ?><!--</label>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+
                                             <input id="empleado_nombre" name="empleado_nombre" type="text"
                                                    value='<?php if (isset($resultado)) {
                                                        echo $resultado->nombreCompleto;

@@ -357,6 +357,8 @@
     $lang['Empleado_nuevo'] = 'Agregar nuevo';
     $lang['formEmpleado_codigo'] = 'Código';
     $lang['formEmpleado_nombre'] = 'Nombre';
+    $lang['formEmpleado_apellido1'] = 'Primer apellido';
+    $lang['formEmpleado_apellido2'] = 'Segundo apellido';
     $lang['formEmpleado_identificacion'] = 'Identificación';
     $lang['formEmpleado_fechaNacimiento'] = 'Fecha de nacimiento';
     $lang['formEmpleado_fechaIngreso'] = 'Fecha de ingreso a la empresa';
