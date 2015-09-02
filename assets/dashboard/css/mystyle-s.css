@@ -189,8 +189,9 @@ div#busquedaAvanzadaPS div.modal-content div.row { margin-bottom: 0; }
 
 span.icono-porcentaje-descuento { position: absolute; top: 15px; left: 96%; }
 
-a#logo-principal-header { left: 45%; }
 ul#opciones-barra-superior { display: block !important; margin-right: 10px; }
+
+ul#listaNotificaciones li a, ul#listaConfiguracion li a { padding: 11px 1rem; }
 
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/
@@ -238,6 +239,10 @@ ul#opciones-barra-superior { display: block !important; margin-right: 10px; }
     div.tabla-conAgregar.tabla-opciones-monedas { position: absolute; top: 220px; left: 50%; width: 180px; margin-left: -90px; }
     div.tabla-sinAgregar { position: absolute; top: 30px; left: 50%; width: 180px; margin-left: -90px; }
     div.tabla-detalles-cotizacion { left: 430px; bottom: 33%; top: unset; width: auto; }
+
+    a#logo-principal-header { left: 43%; padding: 0; }  /* Era 48 */
+    /*a#pantalla-completa { display: none; }*/
+    ul#listaNotificaciones li a, ul#listaConfiguracion li a { padding: 10px; }
 }
 
 @media only screen and (max-width: 768px) {
@@ -297,6 +302,8 @@ ul#opciones-barra-superior { display: block !important; margin-right: 10px; }
 
     span.icono-porcentaje-descuento { position: absolute; top: 15px; left: 95%; }
     ul#opciones-barra-superior li a { padding: 0 7px; }
+    ul#listaNotificaciones li a, ul#listaConfiguracion li a { padding: 9px 10px; }
+    /*a#logo-principal-header { left: 48%; padding: 0; }*/
 }
 
 @media only screen and (max-width: 640px) {
@@ -332,13 +339,14 @@ ul#opciones-barra-superior { display: block !important; margin-right: 10px; }
     ul.usuario-info li a { background-color: #009966; font-size: x-small; }
 
     div.tabla-detalles-cotizacion { left: 430px; bottom: 33%; top: unset; width: auto; }
+    /*a#logo-principal-header { left: 48%; padding: 0; }*/
 }
 
 @media only screen and (max-width: 600px) {
     div.tabla-detalles-cotizacion { left: 430px; bottom: 46%; top: unset; width: auto; }
     a#cotizacion-agregarAtencion { padding: 0; background-color: transparent; position: absolute; left: 90%; box-shadow: none; top: -15px; }
     span.icono-porcentaje-descuento { position: absolute; top: 15px; left: 93%; }
-    a#logo-principal-header { left: 43%; }
+    a#logo-principal-header { left: 43%; padding: 0; }  /* Era 47 */
     ul#opciones-barra-superior { margin-top: 15px; }
 }
 
@@ -429,16 +437,18 @@ ul#opciones-barra-superior { display: block !important; margin-right: 10px; }
 
     span.icono-porcentaje-descuento { position: absolute; top: 15px; left: 90%; }
 
-    a#logo-principal-header { left: 43%; }
+    a#logo-principal-header { left: 43%; padding: 0; } /* Era 48 */
     ul#opciones-barra-superior { margin-top: 15px; margin-right: 5px; }
     ul#opciones-barra-superior li a { padding: 0 5px; }
     ul#opciones-barra-superior li a i { font-size: 23px; }
+    ul#listaNotificaciones li a, ul#listaConfiguracion li a { padding: 8px 10px; }
 }
 
 @media only screen and (max-width: 360px) {
-    a#logo-principal-header { left: 43%; }
+    a#logo-principal-header { left: 43%; padding: 0; }  /* Era 48 */
     a#logo-principal-header img { width: 145px; height: 30px; }
     ul#opciones-barra-superior { margin-top: 17px; margin-right: 2px; }
     ul#opciones-barra-superior li a { padding: 0 4px; }
     ul#opciones-barra-superior li a i { font-size: 23px; }
+    ul#listaNotificaciones li a, ul#listaConfiguracion li a { padding: 8px 10px; }
 }

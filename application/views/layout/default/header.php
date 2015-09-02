@@ -191,7 +191,7 @@
 
                     <li>
                         <a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen"
-                           data-toggle="tooltip" title="<?= label('tooltip_pantallaCompleta') ?>">
+                           data-toggle="tooltip" title="<?= label('tooltip_pantallaCompleta') ?>" id="pantalla-completa">
                             <i class="mdi-action-settings-overscan"></i>
                         </a>
                     </li>
