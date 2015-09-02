@@ -1,5 +1,5 @@
 <div id="menu-crear" style="bottom: 45px; right: 24px;">
-    <a class="btn-opciones btn-large red" href="">
+    <a class="btn-opciones btn-large red">
         <i class="large mdi-content-add"></i>
     </a>
     <ul class="menu-crear">

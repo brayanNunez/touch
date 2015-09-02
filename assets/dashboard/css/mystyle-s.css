@@ -68,6 +68,7 @@ section#planes div.container div.row div.pricing-table a.btn-filled {  }
 #files tbody td { padding: 1.5% 1%; text-align: left; }
 div.new-file { float: left; margin: 3% 3% 0 3%; }
 
+ul.cliente-info li a.active, ul.usuario-info li a.active { color: green !important; background-color: lightgray; }
 ul.cliente-info li { width: 25% !important; }
 ul.cliente-info li a { background-color: #009966; }
 ul.usuario-info li { width: 50% !important; }
@@ -178,8 +179,6 @@ tr.edicion-subcategoria td { padding: 0;background-color: gainsboro; }
 tr.edicion-subcategoria td div.subcategoria-edicion-opciones { margin: 0 0 10px 0; }
 tr.edicion-subcategoria td div.subcategoria-edicion-opciones a.btn-guardarSubcategoria { width: 30%;margin-left: 35%; }
 tr.edicion-subcategoria td div.subcategoria-edicion-opciones a.btn-cancelarSubcategoria { float: right;background-color: red; }
-
-ul.cliente-info li a.active { color: green !important; background-color: lightgray; }
 
 div#busquedaAvanzada div.select-wrapper + label { top: 0; }
 div.tagsInput-div { margin-top: 15px; }
