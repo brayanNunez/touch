@@ -59,7 +59,7 @@
                                                                 foreach ($lista as $fila) {
                                                                     $idEncriptado = encryptIt($fila->idEmpleado);
                                                                     ?>
-                                                                    <tr id="fila<?= $idEncriptado ?>">
+                                                                    <tr id="fila<?= $idEncriptado ?>" data-idElemento="<?= $idEncriptado ?>">
                                                                         <td style="text-align: center;">
                                                                             <input type="checkbox" class="filled-in checkbox"
                                                                                    id="<?=$idEncriptado?>"/>
@@ -318,7 +318,7 @@
         document.getElementById('checkbox-all').checked = false;
     });
     $(document).ready(function () {
-        $('#botonEliminar').on("click", function (event) {
+        $('#eliminarElementosSeleccionados #botonEliminar').on("click", function (event) {
             var tb = $(this).attr('title');
             var sel = false;
             var ch = $('#' + tb).find('tbody input[type=checkbox]');
@@ -326,12 +326,14 @@
                 var $this = $(this);
                 if ($this.is(':checked')) {
                     sel = true;
+                    alert($this.parents('tr').attr('data-idElemento'));
                     $this.parents('tr').fadeOut(function () {
                         $this.remove();
                     });
                 }
             });
             return false;
+
         });
     });
     $(document).ready(function () {
