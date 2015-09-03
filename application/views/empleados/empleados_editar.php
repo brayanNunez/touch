@@ -41,29 +41,30 @@
                                             <label
                                                 for="empleado_id"><?= label('formEmpleado_identificacion'); ?></label>
                                         </div>
-                                        <div class="input-field col s12">
+                                       
 
-<!--                                            <div>-->
-<!--                                                <div class="input-field col s12 m4 l4">-->
-<!--                                                    <input id="empleado_apellido1" type="text">-->
-<!--                                                    <label for="empleado_apellido1">--><?//= label('formEmpleado_apellido1'); ?><!--</label>-->
-<!--                                                </div>-->
-<!--                                                <div class="input-field col s12 m4 l4">-->
-<!--                                                    <input id="empleado_apellido2" type="text">-->
-<!--                                                    <label for="empleado_apellido2">--><?//= label('formEmpleado_apellido2'); ?><!--</label>-->
-<!--                                                </div>-->
-<!--                                                <div class="input-field col s12 m4 l4">-->
-<!--                                                    <input id="empleado_nombre" type="text">-->
-<!--                                                    <label for="empleado_nombre">--><?//= label('formEmpleado_nombre'); ?><!--</label>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-
-                                            <input id="empleado_nombre" name="empleado_nombre" type="text"
-                                                   value='<?php if (isset($resultado)) {
-                                                       echo $resultado->nombreCompleto;
+                                        <div>
+                                            <div class="input-field col s12 m4 l4">
+                                                <input id="empleado_primerApellido" name="empleado_primerApellido" type="text" value='<?php if (isset($resultado)) {
+                                                       echo $resultado->primerApellido;
                                                    } ?>'>
-                                            <label for="empleado_nombre"><?= label('formEmpleado_nombre'); ?></label>
+                                                <label for="empleado_primerApellido"><?= label('formEmpleado_apellido1'); ?></label>
+                                            </div>
+                                            <div class="input-field col s12 m4 l4">
+                                                <input id="empleado_segundoApellido" name="empleado_segundoApellido" type="text"value='<?php if (isset($resultado)) {
+                                                       echo $resultado->segundoApellido;
+                                                   } ?>'>
+                                                <label for="empleado_segundoApellido"><?= label('formEmpleado_apellido2'); ?></label>
+                                            </div>
+                                            <div class="input-field col s12 m4 l4">
+                                                <input id="empleado_nombre" name="empleado_nombre" type="text"value='<?php if (isset($resultado)) {
+                                                       echo $resultado->nombre;
+                                                   } ?>'>
+                                                <label for="empleado_nombre"><?= label('formEmpleado_nombre'); ?></label>
+                                            </div>
                                         </div>
+
+
 
                                         <div class="inputTag col s12">
 

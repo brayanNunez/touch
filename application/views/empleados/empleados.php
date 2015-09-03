@@ -35,15 +35,15 @@
 
                                         <div>
                                             <div class="input-field col s12 m4 l4">
-                                                <input id="empleado_apellido1" type="text">
-                                                <label for="empleado_apellido1"><?= label('formEmpleado_apellido1'); ?></label>
+                                                <input id="empleado_primerApellido" name="empleado_primerApellido" type="text">
+                                                <label for="empleado_primerApellido"><?= label('formEmpleado_apellido1'); ?></label>
                                             </div>
                                             <div class="input-field col s12 m4 l4">
-                                                <input id="empleado_apellido2" type="text">
-                                                <label for="empleado_apellido2"><?= label('formEmpleado_apellido2'); ?></label>
+                                                <input id="empleado_segundoApellido" name="empleado_segundoApellido" type="text">
+                                                <label for="empleado_segundoApellido"><?= label('formEmpleado_apellido2'); ?></label>
                                             </div>
                                             <div class="input-field col s12 m4 l4">
-                                                <input id="empleado_nombre" type="text">
+                                                <input id="empleado_nombre" name="empleado_nombre" type="text">
                                                 <label for="empleado_nombre"><?= label('formEmpleado_nombre'); ?></label>
                                             </div>
                                         </div>
