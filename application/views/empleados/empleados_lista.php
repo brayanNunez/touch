@@ -59,7 +59,7 @@
                                                                 foreach ($lista as $fila) {
                                                                     $idEncriptado = encryptIt($fila->idEmpleado);
                                                                     ?>
-                                                                    <tr id="fila<?= $idEncriptado ?>" data-idElemento="<?= $idEncriptado ?>">
+                                                                    <tr id="fila<?= $contador ?>" data-idElemento="<?= $idEncriptado ?>">
                                                                         <td style="text-align: center;">
                                                                             <input type="checkbox" class="filled-in checkbox"
                                                                                    id="<?=$idEncriptado?>"/>
@@ -88,7 +88,7 @@
                                                                                 <li>
                                                                                     <a href="#eliminarEmpleado"
                                                                                        class="-text modal-trigger confirmarEliminar"
-                                                                                       data-id-eliminar="<?= $idEncriptado ?>"><?= label('menuOpciones_eliminar') ?></a>
+                                                                                       data-id-eliminar="<?= $idEncriptado ?>"  data-fila-eliminar="fila<?= $contador?>"><?= label('menuOpciones_eliminar') ?></a>
                                                                                 </li>
                                                                             </ul>
                                                                             <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
@@ -255,9 +255,11 @@
           
 
         var idEliminar = 0;
+        var fila = 0;
 
         $('.confirmarEliminar').on('click', function () {
             idEliminar = $(this).data('id-eliminar');
+            fila = $(this).data('fila-eliminar');
             // idEliminar = id;
             // $('#eliminarEmpleado #botonEliminar a').attr('href', "<?=base_url()?>empleados/eliminar/" + id);
         });
@@ -277,7 +279,7 @@
                    success:  function (response) {
                     // alert(response);
                     if (response==true) {
-                        $('#fila' + idEliminar).fadeOut(function () {
+                        $('#' + fila).fadeOut(function () {
                         $this.remove();
                         });
                     } else{
@@ -326,10 +328,31 @@
                 var $this = $(this);
                 if ($this.is(':checked')) {
                     sel = true;
-                    alert($this.parents('tr').attr('data-idElemento'));
-                    $this.parents('tr').fadeOut(function () {
-                        $this.remove();
+                    var fila = $this.parents('tr');
+                    var idEliminar = $this.parents('tr').attr('data-idElemento');
+
+                    $.ajax({
+                           data: {idEliminar : idEliminar},
+                           url:   '<?=base_url()?>empleados/eliminar',
+                           type:  'post',
+                           // beforeSend: function () {
+                           //         $("#resultado").html("Procesando, espere por favor...");
+                           // },
+                           success:  function (response) {
+                            // alert(response);
+                            if (response==true) {
+                               fila.fadeOut(function () {
+                                fila.remove();
+                                });
+                            } else{
+                                alert("Ha ocurrido un error");
+                            };
+                        }
                     });
+
+                    // fila.fadeOut(function () {
+                    //     $this.remove();
+                    // });
                 }
             });
             return false;

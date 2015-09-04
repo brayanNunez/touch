@@ -1,3 +1,15 @@
+<button id="botonPalabras">ver palabras</button>
+
+<script type="text/javascript">
+$('#botonPalabras').on("click", function(){
+    alert($('#empleado_palabras').tagsinput('items'));
+});
+
+    
+</script>
+
+
+
 <!-- START CONTENT   -->
 
 <section id="content">
@@ -23,20 +35,20 @@
                             <div class="col s12 m12 l10">
                                 <form class="col s12"
                                       action="<?= base_url() ?>empleados/modificar/<?php if (isset($resultado)) {
-                                          echo encryptIt($resultado->idEmpleado);
+                                          echo encryptIt($resultado['idEmpleado']);
                                       } ?>" method="POST">
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <input id="empleado_codigo" name="empleado_codigo" type="text"
                                                    value='<?php if (isset($resultado)) {
-                                                       echo $resultado->codigo;
+                                                       echo $resultado['codigo'];
                                                    } ?>'>
                                             <label for="empleado_codigo"><?= label('formEmpleado_codigo'); ?></label>
                                         </div>
                                         <div class="input-field col s12">
                                             <input id="empleado_id" name="empleado_id" type="text"
                                                    value='<?php if (isset($resultado)) {
-                                                       echo $resultado->identificacion;
+                                                       echo $resultado['identificacion'];
                                                    } ?>'>
                                             <label
                                                 for="empleado_id"><?= label('formEmpleado_identificacion'); ?></label>
@@ -46,19 +58,19 @@
                                         <div>
                                             <div class="input-field col s12 m4 l4">
                                                 <input id="empleado_primerApellido" name="empleado_primerApellido" type="text" value='<?php if (isset($resultado)) {
-                                                       echo $resultado->primerApellido;
+                                                       echo $resultado['primerApellido'];
                                                    } ?>'>
                                                 <label for="empleado_primerApellido"><?= label('formEmpleado_apellido1'); ?></label>
                                             </div>
                                             <div class="input-field col s12 m4 l4">
                                                 <input id="empleado_segundoApellido" name="empleado_segundoApellido" type="text"value='<?php if (isset($resultado)) {
-                                                       echo $resultado->segundoApellido;
+                                                       echo $resultado['segundoApellido'];
                                                    } ?>'>
                                                 <label for="empleado_segundoApellido"><?= label('formEmpleado_apellido2'); ?></label>
                                             </div>
                                             <div class="input-field col s12 m4 l4">
                                                 <input id="empleado_nombre" name="empleado_nombre" type="text"value='<?php if (isset($resultado)) {
-                                                       echo $resultado->nombre;
+                                                       echo $resultado['nombre'];
                                                    } ?>'>
                                                 <label for="empleado_nombre"><?= label('formEmpleado_nombre'); ?></label>
                                             </div>
@@ -72,8 +84,13 @@
                                                 for="empleado_palabras"><?= label('formEmpleado_palabrasClave'); ?></label>
 
                                             <input placeholder="<?= label('formEmpleado_anadirPalabraClave'); ?>"
-                                                   id="empleado_palabras" type="text"
-                                                   value="palabra1,palabra2,palabra3,palabra4,palabra5"
+                                                   id="empleado_palabras" name="empleado_palabras" type="text"
+                                                   value="<?php if (isset($resultado)) {
+                                                        foreach ($resultado['palabras'] as $palabra) {
+                                                            echo $palabra['descripcion'].',';
+                                                        }
+                                                      
+                                                   } ?>"
                                                    data-role="tagsinput"/>
 
                                         </div>
@@ -107,7 +124,7 @@
                                             <textarea id="empleado_descripcion" name="empleado_descripcion"
                                                       class="materialize-textarea"
                                                       length="120"><?php if (isset($resultado)) {
-                                                    echo $resultado->descripcion;
+                                                    echo $resultado['descripcion'];
                                                 } ?></textarea>
                                             <label
                                                 for="empleado_descripcion"><?= label('formEmpleado_descripcion'); ?></label>

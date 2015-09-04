@@ -82,7 +82,7 @@ class Empleados extends CI_Controller
 
     public function insertar()
     {
-        $datos = array(
+        $datos = [
             'idEmpresa' => '1',
             'codigo' => $this->input->post('empleado_codigo'),
             'identificacion' => $this->input->post('empleado_id'),
@@ -93,7 +93,7 @@ class Empleados extends CI_Controller
             'fechaIngresoEmpresa' => $this->input->post('empleado_fechaIngreso'),
             'descripcion' => $this->input->post('empleado_descripcion'),
             'eliminado' => '0'
-        );
+        ];
 
         if (!$this->Empleado_model->insertar($datos)) {
             echo "Error en la transaccion";
@@ -147,6 +147,7 @@ class Empleados extends CI_Controller
 
     public function modificar($id)
     {
+        $data['palabras'] = $this->input->post('empleado_palabras');
         $data['datos'] = array(
             'idEmpresa' => '1',
             'codigo' => $this->input->post('empleado_codigo'),

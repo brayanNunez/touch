@@ -33,7 +33,23 @@ class Empleado_model extends CI_Model
 
         $this->db->trans_begin();
 
+
         $query = $this->db->get_where('empleado', array('idEmpleado' => $id));
+        $array = $query->result_array();
+        $nuevoArray = [];
+        foreach ($array as $row)
+        {
+            $this->db->select('descripcion');
+            $query = $this->db->get_where('palabraClaveEmpleado', array('idEmpleado' => $id));
+            $row['palabras'] = $query->result_array();
+
+            $nuevoArray = $row;
+            // array_push($nuevoArray, $row);
+        }
+
+        // print_r($nuevoArray);
+         // echo $nuevoArray['nombre'];exit();
+
 
         if ($this->db->trans_status() === FALSE) {
             $this->db->trans_rollback();
@@ -41,7 +57,8 @@ class Empleado_model extends CI_Model
         } else {
             $this->db->trans_commit();
             if ($query->num_rows() > 0) {
-                return $query->row();
+                // $data['resultado'] = $query->row();
+                return $nuevoArray;
             } else {
                 return -1;
             }
@@ -92,6 +109,19 @@ class Empleado_model extends CI_Model
 
         $this->db->where('idEmpleado', $data['id']);
         $this->db->update('empleado', $data['datos']);
+
+        $palabras = explode(",", $data['palabras']); ;
+
+        $this->db->where('idEmpleado', $data['id']);
+        $this->db->delete('palabraClaveEmpleado');
+        foreach ($palabras as $palabra) {
+            $row = array(
+            'idEmpleado' => $data['id'],
+            'descripcion' => $palabra
+        );
+            $this->db->insert('palabraClaveEmpleado', $row);
+        }
+
 
 
         if ($this->db->trans_status() === FALSE) {
