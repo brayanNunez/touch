@@ -70,7 +70,7 @@
                                             <label
                                                 for="empleado_palabras"><?= label('formEmpleado_palabrasClave'); ?></label>
                                             <input placeholder="<?= label('formEmpleado_anadirPalabraClave'); ?>"
-                                                   id="empleado_palabras" type="text" value="" data-role="tagsinput"/>
+                                                   id="empleado_palabras" name="empleado_palabras" type="text" value="" data-role="tagsinput"/>
                                         </div>
 
                                         <div class="input-field col s12">

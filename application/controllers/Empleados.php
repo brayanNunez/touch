@@ -14,6 +14,7 @@ class Empleados extends CI_Controller
     public function index()
     {
         $lista = $this->Empleado_model->cargarTodos();
+
         // $data["transaccionCorrecta"] = true;
         // if ($lista == false) {
         //    $data["transaccionCorrecta"] = false;
@@ -56,6 +57,30 @@ class Empleados extends CI_Controller
         $this->load->view('layout/default/footer');
     }
 
+     public function insertar()
+    {
+         $data['palabras'] = $this->input->post('empleado_palabras');
+        $data['datos'] = [
+            'idEmpresa' => '1',
+            'codigo' => $this->input->post('empleado_codigo'),
+            'identificacion' => $this->input->post('empleado_id'),
+            'nombre' => $this->input->post('empleado_nombre'),
+            'primerApellido' => $this->input->post('empleado_primerApellido'),
+            'segundoApellido' => $this->input->post('empleado_segundoApellido'),
+            'fechaNacimiento' => $this->input->post('empleado_fechaNacimiento'),
+            'fechaIngresoEmpresa' => $this->input->post('empleado_fechaIngreso'),
+            'descripcion' => $this->input->post('empleado_descripcion'),
+            'eliminado' => '0'
+        ];
+
+        if (!$this->Empleado_model->insertar($data)) {
+            echo "Error en la transaccion";
+        } else {
+            echo "Correcto";
+        }
+        redirect('empleados/index');
+    }
+
     public function editar($id)
     {
         $resultado = $this->Empleado_model->cargar(decryptIt($id)); 
@@ -79,10 +104,10 @@ class Empleados extends CI_Controller
 
     }
 
-
-    public function insertar()
+    public function modificar($id)
     {
-        $datos = [
+        $data['palabras'] = $this->input->post('empleado_palabras');
+        $data['datos'] = array(
             'idEmpresa' => '1',
             'codigo' => $this->input->post('empleado_codigo'),
             'identificacion' => $this->input->post('empleado_id'),
@@ -93,15 +118,32 @@ class Empleados extends CI_Controller
             'fechaIngresoEmpresa' => $this->input->post('empleado_fechaIngreso'),
             'descripcion' => $this->input->post('empleado_descripcion'),
             'eliminado' => '0'
-        ];
-
-        if (!$this->Empleado_model->insertar($datos)) {
+        );
+        // echo $id; exit();
+        $data['id'] = decryptIt($id);
+        if (!$this->Empleado_model->modificar($data)) {
             echo "Error en la transaccion";
         } else {
             echo "Correcto";
         }
         redirect('empleados/index');
     }
+
+    public function eliminar()
+    {
+
+       $id = $_POST['idEliminar'];
+        if (!$this->Empleado_model->eliminar(decryptIt($id))) {
+            echo false; 
+        } else {
+            echo true; 
+            // $this->index();
+        }
+
+    }
+
+
+   
 
     public function cargar()
     {
@@ -145,43 +187,7 @@ class Empleados extends CI_Controller
         }
     }
 
-    public function modificar($id)
-    {
-        $data['palabras'] = $this->input->post('empleado_palabras');
-        $data['datos'] = array(
-            'idEmpresa' => '1',
-            'codigo' => $this->input->post('empleado_codigo'),
-            'identificacion' => $this->input->post('empleado_id'),
-            'nombre' => $this->input->post('empleado_nombre'),
-            'primerApellido' => $this->input->post('empleado_primerApellido'),
-            'segundoApellido' => $this->input->post('empleado_segundoApellido'),
-            'fechaNacimiento' => $this->input->post('empleado_fechaNacimiento'),
-            'fechaIngresoEmpresa' => $this->input->post('empleado_fechaIngreso'),
-            'descripcion' => $this->input->post('empleado_descripcion'),
-            'eliminado' => '0'
-        );
-        // echo $id; exit();
-        $data['id'] = decryptIt($id);
-        if (!$this->Empleado_model->modificar($data)) {
-            echo "Error en la transaccion";
-        } else {
-            echo "Correcto";
-        }
-        redirect('empleados/index');
-    }
-
-    public function eliminar()
-    {
-
-       $id = $_POST['idEliminar'];
-        if (!$this->Empleado_model->eliminar(decryptIt($id))) {
-            echo false; 
-        } else {
-            echo true; 
-            // $this->index();
-        }
-
-    }
+    
 
     // public function pruebaTransacciones(){
     //     $datos= array(

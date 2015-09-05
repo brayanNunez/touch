@@ -79,6 +79,7 @@
 
                                                     <?php
                                                     if (isset($lista)) {
+
                                                         if ($lista !== false) {
                                                              $contador = 0;
                                                                 foreach ($lista as $fila) {
@@ -204,7 +205,7 @@
 
         <?php
         if (isset($lista)) {
-            if ($lista == false) {?>
+            if ($lista === false) {?>
 
                 alert("Error al leer los datos");
 
