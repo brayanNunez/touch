@@ -1,6 +1,7 @@
 <button id="botonPalabras">ver palabras</button>
 
 <script type="text/javascript">
+// $(document).on("ready", function(){})
 $('#botonPalabras').on("click", function(){
     alert($('#empleado_palabras').tagsinput('items'));
 });

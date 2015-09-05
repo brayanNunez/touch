@@ -1,3 +1,27 @@
+<button id="bontonPaginacion">Prueba</button>
+
+<script type="text/javascript">
+
+// $('#bontonPaginacion').on("click", function(){
+//     alert("hola");
+// $(document).on("ready", function(){
+
+    $('.dataTables_paginate paging_simple_numbers').on('click', function(){
+            alert("mec");
+
+             // alert($(this).data('dt-idx'));
+        });
+
+
+// })
+
+        
+// })
+    
+
+</script>
+
+
 <!-- START CONTENT -->
 
 <section id="content">
@@ -36,11 +60,12 @@
                                                     <thead>
                                                     <tr>
                                                         <th style="text-align: center;">
-                                                            <input class="filled-in checkbox checkall" type="checkbox"
+                                                            
+                                                        </th>
+                                                        <input class="filled-in checkbox checkall" type="checkbox"
                                                                    id="checkbox-all"
                                                                    onclick="toggleChecked(this.checked)"/>
                                                             <label for="checkbox-all"></label>
-                                                        </th>
                                                         <th><?= label('Empleado_tablaCodigo'); ?></th>
                                                         <th><?= label('Empleado_tablaNombre'); ?></th>
                                                         <th><?= label('Empleado_primerApellido'); ?></th>
@@ -54,10 +79,10 @@
 
                                                     <?php
                                                     if (isset($lista)) {
-                                                        if ($lista != false) {
+                                                        if ($lista !== false) {
                                                              $contador = 0;
                                                                 foreach ($lista as $fila) {
-                                                                    $idEncriptado = encryptIt($fila->idEmpleado);
+                                                                    $idEncriptado = encryptIt($fila['idEmpleado']);
                                                                     ?>
                                                                     <tr id="fila<?= $contador ?>" data-idElemento="<?= $idEncriptado ?>">
                                                                         <td style="text-align: center;">
@@ -65,19 +90,22 @@
                                                                                    id="<?=$idEncriptado?>"/>
                                                                             <label for="<?=$idEncriptado?>"></label>
                                                                         </td>
-                                                                        <td><?= $fila->codigo ?></td>
+                                                                        <td><?= $fila['codigo'] ?></td>
 
                                                                         <td>
-                                                                            <a href="<?= base_url() ?>empleados/editar/<?= $idEncriptado ?>"><?= $fila->nombre ?></a>
+                                                                            <a href="<?= base_url() ?>empleados/editar/<?= $idEncriptado ?>"><?= $fila['nombre'] ?></a>
                                                                         </td>
                                                                         <td>
-                                                                            <a href="<?= base_url() ?>empleados/editar/<?= $idEncriptado ?>"><?= $fila->primerApellido ?></a>
+                                                                            <a href="<?= base_url() ?>empleados/editar/<?= $idEncriptado ?>"><?= $fila['primerApellido'] ?></a>
                                                                         </td>
                                                                         <td>
-                                                                            <a href="<?= base_url() ?>empleados/editar/<?= $idEncriptado ?>"><?= $fila->segundoApellido ?></a>
+                                                                            <a href="<?= base_url() ?>empleados/editar/<?= $idEncriptado ?>"><?= $fila['segundoApellido'] ?></a>
                                                                         </td>
-                                                                        <td><?= $fila->identificacion ?></td>
-                                                                        <td>Programador, Bases de datos</td>
+                                                                        <td><?= $fila['identificacion'] ?></td>
+                                                                        <td><?php foreach ($fila['palabras'] as $palabra) {
+                                                                                    echo $palabra['descripcion'].', ';
+                                                                                }
+                                                                               ?></td>
                                                                         <td>
                                                                             <ul id="dropdown-empleado<?= $contador ?>"
                                                                                 class="dropdown-content">
@@ -101,75 +129,7 @@
                                                                     </tr>
                                                                     
 
-                                                                    <!-- <tr>
-                                                                        <td style="text-align: center;">
-                                                                            <input type="checkbox" class="filled-in checkbox" id="checkbox_empleado2" />
-                                                                            <label for="checkbox_empleado2"></label>
-                                                                        </td>
-                                                                        <td>0002</td>
-                                                                        <td><a href="<?= base_url() ?>empleados/editar">Brayan Núñez R.</a></td>
-                                                                        <td>2-245-678</td>
-                                                                        <td>Programador, Bases de datos</td>
-                                                                        <td>
-                                                                            <ul id="dropdown-empleado2" class="dropdown-content">
-                                                                                <li>
-                                                                                    <a href="<?= base_url(); ?>empleados/editar" class="-text"><?= label('menuOpciones_editar') ?></a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <a href="#eliminarEmpleado" class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                                                </li>
-                                                                            </ul>
-                                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-empleado2">
-                                                                                <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                                                            </a>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td style="text-align: center;">
-                                                                            <input type="checkbox" class="filled-in checkbox" id="checkbox_empleado3" />
-                                                                            <label for="checkbox_empleado3"></label>
-                                                                        </td>
-                                                                        <td>0003</td>
-                                                                        <td><a href="<?= base_url() ?>empleados/editar">Sebastián Rodríguez B.</a></td>
-                                                                        <td>2-723-327</td>
-                                                                        <td>Programador, Bases de datos</td>
-                                                                        <td>
-                                                                            <ul id="dropdown-empleado3" class="dropdown-content">
-                                                                                <li>
-                                                                                    <a href="<?= base_url(); ?>empleados/editar" class="-text"><?= label('menuOpciones_editar') ?></a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <a href="#eliminarEmpleado" class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                                                </li>
-                                                                            </ul>
-                                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-empleado3">
-                                                                                <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                                                            </a>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td style="text-align: center;">
-                                                                            <input type="checkbox" class="filled-in checkbox" id="checkbox_empleado4" />
-                                                                            <label for="checkbox_empleado4"></label>
-                                                                        </td>
-                                                                        <td>0004</td>
-                                                                        <td><a href="<?= base_url() ?>empleados/editar">Claret Rojas C.</a></td>
-                                                                        <td>2-897-231</td>
-                                                                        <td>Programador, Bases de datos</td>
-                                                                        <td>
-                                                                            <ul id="dropdown-empleado4" class="dropdown-content">
-                                                                                <li>
-                                                                                    <a href="<?= base_url(); ?>empleados/editar" class="-text"><?= label('menuOpciones_editar') ?></a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <a href="#eliminarEmpleado" class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                                                </li>
-                                                                            </ul>
-                                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-empleado4">
-                                                                                <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                                                            </a>
-                                                                        </td>
-                                                                    </tr>  -->
+                                                                    
                                                                 <?php
                                                                 }
                                                             } 
@@ -360,6 +320,12 @@
         });
     });
     $(document).ready(function () {
+
+
+
+
+
+
         $('#checkbox-all').click(function (event) {
             if (this.checked) {
                 $('.checkbox').each(function () {

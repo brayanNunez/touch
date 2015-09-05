@@ -30,22 +30,23 @@ class Empleado_model extends CI_Model
 
     function cargar($id)
     {
-
         $this->db->trans_begin();
 
 
         $query = $this->db->get_where('empleado', array('idEmpleado' => $id));
-        $array = $query->result_array();
-        $nuevoArray = [];
-        foreach ($array as $row)
-        {
-            $this->db->select('descripcion');
-            $query = $this->db->get_where('palabraClaveEmpleado', array('idEmpleado' => $id));
-            $row['palabras'] = $query->result_array();
+        $row = $query->result_array()[0];
+        // $nuevoArray;
+        // foreach ($array as $row)
+        // {
+            // $row = 
 
-            $nuevoArray = $row;
+            $this->db->select('descripcion');
+            $palabras = $this->db->get_where('palabraClaveEmpleado', array('idEmpleado' => $id));
+            $row['palabras'] = $palabras->result_array();
+
+            // $nuevoArray = $row;
             // array_push($nuevoArray, $row);
-        }
+        // }
 
         // print_r($nuevoArray);
          // echo $nuevoArray['nombre'];exit();
@@ -58,7 +59,7 @@ class Empleado_model extends CI_Model
             $this->db->trans_commit();
             if ($query->num_rows() > 0) {
                 // $data['resultado'] = $query->row();
-                return $nuevoArray;
+                return $row;
             } else {
                 return -1;
             }
@@ -69,7 +70,19 @@ class Empleado_model extends CI_Model
     {
         $this->db->trans_begin();
 
-        $query = $this->db->get('empleado');
+        $empleados = $this->db->get_where('empleado', array('eliminado' => 0))->result_array();
+
+        $resultado = [];
+         foreach ($empleados as $row)
+        {
+            $idEmpleado = $row['idEmpleado'];
+            $this->db->select('descripcion');
+            $query = $this->db->get_where('palabraClaveEmpleado', array('idEmpleado' => $idEmpleado));
+            $row['palabras'] = $query->result_array();
+            array_push($resultado, $row);
+        }
+        // print_r($resultado);
+        // echo "fin";exit();
 
         if ($this->db->trans_status() === FALSE) {
             $this->db->trans_rollback();
@@ -77,11 +90,11 @@ class Empleado_model extends CI_Model
             return false;
         } else {
             $this->db->trans_commit();
-            if ($query->num_rows() > 0) {
-                return $query->result();
-            } else {
-                return -1;
-            }
+            // if ($query->num_rows() > 0) {
+                return $resultado;
+            // } else {
+                // return -1;
+            // }
         }
     }
 
@@ -90,7 +103,10 @@ class Empleado_model extends CI_Model
 
         $this->db->trans_begin();
 
-        $this->db->delete('empleado', array('idEmpleado' => $id));
+        $this->db->where('idEmpleado', $id);
+        $this->db->update('empleado', array('eliminado' => 1));
+
+        // $this->db->delete('empleado', array('idEmpleado' => $id));
 
         if ($this->db->trans_status() === FALSE) {
             $this->db->trans_rollback();
