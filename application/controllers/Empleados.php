@@ -64,7 +64,7 @@ class Empleados extends CI_Controller
         } else {
             // echo "Correcto<br>";
             if ($resultado === -1) {
-                //No retorno nada
+                echo 'No retorno nada';
 
             } else {
                 // echo $resultado->codigo;exit();
