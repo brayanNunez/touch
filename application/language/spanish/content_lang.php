@@ -6,6 +6,10 @@
 //ubicado en la ruta assets\dashboard\js\plugins\data-tables\js posteriormente debe comprimirlo para que su extension sea .min.js ya que 
 //el archivo que utiliza la aplicacion es el jquery.dataTables.min.js
 
+//Los mensajes que se muestran en los errores de validación de los formularios se encuentran 
+//en el archivo assets\dashboard\js\messages_es.js Sin este el lenguaje 
+//por defecto es el ingles. 
+
 
 
 

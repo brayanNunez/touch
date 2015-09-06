@@ -509,3 +509,6 @@ margin-top: 2%;
 	overflow-x: scroll;
 }
 
+.error{
+	color: red;
+}

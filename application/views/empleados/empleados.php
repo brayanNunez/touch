@@ -213,31 +213,6 @@
 
 <script>
 
-
-    $(document).on("ready", function(){
-
-        $("#btnForm").on("click", function(){
-            $('form').validate({
-                rules:
-                {
-                    empleado_codigo: {required: true, minlength: 3, maxlength: 6}
-                },
-                messages:
-                {
-                     empleado_codigo: {required: 'El campo es requerido', minlength: 'El minimo permitido son 3 caracteres',
-                     maxlength: 'el maximo permitido son 6 caracteres'}
-                 },
-                 errorElement: 'div'
-
-
-            });
-
-        });
-    });
-
-
-
-
     $(window).load(function () {
         var marcados = $('.checkbox:checked').size();
         if (marcados >= 1) {

@@ -124,7 +124,7 @@ $('#botonPalabras').on("click", function(){
                                         <div class="input-field col s12">
                                             <textarea id="empleado_descripcion" name="empleado_descripcion"
                                                       class="materialize-textarea"
-                                                      length="120"><?php if (isset($resultado)) {
+                                                      ><?php if (isset($resultado)) {
                                                     echo $resultado['descripcion'];
                                                 } ?></textarea>
                                             <label
@@ -249,7 +249,7 @@ $('#botonPalabras').on("click", function(){
                                         </div>
 
                                         <div class="input-field col s12 envio-formulario">
-                                            <button class="btn waves-effect waves-light right" type="submit"
+                                            <button id="btnForm" class="btn waves-effect waves-light right" type="submit"
                                                     name="action"><?= label('formEmpleado_editar'); ?>
                                             </button>
                                         </div>
