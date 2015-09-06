@@ -49,27 +49,31 @@
                                 <div class="card lista-elementos">
                                     <div id="table-datatables">
                                         <div class="row">
-                                            <div class="col s12 m12 l12">
+                                            <div class="col s12">
+                                                <div class="agregar_nuevo">
+                                                    <a href="<?= base_url() ?>empleados/agregar"
+                                                       class="btn btn-default"><?= label('agregar_nuevo'); ?></a>
+                                                </div>
+                                                <div class="checkbox-general">
+                                                    <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all"
+                                                           onclick="toggleChecked(this.checked)"/>
+                                                    <label for="checkbox-all"></label>
+                                                </div>
                                                 <table id="empleados-tabla-lista"
                                                        class="data-table-information responsive-table display"
                                                        cellspacing="0">
-                                                    <div class="agregar_nuevo">
-                                                        <a href="<?= base_url() ?>empleados/agregar"
-                                                           class="btn btn-default"><?= label('agregar_nuevo'); ?></a>
-                                                    </div>
                                                     <thead>
                                                     <tr>
-                                                        <th style="text-align: center;">
-                                                            
-                                                        </th>
-                                                        <input class="filled-in checkbox checkall" type="checkbox"
-                                                                   id="checkbox-all"
+                                                        <th>
+                                                            <input class="filled-in checkbox checkall" type="checkbox"
+                                                                   id="checkbox-all" style="visibility: hidden;"
                                                                    onclick="toggleChecked(this.checked)"/>
-                                                            <label for="checkbox-all"></label>
+                                                            <label for="checkbox-all" style="visibility: hidden;"></label>
+                                                        </th>
                                                         <th><?= label('Empleado_tablaCodigo'); ?></th>
                                                         <th><?= label('Empleado_tablaNombre'); ?></th>
                                                         <th><?= label('Empleado_primerApellido'); ?></th>
-                                                         <th><?= label('Empleado_segundoApellido'); ?></th>
+                                                        <th><?= label('Empleado_segundoApellido'); ?></th>
                                                         <th><?= label('Empleado_tablaIdentificacion'); ?></th> 
                                                         <th><?= label('Empleado_tablaPalabras'); ?></th>
                                                         <th><?= label('Empleado_tablaOpciones'); ?></th>
@@ -321,22 +325,17 @@
         });
     });
     $(document).ready(function () {
-
-
-
-
-
-
         $('#checkbox-all').click(function (event) {
-            if (this.checked) {
-                $('.checkbox').each(function () {
-                    this.checked = true;
-                });
-            } else {
-                $('.checkbox').each(function () {
-                    this.checked = false;
-                });
-            }
+            var $this = $(this);
+            var tableBody = $('#empleados-tabla-lista').find('tbody tr[role=row] input[type=checkbox]');
+            tableBody.each(function() {
+                var check = $(this);
+                if ($this.is(':checked')) {
+                    check.prop('checked', true);
+                } else {
+                    check.prop('checked', false);
+                }
+            });
         });
     });
     $(document).ready(function () {

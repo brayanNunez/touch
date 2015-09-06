@@ -195,8 +195,10 @@ ul#listaNotificaciones li a, ul#listaConfiguracion li a { padding: 11px 1rem; }
 table.data-table-information tbody tr td.dataTables_empty { padding: 9.6px 1% !important; }
 
 table.data-table-information thead tr th:first-child { width: 6% !important; }
-div#checkbox-general { position: absolute; width: 25px; height: 30px; top: 185px; margin-left: 10px; z-index: 99; }
-div#checkbox-general label { margin-top: 4px; padding-left: 35px; box-sizing: content-box; }
+table.data-table-information thead tr th:first-child { width: 6% !important; }
+div.checkbox-general { position: absolute; width: 25px; height: 30px; top: 200px; margin-left: 18px; z-index: 99; }
+div.checkbox-general.tabla-interna { position: absolute; width: 25px; height: 30px; top: 185px; margin-left: 18px; z-index: 99; }
+div.checkbox-general label { margin-top: 4px; padding-left: 35px; box-sizing: content-box; }
 
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/
