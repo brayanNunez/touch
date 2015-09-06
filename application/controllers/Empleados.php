@@ -79,7 +79,9 @@ class Empleados extends CI_Controller
         //     echo "bien"; exit;
         // }
 
-         
+          // echo date("Y-m-d", strtotime($this->input->post('empleado_fechaIngreso')));; exit;
+
+
         $data['palabras'] = $this->input->post('empleado_palabras');
         $data['datos'] = [
             'idEmpresa' => '1',
@@ -88,8 +90,10 @@ class Empleados extends CI_Controller
             'nombre' => $this->input->post('empleado_nombre'),
             'primerApellido' => $this->input->post('empleado_primerApellido'),
             'segundoApellido' => $this->input->post('empleado_segundoApellido'),
-            'fechaNacimiento' => date("Y-m-d", strtotime($this->input->post('empleado_fechaNacimiento'))),
-            'fechaIngresoEmpresa' => date("Y-m-d", strtotime($this->input->post('empleado_fechaIngreso'))),
+            // 'fechaNacimiento' => date("Y-m-d", strtotime($this->input->post('empleado_fechaNacimiento'))),
+            // 'fechaIngresoEmpresa' => date("Y-m-d", strtotime($this->input->post('empleado_fechaIngreso'))),
+            'fechaNacimiento' => $this->input->post('empleado_fechaNacimiento'),
+            'fechaIngresoEmpresa' => $this->input->post('empleado_fechaIngreso'),
             'descripcion' => $this->input->post('empleado_descripcion'),
             'eliminado' => '0'
         ];

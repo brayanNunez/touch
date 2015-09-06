@@ -213,6 +213,13 @@
 
 <script>
 
+    $('#empleado_fechaNacimiento').datepicker({
+      dateFormat: 'yy-mm-dd'
+    });
+    $('#empleado_fechaIngreso').datepicker({
+      dateFormat: 'yy-mm-dd'
+    });
+
     $(window).load(function () {
         var marcados = $('.checkbox:checked').size();
         if (marcados >= 1) {
