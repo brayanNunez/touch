@@ -12,15 +12,11 @@
              // alert($(this).data('dt-idx'));
         });
 
-
 // })
 
-        
 // })
-    
 
 </script>
-
 
 <!-- START CONTENT -->
 
@@ -139,13 +135,7 @@
                                                                 }
                                                             } 
                                                         }
-                                                                
                                                     ?>
-
-                                                       
-                                                        
-                                                    
-                                                    
 
                                                     </tbody>
                                                 </table>
@@ -201,7 +191,6 @@
 
 </section>
 <!-- END CONTENT-->
-
 
 <!-- script para agregar link al boton aceptar del modal -->
 <script type="text/javascript">
@@ -261,7 +250,6 @@
 
 </script>
 
-
 <script>
     $(window).load(function () {
         var marcados = $('.checkbox:checked').size();
@@ -283,6 +271,20 @@
             }
         }
         document.getElementById('checkbox-all').checked = false;
+
+    });
+    $(document).ready( function () {
+        $('#empleados-tabla-lista').dataTable( {
+            'aoColumnDefs': [{
+                'bSortable': false,
+                'aTargets': [0, -1] /* 1st one, start by the right */
+            }]
+        });
+    });
+    $(document).ready(function () {
+        $('table#empleados-tabla-lista thead th:first').removeClass('sorting_asc').addClass('sorting_disabled');
+        $('table#empleados-tabla-lista thead th:nth-child(2)').removeClass('sorting').addClass('sorting_asc');
+//        $('table#empleados-tabla-lista thead th:last').removeClass('sorting').addClass('sorting_disabled');
     });
     $(document).ready(function () {
         $('#eliminarElementosSeleccionados #botonEliminar').on("click", function (event) {
@@ -393,8 +395,6 @@
         <a href="" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
-
-
 <div id="eliminarElementosSeleccionados" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>

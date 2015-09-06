@@ -195,10 +195,44 @@ ul#listaNotificaciones li a, ul#listaConfiguracion li a { padding: 11px 1rem; }
 table.data-table-information tbody tr td.dataTables_empty { padding: 9.6px 1% !important; }
 
 table.data-table-information thead tr th:first-child { width: 6% !important; }
-table.data-table-information thead tr th:first-child { width: 6% !important; }
 div.checkbox-general { position: absolute; width: 25px; height: 30px; top: 200px; margin-left: 18px; z-index: 99; }
 div.checkbox-general.tabla-interna { position: absolute; width: 25px; height: 30px; top: 185px; margin-left: 18px; z-index: 99; }
 div.checkbox-general label { margin-top: 4px; padding-left: 35px; box-sizing: content-box; }
+
+@media only screen and (max-width: 2300px) {
+    table.data-table-information thead tr th:first-child { width: 6% !important; }
+    div.checkbox-general { position: absolute; width: 25px; height: 30px; top: 230px; margin-left: 32px; z-index: 99; }
+    div.checkbox-general.tabla-interna { position: absolute; width: 25px; height: 30px; top: 215px; margin-left: 32px; z-index: 99; }
+    div.checkbox-general label { margin-top: 4px; padding-left: 35px; box-sizing: content-box; }
+}
+
+@media only screen and (max-width: 2000px) {
+    table.data-table-information thead tr th:first-child { width: 6% !important; }
+    div.checkbox-general { position: absolute; width: 25px; height: 30px; top: 220px; margin-left: 27px; z-index: 99; }
+    div.checkbox-general.tabla-interna { position: absolute; width: 25px; height: 30px; top: 205px; margin-left: 27px; z-index: 99; }
+    div.checkbox-general label { margin-top: 4px; padding-left: 35px; box-sizing: content-box; }
+}
+
+@media only screen and (max-width: 1850px) {
+    table.data-table-information thead tr th:first-child { width: 6% !important; }
+    div.checkbox-general { position: absolute; width: 25px; height: 30px; top: 215px; margin-left: 23px; z-index: 99; }
+    div.checkbox-general.tabla-interna { position: absolute; width: 25px; height: 30px; top: 200px; margin-left: 23px; z-index: 99; }
+    div.checkbox-general label { margin-top: 4px; padding-left: 35px; box-sizing: content-box; }
+}
+
+@media only screen and (max-width: 1600px) {
+    table.data-table-information thead tr th:first-child { width: 6% !important; }
+    div.checkbox-general { position: absolute; width: 25px; height: 30px; top: 210px; margin-left: 19px; z-index: 99; }
+    div.checkbox-general.tabla-interna { position: absolute; width: 25px; height: 30px; top: 195px; margin-left: 19px; z-index: 99; }
+    div.checkbox-general label { margin-top: 4px; padding-left: 35px; box-sizing: content-box; }
+}
+
+@media only screen and (max-width: 1450px) {
+    table.data-table-information thead tr th:first-child { width: 6% !important; }
+    div.checkbox-general { position: absolute; width: 25px; height: 30px; top: 205px; margin-left: 18px; z-index: 99; }
+    div.checkbox-general.tabla-interna { position: absolute; width: 25px; height: 30px; top: 185px; margin-left: 18px; z-index: 99; }
+    div.checkbox-general label { margin-top: 4px; padding-left: 35px; box-sizing: content-box; }
+}
 
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/
@@ -251,6 +285,11 @@ div.checkbox-general label { margin-top: 4px; padding-left: 35px; box-sizing: co
     a#logo-principal-header { left: 43%; padding: 0; }  /* Era 48 */
     /*a#pantalla-completa { display: none; }*/
     ul#listaNotificaciones li a, ul#listaConfiguracion li a { padding: 10px; }
+
+    table.data-table-information thead tr th:first-child { width: auto !important; }
+    div.checkbox-general { position: absolute; width: 25px; height: 30px; top: 183px; margin-left: 90px; z-index: 99; }
+    div.checkbox-general.tabla-interna { position: absolute; width: 25px; height: 30px; top: 168px; margin-left: 90px; z-index: 99; }
+    div.checkbox-general label { margin-top: 4px; padding-left: 35px; box-sizing: content-box; }
 }
 
 @media only screen and (max-width: 768px) {
@@ -313,6 +352,11 @@ div.checkbox-general label { margin-top: 4px; padding-left: 35px; box-sizing: co
     ul#opciones-barra-superior li a { padding: 0 7px; }
     ul#listaNotificaciones li a, ul#listaConfiguracion li a { padding: 9px 10px; }
     /*a#logo-principal-header { left: 48%; padding: 0; }*/
+
+    table.data-table-information thead tr th:first-child { width: auto !important; }
+    div.checkbox-general { position: absolute; width: 25px; height: 30px; top: 175px; margin-left: 90px; z-index: 99; }
+    div.checkbox-general.tabla-interna { position: absolute; width: 25px; height: 30px; top: 160px; margin-left: 90px; z-index: 99; }
+    div.checkbox-general label { margin-top: 4px; padding-left: 35px; box-sizing: content-box; }
 }
 
 @media only screen and (max-width: 640px) {
@@ -349,6 +393,11 @@ div.checkbox-general label { margin-top: 4px; padding-left: 35px; box-sizing: co
 
     div.tabla-detalles-cotizacion { left: 430px; bottom: 33%; top: unset; width: auto; }
     /*a#logo-principal-header { left: 48%; padding: 0; }*/
+
+    table.data-table-information thead tr th:first-child { width: auto !important; }
+    div.checkbox-general { position: absolute; width: 25px; height: 30px; top: 323px; margin-left: 90px; z-index: 99; }
+    div.checkbox-general.tabla-interna { position: absolute; width: 25px; height: 30px; top: 308px; margin-left: 90px; z-index: 99; }
+    div.checkbox-general label { margin-top: 4px; padding-left: 35px; box-sizing: content-box; }
 }
 
 @media only screen and (max-width: 600px) {
@@ -452,6 +501,12 @@ div.checkbox-general label { margin-top: 4px; padding-left: 35px; box-sizing: co
     ul#opciones-barra-superior li a { padding: 0 5px; }
     ul#opciones-barra-superior li a i { font-size: 23px; }
     ul#listaNotificaciones li a, ul#listaConfiguracion li a { padding: 8px 10px; }
+
+
+    table.data-table-information thead tr th:first-child { width: auto !important; }
+    div.checkbox-general { position: absolute; width: 25px; height: 30px; top: 315px; margin-left: 90px; z-index: 99; }
+    div.checkbox-general.tabla-interna { position: absolute; width: 25px; height: 30px; top: 300px; margin-left: 90px; z-index: 99; }
+    div.checkbox-general label { margin-top: 4px; padding-left: 35px; box-sizing: content-box; }
 }
 
 @media only screen and (max-width: 360px) {
