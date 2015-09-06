@@ -1,6 +1,6 @@
     $(document).on("ready", function(){
 
-        $("#btnForm").on("click", function(){
+        $("button[type= 'submit']").on("click", function(){
             $('form').validate({
                 rules:
                 {

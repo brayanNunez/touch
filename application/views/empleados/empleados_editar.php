@@ -249,7 +249,7 @@ $('#botonPalabras').on("click", function(){
                                         </div>
 
                                         <div class="input-field col s12 envio-formulario">
-                                            <button id="btnForm" class="btn waves-effect waves-light right" type="submit"
+                                            <button class="btn waves-effect waves-light right" type="submit"
                                                     name="action"><?= label('formEmpleado_editar'); ?>
                                             </button>
                                         </div>
