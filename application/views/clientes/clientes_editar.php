@@ -857,6 +857,19 @@
         }
         document.getElementById('checkbox-all').checked = false;
     });
+
+    $(document).ready( function () {
+        $('#cliente1-contactos-editar').dataTable( {
+            'aoColumnDefs': [{
+                'bSortable': false,
+                'aTargets': [0, -1] /* 1st one, start by the right */
+            }]
+        });
+
+        $('table#cliente1-contactos-editar thead th:first').removeClass('sorting_asc').addClass('sorting_disabled');
+        $('table#cliente1-contactos-editar thead th:nth-child(2)').removeClass('sorting').addClass('sorting_asc');
+    });
+
     $(document).ready(function () {
         $('#botonElimnar').on("click", function (event) {
             var tb = $(this).attr('title');
