@@ -48,23 +48,6 @@
                                             </div>
                                         </div>
 
-                                        <!--                                        <div class="input-field col s12">-->
-                                        <!--                                            <label for="empleado_palabras">-->
-                                        <? //=label('formEmpleado_palabrasClave');?><!--</label>-->
-                                        <!--                                            <input id="empleado_palabras" type="text">-->
-                                        <!--                                            <div class="input-field col s12">-->
-                                        <!--                                                <div class="input-field col s8">-->
-                                        <!--                                                    <input id="otra_palabra" type="text">-->
-                                        <!--                                                    <label for="otra_palabra">-->
-                                        <? //=label('formEmpleado_nuevaPalabra');?><!--</label>-->
-                                        <!--                                                </div>-->
-                                        <!--                                                <div class="input-field col s4">-->
-                                        <!--                                                    <a href="" class="btn btn-default">-->
-                                        <? //=label('formEmpleado_agregar');?><!--</a>-->
-                                        <!--                                                </div>-->
-                                        <!--                                            </div>-->
-                                        <!--                                            <hr />-->
-                                        <!--                                        </div> -->
 
                                         <div class="inputTag col s12">
                                             <label
@@ -74,11 +57,11 @@
                                         </div>
 
                                         <div class="input-field col s12">
-                                            <input id="empleado_fechaNacimiento" type="text" class="datepicker-fecha">
+                                            <input id="empleado_fechaNacimiento" name="empleado_fechaNacimiento" type="text" class="datepicker-fecha">
                                             <label for="empleado_fechaNacimiento"><?= label('formEmpleado_fechaNacimiento'); ?></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input id="empleado_fechaIngreso" type="text" class="datepicker-fecha">
+                                            <input id="empleado_fechaIngreso" name="empleado_fechaIngreso" type="text" class="datepicker-fecha">
                                             <label for="empleado_fechaIngreso"><?= label('formEmpleado_fechaIngreso'); ?></label>
                                         </div>
                                         <div class="input-field col s12">
@@ -206,7 +189,7 @@
                                         </div>
 
                                         <div class="input-field col s12 envio-formulario">
-                                            <button class="btn waves-effect waves-light right" type="submit"
+                                            <button id="btnForm" class="btn waves-effect waves-light right" type="submit"
                                                     name="action"><?= label('formEmpleado_enviar'); ?>
                                             </button>
                                         </div>
@@ -229,6 +212,32 @@
 <!-- END CONTENT-->
 
 <script>
+
+
+    $(document).on("ready", function(){
+
+        $("#btnForm").on("click", function(){
+            $('form').validate({
+                rules:
+                {
+                    empleado_codigo: {required: true, minlength: 3, maxlength: 6}
+                },
+                messages:
+                {
+                     empleado_codigo: {required: 'El campo es requerido', minlength: 'El minimo permitido son 3 caracteres',
+                     maxlength: 'el maximo permitido son 6 caracteres'}
+                 },
+                 errorElement: 'div'
+
+
+            });
+
+        });
+    });
+
+
+
+
     $(window).load(function () {
         var marcados = $('.checkbox:checked').size();
         if (marcados >= 1) {

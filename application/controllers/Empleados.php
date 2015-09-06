@@ -9,6 +9,7 @@ class Empleados extends CI_Controller
         parent::__construct();
         $this->lang->load('content');
         $this->load->model('Empleado_model');
+        $this->load->library('form_validation');
     }
 
     public function index()
@@ -59,7 +60,26 @@ class Empleados extends CI_Controller
 
      public function insertar()
     {
-         $data['palabras'] = $this->input->post('empleado_palabras');
+        // echo "bien"; exit;
+
+        // $this->form_validation->set_rules('empleado_codigo', 'Codigo', 'required');
+        //  $this->form_validation->set_rules('empleado_id', 'Identificacion', 'required');
+        // // $this->form_validation->set_rules('passconf', 'Password Confirmation', 'required');
+        // // $this->form_validation->set_rules('email', 'Email', 'required');
+
+        // if ($this->form_validation->run() == FALSE)
+        // {
+        // $this->load->view('layout/default/header');
+        // $this->load->view('layout/default/left-sidebar');
+        // $this->load->view('empleados/empleados');
+        // $this->load->view('layout/default/footer');
+        // }
+        // else
+        // {
+        //     echo "bien"; exit;
+        // }
+
+        $data['palabras'] = $this->input->post('empleado_palabras');
         $data['datos'] = [
             'idEmpresa' => '1',
             'codigo' => $this->input->post('empleado_codigo'),
@@ -124,7 +144,7 @@ class Empleados extends CI_Controller
         if (!$this->Empleado_model->modificar($data)) {
             echo "Error en la transaccion";
         } else {
-            echo "Correcto";
+            echo "Correcto"; 
         }
         redirect('empleados/index');
     }

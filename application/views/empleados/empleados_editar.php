@@ -114,11 +114,11 @@ $('#botonPalabras').on("click", function(){
                                         <!--                                         </div> -->
 
                                         <div class="input-field col s12">
-                                            <input id="empleado_fechaNacimiento" type="text" class="datepicker-fecha" value="18-06-1994">
+                                            <input id="empleado_fechaNacimiento" name="empleado_fechaNacimiento" type="text" class="datepicker-fecha" value="18-06-1994">
                                             <label for="empleado_fechaNacimiento"><?= label('formEmpleado_fechaNacimiento'); ?></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input id="empleado_fechaIngreso" type="text" class="datepicker-fecha" value="09-03-2015">
+                                            <input id="empleado_fechaIngreso" name="empleado_fechaIngreso" type="text" class="datepicker-fecha" value="09-03-2015">
                                             <label for="empleado_fechaIngreso"><?= label('formEmpleado_fechaIngreso'); ?></label>
                                         </div>
                                         <div class="input-field col s12">

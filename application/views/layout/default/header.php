@@ -119,12 +119,18 @@
     <!-- <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
 
 
+     <!-- js para validar foormularios -->
+    <script src="<?= base_url() ?>assets/dashboard/js/jquery.validate.min.js" type="text/javascript"></script>
+
+
     <!-- css necesario para estilo de la hoja de diseno -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/dashboard/css/estiloDisenoHoja.css">
 
 
     <!-- js y css necesario para chosen de los autocompletar -->
     <link href="<?= base_url() ?>assets/dashboard/css/chosen/chosen.css" rel="stylesheet" type="text/css"/>
+
+
     
 
 </head>
