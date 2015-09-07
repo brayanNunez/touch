@@ -670,17 +670,28 @@
             return false;
         });
     });
+    $(document).ready( function () {
+        $('#cotizacion1-detalles').dataTable( {
+            'aoColumnDefs': [{
+                'bSortable': false,
+                'aTargets': [0, -1] /* 1st one, start by the right */
+            }]
+        });
+        $('table#cotizacion1-detalles thead th:first').removeClass('sorting_asc').addClass('sorting_disabled');
+        $('table#cotizacion1-detalles thead th:nth-child(2)').removeClass('sorting').addClass('sorting_asc');
+    });
     $(document).ready(function () {
         $('#checkbox-all').click(function (event) {
-            if (this.checked) {
-                $('.checkbox').each(function () {
-                    this.checked = true;
-                });
-            } else {
-                $('.checkbox').each(function () {
-                    this.checked = false;
-                });
-            }
+            var $this = $(this);
+            var tableBody = $('#cotizacion1-detalles').find('tbody tr[role=row] input[type=checkbox]');
+            tableBody.each(function() {
+                var check = $(this);
+                if ($this.is(':checked')) {
+                    check.prop('checked', true);
+                } else {
+                    check.prop('checked', false);
+                }
+            });
         });
     });
     $(document).ready(function () {
