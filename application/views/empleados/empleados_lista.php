@@ -56,7 +56,7 @@
                                                     <label for="checkbox-all"></label>
                                                 </div>
                                                 <table id="empleados-tabla-lista"
-                                                       class="data-table-information responsive-table display"
+                                                       class="data-table-information responsive-table striped"
                                                        cellspacing="0">
                                                     <thead>
                                                     <tr>

@@ -1,20 +1,25 @@
 <div class="agregar_nuevo">
     <a href="#agregarArchivo" class="btn btn-default modal-trigger"><?= label('clientes_archivoNuevo') ?></a>
 </div>
+<div class="checkbox-general tabla-interna">
+    <input class="filled-in checkbox checkbox-file checkall" type="checkbox" id="checkbox-all-files"
+           onclick="toggleChecked(this.checked)"/>
+    <label for="checkbox-all-files"></label>
+</div>
 <table id="files" class="data-table-information responsive-table display">
     <thead>
-    <tr>
-        <th style="text-align: center;">
-            <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all-files"
-                   onclick="toggleChecked(this.checked)"/>
-            <label for="checkbox-all-files"></label>
-        </th>
-        <th><?= label('clientes_archivosNombre') ?></th>
-        <th><?= label('clientes_archivosDescripcion') ?></th>
-        <th><?= label('clientes_archivosPeso') ?></th>
-        <th><?= label('clientes_archivosFecha') ?></th>
-        <th><?= label('clientes_archivosOpciones') ?></th>
-    </tr>
+        <tr>
+            <th style="text-align: center;">
+                <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all-files"
+                       style="visibility: hidden;" onclick="toggleChecked(this.checked)"/>
+                <label for="checkbox-all-files" style="visibility: hidden;"></label>
+            </th>
+            <th><?= label('clientes_archivosNombre') ?></th>
+            <th><?= label('clientes_archivosDescripcion') ?></th>
+            <th><?= label('clientes_archivosPeso') ?></th>
+            <th><?= label('clientes_archivosFecha') ?></th>
+            <th><?= label('clientes_archivosOpciones') ?></th>
+        </tr>
     </thead>
     <tbody>
     <?php if ($archivos): ?>
@@ -124,30 +129,28 @@
             return false;
         });
     });
+    $(document).ready( function () {
+        $('#files').dataTable( {
+            'aoColumnDefs': [{
+                'bSortable': false,
+                'aTargets': [0, -1] /* 1st one, start by the right */
+            }]
+        });
+        $('table#files thead th:first').removeClass('sorting_asc').addClass('sorting_disabled');
+        $('table#files thead th:nth-child(2)').removeClass('sorting').addClass('sorting_asc');
+    });
     $(document).ready(function () {
         $('input#checkbox-all-files').click(function (event) {
-            if (this.checked) {
-                $('.checkbox-file').each(function () {
-                    this.checked = true;
-                });
-            } else {
-                $('.checkbox-file').each(function () {
-                    this.checked = false;
-                });
-            }
-            var marcados = $('.checkbox-file:checked').size();
-            var elems = document.getElementsByClassName('opciones-seleccionados-archivos');
-            if (marcados >= 1) {
-                var e1;
-                for (e1 in elems) {
-                    elems[e1].style.visibility = 'visible';
+            var $this = $(this);
+            var tableBody = $('#files').find('tbody tr[role=row] input[type=checkbox]');
+            tableBody.each(function() {
+                var check = $(this);
+                if ($this.is(':checked')) {
+                    check.prop('checked', true);
+                } else {
+                    check.prop('checked', false);
                 }
-            } else {
-                var e2;
-                for (e2 in elems) {
-                    elems[e2].style.visibility = 'hidden';
-                }
-            }
+            });
         });
     });
     $(document).ready(function () {
@@ -169,6 +172,7 @@
     });
 </script>
 
+<!-- lista modals -->
 <div id="eliminarArchivo" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
@@ -226,7 +230,7 @@
         <a href="#" class="btn-flat modal-close"></a>
     </div>
 </div>
-
+<!--Fin lista modals -->
 
 
 

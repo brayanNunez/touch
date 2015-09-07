@@ -2,7 +2,7 @@
     <form class="col s12">
         <div class="row">
             <div class="col s12">
-                <table id="cliente1-informacion" class="responsive-table striped">
+                <table id="cliente1-informacion" class="striped">
                     <thead>
                         <tr>
                             <th style="width: 30%;"></th>
@@ -77,7 +77,7 @@
 
             <div class="col s12">
                 <div id="tab-direccion" class="card col s12">
-                    <table id="cliente1-direccion" class="responsive-table striped">
+                    <table id="cliente1-direccion" class="striped">
                         <thead>
                             <tr>
                                 <th style="width: 30%;"></th>
@@ -109,81 +109,87 @@
                     </table>
                 </div>
                 <div id="tab-contactos" class="card col s12">
-                    <table id="cliente1-contactos" class="responsive-table striped">
-                        <thead>
-                            <tr>
-                                <th style="width: 40%;"><?= label('formCliente_nombreContacto'); ?></th>
-                                <th><?= label('formCliente_correoContacto'); ?></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Maria Rodriguez</td>
-                                <td>maria@gmail.com</td>
-                            </tr>
-                            <tr>
-                                <td>Juan Perez</td>
-                                <td>juan@gmail.com</td>
-                            </tr>
-                            <tr>
-                                <td>Jose Mora</td>
-                                <td>jose@gmail.com</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table id="cliente1-contactos" class="striped">
+                            <thead>
+                                <tr>
+                                    <th style="width: 40%;"><?= label('formCliente_nombreContacto'); ?></th>
+                                    <th><?= label('formCliente_correoContacto'); ?></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Maria Rodriguez</td>
+                                    <td>maria@gmail.com</td>
+                                </tr>
+                                <tr>
+                                    <td>Juan Perez</td>
+                                    <td>juan@gmail.com</td>
+                                </tr>
+                                <tr>
+                                    <td>Jose Mora</td>
+                                    <td>jose@gmail.com</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div id="tab-infoAdicional" class="card col s12">
-                    <table id="cliente1-direccion" class="responsive-table striped">
-                        <thead>
+                    <div class="table-responsive">
+                        <table id="cliente1-direccion" class="striped">
+                            <thead>
+                                <tr>
+                                    <th style="width: 30%;"></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><?= label('formCliente_cotizador'); ?></td>
+                                    <td>Brayan Nunez Rojas,
+                                        Anthony Nunez Rojas,
+                                        Maria Perez Salas,
+                                        Carlos David Rojas,
+                                        Diego Alfaro Rojas
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><?= label('formCliente_gustos_preferencias'); ?></td>
+                                    <td>Futbol, Baseball, Tennis, Golf</td>
+                                </tr>
+                                <tr>
+                                    <td><?= label('formCliente_mediosContacto'); ?></td>
+                                    <td>TV,Radio,Carteles,Vallas publicitarias</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="tab-infoFacturacion" class="card col s12">
+                    <div class="table-responsive">
+                        <table id="cliente1-informacion" class="striped">
+                            <thead>
                             <tr>
                                 <th style="width: 30%;"></th>
                                 <th></th>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><?= label('formCliente_cotizador'); ?></td>
-                                <td>Brayan Nunez Rojas,
-                                    Anthony Nunez Rojas,
-                                    Maria Perez Salas,
-                                    Carlos David Rojas,
-                                    Diego Alfaro Rojas
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><?= label('formCliente_gustos_preferencias'); ?></td>
-                                <td>Futbol, Baseball, Tennis, Golf</td>
-                            </tr>
-                            <tr>
-                                <td><?= label('formCliente_mediosContacto'); ?></td>
-                                <td>TV,Radio,Carteles,Vallas publicitarias</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div id="tab-infoFacturacion" class="card col s12">
-                    <table id="cliente1-informacion" class="responsive-table striped">
-                        <thead>
-                        <tr>
-                            <th style="width: 30%;"></th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><?= label('formCliente_formaPagoFavorita'); ?></td>
-                                <td>A pagos</td>
-                            </tr>
-                            <tr>
-                                <td><?= label('formCliente_descuento'); ?></td>
-                                <td>5%</td>
-                            </tr>
-                            <tr>
-                                <td><?= label('formCliente_monedaCotizar'); ?></td>
-                                <td>Dolar ($)</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><?= label('formCliente_formaPagoFavorita'); ?></td>
+                                    <td>A pagos</td>
+                                </tr>
+                                <tr>
+                                    <td><?= label('formCliente_descuento'); ?></td>
+                                    <td>5%</td>
+                                </tr>
+                                <tr>
+                                    <td><?= label('formCliente_monedaCotizar'); ?></td>
+                                    <td>Dolar ($)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

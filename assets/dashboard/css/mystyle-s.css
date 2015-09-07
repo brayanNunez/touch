@@ -234,6 +234,13 @@ div.checkbox-general label { margin-top: 4px; padding-left: 35px; box-sizing: co
     div.checkbox-general label { margin-top: 4px; padding-left: 35px; box-sizing: content-box; }
 }
 
+@media only screen and (max-width: 1350px) {
+    table.data-table-information thead tr th:first-child { width: 6% !important; }
+    div.checkbox-general { position: absolute; width: 25px; height: 30px; top: 195px; margin-left: 18px; z-index: 99; }
+    div.checkbox-general.tabla-interna { position: absolute; width: 25px; height: 30px; top: 175px; margin-left: 18px; z-index: 99; }
+    div.checkbox-general label { margin-top: 4px; padding-left: 35px; box-sizing: content-box; }
+}
+
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/
     div#login-page { width: 380px !important; max-height: 408px !important; top: 0 !important; }
@@ -242,6 +249,11 @@ div.checkbox-general label { margin-top: 4px; padding-left: 35px; box-sizing: co
     div.tabla-conAgregar.tabla-opciones-monedas { position: absolute; top: 220px; left: 50%; width: 180px; margin-left: -90px; }
     div.tabla-detalles-cotizacion { left: 430px; bottom: 24%; top: unset; width: auto; }
     a#cotizacion-agregarAtencion { padding: 0; background-color: transparent; position: absolute; left: 88%; box-shadow: none; top: -15px; }
+
+    table.data-table-information thead tr th:first-child { width: 6% !important; }
+    div.checkbox-general { position: absolute; width: 25px; height: 30px; top: 185px; margin-left: 18px; z-index: 99; }
+    div.checkbox-general.tabla-interna { position: absolute; width: 25px; height: 30px; top: 165px; margin-left: 18px; z-index: 99; }
+    div.checkbox-general label { margin-top: 4px; padding-left: 35px; box-sizing: content-box; }
 }
 
 @media only screen and (max-width: 992px) {

@@ -5,9 +5,8 @@
     <div id="breadcrumbs-wrapper" class=" grey lighten-3">
         <div class="container">
             <div class="row">
-                <div class="col s12 m12 l12">
+                <div class="col s12">
                     <h1 class="breadcrumbs-title"><?= label('tituloFormularioCliente'); ?></h1>
-
                 </div>
             </div>
         </div>
@@ -18,10 +17,10 @@
     <div class="container">
         <div id="chart-dashboard">
             <div class="row">
-                <div class="col s12 m12 l12">
+                <div class="col s12">
                     <div id="submit-button" class="section">
                         <div class="row">
-                            <div class="col s12 m12 l10">
+                            <div class="col s12">
                                 <form class="col s12">
                                     <div class="row">
                                         <div class="input-field col s12">
@@ -190,13 +189,18 @@
                                                         <?= label('formCliente_agregar'); ?>
                                                     </a>
                                                 </div>
+                                                <div class="checkbox-general tabla-interna">
+                                                    <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all"
+                                                           onclick="toggleChecked(this.checked)"/>
+                                                    <label for="checkbox-all"></label>
+                                                </div>
                                                 <table id="cliente1-contactos" class="data-table-information responsive-table striped">
                                                     <thead>
                                                         <tr>
                                                             <th style="text-align: center;">
                                                                 <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all"
-                                                                       onclick="toggleChecked(this.checked)"/>
-                                                                <label for="checkbox-all"></label>
+                                                                       style="visibility: hidden;" onclick="toggleChecked(this.checked)"/>
+                                                                <label for="checkbox-all" style="visibility: hidden;"></label>
                                                             </th>
                                                             <th><?= label('formCliente_nombreContacto'); ?></th>
                                                             <th><?= label('formCliente_correoContacto'); ?></th>
@@ -333,17 +337,29 @@
             return false;
         });
     });
+    $(document).ready( function () {
+        $('#cliente1-contactos').dataTable( {
+            'aoColumnDefs': [{
+                'bSortable': false,
+                'aTargets': [0, -1] /* 1st one, start by the right */
+            }]
+        });
+
+        $('table#cliente1-contactos thead th:first').removeClass('sorting_asc').addClass('sorting_disabled');
+        $('table#cliente1-contactos thead th:nth-child(2)').removeClass('sorting').addClass('sorting_asc');
+    });
     $(document).ready(function () {
         $('#checkbox-all').click(function (event) {
-            if (this.checked) {
-                $('.checkbox').each(function () {
-                    this.checked = true;
-                });
-            } else {
-                $('.checkbox').each(function () {
-                    this.checked = false;
-                });
-            }
+            var $this = $(this);
+            var tableBody = $('#cliente1-contactos').find('tbody tr[role=row] input[type=checkbox]');
+            tableBody.each(function() {
+                var check = $(this);
+                if ($this.is(':checked')) {
+                    check.prop('checked', true);
+                } else {
+                    check.prop('checked', false);
+                }
+            });
         });
     });
     $(document).ready(function () {
