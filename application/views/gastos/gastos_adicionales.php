@@ -25,13 +25,13 @@
                                     <div id="table-datatables">
                                         <div class="row">
                                             <div class="col s12 m12 l12">
+                                                <div class="agregar_nuevo">
+                                                    <a href="#agregarGasto"
+                                                       class="btn modal-trigger"><?= label('tituloGastos_nuevo'); ?></a>
+                                                </div>
                                                 <table id="gastos-tabla-lista"
                                                        class="data-table-information responsive-table display"
                                                        cellspacing="0">
-                                                    <div class="agregar_nuevo">
-                                                        <a href="#agregarGasto"
-                                                           class="btn modal-trigger"><?= label('tituloGastos_nuevo'); ?></a>
-                                                    </div>
                                                     <thead>
                                                     <tr>
                                                         <th style="text-align: center;">
@@ -214,17 +214,28 @@
             return false;
         });
     });
+    $(document).ready( function () {
+        $('#gastos-tabla-lista').dataTable( {
+            'aoColumnDefs': [{
+                'bSortable': false,
+                'aTargets': [0, -1] /* 1st one, start by the right */
+            }]
+        });
+        $('table#gastos-tabla-lista thead th:first').removeClass('sorting_asc').addClass('sorting_disabled');
+        $('table#gastos-tabla-lista thead th:nth-child(2)').removeClass('sorting').addClass('sorting_asc');
+    });
     $(document).ready(function () {
         $('#checkbox-all').click(function (event) {
-            if (this.checked) {
-                $('.checkbox').each(function () {
-                    this.checked = true;
-                });
-            } else {
-                $('.checkbox').each(function () {
-                    this.checked = false;
-                });
-            }
+            var $this = $(this);
+            var tableBody = $('#gastos-tabla-lista').find('tbody tr[role=row] input[type=checkbox]');
+            tableBody.each(function() {
+                var check = $(this);
+                if ($this.is(':checked')) {
+                    check.prop('checked', true);
+                } else {
+                    check.prop('checked', false);
+                }
+            });
         });
     });
     $(document).ready(function () {

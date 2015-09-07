@@ -25,13 +25,13 @@
                                     <div id="table-datatables">
                                         <div class="row">
                                             <div class="col s12 m12 l12">
+                                                <div class="agregar_nuevo">
+                                                    <a href="#Agregar"
+                                                       class="btn btn-default modal-trigger"><?= label('impuestoNuevo'); ?></a>
+                                                </div>
                                                 <table id="impuestos-tabla-lista"
                                                        class="data-table-information responsive-table display"
                                                        cellspacing="0">
-                                                    <div id="boton_nuevo">
-                                                        <a href="#Agregar"
-                                                           class="btn btn-default modal-trigger"><?= label('impuestoNuevo'); ?></a>
-                                                    </div>
                                                     <thead>
                                                     <tr>
                                                         <th style="text-align: center;">
@@ -164,17 +164,28 @@
             return false;
         });
     });
+    $(document).ready( function () {
+        $('#impuestos-tabla-lista').dataTable( {
+            'aoColumnDefs': [{
+                'bSortable': false,
+                'aTargets': [0, -1] /* 1st one, start by the right */
+            }]
+        });
+        $('table#impuestos-tabla-lista thead th:first').removeClass('sorting_asc').addClass('sorting_disabled');
+        $('table#impuestos-tabla-lista thead th:nth-child(2)').removeClass('sorting').addClass('sorting_asc');
+    });
     $(document).ready(function () {
         $('#checkbox-all').click(function (event) {
-            if (this.checked) {
-                $('.checkbox').each(function () {
-                    this.checked = true;
-                });
-            } else {
-                $('.checkbox').each(function () {
-                    this.checked = false;
-                });
-            }
+            var $this = $(this);
+            var tableBody = $('#impuestos-tabla-lista').find('tbody tr[role=row] input[type=checkbox]');
+            tableBody.each(function() {
+                var check = $(this);
+                if ($this.is(':checked')) {
+                    check.prop('checked', true);
+                } else {
+                    check.prop('checked', false);
+                }
+            });
         });
     });
     $(document).ready(function () {
