@@ -367,17 +367,28 @@
             return false;
         });
     });
+    $(document).ready( function () {
+        $('#tabla-productosServicios-lista').dataTable( {
+            'aoColumnDefs': [{
+                'bSortable': false,
+                'aTargets': [0, -1] /* 1st one, start by the right */
+            }]
+        });
+        $('table#tabla-productosServicios-lista thead th:first').removeClass('sorting_asc').addClass('sorting_disabled');
+        $('table#tabla-productosServicios-lista thead th:nth-child(2)').removeClass('sorting').addClass('sorting_asc');
+    });
     $(document).ready(function () {
         $('#checkbox-all').click(function (event) {
-            if (this.checked) {
-                $('.checkbox').each(function () {
-                    this.checked = true;
-                });
-            } else {
-                $('.checkbox').each(function () {
-                    this.checked = false;
-                });
-            }
+            var $this = $(this);
+            var tableBody = $('#tabla-productosServicios-lista').find('tbody tr[role=row] input[type=checkbox]');
+            tableBody.each(function() {
+                var check = $(this);
+                if ($this.is(':checked')) {
+                    check.prop('checked', true);
+                } else {
+                    check.prop('checked', false);
+                }
+            });
         });
     });
     $(document).ready(function () {

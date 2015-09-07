@@ -214,7 +214,7 @@
             return false;
         });
     });
-    $(document).ready( function () {
+    $(document).ready(function () {
         $('#gastos-tabla-lista').dataTable( {
             'aoColumnDefs': [{
                 'bSortable': false,

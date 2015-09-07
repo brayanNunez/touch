@@ -26,13 +26,13 @@
                                     <div id="table-datatables">
                                         <div class="row">
                                             <div class="col s12 m12 l12">
+                                                <div class="agregar_nuevo">
+                                                    <a href="<?= base_url() ?>proveedores/agregar"
+                                                       class="btn btn-default"><?= label('agregar_nuevo'); ?></a>
+                                                </div>
                                                 <table id="tabla-lista-proveedores"
                                                        class="data-table-information responsive-table display"
                                                        cellspacing="0">
-                                                    <div class="agregar_nuevo">
-                                                        <a href="<?= base_url() ?>proveedores/agregar"
-                                                           class="btn btn-default"><?= label('agregar_nuevo'); ?></a>
-                                                    </div>
                                                     <thead>
                                                     <tr>
                                                         <th style="text-align: center;">
@@ -255,17 +255,28 @@
             return false;
         });
     });
+    $(document).ready( function () {
+        $('#tabla-lista-proveedores').dataTable( {
+            'aoColumnDefs': [{
+                'bSortable': false,
+                'aTargets': [0, -1] /* 1st one, start by the right */
+            }]
+        });
+        $('table#tabla-lista-proveedores thead th:first').removeClass('sorting_asc').addClass('sorting_disabled');
+        $('table#tabla-lista-proveedores thead th:nth-child(2)').removeClass('sorting').addClass('sorting_asc');
+    });
     $(document).ready(function () {
         $('#checkbox-all').click(function (event) {
-            if (this.checked) {
-                $('.checkbox').each(function () {
-                    this.checked = true;
-                });
-            } else {
-                $('.checkbox').each(function () {
-                    this.checked = false;
-                });
-            }
+            var $this = $(this);
+            var tableBody = $('#tabla-lista-proveedores').find('tbody tr[role=row] input[type=checkbox]');
+            tableBody.each(function() {
+                var check = $(this);
+                if ($this.is(':checked')) {
+                    check.prop('checked', true);
+                } else {
+                    check.prop('checked', false);
+                }
+            });
         });
     });
     $(document).ready(function () {

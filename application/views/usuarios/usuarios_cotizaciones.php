@@ -2,7 +2,7 @@
     <thead>
     <tr>
         <th style="text-align: center;">
-            <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all-cotizaciones"
+            <input class="filled-in checkbox checkbox-cotizacion checkall" type="checkbox" id="checkbox-all-cotizaciones"
                    onclick="toggleChecked(this.checked)"/>
             <label for="checkbox-all-cotizaciones"></label>
         </th>
@@ -155,35 +155,32 @@
             return false;
         });
     });
-    $(document).ready(function () {
-        $('.checkbox-cotizacion').click(function (event) {
-            var marcados = $('.checkbox-cotizacion:checked').size();
-            if (marcados >= 1) {
-                var elems = document.getElementsByClassName('opciones-seleccionados-cotizaciones');
-                var e;
-                for (e in elems) {
-                    elems[e].style.visibility = 'visible';
-                }
-            } else {
-                var elems = document.getElementsByClassName('opciones-seleccionados-cotizaciones');
-                var e;
-                for (e in elems) {
-                    elems[e].style.visibility = 'hidden';
-                }
-            }
+    $(document).ready( function () {
+        $('#usuario1-cotizaciones').dataTable( {
+            'aoColumnDefs': [{
+                'bSortable': false,
+                'aTargets': [0, -1] /* 1st one, start by the right */
+            }]
         });
+        $('table#usuario1-cotizaciones thead th:first').removeClass('sorting_asc').addClass('sorting_disabled');
+        $('table#usuario1-cotizaciones thead th:nth-child(2)').removeClass('sorting').addClass('sorting_asc');
     });
     $(document).ready(function () {
         $('#checkbox-all-cotizaciones').click(function (event) {
-            if (this.checked) {
-                $('.checkbox-cotizacion').each(function () {
-                    this.checked = true;
-                });
-            } else {
-                $('.checkbox-cotizacion').each(function () {
-                    this.checked = false;
-                });
-            }
+            var $this = $(this);
+            var tableBody = $('#usuario1-cotizaciones').find('tbody tr[role=row] input[type=checkbox]');
+            tableBody.each(function() {
+                var check = $(this);
+                if ($this.is(':checked')) {
+                    check.prop('checked', true);
+                } else {
+                    check.prop('checked', false);
+                }
+            });
+        });
+    });
+    $(document).ready(function () {
+        $('.checkbox-cotizacion').click(function (event) {
             var marcados = $('.checkbox-cotizacion:checked').size();
             if (marcados >= 1) {
                 var elems = document.getElementsByClassName('opciones-seleccionados-cotizaciones');
@@ -254,3 +251,4 @@
         </div>
     </div>
 </div>
+<!-- Fin lista modals -->

@@ -256,7 +256,7 @@
             return false;
         });
     });
-    $(document).ready( function () {
+    $(document).ready(function () {
         $('#categorias-tabla-lista').dataTable( {
             'aoColumnDefs': [{
                 'bSortable': false,

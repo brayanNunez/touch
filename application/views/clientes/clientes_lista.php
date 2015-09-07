@@ -271,7 +271,7 @@
             return false;
         });
     });
-    $(document).ready( function () {
+    $(document).ready(function () {
         $('#clients').dataTable( {
             'aoColumnDefs': [{
                 'bSortable': false,
