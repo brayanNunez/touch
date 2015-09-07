@@ -1,18 +1,13 @@
 <div class="agregar_nuevo">
     <a href="#agregarArchivo" class="btn btn-default modal-trigger"><?= label('clientes_archivoNuevo') ?></a>
 </div>
-<div class="checkbox-general tabla-interna">
-    <input class="filled-in checkbox checkbox-file checkall" type="checkbox" id="checkbox-all-files"
-           onclick="toggleChecked(this.checked)"/>
-    <label for="checkbox-all-files"></label>
-</div>
 <table id="files" class="data-table-information responsive-table display">
     <thead>
         <tr>
             <th style="text-align: center;">
-                <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all-files"
-                       style="visibility: hidden;" onclick="toggleChecked(this.checked)"/>
-                <label for="checkbox-all-files" style="visibility: hidden;"></label>
+                <input class="filled-in checkbox checkbox-file checkall" type="checkbox" id="checkbox-all-files"
+                       onclick="toggleChecked(this.checked)"/>
+                <label for="checkbox-all-files"></label>
             </th>
             <th><?= label('clientes_archivosNombre') ?></th>
             <th><?= label('clientes_archivosDescripcion') ?></th>

@@ -189,18 +189,13 @@
                                                         <?= label('formCliente_agregar'); ?>
                                                     </a>
                                                 </div>
-                                                <div class="checkbox-general tabla-interna">
-                                                    <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all"
-                                                           onclick="toggleChecked(this.checked)"/>
-                                                    <label for="checkbox-all"></label>
-                                                </div>
                                                 <table id="cliente1-contactos" class="data-table-information responsive-table striped">
                                                     <thead>
                                                         <tr>
                                                             <th style="text-align: center;">
                                                                 <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all"
-                                                                       style="visibility: hidden;" onclick="toggleChecked(this.checked)"/>
-                                                                <label for="checkbox-all" style="visibility: hidden;"></label>
+                                                                       onclick="toggleChecked(this.checked)"/>
+                                                                <label for="checkbox-all"></label>
                                                             </th>
                                                             <th><?= label('formCliente_nombreContacto'); ?></th>
                                                             <th><?= label('formCliente_correoContacto'); ?></th>

@@ -6,18 +6,13 @@
     <a id="busqueda-avanzada-agregar" href="#busquedaAvanzada"
        class="modal-trigger"><?= label('clientes_busquedaAvanzada') ?></a>
 </div>
-<div class="checkbox-general tabla-interna">
-    <input class="filled-in checkbox checkbox-cotizacion checkall" type="checkbox" id="checkbox-all-cotizaciones"
-           onclick="toggleChecked(this.checked)"/>
-    <label for="checkbox-all-cotizaciones"></label>
-</div>
 <table id="cliente1-cotizaciones" class="data-table-information responsive-table display" cellspacing="0">
     <thead>
         <tr>
             <th style="text-align: center;">
-                <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all-cotizaciones"
-                       style="visibility: hidden;" onclick="toggleChecked(this.checked)"/>
-                <label for="checkbox-all-cotizaciones" style="visibility: hidden;"></label>
+                <input class="filled-in checkbox checkbox-cotizacion checkall" type="checkbox" id="checkbox-all-cotizaciones"
+                       onclick="toggleChecked(this.checked)"/>
+                <label for="checkbox-all-cotizaciones"></label>
             </th>
             <th><?= label('tablaCotizaciones_codigo'); ?></th>
             <th><?= label('tablaCotizaciones_fecha'); ?></th>

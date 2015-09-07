@@ -33,12 +33,6 @@
                                                     <a id="busqueda-avanzada-agregar" href="#busquedaAvanzada"
                                                        class="modal-trigger"><?= label('clientes_busquedaAvanzada') ?></a>
                                                 </div>
-                                                <div class="checkbox-general">
-                                                    <input class="filled-in checkbox checkall" type="checkbox"
-                                                           id="checkbox-all"
-                                                           onclick="toggleChecked(this.checked)"/>
-                                                    <label for="checkbox-all"></label>
-                                                </div>
                                                 <table id="clients"
                                                        class="data-table-information responsive-table display"
                                                        cellspacing="0">
@@ -46,9 +40,9 @@
                                                         <tr>
                                                             <th style="text-align: center;">
                                                                 <input class="filled-in checkbox checkall" type="checkbox"
-                                                                       id="checkbox-all" style="visibility: hidden;"
+                                                                       id="checkbox-all"
                                                                        onclick="toggleChecked(this.checked)"/>
-                                                                <label for="checkbox-all" style="visibility: hidden;"></label>
+                                                                <label for="checkbox-all"></label>
                                                             </th>
                                                             <th><?= label('Cliente_tablaCodigo'); ?></th>
                                                             <th><?= label('Cliente_tablaTipo'); ?></th>
