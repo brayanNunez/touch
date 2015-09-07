@@ -1,6 +1,7 @@
     $(document).on("ready", function(){
 
         $("button[type= 'submit']").on("click", function(){
+             //event.preventDefault();
             $('form').validate({
                 rules:
                 {

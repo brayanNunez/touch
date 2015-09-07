@@ -21,7 +21,7 @@
                     <div id="submit-button" class="section">
                         <div class="row">
                             <div class="col s12 m12 l10">
-                                <form class="col s12" action="<?= base_url() ?>empleados/insertar" method="POST">
+                                <form class="col s12" data-action="<?= base_url() ?>empleados/insertar" method="POST">
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <input id="empleado_codigo" name="empleado_codigo" type="text">
@@ -215,21 +215,59 @@
 <script>  
 
  $("button[type='submit']").click(function(){
-    event.preventDefault();
+     // event.preventDefault();
 
-    var url = $('form').attr('action');
-    var method = $('form').attr('method'); 
+    // var url = $('form').attr('action');
+    // var method = $('form').attr('method'); 
+
+
+    // $.ajax({
+    //        type: method,
+    //        url: url,
+    //        data: $('form').serialize(), 
+    //        success: function(response)
+    //        {
+    //            alert(response);
+    //        }
+    //      });
 
 
     $.ajax({
-           type: method,
-           url: url,
-           data: $('form').serialize(), 
-           success: function(response)
-           {
-               alert(response);
-           }
-         });
+           data: {empleado_id :  $('#empleado_id').val()},
+           url:   '<?=base_url()?>empleados/existeIdentificacion',
+           type:  'post',
+           success:  function (response) {
+            switch(response){
+                case '0':
+                    alert("Ha ocurrido un error");
+                break;
+                case '1':
+                    alert("La identificacion ya existe");
+                break;
+                case '2':
+                    var url = $('form').data('action');
+                    var method = $('form').attr('method'); 
+                    $.ajax({
+                           type: method,
+                           url: url,
+                           data: $('form').serialize(), 
+                           success: function(response)
+                           {
+                               if (response == 0) {
+                                    alert("Ha ocurrido un error");
+                               } else {
+                                    alert("Correcto, reiniciar form");
+                               }
+                           }
+                         });
+
+                break;
+            }
+        }
+    });
+
+
+
  });
 
 

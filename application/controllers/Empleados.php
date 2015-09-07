@@ -57,10 +57,11 @@ class Empleados extends CI_Controller
         ];
 
         if (!$this->Empleado_model->insertar($data)) {
-            echo "Error en la transaccion";
+            //Error en la transaccion
+            echo 0;
         } else {
-            // redirect('empleados/index');
-            echo "Correcto";
+            // correcto
+            echo 1;
         }
         
     }
@@ -117,14 +118,21 @@ class Empleados extends CI_Controller
     }
 
     //este metodo es llamado mediante ajax
-    public function Existe()
+    public function existeIdentificacion()
     {
-
-       $id = $_POST['idEliminar'];
-        if (!$this->Empleado_model->eliminar(decryptIt($id))) {
-            echo false; 
+        $identificacion = $_POST['empleado_id'];
+        $resultado = $this->Empleado_model->existeIdentificacion($identificacion);
+        if ($resultado === false) {
+            //Error en la transaccion
+            echo 0; 
         } else {
-            echo true; 
+            if ($resultado == 1) {
+                //Ya existe esta identificacion
+                echo 1;
+            } else {
+                //Identificacion Valida
+                echo 2;
+            }
         }
 
     }

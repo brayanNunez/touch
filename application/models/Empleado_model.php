@@ -10,6 +10,26 @@ class Empleado_model extends CI_Model
         $this->load->database();
     }
 
+    
+
+    function existeIdentificacion($identificacion)
+    {
+        try {
+            $this->db->trans_begin();
+            $query = $this->db->get_where('empleado', array('identificacion' => $identificacion));
+            if (!$query) throw new Exception("Error en la BD");   
+            $existe = 0;
+            if ($query->num_rows() > 0) {
+                $existe = 1;
+            }
+             $this->db->trans_commit();
+             return $existe;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
 
     function insertar($data)
     {
