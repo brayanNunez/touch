@@ -108,7 +108,6 @@
     <!-- js y css para menu contextual -->
     <script src="<?= base_url() ?>assets/dashboard/js/jquery.contextMenu.js" type="text/javascript"></script>
     <link href="<?= base_url() ?>assets/dashboard/css/jquery.contextMenu.css" rel="stylesheet" type="text/css"/>
-    <script src="<?= base_url() ?>assets/dashboard/js/validaciones.js" type="text/javascript"></script>
     
 
 
@@ -122,6 +121,7 @@
 
 
      <!-- js para validar foormularios -->
+     <script src="<?= base_url() ?>assets/dashboard/js/validaciones.js" type="text/javascript"></script>
     <script src="<?= base_url() ?>assets/dashboard/js/jquery.validate.min.js" type="text/javascript"></script>
     <script src="<?= base_url() ?>assets/dashboard/js/messages_es.js" type="text/javascript"></script>
 

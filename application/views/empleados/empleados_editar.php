@@ -103,13 +103,15 @@
 
                                         <div class="input-field col s12">
                                             <input id="empleado_fechaNacimiento" name="empleado_fechaNacimiento" type="text" class="datepicker-fecha" value='<?php if (isset($resultado)) {
-                                                       echo $resultado['fechaNacimiento'];
+                                                       $originalDate =  $resultado['fechaNacimiento'];
+                                                       echo date("d-m-Y", strtotime($originalDate));
                                                    } ?>'>
                                             <label for="empleado_fechaNacimiento"><?= label('formEmpleado_fechaNacimiento'); ?></label>
                                         </div>
                                         <div class="input-field col s12">
                                             <input id="empleado_fechaIngreso" name="empleado_fechaIngreso" type="text" class="datepicker-fecha" value='<?php if (isset($resultado)) {
-                                                       echo $resultado['fechaIngresoEmpresa'];
+                                                       $originalDate =  $resultado['fechaIngresoEmpresa'];
+                                                       echo date("d-m-Y", strtotime($originalDate));
                                                    } ?>'>
                                             <label for="empleado_fechaIngreso"><?= label('formEmpleado_fechaIngreso'); ?></label>
                                         </div>
@@ -266,12 +268,12 @@
 <script>
 
 
-     $('#empleado_fechaNacimiento').datepicker({
-      dateFormat: 'yy-mm-dd'
-    });
-    $('#empleado_fechaIngreso').datepicker({
-      dateFormat: 'yy-mm-dd'
-    });
+    //  $('#empleado_fechaNacimiento').datepicker({
+    //   dateFormat: 'yy-mm-dd'
+    // });
+    // $('#empleado_fechaIngreso').datepicker({
+    //   dateFormat: 'yy-mm-dd'
+    // });
 
     $(window).load(function () {
         var marcados = $('.checkbox:checked').size();
