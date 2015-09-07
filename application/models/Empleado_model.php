@@ -13,177 +13,129 @@ class Empleado_model extends CI_Model
 
     function insertar($data)
     {
+        try{
+            $this->db->trans_begin();
 
+            $query = $this->db->insert('empleado', $data['datos']);
+            if (!$query) throw new Exception("Error en la BD");   
+            $insert_id = $this->db->insert_id();
+            $palabras = explode(",", $data['palabras']); ;
+            foreach ($palabras as $palabra) {
+                $row = [
+                'idEmpleado' => $insert_id,
+                'descripcion' => $palabra
+                ];
+                $query = $this->db->insert('palabraClaveEmpleado', $row);
+                if (!$query) throw new Exception("Error en la BD");   
+            }
 
-        $this->db->trans_begin();
-
-        $this->db->insert('empleado', $data['datos']);
-        $insert_id = $this->db->insert_id();
-
-        $palabras = explode(",", $data['palabras']); ;
-
-        foreach ($palabras as $palabra) {
-            $row = [
-            'idEmpleado' => $insert_id,
-            'descripcion' => $palabra
-            ];
-            $this->db->insert('palabraClaveEmpleado', $row);
-        }
-
-        if ($this->db->trans_status() === FALSE) {
-            $this->db->trans_rollback();
-            return false;
-        } else {
             $this->db->trans_commit();
             return true;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
         }
+
     }
 
     function cargar($id)
     {
-        $this->db->trans_begin();
-
-
-        $query = $this->db->get_where('empleado', array('idEmpleado' => $id));
-        $row = $query->result_array()[0];
-        // $nuevoArray;
-        // foreach ($array as $row)
-        // {
-            // $row = 
-
-            $this->db->select('descripcion');
-            $palabras = $this->db->get_where('palabraClaveEmpleado', array('idEmpleado' => $id));
-            $row['palabras'] = $palabras->result_array();
-
-            // $nuevoArray = $row;
-            // array_push($nuevoArray, $row);
-        // }
-
-        // print_r($nuevoArray);
-         // echo $nuevoArray['nombre'];exit();
-
-
-        if ($this->db->trans_status() === FALSE) {
+        try {
+            $this->db->trans_begin();
+            $query = $this->db->get_where('empleado', array('idEmpleado' => $id));
+            if (!$query) throw new Exception("Error en la BD");   
+            $row = [];
+            if ($query->num_rows() > 0) {
+                $row = $query->result_array()[0];
+                $this->db->select('descripcion');
+                $palabras = $this->db->get_where('palabraClaveEmpleado', array('idEmpleado' => $id));
+                if (!$palabras) throw new Exception("Error en la BD");   
+                $row['palabras'] = $palabras->result_array();
+            }
+             $this->db->trans_commit();
+             return $row;
+        } catch (Exception $e) {
             $this->db->trans_rollback();
             return false;
-        } else {
-            $this->db->trans_commit();
-            if ($query->num_rows() > 0) {
-                // $data['resultado'] = $query->row();
-                return $row;
-            } else {
-                return -1;
-            }
         }
+    }
+
+    public function modificar($data)
+    {
+        try{
+            $this->db->trans_begin();
+
+            $this->db->where('idEmpleado', $data['id']);
+            $query = $this->db->update('empleado', $data['datos']);
+            if (!$query) throw new Exception("Error en la BD");   
+            $palabras = explode(",", $data['palabras']); ;
+            $this->db->where('idEmpleado', $data['id']);
+            $query = $this->db->delete('palabraClaveEmpleado');
+            if (!$query) throw new Exception("Error en la BD"); 
+            foreach ($palabras as $palabra) {
+                $row = array(
+                'idEmpleado' => $data['id'],
+                'descripcion' => $palabra
+                );
+                $query = $this->db->insert('palabraClaveEmpleado', $row);
+                if (!$query) throw new Exception("Error en la BD"); 
+            }
+
+            $this->db->trans_commit();
+            return true;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+
     }
 
     function cargarTodos()
     {
-        $this->db->trans_begin();
+        try{
+            $this->db->trans_begin();
+            
+            $empleados = $this->db->get_where('empleado', array('eliminado' => 0));
+            if (!$empleados) throw new Exception("Error en la BD"); 
+            $empleados = $empleados->result_array();
+            $resultado = [];
+             foreach ($empleados as $row)
+            {
+                $idEmpleado = $row['idEmpleado'];
+                $this->db->select('descripcion');
+                $query = $this->db->get_where('palabraClaveEmpleado', array('idEmpleado' => $idEmpleado));
+                if (!$query) throw new Exception("Error en la BD"); 
+                $row['palabras'] = $query->result_array();
+                array_push($resultado, $row);
+            }
 
-        $empleados = $this->db->get_where('empleado', array('eliminado' => 0))->result_array();
-
-        $resultado = [];
-         foreach ($empleados as $row)
-        {
-            $idEmpleado = $row['idEmpleado'];
-            $this->db->select('descripcion');
-            $query = $this->db->get_where('palabraClaveEmpleado', array('idEmpleado' => $idEmpleado));
-            $row['palabras'] = $query->result_array();
-            array_push($resultado, $row);
-        }
-
-        // print_r($resultado);
-        // echo "fin";exit();
-         //$empleados = $this->db->get_where('empleados', array('eliminado' => 0));
-
-        if ($this->db->trans_status() === FALSE) {
-            $this->db->trans_rollback();
-
-            return false;
-        } else {
             $this->db->trans_commit();
-            // if ($query->num_rows() > 0) {
-                //echo $resultado; exit;
-                
-                return $resultado;
-            // } else {
-                // return -1;
-            // }
+            return $resultado;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
         }
+       
     }
 
     public function eliminar($id)
     {
+        try{
+            $this->db->trans_begin();
 
-        $this->db->trans_begin();
+            $this->db->where('idEmpleado', $id);
+            $query = $this->db->update('empleado', array('eliminado' => 1));
+            if (!$query) throw new Exception("Error en la BD"); 
 
-        $this->db->where('idEmpleado', $id);
-        $this->db->update('empleado', array('eliminado' => 1));
-
-        // $this->db->delete('empleado', array('idEmpleado' => $id));
-
-        if ($this->db->trans_status() === FALSE) {
-            $this->db->trans_rollback();
-            return false;
-        } else {
             $this->db->trans_commit();
             return true;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
         }
     }
 
-    //actualizamos los datos del usuario con id = 3
-    public function modificar($data)
-    {
-
-        $this->db->trans_begin();
-
-        $this->db->where('idEmpleado', $data['id']);
-        $this->db->update('empleado', $data['datos']);
-
-        $palabras = explode(",", $data['palabras']); ;
-
-        $this->db->where('idEmpleado', $data['id']);
-        $this->db->delete('palabraClaveEmpleado');
-        foreach ($palabras as $palabra) {
-            $row = array(
-            'idEmpleado' => $data['id'],
-            'descripcion' => $palabra
-        );
-            $this->db->insert('palabraClaveEmpleado', $row);
-        }
-
-
-
-        if ($this->db->trans_status() === FALSE) {
-            $this->db->trans_rollback();
-            return false;
-        } else {
-            $this->db->trans_commit();
-            return true;
-        }
-
-
-    }
-
-    public function pruebaTransacciones($datos)
-    {
-
-        //empezamos una transacción
-        $this->db->trans_begin();
-
-
-        if ($this->db->trans_status() === FALSE) {
-            $this->db->trans_rollback();
-            return false;
-
-        } else {
-            $this->db->trans_commit();
-            return true;
-        }
-
-    }
-
+    
 }
 
 ?>
