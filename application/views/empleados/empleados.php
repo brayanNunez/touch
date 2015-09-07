@@ -1,3 +1,7 @@
+
+
+
+
 <!--START CONTENT -->
 
 <section id="content">
@@ -57,7 +61,7 @@
                                         </div>
 
                                         <div class="input-field col s12">
-                                            <input id="empleado_fechaNacimiento" name="empleado_fechaNacimiento" type="text" class="datepicker-fecha" value="10-03-1994">
+                                            <input id="empleado_fechaNacimiento" name="empleado_fechaNacimiento" type="text" class="datepicker-fecha">
                                             <label for="empleado_fechaNacimiento"><?= label('formEmpleado_fechaNacimiento'); ?></label>
                                         </div>
                                         <div class="input-field col s12">
@@ -260,8 +264,8 @@ function validacionCorrecta(){
                                     alert("Ha ocurrido un error");
                                } else {
                                     alert("Correcto, reiniciar form");
-                                    var validator = $('form').validate();
-                                    validator.resetForm();
+                                    $('form')[0].reset();
+                                    $('#empleado_palabras').tagsinput('removeAll');
                                }
                            }
                          });
