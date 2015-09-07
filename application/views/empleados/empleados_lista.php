@@ -50,21 +50,16 @@
                                                     <a href="<?= base_url() ?>empleados/agregar"
                                                        class="btn btn-default"><?= label('agregar_nuevo'); ?></a>
                                                 </div>
-                                                <div class="checkbox-general">
-                                                    <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all"
-                                                           onclick="toggleChecked(this.checked)"/>
-                                                    <label for="checkbox-all"></label>
-                                                </div>
                                                 <table id="empleados-tabla-lista"
                                                        class="data-table-information responsive-table striped"
                                                        cellspacing="0">
                                                     <thead>
                                                     <tr>
-                                                        <th>
+                                                        <th style="text-align: center;">
                                                             <input class="filled-in checkbox checkall" type="checkbox"
-                                                                   id="checkbox-all" style="visibility: hidden;"
+                                                                   id="checkbox-all"
                                                                    onclick="toggleChecked(this.checked)"/>
-                                                            <label for="checkbox-all" style="visibility: hidden;"></label>
+                                                            <label for="checkbox-all"></label>
                                                         </th>
                                                         <th><?= label('Empleado_tablaCodigo'); ?></th>
                                                         <th><?= label('Empleado_tablaNombre'); ?></th>
