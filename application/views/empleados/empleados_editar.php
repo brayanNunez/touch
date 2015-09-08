@@ -265,15 +265,80 @@
 </section>
 <!-- END CONTENT-->
 
+<script>  
+
+function validacionCorrecta(){
+    var miIdActual = "<?php if (isset($resultado)) {echo $resultado['identificacion'];} ?>";
+    var idNuevo = $('#empleado_id').val();
+
+    if (miIdActual == idNuevo) {
+        var url = $('form').attr('action');
+        var method = $('form').attr('method'); 
+        $.ajax({
+               type: method,
+               url: url,
+               data: $('form').serialize(), 
+               success: function(response)
+               {
+                   if (response == 0) {
+                        alert("Ha ocurrido un error");
+                   } else {
+                        alert("Correcto, ir a lista");
+                        window.location.href = "<?= base_url() ?>empleados";
+                   }
+               }
+             });
+    } else {
+            $.ajax({
+                   data: {empleado_id : idNuevo},
+                   url:   '<?=base_url()?>empleados/existeIdentificacion',
+                   type:  'post',
+                   success:  function (response) {
+                    switch(response){
+                        case '0':
+                            alert("Ha ocurrido un error");
+                        break;
+                        case '1':
+                            alert("La identificacion ya existe");
+                            $('#empleado_id').focus();
+                        break;
+                        case '2':
+
+                            var url = $('form').attr('action');
+                            var method = $('form').attr('method'); 
+                            $.ajax({
+                                   type: method,
+                                   url: url,
+                                   data: $('form').serialize(), 
+                                   success: function(response)
+                                   {
+                                       if (response == 0) {
+                                            alert("Ha ocurrido un error");
+                                       } else {
+                                            alert("Correcto, ir a lista");
+                                            window.location.href = "<?= base_url() ?>empleados";
+                                       }
+                                   }
+                                 });
+
+                        break;
+                    }
+                }
+            });
+
+         };
+
+    }
+
+
+</script>
+
+
+
+
+
 <script>
 
-
-    //  $('#empleado_fechaNacimiento').datepicker({
-    //   dateFormat: 'yy-mm-dd'
-    // });
-    // $('#empleado_fechaIngreso').datepicker({
-    //   dateFormat: 'yy-mm-dd'
-    // });
 
     $(window).load(function () {
         var marcados = $('.checkbox:checked').size();

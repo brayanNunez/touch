@@ -218,25 +218,6 @@
 
 <script>  
 
- // $("button[type='submit']").click(function(){
-
-
-     // event.preventDefault();
-
-    // var url = $('form').attr('action');
-    // var method = $('form').attr('method'); 
-
-
-    // $.ajax({
-    //        type: method,
-    //        url: url,
-    //        data: $('form').serialize(), 
-    //        success: function(response)
-    //        {
-    //            alert(response);
-    //        }
-    //      });
-
 function validacionCorrecta(){
 
     $.ajax({
@@ -250,6 +231,7 @@ function validacionCorrecta(){
                 break;
                 case '1':
                     alert("La identificacion ya existe");
+                    $('#empleado_id').focus();
                 break;
                 case '2':
                     var url = $('form').attr('action');
@@ -275,11 +257,6 @@ function validacionCorrecta(){
         }
     });
 }
-
-
-
- // });
-
 
 </script>
 

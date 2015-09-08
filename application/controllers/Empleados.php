@@ -38,6 +38,7 @@ class Empleados extends CI_Controller
         $this->load->view('layout/default/footer');
     }
 
+    //Metodo llamado mediante ajax
      public function insertar()
     {
         $data['palabras'] = $this->input->post('empleado_palabras');
@@ -80,6 +81,8 @@ class Empleados extends CI_Controller
         }
     }
 
+
+    //Metodo llamado mediante ajax
     public function modificar($id)
     {
         $data['palabras'] = $this->input->post('empleado_palabras');
@@ -99,9 +102,11 @@ class Empleados extends CI_Controller
         );
         $data['id'] = decryptIt($id);
         if (!$this->Empleado_model->modificar($data)) {
-            echo "Error en la transaccion"; 
+            //Error en la transaccion
+            echo 0;
         } else {
-           redirect('empleados/index');
+            //correcto
+            echo 1;
         }
         
     }

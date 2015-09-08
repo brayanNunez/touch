@@ -16,7 +16,7 @@ class Empleado_model extends CI_Model
     {
         try {
             $this->db->trans_begin();
-            $query = $this->db->get_where('empleado', array('identificacion' => $identificacion));
+            $query = $this->db->get_where('empleado', array('identificacion' => $identificacion,  'eliminado' => 0));
             if (!$query) throw new Exception("Error en la BD");   
             $existe = 0;
             if ($query->num_rows() > 0) {
@@ -62,7 +62,7 @@ class Empleado_model extends CI_Model
     {
         try {
             $this->db->trans_begin();
-            $query = $this->db->get_where('empleado', array('idEmpleado' => $id));
+            $query = $this->db->get_where('empleado', array('idEmpleado' => $id,  'eliminado' => 0));
             if (!$query) throw new Exception("Error en la BD");   
             $row = [];
             if ($query->num_rows() > 0) {
