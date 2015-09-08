@@ -50,6 +50,11 @@
     $lang['confirmarActivarProductoServicio'] = '¿Realmente desea activar el elemento seleccionado?';
     $lang['confirmarDesactivarProductoServicio'] = '¿Realmente desea desactivar el elemento seleccionado?';
 
+    $lang['empleadoGuardadoCorrectamente'] = 'El empleado ha sido creado correctamente.';
+    $lang['empleadoEditadoCorrectamente'] = 'El empleado ha sido editado correctamente.';
+    $lang['empleadoIdentificacionExistente'] = 'La identificación indicada ya existe.';
+
+    
 //tipos de salario
     $lang['horas'] = 'Por horas';
     $lang['dia'] = 'Diario';

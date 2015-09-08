@@ -247,6 +247,9 @@
                                                     name="action"><?= label('formEmpleado_editar'); ?>
                                             </button>
                                         </div>
+                                        <div style="display: none">
+                                            <a id="linkModalEditado" href="#transaccionCorrecta" class="btn btn-default modal-trigger"></a>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -283,8 +286,8 @@ function validacionCorrecta(){
                    if (response == 0) {
                         alert("Ha ocurrido un error");
                    } else {
-                        alert("Correcto, ir a lista");
-                        window.location.href = "<?= base_url() ?>empleados";
+                        $('#linkModalEditado').click();
+                        // window.location.href = "<?= base_url() ?>empleados";
                    }
                }
              });
@@ -299,7 +302,7 @@ function validacionCorrecta(){
                             alert("Ha ocurrido un error");
                         break;
                         case '1':
-                            alert("La identificacion ya existe");
+                            alert('<?= label("empleadoIdentificacionExistente"); ?>');
                             $('#empleado_id').focus();
                         break;
                         case '2':
@@ -315,8 +318,8 @@ function validacionCorrecta(){
                                        if (response == 0) {
                                             alert("Ha ocurrido un error");
                                        } else {
-                                            alert("Correcto, ir a lista");
-                                            window.location.href = "<?= base_url() ?>empleados";
+                                            $('#linkModalEditado').click();
+                                            // window.location.href = "<?= base_url() ?>empleados";
                                        }
                                    }
                                  });
@@ -426,21 +429,19 @@ function validacionCorrecta(){
 </script>
 
 <!-- lista modals -->
-<div id="agregarPalabra" class="modal">
+<div id="transaccionCorrecta" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
-        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+        <a href="" class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <div class="input-field col s12">
-            <input id="palabra_nombre" type="text" value="">
-            <label for="palabra_nombre"><?= label('formEmpleado_palabraNombre'); ?></label>
-        </div>
+        <p><?= label('empleadoEditadoCorrectamente'); ?></p>
     </div>
     <div class="modal-footer">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <a href="<?= base_url() ?>empleados" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('Ir a la lista'); ?></a>
     </div>
 </div>
+
 <div id="agregarSalario" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
