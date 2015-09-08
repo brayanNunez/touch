@@ -42,7 +42,7 @@ class Empleados extends CI_Controller
      public function insertar()
     {
         $data['palabras'] = $this->input->post('empleado_palabras');
-        $data['datos'] = [
+        $data['datos'] = array(
             'idEmpresa' => '1',
             'codigo' => $this->input->post('empleado_codigo'),
             'identificacion' => $this->input->post('empleado_id'),
@@ -55,7 +55,7 @@ class Empleados extends CI_Controller
             // 'fechaIngresoEmpresa' => $this->input->post('empleado_fechaIngreso'),
             'descripcion' => $this->input->post('empleado_descripcion'),
             'eliminado' => '0'
-        ];
+        );
 
         if (!$this->Empleado_model->insertar($data)) {
             //Error en la transaccion
@@ -70,7 +70,7 @@ class Empleados extends CI_Controller
     public function editar($id)
     {
         $resultado = $this->Empleado_model->cargar(decryptIt($id)); 
-        if ($resultado === false || $resultado === []) {
+        if ($resultado === false || $resultado === array()) {
             echo "Error en la transaccion";
         } else {
                 $data['resultado'] = $resultado;

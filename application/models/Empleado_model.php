@@ -41,10 +41,10 @@ class Empleado_model extends CI_Model
             $insert_id = $this->db->insert_id();
             $palabras = explode(",", $data['palabras']); ;
             foreach ($palabras as $palabra) {
-                $row = [
+                $row = array(
                 'idEmpleado' => $insert_id,
                 'descripcion' => $palabra
-                ];
+                );
                 $query = $this->db->insert('palabraClaveEmpleado', $row);
                 if (!$query) throw new Exception("Error en la BD");   
             }
@@ -64,9 +64,10 @@ class Empleado_model extends CI_Model
             $this->db->trans_begin();
             $query = $this->db->get_where('empleado', array('idEmpleado' => $id,  'eliminado' => 0));
             if (!$query) throw new Exception("Error en la BD");   
-            $row = [];
+            $row = array();
             if ($query->num_rows() > 0) {
-                $row = $query->result_array()[0];
+                $array = $query->result_array();
+                $row = array_shift($array);//obtiene el primer elemento.. el [0] no sirve en el server
                 $this->db->select('descripcion');
                 $palabras = $this->db->get_where('palabraClaveEmpleado', array('idEmpleado' => $id));
                 if (!$palabras) throw new Exception("Error en la BD");   
@@ -118,7 +119,7 @@ class Empleado_model extends CI_Model
             $empleados = $this->db->get_where('empleado', array('eliminado' => 0));
             if (!$empleados) throw new Exception("Error en la BD"); 
             $empleados = $empleados->result_array();
-            $resultado = [];
+            $resultado = array();
              foreach ($empleados as $row)
             {
                 $idEmpleado = $row['idEmpleado'];
