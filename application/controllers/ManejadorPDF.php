@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Pdf_ci extends CI_Controller
+class ManejadorPDF extends CI_Controller
 {
 
 
@@ -22,6 +22,42 @@ class Pdf_ci extends CI_Controller
         }
     }
 
+
+
+    public function tablaDescarga()
+    {
+
+        if (isset($_POST['miHtml'])) {
+            $htmlEntrada = $_POST['miHtml'];
+            $this->createFolder();
+            $this->html2pdf->folder('./files/pdfs/');
+            $this->html2pdf->filename('test.pdf');
+            $this->html2pdf->paper('a4', 'portrait');
+            $data = "";
+            $this->html2pdf->html(utf8_decode($htmlEntrada));
+            $this->html2pdf->create();
+            // if ($path = $this->html2pdf->create('save')) {
+
+            //     $this->load->library('email');
+
+            //     $this->email->from('brayannr@hotmail.es', 'Brayan');
+            //     $this->email->to('brayan.nunez@ucrso.info');
+            //     // $this->email->cc('jose.rodriguez@ucrso.info'); 
+
+            //     $this->email->subject('Email PDF Test');
+            //     $this->email->message('Testing the email a freshly created PDF');
+
+            //     $this->email->attach($path);
+
+            //     $this->email->send();
+            //     $this->html2pdf->create();
+            //     echo "El email ha sido enviado correctamente";
+
+            // }
+
+        }
+
+    }
 
     public function index()
     {

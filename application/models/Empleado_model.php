@@ -73,6 +73,7 @@ class Empleado_model extends CI_Model
                 if (!$palabras) throw new Exception("Error en la BD");   
                 $row['palabras'] = $palabras->result_array();
             }
+            // print_r ($row);exit();
              $this->db->trans_commit();
              return $row;
         } catch (Exception $e) {
@@ -129,6 +130,7 @@ class Empleado_model extends CI_Model
                 $row['palabras'] = $query->result_array();
                 array_push($resultado, $row);
             }
+
 
             $this->db->trans_commit();
             return $resultado;

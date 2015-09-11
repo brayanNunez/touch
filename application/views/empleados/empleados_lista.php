@@ -2,21 +2,86 @@
 
 <script type="text/javascript">
 
-// $('#bontonPaginacion').on("click", function(){
-//     alert("hola");
-// $(document).on("ready", function(){
+$('#bontonPaginacion').on("click", function(){
 
-    $('.dataTables_paginate paging_simple_numbers').on('click', function(){
-            alert("mec");
+    alert($('#empleados-tabla-lista >tbody >tr').length);
+    
+    var informacionSistema = '<div id="informacionSistema"><span><p>touchcr.com</p></span></div>';
 
-             // alert($(this).data('dt-idx'));
-        });
 
-// })
+    
+    var tablaHtml = informacionSistema;
+    tablaHtml += '<h1 id="titulo">Empleados</h1>';
+    tablaHtml += '<table><thead>';
 
-// })
+    $('#empleados-tabla-lista >thead >tr').each(function()
+    {
+        tablaHtml += '<tr>';
+
+        var cantidadColummnas = $(this).children("th").length;
+
+
+      $(this).children("th").each(function(index){
+        if (index != 0 && index != cantidadColummnas-1) {
+            tablaHtml += '<td>' + $(this).html() + '</td>';
+        };
+      });
+      tablaHtml += '</tr>';
+    });
+
+    tablaHtml += '</thead>';
+
+
+
+    tablaHtml += '<tbody>';
+
+    $('#empleados-tabla-lista >tbody >tr').each(function()
+    {
+        tablaHtml += '<tr>';
+
+        var cantidadColummnas = $(this).children("td").length;
+
+
+      $(this).children("td").each(function(index){
+        if (index != 0 && index != cantidadColummnas-1) {
+            tablaHtml += '<td>' + $(this).text() + '</td>';
+            // alert($(this).html());
+        };
+      });
+      tablaHtml += '</tr>';
+    });
+    tablaHtml += '</tbody></table></body></html>';
+
+
+
+     var table =  '<table><thead><tr><th>Month</th><th>Savings</th></tr></thead><tfoot><tr><td>Sum</td><td><a href="localhost/Proyectos">$180</a></td></tr></tfoot><tbody><tr><td>January</td><td>$100</td></tr><tr><td>February</td><td>$80</td></tr></tbody></table>';
+     // table = $('#contenedorTabla').html();
+
+
+
+
+
+
+    var html = '<!DOCTYPE html><html><head><title>403 Forbidden</title><link rel="stylesheet" href="<?= base_url() ?>assets/dashboard/css/estiloTablasDescarga.css"></head><body id="hojaPDF">';
+     html +=  tablaHtml + '</body></html>';
+
+  
+
+
+
+    $('#inset_form').html('<form  action="<?=base_url()?>ManejadorPDF/tablaDescarga" name="form" method="post" style="display:block;"><textarea name="miHtml">' + html + '</textarea></form>');
+    document.forms['form'].submit();
+
+    //eliminar la propiedead height para que siga adaptandose a los cambios de tamano en el html
+    // $('#footerDiseno').css("height", "");
+    // $('#informacion').css("height", "");
+    // $('#prefooter').css("height", "");
+    // $('.editarExterno').css("display", "");
+
+});
 
 </script>
+<div id="inset_form"></div>
 
 <!-- START CONTENT -->
 
@@ -50,9 +115,8 @@
                                                     <a href="<?= base_url() ?>empleados/agregar"
                                                        class="btn btn-default"><?= label('agregar_nuevo'); ?></a>
                                                 </div>
-                                                <table id="empleados-tabla-lista"
-                                                       class="data-table-information responsive-table striped"
-                                                       cellspacing="0">
+                                                <div id="contenedorTabla">
+                                                <table id="empleados-tabla-lista" class="data-table-information responsive-table striped" cellspacing="0">
                                                     <thead>
                                                     <tr>
                                                         <th style="text-align: center;">
@@ -134,6 +198,8 @@
 
                                                     </tbody>
                                                 </table>
+                                                </div>
+
                                                 <div class="tabla-conAgregar">
                                                     <a id="opciones-seleccionados-print"
                                                        class="waves-effect black-text opciones-seleccionados option-print-table"
