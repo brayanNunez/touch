@@ -1,26 +1,14 @@
-<button id="bontonPaginacion">Prueba</button>
-
+<button id="convertirPDF">PDF</button>
+<button id="convertirExcel">Excel</button>
 <script type="text/javascript">
 
-$('#bontonPaginacion').on("click", function(){
-
-    alert($('#empleados-tabla-lista >tbody >tr').length);
-    
-    var informacionSistema = '<div id="informacionSistema"><span><p>touchcr.com</p></span></div>';
-
-
-    
-    var tablaHtml = informacionSistema;
-    tablaHtml += '<h1 id="titulo">Empleados</h1>';
-    tablaHtml += '<table><thead>';
+$('#convertirExcel').on("click", function(){
+    tablaHtml = '<table><thead>';
 
     $('#empleados-tabla-lista >thead >tr').each(function()
     {
         tablaHtml += '<tr>';
-
         var cantidadColummnas = $(this).children("th").length;
-
-
       $(this).children("th").each(function(index){
         if (index != 0 && index != cantidadColummnas-1) {
             tablaHtml += '<td>' + $(this).html() + '</td>';
@@ -30,22 +18,15 @@ $('#bontonPaginacion').on("click", function(){
     });
 
     tablaHtml += '</thead>';
-
-
-
     tablaHtml += '<tbody>';
 
     $('#empleados-tabla-lista >tbody >tr').each(function()
     {
         tablaHtml += '<tr>';
-
         var cantidadColummnas = $(this).children("td").length;
-
-
       $(this).children("td").each(function(index){
         if (index != 0 && index != cantidadColummnas-1) {
             tablaHtml += '<td>' + $(this).text() + '</td>';
-            // alert($(this).html());
         };
       });
       tablaHtml += '</tr>';
@@ -53,21 +34,59 @@ $('#bontonPaginacion').on("click", function(){
     tablaHtml += '</tbody></table></body></html>';
 
 
+    var html = tablaHtml;
 
+    $('#inset_form').html('<form  action="<?=base_url()?>ManejadorExcel/tablaDescarga" name="form" method="post" style="display:block;"><textarea name="miHtml">' + html + '</textarea></form>');
+    document.forms['form'].submit();
+
+    //eliminar la propiedead height para que siga adaptandose a los cambios de tamano en el html
+    // $('#footerDiseno').css("height", "");
+    // $('#informacion').css("height", "");
+    // $('#prefooter').css("height", "");
+    // $('.editarExterno').css("display", "");
+
+});
+
+$('#convertirPDF').on("click", function(){
+ 
+    var informacionSistema = '<div id="informacionSistema"><span><p>touchcr.com</p></span></div>';
+
+    var tablaHtml = informacionSistema;
+    tablaHtml += '<h1 id="titulo">Empleados</h1>';
+    tablaHtml += '<table><thead>';
+
+    $('#empleados-tabla-lista >thead >tr').each(function()
+    {
+        tablaHtml += '<tr>';
+        var cantidadColummnas = $(this).children("th").length;
+      $(this).children("th").each(function(index){
+        if (index != 0 && index != cantidadColummnas-1) {
+            tablaHtml += '<td>' + $(this).html() + '</td>';
+        };
+      });
+      tablaHtml += '</tr>';
+    });
+
+    tablaHtml += '</thead>';
+    tablaHtml += '<tbody>';
+
+    $('#empleados-tabla-lista >tbody >tr').each(function()
+    {
+        tablaHtml += '<tr>';
+        var cantidadColummnas = $(this).children("td").length;
+      $(this).children("td").each(function(index){
+        if (index != 0 && index != cantidadColummnas-1) {
+            tablaHtml += '<td>' + $(this).text() + '</td>';
+        };
+      });
+      tablaHtml += '</tr>';
+    });
+    tablaHtml += '</tbody></table></body></html>';
      var table =  '<table><thead><tr><th>Month</th><th>Savings</th></tr></thead><tfoot><tr><td>Sum</td><td><a href="localhost/Proyectos">$180</a></td></tr></tfoot><tbody><tr><td>January</td><td>$100</td></tr><tr><td>February</td><td>$80</td></tr></tbody></table>';
      // table = $('#contenedorTabla').html();
 
-
-
-
-
-
     var html = '<!DOCTYPE html><html><head><title>403 Forbidden</title><link rel="stylesheet" href="<?= base_url() ?>assets/dashboard/css/estiloTablasDescarga.css"></head><body id="hojaPDF">';
      html +=  tablaHtml + '</body></html>';
-
-  
-
-
 
     $('#inset_form').html('<form  action="<?=base_url()?>ManejadorPDF/tablaDescarga" name="form" method="post" style="display:block;"><textarea name="miHtml">' + html + '</textarea></form>');
     document.forms['form'].submit();

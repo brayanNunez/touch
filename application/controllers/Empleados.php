@@ -9,11 +9,31 @@ class Empleados extends CI_Controller
         parent::__construct();
         $this->lang->load('content');
         $this->load->model('Empleado_model');
-        $this->load->library('form_validation');
+        $this->load->library('simple_html_dom');
     }
 
     public function index()
     {
+
+$str = '<table class="tableISV"><tr><td>language</td><td>español</td></tr><tr><td>query</td><td>Convertir</td></tr><tr><td>origen</td><td>html</td></tr><tr><td>destino</td><td>array</td></tr><tr><td>user</td><td>username</td><td>root</td></tr><tr><td></td><td>password</td><td>toor</td></tr></table>';
+
+
+// $table = str_get_html($str);
+// $rowData = array();
+
+// foreach($table->find('tr') as $row) {
+//     // initialize array to store the cell data from each row
+//     $flight = array();
+//     foreach($row->find('td') as $cell) {
+//         // push the cell's text to the array
+//         $flight[] = $cell->plaintext;
+//     }
+//     $rowData[] = $flight;
+// }
+// echo print_r($rowData); exit();
+
+
+
         $lista = $this->Empleado_model->cargarTodos();
                 $data['lista'] = $lista;
                 $this->load->view('layout/default/header');
@@ -148,6 +168,7 @@ class Empleados extends CI_Controller
 
     public function cargarTodos()
     {
+
         $resultado = $this->Empleado_model->cargarTodos();
         if ($resultado == false) {
             echo "Error en la transaccion";
@@ -167,6 +188,10 @@ class Empleados extends CI_Controller
         }
 
     }
+
+
+
+
 
 }
 

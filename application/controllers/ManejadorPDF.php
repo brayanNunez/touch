@@ -12,6 +12,8 @@ class ManejadorPDF extends CI_Controller
         //cargamos el modelo pdf_model
         // $this->load->model('pdf_model');
         $this->load->helper('file');
+
+        // $this->load->library('simple_html_dom');
     }
 
     private function createFolder()
@@ -29,6 +31,31 @@ class ManejadorPDF extends CI_Controller
 
         if (isset($_POST['miHtml'])) {
             $htmlEntrada = $_POST['miHtml'];
+
+
+
+            // $str = '<table class="tableISV"><tr><td>language</td><td>español</td></tr><tr><td>query</td><td>Convertir</td></tr><tr><td>origen</td><td>html</td></tr><tr><td>destino</td><td>array</td></tr><tr><td>user</td><td>username</td><td>root</td></tr><tr><td></td><td>password</td><td>toor</td></tr></table>';
+            // $str = $htmlEntrada;
+
+            // $table = str_get_html($str);
+            // $rowData = array();
+
+            // foreach($table->find('tr') as $row) {
+            //     // initialize array to store the cell data from each row
+            //     $flight = array();
+            //     foreach($row->find('td') as $cell) {
+            //         // push the cell's text to the array
+            //         $flight[] = $cell->plaintext;
+            //     }
+            //     $rowData[] = $flight;
+            // }
+            // echo print_r($rowData); exit();
+
+
+
+
+
+
             $this->createFolder();
             $this->html2pdf->folder('./files/pdfs/');
             $this->html2pdf->filename('test.pdf');
