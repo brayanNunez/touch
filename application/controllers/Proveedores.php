@@ -22,7 +22,7 @@ class Proveedores extends CI_Controller
     {
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
-        $this->load->view('proveedores/proveedores');
+        $this->load->view('proveedores/proveedores_crear');
         $this->load->view('layout/default/footer');
     }
 
