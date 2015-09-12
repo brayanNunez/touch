@@ -25,7 +25,7 @@
                                     <div class="row">
 
                                         <div class="input-field col s12">
-                                            <input id="perfil_numeroIdentificacionIndependiente" type="text">
+                                            <input id="perfil_numeroIdentificacionIndependiente" type="text" value="1-1515-7373">
                                             <label for="perfil_numeroIdentificacionIndependiente"><?= label('Número de identificación'); ?></label>
                                         </div>
 
@@ -46,60 +46,59 @@
 
                                         <div>
                                             <div class="input-field col s12 m6 l6">
-                                                <input id="perfil_correoIndepediente" type="email">
+                                                <input id="perfil_correoIndepediente" type="email" value="juanperez@gmail.com">
                                                 <label for="perfil_correoIndepediente">Correo electrónico</label>
                                             </div>
                                             <div class="input-field col s12 m6 l6">
-                                                <input id="perfil_confirmarCorreoIndepediente" type="email">
+                                                <input id="perfil_confirmarCorreoIndepediente" type="email" value="juanperez@gmail.com">
                                                 <label for="perfil_confirmarCorreoIndepediente">Confirmar correo electrónico</label>
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="input-field col s12 m6 l6">
-                                                <input id="perfil_contraseñaIndepediente" type="password">
+                                                <input id="perfil_contraseñaIndepediente" type="password" value="123456">
                                                 <label for="perfil_contraseñaIndepediente">Contraseña</label>
                                             </div>
                                             <div class="input-field col s12 m6 l6">
-                                                <input id="perfil_confirmarContraseñaIndepediente" type="password">
+                                                <input id="perfil_confirmarContraseñaIndepediente" type="password" value="123456">
                                                 <label for="perfil_confirmarContraseñaIndepediente">Confirmar contraseña</label>
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="input-field col s12 m6 l6">
-                                                <input id="perfil_telefonoIndependiente" type="text">
+                                                <input id="perfil_telefonoIndependiente" type="text" value="2444-5689">
                                                 <label for="perfil_telefonoIndependiente">Teléfono</label>
                                             </div>
 
                                             <div class="input-field col s12 m6 l6">
-                                                <input id="perfil_celularIndependiente" type="text">
+                                                <input id="perfil_celularIndependiente" type="text" value="8245-5956">
                                                 <label for="perfil_celularIndependiente">Celular</label>
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="input-field col s12 m6 l6">
-                                                <input id="perfil_profesionIndependiente" type="text">
+                                                <input id="perfil_profesionIndependiente" type="text" value="Comerciante">
                                                 <label for="perfil_profesionIndependiente">Profesión</label>
                                             </div>
 
                                             <div class="input-field col s12 m6 l6">
-                                                <input id="perfil_sitioIndependiente" type="text">
+                                                <input id="perfil_sitioIndependiente" type="text" value="www.empresa.com">
                                                 <label for="perfil_sitioIndependiente">Sitio web</label>
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="input-field col s12 m6 l6">
-                                                <input id="perfil_fechaNacIndependiente" class="datepicker-fecha" type="text">
+                                                <input id="perfil_fechaNacIndependiente" class="datepicker-fecha" type="text" value="11-09-1990">
                                                 <label for="perfil_fechaNacIndependiente">Fecha de nacimiento</label>
                                             </div>
 
                                             <div class="input-field col s12 m6 l6">
                                                 <select id="perfil_actividadIndependiente">
-                                                    <option class="selected-option" selected disabled>Actividad comercial</option>
-                                                    <option>Trabajador independiente</option>
+                                                    <option selected>Trabajador independiente</option>
                                                     <option>Empresa</option>
                                                 </select>
                                                 <label for="perfil_actividadIndependiente">Actividad comercial</label>
@@ -131,9 +130,7 @@
                                             <div class="input-field col s12 m6 l6">
                                                 <div class="input-field col s12 country-select">
                                                     <select id="perfil_paisIndependiente">
-                                                        <option class="selected-option" selected disabled>País
-                                                        </option>
-                                                        <option value="1">Costa Rica</option>
+                                                        <option value="1" selected>Costa Rica</option>
                                                         <option value="2">Colombia</option>
                                                         <option value="3">Brasil</option>
                                                         <option value="4">USA</option>
@@ -144,7 +141,7 @@
                                             </div>
                                             <div class="input-field col s12 m6 l6">
                                                 <div class="input-field col s12">
-                                                    <input id="perfil_estadoProvinciaIndependiente" type="text">
+                                                    <input id="perfil_estadoProvinciaIndependiente" type="text" value="Alajuela">
                                                     <label for="perfil_estadoProvinciaIndependiente">Estado/Provincia</label>
                                                 </div>
                                             </div>
@@ -154,14 +151,14 @@
                                         <div class="col s12 m12">
                                             <div class="input-field col s12 m6 l6">
                                                 <div class="input-field col s12">
-                                                <input id="perfil_ciudadCantonIndependiente" type="text">
+                                                <input id="perfil_ciudadCantonIndependiente" type="text" value="San Pedro">
                                                 <label for="perfil_ciudadCantonIndependiente">Ciudad/Cantón</label>
                                             </div>
                                             </div>
 
                                             <div class="input-field col s12 m6 l6">
                                                 <div class="input-field col s12">
-                                                <input id="perfil_domicilioIndependiente" type="text">
+                                                <input id="perfil_domicilioIndependiente" type="text" value="Poás">
                                                 <label for="perfil_domicilioIndependiente">Domicilio</label>
                                             </div>
                                             </div>

@@ -25,42 +25,42 @@
                                     <div class="row">
 
                                         <div class="input-field col s12">
-                                            <input id="perfil_numeroIdentificacionEmpresa" type="text">
+                                            <input id="perfil_numeroIdentificacionEmpresa" type="text" value="3-101-289867">
                                             <label for="perfil_numeroIdentificacionEmpresa"><?= label('Número de identificación'); ?></label>
                                         </div>
 
                                         <div>
                                             <div class="input-field col s12 m6 l6">
-                                                <input id="perfil_nombreEmpresa" type="text">
+                                                <input id="perfil_nombreEmpresa" type="text" value="Empresa S.A">
                                                 <label for="perfil_nombreEmpresa">Nombre (Razón social)</label>
                                             </div>
                                             <div class="input-field col s12 m6 l6">
-                                                <input id="perfil_nombreFantasiaEmpresa" type="text">
+                                                <input id="perfil_nombreFantasiaEmpresa" type="text" value="Empresa">
                                                 <label for="perfil_nombreFantasiaEmpresa">Nombre de fantasía</label>
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="input-field col s12 m6 l6">
-                                                <input id="perfil_telefonoEmpresa" type="text">
+                                                <input id="perfil_telefonoEmpresa" type="text" value="2448-6352">
                                                 <label for="perfil_telefonoEmpresa">Teléfono</label>
                                             </div>
 
                                             <div class="input-field col s12 m6 l6">
-                                                <input id="perfil_celularEmpresa" type="text">
+                                                <input id="perfil_celularEmpresa" type="text" value="8475-5689">
                                                 <label for="perfil_celularEmpresa">Celular</label>
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="input-field col s12 m6 l6">
-                                                <input id="perfil_correoEmpresa" type="email">
+                                                <input id="perfil_correoEmpresa" type="email" value="empresa@gmail.com">
                                                 <label for="perfil_correoEmpresa">Correo empresarial</label>
                                             </div>
 
                                             <div class="input-field col s12 m6 l6">
-                                                <input id="perfil_sitioIndependiente" type="text">
-                                                <label for="perfil_sitioIndependiente">Sitio web</label>
+                                                <input id="perfil_sitioEmpresa" type="text" value="www.empresa.com">
+                                                <label for="perfil_sitioEmpresa">Sitio web</label>
                                             </div>
                                         </div>
 
@@ -68,14 +68,8 @@
                                             <div class="input-field col s12 m6 l6">
                                                 
                                                 <select id="perfil_actividadEmpresa">
-                                                    <option class="selected-option" selected disabled>Actividad comercial</option>
-                                                    <option>1 a 5</option>
-                                                    <option>6 a 10</option>
-                                                    <option>11 a 25</option>
-                                                    <option>26 a 50</option>
-                                                    <option>51 a 75</option>
-                                                    <option>76 a 100</option>
-                                                    <option>100+</option>
+                                                    <option>Independiente</option>
+                                                    <option selected>Empresa</option>
                                                 </select>
                                                 <label for="perfil_actividadEmpresa">Actividad comercial</label>
                                             </div>
@@ -83,10 +77,9 @@
                                             <div class="input-field col s12 m6 l6">
 
                                                 <select id="perfil_tamañoEmpresa">
-                                                    <option class="selected-option" selected disabled>Tamaño de la empresa</option>
                                                     <option>1 a 5</option>
                                                     <option>6 a 10</option>
-                                                    <option>11 a 25</option>
+                                                    <option selected>11 a 25</option>
                                                     <option>26 a 50</option>
                                                     <option>51 a 75</option>
                                                     <option>76 a 100</option>
@@ -99,7 +92,7 @@
                                         <div>
 
                                             <div class="input-field col s12 m6 l6">
-                                                <input id="perfil_fechaEmpresa" class="datepicker-fecha" type="text">
+                                                <input id="perfil_fechaEmpresa" class="datepicker-fecha" type="text" value="04-05-2000">
                                                 <label for="perfil_fechaEmpresa">Fecha de creación</label>
                                             </div>
                                             
@@ -125,9 +118,7 @@
                                             <div class="input-field col s12 m6 l6">
                                                 <div class="input-field col s12 country-select">
                                                     <select id="perfil_paisEmpresa">
-                                                        <option class="selected-option" selected disabled>País
-                                                        </option>
-                                                        <option value="1">Costa Rica</option>
+                                                        <option value="1" selected>Costa Rica</option>
                                                         <option value="2">Colombia</option>
                                                         <option value="3">Brasil</option>
                                                         <option value="4">USA</option>
@@ -138,7 +129,7 @@
                                             </div>
                                             <div class="input-field col s12 m6 l6">
                                                 <div class="input-field col s12">
-                                                    <input id="perfil_estadoProvinciaEmpresa" type="text">
+                                                    <input id="perfil_estadoProvinciaEmpresa" type="text" value="San José">
                                                     <label for="perfil_estadoProvinciaEmpresa">Estado/Provincia</label>
                                                 </div>
                                             </div>
@@ -148,14 +139,14 @@
                                         <div class="col s12 m12">
                                             <div class="input-field col s12 m6 l6">
                                                 <div class="input-field col s12">
-                                                <input id="perfil_ciudadCantonEmpresa" type="text">
+                                                <input id="perfil_ciudadCantonEmpresa" type="text" value="Escazú">
                                                 <label for="perfil_ciudadCantonEmpresa">Ciudad/Cantón</label>
                                             </div>
                                             </div>
 
                                             <div class="input-field col s12 m6 l6">
                                                 <div class="input-field col s12">
-                                                <input id="perfil_domicilioEmpresa" type="text">
+                                                <input id="perfil_domicilioEmpresa" type="text" value="100m sur del parque central">
                                                 <label for="perfil_domicilioEmpresa">Domicilio</label>
                                             </div>
                                             </div>
@@ -167,66 +158,66 @@
                                         </div>
 
                                         <div class="input-field col s12">
-                                            <input id="perfil_numeroIdentificacionContactoEmpresa" type="text">
+                                            <input id="perfil_numeroIdentificacionContactoEmpresa" type="text" value="1-0578-3852">
                                             <label for="perfil_numeroIdentificacionContactoEmpresa"><?= label('Número de identificación'); ?></label>
                                         </div>
 
                                         <div>
                                             <div class="input-field col s12 m4 l4">
-                                                <input id="perfil_apellido1ContactoEmpresa" type="text">
+                                                <input id="perfil_apellido1ContactoEmpresa" type="text" value="Chaves">
                                                 <label for="perfil_apellido1ContactoEmpresa">Primer apellido</label>
                                             </div>
                                             <div class="input-field col s12 m4 l4">
-                                                <input id="perfil_apellido2ContactoEmpresa" type="text">
+                                                <input id="perfil_apellido2ContactoEmpresa" type="text" value="Arias">
                                                 <label for="perfil_apellido2ContactoEmpresa">Segundo apellido</label>
                                             </div>
                                             <div class="input-field col s12 m4 l4">
-                                                <input id="perfil_nombreContactoEmpresa" type="text">
+                                                <input id="perfil_nombreContactoEmpresa" type="text" value="Hugo">
                                                 <label for="perfil_nombreContactoEmpresa">Nombre</label>
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="input-field col s12 m6 l6">
-                                                <input id="perfil_correoContactoEmpresa" type="email">
+                                                <input id="perfil_correoContactoEmpresa" type="email" value="hugo@gmail.com">
                                                 <label for="perfil_correoContactoEmpresa">Correo electrónico</label>
                                             </div>
                                             <div class="input-field col s12 m6 l6">
-                                                <input id="perfil_confirmarCorreoContactoEmpresa" type="email">
+                                                <input id="perfil_confirmarCorreoContactoEmpresa" type="email" value="hugo@gmail.com">
                                                 <label for="perfil_confirmarCorreoContactoEmpresa">Confirmar correo electrónico</label>
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="input-field col s12 m6 l6">
-                                                <input id="perfil_contraseñaContactoEmpresa" type="password">
+                                                <input id="perfil_contraseñaContactoEmpresa" type="password" value="123456">
                                                 <label for="perfil_contraseñaContactoEmpresa">Contraseña</label>
                                             </div>
                                             <div class="input-field col s12 m6 l6">
-                                                <input id="perfil_confirmarContraseñaContactoEmpresa" type="password">
+                                                <input id="perfil_confirmarContraseñaContactoEmpresa" type="password" value="123456">
                                                 <label for="perfil_confirmarContraseñaContactoEmpresa">Confirmar contraseña</label>
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="input-field col s12 m6 l6">
-                                                <input id="perfil_puestoContactoEmpresa" type="text">
+                                                <input id="perfil_puestoContactoEmpresa" type="text" value="Gerente">
                                                 <label for="perfil_puestoContactoEmpresa">Puesto</label>
                                             </div>
                                             <div class="input-field col s12 m6 l6">
-                                                <input id="perfil_fechaNacIndependienteContactoEmpresa" class="datepicker-fecha" type="text">
+                                                <input id="perfil_fechaNacIndependienteContactoEmpresa" value="05-07-1970" class="datepicker-fecha" type="text">
                                                 <label for="perfil_fechaNacIndependienteContactoEmpresa">Fecha de nacimiento</label>
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="input-field col s12 m6 l6">
-                                                <input id="perfil_telefonoContactoEmpresa" type="text">
+                                                <input id="perfil_telefonoContactoEmpresa" type="text" value="2568-5985">
                                                 <label for="perfil_telefonoContactoEmpresa">Teléfono</label>
                                             </div>
 
                                             <div class="input-field col s12 m6 l6">
-                                                <input id="perfil_celularContactoEmpresa" type="text">
+                                                <input id="perfil_celularContactoEmpresa" type="text" value="8549-5748">
                                                 <label for="perfil_celularContactoEmpresa">Celular</label>
                                             </div>
                                         </div>
