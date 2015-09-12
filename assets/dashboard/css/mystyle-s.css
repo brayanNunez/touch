@@ -205,14 +205,22 @@ table.data-table-information thead tr th:first-child { width: 6% !important; }
 .liquid div.wrapper { float: none !important; display: block; margin: 0 auto; }
 .liquid .previous { position: absolute; left: 25px; top: 70px; }
 .liquid .next { position: absolute; right: 25px; top: 70px; }
-.liquid ul li { width:200px; padding:0 2px; margin:0; }
-.liquid ul li div.info-contacto { width: auto; height: 195px; border: 2px solid black; border-radius: 5px; position: relative; }
-.liquid ul li div.info-contacto div { margin: 5px; }
-.liquid ul li div.info-contacto div div.contacto-opciones { position: absolute; bottom: 0; right: 0; margin: 0; }
-.liquid ul li div.info-contacto div div.contacto-opciones a { padding: 0 5px; }
+.liquid ul li { width:200px; padding:0 10px; margin:0; }
+.liquid ul li div.info-contacto { width: auto; height: 260px; border: 2px solid black; border-radius: 5px; position: relative; }
+.liquid ul li div.info-contacto div { margin: 5px; word-wrap: break-word; }
+.liquid ul li div.info-contacto div div.contacto-opciones { position: absolute; bottom: 0; right: 0; margin: 0 3px 3px 0; }
+.liquid ul li div.info-contacto div div.contacto-opciones a { padding: 0 10px; }
 .liquid ul li div.info-contacto div div.contacto-opciones a i { color: black; }
+.liquid ul li div.info-contacto div div.contacto-principal { position: absolute; top: 0; right: 0; margin: 0; }
+.liquid ul li div.info-contacto div div.contacto-principal a { padding: 8px 0 0 0; background-color: darkgray; opacity: 0.6; }
+.liquid ul li div.info-contacto div div.contacto-principal.es-principal a { background-color: #47b475; }
+.liquid ul li div.info-contacto div div.contacto-principal a i { color: white; }
 
 span.informacion-cliente { font-weight: bold; }
+
+div#tab-contactos hr { height: 12px; border: 0; box-shadow: inset 0 15px 15px -11px gray; }
+div#tab-contactos-nuevo { margin: 15px 0; }
+div#tab-contactos-nuevo a { cursor: pointer; font-size: large; text-decoration: underline; }
 
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/
@@ -265,6 +273,8 @@ span.informacion-cliente { font-weight: bold; }
     a#logo-principal-header { left: 43%; padding: 0; }  /* Era 48 */
     /*a#pantalla-completa { display: none; }*/
     ul#listaNotificaciones li a, ul#listaConfiguracion li a { padding: 10px; }
+
+    table.data-table-information thead tr th:first-child { width: auto !important; }
 }
 
 @media only screen and (max-width: 768px) {
@@ -327,6 +337,8 @@ span.informacion-cliente { font-weight: bold; }
     ul#opciones-barra-superior li a { padding: 0 7px; }
     ul#listaNotificaciones li a, ul#listaConfiguracion li a { padding: 9px 10px; }
     /*a#logo-principal-header { left: 48%; padding: 0; }*/
+
+    table.data-table-information thead tr th:first-child { width: auto !important; }
 }
 
 @media only screen and (max-width: 640px) {
@@ -373,6 +385,10 @@ span.informacion-cliente { font-weight: bold; }
     span.icono-porcentaje-descuento { position: absolute; top: 15px; left: 93%; }
     a#logo-principal-header { left: 43%; padding: 0; }  /* Era 47 */
     ul#opciones-barra-superior { margin-top: 15px; }
+
+    .liquid .previous { position: absolute; left: 5px; top: 70px; }
+    .liquid .next { position: absolute; right: 5px; top: 70px; }
+    .liquid ul li { width:160px; padding:0 2px; margin:0; }
 }
 
 @media only screen and (max-width: 480px) {
@@ -470,6 +486,16 @@ span.informacion-cliente { font-weight: bold; }
     ul#opciones-barra-superior li a { padding: 0 5px; }
     ul#opciones-barra-superior li a i { font-size: 23px; }
     ul#listaNotificaciones li a, ul#listaConfiguracion li a { padding: 8px 10px; }
+
+    .liquid .previous { position: absolute; left: 0; top: 70px; z-index: 100; }
+    .liquid .next { position: absolute; right: 0; top: 70px; z-index: 100; }
+    .liquid .previous i, .liquid .next i { font-size: 3rem; }
+    .liquid ul li { width:135px; padding:0; margin:0; }
+    .liquid ul li div.info-contacto div h5 { font-size: 1rem; }
+    .liquid ul li div.info-contacto div p { font-size: 11px; }
+    .liquid ul li div.info-contacto div div.contacto-opciones a { padding: 0 5px; }
+
+    table.data-table-information thead tr th:first-child { width: auto !important; }
 }
 
 @media only screen and (max-width: 360px) {
@@ -479,4 +505,12 @@ span.informacion-cliente { font-weight: bold; }
     ul#opciones-barra-superior li a { padding: 0 4px; }
     ul#opciones-barra-superior li a i { font-size: 23px; }
     ul#listaNotificaciones li a, ul#listaConfiguracion li a { padding: 8px 10px; }
+
+    .liquid .previous { position: absolute; left: 0; top: 70px; z-index: 100; }
+    .liquid .next { position: absolute; right: 0; top: 70px; z-index: 100; }
+    .liquid .previous i, .liquid .next i { font-size: 3rem; }
+    .liquid ul li { width:120px; padding:0; margin:0; }
+    .liquid ul li div.info-contacto div h5 { font-size: 1rem; }
+    .liquid ul li div.info-contacto div p { font-size: 11px; }
+    .liquid ul li div.info-contacto div div.contacto-opciones a { padding: 0 5px; }
 }

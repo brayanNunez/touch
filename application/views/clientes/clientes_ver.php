@@ -1,6 +1,6 @@
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#slider-contactos').liquidcarousel({height:200, duration:1000, hidearrows:false});
+        $('#slider-contactos').liquidcarousel({height:275, duration:700, hidearrows:false});
     });
 </script>
 
@@ -54,11 +54,37 @@
             </div>
 
             <div class="col s12">
-                <div id="tab-contactos" class="card col s12">
+                <div id="tab-contactos" class="card col s12" style="padding: 0;">
                     <div id="slider-contactos" class="liquid">
                         <span class="previous"><i class="mdi-image-navigate-before large"></i></span>
                         <div class="wrapper">
                             <ul>
+                                <li>
+                                    <div class="info-contacto">
+                                        <div>
+                                            <h5>Sebastian Rodriguez Bolanos</h5>
+                                            <p>CEO</p>
+                                            <p>sebastian.rodriguez@gmail.com</p>
+                                            <p>Tel. 8956-3405</p>
+                                            <div class="contacto-opciones">
+                                                <a href="#">
+                                                    <i class="mdi-editor-mode-edit"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="mdi-file-file-download"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="mdi-action-delete"></i>
+                                                </a>
+                                            </div>
+                                            <div class="contacto-principal es-principal">
+                                                <a href="#">
+                                                    <i class="mdi-action-done"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
                                 <li>
                                     <div class="info-contacto">
                                         <div>
@@ -75,6 +101,11 @@
                                                 </a>
                                                 <a href="#">
                                                     <i class="mdi-action-delete"></i>
+                                                </a>
+                                            </div>
+                                            <div class="contacto-principal">
+                                                <a href="#">
+                                                    <i class="mdi-action-done"></i>
                                                 </a>
                                             </div>
                                         </div>
@@ -98,25 +129,9 @@
                                                     <i class="mdi-action-delete"></i>
                                                 </a>
                                             </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="info-contacto">
-                                        <div>
-                                            <h5>Sebastian Rodriguez B.</h5>
-                                            <p>CEO</p>
-                                            <p>sebas@gmail.com</p>
-                                            <p>Tel. 8956-3405</p>
-                                            <div class="contacto-opciones">
+                                            <div class="contacto-principal">
                                                 <a href="#">
-                                                    <i class="mdi-editor-mode-edit"></i>
-                                                </a>
-                                                <a href="#">
-                                                    <i class="mdi-file-file-download"></i>
-                                                </a>
-                                                <a href="#">
-                                                    <i class="mdi-action-delete"></i>
+                                                    <i class="mdi-action-done"></i>
                                                 </a>
                                             </div>
                                         </div>
@@ -140,6 +155,11 @@
                                                     <i class="mdi-action-delete"></i>
                                                 </a>
                                             </div>
+                                            <div class="contacto-principal">
+                                                <a href="#">
+                                                    <i class="mdi-action-done"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
@@ -159,6 +179,11 @@
                                                 </a>
                                                 <a href="#">
                                                     <i class="mdi-action-delete"></i>
+                                                </a>
+                                            </div>
+                                            <div class="contacto-principal">
+                                                <a href="#">
+                                                    <i class="mdi-action-done"></i>
                                                 </a>
                                             </div>
                                         </div>
@@ -182,6 +207,11 @@
                                                     <i class="mdi-action-delete"></i>
                                                 </a>
                                             </div>
+                                            <div class="contacto-principal">
+                                                <a href="#">
+                                                    <i class="mdi-action-done"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
@@ -201,6 +231,11 @@
                                                 </a>
                                                 <a href="#">
                                                     <i class="mdi-action-delete"></i>
+                                                </a>
+                                            </div>
+                                            <div class="contacto-principal">
+                                                <a href="#">
+                                                    <i class="mdi-action-done"></i>
                                                 </a>
                                             </div>
                                         </div>
@@ -224,6 +259,11 @@
                                                     <i class="mdi-action-delete"></i>
                                                 </a>
                                             </div>
+                                            <div class="contacto-principal">
+                                                <a href="#">
+                                                    <i class="mdi-action-done"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
@@ -243,6 +283,11 @@
                                                 </a>
                                                 <a href="#">
                                                     <i class="mdi-action-delete"></i>
+                                                </a>
+                                            </div>
+                                            <div class="contacto-principal">
+                                                <a href="#">
+                                                    <i class="mdi-action-done"></i>
                                                 </a>
                                             </div>
                                         </div>
@@ -266,6 +311,11 @@
                                                     <i class="mdi-action-delete"></i>
                                                 </a>
                                             </div>
+                                            <div class="contacto-principal">
+                                                <a href="#">
+                                                    <i class="mdi-action-done"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
@@ -285,6 +335,11 @@
                                                 </a>
                                                 <a href="#">
                                                     <i class="mdi-action-delete"></i>
+                                                </a>
+                                            </div>
+                                            <div class="contacto-principal">
+                                                <a href="#">
+                                                    <i class="mdi-action-done"></i>
                                                 </a>
                                             </div>
                                         </div>
