@@ -2,6 +2,14 @@
 <button id="convertirExcel">Excel</button>
 <script type="text/javascript">
 
+    // $(document).ready( function() {
+    //   $('#empleados-tabla-lista').dataTable( {
+    //     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+    //   } );
+    //  } );
+
+
+
 $('#convertirExcel').on("click", function(){
     tablaHtml = '<table><thead>';
 
@@ -49,13 +57,21 @@ $('#convertirExcel').on("click", function(){
 
 $('#convertirPDF').on("click", function(){
  
-    var informacionSistema = '<div id="informacionSistema"><span><p>touchcr.com</p></span></div>';
-
+    var informacionSistema = '<div id="informacionSistema"><span><a href="<?=base_url()?>">touchcr.com</a></span></div>';
     var tablaHtml = informacionSistema;
     tablaHtml += '<h1 id="titulo">Empleados</h1>';
     tablaHtml += '<table><thead>';
 
-    $('#empleados-tabla-lista >thead >tr').each(function()
+    var rows = $("#empleados-tabla-lista").dataTable().fnGetNodes();
+    // alert(rows.html());
+
+    var tabla = $("#empleados-tabla-lista").dataTable();
+    // $("#empleados-tabla-lista");
+    alert( tabla.find('> tbody > tr').length);
+
+
+
+    tabla.find('> thead > tr').each(function()
     {
         tablaHtml += '<tr>';
         var cantidadColummnas = $(this).children("th").length;
@@ -70,7 +86,7 @@ $('#convertirPDF').on("click", function(){
     tablaHtml += '</thead>';
     tablaHtml += '<tbody>';
 
-    $('#empleados-tabla-lista >tbody >tr').each(function()
+    tabla.find('> tbody > tr').each(function()
     {
         tablaHtml += '<tr>';
         var cantidadColummnas = $(this).children("td").length;
