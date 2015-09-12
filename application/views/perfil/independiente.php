@@ -102,6 +102,7 @@
                                                     <option>Trabajador independiente</option>
                                                     <option>Empresa</option>
                                                 </select>
+                                                <label for="perfil_actividadIndependiente">Actividad comercial</label>
                                             </div>
                                         </div>
 
@@ -129,7 +130,7 @@
                                             </div>
                                             <div class="input-field col s12 m6 l6">
                                                 <div class="input-field col s12 country-select">
-                                                    <select>
+                                                    <select id="perfil_paisIndependiente">
                                                         <option class="selected-option" selected disabled>País
                                                         </option>
                                                         <option value="1">Costa Rica</option>
@@ -138,6 +139,7 @@
                                                         <option value="4">USA</option>
                                                         <option value="5">Chile</option>
                                                     </select>
+                                                    <label for="perfil_paisIndependiente">País</label>
                                                 </div>
                                             </div>
                                             <div class="input-field col s12 m6 l6">
