@@ -2,30 +2,58 @@
     <form class="col s12">
         <div class="row">
             <div class="col s12">
-                <div class="col s12 m2 l3">
-                    <div class="col s12" style="margin-top: 45px;">
-                        <img style="width: inherit; border: 1px solid #000;" src="<?= base_url().'files/archivo1.png'; ?>" />
-                    </div>
-                </div>
-                <div class="col s12 m5 l5">
-                    <h4>Claret Rojas Chaves</h4>
-                    <p><span class="informacion-cliente"><?= label('formCliente_identificacion'); ?></span>. 2-723-327</p>
-                    <p><span class="informacion-cliente"><?= label('formCliente_nacionalidad'); ?></span>: Costa Rica</p>
-                    <p><span class="informacion-cliente"><?= label('formCliente_fechaNacimiento'); ?></span>: 10-03-1994</p>
-                    <p><span class="informacion-cliente"><?= label('formCliente_telefonoMovil'); ?></span>: 8956-9865</p>
-                    <p><span class="informacion-cliente"><?= label('formCliente_telefonoFijo'); ?></span>: 2448-5623</p>
-                    <p><span class="informacion-cliente"><?= label('formCliente_correo'); ?></span>: claret@gmail.com</p>
-                </div>
-                <div class="col s12 m4 l4">
-                    <h5><?= label('cliente_direccion'); ?></h5>
-                    <p>Costa Rica, Alajuela</p>
-                    <p>Grecia, Tacares</p>
-                    <p>50 mts norte de la iglesia de la localidad</p>
-                </div>
+                <table id="cliente1-informacion" class="striped">
+                    <thead>
+                        <tr>
+                            <th style="width: 30%;"></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><?= label('formCliente_tipoPersona'); ?></td>
+                            <td><?= label('formCliente_fisica'); ?></td>
+                        </tr>
+                        <tr>
+                            <td><?= label('formCliente_nacionalidad'); ?></td>
+                            <td>Costa Rica</td>
+                        </tr>
+                        <tr>
+                            <td><?= label('formCliente_identificacion'); ?></td>
+                            <td>2-723-327</td>
+                        </tr>
+                        <tr>
+                            <td><?= label('formCliente_nombreContacto'); ?></td>
+                            <td>Claret Rojas Chaves</td>
+                        </tr>
+                        <tr>
+                            <td><?= label('formCliente_correo'); ?></td>
+                            <td>claret@gmail.com (Facturas se envian a este correo)</td>
+                        </tr>
+                        <tr>
+                            <td><?= label('formCliente_telefonoMovil'); ?></td>
+                            <td>8956-9865</td>
+                        </tr>
+                        <tr>
+                            <td><?= label('formCliente_telefonoFijo'); ?></td>
+                            <td>2448-5623</td>
+                        </tr>
+                        <tr>
+                            <td><?= label('formCliente_fechaNacimiento'); ?></td>
+                            <td>10-03-1994</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
             <div class="col s12" style="margin-top: 20px;">
-                <ul class="tabs tab-demo-active z-depth-1 cliente-info tags-secundarios">
+                <ul class="tabs tab-demo-active z-depth-1 cliente-info">
+                    <li class="tab col s3">
+                        <a class="white-text darken-1 waves-effect waves-light active"
+                           id="cliente-informacion" href="#tab-direccion"><i
+                                class="mdi-maps-my-location"></i>
+                            <?= label('cliente_direccion'); ?></a>
+                    </li>
                     <li class="tab-interior tab col s3">
                         <a class="white-text darken-1 waves-effect waves-light"
                            id="cliente-informacion" href="#tab-contactos"><i
@@ -48,8 +76,63 @@
             </div>
 
             <div class="col s12">
+                <div id="tab-direccion" class="card col s12">
+                    <table id="cliente1-direccion" class="striped">
+                        <thead>
+                            <tr>
+                                <th style="width: 30%;"></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><?= label('formCliente_direccionPais'); ?></td>
+                                <td>Costa Rica</td>
+                            </tr>
+                            <tr>
+                                <td><?= label('formCliente_direccionProvincia'); ?></td>
+                                <td>Alajuela</td>
+                            </tr>
+                            <tr>
+                                <td><?= label('formCliente_direccionCanton'); ?></td>
+                                <td>Grecia</td>
+                            </tr>
+                            <tr>
+                                <td><?= label('formCliente_direccionDistrito'); ?></td>
+                                <td>Tacares</td>
+                            </tr>
+                            <tr>
+                                <td><?= label('formCliente_direccionDomicilio'); ?></td>
+                                <td>50 mts norte de la iglesia de la localidad</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <div id="tab-contactos" class="card col s12">
-
+                    <div class="table-responsive">
+                        <table id="cliente1-contactos" class="striped">
+                            <thead>
+                                <tr>
+                                    <th style="width: 40%;"><?= label('formCliente_nombreContacto'); ?></th>
+                                    <th><?= label('formCliente_correoContacto'); ?></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Maria Rodriguez</td>
+                                    <td>maria@gmail.com</td>
+                                </tr>
+                                <tr>
+                                    <td>Juan Perez</td>
+                                    <td>juan@gmail.com</td>
+                                </tr>
+                                <tr>
+                                    <td>Jose Mora</td>
+                                    <td>jose@gmail.com</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div id="tab-infoAdicional" class="card col s12">
                     <div class="table-responsive">

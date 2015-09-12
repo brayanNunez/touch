@@ -70,6 +70,7 @@ div.new-file { float: left; margin: 3% 3% 0 3%; }
 
 ul.cliente-info li a.active, ul.usuario-info li a.active, ul.proveedor-info li a.active, ul.proveedor-info-juridico li a.active { color: green !important; background-color: lightgray; }
 ul.cliente-info li { width: 25% !important; }
+ul.cliente-info.tags-secundarios li { width: 33.3% !important; }
 ul.cliente-info li a { background-color: #009966; }
 ul.usuario-info li { width: 50% !important; }
 ul.usuario-info li a { background-color: #009966; }
@@ -199,6 +200,8 @@ ul#listaNotificaciones li a, ul#listaConfiguracion li a { padding: 11px 1rem; }
 table.data-table-information tbody tr td.dataTables_empty { padding: 9.6px 1% !important; }
 
 table.data-table-information thead tr th:first-child { width: 6% !important; }
+
+span.informacion-cliente { font-weight: bold; }
 
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/
