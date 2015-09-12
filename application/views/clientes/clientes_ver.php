@@ -14,13 +14,13 @@
                     </div>
                 </div>
                 <div class="col s12 m5 l5">
-                    <h4>Claret Rojas Chaves</h4>
+                    <h4>Cooperativa Dos Pinos R.L.</h4>
                     <p><span class="informacion-cliente"><?= label('formCliente_identificacion'); ?></span>. 2-723-327</p>
                     <p><span class="informacion-cliente"><?= label('formCliente_nacionalidad'); ?></span>: Costa Rica</p>
                     <p><span class="informacion-cliente"><?= label('formCliente_fechaNacimiento'); ?></span>: 10-03-1994</p>
                     <p><span class="informacion-cliente"><?= label('formCliente_telefonoMovil'); ?></span>: 8956-9865</p>
                     <p><span class="informacion-cliente"><?= label('formCliente_telefonoFijo'); ?></span>: 2448-5623</p>
-                    <p><span class="informacion-cliente"><?= label('formCliente_correo'); ?></span>: claret@gmail.com</p>
+                    <p><span class="informacion-cliente"><?= label('formCliente_correo'); ?></span>: dospinos@gmail.com</p>
                 </div>
                 <div class="col s12 m4 l4">
                     <h5><?= label('cliente_direccion'); ?></h5>
@@ -67,18 +67,46 @@
                                             <p>sebastian.rodriguez@gmail.com</p>
                                             <p>Tel. 8956-3405</p>
                                             <div class="contacto-opciones">
-                                                <a href="#">
+                                                <a href="#editarContacto" class="modal-trigger"
+                                                   title="<?= label('formCliente_contactoEditar') ?>">
                                                     <i class="mdi-editor-mode-edit"></i>
                                                 </a>
-                                                <a href="#">
+                                                <a href="#" title="<?= label('formCliente_contactoDescargar')?>">
                                                     <i class="mdi-file-file-download"></i>
                                                 </a>
-                                                <a href="#">
+                                                <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formCliente_contactoEliminar')?>">
                                                     <i class="mdi-action-delete"></i>
                                                 </a>
                                             </div>
                                             <div class="contacto-principal es-principal">
-                                                <a href="#">
+                                                <a href="#" title="<?= label('formCliente_contactoPrincipal') ?>">
+                                                    <i class="mdi-action-done"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="info-contacto">
+                                        <div>
+                                            <h5>Brayan Nunez</h5>
+                                            <p>CEO</p>
+                                            <p>brayan@gmail.com</p>
+                                            <p>Tel. 8956-6545</p>
+                                            <div class="contacto-opciones">
+                                                <a href="#editarContacto" class="modal-trigger"
+                                                   title="<?= label('formCliente_contactoEditar') ?>">
+                                                    <i class="mdi-editor-mode-edit"></i>
+                                                </a>
+                                                <a href="#" title="<?= label('formCliente_contactoDescargar')?>">
+                                                    <i class="mdi-file-file-download"></i>
+                                                </a>
+                                                <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formCliente_contactoEliminar')?>">
+                                                    <i class="mdi-action-delete"></i>
+                                                </a>
+                                            </div>
+                                            <div class="contacto-principal">
+                                                <a href="#" title="<?= label('formCliente_contactoSecundario') ?>">
                                                     <i class="mdi-action-done"></i>
                                                 </a>
                                             </div>
@@ -93,18 +121,19 @@
                                             <p>jorge@gmail.com</p>
                                             <p>Tel. 8956-9865</p>
                                             <div class="contacto-opciones">
-                                                <a href="#">
+                                                <a href="#editarContacto" class="modal-trigger"
+                                                   title="<?= label('formCliente_contactoEditar') ?>">
                                                     <i class="mdi-editor-mode-edit"></i>
                                                 </a>
-                                                <a href="#">
+                                                <a href="#" title="<?= label('formCliente_contactoDescargar')?>">
                                                     <i class="mdi-file-file-download"></i>
                                                 </a>
-                                                <a href="#">
+                                                <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formCliente_contactoEliminar')?>">
                                                     <i class="mdi-action-delete"></i>
                                                 </a>
                                             </div>
                                             <div class="contacto-principal">
-                                                <a href="#">
+                                                <a href="#" title="<?= label('formCliente_contactoSecundario') ?>">
                                                     <i class="mdi-action-done"></i>
                                                 </a>
                                             </div>
@@ -114,49 +143,24 @@
                                 <li>
                                     <div class="info-contacto">
                                         <div>
-                                            <h5>Brayan Nunez</h5>
-                                            <p>Gerente de planta</p>
-                                            <p>brayan@gmail.com</p>
-                                            <p>Tel. 8956-6545</p>
-                                            <div class="contacto-opciones">
-                                                <a href="#">
-                                                    <i class="mdi-editor-mode-edit"></i>
-                                                </a>
-                                                <a href="#">
-                                                    <i class="mdi-file-file-download"></i>
-                                                </a>
-                                                <a href="#">
-                                                    <i class="mdi-action-delete"></i>
-                                                </a>
-                                            </div>
-                                            <div class="contacto-principal">
-                                                <a href="#">
-                                                    <i class="mdi-action-done"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="info-contacto">
-                                        <div>
-                                            <h5>Emmanuel Jimenez</h5>
-                                            <p>Programador</p>
-                                            <p>emma@gmail.com</p>
+                                            <h5>Claret Rojas Chaves</h5>
+                                            <p>Gerente de personal</p>
+                                            <p>cloret@gmail.com</p>
                                             <p>Tel. 8956-1245</p>
                                             <div class="contacto-opciones">
-                                                <a href="#">
+                                                <a href="#editarContacto" class="modal-trigger"
+                                                   title="<?= label('formCliente_contactoEditar') ?>">
                                                     <i class="mdi-editor-mode-edit"></i>
                                                 </a>
-                                                <a href="#">
+                                                <a href="#" title="<?= label('formCliente_contactoDescargar')?>">
                                                     <i class="mdi-file-file-download"></i>
                                                 </a>
-                                                <a href="#">
+                                                <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formCliente_contactoEliminar')?>">
                                                     <i class="mdi-action-delete"></i>
                                                 </a>
                                             </div>
                                             <div class="contacto-principal">
-                                                <a href="#">
+                                                <a href="#" title="<?= label('formCliente_contactoSecundario') ?>">
                                                     <i class="mdi-action-done"></i>
                                                 </a>
                                             </div>
@@ -171,18 +175,19 @@
                                             <p>luis@gmail.com</p>
                                             <p>Tel. 8752-9865</p>
                                             <div class="contacto-opciones">
-                                                <a href="#">
+                                                <a href="#editarContacto" class="modal-trigger"
+                                                   title="<?= label('formCliente_contactoEditar') ?>">
                                                     <i class="mdi-editor-mode-edit"></i>
                                                 </a>
-                                                <a href="#">
+                                                <a href="#" title="<?= label('formCliente_contactoDescargar')?>">
                                                     <i class="mdi-file-file-download"></i>
                                                 </a>
-                                                <a href="#">
+                                                <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formCliente_contactoEliminar')?>">
                                                     <i class="mdi-action-delete"></i>
                                                 </a>
                                             </div>
                                             <div class="contacto-principal">
-                                                <a href="#">
+                                                <a href="#" title="<?= label('formCliente_contactoSecundario') ?>">
                                                     <i class="mdi-action-done"></i>
                                                 </a>
                                             </div>
@@ -197,18 +202,19 @@
                                             <p>yohan@gmail.com</p>
                                             <p>Tel. 8956-1379</p>
                                             <div class="contacto-opciones">
-                                                <a href="#">
+                                                <a href="#editarContacto" class="modal-trigger"
+                                                   title="<?= label('formCliente_contactoEditar') ?>">
                                                     <i class="mdi-editor-mode-edit"></i>
                                                 </a>
-                                                <a href="#">
+                                                <a href="#" title="<?= label('formCliente_contactoDescargar')?>">
                                                     <i class="mdi-file-file-download"></i>
                                                 </a>
-                                                <a href="#">
+                                                <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formCliente_contactoEliminar')?>">
                                                     <i class="mdi-action-delete"></i>
                                                 </a>
                                             </div>
                                             <div class="contacto-principal">
-                                                <a href="#">
+                                                <a href="#" title="<?= label('formCliente_contactoSecundario') ?>">
                                                     <i class="mdi-action-done"></i>
                                                 </a>
                                             </div>
@@ -223,18 +229,19 @@
                                             <p>jean@gmail.com</p>
                                             <p>Tel. 8956-0943</p>
                                             <div class="contacto-opciones">
-                                                <a href="#">
+                                                <a href="#editarContacto" class="modal-trigger"
+                                                   title="<?= label('formCliente_contactoEditar') ?>">
                                                     <i class="mdi-editor-mode-edit"></i>
                                                 </a>
-                                                <a href="#">
+                                                <a href="#" title="<?= label('formCliente_contactoDescargar')?>">
                                                     <i class="mdi-file-file-download"></i>
                                                 </a>
-                                                <a href="#">
+                                                <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formCliente_contactoEliminar')?>">
                                                     <i class="mdi-action-delete"></i>
                                                 </a>
                                             </div>
                                             <div class="contacto-principal">
-                                                <a href="#">
+                                                <a href="#" title="<?= label('formCliente_contactoSecundario') ?>">
                                                     <i class="mdi-action-done"></i>
                                                 </a>
                                             </div>
@@ -249,18 +256,19 @@
                                             <p>joseph@gmail.com</p>
                                             <p>Tel. 8956-3051</p>
                                             <div class="contacto-opciones">
-                                                <a href="#">
+                                                <a href="#editarContacto" class="modal-trigger"
+                                                   title="<?= label('formCliente_contactoEditar') ?>">
                                                     <i class="mdi-editor-mode-edit"></i>
                                                 </a>
-                                                <a href="#">
+                                                <a href="#" title="<?= label('formCliente_contactoDescargar')?>">
                                                     <i class="mdi-file-file-download"></i>
                                                 </a>
-                                                <a href="#">
+                                                <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formCliente_contactoEliminar')?>">
                                                     <i class="mdi-action-delete"></i>
                                                 </a>
                                             </div>
                                             <div class="contacto-principal">
-                                                <a href="#">
+                                                <a href="#" title="<?= label('formCliente_contactoSecundario') ?>">
                                                     <i class="mdi-action-done"></i>
                                                 </a>
                                             </div>
@@ -275,18 +283,19 @@
                                             <p>victor@gmail.com</p>
                                             <p>Tel. 8956-7391</p>
                                             <div class="contacto-opciones">
-                                                <a href="#">
+                                                <a href="#editarContacto" class="modal-trigger"
+                                                   title="<?= label('formCliente_contactoEditar') ?>">
                                                     <i class="mdi-editor-mode-edit"></i>
                                                 </a>
-                                                <a href="#">
+                                                <a href="#" title="<?= label('formCliente_contactoDescargar')?>">
                                                     <i class="mdi-file-file-download"></i>
                                                 </a>
-                                                <a href="#">
+                                                <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formCliente_contactoEliminar')?>">
                                                     <i class="mdi-action-delete"></i>
                                                 </a>
                                             </div>
                                             <div class="contacto-principal">
-                                                <a href="#">
+                                                <a href="#" title="<?= label('formCliente_contactoSecundario') ?>">
                                                     <i class="mdi-action-done"></i>
                                                 </a>
                                             </div>
@@ -301,18 +310,19 @@
                                             <p>rebeca@gmail.com</p>
                                             <p>Tel. 8956-7913</p>
                                             <div class="contacto-opciones">
-                                                <a href="#">
+                                                <a href="#editarContacto" class="modal-trigger"
+                                                   title="<?= label('formCliente_contactoEditar') ?>">
                                                     <i class="mdi-editor-mode-edit"></i>
                                                 </a>
-                                                <a href="#">
+                                                <a href="#" title="<?= label('formCliente_contactoDescargar')?>">
                                                     <i class="mdi-file-file-download"></i>
                                                 </a>
-                                                <a href="#">
+                                                <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formCliente_contactoEliminar')?>">
                                                     <i class="mdi-action-delete"></i>
                                                 </a>
                                             </div>
                                             <div class="contacto-principal">
-                                                <a href="#">
+                                                <a href="#" title="<?= label('formCliente_contactoSecundario') ?>">
                                                     <i class="mdi-action-done"></i>
                                                 </a>
                                             </div>
@@ -322,23 +332,24 @@
                                 <li>
                                     <div class="info-contacto">
                                         <div>
-                                            <h5>Michael Arguedas</h5>
-                                            <p>Redes</p>
-                                            <p>caya@gmail.com</p>
+                                            <h5>Emmanuel Jimenez</h5>
+                                            <p>Programador</p>
+                                            <p>emma@gmail.com</p>
                                             <p>Tel. 8956-5080</p>
                                             <div class="contacto-opciones">
-                                                <a href="#">
+                                                <a href="#editarContacto" class="modal-trigger"
+                                                   title="<?= label('formCliente_contactoEditar') ?>">
                                                     <i class="mdi-editor-mode-edit"></i>
                                                 </a>
-                                                <a href="#">
+                                                <a href="#" title="<?= label('formCliente_contactoDescargar')?>">
                                                     <i class="mdi-file-file-download"></i>
                                                 </a>
-                                                <a href="#">
+                                                <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formCliente_contactoEliminar')?>">
                                                     <i class="mdi-action-delete"></i>
                                                 </a>
                                             </div>
                                             <div class="contacto-principal">
-                                                <a href="#">
+                                                <a href="#" title="<?= label('formCliente_contactoSecundario') ?>">
                                                     <i class="mdi-action-done"></i>
                                                 </a>
                                             </div>
@@ -501,3 +512,66 @@
 
     });
 </script>
+
+<!-- Lista de modals-->
+
+<div id="eliminarContacto" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('confirmarEliminarContacto'); ?></p>
+    </div>
+    <div class="modal-footer black-text">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="editarContacto" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <div class="row">
+            <div class="input-field col s12 m4 l4">
+                <input id="cliente_contactoApellido1_existente" type="text" value="Rojas">
+                <label for="cliente_contactoApellido1_existente"><?= label('formContacto_apellido1'); ?></label>
+            </div>
+            <div class="input-field col s12 m4 l4">
+                <input id="cliente_contactoApellido2_existente" type="text" value="Chaves">
+                <label for="cliente_contactoApellido2_existente"><?= label('formContacto_apellido2'); ?></label>
+            </div>
+            <div class="input-field col s12 m4 l4">
+                <input id="cliente_contactoNombre_existente" type="text" value="Claret">
+                <label for="cliente_contactoNombre_existente"><?= label('formContacto_nombre'); ?></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 m6 l6">
+                <div>
+                    <input id="cliente_contactoCorreo_existente" type="email" style="margin-bottom: 0;">
+                    <label for="cliente_contactoCorreo_existente"><?= label('formCliente_correo'); ?></label>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <input type="checkbox" class="filled-in" id="checkbox_contactoCorreoCliente_existente" checked/>
+                    <label for="checkbox_contactoCorreoCliente_existente" style="margin-bottom: 20px;">
+                        <?= label('formCliente_correoCheck') ?>
+                    </label>
+                </div>
+            </div>
+            <div class="input-field col s12 m3 l3">
+                <input id="cliente_contactoPuesto_existente" type="text" value="CEO">
+                <label for="cliente_contactoPuesto_existente"><?= label('formContacto_puesto'); ?></label>
+            </div>
+            <div class="input-field col s12 m3 l3">
+                <input id="cliente_contactoTelefono_existente" type="text" value="8596-7420">
+                <label
+                    for="cliente_contactoTelefono_existente"><?= label('formContacto_telefono'); ?></label>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>

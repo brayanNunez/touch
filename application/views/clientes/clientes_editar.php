@@ -202,7 +202,7 @@
                             </div>
                         </div>
                         <div class="col s1 m1 l1" style="margin-top: 50px;">
-                            <a href="#">
+                            <a href="#eliminarContacto_editar" class="modal-trigger" title="<?= label('formCliente_contactoEliminar') ?>">
                                 <i class="mdi-action-delete medium" style="color: black;"></i>
                             </a>
                         </div>
@@ -251,7 +251,7 @@
                             </div>
                         </div>
                         <div class="col s1 m1 l1" style="margin-top: 50px;">
-                            <a href="#">
+                            <a href="#eliminarContacto_editar" class="modal-trigger" title="<?= label('formCliente_contactoEliminar') ?>">
                                 <i class="mdi-action-delete medium" style="color: black;"></i>
                             </a>
                         </div>
@@ -300,7 +300,7 @@
                             </div>
                         </div>
                         <div class="col s1 m1 l1" style="margin-top: 50px;">
-                            <a href="#">
+                            <a href="#eliminarContacto_editar" class="modal-trigger" title="<?= label('formCliente_contactoEliminar') ?>">
                                 <i class="mdi-action-delete medium" style="color: black;"></i>
                             </a>
                         </div>
@@ -349,7 +349,7 @@
                             </div>
                         </div>
                         <div class="col s1 m1 l1" style="margin-top: 50px;">
-                            <a href="#">
+                            <a href="#eliminarContacto_editar" class="modal-trigger" title="<?= label('formCliente_contactoEliminar') ?>">
                                 <i class="mdi-action-delete medium" style="color: black;"></i>
                             </a>
                         </div>
@@ -653,7 +653,7 @@
 
             '</div>' +
             '<div class="col s1 m1 l1" style="margin-top: 50px;">' +
-            '<a href="#"><i class="mdi-action-delete medium" style="color: black;"></i></a>' +
+            '<a href="#eliminarContacto_editar" class="modal-trigger" title="<?= label('formCliente_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>' +
             '</div>' +
             '</div>' +
             '<div class="row" id="tab-contactos-nuevo-editar">' +
@@ -666,7 +666,7 @@
 </script>
 
 <!-- lista modals -->
-<div id="eliminarContacto" class="modal">
+<div id="eliminarContacto_editar" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
@@ -676,115 +676,6 @@
     </div>
     <div class="modal-footer black-text">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
-    </div>
-</div>
-<div id="agregarContacto" class="modal">
-    <div class="modal-header">
-        <p><?= label('nombreSistema'); ?></p>
-        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
-    </div>
-    <div class="modal-content">
-        <div class="row">
-            <div class="input-field col s12 m4 l4">
-                <input id="cliente_contactoApellido1" type="text">
-                <label for="cliente_contactoApellido1"><?= label('formContacto_apellido1'); ?></label>
-            </div>
-            <div class="input-field col s12 m4 l4">
-                <input id="cliente_contactoApellido2" type="text">
-                <label for="cliente_contactoApellido2"><?= label('formContacto_apellido2'); ?></label>
-            </div>
-            <div class="input-field col s12 m4 l4">
-                <input id="cliente_contactoNombre" type="text">
-                <label for="cliente_contactoNombre"><?= label('formContacto_nombre'); ?></label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12 m6 l6">
-                <input id="cliente_contactoCorreo" type="email" style="margin-bottom: 0;">
-                <label for="cliente_contactoCorreo"><?= label('formCliente_correo'); ?></label>
-                <input type="checkbox" class="filled-in checkbox"
-                       id="checkbox_contactoCorreoCliente" />
-                <label for="checkbox_contactoCorreoCliente" style="margin-bottom: 20px;">
-                    <?= label('formCliente_correoCheck') ?>
-                </label>
-            </div>
-            <div class="input-field col s12 m3 l3">
-                <input id="cliente_contactoPuesto" type="text">
-                <label for="cliente_contactoPuesto"><?= label('formContacto_puesto'); ?></label>
-            </div>
-            <div class="input-field col s12 m3 l3">
-                <input id="cliente_contactoTelefono" type="text">
-                <label
-                    for="cliente_contactoTelefono"><?= label('formContacto_telefono'); ?></label>
-            </div>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
-    </div>
-</div>
-<div id="editarContacto" class="modal">
-    <div class="modal-header">
-        <p><?= label('nombreSistema'); ?></p>
-        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
-    </div>
-    <div class="modal-content">
-        <div class="row">
-            <div class="input-field col s12 m4 l4">
-                <input id="cliente_contactoApellido1_existente" type="text" value="Rojas">
-                <label for="cliente_contactoApellido1_existente"><?= label('formContacto_apellido1'); ?></label>
-            </div>
-            <div class="input-field col s12 m4 l4">
-                <input id="cliente_contactoApellido2_existente" type="text" value="Chaves">
-                <label for="cliente_contactoApellido2_existente"><?= label('formContacto_apellido2'); ?></label>
-            </div>
-            <div class="input-field col s12 m4 l4">
-                <input id="cliente_contactoNombre_existente" type="text" value="Claret">
-                <label for="cliente_contactoNombre_existente"><?= label('formContacto_nombre'); ?></label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12 m6 l6">
-                <div>
-                    <input id="cliente_contactoCorreo_existente" type="email" style="margin-bottom: 0;" value="claret@gmail.com">
-                    <label for="cliente_contactoCorreo_existente"><?= label('formCliente_correo'); ?></label>
-                </div>
-                <div style="margin-bottom: 20px;">
-                    <input type="checkbox" class="filled-in"
-                           id="checkbox_contactoCorreoCliente_existente" checked/>
-                    <label for="checkbox_contactoCorreoCliente_existente" style="margin-bottom: 20px;">
-                        <?= label('formCliente_correoCheck') ?>
-                    </label>
-                </div>
-            </div>
-            <div class="input-field col s12 m3 l3">
-                <input id="cliente_contactoPuesto_existente" type="text" value="CEO">
-                <label for="cliente_contactoPuesto_existente"><?= label('formContacto_puesto'); ?></label>
-            </div>
-            <div class="input-field col s12 m3 l3">
-                <input id="cliente_contactoTelefono_existente" type="text" value="8596-7420">
-                <label
-                    for="cliente_contactoTelefono_existente"><?= label('formContacto_telefono'); ?></label>
-            </div>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
-    </div>
-</div>
-<div id="eliminarElementosSeleccionados" class="modal">
-    <div class="modal-header">
-        <p><?= label('nombreSistema'); ?></p>
-        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
-    </div>
-    <div class="modal-content">
-        <p><?= label('clientes_archivosSeleccionadosEliminar'); ?></p>
-    </div>
-    <div class="modal-footer black-text">
-        <div id="botonElimnar" title="cliente1-contactos-editar">
-            <a href="#"
-               class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
-        </div>
     </div>
 </div>
 <!-- Fin lista modals-->

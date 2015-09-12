@@ -368,6 +368,12 @@
     $lang['formCliente_descuento'] = 'Descuento fijo';
     $lang['formCliente_monedaCotizar'] = 'Cotizar en';
 
+$lang['formCliente_contactoEditar'] = 'Editar contacto';
+$lang['formCliente_contactoDescargar'] = 'Descargar contacto';
+$lang['formCliente_contactoEliminar'] = 'Eliminar contacto';
+$lang['formCliente_contactoPrincipal'] = 'Contacto principal';
+$lang['formCliente_contactoSecundario'] = 'Cambiar a contacto principal';
+
     $lang['cliente_direccion'] = 'Dirección';
     $lang['formCliente_direccionPais'] = 'País';
     $lang['formCliente_direccionProvincia'] = 'Provincia';
