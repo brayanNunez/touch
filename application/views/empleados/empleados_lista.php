@@ -1,13 +1,87 @@
 <button id="convertirPDF">PDF</button>
 <button id="convertirExcel">Excel</button>
+<button id="convertirImprimir">Imprimir</button>
+
+
+
 <script type="text/javascript">
 
-    // $(document).ready( function() {
-    //   $('#empleados-tabla-lista').dataTable( {
-    //     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
-    //   } );
-    //  } );
+    $('#convertirImprimir').on("click", function(){
+        tablaHtml = '<table style="border-collapse:collapse;"><thead style="font-weight: bold;">';
 
+    $('#empleados-tabla-lista >thead >tr').each(function()
+    {
+        tablaHtml += '<tr>';
+        var cantidadColummnas = $(this).children("th").length;
+      $(this).children("th").each(function(index){
+        if (index != 0 && index != cantidadColummnas-1) {
+            tablaHtml += '<td style="border:1px solid #A9A9A9; padding:3px 7px 2px 7px;">' + $(this).html() + '</td>';
+        };
+      });
+      tablaHtml += '</tr>';
+    });
+
+    tablaHtml += '</thead>';
+    tablaHtml += '<tbody>';
+
+    $('#empleados-tabla-lista >tbody >tr').each(function()
+    {
+        tablaHtml += '<tr>';
+        var cantidadColummnas = $(this).children("td").length;
+      $(this).children("td").each(function(index){
+        if (index != 0 && index != cantidadColummnas-1) {
+            tablaHtml += '<td style="border:1px solid #A9A9A9; padding:3px 7px 2px 7px;">' + $(this).text() + '</td>';
+        };
+      });
+      tablaHtml += '</tr>';
+    });
+    
+    var html = '<!DOCTYPE html><html><head><title>403 Forbidden</title><link rel="stylesheet" href="<?= base_url() ?>assets/dashboard/css/estiloTablasDescarga.css"></head><body id="hojaPDF">';
+     html +=  tablaHtml + '</body></html>';
+
+    
+        // alert('mec');
+        Popup(tablaHtml);
+
+    });
+
+    function Popup(data) 
+    {
+        // var mywindow = window.open('', 'my div', 'height=400,width=600');
+        var mywindow = window.open('', 'my div', '');
+        mywindow.document.write('<html><head><title>Empleados</title>');
+       // mywindow.document.write('<link media="print,screen" href="<?= base_url() ?>assets/dashboard/css/estiloTablasDescarga.css" rel="stylesheet" type="text/css" >');
+
+          // mywindow.document.write('<style type="text/css">@media print {table{background: red;}}</style>');
+        
+        mywindow.document.write('</head><body>');
+        mywindow.document.write(data);
+        mywindow.document.write('</body></html>');
+
+
+        mywindow.document.close(); // necessary for IE >= 10
+        mywindow.focus(); // necessary for IE >= 10
+
+
+
+        mywindow.print();
+
+        mywindow.close();
+
+
+        return true;
+    }
+
+</script>
+
+
+
+<script type="text/javascript">
+
+$('#convertirImprimir').on("click", function(){
+    $('table').printArea();
+
+});
 
 
 $('#convertirExcel').on("click", function(){
