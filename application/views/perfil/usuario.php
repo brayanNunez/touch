@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 m12 l12">
-                    <h5 class="breadcrumbs-title">Información del usuario</a></h5>
+                    <h5 class="breadcrumbs-title"><?= label('tituloUsuario'); ?></a></h5>
                 </div>
             </div>
         </div>
@@ -27,60 +27,60 @@
                                         <div>
                                             <div class="input-field col s12 m4 l4">
                                                 <input id="perfil_nombreUsuario" type="text" value="Juan">
-                                                <label for="perfil_nombreUsuario"><?= label('formUsuario_nombre'); ?></label>
+                                                <label for="perfil_nombreUsuario"><?= label('formPerfil_nombre'); ?></label>
                                             </div>
                                             <div class="input-field col s12 m4 l4">
                                                 <input id="perfil_apellido1Usuario" type="text" value="Perez">
-                                                <label for="perfil_apellido1Usuario"><?= label('formUsuario_apellido1'); ?></label>
+                                                <label for="perfil_apellido1Usuario"><?= label('formPerfil_apellido1'); ?></label>
                                             </div>
                                             <div class="input-field col s12 m4 l4">
                                                 <input id="perfil_apellido2Usuario" type="text" value="Pereira">
-                                                <label for="perfil_apellido2Usuario"><?= label('formUsuario_apellido2'); ?></label>
+                                                <label for="perfil_apellido2Usuario"><?= label('formPerfil_apellido2'); ?></label>
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="input-field col s12 m6 l6">
                                                 <input id="perfil_correoUsuario" type="email" value="juanperez@gmail.com">
-                                                <label for="perfil_correoUsuario">Correo electrónico</label>
+                                                <label for="perfil_correoUsuario"><?= label('formPerfil_correo'); ?></label>
                                             </div>
                                             <div class="input-field col s12 m6 l6">
                                                 <input id="perfil_confirmarCorreoUsuario" type="email" value="juanperez@gmail.com">
-                                                <label for="perfil_confirmarCorreoUsuario">Confirmar correo electrónico</label>
+                                                <label for="perfil_confirmarCorreoUsuario"><?= label('formPerfil_confCorreo'); ?></label>
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="input-field col s12 m6 l6">
                                                 <input id="perfil_contraseñaUsuario" type="password" value="123456">
-                                                <label for="perfil_contraseñaUsuario">Contraseña</label>
+                                                <label for="perfil_contraseñaUsuario"><?= label('formPerfil_contraseña'); ?></label>
                                             </div>
                                             <div class="input-field col s12 m6 l6">
                                                 <input id="perfil_confirmarContraseñaUsuario" type="password" value="123456">
-                                                <label for="perfil_confirmarContraseñaUsuario">Confirmar contraseña</label>
+                                                <label for="perfil_confirmarContraseñaUsuario"><?= label('formPerfil_confContraseña'); ?></label>
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="input-field col s12 m6 l6">
                                                 <input id="perfil_puestoUsuario" type="text" value="2444-5689">
-                                                <label for="perfil_puestoUsuario">Puesto</label>
+                                                <label for="perfil_puestoUsuario"><?= label('formPerfil_puesto'); ?></label>
                                             </div>
                                             <div class="input-field col s12 m6 l6">
                                                 <input id="perfil_fechaNacUsuario" class="datepicker-fecha" type="text" value="11-09-1990">
-                                                <label for="perfil_fechaNacUsuario">Fecha de nacimiento</label>
+                                                <label for="perfil_fechaNacUsuario"><?= label('formPerfil_fechaNac'); ?></label>
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="input-field col s12 m6 l6">
                                                 <input id="perfil_telefonoUsuario" type="text" value="2444-5689">
-                                                <label for="perfil_telefonoUsuario">Teléfono</label>
+                                                <label for="perfil_telefonoUsuario"><?= label('formPerfil_telefono'); ?></label>
                                             </div>
 
                                             <div class="input-field col s12 m6 l6">
                                                 <input id="perfil_celularUsuario" type="text" value="8245-5956">
-                                                <label for="perfil_celularUsuario">Celular</label>
+                                                <label for="perfil_celularUsuario"><?= label('formPerfil_celular'); ?></label>
                                             </div>
                                         </div>
                                         

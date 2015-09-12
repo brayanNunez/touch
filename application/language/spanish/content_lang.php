@@ -109,6 +109,8 @@
     $lang['tituloListaPorAprobar'] = 'Cotizaciones pendientes por revisar';
     $lang['tituloAprobarEnvioCliente'] = 'Revisar cotización';
     $lang['tituloListaPlan'] = 'Lista de planes';
+    $lang['tituloPerfil'] = 'Información de la cuenta';
+    $lang['tituloUsuario'] = 'Información del usuario';
 
 //tabla de planes
     $lang['tablaPlan_nombre'] = 'Nombre';
@@ -272,6 +274,37 @@
 	$lang['agregarProveedor'] = 'Agregar proveedor';
 	$lang['agregarS'] = 'Agregar servicio';
 	$lang['reportes'] = 'Reportes';
+
+//Formulario informacion del perfil
+    $lang['formPerfil_numeroIdentificacion'] = 'Número de identificación';
+    $lang['formPerfil_nombre'] = 'Nombre';
+    $lang['formPerfil_apellido1'] = 'Primer apellido';
+    $lang['formPerfil_apellido2'] = 'Segundo apellido';
+    $lang['formPerfil_correo'] = 'Correo electrónico';
+    $lang['formPerfil_confCorreo'] = 'Confirmar correo electrónico';
+    $lang['formPerfil_contraseña'] = 'Contraseña';
+    $lang['formPerfil_confContraseña'] = 'Confirmar contraseña';
+    $lang['formPerfil_telefono'] = 'Teléfono';
+    $lang['formPerfil_celular'] = 'Celular';
+    $lang['formPerfil_profesion'] = 'Profesión';
+    $lang['formPerfil_sitioWeb'] = 'Sitio web';
+    $lang['formPerfil_fechaNac'] = 'Fecha de nacimiento';
+    $lang['formPerfil_actividadComercial'] = 'Actividad comercial';
+    $lang['formPerfil_pais'] = 'País';
+    $lang['formPerfil_estado'] = 'Estado/Provincia';
+    $lang['formPerfil_ciudad'] = 'Ciudad/Cantón';
+    $lang['formPerfil_domicilio'] = 'Domicilio';
+    $lang['formPerfil_nombreEmpresa'] = 'Nombre (Razón social)';
+    $lang['formPerfil_nombreFantasia'] = 'Nombre de fantasía';
+    $lang['formPerfil_correoEmpresarial'] = 'Correo empresarial';
+    $lang['formPerfil_tamañoEmp'] = 'Tamaño de la empresa';
+    $lang['formPerfil_fechaCreacion'] = 'Fecha de creación';
+    $lang['formPerfil_direccion'] = 'Dirección';
+    $lang['formPerfil_datosContacto'] = 'Datos del contacto (Representante legal)';
+    $lang['formPerfil_puesto'] = 'Puesto';
+    $lang['formPerfil_captcha'] = 'Ingrese el captcha';
+    $lang['formPerfil_acepto1'] = 'Acepto recibir correos y promociones de Touch!';
+    $lang['formPerfil_acepto2'] = 'Acepto términos y condiciones de uso';
 
 //Formulario de solicitudes
     $lang['formSolicitud_nombre'] = 'Nombre';
