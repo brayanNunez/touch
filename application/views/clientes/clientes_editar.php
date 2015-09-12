@@ -162,612 +162,205 @@
                     </div>
                 </div>
                 <div id="tab-contactos-editar" class="card col s12">
-                    <div class="agregar_nuevo">
-                        <a href="#agregarContacto" class="btn btn-default modal-trigger">
-                            <?= label('formCliente_agregar'); ?>
+                    <div class="row">
+                        <div class="col s11 m11 l11">
+                            <div class="row">
+                                <div class="input-field col s12 m4 l4">
+                                    <input id="cliente_contactoApellido1" type="text" value="Rodriguez">
+                                    <label for="cliente_contactoApellido1"><?= label('formContacto_apellido1'); ?></label>
+                                </div>
+                                <div class="input-field col s12 m4 l4">
+                                    <input id="cliente_contactoApellido2" type="text" value="Bolannos">
+                                    <label for="cliente_contactoApellido2"><?= label('formContacto_apellido2'); ?></label>
+                                </div>
+                                <div class="input-field col s12 m4 l4">
+                                    <input id="cliente_contactoNombre" type="text" value="Jose Sebastian">
+                                    <label for="cliente_contactoNombre"><?= label('formContacto_nombre'); ?></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12 m6 l6">
+                                    <div>
+                                        <input id="cliente_contactoCorreo" type="email" style="margin-bottom: 0;" value="sebas@gmail.com">
+                                        <label for="cliente_contactoCorreo"><?= label('formCliente_correo'); ?></label>
+                                    </div>
+                                    <div style="margin-bottom: 20px;">
+                                        <input type="checkbox" class="filled-in" id="checkbox_contactoCorreoCliente" checked />
+                                        <label for="checkbox_contactoCorreoCliente" style="margin-bottom: 20px;">
+                                            <?= label('formCliente_correoCheck') ?>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="input-field col s12 m3 l3">
+                                    <input id="cliente_contactoPuesto" type="text" value="CEO">
+                                    <label for="cliente_contactoPuesto"><?= label('formContacto_puesto'); ?></label>
+                                </div>
+                                <div class="input-field col s12 m3 l3">
+                                    <input id="cliente_contactoTelefono" type="text" value="89563405">
+                                    <label for="cliente_contactoTelefono"><?= label('formContacto_telefono'); ?></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s1 m1 l1" style="margin-top: 50px;">
+                            <a href="#">
+                                <i class="mdi-action-delete medium" style="color: black;"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <hr />
+                    </div>
+
+                    <div class="row">
+                        <div class="col s11 m11 l11">
+                            <div class="row">
+                                <div class="input-field col s12 m4 l4">
+                                    <input id="cliente_contactoApellido1" type="text" value="Nunez">
+                                    <label for="cliente_contactoApellido1"><?= label('formContacto_apellido1'); ?></label>
+                                </div>
+                                <div class="input-field col s12 m4 l4">
+                                    <input id="cliente_contactoApellido2" type="text" value="Rojas">
+                                    <label for="cliente_contactoApellido2"><?= label('formContacto_apellido2'); ?></label>
+                                </div>
+                                <div class="input-field col s12 m4 l4">
+                                    <input id="cliente_contactoNombre" type="text" value="Brayan">
+                                    <label for="cliente_contactoNombre"><?= label('formContacto_nombre'); ?></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12 m6 l6">
+                                    <div>
+                                        <input id="cliente_contactoCorreo" type="email" style="margin-bottom: 0;" value="brayan@gmail.com">
+                                        <label for="cliente_contactoCorreo"><?= label('formCliente_correo'); ?></label>
+                                    </div>
+                                    <div style="margin-bottom: 20px;">
+                                        <input type="checkbox" class="filled-in" id="checkbox_contactoCorreoCliente" checked />
+                                        <label for="checkbox_contactoCorreoCliente" style="margin-bottom: 20px;">
+                                            <?= label('formCliente_correoCheck') ?>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="input-field col s12 m3 l3">
+                                    <input id="cliente_contactoPuesto" type="text" value="CEO">
+                                    <label for="cliente_contactoPuesto"><?= label('formContacto_puesto'); ?></label>
+                                </div>
+                                <div class="input-field col s12 m3 l3">
+                                    <input id="cliente_contactoTelefono" type="text" value="87234691">
+                                    <label for="cliente_contactoTelefono"><?= label('formContacto_telefono'); ?></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s1 m1 l1" style="margin-top: 50px;">
+                            <a href="#">
+                                <i class="mdi-action-delete medium" style="color: black;"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <hr />
+                    </div>
+
+                    <div class="row">
+                        <div class="col s11 m11 l11">
+                            <div class="row">
+                                <div class="input-field col s12 m4 l4">
+                                    <input id="cliente_contactoApellido1" type="text" value="Arias">
+                                    <label for="cliente_contactoApellido1"><?= label('formContacto_apellido1'); ?></label>
+                                </div>
+                                <div class="input-field col s12 m4 l4">
+                                    <input id="cliente_contactoApellido2" type="text" value="Chaves">
+                                    <label for="cliente_contactoApellido2"><?= label('formContacto_apellido2'); ?></label>
+                                </div>
+                                <div class="input-field col s12 m4 l4">
+                                    <input id="cliente_contactoNombre" type="text" value="Jorge">
+                                    <label for="cliente_contactoNombre"><?= label('formContacto_nombre'); ?></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12 m6 l6">
+                                    <div>
+                                        <input id="cliente_contactoCorreo" type="email" style="margin-bottom: 0;" value="jorge@gmail.com">
+                                        <label for="cliente_contactoCorreo"><?= label('formCliente_correo'); ?></label>
+                                    </div>
+                                    <div style="margin-bottom: 20px;">
+                                        <input type="checkbox" class="filled-in" id="checkbox_contactoCorreoCliente" />
+                                        <label for="checkbox_contactoCorreoCliente" style="margin-bottom: 20px;">
+                                            <?= label('formCliente_correoCheck') ?>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="input-field col s12 m3 l3">
+                                    <input id="cliente_contactoPuesto" type="text" value="Programador">
+                                    <label for="cliente_contactoPuesto"><?= label('formContacto_puesto'); ?></label>
+                                </div>
+                                <div class="input-field col s12 m3 l3">
+                                    <input id="cliente_contactoTelefono" type="text" value="85204679">
+                                    <label for="cliente_contactoTelefono"><?= label('formContacto_telefono'); ?></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s1 m1 l1" style="margin-top: 50px;">
+                            <a href="#">
+                                <i class="mdi-action-delete medium" style="color: black;"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <hr />
+                    </div>
+
+                    <div class="row">
+                        <div class="col s11 m11 l11">
+                            <div class="row">
+                                <div class="input-field col s12 m4 l4">
+                                    <input id="cliente_contactoApellido1" type="text" value="Rojas">
+                                    <label for="cliente_contactoApellido1"><?= label('formContacto_apellido1'); ?></label>
+                                </div>
+                                <div class="input-field col s12 m4 l4">
+                                    <input id="cliente_contactoApellido2" type="text" value="Chaves">
+                                    <label for="cliente_contactoApellido2"><?= label('formContacto_apellido2'); ?></label>
+                                </div>
+                                <div class="input-field col s12 m4 l4">
+                                    <input id="cliente_contactoNombre" type="text" value="Cloret">
+                                    <label for="cliente_contactoNombre"><?= label('formContacto_nombre'); ?></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12 m6 l6">
+                                    <div>
+                                        <input id="cliente_contactoCorreo" type="email" style="margin-bottom: 0;" value="cloret@gmail.com">
+                                        <label for="cliente_contactoCorreo"><?= label('formCliente_correo'); ?></label>
+                                    </div>
+                                    <div style="margin-bottom: 20px;">
+                                        <input type="checkbox" class="filled-in" id="checkbox_contactoCorreoCliente" />
+                                        <label for="checkbox_contactoCorreoCliente" style="margin-bottom: 20px;">
+                                            <?= label('formCliente_correoCheck') ?>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="input-field col s12 m3 l3">
+                                    <input id="cliente_contactoPuesto" type="text" value="Programador">
+                                    <label for="cliente_contactoPuesto"><?= label('formContacto_puesto'); ?></label>
+                                </div>
+                                <div class="input-field col s12 m3 l3">
+                                    <input id="cliente_contactoTelefono" type="text" value="82506431">
+                                    <label for="cliente_contactoTelefono"><?= label('formContacto_telefono'); ?></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s1 m1 l1" style="margin-top: 50px;">
+                            <a href="#">
+                                <i class="mdi-action-delete medium" style="color: black;"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row" id="tab-contactos-nuevo-editar">
+                        <a onclick="agregarNuevoContacto();">
+                            Agregar nuevo contacto
                         </a>
                     </div>
-                    <table id="cliente1-contactos-editar" class="data-table-information responsive-table striped">
-                        <thead>
-                            <tr>
-                                <th style="text-align: center;">
-                                    <input class="filled-in checkbox-edicion checkall" type="checkbox" id="checkbox-all"
-                                           onclick="toggleChecked(this.checked)"/>
-                                    <label for="checkbox-all"></label></th>
-                                <th><?= label('formCliente_nombreContacto'); ?></th>
-                                <th><?= label('formCliente_correoContacto'); ?></th>
-                                <th><?= label('formCliente_opcionesContacto'); ?></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox-edicion" id="checkbox_cliente1_contacto1"/>
-                                    <label for="checkbox_cliente1_contacto1"></label>
-                                </td>
-                                <td>Maria Rodriguez</td>
-                                <td>maria@gmail.com</td>
-                                <td>
-                                    <ul id="dropdown-cliente1-contacto1" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                       data-activates="dropdown-cliente1-contacto1">
-                                        <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox-edicion" id="checkbox_cliente1_contacto2"/>
-                                    <label for="checkbox_cliente1_contacto2"></label>
-                                </td>
-                                <td>Juan Perez</td>
-                                <td>juan@gmail.com</td>
-                                <td>
-                                    <ul id="dropdown-cliente1-contacto2" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                       data-activates="dropdown-cliente1-contacto2">
-                                        <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox-edicion" id="checkbox_cliente1_contacto3"/>
-                                    <label for="checkbox_cliente1_contacto3"></label>
-                                </td>
-                                <td>Jose Mora</td>
-                                <td>jose@gmail.com</td>
-                                <td>
-                                    <ul id="dropdown-cliente1-contacto3" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                       data-activates="dropdown-cliente1-contacto3">
-                                        <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox-edicion" id="checkbox_cliente1_contacto4"/>
-                                    <label for="checkbox_cliente1_contacto4"></label>
-                                </td>
-                                <td>Brayan Nunnez</td>
-                                <td>brayan@gmail.com</td>
-                                <td>
-                                    <ul id="dropdown-cliente1-contacto4" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                       data-activates="dropdown-cliente1-contacto4">
-                                        <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox-edicion" id="checkbox_cliente1_contacto5"/>
-                                    <label for="checkbox_cliente1_contacto5"></label>
-                                </td>
-                                <td>Jorge Arias</td>
-                                <td>jorge@gmail.com</td>
-                                <td>
-                                    <ul id="dropdown-cliente1-contacto5" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                       data-activates="dropdown-cliente1-contacto5">
-                                        <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox-edicion" id="checkbox_cliente1_contacto6"/>
-                                    <label for="checkbox_cliente1_contacto6"></label>
-                                </td>
-                                <td>Claret Rojas</td>
-                                <td>cloret@gmail.com</td>
-                                <td>
-                                    <ul id="dropdown-cliente1-contacto6" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                       data-activates="dropdown-cliente1-contacto6">
-                                        <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox-edicion" id="checkbox_cliente1_contacto7"/>
-                                    <label for="checkbox_cliente1_contacto7"></label>
-                                </td>
-                                <td>Sebastian Rodriguez</td>
-                                <td>sebas@gmail.com</td>
-                                <td>
-                                    <ul id="dropdown-cliente1-contacto7" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                       data-activates="dropdown-cliente1-contacto7">
-                                        <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox-edicion" id="checkbox_cliente1_contacto8"/>
-                                    <label for="checkbox_cliente1_contacto8"></label>
-                                </td>
-                                <td>Emmanuel Conejo</td>
-                                <td>emma@gmail.com</td>
-                                <td>
-                                    <ul id="dropdown-cliente1-contacto8" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                       data-activates="dropdown-cliente1-contacto8">
-                                        <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox-edicion" id="checkbox_cliente1_contacto9"/>
-                                    <label for="checkbox_cliente1_contacto9"></label>
-                                </td>
-                                <td>Emmanuel Jimenez</td>
-                                <td>emmaj@gmail.com</td>
-                                <td>
-                                    <ul id="dropdown-cliente1-contacto9" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                       data-activates="dropdown-cliente1-contacto9">
-                                        <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox-edicion" id="checkbox_cliente1_contacto10"/>
-                                    <label for="checkbox_cliente1_contacto10"></label>
-                                </td>
-                                <td>Luis Barrantes</td>
-                                <td>luis@gmail.com</td>
-                                <td>
-                                    <ul id="dropdown-cliente1-contacto10" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                       data-activates="dropdown-cliente1-contacto10">
-                                        <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox-edicion" id="checkbox_cliente1_contacto11"/>
-                                    <label for="checkbox_cliente1_contacto11"></label>
-                                </td>
-                                <td>Joseph Fuentes</td>
-                                <td>joseph@gmail.com</td>
-                                <td>
-                                    <ul id="dropdown-cliente1-contacto11" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                       data-activates="dropdown-cliente1-contacto11">
-                                        <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox-edicion" id="checkbox_cliente1_contacto12"/>
-                                    <label for="checkbox_cliente1_contacto12"></label>
-                                </td>
-                                <td>Yohan Diaz</td>
-                                <td>yohan@gmail.com</td>
-                                <td>
-                                    <ul id="dropdown-cliente1-contacto12" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                       data-activates="dropdown-cliente1-contacto12">
-                                        <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox-edicion" id="checkbox_cliente1_contacto13"/>
-                                    <label for="checkbox_cliente1_contacto13"></label>
-                                </td>
-                                <td>Victor Gonzales</td>
-                                <td>victor@gmail.com</td>
-                                <td>
-                                    <ul id="dropdown-cliente1-contacto13" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                       data-activates="dropdown-cliente1-contacto13">
-                                        <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox-edicion" id="checkbox_cliente1_contacto14"/>
-                                    <label for="checkbox_cliente1_contacto14"></label>
-                                </td>
-                                <td>Jonathan Calderon</td>
-                                <td>calde@gmail.com</td>
-                                <td>
-                                    <ul id="dropdown-cliente1-contacto14" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                       data-activates="dropdown-cliente1-contacto14">
-                                        <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox-edicion" id="checkbox_cliente1_contacto15"/>
-                                    <label for="checkbox_cliente1_contacto15"></label>
-                                </td>
-                                <td>Kendal Zamora</td>
-                                <td>kendal@gmail.com</td>
-                                <td>
-                                    <ul id="dropdown-cliente1-contacto15" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                       data-activates="dropdown-cliente1-contacto15">
-                                        <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox-edicion" id="checkbox_cliente1_contacto16"/>
-                                    <label for="checkbox_cliente1_contacto16"></label>
-                                </td>
-                                <td>Sindy Porras</td>
-                                <td>sindy@gmail.com</td>
-                                <td>
-                                    <ul id="dropdown-cliente1-contacto16" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                       data-activates="dropdown-cliente1-contacto16">
-                                        <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox-edicion" id="checkbox_cliente1_contacto17"/>
-                                    <label for="checkbox_cliente1_contacto17"></label>
-                                </td>
-                                <td>Enrico Travierso</td>
-                                <td>enrico@gmail.com</td>
-                                <td>
-                                    <ul id="dropdown-cliente1-contacto17" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                       data-activates="dropdown-cliente1-contacto17">
-                                        <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox-edicion" id="checkbox_cliente1_contacto18"/>
-                                    <label for="checkbox_cliente1_contacto18"></label>
-                                </td>
-                                <td>Juan Carlos Miranda</td>
-                                <td>miranda@gmail.com</td>
-                                <td>
-                                    <ul id="dropdown-cliente1-contacto18" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                       data-activates="dropdown-cliente1-contacto18">
-                                        <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox-edicion" id="checkbox_cliente1_contacto19"/>
-                                    <label for="checkbox_cliente1_contacto19"></label>
-                                </td>
-                                <td>Wendy Castro</td>
-                                <td>wendy@gmail.com</td>
-                                <td>
-                                    <ul id="dropdown-cliente1-contacto19" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                       data-activates="dropdown-cliente1-contacto19">
-                                        <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox-edicion" id="checkbox_cliente1_contacto20"/>
-                                    <label for="checkbox_cliente1_contacto20"></label>
-                                </td>
-                                <td>Dennis Gonzales</td>
-                                <td>dennis@gmail.com</td>
-                                <td>
-                                    <ul id="dropdown-cliente1-contacto20" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                       data-activates="dropdown-cliente1-contacto20">
-                                        <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox-edicion" id="checkbox_cliente1_contacto13"/>
-                                    <label for="checkbox_cliente1_contacto13"></label>
-                                </td>
-                                <td>Rebeca Arias</td>
-                                <td>rebeca@gmail.com</td>
-                                <td>
-                                    <ul id="dropdown-cliente1-contacto13" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                       data-activates="dropdown-cliente1-contacto13">
-                                        <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox-edicion" id="checkbox_cliente1_contacto14"/>
-                                    <label for="checkbox_cliente1_contacto14"></label>
-                                </td>
-                                <td>Hilary madrigal</td>
-                                <td>hilary@gmail.com</td>
-                                <td>
-                                    <ul id="dropdown-cliente1-contacto14" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                       data-activates="dropdown-cliente1-contacto14">
-                                        <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox-edicion" id="checkbox_cliente1_contacto15"/>
-                                    <label for="checkbox_cliente1_contacto15"></label>
-                                </td>
-                                <td>Michael Arguedas</td>
-                                <td>michael@gmail.com</td>
-                                <td>
-                                    <ul id="dropdown-cliente1-contacto15" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                       data-activates="dropdown-cliente1-contacto15">
-                                        <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox-edicion" id="checkbox_cliente1_contacto16"/>
-                                    <label for="checkbox_cliente1_contacto16"></label>
-                                </td>
-                                <td>Emmanuel Hidalgo</td>
-                                <td>emmaF@gmail.com</td>
-                                <td>
-                                    <ul id="dropdown-cliente1-contacto16" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarContacto"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                       data-activates="dropdown-cliente1-contacto16">
-                                        <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="tabla-conAgregar tabla-opciones-contacto">
-                        <a id="opciones-seleccionados-delete"
-                           class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements"
-                           style="visibility: hidden;"
-                           href="#eliminarElementosSeleccionados" data-toggle="tooltip"
-                           title="<?= label('opciones_seleccionadosEliminar') ?>">
-                            <i class="mdi-action-delete icono-opciones-varios"></i>
-                        </a>
+                    <div class="col s12">
+                        <hr />
                     </div>
                 </div>
                 <div id="tab-infoAdicional-editar" class="card col s12">
@@ -1014,6 +607,61 @@
             document.getElementById('elementos-cliente-fisico').style.display = 'none';
             document.getElementById('elementos-cliente-juridico').style.display = 'block';
         }
+    }
+    function agregarNuevoContacto() {
+        $('#tab-contactos-nuevo-editar').remove();
+        $('#tab-contactos-editar').append('' +
+            '<div class="row">' +
+            '<div class="col s11 m11 l11">' +
+            '<div class="row">' +
+            '<div class="input-field col s12 m4 l4">' +
+            '<input id="cliente_contactoApellido1" type="text">' +
+            '<label for="cliente_contactoApellido1"><?= label("formContacto_apellido1"); ?></label>' +
+            '</div>' +
+            '<div class="input-field col s12 m4 l4">' +
+            '<input id="cliente_contactoApellido2" type="text">' +
+            '<label for="cliente_contactoApellido2"><?= label("formContacto_apellido2"); ?></label>' +
+            '</div>' +
+            '<div class="input-field col s12 m4 l4">' +
+            '<input id="cliente_contactoNombre" type="text">' +
+            '<label for="cliente_contactoNombre"><?= label("formContacto_nombre"); ?></label>' +
+            '</div>' +
+            '</div>' +
+
+            '<div class="row">' +
+            '<div class="input-field col s12 m6 l6">' +
+            '<div>' +
+            '<input id="cliente_contactoCorreo" type="email" style="margin-bottom: 0;">' +
+            '<label for="cliente_contactoCorreo"><?= label('formCliente_correo'); ?></label>' +
+            '</div>' +
+            '<div style="margin-bottom: 20px;">' +
+            '<input type="checkbox" class="filled-in" id="checkbox_contactoCorreoCliente" />' +
+            '<label for="checkbox_contactoCorreoCliente" style="margin-bottom: 20px;">' +
+            '<?= label('formCliente_correoCheck') ?>' +
+            '</label>' +
+            '</div>' +
+            '</div>' +
+            '<div class="input-field col s12 m3 l3">' +
+            '<input id="cliente_contactoPuesto" type="text">' +
+            '<label for="cliente_contactoPuesto"><?= label('formContacto_puesto'); ?></label>' +
+            '</div>' +
+            '<div class="input-field col s12 m3 l3">' +
+            '<input id="cliente_contactoTelefono" type="text">' +
+            '<label for="cliente_contactoTelefono"><?= label('formContacto_telefono'); ?></label>' +
+            '</div>' +
+            '</div>' +
+
+            '</div>' +
+            '<div class="col s1 m1 l1" style="margin-top: 50px;">' +
+            '<a href="#"><i class="mdi-action-delete medium" style="color: black;"></i></a>' +
+            '</div>' +
+            '</div>' +
+            '<div class="row" id="tab-contactos-nuevo-editar">' +
+            '<a style="cursor: pointer;" onclick="agregarNuevoContacto();">Agregar nuevo contacto</a>' +
+            '</div>' +
+            '<div class="col s12">' +
+            '<hr />' +
+            '</div>');
     }
 </script>
 

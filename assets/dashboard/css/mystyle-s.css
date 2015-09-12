@@ -218,9 +218,9 @@ table.data-table-information thead tr th:first-child { width: 6% !important; }
 
 span.informacion-cliente { font-weight: bold; }
 
-div#tab-contactos hr { height: 12px; border: 0; box-shadow: inset 0 15px 15px -11px gray; }
-div#tab-contactos-nuevo { margin: 15px 0; }
-div#tab-contactos-nuevo a { cursor: pointer; font-size: large; text-decoration: underline; }
+div#tab-contactos hr, div#tab-contactos-editar hr { height: 12px; border: 0; box-shadow: inset 0 15px 15px -11px gray; }
+div#tab-contactos-nuevo, div#tab-contactos-nuevo-editar { margin: 15px 0; }
+div#tab-contactos-nuevo a, div#tab-contactos-nuevo-editar a { cursor: pointer; font-size: large; text-decoration: underline; }
 
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/
