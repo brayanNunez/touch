@@ -539,7 +539,7 @@
                 <div class="file-field input-field col s12">
                     <input id="registro_ImagenEmpresa" class="file-path validate campo-registro" type="text"
                            placeholder="Foto o logo"/>
-                    <div class="btn" data-toggle="tooltip"
+                    <div class="btn modal-registro" data-toggle="tooltip"
                          title="<?= label('tooltip_examinar') ?>"
                          style="border-radius: 0px !important; min-width: 13%;">
                         <span><i class="mdi-action-search"></i></span>

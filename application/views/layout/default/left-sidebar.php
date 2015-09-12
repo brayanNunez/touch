@@ -19,7 +19,7 @@
                         <li class="divider"></li>
                         <li><a href="<?= base_url(); ?>pagos"><i class="mdi-action-lock-outline"></i> Pagos</a>
                         </li>
-                        <li><a href="#"><i class="mdi-hardware-keyboard-tab"></i> <?= label('logout'); ?></a>
+                        <li><a href="<?= base_url(); ?>"><i class="mdi-hardware-keyboard-tab"></i> <?= label('logout'); ?></a>
                         </li>
                     </ul>
                     <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#"

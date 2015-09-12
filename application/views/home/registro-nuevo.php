@@ -13,7 +13,7 @@
                                 <form class="col s12">
 
                                     <div class="col s12 m12 l12">
-                                        <div class="input-field col s12 m6 l0">
+                                        <div class="input-field col s12 m8 l6">
                                             <div class="input-field col s12">
                                                 <select onChange="registro(this)">
                                                     <!--<option value="" class="selected-option" selected disabled>Tipo de usuario</option>-->
@@ -22,10 +22,10 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="input-field col s12 m6 l0">
+                                        <div class="input-field col s12 m8 l6">
                                             <div class="input-field col s12">
-                                                <input id="registro_cedula" class="campo-registro" type="text"
-                                                       placeholder="Cédula">
+                                                <input id="registro_numeroIdentificacion" class="campo-registro" type="text"
+                                                       placeholder="Número de identificación">
                                             </div>
                                         </div>
                                     </div>
@@ -99,31 +99,33 @@
                                         </div>
 
                                         <div class="col s12 m12 l12">
-                                            <div class="input-field col s12 m8 l4">
-                                                <div class="input-field col s12">
-                                                    <input id="registro_paisIndepediente" class="campo-registro" type="text"
-                                                           placeholder="País">
+                                            <div class="input-field col s12 m8 l6">
+                                                <div class="input-field col s12 country-select">
+                                                    <select>
+                                                        <option class="selected-option" selected disabled>País
+                                                        </option>
+                                                        <option value="1">Costa Rica</option>
+                                                        <option value="2">Colombia</option>
+                                                        <option value="3">Brasil</option>
+                                                        <option value="4">USA</option>
+                                                        <option value="5">Chile</option>
+                                                    </select>
                                                 </div>
                                             </div>
-                                            <div class="input-field col s12 m8 l4">
+                                            <div class="input-field col s12 m8 l6">
                                                 <div class="input-field col s12">
                                                     <input id="registro_provinciaIndepediente" class="campo-registro" type="text"
-                                                           placeholder="Provincia">
+                                                           placeholder="Estado/Provincia">
                                                 </div>
                                             </div>
-                                            <div class="input-field col s12 m8 l4">
-                                                <div class="input-field col s12">
-                                                    <input id="registro_cantonIndepediente" class="campo-registro" type="text"
-                                                           placeholder="Cantón">
-                                                </div>
-                                            </div>
+                                            
                                         </div>
 
                                         <div class="col s12 m12 l12">
                                             <div class="input-field col s12 m8 l6">
                                                 <div class="input-field col s12">
-                                                    <input id="registro_distritoIndepediente" class="campo-registro" type="text"
-                                                           placeholder="Distrito">
+                                                    <input id="registro_cantonIndepediente" class="campo-registro" type="text"
+                                                           placeholder="Ciudad/Cantón">
                                                 </div>
                                             </div>
                                             <div class="input-field col s12 m8 l6">
@@ -170,31 +172,33 @@
                                         </div>
 
                                         <div class="col s12 m12 l12">
-                                            <div class="input-field col s12 m8 l4">
-                                                <div class="input-field col s12">
-                                                    <input id="registro_paisEmpresa" class="campo-registro" type="text"
-                                                           placeholder="País">
+                                            <div class="input-field col s12 m8 l6">
+                                                <div class="input-field col s12 country-select">
+                                                    <select>
+                                                        <option class="selected-option" selected disabled>País
+                                                        </option>
+                                                        <option value="1">Costa Rica</option>
+                                                        <option value="2">Colombia</option>
+                                                        <option value="3">Brasil</option>
+                                                        <option value="4">USA</option>
+                                                        <option value="5">Chile</option>
+                                                    </select>
                                                 </div>
                                             </div>
-                                            <div class="input-field col s12 m8 l4">
+                                            <div class="input-field col s12 m8 l6">
                                                 <div class="input-field col s12">
                                                     <input id="registro_provinciaEmpresa" class="campo-registro" type="text"
-                                                           placeholder="Provincia">
+                                                           placeholder="Estado/Provincia">
                                                 </div>
                                             </div>
-                                            <div class="input-field col s12 m8 l4">
-                                                <div class="input-field col s12">
-                                                    <input id="registro_cantonEmpresa" class="campo-registro" type="text"
-                                                           placeholder="Cantón">
-                                                </div>
-                                            </div>
+                                            
                                         </div>
 
                                         <div class="col s12 m12 l12">
                                             <div class="input-field col s12 m8 l6">
                                                 <div class="input-field col s12">
-                                                    <input id="registro_distritoEmpresa" class="campo-registro" type="text"
-                                                           placeholder="Distrito">
+                                                    <input id="registro_cantonEmpresa" class="campo-registro" type="text"
+                                                           placeholder="Ciudad/Cantón">
                                                 </div>
                                             </div>
                                             <div class="input-field col s12 m8 l6">
@@ -216,10 +220,10 @@
                                             <h5>Datos del contacto (Se recomienda representante legal)</h5>
                                         </div>
 
-                                        <div class="col s12 m6 10">
+                                        <div class="col s12 m8 10">
                                             <div class="input-field col s12">
-                                                <input id="registro_cedulaContacto" class="campo-registro" type="text"
-                                                       placeholder="Cédula">
+                                                <input id="registro_numeroIdentificacionContacto" class="campo-registro" type="text"
+                                                       placeholder="Número de identificación">
                                             </div>
                                         </div>
 
