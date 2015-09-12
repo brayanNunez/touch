@@ -201,6 +201,17 @@ table.data-table-information tbody tr td.dataTables_empty { padding: 9.6px 1% !i
 
 table.data-table-information thead tr th:first-child { width: 6% !important; }
 
+.liquid { padding:10px 0; }
+.liquid div.wrapper { float: none !important; display: block; margin: 0 auto; }
+.liquid .previous { position: absolute; left: 25px; top: 70px; }
+.liquid .next { position: absolute; right: 25px; top: 70px; }
+.liquid ul li { width:200px; padding:0 2px; margin:0; }
+.liquid ul li div.info-contacto { width: auto; height: 195px; border: 2px solid black; border-radius: 5px; position: relative; }
+.liquid ul li div.info-contacto div { margin: 5px; }
+.liquid ul li div.info-contacto div div.contacto-opciones { position: absolute; bottom: 0; right: 0; margin: 0; }
+.liquid ul li div.info-contacto div div.contacto-opciones a { padding: 0 5px; }
+.liquid ul li div.info-contacto div div.contacto-opciones a i { color: black; }
+
 span.informacion-cliente { font-weight: bold; }
 
 @media only screen and (max-width: 1200px) {

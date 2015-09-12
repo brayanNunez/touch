@@ -36,6 +36,7 @@
     <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
     <!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script> -->
     <script type="text/javascript" src="<?= base_url() ?>assets/dashboard/js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="<?= base_url() ?>assets/dashboard/js/jquery.liquidcarousel.pack.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>assets/dashboard/js/jquery.treetable-ajax-persist.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>assets/dashboard/js/jquery.treetable-3.0.0.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>assets/dashboard/js/persist-min.js"></script>

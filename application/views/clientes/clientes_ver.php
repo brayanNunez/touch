@@ -1,3 +1,9 @@
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#slider-contactos').liquidcarousel({height:200, duration:1000, hidearrows:false});
+    });
+</script>
+
 <div class="col s12">
     <form class="col s12">
         <div class="row">
@@ -49,7 +55,245 @@
 
             <div class="col s12">
                 <div id="tab-contactos" class="card col s12">
-
+                    <div id="slider-contactos" class="liquid">
+                        <span class="previous"><i class="mdi-image-navigate-before large"></i></span>
+                        <div class="wrapper">
+                            <ul>
+                                <li>
+                                    <div class="info-contacto">
+                                        <div>
+                                            <h5>Jorge Arias</h5>
+                                            <p>Gerente de finanzas</p>
+                                            <p>jorge@gmail.com</p>
+                                            <p>Tel. 8956-9865</p>
+                                            <div class="contacto-opciones">
+                                                <a href="#">
+                                                    <i class="mdi-editor-mode-edit"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="mdi-file-file-download"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="mdi-action-delete"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="info-contacto">
+                                        <div>
+                                            <h5>Brayan Nunez</h5>
+                                            <p>Gerente de planta</p>
+                                            <p>brayan@gmail.com</p>
+                                            <p>Tel. 8956-6545</p>
+                                            <div class="contacto-opciones">
+                                                <a href="#">
+                                                    <i class="mdi-editor-mode-edit"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="mdi-file-file-download"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="mdi-action-delete"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="info-contacto">
+                                        <div>
+                                            <h5>Sebastian Rodriguez B.</h5>
+                                            <p>CEO</p>
+                                            <p>sebas@gmail.com</p>
+                                            <p>Tel. 8956-3405</p>
+                                            <div class="contacto-opciones">
+                                                <a href="#">
+                                                    <i class="mdi-editor-mode-edit"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="mdi-file-file-download"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="mdi-action-delete"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="info-contacto">
+                                        <div>
+                                            <h5>Emmanuel Jimenez</h5>
+                                            <p>Programador</p>
+                                            <p>emma@gmail.com</p>
+                                            <p>Tel. 8956-1245</p>
+                                            <div class="contacto-opciones">
+                                                <a href="#">
+                                                    <i class="mdi-editor-mode-edit"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="mdi-file-file-download"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="mdi-action-delete"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="info-contacto">
+                                        <div>
+                                            <h5>Luis Barrantes</h5>
+                                            <p>Analista</p>
+                                            <p>luis@gmail.com</p>
+                                            <p>Tel. 8752-9865</p>
+                                            <div class="contacto-opciones">
+                                                <a href="#">
+                                                    <i class="mdi-editor-mode-edit"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="mdi-file-file-download"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="mdi-action-delete"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="info-contacto">
+                                        <div>
+                                            <h5>Yohan Diaz Loria</h5>
+                                            <p>Redes</p>
+                                            <p>yohan@gmail.com</p>
+                                            <p>Tel. 8956-1379</p>
+                                            <div class="contacto-opciones">
+                                                <a href="#">
+                                                    <i class="mdi-editor-mode-edit"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="mdi-file-file-download"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="mdi-action-delete"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="info-contacto">
+                                        <div>
+                                            <h5>Jean Paul Barquero</h5>
+                                            <p>Programador</p>
+                                            <p>jean@gmail.com</p>
+                                            <p>Tel. 8956-0943</p>
+                                            <div class="contacto-opciones">
+                                                <a href="#">
+                                                    <i class="mdi-editor-mode-edit"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="mdi-file-file-download"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="mdi-action-delete"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="info-contacto">
+                                        <div>
+                                            <h5>Joseph Fuentes Cruz</h5>
+                                            <p>Bases de datos</p>
+                                            <p>joseph@gmail.com</p>
+                                            <p>Tel. 8956-3051</p>
+                                            <div class="contacto-opciones">
+                                                <a href="#">
+                                                    <i class="mdi-editor-mode-edit"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="mdi-file-file-download"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="mdi-action-delete"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="info-contacto">
+                                        <div>
+                                            <h5>Victor Gonzalez</h5>
+                                            <p>Redes</p>
+                                            <p>victor@gmail.com</p>
+                                            <p>Tel. 8956-7391</p>
+                                            <div class="contacto-opciones">
+                                                <a href="#">
+                                                    <i class="mdi-editor-mode-edit"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="mdi-file-file-download"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="mdi-action-delete"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="info-contacto">
+                                        <div>
+                                            <h5>Rebeca Arias Cruz</h5>
+                                            <p>Programadora</p>
+                                            <p>rebeca@gmail.com</p>
+                                            <p>Tel. 8956-7913</p>
+                                            <div class="contacto-opciones">
+                                                <a href="#">
+                                                    <i class="mdi-editor-mode-edit"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="mdi-file-file-download"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="mdi-action-delete"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="info-contacto">
+                                        <div>
+                                            <h5>Michael Arguedas</h5>
+                                            <p>Redes</p>
+                                            <p>caya@gmail.com</p>
+                                            <p>Tel. 8956-5080</p>
+                                            <div class="contacto-opciones">
+                                                <a href="#">
+                                                    <i class="mdi-editor-mode-edit"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="mdi-file-file-download"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="mdi-action-delete"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <span class="next"><i class="mdi-image-navigate-next large"></i></span>
+                    </div>
                 </div>
                 <div id="tab-infoAdicional" class="card col s12">
                     <div class="table-responsive">
