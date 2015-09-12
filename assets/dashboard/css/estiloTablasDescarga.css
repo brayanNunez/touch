@@ -1,5 +1,5 @@
 
-@media print {
+
 table
 {
 font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -9,10 +9,10 @@ width: 100%;
 td
 {
 font-size: 12px;
-/*border:1px solid #A9A9A9;*/
-border:1px solid red;
+border:1px solid #A9A9A9;
+/*border:1px solid red;*/
 padding:3px 7px 2px 7px;
-background: red;
+/*background: red;*/
 }
 
 thead{
@@ -36,4 +36,3 @@ tbody{
 	font-family: Helvetica, sans-serif;
 }
 
-}

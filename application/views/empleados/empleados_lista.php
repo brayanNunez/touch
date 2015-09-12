@@ -26,14 +26,22 @@
 
     $('#empleados-tabla-lista >tbody >tr').each(function()
     {
-        tablaHtml += '<tr>';
-        var cantidadColummnas = $(this).children("td").length;
-      $(this).children("td").each(function(index){
-        if (index != 0 && index != cantidadColummnas-1) {
-            tablaHtml += '<td style="border:1px solid #A9A9A9; padding:3px 7px 2px 7px;">' + $(this).text() + '</td>';
-        };
-      });
-      tablaHtml += '</tr>';
+        // alert($(this).children("td").first().html());
+         if ($(this).children("td").first().find('input').is(':checked')) {
+
+            tablaHtml += '<tr>';
+            var cantidadColummnas = $(this).children("td").length;
+            $(this).children("td").each(function(index){
+             if (index != 0 && index != cantidadColummnas-1) {
+                tablaHtml += '<td style="border:1px solid #A9A9A9; padding:3px 7px 2px 7px;">' + $(this).text() + '</td>';
+                };
+            });
+            tablaHtml += '</tr>';
+            
+           
+         }
+
+        
     });
     
     var html = '<!DOCTYPE html><html><head><title>403 Forbidden</title><link rel="stylesheet" href="<?= base_url() ?>assets/dashboard/css/estiloTablasDescarga.css"></head><body id="hojaPDF">';
@@ -104,14 +112,16 @@ $('#convertirExcel').on("click", function(){
 
     $('#empleados-tabla-lista >tbody >tr').each(function()
     {
-        tablaHtml += '<tr>';
-        var cantidadColummnas = $(this).children("td").length;
-      $(this).children("td").each(function(index){
-        if (index != 0 && index != cantidadColummnas-1) {
-            tablaHtml += '<td>' + $(this).text() + '</td>';
-        };
-      });
-      tablaHtml += '</tr>';
+        if ($(this).children("td").first().find('input').is(':checked')) {
+            tablaHtml += '<tr>';
+            var cantidadColummnas = $(this).children("td").length;
+              $(this).children("td").each(function(index){
+                if (index != 0 && index != cantidadColummnas-1) {
+                    tablaHtml += '<td>' + $(this).text() + '</td>';
+                };
+              });
+              tablaHtml += '</tr>';
+     }
     });
     tablaHtml += '</tbody></table></body></html>';
 
@@ -162,6 +172,7 @@ $('#convertirPDF').on("click", function(){
 
     tabla.find('> tbody > tr').each(function()
     {
+        if ($(this).children("td").first().find('input').is(':checked')) {
         tablaHtml += '<tr>';
         var cantidadColummnas = $(this).children("td").length;
       $(this).children("td").each(function(index){
@@ -170,6 +181,7 @@ $('#convertirPDF').on("click", function(){
         };
       });
       tablaHtml += '</tr>';
+  }
     });
     tablaHtml += '</tbody></table></body></html>';
      var table =  '<table><thead><tr><th>Month</th><th>Savings</th></tr></thead><tfoot><tr><td>Sum</td><td><a href="localhost/Proyectos">$180</a></td></tr></tfoot><tbody><tr><td>January</td><td>$100</td></tr><tr><td>February</td><td>$80</td></tr></tbody></table>';
