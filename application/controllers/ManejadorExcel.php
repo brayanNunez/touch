@@ -20,7 +20,7 @@ class ManejadorExcel extends CI_Controller
         if (isset($_POST['miHtml'])) {
             $htmlEntrada = $_POST['miHtml'];
 
-            $titulo = 'Empleados';
+            $titulo = $_POST['titulo'];;
 
             $str = $htmlEntrada;
 
@@ -60,7 +60,11 @@ class ManejadorExcel extends CI_Controller
 
         $hoja->fromArray($rowData, '', 'A1');
 
-        $header = 'a1:f1';
+
+        $cantidadColumnas =  count(array_shift($rowData));
+        $abcd = array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s');
+        $ultimaColumna =  $abcd[$cantidadColumnas - 1]; 
+        $header = 'a1:'.$ultimaColumna.'1';
         $hoja->getStyle($header)->getFill()->setFillType(\PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFFFFF00');
         $style = array(
             'font' => array('bold' => true,),

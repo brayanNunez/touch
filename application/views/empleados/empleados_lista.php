@@ -128,7 +128,7 @@ $('#convertirExcel').on("click", function(){
 
     var html = tablaHtml;
 
-    $('#inset_form').html('<form  action="<?=base_url()?>ManejadorExcel/tablaDescarga" name="form" method="post" style="display:block;"><textarea name="miHtml">' + html + '</textarea></form>');
+    $('#inset_form').html('<form  action="<?=base_url()?>ManejadorExcel/tablaDescarga" name="form" method="post" style="display:block;"><input type="text" name="titulo" value="<?= label('tituloEmpleados'); ?>"><textarea name="miHtml">' + html + '</textarea></form>');
     document.forms['form'].submit();
 
     //eliminar la propiedead height para que siga adaptandose a los cambios de tamano en el html
