@@ -141,9 +141,9 @@ $('#convertirExcel').on("click", function(){
 
 $('#convertirPDF').on("click", function(){
  
-    var informacionSistema = '<div id="informacionSistema"><span><a href="<?=base_url()?>">touchcr.com</a></span></div>';
+    var informacionSistema = '<div id="informacionSistema"><div id="linkPagina"><a href="<?=base_url()?>">touchcr.com</a></div><span class="numeracion"></span></div>';
     var tablaHtml = informacionSistema;
-    tablaHtml += '<h1 id="titulo">Empleados</h1>';
+    // tablaHtml += '<h4 id="titulo">Empleados</h4>';
     tablaHtml += '<table><thead>';
 
     var rows = $("#empleados-tabla-lista").dataTable().fnGetNodes();
