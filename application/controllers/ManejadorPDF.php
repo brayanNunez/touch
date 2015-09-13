@@ -81,6 +81,7 @@ class ManejadorPDF extends CI_Controller
             //     echo "El email ha sido enviado correctamente";
 
             // }
+            exit;
 
         }
 
