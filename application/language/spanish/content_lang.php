@@ -496,6 +496,16 @@ $lang['formProveedor_contactoEliminar'] = 'Eliminar contacto';
 $lang['formProveedor_contactoPrincipal'] = 'Contacto principal';
 $lang['formProveedor_contactoSecundario'] = 'Cambiar a contacto principal';
 
+$lang['proveedores_archivosNombre'] = 'Nombre del archivo';
+$lang['proveedores_archivosDescripcion'] = 'Descripción';
+$lang['proveedores_archivosPeso'] = 'Tamaño';
+$lang['proveedores_archivosFecha'] = 'Fecha';
+$lang['proveedores_archivosOpciones'] = 'Opciones';
+$lang['proveedores_archivos_accionEliminar'] = 'Eliminar archivos seleccionados';
+$lang['proveedores_archivoNuevo'] = 'Agregar nuevo archivo';
+$lang['proveedores_archivoEliminar'] = '¿Realmente desea eliminar el archivo seleccionado?';
+$lang['proveedores_archivosSeleccionadosEliminar'] = '¿Realmente desea eliminar los archivos seleccionados?';
+
 //Formulario de usuarios
     $lang['Usuario_tablaNombre'] = 'Nombre';
     $lang['Usuario_tablaIdentificacion'] = 'Identificación';
