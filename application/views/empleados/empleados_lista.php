@@ -1,3 +1,10 @@
+<!-- quitar class waves-effect a los <a> de descarga, imprimir eliminar -->
+<!-- cada vez que se elimina se debe verificar lo de los checks a ver si le quitamos
+las opciones.
+El check general desaparace cuando se quita el ultimo check (ver metodo verificarChecks) 
+ -->
+
+
 <button id="convertirPDF">PDF</button>
 <button id="convertirExcel">Excel</button>
 <button id="convertirImprimir">Imprimir</button>
@@ -5,6 +12,10 @@
 
 
 <script type="text/javascript">
+
+    $('#opciones-seleccionados-print').on('click', function(){
+        alert('click');
+    });
 
     $('#convertirImprimir').on("click", function(){
         tablaHtml = '<table style="border-collapse:collapse;width: 100%;"><thead style="font-weight: bold;">';
@@ -152,7 +163,7 @@ $('#convertirPDF').on("click", function(){
 
     var tabla = $("#empleados-tabla-lista").dataTable();
     // $("#empleados-tabla-lista");
-    alert( tabla.find('> tbody > tr').length);
+    // alert( tabla.find('> tbody > tr').length);
 
 
 
@@ -324,7 +335,7 @@ $('#convertirPDF').on("click", function(){
 
                                                 <div class="tabla-conAgregar">
                                                     <a id="opciones-seleccionados-print"
-                                                       class="waves-effect black-text opciones-seleccionados option-print-table"
+                                                       class="black-text opciones-seleccionados option-print-table"
                                                        style="visibility: hidden;"
                                                        href="#" data-toggle="tooltip"
                                                        title="<?= label('opciones_seleccionadosImprimir') ?>">
@@ -341,6 +352,7 @@ $('#convertirPDF').on("click", function(){
                                                         </li>
                                                     </ul>
                                                     <a id="opciones-seleccionados-export"
+                                                       style="visibility: hidden;"
                                                        class="opciones-seleccionados boton-opciones black-text dropdown-button option-export-table"
                                                        href="#" data-toggle="tooltip"
                                                        title="<?= label('opciones_seleccionadosExportar') ?>"
@@ -348,7 +360,7 @@ $('#convertirPDF').on("click", function(){
                                                         <i class="mdi-file-file-download icono-opciones-varios"></i>
                                                     </a>
                                                     <a id="opciones-seleccionados-delete"
-                                                       class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements"
+                                                       class="modal-trigger black-text opciones-seleccionados option-delete-elements"
                                                        style="visibility: hidden;"
                                                        href="#eliminarElementosSeleccionados" data-toggle="tooltip"
                                                        title="<?= label('opciones_seleccionadosEliminar') ?>">
@@ -436,28 +448,28 @@ $('#convertirPDF').on("click", function(){
 </script>
 
 <script>
-    $(window).load(function () {
-        var marcados = $('.checkbox:checked').size();
-        if (marcados >= 1) {
-            var elems = document.getElementsByClassName('opciones-seleccionados');
-            var e;
-            for (e in elems) {
-//                elems[e].style.display = 'block';
-                elems[e].style.visibility = 'visible';
-//                elems[e].css('visibility', 'visible');
-            }
-        } else {
-            var elems = document.getElementsByClassName('opciones-seleccionados');
-            var e;
-            for (e in elems) {
-//                elems[e].style.display = 'none';
-                elems[e].style.visibility = 'hidden';
-//                elems[e].css('visibility', 'hidden');
-            }
-        }
-        document.getElementById('checkbox-all').checked = false;
+//     $(window).load(function () {
+//         var marcados = $('.checkbox:checked').size();
+//         if (marcados >= 1) {
+//             var elems = document.getElementsByClassName('opciones-seleccionados');
+//             var e;
+//             for (e in elems) {
+// //                elems[e].style.display = 'block';
+//                 elems[e].style.visibility = 'visible';
+// //                elems[e].css('visibility', 'visible');
+//             }
+//         } else {
+//             var elems = document.getElementsByClassName('opciones-seleccionados');
+//             var e;
+//             for (e in elems) {
+// //                elems[e].style.display = 'none';
+//                 elems[e].style.visibility = 'hidden';
+// //                elems[e].css('visibility', 'hidden');
+//             }
+//         }
+//         document.getElementById('checkbox-all').checked = false;
 
-    });
+//     });
     $(document).ready( function () {
         $('#empleados-tabla-lista').dataTable( {
             'aoColumnDefs': [{
@@ -493,7 +505,7 @@ $('#convertirPDF').on("click", function(){
                            success:  function (response) {
                             // alert(response);
                             if (response==true) {
-                                alert(fila.html());
+                                // alert(fila.html());
                                fila.fadeOut(function () {
 
                                 fila.remove();
@@ -537,7 +549,7 @@ $('#convertirPDF').on("click", function(){
     function verificarChecks(){
         
         var marcados = $('.checkbox:checked').not('#checkbox-all').size();
-            alert(marcados);
+            // alert(marcados);
             if (marcados >= 1) {
                 var elems = document.getElementsByClassName('opciones-seleccionados');
                 var e;
