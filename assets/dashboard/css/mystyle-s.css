@@ -203,9 +203,10 @@ table.data-table-information tbody tr td.dataTables_empty { padding: 9.6px 1% !i
 table.data-table-information thead tr th:first-child { width: 6% !important; }
 
 .liquid { padding:10px 0; }
-.liquid div.wrapper { float: none !important; display: block; margin: 0 auto; }
+.liquid div.wrapper { float: none !important; display: block; margin: 0 auto !important; }
 .liquid .previous { position: absolute; left: 25px; top: 70px; }
 .liquid .next { position: absolute; right: 25px; top: 70px; }
+.liquid ul { margin-top: 5px !important; }
 .liquid ul li { width:200px; padding:0 10px; margin:0; }
 .liquid ul li div.info-contacto { width: auto; height: 260px; border: 2px solid black; border-radius: 5px; position: relative; }
 .liquid ul li div.info-contacto div { margin: 5px; word-wrap: break-word; }
