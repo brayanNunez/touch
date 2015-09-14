@@ -5,19 +5,17 @@ El check general desaparace cuando se quita el ultimo check (ver metodo verifica
  -->
 
 
-<button id="convertirPDF">PDF</button>
+<!-- <button id="convertirPDF">PDF</button>
 <button id="convertirExcel">Excel</button>
-<button id="convertirImprimir">Imprimir</button>
+<button id="convertirImprimir">Imprimir</button> -->
 
 
 
 <script type="text/javascript">
 
-    $('#opciones-seleccionados-print').on('click', function(){
-        alert('click');
-    });
+$(document).on('ready', function(){
 
-    $('#convertirImprimir').on("click", function(){
+    $('#opciones-seleccionados-print').on("click", function(){
         tablaHtml = '<table style="border-collapse:collapse;width: 100%;"><thead style="font-weight: bold;">';
 
     $('#empleados-tabla-lista >thead >tr').each(function()
@@ -91,19 +89,17 @@ El check general desaparace cuando se quita el ultimo check (ver metodo verifica
         return true;
     }
 
-</script>
 
 
 
-<script type="text/javascript">
 
-$('#convertirImprimir').on("click", function(){
-    $('table').printArea();
+// $('#convertirImprimir').on("click", function(){
+//     $('table').printArea();
 
-});
+// });
 
 
-$('#convertirExcel').on("click", function(){
+$('#opciones-seleccionados-Excel').on("click", function(){
     tablaHtml = '<table><thead>';
 
     $('#empleados-tabla-lista >thead >tr').each(function()
@@ -150,7 +146,7 @@ $('#convertirExcel').on("click", function(){
 
 });
 
-$('#convertirPDF').on("click", function(){
+$('#opciones-seleccionados-PDF').on("click", function(){
  
     var informacionSistema = '<div id="informacionSistema"><div id="linkPagina"><a href="<?=base_url()?>">touchcr.com</a></div><span class="numeracion"></span></div>';
     var encabezado = '<div id="encabezado"><?= label('tituloEmpleados'); ?></div>';
@@ -212,10 +208,14 @@ $('#convertirPDF').on("click", function(){
     // $('.editarExterno').css("display", "");
 
 });
+});
 
 </script>
+
 <div style="display: none" id="inset_form"></div>
 
+
+<!-- <button id="mensajeDescarga">Prueba</button> -->
 <!-- START CONTENT -->
 
 <section id="content">
@@ -233,6 +233,7 @@ $('#convertirPDF').on("click", function(){
     </div>
     <!--breadcrumbs end-->
 
+
     <div class="container">
         <div id="chart-dashboard">
             <div class="row">
@@ -249,6 +250,7 @@ $('#convertirPDF').on("click", function(){
                                                        class="btn btn-default"><?= label('agregar_nuevo'); ?></a>
                                                 </div>
                                                 <div id="contenedorTabla">
+
                                                 <table id="empleados-tabla-lista" class="data-table-information responsive-table striped" cellspacing="0">
                                                     <thead>
                                                     <tr>
@@ -329,11 +331,14 @@ $('#convertirPDF').on("click", function(){
                                                         }
                                                     ?>
 
+
                                                     </tbody>
                                                 </table>
                                                 </div>
 
+
                                                 <div class="tabla-conAgregar">
+
                                                     <a id="opciones-seleccionados-print"
                                                        class="black-text opciones-seleccionados option-print-table"
                                                        style="visibility: hidden;"
@@ -343,11 +348,11 @@ $('#convertirPDF').on("click", function(){
                                                     </a>
                                                     <ul id="dropdown-exportar" class="dropdown-content">
                                                         <li>
-                                                            <a href="#"
+                                                            <a id="opciones-seleccionados-PDF" href="#"
                                                                class="-text"><?= label('opciones_seleccionadosExportarPdf') ?></a>
                                                         </li>
                                                         <li>
-                                                            <a href="#"
+                                                            <a id="opciones-seleccionados-Excel" href="#"
                                                                class="-text"><?= label('opciones_seleccionadosExportarExcel') ?></a>
                                                         </li>
                                                     </ul>
@@ -366,6 +371,7 @@ $('#convertirPDF').on("click", function(){
                                                        title="<?= label('opciones_seleccionadosEliminar') ?>">
                                                         <i class="mdi-action-delete icono-opciones-varios"></i>
                                                     </a>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -549,7 +555,7 @@ $('#convertirPDF').on("click", function(){
     function verificarChecks(){
         
         var marcados = $('.checkbox:checked').not('#checkbox-all').size();
-             // alert(marcados);
+             //alert(marcados);
             if (marcados >= 1) {
                 var elems = document.getElementsByClassName('opciones-seleccionados');
                 var e;
