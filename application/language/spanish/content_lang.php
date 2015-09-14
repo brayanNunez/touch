@@ -369,6 +369,7 @@
     $lang['formCliente_descuento'] = 'Descuento fijo';
     $lang['formCliente_monedaCotizar'] = 'Cotizar en';
 
+$lang['formCliente_contactoAgregar'] = 'Agregar nuevo contacto';
 $lang['formCliente_contactoEditar'] = 'Editar contacto';
 $lang['formCliente_contactoDescargar'] = 'Descargar contacto';
 $lang['formCliente_contactoEliminar'] = 'Eliminar contacto';
@@ -431,6 +432,10 @@ $lang['formCliente_contactoSecundario'] = 'Cambiar a contacto principal';
 
 
 //Formulario de proveedores
+    $lang['proveedor_info'] = 'Información del proveedor';
+    $lang['proveedor_ver'] = 'Perfil';
+    $lang['proveedor_archivos'] = 'Archivos';
+    $lang['proveedor_editar'] = 'Editar información';
     $lang['Proveedor_tablaNombre'] = 'Nombre';
     $lang['Proveedor_tablaCodigo'] = 'Código';
     $lang['Proveedor_tablaIdentificacion'] = 'Identificación';
@@ -453,6 +458,7 @@ $lang['formProveedor_nombreFantasia'] = 'Nombre de fantasía';
 $lang['formProveedor_telefono'] = 'Número telefónico';
 $lang['formProveedor_fax'] = 'Fax';
 $lang['formProveedor_palabrasClave'] = 'Palabras clave';
+$lang['formProveedor_palabrasClaveAsociadas'] = 'Palabras clave asociadas';
 $lang['formProveedor_palabrasClaveAnadir'] = 'Añadir palabra';
 $lang['formProveedor_descripcion'] = 'Descripción';
 $lang['formProveedor_direccion'] = 'Dirección';
@@ -461,8 +467,9 @@ $lang['formProveedor_direccion'] = 'Dirección';
     $lang['formProveedor_direccionCanton'] = 'Cantón';
     $lang['formProveedor_direccionDistrito'] = 'Distrito';
     $lang['formProveedor_direccionDomicilio'] = 'Domicilio';
+$lang['formProveedor_correoCheck'] = 'Enviar facturas a este correo';
 $lang['formProveedor_contactos'] = 'Contactos';
-$lang['formProveedor_infoCotizacion'] = 'Información exclusiva para cotizar';
+$lang['formProveedor_infoCotizacion'] = 'Información de cotización';
     $lang['formProveedor_correo'] = 'Correo electrónico';
     $lang['formProveedor_telefonoFijo'] = 'Teléfono fijo';
     $lang['formProveedor_telefonoMovil'] = 'Teléfono móvil';
@@ -471,17 +478,23 @@ $lang['formProveedor_infoCotizacion'] = 'Información exclusiva para cotizar';
     $lang['formProveedor_descripcion'] = 'Descripción';
     $lang['formProveedor_salarios'] = 'Salarios';
     $lang['formProveedor_nuevaPalabra'] = 'Nueva palabra clave';
-    $lang['formProveedor_nuevoSalario'] = 'Nuevo salario';
+    $lang['formProveedor_nuevoSalario'] = 'Nuevo presupuesto';
     $lang['formProveedor_agregar'] = 'Agregar';
-    $lang['formProveedor_salariosTipo'] = 'Agregar';
-    $lang['formProveedor_salariosMonto'] = 'Agregar';
-    $lang['formProveedor_salariosOpciones'] = 'Agregar';
+    $lang['formProveedor_salariosTipo'] = 'Tipo';
+    $lang['formProveedor_salariosMonto'] = 'Monto';
+    $lang['formProveedor_salariosOpciones'] = 'Opciones';
     $lang['formProveedor_enviar'] = 'Agregar proveedor';
     $lang['formProveedor_editar'] = 'Guardar cambios';
     $lang['formProveedor_salarioTipo'] = 'Tipo';
     $lang['formProveedor_salarioMonto'] = 'Monto';
     $lang['formProveedor_palabrasClave'] = 'Palabras clave';
     $lang['formProveedor_anadirPalabraClave'] = 'Añadir palabra';
+$lang['formProveedor_contactoAgregar'] = 'Agregar nuevo contacto';
+$lang['formProveedor_contactoEditar'] = 'Editar contacto';
+$lang['formProveedor_contactoDescargar'] = 'Descargar contacto';
+$lang['formProveedor_contactoEliminar'] = 'Eliminar contacto';
+$lang['formProveedor_contactoPrincipal'] = 'Contacto principal';
+$lang['formProveedor_contactoSecundario'] = 'Cambiar a contacto principal';
 
 //Formulario de usuarios
     $lang['Usuario_tablaNombre'] = 'Nombre';
