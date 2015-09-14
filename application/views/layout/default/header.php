@@ -192,19 +192,19 @@
                     </li>
 
 
-                    <li>
+                   <!--  <li>
                         <a class="dropdown-button" href="#!" data-activates="listaNotificaciones"
                            title="<?= label('tooltip_notificaciones') ?>">
                             <i class="mdi-social-notifications"></i>
                         </a>
-                    </li>
+                    </li> -->
 
-                    <li>
+                    <!-- <li>
                         <a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen"
                            data-toggle="tooltip" title="<?= label('tooltip_pantallaCompleta') ?>" id="pantalla-completa">
                             <i class="mdi-action-settings-overscan"></i>
                         </a>
-                    </li>
+                    </li> -->
 
 
                     <ul id="listaNotificaciones" class="dropdown-content active"

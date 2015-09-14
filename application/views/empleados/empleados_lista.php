@@ -549,7 +549,7 @@ $('#convertirPDF').on("click", function(){
     function verificarChecks(){
         
         var marcados = $('.checkbox:checked').not('#checkbox-all').size();
-             alert(marcados);
+             // alert(marcados);
             if (marcados >= 1) {
                 var elems = document.getElementsByClassName('opciones-seleccionados');
                 var e;
