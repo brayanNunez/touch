@@ -108,39 +108,25 @@
                                                 <input id="proveedorjuridico_fax" type="text">
                                                 <label for="proveedorjuridico_fax"><?= label('formProveedor_fax'); ?></label>
                                             </div>
+                                        </div>
+
+                                        <div>
                                             <div class="inputTag col s12" style="margin-bottom: 10px;">
-                                                <label for="proveedorjuridico_palabrasClave"><?= label('formProveedor_palabrasClave'); ?></label>
-                                                <div id="proveedorjuridico_palabrasClave" class="example tags_keywords" style="margin-top: 10px;">
+                                                <label for="proveedor_palabrasClave"><?= label('formProveedor_palabrasClave'); ?></label>
+                                                <div id="proveedor_palabrasClave" class="example tags_keywords" style="margin-top: 10px;">
                                                     <div class="bs-example">
                                                         <input placeholder="<?= label('formProveedor_palabrasClaveAnadir'); ?>" type="text"/>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="input-field col s12">
-                                                <textarea id="proveedorjuridico_descripcion" name="proveedor_descripcion"
+                                                <textarea id="proveedor_descripcion" name="proveedor_descripcion"
                                                           class="materialize-textarea" length="120"></textarea>
-                                                <label for="proveedorjuridico_descripcion"><?= label('formProveedor_descripcion'); ?></label>
+                                                <label for="proveedor_descripcion"><?= label('formProveedor_descripcion'); ?></label>
                                             </div>
                                         </div>
 
-                                        <div class="col s12" id="tabs-proveedor-fisico" style="display: block;">
-                                            <ul class="tabs tab-demo-active z-depth-1 proveedor-info">
-                                                <li class="tab col s3">
-                                                    <a class="white-text darken-1 waves-effect waves-light active"
-                                                       id="proveedor-tab-direccion" href="#tab-direccion"><i
-                                                            class="mdi-maps-my-location"></i>
-                                                        <?= label('formProveedor_direccion'); ?></a>
-                                                </li>
-                                                <li class="tab-interior tab col s3">
-                                                    <a class="white-text darken-1 waves-effect waves-light"
-                                                       id="proveedor-tab-contactos" href="#tab-contactos"><i
-                                                            class="mdi-communication-contacts"></i>
-                                                        <?= label('formProveedor_contactos'); ?></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="col s12" id="tabs-proveedor-juridico" style="display: none;">
+                                        <div class="col s12">
                                             <ul class="tabs tab-demo-active z-depth-1 proveedor-info-juridico">
                                                 <li class="tab col s3">
                                                     <a class="white-text darken-1 waves-effect waves-light active"
@@ -189,40 +175,171 @@
                                                 </div>
                                             </div>
                                             <div id="tab-contactos" class="card col s12">
-                                                <div class="agregar_nuevo">
-                                                    <a href="#agregarContacto" class="btn btn-default modal-trigger">
-                                                        <?= label('formCliente_agregar'); ?>
+                                                <div class="row">
+                                                    <div class="col s11 m11 l11">
+                                                        <div class="row">
+                                                            <div class="input-field col s12 m4 l4">
+                                                                <input id="proveedor_contactoApellido1" type="text">
+                                                                <label for="proveedor_contactoApellido1"><?= label('formContacto_apellido1'); ?></label>
+                                                            </div>
+                                                            <div class="input-field col s12 m4 l4">
+                                                                <input id="proveedor_contactoApellido2" type="text">
+                                                                <label for="proveedor_contactoApellido2"><?= label('formContacto_apellido2'); ?></label>
+                                                            </div>
+                                                            <div class="input-field col s12 m4 l4">
+                                                                <input id="proveedor_contactoNombre" type="text">
+                                                                <label for="proveedor_contactoNombre"><?= label('formContacto_nombre'); ?></label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="input-field col s12 m6 l6">
+                                                                <div>
+                                                                    <input id="proveedor_contactoCorreo" type="email" style="margin-bottom: 0;">
+                                                                    <label for="proveedor_contactoCorreo"><?= label('formProveedor_correo'); ?></label>
+                                                                </div>
+                                                                <div style="margin-bottom: 20px;">
+                                                                    <input type="checkbox" class="filled-in" id="checkbox_contactoCorreoProveedor" />
+                                                                    <label for="checkbox_contactoCorreoProveedor" style="margin-bottom: 20px;">
+                                                                        <?= label('formProveedor_correoCheck') ?>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="input-field col s12 m3 l3">
+                                                                <input id="proveedor_contactoPuesto" type="text">
+                                                                <label for="proveedor_contactoPuesto"><?= label('formContacto_puesto'); ?></label>
+                                                            </div>
+                                                            <div class="input-field col s12 m3 l3">
+                                                                <input id="proveedor_contactoTelefono" type="text">
+                                                                <label for="proveedor_contactoTelefono"><?= label('formContacto_telefono'); ?></label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col s1 m1 l1" style="margin-top: 50px;">
+                                                        <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar') ?>">
+                                                            <i class="mdi-action-delete medium" style="color: black;"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="row" id="tab-contactos-nuevo">
+                                                    <a onclick="agregarNuevoContacto();">
+                                                        <?= label('formProveedor_contactoAgregar') ?>
                                                     </a>
                                                 </div>
-                                                <table id=proveedor1-contactos" class="data-table-information responsive-table striped">
-                                                    <thead>
-                                                        <tr>
-                                                            <th style="text-align: center;">
-                                                                <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all"
-                                                                       onclick="toggleChecked(this.checked)"/>
-                                                                <label for="checkbox-all"></label>
-                                                            </th>
-                                                            <th><?= label('formCliente_nombreContacto'); ?></th>
-                                                            <th><?= label('formCliente_correoContacto'); ?></th>
-                                                            <th><?= label('formCliente_opcionesContacto'); ?></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    </tbody>
-                                                </table>
-                                                <div class="tabla-conAgregar tabla-opciones-contacto">
-                                                    <a id="opciones-seleccionados-delete"
-                                                       class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements"
-                                                       style="visibility: hidden;"
-                                                       href="#eliminarElementosSeleccionados" data-toggle="tooltip"
-                                                       title="<?= label('opciones_seleccionadosEliminar') ?>">
-                                                        <i class="mdi-action-delete icono-opciones-varios"></i>
-                                                    </a>
+                                                <div class="col s12">
+                                                    <hr />
                                                 </div>
                                             </div>
                                             <div id="tab-infoAdicional" class="card col s12">
+                                                <h5>Presupuesto promedio del proveedor</h5>
                                                 <p>* Exclusivo para proveedores de servicios, no tiene fines contables</p>
-                                                <p>Presupuesto promedio del proveedor</p>
+                                                <table id="proveedor1-salarios" class="table striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="text-align: center;">
+                                                                <input class="filled-in checkbox checkall" type="checkbox"
+                                                                       id="checkbox-all" onclick="toggleChecked(this.checked)"/>
+                                                                <label for="checkbox-all"></label>
+                                                            </th>
+                                                            <th><?= label('formProveedor_salariosTipo'); ?></th>
+                                                            <th><?= label('formProveedor_salariosMonto'); ?></th>
+                                                            <th><?= label('formProveedor_salariosOpciones'); ?></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td style="text-align: center;">
+                                                                <input type="checkbox" class="filled-in checkbox"
+                                                                       id="checkbox_proveedor1_salario1"/>
+                                                                <label for="checkbox_proveedor1_salario1"></label>
+                                                            </td>
+                                                            <td>Por hora</td>
+                                                            <td>$10</td>
+                                                            <td>
+                                                                <ul id="dropdown-proveedor1-salario1" class="dropdown-content">
+                                                                    <li>
+                                                                        <a href="#editarSalario"
+                                                                           class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#eliminarSalario"
+                                                                           class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
+                                                                    </li>
+                                                                </ul>
+                                                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
+                                                                   href="#!" data-activates="dropdown-proveedor1-salario1">
+                                                                    <?= label('menuOpciones_seleccionar') ?><i
+                                                                        class="mdi-navigation-arrow-drop-down"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="text-align: center;">
+                                                                <input type="checkbox" class="filled-in checkbox"
+                                                                       id="checkbox_proveedor1_salario2"/>
+                                                                <label for="checkbox_proveedor1_salario2"></label>
+                                                            </td>
+                                                            <td>Diario</td>
+                                                            <td>$80</td>
+                                                            <td>
+                                                                <ul id="dropdown-proveedor1-salario2" class="dropdown-content">
+                                                                    <li>
+                                                                        <a href="#editarSalario"
+                                                                           class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#eliminarSalario"
+                                                                           class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
+                                                                    </li>
+                                                                </ul>
+                                                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
+                                                                   href="#!" data-activates="dropdown-proveedor1-salario2">
+                                                                    <?= label('menuOpciones_seleccionar') ?><i
+                                                                        class="mdi-navigation-arrow-drop-down"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="text-align: center;">
+                                                                <input type="checkbox" class="filled-in checkbox"
+                                                                       id="checkbox_proveedor1_salario3"/>
+                                                                <label for="checkbox_proveedor1_salario3"></label>
+                                                            </td>
+                                                            <td>Mensual</td>
+                                                            <td>$1400</td>
+                                                            <td>
+                                                                <ul id="dropdown-proveedor1-salario3" class="dropdown-content">
+                                                                    <li>
+                                                                        <a href="#editarSalario"
+                                                                           class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#eliminarSalario"
+                                                                           class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
+                                                                    </li>
+                                                                </ul>
+                                                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
+                                                                   href="#!" data-activates="dropdown-proveedor1-salario3">
+                                                                    <?= label('menuOpciones_seleccionar') ?><i
+                                                                        class="mdi-navigation-arrow-drop-down"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <div style="padding: 20px;">
+                                                    <a href="#agregarSalario"
+                                                       class="btn btn-default modal-trigger"><?= label('formProveedor_nuevoSalario'); ?></a>
+
+                                                    <div class="tabla-conAgregar tabla-salarios-proveedor">
+                                                        <a id="opciones-seleccionados-delete"
+                                                           class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements"
+                                                           style="visibility: hidden;"
+                                                           href="#eliminarElementosSeleccionados" data-toggle="tooltip"
+                                                           title="<?= label('opciones_seleccionadosEliminar') ?>">
+                                                            <i class="mdi-action-delete icono-opciones-varios"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -278,21 +395,10 @@
             return false;
         });
     });
-    $(document).ready( function () {
-        $('#proveedor1-contactos').dataTable( {
-            'aoColumnDefs': [{
-                'bSortable': false,
-                'aTargets': [0, -1] /* 1st one, start by the right */
-            }]
-        });
-
-        $('table#proveedor1-contactos thead th:first').removeClass('sorting_asc').addClass('sorting_disabled');
-        $('table#proveedor1-contactos thead th:nth-child(2)').removeClass('sorting').addClass('sorting_asc');
-    });
     $(document).ready(function () {
         $('#checkbox-all').click(function (event) {
             var $this = $(this);
-            var tableBody = $('#proveedor1-contactos').find('tbody tr[role=row] input[type=checkbox]');
+            var tableBody = $('#proveedor1-salarios').find('tbody tr input[type=checkbox]');
             tableBody.each(function() {
                 var check = $(this);
                 if ($this.is(':checked')) {
@@ -317,24 +423,6 @@
                 var e;
                 for (e in elems) {
                     elems[e].style.visibility = 'hidden';
-                }
-            }
-        });
-    });
-    $(document).ready(function () {
-        $('.boton-opciones').on('click', function (event) {
-            // alert(event.type);
-            //e.preventDefault();
-
-            var elementoActivo = $(this).siblings('ul.active');
-            if (elementoActivo.length > 0) {
-                var estado = elementoActivo.css("display");
-                if (estado == "block") {
-                    elementoActivo.css("display", "none");
-                    elementoActivo.style.display = 'none';
-                } else {
-                    elementoActivo.css("display", "block");
-                    elementoActivo.style.display = 'block';
                 }
             }
         });
@@ -451,18 +539,137 @@
         if (opcionSeleccionada.value == "1") {
             document.getElementById('campos-proveedor-fisico').style.display = 'block';
             document.getElementById('campos-proveedor-juridico').style.display = 'none';
-            document.getElementById('tabs-proveedor-fisico').style.display = 'block';
-            document.getElementById('tabs-proveedor-juridico').style.display = 'none';
+//            document.getElementById('tabs-proveedor-fisico').style.display = 'block';
+//            document.getElementById('tabs-proveedor-juridico').style.display = 'none';
         } else {
             document.getElementById('campos-proveedor-fisico').style.display = 'none';
             document.getElementById('campos-proveedor-juridico').style.display = 'block';
-            document.getElementById('tabs-proveedor-fisico').style.display = 'none';
-            document.getElementById('tabs-proveedor-juridico').style.display = 'block';
+//            document.getElementById('tabs-proveedor-fisico').style.display = 'none';
+//            document.getElementById('tabs-proveedor-juridico').style.display = 'block';
         }
+    }
+    function agregarNuevoContacto() {
+        $('#tab-contactos-nuevo').remove();
+        $('#tab-contactos').append('' +
+            '<div class="row">' +
+            '<div class="col s11 m11 l11">' +
+            '<div class="row">' +
+            '<div class="input-field col s12 m4 l4">' +
+            '<input id="proveedor_contactoApellido1" type="text">' +
+            '<label for="proveedor_contactoApellido1"><?= label("formContacto_apellido1"); ?></label>' +
+            '</div>' +
+            '<div class="input-field col s12 m4 l4">' +
+            '<input id="proveedor_contactoApellido2" type="text">' +
+            '<label for="proveedor_contactoApellido2"><?= label("formContacto_apellido2"); ?></label>' +
+            '</div>' +
+            '<div class="input-field col s12 m4 l4">' +
+            '<input id="proveedor_contactoNombre" type="text">' +
+            '<label for="proveedor_contactoNombre"><?= label("formContacto_nombre"); ?></label>' +
+            '</div>' +
+            '</div>' +
+
+            '<div class="row">' +
+            '<div class="input-field col s12 m6 l6">' +
+            '<div>' +
+            '<input id="proveedor_contactoCorreo" type="email" style="margin-bottom: 0;">' +
+            '<label for="proveedor_contactoCorreo"><?= label('formProveedor_correo'); ?></label>' +
+            '</div>' +
+            '<div style="margin-bottom: 20px;">' +
+            '<input type="checkbox" class="filled-in" id="checkbox_contactoCorreoProveedor" />' +
+            '<label for="checkbox_contactoCorreoProveedor" style="margin-bottom: 20px;">' +
+            '<?= label('formProveedor_correoCheck') ?>' +
+            '</label>' +
+            '</div>' +
+            '</div>' +
+            '<div class="input-field col s12 m3 l3">' +
+            '<input id="proveedor_contactoPuesto" type="text">' +
+            '<label for="proveedor_contactoPuesto"><?= label('formContacto_puesto'); ?></label>' +
+            '</div>' +
+            '<div class="input-field col s12 m3 l3">' +
+            '<input id="proveedor_contactoTelefono" type="text">' +
+            '<label for="proveedor_contactoTelefono"><?= label('formContacto_telefono'); ?></label>' +
+            '</div>' +
+            '</div>' +
+
+            '</div>' +
+            '<div class="col s1 m1 l1" style="margin-top: 50px;">' +
+            '<a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>' +
+            '</div>' +
+            '</div>' +
+            '<div class="row" id="tab-contactos-nuevo">' +
+            '<a style="cursor: pointer;" onclick="agregarNuevoContacto();"><?= label('formProveedor_contactoAgregar') ?></a>' +
+            '</div>' +
+            '<div class="col s12">' +
+            '<hr />' +
+            '</div>');
     }
 </script>
 
 <!-- lista modals -->
+<div id="agregarSalario" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <div class="input-field col s12">
+            <select>
+                <option value="">Seleccione</option>
+                <option value="1"><?= label('horas') ?></option>
+                <option value="2"><?= label('dia') ?></option>
+                <option value="3"><?= label('semana') ?></option>
+                <option value="4"><?= label('quincena') ?></option>
+                <option value="5"><?= label('mes') ?></option>
+            </select>
+            <label for=""><?= label('formProveedor_salarioTipo'); ?></label>
+        </div>
+        <div class="input-field col s12">
+            <input id="salario_monto" type="text" value="">
+            <label for="salario_monto"><?= label('formProveedor_salarioMonto'); ?></label>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="editarSalario" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <div class="input-field col s12">
+            <select>
+                <option value="">Seleccione</option>
+                <option value="1" selected><?= label('horas') ?></option>
+                <option value="2"><?= label('dia') ?></option>
+                <option value="3"><?= label('semana') ?></option>
+                <option value="4"><?= label('quincena') ?></option>
+                <option value="5"><?= label('mes') ?></option>
+            </select>
+            <label for=""><?= label('formProveedor_salarioTipo'); ?></label>
+        </div>
+        <div class="input-field col s12">
+            <input id="salario_monto" type="text" value="$10">
+            <label for="salario_monto"><?= label('formProveedor_salarioMonto'); ?></label>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="eliminarSalario" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('confirmarEliminarSalario'); ?></p>
+    </div>
+    <div class="modal-footer black-text">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
 <div id="eliminarContacto" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
@@ -475,102 +682,6 @@
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
-<div id="agregarContacto" class="modal">
-    <div class="modal-header">
-        <p><?= label('nombreSistema'); ?></p>
-        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
-    </div>
-    <div class="modal-content">
-        <div class="row">
-            <div class="input-field col s12 m4 l4">
-                <input id="cliente_contactoApellido1" type="text">
-                <label for="cliente_contactoApellido1"><?= label('formContacto_apellido1'); ?></label>
-            </div>
-            <div class="input-field col s12 m4 l4">
-                <input id="cliente_contactoApellido2" type="text">
-                <label for="cliente_contactoApellido2"><?= label('formContacto_apellido2'); ?></label>
-            </div>
-            <div class="input-field col s12 m4 l4">
-                <input id="cliente_contactoNombre" type="text">
-                <label for="cliente_contactoNombre"><?= label('formContacto_nombre'); ?></label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12 m6 l6">
-                <div>
-                    <input id="cliente_contactoCorreo" type="email" style="margin-bottom: 0;">
-                    <label for="cliente_contactoCorreo"><?= label('formCliente_correo'); ?></label>
-                </div>
-                <div style="margin-bottom: 20px;">
-                    <input type="checkbox" class="filled-in" id="checkbox_contactoCorreoCliente" />
-                    <label for="checkbox_contactoCorreoCliente" style="margin-bottom: 20px;">
-                        <?= label('formCliente_correoCheck') ?>
-                    </label>
-                </div>
-            </div>
-            <div class="input-field col s12 m3 l3">
-                <input id="cliente_contactoPuesto" type="text">
-                <label for="cliente_contactoPuesto"><?= label('formContacto_puesto'); ?></label>
-            </div>
-            <div class="input-field col s12 m3 l3">
-                <input id="cliente_contactoTelefono" type="text">
-                <label
-                    for="cliente_contactoTelefono"><?= label('formContacto_telefono'); ?></label>
-            </div>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
-    </div>
-</div>
-<div id="editarContacto" class="modal">
-    <div class="modal-header">
-        <p><?= label('nombreSistema'); ?></p>
-        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
-    </div>
-    <div class="modal-content">
-        <div class="row">
-            <div class="input-field col s12 m4 l4">
-                <input id="cliente_contactoApellido1_existente" type="text" value="Rojas">
-                <label for="cliente_contactoApellido1_existente"><?= label('formContacto_apellido1'); ?></label>
-            </div>
-            <div class="input-field col s12 m4 l4">
-                <input id="cliente_contactoApellido2_existente" type="text" value="Chaves">
-                <label for="cliente_contactoApellido2_existente"><?= label('formContacto_apellido2'); ?></label>
-            </div>
-            <div class="input-field col s12 m4 l4">
-                <input id="cliente_contactoNombre_existente" type="text" value="Claret">
-                <label for="cliente_contactoNombre_existente"><?= label('formContacto_nombre'); ?></label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12 m6 l6">
-                <div>
-                    <input id="cliente_contactoCorreo_existente" type="email" style="margin-bottom: 0;">
-                    <label for="cliente_contactoCorreo_existente"><?= label('formCliente_correo'); ?></label>
-                </div>
-                <div style="margin-bottom: 20px;">
-                    <input type="checkbox" class="filled-in" id="checkbox_contactoCorreoCliente_existente" checked/>
-                    <label for="checkbox_contactoCorreoCliente_existente" style="margin-bottom: 20px;">
-                        <?= label('formCliente_correoCheck') ?>
-                    </label>
-                </div>
-            </div>
-            <div class="input-field col s12 m3 l3">
-                <input id="cliente_contactoPuesto_existente" type="text" value="CEO">
-                <label for="cliente_contactoPuesto_existente"><?= label('formContacto_puesto'); ?></label>
-            </div>
-            <div class="input-field col s12 m3 l3">
-                <input id="cliente_contactoTelefono_existente" type="text" value="8596-7420">
-                <label
-                    for="cliente_contactoTelefono_existente"><?= label('formContacto_telefono'); ?></label>
-            </div>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
-    </div>
-</div>
 <div id="eliminarElementosSeleccionados" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
@@ -580,7 +691,7 @@
         <p><?= label('clientes_archivosSeleccionadosEliminar'); ?></p>
     </div>
     <div class="modal-footer black-text">
-        <div id="botonElimnar" title="cliente1-contactos">
+        <div id="botonElimnar" title="proveedor1-salarios">
             <a href="#"
                class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
         </div>
