@@ -36,7 +36,7 @@ class Empleado_model extends CI_Model
         try{
             $this->db->trans_begin();
 
-            $query = $this->db->insert('empleado', $data['datos']);
+            $query = $this->db->insert('empleados', $data['datos']);
             if (!$query) throw new Exception("Error en la BD");   
             $insert_id = $this->db->insert_id();
             $palabras = explode(",", $data['palabras']); ;

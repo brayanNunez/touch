@@ -7,7 +7,7 @@
 <script type="text/javascript">
 
     $('#convertirImprimir').on("click", function(){
-        tablaHtml = '<table style="border-collapse:collapse;"><thead style="font-weight: bold;">';
+        tablaHtml = '<table style="border-collapse:collapse;width: 100%;"><thead style="font-weight: bold;">';
 
     $('#empleados-tabla-lista >thead >tr').each(function()
     {
@@ -142,7 +142,8 @@ $('#convertirExcel').on("click", function(){
 $('#convertirPDF').on("click", function(){
  
     var informacionSistema = '<div id="informacionSistema"><div id="linkPagina"><a href="<?=base_url()?>">touchcr.com</a></div><span class="numeracion"></span></div>';
-    var tablaHtml = informacionSistema;
+    var encabezado = '<div id="encabezado"><?= label('tituloEmpleados'); ?></div>';
+    var tablaHtml = encabezado + informacionSistema;
     // tablaHtml += '<h4 id="titulo">Empleados</h4>';
     tablaHtml += '<table><thead>';
 
@@ -202,7 +203,7 @@ $('#convertirPDF').on("click", function(){
 });
 
 </script>
-<div id="inset_form"></div>
+<div style="display: none" id="inset_form"></div>
 
 <!-- START CONTENT -->
 
@@ -248,8 +249,8 @@ $('#convertirPDF').on("click", function(){
                                                         </th>
                                                         <th><?= label('Empleado_tablaCodigo'); ?></th>
                                                         <th><?= label('Empleado_tablaNombre'); ?></th>
-                                                        <th><?= label('Empleado_primerApellido'); ?></th>
-                                                        <th><?= label('Empleado_segundoApellido'); ?></th>
+                                                        <!-- <th><?= label('Empleado_primerApellido'); ?></th> -->
+                                                        <!-- <th><?= label('Empleado_segundoApellido'); ?></th> -->
                                                         <th><?= label('Empleado_tablaIdentificacion'); ?></th> 
                                                         <th><?= label('Empleado_tablaPalabras'); ?></th>
                                                         <th><?= label('Empleado_tablaOpciones'); ?></th>
@@ -274,14 +275,14 @@ $('#convertirPDF').on("click", function(){
                                                                         <td><?= $fila['codigo'] ?></td>
 
                                                                         <td>
-                                                                            <a href="<?= base_url() ?>empleados/editar/<?= $idEncriptado ?>"><?= $fila['nombre'] ?></a>
+                                                                            <a href="<?= base_url() ?>empleados/editar/<?= $idEncriptado ?>"><?= $fila['nombre']." ".$fila['primerApellido']." ".$fila['segundoApellido'] ?></a>
                                                                         </td>
-                                                                        <td>
+                                                                        <!-- <td>
                                                                             <a href="<?= base_url() ?>empleados/editar/<?= $idEncriptado ?>"><?= $fila['primerApellido'] ?></a>
                                                                         </td>
                                                                         <td>
                                                                             <a href="<?= base_url() ?>empleados/editar/<?= $idEncriptado ?>"><?= $fila['segundoApellido'] ?></a>
-                                                                        </td>
+                                                                        </td> -->
                                                                         <td><?= $fila['identificacion'] ?></td>
                                                                         <td><?php foreach ($fila['palabras'] as $palabra) {
                                                                                     echo $palabra['descripcion'].', ';
@@ -340,7 +341,7 @@ $('#convertirPDF').on("click", function(){
                                                         </li>
                                                     </ul>
                                                     <a id="opciones-seleccionados-export"
-                                                       class="boton-opciones black-text dropdown-button option-export-table"
+                                                       class="opciones-seleccionados boton-opciones black-text dropdown-button option-export-table"
                                                        href="#" data-toggle="tooltip"
                                                        title="<?= label('opciones_seleccionadosExportar') ?>"
                                                        data-activates="dropdown-exportar">
@@ -492,6 +493,7 @@ $('#convertirPDF').on("click", function(){
                             if (response==true) {
                                fila.fadeOut(function () {
                                 fila.remove();
+                                verificarChecks();
                                 });
                             } else{
                                 alert("Ha ocurrido un error");
@@ -524,7 +526,12 @@ $('#convertirPDF').on("click", function(){
     });
     $(document).ready(function () {
         $('.checkbox').click(function (event) {
-            var marcados = $('.checkbox:checked').size();
+            verificarChecks();
+        });
+    });
+
+    function verificarChecks(){
+        var marcados = $('.checkbox:checked').not('#checkbox-all').size();
             if (marcados >= 1) {
                 var elems = document.getElementsByClassName('opciones-seleccionados');
                 var e;
@@ -534,6 +541,7 @@ $('#convertirPDF').on("click", function(){
 //                elems[e].css('visibility', 'visible');
                 }
             } else {
+                $('#checkbox-all').prop('checked', false);
                 var elems = document.getElementsByClassName('opciones-seleccionados');
                 var e;
                 for (e in elems) {
@@ -542,8 +550,13 @@ $('#convertirPDF').on("click", function(){
 //                elems[e].css('visibility', 'hidden');
                 }
             }
-        });
-    });
+    }
+
+
+
+
+
+
     $(document).ready(function () {
         $('.boton-opciones').on('click', function (event) {
             // alert(event.type);

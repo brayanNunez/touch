@@ -197,6 +197,7 @@
                                         </div>
                                         <div style="display: none">
                                             <a id="linkModalGuardado" href="#transaccionCorrecta" class="btn btn-default modal-trigger"></a>
+                                            <a id="linkModalError" href="#transaccionIncorrecta" class="btn btn-default modal-trigger"></a>
                                         </div>
                                     </div>
                                 </form>
@@ -231,7 +232,8 @@ function validacionCorrecta(){
            success:  function (response) {
             switch(response){
                 case '0':
-                    alert("Ha ocurrido un error");
+
+                    alert("Ha ocurrido un error");//error al ir a verificar identificación
                 break;
                 case '1':
                     alert('<?= label("empleadoIdentificacionExistente"); ?>');
@@ -247,7 +249,7 @@ function validacionCorrecta(){
                            success: function(response)
                            {
                                if (response == 0) {
-                                    alert("Ha ocurrido un error");
+                                   $('#linkModalError').click();
                                } else {
                                     $('#linkModalGuardado').click();
                                     $('form')[0].reset();
@@ -367,6 +369,19 @@ function validacionCorrecta(){
     </div>
     <div class="modal-content">
         <p><?= label('empleadoGuardadoCorrectamente'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+
+<div id="transaccionIncorrecta" class="modal">
+    <div id="HeaderTransaccionIncorrecta" class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('empleadoError'); ?></p>
     </div>
     <div class="modal-footer">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
