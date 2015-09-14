@@ -417,8 +417,10 @@ $('#convertirPDF').on("click", function(){
                     // alert(response);
                     if (response==true) {
                         $('#' + fila).fadeOut(function () {
-                        $this.remove();
+                        $('#' + fila).remove();
+                        verificarChecks();
                         });
+                        
                     } else{
                         alert("Ha ocurrido un error");
                     };
@@ -491,7 +493,9 @@ $('#convertirPDF').on("click", function(){
                            success:  function (response) {
                             // alert(response);
                             if (response==true) {
+                                alert(fila.html());
                                fila.fadeOut(function () {
+
                                 fila.remove();
                                 verificarChecks();
                                 });
@@ -531,7 +535,9 @@ $('#convertirPDF').on("click", function(){
     });
 
     function verificarChecks(){
+        
         var marcados = $('.checkbox:checked').not('#checkbox-all').size();
+            alert(marcados);
             if (marcados >= 1) {
                 var elems = document.getElementsByClassName('opciones-seleccionados');
                 var e;
