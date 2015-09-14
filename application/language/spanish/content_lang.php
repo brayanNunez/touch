@@ -53,7 +53,8 @@
     $lang['empleadoGuardadoCorrectamente'] = 'El empleado ha sido creado correctamente.';
     $lang['empleadoEditadoCorrectamente'] = 'El empleado ha sido editado correctamente.';
     $lang['empleadoIdentificacionExistente'] = 'La identificación indicada ya existe.';
-
+    $lang['empleadoError'] = 'Ha ocurrido un error al intentar guardar el empleado.';
+    
     
 //tipos de salario
     $lang['horas'] = 'Por horas';

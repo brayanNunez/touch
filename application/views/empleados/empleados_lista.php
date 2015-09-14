@@ -341,7 +341,7 @@ $('#convertirPDF').on("click", function(){
                                                         </li>
                                                     </ul>
                                                     <a id="opciones-seleccionados-export"
-                                                       class="boton-opciones black-text dropdown-button option-export-table"
+                                                       class="opciones-seleccionados boton-opciones black-text dropdown-button option-export-table"
                                                        href="#" data-toggle="tooltip"
                                                        title="<?= label('opciones_seleccionadosExportar') ?>"
                                                        data-activates="dropdown-exportar">
@@ -493,6 +493,7 @@ $('#convertirPDF').on("click", function(){
                             if (response==true) {
                                fila.fadeOut(function () {
                                 fila.remove();
+                                verificarChecks();
                                 });
                             } else{
                                 alert("Ha ocurrido un error");
@@ -525,7 +526,12 @@ $('#convertirPDF').on("click", function(){
     });
     $(document).ready(function () {
         $('.checkbox').click(function (event) {
-            var marcados = $('.checkbox:checked').size();
+            verificarChecks();
+        });
+    });
+
+    function verificarChecks(){
+        var marcados = $('.checkbox:checked').not('#checkbox-all').size();
             if (marcados >= 1) {
                 var elems = document.getElementsByClassName('opciones-seleccionados');
                 var e;
@@ -535,6 +541,7 @@ $('#convertirPDF').on("click", function(){
 //                elems[e].css('visibility', 'visible');
                 }
             } else {
+                $('#checkbox-all').prop('checked', false);
                 var elems = document.getElementsByClassName('opciones-seleccionados');
                 var e;
                 for (e in elems) {
@@ -543,8 +550,13 @@ $('#convertirPDF').on("click", function(){
 //                elems[e].css('visibility', 'hidden');
                 }
             }
-        });
-    });
+    }
+
+
+
+
+
+
     $(document).ready(function () {
         $('.boton-opciones').on('click', function (event) {
             // alert(event.type);
