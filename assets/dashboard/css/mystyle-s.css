@@ -68,16 +68,17 @@ section#planes div.container div.row div.pricing-table a.btn-filled {  }
 #files tbody td { padding: 1.5% 1%; text-align: left; }
 div.new-file { float: left; margin: 3% 3% 0 3%; }
 
-ul.cliente-info li a.active, ul.usuario-info li a.active, ul.proveedor-info li a.active, ul.proveedor-info-juridico li a.active { color: green !important; background-color: lightgray; }
+ul.cliente-info li a.active, ul.usuario-info li a.active, ul.proveedor-info li a.active { color: green !important; background-color: lightgray; }
 ul.cliente-info li { width: 25% !important; }
 ul.cliente-info.tags-secundarios li { width: 33.3% !important; }
 ul.cliente-info li a { background-color: #009966; }
 ul.usuario-info li { width: 50% !important; }
 ul.usuario-info li a { background-color: #009966; }
-ul.proveedor-info li { width: 50% !important; }
+ul.proveedor-info li { width: 33.3% !important; }
+ul.proveedor-info.tags-secundarios li { width: 50% !important; }
 ul.proveedor-info li a { background-color: #009966; }
-ul.proveedor-info-juridico li { width: 33.3% !important; }
-ul.proveedor-info-juridico li a { background-color: #009966; }
+/*ul.proveedor-info-juridico li { width: 33.3% !important; }*/
+/*ul.proveedor-info-juridico li a { background-color: #009966; }*/
 li.tab-interior { border-left: 3px solid white; }
 li.disabled { background-color: #a8a8a8 !important; }
 
@@ -216,7 +217,7 @@ table.data-table-information thead tr th:first-child { width: 6% !important; }
 .liquid ul li div.info-contacto div div.contacto-principal.es-principal a { background-color: #47b475; }
 .liquid ul li div.info-contacto div div.contacto-principal a i { color: white; }
 
-span.informacion-cliente { font-weight: bold; }
+span.informacion-cliente, span.informacion-proveedor { font-weight: bold; }
 
 div#tab-contactos hr, div#tab-contactos-editar hr { height: 12px; border: 0; box-shadow: inset 0 15px 15px -11px gray; }
 div#tab-contactos-nuevo, div#tab-contactos-nuevo-editar { margin: 15px 0; }
@@ -373,7 +374,7 @@ div#tab-contactos-nuevo a, div#tab-contactos-nuevo-editar a { cursor: pointer; f
     ul.cliente-info li a { background-color: #009966; font-size: 8px; }
     ul.usuario-info li a { background-color: #009966; font-size: x-small; }
     ul.proveedor-info li a { background-color: #009966; font-size: x-small; }
-    ul.proveedor-info-juridico li a { background-color: #009966; font-size: x-small; }
+    /*ul.proveedor-info-juridico li a { background-color: #009966; font-size: x-small; }*/
 
     div.tabla-detalles-cotizacion { left: 430px; bottom: 33%; top: unset; width: auto; }
     /*a#logo-principal-header { left: 48%; padding: 0; }*/
@@ -469,8 +470,8 @@ div#tab-contactos-nuevo a, div#tab-contactos-nuevo-editar a { cursor: pointer; f
     ul.cliente-info li a { background-color: #009966; font-size: 7.5px; letter-spacing: 0; font-weight: 700;}
     ul.usuario-info li a { background-color: #009966; font-size: 8px; letter-spacing: 0; font-weight: 900; }
     ul.proveedor-info li a { background-color: #009966; font-size: 8px; letter-spacing: 0; font-weight: 900; }
-    ul.proveedor-info-juridico li a { background-color: #009966; font-size: 8px; letter-spacing: 0; font-weight: 900; }
-    ul.cliente-info li a i, ul.usuario-info li a i, ul.proveedor-info li a i, ul.proveedor-info-juridico li a i { font-size: 15px; display: none; }
+    /*ul.proveedor-info-juridico li a { background-color: #009966; font-size: 8px; letter-spacing: 0; font-weight: 900; }*/
+    ul.cliente-info li a i, ul.usuario-info li a i, ul.proveedor-info li a i { font-size: 15px; display: none; }
 
     a.btn-newLine { width: 188px; font-size: x-small; }
     div.tabla-detalles-cotizacion { left: 290px; bottom: 46%; top: unset; width: auto; }

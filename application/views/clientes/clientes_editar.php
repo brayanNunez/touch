@@ -356,7 +356,7 @@
                     </div>
                     <div class="row" id="tab-contactos-nuevo-editar">
                         <a onclick="agregarNuevoContacto();">
-                            Agregar nuevo contacto
+                            <?= label('formCliente_contactoAgregar') ?>
                         </a>
                     </div>
                     <div class="col s12">
@@ -657,7 +657,7 @@
             '</div>' +
             '</div>' +
             '<div class="row" id="tab-contactos-nuevo-editar">' +
-            '<a style="cursor: pointer;" onclick="agregarNuevoContacto();">Agregar nuevo contacto</a>' +
+            '<a style="cursor: pointer;" onclick="agregarNuevoContacto();"><?= label('formCliente_contactoAgregar') ?></a>' +
             '</div>' +
             '<div class="col s12">' +
             '<hr />' +
