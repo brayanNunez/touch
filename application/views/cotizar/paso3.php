@@ -710,7 +710,7 @@
             html += '<div id="informacionSistema">' + $('#informacionSistema').html() + '</div>';
             html += '<div id="cuerpoDocumento">' + $('#cuerpoDocumento').html() + '</div></body></html>';
             // target="iframe"
-            $('#inset_form').html('<form  action="<?=base_url()?>Pdf_ci/index" name="form" method="post" style="display:block;"><textarea name="miHtml">' + html + '</textarea></form>');
+            $('#inset_form').html('<form  action="<?=base_url()?>ManejadorPDF/index" name="form" method="post" style="display:block;"><textarea name="miHtml">' + html + '</textarea></form>');
             document.forms['form'].submit();
 
             //eliminar la propiedead height para que siga adaptandose a los cambios de tamano en el html

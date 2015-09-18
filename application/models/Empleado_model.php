@@ -12,11 +12,11 @@ class Empleado_model extends CI_Model
 
     
 
-    function existeIdentificacion($identificacion)
+    function existeIdentificacion($data)
     {
         try {
             $this->db->trans_begin();
-            $query = $this->db->get_where('empleado', array('identificacion' => $identificacion,  'eliminado' => 0));
+            $query = $this->db->get_where('empleado', array('identificacion' => $data['identificacion'],  'eliminado' => 0, 'idEmpresa' => $data['idEmpresa']));
             if (!$query) throw new Exception("Error en la BD");   
             $existe = 0;
             if ($query->num_rows() > 0) {
@@ -36,7 +36,7 @@ class Empleado_model extends CI_Model
         try{
             $this->db->trans_begin();
 
-            $query = $this->db->insert('empleados', $data['datos']);
+            $query = $this->db->insert('empleado', $data['datos']);
             if (!$query) throw new Exception("Error en la BD");   
             $insert_id = $this->db->insert_id();
             $palabras = explode(",", $data['palabras']); ;
@@ -48,7 +48,6 @@ class Empleado_model extends CI_Model
                 $query = $this->db->insert('palabraClaveEmpleado', $row);
                 if (!$query) throw new Exception("Error en la BD");   
             }
-
             $this->db->trans_commit();
             return true;
         } catch (Exception $e) {
@@ -112,12 +111,12 @@ class Empleado_model extends CI_Model
 
     }
 
-    function cargarTodos()
+    function cargarTodos($idEmpresa)
     {
         try{
             $this->db->trans_begin();
             
-            $empleados = $this->db->get_where('empleado', array('eliminado' => 0));
+            $empleados = $this->db->get_where('empleado', array('eliminado' => 0,'idEmpresa' => $idEmpresa));
             if (!$empleados) throw new Exception("Error en la BD"); 
             $empleados = $empleados->result_array();
             $resultado = array();
