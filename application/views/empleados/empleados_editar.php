@@ -84,23 +84,6 @@
 
                                         </div>
 
-                                        <!--                                        <div class="inputTag col s12">-->
-                                        <!--                                            <label for="vendedoresCliente">-->
-                                        <? //=label('formCliente_cotizador');?><!--</label>-->
-                                        <!--                                            <br>-->
-                                        <!--                                            <div id="vendedoresCliente" class="example example_objects_as_tags">-->
-                                        <!--                                              <div class="bs-example">-->
-                                        <!--                                                <input  placeholder="-->
-                                        <? //=label('formCliente_anadirVendedor');?><!--" type="text"  />-->
-                                        <!--                                              </div>-->
-                                        <!--                                            </div>-->
-                                        <!--                                            <br>-->
-                                        <!--                                        </div> -->
-
-                                        <!--                                         <div class="input-field col s12"> -->
-                                        <!--                                             <input type="text" value="palabra1,palabra2,palabra3,palabra4,palabra5" data-role="tagsinput" /> -->
-                                        <!--                                         </div> -->
-
                                         <div class="input-field col s12">
                                             <input id="empleado_fechaNacimiento" name="empleado_fechaNacimiento" type="text" class="datepicker-fecha" value='<?php if (isset($resultado)) {
                                                        $originalDate =  $resultado['fechaNacimiento'];
@@ -247,9 +230,6 @@
                                                     name="action"><?= label('formEmpleado_editar'); ?>
                                             </button>
                                         </div>
-                                        <div style="display: none">
-                                            <a id="linkModalEditado" href="#transaccionCorrecta" class="btn btn-default modal-trigger"></a>
-                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -266,6 +246,10 @@
     ?>
 
 </section>
+<div style="display: none">
+    <a id="linkModalEditado" href="#transaccionCorrecta" class="btn btn-default modal-trigger"></a>
+    <a id="linkModalError" href="#transaccionIncorrecta" class="btn btn-default modal-trigger"></a>
+</div>
 <!-- END CONTENT-->
 
 <script>  
@@ -284,10 +268,9 @@ function validacionCorrecta(){
                success: function(response)
                {
                    if (response == 0) {
-                        alert("Ha ocurrido un error");
+                        $('#linkModalError').click();
                    } else {
                         $('#linkModalEditado').click();
-                        // window.location.href = "<?= base_url() ?>empleados";
                    }
                }
              });
@@ -299,7 +282,7 @@ function validacionCorrecta(){
                    success:  function (response) {
                     switch(response){
                         case '0':
-                            alert("Ha ocurrido un error");
+                            $('#linkModalError').click();
                         break;
                         case '1':
                             alert('<?= label("empleadoIdentificacionExistente"); ?>');
@@ -316,10 +299,9 @@ function validacionCorrecta(){
                                    success: function(response)
                                    {
                                        if (response == 0) {
-                                            alert("Ha ocurrido un error");
+                                            $('#linkModalError').click();
                                        } else {
                                             $('#linkModalEditado').click();
-                                            // window.location.href = "<?= base_url() ?>empleados";
                                        }
                                    }
                                  });
@@ -332,16 +314,6 @@ function validacionCorrecta(){
          };
 
     }
-
-
-</script>
-
-
-
-
-
-<script>
-
 
     $(window).load(function () {
         var marcados = $('.checkbox:checked').size();
@@ -410,9 +382,6 @@ function validacionCorrecta(){
     });
     $(document).ready(function () {
         $('.boton-opciones').on('click', function (event) {
-            // alert(event.type);
-            //e.preventDefault();
-
             var elementoActivo = $(this).siblings('ul.active');
             if (elementoActivo.length > 0) {
                 var estado = elementoActivo.css("display");
@@ -438,7 +407,19 @@ function validacionCorrecta(){
         <p><?= label('empleadoEditadoCorrectamente'); ?></p>
     </div>
     <div class="modal-footer">
-        <a href="<?= base_url() ?>empleados" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('Ir a la lista'); ?></a>
+        <a href="<?= base_url() ?>empleados" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="transaccionIncorrecta" class="modal">
+    <div  class="modal-header headerTransaccionIncorrecta">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('errorEditar'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
 

@@ -20,7 +20,7 @@ class ManejadorExcel extends CI_Controller
         if (isset($_POST['miHtml'])) {
             $htmlEntrada = $_POST['miHtml'];
 
-            $titulo = $_POST['titulo'];;
+            $titulo = $_POST['titulo'];
 
             $str = $htmlEntrada;
 

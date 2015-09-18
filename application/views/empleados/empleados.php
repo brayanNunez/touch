@@ -195,10 +195,7 @@
                                                     name="action"><?= label('formEmpleado_enviar'); ?>
                                             </button>
                                         </div>
-                                        <div style="display: none">
-                                            <a id="linkModalGuardado" href="#transaccionCorrecta" class="btn btn-default modal-trigger"></a>
-                                            <a id="linkModalError" href="#transaccionIncorrecta" class="btn btn-default modal-trigger"></a>
-                                        </div>
+                                        
                                     </div>
                                 </form>
                                 
@@ -215,9 +212,11 @@
     $this->load->view('layout/default/menu-crear.php');
     ?>
 
-    
-
 </section>
+<div style="display: none">
+    <a id="linkModalGuardado" href="#transaccionCorrecta" class="btn btn-default modal-trigger"></a>
+    <a id="linkModalError" href="#transaccionIncorrecta" class="btn btn-default modal-trigger"></a>
+</div>
 <!-- END CONTENT-->
 
 
@@ -232,8 +231,7 @@ function validacionCorrecta(){
            success:  function (response) {
             switch(response){
                 case '0':
-
-                    alert("Ha ocurrido un error");//error al ir a verificar identificación
+                    $('#linkModalError').click();//error al ir a verificar identificación
                 break;
                 case '1':
                     alert('<?= label("empleadoIdentificacionExistente"); ?>');
@@ -268,14 +266,6 @@ function validacionCorrecta(){
 
 
 <script>
-
-    // $('#empleado_fechaNacimiento').datepicker({
-    //   dateFormat: 'yy-mm-dd'
-    // });
-    // $('#empleado_fechaIngreso').datepicker({
-    //   dateFormat: 'yy-mm-dd'
-    // });
-
     $(window).load(function () {
         var marcados = $('.checkbox:checked').size();
         if (marcados >= 1) {
@@ -343,9 +333,6 @@ function validacionCorrecta(){
     });
     $(document).ready(function () {
         $('.boton-opciones').on('click', function (event) {
-            // alert(event.type);
-            //e.preventDefault();
-
             var elementoActivo = $(this).siblings('ul.active');
             if (elementoActivo.length > 0) {
                 var estado = elementoActivo.css("display");
@@ -376,12 +363,12 @@ function validacionCorrecta(){
 </div>
 
 <div id="transaccionIncorrecta" class="modal">
-    <div id="HeaderTransaccionIncorrecta" class="modal-header">
+    <div  class="modal-header headerTransaccionIncorrecta">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <p><?= label('empleadoError'); ?></p>
+        <p><?= label('errorGuardar'); ?></p>
     </div>
     <div class="modal-footer">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>

@@ -3,108 +3,8 @@
    las opciones.
    El check general desaparace cuando se quita el ultimo check (ver metodo verificarChecks) 
     -->
-<script type="text/javascript">
-   $(document).on('ready', function(){
-   
-       $('#opciones-seleccionados-print').on("click", function(){
-           tablaHtml = htmlTabla('empleados-tabla-lista', true);
-           Popup(tablaHtml);
-       });
-   
-       function Popup(data) 
-       {
-           // var mywindow = window.open('', 'my div', 'height=400,width=600');
-           var mywindow = window.open('', 'my div', '');
-           mywindow.document.write('<html><head><title>Empleados</title>');
-          // mywindow.document.write('<link media="print,screen" href="<?= base_url() ?>assets/dashboard/css/estiloTablasDescarga.css" rel="stylesheet" type="text/css" >');
-           mywindow.document.write('</head><body>');
-           mywindow.document.write(data);
-           mywindow.document.write('</body></html>');
-           mywindow.document.close(); // necessary for IE >= 10
-           mywindow.focus(); // necessary for IE >= 10
-           mywindow.print();
-           mywindow.close();
-           return true;
-       }
-   
-   
-   $('#opciones-seleccionados-Excel').on("click", function(){
-       var html = htmlTabla('empleados-tabla-lista', false);
-       $('#inset_form').html('<form  action="<?=base_url()?>ManejadorExcel/tablaDescarga" name="form" method="post" style="display:block;"><input type="text" name="titulo" value="<?= label('tituloEmpleados'); ?>"><textarea name="miHtml">' + html + '</textarea></form>');
-       document.forms['form'].submit();
-   });
-   
-   $('#opciones-seleccionados-PDF').on("click", function(){
-       var informacionSistema = '<div id="informacionSistema"><div id="linkPagina"><a href="<?=base_url()?>">touchcr.com</a></div><span class="numeracion"></span></div>';
-       var encabezado = '<div id="encabezado"><?= label('tituloEmpleados'); ?></div>';
-       var body = encabezado + informacionSistema;
-       body += htmlTabla('empleados-tabla-lista', false);
-       var html = '<!DOCTYPE html><html><head><title>403 Forbidden</title><link rel="stylesheet" href="<?= base_url() ?>assets/dashboard/css/estiloTablasDescarga.css"></head><body id="hojaPDF">';
-       html +=  body + '</body></html>';
-       $('#inset_form').html('<form  action="<?=base_url()?>ManejadorPDF/tablaDescarga" name="form" method="post" style="display:block;"><textarea name="miHtml">' + html + '</textarea></form>');
-       document.forms['form'].submit();
-   });
-   
-   
-   function htmlTabla(idTabla, style){
-   
-       var styleTable = 'style="border-collapse:collapse;width: 100%;"';
-       var styleHead = 'style="font-weight: bold;"';
-       var styleTd = 'style="border:1px solid #A9A9A9; padding:3px 7px 2px 7px;"';
-       if (style) {
-           var tablaHtml = '<table ' + styleTable + '><thead ' + styleHead + '>';
-       } else{
-           var tablaHtml = '<table><thead>';
-       };
-       
-       var tabla = $("#" + idTabla).dataTable();
-       
-       tabla.find('> thead > tr').each(function()
-       {
-           tablaHtml += '<tr>';
-           var cantidadColummnas = $(this).children("th").length;
-             $(this).children("th").each(function(index){
-               if (index != 0 && index != cantidadColummnas-1) {
-                   if (style) {
-                       tablaHtml += '<td ' + styleTd + '>' + $(this).html() + '</td>';
-                   } else{
-                       tablaHtml += '<td>' + $(this).html() + '</td>';
-                   };
-                   
-               };
-             });
-           tablaHtml += '</tr>';
-       });
-   
-       tablaHtml += '</thead>';
-       tablaHtml += '<tbody>';
-       tabla.find('> tbody > tr').each(function()
-       {
-           if ($(this).children("td").first().find('input').is(':checked')) {
-           tablaHtml += '<tr>';
-           var cantidadColummnas = $(this).children("td").length;
-             $(this).children("td").each(function(index){
-               if (index != 0 && index != cantidadColummnas-1) {
-                   if (style) {
-                       tablaHtml += '<td '+ styleTd +'>' + $(this).text() + '</td>';
-                   } else{
-                       tablaHtml += '<td>' + $(this).text() + '</td>';
-                   };
-                   
-               };
-             });
-         tablaHtml += '</tr>';
-     }
-       });
-       tablaHtml += '</tbody></table>';
-      return  tablaHtml;
-       
-   }
-   });
-   
-</script>
+
 <div style="display: none" id="inset_form"></div>
-<!-- <button id="mensajeDescarga">Prueba</button> -->
 <!-- START CONTENT -->
 <section id="content">
    <!--start container-->
@@ -145,8 +45,6 @@
                                                 </th>
                                                 <th><?= label('Empleado_tablaCodigo'); ?></th>
                                                 <th><?= label('Empleado_tablaNombre'); ?></th>
-                                                <!-- <th><?= label('Empleado_primerApellido'); ?></th> -->
-                                                <!-- <th><?= label('Empleado_segundoApellido'); ?></th> -->
                                                 <th><?= label('Empleado_tablaIdentificacion'); ?></th>
                                                 <th><?= label('Empleado_tablaPalabras'); ?></th>
                                                 <th><?= label('Empleado_tablaOpciones'); ?></th>
@@ -171,12 +69,6 @@
                                                 <td>
                                                    <a href="<?= base_url() ?>empleados/editar/<?= $idEncriptado ?>"><?= $fila['nombre']." ".$fila['primerApellido']." ".$fila['segundoApellido'] ?></a>
                                                 </td>
-                                                <!-- <td>
-                                                   <a href="<?= base_url() ?>empleados/editar/<?= $idEncriptado ?>"><?= $fila['primerApellido'] ?></a>
-                                                   </td>
-                                                   <td>
-                                                   <a href="<?= base_url() ?>empleados/editar/<?= $idEncriptado ?>"><?= $fila['segundoApellido'] ?></a>
-                                                   </td> -->
                                                 <td><?= $fila['identificacion'] ?></td>
                                                 <td><?php foreach ($fila['palabras'] as $palabra) {
                                                    echo $palabra['descripcion'].', ';
@@ -261,8 +153,13 @@
       $this->load->view('layout/default/menu-crear.php');
       ?>
 </section>
+<div style="display: none">
+    <a id="linkModalErrorCargarDatos" href="#transaccionIncorrectaCargar" class="btn btn-default modal-trigger"></a>
+    <a id="linkModalErrorEliminar" href="#transaccionIncorrectaEliminar" class="btn btn-default modal-trigger"></a>
+</div>
+
 <!-- END CONTENT-->
-<!-- script para agregar link al boton aceptar del modal -->
+
 <script type="text/javascript">
    $(document).on("ready", function () { 
    
@@ -270,7 +167,7 @@
       if (isset($lista)) {
           if ($lista === false) {?>
    
-               alert("Error al leer los datos");
+                $('#linkModalErrorCargarDatos').click();
    
            <?php
       }
@@ -284,15 +181,10 @@
        $('.confirmarEliminar').on('click', function () {
            idEliminar = $(this).data('id-eliminar');
            fila = $(this).data('fila-eliminar');
-           // idEliminar = id;
-           // $('#eliminarEmpleado #botonEliminar a').attr('href', "<?=base_url()?>empleados/eliminar/" + id);
        });
    
         $('#eliminarEmpleado #botonEliminar').on('click', function () {
            event.preventDefault();
-           // alert("#fila" + idEliminar);
-           // window.location.replace('<?=base_url()?>empleados/eliminar/' + idEliminar);
-           // redirect();
            $.ajax({
                   data: {idEliminar : idEliminar},
                   url:   '<?=base_url()?>empleados/eliminar',
@@ -301,7 +193,6 @@
                   //         $("#resultado").html("Procesando, espere por favor...");
                   // },
                   success:  function (response) {
-                   // alert(response);
                    if (response==1) {
                        $('#' + fila).fadeOut(function () {
                        $('#' + fila).remove();
@@ -309,7 +200,7 @@
                        });
                        
                    } else{
-                       alert("Ha ocurrido un error");
+                       $('#linkModalErrorEliminar').click();
                    };
                }
            });
@@ -320,131 +211,249 @@
    
    });
    
-</script>
-<script>
-
-       $(document).ready( function () {
-           $('#empleados-tabla-lista').dataTable( {
-               'aoColumnDefs': [{
-                   'bSortable': false,
-                   'aTargets': [0, -1] /* 1st one, start by the right */
-               }]
-           });
+   $(document).ready( function () {
+       $('#empleados-tabla-lista').dataTable( {
+           'aoColumnDefs': [{
+               'bSortable': false,
+               'aTargets': [0, -1] //desactiva en primer y última columna opción de ordenar
+           }]
        });
-       $(document).ready(function () {
-           $('table#empleados-tabla-lista thead th:first').removeClass('sorting_asc').addClass('sorting_disabled');
-           $('table#empleados-tabla-lista thead th:nth-child(2)').removeClass('sorting').addClass('sorting_asc');
-   //        $('table#empleados-tabla-lista thead th:last').removeClass('sorting').addClass('sorting_disabled');
-       });
-       $(document).ready(function () {
-           $('#eliminarElementosSeleccionados #botonEliminar').on("click", function (event) {
-               var tb = $(this).attr('title');
-               var sel = false;
-               var ch = $('#' + tb).find('tbody input[type=checkbox]');
-               ch.each(function () {
-                   var $this = $(this);
-                   if ($this.is(':checked')) {
-                       sel = true;
-                       var fila = $this.parents('tr');
-                       var idEliminar = $this.parents('tr').attr('data-idElemento');
-   
-                       $.ajax({
-                              data: {idEliminar : idEliminar},
-                              url:   '<?=base_url()?>empleados/eliminar',
-                              type:  'post',
-                              // beforeSend: function () {
-                              //         $("#resultado").html("Procesando, espere por favor...");
-                              // },
-                              success:  function (response) {
-                               // alert(response);
-                               if (response==1) {
-                                   // alert(fila.html());
-                                  fila.fadeOut(function () {
-   
-                                   fila.remove();
-                                   verificarChecks();
-                                   });
-                               } else{
-                                   alert("Ha ocurrido un error");
-                               };
-                           }
-                       });
-   
-                   }
-               });
-               return false;
-   
-           });
-       });
-       $(document).ready(function () {
-           $('#checkbox-all').click(function (event) {
-               var $this = $(this);
-               var tableBody = $('#empleados-tabla-lista').find('tbody tr[role=row] input[type=checkbox]');
-               tableBody.each(function() {
-                   var check = $(this);
-                   if ($this.is(':checked')) {
-                       check.prop('checked', true);
-                   } else {
-                       check.prop('checked', false);
-                   }
-               });
-           });
-       });
-       $(document).ready(function () {
-           $('.checkbox').click(function (event) {
-               verificarChecks();
-           });
-       });
-   
-       function verificarChecks(){
-           
+   });
+   $(document).ready(function () {
+       $('table#empleados-tabla-lista thead th:first').removeClass('sorting_asc').addClass('sorting_disabled');
+       $('table#empleados-tabla-lista thead th:nth-child(2)').removeClass('sorting').addClass('sorting_asc');
+   });
+   $(document).ready(function () {
+       $('#eliminarElementosSeleccionados #botonEliminar').on("click", function (event) {
+           var tb = $(this).attr('title');
+           var sel = false;
+           var ch = $('#' + tb).find('tbody input[type=checkbox]');
            var marcados = $('.checkbox:checked').not('#checkbox-all').size();
-                //alert(marcados);
-               if (marcados >= 1) {
-                   var elems = document.getElementsByClassName('opciones-seleccionados');
-                   var e;
-                   for (e in elems) {
-   //                    elems[e].style.display = 'block';
-                       elems[e].style.visibility = 'visible';
-   //                elems[e].css('visibility', 'visible');
-                   }
-               } else {
-                   $('#checkbox-all').prop('checked', false);
-                   var elems = document.getElementsByClassName('opciones-seleccionados');
-                   var e;
-                   for (e in elems) {
-   //                    elems[e].style.display = 'none';
-                       elems[e].style.visibility = 'hidden';
-   //                elems[e].css('visibility', 'hidden');
-                   }
+           var contador = 0;
+           ch.each(function () {
+               var $this = $(this);
+               if ($this.is(':checked')) {
+                   sel = true;
+                   var fila = $this.parents('tr');
+                   var idEliminar = $this.parents('tr').attr('data-idElemento');
+   
+                   $.ajax({
+                          data: {idEliminar : idEliminar},
+                          url:   '<?=base_url()?>empleados/eliminar',
+                          type:  'post',
+                          // beforeSend: function () {
+                          //         $("#resultado").html("Procesando, espere por favor...");
+                          // },
+                          success:  function (response) {
+                           if (response==1) {
+                              fila.fadeOut(function () {
+                               fila.remove();
+                               verificarChecks();
+                               });
+                           } else{ 
+                            contador++;
+                            if (contador == marcados) {
+                              $('#linkModalErrorEliminar').click();
+                            };
+                           };
+                       }
+                   });
+  
                }
+           });
+            
+           return false;
+   
+       });
+   });
+
+    $(window).load(function () {
+        verificarChecks();
+    });
+
+   $(document).ready(function () {
+       $('#checkbox-all').click(function (event) {
+           var $this = $(this);
+           var tableBody = $('#empleados-tabla-lista').find('tbody tr[role=row] input[type=checkbox]');
+           tableBody.each(function() {
+               var check = $(this);
+               if ($this.is(':checked')) {
+                   check.prop('checked', true);
+               } else {
+                   check.prop('checked', false);
+               }
+           });
+       });
+   });
+   $(document).ready(function () {
+       $('.checkbox').click(function (event) {
+           verificarChecks();
+       });
+   });
+   
+   function verificarChecks(){
+       
+       var marcados = $('.checkbox:checked').not('#checkbox-all').size();
+       if (marcados >= 1) {
+           var elems = document.getElementsByClassName('opciones-seleccionados');
+           var e;
+           for (e in elems) {
+               elems[e].style.visibility = 'visible';
+           }
+       } else {
+           $('#checkbox-all').prop('checked', false);
+           var elems = document.getElementsByClassName('opciones-seleccionados');
+           var e;
+           for (e in elems) {
+               elems[e].style.visibility = 'hidden';
+           }
+       }
+   }
+   
+   $(document).ready(function () {
+       $('.boton-opciones').on('click', function (event) {
+           var elementoActivo = $(this).siblings('ul.active');
+           if (elementoActivo.length > 0) {
+               var estado = elementoActivo.css("display");
+               if (estado == "block") {
+                   elementoActivo.css("display", "none");
+                   elementoActivo.style.display = 'none';
+               } else {
+                   elementoActivo.css("display", "block");
+                   elementoActivo.style.display = 'block';
+               }
+           }
+       });
+   });
+
+   // Inicio script de descarga pdf, excel e imprimir
+   $(document).on('ready', function(){
+   
+       $('#opciones-seleccionados-print').on("click", function(){
+           tablaHtml = htmlTabla('empleados-tabla-lista', true);
+           Popup(tablaHtml);
+       });
+   
+       function Popup(data) 
+       {
+           // var mywindow = window.open('', 'my div', 'height=400,width=600');
+           var mywindow = window.open('', 'my div', '');
+           mywindow.document.write('<html><head><title>Empleados</title>');
+          // mywindow.document.write('<link media="print,screen" href="<?= base_url() ?>assets/dashboard/css/estiloTablasDescarga.css" rel="stylesheet" type="text/css" >');
+           mywindow.document.write('</head><body>');
+           mywindow.document.write(data);
+           mywindow.document.write('</body></html>');
+           mywindow.document.close(); // necessary for IE >= 10
+           mywindow.focus(); // necessary for IE >= 10
+           mywindow.print();
+           mywindow.close();
+           return true;
        }
    
    
-   
-   
-   
-   
-       $(document).ready(function () {
-           $('.boton-opciones').on('click', function (event) {
-               // alert(event.type);
-               //e.preventDefault();
-   
-               var elementoActivo = $(this).siblings('ul.active');
-               if (elementoActivo.length > 0) {
-                   var estado = elementoActivo.css("display");
-                   if (estado == "block") {
-                       elementoActivo.css("display", "none");
-                       elementoActivo.style.display = 'none';
-                   } else {
-                       elementoActivo.css("display", "block");
-                       elementoActivo.style.display = 'block';
-                   }
-               }
-           });
+       $('#opciones-seleccionados-Excel').on("click", function(){
+           var html = htmlTabla('empleados-tabla-lista', false);
+           $('#inset_form').html('<form  action="<?=base_url()?>ManejadorExcel/tablaDescarga" name="form" method="post" style="display:block;"><input type="text" name="titulo" value="<?= label('tituloEmpleados'); ?>"><textarea name="miHtml">' + html + '</textarea></form>');
+           document.forms['form'].submit();
        });
+       
+       $('#opciones-seleccionados-PDF').on("click", function(){
+           var informacionSistema = '<div id="informacionSistema"><div id="linkPagina"><a href="<?=base_url()?>">touchcr.com</a></div><span class="numeracion"></span></div>';
+           var encabezado = '<div id="encabezado"><?= label('tituloEmpleados'); ?></div>';
+           var body = encabezado + informacionSistema;
+           body += htmlTabla('empleados-tabla-lista', false);
+           var html = '<!DOCTYPE html><html><head><title>403 Forbidden</title><link rel="stylesheet" href="<?= base_url() ?>assets/dashboard/css/estiloTablasDescarga.css"></head><body id="hojaPDF">';
+           html +=  body + '</body></html>';
+           $('#inset_form').html('<form  action="<?=base_url()?>ManejadorPDF/tablaDescarga" name="form" method="post" style="display:block;"><input type="text" name="titulo" value="<?= label('tituloEmpleados'); ?>"><textarea name="miHtml">' + html + '</textarea></form>');
+           document.forms['form'].submit();
+       });
+       
+       
+       function htmlTabla(idTabla, style){
+       
+           var styleTable = 'style="border-collapse:collapse;width: 100%;"';
+           var styleHead = 'style="font-weight: bold;"';
+           var styleTd = 'style="border:1px solid #A9A9A9; padding:3px 7px 2px 7px;"';
+           if (style) {
+               var tablaHtml = '<table ' + styleTable + '><thead ' + styleHead + '>';
+           } else{
+               var tablaHtml = '<table><thead>';
+           };
+           
+           var tabla = $("#" + idTabla).dataTable();
+           
+           tabla.find('> thead > tr').each(function()
+           {
+               tablaHtml += '<tr>';
+               var cantidadColummnas = $(this).children("th").length;
+                 $(this).children("th").each(function(index){
+                   if (index != 0 && index != cantidadColummnas-1) {
+                       if (style) {
+                           tablaHtml += '<td ' + styleTd + '>' + $(this).html() + '</td>';
+                       } else{
+                           tablaHtml += '<td>' + $(this).html() + '</td>';
+                       };
+                       
+                   };
+                 });
+               tablaHtml += '</tr>';
+           });
+       
+           tablaHtml += '</thead>';
+           tablaHtml += '<tbody>';
+           tabla.find('> tbody > tr').each(function()
+           {
+               if ($(this).children("td").first().find('input').is(':checked')) {
+               tablaHtml += '<tr>';
+               var cantidadColummnas = $(this).children("td").length;
+                 $(this).children("td").each(function(index){
+                   if (index != 0 && index != cantidadColummnas-1) {
+                       if (style) {
+                           tablaHtml += '<td '+ styleTd +'>' + $(this).text() + '</td>';
+                       } else{
+                           tablaHtml += '<td>' + $(this).text() + '</td>';
+                       };
+                       
+                   };
+                 });
+             tablaHtml += '</tr>';
+         }
+           });
+           tablaHtml += '</tbody></table>';
+          return  tablaHtml;
+           
+       }
+   });
+   // Fin script de descarga pdf, excel e imprimir
+
+
+
 </script>
 <!-- lista modals -->
+<div id="transaccionIncorrectaCargar" class="modal">
+    <div  class="modal-header headerTransaccionIncorrecta">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('errorLeerDatos'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="transaccionIncorrectaEliminar" class="modal">
+    <div  class="modal-header headerTransaccionIncorrecta">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('errorEliminar'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
 <div id="eliminarEmpleado" class="modal">
    <div class="modal-header">
       <p><?= label('nombreSistema'); ?></p>

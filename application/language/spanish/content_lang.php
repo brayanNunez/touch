@@ -53,7 +53,16 @@
     $lang['empleadoGuardadoCorrectamente'] = 'El empleado ha sido creado correctamente.';
     $lang['empleadoEditadoCorrectamente'] = 'El empleado ha sido editado correctamente.';
     $lang['empleadoIdentificacionExistente'] = 'La identificación indicada ya existe.';
-    $lang['empleadoError'] = 'Ha ocurrido un error al intentar guardar el empleado.';
+
+    
+    $lang['errorGuardar'] = 'Ha ocurrido un error al intentar guardar los datos.';
+    $lang['errorLeerDatos'] = 'Ha ocurrido un error al intentar leer los datos.';
+    $lang['errorEliminar'] = 'Ha ocurrido un error al intentar eliminar los datos.';
+    $lang['errorEditar'] = 'Ha ocurrido un error al intentar editar los datos.';
+
+    
+
+    
     
     
 //tipos de salario

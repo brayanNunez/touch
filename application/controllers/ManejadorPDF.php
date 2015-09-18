@@ -30,61 +30,19 @@ class ManejadorPDF extends CI_Controller
     {
 
         if (isset($_POST['miHtml'])) {
+
+            $titulo = $_POST['titulo'];
+
             $htmlEntrada = $_POST['miHtml'];
-
-
-
-            // $str = '<table class="tableISV"><tr><td>language</td><td>español</td></tr><tr><td>query</td><td>Convertir</td></tr><tr><td>origen</td><td>html</td></tr><tr><td>destino</td><td>array</td></tr><tr><td>user</td><td>username</td><td>root</td></tr><tr><td></td><td>password</td><td>toor</td></tr></table>';
-            // $str = $htmlEntrada;
-
-            // $table = str_get_html($str);
-            // $rowData = array();
-
-            // foreach($table->find('tr') as $row) {
-            //     // initialize array to store the cell data from each row
-            //     $flight = array();
-            //     foreach($row->find('td') as $cell) {
-            //         // push the cell's text to the array
-            //         $flight[] = $cell->plaintext;
-            //     }
-            //     $rowData[] = $flight;
-            // }
-            // echo print_r($rowData); exit();
-
-
-
-
-
-
-            $this->createFolder();
+            // $this->createFolder();
             $this->html2pdf->folder('./files/pdfs/');
-            $this->html2pdf->filename('test.pdf');
+            $this->html2pdf->filename($titulo.'.pdf');
             $this->html2pdf->paper('a4', 'portrait');
-            $data = "";
+            // $data = "";
             $this->html2pdf->html(utf8_decode($htmlEntrada));
             $this->html2pdf->create();
-            // if ($path = $this->html2pdf->create('save')) {
-
-            //     $this->load->library('email');
-
-            //     $this->email->from('brayannr@hotmail.es', 'Brayan');
-            //     $this->email->to('brayan.nunez@ucrso.info');
-            //     // $this->email->cc('jose.rodriguez@ucrso.info'); 
-
-            //     $this->email->subject('Email PDF Test');
-            //     $this->email->message('Testing the email a freshly created PDF');
-
-            //     $this->email->attach($path);
-
-            //     $this->email->send();
-            //     $this->html2pdf->create();
-            //     echo "El email ha sido enviado correctamente";
-
-            // }
             exit;
-
         }
-
     }
 
     public function index()

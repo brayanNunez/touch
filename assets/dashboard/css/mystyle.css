@@ -513,6 +513,6 @@ margin-top: 2%;
 	color: red;
 }
 
-#HeaderTransaccionIncorrecta{
-	background: red;
+.headerTransaccionIncorrecta{
+	background: red !important;
 }
