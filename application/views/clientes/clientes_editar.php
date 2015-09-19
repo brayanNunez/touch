@@ -1,4 +1,4 @@
-<div class="col s12">
+<div class="col s12 tab-edicion-editar">
     <form class="col s12">
         <div class="row">
             <div class="input-field col s12">
@@ -163,7 +163,7 @@
                 </div>
                 <div id="tab-contactos-editar" class="card col s12">
                     <div class="row">
-                        <div class="col s11 m11 l11">
+                        <div class="col s12 m11 l11">
                             <div class="row">
                                 <div class="input-field col s12 m4 l4">
                                     <input id="cliente_contactoApellido1" type="text" value="Rodriguez">
@@ -201,7 +201,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col s1 m1 l1" style="margin-top: 50px;">
+                        <div class="col s12 m1 l1 btn-contacto-eliminar-edicion">
                             <a href="#eliminarContacto_editar" class="modal-trigger" title="<?= label('formCliente_contactoEliminar') ?>">
                                 <i class="mdi-action-delete medium" style="color: black;"></i>
                             </a>
@@ -212,7 +212,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col s11 m11 l11">
+                        <div class="col s12 m11 l11">
                             <div class="row">
                                 <div class="input-field col s12 m4 l4">
                                     <input id="cliente_contactoApellido1" type="text" value="Nunez">
@@ -250,7 +250,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col s1 m1 l1" style="margin-top: 50px;">
+                        <div class="col s12 m1 l1 btn-contacto-eliminar-edicion">
                             <a href="#eliminarContacto_editar" class="modal-trigger" title="<?= label('formCliente_contactoEliminar') ?>">
                                 <i class="mdi-action-delete medium" style="color: black;"></i>
                             </a>
@@ -261,7 +261,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col s11 m11 l11">
+                        <div class="col s12 m11 l11">
                             <div class="row">
                                 <div class="input-field col s12 m4 l4">
                                     <input id="cliente_contactoApellido1" type="text" value="Arias">
@@ -299,7 +299,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col s1 m1 l1" style="margin-top: 50px;">
+                        <div class="col s12 m1 l1 btn-contacto-eliminar-edicion">
                             <a href="#eliminarContacto_editar" class="modal-trigger" title="<?= label('formCliente_contactoEliminar') ?>">
                                 <i class="mdi-action-delete medium" style="color: black;"></i>
                             </a>
@@ -310,7 +310,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col s11 m11 l11">
+                        <div class="col s12 m11 l11">
                             <div class="row">
                                 <div class="input-field col s12 m4 l4">
                                     <input id="cliente_contactoApellido1" type="text" value="Rojas">
@@ -348,7 +348,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col s1 m1 l1" style="margin-top: 50px;">
+                        <div class="col s12 m1 l1 btn-contacto-eliminar-edicion">
                             <a href="#eliminarContacto_editar" class="modal-trigger" title="<?= label('formCliente_contactoEliminar') ?>">
                                 <i class="mdi-action-delete medium" style="color: black;"></i>
                             </a>
@@ -612,7 +612,7 @@
         $('#tab-contactos-nuevo-editar').remove();
         $('#tab-contactos-editar').append('' +
             '<div class="row">' +
-            '<div class="col s11 m11 l11">' +
+            '<div class="col s12 m11 l11">' +
             '<div class="row">' +
             '<div class="input-field col s12 m4 l4">' +
             '<input id="cliente_contactoApellido1" type="text">' +
@@ -652,7 +652,7 @@
             '</div>' +
 
             '</div>' +
-            '<div class="col s1 m1 l1" style="margin-top: 50px;">' +
+            '<div class="col s12 m1 l1 btn-contacto-eliminar-edicion">' +
             '<a href="#eliminarContacto_editar" class="modal-trigger" title="<?= label('formCliente_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>' +
             '</div>' +
             '</div>' +

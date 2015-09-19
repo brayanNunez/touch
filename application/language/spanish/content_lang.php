@@ -373,7 +373,7 @@
     $lang['formCliente_nombreContacto'] = 'Nombre completo';
     $lang['formCliente_Contactos'] = 'Contactos';
     $lang['cliente_infoAdicional'] = 'Adicional';
-    $lang['cliente_infoFacturacion'] = 'Cotización';
+    $lang['cliente_infoFacturacion'] = 'Facturación';
     $lang['formCliente_formaPagoFavorita'] = 'Forma de pago preferida';
     $lang['formCliente_descuento'] = 'Descuento fijo';
     $lang['formCliente_monedaCotizar'] = 'Cotizar en';

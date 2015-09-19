@@ -224,6 +224,19 @@ div#tab-contactos hr, div#tab-contactos-editar hr { height: 12px; border: 0; box
 div#tab-contactos-nuevo, div#tab-contactos-nuevo-editar { margin: 15px 0; }
 div#tab-contactos-nuevo a, div#tab-contactos-nuevo-editar a { cursor: pointer; font-size: large; text-decoration: underline; }
 
+div#card-graficos-inicio { height: 180px; padding: 41px 14px !important; }
+div#card-stats div.card { margin-bottom: 7.5px; }
+div#card-stats div.card div.card-content { padding-bottom: 1px; }
+div#card-stats div.card div.card-action { padding: 8px 14px; }
+/*canvas#trending-line-chart { height: 245px !important; }*/
+div#card-widgets div.card div.card-image { height: 130px; }
+div#card-widgets div.card div.card-content img { top: 30px; }
+
+div.select-wrapper ul.select-dropdown { top: 50px !important; }
+#menu-crear .menu-crear:hover { display: block !important; }
+div.cliente-ver-logo { margin-top: 45px; }
+div.btn-contacto-eliminar-edicion { margin-top: 50px; }
+
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/
     div#login-page { width: 380px !important; max-height: 408px !important; top: 0 !important; }
@@ -391,6 +404,8 @@ div#tab-contactos-nuevo a, div#tab-contactos-nuevo-editar a { cursor: pointer; f
     .liquid .previous { position: absolute; left: 5px; top: 70px; }
     .liquid .next { position: absolute; right: 5px; top: 70px; }
     .liquid ul li { width:160px; padding:0 2px; margin:0; }
+
+    div#card-graficos-inicio { height: 690px; }
 }
 
 @media only screen and (max-width: 480px) {
@@ -458,6 +473,8 @@ div#tab-contactos-nuevo a, div#tab-contactos-nuevo-editar a { cursor: pointer; f
     div.tabla-conAgregar a.option-export-table, div.tabla-sinAgregar a.option-export-table { float: left; padding: 0 !important; margin-right: 15px; background-color: transparent !important; }
     div.tabla-conAgregar a.option-export-table i, div.tabla-sinAgregar a.option-export-table i { padding: 0; }
 
+    div.tabla-salarios-proveedor { right: 0 !important; left: unset; bottom: 16px !important; top: unset; width: 40px; margin-left: 0; }
+    
     div.tabla-conAgregar.tabla-opciones-serviciosProductos { position: absolute; top: 260px; left: 74%; width: 130px; margin-left: -65px; }
         div.tabla-conAgregar.tabla-opciones-serviciosProductos a i { font-size: 25px; }
         div.tabla-conAgregar.tabla-opciones-serviciosProductos a.option-delete-elements { float: left; margin-right: 0; }
@@ -492,12 +509,28 @@ div#tab-contactos-nuevo a, div#tab-contactos-nuevo-editar a { cursor: pointer; f
     .liquid .previous { position: absolute; left: 0; top: 70px; z-index: 100; }
     .liquid .next { position: absolute; right: 0; top: 70px; z-index: 100; }
     .liquid .previous i, .liquid .next i { font-size: 3rem; }
-    .liquid ul li { width:135px; padding:0; margin:0; }
+    .liquid ul li { width:160px; padding:0; margin:0; }
     .liquid ul li div.info-contacto div h5 { font-size: 1rem; }
     .liquid ul li div.info-contacto div p { font-size: 11px; }
     .liquid ul li div.info-contacto div div.contacto-opciones a { padding: 0 5px; }
 
     table.data-table-information thead tr th:first-child { width: auto !important; }
+
+    #tab-informacion, #tab-edicion, .tab-informacion-ver, .tab-edicion-editar, #tab-direccion-editar, #tab-infoFacturacion-editar,
+    #tab-direccion, #tab-infoFacturacion, .proveedor-editar-tabs-secundarios { padding: 0 !important; }
+    #tab-infoAdicional, #tab-infoAdicional-editar { padding: 0 2px !important; }
+    div.cliente-ver-logo, div.proveedor-ver-logo { margin-top: 15px; }
+    div.btn-contacto-eliminar-edicion { margin-top: 0; height: 40px; }
+    div.btn-contacto-eliminar-edicion a { left: 50%; position: absolute; margin-left: -21px; }
+    div.btn-contacto-eliminar-edicion a i { font-size: 3rem;  }
+
+    div#card-graficos-inicio { height: 590px; }
+    div#card-stats div.card { margin-bottom: 7.5px; }
+    div#card-stats div.card div.card-content { padding-bottom: 10px; }
+    div#card-stats div.card div.card-action { padding: 10px 14px; }
+    /*canvas#trending-line-chart { height: 245px !important; }*/
+    div#card-widgets div.card div.card-image { height: 130px; }
+    div#card-widgets div.card div.card-content img { top: 30px; }
 }
 
 @media only screen and (max-width: 360px) {
@@ -508,11 +541,13 @@ div#tab-contactos-nuevo a, div#tab-contactos-nuevo-editar a { cursor: pointer; f
     ul#opciones-barra-superior li a i { font-size: 23px; }
     ul#listaNotificaciones li a, ul#listaConfiguracion li a { padding: 8px 10px; }
 
-    .liquid .previous { position: absolute; left: 0; top: 70px; z-index: 100; }
-    .liquid .next { position: absolute; right: 0; top: 70px; z-index: 100; }
-    .liquid .previous i, .liquid .next i { font-size: 3rem; }
-    .liquid ul li { width:120px; padding:0; margin:0; }
-    .liquid ul li div.info-contacto div h5 { font-size: 1rem; }
-    .liquid ul li div.info-contacto div p { font-size: 11px; }
-    .liquid ul li div.info-contacto div div.contacto-opciones a { padding: 0 5px; }
+    div#card-graficos-inicio { height: 490px; }
+
+    /*.liquid .previous { position: absolute; left: 0; top: 70px; z-index: 100; }*/
+    /*.liquid .next { position: absolute; right: 0; top: 70px; z-index: 100; }*/
+    /*.liquid .previous i, .liquid .next i { font-size: 3rem; }*/
+    /*.liquid ul li { width:120px; padding:0; margin:0; }*/
+    /*.liquid ul li div.info-contacto div h5 { font-size: 1rem; }*/
+    /*.liquid ul li div.info-contacto div p { font-size: 11px; }*/
+    /*.liquid ul li div.info-contacto div div.contacto-opciones a { padding: 0 5px; }*/
 }

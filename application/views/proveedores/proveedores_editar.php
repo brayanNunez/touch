@@ -1,4 +1,4 @@
-<div class="col s12">
+<div class="col s12 tab-edicion-editar">
     <form class="col s12">
         <div class="row">
             <div class="input-field col s12">
@@ -104,7 +104,7 @@
                 </div>
             </div>
 
-            <div class="col s12">
+            <div class="col s12 proveedor-editar-tabs-secundarios">
                 <ul class="tabs tab-demo-active z-depth-1 proveedor-info">
                     <li class="tab col s3">
                         <a class="white-text darken-1 waves-effect waves-light active"
@@ -127,7 +127,7 @@
                 </ul>
             </div>
 
-            <div class="col s12">
+            <div class="col s12 proveedor-editar-tabs-secundarios">
                 <div id="tab-direccion-editar" class="card col s12">
                     <div>
                         <div class="input-field col s12 m4 l4">
@@ -154,7 +154,7 @@
                 </div>
                 <div id="tab-contactos-editar" class="card col s12">
                     <div class="row">
-                        <div class="col s11 m11 l11">
+                        <div class="col s12 m11 l11">
                             <div class="row">
                                 <div class="input-field col s12 m4 l4">
                                     <input id="proveedor_contactoApellido1" type="text" value="Rodriguez">
@@ -192,7 +192,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col s1 m1 l1" style="margin-top: 50px;">
+                        <div class="col s12 m1 l1 btn-contacto-eliminar-edicion">
                             <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar') ?>">
                                 <i class="mdi-action-delete medium" style="color: black;"></i>
                             </a>
@@ -203,7 +203,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col s11 m11 l11">
+                        <div class="col s12 m11 l11">
                             <div class="row">
                                 <div class="input-field col s12 m4 l4">
                                     <input id="proveedor_contactoApellido1" type="text" value="Bolanos" >
@@ -241,7 +241,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col s1 m1 l1" style="margin-top: 50px;">
+                        <div class="col s12 m1 l1 btn-contacto-eliminar-edicion">
                             <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar') ?>">
                                 <i class="mdi-action-delete medium" style="color: black;"></i>
                             </a>
@@ -252,7 +252,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col s11 m11 l11">
+                        <div class="col s12 m11 l11">
                             <div class="row">
                                 <div class="input-field col s12 m4 l4">
                                     <input id="proveedor_contactoApellido1" type="text" value="Castro">
@@ -290,7 +290,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col s1 m1 l1" style="margin-top: 50px;">
+                        <div class="col s12 m1 l1 btn-contacto-eliminar-edicion">
                             <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar') ?>">
                                 <i class="mdi-action-delete medium" style="color: black;"></i>
                             </a>
@@ -301,7 +301,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col s11 m11 l11">
+                        <div class="col s12 m11 l11">
                             <div class="row">
                                 <div class="input-field col s12 m4 l4">
                                     <input id="proveedor_contactoApellido1" type="text" value="Porras">
@@ -339,7 +339,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col s1 m1 l1" style="margin-top: 50px;">
+                        <div class="col s12 m1 l1 btn-contacto-eliminar-edicion">
                             <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar') ?>">
                                 <i class="mdi-action-delete medium" style="color: black;"></i>
                             </a>
@@ -350,7 +350,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col s11 m11 l11">
+                        <div class="col s12 m11 l11">
                             <div class="row">
                                 <div class="input-field col s12 m4 l4">
                                     <input id="proveedor_contactoApellido1" type="text" value="Murillo">
@@ -388,7 +388,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col s1 m1 l1" style="margin-top: 50px;">
+                        <div class="col s12 m1 l1 btn-contacto-eliminar-edicion">
                             <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar') ?>">
                                 <i class="mdi-action-delete medium" style="color: black;"></i>
                             </a>
@@ -399,7 +399,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col s11 m11 l11">
+                        <div class="col s12 m11 l11">
                             <div class="row">
                                 <div class="input-field col s12 m4 l4">
                                     <input id="proveedor_contactoApellido1" type="text" value="Arias">
@@ -437,7 +437,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col s1 m1 l1" style="margin-top: 50px;">
+                        <div class="col s12 m1 l1 btn-contacto-eliminar-edicion">
                             <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar') ?>">
                                 <i class="mdi-action-delete medium" style="color: black;"></i>
                             </a>
@@ -448,7 +448,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col s11 m11 l11">
+                        <div class="col s12 m11 l11">
                             <div class="row">
                                 <div class="input-field col s12 m4 l4">
                                     <input id="proveedor_contactoApellido1" type="text" value="Zamora">
@@ -486,7 +486,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col s1 m1 l1" style="margin-top: 50px;">
+                        <div class="col s12 m1 l1 btn-contacto-eliminar-edicion">
                             <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar') ?>">
                                 <i class="mdi-action-delete medium" style="color: black;"></i>
                             </a>
@@ -810,7 +810,7 @@
         $('#tab-contactos-nuevo').remove();
         $('#tab-contactos-editar').append('' +
             '<div class="row">' +
-            '<div class="col s11 m11 l11">' +
+            '<div class="col s12 m11 l11">' +
             '<div class="row">' +
             '<div class="input-field col s12 m4 l4">' +
             '<input id="proveedor_contactoApellido1" type="text">' +
@@ -850,7 +850,7 @@
             '</div>' +
 
             '</div>' +
-            '<div class="col s1 m1 l1" style="margin-top: 50px;">' +
+            '<div class="col s12 m1 l1 btn-contacto-eliminar-edicion">' +
             '<a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>' +
             '</div>' +
             '</div>' +

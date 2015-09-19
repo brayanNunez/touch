@@ -34,7 +34,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-content">
+                        <div id="card-graficos-inicio" class="card-content">
                             <a class="btn-floating btn-move-up waves-effect waves-light darken-2 right"><i
                                     class="mdi-content-add activator"></i></a>
 
@@ -165,20 +165,14 @@
 
                     </div>
                 </div>
+        <!--chart dashboard end-->
 
-                <!--   </div>
-              </div> -->
-
-
-                <!--chart dashboard end-->
-
-                <!-- //////////////////////////////////////////////////////////////////////////// -->
 
                 <!--card stats start-->
-                <div id="card-stats">
+                <div id="card-stats" class="col s12 m12 l4">
                     <div class="row">
                         <a href="<?= base_url() ?>cotizacion">
-                            <div class="col s12 m6 l3">
+                            <div class="col s12 m6 l12">
                                 <div class="card">
                                     <div class="card-content  green white-text">
                                         <p class="card-stats-title"><i class="mdi-social-group-add"></i> Total
@@ -192,7 +186,7 @@
                             </div>
                         </a>
                         <a href="<?= base_url() ?>cotizacion">
-                            <div class="col s12 m6 l3">
+                            <div class="col s12 m6 l12">
                                 <div class="card">
                                     <div class="card-content purple white-text">
                                         <p class="card-stats-title"><i class="mdi-editor-attach-money"></i>Cotizaciones
@@ -211,7 +205,7 @@
                             </div>
                         </a>
                         <a href="<?= base_url() ?>cotizacion">
-                            <div class="col s12 m6 l3">
+                            <div class="col s12 m6 l12">
                                 <div class="card">
                                     <div class="card-content blue-grey white-text">
                                         <p class="card-stats-title"><i class="mdi-action-trending-up"></i> Cotizaciones
@@ -225,9 +219,8 @@
                                 </div>
                             </div>
                         </a>
-
                         <a href="<?= base_url() ?>cotizacion">
-                            <div class="col s12 m6 l3">
+                            <div class="col s12 m6 l12">
                                 <div class="card">
                                     <div class="card-content  green white-text">
                                         <p class="card-stats-title"><i class="mdi-social-group-add"></i> Cotizaciones en
@@ -241,9 +234,8 @@
                                 </div>
                             </div>
                         </a>
-
                         <a href="<?= base_url() ?>cotizacion">
-                            <div class="col s12 m6 l3">
+                            <div class="col s12 m6 l12">
                                 <div class="card">
                                     <div class="card-content deep-purple white-text">
                                         <p class="card-stats-title"><i class="mdi-editor-insert-drive-file"></i>
@@ -257,18 +249,13 @@
                                 </div>
                             </div>
                         </a>
-
                     </div>
                 </div>
                 <!--card stats end-->
 
-                <!-- //////////////////////////////////////////////////////////////////////////// -->
-
                 <!--card widgets start-->
                 <div id="card-widgets">
                     <div class="row">
-
-
                         <div class="col s12 m6 l4">
                             <div id="profile-card" class="card">
                                 <div class="card-image waves-effect waves-block waves-light">
@@ -306,8 +293,6 @@
 
                             </div>
                         </div>
-
-
                         <div class="col s12 m6 l4">
                             <div id="profile-card" class="card">
                                 <div class="card-image waves-effect waves-block waves-light">
@@ -339,8 +324,6 @@
 
                             </div>
                         </div>
-
-
                         <div class="col s12 m6 l4">
                             <div id="profile-card" class="card">
                                 <div class="card-image waves-effect waves-block waves-light">
@@ -377,8 +360,6 @@
 
                             </div>
                         </div>
-
-
                     </div>
                 </div>
                 <!--card widgets end-->

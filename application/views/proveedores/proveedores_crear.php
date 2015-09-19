@@ -176,7 +176,7 @@
                                             </div>
                                             <div id="tab-contactos" class="card col s12">
                                                 <div class="row">
-                                                    <div class="col s11 m11 l11">
+                                                    <div class="col s12 m11 l11">
                                                         <div class="row">
                                                             <div class="input-field col s12 m4 l4">
                                                                 <input id="proveedor_contactoApellido1" type="text">
@@ -214,7 +214,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col s1 m1 l1" style="margin-top: 50px;">
+                                                    <div class="col s12 m1 l1 btn-contacto-eliminar-edicion">
                                                         <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar') ?>">
                                                             <i class="mdi-action-delete medium" style="color: black;"></i>
                                                         </a>
@@ -246,84 +246,6 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-<!--                                                        <tr>-->
-<!--                                                            <td style="text-align: center;">-->
-<!--                                                                <input type="checkbox" class="filled-in checkbox"-->
-<!--                                                                       id="checkbox_proveedor1_salario1"/>-->
-<!--                                                                <label for="checkbox_proveedor1_salario1"></label>-->
-<!--                                                            </td>-->
-<!--                                                            <td>Por hora</td>-->
-<!--                                                            <td>$10</td>-->
-<!--                                                            <td>-->
-<!--                                                                <ul id="dropdown-proveedor1-salario1" class="dropdown-content">-->
-<!--                                                                    <li>-->
-<!--                                                                        <a href="#editarSalario"-->
-<!--                                                                           class="-text modal-trigger">--><?//= label('menuOpciones_editar') ?><!--</a>-->
-<!--                                                                    </li>-->
-<!--                                                                    <li>-->
-<!--                                                                        <a href="#eliminarSalario"-->
-<!--                                                                           class="-text modal-trigger">--><?//= label('menuOpciones_eliminar') ?><!--</a>-->
-<!--                                                                    </li>-->
-<!--                                                                </ul>-->
-<!--                                                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"-->
-<!--                                                                   href="#!" data-activates="dropdown-proveedor1-salario1">-->
-<!--                                                                    --><?//= label('menuOpciones_seleccionar') ?><!--<i-->
-<!--                                                                        class="mdi-navigation-arrow-drop-down"></i>-->
-<!--                                                                </a>-->
-<!--                                                            </td>-->
-<!--                                                        </tr>-->
-<!--                                                        <tr>-->
-<!--                                                            <td style="text-align: center;">-->
-<!--                                                                <input type="checkbox" class="filled-in checkbox"-->
-<!--                                                                       id="checkbox_proveedor1_salario2"/>-->
-<!--                                                                <label for="checkbox_proveedor1_salario2"></label>-->
-<!--                                                            </td>-->
-<!--                                                            <td>Diario</td>-->
-<!--                                                            <td>$80</td>-->
-<!--                                                            <td>-->
-<!--                                                                <ul id="dropdown-proveedor1-salario2" class="dropdown-content">-->
-<!--                                                                    <li>-->
-<!--                                                                        <a href="#editarSalario"-->
-<!--                                                                           class="-text modal-trigger">--><?//= label('menuOpciones_editar') ?><!--</a>-->
-<!--                                                                    </li>-->
-<!--                                                                    <li>-->
-<!--                                                                        <a href="#eliminarSalario"-->
-<!--                                                                           class="-text modal-trigger">--><?//= label('menuOpciones_eliminar') ?><!--</a>-->
-<!--                                                                    </li>-->
-<!--                                                                </ul>-->
-<!--                                                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"-->
-<!--                                                                   href="#!" data-activates="dropdown-proveedor1-salario2">-->
-<!--                                                                    --><?//= label('menuOpciones_seleccionar') ?><!--<i-->
-<!--                                                                        class="mdi-navigation-arrow-drop-down"></i>-->
-<!--                                                                </a>-->
-<!--                                                            </td>-->
-<!--                                                        </tr>-->
-<!--                                                        <tr>-->
-<!--                                                            <td style="text-align: center;">-->
-<!--                                                                <input type="checkbox" class="filled-in checkbox"-->
-<!--                                                                       id="checkbox_proveedor1_salario3"/>-->
-<!--                                                                <label for="checkbox_proveedor1_salario3"></label>-->
-<!--                                                            </td>-->
-<!--                                                            <td>Mensual</td>-->
-<!--                                                            <td>$1400</td>-->
-<!--                                                            <td>-->
-<!--                                                                <ul id="dropdown-proveedor1-salario3" class="dropdown-content">-->
-<!--                                                                    <li>-->
-<!--                                                                        <a href="#editarSalario"-->
-<!--                                                                           class="-text modal-trigger">--><?//= label('menuOpciones_editar') ?><!--</a>-->
-<!--                                                                    </li>-->
-<!--                                                                    <li>-->
-<!--                                                                        <a href="#eliminarSalario"-->
-<!--                                                                           class="-text modal-trigger">--><?//= label('menuOpciones_eliminar') ?><!--</a>-->
-<!--                                                                    </li>-->
-<!--                                                                </ul>-->
-<!--                                                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"-->
-<!--                                                                   href="#!" data-activates="dropdown-proveedor1-salario3">-->
-<!--                                                                    --><?//= label('menuOpciones_seleccionar') ?><!--<i-->
-<!--                                                                        class="mdi-navigation-arrow-drop-down"></i>-->
-<!--                                                                </a>-->
-<!--                                                            </td>-->
-<!--                                                        </tr>-->
                                                     </tbody>
                                                 </table>
                                                 <div style="padding: 20px;">
@@ -552,7 +474,7 @@
         $('#tab-contactos-nuevo').remove();
         $('#tab-contactos').append('' +
             '<div class="row">' +
-            '<div class="col s11 m11 l11">' +
+            '<div class="col s12 m11 l11">' +
             '<div class="row">' +
             '<div class="input-field col s12 m4 l4">' +
             '<input id="proveedor_contactoApellido1" type="text">' +
@@ -592,7 +514,7 @@
             '</div>' +
 
             '</div>' +
-            '<div class="col s1 m1 l1" style="margin-top: 50px;">' +
+            '<div class="col s12 m1 l1 btn-contacto-eliminar-edicion">' +
             '<a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>' +
             '</div>' +
             '</div>' +

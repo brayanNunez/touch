@@ -4,288 +4,286 @@
     });
 </script>
 
-<div class="col s12">
-    <form class="col s12">
-        <div class="row">
-            <div class="col s12">
-                <div class="col s12 m2 l3">
-                    <div class="col s12" style="margin-top: 45px;">
-                        <img style="width: inherit; border: 1px solid #000;" src="<?= base_url().'files/proveedor.jpg'; ?>" />
-                    </div>
+<div class="col s12 tab-informacion-ver">
+    <div class="row">
+        <div class="col s12">
+            <div class="col s12 m2 l3">
+                <div class="col s12 proveedor-ver-logo">
+                    <img style="width: inherit; border: 1px solid #000;" src="<?= base_url().'files/proveedor.jpg'; ?>" />
                 </div>
-                <div class="col s12 m5 l5">
-                    <h4>Materiales R&B</h4>
-                    <p><span class="informacion-proveedor"><?= label('formProveedor_identificacion'); ?></span>. 2-723-327</p>
-                    <p><span class="informacion-proveedor"><?= label('formProveedor_nacionalidad'); ?></span>: Costa Rica</p>
+            </div>
+            <div class="col s12 m5 l5">
+                <h4>Materiales R&B</h4>
+                <p><span class="informacion-proveedor"><?= label('formProveedor_identificacion'); ?></span>. 2-723-327</p>
+                <p><span class="informacion-proveedor"><?= label('formProveedor_nacionalidad'); ?></span>: Costa Rica</p>
 <!--                    <p><span class="informacion-proveedor">--><?//= label('formCliente_fechaNacimiento'); ?><!--</span>: 10-03-1994</p>-->
-                    <p><span class="informacion-proveedor"><?= label('formProveedor_telefono'); ?></span>: 2448-9865</p>
-                    <p><span class="informacion-proveedor"><?= label('formProveedor_fax'); ?></span>: 2448-5623</p>
-                    <p><span class="informacion-proveedor"><?= label('formProveedor_correo'); ?></span>: rbmateriales@gmail.com</p>
-                    <p><span class="informacion-proveedor"><?= label('formProveedor_descripcion'); ?></span>: Proveedor de
-                        herramientas y materiales varios. </p>
-                </div>
-                <div class="col s12 m4 l4">
-                    <div>
-                        <h5><?= label('formProveedor_direccion'); ?></h5>
-                        <p>Costa Rica, Alajuela</p>
-                        <p>San Rafael, Poas</p>
-                        <p>200 mts este de la iglesia de la localidad</p>
-                    </div>
-                    <div style="margin-top: 25px;">
-                        <h5><?= label('formProveedor_palabrasClaveAsociadas'); ?>:</h5>
-                        <p>Herramientas, Materiales varios, Reparaciones, Servicio express</p>
-                    </div>
-                </div>
+                <p><span class="informacion-proveedor"><?= label('formProveedor_telefono'); ?></span>: 2448-9865</p>
+                <p><span class="informacion-proveedor"><?= label('formProveedor_fax'); ?></span>: 2448-5623</p>
+                <p><span class="informacion-proveedor"><?= label('formProveedor_correo'); ?></span>: rbmateriales@gmail.com</p>
+                <p><span class="informacion-proveedor"><?= label('formProveedor_descripcion'); ?></span>: Proveedor de
+                    herramientas y materiales varios. </p>
             </div>
-
-            <div class="col s12" style="margin-top: 20px;">
-                <ul class="tabs tab-demo-active z-depth-1 proveedor-info tags-secundarios">
-                    <li class="tab-interior tab col s3">
-                        <a class="white-text darken-1 waves-effect waves-light"
-                           id="cliente-informacion" href="#tab-contactos"><i
-                                class="mdi-communication-contacts"></i>
-                            <?= label('formProveedor_contactos'); ?></a>
-                    </li>
-                    <li class="tab-interior tab col s3">
-                        <a class="white-text darken-1 waves-effect waves-light"
-                           id="cliente-informacion" href="#tab-infoAdicional"><i
-                                class="mdi-av-queue"></i>
-                            <?= label('formProveedor_infoCotizacion'); ?></a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="col s12">
-                <div id="tab-contactos" class="card col s12" style="padding: 0;">
-                    <div id="slider-contactos" class="liquid">
-                        <span class="previous"><i class="mdi-image-navigate-before large"></i></span>
-                        <div class="wrapper">
-                            <ul>
-                                <li>
-                                    <div class="info-contacto">
-                                        <div>
-                                            <h5>Jose Rodriguez</h5>
-                                            <p>Propietario</p>
-                                            <p>jose.rodriguez@gmail.com</p>
-                                            <p>Tel. 8956-3405</p>
-                                            <div class="contacto-opciones">
-                                                <a href="#editarContacto" class="modal-trigger"
-                                                   title="<?= label('formProveedor_contactoEditar') ?>">
-                                                    <i class="mdi-editor-mode-edit"></i>
-                                                </a>
-                                                <a href="#" title="<?= label('formProveedor_contactoDescargar')?>">
-                                                    <i class="mdi-file-file-download"></i>
-                                                </a>
-                                                <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar')?>">
-                                                    <i class="mdi-action-delete"></i>
-                                                </a>
-                                            </div>
-                                            <div class="contacto-principal es-principal">
-                                                <a href="#" title="<?= label('formProveedor_contactoPrincipal') ?>">
-                                                    <i class="mdi-action-done"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="info-contacto">
-                                        <div>
-                                            <h5>Maria Bolanos</h5>
-                                            <p>Propietaria</p>
-                                            <p>maria.bolanos@gmail.com</p>
-                                            <p>Tel. 8956-6545</p>
-                                            <div class="contacto-opciones">
-                                                <a href="#editarContacto" class="modal-trigger"
-                                                   title="<?= label('formProveedor_contactoEditar') ?>">
-                                                    <i class="mdi-editor-mode-edit"></i>
-                                                </a>
-                                                <a href="#" title="<?= label('formProveedor_contactoDescargar')?>">
-                                                    <i class="mdi-file-file-download"></i>
-                                                </a>
-                                                <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar')?>">
-                                                    <i class="mdi-action-delete"></i>
-                                                </a>
-                                            </div>
-                                            <div class="contacto-principal">
-                                                <a href="#" title="<?= label('formProveedor_contactoSecundario') ?>">
-                                                    <i class="mdi-action-done"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="info-contacto">
-                                        <div>
-                                            <h5>Juan Castro</h5>
-                                            <p>Vendedor</p>
-                                            <p>juan.castro@gmail.com</p>
-                                            <p>Tel. 8956-9865</p>
-                                            <div class="contacto-opciones">
-                                                <a href="#editarContacto" class="modal-trigger"
-                                                   title="<?= label('formProveedor_contactoEditar') ?>">
-                                                    <i class="mdi-editor-mode-edit"></i>
-                                                </a>
-                                                <a href="#" title="<?= label('formProveedor_contactoDescargar')?>">
-                                                    <i class="mdi-file-file-download"></i>
-                                                </a>
-                                                <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar')?>">
-                                                    <i class="mdi-action-delete"></i>
-                                                </a>
-                                            </div>
-                                            <div class="contacto-principal">
-                                                <a href="#" title="<?= label('formProveedor_contactoSecundario') ?>">
-                                                    <i class="mdi-action-done"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="info-contacto">
-                                        <div>
-                                            <h5>Luis Porras</h5>
-                                            <p>Vendedor</p>
-                                            <p>luis.porras@gmail.com</p>
-                                            <p>Tel. 8956-1245</p>
-                                            <div class="contacto-opciones">
-                                                <a href="#editarContacto" class="modal-trigger"
-                                                   title="<?= label('formProveedor_contactoEditar') ?>">
-                                                    <i class="mdi-editor-mode-edit"></i>
-                                                </a>
-                                                <a href="#" title="<?= label('formProveedor_contactoDescargar')?>">
-                                                    <i class="mdi-file-file-download"></i>
-                                                </a>
-                                                <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar')?>">
-                                                    <i class="mdi-action-delete"></i>
-                                                </a>
-                                            </div>
-                                            <div class="contacto-principal">
-                                                <a href="#" title="<?= label('formProveedor_contactoSecundario') ?>">
-                                                    <i class="mdi-action-done"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="info-contacto">
-                                        <div>
-                                            <h5>Jose Murillo</h5>
-                                            <p>Vendedor</p>
-                                            <p>jose.murillo@gmail.com</p>
-                                            <p>Tel. 8752-9865</p>
-                                            <div class="contacto-opciones">
-                                                <a href="#editarContacto" class="modal-trigger"
-                                                   title="<?= label('formProveedor_contactoEditar') ?>">
-                                                    <i class="mdi-editor-mode-edit"></i>
-                                                </a>
-                                                <a href="#" title="<?= label('formProveedor_contactoDescargar')?>">
-                                                    <i class="mdi-file-file-download"></i>
-                                                </a>
-                                                <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar')?>">
-                                                    <i class="mdi-action-delete"></i>
-                                                </a>
-                                            </div>
-                                            <div class="contacto-principal">
-                                                <a href="#" title="<?= label('formProveedor_contactoSecundario') ?>">
-                                                    <i class="mdi-action-done"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="info-contacto">
-                                        <div>
-                                            <h5>Karla Arias</h5>
-                                            <p>Vendedor</p>
-                                            <p>karla.arias@gmail.com</p>
-                                            <p>Tel. 8956-1379</p>
-                                            <div class="contacto-opciones">
-                                                <a href="#editarContacto" class="modal-trigger"
-                                                   title="<?= label('formProveedor_contactoEditar') ?>">
-                                                    <i class="mdi-editor-mode-edit"></i>
-                                                </a>
-                                                <a href="#" title="<?= label('formProveedor_contactoDescargar')?>">
-                                                    <i class="mdi-file-file-download"></i>
-                                                </a>
-                                                <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar')?>">
-                                                    <i class="mdi-action-delete"></i>
-                                                </a>
-                                            </div>
-                                            <div class="contacto-principal">
-                                                <a href="#" title="<?= label('formProveedor_contactoSecundario') ?>">
-                                                    <i class="mdi-action-done"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="info-contacto">
-                                        <div>
-                                            <h5>Fabian Zamora</h5>
-                                            <p>Vendedor</p>
-                                            <p>fabian.zamora@gmail.com</p>
-                                            <p>Tel. 8956-0943</p>
-                                            <div class="contacto-opciones">
-                                                <a href="#editarContacto" class="modal-trigger"
-                                                   title="<?= label('formProveedor_contactoEditar') ?>">
-                                                    <i class="mdi-editor-mode-edit"></i>
-                                                </a>
-                                                <a href="#" title="<?= label('formProveedor_contactoDescargar')?>">
-                                                    <i class="mdi-file-file-download"></i>
-                                                </a>
-                                                <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar')?>">
-                                                    <i class="mdi-action-delete"></i>
-                                                </a>
-                                            </div>
-                                            <div class="contacto-principal">
-                                                <a href="#" title="<?= label('formProveedor_contactoSecundario') ?>">
-                                                    <i class="mdi-action-done"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <span class="next"><i class="mdi-image-navigate-next large"></i></span>
-                    </div>
+            <div class="col s12 m4 l4">
+                <div>
+                    <h5><?= label('formProveedor_direccion'); ?></h5>
+                    <p>Costa Rica, Alajuela</p>
+                    <p>San Rafael, Poas</p>
+                    <p>200 mts este de la iglesia de la localidad</p>
                 </div>
-                <div id="tab-infoAdicional" class="card col s12">
-                    <div class="table-responsive">
-                        <h5>Presupuesto promedio del proveedor</h5>
-                        <p>* Exclusivo para proveedores de servicios, no tiene fines contables</p>
-                        <table id="proveedor1-presupuestos" class="striped">
-                            <thead>
-                                <tr>
-                                    <th style="width: 30%;"><?= label('formProveedor_salariosTipo'); ?></th>
-                                    <th><?= label('formProveedor_salariosMonto'); ?></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Por hora</td>
-                                    <td>$10</td>
-                                </tr>
-                                <tr>
-                                    <td>Diario</td>
-                                    <td>$80</td>
-                                </tr>
-                                <tr>
-                                    <td>Mensual</td>
-                                    <td>$1400</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div style="margin-top: 25px;">
+                    <h5><?= label('formProveedor_palabrasClaveAsociadas'); ?>:</h5>
+                    <p>Herramientas, Materiales varios, Reparaciones, Servicio express</p>
                 </div>
             </div>
         </div>
-    </form>
+
+        <div class="col s12" style="margin-top: 20px;">
+            <ul class="tabs tab-demo-active z-depth-1 proveedor-info tags-secundarios">
+                <li class="tab-interior tab col s3">
+                    <a class="white-text darken-1 waves-effect waves-light"
+                       id="cliente-informacion" href="#tab-contactos"><i
+                            class="mdi-communication-contacts"></i>
+                        <?= label('formProveedor_contactos'); ?></a>
+                </li>
+                <li class="tab-interior tab col s3">
+                    <a class="white-text darken-1 waves-effect waves-light"
+                       id="cliente-informacion" href="#tab-infoAdicional"><i
+                            class="mdi-av-queue"></i>
+                        <?= label('formProveedor_infoCotizacion'); ?></a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col s12">
+            <div id="tab-contactos" class="card col s12" style="padding: 0;">
+                <div id="slider-contactos" class="liquid">
+                    <span class="previous"><i class="mdi-image-navigate-before large"></i></span>
+                    <div class="wrapper">
+                        <ul>
+                            <li>
+                                <div class="info-contacto">
+                                    <div>
+                                        <h5>Jose Rodriguez</h5>
+                                        <p>Propietario</p>
+                                        <p>jose.rodriguez@gmail.com</p>
+                                        <p>Tel. 8956-3405</p>
+                                        <div class="contacto-opciones">
+                                            <a href="#editarContacto" class="modal-trigger"
+                                               title="<?= label('formProveedor_contactoEditar') ?>">
+                                                <i class="mdi-editor-mode-edit"></i>
+                                            </a>
+                                            <a href="#" title="<?= label('formProveedor_contactoDescargar')?>">
+                                                <i class="mdi-file-file-download"></i>
+                                            </a>
+                                            <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar')?>">
+                                                <i class="mdi-action-delete"></i>
+                                            </a>
+                                        </div>
+                                        <div class="contacto-principal es-principal">
+                                            <a href="#" title="<?= label('formProveedor_contactoPrincipal') ?>">
+                                                <i class="mdi-action-done"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="info-contacto">
+                                    <div>
+                                        <h5>Maria Bolanos</h5>
+                                        <p>Propietaria</p>
+                                        <p>maria.bolanos@gmail.com</p>
+                                        <p>Tel. 8956-6545</p>
+                                        <div class="contacto-opciones">
+                                            <a href="#editarContacto" class="modal-trigger"
+                                               title="<?= label('formProveedor_contactoEditar') ?>">
+                                                <i class="mdi-editor-mode-edit"></i>
+                                            </a>
+                                            <a href="#" title="<?= label('formProveedor_contactoDescargar')?>">
+                                                <i class="mdi-file-file-download"></i>
+                                            </a>
+                                            <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar')?>">
+                                                <i class="mdi-action-delete"></i>
+                                            </a>
+                                        </div>
+                                        <div class="contacto-principal">
+                                            <a href="#" title="<?= label('formProveedor_contactoSecundario') ?>">
+                                                <i class="mdi-action-done"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="info-contacto">
+                                    <div>
+                                        <h5>Juan Castro</h5>
+                                        <p>Vendedor</p>
+                                        <p>juan.castro@gmail.com</p>
+                                        <p>Tel. 8956-9865</p>
+                                        <div class="contacto-opciones">
+                                            <a href="#editarContacto" class="modal-trigger"
+                                               title="<?= label('formProveedor_contactoEditar') ?>">
+                                                <i class="mdi-editor-mode-edit"></i>
+                                            </a>
+                                            <a href="#" title="<?= label('formProveedor_contactoDescargar')?>">
+                                                <i class="mdi-file-file-download"></i>
+                                            </a>
+                                            <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar')?>">
+                                                <i class="mdi-action-delete"></i>
+                                            </a>
+                                        </div>
+                                        <div class="contacto-principal">
+                                            <a href="#" title="<?= label('formProveedor_contactoSecundario') ?>">
+                                                <i class="mdi-action-done"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="info-contacto">
+                                    <div>
+                                        <h5>Luis Porras</h5>
+                                        <p>Vendedor</p>
+                                        <p>luis.porras@gmail.com</p>
+                                        <p>Tel. 8956-1245</p>
+                                        <div class="contacto-opciones">
+                                            <a href="#editarContacto" class="modal-trigger"
+                                               title="<?= label('formProveedor_contactoEditar') ?>">
+                                                <i class="mdi-editor-mode-edit"></i>
+                                            </a>
+                                            <a href="#" title="<?= label('formProveedor_contactoDescargar')?>">
+                                                <i class="mdi-file-file-download"></i>
+                                            </a>
+                                            <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar')?>">
+                                                <i class="mdi-action-delete"></i>
+                                            </a>
+                                        </div>
+                                        <div class="contacto-principal">
+                                            <a href="#" title="<?= label('formProveedor_contactoSecundario') ?>">
+                                                <i class="mdi-action-done"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="info-contacto">
+                                    <div>
+                                        <h5>Jose Murillo</h5>
+                                        <p>Vendedor</p>
+                                        <p>jose.murillo@gmail.com</p>
+                                        <p>Tel. 8752-9865</p>
+                                        <div class="contacto-opciones">
+                                            <a href="#editarContacto" class="modal-trigger"
+                                               title="<?= label('formProveedor_contactoEditar') ?>">
+                                                <i class="mdi-editor-mode-edit"></i>
+                                            </a>
+                                            <a href="#" title="<?= label('formProveedor_contactoDescargar')?>">
+                                                <i class="mdi-file-file-download"></i>
+                                            </a>
+                                            <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar')?>">
+                                                <i class="mdi-action-delete"></i>
+                                            </a>
+                                        </div>
+                                        <div class="contacto-principal">
+                                            <a href="#" title="<?= label('formProveedor_contactoSecundario') ?>">
+                                                <i class="mdi-action-done"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="info-contacto">
+                                    <div>
+                                        <h5>Karla Arias</h5>
+                                        <p>Vendedor</p>
+                                        <p>karla.arias@gmail.com</p>
+                                        <p>Tel. 8956-1379</p>
+                                        <div class="contacto-opciones">
+                                            <a href="#editarContacto" class="modal-trigger"
+                                               title="<?= label('formProveedor_contactoEditar') ?>">
+                                                <i class="mdi-editor-mode-edit"></i>
+                                            </a>
+                                            <a href="#" title="<?= label('formProveedor_contactoDescargar')?>">
+                                                <i class="mdi-file-file-download"></i>
+                                            </a>
+                                            <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar')?>">
+                                                <i class="mdi-action-delete"></i>
+                                            </a>
+                                        </div>
+                                        <div class="contacto-principal">
+                                            <a href="#" title="<?= label('formProveedor_contactoSecundario') ?>">
+                                                <i class="mdi-action-done"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="info-contacto">
+                                    <div>
+                                        <h5>Fabian Zamora</h5>
+                                        <p>Vendedor</p>
+                                        <p>fabian.zamora@gmail.com</p>
+                                        <p>Tel. 8956-0943</p>
+                                        <div class="contacto-opciones">
+                                            <a href="#editarContacto" class="modal-trigger"
+                                               title="<?= label('formProveedor_contactoEditar') ?>">
+                                                <i class="mdi-editor-mode-edit"></i>
+                                            </a>
+                                            <a href="#" title="<?= label('formProveedor_contactoDescargar')?>">
+                                                <i class="mdi-file-file-download"></i>
+                                            </a>
+                                            <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar')?>">
+                                                <i class="mdi-action-delete"></i>
+                                            </a>
+                                        </div>
+                                        <div class="contacto-principal">
+                                            <a href="#" title="<?= label('formProveedor_contactoSecundario') ?>">
+                                                <i class="mdi-action-done"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="next"><i class="mdi-image-navigate-next large"></i></span>
+                </div>
+            </div>
+            <div id="tab-infoAdicional" class="card col s12">
+                <div class="table-responsive">
+                    <h5>Presupuesto promedio del proveedor</h5>
+                    <p>* Exclusivo para proveedores de servicios, no tiene fines contables</p>
+                    <table id="proveedor1-presupuestos" class="striped">
+                        <thead>
+                            <tr>
+                                <th style="width: 30%;"><?= label('formProveedor_salariosTipo'); ?></th>
+                                <th><?= label('formProveedor_salariosMonto'); ?></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Por hora</td>
+                                <td>$10</td>
+                            </tr>
+                            <tr>
+                                <td>Diario</td>
+                                <td>$80</td>
+                            </tr>
+                            <tr>
+                                <td>Mensual</td>
+                                <td>$1400</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Script para tags -->

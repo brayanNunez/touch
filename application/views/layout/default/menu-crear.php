@@ -2,7 +2,7 @@
     <a class="btn-opciones btn-large red">
         <i class="large mdi-content-add"></i>
     </a>
-    <ul class="menu-crear">
+    <ul class="menu-crear" style="display:none;">
         <li>
             <a href="<?= base_url(); ?>servicios/agregar" class="btn-floating">
                 <span><i class="mdi-maps-beenhere"></i><?= label('agregarS'); ?></span>
@@ -30,3 +30,21 @@
         </li>
     </ul>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('.btn-opciones').on('click', function (event) {
+            var elementoActivo = $(this).siblings('ul.menu-crear');
+            if (elementoActivo.length > 0) {
+                var estado = elementoActivo.css("display");
+                if (estado == "block") {
+                    elementoActivo.css("display", "none");
+                    elementoActivo.style.display = 'none';
+                } else {
+                    elementoActivo.css("display", "block");
+                    elementoActivo.style.display = 'block';
+                }
+            }
+        });
+    });
+</script>
