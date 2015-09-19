@@ -20,7 +20,7 @@
                 <div class="col s12 m12 l12">
                     <div id="submit-button" class="section">
                         <div class="row">
-                            <div class="col s12 m12 l8">
+                            <div class="col s12">
                                 <form class="col s12">
                                     <div class="row">
 
