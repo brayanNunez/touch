@@ -7,12 +7,12 @@
 <div class="col s12 tab-informacion-ver">
     <div class="row">
         <div class="col s12">
-            <div class="col s12 m2 l3">
-                <div class="col s12 cliente-ver-logo">
-                    <img style="width: inherit; border: 1px solid #000;" src="<?= base_url().'files/archivo1.png'; ?>" />
+            <div class="col s12 m12 l3">
+                <div class="cliente-ver-logo">
+                    <img src="<?= base_url().'files/archivo1.png'; ?>" />
                 </div>
             </div>
-            <div class="col s12 m5 l5">
+            <div class="col s12 m8 l5">
                 <h4>Cooperativa Dos Pinos R.L.</h4>
                 <p><span class="informacion-cliente"><?= label('formCliente_identificacion'); ?></span>. 2-723-327</p>
                 <p><span class="informacion-cliente"><?= label('formCliente_nacionalidad'); ?></span>: Costa Rica</p>
@@ -55,7 +55,9 @@
         <div class="col s12">
             <div id="tab-contactos" class="card col s12" style="padding: 0;">
                 <div id="slider-contactos" class="liquid">
-                    <span id="btn-previous" class="previous"><i class="mdi-image-navigate-before large"></i></span>
+                    <span id="btn-previous" class="previous" title="Elementos anteriores">
+                        <img src="<?= base_url(); ?>assets/img/lightbox/img_prev.png">
+                    </span>
                     <div class="wrapper">
                         <ul>
                             <li>
@@ -357,7 +359,9 @@
                             </li>
                         </ul>
                     </div>
-                    <span id="btn-next" class="next"><i class="mdi-image-navigate-next large"></i></span>
+                    <span id="btn-next" class="next" title="Elementos siguientes">
+                        <img src="<?= base_url(); ?>assets/img/lightbox/img_next.png">
+                    </span>
                 </div>
             </div>
             <div id="tab-infoAdicional" class="card col s12">
@@ -438,6 +442,20 @@
         var primerowv = primerow.substring(0, primerow.length-2);
         var primeromv = primerom.substring(0, primerom.length-2);
         var primeroT = parseInt(primerowv) + 2*parseInt(primeromv);
+
+        var wlis = parseInt(wrapperwn/primeroT);
+        var wx = wrapperwn%primeroT;
+        var falta = wx/(wlis*2);
+        if(falta == 0) {
+        } else {
+            lista.each(function() {
+                var $this = $(this);
+                var newv = parseInt(primerom) + falta;
+                $this.css('margin-left', newv);
+                $this.css('margin-right', newv);
+            });
+        }
+
         var total = primeroT * numero;
 
         if(wrapperwn >= total) {
