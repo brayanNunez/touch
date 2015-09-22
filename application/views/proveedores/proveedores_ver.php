@@ -7,12 +7,12 @@
 <div class="col s12 tab-informacion-ver">
     <div class="row">
         <div class="col s12">
-            <div class="col s12 m2 l3">
-                <div class="col s12 proveedor-ver-logo">
-                    <img style="width: inherit; border: 1px solid #000;" src="<?= base_url().'files/proveedor.jpg'; ?>" />
+            <div class="col s12 m12 l3">
+                <div class="proveedor-ver-logo">
+                    <img src="<?= base_url().'files/proveedor.jpg'; ?>" />
                 </div>
             </div>
-            <div class="col s12 m5 l5">
+            <div class="col s12 m8 l5">
                 <h4>Materiales R&B</h4>
                 <p><span class="informacion-proveedor"><?= label('formProveedor_identificacion'); ?></span>. 2-723-327</p>
                 <p><span class="informacion-proveedor"><?= label('formProveedor_nacionalidad'); ?></span>: Costa Rica</p>
@@ -57,7 +57,9 @@
         <div class="col s12">
             <div id="tab-contactos" class="card col s12" style="padding: 0;">
                 <div id="slider-contactos" class="liquid">
-                    <span class="previous"><i class="mdi-image-navigate-before large"></i></span>
+                    <span id="btn-previous" class="previous" title="Elementos anteriores">
+                        <img src="<?= base_url(); ?>assets/img/lightbox/img_prev.png">
+                    </span>
                     <div class="wrapper">
                         <ul>
                             <li>
@@ -251,7 +253,9 @@
                             </li>
                         </ul>
                     </div>
-                    <span class="next"><i class="mdi-image-navigate-next large"></i></span>
+                    <span id="btn-next" class="next" title="Elementos siguientes">
+                        <img src="<?= base_url(); ?>assets/img/lightbox/img_next.png">
+                    </span>
                 </div>
             </div>
             <div id="tab-infoAdicional" class="card col s12">
@@ -285,6 +289,92 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(window).load(function () {
+        document.getElementById('btn-previous').style.visibility = 'hidden';
+
+        var slider = $('#slider-contactos');
+        var wrapper = slider.find('div').first().css('width');
+        var wrapperw = wrapper.substring(0, wrapper.length-2);
+        var wrapperwn = parseInt(wrapperw);
+
+        var lista = slider.find('ul li');
+        var numero = lista.size();
+        var primero = lista.first();
+        var primerow = primero.css('width');
+        var primerom = primero.css('margin-left');
+        var primerowv = primerow.substring(0, primerow.length-2);
+        var primeromv = primerom.substring(0, primerom.length-2);
+        var primeroT = parseInt(primerowv) + 2*parseInt(primeromv);
+
+        var wlis = parseInt(wrapperwn/primeroT);
+        var wx = wrapperwn%primeroT;
+        var falta = wx/(wlis*2);
+        if(falta == 0) {
+        } else {
+            lista.each(function() {
+                var $this = $(this);
+                var newv = parseInt(primerom) + falta;
+                $this.css('margin-left', newv);
+                $this.css('margin-right', newv);
+            });
+        }
+
+        var total = primeroT * numero;
+
+        if(wrapperwn >= total) {
+            document.getElementById('btn-next').style.visibility = 'hidden';
+        } else {
+            document.getElementById('btn-next').style.visibility = 'visible';
+        }
+    });
+    $(document).ready(function () {
+        $('.previous').on("click", function (event) {
+            document.getElementById('btn-next').style.visibility = 'visible';
+
+            var slider = $('#slider-contactos');
+            var wrapper = slider.find('div').first().css('width');
+            var wrapperw = wrapper.substring(0, wrapper.length-2);
+            var lista = slider.find('ul').first().css('width');
+            var listaw = lista.substring(0, lista.length-2);
+
+            var anterior = listaw/wrapperw - 1;
+            if(anterior <= 1) {
+                document.getElementById('btn-previous').style.visibility = 'hidden';
+            } else {
+                document.getElementById('btn-previous').style.visibility = 'visible';
+            }
+        });
+        $('.next').on("click", function (event) {
+            document.getElementById('btn-previous').style.visibility = 'visible';
+
+            var slider = $('#slider-contactos');
+            var wrapper = slider.find('div').first().css('width');
+            var wrapperw = wrapper.substring(0, wrapper.length-2);
+            var listaul = slider.find('ul').first();
+            var lista = listaul.css('width');
+            var listaw = lista.substring(0, lista.length-2);
+            var totalActual = parseInt(listaw)+parseInt(wrapperw);
+
+            var listali = slider.find('ul li');
+            var numero = listali.size();
+            var primero = listali.first();
+            var primerow = primero.css('width');
+            var primerom = primero.css('margin-left');
+            var primerowv = primerow.substring(0, primerow.length-2);
+            var primeromv = primerom.substring(0, primerom.length-2);
+            var primeroT = parseInt(primerowv) + 2*parseInt(primeromv);
+            var total = primeroT * numero;
+
+            if(totalActual >= total) {
+                document.getElementById('btn-next').style.visibility = 'hidden';
+            } else {
+                document.getElementById('btn-next').style.visibility = 'visible';
+            }
+        });
+    });
+</script>
 
 <!-- Script para tags -->
 <script>
