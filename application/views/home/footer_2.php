@@ -222,23 +222,22 @@
                data: $('form').serialize(), 
                success: function(response)
                {
-                   alert('hola');
-                   alert(response);
+                    // alert('1');
+                    alert(response);
+                    <?php
+                          if (isset($inicialURL)) {?>
+                                    window.location.href = "<?= $inicialURL?>";
+                          <?php
+                          } else{?>
+                                 window.location.href = "<?= base_url() ?>inicio";
+                          <?php
+                             }
+                        ?>
                }
              });
-         alert('mec');
-        <?php
-          if (isset($url_inicial)) {?>
-            //soy la artificial
-                    window.location.href = "<?= $url_inicial?>";
-          <?php
-          } else{?>
-            //soy la natural
-                 window.location.href = "<?= base_url() ?>inicio";
-          <?php
-             }
-        ?>
+         // alert('2');
         
+       
     }
 // });
 
