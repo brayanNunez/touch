@@ -59,6 +59,7 @@
                                                                 <label for="checkbox-all"></label>
                                                             </th>
                                                             <th><?= label('tiposMoneda_nombre'); ?></th>
+                                                            <th><?= label('tiposMoneda_tipoCambio'); ?></th>
                                                             <th><?= label('tiposMoneda_opciones'); ?></th>
                                                         </tr>
                                                         </thead>
@@ -70,6 +71,7 @@
                                                                 <label for="checkbox_moneda1"></label>
                                                             </td>
                                                             <td>Colón</td>
+                                                            <td>550</td>
                                                             <td>
                                                                 <ul id="dropdown-moneda1" class="dropdown-content">
                                                                     <li>
@@ -91,6 +93,7 @@
                                                                 <label for="checkbox_moneda2"></label>
                                                             </td>
                                                             <td>Dólar</td>
+                                                            <td>1</td>
                                                             <td>
                                                                 <ul id="dropdown-moneda2" class="dropdown-content">
                                                                     <li>
@@ -112,6 +115,7 @@
                                                                 <label for="checkbox_moneda3"></label>
                                                             </td>
                                                             <td>Euro</td>
+                                                            <td>0.97</td>
                                                             <td>
                                                                 <ul id="dropdown-moneda3" class="dropdown-content">
                                                                     <li>
@@ -299,14 +303,18 @@
     </div>
     <div class="modal-content">
         <div class="input-field col s12">
-            <select>
+            <select id="moneda_nombre">
                 <option value="" selected disabled><?= label('tiposMoneda_selecionarUno'); ?></option>
                 <option value="1">Colón</option>
                 <option value="2">Dólar</option>
                 <option value="3">Euro</option>
                 <option value="4">Peso mexicano</option>
             </select>
-            <label for="cliente_tipo"><?= label('tiposMoneda_defecto'); ?></label>
+            <label for="tiposMoneda_defecto"><?= label('tiposMoneda_defecto'); ?></label>
+        </div>
+        <div class="input-field col s12">
+            <input id="moneda_tipoCambio" class="col s6" type="number">
+            <label for="tiposMoneda_tipoCambio"><?= label('tiposMoneda_tipoCambio'); ?></label>
         </div>
     </div>
     <div class="modal-footer">

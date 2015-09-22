@@ -164,6 +164,7 @@
 	$lang['tiposMoneda_selecionarUno'] = 'Seleccione uno';
 	$lang['tiposMoneda_permitidos'] = 'Tipos de moneda permitidos en las cotizaciones';
 	$lang['tiposMoneda_nombre'] = 'Moneda';
+    $lang['tiposMoneda_tipoCambio'] = 'Tipo de cambio respecto a la moneda por defecto';
 	$lang['tiposMoneda_opciones'] = 'Opciones';
 	$lang['tiposMoneda_nuevo'] = 'Nuevo tipo de moneda';
 
