@@ -2,11 +2,12 @@
 
         // $("button[type= 'submit']").on("click", function(){
              //event.preventDefault();
-            $('form').validate({
+            $('#form_empleado').validate({
                 rules:
                 {
                     empleado_codigo: {required: true, minlength: 3, maxlength: 6},
-                    empleado_id: {required: true, minlength: 3, maxlength: 6}
+                    empleado_id: {required: true, minlength: 3, maxlength: 6},
+                    username: {required: true, minlength: 3, maxlength: 6}
                     // empleado_primerApellido: {required: true, minlength: 3, maxlength: 6},
                     // empleado_segundoApellido: {required: true, minlength: 3, maxlength: 6},
                     // empleado_nombre: {required: true, minlength: 3, maxlength: 6},
@@ -18,5 +19,29 @@
                     validacionCorrecta();
                   }
             });
-        // });
+
+            $('#form_empleado_agregarSalario').validate({
+                rules:
+                {
+                    salario_monto: {required: true, minlength: 3, maxlength: 6}
+                },
+                 errorElement: 'div',
+                 submitHandler: function(form) {
+                    validacionCorrecta_agregarSalario();
+                  }
+            });
+
+            $('#form_login').validate({
+                rules:
+                {
+                    username: {required: true, minlength: 3, maxlength: 6}
+                },
+                 errorElement: 'div',
+                 submitHandler: function(form) {
+                    validacionCorrecta();
+                  }
+            });
+
+            
+
     });

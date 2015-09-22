@@ -115,9 +115,18 @@
 
 <script type="text/javascript" src="<?= base_url() ?>assets/dashboard/js/plugins.js"></script>
 
+ <!-- js para validar foormularios -->
+<script src="<?= base_url() ?>assets/dashboard/js/validaciones.js" type="text/javascript"></script>
+<script src="<?= base_url() ?>assets/dashboard/js/jquery.validate.min.js" type="text/javascript"></script>
+<script src="<?= base_url() ?>assets/dashboard/js/messages_es.js" type="text/javascript"></script>
+
+
+
+<!-- Lista Modals -->
+
 <div id="login-page" class="modal fade in">
     <div class="col s12 z-depth-4 card-panel">
-        <form class="login-form" style="width: auto; ">
+        <form id="form_login" class="login-form" style="width: auto; ">
             <div class="row">
                 <div class="input-field col s12 center">
                     <img src="<?= base_url() ?>assets/img/to.png" alt="Touch!">
@@ -126,14 +135,14 @@
             <div class="row margin">
                 <div class="input-field col s12">
                     <i class="mdi-social-person-outline prefix"></i>
-                    <input id="username" type="text">
+                    <input id="username" name="username" type="text">
                     <label for="username" class="center-align"><?= label('login_username'); ?></label>
                 </div>
             </div>
             <div class="row margin">
                 <div class="input-field col s12">
                     <i class="mdi-action-lock-outline prefix"></i>
-                    <input id="password" type="password">
+                    <input id="password" name="password" type="password">
                     <label for="password"><?= label('login_password'); ?></label>
                 </div>
             </div>

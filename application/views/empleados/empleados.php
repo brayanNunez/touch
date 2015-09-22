@@ -23,7 +23,7 @@
                     <div id="submit-button" class="section">
                         <div class="row">
                             <div class="col s12">
-                                <form class="col s12" action="<?= base_url() ?>empleados/insertar" method="POST">
+                                <form id="form_empleado" class="col s12" action="<?= base_url() ?>empleados/insertar" method="POST">
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <input id="empleado_codigo" name="empleado_codigo" type="text">
@@ -222,6 +222,10 @@
 
 <script>  
 
+function validacionCorrecta_agregarSalario(){
+  $('.modal-header a').click(); 
+}
+
 function validacionCorrecta(){
 
     $.ajax({
@@ -381,7 +385,9 @@ function validacionCorrecta(){
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
+    <form id="form_empleado_agregarSalario">
     <div class="modal-content">
+        
         <div class="input-field col s12">
             <select>
                 <option value="">Seleccione</option>
@@ -394,13 +400,15 @@ function validacionCorrecta(){
             <label for=""><?= label('formEmpleado_salarioTipo'); ?></label>
         </div>
         <div class="input-field col s12">
-            <input id="salario_monto" type="text" value="">
+            <input id="salario_monto" name="salario_monto" type="text" value="">
             <label for="salario_monto"><?= label('formEmpleado_salarioMonto'); ?></label>
         </div>
+        
     </div>
     <div class="modal-footer">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <a onclick="$(this).closest('form').submit()" class="waves-effect waves-green btn-flat"><?= label('aceptar'); ?></a>
     </div>
+    </form>
 </div>
 <div id="editarSalario" class="modal">
     <div class="modal-header">

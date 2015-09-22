@@ -1,9 +1,9 @@
-<div id="formGeneral" class="section">
+<form id="formGeneral" class="section">
     <div class="row">
         <div class="input-field col s6 m3 l3">
             <div class="input-field col s12">
-                <input id="last_name" type="text">
-                <label for="last_name" class=""><?= label("paso1_labelCodido"); ?></label>
+                <input id="paso1_codigo" name="paso1_codigo" type="text">
+                <label for="paso1_codigo" class=""><?= label("paso1_labelCodido"); ?></label>
             </div>
         </div>
         <div class="input-field col s6 m3 l3">
@@ -70,7 +70,7 @@
             </div>
         </div>
     </div>
-</div>
+</form>
 
 <!-- lista modals -->
 <div id="agregarAtencion" class="modal">

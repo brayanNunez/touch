@@ -69,6 +69,10 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="<?= base_url() ?>assets/dashboard/js/jquery.plugin.js"></script>
     <script src="<?= base_url() ?>assets/dashboard/js/jquery.realperson.js"></script>
+
+   
+
+    
     <script>
         $(function () {
             $('#defaultReal').realperson({length: 6, regenerate: '<?=label("cambiar_captcha")?>'});
