@@ -41,6 +41,15 @@ class Usuarios extends CI_Controller
         echo $this->Usuario_model->usuario_login($usuario);
     }
 
+    function logout() {
+        $array_sesiones = array('logged_in' => '', 'url_inicial' => '');
+        $this->session->unset_userdata($array_sesiones);
+        $this->session->sess_destroy();
+        // $this->session->unset_userdata('logged_in');
+        // session_destroy();
+        redirect('Welcome');
+    }
+
     //Metodo llamado mediante ajax
     public function verificar() {
         $username = $this->input->post('username');
@@ -57,6 +66,7 @@ class Usuarios extends CI_Controller
                     'cotizador' => true,
                     'contador' => true
                 );
+                $this->session->set_userdata('url', 'una url');
                 $this->session->set_userdata('logged_in', $sess_array);
             // }
             echo $username.', '.$password;

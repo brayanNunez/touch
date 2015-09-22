@@ -10,11 +10,16 @@ class Welcome extends CI_Controller
         $this->lang->load('content');
     }
 
-    public function index()
+    public function index($login = false)
     {
+        $data['login'] = $login;
+        if ($login) {
+            $data['url_inicial'] = $this->session->userdata('url_inicial'); 
+        } 
         $this->load->view('home/header');
-        $this->load->view('home/index');
+        $this->load->view('home/index', $data);
         $this->load->view('home/footer_2');
+
     }
 
     public function que()

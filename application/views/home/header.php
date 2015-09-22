@@ -40,7 +40,7 @@
             <div class="module right">
                 <a class="btn btn-sm boton-registro"
                    href="<?= base_url() ?>welcome/registro"><?= label('registrarse'); ?></a>
-                <a href="#login-page" class="btn btn-sm boton-registro modal-trigger"><?= label('ingresar'); ?></a>
+                <a id="botonLogin" href="#login-page" class="btn btn-sm boton-registro modal-trigger"><?= label('ingresar'); ?></a>
             </div>
         </div>
         <div class="nav-bar">

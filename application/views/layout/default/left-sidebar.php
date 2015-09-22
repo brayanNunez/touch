@@ -19,7 +19,7 @@
                         <li class="divider"></li>
                         <li><a href="<?= base_url(); ?>pagos"><i class="mdi-action-lock-outline"></i> Pagos</a>
                         </li>
-                        <li><a href="<?= base_url(); ?>"><i class="mdi-hardware-keyboard-tab"></i> Cerrar sesión</a>
+                        <li><a href="<?= base_url()?>usuarios/logout"><i class="mdi-hardware-keyboard-tab"></i> Cerrar sesión</a>
                         </li>
                     </ul>
                     <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#"
