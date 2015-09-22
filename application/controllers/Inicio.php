@@ -8,6 +8,13 @@ class Inicio extends CI_Controller
     {
         parent::__construct();
         $this->lang->load('content');
+
+        $sessionActual = $this->session->userdata('logged_in');
+        if(!$sessionActual) {
+            redirect(base_url());
+        } elseif (!($sessionActual['administrador'])) {
+            redirect(base_url());
+        }
     }
 
     public function index()

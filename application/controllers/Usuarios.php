@@ -40,6 +40,43 @@ class Usuarios extends CI_Controller
         $usuario = "brayan22";
         echo $this->Usuario_model->usuario_login($usuario);
     }
+
+    public function verificar() {
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+        
+
+
+        // $sess_array = array();
+            // foreach ($result as $row) {
+                $sess_array = array(
+                    'idEmpresa' => 1,
+                    'administrador' => true,
+                    'aprobador' => true,
+                    'cotizador' => true,
+                    'contador' => true
+                );
+                $this->session->set_userdata('logged_in', $sess_array);
+            // }
+            echo $username.', '.$password;
+
+        // $result = $this->Estudiante_model->validar_ingreso($username, $password);
+        // if($result) {
+        //     $sess_array = array();
+        //     foreach ($result as $row) {
+        //         $sess_array = array(
+        //             'id' => $row->idEstudiante,
+        //             'carnet' => $row->carnet,
+        //             'tipo' => 1
+        //         );
+        //         $this->session->set_userdata('logged_in', $sess_array);
+        //     }
+        //     return true;
+        // } else {
+        //     $this->form_validation->set_message('check_database', 'Datos invalidos');
+        //     return false;
+        // }
+    }
 }
 
 ?>

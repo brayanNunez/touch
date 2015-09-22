@@ -126,7 +126,7 @@
 
 <div id="login-page" class="modal fade in">
     <div class="col s12 z-depth-4 card-panel">
-        <form id="form_login" class="login-form" style="width: auto; ">
+        <form  action="<?= base_url() ?>usuarios/verificar" method="POST" id="form_login" class="login-form"  style="width: auto; ">
             <div class="row">
                 <div class="input-field col s12 center">
                     <img src="<?= base_url() ?>assets/img/to.png" alt="Touch!">
@@ -154,7 +154,7 @@
             </div>
             <div class="row" style="margin-bottom: 0;">
                 <div class="input-field col s12 campo-btn-logueo">
-                    <a href="<?= base_url() ?>inicio" class="btn btn-logueo waves-effect waves-light col s12">
+                    <a onclick="$(this).closest('form').submit()" class="btn btn-logueo waves-effect waves-light col s12">
                         <?= label('loguear') ?>
                     </a>
                 </div>
@@ -205,6 +205,32 @@
         </form>
     </div>
 </div>
+
+
+
+<script type="text/javascript">
+
+// $(document).on('ready', function(){
+    function validacionCorrecta_login(){
+        var url = $('#form_login').attr('action');
+        var method = $('#form_login').attr('method'); 
+        $.ajax({
+               type: method,
+               url: url,
+               data: $('form').serialize(), 
+               success: function(response)
+               {
+                   alert(response);
+               }
+             });
+        window.location.href = "<?= base_url() ?>inicio";
+    }
+// });
+
+    
+
+
+</script>
 
 </body>
 </html>
