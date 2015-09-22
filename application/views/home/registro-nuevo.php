@@ -305,9 +305,8 @@
 
                                     <div class="col s12 m12 l12">
                                         <div class="input-field col s12 envio-formulario">
-                                            <button class="btn btn-filled registrar" type="submit"
-                                                    name="action"><?= label('formRegistro_crearPerfil'); ?>
-                                            </button>
+                                            <a href="<?= base_url() ?>inicio" class="btn btn-filled registrar">
+                                                <?= label('formRegistro_crearPerfil'); ?></a>
                                         </div>
                                     </div>
 

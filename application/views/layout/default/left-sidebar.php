@@ -8,7 +8,7 @@
                          class="circle responsive-img valign profile-image">
                 </div>
                 <div class="col col s8 m8 l8">
-                    <ul id="profile-dropdown" class="dropdown-content">
+                    <ul id="profile-dropdown" class="dropdown-content menu-admin">
                         <li><a href="<?= base_url(); ?>usuarios/editar"><i class="mdi-action-face-unlock"></i>
                                 Perfil</a>
                         </li>
@@ -19,7 +19,7 @@
                         <li class="divider"></li>
                         <li><a href="<?= base_url(); ?>pagos"><i class="mdi-action-lock-outline"></i> Pagos</a>
                         </li>
-                        <li><a href="<?= base_url(); ?>"><i class="mdi-hardware-keyboard-tab"></i> <?= label('logout'); ?></a>
+                        <li><a href="<?= base_url(); ?>"><i class="mdi-hardware-keyboard-tab"></i> Cerrar sesión</a>
                         </li>
                     </ul>
                     <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#"

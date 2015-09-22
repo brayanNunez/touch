@@ -717,6 +717,7 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
 
     //tabla de pagos
     $lang['pagos'] = 'Pagos';
+    $lang['tablaPagos_codigo'] = 'Código';
     $lang['tablaPagos_empresa'] = 'Empresa';
     $lang['tablaPagos_fecha'] = 'Fecha';
     $lang['tablaPagos_monto'] = 'Monto';

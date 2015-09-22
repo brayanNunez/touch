@@ -93,6 +93,7 @@
                                                        cellspacing="0">
                                                     <thead>
                                                     <tr>
+                                                        <th><?= label('tablaPagos_codigo'); ?></th>
                                                         <th><?= label('tablaPagos_fecha'); ?></th>
                                                         <th><?= label('tablaPagos_monto'); ?></th>
                                                         <th><?= label('tablaPagos_comprobante'); ?></th>
@@ -108,16 +109,19 @@
                                                     </tfoot>
                                                     <tbody>
                                                     <tr>
+                                                        <td>001</td>
                                                         <td>18/05/2015</td>
                                                         <td>$20</td>
                                                         <td><a href="#">Archivo</a></td>
                                                     </tr>
                                                     <tr>
+                                                        <td>002</td>
                                                         <td>18/04/2015</td>
                                                         <td>$20</td>
                                                         <td><a href="#">Archivo</a></td>
                                                     </tr>
                                                     <tr>
+                                                        <td>003</td>
                                                         <td>18/03/2015</td>
                                                         <td>$20</td>
                                                         <td><a href="#">Archivo</a></td>
