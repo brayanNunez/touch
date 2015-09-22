@@ -41,6 +41,7 @@ class Usuarios extends CI_Controller
         echo $this->Usuario_model->usuario_login($usuario);
     }
 
+    //Metodo llamado mediante ajax
     public function verificar() {
         $username = $this->input->post('username');
         $password = $this->input->post('password');
