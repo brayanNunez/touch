@@ -213,6 +213,7 @@
 // $(document).on('ready', function(){
     function validacionCorrecta_login(){
 
+
         var url = $('#form_login').attr('action');
         var method = $('#form_login').attr('method'); 
         $.ajax({
@@ -225,11 +226,14 @@
                    alert(response);
                }
              });
+         alert('mec');
         <?php
           if (isset($url_inicial)) {?>
+            //soy la artificial
                     window.location.href = "<?= $url_inicial?>";
           <?php
           } else{?>
+            //soy la natural
                  window.location.href = "<?= base_url() ?>inicio";
           <?php
              }

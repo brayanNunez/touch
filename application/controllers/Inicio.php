@@ -12,7 +12,7 @@ class Inicio extends CI_Controller
         $sessionActual = $this->session->userdata('logged_in');
         $this->session->set_userdata('url_inicial', current_url());
         if(!$sessionActual) {
-            redirect(base_url().'welcome/index/1');
+            redirect(base_url().'welcome/index/1/'.current_url());
         } elseif (!($sessionActual['administrador'])) {
             redirect(base_url());
         }
