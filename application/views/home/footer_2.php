@@ -212,6 +212,7 @@
 
 // $(document).on('ready', function(){
     function validacionCorrecta_login(){
+
         var url = $('#form_login').attr('action');
         var method = $('#form_login').attr('method'); 
         $.ajax({
@@ -220,10 +221,20 @@
                data: $('form').serialize(), 
                success: function(response)
                {
+                   alert('hola');
                    alert(response);
                }
              });
-        window.location.href = "<?= base_url() ?>inicio";
+        <?php
+          if (isset($url_inicial)) {?>
+                    window.location.href = "<?= $url_inicial?>";
+          <?php
+          } else{?>
+                 window.location.href = "<?= base_url() ?>inicio";
+          <?php
+             }
+        ?>
+        
     }
 // });
 

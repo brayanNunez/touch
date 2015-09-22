@@ -182,3 +182,20 @@
     </div>
 
 </section>
+
+
+<script type="text/javascript">
+   $(document).on("ready", function () { 
+   
+       <?php
+      if (isset($login)) {
+          if ($login) {?>
+                // alert("login");
+                $('#botonLogin').click();
+   
+           <?php
+      }
+      }
+      ?>
+      });
+   </script>

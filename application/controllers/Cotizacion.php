@@ -8,6 +8,14 @@ class Cotizacion extends CI_Controller
     {
         parent::__construct();
         $this->lang->load('content');
+        
+        $sessionActual = $this->session->userdata('logged_in');
+        $this->session->set_userdata('url_inicial', current_url());
+        if(!$sessionActual) {
+            redirect(base_url().'welcome/index/1');
+        } elseif (!($sessionActual['administrador'])) {
+            redirect(base_url());
+        }
     }
 
     public function index($lang = '')
