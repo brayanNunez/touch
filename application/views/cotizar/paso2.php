@@ -12,7 +12,8 @@
             <!-- <input type="text" class="tags"> -->
 
             <div id="contenerdorTablaDetalles">
-                <table id="cotizacion1-detalles" class="centered">
+                <table class="centered">
+                <!-- <table id="cotizacion1-detalles" class="centered"> -->
                     <thead>
                     <tr>
                         <th style="text-align: center;">
@@ -20,7 +21,7 @@
                                    onclick="toggleChecked(this.checked)"/>
                             <label for="checkbox-all"></label>
                         </th>
-                        <th class="context-menu-miItem box" id="columna1" data-field="id">
+                        <th class="context-menu-miItem box" data-field="id">
                             <row>
                                 <div class="col s12 m12 l12 celdaTitulo">Item</div>
                             </row>
@@ -128,7 +129,7 @@
                                 <!-- <div class="col s12 m12 l12 celda"> -->
                                     <div id="contenedorSelectProductoNombre1" class="contenedorSelectProductoNombre"></div>
                                     <!--  -->
-                                </div>
+                                <!-- </div> -->
                             </row>
                         </td>
                         <td>
@@ -262,7 +263,7 @@
                                 <!-- <div class="col s12 m12 l12 celda"> -->
                                     <div id="contenedorSelectProductoNombre2" class="contenedorSelectProductoNombre"></div>
                                     <!--  -->
-                                </div>
+                                <!-- </div> -->
                             </row>
                         </td>
                         <td>
