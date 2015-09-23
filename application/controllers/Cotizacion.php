@@ -12,20 +12,21 @@ class Cotizacion extends CI_Controller
 
     public function index()
     {
-        verificarLogin();//helper//helper
+        verificarLogin();//helper
+        esAdministrador();//helper
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
         $this->load->view('cotizar/lista');
         $this->load->view('layout/default/footer');
     }
 
-    public function pasos()
-    {
-        $this->load->view('layout/default/header');
-        $this->load->view('layout/default/left-sidebar');
-        $this->load->view('cotizar/paso3');
-        $this->load->view('layout/default/footer');
-    }
+    // public function pasos()
+    // {
+    //     $this->load->view('layout/default/header');
+    //     $this->load->view('layout/default/left-sidebar');
+    //     $this->load->view('cotizar/paso3');
+    //     $this->load->view('layout/default/footer');
+    // }
 
     public function cotizar()
     {
@@ -36,13 +37,13 @@ class Cotizacion extends CI_Controller
         $this->load->view('layout/default/footer');
     }
 
-    public function paso2()
-    {
-        $this->load->view('layout/default/header');
-        $this->load->view('layout/default/left-sidebar');
-        $this->load->view('cotizar/paso2');
-        $this->load->view('layout/default/footer');
-    }
+    // public function paso2()
+    // {
+    //     $this->load->view('layout/default/header');
+    //     $this->load->view('layout/default/left-sidebar');
+    //     $this->load->view('cotizar/paso2');
+    //     $this->load->view('layout/default/footer');
+    // }
 
     public function jsonVendedores()
     {
