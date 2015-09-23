@@ -24,8 +24,7 @@
             <div class="col s12 m4 l4">
                 <h5><?= label('cliente_direccion'); ?></h5>
                 <p>Costa Rica, Alajuela</p>
-                <p>Grecia, Tacares</p>
-                <p>50 mts norte de la iglesia de la localidad</p>
+                <p>Grecia, Tacares, 50 mts norte de la iglesia de la localidad</p>
             </div>
         </div>
 
@@ -448,9 +447,9 @@
         var falta = wx/(wlis*2);
         if(falta == 0) {
         } else {
+            var newv = parseInt(primerom) + falta;
             lista.each(function() {
                 var $this = $(this);
-                var newv = parseInt(primerom) + falta;
                 $this.css('margin-left', newv);
                 $this.css('margin-right', newv);
             });

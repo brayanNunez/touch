@@ -12,9 +12,9 @@
                 <select>
                     <option value="" disabled><?= label('formCliente_seleccioneUno'); ?></option>
                     <option value="1" selected>Costa Rica</option>
-                    <option value="2">Brasil</option>
+                    <option value="2">Colombia</option>
                     <option value="3">USA</option>
-                    <option value="4">Colombia</option>
+                    <option value="4">Brasil</option>
                     <option value="5">Uruguay</option>
                     <option value="6">Chile</option>
                 </select>
@@ -150,13 +150,13 @@
                             <input id="cliente_direccionCanton" type="text" value="Grecia">
                             <label for="cliente_direccionCanton"><?= label('formCliente_direccionCanton'); ?></label>
                         </div>
-                        <div class="input-field col s12 m4 l4">
-                            <input id="cliente_direccionDistrito" type="text" value="Tacares">
-                            <label for="cliente_direccionDistrito"><?= label('formCliente_direccionDistrito'); ?></label>
-                        </div>
-                        <div class="input-field col s12 m8 l8">
+<!--                        <div class="input-field col s12 m4 l4">-->
+<!--                            <input id="cliente_direccionDistrito" type="text" value="Tacares">-->
+<!--                            <label for="cliente_direccionDistrito">--><?//= label('formCliente_direccionDistrito'); ?><!--</label>-->
+<!--                        </div>-->
+                        <div class="input-field col s12 m12 l12">
                             <input id="cliente_direccionDomicilio" type="text"
-                                   value="50 mts norte de la iglesia de la localidad">
+                                   value="Tacares, 50 mts norte de la iglesia de la localidad">
                             <label for="cliente_direccionDomicilio"><?= label('formCliente_direccionDomicilio'); ?></label>
                         </div>
                     </div>

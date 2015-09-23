@@ -71,15 +71,27 @@
                                                                 <ul id="dropdown-cliente1" class="dropdown-content">
                                                                     <li>
                                                                         <a href="<?= base_url(); ?>clientes/editar"
+                                                                           class="-text"><?= label('menuOpciones_ver') ?></a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="<?= base_url(); ?>clientes/editar"
                                                                            class="-text"><?= label('menuOpciones_editar') ?></a>
                                                                     </li>
                                                                     <li>
                                                                         <a href="#eliminarCliente"
                                                                            class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
                                                                     </li>
+                                                                    <li>
+                                                                        <a href="<?= base_url(); ?>cotizacion/cotizar"
+                                                                           class="-text"><?= label('menuOpciones_cotizar') ?></a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#desactivarCliente"
+                                                                           class="-text modal-trigger"><?= label('menuOpciones_desactivar') ?></a>
+                                                                    </li>
                                                                 </ul>
                                                                 <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                                   href="#!" data-activates="dropdown-cliente1">
+                                                                   href="#" data-activates="dropdown-cliente1">
                                                                     <?= label('menuOpciones_seleccionar') ?><i
                                                                         class="mdi-navigation-arrow-drop-down"></i>
                                                                 </a>
@@ -102,11 +114,23 @@
                                                                 <ul id="dropdown-cliente2" class="dropdown-content">
                                                                     <li>
                                                                         <a href="<?= base_url(); ?>clientes/editar"
+                                                                           class="-text"><?= label('menuOpciones_ver') ?></a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="<?= base_url(); ?>clientes/editar"
                                                                            class="-text"><?= label('menuOpciones_editar') ?></a>
                                                                     </li>
                                                                     <li>
                                                                         <a href="#eliminarCliente"
                                                                            class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="<?= base_url(); ?>cotizacion/cotizar"
+                                                                           class="-text"><?= label('menuOpciones_cotizar') ?></a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#desactivarCliente"
+                                                                           class="-text modal-trigger"><?= label('menuOpciones_desactivar') ?></a>
                                                                     </li>
                                                                 </ul>
                                                                 <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
@@ -133,11 +157,23 @@
                                                                 <ul id="dropdown-cliente3" class="dropdown-content">
                                                                     <li>
                                                                         <a href="<?= base_url(); ?>clientes/editar"
+                                                                           class="-text"><?= label('menuOpciones_ver') ?></a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="<?= base_url(); ?>clientes/editar"
                                                                            class="-text"><?= label('menuOpciones_editar') ?></a>
                                                                     </li>
                                                                     <li>
                                                                         <a href="#eliminarCliente"
                                                                            class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="<?= base_url(); ?>cotizacion/cotizar"
+                                                                           class="-text"><?= label('menuOpciones_cotizar') ?></a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#desactivarCliente"
+                                                                           class="-text modal-trigger"><?= label('menuOpciones_desactivar') ?></a>
                                                                     </li>
                                                                 </ul>
                                                                 <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
@@ -164,11 +200,23 @@
                                                                 <ul id="dropdown-cliente4" class="dropdown-content">
                                                                     <li>
                                                                         <a href="<?= base_url(); ?>clientes/editar"
+                                                                           class="-text"><?= label('menuOpciones_ver') ?></a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="<?= base_url(); ?>clientes/editar"
                                                                            class="-text"><?= label('menuOpciones_editar') ?></a>
                                                                     </li>
                                                                     <li>
                                                                         <a href="#eliminarCliente"
                                                                            class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="<?= base_url(); ?>cotizacion/cotizar"
+                                                                           class="-text"><?= label('menuOpciones_cotizar') ?></a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#desactivarCliente"
+                                                                           class="-text modal-trigger"><?= label('menuOpciones_desactivar') ?></a>
                                                                     </li>
                                                                 </ul>
                                                                 <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
@@ -440,6 +488,18 @@
 </script>
 
 <!-- lista modals -->
+<div id="desactivarCliente" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('confirmarDesactivarCliente'); ?></p>
+    </div>
+    <div class="modal-footer black-text">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
 <div id="eliminarCliente" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
