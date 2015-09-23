@@ -66,7 +66,6 @@ class Usuarios extends CI_Controller
                     'cotizador' => true,
                     'contador' => true
                 );
-                $this->session->set_userdata('url', 'una url');
                 $this->session->set_userdata('logged_in', $sess_array);
             // }
             echo $username.', '.$password;

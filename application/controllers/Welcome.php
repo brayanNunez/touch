@@ -13,10 +13,10 @@ class Welcome extends CI_Controller
     public function index($login = false)
     {
         $data['login'] = $login;
-        // echo $this->session->userdata('inicialURL'); exit();
+        // echo $this->session->userdata('DireccionInicial'); exit();
 
         if ($login) {
-            $data['inicialURL'] = $this->session->userdata('inicialURL'); 
+            $data['urlInicial'] = $this->session->userdata('urlInicial'); 
         } 
         $this->load->view('home/header');
         $this->load->view('home/index', $data);

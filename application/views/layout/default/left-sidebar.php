@@ -66,7 +66,7 @@
                     <div class="collapsible-body">
                         <ul>
                             <li>
-                                <a href="<?= base_url(); ?>cotizacion/general"><?= label('agregarCotizacion'); ?></a>
+                                <a href="<?= base_url(); ?>cotizacion/cotizar"><?= label('agregarCotizacion'); ?></a>
                             </li>
                             <li>
                                 <a href="<?= base_url(); ?>cotizacion"><?= label('listarCotizacion'); ?></a>

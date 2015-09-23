@@ -8,29 +8,14 @@ class Cotizacion extends CI_Controller
     {
         parent::__construct();
         $this->lang->load('content');
-        
-        $sessionActual = $this->session->userdata('logged_in');
-        $this->session->set_userdata('inicialURL', current_url());
-        if(!$sessionActual) {
-            redirect(base_url().'welcome/index/1');
-        } elseif (!($sessionActual['administrador'])) {
-            redirect(base_url());
-        }
     }
 
-    public function index($lang = '')
+    public function index()
     {
+        verificarLogin();//helper//helper
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
         $this->load->view('cotizar/lista');
-        $this->load->view('layout/default/footer');
-    }
-
-    public function general()
-    {
-        $this->load->view('layout/default/header');
-        $this->load->view('layout/default/left-sidebar');
-        $this->load->view('cotizar/cotizar');
         $this->load->view('layout/default/footer');
     }
 
@@ -44,6 +29,7 @@ class Cotizacion extends CI_Controller
 
     public function cotizar()
     {
+        verificarLogin();//helper
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
         $this->load->view('cotizar/cotizar');

@@ -225,8 +225,8 @@
                     // alert('1');
                     alert(response);
                     <?php
-                          if (isset($inicialURL)) {?>
-                                    window.location.href = "<?= $inicialURL?>";
+                          if (isset($urlInicial)) {?>
+                                    window.location.href = "<?= $urlInicial?>";
                           <?php
                           } else{?>
                                  window.location.href = "<?= base_url() ?>inicio";
