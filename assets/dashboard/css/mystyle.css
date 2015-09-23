@@ -445,17 +445,17 @@ margin-top: 2%;
 	width: 200px !important;
 	text-align: left;
 }
-.contenedorSelectProductoNombre .chosen-search input{
+/*.contenedorSelectProductoNombre .chosen-search input{
 	width: 163px !important;
-}
+}*/
 
 .contenedorSelectProductoItem .chosen-container{
 	width: 100px !important;
 	text-align: left;
 }
-.contenedorSelectProductoItem .chosen-search input{
+/*.contenedorSelectProductoItem .chosen-search input{
 	width: 62px !important;
-}
+}*/
 
 .inputSelector label{
 	top: -2px  !important;
@@ -469,9 +469,9 @@ margin-top: 2%;
 .chosen-select{
   width: 100% !important;
 }
-.chosen-search input{
+/*.chosen-search input{
 	width: 85% !important;
-}
+}*/
 
 /*#contenedorSelectAtencion .chosen-container{
 	width: 100% !important;
