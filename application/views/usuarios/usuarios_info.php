@@ -28,7 +28,7 @@
                                                 <li class="tab col s3">
                                                     <a class="white-text darken-1 waves-effect waves-light active"
                                                        href="#tab-informacion">
-                                                        <i class="mdi-action-perm-identity"></i><?= label('usuarios_verEditar'); ?>
+                                                        <i class="mdi-action-perm-identity"></i><?= label('usuarios_ver'); ?>
                                                     </a>
                                                 </li>
                                                 <li class="tab-interior tab col s3">
@@ -37,14 +37,23 @@
                                                         <i class="mdi-editor-format-list-numbered"></i><?= label('usuarios_cotizaciones'); ?>
                                                     </a>
                                                 </li>
+                                                <li class="tab-interior tab col s3">
+                                                    <a class="white-text darken-1 waves-effect waves-light"
+                                                       href="#tab-edicion">
+                                                        <i class="mdi-editor-mode-edit"></i><?= label('usuarios_editar'); ?>
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </div>
                                         <div class="col s12">
                                             <div id="tab-informacion" class="card col s12">
-                                                <?php $this->load->view('usuarios/usuarios_editar'); ?>
+                                                <?php $this->load->view('usuarios/usuarios_ver'); ?>
                                             </div>
                                             <div id="tab-cotizaciones" class="card col s12">
                                                 <?php $this->load->view('usuarios/usuarios_cotizaciones'); ?>
+                                            </div>
+                                            <div id="tab-edicion" class="card col s12">
+                                                <?php $this->load->view('usuarios/usuarios_editar'); ?>
                                             </div>
                                         </div>
                                     </div>
