@@ -49,9 +49,24 @@
                                             <label for="usuario_correo"><?= label('formUsuario_correo'); ?></label>
                                         </div>
 
+<!--                                        <div class="input-field col s12">-->
+<!--                                            <input id="usuario_nombreUsuario" type="text">-->
+<!--                                            <label-->
+<!--                                                for="usuario_nombreUsuario">--><?//= label('formUsuario_nombreUsuario'); ?><!--</label>-->
+<!--                                        </div>-->
                                         <div class="input-field col s12">
-                                            <label><?= label('formUsuario_roles'); ?></label>
-                                            <br/>
+                                            <input id="usuario_contrasena" type="password">
+                                            <label
+                                                for="usuario_contrasena"><?= label('formUsuario_contrasena'); ?></label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input id="usuario_contrasenaConfirm" type="password">
+                                            <label
+                                                for="usuario_contrasenaConfirm"><?= label('formUsuario_contrasenaConfirmar'); ?></label>
+                                        </div>
+
+                                        <div class="input-field col s12">
+                                            <label style="top: 0;"><?= label('formUsuario_roles'); ?></label>
                                             <br/>
                                             <table class="table striped">
                                                 <thead>
@@ -120,18 +135,6 @@
                                                 </tbody>
                                             </table>
                                             <hr/>
-                                            <br/>
-                                        </div>
-
-                                        <div class="input-field col s12">
-                                            <input id="usuario_nombreUsuario" type="text">
-                                            <label
-                                                for="usuario_nombreUsuario"><?= label('formUsuario_nombreUsuario'); ?></label>
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <input id="usuario_contrasena" type="password">
-                                            <label
-                                                for="usuario_contrasena"><?= label('formUsuario_contrasena'); ?></label>
                                         </div>
 
                                         <div class="file-field col s12">
