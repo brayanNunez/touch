@@ -687,7 +687,7 @@ $lang['proveedores_archivosSeleccionadosEliminar'] = '¿Realmente desea eliminar
 
 $lang['agregar_nuevo'] = 'Agregar nuevo';
 //Formulario de logueo
-    $lang['login_username'] = 'Nombre de usuario';
+    $lang['login_username'] = 'Correo electrónico';
     $lang['login_password'] = 'Contraseña';
 
 //botones formulario cliente
