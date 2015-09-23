@@ -64,11 +64,19 @@
                                                             <ul id="dropdown-proveedor1" class="dropdown-content">
                                                                 <li>
                                                                     <a href="<?= base_url(); ?>proveedores/editar"
+                                                                       class="-text"><?= label('menuOpciones_ver') ?></a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="<?= base_url(); ?>proveedores/editar"
                                                                        class="-text"><?= label('menuOpciones_editar') ?></a>
                                                                 </li>
                                                                 <li>
                                                                     <a href="#eliminarProveedor"
                                                                        class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#desactivarProveedor"
+                                                                       class="-text modal-trigger"><?= label('menuOpciones_desactivar') ?></a>
                                                                 </li>
                                                             </ul>
                                                             <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
@@ -93,11 +101,19 @@
                                                             <ul id="dropdown-proveedor2" class="dropdown-content">
                                                                 <li>
                                                                     <a href="<?= base_url(); ?>proveedores/editar"
+                                                                       class="-text"><?= label('menuOpciones_ver') ?></a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="<?= base_url(); ?>proveedores/editar"
                                                                        class="-text"><?= label('menuOpciones_editar') ?></a>
                                                                 </li>
                                                                 <li>
                                                                     <a href="#eliminarProveedor"
                                                                        class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#desactivarProveedor"
+                                                                       class="-text modal-trigger"><?= label('menuOpciones_desactivar') ?></a>
                                                                 </li>
                                                             </ul>
                                                             <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
@@ -122,11 +138,19 @@
                                                             <ul id="dropdown-proveedor3" class="dropdown-content">
                                                                 <li>
                                                                     <a href="<?= base_url(); ?>proveedores/editar"
+                                                                       class="-text"><?= label('menuOpciones_ver') ?></a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="<?= base_url(); ?>proveedores/editar"
                                                                        class="-text"><?= label('menuOpciones_editar') ?></a>
                                                                 </li>
                                                                 <li>
                                                                     <a href="#eliminarProveedor"
                                                                        class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#desactivarProveedor"
+                                                                       class="-text modal-trigger"><?= label('menuOpciones_desactivar') ?></a>
                                                                 </li>
                                                             </ul>
                                                             <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
@@ -151,11 +175,19 @@
                                                             <ul id="dropdown-proveedor4" class="dropdown-content">
                                                                 <li>
                                                                     <a href="<?= base_url(); ?>proveedores/editar"
+                                                                       class="-text"><?= label('menuOpciones_ver') ?></a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="<?= base_url(); ?>proveedores/editar"
                                                                        class="-text"><?= label('menuOpciones_editar') ?></a>
                                                                 </li>
                                                                 <li>
                                                                     <a href="#eliminarProveedor"
                                                                        class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#desactivarProveedor"
+                                                                       class="-text modal-trigger"><?= label('menuOpciones_desactivar') ?></a>
                                                                 </li>
                                                             </ul>
                                                             <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
@@ -318,6 +350,18 @@
 </script>
 
 <!-- lista modals -->
+<div id="desactivarProveedor" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('confirmarDesactivarProveedor'); ?></p>
+    </div>
+    <div class="modal-footer black-text">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
 <div id="eliminarProveedor" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>

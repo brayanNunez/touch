@@ -142,12 +142,12 @@
                             <input id="proveedor_direccionCanton" type="text" value="Poas">
                             <label for="proveedor_direccionCanton"><?= label('formProveedor_direccionCanton'); ?></label>
                         </div>
-                        <div class="input-field col s12 m4 l4">
-                            <input id="proveedor_direccionDistrito" type="text" value="San Rafael">
-                            <label for="proveedor_direccionDistrito"><?= label('formProveedor_direccionDistrito'); ?></label>
-                        </div>
-                        <div class="input-field col s12 m8 l8">
-                            <input id="proveedor_direccionDomicilio" type="text" value="200 mts este de la iglesia de la localidad">
+<!--                        <div class="input-field col s12 m4 l4">-->
+<!--                            <input id="proveedor_direccionDistrito" type="text" value="San Rafael">-->
+<!--                            <label for="proveedor_direccionDistrito">--><?//= label('formProveedor_direccionDistrito'); ?><!--</label>-->
+<!--                        </div>-->
+                        <div class="input-field col s12 m12 l12">
+                            <input id="proveedor_direccionDomicilio" type="text" value="San Rafael, 200 mts este de la iglesia de la localidad">
                             <label for="proveedor_direccionDomicilio"><?= label('formProveedor_direccionDomicilio'); ?></label>
                         </div>
                     </div>

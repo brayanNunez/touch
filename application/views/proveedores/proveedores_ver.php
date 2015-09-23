@@ -27,8 +27,7 @@
                 <div>
                     <h5><?= label('formProveedor_direccion'); ?></h5>
                     <p>Costa Rica, Alajuela</p>
-                    <p>San Rafael, Poas</p>
-                    <p>200 mts este de la iglesia de la localidad</p>
+                    <p>Poas, San Rafael, 200 mts este de la iglesia de la localidad</p>
                 </div>
                 <div style="margin-top: 25px;">
                     <h5><?= label('formProveedor_palabrasClaveAsociadas'); ?>:</h5>

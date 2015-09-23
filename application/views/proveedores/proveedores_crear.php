@@ -35,9 +35,9 @@
                                                 <option value="" selected
                                                         disabled><?= label('formProveedor_seleccioneUno'); ?></option>
                                                 <option value="1">Costa Rica</option>
-                                                <option value="2">Brasil</option>
+                                                <option value="2">Colombia</option>
                                                 <option value="3">USA</option>
-                                                <option value="4">Colombia</option>
+                                                <option value="4">Brasil</option>
                                                 <option value="5">Uruguay</option>
                                                 <option value="6">Chile</option>
                                             </select>
@@ -164,11 +164,11 @@
                                                         <input id="proveedor_direccionCanton" type="text">
                                                         <label for="proveedor_direccionCanton"><?= label('formProveedor_direccionCanton'); ?></label>
                                                     </div>
-                                                    <div class="input-field col s12 m4 l4">
-                                                        <input id="proveedor_direccionDistrito" type="text">
-                                                        <label for="proveedor_direccionDistrito"><?= label('formProveedor_direccionDistrito'); ?></label>
-                                                    </div>
-                                                    <div class="input-field col s12 m8 l8">
+<!--                                                    <div class="input-field col s12 m4 l4">-->
+<!--                                                        <input id="proveedor_direccionDistrito" type="text">-->
+<!--                                                        <label for="proveedor_direccionDistrito">--><?//= label('formProveedor_direccionDistrito'); ?><!--</label>-->
+<!--                                                    </div>-->
+                                                    <div class="input-field col s12 m12 l12">
                                                         <input id="proveedor_direccionDomicilio" type="text">
                                                         <label for="proveedor_direccionDomicilio"><?= label('formProveedor_direccionDomicilio'); ?></label>
                                                     </div>
