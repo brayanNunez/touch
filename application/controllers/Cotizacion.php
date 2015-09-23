@@ -37,6 +37,15 @@ class Cotizacion extends CI_Controller
         $this->load->view('layout/default/footer');
     }
 
+    public function ver()
+    {
+        verificarLogin();//helper
+        $this->load->view('layout/default/header');
+        $this->load->view('layout/default/left-sidebar');
+        $this->load->view('cotizar/ver');
+        $this->load->view('layout/default/footer');
+    }
+
     // public function paso2()
     // {
     //     $this->load->view('layout/default/header');

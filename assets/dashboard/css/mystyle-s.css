@@ -72,7 +72,7 @@ ul.cliente-info li a.active, ul.usuario-info li a.active, ul.proveedor-info li a
 ul.cliente-info li { width: 25% !important; }
 ul.cliente-info.tags-secundarios li { width: 33.3% !important; }
 ul.cliente-info li a { background-color: #009966; }
-ul.usuario-info li { width: 50% !important; }
+ul.usuario-info li { width: 33% !important; }
 ul.usuario-info li a { background-color: #009966; }
 ul.proveedor-info li { width: 33.3% !important; }
 ul.proveedor-info.tags-secundarios li { width: 50% !important; }
@@ -243,6 +243,13 @@ div.select-wrapper ul.select-dropdown { top: 50px !important; }
 div.cliente-ver-logo, div.proveedor-ver-logo { margin-top: 45px; }
 div.cliente-ver-logo img, div.proveedor-ver-logo img { width: 100%; border: 1px solid #000; }
 div.btn-contacto-eliminar-edicion { margin-top: 50px; }
+
+iframe#iframe-ver-cotizacion { width: 85%; height: 500px; display: block; margin: 0 auto; }
+div#opciones-ver-cotizacion { margin: 40px 20px; }
+div#opciones-ver-cotizacion a.opcion-ver-cot { width: 80%; display: block; margin: 0 auto; }
+
+ul.ver-usuario-lista { margin-left: 10%; }
+ul.ver-usuario-lista li { list-style: initial; }
 
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/

@@ -26,6 +26,8 @@
 	$lang['confirmarEliminarEmpleado'] = '¿Realmente desea eliminar el empleado seleccionado?';
 	$lang['confirmarEliminarProveedor'] = '¿Realmente desea eliminar el proveedor seleccionado?';
 	$lang['confirmarEliminarCliente'] = '¿Realmente desea eliminar el cliente seleccionado?';
+	$lang['confirmarDesactivarCliente'] = '¿Realmente desea desactivar el cliente seleccionado?';
+	$lang['confirmarDesactivarProveedor'] = '¿Realmente desea desactivar el proveedor seleccionado?';
 	$lang['confirmarEliminarTipoMoneda'] = '¿Realmente desea eliminar el tipo de moneda seleccionado?';
     $lang['confirmarEliminarGasto'] = '¿Realmente desea eliminar el gasto adicional seleccionado?';
 	$lang['confirmarEliminarUsuario'] = '¿Realmente desea eliminar el usuario seleccionado?';
@@ -178,8 +180,15 @@
 
     $lang['tablaCotizaciones_opcionDuplicar'] = 'Duplicar';
     $lang['tablaCotizaciones_opcionVerEditar'] = 'Ver / Editar';
+    $lang['tablaCotizaciones_opcionVer'] = 'Ver';
+    $lang['tablaCotizaciones_opcionEditar'] = 'Editar';
     $lang['tablaCotizaciones_opcionFinalizar'] = 'Finalizar';
     $lang['tablaCotizaciones_opcionEliminar'] = 'Eliminar';
+
+    $lang['verCotizacion'] = 'Ver cotización';
+    $lang['verCotizacion_editar'] = 'Editar cotización';
+    $lang['verCotizacion_duplicar'] = 'Duplicar cotización';
+    $lang['verCotizacion_eliminar'] = 'Eliminar cotización';
 
 //columnas tabla de solicitudes
     $lang['tablaSolicitudes_nombre'] = 'Nombre';
@@ -388,8 +397,8 @@ $lang['formCliente_contactoSecundario'] = 'Cambiar a contacto principal';
 
     $lang['cliente_direccion'] = 'Dirección';
     $lang['formCliente_direccionPais'] = 'País';
-    $lang['formCliente_direccionProvincia'] = 'Provincia';
-    $lang['formCliente_direccionCanton'] = 'Cantón';
+    $lang['formCliente_direccionProvincia'] = 'Estado o provincia';
+    $lang['formCliente_direccionCanton'] = 'Ciudad o cantón';
     $lang['formCliente_direccionDistrito'] = 'Distrito';
     $lang['formCliente_direccionDomicilio'] = 'Domicilio';
     $lang['formCliente_correo'] = 'Correo electrónico';
@@ -473,8 +482,8 @@ $lang['formProveedor_palabrasClaveAnadir'] = 'Añadir palabra';
 $lang['formProveedor_descripcion'] = 'Descripción';
 $lang['formProveedor_direccion'] = 'Dirección';
     $lang['formProveedor_direccionPais'] = 'País';
-    $lang['formProveedor_direccionProvincia'] = 'Provincia';
-    $lang['formProveedor_direccionCanton'] = 'Cantón';
+    $lang['formProveedor_direccionProvincia'] = 'Estado o provincia';
+    $lang['formProveedor_direccionCanton'] = 'Ciudad o cantón';
     $lang['formProveedor_direccionDistrito'] = 'Distrito';
     $lang['formProveedor_direccionDomicilio'] = 'Domicilio';
 $lang['formProveedor_correoCheck'] = 'Enviar facturas a este correo';
@@ -528,6 +537,10 @@ $lang['proveedores_archivosSeleccionadosEliminar'] = '¿Realmente desea eliminar
     $lang['formUsuario_correo'] = 'Correo electrónico';
     $lang['formUsuario_nombreUsuario'] = 'Nombre de usuario';
     $lang['formUsuario_contrasena'] = 'Contraseña';
+    $lang['formUsuario_contrasenaCambio'] = 'Cambio de contraseña';
+    $lang['formUsuario_contrasenaVieja'] = 'Contraseña actual';
+    $lang['formUsuario_contrasenaNueva'] = 'Contraseña nueva';
+    $lang['formUsuario_contrasenaConfirmar'] = 'Confirmar contraseña';
     $lang['formUsuario_fotografia'] = 'Imagen';
     $lang['formUsuario_roles'] = 'Roles asignados';
     $lang['formUsuario_examinar'] = 'Ex';
@@ -786,6 +799,9 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
 
     $lang['menuOpciones_seleccionar'] = 'Opciones';
     $lang['menuOpciones_editar'] = 'Editar';
+    $lang['menuOpciones_ver'] = 'Ver';
+    $lang['menuOpciones_cotizar'] = 'Cotizar';
+    $lang['menuOpciones_desactivar'] = 'Desactivar';
     $lang['menuOpciones_eliminar'] = 'Eliminar';
     $lang['menuOpciones_abrir'] = 'Abrir';
     $lang['menuOpciones_agregarCategoria'] = 'Agregar categoría';
@@ -834,6 +850,8 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
 //Usuarios editar
     $lang['usuarios_info'] = 'Información del usuario';
     $lang['usuarios_verEditar'] = 'Ver / Editar información';
+    $lang['usuarios_ver'] = 'Perfil';
+    $lang['usuarios_editar'] = 'Editar';
     $lang['usuarios_cotizaciones'] = 'Cotizaciones';
 
 

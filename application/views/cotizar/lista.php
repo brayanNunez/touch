@@ -71,15 +71,21 @@
                                                         <td>
                                                             <ul id="dropdown-cotizacion1" class="dropdown-content">
                                                                 <li>
+                                                                    <a class="btn_ver modal-trigger icono-edicion"
+                                                                       href="<?= base_url() ?>cotizacion/ver">
+                                                                        <?= label('tablaCotizaciones_opcionVer') ?>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
                                                                     <a class="btn_duplicar modal-trigger icono-edicion"
                                                                        href="#duplicar">
                                                                         <?= label('tablaCotizaciones_opcionDuplicar') ?>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a class="btn_ver icono-edicion"
+                                                                    <a class="btn_editar icono-edicion"
                                                                        href="<?= base_url() ?>cotizacion/cotizar">
-                                                                        <?= label('tablaCotizaciones_opcionVerEditar') ?>
+                                                                        <?= label('tablaCotizaciones_opcionEditar') ?>
                                                                     </a>
                                                                 </li>
                                                                 <li>
@@ -111,15 +117,21 @@
                                                         <td>
                                                             <ul id="dropdown-cotizacion2" class="dropdown-content">
                                                                 <li>
+                                                                    <a class="btn_ver modal-trigger icono-edicion"
+                                                                       href="<?= base_url() ?>cotizacion/ver">
+                                                                        <?= label('tablaCotizaciones_opcionVer') ?>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
                                                                     <a class="btn_duplicar modal-trigger icono-edicion"
                                                                        href="#duplicar">
                                                                         <?= label('tablaCotizaciones_opcionDuplicar') ?>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a class="btn_ver icono-edicion"
+                                                                    <a class="btn_editar icono-edicion"
                                                                        href="<?= base_url() ?>cotizacion/cotizar">
-                                                                        <?= label('tablaCotizaciones_opcionVerEditar') ?>
+                                                                        <?= label('tablaCotizaciones_opcionEditar') ?>
                                                                     </a>
                                                                 </li>
                                                                 <li>
@@ -157,15 +169,21 @@
                                                         <td>
                                                             <ul id="dropdown-cotizacion3" class="dropdown-content">
                                                                 <li>
+                                                                    <a class="btn_ver modal-trigger icono-edicion"
+                                                                       href="<?= base_url() ?>cotizacion/ver">
+                                                                        <?= label('tablaCotizaciones_opcionVer') ?>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
                                                                     <a class="btn_duplicar modal-trigger icono-edicion"
                                                                        href="#duplicar">
                                                                         <?= label('tablaCotizaciones_opcionDuplicar') ?>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a class="btn_ver icono-edicion"
+                                                                    <a class="btn_editar icono-edicion"
                                                                        href="<?= base_url() ?>cotizacion/cotizar">
-                                                                        <?= label('tablaCotizaciones_opcionVerEditar') ?>
+                                                                        <?= label('tablaCotizaciones_opcionEditar') ?>
                                                                     </a>
                                                                 </li>
                                                                 <li>
@@ -203,15 +221,21 @@
                                                         <td>
                                                             <ul id="dropdown-cotizacion4" class="dropdown-content">
                                                                 <li>
+                                                                    <a class="btn_ver modal-trigger icono-edicion"
+                                                                       href="<?= base_url() ?>cotizacion/ver">
+                                                                        <?= label('tablaCotizaciones_opcionVer') ?>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
                                                                     <a class="btn_duplicar modal-trigger icono-edicion"
                                                                        href="#duplicar">
                                                                         <?= label('tablaCotizaciones_opcionDuplicar') ?>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a class="btn_ver icono-edicion"
+                                                                    <a class="btn_editar icono-edicion"
                                                                        href="<?= base_url() ?>cotizacion/cotizar">
-                                                                        <?= label('tablaCotizaciones_opcionVerEditar') ?>
+                                                                        <?= label('tablaCotizaciones_opcionEditar') ?>
                                                                     </a>
                                                                 </li>
                                                                 <li>
@@ -243,15 +267,21 @@
                                                         <td>
                                                             <ul id="dropdown-cotizacion5" class="dropdown-content">
                                                                 <li>
+                                                                    <a class="btn_ver modal-trigger icono-edicion"
+                                                                       href="<?= base_url() ?>cotizacion/ver">
+                                                                        <?= label('tablaCotizaciones_opcionVer') ?>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
                                                                     <a class="btn_duplicar modal-trigger icono-edicion"
                                                                        href="#duplicar">
                                                                         <?= label('tablaCotizaciones_opcionDuplicar') ?>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a class="btn_ver icono-edicion"
+                                                                    <a class="btn_editar icono-edicion"
                                                                        href="<?= base_url() ?>cotizacion/cotizar">
-                                                                        <?= label('tablaCotizaciones_opcionVerEditar') ?>
+                                                                        <?= label('tablaCotizaciones_opcionEditar') ?>
                                                                     </a>
                                                                 </li>
                                                                 <li>
