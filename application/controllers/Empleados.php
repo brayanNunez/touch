@@ -14,6 +14,7 @@ class Empleados extends CI_Controller
 
     public function index()
     {
+        verificarLogin();//helper
         $idEmpresa = 1;//Obtener de la variable de sesión
         $lista = $this->Empleado_model->cargarTodos($idEmpresa);
         $data['lista'] = $lista;
@@ -25,6 +26,7 @@ class Empleados extends CI_Controller
 
     public function agregar()
     {
+        verificarLogin();//helper
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
         $this->load->view('empleados/empleados');
@@ -59,6 +61,7 @@ class Empleados extends CI_Controller
 
     public function editar($id)
     {
+        verificarLogin();//helper
         $resultado = $this->Empleado_model->cargar(decryptIt($id)); 
         if ($resultado === false || $resultado === array()) {
             echo "Error en la transacción";
