@@ -10,6 +10,142 @@ class Usuario_model extends CI_Model
         $this->load->database();
     }
 
+    function existeCorreo($data) {
+        try {
+            $this->db->trans_begin();
+            $query = $this->db->get_where('usuario', array('correo' => $data['correo'],  'eliminado' => 0, 'idEmpresa' => $data['idEmpresa']));
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+            $existe = 0;
+            if ($query->num_rows() > 0) {
+                $existe = 1;
+            }
+            $this->db->trans_commit();
+            return $existe;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+    function insertarUsuario($data)
+    {
+        try{
+            $this->db->trans_begin();
+
+            $query = $this->db->insert('usuario', $data['datos']);
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+
+            $insert_id = $this->db->insert_id();
+            $roles = $data['roles'];
+            $idRol = 1;
+            foreach ($roles as $rol=>$valor) {
+                if($valor == 'on') {
+                    $row = array(
+                        'idUsuario' => $insert_id,
+                        'idPrivilegio' => $idRol,
+                    );
+                    $query = $this->db->insert('privilegio_usuario', $row);
+                    if (!$query) {
+                        throw new Exception("Error en la BD");
+                    }
+                }
+                $idRol++;
+            }
+            $this->db->trans_commit();
+            return true;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+    function cargarUsuario($id)
+    {
+        try {
+            $this->db->trans_begin();
+            $query = $this->db->get_where('usuario', array('idUsuario' => $id,  'eliminado' => 0));
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+            $row = array();
+            if ($query->num_rows() > 0) {
+                $array = $query->result_array();
+                $row = array_shift($array);//obtiene el primer elemento.. el [0] no sirve en el server
+            }
+            $this->db->trans_commit();
+            return $row;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+    function cargarUsuarios($idEmpresa)
+    {
+        try{
+            $this->db->trans_begin();
+
+            $usuarios = $this->db->get_where('usuario', array('eliminado' => 0,'idEmpresa' => $idEmpresa));
+            if (!$usuarios) {
+                throw new Exception("Error en la BD");
+            }
+            $usuarios = $usuarios->result_array();
+            $resultado = array();
+            foreach ($usuarios as $row)
+            {
+                array_push($resultado, $row);
+            }
+
+            $this->db->trans_commit();
+            return $resultado;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+    function modificarUsuario($data)
+    {
+        try{
+            $this->db->trans_begin();
+
+            $this->db->where('idUsuario', $data['id']);
+            $query = $this->db->update('usuario', $data['datos']);
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+            $this->db->trans_commit();
+            return true;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+    function eliminarUsuario($id)
+    {
+        try{
+            $this->db->trans_begin();
+
+            $this->db->where('idUsuario', $id);
+            $query = $this->db->update('usuario', array('eliminado' => 1));
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+
+            $this->db->trans_commit();
+            return true;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+    //----------------------------------------Metodos viejos----------------------------
 
     function inserta_usuario($datos = array())
     {
@@ -22,7 +158,6 @@ class Usuario_model extends CI_Model
         $this->db->insert('usuario', $datos);
         return $this->db->insert_id();
     }
-
 
     public function insertar()
     {
@@ -59,7 +194,6 @@ class Usuario_model extends CI_Model
             }
         }
     }
-
 
     public function cargarTodos()
     {

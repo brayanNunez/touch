@@ -21,46 +21,34 @@
                     <div id="submit-button" class="section">
                         <div class="row">
                             <div class="col s12">
-                                <form class="col s12">
+                                <form id="form_usuario" class="col s12" action="<?= base_url() ?>usuarios/insertar" method="POST" >
                                     <div class="row">
-
                                         <div>
                                             <div class="input-field col s12 m4 l4">
-                                                <input id="usuario_apellido1" type="text">
-                                                <label for="usuario_apellido1"><?= label('formUsuario_apellido1'); ?></label>
+                                                <input id="usuario_primeroApellido" type="text" name="usuario_primeroApellido">
+                                                <label for="usuario_primeroApellido"><?= label('formUsuario_apellido1'); ?></label>
                                             </div>
                                             <div class="input-field col s12 m4 l4">
-                                                <input id="usuario_apellido2" type="text">
-                                                <label for="usuario_apellido2"><?= label('formUsuario_apellido2'); ?></label>
+                                                <input id="usuario_segundoApellido" type="text" name="usuario_segundoApellido">
+                                                <label for="usuario_segundoApellido"><?= label('formUsuario_apellido2'); ?></label>
                                             </div>
                                             <div class="input-field col s12 m4 l4">
-                                                <input id="usuario_nombre" type="text">
+                                                <input id="usuario_nombre" type="text" name="usuario_nombre">
                                                 <label for="usuario_nombre"><?= label('formUsuario_nombre'); ?></label>
                                             </div>
                                         </div>
 
-<!--                                        <div class="input-field col s12">-->
-<!--                                            <input id="usuario_nombre" type="text">-->
-<!--                                            <label for="usuario_nombre">--><?//= label('formUsuario_nombre'); ?><!--</label>-->
-<!--                                        </div>-->
-
                                         <div class="input-field col s12">
-                                            <input id="usuario_correo" type="email">
+                                            <input id="usuario_correo" type="email" name="usuario_correo">
                                             <label for="usuario_correo"><?= label('formUsuario_correo'); ?></label>
                                         </div>
 
-<!--                                        <div class="input-field col s12">-->
-<!--                                            <input id="usuario_nombreUsuario" type="text">-->
-<!--                                            <label-->
-<!--                                                for="usuario_nombreUsuario">--><?//= label('formUsuario_nombreUsuario'); ?><!--</label>-->
-<!--                                        </div>-->
                                         <div class="input-field col s12">
-                                            <input id="usuario_contrasena" type="password">
-                                            <label
-                                                for="usuario_contrasena"><?= label('formUsuario_contrasena'); ?></label>
+                                            <input id="usuario_contrasena" type="password" name="usuario_contrasena">
+                                            <label for="usuario_contrasena"><?= label('formUsuario_contrasena'); ?></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input id="usuario_contrasenaConfirm" type="password">
+                                            <input id="usuario_contrasenaConfirm" type="password" name="usuario_contrasenaConfirm">
                                             <label
                                                 for="usuario_contrasenaConfirm"><?= label('formUsuario_contrasenaConfirmar'); ?></label>
                                         </div>
@@ -82,7 +70,7 @@
                                                         <div class="switch">
                                                             <label style="position: relative">
                                                                 <?= label('off'); ?>
-                                                                <input type="checkbox">
+                                                                <input type="checkbox" name="usuario_rolAdministrador">
                                                                 <span class="lever"></span>
                                                                 <?= label('on'); ?>
                                                             </label>
@@ -96,7 +84,7 @@
                                                         <div class="switch">
                                                             <label style="position: relative">
                                                                 <?= label('off'); ?>
-                                                                <input type="checkbox">
+                                                                <input type="checkbox" name="usuario_rolAprobador">
                                                                 <span class="lever"></span>
                                                                 <?= label('on'); ?>
                                                             </label>
@@ -110,7 +98,7 @@
                                                         <div class="switch">
                                                             <label style="position: relative">
                                                                 <?= label('off'); ?>
-                                                                <input type="checkbox">
+                                                                <input type="checkbox" name="usuario_rolCotizador">
                                                                 <span class="lever"></span>
                                                                 <?= label('on'); ?>
                                                             </label>
@@ -124,7 +112,7 @@
                                                         <div class="switch">
                                                             <label style="position: relative">
                                                                 <?= label('off'); ?>
-                                                                <input type="checkbox">
+                                                                <input type="checkbox" name="usuario_rolContador">
                                                                 <span class="lever"></span>
                                                                 <?= label('on'); ?>
                                                             </label>
@@ -137,21 +125,29 @@
                                             <hr/>
                                         </div>
 
-                                        <div class="file-field col s12">
-                                            <br/>
-                                            <label
-                                                for="usuario_fotografia"><?= label('formUsuario_fotografia'); ?></label>
+                                        <div class="col s12">
+                                            <div class="file-field col s12 m7 l9">
+                                                <br/>
+                                                <label
+                                                    for="usuario_fotografia"><?= label('formUsuario_fotografia'); ?></label>
 
-                                            <div class="file-field input-field col s12">
-                                                <input class="file-path validate" type="text"/>
+                                                <div class="file-field input-field col s12">
+                                                    <input class="file-path validate" type="text" name="usuario_fotografia">
 
-                                                <div class="btn" data-toggle="tooltip"
-                                                     title="<?= label('tooltip_examinar') ?>">
-                                                    <span><i class="mdi-action-search"></i></span>
-                                                    <input type="file"/>
+                                                    <div class="btn" data-toggle="tooltip"
+                                                         title="<?= label('tooltip_examinar') ?>">
+                                                        <span><i class="mdi-action-search"></i></span>
+                                                        <input type="file"/>
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <div class="col s12 m5 l3">
+                                                <figure>
+                                                    <img style="width: 100%;" src="<?= base_url(); ?>files/usuario.jpg">
+                                                </figure>
+                                            </div>
                                         </div>
+
 
                                         <div class="input-field col s12 envio-formulario">
                                             <button class="btn waves-effect waves-light right" type="submit"
@@ -174,10 +170,77 @@
     ?>
 
 </section>
+
+<div style="display: none">
+    <a id="linkModalGuardado" href="#transaccionCorrecta" class="btn btn-default modal-trigger"></a>
+    <a id="linkModalError" href="#transaccionIncorrecta" class="btn btn-default modal-trigger"></a>
+</div>
 <!-- END CONTENT-->
 
+<script>
+    function validacionCorrecta(){
+        $.ajax({
+            data: {usuario_correo :  $('#usuario_correo').val()},
+            url:   '<?=base_url()?>usuarios/existeCorreo',
+            type:  'post',
+            success:  function (response) {
+                switch(response){
+                    case '0':
+                        $('#linkModalError').click();//error al ir a verificar identificación
+                        break;
+                    case '1':
+                        alert('<?= label("empleadoIdentificacionExistente"); ?>');
+                        $('#usuario_correo').focus();
+                        break;
+                    case '2':
+                        var url = $('form').attr('action');
+                        var method = $('form').attr('method');
+                        $.ajax({
+                            type: method,
+                            url: url,
+                            data: $('form').serialize(),
+                            success: function(response) {
+                                if (response == 0) {
+                                    $('#linkModalError').click();
+                                } else {
+                                    $('#linkModalGuardado').click();
+                                    $('form')[0].reset();
+                                }
+                            }
+                        });
+                        break;
+                }
+            }
+        });
+    }
+</script>
 
 <!-- lista modals -->
+<div id="transaccionCorrecta" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('empleadoGuardadoCorrectamente'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="transaccionIncorrecta" class="modal">
+    <div  class="modal-header headerTransaccionIncorrecta">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('errorGuardar'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+
 <div id="eliminar" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>

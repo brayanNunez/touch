@@ -8,14 +8,17 @@ class Usuarios extends CI_Controller
     {
         parent::__construct();
         $this->lang->load('content');
-//        $this->load->model('Usuario_model');
+        $this->load->model('Usuario_model');
+        $this->load->library('simple_html_dom');
     }
 
     public function index()
     {
+        $idEmpresa = 1;//Obtener de la variable de sesión
+        $data['lista'] = $this->Usuario_model->cargarUsuarios($idEmpresa);;
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
-        $this->load->view('usuarios/usuarios_lista');
+        $this->load->view('usuarios/usuarios_lista', $data);
         $this->load->view('layout/default/footer');
     }
 
@@ -27,13 +30,101 @@ class Usuarios extends CI_Controller
         $this->load->view('layout/default/footer');
     }
 
-    public function editar()
+    public function insertar()
     {
-        $this->load->view('layout/default/header');
-        $this->load->view('layout/default/left-sidebar');
-        $this->load->view('usuarios/usuarios_info');
-        $this->load->view('layout/default/footer');
+        $data['datos'] = array(
+            'idEmpresa' => '1', //Obtener de la variable de sesión
+            'primerApellido' => $this->input->post('usuario_primeroApellido'),
+            'segundoApellido' => $this->input->post('usuario_segundoApellido'),
+            'nombre' => $this->input->post('usuario_nombre'),
+            'correo' => $this->input->post('usuario_correo'),
+            'contrasena' => $this->input->post('usuario_contrasena'),
+            'fotografia' => $this->input->post('usuario_fotografia'),
+            'eliminado' => '0'
+        );
+        $data['roles'] = array(
+            'rolAdministrador' => $this->input->post('usuario_rolAdministrador'),
+            'rolAprobador' => $this->input->post('usuario_rolAprobador'),
+            'rolCotizador' => $this->input->post('usuario_rolCotizador'),
+            'rolContador' => $this->input->post('usuario_rolContador')
+        );
+        if (!$this->Usuario_model->insertarUsuario($data)) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            // correcto
+            echo 1;
+        }
+
     }
+
+    public function editar($id)
+    {
+        $resultado = $this->Usuario_model->cargarUsuario(decryptIt($id));
+        if ($resultado === false || $resultado === array()) {
+            echo "Error en la transacción";
+        } else {
+
+            $data['resultado'] = $resultado;
+            $this->load->view('layout/default/header');
+            $this->load->view('layout/default/left-sidebar');
+            $this->load->view('usuarios/usuarios_info', $data);
+            $this->load->view('layout/default/footer');
+        }
+    }
+
+    public function modificar($id) {
+        $data['datos'] = array(
+            'idEmpresa' => '1', //Obtener de la variable de sesión
+            'primerApellido' => $this->input->post('empleado_primerApellido'),
+            'segundoApellido' => $this->input->post('empleado_segundoApellido'),
+            'nombre' => $this->input->post('empleado_nombre'),
+            'correo' => $this->input->post('empleado_fechaNacimiento'),
+            'contrasena' => $this->input->post('empleado_fechaIngreso'),
+            'fotografia' => $this->input->post('empleado_descripcion'),
+            'eliminado' => '0'
+        );
+        $data['id'] = decryptIt($id);
+        if (!$this->Usuario_model->modificarUsuario($data)) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            //correcto
+            echo 1;
+        }
+    }
+
+    public function eliminar() {
+        $id = $_POST['idEliminar'];
+        if (!$this->Usuario_model->eliminar(decryptIt($id))) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            //correcto
+            echo 1;
+        }
+    }
+
+    public function existeCorreo() {
+        $data['correo'] = $_POST['usuario_correo'];
+        $data['idEmpresa'] = 1;
+        //el correo se puede repetir solo en diferentes empresas
+        $resultado = $this->Usuario_model->existeCorreo($data);
+        if ($resultado === false) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            if ($resultado == 1) {
+                //Ya existe el correo
+                echo 1;
+            } else {
+                //correo valido
+                echo 2;
+            }
+        }
+    }
+
+    //-----------------------------------------------------
 
     public function existeUsuario()
     {
