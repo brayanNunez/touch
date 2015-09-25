@@ -69,7 +69,7 @@
                                                     <label for="cliente_correo"><?= label('formCliente_correo'); ?></label>
                                                 </div>
                                                 <div style="margin-bottom: 20px;">
-                                                    <input type="checkbox" class="filled-in" id="checkbox_correoCliente" name="checkbox_correoCliente" />
+                                                    <input value='1' type="checkbox" class="filled-in" id="checkbox_correoCliente" name="checkbox_correoCliente" />
                                                     <label for="checkbox_correoCliente">
                                                         <?= label('formCliente_correoCheck') ?>
                                                     </label>
@@ -286,7 +286,7 @@
                                                         <?= label('formCliente_formaPagoFavorita'); ?></label>
                                                 </div>
                                                 <div class="input-field col s12">
-                                                    <input id="cliente_descuento" type="text">
+                                                    <input id="cliente_descuento" name="cliente_descuento" type="text">
                                                     <label
                                                         for="cliente_descuento"><?= label('formCliente_descuento'); ?></label>
                                                     <span class="icono-porcentaje-descuento">%</span>
