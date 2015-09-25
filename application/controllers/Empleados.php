@@ -15,7 +15,8 @@ class Empleados extends CI_Controller
     public function index()
     {
         verificarLogin();//helper
-        $idEmpresa = 1;//Obtener de la variable de sesión
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
         $lista = $this->Empleado_model->cargarTodos($idEmpresa);
         $data['lista'] = $lista;
         $this->load->view('layout/default/header');

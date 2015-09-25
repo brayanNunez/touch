@@ -13,9 +13,14 @@ class Clientes extends CI_Controller
 
     public function index()
     {
+        verificarLogin();//helper
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+        $lista = $this->Cliente_model->cargarTodos($idEmpresa);
+        $data['lista'] = $lista;
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
-        $this->load->view('clientes/clientes_lista');
+        $this->load->view('clientes/clientes_lista', $data);
         $this->load->view('layout/default/footer');
     }
 
@@ -45,14 +50,12 @@ class Clientes extends CI_Controller
                 'idEmpresa' => $idEmpresa, 
                 'juridico' => $juridico,
                 'identificacion' => $this->input->post('clientejuridico_id'),
-                 //'nombre' => 'mecdds',
                 // 'primerApellido' => null,
                 // 'segundoApellido' => null,
-                'nombreRazonSocial' => $this->input->post('clientejuridico_nombre'),
+                'nombre' => $this->input->post('clientejuridico_nombre'),
                 'nombreFantasia' => $this->input->post('clientejuridico_nombreFantasia'),
                 // 'telefonoMovil' => null,
-                // 'telefonoFijo' => null,
-                'telefono' => $this->input->post('clientejuridico_telefono'),
+                'telefonoFijo' =>$this->input->post('clientejuridico_telefono'),
                 'estadoProvincia' => $this->input->post('cliente_direccionProvincia'),
                 'ciudadCanton' => $this->input->post('cliente_direccionCanton'),
                 'domicilio' => $this->input->post('cliente_direccionDomicilio'),
@@ -76,11 +79,9 @@ class Clientes extends CI_Controller
                 'nombre' => $this->input->post('cliente_nombre'),
                 'primerApellido' => $this->input->post('cliente_apellido1'),
                 'segundoApellido' => $this->input->post('cliente_apellido2'),
-                // 'nombreRazonSocial' => null,
                 // 'nombreFantasia' => null,
                 'telefonoMovil' => $this->input->post('cliente_telefonoMovil'),
                 'telefonoFijo' => $this->input->post('cliente_telefono'),
-                // 'telefono' => null,
                 'estadoProvincia' => $this->input->post('cliente_direccionProvincia'),
                 'ciudadCanton' => $this->input->post('cliente_direccionCanton'),
                 'domicilio' => $this->input->post('cliente_direccionDomicilio'),

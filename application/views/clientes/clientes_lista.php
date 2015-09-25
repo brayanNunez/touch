@@ -54,179 +54,85 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td style="text-align: center;">
-                                                                <input type="checkbox" class="filled-in checkbox"
-                                                                       id="checkbox_cliente1"/>
-                                                                <label for="checkbox_cliente1"></label>
-                                                            </td>
-                                                            <td>0001</td>
-                                                            <td>Jurídico</td>
-                                                            <td><a href="<?= base_url() ?>clientes/editar">Dos Pinos
-                                                                    S.A.</a></td>
-                                                            <td>2456-0708</td>
-                                                            <td>coopedospinos@gmail.com</td>
-                                                            <td><a href="<?= base_url() ?>usuarios/editar">Juan</a></td>
-                                                            <td>
-                                                                <ul id="dropdown-cliente1" class="dropdown-content">
-                                                                    <li>
-                                                                        <a href="<?= base_url(); ?>clientes/editar"
-                                                                           class="-text"><?= label('menuOpciones_ver') ?></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="<?= base_url(); ?>clientes/editar"
-                                                                           class="-text"><?= label('menuOpciones_editar') ?></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#eliminarCliente"
-                                                                           class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="<?= base_url(); ?>cotizacion/cotizar"
-                                                                           class="-text"><?= label('menuOpciones_cotizar') ?></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#desactivarCliente"
-                                                                           class="-text modal-trigger"><?= label('menuOpciones_desactivar') ?></a>
-                                                                    </li>
-                                                                </ul>
-                                                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                                   href="#" data-activates="dropdown-cliente1">
-                                                                    <?= label('menuOpciones_seleccionar') ?><i
-                                                                        class="mdi-navigation-arrow-drop-down"></i>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="text-align: center;">
-                                                                <input type="checkbox" class="filled-in checkbox"
-                                                                       id="checkbox_cliente2"/>
-                                                                <label for="checkbox_cliente2"></label>
-                                                            </td>
-                                                            <td>0002</td>
-                                                            <td>Físico</td>
-                                                            <td><a href="<?= base_url() ?>clientes/editar">Emanuel Conejo
-                                                                    R.</a></td>
-                                                            <td>2458-9632</td>
-                                                            <td>emanuel@gmail.com</td>
-                                                            <td><a href="<?= base_url() ?>usuarios/editar">Maria</a></td>
-                                                            <td>
-                                                                <ul id="dropdown-cliente2" class="dropdown-content">
-                                                                    <li>
-                                                                        <a href="<?= base_url(); ?>clientes/editar"
-                                                                           class="-text"><?= label('menuOpciones_ver') ?></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="<?= base_url(); ?>clientes/editar"
-                                                                           class="-text"><?= label('menuOpciones_editar') ?></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#eliminarCliente"
-                                                                           class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="<?= base_url(); ?>cotizacion/cotizar"
-                                                                           class="-text"><?= label('menuOpciones_cotizar') ?></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#desactivarCliente"
-                                                                           class="-text modal-trigger"><?= label('menuOpciones_desactivar') ?></a>
-                                                                    </li>
-                                                                </ul>
-                                                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                                   href="#!" data-activates="dropdown-cliente2">
-                                                                    <?= label('menuOpciones_seleccionar') ?><i
-                                                                        class="mdi-navigation-arrow-drop-down"></i>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="text-align: center;">
-                                                                <input type="checkbox" class="filled-in checkbox"
-                                                                       id="checkbox_cliente3"/>
-                                                                <label for="checkbox_cliente3"></label>
-                                                            </td>
-                                                            <td>0003</td>
-                                                            <td>Jurídico</td>
-                                                            <td><a href="<?= base_url() ?>clientes/editar">Pipasa S.A.</a>
-                                                            </td>
-                                                            <td>2478-4512</td>
-                                                            <td>pipasa@gmail.com</td>
-                                                            <td><a href="<?= base_url() ?>usuarios/editar">Maria</a></td>
-                                                            <td>
-                                                                <ul id="dropdown-cliente3" class="dropdown-content">
-                                                                    <li>
-                                                                        <a href="<?= base_url(); ?>clientes/editar"
-                                                                           class="-text"><?= label('menuOpciones_ver') ?></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="<?= base_url(); ?>clientes/editar"
-                                                                           class="-text"><?= label('menuOpciones_editar') ?></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#eliminarCliente"
-                                                                           class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="<?= base_url(); ?>cotizacion/cotizar"
-                                                                           class="-text"><?= label('menuOpciones_cotizar') ?></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#desactivarCliente"
-                                                                           class="-text modal-trigger"><?= label('menuOpciones_desactivar') ?></a>
-                                                                    </li>
-                                                                </ul>
-                                                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                                   href="#!" data-activates="dropdown-cliente3">
-                                                                    <?= label('menuOpciones_seleccionar') ?><i
-                                                                        class="mdi-navigation-arrow-drop-down"></i>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="text-align: center;">
-                                                                <input type="checkbox" class="filled-in checkbox"
-                                                                       id="checkbox_cliente4"/>
-                                                                <label for="checkbox_cliente4"></label>
-                                                            </td>
-                                                            <td>0004</td>
-                                                            <td>Físico</td>
-                                                            <td><a href="<?= base_url() ?>clientes/editar">Julia Bolaños
-                                                                    E.</a></td>
-                                                            <td>2448-4250</td>
-                                                            <td>julia@gmail.com</td>
-                                                            <td><a href="<?= base_url() ?>usuarios/editar">Juan</a></td>
-                                                            <td>
-                                                                <ul id="dropdown-cliente4" class="dropdown-content">
-                                                                    <li>
-                                                                        <a href="<?= base_url(); ?>clientes/editar"
-                                                                           class="-text"><?= label('menuOpciones_ver') ?></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="<?= base_url(); ?>clientes/editar"
-                                                                           class="-text"><?= label('menuOpciones_editar') ?></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#eliminarCliente"
-                                                                           class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="<?= base_url(); ?>cotizacion/cotizar"
-                                                                           class="-text"><?= label('menuOpciones_cotizar') ?></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#desactivarCliente"
-                                                                           class="-text modal-trigger"><?= label('menuOpciones_desactivar') ?></a>
-                                                                    </li>
-                                                                </ul>
-                                                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                                   href="#!" data-activates="dropdown-cliente4">
-                                                                    <?= label('menuOpciones_seleccionar') ?><i
-                                                                        class="mdi-navigation-arrow-drop-down"></i>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
+                                                     <?php
+                                                        if (isset($lista)) {
+                                                        
+                                                            if ($lista !== false) {
+                                                                 $contador = 0;
+                                                                    foreach ($lista as $fila) {
+                                                                        $idEncriptado = encryptIt($fila['idCliente']);
+                                                                        $juridico = $fila['juridico'];
+                                                                        ?>
+                                                     <tr id="fila<?= $contador ?>" data-idElemento="<?= $idEncriptado ?>">
+                                                        <td style="text-align: center;">
+                                                           <input type="checkbox" class="filled-in checkbox"
+                                                              id="<?=$idEncriptado?>"/>
+                                                           <label for="<?=$idEncriptado?>"></label>
+                                                        </td>
+                                                        <td><?= $fila['identificacion'] ?></td>
+                                                        <td><?= $juridico ?></td>
+
+                                                        <?php
+                                                        if (!$juridico) {
+                                                           ?>
+                                                        <td>
+                                                           <a href="<?= base_url() ?>clientes/editar/<?= $idEncriptado ?>"><?= $fila['nombre']." ".$fila['primerApellido']." ".$fila['segundoApellido'] ?></a>
+                                                        </td>
+
+                                                            <?php
+                                                        } else {
+                                                           ?>
+                                                        <td>
+                                                           <a href="<?= base_url() ?>clientes/editar/<?= $idEncriptado ?>"><?= $fila['nombre']?></a>
+                                                        </td>
+
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                        
+                                                        <td><?= $fila['telefonoFijo'] ?></td>
+                                                        <td><?= $fila['correo'] ?></td>
+                                                        <td>Hola</td>
+                                                        
+                                                        <td>
+                                                           <ul id="dropdown-cliente<?= $contador ?>"
+                                                              class="dropdown-content">
+                                                              <li>
+                                                                 <a href="<?= base_url(); ?>clientes/editar"
+                                                                    class="-text"><?= label('menuOpciones_ver') ?></a>
+                                                             </li>
+                                                              <li>
+                                                                 <a href="<?= base_url() ?>clientes/editar/<?= $idEncriptado ?>"
+                                                                    class="-text"><?= label('menuOpciones_editar') ?></a>
+                                                              </li>
+                                                              <li>
+                                                                 <a href="#eliminarCliente"
+                                                                    class="-text modal-trigger confirmarEliminar"
+                                                                    data-id-eliminar="<?= $idEncriptado ?>"  data-fila-eliminar="fila<?= $contador?>"><?= label('menuOpciones_eliminar') ?></a>
+                                                              </li>
+                                                              <li>
+                                                                 <a href="<?= base_url(); ?>cotizacion/cotizar"
+                                                                    class="-text"><?= label('menuOpciones_cotizar') ?></a>
+                                                             </li>
+                                                             <li>
+                                                                 <a href="#desactivarCliente"
+                                                                    class="-text modal-trigger"><?= label('menuOpciones_desactivar') ?></a>
+                                                             </li>
+                                                           </ul>
+                                                           <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
+                                                              href="#!"
+                                                              data-activates="dropdown-cliente<?= $contador++ ?>">
+                                                           <?= label('menuOpciones_seleccionar') ?><i
+                                                              class="mdi-navigation-arrow-drop-down"></i>
+                                                           </a>
+                                                        </td>
+                                                     </tr>
+                                                     <?php
+                                                        }
+                                                        } 
+                                                        }
+                                                        ?>
+                                                  </tbody>
                                                 </table>
 
                                                 <div class="tabla-conAgregar tabla-busqueda-reporte">
