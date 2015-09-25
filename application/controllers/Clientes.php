@@ -8,6 +8,7 @@ class Clientes extends CI_Controller
     {
         parent::__construct();
         $this->lang->load('content');
+        $this->load->model('Cliente_model');
     }
 
     public function index()
@@ -24,6 +25,34 @@ class Clientes extends CI_Controller
         $this->load->view('layout/default/left-sidebar');
         $this->load->view('clientes/clientes_crear');
         $this->load->view('layout/default/footer');
+    }
+
+        //Metodo llamado mediante ajax
+     public function insertar()
+    {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+        // $data['palabras'] = $this->input->post('empleado_palabras');
+        $data['datos'] = array(
+            'idEmpresa' => $idEmpresa, 
+            'juridico' => $this->input->post('cliente_tipo'),
+            'identificacion' => $this->input->post('cliente_id'),
+            'nombre' => $this->input->post('cliente_nombre'),
+            'primerApellido' => $this->input->post('cliente_apellido1'),
+            'segundoApellido' => $this->input->post('cliente_apellido2'),
+            'fechaNacimiento' => date("Y-m-d", strtotime($this->input->post('cliente_fechaNacimiento'))),
+            'correo' => $this->input->post('cliente_correo'),
+            'activo' => '1',
+            'eliminado' => '0'
+        );
+        if (!$this->Cliente_model->insertar($data)) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            // correcto
+            echo 1;
+        }
+        
     }
 
     public function editar()

@@ -9,7 +9,7 @@ class Empleados extends CI_Controller
         parent::__construct();
         $this->lang->load('content');
         $this->load->model('Empleado_model');
-        $this->load->library('simple_html_dom');
+        // $this->load->library('simple_html_dom');
     }
 
     public function index()
@@ -36,9 +36,11 @@ class Empleados extends CI_Controller
     //Metodo llamado mediante ajax
      public function insertar()
     {
+        $sessionActual = $instancia->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
         $data['palabras'] = $this->input->post('empleado_palabras');
         $data['datos'] = array(
-            'idEmpresa' => '1', //Obtener de la variable de sesión
+            'idEmpresa' => $idEmpresa, 
             'codigo' => $this->input->post('empleado_codigo'),
             'identificacion' => $this->input->post('empleado_id'),
             'nombre' => $this->input->post('empleado_nombre'),
