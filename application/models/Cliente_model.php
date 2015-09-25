@@ -61,16 +61,16 @@ class Cliente_model extends CI_Model
     {
         try {
             $this->db->trans_begin();
-            $query = $this->db->get_where('empleado', array('idEmpleado' => $id,  'eliminado' => 0));
+            $query = $this->db->get_where('cliente', array('idCliente' => $id,  'eliminado' => 0));
             if (!$query) throw new Exception("Error en la BD");   
             $row = array();
             if ($query->num_rows() > 0) {
                 $array = $query->result_array();
                 $row = array_shift($array);//obtiene el primer elemento.. el [0] no sirve en el server
-                $this->db->select('descripcion');
-                $palabras = $this->db->get_where('palabraClaveEmpleado', array('idEmpleado' => $id));
-                if (!$palabras) throw new Exception("Error en la BD");   
-                $row['palabras'] = $palabras->result_array();
+                // $this->db->select('descripcion');
+                // $palabras = $this->db->get_where('palabraClaveEmpleado', array('idEmpleado' => $id));
+                // if (!$palabras) throw new Exception("Error en la BD");   
+                // $row['palabras'] = $palabras->result_array();
             }
             // print_r ($row);exit();
              $this->db->trans_commit();

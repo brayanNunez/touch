@@ -127,7 +127,7 @@ class Clientes extends CI_Controller
         
     }
 
-    public function editar()
+    public function editar($id)
     {
         $data['archivos'] = array();
         $data['archivos'][] = array('file_name' => 'archivo1', 'file_ext' => '.png', 'file_date' => '2015/08/04',
@@ -143,11 +143,21 @@ class Clientes extends CI_Controller
         $data['archivos'][] = array('file_name' => 'archivo6', 'file_ext' => '.pdf', 'file_date' => '2015/08/04',
             'file_description' => 'Contrato por tiempo determinado', 'file_size' => '48 KB');
 
-        $this->load->view('layout/default/header');
-        $this->load->view('layout/default/left-sidebar');
-        $this->load->view('clientes/cliente_info', $data);
-        $this->load->view('layout/default/footer');
+        
+
+        $resultado = $this->Cliente_model->cargar(decryptIt($id)); 
+        if ($resultado === false || $resultado === array()) {
+            echo "Error en la transacción";
+        } else {
+                $data['resultado'] = $resultado;
+                $this->load->view('layout/default/header');
+                $this->load->view('layout/default/left-sidebar');
+                $this->load->view('clientes/cliente_info', $data);
+                $this->load->view('layout/default/footer');
+        }
     }
+
+
 
     public function reporte()
     {
