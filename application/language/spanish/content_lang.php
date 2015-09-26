@@ -56,7 +56,10 @@
     $lang['empleadoEditadoCorrectamente'] = 'El empleado ha sido editado correctamente.';
     $lang['empleadoIdentificacionExistente'] = 'La identificación indicada ya existe.';
 
-    
+    $lang['usuarioGuardadoCorrectamente'] = 'El usuario ha sido creado correctamente.';
+    $lang['usuarioErrorTamanoArchivo'] = 'El tamaño del archivo es superior a lo permitido.';
+    $lang['usuarioErrorTipoArchivo'] = 'El tipo de archivo seleccionado no es permitido.';
+
     $lang['errorGuardar'] = 'Ha ocurrido un error al intentar guardar los datos.';
     $lang['errorLeerDatos'] = 'Ha ocurrido un error al intentar leer los datos.';
     $lang['errorEliminar'] = 'Ha ocurrido un error al intentar eliminar los datos.';

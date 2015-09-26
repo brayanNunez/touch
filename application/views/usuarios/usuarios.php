@@ -21,7 +21,10 @@
                     <div id="submit-button" class="section">
                         <div class="row">
                             <div class="col s12">
-                                <form id="form_usuario" class="col s12" action="<?= base_url() ?>usuarios/insertar" method="POST" >
+<!--                                <form id="form_usuario" class="col s12" action="--><?//= base_url() ?><!--usuarios/insertar" method="POST" >-->
+                                <?php $this->load->helper('form'); ?>
+                                <?php echo form_open_multipart(base_url().'usuarios/insertar',
+                                    array('id' => 'form_usuario', 'method' => 'POST', 'class' => 'col s12')); ?>
                                     <div class="row">
                                         <div>
                                             <div class="input-field col s12 m4 l4">
@@ -126,32 +129,30 @@
                                         </div>
 
                                         <div class="col s12">
-                                            <div class="file-field col s12 m7 l9">
-                                                <br/>
-                                                <label
-                                                    for="usuario_fotografia"><?= label('formUsuario_fotografia'); ?></label>
+                                            <div class="file-field col s12 m7 l9" style="margin-top:45px;">
+                                                <label for="usuario_fotografia"><?= label('formUsuario_fotografia'); ?></label>
 
                                                 <div class="file-field input-field col s12">
-                                                    <input class="file-path validate" type="text" name="usuario_fotografia">
+                                                    <input class="file-path" type="text" readonly/>
 
-                                                    <div class="btn" data-toggle="tooltip"
-                                                         title="<?= label('tooltip_examinar') ?>">
+                                                    <div class="btn" data-toggle="tooltip" title="<?= label('tooltip_examinar') ?>">
                                                         <span><i class="mdi-action-search"></i></span>
-                                                        <input type="file"/>
+                                                        <input style="padding-right: 800px;" id="userfile" type="file" name="userfile"
+                                                            accept="image/jpeg,image/png"/>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col s12 m5 l3">
                                                 <figure>
-                                                    <img style="width: 100%;" src="<?= base_url(); ?>files/usuario.jpg">
+                                                    <img id="imagen_seleccionada" style="width: 100%;border: 1px solid black;"
+                                                         src="<?= base_url(); ?>files/default-user-image.png">
                                                 </figure>
                                             </div>
                                         </div>
 
-
                                         <div class="input-field col s12 envio-formulario">
                                             <button class="btn waves-effect waves-light right" type="submit"
-                                                    name="action"><?= label('formUsuario_enviar'); ?>
+                                                    name="upload"><?= label('formUsuario_enviar'); ?>
                                             </button>
                                         </div>
                                     </div>
@@ -178,7 +179,41 @@
 <!-- END CONTENT-->
 
 <script>
-    function validacionCorrecta(){
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imagen_seleccionada').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#userfile").change(function(){
+        var file = this.files[0];
+        var name = file.name;
+        var size = file.size;
+        var type = file.type;
+        if(size > 2097150) { //2097152
+            alert("<?= label('usuarioErrorTamanoArchivo') ?>");
+            document.getElementById('userfile').value = '';
+        }
+        var valid_ext = ['image/png','image/jpg','image/jpeg'];
+        if(valid_ext.indexOf(type)==-1) {
+            alert("<?= label('usuarioErrorTipoArchivo') ?>");
+            document.getElementById('userfile').value = '';
+        }
+        if(document.getElementById('userfile').value == ''){
+            $('#imagen_seleccionada').attr('src', '<?= base_url(); ?>files/default-user-image.png');
+        } else {
+            readURL(this);
+        }
+    });
+</script>
+
+<script>
+    function validacionCorrecta_Usuarios(){
         $.ajax({
             data: {usuario_correo :  $('#usuario_correo').val()},
             url:   '<?=base_url()?>usuarios/existeCorreo',
@@ -193,20 +228,26 @@
                         $('#usuario_correo').focus();
                         break;
                     case '2':
-                        var url = $('form').attr('action');
-                        var method = $('form').attr('method');
+                        var formulario = $('#form_usuario');
+                        var formData = new FormData(formulario[0]);
+                        var url = formulario.attr('action');
+                        var method = formulario.attr('method');
                         $.ajax({
                             type: method,
                             url: url,
-                            data: $('form').serialize(),
+                            data: formData,
                             success: function(response) {
                                 if (response == 0) {
                                     $('#linkModalError').click();
                                 } else {
                                     $('#linkModalGuardado').click();
                                     $('form')[0].reset();
+                                    $('#imagen_seleccionada').attr('src', '<?= base_url(); ?>files/default-user-image.png');
                                 }
-                            }
+                            },
+                            cache: false,
+                            contentType: false,
+                            processData: false
                         });
                         break;
                 }
@@ -222,7 +263,7 @@
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <p><?= label('empleadoGuardadoCorrectamente'); ?></p>
+        <p><?= label('usuarioGuardadoCorrectamente'); ?></p>
     </div>
     <div class="modal-footer">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>

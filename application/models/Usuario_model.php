@@ -13,7 +13,7 @@ class Usuario_model extends CI_Model
     function existeCorreo($data) {
         try {
             $this->db->trans_begin();
-            $query = $this->db->get_where('usuario', array('correo' => $data['correo'],  'eliminado' => 0, 'idEmpresa' => $data['idEmpresa']));
+            $query = $this->db->get_where('usuario', array('correo' => $data['correo'],  'eliminado' => 0));
             if (!$query) {
                 throw new Exception("Error en la BD");
             }
@@ -56,7 +56,11 @@ class Usuario_model extends CI_Model
                 $idRol++;
             }
             $this->db->trans_commit();
-            return true;
+            $path = 'files/'.$data['datos']['idEmpresa'].'/'.$insert_id;
+            if(!is_dir($path)){
+                mkdir($path);
+            }
+            return $insert_id;
         } catch (Exception $e) {
             $this->db->trans_rollback();
             return false;

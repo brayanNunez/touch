@@ -39,7 +39,7 @@ class Usuarios extends CI_Controller
             'nombre' => $this->input->post('usuario_nombre'),
             'correo' => $this->input->post('usuario_correo'),
             'contrasena' => $this->input->post('usuario_contrasena'),
-            'fotografia' => $this->input->post('usuario_fotografia'),
+//            'fotografia' => $this->input->post('usuario_fotografia'),
             'eliminado' => '0'
         );
         $data['roles'] = array(
@@ -48,7 +48,9 @@ class Usuarios extends CI_Controller
             'rolCotizador' => $this->input->post('usuario_rolCotizador'),
             'rolContador' => $this->input->post('usuario_rolContador')
         );
-        if (!$this->Usuario_model->insertarUsuario($data)) {
+
+        $usuario = $this->Usuario_model->insertarUsuario($data);
+        if (!$usuario) {
             //Error en la transacción
             echo 0;
         } else {
@@ -56,6 +58,18 @@ class Usuarios extends CI_Controller
             echo 1;
         }
 
+        $config['upload_path'] = './files/'.$data['datos']['idEmpresa'].'/'.$usuario;
+        $config['file_name'] = 'profile_picture_'.$usuario;
+        $config['allowed_types'] = 'jpg|png|jpeg';
+        $config['max_size'] = '2048';
+
+        $this->load->library('upload', $config);
+        if(!$this->upload->do_upload()) {
+//            echo $this->upload->display_errors();
+        } else {
+            $archivo = $this->upload->data();
+//            $data['datos']['fotografia'] = $archivo['raw_name'] . $archivo['file_ext'];
+        }
     }
 
     public function editar($id)
