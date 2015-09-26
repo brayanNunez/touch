@@ -13,19 +13,51 @@
                 </div>
             </div>
             <div class="col s12 m8 l5">
-                <h4>Cooperativa Dos Pinos R.L.</h4>
-                <p><span class="informacion-cliente"><?= label('formCliente_identificacion'); ?></span>. 2-723-327</p>
+
+
+                <?php
+                if (isset($resultado)) {
+                $juridico = $resultado['juridico'];
+                if (!$juridico) {
+                   ?>
+                   <h4><?= $resultado['nombre']." ".$resultado['primerApellido']." ".$resultado['segundoApellido']; ?></h4>
+
+                   <p><span class="informacion-cliente"><?= label('formCliente_identificacion'); ?>: </span><?=$resultado['identificacion']?></p>
+                   <p><span class="informacion-cliente"><?= label('formCliente_nacionalidad'); ?>: </span> Costa Rica</p>
+                   <p><span class="informacion-cliente"><?= label('formCliente_fechaNacimiento'); ?>: </span><?=date("d-m-Y", strtotime($resultado['fechaNacimiento']))?></p>
+                   <p><span class="informacion-cliente"><?= label('formCliente_telefonoMovil'); ?>: </span><?=$resultado['telefonoMovil']?></p>
+                   <p><span class="informacion-cliente"><?= label('formCliente_telefonoFijo'); ?>: </span><?=$resultado['telefonoFijo']?></p>
+                   <p><span class="informacion-cliente"><?= label('formCliente_correo'); ?>: </span><?=$resultado['correo']?></p>
+                    <?php
+                } else {
+                   ?>
+                   <h4><?=$resultado['nombre']?></h4>
+                   <p><span class="informacion-cliente"><?= label('formCliente_identificacion'); ?>: </span><?=$resultado['identificacion']?></p>
+                   <p><span class="informacion-cliente"><?= label('formCliente_nacionalidad'); ?>: </span> Costa Rica</p>
+                   <p><span class="informacion-cliente"><?= label('formCliente_telefono'); ?>: </span><?=$resultado['telefonoFijo']?></p>
+                   <p><span class="informacion-cliente"><?= label('formCliente_correo'); ?>: </span><?=$resultado['correo']?></p>
+                   <p><span class="informacion-cliente"><?= label('formCliente_fax'); ?>: </span><?=$resultado['fax']?></p>
+                    <?php
+                }
+                ?>
+
+            </div>
+                <div class="col s12 m4 l4">
+                    <h5><?= label('cliente_direccion'); ?></h5>
+                    <p>Costa Rica, <?=$resultado['estadoProvincia']?></p>
+                    <p><?=$resultado['ciudadCanton']?>, <?=$resultado['domicilio']?></p>
+                </div>
+
+                <?php
+                }
+                ?>
+                <!-- <p><span class="informacion-cliente"><?= label('formCliente_identificacion'); ?></span>. 2-723-327</p>
                 <p><span class="informacion-cliente"><?= label('formCliente_nacionalidad'); ?></span>: Costa Rica</p>
                 <p><span class="informacion-cliente"><?= label('formCliente_fechaNacimiento'); ?></span>: 10-03-1994</p>
                 <p><span class="informacion-cliente"><?= label('formCliente_telefonoMovil'); ?></span>: 8956-9865</p>
                 <p><span class="informacion-cliente"><?= label('formCliente_telefonoFijo'); ?></span>: 2448-5623</p>
-                <p><span class="informacion-cliente"><?= label('formCliente_correo'); ?></span>: dospinos@gmail.com</p>
-            </div>
-            <div class="col s12 m4 l4">
-                <h5><?= label('cliente_direccion'); ?></h5>
-                <p>Costa Rica, Alajuela</p>
-                <p>Grecia, Tacares, 50 mts norte de la iglesia de la localidad</p>
-            </div>
+                <p><span class="informacion-cliente"><?= label('formCliente_correo'); ?></span>: dospinos@gmail.com</p> -->
+            
         </div>
 
         <div class="col s12" style="margin-top: 20px;">

@@ -37,7 +37,7 @@ class Empleados extends CI_Controller
     //Metodo llamado mediante ajax
      public function insertar()
     {
-        $sessionActual = $instancia->session->userdata('logged_in');
+        $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
         $data['palabras'] = $this->input->post('empleado_palabras');
         $data['datos'] = array(

@@ -338,7 +338,7 @@
        {
            // var mywindow = window.open('', 'my div', 'height=400,width=600');
            var mywindow = window.open('', 'my div', '');
-           mywindow.document.write('<html><head><title>Empleados</title>');
+           mywindow.document.write('<html><head><title><?= label('tituloEmpleados'); ?></title>');
           // mywindow.document.write('<link media="print,screen" href="<?= base_url() ?>assets/dashboard/css/estiloTablasDescarga.css" rel="stylesheet" type="text/css" >');
            mywindow.document.write('</head><body>');
            mywindow.document.write(data);
@@ -358,7 +358,7 @@
        });
        
        $('#opciones-seleccionados-PDF').on("click", function(){
-           var informacionSistema = '<div id="informacionSistema"><div id="linkPagina"><a href="<?=base_url()?>">touchcr.com</a></div><span class="numeracion"></span></div>';
+           var informacionSistema = '<div id="informacionSistema"><div id="linkPagina"><a href="<?=base_url()?>"><?= label('link_paginaInicial'); ?></a></div><span class="numeracion"></span></div>';
            var encabezado = '<div id="encabezado"><?= label('tituloEmpleados'); ?></div>';
            var body = encabezado + informacionSistema;
            body += htmlTabla('empleados-tabla-lista', false);
@@ -472,7 +472,7 @@
       <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
    </div>
    <div class="modal-content">
-      <p><?= label('clientes_archivosSeleccionadosEliminar'); ?></p>
+      <p><?= label('eliminarSeleccionados'); ?></p>
    </div>
    <div class="modal-footer black-text">
       <div id="botonEliminar" class="modal-footer black-text" title="empleados-tabla-lista">
