@@ -52,6 +52,8 @@
     $lang['confirmarActivarProductoServicio'] = '¿Realmente desea activar el elemento seleccionado?';
     $lang['confirmarDesactivarProductoServicio'] = '¿Realmente desea desactivar el elemento seleccionado?';
 
+    $lang['confirmarCambiarPrincipal'] = '¿Realmente desea cambiar el contacto principal?';
+
     $lang['empleadoGuardadoCorrectamente'] = 'El empleado ha sido creado correctamente.';
     $lang['empleadoEditadoCorrectamente'] = 'El empleado ha sido editado correctamente.';
     $lang['empleadoIdentificacionExistente'] = 'La identificación indicada ya existe.';
@@ -448,6 +450,7 @@ $lang['formCliente_contactoSecundario'] = 'Cambiar a contacto principal';
     $lang['formEmpleado_palabraNombre'] = 'Ocupación';
     $lang['formEmpleado_salarioTipo'] = 'Tipo';
     $lang['formEmpleado_salarioMonto'] = 'Monto';
+    $lang['formEmpleado_salariosPorDefecto'] = 'Por defecto';
     $lang['formEmpleado_anadirPalabraClave'] = 'Añadir palabra';
    
 

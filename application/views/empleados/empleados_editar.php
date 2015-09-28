@@ -122,6 +122,7 @@
                                                     </th>
                                                     <th><?= label('formEmpleado_salariosTipo'); ?></th>
                                                     <th><?= label('formEmpleado_salariosMonto'); ?></th>
+                                                    <th><?= label('formEmpleado_salariosPorDefecto'); ?></th>
                                                     <th><?= label('formEmpleado_salariosOpciones'); ?></th>
                                                 </tr>
                                                 </thead>
@@ -134,6 +135,10 @@
                                                     </td>
                                                     <td>Por hora</td>
                                                     <td>$10</td>
+                                                    <td>
+                                                        <input type="radio" name="radioPorDefectoEmpleado" id="radio_pago1" checked="checked"/>
+                                                        <label for="radio_pago1"></label>
+                                                    </td>
                                                     <td>
                                                         <ul id="dropdown-empleado1-salario1" class="dropdown-content">
                                                             <li>
@@ -161,6 +166,10 @@
                                                     <td>Por día</td>
                                                     <td>$80</td>
                                                     <td>
+                                                        <input type="radio" name="radioPorDefectoEmpleado" id="radio_pago2"/>
+                                                        <label for="radio_pago2"></label>
+                                                    </td>
+                                                    <td>
                                                         <ul id="dropdown-empleado1-salario1" class="dropdown-content">
                                                             <li>
                                                                 <a href="#editarSalario"
@@ -186,6 +195,10 @@
                                                     </td>
                                                     <td>Mensual</td>
                                                     <td>$1400</td>
+                                                    <td>
+                                                        <input type="radio" name="radioPorDefectoEmpleado" id="radio_pago3"/>
+                                                        <label for="radio_pago3"></label>
+                                                    </td>
                                                     <td>
                                                         <ul id="dropdown-empleado1-salario1" class="dropdown-content">
                                                             <li>
