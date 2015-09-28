@@ -94,30 +94,6 @@ class Clientes extends CI_Controller
                 'eliminado' => '0'
             );
         }
-        
-        
-        // $data['datos'] = array(
-        //     'idEmpresa' => $idEmpresa, 
-        //     'juridico' => $this->input->post('cliente_tipo'),
-        //     'identificacion' => $this->input->post('cliente_id'),
-        //     'nombre' => $this->input->post('cliente_nombre'),
-        //     'primerApellido' => $this->input->post('cliente_apellido1'),
-        //     'segundoApellido' => $this->input->post('cliente_apellido2'),
-        //     'nombreRazonSocial' => $this->input->post('clientejuridico_nombre'),
-        //     'nombreFantasia' => $this->input->post('clientejuridico_nombreFantasia'),
-        //     'telefonoMovil' => $this->input->post('cliente_telefonoMovil'),
-        //     'telefonoFijo' => $this->input->post('cliente_telefono'),
-        //     'estadoProvincia' => $this->input->post('cliente_direccionProvincia'),
-        //     'ciudadCanton' => $this->input->post('cliente_direccionCanton'),
-        //     'domicilio' => $this->input->post('cliente_direccionDomicilio'),
-        //     'enviarFacturas' => $enviarFacturas,  
-        //     'descuentoFijo' => $this->input->post('cliente_descuento'),  
-        //     'nombre' => $this->input->post('cliente_nombre'),
-        //     'fechaNacimiento' => date("Y-m-d", strtotime($this->input->post('cliente_fechaNacimiento'))),
-        //     'correo' => $this->input->post('cliente_correo'),
-        //     'activo' => '1',
-        //     'eliminado' => '0'
-        // );
         if (!$this->Cliente_model->insertar($data)) {
             //Error en la transacción
             echo 0;
