@@ -58,4 +58,17 @@
                 }
             });
 
+            $('#usuario-cambio-contrasena').validate({
+                rules:
+                {
+                    usuario_contrasena_actual: { required: true},
+                    usuario_contrasena_nueva: { required: true},
+                    usuario_contrasena_confirmar: { required:true, equalTo:"#usuario_contrasena_nueva"}
+                },
+                errorElement: 'div',
+                submitHandler: function(form) {
+                    validacionCorrecta_Contrasena();
+                }
+            });
+
     });

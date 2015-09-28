@@ -32,6 +32,8 @@ class Usuarios extends CI_Controller
 
     public function insertar()
     {
+        $photo = explode('.',$this->input->post('usuario_fotografia'));
+        $ext = end($photo);
         $data['datos'] = array(
             'idEmpresa' => '1', //Obtener de la variable de sesión
             'primerApellido' => $this->input->post('usuario_primeroApellido'),
@@ -39,7 +41,7 @@ class Usuarios extends CI_Controller
             'nombre' => $this->input->post('usuario_nombre'),
             'correo' => $this->input->post('usuario_correo'),
             'contrasena' => $this->input->post('usuario_contrasena'),
-//            'fotografia' => $this->input->post('usuario_fotografia'),
+            'fotografia' => $ext,
             'eliminado' => '0'
         );
         $data['roles'] = array(

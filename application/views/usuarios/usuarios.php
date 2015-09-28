@@ -133,7 +133,7 @@
                                                 <label for="usuario_fotografia"><?= label('formUsuario_fotografia'); ?></label>
 
                                                 <div class="file-field input-field col s12">
-                                                    <input class="file-path" type="text" readonly/>
+                                                    <input name="usuario_fotografia" class="file-path" type="text" readonly/>
 
                                                     <div class="btn" data-toggle="tooltip" title="<?= label('tooltip_examinar') ?>">
                                                         <span><i class="mdi-action-search"></i></span>
@@ -195,6 +195,8 @@
         var name = file.name;
         var size = file.size;
         var type = file.type;
+        var t = type.split('/');
+        var ext = t.slice(1, 2);
         if(size > 2097150) { //2097152
             alert("<?= label('usuarioErrorTamanoArchivo') ?>");
             document.getElementById('userfile').value = '';
@@ -207,6 +209,7 @@
         if(document.getElementById('userfile').value == ''){
             $('#imagen_seleccionada').attr('src', '<?= base_url(); ?>files/default-user-image.png');
         } else {
+            $('#usuario_fotografia').attr('value', ext);
             readURL(this);
         }
     });
