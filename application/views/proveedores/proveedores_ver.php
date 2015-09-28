@@ -266,20 +266,24 @@
                             <tr>
                                 <th style="width: 30%;"><?= label('formProveedor_salariosTipo'); ?></th>
                                 <th><?= label('formProveedor_salariosMonto'); ?></th>
+                                <th><?= label('formProveedor_salariosPorDefecto'); ?></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>Por hora</td>
                                 <td>$10</td>
+                                <td><i class="mdi-action-done"></i></td>
                             </tr>
                             <tr>
                                 <td>Diario</td>
                                 <td>$80</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>Mensual</td>
                                 <td>$1400</td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>

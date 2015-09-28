@@ -514,6 +514,7 @@
                                 </th>
                                 <th><?= label('formProveedor_salariosTipo'); ?></th>
                                 <th><?= label('formProveedor_salariosMonto'); ?></th>
+                                <th><?= label('formProveedor_salariosPorDefecto'); ?></th>
                                 <th><?= label('formProveedor_salariosOpciones'); ?></th>
                             </tr>
                         </thead>
@@ -526,6 +527,10 @@
                                 </td>
                                 <td>Por hora</td>
                                 <td>$10</td>
+                                <td>
+                                    <input type="radio" name="radioPorDefecto" id="radio_pago1" checked="checked"/>
+                                    <label for="radio_pago1"></label>
+                                </td>
                                 <td>
                                     <ul id="dropdown-proveedor1-salario1" class="dropdown-content">
                                         <li>
@@ -553,6 +558,10 @@
                                 <td>Diario</td>
                                 <td>$80</td>
                                 <td>
+                                    <input type="radio" name="radioPorDefecto" id="radio_pago2"/>
+                                    <label for="radio_pago2"></label>
+                                </td>
+                                <td>
                                     <ul id="dropdown-proveedor1-salario2" class="dropdown-content">
                                         <li>
                                             <a href="#editarSalario"
@@ -578,6 +587,10 @@
                                 </td>
                                 <td>Mensual</td>
                                 <td>$1400</td>
+                                <td>
+                                    <input type="radio" name="radioPorDefecto" id="radio_pago3"/>
+                                    <label for="radio_pago3"></label>
+                                </td>
                                 <td>
                                     <ul id="dropdown-proveedor1-salario3" class="dropdown-content">
                                         <li>

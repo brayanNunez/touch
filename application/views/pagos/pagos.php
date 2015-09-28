@@ -74,6 +74,23 @@
                                         <tr>
                                             <td>18/06/2015</td>
                                             <td>$20</td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>18/06/2015</td>
+                                            <td>$20</td>
+                                        </tr>
+                                        <tr>
+                                            <td>18/06/2015</td>
+                                            <td>$20</td>
+                                        </tr>
+                                        <tr>
+                                            <td>18/06/2015</td>
+                                            <td>$20</td>
+                                        </tr>
+                                        <tr>
+                                            <td>18/06/2015</td>
+                                            <td>$20</td>
                                         </tr>
                                         <tr>
                                             <td>18/06/2015</td>
@@ -89,7 +106,7 @@
                                         <div class="row">
                                             <div class="col s12 m12 l12">
                                                 <h5><?= label('lista_pagos_recientes'); ?></h5>
-                                                <table id="data-table-simple" class="responsive-table display"
+                                                <table id="data-table-simple tabla-pagos" class="responsive-table display"
                                                        cellspacing="0">
                                                     <thead>
                                                     <tr>
@@ -147,6 +164,15 @@
 
 </section>
 <!-- END CONTENT-->
+
+<script>
+$(document).ready(function () {
+        $(".checkbox").click(function(event) {
+            $(".checkbox:checkbox:checked").removeAttr("checked");
+            $(this).prop("checked", true);
+        });
+    });
+</script>
 
 <!-- lista modals -->
 

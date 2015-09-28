@@ -95,7 +95,7 @@
                                                                href="#!" data-activates="dropdown-gasto2">
                                                                 <?= label('menuOpciones_seleccionar') ?><i
                                                                     class="mdi-navigation-arrow-drop-down"></i>
-                                                            </a>
+                                                              </a>
                                                         </td>
                                                     </tr>
                                                     <tr>

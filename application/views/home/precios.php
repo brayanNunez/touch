@@ -15,7 +15,7 @@
                     <span class="price"><?= label('montoPlan1'); ?></span>
 
                     <p class="lead"><?= label('tiempoPlan1'); ?></p>
-                    <a class="btn btn-filled btn-lg" href="#"><?= label('iniciar'); ?></a>
+                    <a class="btn btn-filled btn-lg" href="<?= base_url() ?>welcome/registro"><?= label('iniciar'); ?></a>
                 </div>
 
             </div>
@@ -25,7 +25,7 @@
                     <span class="price"><?= label('montoPlan2'); ?></span>
 
                     <p class="lead"><?= label('tiempoPlan2'); ?></p>
-                    <a class="btn btn-filled btn-lg" href="#"><?= label('iniciar'); ?></a>
+                    <a class="btn btn-filled btn-lg" href="<?= base_url() ?>welcome/registro"><?= label('iniciar'); ?></a>
                 </div>
 
             </div>
@@ -35,7 +35,7 @@
                     <span class="price"><?= label('montoPlan3'); ?></span>
 
                     <p class="lead"><?= label('tiempoPlan3'); ?></p>
-                    <a class="btn btn-white btn-lg" href="#"><?= label('iniciar'); ?></a>
+                    <a class="btn btn-white btn-lg" href="<?= base_url() ?>welcome/registro"><?= label('iniciar'); ?></a>
                 </div>
             </div>
         </div>

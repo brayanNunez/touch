@@ -504,6 +504,7 @@ $lang['formProveedor_infoCotizacion'] = 'Información de cotización';
     $lang['formProveedor_agregar'] = 'Agregar';
     $lang['formProveedor_salariosTipo'] = 'Tipo';
     $lang['formProveedor_salariosMonto'] = 'Monto';
+    $lang['formProveedor_salariosPorDefecto'] = 'Por defecto';
     $lang['formProveedor_salariosOpciones'] = 'Opciones';
     $lang['formProveedor_enviar'] = 'Agregar proveedor';
     $lang['formProveedor_editar'] = 'Guardar cambios';

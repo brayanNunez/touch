@@ -85,7 +85,7 @@
                     <span class="price"><?= label('montoPlan1'); ?></span>
 
                     <p class="lead"><?= label('tiempoPlan1'); ?></p>
-                    <a class="btn btn-filled btn-lg boton-normal" href="#"><?= label('iniciar'); ?></a>
+                    <a class="btn btn-filled btn-lg boton-normal" href="<?= base_url() ?>welcome/registro"><?= label('iniciar'); ?></a>
                     <ul>
                         <li>Clientes</li>
                         <li>Cotizaciones</li>
@@ -105,7 +105,7 @@
                     <span class="price"><?= label('montoPlan2'); ?></span>
 
                     <p class="lead"><?= label('tiempoPlan2'); ?></p>
-                    <a class="btn btn-filled btn-lg boton-normal" href="#"><?= label('iniciar'); ?></a>
+                    <a class="btn btn-filled btn-lg boton-normal" href="<?= base_url() ?>welcome/registro"><?= label('iniciar'); ?></a>
                     <ul>
                         <li>Clientes</li>
                         <li>Cotizaciones</li>
@@ -125,7 +125,7 @@
                     <span class="price"><?= label('montoPlan3'); ?></span>
 
                     <p class="lead"><?= label('tiempoPlan3'); ?></p>
-                    <a class="btn btn-white btn-lg boton-normal" href="#"
+                    <a class="btn btn-white btn-lg boton-normal" href="<?= base_url() ?>welcome/registro"
                        style="border: 2px solid white"><?= label('iniciar'); ?></a>
                     <ul>
                         <li><b>Clientes</b></li>
