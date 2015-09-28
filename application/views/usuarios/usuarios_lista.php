@@ -29,140 +29,69 @@
                                                     <a href="<?= base_url() ?>usuarios/agregar"
                                                        class="btn btn-default"><?= label('Usuario_nuevo'); ?></a>
                                                 </div>
-                                                <table id="usuarios-tabla-lista"
-                                                       class="data-table-information responsive-table display"
-                                                       cellspacing="0">
+
+                                                <table id="usuarios-tabla-lista" class="data-table-information responsive-table display" cellspacing="0">
                                                     <thead>
-                                                    <tr>
-                                                        <th style="text-align: center;">
-                                                            <input class="filled-in checkbox checkall" type="checkbox"
-                                                                   id="checkbox-all"
-                                                                   onclick="toggleChecked(this.checked)"/>
-                                                            <label for="checkbox-all"></label>
-                                                        </th>
-                                                        <th><?= label('Usuario_tablaIdentificacion'); ?></th>
-                                                        <th><?= label('Usuario_tablaNombre'); ?></th>
-                                                        <th><?= label('Usuario_tablaCorreo'); ?></th>
-                                                        <th><?= label('Usuario_tablaOpciones'); ?></th>
-                                                    </tr>
+                                                        <tr>
+                                                            <th style="text-align: center;">
+                                                                <input class="filled-in checkbox checkall" type="checkbox"
+                                                                       id="checkbox-all"
+                                                                       onclick="toggleChecked(this.checked)"/>
+                                                                <label for="checkbox-all"></label>
+                                                            </th>
+<!--                                                            <th>--><?//= label('Usuario_tablaIdentificacion'); ?><!--</th>-->
+                                                            <th><?= label('Usuario_tablaNombre'); ?></th>
+                                                            <th><?= label('Usuario_tablaCorreo'); ?></th>
+                                                            <th><?= label('Usuario_tablaOpciones'); ?></th>
+                                                        </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <tr>
-                                                        <td style="text-align: center;">
-                                                            <input type="checkbox" class="filled-in checkbox"
-                                                                   id="checkbox_usuario1"/>
-                                                            <label for="checkbox_usuario1"></label>
-                                                        </td>
-                                                        <td>2-123-456</td>
-                                                        <td><a href="<?= base_url() ?>usuarios/editar">Juan</a></td>
-                                                        <td>
-                                                            <a href="<?= base_url() ?>usuarios/editar">juan@gmail.com</a>
-                                                        </td>
-                                                        <td>
-                                                            <ul id="dropdown-usuario1" class="dropdown-content">
-                                                                <li>
-                                                                    <a href="<?= base_url(); ?>usuarios/editar"
-                                                                       class="-text"><?= label('menuOpciones_editar') ?></a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#eliminarUsuario"
-                                                                       class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                                </li>
-                                                            </ul>
-                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                               href="#!" data-activates="dropdown-usuario1">
-                                                                <?= label('menuOpciones_seleccionar') ?><i
-                                                                    class="mdi-navigation-arrow-drop-down"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="text-align: center;">
-                                                            <input type="checkbox" class="filled-in checkbox"
-                                                                   id="checkbox_usuario2"/>
-                                                            <label for="checkbox_usuario2"></label>
-                                                        </td>
-                                                        <td>3-012-798</td>
-                                                        <td><a href="<?= base_url() ?>usuarios/editar">Maria</a></td>
-                                                        <td>
-                                                            <a href="<?= base_url() ?>usuarios/editar">maria@gmail.com</a>
-                                                        </td>
-                                                        <td>
-                                                            <ul id="dropdown-usuario2" class="dropdown-content">
-                                                                <li>
-                                                                    <a href="<?= base_url(); ?>usuarios/editar"
-                                                                       class="-text"><?= label('menuOpciones_editar') ?></a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#eliminarUsuario"
-                                                                       class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                                </li>
-                                                            </ul>
-                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                               href="#!" data-activates="dropdown-usuario2">
-                                                                <?= label('menuOpciones_seleccionar') ?><i
-                                                                    class="mdi-navigation-arrow-drop-down"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="text-align: center;">
-                                                            <input type="checkbox" class="filled-in checkbox"
-                                                                   id="checkbox_usuario3"/>
-                                                            <label for="checkbox_usuario3"></label>
-                                                        </td>
-                                                        <td>4-245-023</td>
-                                                        <td><a href="<?= base_url() ?>usuarios/editar">Pepe</a></td>
-                                                        <td>
-                                                            <a href="<?= base_url() ?>usuarios/editar">pepe@gmail.com</a>
-                                                        </td>
-                                                        <td>
-                                                            <ul id="dropdown-usuario3" class="dropdown-content">
-                                                                <li>
-                                                                    <a href="<?= base_url(); ?>usuarios/editar"
-                                                                       class="-text"><?= label('menuOpciones_editar') ?></a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#eliminarUsuario"
-                                                                       class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                                </li>
-                                                            </ul>
-                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                               href="#!" data-activates="dropdown-usuario3">
-                                                                <?= label('menuOpciones_seleccionar') ?><i
-                                                                    class="mdi-navigation-arrow-drop-down"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="text-align: center;">
-                                                            <input type="checkbox" class="filled-in checkbox"
-                                                                   id="checkbox_usuario4"/>
-                                                            <label for="checkbox_usuario4"></label>
-                                                        </td>
-                                                        <td>5-678-123</td>
-                                                        <td><a href="<?= base_url() ?>usuarios/editar">Alberto</a></td>
-                                                        <td>
-                                                            <a href="<?= base_url() ?>usuarios/editar">alberto@gmail.com</a>
-                                                        </td>
-                                                        <td>
-                                                            <ul id="dropdown-usuario4" class="dropdown-content">
-                                                                <li>
-                                                                    <a href="<?= base_url(); ?>usuarios/editar"
-                                                                       class="-text"><?= label('menuOpciones_editar') ?></a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#eliminarUsuario"
-                                                                       class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                                </li>
-                                                            </ul>
-                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                               href="#!" data-activates="dropdown-usuario4">
-                                                                <?= label('menuOpciones_seleccionar') ?><i
-                                                                    class="mdi-navigation-arrow-drop-down"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
+                                                        <?php
+                                                            if(isset($lista)) {
+                                                                if($lista != false) {
+                                                                    $contador = 0;
+                                                                    foreach ($lista as $fila) {
+                                                                        $idEncriptado = encryptIt($fila['idUsuario']);
+                                                        ?>
+                                                            <tr id="fila<?= $contador ?>" data-idElemento="<?= $idEncriptado ?>">
+                                                                <td style="text-align: center;">
+                                                                    <input type="checkbox" class="filled-in checkbox"
+                                                                           id="<?=$idEncriptado?>"/>
+                                                                    <label for="<?=$idEncriptado?>"></label>
+                                                                </td>
+<!--                                                                <td>--><?//= $fila['nombre'] ?><!--</td>-->
+                                                                <td>
+                                                                    <a href="<?= base_url() ?>usuarios/editar/<?= $idEncriptado ?>">
+                                                                        <?= $fila['nombre']." ".$fila['primerApellido']." ".$fila['segundoApellido'] ?>
+                                                                    </a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href="<?= base_url() ?>usuarios/editar/<?= $idEncriptado ?>">
+                                                                        <?= $fila['correo'] ?>
+                                                                    </a>
+                                                                </td>
+                                                                <td>
+                                                                    <ul id="dropdown-usuario<?= $contador ?>" class="dropdown-content">
+                                                                        <li>
+                                                                            <a href="<?= base_url() ?>usuarios/editar/<?= $idEncriptado ?>"
+                                                                               class="-text"><?= label('menuOpciones_editar') ?></a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#eliminarUsuario" class="-text modal-trigger confirmarEliminar" data-id-eliminar="<?= $idEncriptado ?>"
+                                                                               data-fila-eliminar="fila<?= $contador?>"><?= label('menuOpciones_eliminar') ?></a>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
+                                                                       href="#" data-activates="dropdown-usuario<?= $contador++ ?>">
+                                                                        <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                        <?php
+                                                                    }
+                                                                }
+                                                            }
+                                                        ?>
                                                     </tbody>
                                                 </table>
                                                 <div class="tabla-conAgregar">
@@ -175,23 +104,26 @@
                                                     </a>
                                                     <ul id="dropdown-exportar" class="dropdown-content">
                                                         <li>
-                                                            <a href="#"
-                                                               class="-text"><?= label('opciones_seleccionadosExportarPdf') ?></a>
+                                                            <a id="opciones-seleccionados-PDF" href="#" class="-text">
+                                                                <?= label('opciones_seleccionadosExportarPdf') ?>
+                                                            </a>
                                                         </li>
                                                         <li>
-                                                            <a href="#"
-                                                               class="-text"><?= label('opciones_seleccionadosExportarExcel') ?></a>
+                                                            <a id="opciones-seleccionados-Excel" href="#" class="-text">
+                                                                <?= label('opciones_seleccionadosExportarExcel') ?>
+                                                            </a>
                                                         </li>
                                                     </ul>
                                                     <a id="opciones-seleccionados-export"
-                                                       class="boton-opciones black-text dropdown-button option-export-table"
+                                                       style="visibility: hidden;"
+                                                       class="opciones-seleccionados boton-opciones black-text dropdown-button option-export-table"
                                                        href="#" data-toggle="tooltip"
                                                        title="<?= label('opciones_seleccionadosExportar') ?>"
                                                        data-activates="dropdown-exportar">
                                                         <i class="mdi-file-file-download icono-opciones-varios"></i>
                                                     </a>
                                                     <a id="opciones-seleccionados-delete"
-                                                       class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements"
+                                                       class="modal-trigger black-text opciones-seleccionados option-delete-elements"
                                                        style="visibility: hidden;"
                                                        href="#eliminarElementosSeleccionados" data-toggle="tooltip"
                                                        title="<?= label('opciones_seleccionadosEliminar') ?>">
@@ -216,41 +148,48 @@
     ?>
 
 </section>
+<div style="display: none">
+    <a id="linkModalErrorCargarDatos" href="#transaccionIncorrectaCargar" class="btn btn-default modal-trigger"></a>
+    <a id="linkModalErrorEliminar" href="#transaccionIncorrectaEliminar" class="btn btn-default modal-trigger"></a>
+</div>
 <!-- END CONTENT-->
 
-<script>
-    $(window).load(function () {
-        var marcados = $('.checkbox:checked').size();
-        if (marcados >= 1) {
-            var elems = document.getElementsByClassName('opciones-seleccionados');
-            var e;
-            for (e in elems) {
-                elems[e].style.visibility = 'visible';
-            }
-        } else {
-            var elems = document.getElementsByClassName('opciones-seleccionados');
-            var e;
-            for (e in elems) {
-                elems[e].style.visibility = 'hidden';
-            }
-        }
-        document.getElementById('checkbox-all').checked = false;
-    });
-    $(document).ready(function () {
-        $('#botonElimnar').on("click", function (event) {
-            var tb = $(this).attr('title');
-            var sel = false;
-            var ch = $('#' + tb).find('tbody input[type=checkbox]');
-            ch.each(function () {
-                var $this = $(this);
-                if ($this.is(':checked')) {
-                    sel = true;
-                    $this.parents('tr').fadeOut(function () {
-                        $this.remove();
-                    });
+<script type="text/javascript">
+    $(document).on("ready", function () {
+        <?php if (isset($lista)) {
+                if ($lista === false) {
+        ?>
+        $('#linkModalErrorCargarDatos').click();
+        <?php
+                }
+              }
+        ?>
+
+        var idEliminar = 0;
+        var fila = 0;
+
+        $('.confirmarEliminar').on('click', function () {
+            idEliminar = $(this).data('id-eliminar');
+            fila = $(this).data('fila-eliminar');
+        });
+
+        $('#eliminarUsuario #botonEliminar').on('click', function () {
+            event.preventDefault();
+            $.ajax({
+                data: {idEliminar : idEliminar},
+                url:   '<?=base_url()?>usuarios/eliminar',
+                type:  'post',
+                success:  function (response) {
+                    if (response==1) {
+                        $('#' + fila).fadeOut(function () {
+                            $('#' + fila).remove();
+                            verificarChecks();
+                        });
+                    } else{
+                        $('#linkModalErrorEliminar').click();
+                    }
                 }
             });
-            return false;
         });
     });
     $(document).ready( function () {
@@ -262,6 +201,46 @@
         });
         $('table#usuarios-tabla-lista thead th:first').removeClass('sorting_asc').addClass('sorting_disabled');
         $('table#usuarios-tabla-lista thead th:nth-child(2)').removeClass('sorting').addClass('sorting_asc');
+    });
+    $(document).ready(function () {
+        $('#eliminarElementosSeleccionados #botonEliminar').on("click", function (event) {
+            var tb = $(this).attr('title');
+            var sel = false;
+            var ch = $('#' + tb).find('tbody input[type=checkbox]');
+            var marcados = $('.checkbox:checked').not('#checkbox-all').size();
+            var contador = 0;
+            ch.each(function () {
+                var $this = $(this);
+                if ($this.is(':checked')) {
+                    sel = true;
+                    var fila = $this.parents('tr');
+                    var idEliminar = $this.parents('tr').attr('data-idElemento');
+
+                    $.ajax({
+                        data: {idEliminar : idEliminar},
+                        url:   '<?=base_url()?>usuarios/eliminar',
+                        type:  'post',
+                        success:  function (response) {
+                            if (response==1) {
+                                fila.fadeOut(function () {
+                                    fila.remove();
+                                    verificarChecks();
+                                });
+                            } else{
+                                contador++;
+                                if (contador == marcados) {
+                                    $('#linkModalErrorEliminar').click();
+                                }
+                            }
+                        }
+                    });
+                }
+            });
+            return false;
+        });
+    });
+    $(window).load(function () {
+        verificarChecks();
     });
     $(document).ready(function () {
         $('#checkbox-all').click(function (event) {
@@ -279,27 +258,28 @@
     });
     $(document).ready(function () {
         $('.checkbox').click(function (event) {
-            var marcados = $('.checkbox:checked').size();
-            if (marcados >= 1) {
-                var elems = document.getElementsByClassName('opciones-seleccionados');
-                var e;
-                for (e in elems) {
-                    elems[e].style.visibility = 'visible';
-                }
-            } else {
-                var elems = document.getElementsByClassName('opciones-seleccionados');
-                var e;
-                for (e in elems) {
-                    elems[e].style.visibility = 'hidden';
-                }
-            }
+            verificarChecks();
         });
     });
+    function verificarChecks(){
+        var marcados = $('.checkbox:checked').not('#checkbox-all').size();
+        if (marcados >= 1) {
+            var elems = document.getElementsByClassName('opciones-seleccionados');
+            var e;
+            for (e in elems) {
+                elems[e].style.visibility = 'visible';
+            }
+        } else {
+            $('#checkbox-all').prop('checked', false);
+            var elems = document.getElementsByClassName('opciones-seleccionados');
+            var e;
+            for (e in elems) {
+                elems[e].style.visibility = 'hidden';
+            }
+        }
+    }
     $(document).ready(function () {
         $('.boton-opciones').on('click', function (event) {
-            // alert(event.type);
-            //e.preventDefault();
-
             var elementoActivo = $(this).siblings('ul.active');
             if (elementoActivo.length > 0) {
                 var estado = elementoActivo.css("display");
@@ -313,9 +293,128 @@
             }
         });
     });
+
+    //Script para descarga de pdf, excel e imprimir
+    $(document).on('ready', function(){
+        $('#opciones-seleccionados-print').on("click", function(){
+            tablaHtml = htmlTabla('usuarios-tabla-lista', true);
+            Popup(tablaHtml);
+        });
+
+        function Popup(data) {
+            // var mywindow = window.open('', 'my div', 'height=400,width=600');
+            var mywindow = window.open('', 'my div', '');
+            mywindow.document.write('<html><head><title><?= label('tituloUsuarios'); ?></title>');
+            // mywindow.document.write('<link media="print,screen" href="<?= base_url() ?>assets/dashboard/css/estiloTablasDescarga.css" rel="stylesheet" type="text/css" >');
+            mywindow.document.write('</head><body>');
+            mywindow.document.write(data);
+            mywindow.document.write('</body></html>');
+            mywindow.document.close(); // necessary for IE >= 10
+            mywindow.focus(); // necessary for IE >= 10
+            mywindow.print();
+            mywindow.close();
+            return true;
+        }
+
+        $('#opciones-seleccionados-Excel').on("click", function(){
+            var html = htmlTabla('usuarios-tabla-lista', false);
+            $('#inset_form').html('<form  action="<?=base_url()?>ManejadorExcel/tablaDescarga" name="form" method="post" style="display:block;"><input type="text" name="titulo" value="<?= label('tituloUsuarios'); ?>"><textarea name="miHtml">' + html + '</textarea></form>');
+            document.forms['form'].submit();
+        });
+
+        $('#opciones-seleccionados-PDF').on("click", function(){
+            var informacionSistema = '<div id="informacionSistema"><div id="linkPagina"><a href="<?=base_url()?>"><?= label('link_paginaInicial'); ?></a></div><span class="numeracion"></span></div>';
+            var encabezado = '<div id="encabezado"><?= label('tituloUsuarios'); ?></div>';
+            var body = encabezado + informacionSistema;
+            body += htmlTabla('usuarios-tabla-lista', false);
+            var html = '<!DOCTYPE html><html><head><title>403 Forbidden</title><link rel="stylesheet" href="<?= base_url() ?>assets/dashboard/css/estiloTablasDescarga.css"></head><body id="hojaPDF">';
+            html +=  body + '</body></html>';
+            $('#inset_form').html('<form  action="<?=base_url()?>ManejadorPDF/tablaDescarga" name="form" method="post" style="display:block;"><input type="text" name="titulo" value="<?= label('tituloUsuarios'); ?>"><textarea name="miHtml">' + html + '</textarea></form>');
+            document.forms['form'].submit();
+        });
+
+        function htmlTabla(idTabla, style){
+
+            var styleTable = 'style="border-collapse:collapse;width: 100%;"';
+            var styleHead = 'style="font-weight: bold;"';
+            var styleTd = 'style="border:1px solid #A9A9A9; padding:3px 7px 2px 7px;"';
+            if (style) {
+                var tablaHtml = '<table ' + styleTable + '><thead ' + styleHead + '>';
+            } else{
+                var tablaHtml = '<table><thead>';
+            };
+
+            var tabla = $("#" + idTabla).dataTable();
+
+            tabla.find('> thead > tr').each(function()
+            {
+                tablaHtml += '<tr>';
+                var cantidadColummnas = $(this).children("th").length;
+                $(this).children("th").each(function(index){
+                    if (index != 0 && index != cantidadColummnas-1) {
+                        if (style) {
+                            tablaHtml += '<td ' + styleTd + '>' + $(this).html() + '</td>';
+                        } else{
+                            tablaHtml += '<td>' + $(this).html() + '</td>';
+                        };
+
+                    };
+                });
+                tablaHtml += '</tr>';
+            });
+
+            tablaHtml += '</thead>';
+            tablaHtml += '<tbody>';
+            tabla.find('> tbody > tr').each(function()
+            {
+                if ($(this).children("td").first().find('input').is(':checked')) {
+                    tablaHtml += '<tr>';
+                    var cantidadColummnas = $(this).children("td").length;
+                    $(this).children("td").each(function(index){
+                        if (index != 0 && index != cantidadColummnas-1) {
+                            if (style) {
+                                tablaHtml += '<td '+ styleTd +'>' + $(this).text() + '</td>';
+                            } else{
+                                tablaHtml += '<td>' + $(this).text() + '</td>';
+                            };
+
+                        };
+                    });
+                    tablaHtml += '</tr>';
+                }
+            });
+            tablaHtml += '</tbody></table>';
+            return  tablaHtml;
+
+        }
+    });
 </script>
 
 <!-- lista modals -->
+<div id="transaccionIncorrectaCargar" class="modal">
+    <div  class="modal-header headerTransaccionIncorrecta">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('errorLeerDatos'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="transaccionIncorrectaEliminar" class="modal">
+    <div  class="modal-header headerTransaccionIncorrecta">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('errorEliminar'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
 <div id="eliminarUsuario" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
@@ -324,7 +423,7 @@
     <div class="modal-content">
         <p><?= label('confirmarEliminarUsuario'); ?></p>
     </div>
-    <div class="modal-footer black-text">
+    <div id="botonEliminar"  class="modal-footer black-text">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
@@ -334,12 +433,11 @@
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <p><?= label('clientes_archivosSeleccionadosEliminar'); ?></p>
+        <p><?= label('eliminarSeleccionados'); ?></p>
     </div>
     <div class="modal-footer black-text">
-        <div id="botonElimnar" title="usuarios-tabla-lista">
-            <a href="#"
-               class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <div id="botonEliminar" title="usuarios-tabla-lista">
+            <a href="#" class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
         </div>
     </div>
 </div>

@@ -251,6 +251,10 @@ div#opciones-ver-cotizacion a.opcion-ver-cot { width: 80%; display: block; margi
 ul.ver-usuario-lista { margin-left: 10%; }
 ul.ver-usuario-lista li { list-style: initial; }
 
+.switch label .lever:after { background-color: whitesmoke; }
+.switch label input[type=checkbox]:checked + .lever { background-color: #47B475; } /*dodgerblue*/
+.switch label input[type=checkbox]:checked + .lever:after { background-color: whitesmoke; }
+
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/
     div#login-page { width: 380px !important; max-height: 408px !important; top: 0 !important; }

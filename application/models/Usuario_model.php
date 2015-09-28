@@ -79,6 +79,37 @@ class Usuario_model extends CI_Model
             if ($query->num_rows() > 0) {
                 $array = $query->result_array();
                 $row = array_shift($array);//obtiene el primer elemento.. el [0] no sirve en el server
+
+                $idUsuario = $row['idUsuario'];
+                $roles = array(
+                    'rolAdministrador' => '',
+                    'rolAprobador' => '',
+                    'rolCotizador' => '',
+                    'rolContador' => ''
+                );
+                $query = $this->db->get_where('privilegio_usuario', array('idUsuario' => $idUsuario));
+                if (!$query) {
+                    throw new Exception("Error en la BD");
+                }
+                $privilegios = $query->result_array();
+                foreach ($privilegios as $pr) {
+                    switch($pr['idPrivilegio']) {
+                        case 1:
+                            $roles['rolAdministrador'] = 'checked';
+                            break;
+                        case 2:
+                            $roles['rolAprobador'] = 'checked';
+                            break;
+                        case 3:
+                            $roles['rolCotizador'] = 'checked';
+                            break;
+                        case 4:
+                            $roles['rolContador'] = 'checked';
+                            break;
+                    }
+                }
+
+                $row['roles'] = $roles;
             }
             $this->db->trans_commit();
             return $row;
@@ -101,6 +132,36 @@ class Usuario_model extends CI_Model
             $resultado = array();
             foreach ($usuarios as $row)
             {
+                $idUsuario = $row['idUsuario'];
+                $roles = array(
+                    'rolAdministrador' => '',
+                    'rolAprobador' => '',
+                    'rolCotizador' => '',
+                    'rolContador' => ''
+                );
+                $query = $this->db->get_where('privilegio_usuario', array('idUsuario' => $idUsuario));
+                if (!$query) {
+                    throw new Exception("Error en la BD");
+                }
+                $privilegios = $query->result_array();
+                foreach ($privilegios as $pr) {
+                    switch($pr['idPrivilegio']) {
+                        case 1:
+                            $roles['rolAdministrador'] = 'checked';
+                            break;
+                        case 2:
+                            $roles['rolAprobador'] = 'checked';
+                            break;
+                        case 3:
+                            $roles['rolCotizador'] = 'checked';
+                            break;
+                        case 4:
+                            $roles['rolContador'] = 'checked';
+                            break;
+                    }
+                }
+
+                $row['roles'] = $roles;
                 array_push($resultado, $row);
             }
 

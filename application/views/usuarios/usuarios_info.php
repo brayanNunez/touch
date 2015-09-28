@@ -47,13 +47,25 @@
                                         </div>
                                         <div class="col s12">
                                             <div id="tab-informacion" class="card col s12">
-                                                <?php $this->load->view('usuarios/usuarios_ver'); ?>
+                                                <?php
+                                                if(isset($resultado)) {
+                                                    $this->load->view('usuarios/usuarios_ver', $resultado);
+                                                }  else {
+                                                    $this->load->view('usuarios/usuarios_ver');
+                                                }
+                                                ?>
                                             </div>
                                             <div id="tab-cotizaciones" class="card col s12">
                                                 <?php $this->load->view('usuarios/usuarios_cotizaciones'); ?>
                                             </div>
                                             <div id="tab-edicion" class="card col s12">
-                                                <?php $this->load->view('usuarios/usuarios_editar'); ?>
+                                                <?php
+                                                if(isset($resultado)) {
+                                                    $this->load->view('usuarios/usuarios_editar', $resultado);
+                                                }  else {
+                                                    $this->load->view('usuarios/usuarios_editar');
+                                                }
+                                                ?>
                                             </div>
                                         </div>
                                     </div>
