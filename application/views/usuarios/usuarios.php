@@ -73,7 +73,7 @@
                                                         <div class="switch">
                                                             <label style="position: relative">
                                                                 <?= label('off'); ?>
-                                                                <input type="checkbox" name="usuario_rolAdministrador">
+                                                                <input type="checkbox" name="usuario_rolAdministrador" value="1">
                                                                 <span class="lever"></span>
                                                                 <?= label('on'); ?>
                                                             </label>
@@ -87,7 +87,7 @@
                                                         <div class="switch">
                                                             <label style="position: relative">
                                                                 <?= label('off'); ?>
-                                                                <input type="checkbox" name="usuario_rolAprobador">
+                                                                <input type="checkbox" name="usuario_rolAprobador" value="2">
                                                                 <span class="lever"></span>
                                                                 <?= label('on'); ?>
                                                             </label>
@@ -101,7 +101,7 @@
                                                         <div class="switch">
                                                             <label style="position: relative">
                                                                 <?= label('off'); ?>
-                                                                <input type="checkbox" name="usuario_rolCotizador">
+                                                                <input type="checkbox" name="usuario_rolCotizador" value="3">
                                                                 <span class="lever"></span>
                                                                 <?= label('on'); ?>
                                                             </label>
@@ -115,7 +115,7 @@
                                                         <div class="switch">
                                                             <label style="position: relative">
                                                                 <?= label('off'); ?>
-                                                                <input type="checkbox" name="usuario_rolContador">
+                                                                <input type="checkbox" name="usuario_rolContador" value="4">
                                                                 <span class="lever"></span>
                                                                 <?= label('on'); ?>
                                                             </label>

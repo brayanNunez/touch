@@ -1,3 +1,4 @@
+<div style="display: none" id="inset_form"></div>
 <!-- START CONTENT -->
 
 <section id="content">
@@ -96,7 +97,7 @@
                                                 </table>
                                                 <div class="tabla-conAgregar">
                                                     <a id="opciones-seleccionados-print"
-                                                       class="waves-effect black-text opciones-seleccionados option-print-table"
+                                                       class="black-text opciones-seleccionados option-print-table"
                                                        style="visibility: hidden;"
                                                        href="#" data-toggle="tooltip"
                                                        title="<?= label('opciones_seleccionadosImprimir') ?>">
@@ -104,14 +105,12 @@
                                                     </a>
                                                     <ul id="dropdown-exportar" class="dropdown-content">
                                                         <li>
-                                                            <a id="opciones-seleccionados-PDF" href="#" class="-text">
-                                                                <?= label('opciones_seleccionadosExportarPdf') ?>
-                                                            </a>
+                                                            <a id="opciones-seleccionados-PDF" href="#"
+                                                               class="-text"><?= label('opciones_seleccionadosExportarPdf') ?></a>
                                                         </li>
                                                         <li>
-                                                            <a id="opciones-seleccionados-Excel" href="#" class="-text">
-                                                                <?= label('opciones_seleccionadosExportarExcel') ?>
-                                                            </a>
+                                                            <a id="opciones-seleccionados-Excel" href="#"
+                                                               class="-text"><?= label('opciones_seleccionadosExportarExcel') ?></a>
                                                         </li>
                                                     </ul>
                                                     <a id="opciones-seleccionados-export"
@@ -156,14 +155,18 @@
 
 <script type="text/javascript">
     $(document).on("ready", function () {
-        <?php if (isset($lista)) {
-                if ($lista === false) {
-        ?>
-        $('#linkModalErrorCargarDatos').click();
+
         <?php
-                }
-              }
-        ?>
+       if (isset($lista)) {
+           if ($lista === false) {?>
+
+        $('#linkModalErrorCargarDatos').click();
+
+        <?php
+   }
+   }
+   ?>
+
 
         var idEliminar = 0;
         var fila = 0;
@@ -179,26 +182,37 @@
                 data: {idEliminar : idEliminar},
                 url:   '<?=base_url()?>usuarios/eliminar',
                 type:  'post',
+                // beforeSend: function () {
+                //         $("#resultado").html("Procesando, espere por favor...");
+                // },
                 success:  function (response) {
                     if (response==1) {
                         $('#' + fila).fadeOut(function () {
                             $('#' + fila).remove();
                             verificarChecks();
                         });
+
                     } else{
                         $('#linkModalErrorEliminar').click();
-                    }
+                    };
                 }
             });
         });
+
+
+
+
     });
+
     $(document).ready( function () {
         $('#usuarios-tabla-lista').dataTable( {
             'aoColumnDefs': [{
                 'bSortable': false,
-                'aTargets': [0, -1] /* 1st one, start by the right */
+                'aTargets': [0, -1] //desactiva en primer y última columna opción de ordenar
             }]
         });
+    });
+    $(document).ready(function () {
         $('table#usuarios-tabla-lista thead th:first').removeClass('sorting_asc').addClass('sorting_disabled');
         $('table#usuarios-tabla-lista thead th:nth-child(2)').removeClass('sorting').addClass('sorting_asc');
     });
@@ -220,6 +234,9 @@
                         data: {idEliminar : idEliminar},
                         url:   '<?=base_url()?>usuarios/eliminar',
                         type:  'post',
+                        // beforeSend: function () {
+                        //         $("#resultado").html("Procesando, espere por favor...");
+                        // },
                         success:  function (response) {
                             if (response==1) {
                                 fila.fadeOut(function () {
@@ -230,18 +247,23 @@
                                 contador++;
                                 if (contador == marcados) {
                                     $('#linkModalErrorEliminar').click();
-                                }
-                            }
+                                };
+                            };
                         }
                     });
+
                 }
             });
+
             return false;
+
         });
     });
+
     $(window).load(function () {
         verificarChecks();
     });
+
     $(document).ready(function () {
         $('#checkbox-all').click(function (event) {
             var $this = $(this);
@@ -261,7 +283,9 @@
             verificarChecks();
         });
     });
+
     function verificarChecks(){
+
         var marcados = $('.checkbox:checked').not('#checkbox-all').size();
         if (marcados >= 1) {
             var elems = document.getElementsByClassName('opciones-seleccionados');
@@ -278,6 +302,7 @@
             }
         }
     }
+
     $(document).ready(function () {
         $('.boton-opciones').on('click', function (event) {
             var elementoActivo = $(this).siblings('ul.active');
@@ -294,14 +319,16 @@
         });
     });
 
-    //Script para descarga de pdf, excel e imprimir
+    // Inicio script de descarga pdf, excel e imprimir
     $(document).on('ready', function(){
+
         $('#opciones-seleccionados-print').on("click", function(){
             tablaHtml = htmlTabla('usuarios-tabla-lista', true);
             Popup(tablaHtml);
         });
 
-        function Popup(data) {
+        function Popup(data)
+        {
             // var mywindow = window.open('', 'my div', 'height=400,width=600');
             var mywindow = window.open('', 'my div', '');
             mywindow.document.write('<html><head><title><?= label('tituloUsuarios'); ?></title>');
@@ -315,6 +342,7 @@
             mywindow.close();
             return true;
         }
+
 
         $('#opciones-seleccionados-Excel').on("click", function(){
             var html = htmlTabla('usuarios-tabla-lista', false);
@@ -332,6 +360,7 @@
             $('#inset_form').html('<form  action="<?=base_url()?>ManejadorPDF/tablaDescarga" name="form" method="post" style="display:block;"><input type="text" name="titulo" value="<?= label('tituloUsuarios'); ?>"><textarea name="miHtml">' + html + '</textarea></form>');
             document.forms['form'].submit();
         });
+
 
         function htmlTabla(idTabla, style){
 
@@ -388,8 +417,11 @@
 
         }
     });
-</script>
+    // Fin script de descarga pdf, excel e imprimir
 
+
+
+</script>
 <!-- lista modals -->
 <div id="transaccionIncorrectaCargar" class="modal">
     <div  class="modal-header headerTransaccionIncorrecta">
@@ -423,8 +455,8 @@
     <div class="modal-content">
         <p><?= label('confirmarEliminarUsuario'); ?></p>
     </div>
-    <div id="botonEliminar"  class="modal-footer black-text">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    <div id="botonEliminar" class="modal-footer black-text">
+        <a href="" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
 <div id="eliminarElementosSeleccionados" class="modal">
@@ -436,8 +468,9 @@
         <p><?= label('eliminarSeleccionados'); ?></p>
     </div>
     <div class="modal-footer black-text">
-        <div id="botonEliminar" title="usuarios-tabla-lista">
-            <a href="#" class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <div id="botonEliminar" class="modal-footer black-text" title="usuarios-tabla-lista">
+            <a href="#"
+               class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
         </div>
     </div>
 </div>

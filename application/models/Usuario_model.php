@@ -41,19 +41,19 @@ class Usuario_model extends CI_Model
 
             $insert_id = $this->db->insert_id();
             $roles = $data['roles'];
-            $idRol = 1;
+//            $idRol = 1;
             foreach ($roles as $rol=>$valor) {
-                if($valor == 'on') {
+                if($valor) {
                     $row = array(
                         'idUsuario' => $insert_id,
-                        'idPrivilegio' => $idRol,
+                        'idPrivilegio' => $valor,
                     );
                     $query = $this->db->insert('privilegio_usuario', $row);
                     if (!$query) {
                         throw new Exception("Error en la BD");
                     }
                 }
-                $idRol++;
+//                $idRol++;
             }
             $this->db->trans_commit();
             $path = 'files/'.$data['datos']['idEmpresa'].'/'.$insert_id;
@@ -108,7 +108,6 @@ class Usuario_model extends CI_Model
                             break;
                     }
                 }
-
                 $row['roles'] = $roles;
             }
             $this->db->trans_commit();
