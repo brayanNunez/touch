@@ -38,16 +38,16 @@ class Cliente_model extends CI_Model
 
             $query = $this->db->insert('cliente', $data['datos']);
             if (!$query) throw new Exception("Error en la BD");   
-            // $insert_id = $this->db->insert_id();
-            // $palabras = explode(",", $data['palabras']); ;
-            // foreach ($palabras as $palabra) {
-            //     $row = array(
-            //     'idEmpleado' => $insert_id,
-            //     'descripcion' => $palabra
-            //     );
-            //     $query = $this->db->insert('palabraClaveEmpleado', $row);
-            //     if (!$query) throw new Exception("Error en la BD");   
-            // }
+            $insert_id = $this->db->insert_id();
+            $gustos = explode(",", $data['gustos']); ;
+            foreach ($gustos as $gusto) {
+                $row = array(
+                'idCliente' => $insert_id,
+                'nombre' => $gusto
+                );
+                $query = $this->db->insert('gusto', $row);
+                if (!$query) throw new Exception("Error en la BD");   
+            }
             $this->db->trans_commit();
             return true;
         } catch (Exception $e) {
@@ -55,6 +55,21 @@ class Cliente_model extends CI_Model
             return false;
         }
 
+    }
+
+    function gustosSugerencia(){
+        try {
+            $this->db->trans_begin();
+            $this->db->distinct();
+            $this->db->select('nombre');
+            $query = $this->db->get('gusto');
+            if (!$query) throw new Exception("Error en la BD");   
+            $this->db->trans_commit();
+            return $query->result_array();
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
     }
 
     function cargar($id)
@@ -67,10 +82,10 @@ class Cliente_model extends CI_Model
             if ($query->num_rows() > 0) {
                 $array = $query->result_array();
                 $row = array_shift($array);//obtiene el primer elemento.. el [0] no sirve en el server
-                // $this->db->select('descripcion');
-                // $palabras = $this->db->get_where('palabraClaveEmpleado', array('idEmpleado' => $id));
-                // if (!$palabras) throw new Exception("Error en la BD");   
-                // $row['palabras'] = $palabras->result_array();
+                $this->db->select('nombre');
+                $gustos = $this->db->get_where('gusto', array('idCliente' => $id));
+                if (!$gustos) throw new Exception("Error en la BD");   
+                $row['gustos'] = $gustos->result_array();
             }
             // print_r ($row);exit();
              $this->db->trans_commit();

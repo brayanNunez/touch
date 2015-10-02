@@ -255,7 +255,7 @@
                                                     <br>
                                                     <div id="gustosCliente" class="example tags_gustosCliente">
                                                         <div class="bs-example">
-                                                            <input placeholder="<?= label('formCliente_anadirGusto'); ?>" type="text"
+                                                            <input name="cliente_gustos" placeholder="<?= label('formCliente_anadirGusto'); ?>" type="text"
                                                                    value=""/>
                                                         </div>
                                                     </div>
@@ -462,7 +462,7 @@
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             prefetch: {
-                url: '<?=base_url()?>Cotizacion/jsonGustos',
+                url: '<?=base_url()?>Clientes/gustosSugerencia',
                 ttl: 1000,
                 filter: function (list) {
                     return $.map(list, function (gusto) {

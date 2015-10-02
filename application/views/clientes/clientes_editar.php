@@ -380,7 +380,12 @@
                         <div id="gustosCliente" class="example tags_gustosCliente">
                             <div class="bs-example">
                                 <input placeholder="<?= label('formCliente_anadirGusto'); ?>" type="text"
-                                       value="Futbol,Baseball,Tennis,Golf"/>
+                                       value="<?php if (isset($resultado)) {
+                                        foreach ($resultado['gustos'] as $gusto) {
+                                            echo $gusto['nombre'].',';
+                                        }
+                                      
+                                   } ?>"/>
                             </div>
                         </div>
                         <br>
@@ -503,95 +508,6 @@
                 for (e2 in elems) {
                     elems[e2].style.visibility = 'hidden';
                 }
-            }
-        });
-    });
-</script>
-
-<!-- Script para tags -->
-<script>
-    $(document).ready(function () {
-
-        var vendedores = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/vendedores.json'
-            prefetch: {
-                url: '<?=base_url()?>Cotizacion/jsonVendedores',
-                ttl: 1000
-            }
-        });
-
-        vendedores.initialize();
-
-        elt = $('.tags_vendedores > > input');
-        elt.tagsinput({
-            itemValue: 'value',
-            itemText: 'text',
-            typeaheadjs: {
-                name: 'vendedores',
-                displayKey: 'text',
-                source: vendedores.ttAdapter()
-            }
-        });
-
-//        elt.tagsinput('add', {"value": 1, "text": "Brayan Nuñez Rojas", "continent": "Europe"});
-//        elt.tagsinput('add', {"value": 4, "text": "Anthony Nuñez Rojas", "continent": "America"});
-//        elt.tagsinput('add', {"value": 7, "text": "Maria Perez Salas", "continent": "Australia"});
-//        elt.tagsinput('add', {"value": 10, "text": "Carlos David Rojas", "continent": "Asia"});
-//        elt.tagsinput('add', {"value": 13, "text": "Diego Alfaro Rojas", "continent": "Africa"});
-
-
-        var gusto = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            prefetch: {
-                url: '<?=base_url()?>Cotizacion/jsonGustos',
-                ttl: 1000,
-                filter: function (list) {
-                    return $.map(list, function (gusto) {
-                        return {name: gusto};
-                    });
-                }
-            }
-        });
-        gusto.initialize();
-
-
-        $('.tags_gustosCliente  > > input').tagsinput({
-            typeaheadjs: {
-                name: 'gusto',
-                displayKey: 'name',
-                valueKey: 'name',
-                source: gusto.ttAdapter()
-            }
-        });
-
-
-        var mediosContacto = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/gustos.json'
-            prefetch: {
-                url: '<?=base_url()?>Cotizacion/jsonContactos',
-                ttl: 1000,
-                filter: function (list) {
-                    return $.map(list, function (mediosContacto) {
-                        return {name: mediosContacto};
-                    });
-                }
-            }
-        });
-        mediosContacto.initialize();
-
-
-        var elt = $('.tags_mediosContacto > > input');
-        elt.tagsinput({
-            typeaheadjs: {
-                name: 'mediosContacto',
-                displayKey: 'name',
-                valueKey: 'name',
-                source: mediosContacto.ttAdapter()
             }
         });
     });

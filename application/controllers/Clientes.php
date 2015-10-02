@@ -39,6 +39,7 @@ class Clientes extends CI_Controller
         $idEmpresa = $sessionActual['idEmpresa'];
         // $data['palabras'] = $this->input->post('empleado_palabras');
 
+        $data['gustos'] = $this->input->post('cliente_gustos');
         $juridico = $this->input->post('cliente_tipo');
         
         if ($juridico) {
@@ -144,6 +145,59 @@ class Clientes extends CI_Controller
         $this->load->view('layout/default/footer');
     }
 
+    public function gustosSugerencia()
+    {
+        $resultado = $this->Cliente_model->gustosSugerencia(); 
+        $gustos = [];
+        foreach ($resultado as $v){
+            array_push($gustos,$v['nombre']);
+        }
+       
+
+
+        $json = '[ "Música",
+                  "Fútbol",
+                  "Paris",
+                  "Naturaleza",
+                  "New York",
+                  "Deportes extremos",
+                  "Playa",
+                  "Deportes acuaticos",
+                  "Historia",
+                  "Ciencias",
+                  "Viajar",
+                  "Lotería",
+                  "Adidas",
+                  "Nike",
+                  "Pan salado",
+                  "Europa",
+                  "Patinetas"
+                ]';
+        echo json_encode($gustos);
+    }
+
+    public function jsonGustos()
+    {
+        $json = '[ "Música",
+                  "Fútbol",
+                  "Paris",
+                  "Naturaleza",
+                  "New York",
+                  "Deportes extremos",
+                  "Playa",
+                  "Deportes acuaticos",
+                  "Historia",
+                  "Ciencias",
+                  "Viajar",
+                  "Lotería",
+                  "Adidas",
+                  "Nike",
+                  "Pan salado",
+                  "Europa",
+                  "Patinetas"
+                ]';
+        echo $json;
+    }
 }
 
 ?>

@@ -121,7 +121,7 @@
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             prefetch: {
-                url: '<?=base_url()?>Cotizacion/jsonGustos',
+                url: '<?=base_url()?>Clientes/gustosSugerencia',
                 ttl: 1000,
                 filter: function (list) {
                     return $.map(list, function (gusto) {
