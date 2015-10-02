@@ -57,12 +57,21 @@ class Cliente_model extends CI_Model
 
     }
 
-    function gustosSugerencia(){
+
+
+
+    //Retorna los gustos que tienen los clientes en la misma 
+    //empresa para ser sugeridos a la hora de agregar nuevos gustos
+    function gustosSugerencia($idEmpresa){
         try {
             $this->db->trans_begin();
             $this->db->distinct();
-            $this->db->select('nombre');
-            $query = $this->db->get('gusto');
+            $this->db->select('gu.nombre');
+            $this->db->from('gusto gu');
+            $this->db->join('cliente cl', 'cl.idCliente = gu.idCliente');
+            $this->db->join('empresa em', 'cl.idEmpresa = em.idEmpresa');
+            $this->db->where('em.idEmpresa', $idEmpresa);
+            $query = $this->db->get();
             if (!$query) throw new Exception("Error en la BD");   
             $this->db->trans_commit();
             return $query->result_array();
@@ -101,19 +110,19 @@ class Cliente_model extends CI_Model
         try{
             $this->db->trans_begin();
 
-            $this->db->where('idEmpleado', $data['id']);
-            $query = $this->db->update('empleado', $data['datos']);
+            $this->db->where('idCliente', $data['id']);
+            $query = $this->db->update('cliente', $data['datos']);
             if (!$query) throw new Exception("Error en la BD");   
-            $palabras = explode(",", $data['palabras']); ;
-            $this->db->where('idEmpleado', $data['id']);
-            $query = $this->db->delete('palabraClaveEmpleado');
+            $gustos = explode(",", $data['gustos']); ;
+            $this->db->where('idCliente', $data['id']);
+            $query = $this->db->delete('gusto');
             if (!$query) throw new Exception("Error en la BD"); 
-            foreach ($palabras as $palabra) {
+            foreach ($gustos as $gusto) {
                 $row = array(
-                'idEmpleado' => $data['id'],
-                'descripcion' => $palabra
+                'idCliente' => $data['id'],
+                'nombre' => $gusto
                 );
-                $query = $this->db->insert('palabraClaveEmpleado', $row);
+                $query = $this->db->insert('gusto', $row);
                 if (!$query) throw new Exception("Error en la BD"); 
             }
 

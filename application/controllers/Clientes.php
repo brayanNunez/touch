@@ -135,6 +135,79 @@ class Clientes extends CI_Controller
         }
     }
 
+        public function modificar($id)
+    {
+        // $sessionActual = $this->session->userdata('logged_in');
+        // $idEmpresa = $sessionActual['idEmpresa'];
+        // $data['palabras'] = $this->input->post('empleado_palabras');
+
+        $data['gustos'] = $this->input->post('cliente_gustos');
+        $juridico = $this->input->post('cliente_tipo');
+        
+        if ($juridico) {
+            $enviarFacturas = 0;
+            if ($this->input->post('checkbox_correoClientejuridico')) {
+                $enviarFacturas = 1;
+            }
+            $data['datos'] = array(
+                // 'idEmpresa' => $idEmpresa, 
+                'juridico' => $juridico,
+                'identificacion' => $this->input->post('clientejuridico_id'),
+                'primerApellido' => null,
+                'segundoApellido' => null,
+                'nombre' => $this->input->post('clientejuridico_nombre'),
+                'nombreFantasia' => $this->input->post('clientejuridico_nombreFantasia'),
+                'telefonoMovil' => null,
+                'telefonoFijo' =>$this->input->post('clientejuridico_telefono'),
+                'estadoProvincia' => $this->input->post('cliente_direccionProvincia'),
+                'ciudadCanton' => $this->input->post('cliente_direccionCanton'),
+                'domicilio' => $this->input->post('cliente_direccionDomicilio'),
+                'enviarFacturas' => $enviarFacturas,  
+                'descuentoFijo' => $this->input->post('cliente_descuento'),  
+                'fechaNacimiento' => null,
+                'correo' => $this->input->post('clientejuridico_correo'),
+                'fax' => $this->input->post('clientejuridico_fax'),
+                'activo' => '1',
+                'eliminado' => '0'
+            );
+        } else {
+            $enviarFacturas = 0;
+            if ($this->input->post('checkbox_correoCliente')) {
+                $enviarFacturas = 1;
+            }
+            $data['datos'] = array(
+                // 'idEmpresa' => $idEmpresa, 
+                'juridico' => $juridico,
+                'identificacion' => $this->input->post('cliente_id'),
+                'nombre' => $this->input->post('cliente_nombre'),
+                'primerApellido' => $this->input->post('cliente_apellido1'),
+                'segundoApellido' => $this->input->post('cliente_apellido2'),
+                'nombreFantasia' => null,
+                'telefonoMovil' => $this->input->post('cliente_telefonoMovil'),
+                'telefonoFijo' => $this->input->post('cliente_telefono'),
+                'estadoProvincia' => $this->input->post('cliente_direccionProvincia'),
+                'ciudadCanton' => $this->input->post('cliente_direccionCanton'),
+                'domicilio' => $this->input->post('cliente_direccionDomicilio'),
+                'enviarFacturas' => $enviarFacturas,  
+                'descuentoFijo' => $this->input->post('cliente_descuento'),  
+                'fechaNacimiento' => date("Y-m-d", strtotime($this->input->post('cliente_fechaNacimiento'))),
+                'correo' => $this->input->post('cliente_correo'),
+                'fax' => null,
+                'activo' => '1',
+                'eliminado' => '0'
+            );
+        }
+        $data['id'] = decryptIt($id);
+        if (!$this->Cliente_model->modificar($data)) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            //correcto
+            echo 1;
+        }
+        
+    }
+
 
 
     public function reporte()
@@ -147,7 +220,10 @@ class Clientes extends CI_Controller
 
     public function gustosSugerencia()
     {
-        $resultado = $this->Cliente_model->gustosSugerencia(); 
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $resultado = $this->Cliente_model->gustosSugerencia($idEmpresa); 
         $gustos = [];
         foreach ($resultado as $v){
             array_push($gustos,$v['nombre']);
@@ -155,49 +231,29 @@ class Clientes extends CI_Controller
        
 
 
-        $json = '[ "Música",
-                  "Fútbol",
-                  "Paris",
-                  "Naturaleza",
-                  "New York",
-                  "Deportes extremos",
-                  "Playa",
-                  "Deportes acuaticos",
-                  "Historia",
-                  "Ciencias",
-                  "Viajar",
-                  "Lotería",
-                  "Adidas",
-                  "Nike",
-                  "Pan salado",
-                  "Europa",
-                  "Patinetas"
-                ]';
+        // $json = '[ "Música",
+        //           "Fútbol",
+        //           "Paris",
+        //           "Naturaleza",
+        //           "New York",
+        //           "Deportes extremos",
+        //           "Playa",
+        //           "Deportes acuaticos",
+        //           "Historia",
+        //           "Ciencias",
+        //           "Viajar",
+        //           "Lotería",
+        //           "Adidas",
+        //           "Nike",
+        //           "Pan salado",
+        //           "Europa",
+        //           "Patinetas"
+        //         ]';
+
         echo json_encode($gustos);
     }
 
-    public function jsonGustos()
-    {
-        $json = '[ "Música",
-                  "Fútbol",
-                  "Paris",
-                  "Naturaleza",
-                  "New York",
-                  "Deportes extremos",
-                  "Playa",
-                  "Deportes acuaticos",
-                  "Historia",
-                  "Ciencias",
-                  "Viajar",
-                  "Lotería",
-                  "Adidas",
-                  "Nike",
-                  "Pan salado",
-                  "Europa",
-                  "Patinetas"
-                ]';
-        echo $json;
-    }
+
 }
 
 ?>
