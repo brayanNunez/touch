@@ -48,6 +48,15 @@ class Cliente_model extends CI_Model
                 $query = $this->db->insert('gusto', $row);
                 if (!$query) throw new Exception("Error en la BD");   
             }
+
+
+            $contactos = $data['contactos'];
+            // echo print_r($contactos); exit();
+            foreach ($contactos as $contacto) {
+                $contacto['idCliente'] = $insert_id;
+                $query = $this->db->insert('personacontacto', $contacto);
+                if (!$query) throw new Exception("Error en la BD");   
+            }
             $this->db->trans_commit();
             return true;
         } catch (Exception $e) {

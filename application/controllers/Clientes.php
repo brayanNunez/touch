@@ -32,9 +32,10 @@ class Clientes extends CI_Controller
         $this->load->view('layout/default/footer');
     }
 
-        //Metodo llamado mediante ajax
+    //Metodo llamado mediante ajax
      public function insertar()
     {
+
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
         // $data['palabras'] = $this->input->post('empleado_palabras');
@@ -95,6 +96,34 @@ class Clientes extends CI_Controller
                 'eliminado' => '0'
             );
         }
+
+
+
+
+        $contactos = array();
+        $contador = 0;
+        while ($contador <= 10) {
+            if ($this->input->post('cliente_contactoNombre_'.$contador)) {
+                    $enviarFacturas = 0;
+                    if ($this->input->post('checkbox_contactoCorreoCliente_'.$contador)) {
+                        $enviarFacturas = 1;
+                    }
+                  $contacto = array(
+                 'nombre' => $this->input->post('cliente_contactoNombre_'.$contador),
+                 'primerApellido' => $this->input->post('cliente_contactoApellido1_'.$contador),
+                 'segundoApellido' => $this->input->post('cliente_contactoApellido2_'.$contador),
+                 'correo' => $this->input->post('cliente_contactoCorreo_'.$contador),
+                 'puesto' => $this->input->post('cliente_contactoTelefono_'.$contador),
+                 'telefono' => $this->input->post('cliente_contactoPuesto_'.$contador),
+                 'enviarFacturas' => $enviarFacturas
+                 );
+                array_push($contactos, $contacto);
+            }
+            $contador++;
+         }
+
+         $data['contactos'] = $contactos;
+
         if (!$this->Cliente_model->insertar($data)) {
             //Error en la transacción
             echo 0;
