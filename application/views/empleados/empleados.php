@@ -1,3 +1,12 @@
+<script type="text/javascript">
+$(document).on.ready(function(){
+     $("[name^=username]").each(function () {
+        $(this).rules("add", {
+            required: true
+        });
+    });
+});
+</script>
 
 
 <!--START CONTENT -->
@@ -25,6 +34,19 @@
                             <div class="col s12">
                                 <form id="form_empleado" class="col s12" action="<?= base_url() ?>empleados/insertar" method="POST">
                                     <div class="row">
+                                        <div class="input-field col s12">
+                                            <input name="username1" type="text">
+                                            <label for="username"><?= label('Usuario'); ?></label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input  name="username2" type="text">
+                                            <label for="username"><?= label('Usuario'); ?></label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input  name="username3" type="text">
+                                            <label for="username"><?= label('Usuario'); ?></label>
+                                        </div>
+
                                         <div class="input-field col s12">
                                             <input id="empleado_codigo" name="empleado_codigo" type="text">
                                             <label for="empleado_codigo"><?= label('formEmpleado_codigo'); ?></label>

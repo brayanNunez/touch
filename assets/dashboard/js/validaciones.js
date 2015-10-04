@@ -2,12 +2,16 @@
 
         // $("button[type= 'submit']").on("click", function(){
              //event.preventDefault();
+             var username = {required: true, minlength: 3, maxlength: 6};
+
             $('#form_empleado').validate({
                 rules:
                 {
                     empleado_codigo: {required: true, minlength: 3, maxlength: 6},
                     empleado_id: {required: true, minlength: 3, maxlength: 6},
-                    username: {required: true, minlength: 3, maxlength: 6}
+                    username1: username,
+                    username2: username,
+                    username3: username
                     // empleado_primerApellido: {required: true, minlength: 3, maxlength: 6},
                     // empleado_segundoApellido: {required: true, minlength: 3, maxlength: 6},
                     // empleado_nombre: {required: true, minlength: 3, maxlength: 6},

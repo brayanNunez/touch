@@ -1,3 +1,6 @@
+
+
+
 <!--START CONTENT  -->
 
 <section id="content">
@@ -117,7 +120,7 @@
                                                     </label>
                                                 </div>
                                             </div>
-                                            <div class="input-field col s12">
+                                            <div class="input-field col s12">/////////////////////
                                                 <input id="clientejuridico_telefono" name="clientejuridico_telefono" type="text">
                                                 <label
                                                     for="clientejuridico_telefono"><?= label('formCliente_telefono'); ?></label>
@@ -428,6 +431,7 @@
 <script>
     $(document).ready(function () {
 
+
         var vendedores = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -540,6 +544,7 @@
         }
     }
     function agregarNuevoContacto() {
+
         $('#tab-contactos-nuevo').remove();
         $('#tab-contactos').append('' +
             '<div class="row">' +
