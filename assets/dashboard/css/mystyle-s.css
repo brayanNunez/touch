@@ -255,6 +255,8 @@ ul.ver-usuario-lista li { list-style: initial; }
 .switch label input[type=checkbox]:checked + .lever { background-color: #47B475; } /*dodgerblue*/
 .switch label input[type=checkbox]:checked + .lever:after { background-color: whitesmoke; }
 
+a#btn-cambio-contresena { background-color: dimgrey; }
+
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/
     div#login-page { width: 380px !important; max-height: 408px !important; top: 0 !important; }

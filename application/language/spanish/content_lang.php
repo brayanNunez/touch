@@ -48,6 +48,8 @@
     $lang['confirmarCancelarCotizacion'] = '¿Realmente desea cancelar la cotización en proceso?';
     $lang['confirmarObtenerPlan'] = '¿Realmente desea obtener el plan?';
 
+$lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos seleccionados?';
+
     $lang['confirmarEliminarProductoServicio'] = '¿Realmente desea eliminar el elemento seleccionado?';
     $lang['confirmarActivarProductoServicio'] = '¿Realmente desea activar el elemento seleccionado?';
     $lang['confirmarDesactivarProductoServicio'] = '¿Realmente desea desactivar el elemento seleccionado?';
@@ -59,6 +61,7 @@
     $lang['empleadoIdentificacionExistente'] = 'La identificación indicada ya existe.';
 
     $lang['usuarioGuardadoCorrectamente'] = 'El usuario ha sido creado correctamente.';
+$lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente.';
     $lang['usuarioErrorTamanoArchivo'] = 'El tamaño del archivo es superior a lo permitido.';
     $lang['usuarioErrorTipoArchivo'] = 'El tipo de archivo seleccionado no es permitido.';
 

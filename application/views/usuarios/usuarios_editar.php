@@ -1,6 +1,7 @@
 <div class="col s12">
     <?php $this->load->helper('form'); ?>
     <?php
+    $idUsuario = '';
     $primerApellido = '';
     $segundoApellido = '';
     $nombre = '';
@@ -13,6 +14,7 @@
     $accion = base_url().'usuarios/modificar/';
     $ruta = base_url().'files/';
     if (isset($resultado)) {
+        $idUsuario = encryptIt($resultado['idUsuario']);
         $accion .= encryptIt($resultado['idUsuario']);
         $primerApellido = $resultado['primerApellido'];
         $segundoApellido = $resultado['segundoApellido'];
@@ -30,43 +32,33 @@
         }
     }
     ?>
-    <?php echo form_open_multipart($accion, array('id' => 'form_usuario', 'method' => 'POST', 'class' => 'col s12')); ?>
+    <?php echo form_open_multipart($accion, array('id' => 'form_usuario_editar', 'method' => 'POST', 'class' => 'col s12')); ?>
         <div class="row">
             <div class="col s12" style="position: relative;margin-top: 15px;min-height: 150px;">
                 <div class="col s12 m5 l3">
-                    <div class="cliente-ver-logo" style="margin: 5px 0;">
-                        <a onclick="mostrarCambioImagen();" title="Cambiar imagen" style="cursor:pointer;">
-                            <img alt="Imagen de perfil del usuario" src="<?= $ruta; ?>" />
+                    <div id="imagen-usuario-editar" class="cliente-ver-logo" style="margin: 5px 0;">
+                        <a class="modal-trigger" href="#cambio-imagen" title="Cambiar imagen" style="position: relative; cursor:pointer;">
+                            <img alt="Imagen de perfil del usuario" src="<?= $ruta; ?>" style="position:relative;height: 200px;width: 200px;" />
+                            <img id="icon-image-edit" src="<?= base_url() ?>files/edit-image.png" style="border:0;position:absolute;width: 100px;left: 55px;bottom: 50px;visibility: hidden;">
                         </a>
                     </div>
                 </div>
-                <div id="input-cambio-imagen" class="col s12 m17 l9" style="display: none;bottom: 0;position: absolute;right: 0;padding: 20px 30px;background-color: gainsboro;">
-                    <div  style="">
-                        <div class="file-field col s10 m10 l10">
-                            <label for="usuario_fotografia"><?= label('formUsuario_fotografia'); ?></label>
+                <div class="col s12 m17 l9" style="padding: 30px 0;">
+                    <div class="input-field col s12">
+                        <input id="usuario_correo" type="email" name="usuario_correo" value="<?= $correo; ?>">
+                        <label for="usuario_correo"><?= label('formUsuario_correo'); ?></label>
+                    </div>
 
-                            <div class="file-field input-field col s12">
-                                <br/>
-                                <input class="file-path" type="text" readonly/>
-
-                                <div class="btn" data-toggle="tooltip" title="<?= label('tooltip_examinar') ?>">
-                                    <span><i class="mdi-action-search"></i></span>
-                                    <input style="padding-right: 400px;" id="userfile" type="file" name="userfile"
-                                           accept="image/jpeg,image/png"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col s2 m2 l2">
-                            <a class="btn" style="float:right;background-color:red;" onclick="quitarCambioImagen();">X</a>
-                        </div>
+                    <div class="col s12" style="margin: 10px 0;">
+                        <a id="btn-cambio-contresena" class="btn btn-default modal-trigger" href="#cambio-contrasena"><?= label('formUsuario_contrasenaCambio'); ?></a>
                     </div>
                 </div>
             </div>
 
             <div style="margin-top: 15px;padding: 0;" class="col s12">
                 <div class="input-field col s12 m4 l4">
-                    <input id="usuario_primeroApellido" type="text" name="usuario_primeroApellido" value="<?= $primerApellido; ?>">
-                    <label for="usuario_primeroApellido"><?= label('formUsuario_apellido1'); ?></label>
+                    <input id="usuario_primerApellido" type="text" name="usuario_primerApellido" value="<?= $primerApellido; ?>">
+                    <label for="usuario_primerApellido"><?= label('formUsuario_apellido1'); ?></label>
                 </div>
                 <div class="input-field col s12 m4 l4">
                     <input id="usuario_segundoApellido" type="text" name="usuario_segundoApellido" value="<?= $segundoApellido; ?>">
@@ -78,10 +70,14 @@
                 </div>
             </div>
 
-            <div class="input-field col s12">
-                <input id="usuario_correo" type="email" name="usuario_correo" value="<?= $correo; ?>">
-                <label for="usuario_correo"><?= label('formUsuario_correo'); ?></label>
-            </div>
+<!--            <div class="input-field col s12">-->
+<!--                <input id="usuario_correo" type="email" name="usuario_correo" value="--><?//= $correo; ?><!--">-->
+<!--                <label for="usuario_correo">--><?//= label('formUsuario_correo'); ?><!--</label>-->
+<!--            </div>-->
+<!---->
+<!--            <div class="col s12" style="margin: 10px 0;">-->
+<!--                <a id="btn-cambio-contresena" class="btn btn-default modal-trigger" href="#cambio-contrasena">--><?//= label('formUsuario_contrasenaCambio'); ?><!--</a>-->
+<!--            </div>-->
 
             <div class="input-field col s12">
                 <label style="font-size: 0.8rem; top: 0;"><?= label('formUsuario_roles'); ?></label>
@@ -100,7 +96,7 @@
                             <div class="switch">
                                 <label style="position: relative">
                                     <?= label('off'); ?>
-                                    <input type="checkbox" name="usuario_rolAdministrador" <?= ' '.$rolAdministrador; ?> >
+                                    <input type="checkbox" name="usuario_rolAdministrador" <?= ' '.$rolAdministrador; ?> value="1" >
                                     <span class="lever"></span>
                                     <?= label('on'); ?>
                                 </label>
@@ -114,7 +110,7 @@
                             <div class="switch">
                                 <label style="position: relative">
                                     <?= label('off'); ?>
-                                    <input type="checkbox" name="usuario_rolAprobador" <?= ' '.$rolAprobador; ?>>
+                                    <input type="checkbox" name="usuario_rolAprobador" <?= ' '.$rolAprobador; ?> value="2" >
                                     <span class="lever"></span>
                                     <?= label('on'); ?>
                                 </label>
@@ -128,7 +124,7 @@
                             <div class="switch">
                                 <label style="position: relative">
                                     <?= label('off'); ?>
-                                    <input type="checkbox" name="usuario_rolCotizador" <?= ' '.$rolCotizador; ?>>
+                                    <input type="checkbox" name="usuario_rolCotizador" <?= ' '.$rolCotizador; ?> value="3" >
                                     <span class="lever"></span>
                                     <?= label('on'); ?>
                                 </label>
@@ -142,7 +138,7 @@
                             <div class="switch">
                                 <label style="position: relative">
                                     <?= label('off'); ?>
-                                    <input type="checkbox" name="usuario_rolContador" <?= ' '.$rolContador; ?>>
+                                    <input type="checkbox" name="usuario_rolContador" <?= ' '.$rolContador; ?> value="4" >
                                     <span class="lever"></span>
                                     <?= label('on'); ?>
                                 </label>
@@ -161,41 +157,20 @@
             </div>
         </div>
     </form>
+</div>
 
-    <div class="col s12" style="padding: 0 10px 30px;">
-        <a class="btn btn-default" onclick="mostrarcambioContrasena();"><?= label('formUsuario_contrasenaCambio'); ?></a>
-        <form id="usuario-cambio-contrasena">
-            <div class="col s12" id="cambio-contrasena" style="display: none;margin: 15px 0;background-color:gainsboro;padding-top: 15px;padding-bottom: 15px;">
-                <div style="">
-                    <div class="input-field col s12">
-                        <input id="usuario_contrasena_actual" type="password" name="usuario_contrasena_actual">
-                        <label for="usuario_contrasena_actual"><?= label('formUsuario_contrasenaVieja'); ?></label>
-                    </div>
-                    <div class="input-field col s12">
-                        <input id="usuario_contrasena_nueva" type="password" name="usuario_contrasena_nueva">
-                        <label for="usuario_contrasena_nueva"><?= label('formUsuario_contrasenaNueva'); ?></label>
-                    </div>
-                    <div class="input-field col s12">
-                        <input id="usuario_contrasena_confirmar" type="password" name="usuario_contrasena_confirmar">
-                        <label for="usuario_contrasena_confirmar"><?= label('formUsuario_contrasenaConfirmar'); ?></label>
-                    </div>
-                    <div class="input-field col s12">
-                        <div class="col s10 m10 l10">
-                            <button class="btn btn-default" type="submit" name="cambiar" style="display: block; margin: 0 auto; width: 300px;"
-                               onclick="">Guardar cambios</button>
-                        </div>
-                        <div class="col s2 m2 l2">
-                            <a class="btn" style="float: right; width: 150px; background-color: red;"
-                               onclick="quitarcambioContrasena();">Cancelar</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
+<div style="display: none">
+    <a id="linkModalEditado" href="#transaccionCorrecta" class="btn btn-default modal-trigger"></a>
+    <a id="linkModalError" href="#transaccionIncorrecta" class="btn btn-default modal-trigger"></a>
 </div>
 
 <script>
+    $(document).ready(function () {
+      $('#imagen-usuario-editar').on('click', function(event){
+          alert('me cago en claret');
+//          $('#icon-image-edit').style.visibility = 'visible';
+      });
+    };
     function mostrarCambioImagen() {
         document.getElementById('input-cambio-imagen').style.display = 'block';
     }
@@ -213,3 +188,234 @@
 </script>
 
 <!-- lista modals -->
+<div id="transaccionCorrecta" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('usuarioEditadoCorrectamente'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="transaccionIncorrecta" class="modal">
+    <div  class="modal-header headerTransaccionIncorrecta">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('errorGuardar'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+
+<script>
+    function validacionCorrecta_UsuariosEditar(){
+        var miCorreoActual = "<?= $correo; ?>";
+        var correoNuevo = $('#usuario_correo').val();
+
+        if (miCorreoActual == correoNuevo) {
+            var url = $('#form_usuario_editar').attr('action');
+            var method = $('#form_usuario_editar').attr('method');
+            $.ajax({
+                type: method,
+                url: url,
+                data: $('#form_usuario_editar').serialize(),
+                success: function(response)
+                {
+                    if (response == 0) {
+                        $('#linkModalError').click();
+                    } else {
+                        $('#linkModalEditado').click();
+                    }
+                }
+            });
+        } else {
+            $.ajax({
+                data: {usuario_correo : correoNuevo},
+                url:   '<?=base_url()?>usuarios/existeCorreo',
+                type:  'post',
+                success:  function (response) {
+                    switch(response){
+                        case '0':
+                            $('#linkModalError').click();
+                            break;
+                        case '1':
+                            alert('<?= label("empleadoIdentificacionExistente"); ?>');
+                            $('#usuario_correo').focus();
+                            break;
+                        case '2':
+                            var url = $('#form_usuario_editar').attr('action');
+                            var method = $('#form_usuario_editar').attr('method');
+                            $.ajax({
+                                type: method,
+                                url: url,
+                                data: $('#form_usuario_editar').serialize(),
+                                success: function(response)
+                                {
+                                    if (response == 0) {
+                                        $('#linkModalError').click();
+                                    } else {
+                                        $('#linkModalEditado').click();
+                                    }
+                                }
+                            });
+
+                            break;
+                    }
+                }
+            });
+
+        };
+    }
+    function validacionCorrecta_Contrasena(){
+        var formPW = $('#usuario-cambio-contrasena');
+        $.ajax({
+            data: formPW.serialize(),
+            url: formPW.attr('action'),
+            type: formPW.attr('method'),
+            success:  function (response) {
+                switch(response){
+                    case '0':
+                        alert('Ocurrió un error al guardar los cambios realizados');//error al ir a verificar identificación
+                        break;
+                    case '1':
+                        alert('El cambio de contraseña fue exitoso');
+                        break;
+                }
+            }
+        });
+    }
+    function validacionCorrecta_Imagen(){
+        var formPW = $('#usuario-cambio-imagen');
+        $.ajax({
+            data: new FormData(formPW[0]),
+            url: formPW.attr('action'),
+            type: formPW.attr('method'),
+            success:  function (response) {
+                switch(response){
+                    case '0':
+                        alert('Ocurrió un error al guardar los cambios realizados');//error al ir a verificar identificación
+                        break;
+                    case '1':
+                        alert('El cambio de imagen fue exitoso');
+                        $('#imagen_seleccionada').attr('src', '<?= $ruta; ?>');
+                        break;
+                }
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    }
+</script>
+
+<div id="cambio-contrasena" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <form id="usuario-cambio-contrasena" method="post" action="<?= base_url(); ?>usuarios/cambio_contrasena/<?= $idUsuario; ?>">
+            <div class="col s12" style="padding-bottom: 15px;">
+                <div style="">
+                    <div class="input-field col s12">
+                        <input id="usuario_contrasena_actual" type="password" name="usuario_contrasena_actual">
+                        <label for="usuario_contrasena_actual"><?= label('formUsuario_contrasenaVieja'); ?></label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="usuario_contrasena_nueva" type="password" name="usuario_contrasena_nueva">
+                        <label for="usuario_contrasena_nueva"><?= label('formUsuario_contrasenaNueva'); ?></label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="usuario_contrasena_confirmar" type="password" name="usuario_contrasena_confirmar">
+                        <label for="usuario_contrasena_confirmar"><?= label('formUsuario_contrasenaConfirmar'); ?></label>
+                    </div>
+                    <div class="input-field col s12">
+                        <div class="col s12">
+                            <button class="btn btn-default modal-close" type="submit" name="cambiar" style="display: block; margin: 0 auto; width: 300px;"
+                                    id="cambiar-contrasena-usuario" onclick="">Guardar cambios</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="cambio-imagen" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <?php echo form_open_multipart(base_url().'usuarios/cambio_imagen/'.$idUsuario, array('id' => 'usuario-cambio-imagen', 'method' => 'POST', 'class' => 'col s12')); ?>
+            <div class="col s12" style="padding: 0;">
+                <div class="file-field col s12 m7 l9" style="padding: 0;">
+                    <label for="usuario_fotografia"><?= label('formUsuario_fotografia'); ?></label>
+
+                    <div class="file-field input-field col s12" style="padding: 0;">
+                        <input style="margin-left: 18% !important;width: 80% !important;" name="usuario_fotografia" class="file-path" type="text" readonly/>
+
+                        <div class="btn" data-toggle="tooltip" title="<?= label('tooltip_examinar') ?>" style="top: -15px;">
+                            <span><i class="mdi-action-search"></i></span>
+                            <input style="padding-right: 100px;" id="userfile" type="file" name="userfile"
+                                   accept="image/jpeg,image/png"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m5 l3">
+                    <figure style="margin:0 10px;">
+                        <img id="imagen_seleccionada" style="width: 132px;border: 1px solid black;"
+                             src="<?= base_url(); ?>files/default-user-image.png">
+                    </figure>
+                </div>
+            </div>
+            <div class="input-field col s12 envio-formulario" style="margin-bottom: 30px;">
+                <button class="btn waves-effect waves-light right" type="submit" id="guardar-cambios-usuario"
+                        name="action"><?= label('formUsuario_editar'); ?></button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Fin lista modals -->
+
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imagen_seleccionada').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#userfile").change(function(){
+        var file = this.files[0];
+        var name = file.name;
+        var size = file.size;
+        var type = file.type;
+        var t = type.split('/');
+        var ext = t.slice(1, 2);
+        if(size > 2097150) { //2097152
+            alert("<?= label('usuarioErrorTamanoArchivo') ?>");
+            document.getElementById('userfile').value = '';
+        }
+        var valid_ext = ['image/png','image/jpg','image/jpeg'];
+        if(valid_ext.indexOf(type)==-1) {
+            alert("<?= label('usuarioErrorTipoArchivo') ?>");
+            document.getElementById('userfile').value = '';
+        }
+        if(document.getElementById('userfile').value == ''){
+            $('#imagen_seleccionada').attr('src', '<?= base_url(); ?>files/default-user-image.png');
+        } else {
+            $('#usuario_fotografia').attr('value', ext);
+            readURL(this);
+        }
+    });
+</script>

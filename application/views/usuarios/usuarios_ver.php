@@ -27,12 +27,12 @@
     ?>
     <div class="row">
         <div class="col s12" style="margin-bottom: 30px;">
-            <div class="col s12 m12 l3">
+            <div class="col s12 m12 l4">
                 <div class="cliente-ver-logo">
-                    <img src="<?= $ruta; ?>" />
+                    <img alt="Imagen de perfil del usuario" style="width: 250px;height: 250px;display: block;margin: 0 auto;" src="<?= $ruta; ?>" />
                 </div>
             </div>
-            <div class="col s12 m12 l9">
+            <div class="col s12 m12 l8">
                 <div class="col s12" style="margin-top: 30px;">
                     <h4><?= $nombre.' '.$primerApellido.' '.$segundoApellido; ?></h4>
                     <p><span style="font-weight: bold;"><?= label('formUsuario_correo'); ?>: </span><?= $correo; ?></p>

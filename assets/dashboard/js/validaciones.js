@@ -62,6 +62,19 @@
                 }
             });
 
+            $('#form_usuario_editar').validate({
+                rules:
+                {
+                    usuario_primeroApellido: {required: true},
+                    usuario_nombre: { required: true},
+                    usuario_correo: { required:true}
+                },
+                errorElement: 'div',
+                submitHandler: function(form) {
+                    validacionCorrecta_UsuariosEditar();
+                }
+            });
+
             $('#usuario-cambio-contrasena').validate({
                 rules:
                 {
@@ -72,6 +85,17 @@
                 errorElement: 'div',
                 submitHandler: function(form) {
                     validacionCorrecta_Contrasena();
+                }
+            });
+
+            $('#usuario-cambio-imagen').validate({
+                rules:
+                {
+                    userfile: { required: false}
+                },
+                errorElement: 'div',
+                submitHandler: function(form) {
+                    validacionCorrecta_Imagen();
                 }
             });
 

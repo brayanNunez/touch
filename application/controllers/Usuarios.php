@@ -56,21 +56,19 @@ class Usuarios extends CI_Controller
             //Error en la transacción
             echo 0;
         } else {
-            // correcto
-            echo 1;
-        }
+            $config['upload_path'] = './files/'.$data['datos']['idEmpresa'].'/'.$usuario;
+            $config['file_name'] = 'profile_picture_'.$usuario;
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['max_size'] = '2048';
 
-        $config['upload_path'] = './files/'.$data['datos']['idEmpresa'].'/'.$usuario;
-        $config['file_name'] = 'profile_picture_'.$usuario;
-        $config['allowed_types'] = 'jpg|png|jpeg';
-        $config['max_size'] = '2048';
-
-        $this->load->library('upload', $config);
-        if(!$this->upload->do_upload()) {
+            $this->load->library('upload', $config);
+            if(!$this->upload->do_upload()) {
 //            echo $this->upload->display_errors();
-        } else {
-            $archivo = $this->upload->data();
+            } else {
+                $archivo = $this->upload->data();
 //            $data['datos']['fotografia'] = $archivo['raw_name'] . $archivo['file_ext'];
+            }
+            echo 1;
         }
     }
 
@@ -91,14 +89,16 @@ class Usuarios extends CI_Controller
 
     public function modificar($id) {
         $data['datos'] = array(
-            'idEmpresa' => '1', //Obtener de la variable de sesión
-            'primerApellido' => $this->input->post('empleado_primerApellido'),
-            'segundoApellido' => $this->input->post('empleado_segundoApellido'),
-            'nombre' => $this->input->post('empleado_nombre'),
-            'correo' => $this->input->post('empleado_fechaNacimiento'),
-            'contrasena' => $this->input->post('empleado_fechaIngreso'),
-            'fotografia' => $this->input->post('empleado_descripcion'),
-            'eliminado' => '0'
+            'primerApellido' => $this->input->post('usuario_primerApellido'),
+            'segundoApellido' => $this->input->post('usuario_segundoApellido'),
+            'nombre' => $this->input->post('usuario_nombre'),
+            'correo' => $this->input->post('usuario_correo')
+        );
+        $data['roles'] = array(
+            'rolAdministrador' => $this->input->post('usuario_rolAdministrador'),
+            'rolAprobador' => $this->input->post('usuario_rolAprobador'),
+            'rolCotizador' => $this->input->post('usuario_rolCotizador'),
+            'rolContador' => $this->input->post('usuario_rolContador')
         );
         $data['id'] = decryptIt($id);
         if (!$this->Usuario_model->modificarUsuario($data)) {
@@ -112,7 +112,7 @@ class Usuarios extends CI_Controller
 
     public function eliminar() {
         $id = $_POST['idEliminar'];
-        if (!$this->Usuario_model->eliminar(decryptIt($id))) {
+        if (!$this->Usuario_model->eliminarUsuario(decryptIt($id))) {
             //Error en la transacción
             echo 0;
         } else {
@@ -137,6 +137,50 @@ class Usuarios extends CI_Controller
                 //correo valido
                 echo 2;
             }
+        }
+    }
+
+    public function cambio_contrasena($id) {
+        $data['datos'] = array(
+            'contrasena' => $this->input->post('usuario_contrasena_nueva')
+        );
+        $data['actual'] = $this->input->post('usuario_contrasena_actual');
+        $data['confirmacion'] = $this->input->post('usuario_contrasena_confirmar');
+        $data['id'] = decryptIt($id);
+        if (!$this->Usuario_model->cambiar_contrasena($data)) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            //correcto
+            echo 1;
+        }
+    }
+
+    public function cambio_imagen($id) {
+        $photo = explode('.',$this->input->post('usuario_fotografia'));
+        $ext = end($photo);
+        $data['datos'] = array(
+            'idEmpresa' => 1,
+            'fotografia' => $ext
+        );
+        $data['id'] = decryptIt($id);
+        $usuario = $this->Usuario_model->cambiar_imagen($data);
+        if (!$usuario) {
+            echo 0;
+        } else {
+            $ruta = './files/'.$data['datos']['idEmpresa'].'/'.$data['id'];
+            unlink($ruta.'/profile_picture_'.$data['id'].'.'.$usuario);
+            $config['upload_path'] = $ruta;
+            $config['file_name'] = 'profile_picture_'.$data['id'];
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['max_size'] = '2048';
+
+            $this->load->library('upload', $config);
+            if(!$this->upload->do_upload()) {
+            } else {
+                $archivo = $this->upload->data();
+            }
+            echo 1;
         }
     }
 

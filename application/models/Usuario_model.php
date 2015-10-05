@@ -182,6 +182,21 @@ class Usuario_model extends CI_Model
             if (!$query) {
                 throw new Exception("Error en la BD");
             }
+            $roles = $data['roles'];
+            $this->db->where('idUsuario', $data['id']);
+            $query = $this->db->delete('privilegio_usuario');
+            foreach ($roles as $rol=>$valor) {
+                if($valor) {
+                    $row = array(
+                        'idUsuario' => $data['id'],
+                        'idPrivilegio' => $valor,
+                    );
+                    $query = $this->db->insert('privilegio_usuario', $row);
+                    if (!$query) {
+                        throw new Exception("Error en la BD");
+                    }
+                }
+            }
             $this->db->trans_commit();
             return true;
         } catch (Exception $e) {
@@ -203,6 +218,73 @@ class Usuario_model extends CI_Model
 
             $this->db->trans_commit();
             return true;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+    function cambiar_contrasena($data)
+    {
+        try{
+            $this->db->trans_begin();
+
+            $this->db->select('contrasena');
+            $this->db->where('idUsuario', $data['id']);
+            $this->db->from('usuario');
+            $query = $this->db->get();
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+            if($query->num_rows() > 0) {
+                $datos = $query->result_array();
+                $pass = $datos[0]['contrasena'];
+                if(!($pass === $data['actual'])) {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+            if($data['confirmacion'] === $data['datos']['contrasena']) {
+                $this->db->where('idUsuario', $data['id']);
+                $query = $this->db->update('usuario', $data['datos']);
+                if (!$query) {
+                    throw new Exception("Error en la BD");
+                }
+                $this->db->trans_commit();
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+    function cambiar_imagen($data) {
+        try{
+            $photo = '';
+            $this->db->trans_begin();
+            $this->db->select('fotografia');
+            $this->db->where('idUsuario', $data['id']);
+            $this->db->from('usuario');
+            $query1 = $this->db->get();
+            if (!$query1) {
+                throw new Exception("Error en la BD");
+            }
+            if($query1->num_rows() > 0) {
+                $datos = $query1->result_array();
+                $photo = $datos[0]['fotografia'];
+            }
+            $this->db->where('idUsuario', $data['id']);
+            $query2 = $this->db->update('usuario', $data['datos']);
+            if (!$query2) {
+                throw new Exception("Error en la BD");
+            }
+
+            $this->db->trans_commit();
+            return $photo;
         } catch (Exception $e) {
             $this->db->trans_rollback();
             return false;
