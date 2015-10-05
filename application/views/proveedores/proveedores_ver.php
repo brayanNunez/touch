@@ -81,7 +81,7 @@
                                             </a>
                                         </div>
                                         <div class="contacto-principal es-principal">
-                                            <a href="#" title="<?= label('formProveedor_contactoPrincipal') ?>">
+                                            <a href="#cambiarPrincipal" class="modal-trigger" title="<?= label('formProveedor_contactoPrincipal') ?>">
                                                 <i class="mdi-action-done"></i>
                                             </a>
                                         </div>
@@ -108,7 +108,7 @@
                                             </a>
                                         </div>
                                         <div class="contacto-principal">
-                                            <a href="#" title="<?= label('formProveedor_contactoSecundario') ?>">
+                                            <a href="#cambiarPrincipal" class="modal-trigger" title="<?= label('formProveedor_contactoSecundario') ?>">
                                                 <i class="mdi-action-done"></i>
                                             </a>
                                         </div>
@@ -135,7 +135,7 @@
                                             </a>
                                         </div>
                                         <div class="contacto-principal">
-                                            <a href="#" title="<?= label('formProveedor_contactoSecundario') ?>">
+                                            <a href="#cambiarPrincipal" class="modal-trigger" title="<?= label('formProveedor_contactoSecundario') ?>">
                                                 <i class="mdi-action-done"></i>
                                             </a>
                                         </div>
@@ -162,7 +162,7 @@
                                             </a>
                                         </div>
                                         <div class="contacto-principal">
-                                            <a href="#" title="<?= label('formProveedor_contactoSecundario') ?>">
+                                            <a href="#cambiarPrincipal" class="modal-trigger" title="<?= label('formProveedor_contactoSecundario') ?>">
                                                 <i class="mdi-action-done"></i>
                                             </a>
                                         </div>
@@ -189,7 +189,7 @@
                                             </a>
                                         </div>
                                         <div class="contacto-principal">
-                                            <a href="#" title="<?= label('formProveedor_contactoSecundario') ?>">
+                                            <a href="#cambiarPrincipal" class="modal-trigger" title="<?= label('formProveedor_contactoSecundario') ?>">
                                                 <i class="mdi-action-done"></i>
                                             </a>
                                         </div>
@@ -216,7 +216,7 @@
                                             </a>
                                         </div>
                                         <div class="contacto-principal">
-                                            <a href="#" title="<?= label('formProveedor_contactoSecundario') ?>">
+                                            <a href="#cambiarPrincipal" class="modal-trigger" title="<?= label('formProveedor_contactoSecundario') ?>">
                                                 <i class="mdi-action-done"></i>
                                             </a>
                                         </div>
@@ -243,7 +243,7 @@
                                             </a>
                                         </div>
                                         <div class="contacto-principal">
-                                            <a href="#" title="<?= label('formProveedor_contactoSecundario') ?>">
+                                            <a href="#cambiarPrincipal" class="modal-trigger" title="<?= label('formProveedor_contactoSecundario') ?>">
                                                 <i class="mdi-action-done"></i>
                                             </a>
                                         </div>
@@ -478,6 +478,18 @@
     </div>
     <div class="modal-content">
         <p><?= label('confirmarEliminarContacto'); ?></p>
+    </div>
+    <div class="modal-footer black-text">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="cambiarPrincipal" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('confirmarCambiarPrincipal'); ?></p>
     </div>
     <div class="modal-footer black-text">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
