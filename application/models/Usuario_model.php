@@ -29,7 +29,7 @@ class Usuario_model extends CI_Model
         }
     }
 
-    function insertarUsuario($data)
+    function insertar($data)
     {
         try{
             $this->db->trans_begin();
@@ -38,10 +38,8 @@ class Usuario_model extends CI_Model
             if (!$query) {
                 throw new Exception("Error en la BD");
             }
-
             $insert_id = $this->db->insert_id();
             $roles = $data['roles'];
-//            $idRol = 1;
             foreach ($roles as $rol=>$valor) {
                 if($valor) {
                     $row = array(
@@ -53,13 +51,14 @@ class Usuario_model extends CI_Model
                         throw new Exception("Error en la BD");
                     }
                 }
-//                $idRol++;
             }
             $this->db->trans_commit();
+
             $path = 'files/'.$data['datos']['idEmpresa'].'/'.$insert_id;
             if(!is_dir($path)){
                 mkdir($path);
             }
+
             return $insert_id;
         } catch (Exception $e) {
             $this->db->trans_rollback();
@@ -67,7 +66,7 @@ class Usuario_model extends CI_Model
         }
     }
 
-    function cargarUsuario($id)
+    function cargar($id)
     {
         try {
             $this->db->trans_begin();
@@ -79,7 +78,6 @@ class Usuario_model extends CI_Model
             if ($query->num_rows() > 0) {
                 $array = $query->result_array();
                 $row = array_shift($array);//obtiene el primer elemento.. el [0] no sirve en el server
-
                 $idUsuario = $row['idUsuario'];
                 $roles = array(
                     'rolAdministrador' => '',
@@ -118,7 +116,7 @@ class Usuario_model extends CI_Model
         }
     }
 
-    function cargarUsuarios($idEmpresa)
+    function cargarTodos($idEmpresa)
     {
         try{
             $this->db->trans_begin();
@@ -128,51 +126,16 @@ class Usuario_model extends CI_Model
                 throw new Exception("Error en la BD");
             }
             $usuarios = $usuarios->result_array();
-            $resultado = array();
-            foreach ($usuarios as $row)
-            {
-                $idUsuario = $row['idUsuario'];
-                $roles = array(
-                    'rolAdministrador' => '',
-                    'rolAprobador' => '',
-                    'rolCotizador' => '',
-                    'rolContador' => ''
-                );
-                $query = $this->db->get_where('privilegio_usuario', array('idUsuario' => $idUsuario));
-                if (!$query) {
-                    throw new Exception("Error en la BD");
-                }
-                $privilegios = $query->result_array();
-                foreach ($privilegios as $pr) {
-                    switch($pr['idPrivilegio']) {
-                        case 1:
-                            $roles['rolAdministrador'] = 'checked';
-                            break;
-                        case 2:
-                            $roles['rolAprobador'] = 'checked';
-                            break;
-                        case 3:
-                            $roles['rolCotizador'] = 'checked';
-                            break;
-                        case 4:
-                            $roles['rolContador'] = 'checked';
-                            break;
-                    }
-                }
-
-                $row['roles'] = $roles;
-                array_push($resultado, $row);
-            }
 
             $this->db->trans_commit();
-            return $resultado;
+            return $usuarios;
         } catch (Exception $e) {
             $this->db->trans_rollback();
             return false;
         }
     }
 
-    function modificarUsuario($data)
+    function modificar($data)
     {
         try{
             $this->db->trans_begin();
@@ -205,7 +168,7 @@ class Usuario_model extends CI_Model
         }
     }
 
-    function eliminarUsuario($id)
+    function eliminar($id)
     {
         try{
             $this->db->trans_begin();
@@ -240,7 +203,7 @@ class Usuario_model extends CI_Model
                 $datos = $query->result_array();
                 $pass = $datos[0]['contrasena'];
                 if(!($pass === $data['actual'])) {
-                    return false;
+                    return 'errorE';
                 }
             } else {
                 return false;
@@ -254,7 +217,7 @@ class Usuario_model extends CI_Model
                 $this->db->trans_commit();
                 return true;
             } else {
-                return false;
+                return 'errorD';
             }
         } catch (Exception $e) {
             $this->db->trans_rollback();
@@ -266,6 +229,7 @@ class Usuario_model extends CI_Model
         try{
             $photo = '';
             $this->db->trans_begin();
+
             $this->db->select('fotografia');
             $this->db->where('idUsuario', $data['id']);
             $this->db->from('usuario');
@@ -276,13 +240,19 @@ class Usuario_model extends CI_Model
             if($query1->num_rows() > 0) {
                 $datos = $query1->result_array();
                 $photo = $datos[0]['fotografia'];
+                if(!$photo) {
+                    $photo = 'sinFoto';
+                }
+            } else {
+                $photo = 'sinFoto';
             }
-            $this->db->where('idUsuario', $data['id']);
-            $query2 = $this->db->update('usuario', $data['datos']);
-            if (!$query2) {
-                throw new Exception("Error en la BD");
+            if($photo) {
+                $this->db->where('idUsuario', $data['id']);
+                $query2 = $this->db->update('usuario', $data['datos']);
+                if (!$query2) {
+                    throw new Exception("Error en la BD");
+                }
             }
-
             $this->db->trans_commit();
             return $photo;
         } catch (Exception $e) {
@@ -291,105 +261,6 @@ class Usuario_model extends CI_Model
         }
     }
 
-    //----------------------------------------Metodos viejos----------------------------
-
-    function inserta_usuario($datos = array())
-    {
-        if (!$this->_required(array("email_usuario", "clave"), $datos)) {
-            return FALSE;
-        }
-        //clave, encripto
-        $datos['clave'] = md5($datos['clave']);
-
-        $this->db->insert('usuario', $datos);
-        return $this->db->insert_id();
-    }
-
-    public function insertar()
-    {
-        $datos = array(
-            'idEmpresa' => '3',
-            'codigo' => 'Juan68',
-            'identificacion' => '202020202',
-            'nombreCompleto' => 'juan perez rojas',
-            'fechaNacimiento' => '2013-01-19',
-            'fechaIngresoEmpresa' => '2013-01-19',
-            'descripcion' => 'Pérez',
-            'eliminado' => '0'
-        );
-
-        if (!$this->Empleado_model->insertar($datos)) {
-            echo "Error en la transaccion";
-        } else {
-            echo "Correcto";
-        }
-    }
-
-    public function cargar()
-    {
-        $resultado = $this->Empleado_model->cargar(97);
-        if ($resultado == false) {
-            echo "Error en la transaccion";
-        } else {
-            echo "Correcto<br>";
-            if ($resultado === -1) {
-                //No retorno nada
-
-            } else {
-                echo $resultado->nombreCompleto;
-            }
-        }
-    }
-
-    public function cargarTodos()
-    {
-        $resultado = $this->Empleado_model->cargarTodos();
-        if ($resultado == false) {
-            echo "Error en la transaccion";
-        } else {
-            echo "Correcto<br>";
-            if ($resultado === -1) {
-                //No retorno nada
-            } else {
-                foreach ($resultado as $fila) {
-                    $data[] = array(
-                        'id_user' => $fila->identificacion,
-                        'nombre' => $fila->nombreCompleto,
-                        'email' => $fila->fechaNacimiento
-                    );
-
-                    echo $fila->identificacion . "<br><br>";
-                    echo $fila->nombreCompleto . "<br><br>";
-                    echo $fila->fechaNacimiento . "<br><br>";
-                }
-            }
-        }
-    }
-
-    public function modificar()
-    {
-        $data['datos'] = array(
-            'identificacion' => '302020202',
-            'fechaNacimiento' => '2015-01-19',
-            'nombreCompleto' => 'Maria perez rojas'
-        );
-        $data['id'] = 109;
-        if (!$this->Empleado_model->modificar($data)) {
-            echo "Error en la transaccion";
-        } else {
-            echo "Correcto";
-        }
-
-    }
-
-    public function eliminar()
-    {
-        if (!$this->Empleado_model->eliminar(99)) {
-            echo "Error en la transaccion";
-        } else {
-            echo "Correcto";
-        }
-    }
 }
 
 ?>

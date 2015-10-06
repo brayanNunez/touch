@@ -64,6 +64,13 @@ $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos selec
 $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente.';
     $lang['usuarioErrorTamanoArchivo'] = 'El tamaño del archivo es superior a lo permitido.';
     $lang['usuarioErrorTipoArchivo'] = 'El tipo de archivo seleccionado no es permitido.';
+    $lang['usuarioErrorCambioContrasena'] = 'Ha ocurrido un error al intentar hacer el cambio de contraseña';
+    $lang['usuarioExitoCambioContrasena'] = 'El cambio de contraseña fue exitoso';
+    $lang['usuarioErrorContrasenaActual'] = 'La contraseña actual no es correcta';
+    $lang['usuarioErrorContrasenaConfirmar'] = 'Las contraseña no coinciden';
+    $lang['usuarioErrorCambioImagen'] = 'Ha ocurrido un error al intentar hacer el cambio de imagen';
+    $lang['usuarioExitoCambioEmagen'] = 'El cambio de imagen fue exitoso';
+
 
     $lang['errorGuardar'] = 'Ha ocurrido un error al intentar guardar los datos.';
     $lang['errorLeerDatos'] = 'Ha ocurrido un error al intentar leer los datos.';

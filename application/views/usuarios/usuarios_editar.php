@@ -30,6 +30,8 @@
         } else {
             $ruta.= 'default-user-image.png';
         }
+    } else {
+        $ruta.= 'default-user-image.png';
     }
     ?>
     <?php echo form_open_multipart($accion, array('id' => 'form_usuario_editar', 'method' => 'POST', 'class' => 'col s12')); ?>
@@ -38,7 +40,7 @@
                 <div class="col s12 m5 l3">
                     <div id="imagen-usuario-editar" class="cliente-ver-logo" style="margin: 5px 0;">
                         <a class="modal-trigger" href="#cambio-imagen" title="Cambiar imagen" style="position: relative; cursor:pointer;">
-                            <img alt="Imagen de perfil del usuario" src="<?= $ruta; ?>" style="position:relative;height: 200px;width: 200px;" />
+                            <img id="imagen_perfil_usuario" alt="Imagen de perfil del usuario" src="<?= $ruta; ?>" style="position:relative;height: 200px;width: 200px;" />
                             <img id="icon-image-edit" src="<?= base_url() ?>files/edit-image.png" style="border:0;position:absolute;width: 100px;left: 55px;bottom: 50px;visibility: hidden;">
                         </a>
                     </div>
@@ -69,15 +71,6 @@
                     <label for="usuario_nombre"><?= label('formUsuario_nombre'); ?></label>
                 </div>
             </div>
-
-<!--            <div class="input-field col s12">-->
-<!--                <input id="usuario_correo" type="email" name="usuario_correo" value="--><?//= $correo; ?><!--">-->
-<!--                <label for="usuario_correo">--><?//= label('formUsuario_correo'); ?><!--</label>-->
-<!--            </div>-->
-<!---->
-<!--            <div class="col s12" style="margin: 10px 0;">-->
-<!--                <a id="btn-cambio-contresena" class="btn btn-default modal-trigger" href="#cambio-contrasena">--><?//= label('formUsuario_contrasenaCambio'); ?><!--</a>-->
-<!--            </div>-->
 
             <div class="input-field col s12">
                 <label style="font-size: 0.8rem; top: 0;"><?= label('formUsuario_roles'); ?></label>
@@ -165,12 +158,6 @@
 </div>
 
 <script>
-    $(document).ready(function () {
-      $('#imagen-usuario-editar').on('click', function(event){
-          alert('me cago en claret');
-//          $('#icon-image-edit').style.visibility = 'visible';
-      });
-    };
     function mostrarCambioImagen() {
         document.getElementById('input-cambio-imagen').style.display = 'block';
     }
@@ -179,11 +166,9 @@
     }
     function mostrarcambioContrasena() {
         document.getElementById('cambio-contrasena').style.display = 'block';
-//        document.getElementById('guardar-cambios-usuario').style.display = 'none';
     }
     function quitarcambioContrasena() {
         document.getElementById('cambio-contrasena').style.display = 'none';
-//        document.getElementById('guardar-cambios-usuario').style.display = 'block';
     }
 </script>
 
@@ -278,13 +263,22 @@
             data: formPW.serialize(),
             url: formPW.attr('action'),
             type: formPW.attr('method'),
-            success:  function (response) {
-                switch(response){
+            success: function (response) {
+                switch (response) {
                     case '0':
-                        alert('Ocurrió un error al guardar los cambios realizados');//error al ir a verificar identificación
+                        alert('<?= label('usuarioErrorCambioContrasena'); ?>');//error al ir a verificar identificación
                         break;
                     case '1':
-                        alert('El cambio de contraseña fue exitoso');
+                        alert('<?= label('usuarioExitoCambioContrasena'); ?>');
+                        formPW.find('input:password').val(null);
+                        break;
+                    case '2':
+                        alert('<?= label('usuarioErrorContrasenaActual'); ?>');
+                        $('#usuario_contrasena_actual').focus();
+                        break;
+                    case '3':
+                        alert('<?= label('usuarioErrorContrasenaConfirmar'); ?>');
+                        $('#usuario_contrasena_confirmar').focus();
                         break;
                 }
             }
@@ -299,11 +293,14 @@
             success:  function (response) {
                 switch(response){
                     case '0':
-                        alert('Ocurrió un error al guardar los cambios realizados');//error al ir a verificar identificación
+                        alert('<?= label('usuarioErrorCambioImagen'); ?>');//error al ir a verificar identificación
                         break;
                     case '1':
-                        alert('El cambio de imagen fue exitoso');
-                        $('#imagen_seleccionada').attr('src', '<?= $ruta; ?>');
+                        alert('<?= label('usuarioExitoCambioEmagen'); ?>');
+                        d = new Date();
+                        $('#imagen_seleccionada').attr('src', '<?= $ruta; ?>?' + d.getTime());
+                        $('#imagen_perfil_usuario').attr('src', '<?= $ruta; ?>?' + d.getTime());
+                        formPW.find('input:file,input:text').val('');
                         break;
                 }
             },
@@ -337,7 +334,7 @@
                     </div>
                     <div class="input-field col s12">
                         <div class="col s12">
-                            <button class="btn btn-default modal-close" type="submit" name="cambiar" style="display: block; margin: 0 auto; width: 300px;"
+                            <button class="btn btn-default" type="submit" name="cambiar" style="display: block; margin: 0 auto; width: 300px;"
                                     id="cambiar-contrasena-usuario" onclick="">Guardar cambios</button>
                         </div>
                     </div>
@@ -370,7 +367,7 @@
                 <div class="col s12 m5 l3">
                     <figure style="margin:0 10px;">
                         <img id="imagen_seleccionada" style="width: 132px;border: 1px solid black;"
-                             src="<?= base_url(); ?>files/default-user-image.png">
+                             src="<?= $ruta; ?>">
                     </figure>
                 </div>
             </div>

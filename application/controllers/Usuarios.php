@@ -15,7 +15,7 @@ class Usuarios extends CI_Controller
     public function index()
     {
         $idEmpresa = 1;//Obtener de la variable de sesión
-        $data['lista'] = $this->Usuario_model->cargarUsuarios($idEmpresa);;
+        $data['lista'] = $this->Usuario_model->cargarTodos($idEmpresa);;
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
         $this->load->view('usuarios/usuarios_lista', $data);
@@ -51,7 +51,7 @@ class Usuarios extends CI_Controller
             'rolContador' => $this->input->post('usuario_rolContador')
         );
 
-        $usuario = $this->Usuario_model->insertarUsuario($data);
+        $usuario = $this->Usuario_model->insertar($data);
         if (!$usuario) {
             //Error en la transacción
             echo 0;
@@ -74,7 +74,7 @@ class Usuarios extends CI_Controller
 
     public function editar($id)
     {
-        $resultado = $this->Usuario_model->cargarUsuario(decryptIt($id));
+        $resultado = $this->Usuario_model->cargar(decryptIt($id));
         if ($resultado === false || $resultado === array()) {
             echo "Error en la transacción";
         } else {
@@ -101,7 +101,7 @@ class Usuarios extends CI_Controller
             'rolContador' => $this->input->post('usuario_rolContador')
         );
         $data['id'] = decryptIt($id);
-        if (!$this->Usuario_model->modificarUsuario($data)) {
+        if (!$this->Usuario_model->modificar($data)) {
             //Error en la transacción
             echo 0;
         } else {
@@ -112,7 +112,7 @@ class Usuarios extends CI_Controller
 
     public function eliminar() {
         $id = $_POST['idEliminar'];
-        if (!$this->Usuario_model->eliminarUsuario(decryptIt($id))) {
+        if (!$this->Usuario_model->eliminar(decryptIt($id))) {
             //Error en la transacción
             echo 0;
         } else {
@@ -147,12 +147,19 @@ class Usuarios extends CI_Controller
         $data['actual'] = $this->input->post('usuario_contrasena_actual');
         $data['confirmacion'] = $this->input->post('usuario_contrasena_confirmar');
         $data['id'] = decryptIt($id);
-        if (!$this->Usuario_model->cambiar_contrasena($data)) {
+        $resultado = $this->Usuario_model->cambiar_contrasena($data);
+        if (!$resultado) {
             //Error en la transacción
             echo 0;
         } else {
-            //correcto
-            echo 1;
+            if($resultado === 'errorE') {
+                echo 2;
+            } elseif($resultado === 'errorD') {
+                echo 3;
+            } else {
+                //correcto
+                echo 1;
+            }
         }
     }
 
@@ -168,8 +175,10 @@ class Usuarios extends CI_Controller
         if (!$usuario) {
             echo 0;
         } else {
-            $ruta = './files/'.$data['datos']['idEmpresa'].'/'.$data['id'];
-            unlink($ruta.'/profile_picture_'.$data['id'].'.'.$usuario);
+            $ruta = './files/'.$data['datos']['idEmpresa'].'/'. $data['id'];
+            if($usuario != 'sinFoto') {
+                unlink($ruta . '/profile_picture_' . $data['id'] . '.' . $usuario);
+            }
             $config['upload_path'] = $ruta;
             $config['file_name'] = 'profile_picture_'.$data['id'];
             $config['allowed_types'] = 'jpg|png|jpeg';
