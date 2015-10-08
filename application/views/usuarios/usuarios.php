@@ -144,8 +144,7 @@
                                             </div>
                                             <div class="col s12 m5 l3">
                                                 <figure>
-                                                    <img id="imagen_seleccionada" style="width: 100%;border: 1px solid black;"
-                                                         src="<?= base_url(); ?>files/default-user-image.png">
+                                                    <img id="imagen_seleccionada" src="<?= base_url(); ?>files/default-user-image.png">
                                                 </figure>
                                             </div>
                                         </div>

@@ -257,6 +257,10 @@ ul.ver-usuario-lista li { list-style: initial; }
 
 a#btn-cambio-contresena { background-color: dimgrey; }
 
+img#icon-image-edit { border:0; position:absolute; width: 200px; left: 0; background-color: white; opacity: 0.4; padding: 40px; }
+img#icon-image-edit:hover { opacity: 0.7; }
+img#imagen_seleccionada { width: 159px;height: 159px;border: 1px solid black; }
+
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/
     div#login-page { width: 380px !important; max-height: 408px !important; top: 0 !important; }

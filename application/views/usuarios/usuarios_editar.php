@@ -41,7 +41,7 @@
                     <div id="imagen-usuario-editar" class="cliente-ver-logo" style="margin: 5px 0;">
                         <a class="modal-trigger" href="#cambio-imagen" title="Cambiar imagen" style="position: relative; cursor:pointer;">
                             <img id="imagen_perfil_usuario" alt="Imagen de perfil del usuario" src="<?= $ruta; ?>" style="position:relative;height: 200px;width: 200px;" />
-                            <img id="icon-image-edit" src="<?= base_url() ?>files/edit-image.png" style="border:0;position:absolute;width: 100px;left: 55px;bottom: 50px;visibility: hidden;">
+                            <img id="icon-image-edit" src="<?= base_url() ?>files/edit-image.png">
                         </a>
                     </div>
                 </div>
@@ -366,8 +366,7 @@
                 </div>
                 <div class="col s12 m5 l3">
                     <figure style="margin:0 10px;">
-                        <img id="imagen_seleccionada" style="width: 132px;border: 1px solid black;"
-                             src="<?= $ruta; ?>">
+                        <img id="imagen_seleccionada" src="<?= $ruta; ?>">
                     </figure>
                 </div>
             </div>
