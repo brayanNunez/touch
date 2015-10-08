@@ -102,8 +102,10 @@ class Clientes extends CI_Controller
 
         $contactos = array();
         $contador = 0;
-        while ($contador <= 10) {
-            if ($this->input->post('cliente_contactoNombre_'.$contador)) {
+        $contactosObtenidos = 0;
+        $cantidadContactos = $this->input->post('cantidadContactos');
+        while ($contactosObtenidos < $cantidadContactos) {
+            if (isset($_POST['contacto_'.$contador])) {
                     $enviarFacturas = 0;
                     if ($this->input->post('checkbox_contactoCorreoCliente_'.$contador)) {
                         $enviarFacturas = 1;
@@ -115,9 +117,11 @@ class Clientes extends CI_Controller
                  'correo' => $this->input->post('cliente_contactoCorreo_'.$contador),
                  'puesto' => $this->input->post('cliente_contactoTelefono_'.$contador),
                  'telefono' => $this->input->post('cliente_contactoPuesto_'.$contador),
-                 'enviarFacturas' => $enviarFacturas
+                 'enviarFacturas' => $enviarFacturas,   
+                 'eliminado' => '0'
                  );
                 array_push($contactos, $contacto);
+                $contactosObtenidos++;
             }
             $contador++;
          }

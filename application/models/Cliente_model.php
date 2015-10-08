@@ -49,7 +49,6 @@ class Cliente_model extends CI_Model
                 if (!$query) throw new Exception("Error en la BD");   
             }
 
-
             $contactos = $data['contactos'];
             // echo print_r($contactos); exit();
             foreach ($contactos as $contacto) {
@@ -104,6 +103,11 @@ class Cliente_model extends CI_Model
                 $gustos = $this->db->get_where('gusto', array('idCliente' => $id));
                 if (!$gustos) throw new Exception("Error en la BD");   
                 $row['gustos'] = $gustos->result_array();
+
+                $contactos = $this->db->get_where('personacontacto', array('idCliente' => $id,  'eliminado' => 0));
+                if (!$contactos) throw new Exception("Error en la BD");   
+                $row['contactos'] = $contactos->result_array();
+
             }
             // print_r ($row);exit();
              $this->db->trans_commit();
