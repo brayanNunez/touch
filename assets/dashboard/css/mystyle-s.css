@@ -20,7 +20,7 @@ div#table { margin-top: 3%; }
 .modal div.modal-header p { font-size: xx-large; text-align: center; padding-top: 10px; }
 .modal div.modal-footer a { color: #000000; font-weight: bold; }
 
-section.registro-content { padding-top: 0 !important; }
+section.registro-content { padding-top: 0 !important; padding-bottom: 30px; }
 div.menu-nosotros { color: #666; }
 ul.menu li.nosotros { color: #666 !important; padding-right: 5px !important; }
 a.boton-registro { background-color: white; border: 2px solid #47b475; line-height: 27px; box-shadow: none; color: #47b475 !important; }
@@ -51,7 +51,7 @@ li.nosotros ul.mega-menu span.title { font-size: initial; color:black; }
 li.nosotros ul.mega-menu a.nosotros-opcion { color:black !important; padding-right: 70%; }
 div.modal-header a.cerrar-modal { color: white; position: absolute; top: 0; right: 0; padding: 5px 10px 0 10px; background-color: #C75050; }
 div.realperson-text { text-align: center !important; min-height: 35px; }
-div.campo-captcha { margin-top: 6% !important; }
+div.campo-captcha { margin-top: 2% !important; }
 div.realperson-regen { font-size: initial; margin-top: 10px; color: blue; }
 div.realperson-text { display: block; margin: 0 auto; }
 section.bg-dark.bg-secondary { padding: 10px 0; }

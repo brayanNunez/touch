@@ -77,7 +77,7 @@ $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente
     $lang['errorEliminar'] = 'Ha ocurrido un error al intentar eliminar los datos.';
     $lang['errorEditar'] = 'Ha ocurrido un error al intentar editar los datos.';
 
-    
+
 
     
     
@@ -311,7 +311,10 @@ $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente
 	$lang['reportes'] = 'Reportes';
 
 //Formulario informacion del perfil
+    $lang['formRegistro_tipo'] = 'Tipo de registro';
     $lang['formPerfil_numeroIdentificacion'] = 'Número de identificación';
+    $lang['formPerfil_cedulaJuridica'] = 'Cédula jurídica';
+    $lang['formPerfil_nombreArtistico'] = 'Nombre artístico';
     $lang['formPerfil_nombre'] = 'Nombre';
     $lang['formPerfil_apellido1'] = 'Primer apellido';
     $lang['formPerfil_apellido2'] = 'Segundo apellido';
