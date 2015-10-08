@@ -284,205 +284,78 @@
                     </div>
                 </div>
                 <div id="tab-contactos-editar" class="card col s12">
-                    <div class="row">
-                        <div class="col s12 m11 l11">
-                            <div class="row">
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="cliente_contactoApellido1" type="text" value="Rodriguez">
-                                    <label for="cliente_contactoApellido1"><?= label('formContacto_apellido1'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="cliente_contactoApellido2" type="text" value="Bolannos">
-                                    <label for="cliente_contactoApellido2"><?= label('formContacto_apellido2'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="cliente_contactoNombre" type="text" value="Jose Sebastian">
-                                    <label for="cliente_contactoNombre"><?= label('formContacto_nombre'); ?></label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12 m6 l6">
-                                    <div>
-                                        <input id="cliente_contactoCorreo" type="email" style="margin-bottom: 0;" value="sebas@gmail.com">
-                                        <label for="cliente_contactoCorreo"><?= label('formCliente_correo'); ?></label>
-                                    </div>
-                                    <div style="margin-bottom: 20px;">
-                                        <input type="checkbox" class="filled-in" id="checkbox_contactoCorreoCliente" checked />
-                                        <label for="checkbox_contactoCorreoCliente" style="margin-bottom: 20px;">
-                                            <?= label('formCliente_correoCheck') ?>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="input-field col s12 m3 l3">
-                                    <input id="cliente_contactoPuesto" type="text" value="CEO">
-                                    <label for="cliente_contactoPuesto"><?= label('formContacto_puesto'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m3 l3">
-                                    <input id="cliente_contactoTelefono" type="text" value="89563405">
-                                    <label for="cliente_contactoTelefono"><?= label('formContacto_telefono'); ?></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col s12 m1 l1 btn-contacto-eliminar-edicion">
-                            <a href="#eliminarContacto_editar" class="modal-trigger" title="<?= label('formCliente_contactoEliminar') ?>">
-                                <i class="mdi-action-delete medium" style="color: black;"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col s12">
-                        <hr />
-                    </div>
+                    <div id="contenedorContactos">
 
-                    <div class="row">
-                        <div class="col s12 m11 l11">
-                            <div class="row">
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="cliente_contactoApellido1" type="text" value="Nunez">
-                                    <label for="cliente_contactoApellido1"><?= label('formContacto_apellido1'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="cliente_contactoApellido2" type="text" value="Rojas">
-                                    <label for="cliente_contactoApellido2"><?= label('formContacto_apellido2'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="cliente_contactoNombre" type="text" value="Brayan">
-                                    <label for="cliente_contactoNombre"><?= label('formContacto_nombre'); ?></label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12 m6 l6">
-                                    <div>
-                                        <input id="cliente_contactoCorreo" type="email" style="margin-bottom: 0;" value="brayan@gmail.com">
-                                        <label for="cliente_contactoCorreo"><?= label('formCliente_correo'); ?></label>
-                                    </div>
-                                    <div style="margin-bottom: 20px;">
-                                        <input type="checkbox" class="filled-in" id="checkbox_contactoCorreoCliente" checked />
-                                        <label for="checkbox_contactoCorreoCliente" style="margin-bottom: 20px;">
-                                            <?= label('formCliente_correoCheck') ?>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="input-field col s12 m3 l3">
-                                    <input id="cliente_contactoPuesto" type="text" value="CEO">
-                                    <label for="cliente_contactoPuesto"><?= label('formContacto_puesto'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m3 l3">
-                                    <input id="cliente_contactoTelefono" type="text" value="87234691">
-                                    <label for="cliente_contactoTelefono"><?= label('formContacto_telefono'); ?></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col s12 m1 l1 btn-contacto-eliminar-edicion">
-                            <a href="#eliminarContacto_editar" class="modal-trigger" title="<?= label('formCliente_contactoEliminar') ?>">
-                                <i class="mdi-action-delete medium" style="color: black;"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col s12">
-                        <hr />
-                    </div>
+                    <?php 
+                        $contador= 0;
+                        foreach ($resultado['contactos'] as $contacto) {
+                    ?>
 
-                    <div class="row">
-                        <div class="col s12 m11 l11">
-                            <div class="row">
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="cliente_contactoApellido1" type="text" value="Arias">
-                                    <label for="cliente_contactoApellido1"><?= label('formContacto_apellido1'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="cliente_contactoApellido2" type="text" value="Chaves">
-                                    <label for="cliente_contactoApellido2"><?= label('formContacto_apellido2'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="cliente_contactoNombre" type="text" value="Jorge">
-                                    <label for="cliente_contactoNombre"><?= label('formContacto_nombre'); ?></label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12 m6 l6">
-                                    <div>
-                                        <input id="cliente_contactoCorreo" type="email" style="margin-bottom: 0;" value="jorge@gmail.com">
-                                        <label for="cliente_contactoCorreo"><?= label('formCliente_correo'); ?></label>
-                                    </div>
-                                    <div style="margin-bottom: 20px;">
-                                        <input type="checkbox" class="filled-in" id="checkbox_contactoCorreoCliente" />
-                                        <label for="checkbox_contactoCorreoCliente" style="margin-bottom: 20px;">
-                                            <?= label('formCliente_correoCheck') ?>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="input-field col s12 m3 l3">
-                                    <input id="cliente_contactoPuesto" type="text" value="Programador">
-                                    <label for="cliente_contactoPuesto"><?= label('formContacto_puesto'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m3 l3">
-                                    <input id="cliente_contactoTelefono" type="text" value="85204679">
-                                    <label for="cliente_contactoTelefono"><?= label('formContacto_telefono'); ?></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col s12 m1 l1 btn-contacto-eliminar-edicion">
-                            <a href="#eliminarContacto_editar" class="modal-trigger" title="<?= label('formCliente_contactoEliminar') ?>">
-                                <i class="mdi-action-delete medium" style="color: black;"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col s12">
-                        <hr />
-                    </div>
+                    <div id="contacto<?=$contador?> " class="row"> 
+                        <div class="col s12 m11 l11"> 
+                            <div class="row"> 
+                                <div class="input-field col s12 m4 l4"> 
+                                    <input class="accionAplicada" style="display:none" name="contacto_<?=$contador?>" type="text" value="1"> <!-- value 1 para existentes, 0 los nuevos y 2 los eliminados -->
+                                    <input style="display:none" name="idContacto_<?=$contador?>" type="text" value="<?=encryptIt($contacto['idPersonaContacto'])?>">
 
-                    <div class="row">
-                        <div class="col s12 m11 l11">
-                            <div class="row">
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="cliente_contactoApellido1" type="text" value="Rojas">
-                                    <label for="cliente_contactoApellido1"><?= label('formContacto_apellido1'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="cliente_contactoApellido2" type="text" value="Chaves">
-                                    <label for="cliente_contactoApellido2"><?= label('formContacto_apellido2'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="cliente_contactoNombre" type="text" value="Cloret">
-                                    <label for="cliente_contactoNombre"><?= label('formContacto_nombre'); ?></label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12 m6 l6">
-                                    <div>
-                                        <input id="cliente_contactoCorreo" type="email" style="margin-bottom: 0;" value="cloret@gmail.com">
-                                        <label for="cliente_contactoCorreo"><?= label('formCliente_correo'); ?></label>
-                                    </div>
-                                    <div style="margin-bottom: 20px;">
-                                        <input type="checkbox" class="filled-in" id="checkbox_contactoCorreoCliente" />
-                                        <label for="checkbox_contactoCorreoCliente" style="margin-bottom: 20px;">
-                                            <?= label('formCliente_correoCheck') ?>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="input-field col s12 m3 l3">
-                                    <input id="cliente_contactoPuesto" type="text" value="Programador">
-                                    <label for="cliente_contactoPuesto"><?= label('formContacto_puesto'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m3 l3">
-                                    <input id="cliente_contactoTelefono" type="text" value="82506431">
-                                    <label for="cliente_contactoTelefono"><?= label('formContacto_telefono'); ?></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col s12 m1 l1 btn-contacto-eliminar-edicion">
-                            <a href="#eliminarContacto_editar" class="modal-trigger" title="<?= label('formCliente_contactoEliminar') ?>">
-                                <i class="mdi-action-delete medium" style="color: black;"></i>
-                            </a>
-                        </div>
+                                    <input id="cliente_contactoApellido1_<?=$contador?>" name="cliente_contactoApellido1_<?=$contador?>" type="text" value="<?=$contacto['primerApellido']?>"> 
+                                    <label for="cliente_contactoApellido1_<?=$contador?>"><?= label("formContacto_apellido1"); ?></label> 
+                                </div> 
+                                <div class="input-field col s12 m4 l4"> 
+                                    <input id="cliente_contactoApellido2_<?=$contador?>" name="cliente_contactoApellido2_<?=$contador?>" type="text" value="<?=$contacto['segundoApellido']?>"> 
+                                    <label for="cliente_contactoApellido2_<?=$contador?>"><?= label("formContacto_apellido2"); ?></label> 
+                                </div> 
+                                <div class="input-field col s12 m4 l4"> 
+                                    <input id="cliente_contactoNombre_<?=$contador?>" name="cliente_contactoNombre_<?=$contador?>" type="text" value="<?=$contacto['nombre']?>"> 
+                                    <label for="cliente_contactoNombre_<?=$contador?>"><?= label("formContacto_nombre"); ?></label> 
+                                </div> 
+                            </div> 
+
+                            <div class="row"> 
+                                <div class="input-field col s12 m6 l6"> 
+                                    <div> 
+                                        <input id="cliente_contactoCorreo_<?=$contador?>" name="cliente_contactoCorreo_<?=$contador?>" type="email" style="margin-bottom: 0;" value="<?=$contacto['correo']?>"> 
+                                        <label for="cliente_contactoCorreo_<?=$contador?>"><?= label("formCliente_correo"); ?></label> 
+                                    </div> 
+                                    <div style="margin-bottom: 20px;"> 
+                                        <input type="checkbox" class="filled-in" id="checkbox_contactoCorreoCliente_<?=$contador?>" name="checkbox_contactoCorreoCliente_<?=$contador?>" value="1" <?php if($contacto['enviarFacturas']) echo 'checked';?>> 
+                                        <label for="checkbox_contactoCorreoCliente_<?=$contador?>" style="margin-bottom: 20px;"> 
+                                        <?= label("formCliente_correoCheck"); ?> 
+                                        </label> 
+                                    </div> 
+                                </div> 
+                                <div class="input-field col s12 m3 l3"> 
+                                    <input id="cliente_contactoPuesto_<?=$contador?>" name="cliente_contactoPuesto_<?=$contador?>" type="text" value="<?=$contacto['puesto']?>"> 
+                                    <label for="cliente_contactoPuesto_<?=$contador?>"><?= label("formContacto_puesto"); ?></label> 
+                                </div> 
+                                <div class="input-field col s12 m3 l3"> 
+                                    <input id="cliente_contactoTelefono_<?=$contador?>" name="cliente_contactoTelefono_<?=$contador?>" type="text" value="<?=$contacto['telefono']?>"> 
+                                    <label for="cliente_contactoTelefono_<?=$contador?>"><?= label("formContacto_telefono"); ?></label> 
+                                </div> 
+                            </div> 
+
+                        </div> 
+                        <div class="col s12 m1 l1 btn-contacto-eliminar-edicion"> 
+                            <a class="confirmarEliminarContacto" data-fila-eliminar=" <?=$contador?> " title="<?= label("formCliente_contactoEliminar") ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a> 
+                        </div> 
+                        <div class="col s12"> 
+                            <hr /> 
+                        </div> 
+                    </div> 
+
+
+
+                    <?php 
+                        $contador++;
+                        }
+                    ?>
+                        
                     </div>
-                    <div class="row" id="tab-contactos-nuevo-editar">
+                       
+                    <div class="row" id="tab-contactos-editar-nuevo">
                         <a onclick="agregarNuevoContacto();">
                             <?= label('formCliente_contactoAgregar') ?>
                         </a>
-                    </div>
-                    <div class="col s12">
-                        <hr />
                     </div>
                 </div>
                 <div id="tab-infoAdicional-editar" class="card col s12">
@@ -562,6 +435,13 @@
         </div>
     </form>
 </div>
+
+<div style="visibility:hidden; position:absolute">
+<!-- <div style="display:none"> -->
+    <input id="cantidadContactos" form="form_cliente" name="cantidadContactos" type="text" value="<?= count($resultado['contactos'])?>">                                          
+    <a id="linkContactosElimminar" href="#eliminarContacto-editar" class="modal-trigger" data-fila-eliminar="1" title="<?= label('formCliente_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>
+</div>
+
 
 <script>
     $(window).load(function () {
@@ -654,65 +534,100 @@
             document.getElementById('elementos-cliente-juridico').style.display = 'block';
         }
     }
+
+    var contactoEliminar = null;
+    $(document).on('click','.confirmarEliminarContacto', function () {
+       contactoEliminar = $(this).parent().parent();
+       $('#linkContactosElimminar').click();//esto se hace porque al agregar un <a class="modal-trigger"> dinamicamente con el metodo de agregarNuevoContacto() pareciera no servir, entonces lo que se hace es llamar al evento click del modal-trigger con el id = linkContactosElimminar 
+   });
+
+    $(document).on('click','#eliminarContacto-editar #botonEliminar', function () {
+       event.preventDefault();
+       var tipo = contactoEliminar.find('.accionAplicada').val();
+       if (tipo == '0') {
+            contactoEliminar.fadeOut(function () {
+                contactoEliminar.remove();
+           });
+           cantidad--;
+           actualizarCantidad();
+       } else{
+        contactoEliminar.find('.accionAplicada').val('2');
+        contactoEliminar.fadeOut(function () {
+            contactoEliminar.hide();
+       });
+
+       }
+    });
+
+    function actualizarCantidad(){
+        $('#cantidadContactos').val(cantidad);
+
+    }
+    var cantidad = <?= count($resultado['contactos'])?>;
+    var contador = cantidad;
     function agregarNuevoContacto() {
-        $('#tab-contactos-nuevo-editar').remove();
-        $('#tab-contactos-editar').append('' +
-            '<div class="row">' +
-            '<div class="col s12 m11 l11">' +
-            '<div class="row">' +
-            '<div class="input-field col s12 m4 l4">' +
-            '<input id="cliente_contactoApellido1" type="text">' +
-            '<label for="cliente_contactoApellido1"><?= label("formContacto_apellido1"); ?></label>' +
-            '</div>' +
-            '<div class="input-field col s12 m4 l4">' +
-            '<input id="cliente_contactoApellido2" type="text">' +
-            '<label for="cliente_contactoApellido2"><?= label("formContacto_apellido2"); ?></label>' +
-            '</div>' +
-            '<div class="input-field col s12 m4 l4">' +
-            '<input id="cliente_contactoNombre" type="text">' +
-            '<label for="cliente_contactoNombre"><?= label("formContacto_nombre"); ?></label>' +
-            '</div>' +
-            '</div>' +
+        cantidad++;
+        actualizarCantidad();
+        $('#contenedorContactos').append('' +
+            '<div id="contacto' + contador +' " class="row">' +
+                '<div class="col s12 m11 l11">' +
+                    '<div class="row">' +
+                        '<div class="input-field col s12 m4 l4">' +
+                            '<input class="accionAplicada" style="display:none" name="contacto_'+ contador +'" type="text" value="0">' +  
+                            '<input id="cliente_contactoApellido1_'+ contador +'" name="cliente_contactoApellido1_'+ contador +'" type="text">' +
+                            '<label for="cliente_contactoApellido1_'+ contador +'"><?= label("formContacto_apellido1"); ?></label>' +
+                        '</div>' +
+                        '<div class="input-field col s12 m4 l4">' +
+                            '<input id="cliente_contactoApellido2_'+ contador +'" name="cliente_contactoApellido2_'+ contador +'" type="text">' +
+                            '<label for="cliente_contactoApellido2_'+ contador +'"><?= label("formContacto_apellido2"); ?></label>' +
+                        '</div>' +
+                        '<div class="input-field col s12 m4 l4">' +
+                            '<input id="cliente_contactoNombre_'+ contador +'" name="cliente_contactoNombre_'+ contador +'" type="text">' +
+                            '<label for="cliente_contactoNombre_'+ contador +'"><?= label("formContacto_nombre"); ?></label>' +
+                        '</div>' +
+                    '</div>' +
 
-            '<div class="row">' +
-            '<div class="input-field col s12 m6 l6">' +
-            '<div>' +
-            '<input id="cliente_contactoCorreo" type="email" style="margin-bottom: 0;">' +
-            '<label for="cliente_contactoCorreo"><?= label('formCliente_correo'); ?></label>' +
-            '</div>' +
-            '<div style="margin-bottom: 20px;">' +
-            '<input type="checkbox" class="filled-in" id="checkbox_contactoCorreoCliente" />' +
-            '<label for="checkbox_contactoCorreoCliente" style="margin-bottom: 20px;">' +
-            '<?= label('formCliente_correoCheck') ?>' +
-            '</label>' +
-            '</div>' +
-            '</div>' +
-            '<div class="input-field col s12 m3 l3">' +
-            '<input id="cliente_contactoPuesto" type="text">' +
-            '<label for="cliente_contactoPuesto"><?= label('formContacto_puesto'); ?></label>' +
-            '</div>' +
-            '<div class="input-field col s12 m3 l3">' +
-            '<input id="cliente_contactoTelefono" type="text">' +
-            '<label for="cliente_contactoTelefono"><?= label('formContacto_telefono'); ?></label>' +
-            '</div>' +
-            '</div>' +
+                    '<div class="row">' +
+                        '<div class="input-field col s12 m6 l6">' +
+                            '<div>' +
+                                '<input id="cliente_contactoCorreo_'+ contador +'" name="cliente_contactoCorreo_'+ contador +'" type="email" style="margin-bottom: 0;">' +
+                                '<label for="cliente_contactoCorreo_'+ contador +'"><?= label('formCliente_correo'); ?></label>' +
+                            '</div>' +
+                            '<div style="margin-bottom: 20px;">' +
+                                '<input type="checkbox" class="filled-in" id="checkbox_contactoCorreoCliente_'+ contador +'" name="checkbox_contactoCorreoCliente_'+ contador +'" />' +
+                                '<label for="checkbox_contactoCorreoCliente_'+ contador +'" style="margin-bottom: 20px;">' +
+                                '<?= label('formCliente_correoCheck') ?>' +
+                                '</label>' +
+                            '</div>' +
+                        '</div>' +
+                        '<div class="input-field col s12 m3 l3">' +
+                            '<input id="cliente_contactoPuesto_'+ contador +'" name="cliente_contactoPuesto_'+ contador +'" type="text">' +
+                            '<label for="cliente_contactoPuesto_'+ contador +'"><?= label('formContacto_puesto'); ?></label>' +
+                        '</div>' +
+                        '<div class="input-field col s12 m3 l3">' +
+                            '<input id="cliente_contactoTelefono_'+ contador +'" name="cliente_contactoTelefono_'+ contador +'" type="text">' +
+                            '<label for="cliente_contactoTelefono_'+ contador +'"><?= label('formContacto_telefono'); ?></label>' +
+                        '</div>' +
+                    '</div>' +
 
-            '</div>' +
-            '<div class="col s12 m1 l1 btn-contacto-eliminar-edicion">' +
-            '<a href="#eliminarContacto_editar" class="modal-trigger" title="<?= label('formCliente_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>' +
-            '</div>' +
-            '</div>' +
-            '<div class="row" id="tab-contactos-nuevo-editar">' +
-            '<a style="cursor: pointer;" onclick="agregarNuevoContacto();"><?= label('formCliente_contactoAgregar') ?></a>' +
-            '</div>' +
-            '<div class="col s12">' +
-            '<hr />' +
-            '</div>');
+                '</div>' +
+                '<div class="col s12 m1 l1 btn-contacto-eliminar-edicion">' +
+                   // '<a href="#eliminarContacto" class="-text modal-trigger confirmarEliminar"  data-fila-eliminar="' + contador + '"><?= label('menuOpciones_eliminar') ?></a>' +
+                   // '<div class="confirmarEliminarContacto">prueba</div>'+
+                    '<a class="confirmarEliminarContacto" data-fila-eliminar="' + contador + '" title="<?= label('formCliente_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>' +
+                '</div>' +
+                '<div class="col s12">' +
+                    '<hr />' +
+                '</div>' +
+            '</div>' 
+            
+            );
+            contador++;
     }
 </script>
 
 <!-- lista modals -->
-<div id="eliminarContacto_editar" class="modal">
+<div id="eliminarContacto-editar" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
@@ -720,7 +635,7 @@
     <div class="modal-content">
         <p><?= label('confirmarEliminarContacto'); ?></p>
     </div>
-    <div class="modal-footer black-text">
+    <div id="botonEliminar" class="modal-footer black-text">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>

@@ -282,7 +282,7 @@
 
 </section>
 <div style="visibility:hidden; position:absolute">
-    <input id="cantidadContactos" form="form_cliente" name="cantidadContactos" type="text" value="5">                                          
+    <input id="cantidadContactos" form="form_cliente" name="cantidadContactos" type="text" value="0">                                          
     <a id="linkContactosElimminar" href="#eliminarContacto" class="modal-trigger" data-fila-eliminar="1" title="<?= label('formCliente_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>
 </div>
 <!-- END CONTENT-->
@@ -599,7 +599,7 @@
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
-<div id="eliminarElementosSeleccionados" class="modal">
+<!-- <div id="eliminarElementosSeleccionados" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
@@ -613,5 +613,5 @@
                class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
         </div>
     </div>
-</div>
+</div> -->
 <!-- Fin lista modals-->
