@@ -424,11 +424,39 @@
                             </tr>
                             <tr>
                                 <td><?= label('formCliente_gustos_preferencias'); ?></td>
-                                <td>Futbol, Baseball, Tennis, Golf</td>
+                                <td><?php if (isset($resultado)) {
+                                        $numItems = count($resultado['gustos']);
+                                        $i = 0;
+                                        foreach ($resultado['gustos'] as $gusto) {
+                                            if(++$i === $numItems) {
+                                                echo $gusto['nombre'];
+                                            } else {
+                                                echo $gusto['nombre'].', ';
+                                            }
+
+                                            
+                                        }
+                                      
+                                   } ?>
+                                   </td>
                             </tr>
                             <tr>
                                 <td><?= label('formCliente_mediosContacto'); ?></td>
-                                <td>TV,Radio,Carteles,Vallas publicitarias</td>
+                                <td><?php if (isset($resultado)) {
+                                        $numItems = count($resultado['medios']);
+                                        $i = 0;
+                                        foreach ($resultado['medios'] as $gusto) {
+                                            if(++$i === $numItems) {
+                                                echo $gusto['nombre'];
+                                            } else {
+                                                echo $gusto['nombre'].', ';
+                                            }
+
+                                            
+                                        }
+                                      
+                                   } ?>
+                                   </td>
                             </tr>
                         </tbody>
                     </table>

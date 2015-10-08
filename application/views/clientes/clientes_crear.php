@@ -175,10 +175,6 @@
                                                         <input id="cliente_direccionCanton" name="cliente_direccionCanton" type="text">
                                                         <label for="cliente_direccionCanton"><?= label('formCliente_direccionCanton'); ?></label>
                                                     </div>
-<!--                                                    <div class="input-field col s12 m4 l4">-->
-<!--                                                        <input id="cliente_direccionDistrito" type="text">-->
-<!--                                                        <label for="cliente_direccionDistrito">--><?//= label('formCliente_direccionDistrito'); ?><!--</label>-->
-<!--                                                    </div>-->
                                                     <div class="input-field col s12 m12 l12">
                                                         <input id="cliente_direccionDomicilio" name="cliente_direccionDomicilio" type="text">
                                                         <label for="cliente_direccionDomicilio"><?= label('formCliente_direccionDomicilio'); ?></label>
