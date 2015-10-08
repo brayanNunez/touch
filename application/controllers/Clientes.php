@@ -41,6 +41,8 @@ class Clientes extends CI_Controller
         // $data['palabras'] = $this->input->post('empleado_palabras');
 
         $data['gustos'] = $this->input->post('cliente_gustos');
+        $data['medios'] = $this->input->post('cliente_medios');
+
         $juridico = $this->input->post('cliente_tipo');
         
         if ($juridico) {
@@ -175,6 +177,8 @@ class Clientes extends CI_Controller
         // $data['palabras'] = $this->input->post('empleado_palabras');
 
         $data['gustos'] = $this->input->post('cliente_gustos');
+        $data['medios'] = $this->input->post('cliente_medios');
+
         $juridico = $this->input->post('cliente_tipo');
         
         if ($juridico) {
@@ -331,27 +335,20 @@ class Clientes extends CI_Controller
         foreach ($resultado as $v){
             array_push($gustos,$v['nombre']);
         }
-       
 
+        echo json_encode($gustos);
+    }
 
-        // $json = '[ "Música",
-        //           "Fútbol",
-        //           "Paris",
-        //           "Naturaleza",
-        //           "New York",
-        //           "Deportes extremos",
-        //           "Playa",
-        //           "Deportes acuaticos",
-        //           "Historia",
-        //           "Ciencias",
-        //           "Viajar",
-        //           "Lotería",
-        //           "Adidas",
-        //           "Nike",
-        //           "Pan salado",
-        //           "Europa",
-        //           "Patinetas"
-        //         ]';
+    public function mediosSugerencia()
+    {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $resultado = $this->Cliente_model->mediosSugerencia($idEmpresa); 
+        $gustos = [];
+        foreach ($resultado as $v){
+            array_push($gustos,$v['nombre']);
+        }
 
         echo json_encode($gustos);
     }

@@ -91,13 +91,17 @@
                     </span>
                     <div class="wrapper">
                         <ul>
+                        <?php 
+                        foreach ($resultado['contactos'] as $contacto) {
+                        ?>
                             <li>
                                 <div class="info-contacto">
+                                    
                                     <div>
-                                        <h5>Sebastian Rodriguez Bolanos</h5>
-                                        <p>CEO</p>
-                                        <p>sebastian.rodriguez@gmail.com</p>
-                                        <p>Tel. 8956-3405</p>
+                                        <h5><?=$contacto['nombre']." ".$contacto['primerApellido']." ".$contacto['segundoApellido']?></h5>
+                                        <p><?=$contacto['puesto']?></p>
+                                        <p><?=$contacto['correo']?></p>
+                                        <p><?=$contacto['telefono']?></p>
                                         <div class="contacto-opciones">
                                             <a href="#editarContacto" class="modal-trigger"
                                                title="<?= label('formCliente_contactoEditar') ?>">
@@ -116,9 +120,13 @@
                                             </a>
                                         </div>
                                     </div>
+                                    
                                 </div>
                             </li>
-                            <li>
+                            <?php 
+                                }
+                            ?>
+                            <!-- <li>
                                 <div class="info-contacto">
                                     <div>
                                         <h5>Brayan Nunez</h5>
@@ -144,8 +152,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </li>
-                            <li>
+                            </li> -->
+                            <!-- <li>
                                 <div class="info-contacto">
                                     <div>
                                         <h5>Jorge Arias</h5>
@@ -387,7 +395,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                     <span id="btn-next" class="next" title="Elementos siguientes">

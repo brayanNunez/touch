@@ -85,38 +85,38 @@ class Cotizacion extends CI_Controller
         echo $json;
     }
 
-    public function jsonContactos()
-    {
-        $json = '[ "Facebook",
-                  "TV",
-                  "Radio",
-                  "Periódico"
-                ]';
-        echo $json;
-    }
+    // public function jsonContactos()
+    // {
+    //     $json = '[ "Facebook",
+    //               "TV",
+    //               "Radio",
+    //               "Periódico"
+    //             ]';
+    //     echo $json;
+    // }
 
-    public function jsonGustos()
-    {
-        $json = '[ "Música",
-                  "Fútbol",
-                  "Paris",
-                  "Naturaleza",
-                  "New York",
-                  "Deportes extremos",
-                  "Playa",
-                  "Deportes acuaticos",
-                  "Historia",
-                  "Ciencias",
-                  "Viajar",
-                  "Lotería",
-                  "Adidas",
-                  "Nike",
-                  "Pan salado",
-                  "Europa",
-                  "Patinetas"
-                ]';
-        echo $json;
-    }
+    // public function jsonGustos()
+    // {
+    //     $json = '[ "Música",
+    //               "Fútbol",
+    //               "Paris",
+    //               "Naturaleza",
+    //               "New York",
+    //               "Deportes extremos",
+    //               "Playa",
+    //               "Deportes acuaticos",
+    //               "Historia",
+    //               "Ciencias",
+    //               "Viajar",
+    //               "Lotería",
+    //               "Adidas",
+    //               "Nike",
+    //               "Pan salado",
+    //               "Europa",
+    //               "Patinetas"
+    //             ]';
+    //     echo $json;
+    // }
 
     
 

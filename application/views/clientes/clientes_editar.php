@@ -390,8 +390,13 @@
                         <br>
                         <div id="mediosCliente" class="example tags_mediosContacto">
                             <div class="bs-example">
-                                <input placeholder="<?= label('formCliente_anadirMedio'); ?>" type="text"
-                                       value="TV,Radio,Carteles,Vallas publicitarias"/>
+                                <input name="cliente_medios" placeholder="<?= label('formCliente_anadirMedio'); ?>" type="text"
+                                       value="<?php if (isset($resultado)) {
+                                        foreach ($resultado['medios'] as $medio) {
+                                            echo $medio['nombre'].',';
+                                        }
+                                      
+                                   } ?>"/>
                             </div>
                         </div>
                         <br>

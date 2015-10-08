@@ -148,7 +148,7 @@
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/gustos.json'
             prefetch: {
-                url: '<?=base_url()?>Cotizacion/jsonContactos',
+                url: '<?=base_url()?>Clientes/mediosSugerencia',
                 ttl: 1000,
                 filter: function (list) {
                     return $.map(list, function (mediosContacto) {

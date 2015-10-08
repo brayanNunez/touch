@@ -49,6 +49,16 @@ class Cliente_model extends CI_Model
                 if (!$query) throw new Exception("Error en la BD");   
             }
 
+            $medios = explode(",", $data['medios']); ;
+            foreach ($medios as $medio) {
+                $row = array(
+                'idCliente' => $insert_id,
+                'nombre' => $medio
+                );
+                $query = $this->db->insert('medio', $row);
+                if (!$query) throw new Exception("Error en la BD");   
+            }
+
             $contactos = $data['contactos'];
             // echo print_r($contactos); exit();
             foreach ($contactos as $contacto) {
@@ -88,6 +98,26 @@ class Cliente_model extends CI_Model
             return false;
         }
     }
+    //Retorna los medios que tienen los clientes en la misma 
+    //empresa para ser sugeridos a la hora de agregar nuevos medios
+    function mediosSugerencia($idEmpresa){
+        try {
+            $this->db->trans_begin();
+            $this->db->distinct();
+            $this->db->select('me.nombre');
+            $this->db->from('medio me');
+            $this->db->join('cliente cl', 'cl.idCliente = me.idCliente');
+            $this->db->join('empresa em', 'cl.idEmpresa = em.idEmpresa');
+            $this->db->where('em.idEmpresa', $idEmpresa);
+            $query = $this->db->get();
+            if (!$query) throw new Exception("Error en la BD");   
+            $this->db->trans_commit();
+            return $query->result_array();
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
 
     function cargar($id)
     {
@@ -99,10 +129,16 @@ class Cliente_model extends CI_Model
             if ($query->num_rows() > 0) {
                 $array = $query->result_array();
                 $row = array_shift($array);//obtiene el primer elemento.. el [0] no sirve en el server
+
                 $this->db->select('nombre');
                 $gustos = $this->db->get_where('gusto', array('idCliente' => $id));
                 if (!$gustos) throw new Exception("Error en la BD");   
                 $row['gustos'] = $gustos->result_array();
+
+                $this->db->select('nombre');
+                $medios = $this->db->get_where('medio', array('idCliente' => $id));
+                if (!$medios) throw new Exception("Error en la BD");   
+                $row['medios'] = $medios->result_array();
 
                 $contactos = $this->db->get_where('personacontacto', array('idCliente' => $id,  'eliminado' => 0));
                 if (!$contactos) throw new Exception("Error en la BD");   
@@ -126,6 +162,7 @@ class Cliente_model extends CI_Model
             $this->db->where('idCliente', $data['id']);
             $query = $this->db->update('cliente', $data['datos']);
             if (!$query) throw new Exception("Error en la BD");   
+            
             $gustos = explode(",", $data['gustos']); ;
             $this->db->where('idCliente', $data['id']);
             $query = $this->db->delete('gusto');
@@ -136,6 +173,19 @@ class Cliente_model extends CI_Model
                 'nombre' => $gusto
                 );
                 $query = $this->db->insert('gusto', $row);
+                if (!$query) throw new Exception("Error en la BD"); 
+            }
+
+            $medios = explode(",", $data['medios']); ;
+            $this->db->where('idCliente', $data['id']);
+            $query = $this->db->delete('medio');
+            if (!$query) throw new Exception("Error en la BD"); 
+            foreach ($medios as $medio) {
+                $row = array(
+                'idCliente' => $data['id'],
+                'nombre' => $medio
+                );
+                $query = $this->db->insert('medio', $row);
                 if (!$query) throw new Exception("Error en la BD"); 
             }
 
