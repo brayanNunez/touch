@@ -139,6 +139,29 @@ class Cliente_model extends CI_Model
                 if (!$query) throw new Exception("Error en la BD"); 
             }
 
+            $nuevos = $data['nuevos'];
+
+            foreach ($nuevos as $nuevo) {
+                $query = $this->db->insert('personacontacto', $nuevo);
+                if (!$query) throw new Exception("Error en la BD"); 
+            }
+
+            $editados = $data['editados'];
+
+            foreach ($editados as $editado) {
+                $this->db->where('idPersonaContacto', $editado['idPersonaContacto']);
+                $query = $this->db->update('personacontacto', $editado);
+                if (!$query) throw new Exception("Error en la BD"); 
+            }
+
+            $eliminados = $data['eliminados'];
+
+            foreach ($eliminados as $eliminado) {
+                $this->db->where('idPersonaContacto', $eliminado['idPersonaContacto']);
+                $query = $this->db->update('personacontacto', $eliminado);
+                if (!$query) throw new Exception("Error en la BD"); 
+            }
+
             $this->db->trans_commit();
             return true;
         } catch (Exception $e) {

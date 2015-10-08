@@ -234,51 +234,72 @@ class Clientes extends CI_Controller
 
 
 
-        $contactos = array();
+        $editados = array();
+        $eliminados = array();
+        $nuevos = array();
+
         $contador = 0;
         $contactosObtenidos = 0;
         $cantidadContactos = $this->input->post('cantidadContactos');
+
+
         while ($contactosObtenidos < $cantidadContactos) {
             if (isset($_POST['contacto_'.$contador])) {
                 $accionEfectuada = $this->input->post('contacto_'.$contador);
-                if ($accionEfectuada=='2') {
-                    echo "eliminado_______";
+                if ($accionEfectuada=='2') {//fue eliminado
+                    $identificacion =  decryptIt($this->input->post('idContacto_'.$contador));
+                    $contacto = array(
+                         'idPersonaContacto' =>decryptIt($this->input->post('idContacto_'.$contador)),
+                         'eliminado' => '1'
+                         );
+                    array_push($eliminados, $contacto);
                 } else {
-                    if ($accionEfectuada=='1') {
-                         echo 'editado______';
-                    } else {
-                         echo 'nuevo______';
+                    if ($accionEfectuada=='1') {// no fue eliminado
+                        $enviarFacturas = 0;
+                         if ($this->input->post('checkbox_contactoCorreoCliente_'.$contador)) {
+                            $enviarFacturas = 1;
+                         }
+                          $contacto = array(
+                         'idPersonaContacto' =>decryptIt($this->input->post('idContacto_'.$contador)),
+                         'nombre' => $this->input->post('cliente_contactoNombre_'.$contador),
+                         'primerApellido' => $this->input->post('cliente_contactoApellido1_'.$contador),
+                         'segundoApellido' => $this->input->post('cliente_contactoApellido2_'.$contador),
+                         'correo' => $this->input->post('cliente_contactoCorreo_'.$contador),
+                         'telefono' => $this->input->post('cliente_contactoTelefono_'.$contador),
+                         'puesto' => $this->input->post('cliente_contactoPuesto_'.$contador),
+                         'enviarFacturas' => $enviarFacturas,   
+                         'eliminado' => '0'
+                         );
+                        array_push($editados, $contacto);
+
+                    } else {// es nuevo
+                         $enviarFacturas = 0;
+                         if ($this->input->post('checkbox_contactoCorreoCliente_'.$contador)) {
+                            $enviarFacturas = 1;
+                         }
+                          $contacto = array(
+                         'idCliente' => decryptIt($id),
+                         'nombre' => $this->input->post('cliente_contactoNombre_'.$contador),
+                         'primerApellido' => $this->input->post('cliente_contactoApellido1_'.$contador),
+                         'segundoApellido' => $this->input->post('cliente_contactoApellido2_'.$contador),
+                         'correo' => $this->input->post('cliente_contactoCorreo_'.$contador),
+                         'telefono' => $this->input->post('cliente_contactoTelefono_'.$contador),
+                         'puesto' => $this->input->post('cliente_contactoPuesto_'.$contador),
+                         'enviarFacturas' => $enviarFacturas,   
+                         'eliminado' => '0'
+                         );
+                        array_push($nuevos, $contacto);
                     }
                     
-                   
-                }
-                
-
-
-                    $enviarFacturas = 0;
-                    if ($this->input->post('checkbox_contactoCorreoCliente_'.$contador)) {
-                        $enviarFacturas = 1;
-                    }
-                  $contacto = array(
-                 'nombre' => $this->input->post('cliente_contactoNombre_'.$contador),
-                 'primerApellido' => $this->input->post('cliente_contactoApellido1_'.$contador),
-                 'segundoApellido' => $this->input->post('cliente_contactoApellido2_'.$contador),
-                 'correo' => $this->input->post('cliente_contactoCorreo_'.$contador),
-                 'telefono' => $this->input->post('cliente_contactoTelefono_'.$contador),
-                 'puesto' => $this->input->post('cliente_contactoPuesto_'.$contador),
-                 'enviarFacturas' => $enviarFacturas,   
-                 'eliminado' => '0'
-                 );
-                array_push($contactos, $contacto);
-                $contactosObtenidos++;
+                } 
+                $contactosObtenidos++;  
             }
             $contador++;
          }
 
-         $data['contactos'] = $contactos;
-
-
-
+         $data['nuevos'] = $nuevos;
+         $data['editados'] = $editados;
+         $data['eliminados'] = $eliminados;
 
         if (!$this->Cliente_model->modificar($data)) {
             //Error en la transacción
