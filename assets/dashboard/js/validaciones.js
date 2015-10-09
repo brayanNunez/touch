@@ -128,4 +128,44 @@
                 }
             });
 
+            $('#formulario_registro').validate({
+            rules:
+            {
+                registro_cedulaTrabajador: {required: true},
+                registro_nombreEmpresaTrabajador: {required: true},
+                registro_paisTrabajador: {required: true},
+                registro_provinciaTrabajador: {required: true},
+                registro_cantonTrabajador: {required: true},
+                registro_domicilioTrabajador: {required: true},
+                registro_primerApellidoTrabajador: {required: true},
+                registro_segundoApellidoTrabajador: {required: true},
+                registro_nombreTrabajador: {required: true},
+                registro_correoTrabajador: {required: true},
+                registro_confirmarCorreoTrabajador: {required: true, equalTo:"#registro_correoTrabajador"},
+                registro_contrasenaTrabajador: {required: true},
+                registro_confirmarContrasenaTrabajador: {required: true, equalTo:"#registro_contrasenaTrabajador"},
+
+                registro_cedulaEmpresa: {required: true},
+                registro_nombreEmpresa: {required: true},
+                registro_nombreFantasiaEmpresa: {required: true},
+                registro_paisEmpresa: {required: true},
+                registro_provinciaEmpresa: {required: true},
+                registro_cantonEmpresa: {required: true},
+                registro_domicilioEmpresa: {required: true},
+                registro_empresaPrimerApellidoContacto: {required: true},
+                registro_empresaSegundoApellidoContacto: {required: true},
+                registro_empresaNombreContacto: {required: true},
+                registro_empresaCorreoContacto: {required: true},
+                registro_empresaConfirmarCorreoContacto: {required: true, equalTo:"#registro_empresaCorreoContacto"},
+                registro_empresaContrasenaContacto: {required: true},
+                registro_empresaConfirmarContrasenaContacto: {required: true, equalTo:"#registro_empresaContrasenaContacto"},
+
+                defaultReal: {required: true}
+            },
+            errorElement: 'div',
+            submitHandler: function(form) {
+                validacionCorrecta_Registro();
+            }
+        });
+
     });

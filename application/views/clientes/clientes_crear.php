@@ -175,10 +175,6 @@
                                                         <input id="cliente_direccionCanton" name="cliente_direccionCanton" type="text">
                                                         <label for="cliente_direccionCanton"><?= label('formCliente_direccionCanton'); ?></label>
                                                     </div>
-<!--                                                    <div class="input-field col s12 m4 l4">-->
-<!--                                                        <input id="cliente_direccionDistrito" type="text">-->
-<!--                                                        <label for="cliente_direccionDistrito">--><?//= label('formCliente_direccionDistrito'); ?><!--</label>-->
-<!--                                                    </div>-->
                                                     <div class="input-field col s12 m12 l12">
                                                         <input id="cliente_direccionDomicilio" name="cliente_direccionDomicilio" type="text">
                                                         <label for="cliente_direccionDomicilio"><?= label('formCliente_direccionDomicilio'); ?></label>
@@ -223,7 +219,7 @@
                                                     <br>
                                                     <div id="mediosCliente" class="example tags_mediosContacto">
                                                         <div class="bs-example">
-                                                            <input placeholder="<?= label('formCliente_anadirMedio'); ?>" type="text"
+                                                            <input name="cliente_medios" placeholder="<?= label('formCliente_anadirMedio'); ?>" type="text"
                                                                    value=""/>
                                                         </div>
                                                     </div>
@@ -451,7 +447,7 @@
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/gustos.json'
             prefetch: {
-                url: '<?=base_url()?>Cotizacion/jsonContactos',
+                url: '<?=base_url()?>Clientes/mediosSugerencia',
                 ttl: 1000,
                 filter: function (list) {
                     return $.map(list, function (mediosContacto) {

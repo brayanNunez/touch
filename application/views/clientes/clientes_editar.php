@@ -266,19 +266,15 @@
                             <label for="cliente_direccionPais"><?= label('formCliente_direccionPais'); ?></label>
                         </div>
                         <div class="input-field col s12 m4 l4">
-                            <input id="cliente_direccionProvincia" name="cliente_direccionProvincia" type="text">
+                            <input id="cliente_direccionProvincia" name="cliente_direccionProvincia" type="text" value='<?php if (isset($resultado)) echo $resultado['estadoProvincia'];?>'>
                             <label for="cliente_direccionProvincia"><?= label('formCliente_direccionProvincia'); ?></label>
                         </div>
                         <div class="input-field col s12 m4 l4">
-                            <input id="cliente_direccionCanton" name="cliente_direccionCanton" type="text">
+                            <input id="cliente_direccionCanton" name="cliente_direccionCanton" type="text" value='<?php if (isset($resultado)) echo $resultado['ciudadCanton'];?>'>
                             <label for="cliente_direccionCanton"><?= label('formCliente_direccionCanton'); ?></label>
                         </div>
-                <!--                                                    <div class="input-field col s12 m4 l4">-->
-                <!--                                                        <input id="cliente_direccionDistrito" type="text">-->
-                <!--                                                        <label for="cliente_direccionDistrito">--><?//= label('formCliente_direccionDistrito'); ?><!--</label>-->
-                <!--                                                    </div>-->
                         <div class="input-field col s12 m12 l12">
-                            <input id="cliente_direccionDomicilio" name="cliente_direccionDomicilio" type="text">
+                            <input id="cliente_direccionDomicilio" name="cliente_direccionDomicilio" type="text" value='<?php if (isset($resultado)) echo $resultado['domicilio'];?>'>
                             <label for="cliente_direccionDomicilio"><?= label('formCliente_direccionDomicilio'); ?></label>
                         </div>
                     </div>
@@ -390,8 +386,13 @@
                         <br>
                         <div id="mediosCliente" class="example tags_mediosContacto">
                             <div class="bs-example">
-                                <input placeholder="<?= label('formCliente_anadirMedio'); ?>" type="text"
-                                       value="TV,Radio,Carteles,Vallas publicitarias"/>
+                                <input name="cliente_medios" placeholder="<?= label('formCliente_anadirMedio'); ?>" type="text"
+                                       value="<?php if (isset($resultado)) {
+                                        foreach ($resultado['medios'] as $medio) {
+                                            echo $medio['nombre'].',';
+                                        }
+                                      
+                                   } ?>"/>
                             </div>
                         </div>
                         <br>

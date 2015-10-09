@@ -12,14 +12,12 @@
                             <div class="col s12 m12 offset-l1 l10">
                                 <form id="formulario_registro" class="col s12" action="<?= base_url(); ?>registro/registrar" method="post">
 
-                                    <div>
-                                        <div class="input-field col s12 m8 l6">
-                                            <select id="registro_tipo" name="registro_tipo" onChange="datosRegistro(this)">
-                                                <option value="1" selected>Trabajador independiente</option>
-                                                <option value="2">Empresa</option>
-                                            </select>
-                                            <label for="registro_tipo"><?= label('formRegistro_tipo'); ?></label>
-                                        </div>
+                                    <div class="input-field col s12 m8 l6">
+                                        <select id="registro_tipo" name="registro_tipo" onChange="datosRegistro(this)">
+                                            <option value="1" selected>Trabajador independiente</option>
+                                            <option value="2">Empresa</option>
+                                        </select>
+                                        <label for="registro_tipo"><?= label('formRegistro_tipo'); ?></label>
                                     </div>
 
                                     <div id="trabajador_informacion" style="display: block;">
@@ -195,13 +193,12 @@
                                         </div>
                                     </div>
 
-                                    <div class="col s12">
-                                        <div class="input-field campo-captcha">
+                                    <div>
+                                        <div class="input-field col s12 campo-captcha">
                                             <input type="text" id="defaultReal" name="defaultReal" class="campo-registro"
                                                    placeholder="<?= label('formPerfil_captcha'); ?>">
                                         </div>
                                     </div>
-
                                     <div>
                                         <div class="input-field col s12" style="margin-top: 0;">
                                             <input class="filled-in" type="checkbox" id="correosPromociones"/>
@@ -220,7 +217,6 @@
                                             </button>
                                         </div>
                                     </div>
-
                                 </form>
                             </div>
                         </div>
@@ -244,3 +240,57 @@
         }
     }
 </script>
+
+<script>
+    function validacionCorrecta_Registro(){
+        var tipo = $('#registro_tipo').val();
+        var correo = '';
+        if(tipo == '1') {
+            correo = $('#registro_correoTrabajador');
+        } else{
+            correo = $('#registro_empresaCorreoContacto');
+        }
+        $.ajax({
+            data: {usuario_correo :  correo.val()},
+            url:   '<?=base_url()?>usuarios/existeCorreo',
+            type:  'post',
+            success:  function (response) {
+                switch(response){
+                    case '0':
+                        $('#linkModalError').click();//error al ir a verificar identificación
+                        break;
+                    case '1':
+                        alert('<?= label("empleadoIdentificacionExistente"); ?>');
+                        correo.focus();
+                        break;
+                    case '2':
+                        var formulario = $('#formulario_registro');
+                        $.ajax({
+                            type: formulario.attr('method'),
+                            url: formulario.attr('action'),
+                            data: formulario.serialize(),
+                            success: function(response) {
+                                if (response == 2) {
+                                    alert('El captcha es incorrecto');
+                                    $('#defaultReal').focus();
+                                } else {
+                                    if (response == 0) {
+                                        alert('Ha ocurrido un error en el registro');
+                                    } else {
+                                        if (response == 1) {
+                                            alert('El registro ha sido existoso');
+                                            $('form')[0].reset();
+                                        } else {
+                                            alert(response);
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                        break;
+                }
+            }
+        });
+    }
+</script>
+
