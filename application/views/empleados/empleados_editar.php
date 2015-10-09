@@ -1,262 +1,227 @@
+<div class="col s12">
+    <form id="form_empleado" class="col s12 " action="<?= base_url() ?>empleados/modificar/<?php if (isset($resultado)) {
+              echo encryptIt($resultado['idEmpleado']);
+          } ?>" method="POST">
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="empleado_codigo" name="empleado_codigo" type="text"
+                       value='<?php if (isset($resultado)) {
+                           echo $resultado['codigo'];
+                       } ?>'>
+                <label for="empleado_codigo"><?= label('formEmpleado_codigo'); ?></label>
+            </div>
+            <div class="input-field col s12">
+                <input id="empleado_id" name="empleado_id" type="text"
+                       value='<?php if (isset($resultado)) {
+                           echo $resultado['identificacion'];
+                       } ?>'>
+                <label
+                    for="empleado_id"><?= label('formEmpleado_identificacion'); ?></label>
+            </div>
+           
 
-<!-- START CONTENT   -->
-
-<section id="content">
-    <!--start breadcrumbs-->
-    <div id="breadcrumbs-wrapper" class=" grey lighten-3">
-        <div class="container">
-            <div class="row">
-                <div class="col s12 m12 l12">
-                    <h1 class="breadcrumbs-title"><?= label('tituloFormularioEmpleadoEditar'); ?></h1>
+            <div>
+                <div class="input-field col s12 m4 l4">
+                    <input id="empleado_primerApellido" name="empleado_primerApellido" type="text" value='<?php if (isset($resultado)) {
+                           echo $resultado['primerApellido'];
+                       } ?>'>
+                    <label for="empleado_primerApellido"><?= label('formEmpleado_apellido1'); ?></label>
+                </div>
+                <div class="input-field col s12 m4 l4">
+                    <input id="empleado_segundoApellido" name="empleado_segundoApellido" type="text"value='<?php if (isset($resultado)) {
+                           echo $resultado['segundoApellido'];
+                       } ?>'>
+                    <label for="empleado_segundoApellido"><?= label('formEmpleado_apellido2'); ?></label>
+                </div>
+                <div class="input-field col s12 m4 l4">
+                    <input id="empleado_nombre" name="empleado_nombre" type="text"value='<?php if (isset($resultado)) {
+                           echo $resultado['nombre'];
+                       } ?>'>
+                    <label for="empleado_nombre"><?= label('formEmpleado_nombre'); ?></label>
                 </div>
             </div>
-        </div>
-    </div>
-    <!--breadcrumbs end-->
-
-    <!--start container-->
-    <div class="container">
-        <div id="chart-dashboard">
-            <div class="row">
-                <div class="col s12 m12 l12">
-                    <div id="submit-button" class="section">
-                        <div class="row">
-                            <div class="col s12">
-                                <form id="form_empleado" class="col s12 "
-                                      action="<?= base_url() ?>empleados/modificar/<?php if (isset($resultado)) {
-                                          echo encryptIt($resultado['idEmpleado']);
-                                      } ?>" method="POST">
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <input id="empleado_codigo" name="empleado_codigo" type="text"
-                                                   value='<?php if (isset($resultado)) {
-                                                       echo $resultado['codigo'];
-                                                   } ?>'>
-                                            <label for="empleado_codigo"><?= label('formEmpleado_codigo'); ?></label>
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <input id="empleado_id" name="empleado_id" type="text"
-                                                   value='<?php if (isset($resultado)) {
-                                                       echo $resultado['identificacion'];
-                                                   } ?>'>
-                                            <label
-                                                for="empleado_id"><?= label('formEmpleado_identificacion'); ?></label>
-                                        </div>
-                                       
-
-                                        <div>
-                                            <div class="input-field col s12 m4 l4">
-                                                <input id="empleado_primerApellido" name="empleado_primerApellido" type="text" value='<?php if (isset($resultado)) {
-                                                       echo $resultado['primerApellido'];
-                                                   } ?>'>
-                                                <label for="empleado_primerApellido"><?= label('formEmpleado_apellido1'); ?></label>
-                                            </div>
-                                            <div class="input-field col s12 m4 l4">
-                                                <input id="empleado_segundoApellido" name="empleado_segundoApellido" type="text"value='<?php if (isset($resultado)) {
-                                                       echo $resultado['segundoApellido'];
-                                                   } ?>'>
-                                                <label for="empleado_segundoApellido"><?= label('formEmpleado_apellido2'); ?></label>
-                                            </div>
-                                            <div class="input-field col s12 m4 l4">
-                                                <input id="empleado_nombre" name="empleado_nombre" type="text"value='<?php if (isset($resultado)) {
-                                                       echo $resultado['nombre'];
-                                                   } ?>'>
-                                                <label for="empleado_nombre"><?= label('formEmpleado_nombre'); ?></label>
-                                            </div>
-                                        </div>
 
 
 
-                                        <div class="inputTag col s12">
+            <div class="inputTag col s12">
 
-                                            <label
-                                                for="empleado_palabras"><?= label('formEmpleado_palabrasClave'); ?></label>
+                <label
+                    for="empleado_palabras"><?= label('formEmpleado_palabrasClave'); ?></label>
 
-                                            <input placeholder="<?= label('formEmpleado_anadirPalabraClave'); ?>"
-                                                   id="empleado_palabras" name="empleado_palabras" type="text"
-                                                   value="<?php if (isset($resultado)) {
-                                                        foreach ($resultado['palabras'] as $palabra) {
-                                                            echo $palabra['descripcion'].',';
-                                                        }
-                                                      
-                                                   } ?>"
-                                                   data-role="tagsinput"/>
+                <input placeholder="<?= label('formEmpleado_anadirPalabraClave'); ?>"
+                       id="empleado_palabras" name="empleado_palabras" type="text"
+                       value="<?php if (isset($resultado)) {
+                            foreach ($resultado['palabras'] as $palabra) {
+                                echo $palabra['descripcion'].',';
+                            }
+                          
+                       } ?>"
+                       data-role="tagsinput"/>
 
-                                        </div>
+            </div>
 
-                                        <div class="input-field col s12">
-                                            <input id="empleado_fechaNacimiento" name="empleado_fechaNacimiento" type="text" class="datepicker-fecha" value='<?php if (isset($resultado)) {
-                                                       $originalDate =  $resultado['fechaNacimiento'];
-                                                       echo date("d-m-Y", strtotime($originalDate));
-                                                   } ?>'>
-                                            <label for="empleado_fechaNacimiento"><?= label('formEmpleado_fechaNacimiento'); ?></label>
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <input id="empleado_fechaIngreso" name="empleado_fechaIngreso" type="text" class="datepicker-fecha" value='<?php if (isset($resultado)) {
-                                                       $originalDate =  $resultado['fechaIngresoEmpresa'];
-                                                       echo date("d-m-Y", strtotime($originalDate));
-                                                   } ?>'>
-                                            <label for="empleado_fechaIngreso"><?= label('formEmpleado_fechaIngreso'); ?></label>
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <textarea id="empleado_descripcion" name="empleado_descripcion"
-                                                      class="materialize-textarea"
-                                                      ><?php if (isset($resultado)) {
-                                                    echo $resultado['descripcion'];
-                                                } ?></textarea>
-                                            <label
-                                                for="empleado_descripcion"><?= label('formEmpleado_descripcion'); ?></label>
-                                        </div>
+            <div class="input-field col s12">
+                <input id="empleado_fechaNacimiento" name="empleado_fechaNacimiento" type="text" class="datepicker-fecha" value='<?php if (isset($resultado)) {
+                           $originalDate =  $resultado['fechaNacimiento'];
+                           echo date("d-m-Y", strtotime($originalDate));
+                       } ?>'>
+                <label for="empleado_fechaNacimiento"><?= label('formEmpleado_fechaNacimiento'); ?></label>
+            </div>
+            <div class="input-field col s12">
+                <input id="empleado_fechaIngreso" name="empleado_fechaIngreso" type="text" class="datepicker-fecha" value='<?php if (isset($resultado)) {
+                           $originalDate =  $resultado['fechaIngresoEmpresa'];
+                           echo date("d-m-Y", strtotime($originalDate));
+                       } ?>'>
+                <label for="empleado_fechaIngreso"><?= label('formEmpleado_fechaIngreso'); ?></label>
+            </div>
+            <div class="input-field col s12">
+                <textarea id="empleado_descripcion" name="empleado_descripcion"
+                          class="materialize-textarea"
+                          ><?php if (isset($resultado)) {
+                        echo $resultado['descripcion'];
+                    } ?></textarea>
+                <label
+                    for="empleado_descripcion"><?= label('formEmpleado_descripcion'); ?></label>
+            </div>
 
-                                        <div class="input-field col s12">
-                                            <label><?= label('formEmpleado_salarios'); ?></label>
-                                            <br/>
-                                            <br/>
-                                            <table id="empleados1-salarios" class="table striped">
-                                                <thead>
-                                                <tr>
-                                                    <th style="text-align: center;">
-                                                        <input class="filled-in checkbox checkall" type="checkbox"
-                                                               id="checkbox-all" onclick="toggleChecked(this.checked)"/>
-                                                        <label for="checkbox-all"></label>
-                                                    </th>
-                                                    <th><?= label('formEmpleado_salariosTipo'); ?></th>
-                                                    <th><?= label('formEmpleado_salariosMonto'); ?></th>
-                                                    <th><?= label('formEmpleado_salariosPorDefecto'); ?></th>
-                                                    <th><?= label('formEmpleado_salariosOpciones'); ?></th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <td style="text-align: center;">
-                                                        <input type="checkbox" class="filled-in checkbox"
-                                                               id="checkbox_empleado1_salario1"/>
-                                                        <label for="checkbox_empleado1_salario1"></label>
-                                                    </td>
-                                                    <td>Por hora</td>
-                                                    <td>$10</td>
-                                                    <td>
-                                                        <input type="radio" name="radioPorDefectoEmpleado" id="radio_pago1" checked="checked"/>
-                                                        <label for="radio_pago1"></label>
-                                                    </td>
-                                                    <td>
-                                                        <ul id="dropdown-empleado1-salario1" class="dropdown-content">
-                                                            <li>
-                                                                <a href="#editarSalario"
-                                                                   class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#eliminarSalario"
-                                                                   class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                            </li>
-                                                        </ul>
-                                                        <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                           href="#!" data-activates="dropdown-empleado1-salario1">
-                                                            <?= label('menuOpciones_seleccionar') ?><i
-                                                                class="mdi-navigation-arrow-drop-down"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="text-align: center;">
-                                                        <input type="checkbox" class="filled-in checkbox"
-                                                               id="checkbox_empleado1_salario1"/>
-                                                        <label for="checkbox_empleado1_salario1"></label>
-                                                    </td>
-                                                    <td>Por día</td>
-                                                    <td>$80</td>
-                                                    <td>
-                                                        <input type="radio" name="radioPorDefectoEmpleado" id="radio_pago2"/>
-                                                        <label for="radio_pago2"></label>
-                                                    </td>
-                                                    <td>
-                                                        <ul id="dropdown-empleado1-salario1" class="dropdown-content">
-                                                            <li>
-                                                                <a href="#editarSalario"
-                                                                   class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#eliminarSalario"
-                                                                   class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                            </li>
-                                                        </ul>
-                                                        <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                           href="#!" data-activates="dropdown-empleado1-salario1">
-                                                            <?= label('menuOpciones_seleccionar') ?><i
-                                                                class="mdi-navigation-arrow-drop-down"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="text-align: center;">
-                                                        <input type="checkbox" class="filled-in checkbox"
-                                                               id="checkbox_empleado1_salario1"/>
-                                                        <label for="checkbox_empleado1_salario1"></label>
-                                                    </td>
-                                                    <td>Mensual</td>
-                                                    <td>$1400</td>
-                                                    <td>
-                                                        <input type="radio" name="radioPorDefectoEmpleado" id="radio_pago3"/>
-                                                        <label for="radio_pago3"></label>
-                                                    </td>
-                                                    <td>
-                                                        <ul id="dropdown-empleado1-salario1" class="dropdown-content">
-                                                            <li>
-                                                                <a href="#editarSalario"
-                                                                   class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#eliminarSalario"
-                                                                   class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                            </li>
-                                                        </ul>
-                                                        <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                           href="#!" data-activates="dropdown-empleado1-salario1">
-                                                            <?= label('menuOpciones_seleccionar') ?><i
-                                                                class="mdi-navigation-arrow-drop-down"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            <br/>
+            <div class="input-field col s12">
+                <label><?= label('formEmpleado_salarios'); ?></label>
+                <br/>
+                <br/>
+                <table id="empleados1-salarios" class="table striped">
+                    <thead>
+                    <tr>
+                        <th style="text-align: center;">
+                            <input class="filled-in checkbox checkall" type="checkbox"
+                                   id="checkbox-all" onclick="toggleChecked(this.checked)"/>
+                            <label for="checkbox-all"></label>
+                        </th>
+                        <th><?= label('formEmpleado_salarioTipo'); ?></th>
+                        <th><?= label('formEmpleado_salarioMonto'); ?></th>
+                        <th><?= label('formEmpleado_salariosPorDefecto'); ?></th>
+                        <th><?= label('formEmpleado_salariosOpciones'); ?></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td style="text-align: center;">
+                            <input type="checkbox" class="filled-in checkbox"
+                                   id="checkbox_empleado1_salario1"/>
+                            <label for="checkbox_empleado1_salario1"></label>
+                        </td>
+                        <td>Por hora</td>
+                        <td>$10</td>
+                        <td>
+                            <input type="radio" name="radioPorDefectoEmpleado" id="radio_pago1" checked="checked"/>
+                            <label for="radio_pago1"></label>
+                        </td>
+                        <td>
+                            <ul id="dropdown-empleado1-salario1" class="dropdown-content">
+                                <li>
+                                    <a href="#editarSalario"
+                                       class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
+                                </li>
+                                <li>
+                                    <a href="#eliminarSalario"
+                                       class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
+                                </li>
+                            </ul>
+                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
+                               href="#!" data-activates="dropdown-empleado1-salario1">
+                                <?= label('menuOpciones_seleccionar') ?><i
+                                    class="mdi-navigation-arrow-drop-down"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">
+                            <input type="checkbox" class="filled-in checkbox"
+                                   id="checkbox_empleado1_salario1"/>
+                            <label for="checkbox_empleado1_salario1"></label>
+                        </td>
+                        <td>Por día</td>
+                        <td>$80</td>
+                        <td>
+                            <input type="radio" name="radioPorDefectoEmpleado" id="radio_pago2"/>
+                            <label for="radio_pago2"></label>
+                        </td>
+                        <td>
+                            <ul id="dropdown-empleado1-salario1" class="dropdown-content">
+                                <li>
+                                    <a href="#editarSalario"
+                                       class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
+                                </li>
+                                <li>
+                                    <a href="#eliminarSalario"
+                                       class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
+                                </li>
+                            </ul>
+                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
+                               href="#!" data-activates="dropdown-empleado1-salario1">
+                                <?= label('menuOpciones_seleccionar') ?><i
+                                    class="mdi-navigation-arrow-drop-down"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">
+                            <input type="checkbox" class="filled-in checkbox"
+                                   id="checkbox_empleado1_salario1"/>
+                            <label for="checkbox_empleado1_salario1"></label>
+                        </td>
+                        <td>Mensual</td>
+                        <td>$1400</td>
+                        <td>
+                            <input type="radio" name="radioPorDefectoEmpleado" id="radio_pago3"/>
+                            <label for="radio_pago3"></label>
+                        </td>
+                        <td>
+                            <ul id="dropdown-empleado1-salario1" class="dropdown-content">
+                                <li>
+                                    <a href="#editarSalario"
+                                       class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
+                                </li>
+                                <li>
+                                    <a href="#eliminarSalario"
+                                       class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
+                                </li>
+                            </ul>
+                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
+                               href="#!" data-activates="dropdown-empleado1-salario1">
+                                <?= label('menuOpciones_seleccionar') ?><i
+                                    class="mdi-navigation-arrow-drop-down"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br/>
 
-                                            <div>
-                                                <a href="#agregarSalario"
-                                                   class="btn btn-default modal-trigger"><?= label('formEmpleado_nuevoSalario'); ?></a>
+                <div>
+                    <a href="#agregarSalario"
+                       class="btn btn-default modal-trigger"><?= label('formEmpleado_nuevoSalario'); ?></a>
 
-                                                <div class="tabla-conAgregar tabla-salarios-empleado">
-                                                    <a id="opciones-seleccionados-delete"
-                                                       class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements"
-                                                       style="visibility: hidden;"
-                                                       href="#eliminarElementosSeleccionados" data-toggle="tooltip"
-                                                       title="<?= label('opciones_seleccionadosEliminar') ?>">
-                                                        <i class="mdi-action-delete icono-opciones-varios"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <hr/>
-                                        </div>
-
-                                        <div class="input-field col s12 envio-formulario">
-                                            <button class="btn waves-effect waves-light right" type="submit"
-                                                    name="action"><?= label('formEmpleado_editar'); ?>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+                    <div class="tabla-conAgregar tabla-salarios-empleado">
+                        <a id="opciones-seleccionados-delete"
+                           class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements"
+                           style="visibility: hidden;"
+                           href="#eliminarElementosSeleccionados" data-toggle="tooltip"
+                           title="<?= label('opciones_seleccionadosEliminar') ?>">
+                            <i class="mdi-action-delete icono-opciones-varios"></i>
+                        </a>
                     </div>
                 </div>
+                <hr/>
+            </div>
+
+            <div class="input-field col s12 envio-formulario">
+                <button class="btn waves-effect waves-light right" type="submit"
+                        name="action"><?= label('formEmpleado_editar'); ?>
+                </button>
             </div>
         </div>
-    </div>
-    <!--end container-->
-
-    <?php
-    $this->load->view('layout/default/menu-crear.php');
-    ?>
+    </form>
+</div>
 
 </section>
 <div style="display: none">

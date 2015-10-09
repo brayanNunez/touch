@@ -72,7 +72,7 @@ class Empleados extends CI_Controller
                 $data['resultado'] = $resultado;
                 $this->load->view('layout/default/header');
                 $this->load->view('layout/default/left-sidebar');
-                $this->load->view('empleados/empleados_editar', $data);
+                $this->load->view('empleados/empleados_info', $data);
                 $this->load->view('layout/default/footer');
         }
     }

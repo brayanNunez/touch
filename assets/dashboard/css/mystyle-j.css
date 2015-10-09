@@ -155,6 +155,11 @@ div.fixed-action-btn ul li a { width: 165px;}
 	left: 85px !important;
 }
 
+ul.empleado-info li { width: 50% !important; }
+ul.empleado-info li a { background-color: #009966; }
+ul.empleado-info li a.active { color: green !important; background-color: lightgray;}
+
+span.informacion-empleado { font-weight: bold; }
 
 
 

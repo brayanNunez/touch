@@ -465,6 +465,9 @@ $lang['formCliente_contactoSecundario'] = 'Cambiar a contacto principal';
     $lang['formEmpleado_salarioMonto'] = 'Monto';
     $lang['formEmpleado_salariosPorDefecto'] = 'Por defecto';
     $lang['formEmpleado_anadirPalabraClave'] = 'Añadir palabra';
+    $lang['empleados_info'] = 'Información del empleado';
+    $lang['empleados_ver'] = 'Perfil';
+    $lang['empleados_editar'] = 'Editar información';
    
 
 
