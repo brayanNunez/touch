@@ -162,10 +162,10 @@
 
                 defaultReal: {required: true}
             },
-            errorElement: 'div',
-            submitHandler: function(form) {
-                validacionCorrecta_Registro();
-            }
+            errorElement: 'div'//,
+            //submitHandler: function(form) {
+            //    validacionCorrecta_Registro();
+            //}
         });
 
     });

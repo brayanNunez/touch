@@ -2,6 +2,75 @@
 
 <section id="content" class="registro-content">
 
+    <?php
+    $tipo_error = '';
+    $tipoT = '';
+    $cedulaT = '';
+    $nombreT = '';
+    $paisT = '';
+    $provinciaT = '';
+    $cantonT = '';
+    $domicilioT = '';
+    $primerApellidoT = '';
+    $segundoApellidoT = '';
+    $nombreContactoT = '';
+    $correoT = '';
+    $correoConfirmT = '';
+    $contrasenaT = '';
+    $contrasenaConfirmT = '';
+
+    $tipoE = '';
+    $cedulaE = '';
+    $nombreE = '';
+    $nombreFantasiaE = '';
+    $paisE = '';
+    $provinciaE = '';
+    $cantonE = '';
+    $domicilioE = '';
+    $primerApellidoE = '';
+    $segundoApellidoE = '';
+    $nombreContactoE = '';
+    $correoE = '';
+    $correoConfirmE = '';
+    $contrasenaE = '';
+    $contrasenaConfirmE = '';
+    if (isset($tipo) && isset($datos) && isset($direccion) && isset($usuario) && isset($correoConfirm) && isset($contrasenaConfirm) && isset($error)) {
+        $tipo_error = $error;
+        if($tipo == 1) {
+            $tipoT = $tipo;
+            $cedulaT = $datos['cedula'];
+            $nombreT = $datos['nombre'];
+            $paisT = $direccion['pais'];
+            $provinciaT = $direccion['provincia'];
+            $cantonT = $direccion['canton'];
+            $domicilioT = $direccion['domicilio'];
+            $primerApellidoT = $usuario['primerApellido'];
+            $segundoApellidoT = $usuario['segundoApellido'];
+            $nombreContactoT = $usuario['nombre'];
+            $correoT = $usuario['correo'];
+            $correoConfirmT = $correoConfirm;
+            $contrasenaT = $usuario['contrasena'];
+            $contrasenaConfirmT = $contrasenaConfirm;
+        } else {
+            $tipoE = $tipo;
+            $cedulaE = $datos['cedula'];
+            $nombreE = $datos['nombre'];
+            $nombreFantasiaE = $datos['nombreFantasia'];
+            $paisE = $direccion['pais'];
+            $provinciaE = $direccion['provincia'];
+            $cantonE = $direccion['canton'];
+            $domicilioE = $direccion['domicilio'];
+            $primerApellidoE = $usuario['primerApellido'];
+            $segundoApellidoE = $usuario['segundoApellido'];
+            $nombreContactoE = $usuario['nombre'];
+            $correoE = $usuario['correo'];
+            $correoConfirmE = $correoConfirm;
+            $contrasenaE = $usuario['contrasena'];
+            $contrasenaConfirmE = $contrasenaConfirm;
+        }
+    }
+    ?>
+
     <!--start container-->
     <div class="container">
         <div id="chart-dashboard">
@@ -27,45 +96,45 @@
                                         <div>
                                             <div class="input-field col s12 m12 l6">
                                                 <input id="registro_cedulaTrabajador" name="registro_cedulaTrabajador" class="campo-registro" type="text"
-                                                       placeholder="<?= label('formPerfil_numeroIdentificacion'); ?>">
+                                                       placeholder="<?= label('formPerfil_numeroIdentificacion'); ?>" value="<?= $cedulaT; ?>">
                                             </div>
                                             <div class="input-field col s12 m12 l6">
                                                 <input id="registro_nombreEmpresaTrabajador" name="registro_nombreEmpresaTrabajador" class="campo-registro" type="text"
-                                                       placeholder="<?= label('formPerfil_nombreArtistico'); ?>">
+                                                       placeholder="<?= label('formPerfil_nombreArtistico'); ?>" value="<?= $nombreT; ?>">
                                             </div>
                                         </div>
                                         <div>
                                             <div class="input-field col s12 m12 l4">
                                                 <input id="registro_nombreTrabajador" name="registro_nombreTrabajador" class="campo-registro" type="text"
-                                                       placeholder="<?= label('formPerfil_nombre'); ?>">
+                                                       placeholder="<?= label('formPerfil_nombre'); ?>" value="<?= $nombreContactoT; ?>">
                                             </div>
                                             <div class="input-field col s12 m12 l4">
                                                 <input id="registro_primerApellidoTrabajador" name="registro_primerApellidoTrabajador" class="campo-registro" type="text"
-                                                       placeholder="<?= label('formPerfil_apellido1'); ?>">
+                                                       placeholder="<?= label('formPerfil_apellido1'); ?>" value="<?= $primerApellidoT; ?>">
                                             </div>
                                             <div class="input-field col s12 m12 l4">
                                                 <input id="registro_segundoApellidoTrabajador" name="registro_segundoApellidoTrabajador" class="campo-registro" type="text"
-                                                       placeholder="<?= label('formPerfil_apellido2'); ?>">
+                                                       placeholder="<?= label('formPerfil_apellido2'); ?>" value="<?= $segundoApellidoT; ?>">
                                             </div>
                                         </div>
                                         <div>
                                             <div class="input-field col s12 m12 l6">
                                                 <input id="registro_correoTrabajador" name="registro_correoTrabajador" class="campo-registro" type="email"
-                                                       placeholder="<?= label('formPerfil_correo'); ?>">
+                                                       placeholder="<?= label('formPerfil_correo'); ?>" value="<?= $correoT; ?>">
                                             </div>
                                             <div class="input-field col s12 m12 l6">
                                                 <input id="registro_confirmarCorreoTrabajador" name="registro_confirmarCorreoTrabajador" class="campo-registro" type="email"
-                                                       placeholder="<?= label('formPerfil_confCorreo'); ?>">
+                                                       placeholder="<?= label('formPerfil_confCorreo'); ?>" value="<?= $correoConfirmT; ?>">
                                             </div>
                                         </div>
                                         <div>
                                             <div class="input-field col s12 m12 l6">
                                                 <input id="registro_contrasenaTrabajador" name="registro_contrasenaTrabajador" class="campo-registro" type="password"
-                                                       placeholder="<?= label('formPerfil_contraseña'); ?>">
+                                                       placeholder="<?= label('formPerfil_contraseña'); ?>" value="<?= $contrasenaT; ?>">
                                             </div>
                                             <div class="input-field col s12 m12 l6">
                                                 <input id="registro_confirmarContrasenaTrabajador" name="registro_confirmarContrasenaTrabajador" class="campo-registro" type="password"
-                                                       placeholder="<?= label('formPerfil_confContraseña'); ?>">
+                                                       placeholder="<?= label('formPerfil_confContraseña'); ?>" value="<?= $contrasenaConfirmT; ?>">
                                             </div>
                                         </div>
                                         <div id="trabajador_direccion">
@@ -86,17 +155,17 @@
                                                 </div>
                                                 <div class="input-field col s12 m12 l6">
                                                     <input id="registro_provinciaTrabajador" name="registro_provinciaTrabajador" class="campo-registro" type="text"
-                                                           placeholder="<?= label('formPerfil_estado'); ?>">
+                                                           placeholder="<?= label('formPerfil_estado'); ?>" value="<?= $provinciaT; ?>">
                                                 </div>
                                             </div>
                                             <div>
                                                 <div class="input-field col s12 m12 l6">
                                                     <input id="registro_cantonTrabajador" name="registro_cantonTrabajador" class="campo-registro" type="text"
-                                                           placeholder="<?= label('formPerfil_ciudad'); ?>">
+                                                           placeholder="<?= label('formPerfil_ciudad'); ?>" value="<?= $cantonT; ?>">
                                                 </div>
                                                 <div class="input-field col s12 m12 l6">
                                                     <input id="registro_domicilioTrabajador" name="registro_domicilioTrabajador" class="campo-registro" type="text"
-                                                           placeholder="<?= label('formPerfil_domicilio'); ?>">
+                                                           placeholder="<?= label('formPerfil_domicilio'); ?>" value="<?= $domicilioT; ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -109,15 +178,15 @@
                                         <div>
                                             <div class="input-field col s12 m12 l4">
                                                 <input id="registro_cedulaEmpresa" name="registro_cedulaEmpresa" class="campo-registro" type="text"
-                                                       placeholder="<?= label('formPerfil_cedulaJuridica'); ?>">
+                                                       placeholder="<?= label('formPerfil_cedulaJuridica'); ?>" value="<?= $cedulaE; ?>">
                                             </div>
                                             <div class="input-field col s12 m12 l4">
                                                 <input id="registro_nombreEmpresa" name="registro_nombreEmpresa" class="campo-registro" type="text"
-                                                       placeholder="<?= label('formPerfil_nombreEmpresa'); ?>">
+                                                       placeholder="<?= label('formPerfil_nombreEmpresa'); ?>" value="<?= $nombreE; ?>">
                                             </div>
                                             <div class="input-field col s12 m12 l4">
                                                 <input id="registro_nombreFantasiaEmpresa" name="registro_nombreFantasiaEmpresa" class="campo-registro" type="text"
-                                                       placeholder="<?= label('formPerfil_nombreFantasia'); ?>">
+                                                       placeholder="<?= label('formPerfil_nombreFantasia'); ?>" value="<?= $nombreFantasiaE; ?>">
                                             </div>
                                         </div>
                                         <div id="empresa_direccion">
@@ -138,17 +207,17 @@
                                                 </div>
                                                 <div class="input-field col s12 m12 l6">
                                                     <input id="registro_provinciaEmpresa" name="registro_provinciaEmpresa" class="campo-registro" type="text"
-                                                           placeholder="<?= label('formPerfil_estado'); ?>">
+                                                           placeholder="<?= label('formPerfil_estado'); ?>" value="<?= $provinciaE; ?>">
                                                 </div>
                                             </div>
                                             <div>
                                                 <div class="input-field col s12 m12 l6">
                                                     <input id="registro_cantonEmpresa" name="registro_cantonEmpresa" class="campo-registro" type="text"
-                                                           placeholder="<?= label('formPerfil_ciudad'); ?>">
+                                                           placeholder="<?= label('formPerfil_ciudad'); ?>" value="<?= $cantonE; ?>">
                                                 </div>
                                                 <div class="input-field col s12 m12 l6">
                                                     <input id="registro_domicilioEmpresa" name="registro_domicilioEmpresa" class="campo-registro" type="text"
-                                                           placeholder="<?= label('formPerfil_domicilio'); ?>">
+                                                           placeholder="<?= label('formPerfil_domicilio'); ?>" value="<?= $domicilioE; ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -159,35 +228,35 @@
                                             <div>
                                                 <div class="input-field col s12 m12 l4">
                                                     <input id="registro_empresaNombreContacto" name="registro_empresaNombreContacto" class="campo-registro" type="text"
-                                                           placeholder="<?= label('formPerfil_nombre'); ?>">
+                                                           placeholder="<?= label('formPerfil_nombre'); ?>" value="<?= $nombreContactoE; ?>">
                                                 </div>
                                                 <div class="input-field col s12 m12 l4">
                                                     <input id="registro_empresaPrimerApellidoContacto" name="registro_empresaPrimerApellidoContacto" class="campo-registro" type="text"
-                                                           placeholder="<?= label('formPerfil_apellido1'); ?>">
+                                                           placeholder="<?= label('formPerfil_apellido1'); ?>" value="<?= $primerApellidoE; ?>">
                                                 </div>
                                                 <div class="input-field col s12 m12 l4">
                                                     <input id="registro_empresaSegundoApellidoContacto" name="registro_empresaSegundoApellidoContacto" class="campo-registro" type="text"
-                                                           placeholder="<?= label('formPerfil_apellido2'); ?>">
+                                                           placeholder="<?= label('formPerfil_apellido2'); ?>" value="<?= $segundoApellidoE; ?>">
                                                 </div>
                                             </div>
                                             <div>
                                                 <div class="input-field col s12 m12 l6">
                                                     <input id="registro_empresaCorreoContacto" name="registro_empresaCorreoContacto" class="campo-registro" type="email"
-                                                           placeholder="<?= label('formPerfil_correo'); ?>">
+                                                           placeholder="<?= label('formPerfil_correo'); ?>" value="<?= $correoE; ?>">
                                                 </div>
                                                 <div class="input-field col s12 m12 l6">
                                                     <input id="registro_empresaConfirmarCorreoContacto" name="registro_empresaConfirmarCorreoContacto" class="campo-registro" type="email"
-                                                           placeholder="<?= label('formPerfil_confCorreo'); ?>">
+                                                           placeholder="<?= label('formPerfil_confCorreo'); ?>" value="<?= $correoConfirmE; ?>">
                                                 </div>
                                             </div>
                                             <div>
                                                 <div class="input-field col s12 m12 l6">
                                                     <input id="registro_empresaContrasenaContacto" name="registro_empresaContrasenaContacto" class="campo-registro" type="password"
-                                                           placeholder="<?= label('formPerfil_contraseña'); ?>">
+                                                           placeholder="<?= label('formPerfil_contraseña'); ?>" value="<?= $contrasenaE; ?>">
                                                 </div>
                                                 <div class="input-field col s12 m12 l6">
                                                     <input id="registro_empresaConfirmarContrasenaContacto" name="registro_empresaConfirmarContrasenaContacto" class="campo-registro" type="password"
-                                                           placeholder="<?= label('formPerfil_confContraseña'); ?>">
+                                                           placeholder="<?= label('formPerfil_confContraseña'); ?>" value="<?= $contrasenaConfirmE; ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -241,8 +310,69 @@
     }
 </script>
 
+<script type="text/javascript">
+    $(window).load(function(){
+        var error = '<?= $tipo_error; ?>';
+        if(error != '') {
+            if (error == 0) {
+                alert('Error de bd');
+            } else {
+                if (error == 2) {
+                    alert('Error en el captcha');
+                    $('#defaultReal').focus();
+                } else {
+                    alert(error);
+                }
+            }
+        }
+    });
+    $(document).ready(function(){
+        $('#formulario_registro').on('submit', function(event) {
+//            event.preventDefault();
+            var tipo = $('#registro_tipo').val();
+            var correo = '';
+            if(tipo == '1') {
+                correo = $('#registro_correoTrabajador');
+            } else{
+                correo = $('#registro_empresaCorreoContacto');
+            }
+            var res = 'false';
+            $.ajax({
+                data: {usuario_correo : correo.val()},
+                url:   '<?=base_url()?>usuarios/existeCorreo',
+                type:  'post',
+                success:  function (response) {
+                    switch(response){
+                        case '0':
+                            $('#linkModalError').click();//error al ir a verificar identificación
+                            res = false;
+                            break;
+                        case '1':
+                            alert('<?= label("empleadoIdentificacionExistente"); ?>');
+                            correo.focus();
+                            res = false;
+                            break;
+                        case '2':
+//                            alert('valido');
+                            return true;
+                            break;
+                    }
+                }
+            });
+            alert('Los datos fueron enviados');
+            if(!res) {
+                alert('Por favor arregle los errores');
+                return false;
+            } else {
+//                alert('Registro valido');
+                return true;
+            }
+        });
+    });
+</script>
+
 <script>
-    function validacionCorrecta_Registro(){
+    function validacionCorrecta_RegistroNoUsada(){
         var tipo = $('#registro_tipo').val();
         var correo = '';
         if(tipo == '1') {
