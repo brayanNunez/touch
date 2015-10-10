@@ -132,7 +132,7 @@
                     <img src="<?= base_url() ?>assets/img/to.png" alt="Touch!">
                 </div>
             </div>
-            <p id="mensajeValidacion"></p>
+            <p id="mensajeValidacion" class="error"></p>
             <div class="row margin">
                 <div class="input-field col s12">
                     <i class="mdi-social-person-outline prefix"></i>
@@ -230,22 +230,23 @@
                             break;
                         case '1'://no existe
                             $('#mensajeValidacion').text('<?=label('login_usuarioNoExiste');?>');
-                            alert(response);
+                            // alert(response);
                             break;
                         case '2'://si existe pero contrasena mala
                             $('#mensajeValidacion').text('<?=label('login_contrasenaIncorrecta');?>');
-                            alert(response);
+                            // alert(response);
                             break;
                         case '3'://correcto
                             $('#mensajeValidacion').text('correcto');
                             break;
                     }
+                    alert('login en prueba');
                     <?php
                           if (isset($urlInicial)) {?>
-                                    // window.location.href = "<?= $urlInicial?>";
+                                    window.location.href = "<?= $urlInicial?>";
                           <?php
                           } else{?>
-                                 // window.location.href = "<?= base_url() ?>inicio";
+                                 window.location.href = "<?= base_url() ?>inicio";
                           <?php
                              }
                         ?>
