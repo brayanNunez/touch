@@ -712,6 +712,13 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
 //Formulario de logueo
     $lang['login_username'] = 'Correo electrónico';
     $lang['login_password'] = 'Contraseña';
+    $lang['login_usuarioNoExiste'] = 'Esta cuenta Touch! no existe. Indica una cuenta diferente.';
+    $lang['login_contrasenaIncorrecta'] = 'La contraseña es incorrecta. Asegúrate de usar la contraseña de tu cuenta Touch!.';
+    $lang['login_errorTransaccion'] = 'Ha ocurrido un error mientras se verificaban tus datos, por favor vuelve a intentarlo.';
+
+    
+
+
 
 //botones formulario cliente
 	$lang['formCliente_agregar'] = 'Nuevo contacto';

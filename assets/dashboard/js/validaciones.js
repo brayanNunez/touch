@@ -67,8 +67,8 @@
             $('#form_login').validate({
                 rules:
                 {
-                    username: {required: true, minlength: 3, maxlength: 6},
-                    password: {required: true, minlength: 3, maxlength: 6}
+                    username: {required: true, minlength: 3},
+                    password: {required: true, minlength: 3}
                 },
                  errorElement: 'div',
                  submitHandler: function(form) {

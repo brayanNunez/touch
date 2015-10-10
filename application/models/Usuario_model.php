@@ -65,6 +65,62 @@ class Usuario_model extends CI_Model
             return false;
         }
     }
+    function cargarPorCorreoUsuarioContrasena($data)
+    {
+        try {
+            $this->db->trans_begin();
+            $query = $this->db->get_where('usuario', array('correo' => $data['correo'],  'eliminado' => 0));
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+            $row = array();
+            if ($query->num_rows() > 0) {
+                $array = $query->result_array();
+                $row = array_shift($array);//obtiene el primer elemento.. el [0] no sirve en el server
+                if ($row['contrasena'] != $data['contrasena']) {
+                    $this->db->trans_commit();
+                    return 2;
+                }
+                $idUsuario = $row['idUsuario'];
+                $roles = array(
+                    'rolAdministrador' => false,
+                    'rolAprobador' => false,
+                    'rolCotizador' => false,
+                    'rolContador' => false
+                );
+                $query = $this->db->get_where('privilegio_usuario', array('idUsuario' => $idUsuario));
+                if (!$query) {
+                    throw new Exception("Error en la BD");
+                }
+                $privilegios = $query->result_array();
+                foreach ($privilegios as $pr) {
+                    switch($pr['idPrivilegio']) {
+                        case 1:
+                            $roles['rolAdministrador'] = true;
+                            break;
+                        case 2:
+                            $roles['rolAprobador'] = true;
+                            break;
+                        case 3:
+                            $roles['rolCotizador'] = true;
+                            break;
+                        case 4:
+                            $roles['rolContador'] = true;
+                            break;
+                    }
+                }
+                $row['roles'] = $roles;
+            } else{
+                $this->db->trans_commit();
+                return 1;
+            }
+            $this->db->trans_commit();
+            return $row;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return 0;
+        }
+    }
 
     function cargar($id)
     {

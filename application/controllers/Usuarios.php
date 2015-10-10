@@ -211,41 +211,59 @@ class Usuarios extends CI_Controller
     }
 
     //Metodo llamado mediante ajax
+    // public function verificar() {
+    //     $username = $this->input->post('username');
+    //     $password = $this->input->post('password');
+        
+    //             $sess_array = array(
+    //                 'idEmpresa' => 1,
+    //                 'administrador' => true,
+    //                 'aprobador' => true,
+    //                 'cotizador' => true,
+    //                 'contador' => true
+    //             );
+    //             $this->session->set_userdata('logged_in', $sess_array);
+    //         // }
+    //         echo $username.', '.$password;
+    // }
+
+
+
+    //Metodo llamado mediante ajax
     public function verificar() {
-        $username = $this->input->post('username');
-        $password = $this->input->post('password');
+        $data['correo'] = $this->input->post('username');
+        $data['contrasena'] =  $this->input->post('password');
         
 
+        $resultado = $this->Usuario_model->cargarPorCorreoUsuarioContrasena($data);
 
-        // $sess_array = array();
-            // foreach ($result as $row) {
-                $sess_array = array(
-                    'idEmpresa' => 1,
-                    'administrador' => true,
-                    'aprobador' => true,
-                    'cotizador' => true,
-                    'contador' => true
-                );
-                $this->session->set_userdata('logged_in', $sess_array);
-            // }
-            echo $username.', '.$password;
+        if ($resultado == 0) {
+            echo 0; //Error en la transacción
+        } else {
+            if ($resultado == 1) {
+                echo 1; //no encontrado
+            } else {
+                if ($resultado == 2) {
+                    echo 2;//si encontrado pero contrasena mala
+                } else {
+                     $sess_array = array(
+                    'idEmpresa' => $resultado['idEmpresa'],
+                    'administrador' => $resultado['roles']['rolAdministrador'],
+                    'aprobador' => $resultado['roles']['rolAprobador'],
+                    'cotizador' => $resultado['roles']['rolCotizador'],
+                    'contador' => $resultado['roles']['rolContador']
+                    );
+                    $this->session->set_userdata('logged_in', $sess_array);
+                    echo 3;//correcto
+                }
+                
 
-        // $result = $this->Estudiante_model->validar_ingreso($username, $password);
-        // if($result) {
-        //     $sess_array = array();
-        //     foreach ($result as $row) {
-        //         $sess_array = array(
-        //             'id' => $row->idEstudiante,
-        //             'carnet' => $row->carnet,
-        //             'tipo' => 1
-        //         );
-        //         $this->session->set_userdata('logged_in', $sess_array);
-        //     }
-        //     return true;
-        // } else {
-        //     $this->form_validation->set_message('check_database', 'Datos invalidos');
-        //     return false;
-        // }
+               
+            }
+            
+        }
+        
+                
     }
 }
 

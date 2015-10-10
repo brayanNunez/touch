@@ -132,6 +132,7 @@
                     <img src="<?= base_url() ?>assets/img/to.png" alt="Touch!">
                 </div>
             </div>
+            <p id="mensajeValidacion"></p>
             <div class="row margin">
                 <div class="input-field col s12">
                     <i class="mdi-social-person-outline prefix"></i>
@@ -222,14 +223,29 @@
                data: $('form').serialize(), 
                success: function(response)
                {
-                    // alert('1');
-                    alert(response);
+
+                    switch(response) {
+                        case '0'://Error en la transacción
+                            alert('<?=label('login_errorTransaccion');?>');
+                            break;
+                        case '1'://no existe
+                            $('#mensajeValidacion').text('<?=label('login_usuarioNoExiste');?>');
+                            alert(response);
+                            break;
+                        case '2'://si existe pero contrasena mala
+                            $('#mensajeValidacion').text('<?=label('login_contrasenaIncorrecta');?>');
+                            alert(response);
+                            break;
+                        case '3'://correcto
+                            $('#mensajeValidacion').text('correcto');
+                            break;
+                    }
                     <?php
                           if (isset($urlInicial)) {?>
-                                    window.location.href = "<?= $urlInicial?>";
+                                    // window.location.href = "<?= $urlInicial?>";
                           <?php
                           } else{?>
-                                 window.location.href = "<?= base_url() ?>inicio";
+                                 // window.location.href = "<?= base_url() ?>inicio";
                           <?php
                              }
                         ?>
