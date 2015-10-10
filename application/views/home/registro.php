@@ -1,5 +1,8 @@
 <!-- START CONTENT  -->
 
+<!-- Esta vista de mantenimiento no utiliza ajax debido a que el captcha no puede ser validado correctamente, por lo
+        que se procesa el formulario de manera comun y se valida en el controlador -->
+
 <section id="content" class="registro-content">
 
     <?php
