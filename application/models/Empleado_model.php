@@ -68,9 +68,18 @@ class Empleado_model extends CI_Model
                 $array = $query->result_array();
                 $row = array_shift($array);//obtiene el primer elemento.. el [0] no sirve en el server
                 $this->db->select('descripcion');
+
                 $palabras = $this->db->get_where('palabraClaveEmpleado', array('idEmpleado' => $id));
                 if (!$palabras) throw new Exception("Error en la BD");   
                 $row['palabras'] = $palabras->result_array();
+
+                $salarios = $this->db->get_where('salarioempleado', array('idEmpleado' => $id,  'eliminado' => 0));
+                if (!$salarios) throw new Exception("Error en la BD");   
+                $row['salarios'] = $salarios->result_array();
+
+                $tiposalario = $this->db->get_where('tiposalario');
+                if (!$tiposalario) throw new Exception("Error en la BD");   
+                $row['tiposalario'] = $tiposalario->result_array();
             }
             // print_r ($row);exit();
              $this->db->trans_commit();

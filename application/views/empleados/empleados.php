@@ -96,8 +96,47 @@ $(document).on.ready(function(){
                                                                id="checkbox-all" onclick="toggleChecked(this.checked)"/>
                                                         <label for="checkbox-all"></label>
                                                     </th>
-                                                    <th><?= label('formEmpleado_salariosTipo'); ?></th>
-                                                    <th><?= label('formEmpleado_salariosMonto'); ?></th>
+                                                    <th><?= label('formEmpleado_salarioTipo'); ?></th>
+                                                    <th><?= label('formEmpleado_salarioMonto'); ?></th>
+                                                    <th><?= label('formEmpleado_salariosPorDefecto'); ?></th>
+                                                    <th><?= label('formEmpleado_salariosOpciones'); ?></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                            <br/>
+
+                                            <div>
+                                                <a href="#agregarSalario"
+                                                   class="btn btn-default modal-trigger"><?= label('formEmpleado_nuevoSalario'); ?></a>
+
+                                                <div class="tabla-conAgregar tabla-salarios-empleado">
+                                                    <a id="opciones-seleccionados-delete"
+                                                       class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements"
+                                                       style="visibility: hidden;"
+                                                       href="#eliminarElementosSeleccionados" data-toggle="tooltip"
+                                                       title="<?= label('opciones_seleccionadosEliminar') ?>">
+                                                        <i class="mdi-action-delete icono-opciones-varios"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <hr/>
+
+                                            <div class="input-field col s12">
+                                            <label><?= label('formEmpleado_salarios'); ?></label>
+                                            <br/>
+                                            <br/>
+                                            <table id="empleados1-salarios" class="table striped">
+                                                <thead>
+                                                <tr>
+                                                    <th style="text-align: center;">
+                                                        <input class="filled-in checkbox checkall" type="checkbox"
+                                                               id="checkbox-all" onclick="toggleChecked(this.checked)"/>
+                                                        <label for="checkbox-all"></label>
+                                                    </th>
+                                                    <th><?= label('formEmpleado_salarioTipo'); ?></th>
+                                                    <th><?= label('formEmpleado_salarioMonto'); ?></th>
                                                     <th><?= label('formEmpleado_salariosPorDefecto'); ?></th>
                                                     <th><?= label('formEmpleado_salariosOpciones'); ?></th>
                                                 </tr>
@@ -133,85 +172,9 @@ $(document).on.ready(function(){
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td style="text-align: center;">
-                                                        <input type="checkbox" class="filled-in checkbox"
-                                                               id="checkbox_empleado1_salario1"/>
-                                                        <label for="checkbox_empleado1_salario1"></label>
-                                                    </td>
-                                                    <td>Por día</td>
-                                                    <td>$80</td>
-                                                    <td>
-                                                        <input type="radio" name="radioPorDefectoEmpleado" id="radio_pago2"/>
-                                                        <label for="radio_pago2"></label>
-                                                    </td>
-                                                    <td>
-                                                        <ul id="dropdown-empleado1-salario1" class="dropdown-content">
-                                                            <li>
-                                                                <a href="#editarSalario"
-                                                                   class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#eliminarSalario"
-                                                                   class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                            </li>
-                                                        </ul>
-                                                        <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                           href="#!" data-activates="dropdown-empleado1-salario1">
-                                                            <?= label('menuOpciones_seleccionar') ?><i
-                                                                class="mdi-navigation-arrow-drop-down"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="text-align: center;">
-                                                        <input type="checkbox" class="filled-in checkbox"
-                                                               id="checkbox_empleado1_salario1"/>
-                                                        <label for="checkbox_empleado1_salario1"></label>
-                                                    </td>
-                                                    <td>Mensual</td>
-                                                    <td>$1400</td>
-                                                    <td>
-                                                        <input type="radio" name="radioPorDefectoEmpleado" id="radio_pago3"/>
-                                                        <label for="radio_pago3"></label>
-                                                    </td>
-                                                    <td>
-                                                        <ul id="dropdown-empleado1-salario1" class="dropdown-content">
-                                                            <li>
-                                                                <a href="#editarSalario"
-                                                                   class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#eliminarSalario"
-                                                                   class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                            </li>
-                                                        </ul>
-                                                        <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                           href="#!" data-activates="dropdown-empleado1-salario1">
-                                                            <?= label('menuOpciones_seleccionar') ?><i
-                                                                class="mdi-navigation-arrow-drop-down"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
                                                 </tbody>
                                             </table>
                                             <br/>
-
-                                            <div>
-                                                <a href="#agregarSalario"
-                                                   class="btn btn-default modal-trigger"><?= label('formEmpleado_nuevoSalario'); ?></a>
-
-                                                <div class="tabla-conAgregar tabla-salarios-empleado">
-                                                    <a id="opciones-seleccionados-delete"
-                                                       class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements"
-                                                       style="visibility: hidden;"
-                                                       href="#eliminarElementosSeleccionados" data-toggle="tooltip"
-                                                       title="<?= label('opciones_seleccionadosEliminar') ?>">
-                                                        <i class="mdi-action-delete icono-opciones-varios"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <hr/>
                                         </div>
 
                                         <div class="input-field col s12 envio-formulario">
@@ -424,7 +387,7 @@ function validacionCorrecta(){
             <label for=""><?= label('formEmpleado_salarioTipo'); ?></label>
         </div>
         <div class="input-field col s12">
-            <input id="salario_monto" name="salario_monto" type="text" value="">
+            <input id="salario_monto" name="salario_monto" type="number">
             <label for="salario_monto"><?= label('formEmpleado_salarioMonto'); ?></label>
         </div>
         
@@ -434,6 +397,7 @@ function validacionCorrecta(){
     </div>
     </form>
 </div>
+
 <div id="editarSalario" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>

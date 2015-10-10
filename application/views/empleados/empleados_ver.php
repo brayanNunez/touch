@@ -39,21 +39,27 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>Por hora</td>
-                        <td>$10</td>
-                        <td><i class="mdi-action-done"></i></td>
-                    </tr>
-                    <tr>
-                        <td>Por día</td>
-                        <td>$80</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Mensual</td>
-                        <td>$1400</td>
-                        <td></td>
-                    </tr>
+                    <?php
+                        if (isset($resultado)) {
+                        
+                            if ($resultado !== false) {
+                                 $contador = 0;
+                                    foreach ($resultado['salarios'] as $salario) {
+                                        $idEncriptado = encryptIt($resultado['idEmpleado']);
+                                        ?>
+                     <tr id="fila<?= $contador ?>" data-idElemento="<?= $idEncriptado ?>">
+                        <td><?= $salario['idTipoSalario'] ?></td>
+                        <td><?= $salario['salario'] ?></td>
+                        <td><?php if($salario['defecto'] == 1){ ?>
+                            <i class="mdi-action-done"></i>
+                        <?php } ?>
+                        </td>
+                     </tr>
+                     <?php
+                        }
+                        } 
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
