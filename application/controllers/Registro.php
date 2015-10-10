@@ -20,8 +20,9 @@ class Registro extends CI_Controller
 
     public function registrar()
     {
-        $tipoRegistro = $this->input->post('registro_tipo');
+        $this->load->model('Usuario_model');
         $data = array();
+        $tipoRegistro = $this->input->post('registro_tipo');
         $data['tipo'] = $tipoRegistro;
         $data['error'] = '';
         if ($tipoRegistro == 1) {
@@ -73,25 +74,61 @@ class Registro extends CI_Controller
 
         $captcha = $this->rpHash($this->input->post('defaultReal'));
         $valor = $this->input->post('defaultRealHash');
+        $data['correo'] = $data['usuario']['correo'];
+        $data['cedula'] = $data['datos']['cedula'];
+        $validacionCorreo = $resultado = $this->Usuario_model->existeCorreo($data);
+        $validacionCedula = $resultado = $this->Registro_model->existeIdentificacion($data);
 
-        if($captcha == $valor) {
-            $resultado = $this->Registro_model->registrar($data);
-            if (!$resultado) {
-                //Error en la transacción
-                $data['error'] = 0;
+        if($validacionCorreo === false) {
+            $data['error'] = 0;
+            $this->load->view('home/header_2');
+            $this->load->view('home/registro', $data);
+            $this->load->view('home/footer_2');
+        } else {
+            if ($validacionCorreo == 1) {
+                //Ya existe el correo
+                $data['error'] = 1;
                 $this->load->view('home/header_2');
                 $this->load->view('home/registro', $data);
                 $this->load->view('home/footer_2');
             } else {
-                //Exito en la transaccion
-                redirect('inicio/index');
+                //correo valido
+                if($validacionCedula === false) {
+                    $data['error'] = 0;
+                    $this->load->view('home/header_2');
+                    $this->load->view('home/registro', $data);
+                    $this->load->view('home/footer_2');
+                } else {
+                    if ($validacionCedula == 1) {
+                        //Ya existe el correo
+                        $data['error'] = 3;
+                        $this->load->view('home/header_2');
+                        $this->load->view('home/registro', $data);
+                        $this->load->view('home/footer_2');
+                    } else {
+                        //correo valido
+                        if($captcha == $valor) {
+                            $resultado = $this->Registro_model->registrar($data);
+                            if (!$resultado) {
+                                //Error en la transacción
+                                $data['error'] = 0;
+                                $this->load->view('home/header_2');
+                                $this->load->view('home/registro', $data);
+                                $this->load->view('home/footer_2');
+                            } else {
+                                //Exito en la transaccion
+                                redirect('inicio/index');
+                            }
+                        } else {
+                            //Error en el captcha
+                            $data['error'] = 2;
+                            $this->load->view('home/header_2');
+                            $this->load->view('home/registro', $data);
+                            $this->load->view('home/footer_2');
+                        }
+                    }
+                }
             }
-        } else {
-            //Error en el captcha
-            $data['error'] = 2;
-            $this->load->view('home/header_2');
-            $this->load->view('home/registro', $data);
-            $this->load->view('home/footer_2');
         }
     }
 

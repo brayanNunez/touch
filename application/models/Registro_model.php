@@ -48,6 +48,25 @@ class Registro_model extends CI_Model
         }
     }
 
+    function existeIdentificacion($data) {
+        try {
+            $this->db->trans_begin();
+            $query = $this->db->get_where('empresa', array('cedula' => $data['cedula']));
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+            $existe = 0;
+            if ($query->num_rows() > 0) {
+                $existe = 1;
+            }
+            $this->db->trans_commit();
+            return $existe;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
 }
 
 ?>

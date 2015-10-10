@@ -4,10 +4,10 @@
 
     <?php
     $tipo_error = '';
-    $tipoT = '';
+    $tipoForm = 1;
     $cedulaT = '';
     $nombreT = '';
-    $paisT = '';
+    $paisT = '0';
     $provinciaT = '';
     $cantonT = '';
     $domicilioT = '';
@@ -19,11 +19,10 @@
     $contrasenaT = '';
     $contrasenaConfirmT = '';
 
-    $tipoE = '';
     $cedulaE = '';
     $nombreE = '';
     $nombreFantasiaE = '';
-    $paisE = '';
+    $paisE = '0';
     $provinciaE = '';
     $cantonE = '';
     $domicilioE = '';
@@ -37,7 +36,6 @@
     if (isset($tipo) && isset($datos) && isset($direccion) && isset($usuario) && isset($correoConfirm) && isset($contrasenaConfirm) && isset($error)) {
         $tipo_error = $error;
         if($tipo == 1) {
-            $tipoT = $tipo;
             $cedulaT = $datos['cedula'];
             $nombreT = $datos['nombre'];
             $paisT = $direccion['pais'];
@@ -52,7 +50,7 @@
             $contrasenaT = $usuario['contrasena'];
             $contrasenaConfirmT = $contrasenaConfirm;
         } else {
-            $tipoE = $tipo;
+            $tipoForm = 2;
             $cedulaE = $datos['cedula'];
             $nombreE = $datos['nombre'];
             $nombreFantasiaE = $datos['nombreFantasia'];
@@ -83,7 +81,7 @@
 
                                     <div class="input-field col s12 m8 l6">
                                         <select id="registro_tipo" name="registro_tipo" onChange="datosRegistro(this)">
-                                            <option value="1" selected>Trabajador independiente</option>
+                                            <option value="1">Trabajador independiente</option>
                                             <option value="2">Empresa</option>
                                         </select>
                                         <label for="registro_tipo"><?= label('formRegistro_tipo'); ?></label>
@@ -144,7 +142,7 @@
                                             <div>
                                                 <div class="input-field col s12 m12 l6 country-select" style="margin-top: 13px;">
                                                     <select id="registro_paisTrabajador" name="registro_paisTrabajador">
-                                                        <option class="selected-option" selected disabled><?= label('formPerfil_pais'); ?>
+                                                        <option class="selected-option" value="0"><?= label('formPerfil_pais'); ?>
                                                         </option>
                                                         <option value="1">Costa Rica</option>
                                                         <option value="2">Colombia</option>
@@ -196,7 +194,7 @@
                                             <div>
                                                 <div class="input-field col s12 m12 l6 country-select" style="margin-top: 13px;">
                                                     <select id="registro_paisEmpresa" name="registro_paisEmpresa">
-                                                        <option class="selected-option" selected disabled><?= label('formPerfil_pais'); ?>
+                                                        <option class="selected-option" value="0"><?= label('formPerfil_pais'); ?>
                                                         </option>
                                                         <option value="1">Costa Rica</option>
                                                         <option value="2">Colombia</option>
@@ -313,114 +311,42 @@
 <script type="text/javascript">
     $(window).load(function(){
         var error = '<?= $tipo_error; ?>';
+        var tipoForm = '<?= $tipoForm ?>';
+        var campoCorreo = $('#registro_correoTrabajador');
+        var campoCedula = $('#registro_cedulaTrabajador');
+        if(tipoForm == 2) {
+            campoCorreo = $('#registro_empresaCorreoContacto');
+            campoCedula = $('#registro_cedulaEmpresa');
+        }
         if(error != '') {
             if (error == 0) {
                 alert('Error de bd');
             } else {
-                if (error == 2) {
-                    alert('Error en el captcha');
-                    $('#defaultReal').focus();
+                if (error == 1) {
+                    alert('Error en el correo');
+                    campoCorreo.focus();
                 } else {
-                    alert(error);
-                }
-            }
-        }
-    });
-    $(document).ready(function(){
-        $('#formulario_registro').on('submit', function(event) {
-//            event.preventDefault();
-            var tipo = $('#registro_tipo').val();
-            var correo = '';
-            if(tipo == '1') {
-                correo = $('#registro_correoTrabajador');
-            } else{
-                correo = $('#registro_empresaCorreoContacto');
-            }
-            var res = 'false';
-            $.ajax({
-                data: {usuario_correo : correo.val()},
-                url:   '<?=base_url()?>usuarios/existeCorreo',
-                type:  'post',
-                success:  function (response) {
-                    switch(response){
-                        case '0':
-                            $('#linkModalError').click();//error al ir a verificar identificación
-                            res = false;
-                            break;
-                        case '1':
-                            alert('<?= label("empleadoIdentificacionExistente"); ?>');
-                            correo.focus();
-                            res = false;
-                            break;
-                        case '2':
-//                            alert('valido');
-                            return true;
-                            break;
+                    if (error == 2) {
+                        alert('Error en el captcha');
+                        $('#defaultReal').focus();
+                    } else {
+                        if (error == 3) {
+                            alert('Error en la identificacion');
+                            campoCedula.focus();
+                        }
                     }
                 }
-            });
-            alert('Los datos fueron enviados');
-            if(!res) {
-                alert('Por favor arregle los errores');
-                return false;
-            } else {
-//                alert('Registro valido');
-                return true;
             }
-        });
-    });
-</script>
-
-<script>
-    function validacionCorrecta_RegistroNoUsada(){
-        var tipo = $('#registro_tipo').val();
-        var correo = '';
-        if(tipo == '1') {
-            correo = $('#registro_correoTrabajador');
-        } else{
-            correo = $('#registro_empresaCorreoContacto');
         }
-        $.ajax({
-            data: {usuario_correo :  correo.val()},
-            url:   '<?=base_url()?>usuarios/existeCorreo',
-            type:  'post',
-            success:  function (response) {
-                switch(response){
-                    case '0':
-                        $('#linkModalError').click();//error al ir a verificar identificación
-                        break;
-                    case '1':
-                        alert('<?= label("empleadoIdentificacionExistente"); ?>');
-                        correo.focus();
-                        break;
-                    case '2':
-                        var formulario = $('#formulario_registro');
-                        $.ajax({
-                            type: formulario.attr('method'),
-                            url: formulario.attr('action'),
-                            data: formulario.serialize(),
-                            success: function(response) {
-                                if (response == 2) {
-                                    alert('El captcha es incorrecto');
-                                    $('#defaultReal').focus();
-                                } else {
-                                    if (response == 0) {
-                                        alert('Ha ocurrido un error en el registro');
-                                    } else {
-                                        if (response == 1) {
-                                            alert('El registro ha sido existoso');
-                                            $('form')[0].reset();
-                                        } else {
-                                            alert(response);
-                                        }
-                                    }
-                                }
-                            }
-                        });
-                        break;
-                }
-            }
-        });
-    }
+        var tipoF = parseInt('<?= $tipoForm; ?>');
+        var paisT = parseInt('<?= $paisT; ?>');
+        var paisE = parseInt('<?= $paisE; ?>');
+        $('#registro_tipo').val(tipoF).change();
+        $('#registro_paisTrabajador').val(paisT).change();
+        $('#registro_paisEmpresa').val(paisE).change();
+//        $('#registro_tipo').options[tipoF].selected = true;
+//        $('#registro_paisTrabajador').options[paisT].selected = true;
+//        $('#registro_paisEmpresa').options[paisE].selected = true;
+    });
 </script>
 
