@@ -48,7 +48,11 @@
                                         $idEncriptado = encryptIt($resultado['idEmpleado']);
                                         ?>
                      <tr id="fila<?= $contador ?>" data-idElemento="<?= $idEncriptado ?>">
-                        <td><?= $salario['idTipoSalario'] ?></td>
+                        <?php foreach ($resultado['tiposalario'] as $tipo) { 
+                            if($tipo['idTipoSalario'] === $salario['idTipoSalario']) { ?>
+                        <td><?= $tipo['nombre'] ?></td>
+                        <?php }
+                        } ?>
                         <td><?= $salario['salario'] ?></td>
                         <td><?php if($salario['defecto'] == 1){ ?>
                             <i class="mdi-action-done"></i>

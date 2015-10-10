@@ -90,6 +90,21 @@ class Empleado_model extends CI_Model
         }
     }
 
+    function cargarSalarios(){
+        try {
+            $this->db->trans_begin();
+            $this->db->select('idTipoSalario, nombre');
+            $this->db->from('tiposalario');
+            $query = $this->db->get();
+            if (!$query) throw new Exception("Error en la BD");   
+            $this->db->trans_commit();
+            return $query->result_array();
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
     public function modificar($data)
     {
         try{

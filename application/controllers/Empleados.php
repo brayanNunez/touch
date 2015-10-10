@@ -28,9 +28,11 @@ class Empleados extends CI_Controller
     public function agregar()
     {
         verificarLogin();//helper
+        $lista = $this->Empleado_model->cargarSalarios();
+        $data['resultado'] = $lista;
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
-        $this->load->view('empleados/empleados');
+        $this->load->view('empleados/empleados', $data);
         $this->load->view('layout/default/footer');
     }
 

@@ -117,8 +117,12 @@
                              <input type="checkbox" class="filled-in checkbox"
                                 id="<?=$idEncriptado?>"/>
                              <label for="<?=$idEncriptado?>"></label>
-                          </td>
-                        <td><?= $salario['idTipoSalario'] ?></td>
+                        </td>
+                        <?php foreach ($resultado['tiposalario'] as $tipo) { 
+                            if($tipo['idTipoSalario'] === $salario['idTipoSalario']) { ?>
+                        <td><?= $tipo['nombre'] ?></td>
+                        <?php }
+                        } ?>
                         <td><?= $salario['salario'] ?></td>
                         <td><input type="radio" name="radioPorDefectoEmpleado" id="<?=$idEncriptado?>" <?php if($salario['defecto'] == 1){ ?>
                             checked="checked"

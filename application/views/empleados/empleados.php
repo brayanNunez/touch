@@ -377,12 +377,21 @@ function validacionCorrecta(){
         
         <div class="input-field col s12">
             <select>
-                <option value="">Seleccione</option>
-                <option value="1"><?= label('horas') ?></option>
-                <option value="2"><?= label('dia') ?></option>
-                <option value="3"><?= label('semana') ?></option>
-                <option value="4"><?= label('quincena') ?></option>
-                <option value="5"><?= label('mes') ?></option>
+
+                <option>Seleccione</option>
+                <?php
+                  if (isset($resultado)) {      
+                    if ($resultado !== false) {
+                      $contador = 0;
+                      foreach ($resultado as $tipo) {
+                      ?>
+                        <option value="<?php $tipo['idTipoSalario']?>"><?= $tipo['nombre'] ?></option>
+                      <?php 
+                      
+                    }
+                  }
+                }
+                ?>
             </select>
             <label for=""><?= label('formEmpleado_salarioTipo'); ?></label>
         </div>
@@ -406,12 +415,21 @@ function validacionCorrecta(){
     <div class="modal-content">
         <div class="input-field col s12">
             <select>
-                <option value="">Seleccione</option>
-                <option value="1" selected><?= label('horas') ?></option>
-                <option value="2"><?= label('dia') ?></option>
-                <option value="3"><?= label('semana') ?></option>
-                <option value="4"><?= label('quincena') ?></option>
-                <option value="5"><?= label('mes') ?></option>
+
+                <option>Seleccione</option>
+                <?php
+                  if (isset($resultado)) {      
+                    if ($resultado !== false) {
+                      $contador = 0;
+                      foreach ($resultado as $tipo) {
+                      ?>
+                        <option value="<?php $tipo['idTipoSalario']?>"><?= $tipo['nombre'] ?></option>
+                      <?php 
+                      
+                    }
+                  }
+                }
+                ?>
             </select>
             <label for=""><?= label('formEmpleado_salarioTipo'); ?></label>
         </div>
