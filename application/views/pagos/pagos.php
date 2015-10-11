@@ -5,11 +5,14 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 m12 l12">
-                    <h5 class="breadcrumbs-title"><?= label('tituloPagos'); ?></a></h5>
+                    <h5 class="breadcrumbs-title"><?= label('tituloPagos'); ?></h5>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- <div id="inset_form"></div> -->
+
     <!--breadcrumbs end-->
     <div class="container">
         <div id="chart-dashboard">
@@ -101,6 +104,7 @@
                                     <div class="section reporte-generar">
                                         <a href="#Obtener" class="btn btn-default modal-trigger"><?= label('pagar_servicio'); ?></a>
                                     </div>
+                                    
 
                                     <div id="table-datatables">
                                         <div class="row">
@@ -129,19 +133,19 @@
                                                         <td>001</td>
                                                         <td>18/05/2015</td>
                                                         <td>$20</td>
-                                                        <td><a href="#">Archivo</a></td>
+                                                        <td><a href="<?=base_url()?>files/facturas/test.pdf">Archivo</a></td>
                                                     </tr>
                                                     <tr>
                                                         <td>002</td>
                                                         <td>18/04/2015</td>
                                                         <td>$20</td>
-                                                        <td><a href="#">Archivo</a></td>
+                                                        <td><a href="<?=base_url()?>files/facturas/test.pdf">Archivo</a></td>
                                                     </tr>
                                                     <tr>
                                                         <td>003</td>
                                                         <td>18/03/2015</td>
                                                         <td>$20</td>
-                                                        <td><a href="#">Archivo</a></td>
+                                                        <td><a href="<?=base_url()?>files/facturas/test.pdf">Archivo</a></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -156,6 +160,7 @@
                 </div>
             </div>
         </div>
+    </div>
         <!--end container-->
 
         <?php
@@ -163,6 +168,7 @@
         ?>
 
 </section>
+
 <!-- END CONTENT-->
 
 <script>
@@ -172,7 +178,12 @@ $(document).ready(function () {
             $(this).prop("checked", true);
         });
     });
+
+
+
 </script>
+
+
 
 <!-- lista modals -->
 
@@ -199,3 +210,95 @@ $(document).ready(function () {
 </div>
 <!--Fin lista modals -->
 
+
+
+<!-- html de la factura a crear -->
+<script type="text/javascript">
+
+ $(document).ready(function(){
+
+    $("#crear").click(function(){
+     var style = '';
+
+      var html = '<!DOCTYPE html><html><head><title>403 Forbidden</title><link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/dashboard/css/estiloFactura.css"></head><body id="hojaPDF" '+ style+'>';
+      html +='<div id="headerDiseno">'+ $('#headerDiseno').html() + '</div></body></html>';
+   
+    $('#inset_form').html('<form  action="<?=base_url()?>ManejadorPDF/crearFactura" name="form" method="post" style="display:block;"><textarea name="miHtml">' + html +'</textarea></form>');
+     document.forms['form'].submit();
+
+ 
+ });
+
+ })
+   
+</script>
+
+<div style="display:none">
+    
+    <div id="inset_form"></div>
+
+    <div id="headerDiseno">
+        <div id="barraTitulo">
+                <p id="nombreSistema"><strong>Facturación Touch!</strong></p>
+        </div>
+       <div id="factura">
+          <div id="datosEncabezado">
+          
+             <div class="datos" id="datos1">
+                <div></div>
+                
+                <p>Cédula: <strong>3-101-692725</strong></p>
+                <p>Teléfono: <strong>8528-0288</strong></p>
+                
+             </div>
+             <div class="datos" id="datos2">
+                <div></div>
+                <p>Correo: <strong>admin@touch.cr</strong></p>
+                <p><strong>Sarchí Sur, Valverde Vega</strong></p>
+                
+             </div>
+             <div class="linea">
+             </div>
+             <br>
+             <div class="datos">
+                <div id="datos3">
+                <div></div>
+                <p>Señor(es): <strong>Juan Diego Alfaro</strong></p>
+                <p>Dirección: <strong>SN de Grecia</strong></p>
+                  
+                </div>
+                <div id="datos4">
+                <div></div>
+                <p>Fecha: <strong>24/06/2015</strong></p>
+                <p>Hora: <strong>09:45 am</strong></p>
+                </div>
+                
+             </div>
+
+          </div>
+          <!-- <div id="contenidoFactura"> -->
+          <div class="linea">
+          </div>
+          <br>
+
+           <table id="tablaFactura">
+             <thead >
+              <tr>
+                 <th>Cantidad</th>
+                 <th>Descripción</th>
+                 <th>Total</th>
+              </tr>
+             </thead>
+             <tfoot>
+              <tr>
+                 <td>2</td>
+                 <td>Pago del servicio touch!</td>
+                  <td>$180</td>
+              </tr>
+             </tfoot>
+            </table>
+       </div>
+    </div>
+</div>
+
+    <button id="crear">Crear factura (PRUEBA)</button>

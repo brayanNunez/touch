@@ -14,6 +14,8 @@
 
 
 	$lang['nombreSistema'] = 'Touch!';
+    $lang['link_paginaInicial'] = 'touchcr.com';
+    
 
 //mensajes 
 	$lang['confirmarEliminarCotizacion'] = '¿Realmente desea eliminar la cotización seleccionada?';

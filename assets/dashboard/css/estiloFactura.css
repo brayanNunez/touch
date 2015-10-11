@@ -1,0 +1,172 @@
+
+
+
+	@page {
+
+
+
+            margin: 0px, 0px, 0px, 0px;
+            
+        }
+
+
+#contenedorHoja{
+	width: 793px;
+	height: 1117px;
+	
+	background: gray;
+	padding: 100px; 
+	float: left;
+
+}
+
+
+#hoja{
+	box-shadow: 10px 10px 5px #000000;
+	/*background: #58FAF4;*/
+	width:794px;
+
+}
+
+#hojaPDF {
+    /*background: red;*/
+	width:100%;
+    height:100%;
+    padding: 100px, 50px, 50px, 50px;
+
+}
+
+
+#headerDiseno{
+
+	position: relative;
+	left: 0px;
+	/*top: -50px;*/
+	top: -50px;
+
+}
+
+/*los que tienen el #hoja se aplican solo a la vista en html
+ya que cuando se envia el html para convertirlo a PDF se elimina esta
+etiqueta*/
+#hoja #headerDiseno{ 
+	top: 0px;
+	background: white;
+	padding: 50px 50px 50px 50px;
+
+}
+
+#factura{
+
+	padding: 15px;
+	width: 664px;
+	background-color: white;
+	border: solid 1px black;
+}
+
+#factura .imagen{
+	width: 148px;
+	height: 148px;
+}
+
+#factura #logo{
+	margin: 0;
+	width: 148px;
+	height: 148px;
+	display: inline-block;
+	/*background-color: green;*/
+
+}
+
+#factura #datosEncabezado{
+	margin-left: 7px;
+	width: 100%;
+	display: inline-block;
+	vertical-align: top;
+	/*background-color: yellow;*/
+	
+}
+
+#factura #datosEncabezado .datos{
+
+
+ font-size: 17px;
+
+}
+
+#factura #datosEncabezado #datos1{
+	width: 431.18px;
+	/*background: red;*/
+	display: inline-block;
+}
+#factura #datosEncabezado #datos2{
+	vertical-align: top;
+	width: 221px;
+	/*background: red;*/
+	display: inline-block;
+}
+#factura #datosEncabezado #datos3{
+	/*font-family: monospace;*/
+	width: 431.18px;
+	/*background: red;*/
+	display: inline-block;
+}
+#factura #datosEncabezado #datos4{
+	vertical-align: top;
+	width: 221px;
+	/*background: red;*/
+	display: inline-block;
+}
+
+
+
+
+
+p{
+    margin: 0 0 10px;
+    color: black;
+}
+
+
+
+
+table {
+    border-collapse: collapse;
+}
+
+table, td, th {
+    border: 2px solid black;
+
+}
+td{
+	 height: 30px;
+}
+#tablaFactura th{
+	background: #ccc;
+}
+
+#barraTitulo{
+	padding: 15px;
+	width: 664px;
+	height: 20px;
+	background: #eee;
+	border: 1px solid black;
+	border-bottom: none;
+
+
+}
+
+#nombreSistema {
+	font-size: 20px;
+	
+}
+.linea{
+	background: black;
+	width: 100%;
+	height: 1px;
+}
+
+#tablaFactura{
+	width: 100%;
+	text-align: center;
+}

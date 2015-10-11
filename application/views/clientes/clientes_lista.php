@@ -74,8 +74,7 @@
                                                            <label for="<?=$idEncriptado?>"></label>
                                                         </td>
                                                         <td><?= $fila['identificacion'] ?></td>
-                                                        <td><?= $juridico ?></td>
-
+                                                        <td><?php if($juridico){ echo label('formCliente_juridica');} else { echo label('formCliente_fisica');} ?></td>
                                                         <?php
                                                         if (!$juridico) {
                                                            ?>
