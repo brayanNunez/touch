@@ -271,18 +271,18 @@
                                     </div>
                                     <div>
                                         <div class="input-field col s12" style="margin-top: 0;">
-                                            <input class="filled-in" type="checkbox" id="correosPromociones"/>
-                                            <label for="correosPromociones"><?= label('formPerfil_acepto1'); ?></label>
+                                            <input class="filled-in" type="checkbox" id="registro_enviarCorreos" name="registro_enviarCorreos"/>
+                                            <label for="registro_enviarCorreos"><?= label('formPerfil_acepto1'); ?></label>
                                         </div>
                                         <div class="input-field col s12" style="margin-top: 5px;">
-                                            <input class="filled-in" type="checkbox" id="terminos"/>
-                                            <label for="terminos"><?= label('formPerfil_acepto2'); ?></label>
+                                            <input class="filled-in" type="checkbox" id="registro_terminos" name="registro_terminos"/>
+                                            <label for="registro_terminos"><?= label('formPerfil_acepto2'); ?></label>
                                         </div>
                                     </div>
 
                                     <div class="col s12" style="margin-top: 25px;">
                                         <div class="input-field col s12 envio-formulario">
-                                            <button type="submit" class="btn btn-filled registrar">
+                                            <button id="btn_envioFormulario" type="submit" class="btn btn-filled registrar" disabled>
                                                 <?= label('formRegistro_crearPerfil'); ?>
                                             </button>
                                         </div>
@@ -350,6 +350,23 @@
 //        $('#registro_tipo').options[tipoF].selected = true;
 //        $('#registro_paisTrabajador').options[paisT].selected = true;
 //        $('#registro_paisEmpresa').options[paisE].selected = true;
+    });
+    $(document).ready(function(){
+        $('#registro_terminos').click(function(event) {
+            var $terms = $('#registro_terminos').is(':checked');
+            if($terms) {
+                $('#btn_envioFormulario').attr('disabled', false);
+            } else {
+                $('#btn_envioFormulario').attr('disabled', true);
+            }
+        });
+        $('#formulario_registro').submit(function(event) {
+            var $terms = $('#registro_terminos').is(':checked');
+            if(!$terms) {
+                alert('Por favor, acepte primero los terminos de uso.');
+                return false;
+            }
+        });
     });
 </script>
 

@@ -25,10 +25,15 @@ class Registro extends CI_Controller
         $tipoRegistro = $this->input->post('registro_tipo');
         $data['tipo'] = $tipoRegistro;
         $data['error'] = '';
+        $enviarCorreos = 0;
+        if ($this->input->post('registro_enviarCorreos')) {
+            $enviarCorreos = 1;
+        }
         if ($tipoRegistro == 1) {
             $data['datos'] = array(
                 'cedula' => $this->input->post('registro_cedulaTrabajador'),
                 'nombre' => $this->input->post('registro_nombreEmpresaTrabajador'),
+                'enviarCorreos' => $enviarCorreos,
                 'idMoneda' => 1
             );
             $data['direccion'] = array(
@@ -52,6 +57,7 @@ class Registro extends CI_Controller
                 'cedula' => $this->input->post('registro_cedulaEmpresa'),
                 'nombre' => $this->input->post('registro_nombreEmpresa'),
                 'nombreFantasia' => $this->input->post('registro_nombreFantasiaEmpresa'),
+                'enviarCorreos' => $enviarCorreos,
                 'idMoneda' => 1
             );
             $data['direccion'] = array(
