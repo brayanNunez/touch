@@ -167,6 +167,34 @@
     });
 </script>
 
+<script>
+    function validacionCorrecta_Archivo(){
+        var formPW = $('#cliente-archivo');
+        $.ajax({
+            data: new FormData(formPW[0]),
+            url: formPW.attr('action'),
+            type: formPW.attr('method'),
+            success:  function (response) {
+                switch(response){
+                    case '0':
+                        alert('<?= label('clienteErrorSubirArchivo'); ?>');//error al ir a verificar identificación
+                        break;
+                    case '1':
+                        alert('Error de bd, el archivo no pudo ser subido');
+                        break;
+                    case '2':
+                        alert('El archivo fue subido con exito');
+                        formPW[0].reset();
+                        break;
+                }
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    }
+</script>
+
 <!-- lista modals -->
 <div id="eliminarArchivo" class="modal">
     <div class="modal-header">
@@ -196,34 +224,42 @@
     </div>
 </div>
 <div id="agregarArchivo" class="modal">
+    <?php $this->load->helper('form'); ?>
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <div class="file-field col s12">
-            <div class="file-field input-field col s12">
-                <?php $this->load->helper('form'); ?>
-                <?php echo form_open_multipart(base_url() . 'archivos/do_upload'); ?>
-                <input class="file-path validate" type="text" disabled/>
+        <?php echo form_open_multipart(base_url().'clientes/agregarArchivo', array('id' => 'cliente-archivo', 'method' => 'POST', 'class' => 'col s12')); ?>
+            <div class="col s12" style="padding: 0;">
+                <div class="file-field col s12" style="padding: 0;">
+                    <label for="cliente_archivo"><?= label('formUsuario_fotografia'); ?></label>
 
-                <div class="btn" data-toggle="tooltip" title="<?= label('tooltip_examinar') ?>">
-                    <span><i class="mdi-action-search"></i></span>
-                    <input type="file" name="userfile"/>
+                    <div class="file-field input-field col s12" style="padding: 0;">
+                        <input style="margin-left: 18% !important;width: 80% !important;"
+                               name="cliente_archivo" class="file-path" type="text" readonly/>
+
+                        <div class="btn" data-toggle="tooltip" title="<?= label('tooltip_examinar') ?>" style="top: -15px;">
+                            <span><i class="mdi-action-search"></i></span>
+                            <input style="padding-right: 100px;" id="userfile" type="file" name="userfile"
+                                   accept="image/jpeg,image/png"/>
+                        </div>
+                    </div>
                 </div>
-                <div class="input-field col s12">
-                    <textarea id="archivo_descripcion" class="materialize-textarea" length="120"></textarea>
-                    <label for="archivo_descripcion"><?= label('archivo_descripcion'); ?></label>
-                </div>
-                <input id="subir_archivo" class="btn" type="submit" value="<?= label('archivo_upload'); ?>"
-                       name="upload"/>
-                </form>
             </div>
-        </div>
+            <div class="col s12">
+                <label for="archivo_descripcion" style="float: left;text-align: left;"><?= label('archivo_descripcion'); ?></label>
+                <textarea id="archivo_descripcion" name="archivo_descripcion" class="materialize-textarea" length="120" style="padding: 0.6rem 0 1.6rem;"></textarea>
+            </div>
+            <div class="input-field col s12 envio-formulario" style="margin-bottom: 30px;">
+                <button id="subir_archivo" class="btn" type="submit" value="<?= label('archivo_upload'); ?>"
+                       name="action"><?= label('cliente_subirArchivo'); ?></button>
+            </div>
+        </form>
     </div>
-    <div class="modal-footer black-text">
-        <a href="#" class="btn-flat modal-close"></a>
-    </div>
+<!--    <div class="modal-footer black-text">-->
+<!--        <a href="#" class="btn-flat modal-close"></a>-->
+<!--    </div>-->
 </div>
 <!--Fin lista modals -->
 

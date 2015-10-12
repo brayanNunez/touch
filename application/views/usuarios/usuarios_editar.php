@@ -355,7 +355,8 @@
                     <label for="usuario_fotografia"><?= label('formUsuario_fotografia'); ?></label>
 
                     <div class="file-field input-field col s12" style="padding: 0;">
-                        <input style="margin-left: 18% !important;width: 80% !important;" name="usuario_fotografia" class="file-path" type="text" readonly/>
+                        <input style="margin-left: 18% !important;width: 80% !important;"
+                               name="usuario_fotografia" class="file-path" type="text" readonly/>
 
                         <div class="btn" data-toggle="tooltip" title="<?= label('tooltip_examinar') ?>" style="top: -15px;">
                             <span><i class="mdi-action-search"></i></span>

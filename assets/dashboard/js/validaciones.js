@@ -168,4 +168,16 @@
             //}
         });
 
+            $('#cliente-archivo').validate({
+                rules:
+                {
+                    userfile: { required: false},
+                    archivo_descripcion: { required: true}
+                },
+                errorElement: 'div',
+                submitHandler: function(form) {
+                    validacionCorrecta_Archivo();
+                }
+            });
+
     });

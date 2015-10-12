@@ -353,6 +353,35 @@ class Clientes extends CI_Controller
         echo json_encode($gustos);
     }
 
+    public function agregarArchivo() {
+        $path = './files/empresas/1/clientes/1';
+        $config['upload_path'] = $path;
+        $config['allowed_types'] = 'jpg|png';
+        $config['max_size'] = '2048';
+
+        $this->load->library('upload', $config);
+        if (!$this->upload->do_upload()) {
+//            $error = array('error' => $this->upload->display_errors());
+            echo 0;
+        } else {
+            $data['upload_data'] = $this->upload->data();
+            $data['datos'] = array(
+                'idCliente' => 1,
+                'nombre' => $data['upload_data']['raw_name'].$data['upload_data']['file_ext'],
+                'tamano' => $data['upload_data']['file_size'],
+//                'fecha' => 'curdate()',
+                'descripcion' => $this->input->post('archivo_descripcion')
+            );
+            $resultado = $this->Cliente_model->agregarArchivo($data);
+            $archivo = $path.'/'.$data['datos']['nombre'];
+            if(!$resultado) {
+                unlink($archivo);
+                echo 1;
+            } else {
+                echo 2;
+            }
+        }
+    }
 
 }
 

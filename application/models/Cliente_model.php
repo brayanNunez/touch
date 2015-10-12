@@ -66,6 +66,10 @@ class Cliente_model extends CI_Model
                 $query = $this->db->insert('personacontacto', $contacto);
                 if (!$query) throw new Exception("Error en la BD");   
             }
+            $pathCliente = 'files/empresas/'.$data['datos']['idEmpresa'].'/clientes/'.$insert_id;
+            if(!is_dir($pathCliente)) {
+                mkdir($pathCliente);
+            }
             $this->db->trans_commit();
             return true;
         } catch (Exception $e) {
@@ -267,6 +271,19 @@ class Cliente_model extends CI_Model
         }
     }
 
+    public function agregarArchivo($data) {
+        try{
+            $this->db->trans_begin();
+            $query = $this->db->insert('archivo', $data['datos']);
+            if (!$query) throw new Exception("Error en la BD");
+
+            $this->db->trans_commit();
+            return true;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
     
 }
 
