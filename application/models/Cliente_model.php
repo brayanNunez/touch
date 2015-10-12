@@ -148,6 +148,9 @@ class Cliente_model extends CI_Model
                 if (!$contactos) throw new Exception("Error en la BD");   
                 $row['contactos'] = $contactos->result_array();
 
+                $archivos = $this->db->get_where('archivo', array('idCliente' => $id));
+                if (!$archivos) throw new Exception("Error en la BD");
+                $row['archivos'] = $archivos->result_array();
             }
             // print_r ($row);exit();
              $this->db->trans_commit();
@@ -279,6 +282,39 @@ class Cliente_model extends CI_Model
 
             $this->db->trans_commit();
             return true;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+    public function eliminarArchivo($id) {
+        try{
+            $this->db->trans_begin();
+
+            $this->db->select('nombre');
+            $this->db->where('idArchivo', $id);
+            $this->db->from('archivo');
+            $query1 = $this->db->get();
+            if (!$query1) {
+                throw new Exception("Error en la BD");
+            }
+            if($query1->num_rows() > 0) {
+                $datos = $query1->result_array();
+                $file = $datos[0]['nombre'];
+                if(!$file) {
+                    $file = 'noArchivo';
+                }
+            } else {
+                $file = 'noArchivo';
+            }
+
+            $this->db->where('idArchivo', $id);
+            $query = $this->db->delete('archivo');
+            if (!$query) throw new Exception("Error en la BD");
+
+            $this->db->trans_commit();
+            return $file;
         } catch (Exception $e) {
             $this->db->trans_rollback();
             return false;

@@ -17,42 +17,43 @@
         </tr>
     </thead>
     <tbody>
-    <?php if ($archivos): ?>
-        <?php foreach ($archivos as $file): ?>
-            <tr>
+    <?php if(isset($resultado['archivos'])): ?>
+        <?php $contador = 0; ?>
+        <?php foreach ($resultado['archivos'] as $file): ?>
+            <?php $idEncriptado = encryptIt($file['idArchivo']); ?>
+            <tr id="fila<?=$contador?>" data-idElemento="<?= $idEncriptado ?>">
                 <td style="text-align: center;">
-                    <input type="checkbox" class="filled-in checkbox-file" id="checkbox_<?= $file['file_name']; ?>"/>
-                    <label for="checkbox_<?= $file['file_name']; ?>"></label>
+                    <input type="checkbox" class="filled-in checkbox-file" id="<?= $idEncriptado; ?>"/>
+                    <label for="<?= $idEncriptado; ?>"></label>
                 </td>
                 <td>
-                    <a href="<?= base_url() . 'files/' . $file['file_name'] . '' . $file['file_ext']; ?>"
+                    <a href="<?= base_url() . 'files/empresas/1/clientes/1/' . $file['nombre']; ?>"
                        target="_blank">
-                        <?= $file['file_name'] . '' . $file['file_ext']; ?>
+                        <?= $file['nombre']; ?>
                     </a>
                 </td>
                 <td>
-                    <p><?= $file['file_description']; ?></p>
+                    <p><?= $file['descripcion']; ?></p>
                 </td>
                 <td>
-                    <p><?= $file['file_size']; ?></p>
+                    <p><?= $file['tamano'].' KB'; ?></p>
                 </td>
                 <td>
-                    <p><?= $file['file_date']; ?></p>
+                    <p><?= date('d/m/Y  h:i a', strtotime($file['fecha'])); ?></p>
                 </td>
                 <td>
-                    <ul id="dropdown-<?= $file['file_name']; ?>" class="dropdown-content">
+                    <ul id="dropdown-archivo<?= $contador; ?>" class="dropdown-content">
                         <li>
-                            <a href="<?= base_url() . 'files/' . $file['file_name'] . '' . $file['file_ext']; ?>"
-                               class="-text"
-                               target="_blank"><?= label('menuOpciones_abrir') ?></a>
+                            <a href="<?= base_url() . 'files/empresas/1/clientes/1/' . $file['nombre']; ?>"
+                               class="-text" target="_blank"><?= label('menuOpciones_abrir') ?></a>
                         </li>
                         <li>
-                            <a href="#eliminarArchivo"
-                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
+                            <a href="#eliminarArchivo" data-id-eliminar="<?= $idEncriptado ?>"  data-fila-eliminar="fila<?= $contador?>"
+                               class="-text modal-trigger confirmarEliminar"><?= label('menuOpciones_eliminar') ?></a>
                         </li>
                     </ul>
                     <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                       data-activates="dropdown-<?= $file['file_name']; ?>">
+                       data-activates="dropdown-archivo<?= $contador++; ?>">
                         <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
                     </a>
                 </td>
@@ -64,25 +65,32 @@
 
 <div class="tabla-conAgregar">
     <a id="opciones-seleccionados-print"
-       class="waves-effect black-text opciones-seleccionados-archivos option-print-table" style="visibility: hidden;"
-       href="#" data-toggle="tooltip" title="<?= label('opciones_seleccionadosImprimir') ?>">
+       class="black-text opciones-seleccionados option-print-table"
+       style="visibility: hidden;"
+       href="#" data-toggle="tooltip"
+       title="<?= label('opciones_seleccionadosImprimir') ?>">
         <i class="mdi-action-print icono-opciones-varios"></i>
     </a>
-    <ul id="dropdown-exportar-files" class="dropdown-content">
+    <ul id="dropdown-exportar" class="dropdown-content">
         <li>
-            <a href="#" class="-text"><?= label('opciones_seleccionadosExportarPdf') ?></a>
+            <a id="opciones-seleccionados-PDF" href="#"
+               class="-text"><?= label('opciones_seleccionadosExportarPdf') ?></a>
         </li>
         <li>
-            <a href="#" class="-text"><?= label('opciones_seleccionadosExportarExcel') ?></a>
+            <a id="opciones-seleccionados-Excel" href="#"
+               class="-text"><?= label('opciones_seleccionadosExportarExcel') ?></a>
         </li>
     </ul>
-    <a id="opciones-seleccionados-export" class="boton-opciones black-text dropdown-button option-export-table"
-       href="#" data-toggle="tooltip" title="<?= label('opciones_seleccionadosExportar') ?>"
-       data-activates="dropdown-exportar-files">
+    <a id="opciones-seleccionados-export"
+       style="visibility: hidden;"
+       class="opciones-seleccionados boton-opciones black-text dropdown-button option-export-table"
+       href="#" data-toggle="tooltip"
+       title="<?= label('opciones_seleccionadosExportar') ?>"
+       data-activates="dropdown-exportar">
         <i class="mdi-file-file-download icono-opciones-varios"></i>
     </a>
     <a id="opciones-seleccionados-delete"
-       class="modal-trigger waves-effect black-text opciones-seleccionados-archivos option-delete-elements"
+       class="modal-trigger black-text opciones-seleccionados option-delete-elements"
        style="visibility: hidden;"
        href="#eliminarArchivosSeleccionados" data-toggle="tooltip"
        title="<?= label('opciones_seleccionadosEliminar') ?>">
@@ -90,52 +98,124 @@
     </a>
 </div>
 
-<script>
-    $(window).load(function () {
-        var marcados = $('.checkbox-file:checked').size();
-        var elems = document.getElementsByClassName('opciones-seleccionados-archivos');
-        if (marcados >= 1) {
-            var e1;
-            for (e1 in elems) {
-                elems[e1].style.visibility = 'visible';
-            }
-        } else {
-            var e2;
-            for (e2 in elems) {
-                elems[e2].style.visibility = 'hidden';
-            }
-            document.getElementById('checkbox-all-files').checked = false;
-        }
-    });
-    $(document).ready(function () {
-        $('#botonEliminarArchivosSeleccionados').on("click", function (event) {
-            var tb = $(this).attr('title');
-            var sel = false;
-            var ch = $('#' + tb).find('tbody input[type=checkbox]');
-            ch.each(function () {
-                var $this = $(this);
-                if ($this.is(':checked')) {
-                    sel = true;
-                    $this.parents('tr').fadeOut(function () {
-                        $this.remove();
-                    });
+<div style="display: none">
+    <a id="linkModalErrorCargarDatos" href="#transaccionIncorrectaCargar" class="btn btn-default modal-trigger"></a>
+    <a id="linkModalErrorEliminar" href="#transaccionIncorrectaEliminar" class="btn btn-default modal-trigger"></a>
+</div>
+
+<script type="text/javascript">
+    $(document).on("ready", function () {
+
+        <?php
+       if (isset($lista)) {
+           if ($lista === false) {?>
+
+        $('#linkModalErrorCargarDatos').click();
+
+        <?php
+   }
+   }
+   ?>
+
+
+        var idEliminar = 0;
+        var fila = 0;
+
+        $('.confirmarEliminar').on('click', function () {
+            idEliminar = $(this).data('id-eliminar');
+            fila = $(this).data('fila-eliminar');
+        });
+
+        $('#eliminarArchivo #botonEliminar').on('click', function () {
+            event.preventDefault();
+            $.ajax({
+                data: {idEliminar : idEliminar},
+                url:   '<?=base_url()?>clientes/eliminarArchivo',
+                type:  'post',
+                // beforeSend: function () {
+                //         $("#resultado").html("Procesando, espere por favor...");
+                // },
+                success:  function (response) {
+                    if (response==1) {
+                        $('#' + fila).fadeOut(function () {
+                            $('#' + fila).remove();
+                            verificarChecks();
+                        });
+
+                    } else{
+                        $('#linkModalErrorEliminar').click();
+                    };
                 }
             });
-            return false;
         });
+
+
+
+
     });
+
     $(document).ready( function () {
         $('#files').dataTable( {
             'aoColumnDefs': [{
                 'bSortable': false,
-                'aTargets': [0, -1] /* 1st one, start by the right */
+                'aTargets': [0, -1] //desactiva en primer y última columna opción de ordenar
             }]
         });
+    });
+    $(document).ready(function () {
         $('table#files thead th:first').removeClass('sorting_asc').addClass('sorting_disabled');
         $('table#files thead th:nth-child(2)').removeClass('sorting').addClass('sorting_asc');
     });
     $(document).ready(function () {
-        $('input#checkbox-all-files').click(function (event) {
+        $('#eliminarArchivosSeleccionados #botonEliminar').on("click", function (event) {
+            var tb = $(this).attr('title');
+            var sel = false;
+            var ch = $('#' + tb).find('tbody input[type=checkbox]');
+            var marcados = $('.checkbox-file:checked').not('#checkbox-all-files').size();
+            var contador = 0;
+            ch.each(function () {
+                var $this = $(this);
+                if ($this.is(':checked')) {
+                    sel = true;
+                    var fila = $this.parents('tr');
+                    var idEliminar = $this.parents('tr').attr('data-idElemento');
+
+                    $.ajax({
+                        data: {idEliminar : idEliminar},
+                        url:   '<?=base_url()?>clientes/eliminarArchivo',
+                        type:  'post',
+                        // beforeSend: function () {
+                        //         $("#resultado").html("Procesando, espere por favor...");
+                        // },
+                        success:  function (response) {
+                            if (response==1) {
+                                fila.fadeOut(function () {
+                                    fila.remove();
+                                    verificarChecks();
+                                });
+                            } else{
+                                contador++;
+                                if (contador == marcados) {
+                                    $('#linkModalErrorEliminar').click();
+                                };
+                            };
+                        }
+                    });
+
+                }
+            });
+
+            return false;
+
+        });
+    });
+
+    $(window).load(function () {
+        verificarChecks();
+    });
+
+    $(document).ready(function () {
+        $('#checkbox-all-files').click(function (event) {
             var $this = $(this);
             var tableBody = $('#files').find('tbody tr[role=row] input[type=checkbox]');
             tableBody.each(function() {
@@ -150,21 +230,147 @@
     });
     $(document).ready(function () {
         $('.checkbox-file').click(function (event) {
-            var marcados = $('.checkbox-file:checked').size();
-            var elems = document.getElementsByClassName('opciones-seleccionados-archivos');
-            if (marcados >= 1) {
-                var e1;
-                for (e1 in elems) {
-                    elems[e1].style.visibility = 'visible';
-                }
-            } else {
-                var e2;
-                for (e2 in elems) {
-                    elems[e2].style.visibility = 'hidden';
+            verificarChecks();
+        });
+    });
+
+    function verificarChecks(){
+
+        var marcados = $('.checkbox-file:checked').not('#checkbox-all-files').size();
+        if (marcados >= 1) {
+            var elems = document.getElementsByClassName('opciones-seleccionados');
+            var e;
+            for (e in elems) {
+                elems[e].style.visibility = 'visible';
+            }
+        } else {
+            $('#checkbox-all').prop('checked', false);
+            var elems = document.getElementsByClassName('opciones-seleccionados');
+            var e;
+            for (e in elems) {
+                elems[e].style.visibility = 'hidden';
+            }
+        }
+    }
+
+    $(document).ready(function () {
+        $('.boton-opciones').on('click', function (event) {
+            var elementoActivo = $(this).siblings('ul.active');
+            if (elementoActivo.length > 0) {
+                var estado = elementoActivo.css("display");
+                if (estado == "block") {
+                    elementoActivo.css("display", "none");
+                    elementoActivo.style.display = 'none';
+                } else {
+                    elementoActivo.css("display", "block");
+                    elementoActivo.style.display = 'block';
                 }
             }
         });
     });
+
+    // Inicio script de descarga pdf, excel e imprimir
+    $(document).on('ready', function(){
+
+        $('#opciones-seleccionados-print').on("click", function(){
+            tablaHtml = htmlTabla('files', true);
+            Popup(tablaHtml);
+        });
+
+        function Popup(data)
+        {
+            // var mywindow = window.open('', 'my div', 'height=400,width=600');
+            var mywindow = window.open('', 'my div', '');
+            mywindow.document.write('<html><head><title><?= label('tituloArchivos'); ?></title>');
+            // mywindow.document.write('<link media="print,screen" href="<?= base_url() ?>assets/dashboard/css/estiloTablasDescarga.css" rel="stylesheet" type="text/css" >');
+            mywindow.document.write('</head><body>');
+            mywindow.document.write(data);
+            mywindow.document.write('</body></html>');
+            mywindow.document.close(); // necessary for IE >= 10
+            mywindow.focus(); // necessary for IE >= 10
+            mywindow.print();
+            mywindow.close();
+            return true;
+        }
+
+
+        $('#opciones-seleccionados-Excel').on("click", function(){
+            var html = htmlTabla('empleados-tabla-lista', false);
+            $('#inset_form').html('<form  action="<?=base_url()?>ManejadorExcel/tablaDescarga" name="form" method="post" style="display:block;"><input type="text" name="titulo" value="<?= label('tituloArchivos'); ?>"><textarea name="miHtml">' + html + '</textarea></form>');
+            document.forms['form'].submit();
+        });
+
+        $('#opciones-seleccionados-PDF').on("click", function(){
+            var informacionSistema = '<div id="informacionSistema"><div id="linkPagina"><a href="<?=base_url()?>"><?= label('link_paginaInicial'); ?></a></div><span class="numeracion"></span></div>';
+            var encabezado = '<div id="encabezado"><?= label('tituloArchivos'); ?></div>';
+            var body = encabezado + informacionSistema;
+            body += htmlTabla('files', false);
+            var html = '<!DOCTYPE html><html><head><title>403 Forbidden</title><link rel="stylesheet" href="<?= base_url() ?>assets/dashboard/css/estiloTablasDescarga.css"></head><body id="hojaPDF">';
+            html +=  body + '</body></html>';
+            $('#inset_form').html('<form  action="<?=base_url()?>ManejadorPDF/tablaDescarga" name="form" method="post" style="display:block;"><input type="text" name="titulo" value="<?= label('tituloArchivos'); ?>"><textarea name="miHtml">' + html + '</textarea></form>');
+            document.forms['form'].submit();
+        });
+
+
+        function htmlTabla(idTabla, style){
+
+            var styleTable = 'style="border-collapse:collapse;width: 100%;"';
+            var styleHead = 'style="font-weight: bold;"';
+            var styleTd = 'style="border:1px solid #A9A9A9; padding:3px 7px 2px 7px;"';
+            if (style) {
+                var tablaHtml = '<table ' + styleTable + '><thead ' + styleHead + '>';
+            } else{
+                var tablaHtml = '<table><thead>';
+            };
+
+            var tabla = $("#" + idTabla).dataTable();
+
+            tabla.find('> thead > tr').each(function()
+            {
+                tablaHtml += '<tr>';
+                var cantidadColummnas = $(this).children("th").length;
+                $(this).children("th").each(function(index){
+                    if (index != 0 && index != cantidadColummnas-1) {
+                        if (style) {
+                            tablaHtml += '<td ' + styleTd + '>' + $(this).html() + '</td>';
+                        } else{
+                            tablaHtml += '<td>' + $(this).html() + '</td>';
+                        };
+
+                    };
+                });
+                tablaHtml += '</tr>';
+            });
+
+            tablaHtml += '</thead>';
+            tablaHtml += '<tbody>';
+            tabla.find('> tbody > tr').each(function()
+            {
+                if ($(this).children("td").first().find('input').is(':checked')) {
+                    tablaHtml += '<tr>';
+                    var cantidadColummnas = $(this).children("td").length;
+                    $(this).children("td").each(function(index){
+                        if (index != 0 && index != cantidadColummnas-1) {
+                            if (style) {
+                                tablaHtml += '<td '+ styleTd +'>' + $(this).text() + '</td>';
+                            } else{
+                                tablaHtml += '<td>' + $(this).text() + '</td>';
+                            };
+
+                        };
+                    });
+                    tablaHtml += '</tr>';
+                }
+            });
+            tablaHtml += '</tbody></table>';
+            return  tablaHtml;
+
+        }
+    });
+    // Fin script de descarga pdf, excel e imprimir
+
+
+
 </script>
 
 <script>
@@ -196,6 +402,30 @@
 </script>
 
 <!-- lista modals -->
+<div id="transaccionIncorrectaCargar" class="modal">
+    <div  class="modal-header headerTransaccionIncorrecta">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('errorLeerDatos'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="transaccionIncorrectaEliminar" class="modal">
+    <div  class="modal-header headerTransaccionIncorrecta">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('errorEliminar'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
 <div id="eliminarArchivo" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
@@ -205,7 +435,7 @@
         <p><?= label('clientes_archivoEliminar'); ?></p>
     </div>
     <div class="modal-footer black-text">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <a id="botonEliminar" href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
 <div id="eliminarArchivosSeleccionados" class="modal">
@@ -217,7 +447,7 @@
         <p><?= label('clientes_archivosSeleccionadosEliminar'); ?></p>
     </div>
     <div class="modal-footer black-text">
-        <div id="botonEliminarArchivosSeleccionados" title="files">
+        <div id="botonEliminar" title="files">
             <a href="#"
                class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
         </div>

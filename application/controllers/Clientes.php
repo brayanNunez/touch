@@ -142,19 +142,19 @@ class Clientes extends CI_Controller
 
     public function editar($id)
     {
-        $data['archivos'] = array();
-        $data['archivos'][] = array('file_name' => 'archivo1', 'file_ext' => '.png', 'file_date' => '2015/08/04',
-            'file_description' => 'Imagen del cliente', 'file_size' => '13 KB');
-        $data['archivos'][] = array('file_name' => 'archivo2', 'file_ext' => '.pdf', 'file_date' => '2015/08/04',
-            'file_description' => 'Contrato individual de trabajo', 'file_size' => '187 KB');
-        $data['archivos'][] = array('file_name' => 'archivo3', 'file_ext' => '.jpg', 'file_date' => '2015/08/04',
-            'file_description' => 'Planta de trabajo', 'file_size' => '152 KB');
-        $data['archivos'][] = array('file_name' => 'archivo4', 'file_ext' => '.docx', 'file_date' => '2015/08/04',
-            'file_description' => 'Contrato en formato .docx', 'file_size' => '24 KB');
-        $data['archivos'][] = array('file_name' => 'archivo5', 'file_ext' => '.jpg', 'file_date' => '2015/08/04',
-            'file_description' => 'Productos ofrecidos', 'file_size' => '48 KB');
-        $data['archivos'][] = array('file_name' => 'archivo6', 'file_ext' => '.pdf', 'file_date' => '2015/08/04',
-            'file_description' => 'Contrato por tiempo determinado', 'file_size' => '48 KB');
+//        $data['archivos'] = array();
+//        $data['archivos'][] = array('file_name' => 'archivo1', 'file_ext' => '.png', 'file_date' => '2015/08/04',
+//            'file_description' => 'Imagen del cliente', 'file_size' => '13 KB');
+//        $data['archivos'][] = array('file_name' => 'archivo2', 'file_ext' => '.pdf', 'file_date' => '2015/08/04',
+//            'file_description' => 'Contrato individual de trabajo', 'file_size' => '187 KB');
+//        $data['archivos'][] = array('file_name' => 'archivo3', 'file_ext' => '.jpg', 'file_date' => '2015/08/04',
+//            'file_description' => 'Planta de trabajo', 'file_size' => '152 KB');
+//        $data['archivos'][] = array('file_name' => 'archivo4', 'file_ext' => '.docx', 'file_date' => '2015/08/04',
+//            'file_description' => 'Contrato en formato .docx', 'file_size' => '24 KB');
+//        $data['archivos'][] = array('file_name' => 'archivo5', 'file_ext' => '.jpg', 'file_date' => '2015/08/04',
+//            'file_description' => 'Productos ofrecidos', 'file_size' => '48 KB');
+//        $data['archivos'][] = array('file_name' => 'archivo6', 'file_ext' => '.pdf', 'file_date' => '2015/08/04',
+//            'file_description' => 'Contrato por tiempo determinado', 'file_size' => '48 KB');
 
         
 
@@ -380,6 +380,22 @@ class Clientes extends CI_Controller
             } else {
                 echo 2;
             }
+        }
+    }
+
+    public function eliminarArchivo() {
+        $id = $_POST['idEliminar'];
+        $resultado = $this->Cliente_model->eliminarArchivo(decryptIt($id));
+        if (!$resultado) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            //correcto
+            $ruta = './files/empresas/1/clientes/1/'.$resultado;
+            if($resultado != 'noArchivo') {
+                unlink($ruta);
+            }
+            echo 1;
         }
     }
 

@@ -60,7 +60,13 @@
                                                 <?php $this->load->view('clientes/clientes_editar'); ?>
                                             </div>
                                             <div id="tab-archivos" class="card col s12">
-                                                <?php $this->load->view('clientes/clientes_archivos', $archivos); ?>
+                                                <?php $archivos = array();
+                                                    if(isset($resultado['archivos'])) {
+                                                        $this->load->view('clientes/clientes_archivos', $resultado['archivos']);
+                                                    } else {
+                                                        $this->load->view('clientes/clientes_archivos', $archivos);
+                                                    }
+                                                ?>
                                             </div>
                                             <div id="tab-cotizaciones" class="card col s12">
                                                 <?php $this->load->view('clientes/clientes_cotizaciones'); ?>
