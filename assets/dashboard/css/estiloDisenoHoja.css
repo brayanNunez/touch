@@ -95,7 +95,7 @@ etiqueta*/
 
 	/*background: red;*/
 	width: 794px;
-	font-family: courier;
+	font-family: helvetica ;
 	font-style: italic;
 	/*margin-top: 300px;*/
 
@@ -133,8 +133,8 @@ etiqueta*/
 	min-height: 50px;   
 	background-color: red;
 	 color: white;
-	font-family: arial;
-	font-style: italic;
+	font-family: helvetica;
+	/*font-style: italic;*/
 	/*display: inline-block;*/
 }
 
@@ -255,14 +255,14 @@ etiqueta*/
 }
 
 #footerCotizacion #datosFooter #datos1{
-	width: 58%;
+	width: 53%;
 	/*float: left;*/
 	margin-left: 2%;
 	display: inline-block;
 	/*background: blue;*/
 }
 #footerCotizacion #datosFooter #datos2{
-	width: 38%;
+	width: 43%;
 	/*float: right;*/
 	display: inline-block;
 	vertical-align: top;

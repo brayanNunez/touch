@@ -572,6 +572,9 @@
 </div>
 <!--Fin lista modals-->
 <script type="text/javascript">
+
+    recalcularAlturaContenido();
+
     function recalcularAlturaContenido() {
         var tamanoHojaHTML = 1117; //aqui puede ajustar el tamano de la hoja que se vera en el html
         var header = $('#headerDiseno').height();//212
@@ -579,10 +582,11 @@
         var informacionSistema = $('#informacionSistema').height();//20
 
         var paddingTop = $('#contenidoDiseno').css("padding-top").replace("px", "");
-
         var paddingBottom = $('#contenidoDiseno').css("padding-bottom").replace("px", "");
         var resultado = tamanoHojaHTML - header - footer - informacionSistema - paddingTop - paddingBottom;
-        $('#contenidoDiseno').height(300);
+        $('#contenidoDiseno').height(resultado);
+        alert($('#hoja').height());
+
     }
 
 
@@ -604,12 +608,27 @@
             })
 
             var seleccionados = $('input[name=checksEncabezado]:checked');
+            var logoActivado = false;
             if (seleccionados.length > 0) {
                 seleccionados.each(function () {
                     $('#encabezado .box#' + $(this).val()).show();
+                    if ($(this).val() == 'logo') {
+                        logoActivado = true;
+                    };
                 });
-            }
 
+                if (!logoActivado) {
+                    var datos1 = $('#datosEncabezado #datos1');
+                    $('#datosEncabezado').css('width', 598 + 148);
+                    datos1.css('width', 431.18 + 148);
+                } else{
+                    var datos1 = $('#datosEncabezado #datos1');
+                    $('#datosEncabezado').css('width', 598);
+                    datos1.css('width', 431.18);
+                }
+
+            }
+            recalcularAlturaContenido();
 
         });
 
@@ -623,7 +642,7 @@
             var colorBarra = $('#modalCuerpo .colorBarra').val();
             $('#barra2').css("background", colorBarra);
 
-
+            recalcularAlturaContenido();
         });
 
         $('#modalInformacion .aplicarCambios').click(function () {
@@ -648,7 +667,7 @@
                 });
             }
 
-
+            recalcularAlturaContenido();
         });
 
         $('#modalFooter .aplicarCambios').click(function () {
@@ -663,11 +682,39 @@
             })
 
             var seleccionados = $('input[name=checksFooter]:checked');
+            var logoActivado = false;
             if (seleccionados.length > 0) {
                 seleccionados.each(function () {
+                    $('#footerCotizacion #datos1').show();
+                    $('#footerCotizacion #datos2').css('width', '43%');
+
                     $('#footerCotizacion .box#' + $(this).val()).show();
+                    if ($(this).val() == 'logo') {
+                        logoActivado = true;
+                    };
                 });
+                if (!logoActivado) {
+                    // alert('desactivaron el logo');
+                    $('#datosFooter').css('width', '96%');
+                    $('#footerCotizacion #datos1').css('width', '46%');
+                    $('#footerCotizacion #datos2').css('width', '50%');
+                } else {
+                    $('#datosFooter').css('width', '87%');
+                    if (seleccionados.length == 1) {
+                        $('#footerCotizacion #datos1').hide();
+                        $('#footerCotizacion #datos2').css('width', '100%');
+                    } else {
+                    // $('#footerCotizacion #datos1').show();
+                    $('#footerCotizacion #datos1').css('width', '53%');
+                    $('#footerCotizacion #datos2').css('width', '43%');
+                    }
+                }
+            } else {
+                $('#footerCotizacion #datos1').hide();
+                $('#datosFooter').css('width', '96%');
+                $('#footerCotizacion #datos2').css('width', '100%');
             }
+            recalcularAlturaContenido();
         });
 
         $('#encabezado').css("background", "red");
@@ -685,8 +732,7 @@
 
 
         // alert($('#headerDiseno').height());
-        recalcularAlturaContenido();
-
+        // 
         $("#crear").click(function () {
             alert("hola");
             var height = $('#footerDiseno').css("height");
