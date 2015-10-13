@@ -250,7 +250,7 @@
                                         </div>
 
                                         <table id="tabla-servicio"
-                                                       class="data-table-information responsive-table display"
+                                                       class="responsive-table display"
                                                        cellspacing="0">
                                                     <thead>
                                                     <tr>
