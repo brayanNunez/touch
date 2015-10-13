@@ -8,6 +8,7 @@ class Cotizacion extends CI_Controller
     {
         parent::__construct();
         $this->lang->load('content');
+        $this->load->model('Cotizacion_model');
     }
 
     public function index()
@@ -20,6 +21,7 @@ class Cotizacion extends CI_Controller
         $this->load->view('layout/default/footer');
     }
 
+
     // public function pasos()
     // {
     //     $this->load->view('layout/default/header');
@@ -31,10 +33,17 @@ class Cotizacion extends CI_Controller
     public function cotizar()
     {
         verificarLogin();//helper
-        $this->load->view('layout/default/header');
-        $this->load->view('layout/default/left-sidebar');
-        $this->load->view('cotizar/cotizar');
-        $this->load->view('layout/default/footer');
+
+        $resultado = $this->Cotizacion_model->cargar(1); 
+        if ($resultado === false || $resultado === array()) {
+            echo "Error en la transacción";
+        } else {
+            $data['resultado'] = $resultado;
+            $this->load->view('layout/default/header');
+            $this->load->view('layout/default/left-sidebar');
+            $this->load->view('cotizar/cotizar', $data);
+            $this->load->view('layout/default/footer');
+        }
     }
 
     public function ver()

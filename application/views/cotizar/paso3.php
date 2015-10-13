@@ -273,49 +273,49 @@
                         <div class="listaCecksModals">
                             <p>
                                 <input name="checksEncabezado" value="nombreEmpresa" type="checkbox" class="filled-in"
-                                       id="filled-in-box1" checked="checked">
+                                       id="filled-in-box1">
                                 <label for="filled-in-box1">Nombre de la empresa</label>
                             </p>
 
                             <p>
                                 <input name="checksEncabezado" value="codigoCotizacion" type="checkbox"
-                                       class="filled-in" id="filled-in-box2" checked="checked">
+                                       class="filled-in" id="filled-in-box2">
                                 <label for="filled-in-box2">Código de cotización</label>
                             </p>
 
                             <p>
                                 <input name="checksEncabezado" value="cliente" type="checkbox" class="filled-in"
-                                       id="filled-in-box3" checked="checked">
+                                       id="filled-in-box3">
                                 <label for="filled-in-box3">Cliente</label>
                             </p>
 
                             <p>
                                 <input name="checksEncabezado" value="atencion" type="checkbox" class="filled-in"
-                                       id="filled-in-box4" checked="checked">
+                                       id="filled-in-box4">
                                 <label for="filled-in-box4">Atención</label>
                             </p>
 
                             <p>
                                 <input name="checksEncabezado" value="vendedor" type="checkbox" class="filled-in"
-                                       id="filled-in-box5" checked="checked">
+                                       id="filled-in-box5">
                                 <label for="filled-in-box5">Vendedor</label>
                             </p>
 
                             <p>
                                 <input name="checksEncabezado" value="fecha" type="checkbox" class="filled-in"
-                                       id="filled-in-box6" checked="checked">
+                                       id="filled-in-box6">
                                 <label for="filled-in-box6">Fecha</label>
                             </p>
 
                             <p>
                                 <input name="checksEncabezado" value="hora" type="checkbox" class="filled-in"
-                                       id="filled-in-box7" checked="checked">
+                                       id="filled-in-box7">
                                 <label for="filled-in-box7">Hora</label>
                             </p>
 
                             <p>
                                 <input name="checksEncabezado" value="logo" type="checkbox" class="filled-in"
-                                       id="filled-in-box8" checked="checked">
+                                       id="filled-in-box8">
                                 <label for="filled-in-box8">Imagen</label>
                             </p>
                         </div>
@@ -573,26 +573,51 @@
 <!--Fin lista modals-->
 <script type="text/javascript">
 
-    recalcularAlturaContenido();
-
-    function recalcularAlturaContenido() {
-        var tamanoHojaHTML = 1117; //aqui puede ajustar el tamano de la hoja que se vera en el html
-        var header = $('#headerDiseno').height();//212
-        var footer = $('#footerDiseno').height();//226
-        var informacionSistema = $('#informacionSistema').height();//20
-
-        var paddingTop = $('#contenidoDiseno').css("padding-top").replace("px", "");
-        var paddingBottom = $('#contenidoDiseno').css("padding-bottom").replace("px", "");
-        var resultado = tamanoHojaHTML - header - footer - informacionSistema - paddingTop - paddingBottom;
-        $('#contenidoDiseno').height(resultado);
-        alert($('#hoja').height());
-
-    }
 
 
-    $(document).on('ready', function () {
+    $(document).ready(function(){
+
+
+        recalcularAlturaContenido();
+
+        function recalcularAlturaContenido() {
+            var tamanoHojaHTML = 1117; //aqui puede ajustar el tamano de la hoja que se vera en el html
+            var header = $('#headerDiseno').height();//212
+            var footer = $('#footerDiseno').height();//226
+            var informacionSistema = $('#informacionSistema').height();//20
+
+            var paddingTop = $('#contenidoDiseno').css("padding-top").replace("px", "");
+            var paddingBottom = $('#contenidoDiseno').css("padding-bottom").replace("px", "");
+            var resultado = tamanoHojaHTML - header - footer - informacionSistema - paddingTop - paddingBottom;
+            $('#contenidoDiseno').height(resultado);
+            // alert(tamanoHojaHTML +'-'+ header +'-'+ footer +'-'+ informacionSistema +'-'+ paddingTop +'-'+ paddingBottom);
+            // alert('tamano: ' + $('#hoja').height());
+
+        }
+
 
         $('#modalEncabezado .aplicarCambios').click(function () {
+            actualizarEncabezado();
+            recalcularAlturaContenido();
+        });
+
+        $('#modalCuerpo .aplicarCambios').click(function () {
+            actualizarCuerpo();
+            recalcularAlturaContenido();    
+        });
+
+        $('#modalInformacion .aplicarCambios').click(function () {
+            actualizarInformacion();
+            recalcularAlturaContenido();
+        });
+
+        $('#modalFooter .aplicarCambios').click(function () {
+            actualizarFooter();
+            recalcularAlturaContenido();
+            
+        });
+
+         function actualizarEncabezado(){
             var colorFondo = $('#modalEncabezado .colorFondo').val();
             $('#encabezado').css("background", colorFondo);
 
@@ -628,11 +653,12 @@
                 }
 
             }
-            recalcularAlturaContenido();
+            
+        }
 
-        });
+    
+        function actualizarCuerpo(){
 
-        $('#modalCuerpo .aplicarCambios').click(function () {
             var colorFondo = $('#modalCuerpo .colorFondo').val();
             $('#hoja').css("background", colorFondo);
 
@@ -642,10 +668,10 @@
             var colorBarra = $('#modalCuerpo .colorBarra').val();
             $('#barra2').css("background", colorBarra);
 
-            recalcularAlturaContenido();
-        });
+        }
+        
 
-        $('#modalInformacion .aplicarCambios').click(function () {
+        function actualizarInformacion(){
             var colorFondo = $('#modalInformacion .colorFondo').val();
             $('#informacion').css("background", colorFondo);
 
@@ -666,11 +692,9 @@
                     $('#informacion .box#' + $(this).val()).show();
                 });
             }
+        }
 
-            recalcularAlturaContenido();
-        });
-
-        $('#modalFooter .aplicarCambios').click(function () {
+        function actualizarFooter(){
             var colorFondo = $('#modalFooter .colorFondo').val();
             $('#footerCotizacion').css("background", colorFondo);
 
@@ -714,21 +738,86 @@
                 $('#datosFooter').css('width', '96%');
                 $('#footerCotizacion #datos2').css('width', '100%');
             }
-            recalcularAlturaContenido();
-        });
+        }
 
-        $('#encabezado').css("background", "red");
-        $('#hoja').css("background", "white");
-        $('#hoja').css("color", "#8A0829");
-        $('#hoja').css("font-family", "monospace");
-        $('#encabezado').css("color", "white");
-        $('#encabezado').css("font-family", "lucon");
-        $('#barra1').css("background", "black");
-        $('#barra3').css("background", "black");
-        $('#footerCotizacion').css("background", "red");
-        $('#footerCotizacion').css("color", "white");
-        $('#informacion').css("background", "orange");
-        $('#informacion').css("color", "white");
+        <?php 
+        $js_array = json_encode ($resultado); 
+        echo "var arrayPlantillas =". $js_array;?> 
+
+        desplegarPlantilla(0);
+
+        function desplegarPlantilla(idPlantilla){
+            var plantilla =  arrayPlantillas[idPlantilla];
+
+            // $('#encabezado').css("background", plantilla['colorEncabezado']);
+            // $('#encabezado').css("color", plantilla['colorLetraEncabezado']);
+            $('#encabezado').css("font-family", "helvetica");
+            // $('#barra1').css("background", plantilla['colorBarraHorizontal1']);
+            // $('#hoja').css("background", plantilla['colorDetalle']);
+            // $('#hoja').css("color", plantilla['colorLetraDetalle']);
+            $('#hoja').css("font-family", "helvetica"); 
+            // $('#barra2').css("background", plantilla['colorBarraHorizontal2']);
+            // $('#barra3').css("background", plantilla['colorBarraHorizontal3']);
+            // $('#footerCotizacion').css("background", plantilla['colorPie']);
+            // $('#footerCotizacion').css("color", plantilla['colorLetraPie']);
+            // $('#informacion').css("background", plantilla['colorInformacion']);
+            // $('#informacion').css("color", plantilla['colorLetraInformcion']);
+
+
+            $('#modalEncabezado .colorFondo').val(plantilla['colorEncabezado']);
+            $('#modalEncabezado .colorLetra').val(plantilla['colorLetraEncabezado']);
+            $('#modalEncabezado .colorBarra').val(plantilla['colorBarraHorizontal1']);
+
+
+            $('#modalCuerpo .colorFondo').val(plantilla['colorDetalle']);
+            $('#modalCuerpo .colorLetra').val(plantilla['colorLetraDetalle']);
+            $('#modalCuerpo .colorBarra').val(plantilla['colorBarraHorizontal2']);
+
+            
+            $('#modalInformacion .colorFondo').val(plantilla['colorInformacion']);
+            $('#modalInformacion .colorLetra').val(plantilla['colorLetraInformcion']);
+            $('#modalInformacion .colorBarra').val(plantilla['colorBarraHorizontal3']);
+            
+            $('#modalFooter .colorFondo').val(plantilla['colorPie']);
+            $('#modalFooter .colorLetra').val(plantilla['colorLetraPie']);
+
+
+            if (plantilla['mostrarNombreEmpresa'] == 1) {
+                $("#modalEncabezado input[value='nombreEmpresa']").attr("checked", "checked");
+            };
+            if (plantilla['mostrarCodigo'] == 1) {
+                $("#modalEncabezado input[value='codigoCotizacion']").attr("checked", "checked");
+            };
+            if (plantilla['mostrarCliente'] == 1) {
+                $("#modalEncabezado input[value='cliente']").attr("checked", "checked");
+            };
+            if (plantilla['mostrarAtencion'] == 1) {
+                $("#modalEncabezado input[value='atencion']").attr("checked", "checked");
+            };
+            if (plantilla['mostrarCotizador'] == 1) {
+                $("#modalEncabezado input[value='vendedor']").attr("checked", "checked");
+            };
+            if (plantilla['mostrarFecha'] == 1) {
+                $("#modalEncabezado input[value='fecha']").attr("checked", "checked");
+            };
+            if (plantilla['mostrarHora'] == 1) {
+                $("#modalEncabezado input[value='hora']").attr("checked", "checked");
+            };
+            if (plantilla['mostrarImagenEncabezado'] == 1) {
+                $("#modalEncabezado input[value='logo']").attr("checked", "checked");
+            };
+
+
+            
+            actualizarEncabezado();
+            actualizarCuerpo();
+            actualizarFooter();
+            actualizarInformacion();
+            recalcularAlturaContenido();
+
+        }
+
+        
 
 
         // alert($('#headerDiseno').height());
