@@ -354,7 +354,11 @@
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
-    <div class="modal-content">
+    <div class="modal-content" style="padding: 0 24px;">
+        <div class="row">
+            <h5 style="float: left;">Agregar gasto</h5>
+            <a href="#" style="float: left;margin: 15px 25px;text-decoration: underline;">Importar csv - xls</a>
+        </div>
         <div class="row">
             <div class="input-field col s12 m4 l4">
                 <select id="nuevoGasto_tipo">
@@ -372,33 +376,37 @@
                 <label for="nuevoGasto_gasto"><?= label('gastos_Gasto') ?></label>
             </div>
 
-            <div class="input-field col s12 m4 l4">
-                <select id="nuevoGasto_categoria">
-                    <option value="1" selected>Todos</option>
-                    <option value="2">Servicios profesionales</option>
-                    <option value="3">Servicios profesionales</option>
-                    <option value="4">Servicios profesionales</option>
-                </select>
-                <label for="nuevoGasto_categoria"><?= label('gastos_Categoria'); ?></label>
-            </div>
-            <div class="input-field col s12 m4 l4">
-                <select id="nuevoGasto_tiempo">
-                    <option value="1" selected>Todos</option>
-                    <option value="2">Horas</option>
-                    <option value="3">Diario</option>
-                    <option value="4">Semanal</option>
-                </select>
-                <label for="nuevoGasto_tiempo"><?= label('gastos_Tiempo'); ?></label>
-            </div>
-            <div class="input-field col s12 m4 l4">
-                <select id="nuevoGasto_persona">
-                    <option value="1" selected>Todos</option>
-                    <option value="2">Juan Gomez</option>
-                    <option value="3">Juan Perez</option>
-                    <option value="4">Ronald Alfaro</option>
-                    <option value="5">Pedro Mora</option>
-                </select>
-                <label for="nuevoGasto_persona"><?= label('gastos_Persona'); ?></label>
+            <div class="row">
+                <div class="input-field col s12 m4 l4">
+                    <select id="nuevoGasto_categoria">
+                        <option value="1" selected>Todos</option>
+                        <option value="2">Servicios profesionales</option>
+                        <option value="3">Servicios profesionales</option>
+                        <option value="4">Servicios profesionales</option>
+                    </select>
+                    <label for="nuevoGasto_categoria"><?= label('gastos_Categoria'); ?></label>
+                    <a href="#" style="text-decoration: underline;">Agregar categoria</a>
+                </div>
+                <div class="input-field col s12 m4 l4">
+                    <select id="nuevoGasto_tiempo">
+                        <option value="1" selected>Todos</option>
+                        <option value="2">Horas</option>
+                        <option value="3">Diario</option>
+                        <option value="4">Semanal</option>
+                    </select>
+                    <label for="nuevoGasto_tiempo"><?= label('gastos_Tiempo'); ?></label>
+                </div>
+                <div class="input-field col s12 m4 l4">
+                    <select id="nuevoGasto_persona">
+                        <option value="1" selected>Todos</option>
+                        <option value="2">Juan Gomez</option>
+                        <option value="3">Juan Perez</option>
+                        <option value="4">Ronald Alfaro</option>
+                        <option value="5">Pedro Mora</option>
+                    </select>
+                    <label for="nuevoGasto_persona"><?= label('gastos_Persona'); ?></label>
+                    <a href="#" style="text-decoration: underline;">Agregar persona</a>
+                </div>
             </div>
 
             <div class="input-field col s12 m6 l6">
