@@ -250,7 +250,7 @@
                                         </div>
 
                                         <div class="table-responsive">
-                                            <table id="tabla-servicio" class="table table-striped" cellspacing="0">
+                                            <table id="tabla-servicio" class="table striped" cellspacing="0">
                                                     <thead>
                                                         <tr>
                                                             <th><?= label('tablaServicio_codigo'); ?></th>
