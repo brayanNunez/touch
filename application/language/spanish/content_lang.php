@@ -624,6 +624,19 @@ $lang['proveedores_archivosSeleccionadosEliminar'] = '¿Realmente desea eliminar
     $lang['formServicio_nuevaPersonaSalario'] = 'Salario';
     $lang['formServicio_nuevaPersonaSalarioTipo'] = 'Tipo de salario';
     $lang['formServicio_nuevaPersonaSalarioMonto'] = 'Monto';
+    $lang['formServicio_seleccioneFase'] = 'Seleccione la fase';
+    $lang['formServicio_seleccioneSubfase'] = 'Seleccione la subfase';
+    $lang['formServicio_agregarTodasFases'] = 'Agregar todas las fases';
+    $lang['formServicio_agregar'] = 'Agregar';
+    $lang['formServicio_agregarRapido'] = 'Agregar rápido';
+    $lang['formServicio_busqueda'] = 'Búsqueda';
+    $lang['formServicio_cotizarPor'] = 'Cotizar servicio por';
+    $lang['tablaServicio_codigo'] = 'Código';
+    $lang['tablaServicio_fase'] = 'Fase';
+    $lang['tablaServicio_descripcion'] = 'Descripción';
+    $lang['tablaServicio_cantidad'] = 'Cantidad de tiempo';
+    $lang['tablaServicio_opciones'] = 'Opciones';
+
 
 //Formulario de producto
     $lang['ProductosServicios_busquedaAvanzada'] = 'Búsqueda avanzada';
