@@ -63,13 +63,32 @@
         var miSelect = $('<select placeholder="seleccionar" data-tipo="paso1Atencion" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirAtencion"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
         miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso1_elegirAtencion"); ?></option>');
         miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+        
         miSelect.append('<option value="Almuerzo">Brayan Nunez Rojas</option>');
         miSelect.append('<option value="Fresco">María Alfaro Alfaro</option>');
         miSelect.append('<option value="Hamburguesa">Diego Rojas Salas</option>');
         miSelect.append('<option value="Música">Juan Manuel Rojas</option>');
 
         $('#contenedorSelectAtencion').html(miSelect);
+
+
     }
+
+    function generarAutocompletarPlantilla(id){
+        var miSelect = $('<select placeholder="seleccionar" data-tipo="paso1Atencion" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso3_elegirPalantilla"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
+        miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso1_elegirAtencion"); ?></option>');
+        miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+        <?php 
+        echo 'miSelect.append("<option>Perros</option>");';
+        ?>
+        miSelect.append('<option value="1">Formal</option>');
+        miSelect.append('<option value="2">Para Dos Pinos</option>');
+        miSelect.append('<option value="3">Para el gobierno</option>');
+        miSelect.append('<option value="4">Simple</option>');
+
+        $('#contenedorSelectPalntilla').html(miSelect);
+    }
+
 
      function generarAutocompletarProductoNombre(id){
         var miSelect = $('<select placeholder="seleccionar" data-tipo="productoNombre" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso2_elegirProductoNombre"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
@@ -133,7 +152,10 @@
         generarAutocompletarProductoItem(1);
         generarAutocompletarProductoItem(2);
 
+        
 
+
+        generarAutocompletarPlantilla("paso3_plantilla");
         generarAutocompletarAtencion("paso1_atencion");
         generarAutocompletarCliente("paso1_cliente");
         generarAutocompletarMoneda("paso1_moneda");
@@ -286,7 +308,6 @@
 
     }
 </script>
-
 
 
 

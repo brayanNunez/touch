@@ -34,11 +34,11 @@ class Cotizacion extends CI_Controller
     {
         verificarLogin();//helper
 
-        $resultado = $this->Cotizacion_model->cargar(1); 
-        if ($resultado === false || $resultado === array()) {
+        $plantillas = $this->Cotizacion_model->cargar(1); 
+        if ($plantillas === false || $plantillas === array()) {
             echo "Error en la transacción";
         } else {
-            $data['resultado'] = $resultado;
+            $data['plantillas'] = $plantillas;
             $this->load->view('layout/default/header');
             $this->load->view('layout/default/left-sidebar');
             $this->load->view('cotizar/cotizar', $data);

@@ -20,16 +20,14 @@
                   <div class="col s12 ">
                      <div class="card" id="card-diseno"> -->
 <div class="row">
-    <div class="input-field col s8 m5 l5">
-        <select class="input-field col s12">
-            <option value="" disabled selected>Estilo</option>
-            <option value="1">Formal</option>
-            <option value="2">Normal</option>
-            <option value="3">Simple</option>
-            <option value="4">Para la Dos Pinos</option>
-        </select>
-        <label>Estilo de plantilla</label>
+    <div class="input-field col s12 m3 l3 inputSelector">            
+        <label for="contenedorSelectCliente"><?= label("paso3_labelPlantilla"); ?></label>
+        <br>
+        <div id="contenedorSelectPalntilla"></div>
     </div>
+
+
+
     <!-- <div class="input-field col s4 m7 l7">
         <a href="#modalVistaPrevia" class=" right btn btn-default modal-trigger">Vista previa</a>
     </div> -->
@@ -457,26 +455,26 @@
                         <div class="listaCecksModals">
                             <p>
                                 <input name="checksInformacion" value="formaPago" type="checkbox" class="filled-in"
-                                       id="informacionfilled-in-box1" checked="checked">
+                                       id="informacionfilled-in-box1">
                                 <label for="informacionfilled-in-box1">Forma de pago</label>
                             </p>
 
                             <p>
                                 <input name="checksInformacion" value="validez" type="checkbox" class="filled-in"
-                                       id="informacionfilled-in-box2" checked="checked">
+                                       id="informacionfilled-in-box2">
                                 <label for="informacionfilled-in-box2">Vlidez</label>
                             </p>
 
                             <p>
                                 <input name="checksInformacion" value="informacionDetalle" type="checkbox"
-                                       class="filled-in" id="informacionfilled-in-box3" checked="checked">
+                                       class="filled-in" id="informacionfilled-in-box3">
                                 <label for="informacionfilled-in-box3">Detalle</label>
                             </p>
 
 
                             <p>
                                 <input name="checksInformacion" value="firma" type="checkbox" class="filled-in"
-                                       id="informacionfilled-in-box4" checked="checked">
+                                       id="informacionfilled-in-box4">
                                 <label for="informacionfilled-in-box4">Firma</label>
                             </p>
 
@@ -525,25 +523,25 @@
                         <div class="listaCecksModals">
                             <p>
                                 <input name="checksFooter" value="telefono" type="checkbox" class="filled-in"
-                                       id="footerfilled-in-box1" checked="checked">
+                                       id="footerfilled-in-box1">
                                 <label for="footerfilled-in-box1">Teléfono</label>
                             </p>
 
                             <p>
                                 <input name="checksFooter" value="sitio" type="checkbox" class="filled-in"
-                                       id="footerfilled-in-box2" checked="checked">
+                                       id="footerfilled-in-box2">
                                 <label for="footerfilled-in-box2">Sitio web</label>
                             </p>
 
                             <p>
                                 <input name="checksFooter" value="correo" type="checkbox" class="filled-in"
-                                       id="footerfilled-in-box3" checked="checked">
+                                       id="footerfilled-in-box3">
                                 <label for="footerfilled-in-box3">Correo</label>
                             </p>
 
                             <p>
                                 <input name="checksFooter" value="logo" type="checkbox" class="filled-in"
-                                       id="footerfilled-in-box4" checked="checked">
+                                       id="footerfilled-in-box4">
                                 <label for="footerfilled-in-box4">Imagen</label>
                             </p>
                         </div>
@@ -741,7 +739,7 @@
         }
 
         <?php 
-        $js_array = json_encode ($resultado); 
+        $js_array = json_encode($plantillas); 
         echo "var arrayPlantillas =". $js_array;?> 
 
         desplegarPlantilla(0);
@@ -806,6 +804,55 @@
             if (plantilla['mostrarImagenEncabezado'] == 1) {
                 $("#modalEncabezado input[value='logo']").attr("checked", "checked");
             };
+
+
+
+
+            ///////////////
+            // if (plantilla['mostrarImpuesto'] == 1) {
+            //     $("#modalEncabezado input[value='nombreEmpresa']").attr("checked", "checked");
+            // };
+            // if (plantilla['mostrarDescuento'] == 1) {
+            //     $("#modalEncabezado input[value='codigoCotizacion']").attr("checked", "checked");
+            // };
+            // if (plantilla['mostrarTotal'] == 1) {
+            //     $("#modalEncabezado input[value='cliente']").attr("checked", "checked");
+            // };
+
+
+
+
+            if (plantilla['mostrarFormaPago'] == 1) {
+                $("#modalInformacion input[value='formaPago']").attr("checked", "checked");
+            };
+            if (plantilla['mostrarValidez'] == 1) {
+                $("#modalInformacion input[value='validez']").attr("checked", "checked");
+            };
+            if (plantilla['mostrarDetalle'] == 1) {
+                $("#modalInformacion input[value='informacionDetalle']").attr("checked", "checked");
+            };
+            if (plantilla['mostrarFirma'] == 1) {
+                $("#modalInformacion input[value='firma']").attr("checked", "checked");
+            };
+
+
+
+            if (plantilla['mostrarTelefono'] == 1) {
+                $("#modalFooter input[value='telefono']").attr("checked", "checked");
+            };
+
+            if (plantilla['mostrarSitioWeb'] == 1) {
+                $("#modalFooter input[value='sitio']").attr("checked", "checked");
+            };
+            if (plantilla['mostrarCorreo'] == 1) {
+                $("#modalFooter input[value='correo']").attr("checked", "checked");
+            };
+            if (plantilla['mostrarImagenPie'] == 1) {
+                $("#modalFooter input[value='logo']").attr("checked", "checked");
+            };
+            // if (plantilla['textoAdicionalPie'] == 1) {
+            //     $("#modalEncabezado input[value='logo']").attr("checked", "checked");
+            // };
 
 
             
