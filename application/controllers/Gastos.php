@@ -14,7 +14,7 @@ class Gastos extends CI_Controller
     {
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
-        $this->load->view('gastos/gastos_adicionales');
+        $this->load->view('gastos/gastos');
         $this->load->view('layout/default/footer');
     }
 
