@@ -249,97 +249,97 @@
                                             </div> 
                                         </div>
 
-                                        <table id="tabla-servicio"
-                                                       class="responsive-table display"
-                                                       cellspacing="0">
+                                        <div class="table-responsive">
+                                            <table id="tabla-servicio" class="table table-striped" cellspacing="0">
                                                     <thead>
-                                                    <tr>
-                                                        <th><?= label('tablaServicio_codigo'); ?></th>
-                                                        <th><?= label('tablaServicio_fase'); ?></th>
-                                                        <th><?= label('tablaServicio_descripcion'); ?></th>
-                                                        <th><?= label('tablaServicio_cantidad'); ?></th>
-                                                        <th><?= label('tablaServicio_opciones'); ?></th>
-                                                    </tr>
+                                                        <tr>
+                                                            <th><?= label('tablaServicio_codigo'); ?></th>
+                                                            <th><?= label('tablaServicio_fase'); ?></th>
+                                                            <th><?= label('tablaServicio_descripcion'); ?></th>
+                                                            <th><?= label('tablaServicio_cantidad'); ?></th>
+                                                            <th><?= label('tablaServicio_opciones'); ?></th>
+                                                        </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <tr>
-                                                        <td><a href="">001</a></td>
-                                                        <td><a href="">ERS</a></td>
-                                                        <td>Requerimientos de software</td>
-                                                        <td><input type="number"></td>
-                                                        <td>
-                                                            <ul id="dropdown-forma2" class="dropdown-content">
-                                                                <li>
-                                                                    <a href="#Editar"
-                                                                       class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#Eliminar"
-                                                                       class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                                </li>
-                                                            </ul>
-                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                               href="#!" data-activates="dropdown-forma2">
-                                                                <?= label('menuOpciones_seleccionar') ?><i
-                                                                    class="mdi-navigation-arrow-drop-down"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><a href="">001</a></td>
-                                                        <td><a href="">ERS</a></td>
-                                                        <td>Requerimientos de software</td>
-                                                        <td><input type="number"></td>
-                                                        <td>
-                                                            <ul id="dropdown-forma2" class="dropdown-content">
-                                                                <li>
-                                                                    <a href="#Editar"
-                                                                       class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#Eliminar"
-                                                                       class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                                </li>
-                                                            </ul>
-                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                               href="#!" data-activates="dropdown-forma2">
-                                                                <?= label('menuOpciones_seleccionar') ?><i
-                                                                    class="mdi-navigation-arrow-drop-down"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><a href="">001</a></td>
-                                                        <td><a href="">ERS</a></td>
-                                                        <td>Requerimientos de software</td>
-                                                        <td><input type="number"></td>
-                                                        <td>
-                                                            <ul id="dropdown-forma2" class="dropdown-content">
-                                                                <li>
-                                                                    <a href="#Editar"
-                                                                       class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#Eliminar"
-                                                                       class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                                </li>
-                                                            </ul>
-                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                               href="#!" data-activates="dropdown-forma2">
-                                                                <?= label('menuOpciones_seleccionar') ?><i
-                                                                    class="mdi-navigation-arrow-drop-down"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td>TOTAL</td>
-                                                        <td>70</td>
-                                                        <td></td>
-                                                    </tr>
+                                                        <tr>
+                                                            <td><a href="">001</a></td>
+                                                            <td><a href="">ERS</a></td>
+                                                            <td>Requerimientos de software</td>
+                                                            <td><input type="number"></td>
+                                                            <td>
+                                                                <ul id="dropdown-forma2" class="dropdown-content">
+                                                                    <li>
+                                                                        <a href="#Editar"
+                                                                           class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#Eliminar"
+                                                                           class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
+                                                                    </li>
+                                                                </ul>
+                                                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
+                                                                   href="#!" data-activates="dropdown-forma2">
+                                                                    <?= label('menuOpciones_seleccionar') ?><i
+                                                                        class="mdi-navigation-arrow-drop-down"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><a href="">001</a></td>
+                                                            <td><a href="">ERS</a></td>
+                                                            <td>Requerimientos de software</td>
+                                                            <td><input type="number"></td>
+                                                            <td>
+                                                                <ul id="dropdown-forma2" class="dropdown-content">
+                                                                    <li>
+                                                                        <a href="#Editar"
+                                                                           class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#Eliminar"
+                                                                           class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
+                                                                    </li>
+                                                                </ul>
+                                                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
+                                                                   href="#!" data-activates="dropdown-forma2">
+                                                                    <?= label('menuOpciones_seleccionar') ?><i
+                                                                        class="mdi-navigation-arrow-drop-down"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><a href="">001</a></td>
+                                                            <td><a href="">ERS</a></td>
+                                                            <td>Requerimientos de software</td>
+                                                            <td><input type="number"></td>
+                                                            <td>
+                                                                <ul id="dropdown-forma2" class="dropdown-content">
+                                                                    <li>
+                                                                        <a href="#Editar"
+                                                                           class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#Eliminar"
+                                                                           class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
+                                                                    </li>
+                                                                </ul>
+                                                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
+                                                                   href="#!" data-activates="dropdown-forma2">
+                                                                    <?= label('menuOpciones_seleccionar') ?><i
+                                                                        class="mdi-navigation-arrow-drop-down"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>TOTAL</td>
+                                                            <td>70</td>
+                                                            <td></td>
+                                                        </tr>
                                                     </tbody>
                                                 </table>
+                                            </div>
 
                                         <div class="input-field col offset-s6 s6">
                                             <input id="servicio_utilidad" type="text">
