@@ -169,13 +169,43 @@ $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente
     
 
 //Gastos adicionales
-    $lang['tituloGastos'] = 'Gastos adicionales';
-    $lang['tituloGastos_nombre'] = 'Nombre';
+    $lang['tituloGastos'] = 'Gastos';
+    $lang['tituloGastos_codigo'] = 'Código';
+    $lang['tituloGastos_tipo'] = 'Tipo';
+    $lang['tituloGastos_categoria'] = 'Categoría';
+    $lang['tituloGastos_tiempo'] = 'Tiempo';
+    $lang['tituloGastos_gasto'] = 'Gasto';
+    $lang['tituloGastos_proveedor'] = 'Proveedor';
+    $lang['tituloGastos_proveedorCategoria'] = 'Categoría Proveedor';
     $lang['tituloGastos_monto'] = 'Monto';
     $lang['tituloGastos_opciones'] = 'Opciones';
-    $lang['tituloGastos_nuevo'] = 'Agregar nuevo';
+    $lang['tituloGastos_nuevo'] = 'Nuevo gasto';
     $lang['formGastos_nombre'] = 'Nombre del gasto';
     $lang['formGastos_monto'] = 'Monto del gasto';
+    $lang['gastos_busquedaAvanzada'] = 'Búsqueda avanzada';
+    $lang['gastos_busquedaTipo'] = 'Tipo';
+    $lang['gastos_busquedaCodigo'] = 'Código';
+    $lang['gastos_busquedaCategoria'] = 'Categoría de gasto';
+    $lang['gastos_busquedaTiempo'] = 'Tiempo';
+    $lang['gastos_busquedaGasto'] = 'Nombre gasto';
+    $lang['gastos_busquedaDescripcion'] = 'Descripción';
+    $lang['gastos_busquedaProveedor'] = 'Proveedor';
+    $lang['gastos_busquedaProveedorCategoria'] = 'Categoría proveedor';
+    $lang['gastos_busquedaMontoDesde'] = 'Monto desde';
+    $lang['gastos_busquedaMontoHasta'] = 'Monto hasta';
+    $lang['gastos_busquedaBuscar'] = 'Buscar';
+
+    $lang['gastos_Tipo'] = 'Tipo';
+    $lang['gastos_tipoFijo'] = 'Fijo';
+    $lang['gastos_tipoVariable'] = 'Variable';
+    $lang['gastos_Codigo'] = 'Código';
+    $lang['gastos_Gasto'] = 'Nombre del gasto';
+    $lang['gastos_Categoria'] = 'Categoría';
+    $lang['gastos_Tiempo'] = 'Forma de pago';
+    $lang['gastos_Persona'] = 'Persona';
+    $lang['gastos_Monto'] = 'Monto';
+    $lang['guardarCerrar'] = 'Guardar y cerrar';
+    $lang['guardarAgregarOtro'] = 'Guardar y agregar otro';
 
 //Tipos de moneda
 	$lang['tituloTiposMoneda'] = 'Tipos de moneda';

@@ -111,8 +111,8 @@ div.country-select div.select-wrapper input.select-dropdown { font-size: 15px !i
 
 a#busqueda-avanzada-agregar { position: absolute; right: 50px; top: 165px; font-size: smaller; z-index: 10; }
 a#busqueda-avanzada-sinAgregar { position: absolute; right: 50px; top: 90px; font-size: smaller; z-index: 10; }
-div#busquedaAvanzada { width: 70%; max-height: 77% !important; }
-div#busquedaAvanzada div.modal-content { padding: 0 24px; }
+div#busquedaAvanzada, div#busquedaAvanzadaGastos { width: 70%; max-height: 77% !important; }
+div#busquedaAvanzada, div#busquedaAvanzadaGastos div.modal-content { padding: 0 24px; }
 div#busquedaAvanzadaPS, div#cambiarCategoria { width: 70%; max-height: 77% !important; }
 div#busquedaAvanzadaPS div.modal-content { padding: 0 24px; }
 
@@ -187,6 +187,7 @@ tr.edicion-subcategoria td div.subcategoria-edicion-opciones a.btn-guardarSubcat
 tr.edicion-subcategoria td div.subcategoria-edicion-opciones a.btn-cancelarSubcategoria { float: right;background-color: red; }
 
 div#busquedaAvanzada div.select-wrapper + label { top: 0; }
+div#busquedaAvanzadaGastos div.select-wrapper + label { top: -13px; }
 div.tagsInput-div { margin-top: 15px; }
 div#busquedaAvanzada div.inputTag label { float: left; margin-left: -10px; }
 div#busquedaAvanzada div.inputTag div.campo-tags { margin-top: 10px; }
@@ -260,6 +261,8 @@ a#btn-cambio-contresena { background-color: dimgrey; }
 img#icon-image-edit { border:0; position:absolute; width: 200px; left: 0; background-color: white; opacity: 0.4; padding: 40px; }
 img#icon-image-edit:hover { opacity: 0.7; }
 img#imagen_seleccionada { width: 159px;height: 159px;border: 1px solid black; }
+
+div#agregarGasto div.modal-content div.row .input-field { height: 59px; }
 
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/
