@@ -67,7 +67,7 @@
 
 </section>
 
-<section id="planes">
+ <!--<section id="planes">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 text-center">
@@ -146,7 +146,7 @@
 
     </div>
 
-</section>
+</section>-->
 
 <section id="contacto">
     <div class="container">

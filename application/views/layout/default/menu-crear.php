@@ -8,11 +8,11 @@
                 <span><i class="mdi-maps-beenhere"></i><?= label('agregarS'); ?></span>
             </a>
         </li>
-        <li>
+        <!--<li>
             <a href="<?= base_url(); ?>productos/agregar" class="btn-floating">
                 <span><i class="mdi-communication-vpn-key"></i><?= label('agregarP'); ?></span>
             </a>
-        </li>
+        </li>-->
         <li>
             <a href="<?= base_url(); ?>proveedores/agregar" class="btn-floating">
                 <span><i class="mdi-action-account-child"></i><?= label('agregarProveedor'); ?></span>

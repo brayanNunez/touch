@@ -249,6 +249,21 @@
                                 </div>
                             </div>
                         </a>
+                        <a href="<?= base_url() ?>cotizacion">
+                            <div class="col s12 m6 l12">
+                                <div class="card">
+                                    <div class="card-content green white-text">
+                                        <p class="card-stats-title"><i class="mdi-editor-insert-drive-file"></i>
+                                            Total gasto fijo mensual</p>
+                                        <h4 class="card-stats-number">$40.000</h4>
+
+                                    </div>
+                                    <div class="card-action  green darken-2">
+                                        <div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
                 <!--card stats end-->

@@ -192,12 +192,12 @@
                     </li>
 
 
-                    <li>
+                    <!--<li>
                         <a class="dropdown-button" href="#!" data-activates="listaNotificaciones"
                            title="<?= label('tooltip_notificaciones') ?>">
                             <i class="mdi-social-notifications"></i>
                         </a>
-                    </li> 
+                    </li> -->
 
                     <!-- <li>
                         <a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen"
@@ -233,17 +233,26 @@
                         <li>
                             <a href="<?= base_url(); ?>financiamiento"><?= label('financiamiento'); ?></a>
                         </li>
-                        <li>
+                        <!--<li>
                             <a href="<?= base_url(); ?>pagos"><?= label('pagos'); ?></a>
-                        </li>
+                        </li>-->
                         <li>
                             <a href="<?= base_url(); ?>impuesto"><?= label('impuesto'); ?></a>
                         </li>
-                        <li>
+                        <!--<li>
                             <a href="<?= base_url(); ?>unidad"><?= label('unidad'); ?></a>
                         </li>
                         <li>
                             <a href="<?= base_url(); ?>categorias"><?= label('Categorias_titulo'); ?></a>
+                        </li>-->
+                        <li>
+                            <a href="<?= base_url(); ?>impuesto"><?= label('categoriaDeGastos'); ?></a>
+                        </li>
+                        <li>
+                            <a href="<?= base_url(); ?>impuesto"><?= label('categoriaDeProveedores'); ?></a>
+                        </li>
+                        <li>
+                            <a href="<?= base_url(); ?>impuesto"><?= label('horas'); ?></a>
                         </li>
                     </ul>
 

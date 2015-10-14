@@ -17,8 +17,8 @@
                         <li><a href="#"><i class="mdi-communication-live-help"></i> Ayuda</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="<?= base_url(); ?>pagos"><i class="mdi-action-lock-outline"></i> Pagos</a>
-                        </li>
+                        <!--<li><a href="<?= base_url(); ?>pagos"><i class="mdi-action-lock-outline"></i> Pagos</a>
+                        </li>-->
                         <li><a href="<?= base_url()?>usuarios/logout"><i class="mdi-hardware-keyboard-tab"></i> Cerrar sesión</a>
                         </li>
                     </ul>
@@ -40,25 +40,10 @@
                             class="mdi-social-person"></i> <?= label('clientes'); ?></a>
                 </li>
 
-                <li class="bold"><a href="<?= base_url(); ?>proveedores/" class="waves-effect waves-cyan"><i
-                            class="mdi-action-account-child"></i> <?= label('proveedores'); ?></a>
+                <li class="bold">
+                    <a href="<?= base_url(); ?>gastos" class="waves-effect waves-cyan"><i
+                            class="mdi-action-subject"></i><?= label('gastos'); ?></a>
                 </li>
-
-                <li class="bold"><a href="<?= base_url(); ?>servicios/" class="waves-effect waves-cyan"><i
-                            class="mdi-maps-beenhere"></i> <?= label('tituloProductosServicios'); ?></a>
-                </li>
-<!--                <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i-->
-<!--                            class="mdi-communication-vpn-key"></i> --><?//= label('productos'); ?><!--</a>-->
-<!---->
-<!--                    <div class="collapsible-body">-->
-<!--                        <ul>-->
-<!--                            <li><a href="--><?//= base_url(); ?><!--productos/agregar">--><?//= label('agregarP'); ?><!--</a>-->
-<!--                            </li>-->
-<!--                            <li><a href="--><?//= base_url(); ?><!--productos/">--><?//= label('listarP'); ?><!--</a>-->
-<!--                            </li>-->
-<!--                        </ul>-->
-<!--                    </div>-->
-<!--                </li>-->
 
                 <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i
                             class="mdi-editor-format-list-numbered"></i> <?= label('cotizaciones'); ?></a>
@@ -79,15 +64,31 @@
                     </div>
                 </li>
 
-                <li class="bold">
-                    <a href="<?= base_url() ?>empleados" class="waves-effect waves-cyan"><i
-                            class="mdi-action-perm-identity"></i><?= label('empleados'); ?></a>
+                <li class="bold"><a href="<?= base_url(); ?>servicios/" class="waves-effect waves-cyan"><i
+                            class="mdi-maps-beenhere"></i> <?= label('tituloServicios'); ?></a>
                 </li>
 
-                <li class="bold">
-                    <a href="<?= base_url(); ?>gastos" class="waves-effect waves-cyan"><i
-                            class="mdi-action-subject"></i><?= label('gastos'); ?></a>
+                <li class="bold"><a href="<?= base_url(); ?>proveedores/" class="waves-effect waves-cyan"><i
+                            class="mdi-action-account-child"></i> <?= label('proveedores'); ?></a>
                 </li>
+
+<!--                <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i-->
+<!--                            class="mdi-communication-vpn-key"></i> --><?//= label('productos'); ?><!--</a>-->
+<!---->
+<!--                    <div class="collapsible-body">-->
+<!--                        <ul>-->
+<!--                            <li><a href="--><?//= base_url(); ?><!--productos/agregar">--><?//= label('agregarP'); ?><!--</a>-->
+<!--                            </li>-->
+<!--                            <li><a href="--><?//= base_url(); ?><!--productos/">--><?//= label('listarP'); ?><!--</a>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </li>-->
+
+                <!--<li class="bold">
+                    <a href="<?= base_url() ?>empleados" class="waves-effect waves-cyan"><i
+                            class="mdi-action-perm-identity"></i><?= label('empleados'); ?></a>
+                </li>-->
 
                 <!--<li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-action-settings-applications"></i> <?= label('administración'); ?></a>
                                 <div class="collapsible-body">
@@ -124,9 +125,9 @@
                                     </ul>
                                 </div>
                             </li> -->
-                <li class="bold"><a href="<?= base_url(); ?>embed" class="waves-effect waves-cyan"><i
+                <!--<li class="bold"><a href="<?= base_url(); ?>embed" class="waves-effect waves-cyan"><i
                             class="mdi-action-settings-ethernet"></i> <?= label('avanzado'); ?></a>
-                </li>
+                </li>-->
             </ul>
         </li>
         <li class="li-hover">

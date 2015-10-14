@@ -457,6 +457,20 @@
                                 </div>
                             </div>
 
+                            <div class="col s12 m6 l3">
+                                <div class="card">
+                                    <div class="card-content deep-purple white-text">
+                                        <p class="card-stats-title"><i class="mdi-editor-insert-drive-file"></i>
+                                            Total gasto fijo mensual</p>
+                                        <h4 class="card-stats-number">$40.000</h4>
+
+                                    </div>
+                                    <div class="card-action  deep-purple darken-2">
+                                        <div></div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                     <!--card stats end-->

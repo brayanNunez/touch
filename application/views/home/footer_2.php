@@ -3,7 +3,7 @@
          style="width: 1170px !important; margin-right: auto !important; margin-left: auto !important;">
 
         <div class="row home">
-            <div class="col-md-3 col-sm-3 mb-xs-24">
+            <div class="col-md-4 col-sm-4 mb-xs-24">
                 <i class="icon mb32 ti-pie-chart"></i>
                 <h6 class="uppercase"><?= label('sobreTouch'); ?></h6>
                 <ul>
@@ -21,7 +21,7 @@
                            href="<?= base_url() ?>welcome/terminos"><?= label('terminosCondiciones'); ?></a></li>
                 </ul>
             </div>
-            <div class="col-md-3 col-sm-3 mb-xs-24">
+            <!--<div class="col-md-3 col-sm-3 mb-xs-24">
                 <i class="icon mb32 ti-announcement"></i>
                 <h6 class="uppercase"><?= label('planes'); ?></h6>
                 <ul>
@@ -32,8 +32,8 @@
                     <li><a class="footer-link"
                            href="<?= base_url() ?>welcome/index/#planes"><?= label('metodosDePago'); ?></a></li>
                 </ul>
-            </div>
-            <div class="col-md-3 col-sm-3 mb-xs-24">
+            </div>-->
+            <div class="col-md-4 col-sm-4 mb-xs-24">
                 <i class="icon mb32 ti-menu-alt"></i>
                 <h6 class="uppercase"><?= label('beneficios'); ?></h6>
                 <ul>
@@ -45,7 +45,7 @@
                     <li><?= label('muchoMas'); ?></li>
                 </ul>
             </div>
-            <div class="col-md-3 col-sm-3 mb-xs-24">
+            <div class="col-md-4 col-sm-4 mb-xs-24">
                 <i class="icon mb32 ti-info-alt"></i>
                 <h6 class="uppercase"><a class="footer-link"
                                          href="<?= base_url() ?>welcome/index/#contacto"><?= label('contactenos'); ?></a>

@@ -986,4 +986,9 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['archivo_descripcion'] = 'Descripción del archivo';
     $lang['archivo_upload'] = 'Subir archivo';
 
+
+    $lang['categoriaDeGastos'] = 'Categoría de gastos';
+    $lang['categoriaDeProveedores'] = 'Categoría de proveedores';
+    $lang['horas'] = 'Horas';
+
 ?>
