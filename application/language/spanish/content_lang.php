@@ -49,6 +49,9 @@
     $lang['confirmarGuardarCerrar'] = '¿Realmente desea guardar y cerrar la cotización en proceso?';
     $lang['confirmarCancelarCotizacion'] = '¿Realmente desea cancelar la cotización en proceso?';
     $lang['confirmarObtenerPlan'] = '¿Realmente desea obtener el plan?';
+    $lang['confirmarEliminarFase'] = '¿Realmente desea eliminar la fase?';
+    $lang['fases_eliminarElementosSeleccionados'] = '¿Realmente desea eliminar las fases seleccionadas?';
+    $lang['gastos_eliminarElementosSeleccionados'] = '¿Realmente desea eliminar los gastos seleccionados?';
 
 $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos seleccionados?';
 
@@ -166,7 +169,26 @@ $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente
     $lang['tablaUnidad_nombre'] = 'Nombre';
     $lang['formUnidad_nombre'] = 'Nombre';
     $lang['unidad'] = 'Unidades';
-    
+
+//Fases
+    $lang['tituloFases'] = 'Fases';
+    $lang['tituloFases_nuevo'] = 'Nueva fase';
+    $lang['fases_busquedaAvanzada'] = 'Búsqueda avanzada';
+    $lang['tituloFases_codigo'] = 'Código';
+    $lang['tituloFases_fase'] = 'Fase';
+    $lang['tituloFases_descripcion'] = 'Descripción';
+    $lang['tituloFases_subfases'] = 'Subfases';
+    $lang['tituloFases_opciones'] = 'Opciones';
+    $lang['fase_codigo'] = 'Código';
+    $lang['fase_nombre'] = 'Nombre de la fase';
+    $lang['fase_notas'] = 'Notas';
+    $lang['fase_agregarSubfase'] = 'Agregar subfase';
+    $lang['fases_busquedaCodigo'] = 'Código';
+    $lang['fases_busquedaNombre'] = 'Nombre del producto';
+    $lang['fases_busquedaDescripcion'] = 'Descripción';
+    $lang['fases_busquedaCotizacion'] = 'Cotizaciones';
+    $lang['fases_busquedaBuscar'] = 'Buscar';
+    $lang['fases_guardarCambios'] = 'Guardar cambios';
 
 //Gastos adicionales
     $lang['tituloGastos'] = 'Gastos';
@@ -194,6 +216,7 @@ $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente
     $lang['gastos_busquedaMontoDesde'] = 'Monto desde';
     $lang['gastos_busquedaMontoHasta'] = 'Monto hasta';
     $lang['gastos_busquedaBuscar'] = 'Buscar';
+    $lang['gastos_guardarCambios'] = 'Guardar cambios';
 
     $lang['gastos_Tipo'] = 'Tipo';
     $lang['gastos_tipoFijo'] = 'Fijo';
