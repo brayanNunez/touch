@@ -431,23 +431,78 @@
 <!--        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">--><?//= label('aceptar'); ?><!--</a>-->
 <!--    </div>-->
 </div>
-<div id="editarGasto" class="modal">
+<div id="editarGasto" class="modal" style="width: 70%;">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
-    <div class="modal-content">
-        <div class="input-field col s12">
-            <input id="gasto_nombre" type="text" value="Transporte">
-            <label for="gasto_nombre"><?= label('formGastos_nombre'); ?></label>
+    <div class="modal-content" style="padding: 0 24px;">
+        <div class="row">
+            <h5 style="float: left;">Editar gasto</h5>
         </div>
-        <div class="input-field col s12">
-            <input id="gasto_monto" type="text" value="$1000">
-            <label for="gasto_monto"><?= label('formGastos_monto'); ?></label>
+        <div class="row">
+            <div class="input-field col s12 m4 l4">
+                <select id="editarGasto_tipo">
+                    <option value="1" selected><?= label('gastos_tipoFijo'); ?></option>
+                    <option value="2"><?= label('gastos_tipoVariable'); ?></option>
+                </select>
+                <label for="editarGasto_tipo"><?= label('gastos_Tipo'); ?></label>
+            </div>
+            <div class="input-field col s12 m4 l4">
+                <input id="editarGasto_codigo" type="text" value="Prog. 001">
+                <label for="editarGasto_codigo"><?= label('gastos_Codigo') ?></label>
+            </div>
+            <div class="input-field col s12 m4 l4">
+                <input id="editarGasto_gasto" type="text" value="Mantenimiento Web">
+                <label for="editarGasto_gasto"><?= label('gastos_Gasto') ?></label>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12 m4 l4">
+                    <select id="editarGasto_categoria">
+                        <option value="1">Todos</option>
+                        <option value="2" selected>Servicios profesionales</option>
+                        <option value="3">Servicios profesionales</option>
+                        <option value="4">Servicios profesionales</option>
+                    </select>
+                    <label for="editarGasto_categoria"><?= label('gastos_Categoria'); ?></label>
+                    <a href="#" style="text-decoration: underline;">Agregar categoria</a>
+                </div>
+                <div class="input-field col s12 m4 l4">
+                    <select id="editarGasto_tiempo">
+                        <option value="1">Todos</option>
+                        <option value="2" selected>Horas</option>
+                        <option value="3">Diario</option>
+                        <option value="4">Semanal</option>
+                    </select>
+                    <label for="editarGasto_tiempo"><?= label('gastos_Tiempo'); ?></label>
+                </div>
+                <div class="input-field col s12 m4 l4">
+                    <select id="editarGasto_persona">
+                        <option value="1">Todos</option>
+                        <option value="2" selected>Juan Gomez</option>
+                        <option value="3">Juan Perez</option>
+                        <option value="4">Ronald Alfaro</option>
+                        <option value="5">Pedro Mora</option>
+                    </select>
+                    <label for="editarGasto_persona"><?= label('gastos_Persona'); ?></label>
+                    <a href="#" style="text-decoration: underline;">Agregar persona</a>
+                </div>
+            </div>
+
+            <div class="input-field col s12 m6 l6">
+                <input id="editarGasto_monto" type="text" value="$1000">
+                <label for="editarGasto_monto"><?= label('gastos_Monto') ?></label>
+            </div>
         </div>
-    </div>
-    <div class="modal-footer">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <div class="row">
+            <a href="#" style="font-size: larger;float: left;text-decoration: underline;"
+               class="modal-action modal-close"><?= label('cancelar'); ?>
+            </a>
+            <a href="#" class="waves-effect btn modal-action modal-close" style="margin: 0 20px;">
+                <?= label('gastos_guardarCambios'); ?>
+            </a>
+        </div>
     </div>
 </div>
 <div id="eliminarElementosSeleccionados" class="modal">
@@ -456,7 +511,7 @@
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <p><?= label('clientes_archivosSeleccionadosEliminar'); ?></p>
+        <p><?= label('gastos_eliminarElementosSeleccionados'); ?></p>
     </div>
     <div class="modal-footer black-text">
         <div id="botonElimnar" title="gastos-tabla-lista">
