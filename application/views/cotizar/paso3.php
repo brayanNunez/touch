@@ -19,6 +19,9 @@
                <div class="row">
                   <div class="col s12 ">
                      <div class="card" id="card-diseno"> -->
+
+                     <!-- <button id="pruebaBoton">Prueba</button>
+                     <button id="pruebaBoton2">Prueba2</button> -->
 <div class="row">
     <div class="input-field col s12 m3 l3 inputSelector">            
         <label for="contenedorSelectCliente"><?= label("paso3_labelPlantilla"); ?></label>
@@ -240,6 +243,9 @@
 
 </div>
 
+<div style="visibility:hidden; position:absolute">                                 
+    <a id="linkNuevaPlantilla" href="#agregarPlantilla" class="modal-trigger"></a>
+</div>
 <!-- </div> -->
 <!-- <div class="row">
     <div class="input-field col s4 m7 l7">
@@ -573,8 +579,12 @@
 
 
 
-    $(document).ready(function(){
+     $(document).ready(function(){
+        cargarDieseno(1);
+    });
 
+
+function cargarDieseno(idPlantilla){
 
         recalcularAlturaContenido();
 
@@ -737,14 +747,14 @@
                 $('#footerCotizacion #datos2').css('width', '100%');
             }
         }
-
         <?php 
         $js_array = json_encode($plantillas); 
         echo "var arrayPlantillas =". $js_array;?> 
 
-        desplegarPlantilla(0);
+        desplegarPlantilla(idPlantilla);
 
         function desplegarPlantilla(idPlantilla){
+            // alert('hola mundo');
             var plantilla =  arrayPlantillas[idPlantilla];
 
             // $('#encabezado').css("background", plantilla['colorEncabezado']);
@@ -780,30 +790,48 @@
             $('#modalFooter .colorLetra').val(plantilla['colorLetraPie']);
 
 
+            
+
             if (plantilla['mostrarNombreEmpresa'] == 1) {
-                $("#modalEncabezado input[value='nombreEmpresa']").attr("checked", "checked");
-            };
+                $("#modalEncabezado input[value='nombreEmpresa']").prop( "checked", true );
+            } else{
+                $("#modalEncabezado input[value='nombreEmpresa']").prop( "checked", false );
+            }
             if (plantilla['mostrarCodigo'] == 1) {
-                $("#modalEncabezado input[value='codigoCotizacion']").attr("checked", "checked");
-            };
+                $("#modalEncabezado input[value='codigoCotizacion']").prop( "checked", true );
+            } else{
+                $("#modalEncabezado input[value='codigoCotizacion']").prop( "checked", false );
+            }
             if (plantilla['mostrarCliente'] == 1) {
-                $("#modalEncabezado input[value='cliente']").attr("checked", "checked");
-            };
+                $("#modalEncabezado input[value='cliente']").prop( "checked", true );
+            } else{
+                $("#modalEncabezado input[value='cliente']").prop( "checked", false );
+            }
             if (plantilla['mostrarAtencion'] == 1) {
-                $("#modalEncabezado input[value='atencion']").attr("checked", "checked");
-            };
+                $("#modalEncabezado input[value='atencion']").prop( "checked", true );
+            } else{
+                $("#modalEncabezado input[value='atencion']").prop( "checked", false );
+            }
             if (plantilla['mostrarCotizador'] == 1) {
-                $("#modalEncabezado input[value='vendedor']").attr("checked", "checked");
-            };
+                $("#modalEncabezado input[value='vendedor']").prop( "checked", true );
+            } else{
+                $("#modalEncabezado input[value='vendedor']").prop( "checked", false );
+            }
             if (plantilla['mostrarFecha'] == 1) {
-                $("#modalEncabezado input[value='fecha']").attr("checked", "checked");
-            };
+                $("#modalEncabezado input[value='fecha']").prop( "checked", true );
+            } else{
+                $("#modalEncabezado input[value='fecha']").prop( "checked", false );
+            }
             if (plantilla['mostrarHora'] == 1) {
-                $("#modalEncabezado input[value='hora']").attr("checked", "checked");
-            };
+                $("#modalEncabezado input[value='hora']").prop( "checked", true );
+            } else{
+                $("#modalEncabezado input[value='hora']").prop( "checked", false );
+            }
             if (plantilla['mostrarImagenEncabezado'] == 1) {
-                $("#modalEncabezado input[value='logo']").attr("checked", "checked");
-            };
+                $("#modalEncabezado input[value='logo']").prop( "checked", true );
+            } else{
+                $("#modalEncabezado input[value='logo']").prop( "checked", false );
+            }
 
 
 
@@ -823,32 +851,32 @@
 
 
             if (plantilla['mostrarFormaPago'] == 1) {
-                $("#modalInformacion input[value='formaPago']").attr("checked", "checked");
+                $("#modalInformacion input[value='formaPago']").prop( "checked", true );
             };
             if (plantilla['mostrarValidez'] == 1) {
-                $("#modalInformacion input[value='validez']").attr("checked", "checked");
+                $("#modalInformacion input[value='validez']").prop( "checked", true );
             };
             if (plantilla['mostrarDetalle'] == 1) {
-                $("#modalInformacion input[value='informacionDetalle']").attr("checked", "checked");
+                $("#modalInformacion input[value='informacionDetalle']").prop( "checked", true );
             };
             if (plantilla['mostrarFirma'] == 1) {
-                $("#modalInformacion input[value='firma']").attr("checked", "checked");
+                $("#modalInformacion input[value='firma']").prop( "checked", true );
             };
 
 
 
             if (plantilla['mostrarTelefono'] == 1) {
-                $("#modalFooter input[value='telefono']").attr("checked", "checked");
+                $("#modalFooter input[value='telefono']").prop( "checked", true );
             };
 
             if (plantilla['mostrarSitioWeb'] == 1) {
-                $("#modalFooter input[value='sitio']").attr("checked", "checked");
+                $("#modalFooter input[value='sitio']").prop( "checked", true );
             };
             if (plantilla['mostrarCorreo'] == 1) {
-                $("#modalFooter input[value='correo']").attr("checked", "checked");
+                $("#modalFooter input[value='correo']").prop( "checked", true );
             };
             if (plantilla['mostrarImagenPie'] == 1) {
-                $("#modalFooter input[value='logo']").attr("checked", "checked");
+                $("#modalFooter input[value='logo']").prop( "checked", true );
             };
             // if (plantilla['textoAdicionalPie'] == 1) {
             //     $("#modalEncabezado input[value='logo']").attr("checked", "checked");
@@ -868,16 +896,21 @@
 
 
         // alert($('#headerDiseno').height());
-        // 
+        
+
+    // });
+}
+
+// 
         $("#crear").click(function () {
-            alert("hola");
-            var height = $('#footerDiseno').css("height");
+            // alert("hola");
+            // var height = $('#footerDiseno').css("height");
             $('#footerDiseno').css("height", height);
             $('#prefooter').css("height", height);
 
             var height = $('#informacion').css("height");
             $('#informacion').css("height", height);
-            alert(height);
+            // alert(height);
 
             $('.editarExterno').css("display", "none");
 
@@ -902,6 +935,24 @@
             $('.editarExterno').css("display", "");
 
         });
-
-    });
 </script>
+
+
+<!-- lista modals -->
+<div id="agregarPlantilla" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('paso3_nombreNuevaPlantilla'); ?></p>
+        <div class="input-field col s12 m12 l12">
+                <input id="nombrePlantilla" type="text">
+                <label for="nombrePlantilla"><?= label('paso3_labelNombrePlantilla') ?></label>
+        </div>
+    </div>
+    <div id="botonEliminar" class="modal-footer black-text">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<!-- Fin lista modals-->
