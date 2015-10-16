@@ -332,6 +332,9 @@ $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente
     $lang['paso1_labelTipoCambio'] = 'Tipo de cambio';
     $lang['paso1_labelDetalle'] = 'Detalle';
 
+    $lang['paso3_nombreNuevaPlantilla'] = 'Agregar nueva plantilla';
+    $lang['paso3_labelNombrePlantilla'] = 'Nombre';
+
 
 //Menu izquierdo 
 	$lang['inicio'] = 'Panel principal';

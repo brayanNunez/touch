@@ -1,4 +1,4 @@
-<!--START CONTENT  -->
+START CONTENT  -->
 <!-- <section id="content"> -->
 <!--start container-->
 <!--    <div id="breadcrumbs-wrapper" class=" grey lighten-3">
@@ -935,6 +935,12 @@ function cargarDieseno(idPlantilla){
             $('.editarExterno').css("display", "");
 
         });
+
+
+function validacionCorrecta(){
+    $('.modal-header a').click(); 
+    alert('llamado ajax');
+}
 </script>
 
 
@@ -944,15 +950,17 @@ function cargarDieseno(idPlantilla){
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
-    <div class="modal-content">
-        <p><?= label('paso3_nombreNuevaPlantilla'); ?></p>
-        <div class="input-field col s12 m12 l12">
-                <input id="nombrePlantilla" type="text">
+    <form id="form_paso3AgregarPlantilla">
+        <div class="modal-content">
+            <p style="text-align: center"><?= label('paso3_nombreNuevaPlantilla'); ?></p>
+            <div class="input-field col s12 m12 l12">
+                <input id="nombrePlantilla" name="nombrePlantilla" type="text">
                 <label for="nombrePlantilla"><?= label('paso3_labelNombrePlantilla') ?></label>
+            </div>
         </div>
-    </div>
-    <div id="botonEliminar" class="modal-footer black-text">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
-    </div>
+        <div id="botonEliminar" class="modal-footer black-text">
+            <a onclick="$(this).closest('form').submit()" class="waves-effect waves-red btn-flat modal-action"><?= label('aceptar'); ?></a>
+        </div>
+    </form>
 </div>
-<!-- Fin lista modals-->
+<!-- Fin lista modals
