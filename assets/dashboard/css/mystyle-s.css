@@ -264,6 +264,8 @@ img#imagen_seleccionada { width: 159px;height: 159px;border: 1px solid black; }
 
 div#agregarGasto div.modal-content div.row .input-field, div#editarGasto div.modal-content div.row .input-field { height: 59px; }
 
+label.cotizacionPaso1_labelBusqueda { left: 0; }
+
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/
     div#login-page { width: 380px !important; max-height: 408px !important; top: 0 !important; }
