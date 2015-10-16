@@ -271,7 +271,7 @@
                 <!--card widgets start-->
                 <div id="card-widgets">
                     <div class="row">
-                        <div class="col s12 m6 l4">
+                        <div class="col s12 m6 14">
                             <div id="profile-card" class="card">
                                 <div class="card-image waves-effect waves-block waves-light">
                                     <img class="activator" src="<?= base_url() ?>assets/dashboard/images/user-bg.jpg"
@@ -296,9 +296,9 @@
                                     <a href="<?= base_url() ?>clientes/agregar"><p><i
                                                 class="mdi-action-perm-identity cyan-text text-darken-2"></i> Agregar
                                             Clientes</p></a>
-                                    <a href="<?= base_url() ?>empleados/agregar"><p><i
+                                    <!--<a href="<?= base_url() ?>empleados/agregar"><p><i
                                                 class="mdi-action-perm-identity cyan-text text-darken-2"></i> Agregar
-                                            Empleados</p></a>
+                                            Empleados</p></a>-->
                                     <a href="<?= base_url() ?>proveedores/agregar"><p><i
                                                 class="mdi-action-perm-identity cyan-text text-darken-2"></i> Agregar
                                             Proveedores</p></a>
@@ -308,7 +308,7 @@
 
                             </div>
                         </div>
-                        <div class="col s12 m6 l4">
+                        <!--<div class="col s12 m6 l4">
                             <div id="profile-card" class="card">
                                 <div class="card-image waves-effect waves-block waves-light">
                                     <img class="activator" src="<?= base_url() ?>assets/dashboard/images/user-bg.jpg"
@@ -338,8 +338,8 @@
 
 
                             </div>
-                        </div>
-                        <div class="col s12 m6 l4">
+                        </div>-->
+                        <!--<div class="col s12 m6 14">
                             <div id="profile-card" class="card">
                                 <div class="card-image waves-effect waves-block waves-light">
                                     <img class="activator" src="<?= base_url() ?>assets/dashboard/images/user-bg.jpg"
@@ -359,9 +359,6 @@
                                 <div class="card-reveal">
                                     <span class="card-title grey-text text-darken-4">Reportes <i
                                             class="mdi-navigation-close right"></i></span>
-
-                                    <!--                                                <p><i class="mdi-action-perm-identity cyan-text text-darken-2"></i> Reporte x</p>-->
-                                    <!--                                                <p><i class="mdi-action-perm-identity cyan-text text-darken-2"></i> Reporte y</p>-->
                                     <a href="<?= base_url() ?>reporte"><p><i
                                                 class="mdi-action-perm-identity cyan-text text-darken-2"></i>Reportes de
                                             cotización</p></a>
@@ -376,7 +373,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
                 <!--card widgets end-->
 
                 <!-- //////////////////////////////////////////////////////////////////////////// -->
