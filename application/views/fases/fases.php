@@ -316,21 +316,6 @@
     });
 </script>
 
-<script>
-    $(document).ready(function() {
-        $('#btn_agregarSubfase').click(function(event) {
-//            document.getElementById('nueva_subfase').style.display = 'block';
-            $('#nueva_subfase').css('display', 'block');
-            $(this).css('display', 'none');
-        });
-        $('#editar_agregarSubfase').click(function(event) {
-//            document.getElementById('nueva_subfase').style.display = 'block';
-            $('#editar_subfase').css('display', 'block');
-            $(this).css('display', 'none');
-        });
-    });
-</script>
-
 <!-- lista modals -->
 <div id="eliminarFase" class="modal">
     <div class="modal-header">
@@ -364,27 +349,13 @@
                     <textarea id="nuevaFase_notas" class="materialize-textarea" rows="4"></textarea>
                     <label for="nuevaFase_notas"><?= label('fase_notas') ?></label>
                 </div>
-                <div class="col s12">
-                    <a id="btn_agregarSubfase" href="#" style="text-decoration: underline;float: right;"
-                       onclick="mostrar_nuevaFase();"><?= label('fase_agregarSubfase') ?></a>
-                </div>
             </div>
-            <div id="nueva_subfase" style="margin-left: 50px;display: none;">
-                <div class="input-field col s12 m4 l4">
-                    <input id="nuevaFase_codigo2" type="text">
-                    <label for="nuevaFase_codigo2"><?= label('fase_codigo') ?></label>
-                </div>
-                <div class="input-field col s12 m4 l8">
-                    <input id="nuevaFase_nombre2" type="text">
-                    <label for="nuevaFase_nombre2"><?= label('fase_nombre') ?></label>
-                </div>
-                <div class="input-field col s12">
-                    <textarea id="nuevaFase_notas2" class="materialize-textarea" rows="4"></textarea>
-                    <label for="nuevaFase_notas2"><?= label('fase_notas') ?></label>
-                </div>
-                <div class="col s12">
-                    <a href="#" style="text-decoration: underline;float: right;">Agregar otra subfase</a>
-                </div>
+            <div id="contenedorFases">
+
+            </div>
+            <div class="row">
+                <a id="btn_agregarSubfase" style="text-decoration: underline;float: right;cursor: pointer;"
+                   onclick="agregarNuevaFase();"><?= label('fase_agregarSubfase') ?></a>
             </div>
         </div>
         <div class="row">
@@ -400,7 +371,7 @@
         </div>
     </div>
 </div>
-<div id="editarFase" class="modal">
+<div id="editarFase" class="modal" style="width: 70%;">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
@@ -421,27 +392,13 @@
                     </textarea>
                     <label for="editarFase_notas"><?= label('fase_notas') ?></label>
                 </div>
-                <div class="col s12">
-                    <a id="editar_agregarSubfase" href="#" style="text-decoration: underline;float: right;">
-                        <?= label('fase_agregarSubfase') ?></a>
-                </div>
             </div>
-            <div id="editar_subfase" style="margin-left: 50px;display: none;">
-                <div class="input-field col s12 m4 l4">
-                    <input id="editarFase_codigo2" type="text">
-                    <label for="editarFase_codigo2"><?= label('fase_codigo') ?></label>
-                </div>
-                <div class="input-field col s12 m4 l8">
-                    <input id="editarFase_nombre2" type="text">
-                    <label for="editarFase_nombre2"><?= label('fase_nombre') ?></label>
-                </div>
-                <div class="input-field col s12">
-                    <textarea id="editarFase_notas2" class="materialize-textarea" rows="4"></textarea>
-                    <label for="editarFase_notas2"><?= label('fase_notas') ?></label>
-                </div>
-                <div class="col s12">
-                    <a href="#" style="text-decoration: underline;float: right;">Agregar otra subfase</a>
-                </div>
+            <div id="contenedorFasesEditar">
+
+            </div>
+            <div class="col s12">
+                <a id="editar_agregarSubfase" style="text-decoration: underline;float: right;cursor: pointer;"
+                   onclick="agregarNuevaFaseEditar();"><?= label('fase_agregarSubfase') ?></a>
             </div>
         </div>
         <div class="row">
@@ -470,12 +427,12 @@
     </div>
 </div>
 
-<div id="busquedaAvanzadaFases" class="modal">
+<div id="busquedaAvanzadaFases" class="modal" style="width: 70%;">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
-    <div class="modal-content">
+    <div class="modal-content" style="padding-top: 0;">
         <div id="formGeneral" class="section" style="padding-bottom: 0;">
             <div class="row" style="margin-bottom: 0;">
                 <div class="input-field col s12 m6 l6">
@@ -513,3 +470,53 @@
     </div>
 </div>
 <!-- Fin lista modals -->
+
+<script>
+    var cantidad = 0;
+    var contador = cantidad;
+    function agregarNuevaFase() {
+        cantidad++;
+//        actualizarCantidad();
+        $('#contenedorFases').append('' +
+            '<div id="fase' + contador + '" style="margin-left: 50px;">' +
+                '<div class="input-field col s12 m4 l4">' +
+                    '<input id="fase' + contador + '_codigo" type="text">' +
+                    '<label for="fase' + contador + '_codigo"><?= label('fase_codigo') ?></label>' +
+                '</div>' +
+                '<div class="input-field col s12 m4 l8">' +
+                    '<input id="fase' + contador + '_nombre" type="text">' +
+                    '<label for="fase' + contador + '_nombre"><?= label('fase_nombre') ?></label>' +
+                '</div>' +
+                '<div class="input-field col s12">' +
+                    '<textarea id="fase' + contador + '_notas" class="materialize-textarea" rows="4"></textarea>' +
+                    '<label for="fase' + contador + '_notas"><?= label('fase_notas') ?></label>' +
+                '</div>' +
+            '</div>'
+        );
+        contador++;
+    }
+
+    var cantidadEditar = 0;
+    var contadorEditar = cantidadEditar;
+    function agregarNuevaFaseEditar() {
+        cantidadEditar++;
+//        actualizarCantidad();
+        $('#contenedorFasesEditar').append('' +
+            '<div id="fase' + contadorEditar + '" style="margin-left: 50px;">' +
+                '<div class="input-field col s12 m4 l4">' +
+                    '<input id="faseEditar' + contadorEditar + '_codigo" type="text">' +
+                    '<label for="faseEditar' + contadorEditar + '_codigo"><?= label('fase_codigo') ?></label>' +
+                '</div>' +
+                '<div class="input-field col s12 m4 l8">' +
+                    '<input id="faseEditar' + contadorEditar + '_nombre" type="text">' +
+                    '<label for="faseEditar' + contadorEditar + '_nombre"><?= label('fase_nombre') ?></label>' +
+                '</div>' +
+                '<div class="input-field col s12">' +
+                    '<textarea id="faseEditar' + contadorEditar + '_notas" class="materialize-textarea" rows="4"></textarea>' +
+                    '<label for="faseEditar' + contadorEditar + '_notas"><?= label('fase_notas') ?></label>' +
+                '</div>' +
+            '</div>'
+        );
+        contadorEditar++;
+    }
+</script>
