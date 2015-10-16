@@ -1,4 +1,4 @@
-START CONTENT  -->
+<!--START CONTENT  -->
 <!-- <section id="content"> -->
 <!--start container-->
 <!--    <div id="breadcrumbs-wrapper" class=" grey lighten-3">
@@ -892,6 +892,8 @@ function cargarDieseno(idPlantilla){
 
         }
 
+
+
         
 
 
@@ -902,9 +904,11 @@ function cargarDieseno(idPlantilla){
 }
 
 // 
-        $("#crear").click(function () {
+
+// $(document).ready(function(){
+             $("#crear").click(function () {
             // alert("hola");
-            // var height = $('#footerDiseno').css("height");
+            var height = $('#footerDiseno').css("height");
             $('#footerDiseno').css("height", height);
             $('#prefooter').css("height", height);
 
@@ -935,6 +939,8 @@ function cargarDieseno(idPlantilla){
             $('.editarExterno').css("display", "");
 
         });
+// });
+
 
 
 function validacionCorrecta(){
@@ -952,7 +958,7 @@ function validacionCorrecta(){
     </div>
     <form id="form_paso3AgregarPlantilla">
         <div class="modal-content">
-            <p style="text-align: center"><?= label('paso3_nombreNuevaPlantilla'); ?></p>
+            <p class="center"><?= label('paso3_nombreNuevaPlantilla'); ?></p>
             <div class="input-field col s12 m12 l12">
                 <input id="nombrePlantilla" name="nombrePlantilla" type="text">
                 <label for="nombrePlantilla"><?= label('paso3_labelNombrePlantilla') ?></label>
@@ -963,4 +969,4 @@ function validacionCorrecta(){
         </div>
     </form>
 </div>
-<!-- Fin lista modals
+<!-- Fin lista modals-->
