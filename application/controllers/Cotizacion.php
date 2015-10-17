@@ -32,18 +32,19 @@ class Cotizacion extends CI_Controller
 
     public function cotizar()
     {
-        verificarLogin();//helper
+//        verificarLogin();//helper
 
-        $plantillas = $this->Cotizacion_model->cargar(1); 
-        if ($plantillas === false || $plantillas === array()) {
-            echo "Error en la transacción";
-        } else {
-            $data['plantillas'] = $plantillas;
+//        $plantillas = $this->Cotizacion_model->cargar(1);
+//        if ($plantillas === false || $plantillas === array()) {
+//            echo "Error en la transacción";
+//        } else {
+//            $data['plantillas'] = $plantillas;
             $this->load->view('layout/default/header');
             $this->load->view('layout/default/left-sidebar');
-            $this->load->view('cotizar/cotizar', $data);
+//            $this->load->view('cotizar/cotizar', $data);
+            $this->load->view('cotizar/cotizar');
             $this->load->view('layout/default/footer');
-        }
+//        }
     }
 
     public function ver()
