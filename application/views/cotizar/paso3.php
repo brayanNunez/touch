@@ -276,49 +276,49 @@
                     <div class="row col s12 m6 l6">
                         <div class="listaCecksModals">
                             <p>
-                                <input name="checksEncabezado_nombreEmpresa" value="nombreEmpresa" data-valorbox="nombreEmpresa" type="checkbox" class="filled-in checksEncabezado"
+                                <input name="checksEncabezado_nombreEmpresa" value="1" data-valorbox="nombreEmpresa" type="checkbox" class="filled-in checksEncabezado"
                                        id="filled-in-box1">
                                 <label for="filled-in-box1">Nombre de la empresa</label>
                             </p>
 
                             <p>
-                                <input name="checksEncabezado_codigoCotizacion" value="codigoCotizacion" data-valorbox="codigoCotizacion" type="checkbox"
+                                <input name="checksEncabezado_codigoCotizacion" value="1" data-valorbox="codigoCotizacion" type="checkbox"
                                        class="filled-in checksEncabezado" id="filled-in-box2">
                                 <label for="filled-in-box2">Código de cotización</label>
                             </p>
 
                             <p>
-                                <input name="checksEncabezado_cliente" value="cliente" data-valorbox="cliente" type="checkbox" class="filled-in checksEncabezado"
+                                <input name="checksEncabezado_cliente" value="1" data-valorbox="cliente" type="checkbox" class="filled-in checksEncabezado"
                                        id="filled-in-box3">
                                 <label for="filled-in-box3">Cliente</label>
                             </p>
 
                             <p>
-                               <input name="checksEncabezado_atencion" value="atencion" data-valorbox="atencion" type="checkbox" class="filled-in checksEncabezado"
+                               <input name="checksEncabezado_atencion" value="1" data-valorbox="atencion" type="checkbox" class="filled-in checksEncabezado"
                                        id="filled-in-box4">
                                 <label for="filled-in-box4">Atención</label>
                             </p>
 
                             <p>
-                                <input name="checksEncabezado_vendedor" value="vendedor" data-valorbox="vendedor" type="checkbox" class="filled-in checksEncabezado"
+                                <input name="checksEncabezado_vendedor" value="1" data-valorbox="vendedor" type="checkbox" class="filled-in checksEncabezado"
                                        id="filled-in-box5">
                                 <label for="filled-in-box5">Vendedor</label>
                             </p>
 
                             <p>
-                                <input name="checksEncabezado_fecha" value="fecha" data-valorbox="fecha" type="checkbox" class="filled-in checksEncabezado"
+                                <input name="checksEncabezado_fecha" value="1" data-valorbox="fecha" type="checkbox" class="filled-in checksEncabezado"
                                        id="filled-in-box6">
                                 <label for="filled-in-box6">Fecha</label>
                             </p>
 
                             <p>
-                                <input name="checksEncabezado_hora" value="hora" data-valorbox="hora" type="checkbox" class="filled-in checksEncabezado"
+                                <input name="checksEncabezado_hora" value="1" data-valorbox="hora" type="checkbox" class="filled-in checksEncabezado"
                                        id="filled-in-box7">
                                 <label for="filled-in-box7">Hora</label>
                             </p>
 
                             <p>
-                                <input name="checksEncabezado_logo" value="logo" data-valorbox="logo" type="checkbox" class="filled-in checksEncabezado"
+                                <input name="checksEncabezado_logo" value="1" data-valorbox="logo" type="checkbox" class="filled-in checksEncabezado"
                                        id="filled-in-box8">
                                 <label for="filled-in-box8">Imagen</label>
                             </p>
@@ -357,7 +357,7 @@
     <div class="modal-content">
         <div class="row">
             <div class="col s12 m12 l12">
-                <form action="#">
+                <form id="form_cuerpo">
 
 
 
@@ -365,42 +365,42 @@
                         <div class="listaCecksModals">
                             <p>Mostrar las siguientes columnas:</p>
                             <p>
-                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box1" checked="checked">
+                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box1">
                                 <label for="cuerpofilled-in-box1">Item</label>
                             </p>
 
                             <p>
-                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box2" checked="checked">
+                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box2">
                                 <label for="cuerpofilled-in-box2">Nombre</label>
                             </p>
 
                             <p>
-                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box3" checked="checked">
+                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box3">
                                 <label for="cuerpofilled-in-box3">Descripción</label>
                             </p>
 
                             <p>
-                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box3" checked="checked">
+                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box3">
                                 <label for="cuerpofilled-in-box4">Imagen</label>
                             </p>
 
                             <p>
-                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box5" checked="checked">
+                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box5">
                                 <label for="cuerpofilled-in-box5">Precio unitario</label>
                             </p>
 
                             <p>
-                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box6" checked="checked">
+                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box6">
                                 <label for="cuerpofilled-in-box6">Cantidad</label>
                             </p>
 
                             <p>
-                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box7" checked="checked">
+                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box7">
                                 <label for="cuerpofilled-in-box7">Impuesto</label>
                             </p>
 
                             <p>
-                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box8" checked="checked">
+                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box8">
                                 <label for="cuerpofilled-in-box8">Total individual</label>
                             </p>
 
@@ -412,30 +412,30 @@
                         <div class="listaCecksModals">
                             <p>Mostrar los siguientes totales:</p>
                             <p>
-                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box9" checked="checked">
+                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box9">
                                 <label for="cuerpofilled-in-box9">Impuesto</label>
                             </p>
 
                             <p>
-                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box10" checked="checked">
+                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box10">
                                 <label for="cuerpofilled-in-box10">Descuento</label>
                             </p>
 
                             <p>
-                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box11" checked="checked">
+                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box11">
                                 <label for="cuerpofilled-in-box11">Tolal</label>
                             </p>
                         </div>
                     </div>
                     <div class="row col s12 m6 l6">
                         <div class="inputModals input-field col s12">
-                            <p>Color de fondo: <input class="colorFondo" type="color" id="myColor1"></p>
+                            <p>Color de fondo: <input name="colorCuerpo_colorFondo" class="colorFondo" type="color" id="myColor1"></p>
                         </div>
                         <div class="inputModals input-field col s12">
-                            <p>Color de letra: <input class="colorLetra" type="color" id="myColor2"></p>
+                            <p>Color de letra: <input name="colorCuerpo_colorLetra" class="colorLetra" type="color" id="myColor2"></p>
                         </div>
                         <div class="inputModals input-field col s12">
-                            <p>Color de barra horizontal: <input class="colorBarra" type="color" id="myColor3"></p>
+                            <p>Color de barra horizontal: <input name="colorCuerpo_colorBarra"class="colorBarra" type="color" id="myColor3"></p>
                         </div>
                     </div>
                 </form>
@@ -456,30 +456,29 @@
     <div class="modal-content">
         <div class="row">
             <div class="col s12 m12 l12">
-                <form action="#">
+                <form id="form_informacion">
                     <div class="row col s12 m6 l6">
                         <div class="listaCecksModals">
                             <p>
-                                <input name="checksInformacion" value="formaPago" type="checkbox" class="filled-in"
+                                <input name="checksInformacion_formaPago" value="1" data-valorbox="formaPago" type="checkbox" class="filled-in checksInformacion"
                                        id="informacionfilled-in-box1">
                                 <label for="informacionfilled-in-box1">Forma de pago</label>
                             </p>
 
                             <p>
-                                <input name="checksInformacion" value="validez" type="checkbox" class="filled-in"
+                                <input name="checksInformacion_validez" value="1" data-valorbox="validez" type="checkbox" class="filled-in checksInformacion"
                                        id="informacionfilled-in-box2">
                                 <label for="informacionfilled-in-box2">Vlidez</label>
                             </p>
 
                             <p>
-                                <input name="checksInformacion" value="informacionDetalle" type="checkbox"
-                                       class="filled-in" id="informacionfilled-in-box3">
+                                <input name="checksInformacion_informacionDetalle" value="1" data-valorbox="informacionDetalle" type="checkbox" class="filled-in checksInformacion" id="informacionfilled-in-box3">
                                 <label for="informacionfilled-in-box3">Detalle</label>
                             </p>
 
 
                             <p>
-                                <input name="checksInformacion" value="firma" type="checkbox" class="filled-in"
+                                <input name="checksInformacion_firma" value="1" data-valorbox="firma" type="checkbox" class="filled-in checksInformacion"
                                        id="informacionfilled-in-box4">
                                 <label for="informacionfilled-in-box4">Firma</label>
                             </p>
@@ -493,13 +492,13 @@
                     </div>
                     <div class="row col s12 m6 l6">
                         <div class="inputModals input-field col s12">
-                            <p>Color de fondo: <input class="colorFondo" type="color" id="myColor1"></p>
+                            <p>Color de fondo: <input name="colorInformacion_colorFondo" class="colorFondo" type="color" id="myColor1"></p>
                         </div>
                         <div class="inputModals input-field col s12">
-                            <p>Color de letra: <input class="colorLetra" type="color" id="myColor2"></p>
+                            <p>Color de letra: <input name="colorInformacion_colorLetra" class="colorLetra" type="color" id="myColor2"></p>
                         </div>
                         <div class="inputModals input-field col s12">
-                            <p>Color de barra horizontal: <input class="colorBarra" type="color" id="myColor3"></p>
+                            <p>Color de barra horizontal: <input name="colorInformacion_colorBarra" class="colorBarra" type="color" id="myColor3"></p>
                         </div>
                         <div class="input-field col s12">
                             <textarea id="message" class="materialize-textarea" style="height: 24px;"></textarea>
@@ -524,29 +523,29 @@
     <div class="modal-content">
         <div class="row">
             <div class="col s12 m12 l12">
-                <form action="#">
+                <form id="form_footer">
                     <div class="row col s12 m6 l6">
                         <div class="listaCecksModals">
                             <p>
-                                <input name="checksFooter" value="telefono" type="checkbox" class="filled-in"
+                                <input name="checksFooter_telefono" value="1" data-valorbox="telefono" type="checkbox" class="filled-in checksFooter"
                                        id="footerfilled-in-box1">
                                 <label for="footerfilled-in-box1">Teléfono</label>
                             </p>
 
                             <p>
-                                <input name="checksFooter" value="sitio" type="checkbox" class="filled-in"
+                                <input name="checksFooter_sitio" value="1" data-valorbox="sitio" type="checkbox" class="filled-in checksFooter"
                                        id="footerfilled-in-box2">
                                 <label for="footerfilled-in-box2">Sitio web</label>
                             </p>
 
                             <p>
-                                <input name="checksFooter" value="correo" type="checkbox" class="filled-in"
+                                <input name="checksFooter_correo" value="1" data-valorbox="correo" type="checkbox" class="filled-in checksFooter"
                                        id="footerfilled-in-box3">
                                 <label for="footerfilled-in-box3">Correo</label>
                             </p>
 
                             <p>
-                                <input name="checksFooter" value="logo" type="checkbox" class="filled-in"
+                                <input name="checksFooter_logo" value="1" data-valorbox="logo" type="checkbox" class="filled-in checksFooter"
                                        id="footerfilled-in-box4">
                                 <label for="footerfilled-in-box4">Imagen</label>
                             </p>
@@ -554,10 +553,10 @@
                     </div>
                     <div class="row col s12 m6 l6">
                         <div class="inputModals input-field col s12">
-                            <p>Color de fondo: <input class="colorFondo" type="color" id="myColor1"></p>
+                            <p>Color de fondo: <input name="colorFooter_colorFondo" class="colorFondo" type="color" id="myColor1"></p>
                         </div>
                         <div class="inputModals input-field col s12">
-                            <p>Color de letra: <input class="colorLetra" type="color" id="myColor2"></p>
+                            <p>Color de letra: <input name="colorFooter_colorLetra" class="colorLetra" type="color" id="myColor2"></p>
                         </div>
                         <div class="input-field col s12">
                             <textarea id="message" class="materialize-textarea" style="height: 24px;"></textarea>
@@ -648,7 +647,7 @@ function cargarDieseno(idPlantilla){
             var logoActivado = false;
             if (seleccionados.length > 0) {
                 seleccionados.each(function () {
-                    alert($(this).data('valorbox'));
+                    // alert($(this).data('valorbox'));
                     $('#encabezado .box#' + $(this).data('valorbox')).show();
                     if ($(this).data('valorbox') == 'logo') {
                         logoActivado = true;
@@ -699,10 +698,10 @@ function cargarDieseno(idPlantilla){
                 $(this).hide();
             })
 
-            var seleccionados = $('input[name=checksInformacion]:checked');
+            var seleccionados = $('.checksInformacion:checked');
             if (seleccionados.length > 0) {
                 seleccionados.each(function () {
-                    $('#informacion .box#' + $(this).val()).show();
+                    $('#informacion .box#' + $(this).data('valorbox')).show();
                 });
             }
         }
@@ -718,15 +717,15 @@ function cargarDieseno(idPlantilla){
                 $(this).hide();
             })
 
-            var seleccionados = $('input[name=checksFooter]:checked');
+            var seleccionados = $('.checksFooter:checked');
             var logoActivado = false;
             if (seleccionados.length > 0) {
                 seleccionados.each(function () {
                     $('#footerCotizacion #datos1').show();
                     $('#footerCotizacion #datos2').css('width', '43%');
 
-                    $('#footerCotizacion .box#' + $(this).val()).show();
-                    if ($(this).val() == 'logo') {
+                    $('#footerCotizacion .box#' + $(this).data('valorbox')).show();
+                    if ($(this).data('valorbox') == 'logo') {
                         logoActivado = true;
                     };
                 });
@@ -796,44 +795,44 @@ function cargarDieseno(idPlantilla){
             
 
             if (plantilla['mostrarNombreEmpresa'] == 1) {
-                $("#modalEncabezado input[value='nombreEmpresa']").prop( "checked", true );
+                $("#modalEncabezado input[data-valorbox='nombreEmpresa']").prop( "checked", true );
             } else{
-                $("#modalEncabezado input[value='nombreEmpresa']").prop( "checked", false );
+                $("#modalEncabezado input[data-valorbox='nombreEmpresa']").prop( "checked", false );
             }
             if (plantilla['mostrarCodigo'] == 1) {
-                $("#modalEncabezado input[value='codigoCotizacion']").prop( "checked", true );
+                $("#modalEncabezado input[data-valorbox='codigoCotizacion']").prop( "checked", true );
             } else{
-                $("#modalEncabezado input[value='codigoCotizacion']").prop( "checked", false );
+                $("#modalEncabezado input[data-valorbox='codigoCotizacion']").prop( "checked", false );
             }
             if (plantilla['mostrarCliente'] == 1) {
-                $("#modalEncabezado input[value='cliente']").prop( "checked", true );
+                $("#modalEncabezado input[data-valorbox='cliente']").prop( "checked", true );
             } else{
-                $("#modalEncabezado input[value='cliente']").prop( "checked", false );
+                $("#modalEncabezado input[data-valorbox='cliente']").prop( "checked", false );
             }
             if (plantilla['mostrarAtencion'] == 1) {
-                $("#modalEncabezado input[value='atencion']").prop( "checked", true );
+                $("#modalEncabezado input[data-valorbox='atencion']").prop( "checked", true );
             } else{
-                $("#modalEncabezado input[value='atencion']").prop( "checked", false );
+                $("#modalEncabezado input[data-valorbox='atencion']").prop( "checked", false );
             }
             if (plantilla['mostrarCotizador'] == 1) {
-                $("#modalEncabezado input[value='vendedor']").prop( "checked", true );
+                $("#modalEncabezado input[data-valorbox='vendedor']").prop( "checked", true );
             } else{
-                $("#modalEncabezado input[value='vendedor']").prop( "checked", false );
+                $("#modalEncabezado input[data-valorbox='vendedor']").prop( "checked", false );
             }
             if (plantilla['mostrarFecha'] == 1) {
-                $("#modalEncabezado input[value='fecha']").prop( "checked", true );
+                $("#modalEncabezado input[data-valorbox='fecha']").prop( "checked", true );
             } else{
-                $("#modalEncabezado input[value='fecha']").prop( "checked", false );
+                $("#modalEncabezado input[data-valorbox='fecha']").prop( "checked", false );
             }
             if (plantilla['mostrarHora'] == 1) {
-                $("#modalEncabezado input[value='hora']").prop( "checked", true );
+                $("#modalEncabezado input[data-valorbox='hora']").prop( "checked", true );
             } else{
-                $("#modalEncabezado input[value='hora']").prop( "checked", false );
+                $("#modalEncabezado input[data-valorbox='hora']").prop( "checked", false );
             }
             if (plantilla['mostrarImagenEncabezado'] == 1) {
-                $("#modalEncabezado input[value='logo']").prop( "checked", true );
+                $("#modalEncabezado input[data-valorbox='logo']").prop( "checked", true );
             } else{
-                $("#modalEncabezado input[value='logo']").prop( "checked", false );
+                $("#modalEncabezado input[data-valorbox='logo']").prop( "checked", false );
             }
 
 
@@ -854,33 +853,49 @@ function cargarDieseno(idPlantilla){
 
 
             if (plantilla['mostrarFormaPago'] == 1) {
-                $("#modalInformacion input[value='formaPago']").prop( "checked", true );
-            };
+                $("#modalInformacion input[data-valorbox='formaPago']").prop( "checked", true );
+            } else {
+                $("#modalInformacion input[data-valorbox='formaPago']").prop( "checked", false );
+            }
             if (plantilla['mostrarValidez'] == 1) {
-                $("#modalInformacion input[value='validez']").prop( "checked", true );
-            };
+                $("#modalInformacion input[data-valorbox='validez']").prop( "checked", true );
+            } else {
+                $("#modalInformacion input[data-valorbox='validez']").prop( "checked", false );
+            }
             if (plantilla['mostrarDetalle'] == 1) {
-                $("#modalInformacion input[value='informacionDetalle']").prop( "checked", true );
-            };
+                $("#modalInformacion input[data-valorbox='informacionDetalle']").prop( "checked", true );
+            } else {
+                $("#modalInformacion input[data-valorbox='informacionDetalle']").prop( "checked", false );
+            }
             if (plantilla['mostrarFirma'] == 1) {
-                $("#modalInformacion input[value='firma']").prop( "checked", true );
-            };
+                $("#modalInformacion input[data-valorbox='firma']").prop( "checked", true );
+            } else {
+                $("#modalInformacion input[data-valorbox='firma']").prop( "checked", false );
+            }
 
 
 
             if (plantilla['mostrarTelefono'] == 1) {
-                $("#modalFooter input[value='telefono']").prop( "checked", true );
-            };
+                $("#modalFooter input[data-valorbox='telefono']").prop( "checked", true );
+            } else {
+                $("#modalFooter input[data-valorbox='telefono']").prop( "checked", false );
+            }
 
             if (plantilla['mostrarSitioWeb'] == 1) {
-                $("#modalFooter input[value='sitio']").prop( "checked", true );
-            };
+                $("#modalFooter input[data-valorbox='sitio']").prop( "checked", true );
+            } else {
+                $("#modalFooter input[data-valorbox='sitio']").prop( "checked", false );
+            }
             if (plantilla['mostrarCorreo'] == 1) {
-                $("#modalFooter input[value='correo']").prop( "checked", true );
-            };
+                $("#modalFooter input[data-valorbox='correo']").prop( "checked", true );
+            } else {
+                $("#modalFooter input[data-valorbox='correo']").prop( "checked", false );
+            }
             if (plantilla['mostrarImagenPie'] == 1) {
-                $("#modalFooter input[value='logo']").prop( "checked", true );
-            };
+                $("#modalFooter input[data-valorbox='logo']").prop( "checked", true );
+            } else {
+                $("#modalFooter input[data-valorbox='logo']").prop( "checked", false );
+            }
             // if (plantilla['textoAdicionalPie'] == 1) {
             //     $("#modalEncabezado input[value='logo']").attr("checked", "checked");
             // };
@@ -966,7 +981,7 @@ function validacionCorrecta(){
         $.ajax({
            type: method,
            url: url,
-           data: $('#form_encabezado, #form_paso3AgregarPlantilla').serialize(), 
+           data: $('#form_encabezado, #form_paso3AgregarPlantilla, #form_cuerpo, #form_informacion, #form_footer').serialize(), 
            success: function(response)
            {
 
