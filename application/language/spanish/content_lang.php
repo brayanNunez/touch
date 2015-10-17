@@ -193,6 +193,7 @@ $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente
 //Gastos adicionales
     $lang['tituloGastos'] = 'Gastos';
     $lang['tituloGastos_codigo'] = 'Código';
+    $lang['tituloGastos_cantidad'] = 'Cantidad';
     $lang['tituloGastos_tipo'] = 'Tipo';
     $lang['tituloGastos_categoria'] = 'Categoría';
     $lang['tituloGastos_tiempo'] = 'Tiempo';
@@ -332,6 +333,19 @@ $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente
     $lang['paso1_labelTipoCambio'] = 'Tipo de cambio';
     $lang['paso1_labelDetalle'] = 'Detalle';
 
+    $lang['cotizacion_incluirGastosVariables'] = 'Desea agregar gastos variables';
+    $lang['agregarGatos_buscar'] = 'Buscar';
+    $lang['agregarGastos_masOpciones'] = 'Más opciones';
+    $lang['agregarGastos_menosOpciones'] = 'Menos opciones';
+    $lang['agregarGastos_todos'] = 'Búsqueda';
+    $lang['agregarGastos_categoria'] = 'Categoría de proveedor';
+    $lang['agregarGastos_proveedor'] = 'Proveedor';
+    $lang['agregarGastos_gasto'] = 'Gasto';
+    $lang['agregarGatos_agregar'] = 'Agregar';
+    $lang['cotizacionGastos_total'] = 'Total de gasto variable';
+
+    $lang['paso3_nombreNuevaPlantilla'] = 'Agregar nueva plantilla';
+    $lang['paso3_labelNombrePlantilla'] = 'Nombre';
 
 //Menu izquierdo 
 	$lang['inicio'] = 'Panel principal';
