@@ -46,6 +46,66 @@ class Cotizacion extends CI_Controller
         }
     }
 
+    //Metodo llamado mediante ajax
+     public function nuevaPlantilla()
+    {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+        // $data['palabras'] = $this->input->post('empleado_palabras');
+        $data['datos'] = array(
+            'empresa_idEmpresa' => $idEmpresa, 
+            'nombrePlantilla' => $this->input->post('nombrePlantilla'),
+            'colorEncabezado' => $this->input->post('colorEncabezado_colorFondo'),
+            'colorLetraEncabezado' => $this->input->post('colorEncabezado_colorLetra'),
+            'colorBarraHorizontal1' => $this->input->post('colorEncabezado_colorBarra'),
+            'tipoLetraEncabezado' => $this->input->post(''),
+            'mostrarNombreEmpresa' => $this->input->post('checksEncabezado_nombreEmpresa'),
+            'mostrarCodigo' => $this->input->post('checksEncabezado_codigoCotizacion'),
+            'mostrarCliente' => $this->input->post('checksEncabezado_cliente'),
+            'mostrarAtencion' => $this->input->post('checksEncabezado_atencion'),
+            'mostrarCotizador' => $this->input->post('checksEncabezado_vendedor'),
+            'mostrarFecha' => $this->input->post('checksEncabezado_fecha'),
+            'mostrarHora' => $this->input->post('checksEncabezado_hora'),
+            'mostrarImagenEncabezado' => $this->input->post('checksEncabezado_logo')
+            // 'textoAdicionalEncabezado' => $this->input->post('empleado_primerApellido'),
+            // 'colorDetalle' => $this->input->post('empleado_segundoApellido'),
+            // 'colorLetraDetalle' => $this->input->post('empleado_primerApellido'),
+            // 'colorBarraHorizontal2' => $this->input->post('empleado_segundoApellido'),
+            // 'tipoLetraDeralle' => $this->input->post('empleado_primerApellido'),
+            // 'mostrarImpuesto' => $this->input->post('empleado_segundoApellido'),
+            // 'mostrarDescuento' => $this->input->post('empleado_primerApellido'),
+            // 'mostrarTotal' => $this->input->post('empleado_segundoApellido'),
+            // 'colorInformacion' => $this->input->post('empleado_segundoApellido'),
+            // 'colorLetraInformcion' => $this->input->post('empleado_segundoApellido'),  
+            // 'colorBarraHorizontal3' => $this->input->post('empleado_segundoApellido'),  
+            // 'tipoLetraInformacion' => $this->input->post('empleado_segundoApellido'),  
+            // 'mostrarFormaPago' => $this->input->post('empleado_segundoApellido'),  
+            // 'mostrarValidez' => $this->input->post('empleado_segundoApellido'),  
+            // 'mostrarDetalle' => $this->input->post('empleado_segundoApellido'),  
+            // 'mostrarFirma' => $this->input->post('empleado_segundoApellido'),  
+            // 'imagenFirma' => $this->input->post('empleado_segundoApellido'),  
+            // 'textoAdicionalInformacion' => $this->input->post('empleado_segundoApellido'),
+            // 'colorPie' => $this->input->post('empleado_segundoApellido'),  
+            // 'colorLetraPie' => $this->input->post('empleado_segundoApellido'),  
+            // 'tipoLetraPie' => $this->input->post('empleado_segundoApellido'),
+            // 'mostrarTelefono' => $this->input->post('empleado_segundoApellido'),  
+            // 'mostrarSitioWeb' => $this->input->post('empleado_segundoApellido'),  
+            // 'mostrarCorreo' => $this->input->post('empleado_segundoApellido'),  
+            // 'mostrarImagenPie' => $this->input->post('empleado_segundoApellido'),  
+            // 'textoAdicionalPie' => $this->input->post('empleado_segundoApellido')
+        );
+        // if (!$this->Empleado_model->insertar($data)) {
+        //     //Error en la transacción
+        //     echo 0;
+        // } else {
+        //     // correcto
+        //     echo 1;
+        // }
+
+    echo print_r($data);
+        
+    }
+
     public function ver()
     {
         verificarLogin();//helper

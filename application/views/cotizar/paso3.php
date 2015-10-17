@@ -272,53 +272,53 @@
     <div class="modal-content">
         <div class="row">
             <div class="col s12 m12 l12">
-                <form action="#">
+                <form id="form_encabezado">
                     <div class="row col s12 m6 l6">
                         <div class="listaCecksModals">
                             <p>
-                                <input name="checksEncabezado" value="nombreEmpresa" type="checkbox" class="filled-in"
+                                <input name="checksEncabezado_nombreEmpresa" value="nombreEmpresa" type="checkbox" class="filled-in"
                                        id="filled-in-box1">
                                 <label for="filled-in-box1">Nombre de la empresa</label>
                             </p>
 
                             <p>
-                                <input name="checksEncabezado" value="codigoCotizacion" type="checkbox"
+                                <input name="checksEncabezado_codigoCotizacion" value="codigoCotizacion" type="checkbox"
                                        class="filled-in" id="filled-in-box2">
                                 <label for="filled-in-box2">Código de cotización</label>
                             </p>
 
                             <p>
-                                <input name="checksEncabezado" value="cliente" type="checkbox" class="filled-in"
+                                <input name="checksEncabezado_cliente" value="cliente" type="checkbox" class="filled-in"
                                        id="filled-in-box3">
                                 <label for="filled-in-box3">Cliente</label>
                             </p>
 
                             <p>
-                                <input name="checksEncabezado" value="atencion" type="checkbox" class="filled-in"
+                                <input name="checksEncabezado_atencion" value="atencion" type="checkbox" class="filled-in"
                                        id="filled-in-box4">
                                 <label for="filled-in-box4">Atención</label>
                             </p>
 
                             <p>
-                                <input name="checksEncabezado" value="vendedor" type="checkbox" class="filled-in"
+                                <input name="checksEncabezado_vendedor" value="vendedor" type="checkbox" class="filled-in"
                                        id="filled-in-box5">
                                 <label for="filled-in-box5">Vendedor</label>
                             </p>
 
                             <p>
-                                <input name="checksEncabezado" value="fecha" type="checkbox" class="filled-in"
+                                <input name="checksEncabezado_fecha" value="fecha" type="checkbox" class="filled-in"
                                        id="filled-in-box6">
                                 <label for="filled-in-box6">Fecha</label>
                             </p>
 
                             <p>
-                                <input name="checksEncabezado" value="hora" type="checkbox" class="filled-in"
+                                <input name="checksEncabezado_hora" value="hora" type="checkbox" class="filled-in"
                                        id="filled-in-box7">
                                 <label for="filled-in-box7">Hora</label>
                             </p>
 
                             <p>
-                                <input name="checksEncabezado" value="logo" type="checkbox" class="filled-in"
+                                <input name="checksEncabezado_logo" value="logo" type="checkbox" class="filled-in"
                                        id="filled-in-box8">
                                 <label for="filled-in-box8">Imagen</label>
                             </p>
@@ -326,13 +326,13 @@
                     </div>
                     <div class="row col s12 m6 l6">
                         <div class="inputModals input-field col s12">
-                            <p>Color de fondo: <input class="colorFondo" type="color" id="myColor1"></p>
+                            <p>Color de fondo: <input name="colorEncabezado_colorFondo" class="colorFondo" type="color" id="myColor1"></p>
                         </div>
                         <div class="inputModals input-field col s12">
-                            <p>Color de letra: <input class="colorLetra" type="color" id="myColor2"></p>
+                            <p>Color de letra: <input name="colorEncabezado_colorLetra" class="colorLetra" type="color" id="myColor2"></p>
                         </div>
                         <div class="inputModals input-field col s12">
-                            <p>Color de barra horizontal: <input class="colorBarra" type="color" id="myColor3"></p>
+                            <p>Color de barra horizontal: <input name="colorEncabezado_colorBarra" class="colorBarra" type="color" id="myColor3"></p>
                         </div>
                         <div class="input-field col s12">
                             <textarea id="message" class="materialize-textarea" style="height: 24px;"></textarea>
@@ -583,6 +583,9 @@
         cargarDieseno(1);
     });
 
+ <?php 
+$js_array = json_encode($plantillas); 
+echo "var arrayPlantillas =". $js_array;?> 
 
 function cargarDieseno(idPlantilla){
 
@@ -747,9 +750,7 @@ function cargarDieseno(idPlantilla){
                 $('#footerCotizacion #datos2').css('width', '100%');
             }
         }
-        <?php 
-        $js_array = json_encode($plantillas); 
-        echo "var arrayPlantillas =". $js_array;?> 
+       
 
         desplegarPlantilla(idPlantilla);
 
@@ -906,7 +907,7 @@ function cargarDieseno(idPlantilla){
 // 
 
 // $(document).ready(function(){
-             $("#crear").click(function () {
+        $("#crear").click(function () {
             // alert("hola");
             var height = $('#footerDiseno').css("height");
             $('#footerDiseno').css("height", height);
@@ -944,9 +945,43 @@ function cargarDieseno(idPlantilla){
 
 
 function validacionCorrecta(){
-    $('.modal-header a').click(); 
-    alert('llamado ajax');
+
+    var nuevoNombre = $('#nombrePlantilla').val();
+    var existeNombre = false;
+    for (var i = arrayPlantillas.length - 1; i >= 0; i--) {
+        if (arrayPlantillas[i]['nombrePlantilla'] == nuevoNombre) {
+            existeNombre = true;
+        };
+    };
+
+    if (existeNombre) {
+        alert('<?= label("paso3_nombrePlantillaExiste");?>');
+    } else{
+
+        $('.modal-header a').click(); 
+        var url = $('#form_paso3AgregarPlantilla').attr('action');
+        var method = $('#form_paso3AgregarPlantilla').attr('method'); 
+        $.ajax({
+           type: method,
+           url: url,
+           data: $('#form_encabezado, #form_paso3AgregarPlantilla').serialize(), 
+           success: function(response)
+           {
+
+                alert(response);
+               // if (response == 0) {
+               //     $('#linkModalError').click();
+               // } else {
+               //      $('#linkModalGuardado').click();
+               //      $('#empleado_palabras').tagsinput('removeAll');
+               // }
+           }
+         });        
+
+    }
 }
+
+
 </script>
 
 
@@ -956,7 +991,7 @@ function validacionCorrecta(){
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
-    <form id="form_paso3AgregarPlantilla">
+    <form id="form_paso3AgregarPlantilla" action="<?=base_url()?>Cotizacion/nuevaPlantilla" method="post">
         <div class="modal-content">
             <p class="center"><?= label('paso3_nombreNuevaPlantilla'); ?></p>
             <div class="input-field col s12 m12 l12">

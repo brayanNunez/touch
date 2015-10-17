@@ -26,6 +26,7 @@
         } 
         if (tipo == "paso3_plantilla") {
             // alert('modal para crear plantilla');
+            // $('#form_paso3AgregarPlantilla').reset();
             $('#nombrePlantilla').val(nuevoElementoAgregar);
             $('#linkNuevaPlantilla').click();
             $('#nombrePlantilla').focus();
