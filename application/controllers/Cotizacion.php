@@ -49,6 +49,9 @@ class Cotizacion extends CI_Controller
     //Metodo llamado mediante ajax
      public function nuevaPlantilla()
     {
+        // if (isset($this->input->post('checksEncabezado_hora'))) {
+        //     # code...
+        // }
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
         // $data['palabras'] = $this->input->post('empleado_palabras');

@@ -347,6 +347,8 @@ $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente
     $lang['paso3_nombreNuevaPlantilla'] = 'Agregar nueva plantilla';
     $lang['paso3_labelNombrePlantilla'] = 'Nombre';
 
+    $lang['paso3_nombrePlantillaExiste'] = 'El nombre de la plantilla ya existe, por favor agregue un nombre diferente' ;
+
 //Menu izquierdo 
 	$lang['inicio'] = 'Panel principal';
 	$lang['cotizaciones'] = 'Cotizaciones';

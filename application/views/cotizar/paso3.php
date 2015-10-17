@@ -276,49 +276,49 @@
                     <div class="row col s12 m6 l6">
                         <div class="listaCecksModals">
                             <p>
-                                <input name="checksEncabezado_nombreEmpresa" value="nombreEmpresa" type="checkbox" class="filled-in"
+                                <input name="checksEncabezado_nombreEmpresa" value="nombreEmpresa" data-valorbox="nombreEmpresa" type="checkbox" class="filled-in checksEncabezado"
                                        id="filled-in-box1">
                                 <label for="filled-in-box1">Nombre de la empresa</label>
                             </p>
 
                             <p>
-                                <input name="checksEncabezado_codigoCotizacion" value="codigoCotizacion" type="checkbox"
-                                       class="filled-in" id="filled-in-box2">
+                                <input name="checksEncabezado_codigoCotizacion" value="codigoCotizacion" data-valorbox="codigoCotizacion" type="checkbox"
+                                       class="filled-in checksEncabezado" id="filled-in-box2">
                                 <label for="filled-in-box2">Código de cotización</label>
                             </p>
 
                             <p>
-                                <input name="checksEncabezado_cliente" value="cliente" type="checkbox" class="filled-in"
+                                <input name="checksEncabezado_cliente" value="cliente" data-valorbox="cliente" type="checkbox" class="filled-in checksEncabezado"
                                        id="filled-in-box3">
                                 <label for="filled-in-box3">Cliente</label>
                             </p>
 
                             <p>
-                                <input name="checksEncabezado_atencion" value="atencion" type="checkbox" class="filled-in"
+                               <input name="checksEncabezado_atencion" value="atencion" data-valorbox="atencion" type="checkbox" class="filled-in checksEncabezado"
                                        id="filled-in-box4">
                                 <label for="filled-in-box4">Atención</label>
                             </p>
 
                             <p>
-                                <input name="checksEncabezado_vendedor" value="vendedor" type="checkbox" class="filled-in"
+                                <input name="checksEncabezado_vendedor" value="vendedor" data-valorbox="vendedor" type="checkbox" class="filled-in checksEncabezado"
                                        id="filled-in-box5">
                                 <label for="filled-in-box5">Vendedor</label>
                             </p>
 
                             <p>
-                                <input name="checksEncabezado_fecha" value="fecha" type="checkbox" class="filled-in"
+                                <input name="checksEncabezado_fecha" value="fecha" data-valorbox="fecha" type="checkbox" class="filled-in checksEncabezado"
                                        id="filled-in-box6">
                                 <label for="filled-in-box6">Fecha</label>
                             </p>
 
                             <p>
-                                <input name="checksEncabezado_hora" value="hora" type="checkbox" class="filled-in"
+                                <input name="checksEncabezado_hora" value="hora" data-valorbox="hora" type="checkbox" class="filled-in checksEncabezado"
                                        id="filled-in-box7">
                                 <label for="filled-in-box7">Hora</label>
                             </p>
 
                             <p>
-                                <input name="checksEncabezado_logo" value="logo" type="checkbox" class="filled-in"
+                                <input name="checksEncabezado_logo" value="logo" data-valorbox="logo" type="checkbox" class="filled-in checksEncabezado"
                                        id="filled-in-box8">
                                 <label for="filled-in-box8">Imagen</label>
                             </p>
@@ -643,12 +643,14 @@ function cargarDieseno(idPlantilla){
                 $(this).hide();
             })
 
-            var seleccionados = $('input[name=checksEncabezado]:checked');
+            // var seleccionados = $('input[class*="checksEncabezado"]:checked');
+            var seleccionados = $('.checksEncabezado:checked');
             var logoActivado = false;
             if (seleccionados.length > 0) {
                 seleccionados.each(function () {
-                    $('#encabezado .box#' + $(this).val()).show();
-                    if ($(this).val() == 'logo') {
+                    alert($(this).data('valorbox'));
+                    $('#encabezado .box#' + $(this).data('valorbox')).show();
+                    if ($(this).data('valorbox') == 'logo') {
                         logoActivado = true;
                     };
                 });
