@@ -36,6 +36,17 @@
             //       }
             // });
 
+            $('#form_paso3AgregarPlantilla').validate({
+                rules:
+                {
+                    nombrePlantilla: {required: true, minlength: 3, maxlength: 20}
+                },
+                 errorElement: 'div',
+                 submitHandler: function(form) {
+                    validacionCorrecta();
+                  }
+            });
+
             $('#form_empleado').validate({
                 rules:
                 {

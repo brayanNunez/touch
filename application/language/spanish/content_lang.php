@@ -200,7 +200,6 @@ $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente
     $lang['tituloGastos_proveedor'] = 'Proveedor';
     $lang['tituloGastos_proveedorCategoria'] = 'Categoría Proveedor';
     $lang['tituloGastos_monto'] = 'Monto';
-    $lang['tituloGastos_cantidad'] = 'Cantidad';
     $lang['tituloGastos_opciones'] = 'Opciones';
     $lang['tituloGastos_nuevo'] = 'Nuevo gasto';
     $lang['formGastos_nombre'] = 'Nombre del gasto';
@@ -332,17 +331,6 @@ $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente
     $lang['paso1_labelTiempoVlidez'] = 'Tiempo de validez';
     $lang['paso1_labelTipoCambio'] = 'Tipo de cambio';
     $lang['paso1_labelDetalle'] = 'Detalle';
-
-    $lang['cotizacion_incluirGastosVariables'] = 'Desea agregar gastos variables';
-    $lang['agregarGatos_buscar'] = 'Buscar';
-    $lang['agregarGastos_masOpciones'] = 'Más opciones';
-    $lang['agregarGastos_menosOpciones'] = 'Menos opciones';
-    $lang['agregarGastos_todos'] = 'Búsqueda';
-    $lang['agregarGastos_categoria'] = 'Categoría de proveedor';
-    $lang['agregarGastos_proveedor'] = 'Proveedor';
-    $lang['agregarGastos_gasto'] = 'Gasto';
-    $lang['agregarGatos_agregar'] = 'Agregar';
-    $lang['cotizacionGastos_total'] = 'Total de gasto variable';
 
 
 //Menu izquierdo 
@@ -586,7 +574,7 @@ $lang['formProveedor_infoCotizacion'] = 'Información de cotización';
     $lang['formProveedor_descripcion'] = 'Descripción';
     $lang['formProveedor_salarios'] = 'Salarios';
     $lang['formProveedor_nuevaPalabra'] = 'Nueva palabra clave';
-    $lang['formProveedor_nuevoSalario'] = 'Nuevo presupuesto';
+    $lang['formProveedor_nuevoSalario'] = 'Agregar gasto';
     $lang['formProveedor_agregar'] = 'Agregar';
     $lang['formProveedor_salariosTipo'] = 'Tipo';
     $lang['formProveedor_salariosMonto'] = 'Monto';

@@ -8,9 +8,11 @@
         generarListas();
     }
 
+    //El método botonEnLista es llamado desde el archivo chosen.jquery cuando se quiere agregar un nuevo elemento desde el select o bien puede ser llamado desde el método
+    //$('.chosen-select').on('change',function(){ que se encuentra es en este mismo archivo. La razón es que el plugin chosen.jquery solo  funciona
+    //el ciertos navegadores y en caso de no permitirlos (como la mayoría de los mobile) el llamado a este método (botonEnLista) se hace mediante el método $('.chosen-select').on('change',function(){
+    //ubicado en este archivo.
     function botonEnLista(tipo, idBoton, nuevoElementoAgregar){
-        
-        
         alert("tipo: " +tipo+ " id: " + idBoton + " palabra: " + nuevoElementoAgregar);
         if (tipo == "productoNombre" || tipo == "productoItem") {
             window.location.href = "<?= base_url() ?>productos/agregar";
@@ -22,6 +24,12 @@
         if (tipo == "paso1Cliente") {
              window.location.href = "<?= base_url() ?>clientes/agregar";
         } 
+        if (tipo == "paso3_plantilla") {
+            // alert('modal para crear plantilla');
+            $('#nombrePlantilla').val(nuevoElementoAgregar);
+            $('#linkNuevaPlantilla').click();
+            $('#nombrePlantilla').focus();
+        };
         
     }
 
@@ -75,16 +83,23 @@
     }
 
     function generarAutocompletarPlantilla(id){
-        var miSelect = $('<select placeholder="seleccionar" data-tipo="paso1Atencion" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso3_elegirPalantilla"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
+        var miSelect = $('<select placeholder="seleccionar" data-tipo="paso3_plantilla" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso3_elegirPalantilla"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
         miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso1_elegirAtencion"); ?></option>');
         miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+       
         <?php 
-        echo 'miSelect.append("<option>Perros</option>");';
+        $contador = 0;
+        foreach ($plantillas as $plantilla) {
+            $valor = "value='".$contador++."'";
+             echo 'miSelect.append("<option '.$valor.'>'.$plantilla['nombrePlantilla'].'</option>");';
+        }
+        
         ?>
-        miSelect.append('<option value="1">Formal</option>');
-        miSelect.append('<option value="2">Para Dos Pinos</option>');
-        miSelect.append('<option value="3">Para el gobierno</option>');
-        miSelect.append('<option value="4">Simple</option>');
+
+        // miSelect.append('<option value="1">Formal</option>');
+        // miSelect.append('<option value="2">Para Dos Pinos</option>');
+        // miSelect.append('<option value="3">Para el gobierno</option>');
+        // miSelect.append('<option value="4">Simple</option>');
 
         $('#contenedorSelectPalntilla').html(miSelect);
     }
@@ -166,12 +181,18 @@
 
          $('.chosen-select').on('change',function(){
             var valor = $(this).val();
+            var tipo = $(this).attr("data-tipo");
             if (valor=="nuevo") {
-                var tipo = $(this).attr("data-tipo");
                 var idBoton = $(this).attr("id");
                 var nuevoElementoAgregar = "";
                 botonEnLista(tipo, idBoton, nuevoElementoAgregar)
             } else{
+                
+                switch(tipo){
+                    case 'paso3_plantilla':
+                        cargarDieseno(valor);
+                    break;
+                }
                 alert(valor);
             };
             
