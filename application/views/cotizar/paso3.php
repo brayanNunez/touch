@@ -579,7 +579,7 @@
 
 
      $(document).ready(function(){
-        cargarDieseno(1);
+        cargarDieseno(0);
     });
 
  <?php 
@@ -752,8 +752,14 @@ function cargarDieseno(idPlantilla){
             }
         }
        
-
-        desplegarPlantilla(idPlantilla);
+        <?php 
+        if (count($plantillas) > 0) {
+        ?>
+         desplegarPlantilla(idPlantilla);
+        <?php
+        }
+        ?>
+       
 
         function desplegarPlantilla(idPlantilla){
             // alert('hola mundo');
@@ -962,7 +968,7 @@ function cargarDieseno(idPlantilla){
 
 
 function validacionCorrecta(){
-
+    alert('lansskjjasn');
     var nuevoNombre = $('#nombrePlantilla').val();
     var existeNombre = false;
     for (var i = arrayPlantillas.length - 1; i >= 0; i--) {

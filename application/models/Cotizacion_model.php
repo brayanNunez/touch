@@ -30,6 +30,33 @@ class Cotizacion_model extends CI_Model
         }
     }
     
-}
 
+
+
+    function insertarPlantilla($data)
+    {
+        try{
+            $this->db->trans_begin();
+
+            $query = $this->db->insert('plantilladiseno', $data['datos']);
+            if (!$query) throw new Exception("Error en la BD");   
+            // $insert_id = $this->db->insert_id();
+            // $palabras = explode(",", $data['palabras']); ;
+            // foreach ($palabras as $palabra) {
+            //     $row = array(
+            //     'idEmpleado' => $insert_id,
+            //     'descripcion' => $palabra
+            //     );
+            //     $query = $this->db->insert('palabraClaveEmpleado', $row);
+            //     if (!$query) throw new Exception("Error en la BD");   
+            // }
+            $this->db->trans_commit();
+            return true;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+
+    }
+}
 ?>

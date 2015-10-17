@@ -35,7 +35,8 @@ class Cotizacion extends CI_Controller
         verificarLogin();//helper
 
         $plantillas = $this->Cotizacion_model->cargar(1); 
-        if ($plantillas === false || $plantillas === array()) {
+        // if ($plantillas === false || $plantillas === array()) {
+        if ($plantillas === false) {
             echo "Error en la transacción";
         } else {
             $data['plantillas'] = $plantillas;
@@ -49,32 +50,112 @@ class Cotizacion extends CI_Controller
     //Metodo llamado mediante ajax
      public function nuevaPlantilla()
     {
-        // if (isset($this->input->post('checksEncabezado_hora'))) {
+        // if (isset($this->input->post('checksEncabezado_hora'])) {
         //     # code...
         // }
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
         // $data['palabras'] = $this->input->post('empleado_palabras');
+        // echo (isset($_POST['checksEncabezado_nombreEmpresa'))==false); exit;
+        $nombreEmpresaEncabezado = 0;
+        if (isset($_POST['checksEncabezado_nombreEmpresa'])) {
+           $nombreEmpresaEncabezado = 1;
+        }
+
+        $codigoEncabezado = 0;
+        if (isset($_POST['checksEncabezado_codigoCotizacion'])) {
+           $codigoEncabezado = 1;
+        }
+        
+        $clienteEncabezado = 0;
+        if (isset($_POST['checksEncabezado_cliente'])) {
+           $clienteEncabezado = 1;
+        }
+
+        $atencionEncabezado = 0;
+        if (isset($_POST['checksEncabezado_atencion'])) {
+           $atencionEncabezado = 1;
+        }
+
+        $vendedorEncabezado = 0;
+        if (isset($_POST['checksEncabezado_vendedor'])) {
+           $vendedorEncabezado = 1;
+        }
+
+        $fechaEncabezado = 0;
+        if (isset($_POST['checksEncabezado_fecha'])) {
+           $fechaEncabezado = 1;
+        }
+
+        $horaEncabezado = 0;
+        if (isset($_POST['checksEncabezado_hora'])) {
+           $horaEncabezado = 1;
+        }
+
+        $logoEncabezado = 0;
+        if (isset($_POST['checksEncabezado_logo'])) {
+           $logoEncabezado = 1;
+        }
+
+        $formaPagoIndormacion = 0;
+        if (isset($_POST['checksInformacion_formaPago'])) {
+           $formaPagoInformacion = 1;
+        }
+
+        $validezIndormacion = 0;
+        if (isset($_POST['checksInformacion_validez'])) {
+           $validezInformacion = 1;
+        }
+
+        $firmaInformacion = 0;
+        if (isset($_POST['checksInformacion_firma'])) {
+           $firmaInformacion = 1;
+        }
+
+        $informacionDetalleIndormacion = 0;
+        if (isset($_POST['checksInformacion_informacionDetalle'])) {
+           $informacionDetalleInformacion = 1;
+        }
+
+        $telefonoFooter = 0;
+        if (isset($_POST['checksFooter_telefono'])) {
+           $telefonoFooter = 1;
+        }
+
+        $sitioFooter = 0;
+        if (isset($_POST['checksFooter_sitio'])) {
+           $sitioFooter = 1;
+        }
+        
+        $correoFooter = 0;
+        if (isset($_POST['checksFooter_correo'])) {
+           $correoFooter = 1;
+        }
+
+        $logoFooter = 0;
+        if (isset($_POST['checksFooter_logo'])) {
+           $logoFooter = 1;
+        }
+
         $data['datos'] = array(
             'empresa_idEmpresa' => $idEmpresa, 
             'nombrePlantilla' => $this->input->post('nombrePlantilla'),
             'colorEncabezado' => $this->input->post('colorEncabezado_colorFondo'),
             'colorLetraEncabezado' => $this->input->post('colorEncabezado_colorLetra'),
             'colorBarraHorizontal1' => $this->input->post('colorEncabezado_colorBarra'),
-            'tipoLetraEncabezado' => $this->input->post(''),
-            'mostrarNombreEmpresa' => $this->input->post('checksEncabezado_nombreEmpresa'),
-            'mostrarCodigo' => $this->input->post('checksEncabezado_codigoCotizacion'),
-            'mostrarCliente' => $this->input->post('checksEncabezado_cliente'),
-            'mostrarAtencion' => $this->input->post('checksEncabezado_atencion'),
-            'mostrarCotizador' => $this->input->post('checksEncabezado_vendedor'),
-            'mostrarFecha' => $this->input->post('checksEncabezado_fecha'),
-            'mostrarHora' => $this->input->post('checksEncabezado_hora'),
-            'mostrarImagenEncabezado' => $this->input->post('checksEncabezado_logo'),
+            'tipoLetraEncabezado' => '',
+            'mostrarNombreEmpresa' => $nombreEmpresaEncabezado,
+            'mostrarCodigo' => $codigoEncabezado,
+            'mostrarCliente' => $clienteEncabezado,
+            'mostrarAtencion' => $atencionEncabezado,
+            'mostrarCotizador' => $vendedorEncabezado,
+            'mostrarFecha' => $fechaEncabezado,
+            'mostrarHora' => $horaEncabezado,
+            'mostrarImagenEncabezado' => $logoEncabezado,
             'textoAdicionalEncabezado' => '',
             'colorDetalle' => $this->input->post('colorCuerpo_colorFondo'),
             'colorLetraDetalle' => $this->input->post('colorCuerpo_colorLetra'),
             'colorBarraHorizontal2' => $this->input->post('colorCuerpo_colorBarra'),
-
             'tipoLetraDeralle' => '',
             'mostrarImpuesto' => '',
             'mostrarDescuento' => '',
@@ -83,32 +164,30 @@ class Cotizacion extends CI_Controller
             'colorLetraInformcion' => $this->input->post('colorInformacion_colorLetra'),  
             'colorBarraHorizontal3' => $this->input->post('colorInformacion_colorBarra'),  
             'tipoLetraInformacion' => '',  
-
-            'mostrarFormaPago' => $this->input->post('checksInformacion_formaPago'),  
-            'mostrarValidez' => $this->input->post('checksInformacion_validez'),  
-            'mostrarDetalle' => $this->input->post('checksInformacion_informacionDetalle'),  
-            'mostrarFirma' => $this->input->post('checksInformacion_firma'),  
+            'mostrarFormaPago' => $formaPagoInformacion,  
+            'mostrarValidez' => $validezInformacion,  
+            'mostrarDetalle' => $informacionDetalleInformacion,  
+            'mostrarFirma' => $firmaInformacion,  
             'imagenFirma' => '',  
             'textoAdicionalInformacion' => '',
             'colorPie' => $this->input->post('colorFooter_colorFondo'),  
             'colorLetraPie' => $this->input->post('colorFooter_colorLetra'),  
             'tipoLetraPie' => '',
-
-            'mostrarTelefono' => $this->input->post('checksFooter_telefono'),  
-            'mostrarSitioWeb' => $this->input->post('checksFooter_sitio'),  
-            'mostrarCorreo' => $this->input->post('checksFooter_correo'),  
-            'mostrarImagenPie' => $this->input->post('checksFooter_logo'),  
+            'mostrarTelefono' => $telefonoFooter,  
+            'mostrarSitioWeb' => $sitioFooter,  
+            'mostrarCorreo' => $correoFooter,  
+            'mostrarImagenPie' => $logoFooter,  
             'textoAdicionalPie' => ''
         );
-        // if (!$this->Empleado_model->insertar($data)) {
-        //     //Error en la transacción
-        //     echo 0;
-        // } else {
-        //     // correcto
-        //     echo 1;
-        // }
+        if (!$this->Cotizacion_model->insertarPlantilla($data)) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            // correcto
+            echo 1;
+        }
 
-    echo print_r($data);
+    // echo print_r($data);
         
     }
 
