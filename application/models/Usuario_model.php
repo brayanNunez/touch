@@ -54,7 +54,7 @@ class Usuario_model extends CI_Model
             }
             $this->db->trans_commit();
 
-            $path = 'files/'.$data['datos']['idEmpresa'].'/'.$insert_id;
+            $path = 'files/empresas/'.$data['datos']['idEmpresa'].'/usuarios/'.$insert_id;
             if(!is_dir($path)){
                 mkdir($path);
             }

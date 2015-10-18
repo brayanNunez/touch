@@ -56,7 +56,7 @@ class Usuarios extends CI_Controller
             //Error en la transacción
             echo 0;
         } else {
-            $config['upload_path'] = './files/'.$data['datos']['idEmpresa'].'/'.$usuario;
+            $config['upload_path'] = './files/empresas/'.$data['datos']['idEmpresa'].'/usuarios/'.$usuario;
             $config['file_name'] = 'profile_picture_'.$usuario;
             $config['allowed_types'] = 'jpg|png|jpeg';
             $config['max_size'] = '2048';
@@ -64,10 +64,12 @@ class Usuarios extends CI_Controller
             $this->load->library('upload', $config);
             if(!$this->upload->do_upload()) {
 //            echo $this->upload->display_errors();
-            } else {
-                $archivo = $this->upload->data();
-//            $data['datos']['fotografia'] = $archivo['raw_name'] . $archivo['file_ext'];
+//                echo 2;
             }
+//             else {
+//                $archivo = $this->upload->data();
+//                $data['datos']['fotografia'] = $archivo['raw_name'] . $archivo['file_ext'];
+//            }
             echo 1;
         }
     }
@@ -175,7 +177,7 @@ class Usuarios extends CI_Controller
         if (!$usuario) {
             echo 0;
         } else {
-            $ruta = './files/'.$data['datos']['idEmpresa'].'/'. $data['id'];
+            $ruta = './files/empresas/'.$data['datos']['idEmpresa'].'/usuarios/'. $data['id'];
             if($usuario != 'sinFoto') {
                 unlink($ruta . '/profile_picture_' . $data['id'] . '.' . $usuario);
             }

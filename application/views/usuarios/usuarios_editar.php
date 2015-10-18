@@ -12,7 +12,7 @@
     $rolContador = '';
     $contrasena = '';
     $accion = base_url().'usuarios/modificar/';
-    $ruta = base_url().'files/';
+    $ruta = base_url().'files/empresas/';
     if (isset($resultado)) {
         $idUsuario = encryptIt($resultado['idUsuario']);
         $accion .= encryptIt($resultado['idUsuario']);
@@ -26,7 +26,7 @@
         $rolContador = $resultado['roles']['rolContador'];
         $contrasena = $resultado['contrasena'];
         if(isset($resultado['fotografia'])) {
-            $ruta .= $resultado['idEmpresa'].'/'.$resultado['idUsuario'].'/profile_picture_'.$resultado['idUsuario'].'.'.$resultado['fotografia'];
+            $ruta .= $resultado['idEmpresa'].'/usuarios/'.$resultado['idUsuario'].'/profile_picture_'.$resultado['idUsuario'].'.'.$resultado['fotografia'];
         } else {
             $ruta.= 'default-user-image.png';
         }

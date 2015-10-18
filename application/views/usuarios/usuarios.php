@@ -239,12 +239,18 @@
                             url: url,
                             data: formData,
                             success: function(response) {
-                                if (response == 0) {
-                                    $('#linkModalError').click();
-                                } else {
-                                    $('#linkModalGuardado').click();
-                                    $('form')[0].reset();
-                                    $('#imagen_seleccionada').attr('src', '<?= base_url(); ?>files/default-user-image.png');
+                                switch(response) {
+                                    case '0':
+                                        $('#linkModalError').click();
+                                        break;
+                                    case '1':
+                                        $('#linkModalGuardado').click();
+                                        $('form')[0].reset();
+                                        $('#imagen_seleccionada').attr('src', '<?= base_url(); ?>files/default-user-image.png');
+                                        break;
+//                                    case '2':
+//                                        alert('Ha ocurrido un error con la imagen.');
+//                                        break;
                                 }
                             },
                             cache: false,
