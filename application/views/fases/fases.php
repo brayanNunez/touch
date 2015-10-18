@@ -336,12 +336,12 @@
     </div>
     <div class="modal-content">
         <div class="row">
-            <div>
+            <div id="contenedorFases">
                 <div class="input-field col s12 m4 l4">
                     <input id="nuevaFase_codigo" type="text">
                     <label for="nuevaFase_codigo"><?= label('fase_codigo') ?></label>
                 </div>
-                <div class="input-field col s12 m4 l8">
+                <div class="input-field col s12 m8 l8">
                     <input id="nuevaFase_nombre" type="text">
                     <label for="nuevaFase_nombre"><?= label('fase_nombre') ?></label>
                 </div>
@@ -349,9 +349,9 @@
                     <textarea id="nuevaFase_notas" class="materialize-textarea" rows="4"></textarea>
                     <label for="nuevaFase_notas"><?= label('fase_notas') ?></label>
                 </div>
-            </div>
-            <div id="contenedorFases">
-
+                <div class="col s12">
+                    <hr />
+                </div>
             </div>
             <div class="row">
                 <a id="btn_agregarSubfase" style="text-decoration: underline;float: right;cursor: pointer;"
@@ -378,12 +378,12 @@
     </div>
     <div class="modal-content">
         <div class="row">
-            <div>
+            <div id="contenedorFasesEditar">
                 <div class="input-field col s12 m4 l4">
                     <input id="editarFase_codigo" type="text" value="Prog. 001">
                     <label for="editarFase_codigo"><?= label('fase_codigo') ?></label>
                 </div>
-                <div class="input-field col s12 m4 l8">
+                <div class="input-field col s12 m8 l8">
                     <input id="editarFase_nombre" type="text" value="ERS">
                     <label for="editarFase_nombre"><?= label('fase_nombre') ?></label>
                 </div>
@@ -392,9 +392,9 @@
                     </textarea>
                     <label for="editarFase_notas"><?= label('fase_notas') ?></label>
                 </div>
-            </div>
-            <div id="contenedorFasesEditar">
-
+                <div class="col s12">
+                    <hr />
+                </div>
             </div>
             <div class="col s12">
                 <a id="editar_agregarSubfase" style="text-decoration: underline;float: right;cursor: pointer;"
@@ -483,13 +483,16 @@
                     '<input id="fase' + contador + '_codigo" type="text">' +
                     '<label for="fase' + contador + '_codigo"><?= label('fase_codigo') ?></label>' +
                 '</div>' +
-                '<div class="input-field col s12 m4 l8">' +
+                '<div class="input-field col s12 m8 l8">' +
                     '<input id="fase' + contador + '_nombre" type="text">' +
                     '<label for="fase' + contador + '_nombre"><?= label('fase_nombre') ?></label>' +
                 '</div>' +
                 '<div class="input-field col s12">' +
                     '<textarea id="fase' + contador + '_notas" class="materialize-textarea" rows="4"></textarea>' +
                     '<label for="fase' + contador + '_notas"><?= label('fase_notas') ?></label>' +
+                '</div>' +
+                '<div class="col s12">' +
+                    '<hr />' +
                 '</div>' +
             '</div>'
         );
@@ -507,13 +510,16 @@
                     '<input id="faseEditar' + contadorEditar + '_codigo" type="text">' +
                     '<label for="faseEditar' + contadorEditar + '_codigo"><?= label('fase_codigo') ?></label>' +
                 '</div>' +
-                '<div class="input-field col s12 m4 l8">' +
+                '<div class="input-field col s12 m8 l8">' +
                     '<input id="faseEditar' + contadorEditar + '_nombre" type="text">' +
                     '<label for="faseEditar' + contadorEditar + '_nombre"><?= label('fase_nombre') ?></label>' +
                 '</div>' +
                 '<div class="input-field col s12">' +
                     '<textarea id="faseEditar' + contadorEditar + '_notas" class="materialize-textarea" rows="4"></textarea>' +
                     '<label for="faseEditar' + contadorEditar + '_notas"><?= label('fase_notas') ?></label>' +
+                '</div>' +
+                '<div class="col s12">' +
+                    '<hr />' +
                 '</div>' +
             '</div>'
         );
