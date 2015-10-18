@@ -141,7 +141,7 @@
                                 <td>Ronald Alfaro</td>
                                 <td>Programador</td>
                                 <td>Hora</td>
-                                <td><input type="text" value="10"/></td>
+                                <td><input type="number" value="10"/></td>
                                 <td>$250,000.00</td>
                             </tr>
                             <tr>
@@ -150,7 +150,7 @@
                                 <td>Juan Gomez</td>
                                 <td>Programador</td>
                                 <td>Hora</td>
-                                <td><input type="text" value="20"/></td>
+                                <td><input type="number" value="20"/></td>
                                 <td>$300,000.00</td>
                             </tr>
                             <tr>
@@ -159,7 +159,7 @@
                                 <td>Mauricio Fernandez</td>
                                 <td>Tecnico</td>
                                 <td>Hora</td>
-                                <td><input type="text" value="7"/></td>
+                                <td><input type="number" value="7"/></td>
                                 <td>$70,000.00</td>
                             </tr>
                             <tr>
