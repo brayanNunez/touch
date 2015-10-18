@@ -910,6 +910,8 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['tooltip_guardarDescargar'] = 'Guardar y descargar';
     $lang['tooltip_guardarCerrar'] = 'Guardar y cerrar';
     $lang['tooltip_cancelarCot'] = 'Cancelar cotización';
+    $lang['insertarSoloLinea'] = 'Insertar solo como línea';
+    $lang['insertarGuardarServicio'] = 'Guardar servicio';
 
     $lang['menuOpciones_seleccionar'] = 'Opciones';
     $lang['menuOpciones_editar'] = 'Editar';
