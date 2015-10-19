@@ -703,7 +703,6 @@ $js_array = json_encode($plantillas);
 echo "var arrayPlantillas =". $js_array;?> 
 
 function cargarDieseno(idPlantilla){
-
         recalcularAlturaContenido();
 
         function recalcularAlturaContenido() {
@@ -868,14 +867,9 @@ function cargarDieseno(idPlantilla){
             }
         }
        
-        <?php 
-        if (count($plantillas) > 0) {
-        ?>
-         desplegarPlantilla(idPlantilla);
-        <?php
-        }
-        ?>
-       
+        if (arrayPlantillas.length != 0) {
+            desplegarPlantilla(idPlantilla);
+        };
 
         function desplegarPlantilla(idPlantilla){
             // alert('hola mundo');
@@ -1119,7 +1113,7 @@ function validacionCorrecta(){
                    success: function(response)
                    {
                         arrayPlantillas = $.parseJSON(response);
-                        // alert(response);
+                        alert(response);
                         var valor = arrayPlantillas.length -1;
                         var nombre = arrayPlantillas[valor]['nombrePlantilla'];
                         $('#paso3_plantilla').append('<option selected value="'+ valor + '">'+ nombre +'</option>');
