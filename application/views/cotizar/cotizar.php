@@ -149,7 +149,7 @@
         $('#contenedorSelectProductoItem' + id + '').html(miSelect);
     }
     function generarListas(){
-        // alert("generando")
+        alert("generando");
 
         var config = {'.chosen-select'           : {}}
           for (var selector in config) {

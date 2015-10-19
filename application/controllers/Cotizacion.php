@@ -48,6 +48,20 @@ class Cotizacion extends CI_Controller
     }
 
     //Metodo llamado mediante ajax
+    public function cargarTodasPlnatillas()
+    {
+        verificarLogin();//helper
+
+        $plantillas = $this->Cotizacion_model->cargarTodasPlantillas(); 
+        // if ($plantillas === false || $plantillas === array()) {
+        if ($plantillas === false) {
+            echo "0";
+        } else {
+            echo json_encode($plantillas); 
+        }
+    }
+
+    //Metodo llamado mediante ajax
      public function nuevaPlantilla()
     {
         // if (isset($this->input->post('checksEncabezado_hora'])) {
@@ -97,12 +111,12 @@ class Cotizacion extends CI_Controller
            $logoEncabezado = 1;
         }
 
-        $formaPagoIndormacion = 0;
+        $formaPagoInformacion = 0;
         if (isset($_POST['checksInformacion_formaPago'])) {
            $formaPagoInformacion = 1;
         }
 
-        $validezIndormacion = 0;
+        $validezInformacion = 0;
         if (isset($_POST['checksInformacion_validez'])) {
            $validezInformacion = 1;
         }
@@ -112,7 +126,7 @@ class Cotizacion extends CI_Controller
            $firmaInformacion = 1;
         }
 
-        $informacionDetalleIndormacion = 0;
+        $informacionDetalleInformacion = 0;
         if (isset($_POST['checksInformacion_informacionDetalle'])) {
            $informacionDetalleInformacion = 1;
         }
