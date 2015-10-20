@@ -19,113 +19,7 @@
                <div class="row">
                   <div class="col s12 ">
                      <div class="card" id="card-diseno"> -->
-<script type="text/javascript">
 
-// function rgbToHex(color) {
-//     if (color.substr(0, 1) === '#') {
-//         return color;
-//     }
-//     var digits = /(.*?)rgb\((\d+), (\d+), (\d+)\)/.exec(color);
-
-//     var red = parseInt(digits[2]);
-//     var green = parseInt(digits[3]);
-//     var blue = parseInt(digits[4]);
-
-//     var rgb = blue | (green << 8) | (red << 16);
-//     return digits[1] + '#' + rgb.toString(16);
-// };
-
-function componentToHex(c) {
-    var hex = c.toString(16);
-    return hex.length == 1 ? "0" + hex : hex;
-}
-
-function rgbToHex(rgbColor) {
-    rgb = rgbColor.substring(4, rgbColor.length-1).replace(/ /g, '').split(',');
-    return "#" + componentToHex(parseInt(rgb[0])) + componentToHex(parseInt(rgb[1])) + componentToHex(parseInt(rgb[2]));
-}
-
-function obtenerDatosEncabezado(){
-    var plantilla = {"colorEncabezado":rgbToHex($('#encabezado').css("background-color")),
-    "colorLetraEncabezado":rgbToHex($('#encabezado').css("color")),
-    "colorBarraHorizontal1":rgbToHex($('#barra1').css("background-color")),
-    "tipoLetraEncabezado":"",
-    "mostrarNombreEmpresa":$('#encabezado .box#nombreEmpresa').is(':visible'),
-    "mostrarCodigo":$('#encabezado .box#codigoCotizacion').is(':visible'),
-    "mostrarCliente":$('#encabezado .box#cliente').is(':visible'),
-    "mostrarAtencion":$('#encabezado .box#atencion').is(':visible'),
-    "mostrarCotizador":$('#encabezado .box#vendedor').is(':visible'),
-    "mostrarFecha":$('#encabezado .box#fecha').is(':visible'),
-    "mostrarHora":$('#encabezado .box#hora').is(':visible'),
-    "mostrarImagenEncabezado":$('#encabezado .box#logo').is(':visible'),
-    "textoAdicionalEncabezado":""
-    };
-    // alert(plantilla['mostrarNombreEmpresa']);
-    actualizarModalEncabezado(plantilla);
-}
-
-function obtenerDatosCuerpo(){
-    var plantilla = {"colorDetalle":rgbToHex($('#hoja').css("background-color")),
-    "colorLetraDetalle":rgbToHex($('#hoja').css("color")),
-    "colorBarraHorizontal2":rgbToHex($('#barra2').css("background-color")),
-    "tipoLetraDeralle":"",
-    "mostrarImpuesto":"0",
-    "mostrarDescuento":"0",
-    "mostrarTotal":"0"
-    }
-        // alert('visible: ' + (plantilla['colorEncabezado']));
-    actualizarModalDetalle(plantilla);
-}
-
-function obtenerDatosInformacion(){
-    var plantilla = {
-    "colorInformacion":rgbToHex($('#informacion').css("background-color")),
-    "colorLetraInformcion":rgbToHex($('#informacion').css("color")),
-    "colorBarraHorizontal3":rgbToHex($('#barra3').css("background-color")),
-    "tipoLetraInformacion":"", 
-    "mostrarFormaPago":$('#informacion .box#formaPago').is(':visible'),
-    "mostrarValidez":$('#informacion .box#validez').is(':visible'),
-    "mostrarDetalle":$('#informacion .box#informacionDetalle').is(':visible'),
-    "mostrarFirma":$('#informacion .box#firma').is(':visible'),
-    "imagenFirma":"",
-    "textoAdicionalInformacion":""
-    }
-    // alert('visible: ' + (plantilla['colorEncabezado']));
-    actualizarModalInformacion(plantilla);
-}
-function obtenerDatosFooter(){
-    var plantilla = {
-    "colorPie":rgbToHex($('#footerCotizacion').css("background-color")),
-    "colorLetraPie":rgbToHex($('#footerCotizacion').css("color")),
-    "tipoLetraPie":"",
-    "mostrarTelefono":$('#footerCotizacion .box#telefono').is(':visible'),
-    "mostrarSitioWeb":$('#footerCotizacion .box#sitio').is(':visible'),
-    "mostrarCorreo":$('#footerCotizacion .box#correo').is(':visible'),
-    "mostrarImagenPie":$('#footerCotizacion .box#logo').is(':visible'),
-    "textoAdicionalPie":"0"
-    };
-    // alert('visible: ' + (plantilla['colorEncabezado']));
-    actualizarModalFooter(plantilla);
-}
-    $(document).on('ready', function(){
-        $('#contenerdorEditarEncabezado').on('click', function(){
-            obtenerDatosEncabezado();
-        });
-
-        $('#contenedorEditarCuerpo').on('click', function(){
-            obtenerDatosCuerpo();
-        });
-
-         $('#contenedorEditarInformacion').on('click', function(){
-            obtenerDatosInformacion();
-        });
-
-         $('#contenedorEditarFooter').on('click', function(){
-            obtenerDatosFooter();
-        });
-
-    });
-</script>
 
 
 
@@ -1021,27 +915,6 @@ function actualizarModalFooter(plantilla){
     // };
 }
 
-
-
-    
-
-    // {
-    // "colorPie":"#008000",
-    // "colorLetraPie":"#000000",
-    // "tipoLetraPie":"",
-    // "mostrarTelefono":$('#encabezado .box#').is(':visible'),
-    // "mostrarSitioWeb":"1",
-    // "mostrarCorreo":"1",
-    // "mostrarImagenPie":"1",
-    // "textoAdicionalPie":"0"
-    // };
-    // function (a){
-    //   a=a.replace(/[^\d,]/g,"").split(","); 
-    //   return"#"+((1<<24)+(+a[0]<<16)+(+a[1]<<8)+ +a[2]).toString(16).slice(1);
-    // }
-
-// 
-
 // $(document).ready(function(){
         $("#crear").click(function () {
             // alert("hola");
@@ -1134,6 +1007,96 @@ function validacionCorrecta(){
     }
 }
 
+function componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+}
+
+function rgbToHex(rgbColor) {
+    rgb = rgbColor.substring(4, rgbColor.length-1).replace(/ /g, '').split(',');
+    return "#" + componentToHex(parseInt(rgb[0])) + componentToHex(parseInt(rgb[1])) + componentToHex(parseInt(rgb[2]));
+}
+
+function obtenerDatosEncabezado(){
+    var plantilla = {"colorEncabezado":rgbToHex($('#encabezado').css("background-color")),
+    "colorLetraEncabezado":rgbToHex($('#encabezado').css("color")),
+    "colorBarraHorizontal1":rgbToHex($('#barra1').css("background-color")),
+    "tipoLetraEncabezado":"",
+    "mostrarNombreEmpresa":$('#encabezado .box#nombreEmpresa').is(':visible'),
+    "mostrarCodigo":$('#encabezado .box#codigoCotizacion').is(':visible'),
+    "mostrarCliente":$('#encabezado .box#cliente').is(':visible'),
+    "mostrarAtencion":$('#encabezado .box#atencion').is(':visible'),
+    "mostrarCotizador":$('#encabezado .box#vendedor').is(':visible'),
+    "mostrarFecha":$('#encabezado .box#fecha').is(':visible'),
+    "mostrarHora":$('#encabezado .box#hora').is(':visible'),
+    "mostrarImagenEncabezado":$('#encabezado .box#logo').is(':visible'),
+    "textoAdicionalEncabezado":""
+    };
+    // alert(plantilla['mostrarNombreEmpresa']);
+    actualizarModalEncabezado(plantilla);
+}
+
+function obtenerDatosCuerpo(){
+    var plantilla = {"colorDetalle":rgbToHex($('#hoja').css("background-color")),
+    "colorLetraDetalle":rgbToHex($('#hoja').css("color")),
+    "colorBarraHorizontal2":rgbToHex($('#barra2').css("background-color")),
+    "tipoLetraDeralle":"",
+    "mostrarImpuesto":"0",
+    "mostrarDescuento":"0",
+    "mostrarTotal":"0"
+    }
+        // alert('visible: ' + (plantilla['colorEncabezado']));
+    actualizarModalDetalle(plantilla);
+}
+
+function obtenerDatosInformacion(){
+    var plantilla = {
+    "colorInformacion":rgbToHex($('#informacion').css("background-color")),
+    "colorLetraInformcion":rgbToHex($('#informacion').css("color")),
+    "colorBarraHorizontal3":rgbToHex($('#barra3').css("background-color")),
+    "tipoLetraInformacion":"", 
+    "mostrarFormaPago":$('#informacion .box#formaPago').is(':visible'),
+    "mostrarValidez":$('#informacion .box#validez').is(':visible'),
+    "mostrarDetalle":$('#informacion .box#informacionDetalle').is(':visible'),
+    "mostrarFirma":$('#informacion .box#firma').is(':visible'),
+    "imagenFirma":"",
+    "textoAdicionalInformacion":""
+    }
+    // alert('visible: ' + (plantilla['colorEncabezado']));
+    actualizarModalInformacion(plantilla);
+}
+function obtenerDatosFooter(){
+    var plantilla = {
+    "colorPie":rgbToHex($('#footerCotizacion').css("background-color")),
+    "colorLetraPie":rgbToHex($('#footerCotizacion').css("color")),
+    "tipoLetraPie":"",
+    "mostrarTelefono":$('#footerCotizacion .box#telefono').is(':visible'),
+    "mostrarSitioWeb":$('#footerCotizacion .box#sitio').is(':visible'),
+    "mostrarCorreo":$('#footerCotizacion .box#correo').is(':visible'),
+    "mostrarImagenPie":$('#footerCotizacion .box#logo').is(':visible'),
+    "textoAdicionalPie":"0"
+    };
+    // alert('visible: ' + (plantilla['colorEncabezado']));
+    actualizarModalFooter(plantilla);
+}
+    $(document).on('ready', function(){
+        $('#contenerdorEditarEncabezado').on('click', function(){
+            obtenerDatosEncabezado();
+        });
+
+        $('#contenedorEditarCuerpo').on('click', function(){
+            obtenerDatosCuerpo();
+        });
+
+         $('#contenedorEditarInformacion').on('click', function(){
+            obtenerDatosInformacion();
+        });
+
+         $('#contenedorEditarFooter').on('click', function(){
+            obtenerDatosFooter();
+        });
+
+    });
 
 </script>
 
@@ -1153,7 +1116,7 @@ function validacionCorrecta(){
             </div>
         </div>
         <div id="botonEliminar" class="modal-footer black-text">
-            <a onclick="$(this).closest('form').submit()" class="waves-effect waves-red btn-flat modal-action"><?= label('aceptar'); ?></a>
+            <a onclick="$(this).closest('form').submit()" class="waves-effect waves-green btn-flat modal-action"><?= label('aceptar'); ?></a>
         </div>
     </form>
 </div>

@@ -2,11 +2,11 @@
 
 <script type="text/javascript">
 
-    function agregarFila(){
-        generarAutocompletarProductoNombre(3);
-        generarAutocompletarProductoItem(3);
-        generarListas();
-    }
+    // function agregarFila(){
+    //     generarAutocompletarProductoNombre(3);
+    //     generarAutocompletarProductoItem(3);
+    //     generarListas();
+    // }
 
     //El método botonEnLista es llamado desde el archivo chosen.jquery cuando se quiere agregar un nuevo elemento desde el select o bien puede ser llamado desde el método
     //$('.chosen-select').on('change',function(){ que se encuentra es en este mismo archivo. La razón es que el plugin chosen.jquery solo  funciona
@@ -149,7 +149,7 @@
         $('#contenedorSelectProductoItem' + id + '').html(miSelect);
     }
     function generarListas(){
-        alert("generando");
+        // alert("generando");
 
         var config = {'.chosen-select'           : {}}
           for (var selector in config) {
@@ -162,11 +162,11 @@
     $(document).on("ready", function(){
 
 
-        generarAutocompletarProductoNombre(1);
-        generarAutocompletarProductoNombre(2);
+        generarAutocompletarProductoNombre(0);
+        // generarAutocompletarProductoNombre(2);
 
-        generarAutocompletarProductoItem(1);
-        generarAutocompletarProductoItem(2);
+        generarAutocompletarProductoItem(0);
+        // generarAutocompletarProductoItem(2);
 
         
 
@@ -180,7 +180,7 @@
         generarListas();
 
 
-         $('.chosen-select').on('change',function(){
+         $(document).on('change','.chosen-select',function(){
             var valor = $(this).val();
             var tipo = $(this).attr("data-tipo");
             if (valor=="nuevo") {

@@ -1,6 +1,93 @@
-<button onclick="agregarFila()">Agregar Fila(boton de prueba)</button>
+<button onclick="agregarFila()">Agregar botones(boton de prueba)</button>
+<button id="botonAgregarFila">Agregar Fila(boton de prueba)</button>
 
 <!-- <button id="myFunction">Vamos tu puedes</button> -->
+
+<script type="text/javascript">
+    
+var contadorFilas = 1; //inicia en 1 porque siempre se va a mostrar uno fila con sus valores en 0
+$('#botonAgregarFila').on('click', function(){
+    // alert('agregar fila');
+    var html = '<tr>'+
+    '<td style="text-align: center;">'+
+        '<input type="checkbox" class="filled-in checkbox" id="checkbox_cotizacion1_item'+contadorFilas+'"/>'+
+        '<label for="checkbox_cotizacion1_item'+contadorFilas+'"></label>'+
+    '</td>'+
+    '<td>'+
+        '<row>'+
+            '<div id="contenedorSelectProductoItem'+contadorFilas+'" class="contenedorSelectProductoItem"></div>'+
+        '</row>'+
+    '</td>'+
+    '<td>'+
+        '<row>'+
+            '<div id="contenedorSelectProductoNombre'+contadorFilas+'" class="contenedorSelectProductoNombre"></div>'+
+       '</row>'+
+    '</td>'+
+    '<td>'+
+        '<row>'+
+            '<input value="Música en vivo" type="text" name="descripcion_'+contadorFilas+'">'+
+        '</row>'+
+    '</td>'+
+    '<td>'+
+        '<row>'+
+            '<input value="musica.jpg" type="text" name="imagen_'+contadorFilas+'" readonly="true">'+
+        '</row>'+
+    '</td>'+
+    '<td>'+
+        '<row>'+
+            '<input value="$200" type="text" name="precio_'+contadorFilas+'">'+
+        '</row>'+
+    '</td>'+
+    '<td>'+
+        '<row>'+
+            '<input value="1" type="number" name="cantidad_'+contadorFilas+'">'+
+        '</row>'+
+    '</td>'+
+    '<td>'+
+        '<row>'+
+             '<div id="impuestosProducto" class="example tags_Impuestos">'+
+                '<div class="bs-example">'+
+                    '<input placeholder="<?= label('formProducto_anadirImpuesto'); ?>" type="text"/>'+
+                '</div>'+
+            '</div>'+
+        '</row>'+
+    '</td>'+
+    '<td>'+
+        '<row>'+
+            '<input value="10" type="number" name="utilidad_'+contadorFilas+'">'+
+        '</row>'+
+    '</td>'+
+    '<td>'+
+        '<row>'+
+            '<input value="$200" type="text" name="subTotal_'+contadorFilas+'" readonly="true">'+
+        '</row>'+
+    '</td>'+
+    '<td>'+
+        '<div class="col s12 m12 l12 celdaBoton">'+
+            '<ul id="dropdown-cotizacion1-item'+contadorFilas+'" class="dropdown-content">'+
+                '<li>'+
+                    '<a href="#Elminar class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>'+
+                '</li>'+
+            '</ul>'+
+            '<a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-cotizacion1-item'+contadorFilas+'">'+
+                '<?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>'+
+            '</a>'+
+        '</div>'+
+    '</td>'+
+'</tr>';
+
+$('#contenedorLineas').append(html);
+cargarTags_Impuestos();
+generarAutocompletarProductoNombre(contadorFilas);
+generarAutocompletarProductoItem(contadorFilas);
+generarListas();
+// alert('di');
+
+contadorFilas++;
+});
+
+
+</script>
 
 <div id="centered-table">
     <div class="row">
@@ -97,401 +184,71 @@
                         <!--                        <th data-field="price">Opciones</th>-->
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="contenedorLineas">
                     <tr>
                         <td style="text-align: center;">
-                            <input type="checkbox" class="filled-in checkbox" id="checkbox_cotizacion1_item1"/>
-                            <label for="checkbox_cotizacion1_item1"></label>
+                            <input type="checkbox" class="filled-in checkbox" id="checkbox_cotizacion1_item0"/>
+                            <label for="checkbox_cotizacion1_item0"></label>
                         </td>
                         <td>
                             <row>
-                                <!-- <div class="col s12 m12 l12">
-                                    <input type="checkbox" id="item_1" class="item" checked>
-                                    <label class="ver" for="item_1">
-                                    </label>
-                                </div> -->
-                                <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <div id="contenedorSelectProductoItem1" class="contenedorSelectProductoItem"></div>
-                                <!-- </div> -->
+                                <div id="contenedorSelectProductoItem0" class="contenedorSelectProductoItem"></div>     
                             </row>
                         </td>
                         <td>
                             <row>
-                                <!-- <div class="col s12 m12 l12">
-                                    <input type="checkbox" id="nombre_1" class="nombre" checked>
-                                    <label class="ver" for="nombre_1">
-                                    </label>
-                                </div> -->
-                                <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <div id="contenedorSelectProductoNombre1" class="contenedorSelectProductoNombre"></div>
-                                    <!--  -->
-                                <!-- </div> -->
+                                <div id="contenedorSelectProductoNombre0" class="contenedorSelectProductoNombre"></div>
                             </row>
                         </td>
                         <td>
                             <row>
-                                <!-- <div class="col s12 m12 l12">
-                                    <input type="checkbox" id="descripcion_1" class="descripcion" checked>
-                                    <label class="ver" for="descripcion_1">
-                                    </label>
-                                </div> -->
-                                <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <input value="Arroz, ensalada, carne" type="text" name="descripcion_1">
-                                <!-- </div> -->
+                                <input value="Arroz, ensalada, carne" type="text" name="descripcion_0">
                             </row>
                         </td>
                         <td>
                             <row>
-                                <!-- <div class="col s12 m12 l12">
-                                    <input type="checkbox" id="imagen_1" class="imagen" checked>
-                                    <label class="ver" for="imagen_1">
-                                    </label>
-                                </div> -->
-                                <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <input value="Almuerzo.jpg" type="text" name="imagen_1" readonly="true">
-                                <!-- </div> -->
+                                <input value="Almuerzo.jpg" type="text" name="imagen_0" readonly="true">
                             </row>
                         </td>
                         <td>
                             <row>
-                                <!-- <div class="col s12 m12 l12">
-                                    <input type="checkbox" id="precio_1" class="precio" checked>
-                                    <label class="ver" for="precio_1">
-                                    </label>
-                                </div> -->
-                                <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <input value="$6" type="text" name="precio_1">
-                                <!-- </div> -->
+                                <input value="$6" type="text" name="precio_0">
                             </row>
                         </td>
                         <td>
                             <row>
-                                <!-- <div class="col s12 m12 l12">
-                                    <input type="checkbox" id="cantidad_1" class="cantidad" checked>
-                                    <label class="ver" for="cantidad_1">
-                                    </label>
-                                </div> -->
-                                <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <input value="20" type="number" name="cantidad_1">
-                                <!-- </div> -->
+                                <input value="20" type="number" name="cantidad_0">
                             </row>
                         </td>
                         <td>
                             <row>
-                                <!-- <div class="col s12 m12 l12">
-                                    <input type="checkbox" id="impuestoVenta_1" class="impuestoVenta" checked>
-                                    <label class="ver" for="impuestoVenta_1">
-                                    </label>
-                                </div> -->
-                                <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <div id="impuestosProducto" class="example tags_Impuestos">
-                                        <div class="bs-example">
-                                            <input placeholder="<?= label('formProducto_anadirImpuesto'); ?>" type="text"/>
-                                        </div>
+                                <div id="impuestosProducto" class="example tags_Impuestos">
+                                    <div class="bs-example">
+                                        <input placeholder="<?= label('formProducto_anadirImpuesto'); ?>" type="text"/>
                                     </div>
-                                <!-- </div> -->
+                                </div>
                             </row>
                         </td>
                         <td>
                             <row>
-                                <!-- <div class="col s12 m12 l12">
-                                    <input type="checkbox" id="utilidad_1" class="utilidad" checked>
-                                    <label class="ver" for="utilidad_1">
-                                    </label>
-                                </div> -->
-                                <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <input value="2" type="number" name="utilidad_1">
-                                <!-- </div> -->
+                                <input value="2" type="number" name="utilidad_0">
                             </row>
                         </td>
                         <td>
                             <row>
-                                <!-- <div class="col s12 m12 l12">
-                                    <input type="checkbox" id="subTotal_1" class="subTotal" checked>
-                                    <label class="ver" for="subTotal_1">
-                                    </label>
-                                </div> -->
-                                <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <input value="$120" type="text" name="subTotal_1" readonly="true">
-                                <!-- </div> -->
+                                <input value="$020" type="text" name="subTotal_0" readonly="true">
                             </row>
                         </td>
                         <td>
                             <div class="col s12 m12 l12 celdaBoton">
-                                <ul id="dropdown-cotizacion1-item1" class="dropdown-content">
+                                <ul id="dropdown-cotizacion1-item0" class="dropdown-content">
                                     <li>
                                         <a href="#Elminar"
                                            class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
                                     </li>
                                 </ul>
                                 <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                   data-activates="dropdown-cotizacion1-item1">
-                                    <?= label('menuOpciones_seleccionar') ?><i
-                                        class="mdi-navigation-arrow-drop-down"></i>
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;">
-                            <input type="checkbox" class="filled-in checkbox" id="checkbox_cotizacion1_item2"/>
-                            <label for="checkbox_cotizacion1_item2"></label>
-                        </td>
-                        <td>
-                            <row>
-                                <!-- <div class="col s12 m12 l12">
-                                    <input type="checkbox" id="item_2" class="item" checked>
-                                    <label class="ver" for="item_2">
-                                    </label>
-                                </div> -->
-                                <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <div id="contenedorSelectProductoItem2" class="contenedorSelectProductoItem"></div>
-                                <!-- </div> -->
-                            </row>
-                        </td>
-                        <td>
-                            <row>
-                                <!-- <div class="col s12 m12 l12">
-                                    <input type="checkbox" id="nombre_2" class="nombre" checked>
-                                    <label class="ver" for="nombre_2">
-                                    </label>
-                                </div> -->
-                                <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <div id="contenedorSelectProductoNombre2" class="contenedorSelectProductoNombre"></div>
-                                    <!--  -->
-                                <!-- </div> -->
-                            </row>
-                        </td>
-                        <td>
-                            <row>
-                                <!-- <div class="col s12 m12 l12">
-                                    <input type="checkbox" id="descripcion_2" class="descripcion" checked>
-                                    <label class="ver" for="descripcion_2">
-                                    </label>
-                                </div> -->
-                                <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <input value="Freso de frutas" type="text" name="descripcion_2">
-                                <!-- </div> -->
-                            </row>
-                        </td>
-                        <td>
-                            <row>
-                                <!-- <div class="col s12 m12 l12">
-                                    <input type="checkbox" id="imagen_2" class="imagen" checked>
-                                    <label class="ver" for="imagen_2">
-                                    </label>
-                                </div> -->
-                                <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <input value="fresco.jpg" type="text" name="imagen_2" readonly="true">
-                                <!-- </div> -->
-                            </row>
-                        </td>
-                        <td>
-                            <row>
-                                <!-- <div class="col s12 m12 l12">
-                                    <input type="checkbox" id="precio_2" class="precio" checked>
-                                    <label class="ver" for="precio_2">
-                                    </label>
-                                </div> -->
-                                <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <input value="$1" type="text" name="precio_2">
-                                <!-- </div> -->
-                            </row>
-                        </td>
-                        <td>
-                            <row>
-                                <!-- <div class="col s12 m12 l12">
-                                    <input type="checkbox" id="cantidad_2" class="cantidad" checked>
-                                    <label class="ver" for="cantidad_2">
-                                    </label>
-                                </div> -->
-                                <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <input value="20" type="number" name="cantidad_2">
-                                <!-- </div> -->
-                            </row>
-                        </td>
-                        <td>
-                            <row>
-                                <!-- <div class="col s12 m12 l12">
-                                    <input type="checkbox" id="impuestoVenta_2" class="impuestoVenta" checked>
-                                    <label class="ver" for="impuestoVenta_2">
-                                    </label>
-                                </div> -->
-                                <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <div id="impuestosProducto" class="example tags_Impuestos">
-                                        <div class="bs-example">
-                                            <input placeholder="<?= label('formProducto_anadirImpuesto'); ?>" type="text"/>
-                                        </div>
-                                    </div>
-                                <!-- </div> -->
-                            </row>
-                        </td>
-                        <td>
-                            <row>
-                                <!-- <div class="col s12 m12 l12">
-                                    <input type="checkbox" id="utilidad_2" class="utilidad" checked>
-                                    <label class="ver" for="utilidad_2">
-                                    </label>
-                                </div> -->
-                                <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <input value="2" type="number" name="utilidad_2">
-                                <!-- </div> -->
-                            </row>
-                        </td>
-                        <td>
-                            <row>
-                                <!-- <div class="col s12 m12 l12">
-                                    <input type="checkbox" id="subTotal_2" class="subTotal" checked>
-                                    <label class="ver" for="subTotal_2">
-                                    </label>
-                                </div> -->
-                                <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <input value="$20" type="text" name="subTotal_2" readonly="true">
-                                <!-- </div> -->
-                            </row>
-                        </td>
-                        <td>
-                            <div class="col s12 m12 l12 celdaBoton">
-                                <ul id="dropdown-cotizacion1-item2" class="dropdown-content">
-                                    <li>
-                                        <a href="#Elminar"
-                                           class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                    </li>
-                                </ul>
-                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                   data-activates="dropdown-cotizacion1-item2">
-                                    <?= label('menuOpciones_seleccionar') ?><i
-                                        class="mdi-navigation-arrow-drop-down"></i>
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;">
-                            <input type="checkbox" class="filled-in checkbox" id="checkbox_cotizacion1_item3"/>
-                            <label for="checkbox_cotizacion1_item3"></label>
-                        </td>
-                        <td>
-                            <row>
-                                <!-- <div class="col s12 m12 l12">
-                                    <input type="checkbox" id="item_3" class="item" checked>
-                                    <label class="ver" for="item_3">
-                                    </label>
-                                </div> -->
-                                <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <div id="contenedorSelectProductoItem3" class="contenedorSelectProductoItem"></div>
-                                <!-- </div> -->
-                            </row>
-                        </td>
-                        <td>
-                            <row>
-                                <!-- <div class="col s12 m12 l12">
-                                    <input type="checkbox" id="nombre_3" class="nombre" checked>
-                                    <label class="ver" for="nombre_3">
-                                    </label>
-                                </div> -->
-                                <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <div id="contenedorSelectProductoNombre3" class="contenedorSelectProductoNombre"></div>
-                            <!-- </row> -->
-                        </td>
-                        <td>
-                            <row>
-                                <!-- <div class="col s12 m12 l12">
-                                    <input type="checkbox" id="descripcion_3" class="descripcion" checked>
-                                    <label class="ver" for="descripcion_3">
-                                    </label>
-                                </div> -->
-                                <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <input value="Música en vivo" type="text" name="descripcion_3">
-                                <!-- </div> -->
-                            </row>
-                        </td>
-                        <td>
-                            <row>
-                                <!-- <div class="col s12 m12 l12">
-                                    <input type="checkbox" id="imagen_3" class="imagen" checked>
-                                    <label class="ver" for="imagen_3">
-                                    </label>
-                                </div> -->
-                                <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <input value="musica.jpg" type="text" name="imagen_3" readonly="true">
-                                <!-- </div> -->
-                            </row>
-                        </td>
-                        <td>
-                            <row>
-                                <!-- <div class="col s12 m12 l12">
-                                    <input type="checkbox" id="precio_3" class="precio" checked>
-                                    <label class="ver" for="precio_3">
-                                    </label>
-                                </div> -->
-                                <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <input value="$200" type="text" name="precio_3">
-                                <!-- </div> -->
-                            </row>
-                        </td>
-                        <td>
-                            <row>
-                                <!-- <div class="col s12 m12 l12">
-                                    <input type="checkbox" id="cantidad_3" class="cantidad" checked>
-                                    <label class="ver" for="cantidad_3">
-                                    </label>
-                                </div> -->
-                                <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <input value="1" type="number" name="cantidad_3">
-                                <!-- </div> -->
-                            </row>
-                        </td>
-                        <td>
-                            <row>
-                                <!-- <div class="col s12 m12 l12">
-                                    <input type="checkbox" id="impuestoVenta_3" class="impuestoVenta" checked>
-                                    <label class="ver" for="impuestoVenta_3">
-                                    </label>
-                                </div> -->
-                                <!-- <div class="col s12 m12 l12 celda"> -->
-                                     <div id="impuestosProducto" class="example tags_Impuestos">
-                                        <div class="bs-example">
-                                            <input placeholder="<?= label('formProducto_anadirImpuesto'); ?>" type="text"/>
-                                        </div>
-                                    </div>
-                                <!-- </div> -->
-                            </row>
-                        </td>
-                        <td>
-                            <row>
-                                <!-- <div class="col s12 m12 l12">
-                                    <input type="checkbox" id="utilidad_3" class="utilidad" checked>
-                                    <label class="ver" for="utilidad_3">
-                                    </label>
-                                </div> -->
-                                <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <input value="10" type="number" name="utilidad_3">
-                                <!-- </div> -->
-                            </row>
-                        </td>
-                        <td>
-                            <row>
-                                <!-- <div class="col s12 m12 l12">
-                                    <input type="checkbox" id="subTotal_3" class="subTotal" checked>
-                                    <label class="ver" for="subTotal_3">
-                                    </label>
-                                </div> -->
-                                <!-- <div class="col s12 m12 l12 celda"> -->
-                                    <input value="$200" type="text" name="subTotal_3" readonly="true">
-                                <!-- </div> -->
-                            </row>
-                        </td>
-                        <td>
-                            <div class="col s12 m12 l12 celdaBoton">
-                                <ul id="dropdown-cotizacion1-item3" class="dropdown-content">
-                                    <li>
-                                        <a href="#Elminar"
-                                           class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                    </li>
-                                </ul>
-                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                   data-activates="dropdown-cotizacion1-item3">
+                                   data-activates="dropdown-cotizacion1-item0">
                                     <?= label('menuOpciones_seleccionar') ?><i
                                         class="mdi-navigation-arrow-drop-down"></i>
                                 </a>
@@ -725,8 +482,8 @@
 </script>
 
 <script>
-    $(document).ready(function () {
 
+    function cargarTags_Impuestos(){
         var Impuestos = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -752,6 +509,9 @@
 
         elt.tagsinput('add', {"value": 1, "text": "Impuestos directos", "continent": "Europe"});
         elt.tagsinput('add', {"value": 2, "text": "Impuestos indirectos", "continent": "America"});
+    }
+    $(document).ready(function () {
+        cargarTags_Impuestos();
     });
 </script>
 
