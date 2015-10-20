@@ -14,7 +14,7 @@ class Servicios extends CI_Controller
     {
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
-        $this->load->view('servicios/productos_servicios');
+        $this->load->view('servicios/servicios_lista');
         $this->load->view('layout/default/footer');
     }
 

@@ -342,13 +342,14 @@
                                             </div>
 
                                         <div class="input-field col offset-s6 s6">
-                                            <input id="servicio_utilidad" type="text">
+                                            <input id="servicio_utilidad" type="number">
                                             <label
-                                                for="servicio_utilidad"><?= label('formServicio_utilidad'); ?></label>
+                                                for="servicio_utilidad"><?= label('formServicio_utilidad'); ?>
+                                            </label>
                                         </div>
 
                                         <div class="input-field col offset-s6 s6">
-                                            <input id="servicio_total" type="text">
+                                            <input id="servicio_total" type="number" disabled>
                                             <label for="servicio_total"><?= label('formServicio_total'); ?></label>
                                         </div>
 

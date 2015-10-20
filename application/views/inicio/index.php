@@ -192,14 +192,25 @@
                                         <p class="card-stats-title"><i class="mdi-editor-attach-money"></i>Cotizaciones
                                             aprobadas</p>
                                         <h4 class="card-stats-number">8</h4>
-
-                                        <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-up"></i> 70%
-                                            <span class="purple-text text-lighten-5">mes pasado</span>
-                                        </p>
                                     </div>
                                     <div class="card-action purple darken-2">
                                         <div></div>
 
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="<?= base_url() ?>cotizacion">
+                            <div class="col s12 m6 l12">
+                                <div class="card">
+                                    <div class="card-content deep-purple white-text">
+                                        <p class="card-stats-title"><i class="mdi-editor-insert-drive-file"></i>
+                                            Cotizaciones facturadas </p>
+                                        <h4 class="card-stats-number">16</h4>
+
+                                    </div>
+                                    <div class="card-action  deep-purple darken-2">
+                                        <div></div>
                                     </div>
                                 </div>
                             </div>
