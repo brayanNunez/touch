@@ -331,7 +331,7 @@ class Clientes extends CI_Controller
         $idEmpresa = $sessionActual['idEmpresa'];
 
         $resultado = $this->Cliente_model->gustosSugerencia($idEmpresa); 
-        $gustos = [];
+        $gustos = array();
         foreach ($resultado as $v){
             array_push($gustos,$v['nombre']);
         }
@@ -345,7 +345,7 @@ class Clientes extends CI_Controller
         $idEmpresa = $sessionActual['idEmpresa'];
 
         $resultado = $this->Cliente_model->mediosSugerencia($idEmpresa); 
-        $gustos = [];
+        $gustos = array();
         foreach ($resultado as $v){
             array_push($gustos,$v['nombre']);
         }

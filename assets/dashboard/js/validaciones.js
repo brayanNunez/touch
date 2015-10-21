@@ -5,36 +5,36 @@
              var cliente_contactoNombre = {required: true, minlength: 3, maxlength: 6};
 
 
-            //  $('#form_cliente').validate({
-            //     rules:
-            //     {
-            //         cliente_contactoNombre_0: cliente_contactoNombre,
-            //         cliente_contactoNombre_1: cliente_contactoNombre,
-            //         cliente_contactoNombre_2: cliente_contactoNombre,
-            //         cliente_contactoNombre_3: cliente_contactoNombre,
-            //         cliente_contactoNombre_4: cliente_contactoNombre,
-            //         cliente_contactoNombre_5: cliente_contactoNombre,
-            //         cliente_contactoNombre_6: cliente_contactoNombre,
-            //         cliente_contactoNombre_7: cliente_contactoNombre,
-            //         cliente_contactoNombre_8: cliente_contactoNombre,
-            //         cliente_contactoNombre_9: cliente_contactoNombre,
-            //         cliente_contactoNombre_10: cliente_contactoNombre,
-            //         cliente_contactoNombre_11: cliente_contactoNombre,
-            //         cliente_contactoNombre_12: cliente_contactoNombre,
-            //         cliente_contactoNombre_13: cliente_contactoNombre,
-            //         cliente_contactoNombre_14: cliente_contactoNombre,
-            //         cliente_contactoNombre_15: cliente_contactoNombre,
-            //         cliente_contactoNombre_16: cliente_contactoNombre,
-            //         cliente_contactoNombre_17: cliente_contactoNombre,
-            //         cliente_contactoNombre_18: cliente_contactoNombre,
-            //         cliente_contactoNombre_19: cliente_contactoNombre,
-            //         cliente_contactoNombre_20: cliente_contactoNombre
-            //     },
-            //      errorElement: 'div',
-            //      submitHandler: function(form) {
-            //         validacionCorrecta();
-            //       }
-            // });
+             $('#form_cliente').validate({
+                rules:
+                {
+                    cliente_contactoNombre_0: cliente_contactoNombre,
+                    cliente_contactoNombre_1: cliente_contactoNombre,
+                    cliente_contactoNombre_2: cliente_contactoNombre,
+                    cliente_contactoNombre_3: cliente_contactoNombre,
+                    cliente_contactoNombre_4: cliente_contactoNombre,
+                    cliente_contactoNombre_5: cliente_contactoNombre,
+                    cliente_contactoNombre_6: cliente_contactoNombre,
+                    cliente_contactoNombre_7: cliente_contactoNombre,
+                    cliente_contactoNombre_8: cliente_contactoNombre,
+                    cliente_contactoNombre_9: cliente_contactoNombre,
+                    cliente_contactoNombre_10: cliente_contactoNombre,
+                    cliente_contactoNombre_11: cliente_contactoNombre,
+                    cliente_contactoNombre_12: cliente_contactoNombre,
+                    cliente_contactoNombre_13: cliente_contactoNombre,
+                    cliente_contactoNombre_14: cliente_contactoNombre,
+                    cliente_contactoNombre_15: cliente_contactoNombre,
+                    cliente_contactoNombre_16: cliente_contactoNombre,
+                    cliente_contactoNombre_17: cliente_contactoNombre,
+                    cliente_contactoNombre_18: cliente_contactoNombre,
+                    cliente_contactoNombre_19: cliente_contactoNombre,
+                    cliente_contactoNombre_20: cliente_contactoNombre
+                },
+                 errorElement: 'div',
+                 submitHandler: function(form) {
+                    validacionCorrecta();
+                  }
+            });
 
             $('#form_paso3AgregarPlantilla').validate({
                 rules:
