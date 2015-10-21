@@ -1,4 +1,4 @@
-<button onclick="agregarFila()">Agregar botones(boton de prueba)</button>
+
 <button id="botonAgregarFila">Agregar Fila(boton de prueba)</button>
 
 <!-- <button id="myFunction">Vamos tu puedes</button> -->
@@ -66,10 +66,10 @@ $('#botonAgregarFila').on('click', function(){
         '<div class="col s12 m12 l12 celdaBoton">'+
             '<ul id="dropdown-cotizacion1-item'+contadorFilas+'" class="dropdown-content">'+
                 '<li>'+
-                    '<a href="#Elminar class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>'+
+                    '<a href="#Elminar" class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>'+
                 '</li>'+
             '</ul>'+
-            '<a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-cotizacion1-item'+contadorFilas+'">'+
+            '<a data-beloworigin="true" class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-cotizacion1-item'+contadorFilas+'">'+
                 '<?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>'+
             '</a>'+
         '</div>'+
@@ -81,11 +81,36 @@ cargarTags_Impuestos();
 generarAutocompletarProductoNombre(contadorFilas);
 generarAutocompletarProductoItem(contadorFilas);
 generarListas();
+cargar();
 // alert('di');
 
 contadorFilas++;
 });
 
+function cargar(){
+
+  $('.boton-opciones').sideNav({
+  // menuWidth: 0, // Default is 240
+   edge: 'right', // Choose the horizontal origin
+      closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+    }
+  );
+
+  $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrain_width: true, // Does not change width of dropdown to that of the activator
+      hover: false, // Activate on hover
+      gutter: 0, // Spacing from edge
+      belowOrigin: true, // Displays dropdown below the button
+      alignment: 'left' // Displays dropdown with edge aligned to the left of button
+    }
+  );
+
+  // $(".boton-opciones").sideNav();
+
+
+}
 
 </script>
 

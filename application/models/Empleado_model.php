@@ -45,7 +45,7 @@ class Empleado_model extends CI_Model
                 'idEmpleado' => $insert_id,
                 'descripcion' => $palabra
                 );
-                $query = $this->db->insert('palabraClaveEmpleado', $row);
+                $query = $this->db->insert('palabraclaveempleado', $row);
                 if (!$query) throw new Exception("Error en la BD");   
             }
             $this->db->trans_commit();
@@ -69,7 +69,7 @@ class Empleado_model extends CI_Model
                 $row = array_shift($array);//obtiene el primer elemento.. el [0] no sirve en el server
                 $this->db->select('descripcion');
 
-                $palabras = $this->db->get_where('palabraClaveEmpleado', array('idEmpleado' => $id));
+                $palabras = $this->db->get_where('palabraclaveempleado', array('idEmpleado' => $id));
                 if (!$palabras) throw new Exception("Error en la BD");   
                 $row['palabras'] = $palabras->result_array();
 
@@ -115,14 +115,14 @@ class Empleado_model extends CI_Model
             if (!$query) throw new Exception("Error en la BD");   
             $palabras = explode(",", $data['palabras']); ;
             $this->db->where('idEmpleado', $data['id']);
-            $query = $this->db->delete('palabraClaveEmpleado');
+            $query = $this->db->delete('palabraclaveempleado');
             if (!$query) throw new Exception("Error en la BD"); 
             foreach ($palabras as $palabra) {
                 $row = array(
                 'idEmpleado' => $data['id'],
                 'descripcion' => $palabra
                 );
-                $query = $this->db->insert('palabraClaveEmpleado', $row);
+                $query = $this->db->insert('palabraclaveempleado', $row);
                 if (!$query) throw new Exception("Error en la BD"); 
             }
 
@@ -148,7 +148,7 @@ class Empleado_model extends CI_Model
             {
                 $idEmpleado = $row['idEmpleado'];
                 $this->db->select('descripcion');
-                $query = $this->db->get_where('palabraClaveEmpleado', array('idEmpleado' => $idEmpleado));
+                $query = $this->db->get_where('palabraclaveempleado', array('idEmpleado' => $idEmpleado));
                 if (!$query) throw new Exception("Error en la BD"); 
                 $row['palabras'] = $query->result_array();
                 array_push($resultado, $row);

@@ -87,20 +87,20 @@
                   }
             });
 
-            $('#form_usuario').validate({
-                rules:
-                {
-                    usuario_primeroApellido: {required: true},
-                    usuario_nombre: { required: true},
-                    usuario_correo: { required:true},
-                    usuario_contrasena: { required:true},
-                    usuario_contrasenaConfirm: { required:true, equalTo:"#usuario_contrasena"}
-                },
-                errorElement: 'div',
-                submitHandler: function(form) {
-                    validacionCorrecta_Usuarios();
-                }
-            });
+            // $('#form_usuario').validate({
+            //     rules:
+            //     {
+            //         usuario_primeroApellido: {required: true},
+            //         usuario_nombre: { required: true},
+            //         usuario_correo: { required:true},
+            //         usuario_contrasena: { required:true},
+            //         usuario_contrasenaConfirm: { required:true, equalTo:"#usuario_contrasena"}
+            //     },
+            //     errorElement: 'div',
+            //     submitHandler: function(form) {
+            //         validacionCorrecta_Usuarios();
+            //     }
+            // });
 
             $('#form_usuario_editar').validate({
                 rules:
