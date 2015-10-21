@@ -330,22 +330,23 @@
         });
     });
     $(document).ready(function () {
-        $('.boton-opciones').on('click', function (event) {
-            // alert(event.type);
-            //e.preventDefault();
-
-            var elementoActivo = $(this).siblings('ul.active');
-            if (elementoActivo.length > 0) {
-                var estado = elementoActivo.css("display");
-                if (estado == "block") {
-                    elementoActivo.css("display", "none");
-                    elementoActivo.style.display = 'none';
-                } else {
-                    elementoActivo.css("display", "block");
-                    elementoActivo.style.display = 'block';
-                }
+          $('.boton-opciones').sideNav({
+          // menuWidth: 0, // Default is 240
+           edge: 'right', // Choose the horizontal origin
+              closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
             }
-        });
+          );
+
+          $('.dropdown-button').dropdown({
+              inDuration: 300,
+              outDuration: 225,
+              constrain_width: true, // Does not change width of dropdown to that of the activator
+              hover: false, // Activate on hover
+              gutter: 0, // Spacing from edge
+              belowOrigin: true, // Displays dropdown below the button
+              alignment: 'left' // Displays dropdown with edge aligned to the left of button
+            }
+          );
     });
 </script>
 
