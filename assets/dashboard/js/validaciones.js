@@ -36,6 +36,19 @@
                   }
             });
 
+        
+
+            $('#form_fases').validate({
+                rules:
+                {
+                    fase_codigo: {required: true, minlength: 3, maxlength: 20}
+                },
+                 errorElement: 'div',
+                 submitHandler: function(form) {
+                    validacionCorrecta();
+                  }
+            });
+
             $('#form_paso3AgregarPlantilla').validate({
                 rules:
                 {

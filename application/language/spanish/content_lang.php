@@ -50,6 +50,7 @@
     $lang['confirmarCancelarCotizacion'] = '¿Realmente desea cancelar la cotización en proceso?';
     $lang['confirmarObtenerPlan'] = '¿Realmente desea obtener el plan?';
     $lang['confirmarEliminarFase'] = '¿Realmente desea eliminar la fase?';
+    $lang['confirmarEliminarSubFase'] = '¿Realmente desea eliminar la subfase?';
     $lang['fases_eliminarElementosSeleccionados'] = '¿Realmente desea eliminar las fases seleccionadas?';
     $lang['gastos_eliminarElementosSeleccionados'] = '¿Realmente desea eliminar los gastos seleccionados?';
 
@@ -75,6 +76,9 @@ $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente
     $lang['usuarioErrorContrasenaConfirmar'] = 'Las contraseña no coinciden';
     $lang['usuarioErrorCambioImagen'] = 'Ha ocurrido un error al intentar hacer el cambio de imagen';
     $lang['usuarioExitoCambioEmagen'] = 'El cambio de imagen fue exitoso';
+
+    $lang['paso3_plantillaGuardadoCorrectamente'] = 'La plantilla ha sido creada correctamente.';
+    
 
 
     $lang['errorGuardar'] = 'Ha ocurrido un error al intentar guardar los datos.';
@@ -189,6 +193,9 @@ $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente
     $lang['fases_busquedaCotizacion'] = 'Cotizaciones';
     $lang['fases_busquedaBuscar'] = 'Buscar';
     $lang['fases_guardarCambios'] = 'Guardar cambios';
+    $lang['formFases_subfaseEliminar'] = 'Eliminar subfase';
+
+    
 
 //Gastos adicionales
     $lang['tituloGastos'] = 'Gastos';

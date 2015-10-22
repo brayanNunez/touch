@@ -568,8 +568,6 @@
 
                 '</div>' +
                 '<div class="col s12 m1 l1 btn-contacto-eliminar-edicion">' +
-                   // '<a href="#eliminarContacto" class="-text modal-trigger confirmarEliminar"  data-fila-eliminar="' + contador + '"><?= label('menuOpciones_eliminar') ?></a>' +
-                   // '<div class="confirmarEliminarContacto">prueba</div>'+
                     '<a class="confirmarEliminarContacto" data-fila-eliminar="' + contador + '" title="<?= label('formCliente_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>' +
                 '</div>' +
                 '<div class="col s12">' +

@@ -516,3 +516,7 @@ margin-top: 2%;
 .headerTransaccionIncorrecta{
 	background: red !important;
 }
+
+.btn-fase-eliminar{
+	margin-top: 80px;
+}

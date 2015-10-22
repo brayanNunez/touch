@@ -255,7 +255,11 @@
 
 <div style="visibility:hidden; position:absolute">                                 
     <a id="linkNuevaPlantilla" href="#agregarPlantilla" class="modal-trigger"></a>
+    <a id="linkModalGuardado" href="#transaccionCorrecta" class="btn btn-default modal-trigger"></a>
+    <a id="linkModalError" href="#transaccionIncorrecta" class="btn btn-default modal-trigger"></a>
 </div>
+
+
 <!-- </div> -->
 <!-- <div class="row">
     <div class="input-field col s4 m7 l7">
@@ -979,21 +983,30 @@ function validacionCorrecta(){
            data: $('#form_encabezado, #form_paso3AgregarPlantilla, #form_cuerpo, #form_informacion, #form_footer').serialize(), 
            success: function(response)
            {
-                alert(response);
-                $.ajax({
-                   type: 'POST',
-                   url: '<?=base_url()?>Cotizacion/cargarTodasPlnatillas',
-                   success: function(response)
-                   {
-                        arrayPlantillas = $.parseJSON(response);
-                        alert(response);
-                        var valor = arrayPlantillas.length -1;
-                        var nombre = arrayPlantillas[valor]['nombrePlantilla'];
-                        $('#paso3_plantilla').append('<option selected value="'+ valor + '">'+ nombre +'</option>');
-                        $('#paso3_plantilla').trigger("chosen:updated");
-                         // generarListas();
-                   }
-                 });   
+                if (response == 0) {
+                    $('#linkModalError').click();
+                } else{
+                    $.ajax({
+                       type: 'POST',
+                       url: '<?=base_url()?>Cotizacion/cargarTodasPlnatillas',
+                       success: function(response)
+                       {
+                            if (response == 0) {
+                               $('#linkModalError').click();
+                           } else {
+                            arrayPlantillas = $.parseJSON(response);
+                            var valor = arrayPlantillas.length -1;
+                            var nombre = arrayPlantillas[valor]['nombrePlantilla'];
+                            $('#paso3_plantilla').append('<option selected value="'+ valor + '">'+ nombre +'</option>');
+                            $('#paso3_plantilla').trigger("chosen:updated");
+                             // generarListas();
+                            $('#linkModalGuardado').click();
+                           }
+                       }
+                     }); 
+                };
+                
+                  
 
                // if (response == 0) {
                //     $('#linkModalError').click();
@@ -1119,5 +1132,32 @@ function obtenerDatosFooter(){
             <a onclick="$(this).closest('form').submit()" class="waves-effect waves-green btn-flat modal-action"><?= label('aceptar'); ?></a>
         </div>
     </form>
+</div>
+
+
+<div id="transaccionCorrecta" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('paso3_plantillaGuardadoCorrectamente'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+
+<div id="transaccionIncorrecta" class="modal">
+    <div  class="modal-header headerTransaccionIncorrecta">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('errorGuardar'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
 </div>
 <!-- Fin lista modals-->

@@ -217,6 +217,10 @@
     ?>
 
 </section>
+<div style="visibility:hidden; position:absolute">
+    <input id="cantidadSubfases" form="form_cliente" name="cantidadSubfases" type="text" value="0">                                          
+    <a id="linkSubFaseElimminar" href="#eliminarContacto" class="modal-trigger" data-fila-eliminar="1" title="<?= label('formCliente_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>
+</div>
 <!-- END CONTENT-->
 
 <script>
@@ -315,6 +319,43 @@
             }
           );
     });
+
+    function validacionCorrecta(){
+        $('.modal-header a').click(); 
+        var url = $('#form_fases').attr('action');
+        var method = $('#form_fases').attr('method'); 
+        $.ajax({
+           type: method,
+           url: url,
+           data: $('#form_fases').serialize(), 
+           success: function(response)
+           {
+                alert(response);
+                $.ajax({
+                   type: 'POST',
+                   url: '<?=base_url()?>Cotizacion/cargarTodasPlnatillas',
+                   success: function(response)
+                   {
+                        if (response == 0) {
+                           $('#linkModalError').click();
+                       } else {
+                        arrayPlantillas = $.parseJSON(response);
+                        var valor = arrayPlantillas.length -1;
+                        var nombre = arrayPlantillas[valor]['nombrePlantilla'];
+                        $('#paso3_plantilla').append('<option selected value="'+ valor + '">'+ nombre +'</option>');
+                        $('#paso3_plantilla').trigger("chosen:updated");
+                         // generarListas();
+                        $('#linkModalGuardado').click();
+                       }
+                        
+                   }
+                 });   
+
+              
+           }
+         }); 
+}
+
 </script>
 
 <!-- lista modals -->
@@ -335,42 +376,44 @@
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
-    <div class="modal-content">
-        <div class="row">
-            <div id="contenedorFases">
-                <div class="input-field col s12 m4 l4">
-                    <input id="nuevaFase_codigo" type="text">
-                    <label for="nuevaFase_codigo"><?= label('fase_codigo') ?></label>
+    <form id="form_fases" action="<?=base_url()?>Fases/nuebaFase" method="post">
+        <div class="modal-content">
+            <div class="row">
+                <div id="contenedorFases">
+                    <div class="input-field col s12 m4 l4">
+                        <input id="fase_codigo" name="fase_codigo" type="text">
+                        <label for="fase_codigo"><?= label('fase_codigo') ?></label>
+                    </div>
+                    <div class="input-field col s12 m8 l8">
+                        <input id="fase_nombre" name="fase_nombre" type="text">
+                        <label for="fase_nombre"><?= label('fase_nombre') ?></label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="fase_notas" name="fase_notas" class="materialize-textarea" rows="4"></textarea>
+                        <label for="fase_notas"><?= label('fase_notas') ?></label>
+                    </div>
+                    <div class="col s12">
+                        <hr />
+                    </div>
                 </div>
-                <div class="input-field col s12 m8 l8">
-                    <input id="nuevaFase_nombre" type="text">
-                    <label for="nuevaFase_nombre"><?= label('fase_nombre') ?></label>
-                </div>
-                <div class="input-field col s12">
-                    <textarea id="nuevaFase_notas" class="materialize-textarea" rows="4"></textarea>
-                    <label for="nuevaFase_notas"><?= label('fase_notas') ?></label>
-                </div>
-                <div class="col s12">
-                    <hr />
+                <div class="row">
+                    <a id="btn_agregarSubfase" style="text-decoration: underline;float: right;cursor: pointer;"
+                       onclick="agregarNuevaFase();"><?= label('fase_agregarSubfase') ?></a>
                 </div>
             </div>
             <div class="row">
-                <a id="btn_agregarSubfase" style="text-decoration: underline;float: right;cursor: pointer;"
-                   onclick="agregarNuevaFase();"><?= label('fase_agregarSubfase') ?></a>
+                <a href="#" style="font-size: larger;float: left;text-decoration: underline;"
+                   class="modal-action modal-close"><?= label('cancelar'); ?>
+                </a>
+                <a onclick="$(this).closest('form').submit()" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                    <?= label('guardar'); ?>
+                </a>
+               <!--  <a href="#" class="waves-effect btn modal-action modal-close" style="margin: 0 20px;">
+                    <?= label('guardarAgregarOtro'); ?>
+                </a> -->
             </div>
         </div>
-        <div class="row">
-            <a href="#" style="font-size: larger;float: left;text-decoration: underline;"
-               class="modal-action modal-close"><?= label('cancelar'); ?>
-            </a>
-            <a href="#" class="waves-effect btn modal-action modal-close" style="margin: 0 20px;">
-                <?= label('guardarCerrar'); ?>
-            </a>
-            <a href="#" class="waves-effect btn modal-action modal-close" style="margin: 0 20px;">
-                <?= label('guardarAgregarOtro'); ?>
-            </a>
-        </div>
-    </div>
+    </form>
 </div>
 <div id="editarFase" class="modal" style="width: 70%;">
     <div class="modal-header">
@@ -470,27 +513,64 @@
         </a>
     </div>
 </div>
+
+<div id="eliminarContacto" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('confirmarEliminarContacto'); ?></p>
+    </div>
+    <div id="botonEliminar" class="modal-footer black-text">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
 <!-- Fin lista modals -->
 
 <script>
+    var subfaseEliminar = null;
+    $(document).on('click','.confirmarEliminarSubFase', function () {
+       subfaseEliminar = $(this).parent().parent();
+       var opcion = confirm("<?= label('confirmarEliminarSubFase')?>");
+       if (opcion) {
+        subfaseEliminar.fadeOut(function () {
+            subfaseEliminar.remove();
+       });
+        cantidad--;
+        actualizarCantidad();
+       };
+       
+    });
+
+    function actualizarCantidad(){
+        $('#cantidadSubfases').val(cantidad);
+
+    }
+
     var cantidad = 0;
-    var contador = cantidad;
+    var contador = 0;
     function agregarNuevaFase() {
         cantidad++;
-//        actualizarCantidad();
+        actualizarCantidad();
         $('#contenedorFases').append('' +
             '<div id="fase' + contador + '" style="margin-left: 50px;">' +
+                '<div class="col s12 m11 l11">' +
                 '<div class="input-field col s12 m4 l4">' +
-                    '<input id="fase' + contador + '_codigo" type="text">' +
-                    '<label for="fase' + contador + '_codigo"><?= label('fase_codigo') ?></label>' +
+                    '<input id="fase_codigo' + contador + '" name="fase_codigo' + contador + '" type="text">' +
+                    '<label for="fase_codigo' + contador + '"><?= label('fase_codigo') ?></label>' +
                 '</div>' +
                 '<div class="input-field col s12 m8 l8">' +
-                    '<input id="fase' + contador + '_nombre" type="text">' +
-                    '<label for="fase' + contador + '_nombre"><?= label('fase_nombre') ?></label>' +
+                    '<input id="fase_nombre' + contador + '" name="fase_nombre' + contador + '" type="text">' +
+                    '<label for="fase_nombre' + contador + '"><?= label('fase_nombre') ?></label>' +
                 '</div>' +
                 '<div class="input-field col s12">' +
-                    '<textarea id="fase' + contador + '_notas" class="materialize-textarea" rows="4"></textarea>' +
-                    '<label for="fase' + contador + '_notas"><?= label('fase_notas') ?></label>' +
+                    '<textarea id="fase_notas' + contador + '" name="fase_notas' + contador + '"  class="materialize-textarea" rows="4"></textarea>' +
+                    '<label for="fase_notas' + contador + '"><?= label('fase_notas') ?></label>' +
+                '</div>' +
+                '</div>' +
+                '<div class="col s12 m1 l1 btn-fase-eliminar">' +
+                    '<a class="confirmarEliminarSubFase" data-fila-eliminar="' + contador + '" title="<?= label('formFases_subfaseEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>' +
                 '</div>' +
                 '<div class="col s12">' +
                     '<hr />' +
@@ -518,6 +598,9 @@
                 '<div class="input-field col s12">' +
                     '<textarea id="faseEditar' + contadorEditar + '_notas" class="materialize-textarea" rows="4"></textarea>' +
                     '<label for="faseEditar' + contadorEditar + '_notas"><?= label('fase_notas') ?></label>' +
+                '</div>' +
+                '<div class="col s12 m1 l1 btn-contacto-eliminar-edicion">' +
+                    '<a class="confirmarEliminarContacto" data-fila-eliminar="' + contadorEditar + '" title="<?= label('formCliente_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>' +
                 '</div>' +
                 '<div class="col s12">' +
                     '<hr />' +
