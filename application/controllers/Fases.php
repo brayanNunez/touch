@@ -18,6 +18,10 @@ class Fases extends CI_Controller
         $this->load->view('layout/default/footer');
     }
 
+    public function nuevaFase(){
+        echo '0';
+    }
+
 }
 
 ?>

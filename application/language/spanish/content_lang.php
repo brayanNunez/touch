@@ -78,6 +78,9 @@ $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente
     $lang['usuarioExitoCambioEmagen'] = 'El cambio de imagen fue exitoso';
 
     $lang['paso3_plantillaGuardadoCorrectamente'] = 'La plantilla ha sido creada correctamente.';
+
+    
+    $lang['fases_faseGuardadoCorrectamente'] = 'La fase ha sido creada correctamente.';
     
 
 

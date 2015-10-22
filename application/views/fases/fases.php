@@ -219,8 +219,12 @@
 </section>
 <div style="visibility:hidden; position:absolute">
     <input id="cantidadSubfases" form="form_cliente" name="cantidadSubfases" type="text" value="0">                                          
-    <a id="linkSubFaseElimminar" href="#eliminarContacto" class="modal-trigger" data-fila-eliminar="1" title="<?= label('formCliente_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>
+    <a id="linkModalGuardado" href="#transaccionCorrecta" class="btn btn-default modal-trigger"></a>
+    <a id="linkModalError" href="#transaccionIncorrecta" class="btn btn-default modal-trigger"></a>
 </div>
+
+
+
 <!-- END CONTENT-->
 
 <script>
@@ -330,26 +334,13 @@
            data: $('#form_fases').serialize(), 
            success: function(response)
            {
-                alert(response);
-                $.ajax({
-                   type: 'POST',
-                   url: '<?=base_url()?>Cotizacion/cargarTodasPlnatillas',
-                   success: function(response)
-                   {
-                        if (response == 0) {
-                           $('#linkModalError').click();
-                       } else {
-                        arrayPlantillas = $.parseJSON(response);
-                        var valor = arrayPlantillas.length -1;
-                        var nombre = arrayPlantillas[valor]['nombrePlantilla'];
-                        $('#paso3_plantilla').append('<option selected value="'+ valor + '">'+ nombre +'</option>');
-                        $('#paso3_plantilla').trigger("chosen:updated");
-                         // generarListas();
-                        $('#linkModalGuardado').click();
-                       }
-                        
-                   }
-                 });   
+             if (response == 0) {
+                   $('#linkModalError').click();
+               } else {
+                
+                 
+                $('#linkModalGuardado').click();
+               }   
 
               
            }
@@ -376,7 +367,7 @@
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
-    <form id="form_fases" action="<?=base_url()?>Fases/nuebaFase" method="post">
+    <form id="form_fases" action="<?=base_url()?>Fases/nuevaFase" method="post">
         <div class="modal-content">
             <div class="row">
                 <div id="contenedorFases">
@@ -514,18 +505,34 @@
     </div>
 </div>
 
-<div id="eliminarContacto" class="modal">
+
+<div id="transaccionCorrecta" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <p><?= label('confirmarEliminarContacto'); ?></p>
+        <p><?= label('fases_faseGuardadoCorrectamente'); ?></p>
     </div>
-    <div id="botonEliminar" class="modal-footer black-text">
+    <div class="modal-footer">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
+
+<div id="transaccionIncorrecta" class="modal">
+    <div  class="modal-header headerTransaccionIncorrecta">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('errorGuardar'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+
+
 <!-- Fin lista modals -->
 
 <script>
