@@ -268,7 +268,7 @@ label.cotizacionPaso1_labelBusqueda { left: 0; }
 
 a.opcionesDetalles { text-decoration: underline; font-size: 1.4rem; }
 div#contenedorFases hr, div#contenedorFasesEditar hr { height: 12px; border: 0; box-shadow: inset 0 15px 15px -11px gray; }
-div#agregarServicio a.boton-opciones { display: block; margin: 0 auto; width: 110px; }
+div#agregarServicio a.boton-opciones { display: block; margin: 0 auto; width: 110px; cursor: pointer; }
 
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/

@@ -204,4 +204,34 @@
                 }
             });
 
+            $('#formPersona').validate({
+                rules:
+                {
+                    persona_identificacion: { required: true},
+                    persona_apellido1: { required: true},
+                    persona_apellido2: { required: true},
+                    persona_nombre: { required: true},
+                    persona_correo: { required: true},
+                    persona_telefonoMovil: { required: true},
+                    persona_telefono: { required: true},
+                    persona_fechaNacimiento: { required: true},
+                    personajuridico_identificacion: { required: true},
+                    personajuridico_nombre: { required: true},
+                    personajuridico_nombreFantasia: { required: true},
+                    personajuridico_correo: { required: true},
+                    personajuridico_telefono: { required: true},
+                    personajuridico_fax: { required: true},
+                    persona_palabras: { required: true},
+                    persona_descripcion: { required: true},
+                    persona_direccionPais: { required: true},
+                    persona_direccionProvincia: { required: true},
+                    persona_direccionCanton: { required: true},
+                    persona_direccionDomicilio: { required: true}
+                },
+                errorElement: 'div',
+                submitHandler: function(form) {
+                    validacionCorrecta_Persona();
+                }
+            });
+
     });
