@@ -152,7 +152,7 @@ class Cotizacion extends CI_Controller
         }
 
         $data['datos'] = array(
-            'empresa_idEmpresa' => $idEmpresa, 
+            'idEmpresa' => $idEmpresa, 
             'nombrePlantilla' => $this->input->post('nombrePlantilla'),
             'colorEncabezado' => $this->input->post('colorEncabezado_colorFondo'),
             'colorLetraEncabezado' => $this->input->post('colorEncabezado_colorLetra'),

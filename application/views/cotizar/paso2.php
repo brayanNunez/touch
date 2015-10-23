@@ -81,13 +81,13 @@ cargarTags_Impuestos();
 generarAutocompletarProductoNombre(contadorFilas);
 generarAutocompletarProductoItem(contadorFilas);
 generarListas();
-cargar();
-// alert('di');
+generarListasBotones();
+$('.modal-trigger').leanModal(); 
 
 contadorFilas++;
 });
 
-function cargar(){
+function generarListasBotones(){
 
   $('.boton-opciones').sideNav({
   // menuWidth: 0, // Default is 240
