@@ -5,6 +5,65 @@
 </script>
 
 <div class="col s12 tab-informacion-ver">
+    <?php
+        $empleado = '';
+        $juridico = '';
+        $tipo = '';
+        $tipoProveedor = '';
+        $identificacion = '';
+        $nacionalidad = '';
+        $nombre = '';
+        $nombreFantasia = '';
+        $correo = '';
+        $telefonoFijo = '';
+        $telefonoMovil = '';
+        $fax = '';
+        $fechaNacimiento = '';
+        $descripcion = '';
+        $pais = '';
+        $provincia = '';
+        $canton = '';
+        $domicilio = '';
+        $palabras = '';
+        if(isset($resultado)) {
+            $empleado = $resultado['empleado'];
+            $juridico = $resultado['juridico'];
+            $identificacion = $resultado['identificacion'];
+            $nacionalidad = $resultado['paisNacionalidad'];//Falta jalarlo de la bd
+            $correo = $resultado['correo'];
+            $telefonoFijo = $resultado['telefonoFijo'];
+            $descripcion = $resultado['descripcion'];
+            $pais = $resultado['pais'];
+            $provincia = $resultado['provincia'];
+            $canton = $resultado['canton'];
+            $domicilio = $resultado['domicilio'];
+            foreach($resultado['palabras'] as $palabra) {
+                if($palabras != '') {
+                    $palabras.= ', '.$palabra['descripcion'];
+                } else {
+                    $palabras.= $palabra['descripcion'];
+                }
+            }
+            if($empleado) {
+                $tipo = 'Empleado';
+                $tipoProveedor = 'Fisico';
+                $nombre = $resultado['nombre'].' '.$resultado['primerApellido'].' '.$resultado['segundoApellido'];
+                $telefonoMovil = $resultado['telefonoMovil'];
+                $fechaNacimiento = date('d/m/Y', strtotime($resultado['fechaNacimiento']));
+            } else {
+                $tipo = 'Proveedor';
+                $nombre = $resultado['nombre'];
+                $nombreFantasia = $resultado['nombreFantasia'];
+                if($juridico){
+                    $tipoProveedor = 'Juridico';
+                    $fax = $resultado['fax'];
+                } else {
+                    $tipoProveedor = 'Fisico';
+                    $telefonoMovil = $resultado['telefonoMovil'];
+                }
+            }
+        }
+    ?>
     <div class="row">
         <div class="col s12">
             <div class="col s12 m12 l3">
@@ -13,25 +72,42 @@
                 </div>
             </div>
             <div class="col s12 m8 l5">
-                <h4>Materiales R&B</h4>
-                <p><span class="informacion-proveedor"><?= label('formProveedor_identificacion'); ?></span>. 2-723-327</p>
-                <p><span class="informacion-proveedor"><?= label('formProveedor_nacionalidad'); ?></span>: Costa Rica</p>
-<!--                    <p><span class="informacion-proveedor">--><?//= label('formCliente_fechaNacimiento'); ?><!--</span>: 10-03-1994</p>-->
-                <p><span class="informacion-proveedor"><?= label('formProveedor_telefono'); ?></span>: 2448-9865</p>
-                <p><span class="informacion-proveedor"><?= label('formProveedor_fax'); ?></span>: 2448-5623</p>
-                <p><span class="informacion-proveedor"><?= label('formProveedor_correo'); ?></span>: rbmateriales@gmail.com</p>
-                <p><span class="informacion-proveedor"><?= label('formProveedor_descripcion'); ?></span>: Proveedor de
-                    herramientas y materiales varios. </p>
+                <h4><?= $nombre; ?></h4>
+                <p><span class="informacion-proveedor"><?= label('formProveedor_identificacion'); ?></span>. <?= $identificacion; ?></p>
+                <p><span class="informacion-proveedor"><?= label('formProveedor_nacionalidad'); ?></span>: <?= $nacionalidad; ?></p>
+                <?php
+                    if($empleado) { ?>
+                        <p><span class="informacion-proveedor"><?= label('formProveedor_fechaNacimiento'); ?></span>: <?= $fechaNacimiento; ?></p>
+                <?php
+                    } ?>
+                <p><span class="informacion-proveedor"><?= label('formProveedor_telefono'); ?></span>: <?= $telefonoFijo; ?></p>
+                <?php
+                    if($juridico) { ?>
+                        <p><span class="informacion-proveedor"><?= label('formProveedor_fax'); ?></span>: <?= $fax; ?></p>
+                <?php
+                    } else { ?>
+                        <p><span class="informacion-proveedor"><?= label('formProveedor_telefonoMovil'); ?></span>: <?= $telefonoMovil; ?></p>
+                <?php
+                    }?>
+                <p><span class="informacion-proveedor"><?= label('formProveedor_correo'); ?></span>: <?= $correo; ?></p>
+                <p><span class="informacion-proveedor"><?= label('formProveedor_descripcion'); ?></span>: <?= $descripcion; ?></p>
             </div>
             <div class="col s12 m4 l4">
+                <?php
+                    if(!$empleado && $juridico) {
+                ?>
+                <div><h4><?= $nombreFantasia; ?></h4></div>
+                <?php
+                    }
+                ?>
                 <div>
                     <h5><?= label('formProveedor_direccion'); ?></h5>
-                    <p>Costa Rica, Alajuela</p>
-                    <p>Poas, San Rafael, 200 mts este de la iglesia de la localidad</p>
+                    <p><?= $pais.', '.$provincia; ?></p>
+                    <p><?= $canton.', '.$domicilio; ?></p>
                 </div>
                 <div style="margin-top: 25px;">
                     <h5><?= label('formProveedor_palabrasClaveAsociadas'); ?>:</h5>
-                    <p>Herramientas, Materiales varios, Reparaciones, Servicio express</p>
+                    <p><?= $palabras; ?></p>
                 </div>
             </div>
         </div>
@@ -61,195 +137,45 @@
                     </span>
                     <div class="wrapper">
                         <ul>
-                            <li>
-                                <div class="info-contacto">
-                                    <div>
-                                        <h5>Jose Rodriguez</h5>
-                                        <p>Propietario</p>
-                                        <p>jose.rodriguez@gmail.com</p>
-                                        <p>Tel. 8956-3405</p>
-                                        <div class="contacto-opciones">
-                                            <a href="#editarContacto" class="modal-trigger"
-                                               title="<?= label('formProveedor_contactoEditar') ?>">
-                                                <i class="mdi-editor-mode-edit"></i>
-                                            </a>
-                                            <a href="#" title="<?= label('formProveedor_contactoDescargar')?>">
-                                                <i class="mdi-file-file-download"></i>
-                                            </a>
-                                            <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar')?>">
-                                                <i class="mdi-action-delete"></i>
-                                            </a>
-                                        </div>
-                                        <div class="contacto-principal es-principal">
-                                            <a href="#cambiarPrincipal" class="modal-trigger" title="<?= label('formProveedor_contactoPrincipal') ?>">
-                                                <i class="mdi-action-done"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="info-contacto">
-                                    <div>
-                                        <h5>Maria Bolanos</h5>
-                                        <p>Propietaria</p>
-                                        <p>maria.bolanos@gmail.com</p>
-                                        <p>Tel. 8956-6545</p>
-                                        <div class="contacto-opciones">
-                                            <a href="#editarContacto" class="modal-trigger"
-                                               title="<?= label('formProveedor_contactoEditar') ?>">
-                                                <i class="mdi-editor-mode-edit"></i>
-                                            </a>
-                                            <a href="#" title="<?= label('formProveedor_contactoDescargar')?>">
-                                                <i class="mdi-file-file-download"></i>
-                                            </a>
-                                            <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar')?>">
-                                                <i class="mdi-action-delete"></i>
-                                            </a>
-                                        </div>
-                                        <div class="contacto-principal">
-                                            <a href="#cambiarPrincipal" class="modal-trigger" title="<?= label('formProveedor_contactoSecundario') ?>">
-                                                <i class="mdi-action-done"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="info-contacto">
-                                    <div>
-                                        <h5>Juan Castro</h5>
-                                        <p>Vendedor</p>
-                                        <p>juan.castro@gmail.com</p>
-                                        <p>Tel. 8956-9865</p>
-                                        <div class="contacto-opciones">
-                                            <a href="#editarContacto" class="modal-trigger"
-                                               title="<?= label('formProveedor_contactoEditar') ?>">
-                                                <i class="mdi-editor-mode-edit"></i>
-                                            </a>
-                                            <a href="#" title="<?= label('formProveedor_contactoDescargar')?>">
-                                                <i class="mdi-file-file-download"></i>
-                                            </a>
-                                            <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar')?>">
-                                                <i class="mdi-action-delete"></i>
-                                            </a>
-                                        </div>
-                                        <div class="contacto-principal">
-                                            <a href="#cambiarPrincipal" class="modal-trigger" title="<?= label('formProveedor_contactoSecundario') ?>">
-                                                <i class="mdi-action-done"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="info-contacto">
-                                    <div>
-                                        <h5>Luis Porras</h5>
-                                        <p>Vendedor</p>
-                                        <p>luis.porras@gmail.com</p>
-                                        <p>Tel. 8956-1245</p>
-                                        <div class="contacto-opciones">
-                                            <a href="#editarContacto" class="modal-trigger"
-                                               title="<?= label('formProveedor_contactoEditar') ?>">
-                                                <i class="mdi-editor-mode-edit"></i>
-                                            </a>
-                                            <a href="#" title="<?= label('formProveedor_contactoDescargar')?>">
-                                                <i class="mdi-file-file-download"></i>
-                                            </a>
-                                            <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar')?>">
-                                                <i class="mdi-action-delete"></i>
-                                            </a>
-                                        </div>
-                                        <div class="contacto-principal">
-                                            <a href="#cambiarPrincipal" class="modal-trigger" title="<?= label('formProveedor_contactoSecundario') ?>">
-                                                <i class="mdi-action-done"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="info-contacto">
-                                    <div>
-                                        <h5>Jose Murillo</h5>
-                                        <p>Vendedor</p>
-                                        <p>jose.murillo@gmail.com</p>
-                                        <p>Tel. 8752-9865</p>
-                                        <div class="contacto-opciones">
-                                            <a href="#editarContacto" class="modal-trigger"
-                                               title="<?= label('formProveedor_contactoEditar') ?>">
-                                                <i class="mdi-editor-mode-edit"></i>
-                                            </a>
-                                            <a href="#" title="<?= label('formProveedor_contactoDescargar')?>">
-                                                <i class="mdi-file-file-download"></i>
-                                            </a>
-                                            <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar')?>">
-                                                <i class="mdi-action-delete"></i>
-                                            </a>
-                                        </div>
-                                        <div class="contacto-principal">
-                                            <a href="#cambiarPrincipal" class="modal-trigger" title="<?= label('formProveedor_contactoSecundario') ?>">
-                                                <i class="mdi-action-done"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="info-contacto">
-                                    <div>
-                                        <h5>Karla Arias</h5>
-                                        <p>Vendedor</p>
-                                        <p>karla.arias@gmail.com</p>
-                                        <p>Tel. 8956-1379</p>
-                                        <div class="contacto-opciones">
-                                            <a href="#editarContacto" class="modal-trigger"
-                                               title="<?= label('formProveedor_contactoEditar') ?>">
-                                                <i class="mdi-editor-mode-edit"></i>
-                                            </a>
-                                            <a href="#" title="<?= label('formProveedor_contactoDescargar')?>">
-                                                <i class="mdi-file-file-download"></i>
-                                            </a>
-                                            <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar')?>">
-                                                <i class="mdi-action-delete"></i>
-                                            </a>
-                                        </div>
-                                        <div class="contacto-principal">
-                                            <a href="#cambiarPrincipal" class="modal-trigger" title="<?= label('formProveedor_contactoSecundario') ?>">
-                                                <i class="mdi-action-done"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="info-contacto">
-                                    <div>
-                                        <h5>Fabian Zamora</h5>
-                                        <p>Vendedor</p>
-                                        <p>fabian.zamora@gmail.com</p>
-                                        <p>Tel. 8956-0943</p>
-                                        <div class="contacto-opciones">
-                                            <a href="#editarContacto" class="modal-trigger"
-                                               title="<?= label('formProveedor_contactoEditar') ?>">
-                                                <i class="mdi-editor-mode-edit"></i>
-                                            </a>
-                                            <a href="#" title="<?= label('formProveedor_contactoDescargar')?>">
-                                                <i class="mdi-file-file-download"></i>
-                                            </a>
-                                            <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar')?>">
-                                                <i class="mdi-action-delete"></i>
-                                            </a>
-                                        </div>
-                                        <div class="contacto-principal">
-                                            <a href="#cambiarPrincipal" class="modal-trigger" title="<?= label('formProveedor_contactoSecundario') ?>">
-                                                <i class="mdi-action-done"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                            <?php
+                                if(isset($resultado['contactos'])) {
+                                    $contactos = $resultado['contactos'];
+                                    if($contactos != false) {
+                                        foreach ($contactos as $contacto) {
+                            ?>
+                                            <li>
+                                                <div class="info-contacto">
+                                                    <div>
+                                                        <h5><?= $contacto['nombre'].' '.$contacto['primerApellido'].' '.$contacto['segundoApellido'] ?></h5>
+                                                        <p><?= $contacto['puesto']; ?></p>
+                                                        <p><?= $contacto['correo']; ?></p>
+                                                        <p>Tel. <?= $contacto['telefono']; ?></p>
+                                                        <div class="contacto-opciones">
+                                                            <a href="#editarContacto" class="modal-trigger"
+                                                               title="<?= label('formProveedor_contactoEditar') ?>">
+                                                                <i class="mdi-editor-mode-edit"></i>
+                                                            </a>
+                                                            <a href="#" title="<?= label('formProveedor_contactoDescargar')?>">
+                                                                <i class="mdi-file-file-download"></i>
+                                                            </a>
+                                                            <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar')?>">
+                                                                <i class="mdi-action-delete"></i>
+                                                            </a>
+                                                        </div>
+<!--                                                        El principal se pone con la clase es-principal-->
+                                                        <div class="contacto-principal">
+                                                            <a href="#cambiarPrincipal" class="modal-trigger" title="<?= label('formProveedor_contactoPrincipal') ?>">
+                                                                <i class="mdi-action-done"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                            <?php
+                                        }
+                                    }
+                                }
+                            ?>
                         </ul>
                     </div>
                     <span id="btn-next" class="next" title="Elementos siguientes">

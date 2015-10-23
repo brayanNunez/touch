@@ -1,106 +1,175 @@
 <div class="col s12 tab-edicion-editar">
-    <form class="col s12">
+    <?php
+    $idEncriptado = '';
+    $empleado = '';
+    $juridico = '';
+    $tipo = '';
+    $tipoProveedor = '';
+    $identificacion = '';
+    $nacionalidad = '';
+    $apellido1 = '';
+    $apellido2 = '';
+    $nombre = '';
+    $nombreFantasia = '';
+    $correo = '';
+    $telefonoFijo = '';
+    $telefonoMovil = '';
+    $fax = '';
+    $fechaNacimiento = '';
+    $descripcion = '';
+    $pais = '';
+    $provincia = '';
+    $canton = '';
+    $domicilio = '';
+    $palabras = '';
+    if(isset($resultado)) {
+        $idEncriptado = encryptIt($resultado['idProveedor']);
+        $empleado = $resultado['empleado'];
+        $juridico = $resultado['juridico'];
+        $identificacion = $resultado['identificacion'];
+        $nombre = $resultado['nombre'];
+        $apellido1 = $resultado['primerApellido'];
+        $apellido2 = $resultado['segundoApellido'];
+        $nacionalidad = $resultado['nacionalidad'];//Falta jalarlo de la bd
+        $correo = $resultado['correo'];
+        $telefonoFijo = $resultado['telefonoFijo'];
+        $descripcion = $resultado['descripcion'];
+        $pais = $resultado['pais'];
+        $provincia = $resultado['provincia'];
+        $canton = $resultado['canton'];
+        $domicilio = $resultado['domicilio'];
+        foreach($resultado['palabras'] as $palabra) {
+            $palabras.= $palabra['descripcion'].', ';
+        }
+        if($empleado) {
+            $tipo = 'Empleado';
+            $tipoProveedor = 'Fisico';
+            $telefonoMovil = $resultado['telefonoMovil'];
+            $fechaNacimiento = date('d/m/Y', strtotime($resultado['fechaNacimiento']));
+        } else {
+            $tipo = 'Proveedor';
+            $nombreFantasia = $resultado['nombreFantasia'];
+            if($juridico){
+                $tipoProveedor = 'Juridico';
+                $fax = $resultado['fax'];
+            } else {
+                $tipoProveedor = 'Fisico';
+                $telefonoMovil = $resultado['telefonoMovil'];
+                $fechaNacimiento = date('d/m/Y', strtotime($resultado['fechaNacimiento']));
+            }
+        }
+    }
+    ?>
+    <form id="formPersona" action="<?= base_url(); ?>proveedores/modificar/<?= $idEncriptado; ?>" method="POST" class="col s12">
         <div class="row">
             <div class="input-field col s12">
-                <select onchange="datosProveedor(this)" id="proveedor_tipo">
-                    <option value="1"><?= label('formProveedor_fisico'); ?></option>
-                    <option value="2" selected><?= label('formProveedor_juridico'); ?></option>
-                </select>
-                <label for="proveedor_tipo"><?= label('formProveedor_tipoProveedor'); ?></label>
+                <input id="persona_tipoProveedor" name="persona_tipoProveedor" type="text" value="<?= $tipo; ?>" readonly />
+                <label for="persona_tipoProveedor"><?= label('formPersona_tipoProveedor'); ?></label>
             </div>
+
+            <?php
+                if(!$empleado) { ?>
+                    <div id="seleccion_TipoProveedor" class="input-field col s12">
+                        <select id="persona_tipo" name="persona_tipo" onchange="datosProveedor(this)">
+                            <option value="1" selected><?= label('formPersona_fisico'); ?></option>
+                            <option value="2"><?= label('formPersona_juridico'); ?></option>
+                        </select>
+                        <label for="persona_tipo"><?= label('formPersona_tipo'); ?></label>
+                    </div>
+            <?php
+                } ?>
+
             <div class="input-field col s12">
-                <select id="proveedor_nacionalidad">
-                    <option value="" disabled><?= label('formProveedor_seleccioneUno'); ?></option>
-                    <option value="1" selected>Costa Rica</option>
-                    <option value="2">Brasil</option>
+                <select id="persona_nacionalidad" name="persona_nacionalidad">
+                    <option value="0" selected disabled><?= label('formPersona_seleccioneUno'); ?></option>
+                    <option value="1">Costa Rica</option>
+                    <option value="2">Colombia</option>
                     <option value="3">USA</option>
-                    <option value="4">Colombia</option>
+                    <option value="4">Brasil</option>
                     <option value="5">Uruguay</option>
                     <option value="6">Chile</option>
                 </select>
-                <label for="proveedor_nacionalidad"><?= label('formProveedor_nacionalidad'); ?></label>
+                <label for="persona_nacionalidad"><?= label('formPersona_nacionalidad'); ?></label>
             </div>
 
-            <div id="campos-proveedor-fisico" style="display: none;">
+            <div id="campos-proveedor-fisico" style="display: block;">
                 <div class="input-field col s12">
-                    <input id="proveedor_id" type="text">
-                    <label for="proveedor_id"><?= label('formProveedor_identificacion'); ?></label>
+                    <input id="persona_identificacion" name="persona_identificacion" type="text" value="<?= $identificacion; ?>">
+                    <label for="persona_identificacion"><?= label('formPersona_identificacion'); ?></label>
                 </div>
                 <div>
                     <div class="input-field col s12 m4 l4">
-                        <input id="proveedor_apellido1" type="text">
-                        <label for="proveedor_apellido1"><?= label('formProveedor_apellido1'); ?></label>
+                        <input id="persona_apellido1" name="persona_apellido1" type="text" value="<?= $apellido1; ?>">
+                        <label for="persona_apellido1"><?= label('formPersona_apellido1'); ?></label>
                     </div>
                     <div class="input-field col s12 m4 l4">
-                        <input id="proveedor_apellido2" type="text">
-                        <label for="proveedor_apellido2"><?= label('formProveedor_apellido2'); ?></label>
+                        <input id="persona_apellido2" name="persona_apellido2" type="text" value="<?= $apellido2; ?>">
+                        <label for="persona_apellido2"><?= label('formPersona_apellido2'); ?></label>
                     </div>
                     <div class="input-field col s12 m4 l4">
-                        <input id="proveedor_nombre" type="text">
-                        <label for="proveedor_nombre"><?= label('formProveedor_nombre'); ?></label>
+                        <input id="persona_nombre" name="persona_nombre" type="text" value="<?= $nombre; ?>">
+                        <label for="persona_nombre"><?= label('formPersona_nombre'); ?></label>
                     </div>
                 </div>
                 <div class="input-field col s12">
-                    <input id="proveedor_correo" type="email" style="margin-bottom: 0;" >
-                    <label for="proveedor_correo"><?= label('formProveedor_correo'); ?></label>
+                    <input id="persona_correo" name="persona_correo" type="email" value="<?= $correo; ?>">
+                    <label for="persona_correo"><?= label('formPersona_correo'); ?></label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="proveedor_telefonoMovil" type="text">
-                    <label
-                        for="proveedor_telefonoMovil"><?= label('formProveedor_telefonoMovil'); ?></label>
+                    <input id="persona_telefonoMovil" name="persona_telefonoMovil" type="text" value="<?= $telefonoMovil; ?>">
+                    <label for="persona_telefonoMovil"><?= label('formPersona_telefonoMovil'); ?></label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="proveedor_telefono" type="text">
-                    <label
-                        for="proveedor_telefono"><?= label('formProveedor_telefonoFijo'); ?></label>
+                    <input id="persona_telefono" name="persona_telefono" type="text" value="<?= $telefonoFijo; ?>">
+                    <label for="persona_telefono"><?= label('formProveedor_telefonoFijo'); ?></label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="proveedor_fechaNacimiento" type="text" class="datepicker-fecha">
-                    <label for="proveedor_fechaNacimiento"><?= label('formProveedor_fechaNacimiento'); ?></label>
+                    <input id="persona_fechaNacimiento" name="persona_fechaNacimiento" type="text" class="datepicker-fecha" value="<?= $fechaNacimiento; ?>">
+                    <label for="persona_fechaNacimiento"><?= label('formPersona_fechaNacimiento'); ?></label>
                 </div>
             </div>
 
-            <div id="campos-proveedor-juridico" style="display: block;">
+            <div id="campos-proveedor-juridico" style="display: none;">
                 <div class="input-field col s12">
-                    <input id="proveedorjuridico_id" type="text" value="2-723-327">
-                    <label for="proveedorjuridico_id"><?= label('formProveedor_identificacionJuridica'); ?></label>
+                    <input id="personajuridico_identificacion" name="personajuridico_identificacion" type="text" value="<?= $identificacion; ?>">
+                    <label for="personajuridico_identificacion"><?= label('formPersona_identificacionJuridica'); ?></label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="proveedorjuridico_nombre" type="text" value="Materiales R&B">
-                    <label for="proveedorjuridico_nombre"><?= label('formProveedor_nombreJuridico'); ?></label>
+                    <input id="personajuridico_nombre" name="personajuridico_nombre" type="text" value="<?= $nombre; ?>">
+                    <label for="personajuridico_nombre"><?= label('formPersona_nombreJuridico'); ?></label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="proveedorjuridico_nombreFantasia" type="text" value="Materiales R&B">
-                    <label for="proveedorjuridico_nombreFantasia"><?= label('formProveedor_nombreFantasia'); ?></label>
+                    <input id="personajuridico_nombreFantasia" name="personajuridico_nombreFantasia" type="text" value="<?= $nombreFantasia; ?>">
+                    <label for="personajuridico_nombreFantasia"><?= label('formPersona_nombreFantasia'); ?></label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="proveedorjuridico_correo" type="email" value="rbmateriales@gmail.com">
-                    <label for="proveedorjuridico_correo"><?= label('formProveedor_correo'); ?></label>
+                    <input id="personajuridico_correo" name="personajuridico_correo" type="email" value="<?= $correo; ?>">
+                    <label for="personajuridico_correo"><?= label('formPersona_correo'); ?></label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="proveedorjuridico_telefono" type="text" value="2448-9865">
-                    <label for="proveedorjuridico_telefono"><?= label('formProveedor_telefono'); ?></label>
+                    <input id="personajuridico_telefono" name="personajuridico_telefono" type="text" value="<?= $telefonoFijo; ?>">
+                    <label for="personajuridico_telefono"><?= label('formPersona_telefono'); ?></label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="proveedorjuridico_fax" type="text" value="2448-5623">
-                    <label for="proveedorjuridico_fax"><?= label('formProveedor_fax'); ?></label>
+                    <input id="personajuridico_fax" name="personajuridico_fax" type="text" value="<?= $fax; ?>">
+                    <label for="personajuridico_fax"><?= label('formPersona_fax'); ?></label>
                 </div>
             </div>
 
             <div>
                 <div class="inputTag col s12" style="margin-bottom: 10px;">
-                    <label for="proveedor_palabrasClave"><?= label('formProveedor_palabrasClave'); ?></label>
-                    <div id="proveedor_palabrasClave" class="example tags_keywords" style="margin-top: 10px;">
+                    <label for="persona_palabrasClave"><?= label('formPersona_palabrasClave'); ?></label>
+                    <div id="persona_palabrasClave" class="example tags_keywords" style="margin-top: 10px;">
                         <div class="bs-example">
-                            <input placeholder="<?= label('formProveedor_palabrasClaveAnadir'); ?>" type="text"
-                                value="Herramientas, Materiales varios, Reparaciones, Servicio express" />
+                            <input id="persona_palabras" name="persona_palabras" value="<?= $palabras; ?>"
+                                   placeholder="<?= label('formPersona_palabrasClaveAnadir'); ?>" type="text"/>
                         </div>
                     </div>
                 </div>
                 <div class="input-field col s12">
-                    <textarea id="proveedor_descripcion" name="proveedor_descripcion" class="materialize-textarea"
-                              length="120">Proveedor de herramientas y materiales varios.</textarea>
-                    <label for="proveedor_descripcion"><?= label('formProveedor_descripcion'); ?></label>
+                    <textarea id="persona_descripcion" name="persona_descripcion" class="materialize-textarea"
+                              rows="4"><?= $descripcion; ?></textarea>
+                    <label for="persona_descripcion"><?= label('formPersona_descripcion'); ?></label>
                 </div>
             </div>
 
@@ -129,376 +198,92 @@
 
             <div class="col s12 proveedor-editar-tabs-secundarios">
                 <div id="tab-direccion-editar" class="card col s12">
-                    <div>
-                        <div class="input-field col s12 m4 l4">
-                            <input id="proveedor_direccionPais" type="text" value="Costa Rica">
-                            <label for="proveedor_direccionPais"><?= label('formProveedor_direccionPais'); ?></label>
-                        </div>
-                        <div class="input-field col s12 m4 l4">
-                            <input id="proveedor_direccionProvincia" type="text" value="Alajuela">
-                            <label for="proveedor_direccionProvincia"><?= label('formProveedor_direccionProvincia'); ?></label>
-                        </div>
-                        <div class="input-field col s12 m4 l4">
-                            <input id="proveedor_direccionCanton" type="text" value="Poas">
-                            <label for="proveedor_direccionCanton"><?= label('formProveedor_direccionCanton'); ?></label>
-                        </div>
-<!--                        <div class="input-field col s12 m4 l4">-->
-<!--                            <input id="proveedor_direccionDistrito" type="text" value="San Rafael">-->
-<!--                            <label for="proveedor_direccionDistrito">--><?//= label('formProveedor_direccionDistrito'); ?><!--</label>-->
-<!--                        </div>-->
-                        <div class="input-field col s12 m12 l12">
-                            <input id="proveedor_direccionDomicilio" type="text" value="San Rafael, 200 mts este de la iglesia de la localidad">
-                            <label for="proveedor_direccionDomicilio"><?= label('formProveedor_direccionDomicilio'); ?></label>
-                        </div>
+                    <div class="input-field col s12 m4 l4">
+                        <input id="persona_direccionPais" name="persona_direccionPais" type="text" value="<?= $pais; ?>">
+                        <label for="persona_direccionPais"><?= label('formPersona_direccionPais'); ?></label>
+                    </div>
+                    <div class="input-field col s12 m4 l4">
+                        <input id="persona_direccionProvincia" name="persona_direccionProvincia" type="text" value="<?= $provincia; ?>">
+                        <label for="persona_direccionProvincia"><?= label('formPersona_direccionProvincia'); ?></label>
+                    </div>
+                    <div class="input-field col s12 m4 l4">
+                        <input id="persona_direccionCanton" name="persona_direccionCanton" type="text" value="<?= $canton; ?>">
+                        <label for="persona_direccionCanton"><?= label('formPersona_direccionCanton'); ?></label>
+                    </div>
+                    <div class="input-field col s12 m12 l12">
+                        <input id="persona_direccionDomicilio" name="persona_direccionDomicilio" type="text" value="<?= $domicilio; ?>">
+                        <label for="persona_direccionDomicilio"><?= label('formPersona_direccionDomicilio'); ?></label>
                     </div>
                 </div>
                 <div id="tab-contactos-editar" class="card col s12">
-                    <div class="row">
-                        <div class="col s12 m11 l11">
-                            <div class="row">
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="proveedor_contactoApellido1" type="text" value="Rodriguez">
-                                    <label for="proveedor_contactoApellido1"><?= label('formContacto_apellido1'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="proveedor_contactoApellido2" type="text" value="Bolanos">
-                                    <label for="proveedor_contactoApellido2"><?= label('formContacto_apellido2'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="proveedor_contactoNombre" type="text" value="Jose">
-                                    <label for="proveedor_contactoNombre"><?= label('formContacto_nombre'); ?></label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12 m6 l6">
-                                    <div>
-                                        <input id="proveedor_contactoCorreo" type="email" style="margin-bottom: 0;" value="jose.rodriguez@gmail.com">
-                                        <label for="proveedor_contactoCorreo"><?= label('formProveedor_correo'); ?></label>
-                                    </div>
-                                    <div style="margin-bottom: 20px;">
-                                        <input type="checkbox" class="filled-in" id="checkbox_contactoCorreoProveedor" checked />
-                                        <label for="checkbox_contactoCorreoProveedor" style="margin-bottom: 20px;">
-                                            <?= label('formProveedor_correoCheck') ?>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="input-field col s12 m3 l3">
-                                    <input id="proveedor_contactoPuesto" type="text" value="Propietario">
-                                    <label for="proveedor_contactoPuesto"><?= label('formContacto_puesto'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m3 l3">
-                                    <input id="proveedor_contactoTelefono" type="text" value="8956-3405">
-                                    <label for="proveedor_contactoTelefono"><?= label('formContacto_telefono'); ?></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col s12 m1 l1 btn-contacto-eliminar-edicion">
-                            <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar') ?>">
-                                <i class="mdi-action-delete medium" style="color: black;"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col s12">
-                        <hr />
-                    </div>
+                    <div id="contenedorContactos">
+                        <?php
+                        if(isset($resultado['contactos'])) {
+                            $contactos = $resultado['contactos'];
+                            if($contactos != false) {
+                                $contador= 0;
+                                foreach ($contactos as $contacto) { ?>
+                                    <div id="contacto<?=$contador?> " class="row">
+                                        <div class="col s12 m11 l11">
+                                            <div class="row">
+                                                <div class="input-field col s12 m4 l4">
+                                                    <input class="accionAplicada" style="display:none" name="contacto_<?=$contador?>" type="text" value="1"> <!-- value 1 para existentes, 0 los nuevos y 2 los eliminados -->
+                                                    <input style="display:none" name="idContacto_<?=$contador?>" type="text" value="<?=encryptIt($contacto['idProveedorContacto'])?>">
 
-                    <div class="row">
-                        <div class="col s12 m11 l11">
-                            <div class="row">
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="proveedor_contactoApellido1" type="text" value="Bolanos" >
-                                    <label for="proveedor_contactoApellido1"><?= label('formContacto_apellido1'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="proveedor_contactoApellido2" type="text" value="Castro">
-                                    <label for="proveedor_contactoApellido2"><?= label('formContacto_apellido2'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="proveedor_contactoNombre" type="text" value="Maria">
-                                    <label for="proveedor_contactoNombre"><?= label('formContacto_nombre'); ?></label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12 m6 l6">
-                                    <div>
-                                        <input id="proveedor_contactoCorreo" type="email" style="margin-bottom: 0;" value="maria.bolanos@gmail.com">
-                                        <label for="proveedor_contactoCorreo"><?= label('formProveedor_correo'); ?></label>
-                                    </div>
-                                    <div style="margin-bottom: 20px;">
-                                        <input type="checkbox" class="filled-in" id="checkbox_contactoCorreoProveedor" checked />
-                                        <label for="checkbox_contactoCorreoProveedor" style="margin-bottom: 20px;">
-                                            <?= label('formProveedor_correoCheck') ?>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="input-field col s12 m3 l3">
-                                    <input id="proveedor_contactoPuesto" type="text" value="Propietario">
-                                    <label for="proveedor_contactoPuesto"><?= label('formContacto_puesto'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m3 l3">
-                                    <input id="proveedor_contactoTelefono" type="text" value="8956-6545">
-                                    <label for="proveedor_contactoTelefono"><?= label('formContacto_telefono'); ?></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col s12 m1 l1 btn-contacto-eliminar-edicion">
-                            <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar') ?>">
-                                <i class="mdi-action-delete medium" style="color: black;"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col s12">
-                        <hr />
-                    </div>
+                                                    <input id="proveedor_contactoApellido1_<?=$contador?>" name="proveedor_contactoApellido1_<?=$contador?>" type="text" value="<?=$contacto['primerApellido']?>">
+                                                    <label for="proveedor_contactoApellido1_<?=$contador?>"><?= label("formContacto_apellido1"); ?></label>
+                                                </div>
+                                                <div class="input-field col s12 m4 l4">
+                                                    <input id="proveedor_contactoApellido2_<?=$contador?>" name="proveedor_contactoApellido2_<?=$contador?>" type="text" value="<?=$contacto['segundoApellido']?>">
+                                                    <label for="proveedor_contactoApellido2_<?=$contador?>"><?= label("formContacto_apellido2"); ?></label>
+                                                </div>
+                                                <div class="input-field col s12 m4 l4">
+                                                    <input id="proveedor_contactoNombre_<?=$contador?>" name="proveedor_contactoNombre_<?=$contador?>" type="text" value="<?=$contacto['nombre']?>">
+                                                    <label for="proveedor_contactoNombre_<?=$contador?>"><?= label("formContacto_nombre"); ?></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field col s12 m6 l6">
+                                                    <div>
+<!--                                                        <input id="proveedor_contactoCorreo_--><?//=$contador?><!--" name="proveedor_contactoCorreo_--><?//=$contador?><!--" type="email" style="margin-bottom: 0;" value="--><?//=$contacto['correo']?><!--">-->
+                                                        <input id="proveedor_contactoCorreo_<?=$contador?>" name="proveedor_contactoCorreo_<?=$contador?>" type="email" value="<?=$contacto['correo']?>">
+                                                        <label for="proveedor_contactoCorreo_<?=$contador?>"><?= label("formProveedor_correo"); ?></label>
+                                                    </div>
+<!--                                                    <div style="margin-bottom: 20px;">-->
+<!--                                                        <input type="checkbox" class="filled-in" id="checkbox_contactoCorreoCliente_--><?//=$contador?><!--" name="checkbox_contactoCorreoCliente_--><?//=$contador?><!--" value="1" --><?php //if($contacto['enviarFacturas']) echo 'checked';?><!-->
+<!--                                                        <label for="checkbox_contactoCorreoCliente_--><?//=$contador?><!--" style="margin-bottom: 20px;">-->
+<!--                                                            --><?//= label("formCliente_correoCheck"); ?>
+<!--                                                        </label>-->
+<!--                                                    </div>-->
+                                                </div>
+                                                <div class="input-field col s12 m3 l3">
+                                                    <input id="proveedor_contactoPuesto_<?=$contador?>" name="proveedor_contactoPuesto_<?=$contador?>" type="text" value="<?=$contacto['puesto']?>">
+                                                    <label for="proveedor_contactoPuesto_<?=$contador?>"><?= label("formContacto_puesto"); ?></label>
+                                                </div>
+                                                <div class="input-field col s12 m3 l3">
+                                                    <input id="proveedor_contactoTelefono_<?=$contador?>" name="proveedor_contactoTelefono_<?=$contador?>" type="text" value="<?=$contacto['telefono']?>">
+                                                    <label for="proveedor_contactoTelefono_<?=$contador?>"><?= label("formContacto_telefono"); ?></label>
+                                                </div>
+                                            </div>
 
-                    <div class="row">
-                        <div class="col s12 m11 l11">
-                            <div class="row">
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="proveedor_contactoApellido1" type="text" value="Castro">
-                                    <label for="proveedor_contactoApellido1"><?= label('formContacto_apellido1'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="proveedor_contactoApellido2" type="text" value="Chaves">
-                                    <label for="proveedor_contactoApellido2"><?= label('formContacto_apellido2'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="proveedor_contactoNombre" type="text" value="Juan">
-                                    <label for="proveedor_contactoNombre"><?= label('formContacto_nombre'); ?></label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12 m6 l6">
-                                    <div>
-                                        <input id="proveedor_contactoCorreo" type="email" style="margin-bottom: 0;" value="juan.castro@gmail.com">
-                                        <label for="proveedor_contactoCorreo"><?= label('formProveedor_correo'); ?></label>
+                                        </div>
+                                        <div class="col s12 m1 l1 btn-contacto-eliminar-edicion">
+                                            <a class="confirmarEliminarContacto" data-fila-eliminar="<?= $contador; ?>" title="<?= label("formProveedor_contactoEliminar") ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>
+                                        </div>
                                     </div>
-                                    <div style="margin-bottom: 20px;">
-                                        <input type="checkbox" class="filled-in" id="checkbox_contactoCorreoProveedor" />
-                                        <label for="checkbox_contactoCorreoProveedor" style="margin-bottom: 20px;">
-                                            <?= label('formProveedor_correoCheck') ?>
-                                        </label>
+                                    <div class="col s12">
+                                        <hr />
                                     </div>
-                                </div>
-                                <div class="input-field col s12 m3 l3">
-                                    <input id="proveedor_contactoPuesto" type="text" value="Vendedor">
-                                    <label for="proveedor_contactoPuesto"><?= label('formContacto_puesto'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m3 l3">
-                                    <input id="proveedor_contactoTelefono" type="text" value="8956-9865">
-                                    <label for="proveedor_contactoTelefono"><?= label('formContacto_telefono'); ?></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col s12 m1 l1 btn-contacto-eliminar-edicion">
-                            <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar') ?>">
-                                <i class="mdi-action-delete medium" style="color: black;"></i>
-                            </a>
-                        </div>
+                        <?php
+                                    $contador++;
+                                }
+                            }
+                        } ?>
                     </div>
-                    <div class="col s12">
-                        <hr />
-                    </div>
-
-                    <div class="row">
-                        <div class="col s12 m11 l11">
-                            <div class="row">
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="proveedor_contactoApellido1" type="text" value="Porras">
-                                    <label for="proveedor_contactoApellido1"><?= label('formContacto_apellido1'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="proveedor_contactoApellido2" type="text" value="Bogantes">
-                                    <label for="proveedor_contactoApellido2"><?= label('formContacto_apellido2'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="proveedor_contactoNombre" type="text" value="Luis">
-                                    <label for="proveedor_contactoNombre"><?= label('formContacto_nombre'); ?></label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12 m6 l6">
-                                    <div>
-                                        <input id="proveedor_contactoCorreo" type="email" style="margin-bottom: 0;" value="luis.porras@gmail.com">
-                                        <label for="proveedor_contactoCorreo"><?= label('formProveedor_correo'); ?></label>
-                                    </div>
-                                    <div style="margin-bottom: 20px;">
-                                        <input type="checkbox" class="filled-in" id="checkbox_contactoCorreoProveedor" />
-                                        <label for="checkbox_contactoCorreoProveedor" style="margin-bottom: 20px;">
-                                            <?= label('formProveedor_correoCheck') ?>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="input-field col s12 m3 l3">
-                                    <input id="proveedor_contactoPuesto" type="text" value="Vendedor">
-                                    <label for="proveedor_contactoPuesto"><?= label('formContacto_puesto'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m3 l3">
-                                    <input id="proveedor_contactoTelefono" type="text" value="8956-1245">
-                                    <label for="proveedor_contactoTelefono"><?= label('formContacto_telefono'); ?></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col s12 m1 l1 btn-contacto-eliminar-edicion">
-                            <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar') ?>">
-                                <i class="mdi-action-delete medium" style="color: black;"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col s12">
-                        <hr />
-                    </div>
-
-                    <div class="row">
-                        <div class="col s12 m11 l11">
-                            <div class="row">
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="proveedor_contactoApellido1" type="text" value="Murillo">
-                                    <label for="proveedor_contactoApellido1"><?= label('formContacto_apellido1'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="proveedor_contactoApellido2" type="text" value="Alfaro">
-                                    <label for="proveedor_contactoApellido2"><?= label('formContacto_apellido2'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="proveedor_contactoNombre" type="text" value="Jose">
-                                    <label for="proveedor_contactoNombre"><?= label('formContacto_nombre'); ?></label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12 m6 l6">
-                                    <div>
-                                        <input id="proveedor_contactoCorreo" type="email" style="margin-bottom: 0;" value="jose.murillo@gmail.com">
-                                        <label for="proveedor_contactoCorreo"><?= label('formProveedor_correo'); ?></label>
-                                    </div>
-                                    <div style="margin-bottom: 20px;">
-                                        <input type="checkbox" class="filled-in" id="checkbox_contactoCorreoProveedor" />
-                                        <label for="checkbox_contactoCorreoProveedor" style="margin-bottom: 20px;">
-                                            <?= label('formProveedor_correoCheck') ?>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="input-field col s12 m3 l3">
-                                    <input id="proveedor_contactoPuesto" type="text" value="Vendedor">
-                                    <label for="proveedor_contactoPuesto"><?= label('formContacto_puesto'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m3 l3">
-                                    <input id="proveedor_contactoTelefono" type="text" value="8752-9865">
-                                    <label for="proveedor_contactoTelefono"><?= label('formContacto_telefono'); ?></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col s12 m1 l1 btn-contacto-eliminar-edicion">
-                            <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar') ?>">
-                                <i class="mdi-action-delete medium" style="color: black;"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col s12">
-                        <hr />
-                    </div>
-
-                    <div class="row">
-                        <div class="col s12 m11 l11">
-                            <div class="row">
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="proveedor_contactoApellido1" type="text" value="Arias">
-                                    <label for="proveedor_contactoApellido1"><?= label('formContacto_apellido1'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="proveedor_contactoApellido2" type="text" value="Lopez">
-                                    <label for="proveedor_contactoApellido2"><?= label('formContacto_apellido2'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="proveedor_contactoNombre" type="text" value="Karla">
-                                    <label for="proveedor_contactoNombre"><?= label('formContacto_nombre'); ?></label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12 m6 l6">
-                                    <div>
-                                        <input id="proveedor_contactoCorreo" type="email" style="margin-bottom: 0;" value="karla.arias@gmail.com">
-                                        <label for="proveedor_contactoCorreo"><?= label('formProveedor_correo'); ?></label>
-                                    </div>
-                                    <div style="margin-bottom: 20px;">
-                                        <input type="checkbox" class="filled-in" id="checkbox_contactoCorreoProveedor" />
-                                        <label for="checkbox_contactoCorreoProveedor" style="margin-bottom: 20px;">
-                                            <?= label('formProveedor_correoCheck') ?>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="input-field col s12 m3 l3">
-                                    <input id="proveedor_contactoPuesto" type="text" value="Vendedor">
-                                    <label for="proveedor_contactoPuesto"><?= label('formContacto_puesto'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m3 l3">
-                                    <input id="proveedor_contactoTelefono" type="text" value="8956-1379">
-                                    <label for="proveedor_contactoTelefono"><?= label('formContacto_telefono'); ?></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col s12 m1 l1 btn-contacto-eliminar-edicion">
-                            <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar') ?>">
-                                <i class="mdi-action-delete medium" style="color: black;"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col s12">
-                        <hr />
-                    </div>
-
-                    <div class="row">
-                        <div class="col s12 m11 l11">
-                            <div class="row">
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="proveedor_contactoApellido1" type="text" value="Zamora">
-                                    <label for="proveedor_contactoApellido1"><?= label('formContacto_apellido1'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="proveedor_contactoApellido2" type="text" value="Rivera">
-                                    <label for="proveedor_contactoApellido2"><?= label('formContacto_apellido2'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="proveedor_contactoNombre" type="text" value="Fabian">
-                                    <label for="proveedor_contactoNombre"><?= label('formContacto_nombre'); ?></label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12 m6 l6">
-                                    <div>
-                                        <input id="proveedor_contactoCorreo" type="email" style="margin-bottom: 0;" value="fabian.zamora@gmail.com">
-                                        <label for="proveedor_contactoCorreo"><?= label('formProveedor_correo'); ?></label>
-                                    </div>
-                                    <div style="margin-bottom: 20px;">
-                                        <input type="checkbox" class="filled-in" id="checkbox_contactoCorreoProveedor" />
-                                        <label for="checkbox_contactoCorreoProveedor" style="margin-bottom: 20px;">
-                                            <?= label('formProveedor_correoCheck') ?>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="input-field col s12 m3 l3">
-                                    <input id="proveedor_contactoPuesto" type="text" value="Vendedor">
-                                    <label for="proveedor_contactoPuesto"><?= label('formContacto_puesto'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m3 l3">
-                                    <input id="proveedor_contactoTelefono" type="text" value="8956-0943">
-                                    <label for="proveedor_contactoTelefono"><?= label('formContacto_telefono'); ?></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col s12 m1 l1 btn-contacto-eliminar-edicion">
-                            <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar') ?>">
-                                <i class="mdi-action-delete medium" style="color: black;"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="row" id="tab-contactos-nuevo">
+                    <div class="row" id="tab-contactos-nuevo" style="padding: 20px;">
                         <a onclick="agregarNuevoContacto();">
                             <?= label('formProveedor_contactoAgregar') ?>
                         </a>
-                    </div>
-                    <div class="col s12">
-                        <hr />
                     </div>
                 </div>
                 <div id="tab-infoAdicional-editar" class="card col s12">
@@ -627,13 +412,55 @@
                     </div>
                 </div>
             </div>
+
+            <div class="input-field col s12 envio-formulario" style="margin: 15px 0 25px;">
+                <button class="btn waves-effect waves-light right" type="submit"
+                        name="action"><?= label('formPersona_editar'); ?>
+                </button>
+            </div>
         </div>
     </form>
+</div>
+
+<div style="display: none">
+    <a id="linkModalGuardado" href="#transaccionCorrecta" class="btn btn-default modal-trigger"></a>
+    <a id="linkModalError" href="#transaccionIncorrecta" class="btn btn-default modal-trigger"></a>
+</div>
+<div style="visibility:hidden; position:absolute">
+    <input id="cantidadContactos" form="formPersona" name="cantidadContactos" type="text" value="<?= count($resultado['contactos'])?>">
+    <a id="linkContactosElimminar" href="#eliminarContacto-editar" class="modal-trigger" data-fila-eliminar="1"
+       title="<?= label('formProveedor_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>
 </div>
 
 <?php
     $this->load->view('layout/default/menu-crear.php');
 ?>
+
+<!-- Funcion de insercion de datos-->
+<script>
+    function validacionCorrecta_Persona(){
+        var formulario = $('#formPersona');
+        var data = formulario.serialize();
+        var url = formulario.attr('action');
+        var method = formulario.attr('method');
+        $.ajax({
+            type: method,
+            url: url,
+            data: data,
+            success: function(response) {
+                switch(response) {
+                    case '0':
+                        $('#linkModalError').click();
+                        break;
+                    case '1':
+                        $('#linkModalGuardado').click();
+//                        $('form')[0].reset();
+                        break;
+                }
+            }
+        });
+    }
+</script>
 
 <script>
     $(window).load(function () {
@@ -792,24 +619,33 @@
         });
 
 
-        $('.boton-opciones').on('click', function (event) {
-            var elementoActivo = $(this).siblings('ul.active');
-            if (elementoActivo.length > 0) {
-                var estado = elementoActivo.css("display");
-                if (estado == "block") {
-                    elementoActivo.css("display", "none");
-                    elementoActivo.style.display = 'none';
-                } else {
-                    elementoActivo.css("display", "block");
-                    elementoActivo.style.display = 'block';
-                }
-            }
-        });
+//        $('.boton-opciones').on('click', function (event) {
+//            var elementoActivo = $(this).siblings('ul.active');
+//            if (elementoActivo.length > 0) {
+//                var estado = elementoActivo.css("display");
+//                if (estado == "block") {
+//                    elementoActivo.css("display", "none");
+//                    elementoActivo.style.display = 'none';
+//                } else {
+//                    elementoActivo.css("display", "block");
+//                    elementoActivo.style.display = 'block';
+//                }
+//            }
+//        });
     });
 </script>
 
 <!-- Funcion para mostrar elementos -->
 <script>
+    $(document).ready(function () {
+        $('#persona_nacionalidad').val('<?= $nacionalidad; ?>').change();
+        var tipo = '<?= $juridico; ?>';
+        if(tipo == 1) {
+            $('#persona_tipo').val(2).change();
+        } else {
+            $('#persona_tipo').val(1).change();
+        }
+    });
     function datosProveedor(opcionSeleccionada) {
         if (opcionSeleccionada.value == "1") {
             document.getElementById('campos-proveedor-fisico').style.display = 'block';
@@ -819,64 +655,133 @@
             document.getElementById('campos-proveedor-juridico').style.display = 'block';
         }
     }
+
+    var contactoEliminar = null;
+    $(document).on('click','.confirmarEliminarContacto', function () {
+        contactoEliminar = $(this).parent().parent();
+        $('#linkContactosElimminar').click();//esto se hace porque al agregar un <a class="modal-trigger"> dinamicamente con el metodo de agregarNuevoContacto() pareciera no servir, entonces lo que se hace es llamar al evento click del modal-trigger con el id = linkContactosElimminar
+    });
+
+    $(document).on('click','#eliminarContacto-editar #botonEliminar', function () {
+        event.preventDefault();
+        var tipo = contactoEliminar.find('.accionAplicada').val();
+        if (tipo == '0') {
+            contactoEliminar.fadeOut(function () {
+                contactoEliminar.remove();
+            });
+            cantidad--;
+            actualizarCantidad();
+        } else{
+            contactoEliminar.find('.accionAplicada').val('2');
+            contactoEliminar.fadeOut(function () {
+                contactoEliminar.hide();
+            });
+
+        }
+    });
+
+    function actualizarCantidad(){
+        $('#cantidadContactos').val(cantidad);
+
+    }
+    var cantidad = <?= count($resultado['contactos'])?>;
+    var contador = cantidad;
     function agregarNuevoContacto() {
-        $('#tab-contactos-nuevo').remove();
-        $('#tab-contactos-editar').append('' +
-            '<div class="row">' +
-            '<div class="col s12 m11 l11">' +
-            '<div class="row">' +
-            '<div class="input-field col s12 m4 l4">' +
-            '<input id="proveedor_contactoApellido1" type="text">' +
-            '<label for="proveedor_contactoApellido1"><?= label("formContacto_apellido1"); ?></label>' +
-            '</div>' +
-            '<div class="input-field col s12 m4 l4">' +
-            '<input id="proveedor_contactoApellido2" type="text">' +
-            '<label for="proveedor_contactoApellido2"><?= label("formContacto_apellido2"); ?></label>' +
-            '</div>' +
-            '<div class="input-field col s12 m4 l4">' +
-            '<input id="proveedor_contactoNombre" type="text">' +
-            '<label for="proveedor_contactoNombre"><?= label("formContacto_nombre"); ?></label>' +
-            '</div>' +
-            '</div>' +
-
-            '<div class="row">' +
-            '<div class="input-field col s12 m6 l6">' +
-            '<div>' +
-            '<input id="proveedor_contactoCorreo" type="email" style="margin-bottom: 0;">' +
-            '<label for="proveedor_contactoCorreo"><?= label('formProveedor_correo'); ?></label>' +
-            '</div>' +
-            '<div style="margin-bottom: 20px;">' +
-            '<input type="checkbox" class="filled-in" id="checkbox_contactoCorreoProveedor" />' +
-            '<label for="checkbox_contactoCorreoProveedor" style="margin-bottom: 20px;">' +
-            '<?= label('formProveedor_correoCheck') ?>' +
-            '</label>' +
-            '</div>' +
-            '</div>' +
-            '<div class="input-field col s12 m3 l3">' +
-            '<input id="proveedor_contactoPuesto" type="text">' +
-            '<label for="proveedor_contactoPuesto"><?= label('formContacto_puesto'); ?></label>' +
-            '</div>' +
-            '<div class="input-field col s12 m3 l3">' +
-            '<input id="proveedor_contactoTelefono" type="text">' +
-            '<label for="proveedor_contactoTelefono"><?= label('formContacto_telefono'); ?></label>' +
-            '</div>' +
-            '</div>' +
-
-            '</div>' +
-            '<div class="col s12 m1 l1 btn-contacto-eliminar-edicion">' +
-            '<a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>' +
-            '</div>' +
-            '</div>' +
-            '<div class="row" id="tab-contactos-nuevo">' +
-            '<a style="cursor: pointer;" onclick="agregarNuevoContacto();"><?= label('formProveedor_contactoAgregar') ?></a>' +
+        cantidad++;
+        actualizarCantidad();
+        $('#contenedorContactos').append('' +
+            '<div id="' + contador + '" class="row">' +
+                '<div class="col s12 m11 l11">' +
+                    '<div class="row">' +
+                        '<div class="input-field col s12 m4 l4">' +
+                            '<input class="accionAplicada" style="display:none" name="contacto_'+ contador +'" type="text" value="0">' +
+                            '<input id="proveedor_contactoApellido1_' + contador + '" name="proveedor_contactoApellido1_' + contador + '" type="text">' +
+                            '<label for="proveedor_contactoApellido1_' + contador + '"><?= label("formContacto_apellido1"); ?></label>' +
+                        '</div>' +
+                        '<div class="input-field col s12 m4 l4">' +
+                            '<input id="proveedor_contactoApellido2_' + contador + '" name="proveedor_contactoApellido2_' + contador + '" type="text">' +
+                            '<label for="proveedor_contactoApellido2_' + contador + '"><?= label("formContacto_apellido2"); ?></label>' +
+                        '</div>' +
+                        '<div class="input-field col s12 m4 l4">' +
+                            '<input id="proveedor_contactoNombre_' + contador + '" name="proveedor_contactoNombre_' + contador + '" type="text">' +
+                            '<label for="proveedor_contactoNombre_' + contador + '"><?= label("formContacto_nombre"); ?></label>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="row">' +
+                        '<div class="input-field col s12 m6 l6">' +
+                            '<div>' +
+//                                '<input id="proveedor_contactoCorreo_' + contador + '" name="proveedor_contactoCorreo_' + contador + '" type="email" style="margin-bottom: 0;">' +
+                                '<input id="proveedor_contactoCorreo_' + contador + '" name="proveedor_contactoCorreo_' + contador + '" type="email">' +
+                                '<label for="proveedor_contactoCorreo_' + contador + '"><?= label('formProveedor_correo'); ?></label>' +
+                            '</div>' +
+//                            '<div style="margin-bottom: 20px;">' +
+//                                '<input type="checkbox" class="filled-in" id="checkbox_contactoCorreoProveedor_' + contador + '" name="checkbox_contactoCorreoProveedor_' + contador + '" />' +
+//                                '<label for="checkbox_contactoCorreoProveedor_' + contador + '" style="margin-bottom: 20px;">' +
+//                                '<?//= label('formProveedor_correoCheck') ?>//' +
+//                                '</label>' +
+//                            '</div>' +
+                        '</div>' +
+                        '<div class="input-field col s12 m3 l3">' +
+                            '<input id="proveedor_contactoPuesto_' + contador + '" name="proveedor_contactoPuesto_' + contador + '" type="text">' +
+                            '<label for="proveedor_contactoPuesto_' + contador + '"><?= label('formContacto_puesto'); ?></label>' +
+                        '</div>' +
+                        '<div class="input-field col s12 m3 l3">' +
+                            '<input id="proveedor_contactoTelefono_' + contador + '" name="proveedor_contactoTelefono_' + contador + '" type="text">' +
+                            '<label for="proveedor_contactoTelefono_' + contador + '"><?= label('formContacto_telefono'); ?></label>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+                '<div class="col s12 m1 l1 btn-contacto-eliminar-edicion">' +
+//                    '<a href="#eliminarContacto" class="modal-trigger" title="<?//= label('formProveedor_contactoEliminar') ?>//"><i class="mdi-action-delete medium" style="color: black;"></i></a>' +
+                    '<a class="confirmarEliminarContacto" data-fila-eliminar="' + contador + '" title="<?= label('formProveedor_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>' +
+                '</div>' +
             '</div>' +
             '<div class="col s12">' +
-            '<hr />' +
-            '</div>');
+                '<hr />' +
+            '</div>'
+        );
+        contador++;
     }
 </script>
 
 <!-- lista modals -->
+<div id="transaccionCorrecta" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('usuarioGuardadoCorrectamente'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="transaccionIncorrecta" class="modal">
+    <div  class="modal-header headerTransaccionIncorrecta">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('errorGuardar'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="eliminarContacto-editar" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('confirmarEliminarContacto'); ?></p>
+    </div>
+    <div id="botonEliminar" class="modal-footer black-text">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+
 <div id="agregarSalario" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
@@ -936,18 +841,6 @@
     </div>
     <div class="modal-content">
         <p><?= label('confirmarEliminarSalario'); ?></p>
-    </div>
-    <div class="modal-footer black-text">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
-    </div>
-</div>
-<div id="eliminarContacto" class="modal">
-    <div class="modal-header">
-        <p><?= label('nombreSistema'); ?></p>
-        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
-    </div>
-    <div class="modal-content">
-        <p><?= label('confirmarEliminarContacto'); ?></p>
     </div>
     <div class="modal-footer black-text">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
