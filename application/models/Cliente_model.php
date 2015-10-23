@@ -262,8 +262,8 @@ class Cliente_model extends CI_Model
         try{
             $this->db->trans_begin();
 
-            $this->db->where('idEmpleado', $id);
-            $query = $this->db->update('empleado', array('eliminado' => 1));
+            $this->db->where('idCliente', $id);
+            $query = $this->db->update('cliente', array('eliminado' => 1));
             if (!$query) throw new Exception("Error en la BD"); 
 
             $this->db->trans_commit();

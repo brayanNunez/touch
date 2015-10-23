@@ -80,9 +80,10 @@
                                                                            class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="#eliminarFase"
-                                                                           class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                                    </li>
+                                                                         <a href="#eliminarFase"
+                                                                            class="-text modal-trigger confirmarEliminar"
+                                                                            data-id-eliminar="<?= $idEncriptado ?>"  data-fila-eliminar="fila<?= $contador?>"><?= label('menuOpciones_eliminar') ?></a>
+                                                                      </li>
                                                                 </ul>
                                                                 <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
                                                                   href="#!"

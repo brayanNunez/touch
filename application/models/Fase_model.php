@@ -10,6 +10,23 @@ class Fase_model extends CI_Model
         $this->load->database();
     }
 
+     public function eliminar($id)
+    {
+        try{
+            $this->db->trans_begin();
+
+            $this->db->where('idFase', $id);
+            $query = $this->db->update('fase', array('eliminado' => 1));
+            if (!$query) throw new Exception("Error en la BD"); 
+
+            $this->db->trans_commit();
+            return true;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
     
 
     function cargarTodos($idEmpresa)

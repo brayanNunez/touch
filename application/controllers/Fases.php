@@ -24,6 +24,18 @@ class Fases extends CI_Controller
         $this->load->view('layout/default/footer');
     }
 
+    public function eliminar()
+    {
+       $id = $_POST['idEliminar'];
+        if (!$this->Fase_model->eliminar(decryptIt($id))) {
+            //Error en la transacción
+            echo 0; 
+        } else {
+            //correcto
+            echo 1; 
+        }
+    }
+
 
 
     public function nuevaFase(){

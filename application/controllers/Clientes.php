@@ -383,6 +383,18 @@ class Clientes extends CI_Controller
         }
     }
 
+    public function eliminar()
+    {
+       $id = $_POST['idEliminar'];
+        if (!$this->Cliente_model->eliminar(decryptIt($id))) {
+            //Error en la transacción
+            echo 0; 
+        } else {
+            //correcto
+            echo 1; 
+        }
+    }
+
     public function eliminarArchivo() {
         $id = $_POST['idEliminar'];
         $resultado = $this->Cliente_model->eliminarArchivo(decryptIt($id));
