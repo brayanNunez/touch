@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 m12 l12">
-                    <h5 class="breadcrumbs-title"><?= label('proveedor_info'); ?></a></h5>
+                    <h5 class="breadcrumbs-title"><?= label('persona_info'); ?></a></h5>
                 </div>
             </div>
         </div>
@@ -47,10 +47,22 @@
                                         </div>
                                         <div class="col s12">
                                             <div id="tab-informacion" class="card col s12">
-                                                <?php $this->load->view('proveedores/proveedores_ver'); ?>
+                                                <?php
+                                                    if(isset($resultado)) {
+                                                        $this->load->view('proveedores/proveedores_ver', $resultado);
+                                                    }  else {
+                                                        $this->load->view('proveedores/proveedores_ver');
+                                                    }
+                                                ?>
                                             </div>
                                             <div id="tab-edicion" class="card col s12">
-                                                <?php $this->load->view('proveedores/proveedores_editar'); ?>
+                                                <?php
+                                                    if(isset($resultado)) {
+                                                        $this->load->view('proveedores/proveedores_editar', $resultado);
+                                                    }  else {
+                                                        $this->load->view('proveedores/proveedores_editar');
+                                                    }
+                                                ?>
                                             </div>
                                             <div id="tab-archivos" class="card col s12">
                                                 <?php $this->load->view('proveedores/proveedores_archivos', $archivos); ?>
