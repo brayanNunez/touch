@@ -75,7 +75,7 @@ class Fase_model extends CI_Model
                 if (!$query) throw new Exception("Error en la BD");   
             }
             $this->db->trans_commit();
-            return true;
+            return $insert_id;
         } catch (Exception $e) {
             $this->db->trans_rollback();
             return false;

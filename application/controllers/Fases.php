@@ -104,13 +104,13 @@ class Fases extends CI_Controller
          }
 
          $data['subFases'] = $fases;
-
-        if (!$this->Fase_model->insertar($data)) {
+         $res = $this->Fase_model->insertar($data);
+        if (!$res) {
             //Error en la transacción
             echo 0;
         } else {
             // correcto
-            echo 1;
+            echo encryptIt($res);
         }
     }
 

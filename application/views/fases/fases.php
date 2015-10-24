@@ -15,33 +15,44 @@ $(document).on('ready', function(){
         });
 
 });
-        
+        var contadorFilas = 0;
+        <?php
+          if (isset($lista)) {
+          
+              if ($lista !== false) {
+                ?>
+                contadorFilas = <?=count($lista);?>;//actualiza el contador con los que vienen desde la bd
+                <?php
+              }
+            }
 
+          ?>
+         
        function agregarFila(idEncriptado, codigo, fase, descripcion){
             // $('tbody').empty();
-            var contador = 9;
+           
 
             var check = '<td>' +
                         '<div style="text-align: center;">'+
-                       '<input type="checkbox" class="filled-in checkbox"id="8"/>' +
-                       '<label for="8"></label>' +
+                       '<input type="checkbox" class="filled-in checkbox" id="'+idEncriptado+'"/>' +
+                       '<label for="'+idEncriptado+'"></label>' +
                        '</div>'+
                     '</td>';
             var boton = '<td>' +
-                            '<ul id="dropdown-fase'+ contador +'" class="dropdown-content">' +
+                            '<ul id="dropdown-fase'+ contadorFilas +'" class="dropdown-content">' +
                                 '<li>' +
-                                    '<a href="#editarFase" data-id-editar="8"' +
+                                    '<a href="#editarFase" data-id-editar="'+idEncriptado+'"' +
                                        'class="-text modal-trigger abrirEditar">'+ menuOpciones_editar + '</a>' +
                                 '</li>' +
                                 '<li>' +
                                      '<a href="#eliminarFase"' +
                                         'class="-text modal-trigger confirmarEliminar"' +
-                                        'data-id-eliminar="8"  data-fila-eliminar="fila'+ contador +'">'+menuOpciones_eliminar+'</a>' +
+                                        'data-id-eliminar="'+idEncriptado+'"  data-fila-eliminar="fila'+ contadorFilas +'">'+menuOpciones_eliminar+'</a>' +
                                   '</li>' +
                             '</ul>' +
                             '<a class="boton-opciones btn-flat dropdown-button waves-effect white-text"' +
                               'href="#!"' +
-                              'data-activates="dropdown-fase'+ contador +'">' +
+                              'data-activates="dropdown-fase'+ contadorFilas +'">' +
                            ''+ menuOpciones_seleccionar +'<i class="mdi-navigation-arrow-drop-down"></i>' +
                            '</a>' +
                         '</td>';
@@ -52,18 +63,27 @@ $(document).on('ready', function(){
             var subfases = '<td><a>'+tablaFases_verSubfases+'</a></td>';
 
 
-           $('table').dataTable().fnAddData( [
+            // //initialiase dataTable and set config options
+            // var table = $('table').dataTable({
+            //     'fnCreatedRow': function (nRow, aData, iDataIndex) {
+            //         $(nRow).attr('id', 'myTable'); // or whatever you choose to set as the id
+            //     }
+            // });
+
+
+           $('table').dataTable().fnAddData([
             check,
             codigo,
             fase,
             descripcion,
             subfases,
-            boton ] );
+            boton ]);
+
 
            generarListasBotones();
             $('.modal-trigger').leanModal();
       
-            contador++;
+            contadorFilas++;
             
             };
 
@@ -276,7 +296,6 @@ $('.abrirEditar').click(function(){
 });
 
  function validacionCorrecta(){
-    alert('entre');
     var repetidos = false;
     $("input[name*='fase_codigo']").each(function () {
         var codigoEvaluar = $(this);
@@ -288,7 +307,7 @@ $('.abrirEditar').click(function(){
     });
 
     if (repetidos) {
-      alert('Existen codigos repetidos.');
+      alert("<?=label('fases_error_codigosRepetidos'); ?>");
     } else{
 
        $.ajax({
@@ -296,7 +315,6 @@ $('.abrirEditar').click(function(){
               url:   '<?=base_url()?>fases/verificarCodigos',
               type:  'post',
               success:  function (response) {
-                alert(response);
                 if (response == '0') {
                   alert("<?=label('errorGuardar'); ?>");
                   $('#agregarFase .modal-header a').click();
@@ -311,12 +329,10 @@ $('.abrirEditar').click(function(){
                            data: $('#form_fases').serialize(), 
                            success: function(response)
                            {
-                            
                              if (response == 0) {
                                    alert("<?=label('errorGuardar'); ?>");
                                    $('#agregarFase .modal-header a').click(); 
                                } else {
-                                
                                 
                                 alert("<?=label('fases_faseGuardadoCorrectamente'); ?>");
                                  $('#agregarFase .modal-header a').click(); 
@@ -328,7 +344,7 @@ $('.abrirEditar').click(function(){
                          }); 
 
                   } else{
-                    alert('codigo ya existe');
+                    alert("<?=label('fases_error_codigosExisteEnBD'); ?>");
                     $("input[name*='fase_codigo']").each(function () {
                         if ($(this).val() == response) {
                             $(this).focus();
@@ -376,11 +392,12 @@ $('.abrirEditar').click(function(){
          
    
        var idEliminar = 0;
-       var fila = 0;
+       var filaEliminar = null;
    
-       $('.confirmarEliminar').on('click', function () {
+       $(document).on('click','.confirmarEliminar', function () {
            idEliminar = $(this).data('id-eliminar');
-           fila = $(this).data('fila-eliminar');
+           filaEliminar = $(this).parents('tr');
+           
        });
    
         $('#eliminarFase #botonEliminar').on('click', function () {
@@ -394,8 +411,8 @@ $('.abrirEditar').click(function(){
                   // },
                   success:  function (response) {
                    if (response==1) {
-                       $('#' + fila).fadeOut(function () {
-                       $('#' + fila).remove();
+                       filaEliminar.fadeOut(function () {
+                       filaEliminar.remove();
                        verificarChecks();
                        });
                        
@@ -435,14 +452,15 @@ $('.abrirEditar').click(function(){
                var $this = $(this);
                if ($this.is(':checked')) {
                    sel = true;
-                   var fila = $this.parents('tr');
-                   var idEliminar = $this.parents('tr').attr('data-idElemento');
-   
+                    var fila = $this.parents('tr');
+                   // var idEliminar = $this.parents('tr').attr('data-idElemento');
+                   var idEliminar = $this.attr('id');
                    $.ajax({
                           data: {idEliminar : idEliminar},
                           url:   '<?=base_url()?>fases/eliminar',
                           type:  'post',
                           success:  function (response) {
+
                            contadorTotal++;
                            if (response==1) {
                               fila.fadeOut(function () {
@@ -488,7 +506,7 @@ $('.abrirEditar').click(function(){
        });
    });
    $(document).ready(function () {
-       $('.checkbox').click(function (event) {
+       $(document).on('click','.checkbox',function (event) {
            verificarChecks();
        });
    });
