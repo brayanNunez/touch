@@ -38,8 +38,47 @@ class Fases extends CI_Controller
 
 
 
-    public function nuevaFase(){
-        echo '0';
+    public function insertar(){
+
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $data['fasePadre'] =array(
+         'codigo' => $this->input->post('fase_codigo'),
+         'nombre' => $this->input->post('fase_nombre'),
+         'notas' => $this->input->post('fase_notas'),
+         'idEmpresa' => $idEmpresa,
+         'eliminado' => '0'
+         );
+
+        $fases = array();
+        $contador = 0;
+        $fasesObtenidos = 0;
+        $cantidadFases = $this->input->post('cantidadSubfases');
+        while ($fasesObtenidos < $cantidadFases) {
+            if (isset($_POST['fase_'.$contador])) {
+                  $fase = array(
+                 'codigo' => $this->input->post('fase_codigo'.$contador),
+                 'nombre' => $this->input->post('fase_nombre'.$contador),
+                 'notas' => $this->input->post('fase_notas'.$contador),
+                 'idEmpresa' => $idEmpresa,
+                 'eliminado' => '0'
+                 );
+                array_push($fases, $fase);
+                $fasesObtenidos++;
+            }
+            $contador++;
+         }
+
+         $data['subFases'] = $fases;
+
+        if (!$this->Fase_model->insertar($data)) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            // correcto
+            echo 1;
+        }
     }
 
 }
