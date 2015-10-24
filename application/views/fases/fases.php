@@ -262,8 +262,8 @@ $(document).on('ready', function(){
     <a id="linkModalErrorEliminar" href="#transaccionIncorrectaEliminar" class="btn btn-default modal-trigger"></a>
 
     <input id="cantidadSubfases" form="form_fases" name="cantidadSubfases" type="text" value="0">                                          
-    <a id="linkModalGuardado" href="#transaccionCorrecta" class="btn btn-default modal-trigger"></a>
-    <a id="linkModalError" href="#transaccionIncorrecta" class="btn btn-default modal-trigger"></a>
+  <!--   <a id="linkModalGuardado" href="#transaccionCorrecta" class="btn btn-default modal-trigger"></a>
+    <a id="linkModalError" href="#transaccionIncorrecta" class="btn btn-default modal-trigger"></a> -->
 </div>
 
 <!-- END CONTENT-->
@@ -276,32 +276,90 @@ $('.abrirEditar').click(function(){
 });
 
  function validacionCorrecta(){
-    // alert('entre');
-        // $('#agregarFase .modal-header a').click(); 
-        var url = $('#form_fases').attr('action');
-        var method = $('#form_fases').attr('method'); 
-        $.ajax({
-           type: method,
-           url: url,
-           data: $('#form_fases').serialize(), 
-           success: function(response)
-           {
-            
-            // var arrayPlantillas = $.parseJSON(response);
-            // alert(arrayPlantillas[0]['nombre'].toString());
-            // $('tbody').empty();
-             if (response == 0) {
-                   $('#linkModalError').click();
-               } else {
-                
-                // agregarFila(response, $('#fase_codigo').val(), $('#fase_nombre').val(), $('#fase_notas').val());
-                $('#linkModalGuardado').click();
-                // $('#form_fases').reset();
-               }   
+    alert('entre');
+    var repetidos = false;
+    $("input[name*='fase_codigo']").each(function () {
+        var codigoEvaluar = $(this);
+        $("input[name*='fase_codigo']").each(function () {
+          if ($(this).val() == codigoEvaluar.val() && $(this).attr('name') != codigoEvaluar.attr('name')) {
+              repetidos = true;
+          }
+      });
+    });
 
-              
+    if (repetidos) {
+      alert('Existen codigos repetidos.');
+    } else{
+
+       $.ajax({
+              data: $('#form_fases').serialize(), 
+              url:   '<?=base_url()?>fases/verificarCodigos',
+              type:  'post',
+              success:  function (response) {
+                alert(response);
+                if (response == '0') {
+                  alert("<?=label('errorGuardar'); ?>");
+                  $('#agregarFase .modal-header a').click();
+
+                } else{
+                  if (response == '1') {
+                        var url = $('#form_fases').attr('action');
+                        var method = $('#form_fases').attr('method'); 
+                        $.ajax({
+                           type: method,
+                           url: url,
+                           data: $('#form_fases').serialize(), 
+                           success: function(response)
+                           {
+                            
+                             if (response == 0) {
+                                   alert("<?=label('errorGuardar'); ?>");
+                                   $('#agregarFase .modal-header a').click(); 
+                               } else {
+                                
+                                
+                                alert("<?=label('fases_faseGuardadoCorrectamente'); ?>");
+                                 $('#agregarFase .modal-header a').click(); 
+                                agregarFila(response, $('#fase_codigo').val(), $('#fase_nombre').val(), $('#fase_notas').val());
+                               }   
+
+                              
+                           }
+                         }); 
+
+                  } else{
+                    alert('codigo ya existe');
+                    $("input[name*='fase_codigo']").each(function () {
+                        if ($(this).val() == response) {
+                            $(this).focus();
+                        }
+                    });
+
+                    // $("input[name*='fase_codigo']").each()
+                    // alert($("input[name*='fase_codigo']").length);
+                    // $("input[value='"+response+"']").focus();
+                  };
+                };
+               // contadorTotal++;
+               // if (response==1) {
+               //    fila.fadeOut(function () {
+               //     fila.remove();
+               //     verificarChecks();
+               //     });
+               // } else{ 
+               //  contadorErrores++;
+               // };
+               //  if (contadorTotal == marcados) {
+               //      if (contadorErrores != 0) {
+               //          $('#linkModalErrorEliminar').click();
+               //      } 
+                  
+               //  };
            }
-         }); 
+       });
+   };
+       
+     
 }
    $(document).on("ready", function () { 
    
@@ -371,7 +429,8 @@ $('.abrirEditar').click(function(){
            var sel = false;
            var ch = $('#' + tb).find('tbody input[type=checkbox]');
            var marcados = $('.checkbox:checked').not('#checkbox-all').size();
-           var contador = 0;
+           var contadorErrores = 0;
+           var contadorTotal = 0;
            ch.each(function () {
                var $this = $(this);
                if ($this.is(':checked')) {
@@ -383,21 +442,22 @@ $('.abrirEditar').click(function(){
                           data: {idEliminar : idEliminar},
                           url:   '<?=base_url()?>fases/eliminar',
                           type:  'post',
-                          // beforeSend: function () {
-                          //         $("#resultado").html("Procesando, espere por favor...");
-                          // },
                           success:  function (response) {
+                           contadorTotal++;
                            if (response==1) {
                               fila.fadeOut(function () {
                                fila.remove();
                                verificarChecks();
                                });
                            } else{ 
-                            contador++;
-                            if (contador == marcados) {
-                              $('#linkModalErrorEliminar').click();
-                            };
+                            contadorErrores++;
                            };
+                            if (contadorTotal == marcados) {
+                                if (contadorErrores != 0) {
+                                    $('#linkModalErrorEliminar').click();
+                                } 
+                              
+                            };
                        }
                    });
   
@@ -744,13 +804,13 @@ $('.abrirEditar').click(function(){
 </div>
 
 
-<div id="transaccionCorrecta" class="modal">
+<!-- <div id="transaccionCorrecta" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <p><?= label('fases_faseGuardadoCorrectamente'); ?></p>
+        <p><?= label('fases_faseGuardadoCorrectamente'); ?>'); ?></p>
     </div>
     <div class="modal-footer">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
@@ -768,7 +828,7 @@ $('.abrirEditar').click(function(){
     <div class="modal-footer">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
-</div>
+</div> -->
 
 
 <div id="busquedaAvanzadaFases" class="modal" style="width: 70%;">

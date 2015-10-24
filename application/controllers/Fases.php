@@ -36,6 +36,39 @@ class Fases extends CI_Controller
         }
     }
 
+    public function verificarCodigos(){
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $fases = array();
+
+        $fase = array(
+         'codigo' => $this->input->post('fase_codigo'),
+         'idEmpresa' => $idEmpresa,
+         'eliminado' => '0'
+         );
+
+        array_push($fases, $fase);
+        $contador = 0;
+        $fasesObtenidos = 0;
+        $cantidadFases = $this->input->post('cantidadSubfases');
+        while ($fasesObtenidos < $cantidadFases) {
+            if (isset($_POST['fase_'.$contador])) {
+                  $fase = array(
+                 'codigo' => $this->input->post('fase_codigo'.$contador),
+                 'idEmpresa' => $idEmpresa,
+                 'eliminado' => '0'
+                 );
+                array_push($fases, $fase);
+                $fasesObtenidos++;
+            }
+            $contador++;
+         }
+
+         $data['fases'] = $fases;
+         $res = $this->Fase_model->verificarCodigos($data);
+         echo $res;
+    }
 
 
     public function insertar(){

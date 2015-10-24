@@ -27,6 +27,38 @@ class Fase_model extends CI_Model
         }
     }
 
+    
+
+    function verificarCodigos($data)
+    {
+        try{
+            $this->db->trans_begin();
+
+            $fases = $data['fases'];
+            $existe = 0;
+            $codigoRepetido = '';
+            // echo print_r($fases); exit();
+            foreach ($fases as $fase) {
+                $query = $this->db->get_where('fase', $fase);
+                if (!$query) throw new Exception("Error en la BD");  
+                if ($query->num_rows() > 0) {
+                    $existe = 1;
+                    $codigoRepetido = $fase['codigo'];
+                } 
+            }
+            $this->db->trans_commit();
+            if ($existe) {
+                return $codigoRepetido;
+            } else {
+                return true;
+            }
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+
+    }
+
     function insertar($data)
     {
         try{
