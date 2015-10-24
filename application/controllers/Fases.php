@@ -77,8 +77,7 @@ class Fases extends CI_Controller
             echo 0;
         } else {
             // correcto
-            $lista = $this->Fase_model->cargarTodos($idEmpresa);
-            echo json_encode($lista);
+            echo 1;
         }
     }
 
