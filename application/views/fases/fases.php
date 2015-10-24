@@ -1,3 +1,127 @@
+<button id="hola">prueba</button>
+<script type="text/javascript">
+    // $(document).on('ready', function(){
+        var menuOpciones_editar = 'editar';//cargar con los labels de php
+        var menuOpciones_eliminar = 'elimnar';
+        var menuOpciones_seleccionar = 'opciones';
+
+        $('#hola').click(function(){
+            // $('tbody').empty();
+            var contador = 9;
+
+             var html = '<tr role="row" class="odd" id="fila'+ contador +' " data-idElemento="8">' +
+                '<td style="text-align: center;">' +
+                   '<input type="checkbox" class="filled-in checkbox"id="8"/>' +
+                   '<label for="8"></label>' +
+                '</td>' +
+                    '<td>texto</td>' +
+                    '<td>texto</td>' +
+                    '<td>texto</td>' +
+                    '<td><a href="#">Ver subfases</a></td>' +
+                    '<td>' +
+                        '<ul id="dropdown-fase'+ contador +'" class="dropdown-content">' +
+                            '<li>' +
+                                '<a href="#editarFase" data-id-editar="8"' +
+                                   'class="-text modal-trigger abrirEditar">'+ menuOpciones_editar + '</a>' +
+                            '</li>' +
+                            '<li>' +
+                                 '<a href="#eliminarFase"' +
+                                    'class="-text modal-trigger confirmarEliminar"' +
+                                    'data-id-eliminar="8"  data-fila-eliminar="fila'+ contador +'">'+menuOpciones_eliminar+'</a>' +
+                              '</li>' +
+                        '</ul>' +
+                        '<a class="boton-opciones btn-flat dropdown-button waves-effect white-text"' +
+                          'href="#!"' +
+                          'data-activates="dropdown-fase'+ contador +'">' +
+                       ''+ menuOpciones_seleccionar +'<i class="mdi-navigation-arrow-drop-down"></i>' +
+                       '</a>' +
+                    '</td>' +
+                '</tr>';
+            // $('tbody').append(html);
+
+            // generarListasBotones();
+        // $('.modal-trigger').leanModal(); 
+        // $("table").dataTable()
+        var check = '<td>' +
+                   '<input style="text-align: center;" type="checkbox" class="filled-in checkbox"id="8"/>' +
+                   '<label for="8"></label>' +
+                '</td>';
+        var boton = '<td>' +
+                        '<ul id="dropdown-fase'+ contador +'" class="dropdown-content">' +
+                            '<li>' +
+                                '<a href="#editarFase" data-id-editar="8"' +
+                                   'class="-text modal-trigger abrirEditar">'+ menuOpciones_editar + '</a>' +
+                            '</li>' +
+                            '<li>' +
+                                 '<a href="#eliminarFase"' +
+                                    'class="-text modal-trigger confirmarEliminar"' +
+                                    'data-id-eliminar="8"  data-fila-eliminar="fila'+ contador +'">'+menuOpciones_eliminar+'</a>' +
+                              '</li>' +
+                        '</ul>' +
+                        '<a class="boton-opciones btn-flat dropdown-button waves-effect white-text"' +
+                          'href="#!"' +
+                          'data-activates="dropdown-fase'+ contador +'">' +
+                       ''+ menuOpciones_seleccionar +'<i class="mdi-navigation-arrow-drop-down"></i>' +
+                       '</a>' +
+                    '</td>';
+        var codigo = '<td>texto</td>';
+        var fase = '<td>texto</td>';
+        var descripcion = '<td>texto</td>';
+        var subfases = '<td>texto</td>';
+
+
+       $('table').dataTable().fnAddData( [
+        check,
+        codigo,
+        fase,
+        descripcion,
+        subfases,
+        boton ] );
+
+       generarListasBotones();
+        $('.modal-trigger').leanModal();
+     
+    giCount++;
+
+       
+        contador++;
+        
+        });
+
+        function generarListasBotones(){
+          $('.boton-opciones').sideNav({
+          // menuWidth: 0, // Default is 240
+           edge: 'right', // Choose the horizontal origin
+              closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            }
+          );
+
+          $('.dropdown-button').dropdown({
+              inDuration: 300,
+              outDuration: 225,
+              constrain_width: true, // Does not change width of dropdown to that of the activator
+              hover: false, // Activate on hover
+              gutter: 0, // Spacing from edge
+              belowOrigin: true, // Displays dropdown below the button
+              alignment: 'left' // Displays dropdown with edge aligned to the left of button
+            }
+          );
+      }
+
+    // });
+
+
+
+
+  // $(".boton-opciones").sideNav();
+
+
+
+</script>
+
+
+
+
 <div style="display: none" id="inset_form"></div>
 <!-- START CONTENT  -->
 
@@ -76,8 +200,8 @@
                                                                 <ul id="dropdown-fase<?= $contador ?>"
                                                                   class="dropdown-content">
                                                                     <li>
-                                                                        <a href="#editarFase"
-                                                                           class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
+                                                                        <a href="#editarFase" data-id-editar="<?= $idEncriptado ?>"
+                                                                           class="-text modal-trigger abrirEditar"><?= label('menuOpciones_editar') ?></a>
                                                                     </li>
                                                                     <li>
                                                                          <a href="#eliminarFase"
@@ -102,41 +226,41 @@
                                                 </table>
                                                 </div>
 
-                                                                                                 <div class="tabla-conAgregar">
-                                                 <a id="opciones-seleccionados-print"
-                                                    class="black-text opciones-seleccionados option-print-table"
-                                                    style="visibility: hidden;"
-                                                    href="#" data-toggle="tooltip"
-                                                    title="<?= label('opciones_seleccionadosImprimir') ?>">
-                                                 <i class="mdi-action-print icono-opciones-varios"></i>
-                                                 </a>
-                                                 <ul id="dropdown-exportar" class="dropdown-content">
-                                                    <li>
-                                                       <a id="opciones-seleccionados-PDF" href="#"
-                                                          class="-text"><?= label('opciones_seleccionadosExportarPdf') ?></a>
-                                                    </li>
-                                                    <li>
-                                                       <a id="opciones-seleccionados-Excel" href="#"
-                                                          class="-text"><?= label('opciones_seleccionadosExportarExcel') ?></a>
-                                                    </li>
-                                                 </ul>
-                                                 <a id="opciones-seleccionados-export"
-                                                    style="visibility: hidden;"
-                                                    class="opciones-seleccionados boton-opciones black-text dropdown-button option-export-table"
-                                                    href="#" data-toggle="tooltip"
-                                                    title="<?= label('opciones_seleccionadosExportar') ?>"
-                                                    data-activates="dropdown-exportar">
-                                                 <i class="mdi-file-file-download icono-opciones-varios"></i>
-                                                 </a>
-                                                 <a id="opciones-seleccionados-delete"
-                                                    class="modal-trigger black-text opciones-seleccionados option-delete-elements"
-                                                    style="visibility: hidden;"
-                                                    href="#eliminarElementosSeleccionados" data-toggle="tooltip"
-                                                    title="<?= label('opciones_seleccionadosEliminar') ?>">
-                                                 <i class="mdi-action-delete icono-opciones-varios"></i>
-                                                 </a>
-                                              </div>
-                                            </div>
+                                                <div class="tabla-conAgregar">
+                                                     <a id="opciones-seleccionados-print"
+                                                        class="black-text opciones-seleccionados option-print-table"
+                                                        style="visibility: hidden;"
+                                                        href="#" data-toggle="tooltip"
+                                                        title="<?= label('opciones_seleccionadosImprimir') ?>">
+                                                     <i class="mdi-action-print icono-opciones-varios"></i>
+                                                     </a>
+                                                     <ul id="dropdown-exportar" class="dropdown-content">
+                                                        <li>
+                                                           <a id="opciones-seleccionados-PDF" href="#"
+                                                              class="-text"><?= label('opciones_seleccionadosExportarPdf') ?></a>
+                                                        </li>
+                                                        <li>
+                                                           <a id="opciones-seleccionados-Excel" href="#"
+                                                              class="-text"><?= label('opciones_seleccionadosExportarExcel') ?></a>
+                                                        </li>
+                                                     </ul>
+                                                     <a id="opciones-seleccionados-export"
+                                                        style="visibility: hidden;"
+                                                        class="opciones-seleccionados boton-opciones black-text dropdown-button option-export-table"
+                                                        href="#" data-toggle="tooltip"
+                                                        title="<?= label('opciones_seleccionadosExportar') ?>"
+                                                        data-activates="dropdown-exportar">
+                                                     <i class="mdi-file-file-download icono-opciones-varios"></i>
+                                                     </a>
+                                                     <a id="opciones-seleccionados-delete"
+                                                        class="modal-trigger black-text opciones-seleccionados option-delete-elements"
+                                                        style="visibility: hidden;"
+                                                        href="#eliminarElementosSeleccionados" data-toggle="tooltip"
+                                                        title="<?= label('opciones_seleccionadosEliminar') ?>">
+                                                     <i class="mdi-action-delete icono-opciones-varios"></i>
+                                                     </a>
+                                                  </div>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
@@ -158,7 +282,7 @@
     <a id="linkModalErrorCargarDatos" href="#transaccionIncorrectaCargar" class="btn btn-default modal-trigger"></a>
     <a id="linkModalErrorEliminar" href="#transaccionIncorrectaEliminar" class="btn btn-default modal-trigger"></a>
 
-    <input id="cantidadSubfases" form="form_cliente" name="cantidadSubfases" type="text" value="0">                                          
+    <input id="cantidadSubfases" form="form_fases" name="cantidadSubfases" type="text" value="0">                                          
     <a id="linkModalGuardado" href="#transaccionCorrecta" class="btn btn-default modal-trigger"></a>
     <a id="linkModalError" href="#transaccionIncorrecta" class="btn btn-default modal-trigger"></a>
 </div>
@@ -168,7 +292,12 @@
 
 <script type="text/javascript">
 
+$('.abrirEditar').click(function(){
+ alert($(this).data('id-editar'));
+});
+
  function validacionCorrecta(){
+    alert('entre');
         $('.modal-header a').click(); 
         var url = $('#form_fases').attr('action');
         var method = $('#form_fases').attr('method'); 
@@ -178,6 +307,10 @@
            data: $('#form_fases').serialize(), 
            success: function(response)
            {
+            
+            var arrayPlantillas = $.parseJSON(response);
+            alert(arrayPlantillas[0]['nombre'].toString());
+            $('tbody').empty();
              if (response == 0) {
                    $('#linkModalError').click();
                } else {
@@ -550,7 +683,7 @@
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
-    <form id="form_fases" action="<?=base_url()?>Fases/nuevaFase" method="post">
+    <form id="form_fases" action="<?=base_url()?>Fases/insertar" method="post">
         <div class="modal-content">
             <div class="row">
                 <div id="contenedorFases">
@@ -708,6 +841,7 @@
             '<div id="fase' + contador + '" style="margin-left: 50px;">' +
                 '<div class="col s12 m11 l11">' +
                 '<div class="input-field col s12 m4 l4">' +
+                    '<input style="display:none" name="fase_'+ contador +'" type="text">' +
                     '<input id="fase_codigo' + contador + '" name="fase_codigo' + contador + '" type="text">' +
                     '<label for="fase_codigo' + contador + '"><?= label('fase_codigo') ?></label>' +
                 '</div>' +
