@@ -1,20 +1,47 @@
 <button id="hola">prueba</button>
 <script type="text/javascript">
+
+  $(document).on('ready', function(){
+      $('#botonNuevaFase').click(function(){
+        $('#form_fases')[0].reset();
+        var validator = $("#form_fases").validate();
+        validator.resetForm();
+        $('#contenedorFases').empty();
+        cantidadNuevasFases = 0;
+        contadorNuevasFases = 0;
+        $('#form_fases #fase_codigo').focus();
+       });
+  });      
+
+
+
+  
+
+       
     // $(document).on('ready', function(){
-        var menuOpciones_editar = 'editar';//cargar con los labels de php
-        var menuOpciones_eliminar = 'elimnar';
-        var menuOpciones_seleccionar = 'opciones';
-        var tablaFases_verSubfases = 'Ver Subfases';
-$(document).on('ready', function(){
-    $('#hola').click(function(){
-            $('#linkModalError').click();
-            $('#linkModalGuardado').click();
-            
+        var menuOpciones_editar = '<?= label('menuOpciones_editar'); ?>';
+        var menuOpciones_eliminar = '<?= label('menuOpciones_eliminar'); ?>';
+        var menuOpciones_seleccionar = '<?= label('menuOpciones_seleccionar'); ?>';
+        var tablaFases_verSubfases = '<?= label('tablaFases_verSubfases'); ?>'; 
+        
 
-            agregarFila();
+        var row = null;
+        $(document).on('ready', function(){
+          var table = $('table').DataTable(); 
+          $(document).on( 'click', '.abrirEditar', function () {
+              row = table.row($(this).parents('tr'));
+              editarFila('22', 'fase', 'descripcion');
+          });
+
         });
+        function editarFila(codigo, fase, descripcion){
+            var d = row.data();
+            d[1]= codigo;
+            d[2]= fase;
+            d[3]= descripcion;
+            row.data(d);
+        }
 
-});
         var contadorFilas = 0;
         <?php
           if (isset($lista)) {
@@ -150,8 +177,7 @@ $(document).on('ready', function(){
                                         <div class="row">
                                             <div class="col s12 m12 l12">
                                                 <div class="agregar_nuevo">
-                                                    <a href="#agregarFase"
-                                                       class="btn modal-trigger"><?= label('tituloFases_nuevo'); ?></a>
+                                                    <a id="botonNuevaFase" href="#agregarFase" class="btn modal-trigger"><?= label('tituloFases_nuevo'); ?></a>
                                                 </div>
                                                 <div>
                                                     <a id="busqueda-avanzada-agregar" href="#busquedaAvanzadaFases"
@@ -194,7 +220,7 @@ $(document).on('ready', function(){
                                                             <td><?= $fila['codigo'] ?></td>
                                                             <td><?= $fila['nombre'] ?></td>
                                                             <td><?= $fila['notas'] ?></td>
-                                                            <td><a href="#">Ver subfases</a></td>
+                                                            <td><a href="#"><?= label('tablaFases_verSubfases'); ?></a></td>
                                                             <td>
                                                                 <ul id="dropdown-fase<?= $contador ?>"
                                                                   class="dropdown-content">
@@ -335,8 +361,9 @@ $('.abrirEditar').click(function(){
                                } else {
                                 
                                 alert("<?=label('fases_faseGuardadoCorrectamente'); ?>");
-                                 $('#agregarFase .modal-header a').click(); 
                                 agregarFila(response, $('#fase_codigo').val(), $('#fase_nombre').val(), $('#fase_notas').val());
+                                $('#agregarFase .modal-header a').click(); 
+                                
                                }   
 
                               
@@ -744,22 +771,23 @@ $('.abrirEditar').click(function(){
     <form id="form_fases" action="<?=base_url()?>Fases/insertar" method="post">
         <div class="modal-content">
             <div class="row">
+                <div class="input-field col s12 m4 l4">
+                    <input id="fase_codigo" name="fase_codigo" type="text">
+                    <label for="fase_codigo"><?= label('fase_codigo') ?></label>
+                </div>
+                <div class="input-field col s12 m8 l8">
+                    <input id="fase_nombre" name="fase_nombre" type="text">
+                    <label for="fase_nombre"><?= label('fase_nombre') ?></label>
+                </div>
+                <div class="input-field col s12">
+                    <textarea id="fase_notas" name="fase_notas" class="materialize-textarea" rows="4"></textarea>
+                    <label for="fase_notas"><?= label('fase_notas') ?></label>
+                </div>
+                <div class="col s12">
+                    <hr/>
+                </div>
                 <div id="contenedorFases">
-                    <div class="input-field col s12 m4 l4">
-                        <input id="fase_codigo" name="fase_codigo" type="text">
-                        <label for="fase_codigo"><?= label('fase_codigo') ?></label>
-                    </div>
-                    <div class="input-field col s12 m8 l8">
-                        <input id="fase_nombre" name="fase_nombre" type="text">
-                        <label for="fase_nombre"><?= label('fase_nombre') ?></label>
-                    </div>
-                    <div class="input-field col s12">
-                        <textarea id="fase_notas" name="fase_notas" class="materialize-textarea" rows="4"></textarea>
-                        <label for="fase_notas"><?= label('fase_notas') ?></label>
-                    </div>
-                    <div class="col s12">
-                        <hr />
-                    </div>
+                    
                 </div>
                 <div class="row">
                     <a id="btn_agregarSubfase" style="text-decoration: underline;float: right;cursor: pointer;"
@@ -914,34 +942,34 @@ $('.abrirEditar').click(function(){
     });
 
     function actualizarCantidad(){
-        $('#cantidadSubfases').val(cantidad);
+        $('#cantidadSubfases').val(cantidadNuevasFases);
 
     }
 
-    var cantidad = 0;
-    var contador = 0;
+    var cantidadNuevasFases = 0;
+    var contadorNuevasFases = 0;
     function agregarNuevaFase() {
-        cantidad++;
+        cantidadNuevasFases++;
         actualizarCantidad();
         $('#contenedorFases').append('' +
-            '<div id="fase' + contador + '" style="margin-left: 50px;">' +
+            '<div id="fase' + contadorNuevasFases + '" style="margin-left: 50px;">' +
                 '<div class="col s12 m11 l11">' +
                 '<div class="input-field col s12 m4 l4">' +
-                    '<input style="display:none" name="fase_'+ contador +'" type="text">' +
-                    '<input id="fase_codigo' + contador + '" name="fase_codigo' + contador + '" type="text">' +
-                    '<label for="fase_codigo' + contador + '"><?= label('fase_codigo') ?></label>' +
+                    '<input style="display:none" name="fase_'+ contadorNuevasFases +'" type="text">' +
+                    '<input id="fase_codigo' + contadorNuevasFases + '" name="fase_codigo' + contadorNuevasFases + '" type="text">' +
+                    '<label for="fase_codigo' + contadorNuevasFases + '"><?= label('fase_codigo') ?></label>' +
                 '</div>' +
                 '<div class="input-field col s12 m8 l8">' +
-                    '<input id="fase_nombre' + contador + '" name="fase_nombre' + contador + '" type="text">' +
-                    '<label for="fase_nombre' + contador + '"><?= label('fase_nombre') ?></label>' +
+                    '<input id="fase_nombre' + contadorNuevasFases + '" name="fase_nombre' + contadorNuevasFases + '" type="text">' +
+                    '<label for="fase_nombre' + contadorNuevasFases + '"><?= label('fase_nombre') ?></label>' +
                 '</div>' +
                 '<div class="input-field col s12">' +
-                    '<textarea id="fase_notas' + contador + '" name="fase_notas' + contador + '"  class="materialize-textarea" rows="4"></textarea>' +
-                    '<label for="fase_notas' + contador + '"><?= label('fase_notas') ?></label>' +
+                    '<textarea id="fase_notas' + contadorNuevasFases + '" name="fase_notas' + contadorNuevasFases + '"  class="materialize-textarea" rows="4"></textarea>' +
+                    '<label for="fase_notas' + contadorNuevasFases + '"><?= label('fase_notas') ?></label>' +
                 '</div>' +
                 '</div>' +
                 '<div class="col s12 m1 l1 btn-fase-eliminar">' +
-                    '<a class="confirmarEliminarSubFase" data-fila-eliminar="' + contador + '" title="<?= label('formFases_subfaseEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>' +
+                    '<a class="confirmarEliminarSubFase" data-fila-eliminar="' + contadorNuevasFases + '" title="<?= label('formFases_subfaseEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>' +
                 '</div>' +
                 '<div class="col s12">' +
                     '<hr />' +

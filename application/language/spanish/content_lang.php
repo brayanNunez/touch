@@ -83,6 +83,7 @@ $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente
     $lang['fases_faseGuardadoCorrectamente'] = 'La fase ha sido creada correctamente.';
     $lang['fases_error_codigosRepetidos'] = 'Existen códigos repetidos.';
     $lang['fases_error_codigosExisteEnBD'] = 'El código ingresado ya existe. Por favor agregue uno diferente.';
+    $lang['tablaFases_verSubfases'] = 'Ver subfases';
     
 
 
