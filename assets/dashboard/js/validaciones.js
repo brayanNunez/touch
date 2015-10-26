@@ -355,4 +355,27 @@
                 }
             });
 
+            $('#persona-archivo').validate({
+                rules:
+                {
+                    userfile: { required: false},
+                    archivo_descripcion: { required: true}
+                },
+                errorElement: 'div',
+                submitHandler: function(form) {
+                    validacionCorrecta_Archivo();
+                }
+            });
+
+            $('#persona-cambio-imagen').validate({
+            rules:
+            {
+                userfile: { required: false}
+            },
+            errorElement: 'div',
+            submitHandler: function(form) {
+                validacionCorrecta_Imagen();
+            }
+        });
+
     });

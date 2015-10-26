@@ -20,6 +20,11 @@ class Proveedor_model extends CI_Model
                 throw new Exception("Error en la BD");
             }
             $insert_id = $this->db->insert_id();
+
+            $nombreFotografia = 'profile_picture_'.$insert_id.'.'.$data['extension'];
+            $this->db->where('idProveedor', $insert_id);
+            $query = $this->db->update('proveedor', array('fotografia' => $nombreFotografia));
+
             $palabras = explode(",", $data['palabras']);
             foreach ($palabras as $palabra) {
                 $row = array(
@@ -46,7 +51,7 @@ class Proveedor_model extends CI_Model
                 mkdir($pathProveedor);
             }
             $this->db->trans_commit();
-            return true;
+            return $insert_id;
         } catch (Exception $e) {
             $this->db->trans_rollback();
             return false;
@@ -105,9 +110,11 @@ class Proveedor_model extends CI_Model
                 }
                 $row['contactos'] = $contactos->result_array();
 
-//                $archivos = $this->db->get_where('archivo', array('idCliente' => $id));
-//                if (!$archivos) throw new Exception("Error en la BD");
-//                $row['archivos'] = $archivos->result_array();
+                $archivos = $this->db->get_where('archivopersona', array('idPersona' => $id));
+                if (!$archivos) {
+                    throw new Exception("Error en la BD");
+                }
+                $row['archivos'] = $archivos->result_array();
             }
 //             print_r ($row);exit();
             $this->db->trans_commit();
@@ -193,6 +200,93 @@ class Proveedor_model extends CI_Model
 
             $this->db->trans_commit();
             return true;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+    public function agregarArchivo($data) {
+        try{
+            $this->db->trans_begin();
+
+            $this->db->set('fecha', 'NOW()', FALSE);
+            $query = $this->db->insert('archivopersona', $data['datos']);
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+
+            $this->db->trans_commit();
+            return true;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+    public function eliminarArchivo($id) {
+        try{
+            $this->db->trans_begin();
+
+            $this->db->select('nombre');
+            $this->db->where('idArchivoPersona', $id);
+            $this->db->from('archivopersona');
+            $query1 = $this->db->get();
+            if (!$query1) {
+                throw new Exception("Error en la BD");
+            }
+            if($query1->num_rows() > 0) {
+                $datos = $query1->result_array();
+                $file = $datos[0]['nombre'];
+                if(!$file) {
+                    $file = 'noArchivo';
+                }
+            } else {
+                $file = 'noArchivo';
+            }
+
+            $this->db->where('idArchivoPersona', $id);
+            $query = $this->db->delete('archivopersona');
+            if (!$query) throw new Exception("Error en la BD");
+
+            $this->db->trans_commit();
+            return $file;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+    function cambiar_imagen($data) {
+        try{
+            $photo = '';
+            $this->db->trans_begin();
+
+            $this->db->select('fotografia');
+            $this->db->where('idProveedor', $data['id']);
+            $this->db->from('proveedor');
+            $query1 = $this->db->get();
+            if (!$query1) {
+                throw new Exception("Error en la BD");
+            }
+            if($query1->num_rows() > 0) {
+                $datos = $query1->result_array();
+                $photo = $datos[0]['fotografia'];
+                if(!$photo) {
+                    $photo = 'sinFoto';
+                }
+            } else {
+                $photo = 'sinFoto';
+            }
+            if($photo) {
+                $this->db->where('idProveedor', $data['id']);
+                $query2 = $this->db->update('proveedor', $data['datos']);
+                if (!$query2) {
+                    throw new Exception("Error en la BD");
+                }
+            }
+            $this->db->trans_commit();
+            return $photo;
         } catch (Exception $e) {
             $this->db->trans_rollback();
             return false;

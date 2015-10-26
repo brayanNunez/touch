@@ -49,8 +49,6 @@
                                             <div id="tab-informacion" class="card col s12">
                                                 <?php
                                                     if(isset($resultado)) {
-                                                        $this->load->view('proveedores/proveedores_ver', $resultado);
-                                                    }  else {
                                                         $this->load->view('proveedores/proveedores_ver');
                                                     }
                                                 ?>
@@ -58,14 +56,16 @@
                                             <div id="tab-edicion" class="card col s12">
                                                 <?php
                                                     if(isset($resultado)) {
-                                                        $this->load->view('proveedores/proveedores_editar', $resultado);
-                                                    }  else {
                                                         $this->load->view('proveedores/proveedores_editar');
                                                     }
                                                 ?>
                                             </div>
                                             <div id="tab-archivos" class="card col s12">
-                                                <?php $this->load->view('proveedores/proveedores_archivos', $archivos); ?>
+                                                <?php
+                                                    if(isset($resultado)) {
+                                                        $this->load->view('proveedores/proveedores_archivos');
+                                                    }
+                                                ?>
                                             </div>
                                         </div>
                                     </div>
