@@ -1,18 +1,7 @@
 <button id="hola">prueba</button>
 <script type="text/javascript">
 
-  $(document).on('ready', function(){
-      $('#botonNuevaFase').click(function(){
-        $('#form_fases')[0].reset();
-        var validator = $("#form_fases").validate();
-        validator.resetForm();
-        $('#contenedorFases').empty();
-        cantidadNuevasFases = 0;
-        contadorNuevasFases = 0;
-        $('#form_fases #fase_codigo').focus();
-       });
-  });      
-
+     
 
 
   
@@ -363,6 +352,41 @@
 //  alert($(this).data('id-editar'));
 // });
 
+
+    
+
+      var cerrarModal = false; 
+
+      $(document).on('ready', function(){
+      $('#guardarOtro').on('click', function(){
+        cerrarModal = false; 
+      });
+
+      $('#guardarCerrar').on('click', function(){
+        cerrarModal = true; 
+      });
+
+      $('#botonNuevaFase').click(function(){
+        limpiarForm();
+       });
+
+
+      });
+      
+
+      
+      
+    function limpiarForm(){
+      $('#form_fases')[0].reset();
+      var validator = $("#form_fases").validate();
+      validator.resetForm();
+      $('#contenedorFases').empty();
+      cantidadNuevasFases = 0;
+      contadorNuevasFases = 0;
+      $('#form_fases #fase_codigo').focus();
+    }
+
+
  function validacionCorrecta(){
     var repetidos = false;
     $("input[name*='fase_codigo']").each(function () {
@@ -404,7 +428,11 @@
                                 
                                 alert("<?=label('fases_faseGuardadoCorrectamente'); ?>");
                                 agregarFila(response, $('#form_fases #fase_codigo').val(), $('#form_fases #fase_nombre').val(), $('#form_fases #fase_notas').val());
-                                $('#agregarFase .modal-header a').click(); 
+                                if (cerrarModal) {
+                                  $('#agregarFase .modal-header a').click(); 
+                                } else{
+                                  limpiarForm();
+                                }
                                 
                                }   
                            }
@@ -459,7 +487,7 @@ function validacionCorrectaEditar(){
                            {
                              if (response == 0) {
                                    alert("<?=label('errorGuardar'); ?>");
-                                   $('#agregarFase .modal-header a').click(); 
+                                   $('#editarFase .modal-header a').click(); 
                                } else {
                                 
                                 alert("<?=label('fases_faseEditadaCorrectamente'); ?>");
@@ -878,10 +906,10 @@ function validacionCorrectaEditar(){
                 <a href="#" style="font-size: larger;float: left;text-decoration: underline;"
                    class="modal-action modal-close"><?= label('cancelar'); ?>
                 </a>
-                <a onclick="$(this).closest('form').submit()" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                <a onclick="$(this).closest('form').submit()" id="guardarCerrar" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
                     <?= label('guardarCerrar'); ?>
                 </a>
-                <a id="guardarOtro" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                <a onclick="$(this).closest('form').submit()" id="guardarOtro" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
                     <?= label('guardarAgregarOtro'); ?>
                 </a>
             </div>
