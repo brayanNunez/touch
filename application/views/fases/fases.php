@@ -892,7 +892,7 @@ function validacionCorrectaEditar(){
                     <label for="fase_notas"><?= label('fase_notas') ?></label>
                 </div>
                 <div class="col s12">
-                    <hr/>
+                    <hr class="estiloSombra" />
                 </div>
                 <div id="contenedorFases">
                     
@@ -940,7 +940,7 @@ function validacionCorrectaEditar(){
                     <label for="fase_notas"><?= label('fase_notas') ?></label>
                 </div>
                 <div class="col s12">
-                    <hr/>
+                    <hr class="estiloSombra"/>
                 </div>
                 <div id="contenedorFasesEditar">
                     
@@ -1110,7 +1110,7 @@ function validacionCorrectaEditar(){
                     '<a class="confirmarEliminarSubFase" data-fila-eliminar="' + contadorNuevasFases + '" title="<?= label('formFases_subfaseEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>' +
                 '</div>' +
                 '<div class="col s12">' +
-                    '<hr />' +
+                    '<hr class="estiloSombra"/>' +
                 '</div>' +
             '</div>'
         );
@@ -1145,7 +1145,7 @@ function validacionCorrectaEditar(){
                     '<a class="confirmarEliminarSubFaseEditar" data-fila-eliminar="' + contadorNuevasFases + '" title="<?= label('formFases_subfaseEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>' +
                 '</div>' +
                 '<div class="col s12">' +
-                    '<hr />' +
+                    '<hr class="estiloSombra"/>' +
                 '</div>' +
             '</div>'
         );
