@@ -746,7 +746,7 @@ function validacionCorrectaEditar(){
                tablaHtml += '<tr>';
                var cantidadColummnas = $(this).children("th").length;
                  $(this).children("th").each(function(index){
-                   if (index != 0 && index != cantidadColummnas-1) {
+                   if (index != 0 && index != cantidadColummnas-1 && index != cantidadColummnas-2) {
                        if (style) {
                            tablaHtml += '<td ' + styleTd + '>' + $(this).html() + '</td>';
                        } else{
@@ -766,7 +766,7 @@ function validacionCorrectaEditar(){
                tablaHtml += '<tr>';
                var cantidadColummnas = $(this).children("td").length;
                  $(this).children("td").each(function(index){
-                   if (index != 0 && index != cantidadColummnas-1) {
+                   if (index != 0 && index != cantidadColummnas-1 && index != cantidadColummnas-2) {
                        if (style) {
                            tablaHtml += '<td '+ styleTd +'>' + $(this).text() + '</td>';
                        } else{
@@ -1114,6 +1114,7 @@ function validacionCorrectaEditar(){
                 '</div>' +
             '</div>'
         );
+        $('#fase_codigo' + contadorNuevasFases).focus();
         contadorNuevasFases++;
     }
 
@@ -1149,6 +1150,10 @@ function validacionCorrectaEditar(){
                 '</div>' +
             '</div>'
         );
+        if (tipo == 0) {// si es nueva
+          $('#fase_codigo' + contadorNuevasFases).focus();
+        }
+        
         contadorNuevasFases++;
     }
 </script>
