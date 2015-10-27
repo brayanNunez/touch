@@ -170,6 +170,33 @@
                   }
             });
 
+            $('#form_gastos').validate({
+                rules:
+                {
+                    nuevoGasto_codigo: {required: true, maxlength: 45},
+                    nuevoGasto_gasto: {required: true, maxlength: 45},
+                    nuevoGasto_monto: {required: true, maxlength: 45}
+                },
+                 errorElement: 'div',
+                 submitHandler: function(form) {
+                    validacionCorrecta();
+                  }
+            });
+
+            $('#form_servicio').validate({
+                rules:
+                {
+                    servicio_codigo: {required: true, maxlength: 45},
+                    servicio_nombre: {required: true, maxlength: 45},
+                    servicio_descripcion: {required: true, maxlength: 45},
+                    servicio_utilidad: {required: true, maxlength: 45}
+                },
+                 errorElement: 'div',
+                 submitHandler: function(form) {
+                    validacionCorrecta_Servicio();
+                  }
+            });
+
             $('#form_paso3AgregarPlantilla').validate({
                 rules:
                 {
@@ -325,29 +352,85 @@
                 }
             });
 
+
+            var proveedor_contactoNombre = {required: true, maxlength: 45};
+            var proveedor_contactoApellido1 = {required: true, maxlength: 45};
+            var proveedor_contactoApellido2 = {required: true, maxlength: 45};
+            var proveedor_contactoCorreo = {required: true, maxlength: 45};
+            var proveedor_contactoPuesto = {required: true, maxlength: 45};
+            var proveedor_contactoTelefono = {required: true, maxlength: 45};
+
             $('#formPersona').validate({
                 rules:
                 {
-                    persona_identificacion: { required: true},
-                    persona_apellido1: { required: true},
-                    persona_apellido2: { required: true},
-                    persona_nombre: { required: true},
-                    persona_correo: { required: true},
-                    persona_telefonoMovil: { required: true},
-                    persona_telefono: { required: true},
-                    persona_fechaNacimiento: { required: true},
-                    personajuridico_identificacion: { required: true},
-                    personajuridico_nombre: { required: true},
-                    personajuridico_nombreFantasia: { required: true},
-                    personajuridico_correo: { required: true},
-                    personajuridico_telefono: { required: true},
-                    personajuridico_fax: { required: true},
-                    persona_palabras: { required: true},
-                    persona_descripcion: { required: true},
-                    persona_direccionPais: { required: true},
-                    persona_direccionProvincia: { required: true},
-                    persona_direccionCanton: { required: true},
-                    persona_direccionDomicilio: { required: true}
+
+                    proveedor_contactoNombre_0: proveedor_contactoNombre,
+                    proveedor_contactoNombre_1: proveedor_contactoNombre,
+                    proveedor_contactoNombre_2: proveedor_contactoNombre,
+                    proveedor_contactoNombre_3: proveedor_contactoNombre,
+                    proveedor_contactoNombre_4: proveedor_contactoNombre,
+                    proveedor_contactoNombre_5: proveedor_contactoNombre,
+                    proveedor_contactoNombre_6: proveedor_contactoNombre,
+
+                    proveedor_contactoApellido1_1: proveedor_contactoApellido1,
+                    proveedor_contactoApellido1_2: proveedor_contactoApellido1,
+                    proveedor_contactoApellido1_3: proveedor_contactoApellido1,
+                    proveedor_contactoApellido1_4: proveedor_contactoApellido1,
+                    proveedor_contactoApellido1_5: proveedor_contactoApellido1,
+                    proveedor_contactoApellido1_6: proveedor_contactoApellido1,
+
+                    proveedor_contactoApellido2_0: proveedor_contactoApellido2,
+                    proveedor_contactoApellido2_1: proveedor_contactoApellido2,
+                    proveedor_contactoApellido2_2: proveedor_contactoApellido2,
+                    proveedor_contactoApellido2_3: proveedor_contactoApellido2,
+                    proveedor_contactoApellido2_4: proveedor_contactoApellido2,
+                    proveedor_contactoApellido2_5: proveedor_contactoApellido2,
+                    proveedor_contactoApellido2_6: proveedor_contactoApellido2,
+
+                    proveedor_contactoCorreo_0: proveedor_contactoCorreo,
+                    proveedor_contactoCorreo_1: proveedor_contactoCorreo,
+                    proveedor_contactoCorreo_2: proveedor_contactoCorreo,
+                    proveedor_contactoCorreo_3: proveedor_contactoCorreo,
+                    proveedor_contactoCorreo_4: proveedor_contactoCorreo,
+                    proveedor_contactoCorreo_5: proveedor_contactoCorreo,
+                    proveedor_contactoCorreo_6: proveedor_contactoCorreo,
+
+                    proveedor_contactoPuesto_0: proveedor_contactoPuesto,
+                    proveedor_contactoPuesto_1: proveedor_contactoPuesto,
+                    proveedor_contactoPuesto_2: proveedor_contactoPuesto,
+                    proveedor_contactoPuesto_3: proveedor_contactoPuesto,
+                    proveedor_contactoPuesto_4: proveedor_contactoPuesto,
+                    proveedor_contactoPuesto_5: proveedor_contactoPuesto,
+                    proveedor_contactoPuesto_6: proveedor_contactoPuesto,
+
+                    proveedor_contactoTelefono_0: proveedor_contactoTelefono,
+                    proveedor_contactoTelefono_1: proveedor_contactoTelefono,
+                    proveedor_contactoTelefono_2: proveedor_contactoTelefono,
+                    proveedor_contactoTelefono_3: proveedor_contactoTelefono,
+                    proveedor_contactoTelefono_4: proveedor_contactoTelefono,
+                    proveedor_contactoTelefono_5: proveedor_contactoTelefono,
+                    proveedor_contactoTelefono_6: proveedor_contactoTelefono,
+
+                    persona_identificacion: { required: true, maxlength: 45},
+                    persona_apellido1: { required: true, maxlength: 45},
+                    persona_apellido2: { required: true, maxlength: 45},
+                    persona_nombre: { required: true, maxlength: 45},
+                    persona_correo: { required: true, maxlength: 45},
+                    persona_telefonoMovil: { required: true, maxlength: 45},
+                    persona_telefono: { required: true, maxlength: 45},
+                    persona_fechaNacimiento: { required: true, maxlength: 45},
+                    personajuridico_identificacion: { required: true, maxlength: 45},
+                    personajuridico_nombre: { required: true, maxlength: 45},
+                    personajuridico_nombreFantasia: { required: true, maxlength: 45},
+                    personajuridico_correo: { required: true, maxlength: 45},
+                    personajuridico_telefono: { required: true, maxlength: 45},
+                    personajuridico_fax: { required: true, maxlength: 45},
+                    persona_palabras: { required: true, maxlength: 45},
+                    persona_descripcion: { required: true, maxlength: 45},
+                    persona_direccionPais: { required: true, maxlength: 45},
+                    persona_direccionProvincia: { required: true, maxlength: 45},
+                    persona_direccionCanton: { required: true, maxlength: 45},
+                    persona_direccionDomicilio: { required: true, maxlength: 45}
                 },
                 errorElement: 'div',
                 submitHandler: function(form) {
