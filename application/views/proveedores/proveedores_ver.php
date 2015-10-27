@@ -25,6 +25,7 @@
         $canton = '';
         $domicilio = '';
         $palabras = '';
+        $ruta = base_url().'files/empresas/';
         if(isset($resultado)) {
             $empleado = $resultado['empleado'];
             $juridico = $resultado['juridico'];
@@ -62,13 +63,20 @@
                     $telefonoMovil = $resultado['telefonoMovil'];
                 }
             }
+            if($resultado['fotografia'] != '') {
+                $ruta .= $resultado['idEmpresa'].'/proveedores/'.$resultado['idProveedor'].'/'.$resultado['fotografia'];
+            } else {
+                $ruta = base_url().'files/default-user-image.png';
+            }
+        } else {
+            $ruta = base_url().'files/default-user-image.png';
         }
     ?>
     <div class="row">
         <div class="col s12">
             <div class="col s12 m12 l3">
                 <div class="proveedor-ver-logo">
-                    <img src="<?= base_url().'files/proveedor.jpg'; ?>" />
+                    <img src="<?= $ruta; ?>" />
                 </div>
             </div>
             <div class="col s12 m8 l5">

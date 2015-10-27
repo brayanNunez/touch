@@ -119,10 +119,7 @@
             var subfase_codigo = {required: true, maxlength: 45};
             var subfase_nombre = {required: true, maxlength: 45};
             var subfase_notas = {required: true, maxlength: 45};
-
-            $('#form_fases').validate({
-                rules:
-                {
+            var reglasFases =  {
                     fase_codigo: {required: true, maxlength: 45},
                     fase_nombre: {required: true, maxlength: 45},
                     fase_notas: {required: true, maxlength: 45},
@@ -163,13 +160,17 @@
                     fase_notas9: subfase_notas,
                     fase_notas10: subfase_notas
 
-                },
+                };
+
+            $('#form_fases').validate({
+                rules: reglasFases,
                  errorElement: 'div',
                  submitHandler: function(form) {
                     validacionCorrecta();
                   }
             });
 
+<<<<<<< HEAD
             $('#form_gastos').validate({
                 rules:
                 {
@@ -194,6 +195,13 @@
                  errorElement: 'div',
                  submitHandler: function(form) {
                     validacionCorrecta_Servicio();
+=======
+            $('#form_fasesEditar').validate({
+                rules: reglasFases,
+                 errorElement: 'div',
+                 submitHandler: function(form) {
+                    validacionCorrectaEditar();
+>>>>>>> e5e6e58b06e25405efa995dd3a410e8b934fcc87
                   }
             });
 
@@ -437,5 +445,28 @@
                     validacionCorrecta_Persona();
                 }
             });
+
+            $('#persona-archivo').validate({
+                rules:
+                {
+                    userfile: { required: false},
+                    archivo_descripcion: { required: true}
+                },
+                errorElement: 'div',
+                submitHandler: function(form) {
+                    validacionCorrecta_Archivo();
+                }
+            });
+
+            $('#persona-cambio-imagen').validate({
+            rules:
+            {
+                userfile: { required: false}
+            },
+            errorElement: 'div',
+            submitHandler: function(form) {
+                validacionCorrecta_Imagen();
+            }
+        });
 
     });

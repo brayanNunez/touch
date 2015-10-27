@@ -81,6 +81,11 @@ $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente
 
     
     $lang['fases_faseGuardadoCorrectamente'] = 'La fase ha sido creada correctamente.';
+    $lang['fases_faseEditadaCorrectamente'] = 'La fase ha sido editada correctamente.';
+    
+    $lang['fases_error_codigosRepetidos'] = 'Existen códigos repetidos.';
+    $lang['fases_error_codigosExisteEnBD'] = 'El código ingresado ya existe. Por favor agregue uno diferente.';
+    $lang['tablaFases_verSubfases'] = 'Ver subfases';
     
 
 
@@ -633,10 +638,10 @@ $lang['proveedores_archivosSeleccionadosEliminar'] = '¿Realmente desea eliminar
 $lang['persona_info'] = 'Información de la persona';
 $lang['tituloFormularioPersona'] = 'Agregar persona';
 $lang['tituloPersonas'] = 'Personas';
-$lang['formPersona_tipo'] = 'Tipo de persona';
+$lang['formPersona_tipo'] = 'Tipo de proveedor';
 $lang['formPersona_proveedor'] = 'Proveedor';
 $lang['formPersona_empleado'] = 'Empleado';
-$lang['formPersona_tipoProveedor'] = 'Tipo de proveedor';
+$lang['formPersona_tipoProveedor'] = 'Tipo de persona';
 $lang['formPersona_nacionalidad'] = 'Nacionalidad';
 $lang['formPersona_seleccioneUno'] = 'Seleccione uno';
 $lang['formPersona_fisico'] = 'Físico';
@@ -672,6 +677,8 @@ $lang['formPersona_palabrasClave'] = 'Palabras clave';
 $lang['formPersona_descripcion'] = 'Descripción';
 $lang['formPersona_enviar'] = 'Agregar persona';
 $lang['formPersona_editar'] = 'Guardar cambios';
+$lang['formPersona_fotografia'] = 'Imagen de perfil';
+$lang['personaErrorSubirArchivo'] = 'Ha ocurrido un error al subir el archivo';
 $lang['Persona_tablaTipo'] = 'Tipo';
 $lang['Persona_tablaTipoPersona'] = 'Tipo persona';
 $lang['Persona_tablaIdentificacion'] = 'Identificación';

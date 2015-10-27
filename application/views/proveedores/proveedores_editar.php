@@ -22,6 +22,7 @@
     $canton = '';
     $domicilio = '';
     $palabras = '';
+    $ruta = base_url().'files/empresas/';
     if(isset($resultado)) {
         $idEncriptado = encryptIt($resultado['idProveedor']);
         $empleado = $resultado['empleado'];
@@ -58,38 +59,58 @@
                 $fechaNacimiento = date('d/m/Y', strtotime($resultado['fechaNacimiento']));
             }
         }
+        if($resultado['fotografia'] != '') {
+            $ruta .= $resultado['idEmpresa'].'/proveedores/'.$resultado['idProveedor'].'/'.$resultado['fotografia'];
+        } else {
+            $ruta = base_url().'files/default-user-image.png';
+        }
+    } else {
+        $ruta = base_url().'files/default-user-image.png';
     }
     ?>
     <form id="formPersona" action="<?= base_url(); ?>proveedores/modificar/<?= $idEncriptado; ?>" method="POST" class="col s12">
         <div class="row">
-            <div class="input-field col s12">
-                <input id="persona_tipoProveedor" name="persona_tipoProveedor" type="text" value="<?= $tipo; ?>" readonly />
-                <label for="persona_tipoProveedor"><?= label('formPersona_tipoProveedor'); ?></label>
-            </div>
 
-            <?php
-                if(!$empleado) { ?>
-                    <div id="seleccion_TipoProveedor" class="input-field col s12">
-                        <select id="persona_tipo" name="persona_tipo" onchange="datosProveedor(this)">
-                            <option value="1" selected><?= label('formPersona_fisico'); ?></option>
-                            <option value="2"><?= label('formPersona_juridico'); ?></option>
-                        </select>
-                        <label for="persona_tipo"><?= label('formPersona_tipo'); ?></label>
+            <div class="col s12" style="position: relative;margin-top: 15px;min-height: 150px;">
+                <div class="col s12 m5 l3">
+                    <div id="imagen-usuario-editar" class="cliente-ver-logo" style="margin: 5px 0;">
+                        <a class="modal-trigger" href="#cambio-imagen" title="Cambiar imagen" style="position: relative; cursor:pointer;">
+                            <img id="imagen_perfil_usuario" alt="Imagen de perfil de la persona" src="<?= $ruta; ?>" style="position:relative;height: 200px;width: 200px;" />
+                            <img id="icon-image-edit" src="<?= base_url() ?>files/edit-image.png">
+                        </a>
                     </div>
-            <?php
-                } ?>
+                </div>
+                <div class="col s12 m17 l9" style="padding: 0;">
+                    <div class="input-field col s12">
+                        <input id="persona_tipoProveedor" name="persona_tipoProveedor" type="text" value="<?= $tipo; ?>" readonly />
+                        <label for="persona_tipoProveedor"><?= label('formPersona_tipoProveedor'); ?></label>
+                    </div>
 
-            <div class="input-field col s12">
-                <select id="persona_nacionalidad" name="persona_nacionalidad">
-                    <option value="0" selected disabled><?= label('formPersona_seleccioneUno'); ?></option>
-                    <option value="1">Costa Rica</option>
-                    <option value="2">Colombia</option>
-                    <option value="3">USA</option>
-                    <option value="4">Brasil</option>
-                    <option value="5">Uruguay</option>
-                    <option value="6">Chile</option>
-                </select>
-                <label for="persona_nacionalidad"><?= label('formPersona_nacionalidad'); ?></label>
+                    <?php
+                    if(!$empleado) { ?>
+                        <div id="seleccion_TipoProveedor" class="input-field col s12">
+                            <select id="persona_tipo" name="persona_tipo" onchange="datosProveedor(this)">
+                                <option value="1" selected><?= label('formPersona_fisico'); ?></option>
+                                <option value="2"><?= label('formPersona_juridico'); ?></option>
+                            </select>
+                            <label for="persona_tipo"><?= label('formPersona_tipo'); ?></label>
+                        </div>
+                        <?php
+                    } ?>
+
+                    <div class="input-field col s12">
+                        <select id="persona_nacionalidad" name="persona_nacionalidad">
+                            <option value="0" selected disabled><?= label('formPersona_seleccioneUno'); ?></option>
+                            <option value="1">Costa Rica</option>
+                            <option value="2">Colombia</option>
+                            <option value="3">USA</option>
+                            <option value="4">Brasil</option>
+                            <option value="5">Uruguay</option>
+                            <option value="6">Chile</option>
+                        </select>
+                        <label for="persona_nacionalidad"><?= label('formPersona_nacionalidad'); ?></label>
+                    </div>
+                </div>
             </div>
 
             <div id="campos-proveedor-fisico" style="display: block;">
@@ -460,6 +481,31 @@
             }
         });
     }
+    function validacionCorrecta_Imagen(){
+        var formPW = $('#persona-cambio-imagen');
+        $.ajax({
+            data: new FormData(formPW[0]),
+            url: formPW.attr('action'),
+            type: formPW.attr('method'),
+            success:  function (response) {
+                switch(response){
+                    case '0':
+                        alert('<?= label('usuarioErrorCambioImagen'); ?>');//error al ir a verificar identificación
+                        break;
+                    case '1':
+                        alert('<?= label('usuarioExitoCambioEmagen'); ?>');
+                        d = new Date();
+                        $('#imagen_seleccionada').attr('src', '<?= $ruta; ?>?' + d.getTime());
+                        $('#imagen_perfil_usuario').attr('src', '<?= $ruta; ?>?' + d.getTime());
+                        formPW.find('input:file,input:text').val('');
+                        break;
+                }
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    }
 </script>
 
 <script>
@@ -779,6 +825,42 @@
     </div>
     <div id="botonEliminar" class="modal-footer black-text">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="cambio-imagen" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <?php $this->load->helper('form'); ?>
+        <?php echo form_open_multipart(base_url().'proveedores/cambio_imagen/'.$idEncriptado, array('id' => 'persona-cambio-imagen', 'method' => 'POST', 'class' => 'col s12')); ?>
+            <div class="col s12" style="padding: 0;">
+                <div class="file-field col s12 m7 l9" style="padding: 0;">
+                    <label for="persona_fotografia"><?= label('formPersona_fotografia'); ?></label>
+
+                    <div class="file-field input-field col s12" style="padding: 0;">
+                        <input style="margin-left: 18% !important;width: 80% !important;"
+                               name="persona_fotografia" class="file-path" type="text" readonly/>
+
+                        <div class="btn" data-toggle="tooltip" title="<?= label('tooltip_examinar') ?>" style="top: -15px;">
+                            <span><i class="mdi-action-search"></i></span>
+                            <input style="padding-right: 100px;" id="userfile" type="file" name="userfile"
+                                   accept="image/jpeg,image/png"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m5 l3">
+                    <figure style="margin:0 10px;">
+                        <img id="imagen_seleccionada" src="<?= $ruta; ?>">
+                    </figure>
+                </div>
+            </div>
+            <div class="input-field col s12 envio-formulario" style="margin-bottom: 30px;">
+                <button class="btn waves-effect waves-light right" type="submit" id="guardar-cambios-usuario"
+                        name="action"><?= label('formUsuario_editar'); ?></button>
+            </div>
+        </form>
     </div>
 </div>
 

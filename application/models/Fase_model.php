@@ -10,12 +10,56 @@ class Fase_model extends CI_Model
         $this->load->database();
     }
 
+    public function modificar($data)
+    {
+        try{
+            $this->db->trans_begin();
+
+            $this->db->where('idFase', $data['fasePadre']['idFase']);
+            $query = $this->db->update('fase', $data['fasePadre']);
+            if (!$query) throw new Exception("Error en la BD"); 
+
+            $nuevos = $data['nuevos'];
+            foreach ($nuevos as $nuevo) {
+                $query = $this->db->insert('fase', $nuevo);
+                if (!$query) throw new Exception("Error en la BD"); 
+            }
+
+            $editados = $data['editados'];
+
+            foreach ($editados as $editado) {
+                $this->db->where('idFase', $editado['idFase']);
+                $query = $this->db->update('fase', $editado);
+                if (!$query) throw new Exception("Error en la BD"); 
+            }
+
+            $eliminados = $data['eliminados'];
+
+            foreach ($eliminados as $eliminado) {
+                $this->db->where('idFase', $eliminado['idFase']);
+                $query = $this->db->update('fase', $eliminado);
+                if (!$query) throw new Exception("Error en la BD"); 
+            }
+
+            $this->db->trans_commit();
+            return true;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+
+    }
+
      public function eliminar($id)
     {
         try{
             $this->db->trans_begin();
 
             $this->db->where('idFase', $id);
+            $query = $this->db->update('fase', array('eliminado' => 1));
+            if (!$query) throw new Exception("Error en la BD"); 
+
+            $this->db->where('idFasePadre', $id);
             $query = $this->db->update('fase', array('eliminado' => 1));
             if (!$query) throw new Exception("Error en la BD"); 
 
@@ -75,7 +119,7 @@ class Fase_model extends CI_Model
                 if (!$query) throw new Exception("Error en la BD");   
             }
             $this->db->trans_commit();
-            return true;
+            return $insert_id;
         } catch (Exception $e) {
             $this->db->trans_rollback();
             return false;
@@ -99,6 +143,31 @@ class Fase_model extends CI_Model
             return false;
         }
        
+    }
+
+        function cargar($id)
+    {
+        try {
+            $this->db->trans_begin();
+            $query = $this->db->get_where('fase', array('idFase' => $id,  'eliminado' => 0));
+            if (!$query) throw new Exception("Error en la BD");   
+            $row = array();
+            if ($query->num_rows() > 0) {
+                $array = $query->result_array();
+                $row = array_shift($array);//obtiene el primer elemento.. el [0] no sirve en el server
+
+                $subfases = $this->db->get_where('fase', array('idFasePadre' => $id,  'eliminado' => 0));
+                if (!$subfases) throw new Exception("Error en la BD");   
+                $row['subfases'] = $subfases->result_array();
+
+            }
+            // print_r ($row);exit();
+             $this->db->trans_commit();
+             return $row;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
     }
 
 

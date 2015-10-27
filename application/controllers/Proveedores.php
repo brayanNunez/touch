@@ -39,6 +39,9 @@ class Proveedores extends CI_Controller
         $empleado = $this->input->post('persona_tipoProveedor');
         $juridico = $this->input->post('persona_tipo');
 
+        $photo = explode('.',$this->input->post('persona_fotografia'));
+        $data['extension'] = end($photo);
+
         $data['palabras'] = $this->input->post('persona_palabras');
         if($empleado == 2) {
             $data['datos'] = array(
@@ -127,10 +130,22 @@ class Proveedores extends CI_Controller
         }
         $data['contactos'] = $contactos;
 
-        if (!$this->Proveedor_model->insertar($data)) {
+        $persona = $this->Proveedor_model->insertar($data);
+        if (!$persona) {
             //Error en la transacción
             echo 0;
         } else {
+            $config['upload_path'] = './files/empresas/'.$idEmpresa.'/proveedores/'.$persona;
+            $config['file_name'] = 'profile_picture_'.$persona.'.'.$data['extension'];
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['max_size'] = '2048';
+
+            $this->load->library('upload', $config);
+            if(!$this->upload->do_upload()) {
+//                $error = array('error' => $this->upload->display_errors());echo $error['error'];
+            }
+//            echo './files/empresas/'.$idEmpresa.'/proveedores/'.$persona.'<br/>';
+//            echo 'profile_picture_'.$persona.'.'.$data['extension'].'<br/>';
             // correcto
             echo 1;
         }
@@ -150,20 +165,6 @@ class Proveedores extends CI_Controller
 
     public function editar($id)
     {
-        $data['archivos'] = array();
-        $data['archivos'][] = array('file_name' => 'archivo1', 'file_ext' => '.png', 'file_date' => '2015/08/04',
-            'file_description' => 'Imagen del cliente', 'file_size' => '13 KB');
-        $data['archivos'][] = array('file_name' => 'archivo2', 'file_ext' => '.pdf', 'file_date' => '2015/08/04',
-            'file_description' => 'Contrato individual de trabajo', 'file_size' => '187 KB');
-        $data['archivos'][] = array('file_name' => 'archivo3', 'file_ext' => '.jpg', 'file_date' => '2015/08/04',
-            'file_description' => 'Planta de trabajo', 'file_size' => '152 KB');
-        $data['archivos'][] = array('file_name' => 'archivo4', 'file_ext' => '.docx', 'file_date' => '2015/08/04',
-            'file_description' => 'Contrato en formato .docx', 'file_size' => '24 KB');
-        $data['archivos'][] = array('file_name' => 'archivo5', 'file_ext' => '.jpg', 'file_date' => '2015/08/04',
-            'file_description' => 'Productos ofrecidos', 'file_size' => '48 KB');
-        $data['archivos'][] = array('file_name' => 'archivo6', 'file_ext' => '.pdf', 'file_date' => '2015/08/04',
-            'file_description' => 'Contrato por tiempo determinado', 'file_size' => '48 KB');
-        
         $resultado = $this->Proveedor_model->cargar(decryptIt($id));
         if ($resultado === false || $resultado === array()) {
             echo "Error en la transacción";
@@ -304,6 +305,157 @@ class Proveedores extends CI_Controller
         } else {
             //correcto
             echo 1;
+        }
+    }
+
+    public function agregarArchivo($id)
+    {
+        $data = array();
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $nombreOriginal = $this->input->post('persona_archivo');
+        $nuevoNombre = $this->convertirNombre($nombreOriginal);
+//        $nuevoNombre = date('Y-m-d H:i:s');
+//        $nombre = md5($nuevoNombre);
+
+        $idPersona = decryptIt($id);
+        $path = './files/empresas/'.$idEmpresa.'/proveedores/'.$idPersona;
+        $config['upload_path'] = $path;
+        $config['file_name'] = $nuevoNombre;
+        $config['allowed_types'] = 'jpg|png|jpeg|doc|docx|xls|pdf';
+        $config['max_size'] = '2048';
+
+        $this->load->library('upload', $config);
+        if (!$this->upload->do_upload()) {
+//            $error = array('error' => $this->upload->display_errors()); echo $error['error'];
+            echo 0;
+        } else {
+            $archivo = $this->upload->data();
+            $data['datos'] = array(
+                'idPersona' => $idPersona,
+                'nombre' => $nombreOriginal,
+                'nombreOriginal' => $archivo['raw_name'].$archivo['file_ext'],
+                'tamano' => $archivo['file_size'],
+//                'fecha' => date('Y-m-s h:i:s'),
+                'descripcion' => $this->input->post('archivo_descripcion')
+            );
+//            print_r($data['datos']);
+            $resultado = $this->Proveedor_model->agregarArchivo($data);
+            $archivo = $path.'/'.$data['datos']['nombre'];
+            if(!$resultado) {
+                unlink($archivo);
+                echo 1;
+            } else {
+                echo 2;
+            }
+        }
+    }
+
+    public function eliminarArchivo()
+    {
+        $data = array();
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $id = $_POST['idEliminar'];
+        $persona = decryptIt($_POST['idPersona']);
+        $resultado = $this->Proveedor_model->eliminarArchivo(decryptIt($id));
+        if (!$resultado) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            //correcto
+            $ruta = './files/empresas/'.$idEmpresa.'/proveedores/'.$persona.'/'.$resultado;
+            if($resultado != 'noArchivo') {
+                if(is_file($ruta)) {
+                    unlink($ruta);
+                }
+            }
+            echo 1;
+        }
+    }
+
+    public function cambio_imagen($id) {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+        $idPersona = decryptIt($id);
+
+        $photo = explode('.',$this->input->post('persona_fotografia'));
+        $ext = end($photo);
+        $data['datos'] = array(
+            'idEmpresa' => $idEmpresa,
+            'fotografia' => 'profile_picture_'.$idPersona.'.'.$ext
+        );
+        $data['id'] = $idPersona;
+
+        $fotografia = $this->Proveedor_model->cambiar_imagen($data);
+        if (!$fotografia) {
+            echo 0;
+        } else {
+            $ruta = './files/empresas/'.$idEmpresa.'/proveedores/'. $idPersona;
+            if($fotografia != 'sinFoto') {
+                $path = $ruta . '/'.$fotografia;
+                if(is_file($path)) {
+                    unlink($path);
+                }
+            }
+            $config['upload_path'] = $ruta;
+            $config['file_name'] = 'profile_picture_'.$idPersona;
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['max_size'] = '2048';
+
+            $this->load->library('upload', $config);
+            if(!$this->upload->do_upload()) {
+                echo 2;
+            } else {
+                echo 1;
+            }
+        }
+    }
+
+    //Funcion para eliminar el acento de los nombres de los archivos
+    public function convertirNombre($str, $charset='utf-8'){
+        $str = htmlentities($str, ENT_NOQUOTES, $charset);
+
+        $str = preg_replace('#&([A-za-z])(?:acute|cedil|caron|circ|grave|orn|ring|slash|th|tilde|uml);#', '\1', $str);
+        $str = preg_replace('#&([A-za-z]{2})(?:lig);#', '\1', $str); // pour les ligatures e.g. '&oelig;'
+        $str = preg_replace('#&[^;]+;#', '', $str); // supprime les autres caractères
+
+        return $str;
+    }
+
+    public function cambio_imagen2($id) {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+        $idPersona = decryptIt($id);
+        $photo = explode('.',$this->input->post('persona_fotografia'));
+        $ext = end($photo);
+        $data['datos'] = array(
+            'idEmpresa' => $idEmpresa,
+            'fotografia' => $ext
+        );
+        $data['id'] = $idPersona;
+
+        $extension = $this->Proveedor_model->cambiar_imagen($data);
+        if (!$extension) {
+            echo 0;
+        } else {
+            $ruta = './files/empresas/'.$idEmpresa.'/proveedores/'. $data['id'];
+            if($extension != 'sinFoto') {
+                unlink($ruta . '/profile_picture_' . $idPersona . '.' . $extension);
+            }
+            $config['upload_path'] = $ruta;
+            $config['file_name'] = 'profile_picture_'.$idPersona;
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['max_size'] = '2048';
+
+            $this->load->library('upload', $config);
+            if(!$this->upload->do_upload()) {
+                echo 2;
+            } else {
+                echo 1;
+            }
         }
     }
 
