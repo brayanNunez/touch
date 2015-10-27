@@ -195,8 +195,8 @@ function validacionCorrecta_agregarSalario(){
   $('.modal-header a').click(); 
 }
 
+var miIdActual = "<?php if (isset($resultado)) {echo $resultado['identificacion'];} ?>";
 function validacionCorrecta(){
-    var miIdActual = "<?php if (isset($resultado)) {echo $resultado['identificacion'];} ?>";
     var idNuevo = $('#empleado_id').val();
 
     if (miIdActual == idNuevo) {
@@ -243,6 +243,7 @@ function validacionCorrecta(){
                                             $('#linkModalError').click();
                                        } else {
                                             $('#linkModalEditado').click();
+                                            miIdActual = idNuevo;
                                        }
                                    }
                                  });

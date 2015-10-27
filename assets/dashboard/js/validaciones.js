@@ -119,10 +119,7 @@
             var subfase_codigo = {required: true, maxlength: 45};
             var subfase_nombre = {required: true, maxlength: 45};
             var subfase_notas = {required: true, maxlength: 45};
-
-            $('#form_fases').validate({
-                rules:
-                {
+            var reglasFases =  {
                     fase_codigo: {required: true, maxlength: 45},
                     fase_nombre: {required: true, maxlength: 45},
                     fase_notas: {required: true, maxlength: 45},
@@ -163,10 +160,21 @@
                     fase_notas9: subfase_notas,
                     fase_notas10: subfase_notas
 
-                },
+                };
+
+            $('#form_fases').validate({
+                rules: reglasFases,
                  errorElement: 'div',
                  submitHandler: function(form) {
                     validacionCorrecta();
+                  }
+            });
+
+            $('#form_fasesEditar').validate({
+                rules: reglasFases,
+                 errorElement: 'div',
+                 submitHandler: function(form) {
+                    validacionCorrectaEditar();
                   }
             });
 
