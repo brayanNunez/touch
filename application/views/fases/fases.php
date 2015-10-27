@@ -389,9 +389,9 @@
 
  function validacionCorrecta(){
     var repetidos = false;
-    $("input[name*='fase_codigo']").each(function () {
+    $("#form_fases input[name*='fase_codigo']").each(function () {
         var codigoEvaluar = $(this);
-        $("input[name*='fase_codigo']").each(function () {
+        $("#form_fases input[name*='fase_codigo']").each(function () {
           if ($(this).val() == codigoEvaluar.val() && $(this).attr('name') != codigoEvaluar.attr('name')) {
               repetidos = true;
           }
@@ -440,7 +440,7 @@
 
                   } else{
                     alert("<?=label('fases_error_codigosExisteEnBD'); ?>");
-                    $("input[name*='fase_codigo']").each(function () {
+                    $("#form_fases input[name*='fase_codigo']").each(function () {
                         if ($(this).val() == response) {
                             $(this).focus();
                         }
@@ -454,9 +454,9 @@
 
 function validacionCorrectaEditar(){
     var repetidos = false;
-    $("input[name*='fase_codigo']").each(function () {
+    $("#form_fasesEditar input[name*='fase_codigo']").each(function () {
         var codigoEvaluar = $(this);
-        $("input[name*='fase_codigo']").each(function () {
+        $("#form_fasesEditar input[name*='fase_codigo']").each(function () {
           if ($(this).val() == codigoEvaluar.val() && $(this).attr('name') != codigoEvaluar.attr('name')) {
               repetidos = true;
           }
@@ -500,7 +500,7 @@ function validacionCorrectaEditar(){
 
                   } else{
                     alert("<?=label('fases_error_codigosExisteEnBD'); ?>");
-                    $("input[name*='fase_codigo']").each(function () {
+                    $("#form_fasesEditar input[name*='fase_codigo']").each(function () {
                         if ($(this).val() == response) {
                             $(this).focus();
                         }
