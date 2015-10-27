@@ -170,7 +170,7 @@
                   }
             });
 
-<<<<<<< HEAD
+
             $('#form_gastos').validate({
                 rules:
                 {
@@ -183,25 +183,12 @@
                     validacionCorrecta();
                   }
             });
-
-            $('#form_servicio').validate({
-                rules:
-                {
-                    servicio_codigo: {required: true, maxlength: 45},
-                    servicio_nombre: {required: true, maxlength: 45},
-                    servicio_descripcion: {required: true, maxlength: 45},
-                    servicio_utilidad: {required: true, maxlength: 45}
-                },
-                 errorElement: 'div',
-                 submitHandler: function(form) {
-                    validacionCorrecta_Servicio();
-=======
+            
             $('#form_fasesEditar').validate({
                 rules: reglasFases,
                  errorElement: 'div',
                  submitHandler: function(form) {
                     validacionCorrectaEditar();
->>>>>>> e5e6e58b06e25405efa995dd3a410e8b934fcc87
                   }
             });
 
