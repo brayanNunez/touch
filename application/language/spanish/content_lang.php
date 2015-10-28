@@ -31,7 +31,7 @@
 	$lang['confirmarDesactivarCliente'] = '¿Realmente desea desactivar el cliente seleccionado?';
 	$lang['confirmarDesactivarProveedor'] = '¿Realmente desea desactivar el proveedor seleccionado?';
 	$lang['confirmarEliminarTipoMoneda'] = '¿Realmente desea eliminar el tipo de moneda seleccionado?';
-    $lang['confirmarEliminarGasto'] = '¿Realmente desea eliminar el gasto adicional seleccionado?';
+    $lang['confirmarEliminarGasto'] = '¿Realmente desea eliminar el gasto seleccionado?';
 	$lang['confirmarEliminarUsuario'] = '¿Realmente desea eliminar el usuario seleccionado?';
 	$lang['confirmarEliminarCaracteristica'] = '¿Realmente desea eliminar la característica seleccionada?';
 	$lang['confirmarEliminarElementoServicio'] = '¿Realmente desea eliminar el elemento seleccionado?';

@@ -1,12 +1,3 @@
-<script type="text/javascript">
-$(document).on.ready(function(){
-     $("[name^=username]").each(function () {
-        $(this).rules("add", {
-            required: true
-        });
-    });
-});
-</script>
 
 
 <!--START CONTENT -->
