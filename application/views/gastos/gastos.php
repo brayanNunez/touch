@@ -240,6 +240,7 @@
            var ch = $('#' + tb).find('tbody input[type=checkbox]');
            var marcados = $('.checkbox:checked').not('#checkbox-all').size();
            var contador = 0;
+
            ch.each(function () {
                var $this = $(this);
                if ($this.is(':checked')) {
@@ -469,18 +470,7 @@
     </div>
 </div>
 
-<div id="eliminarGasto" class="modal">
-    <div class="modal-header">
-        <p><?= label('nombreSistema'); ?></p>
-        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
-    </div>
-    <div class="modal-content">
-        <p><?= label('confirmarEliminarGasto'); ?></p>
-    </div>
-    <div class="modal-footer black-text">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
-    </div>
-</div>
+
 <div id="agregarGasto" class="modal" style="width: 70%;">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
@@ -637,20 +627,33 @@
         </div>
     </div>
 </div>
+
+<div id="eliminarGasto" class="modal">
+   <div class="modal-header">
+      <p><?= label('nombreSistema'); ?></p>
+      <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+   </div>
+   <div class="modal-content">
+      <p><?= label('confirmarEliminarGasto'); ?></p>
+   </div>
+   <div id="botonEliminar" class="modal-footer black-text">
+      <a href="" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+   </div>
+</div>
 <div id="eliminarElementosSeleccionados" class="modal">
-    <div class="modal-header">
-        <p><?= label('nombreSistema'); ?></p>
-        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
-    </div>
-    <div class="modal-content">
-        <p><?= label('gastos_eliminarElementosSeleccionados'); ?></p>
-    </div>
-    <div class="modal-footer black-text">
-        <div id="botonElimnar" title="gastos-tabla-lista">
-            <a href="#"
-               class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
-        </div>
-    </div>
+   <div class="modal-header">
+      <p><?= label('nombreSistema'); ?></p>
+      <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+   </div>
+   <div class="modal-content">
+      <p><?= label('eliminarSeleccionados'); ?></p>
+   </div>
+   <div class="modal-footer black-text">
+      <div id="botonEliminar" class="modal-footer black-text" title="gastos-tabla-lista">
+         <a href="#"
+            class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+      </div>
+   </div>
 </div>
 
 <div id="busquedaAvanzadaGastos" class="modal">

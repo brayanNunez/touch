@@ -25,6 +25,19 @@ class Gastos extends CI_Controller
         $this->load->view('layout/default/footer');
     }
 
+     //Metodo es llamado mediante ajax
+    public function eliminar()
+    {
+       $id = $_POST['idEliminar'];
+        if (!$this->Gasto_model->eliminar(decryptIt($id))) {
+            //Error en la transacción
+            echo 0; 
+        } else {
+            //correcto
+            echo 1; 
+        }
+    }
+
 }
 
 ?>
