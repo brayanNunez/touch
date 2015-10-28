@@ -171,7 +171,7 @@
             });
 
 
-            $('#form_gastos').validate({
+            $('#formGasto').validate({
                 rules:
                 {
                     nuevoGasto_codigo: {required: true, maxlength: 45},
@@ -183,13 +183,46 @@
                     validacionCorrecta();
                   }
             });
-            
+
+            $('#formServicio').validate({
+                rules:
+                {
+                    servicio_codigo: {required: true, maxlength: 45},
+                    servicio_nombre: {required: true, maxlength: 45},
+                    servicio_descripcion: {required: true, maxlength: 45},
+                    servicio_utilidad: {required: true, maxlength: 45}
+                },
+                errorElement: 'div',
+                submitHandler: function(form){
+                    validacionCorrecta();
+                }
+            });
+
             $('#form_fasesEditar').validate({
                 rules: reglasFases,
                  errorElement: 'div',
                  submitHandler: function(form) {
                     validacionCorrectaEditar();
                   }
+            });
+
+            $('#formGeneral').validate({
+                rules:
+                {
+                    paso1_codigo: {required: true, maxlength: 45},
+                    paso1_numero: {required: true, maxlength: 45},
+                    contenedorSelectCliente: {required: true},
+                    contenedorSelectAtencion: {required: true},
+                    contenedorSelectFormaPago: {required: true},
+                    contenedorSelectMoneda: {required: true},
+                    paso1_validez: {required: true, maxlength: 45},
+                    paso1_tipoCambio: {required: true, maxlength: 45},
+                    paso1_detalle: {required: true, maxlength: 45}
+                },
+                errorElement: 'div',
+                submitHandler: function(form){
+                    validacionCorrecta();
+                }
             });
 
             $('#form_paso3AgregarPlantilla').validate({
@@ -258,12 +291,29 @@
             //     }
             // });
 
+            $('#form_usuario').validate({
+                rules:
+                {
+                    usuario_primerApellido: {required: true, maxlength: 45},
+                    usuario_segundoApellido: {required: true, maxlength: 45},
+                    usuario_nombre: {required: true, maxlength: 45},
+                    usuario_correo: {required: true, maxlength: 45},
+                    usuario_contrasena: {required: true, maxlength: 45},
+                    usuario_contrasenaConfirm: {required: true, equalTo: "#usuario_contrasena"}
+
+                },
+                errorElement: 'div',
+                submitHandler: function(form) {
+                    validacionCorrecta();
+                }
+            });
+
             $('#form_usuario_editar').validate({
                 rules:
                 {
-                    usuario_primeroApellido: {required: true},
-                    usuario_nombre: { required: true},
-                    usuario_correo: { required:true}
+                    usuario_primerApellido: {required: true, maxlength: 45},
+                    usuario_segundoApellido: {required: true, maxlength: 45},
+                    usuario_nombre: {required: true, maxlength: 45}
                 },
                 errorElement: 'div',
                 submitHandler: function(form) {

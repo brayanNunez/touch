@@ -8,8 +8,8 @@
         </div>
         <div class="input-field col s6 m3 l3">
             <div class="input-field col s12">
-                <input id="last_name" type="text">
-                <label for="last_name" class=""><?= label("paso1_labelNumero"); ?></label>
+                <input id="paso1_numero" type="text">
+                <label for="paso1_numero" class=""><?= label("paso1_labelNumero"); ?></label>
             </div>
         </div>
     </div>
@@ -54,16 +54,16 @@
     </div>
     <div class="row">
         <div class="input-field col s12 m6 l6">
-            <input id="cotizacion-validez" class="datepicker-fecha" type="text">
-            <label for="cotizacion-validez"><?= label("paso1_labelTiempoVlidez"); ?></label>
+            <input id="paso1_validez" class="datepicker-fecha" type="text">
+            <label for="paso1_validez"><?= label("paso1_labelTiempoVlidez"); ?></label>
         </div>
         <div class="input-field col s12 m6 l6">
-            <input id="moneda-tipoCambio" type="text">
-            <label for="moneda-tipoCambio" class=""><?= label("paso1_labelTipoCambio"); ?></label>
+            <input id="paso1_tipoCambio" type="text">
+            <label for="paso1_tipoCambio" class=""><?= label("paso1_labelTipoCambio"); ?></label>
         </div>
         <div class="input-field col s12">
-            <textarea id="message" class="materialize-textarea" style="height: 24px;"></textarea>
-            <label for="message" class=""><?= label("paso1_labelDetalle"); ?></label>
+            <textarea id="paso1_detalle" class="materialize-textarea" style="height: 24px;"></textarea>
+            <label for="paso1_detalle" class=""><?= label("paso1_labelDetalle"); ?></label>
         </div>
     </div>
 
