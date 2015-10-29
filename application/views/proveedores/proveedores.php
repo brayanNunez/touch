@@ -219,7 +219,7 @@
                                             <div id="tab-infoAdicional" class="card col s12">
                                                 <h5>Presupuesto promedio del proveedor</h5>
                                                 <p>* Exclusivo para proveedores de servicios, no tiene fines contables</p>
-                                                <table id="proveedor1-salarios" class="table striped">
+                                                <table id="proveedor_presupuestos" class="data-table-information responsive-table display">
                                                     <thead>
                                                         <tr>
                                                             <th style="text-align: center;">
@@ -229,15 +229,16 @@
                                                             </th>
                                                             <th><?= label('formProveedor_salariosTipo'); ?></th>
                                                             <th><?= label('formProveedor_salariosMonto'); ?></th>
+                                                            <th><?= label('formProveedor_salariosPorDefecto'); ?></th>
                                                             <th><?= label('formProveedor_salariosOpciones'); ?></th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
+                                                    <tbody id="tablaPresupuestos">
                                                     </tbody>
                                                 </table>
                                                 <div style="padding: 20px;">
-                                                    <a href="#agregarSalario"
-                                                       class="btn btn-default modal-trigger"><?= label('formProveedor_nuevoSalario'); ?></a>
+                                                    <a href="#agregarPresupuesto"
+                                                       class="btn btn-default modal-trigger"><?= label('formProveedor_nuevoPresupuesto'); ?></a>
 
                                                     <div class="tabla-conAgregar tabla-salarios-proveedor">
                                                         <a id="opciones-seleccionados-delete"
@@ -280,6 +281,7 @@
 </div>
 <div style="visibility:hidden; position:absolute">
     <input id="cantidadContactos" form="formPersona" name="cantidadContactos" type="text" value="0">
+    <input id="cantidadPresupuestos" form="formPersona" name="cantidadPresupuestos" type="text" value="0">
     <a id="linkContactosElimminar" href="#eliminarContacto" class="modal-trigger" data-fila-eliminar="1"
        title="<?= label('formProveedor_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>
 </div>
@@ -349,75 +351,6 @@
             $('#usuario_fotografia').attr('value', ext);
             readURL(this);
         }
-    });
-</script>
-
-<script>
-    $(window).load(function () {
-        var marcados = $('.checkbox:checked').size();
-        if (marcados >= 1) {
-            var elems = document.getElementsByClassName('opciones-seleccionados');
-            var e;
-            for (e in elems) {
-                elems[e].style.visibility = 'visible';
-            }
-        } else {
-            var elems = document.getElementsByClassName('opciones-seleccionados');
-            var e;
-            for (e in elems) {
-                elems[e].style.visibility = 'hidden';
-            }
-        }
-        document.getElementById('checkbox-all').checked = false;
-    });
-    $(document).ready(function () {
-        $('#botonElimnar').on("click", function (event) {
-            var tb = $(this).attr('title');
-            var sel = false;
-            var ch = $('#' + tb).find('tbody input[type=checkbox]');
-            ch.each(function () {
-                var $this = $(this);
-                if ($this.is(':checked')) {
-                    sel = true;
-                    $this.parents('tr').fadeOut(function () {
-                        $this.remove();
-                    });
-                }
-            });
-            return false;
-        });
-    });
-    $(document).ready(function () {
-        $('#checkbox-all').click(function (event) {
-            var $this = $(this);
-            var tableBody = $('#proveedor1-salarios').find('tbody tr input[type=checkbox]');
-            tableBody.each(function() {
-                var check = $(this);
-                if ($this.is(':checked')) {
-                    check.prop('checked', true);
-                } else {
-                    check.prop('checked', false);
-                }
-            });
-        });
-    });
-    $(document).ready(function () {
-        $('.checkbox').click(function (event) {
-            var marcados = $('.checkbox:checked').size();
-            if (marcados >= 1) {
-                var elems = document.getElementsByClassName('opciones-seleccionados');
-                var e;
-                for (e in elems) {
-                    elems[e].style.visibility = 'visible';
-                }
-            } else {
-                var elems = document.getElementsByClassName('opciones-seleccionados');
-                var e;
-                for (e in elems) {
-                    elems[e].style.visibility = 'hidden';
-                }
-            }
-        });
     });
 </script>
 
@@ -627,6 +560,264 @@
     }
 </script>
 
+
+
+
+<!--Funciones para presupuestos-->
+<script>
+    var nombres = [];
+    var idEditar = 0;
+    $(document).ready(function () {
+        <?php
+            $nombres = array();
+            if(isset($tiposPresupuesto)) {
+                foreach ($tiposPresupuesto as $tipo) { ?>
+        nombres['<?= $tipo['idTipoPresupuesto'] ?>'] = '<?= $tipo['nombre'] ?>';
+                <?php }
+            }
+        ?>
+    });
+    function actualizarCantidadPresupuestos(){
+        $('#cantidadPresupuestos').val(cantidadPresupuesto);
+    }
+    var cantidadPresupuesto = 0;
+    var contadorPresupuesto = 0;
+    $(document).on('click', '#agregarPresupuesto #btnAgregarPresupuesto', function () {
+        var tipo = $('#agregarPresupuesto_tipo');
+        var nombreTipo = nombres[tipo.val()];
+        var monto = $('#agregarPresupuesto_monto');
+        agregarNuevoPresupuesto(tipo.val(), nombreTipo, monto.val());
+//        tipo.val(0).change();
+        monto.val('');
+    });
+    function agregarNuevoPresupuesto(tipo, nombreTipo, monto) {
+        cantidadPresupuesto++;
+        actualizarCantidadPresupuestos();
+        var check = '<td>' +
+                        '<div style="text-align: center;">' +
+                            '<input style="display:none" name="presupuesto_'+ contadorPresupuesto +'" type="text">' +
+                            '<input type="checkbox" class="filled-in checkbox" id="checkbox_presupuesto'+ contadorPresupuesto +'"/>' +
+                            '<label for="checkbox_presupuesto'+ contadorPresupuesto +'"></label>' +
+                        '</div>' +
+                    '</td>';
+        var tipoP = '<td>' +
+                        nombreTipo + '<input type="text" name="presupuesto'+ contadorPresupuesto +'_tipo" id="presupuesto'+ contadorPresupuesto +'_tipo" value="'+ tipo +'" style="display: none;" />' +
+                    '</td>';
+        var montoP = '<td>'+
+                        monto + '<input type="text" name="presupuesto'+ contadorPresupuesto +'_monto" id="presupuesto'+ contadorPresupuesto +'_monto" value="'+ monto +'" style="display: none;" />' +
+                    '</td>';
+        var principal = '<td>' +
+                        '<input type="radio" name="radioPresupuestoPrincipal" id="radio_presupuesto'+ contadorPresupuesto +'" checked="checked"/>' +
+                        '<label for="radio_presupuesto'+ contadorPresupuesto +'"></label>' +
+                    '</td>';
+        var opciones = '<td>' +
+                            '<ul id="dropdown_presupuesto'+ contadorPresupuesto +'" class="dropdown-content">' +
+                                '<li>' +
+                                    '<a href="#editarPresupuesto" class="-text modal-trigger abrirEditar" data-id-editar="'+ contadorPresupuesto + '"><?= label('menuOpciones_editar') ?></a>' +
+                                '</li>' +
+                                '<li>' +
+                                    '<a href="#eliminarPresupuesto" class="-text modal-trigger confirmarEliminar" data-id-eliminar="'+ contadorPresupuesto +'" data-fila-eliminar="fila'+ contadorPresupuesto +'"><?= label('menuOpciones_eliminar') ?></a>' +
+                                '</li>' +
+                            '</ul>' +
+                            '<a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown_presupuesto'+ contadorPresupuesto +'"><?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i> </a>' +
+                        '</td>';
+
+        $('#proveedor_presupuestos').dataTable().fnAddData([
+            check,
+            tipoP,
+            montoP,
+            principal,
+            opciones
+        ]);
+
+        generarListasBotones();
+        $('.modal-trigger').leanModal();
+        contadorPresupuesto++;
+    }
+
+    $(document).on('click', '.abrirEditar', function () {
+        idEditar = $(this).data('id-editar');
+//        row = table.row($(this).parents('tr'));
+        var tipoActual = $('#presupuesto' + idEditar + '_tipo').val();
+        var nombreTipo = nombres[tipoActual];
+        var montoActual = $('#presupuesto' + idEditar + '_monto').val();
+        var tipoEditar = $('#editarPresupuesto_tipo');
+        var montoEditar = $('#editarPresupuesto_monto');
+
+        alert(tipoActual + '  -  ' + montoActual + '  -  ' + nombreTipo);
+
+        tipoEditar.val(tipoActual);
+        montoEditar.val(montoActual);
+    });
+    $(document).on('click', '#editarPresupuesto #btnEditarPresupuesto', function () {
+        alert(idEditar);
+        var tipo = $('#editarPresupuesto_tipo');
+        var nombreTipo = nombres[tipo.val()];
+        var monto = $('#editarPresupuesto_monto');
+
+        $('#presupuesto' + idEditar + '_tipo').val(tipo.val());
+        $('#presupuesto' + idEditar + '_monto').val(monto.val());
+
+//        tipo.val(0).change();
+        monto.val('');
+    });
+
+    function generarListasBotones(){
+        $('.boton-opciones').sideNav({
+                // menuWidth: 0, // Default is 240
+                edge: 'right', // Choose the horizontal origin
+                closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            }
+        );
+
+        $('.dropdown-button').dropdown({
+                inDuration: 300,
+                outDuration: 225,
+                constrain_width: true, // Does not change width of dropdown to that of the activator
+                hover: false, // Activate on hover
+                gutter: 0, // Spacing from edge
+                belowOrigin: true, // Displays dropdown below the button
+                alignment: 'left' // Displays dropdown with edge aligned to the left of button
+            }
+        );
+    }
+</script>
+
+<script>
+    $(document).on("ready", function () {
+
+        <?php
+       if (isset($lista)) {
+           if ($lista === false) {?>
+
+        $('#linkModalErrorCargarDatos').click();
+
+        <?php
+   }
+   }
+   ?>
+
+
+        var idEliminar = 0;
+        var fila = 0;
+
+        $(document).on('click','.confirmarEliminar', function () {
+//            idEliminar = $(this).data('id-eliminar');
+            fila = $(this).parents('tr');
+        });
+
+        $('#eliminarPresupuesto #botonEliminar').on('click', function () {
+            event.preventDefault();
+
+            fila.fadeOut(function () {
+                fila.remove();
+                verificarChecks();
+            });
+        });
+    });
+
+    $(document).ready( function () {
+        $('#proveedor_presupuestos').dataTable( {
+            'aoColumnDefs': [{
+                'bSortable': false,
+                'aTargets': [0, -1] //desactiva en primer y última columna opción de ordenar
+            }]
+        });
+    });
+    $(document).ready(function () {
+        $('table#proveedor_presupuestos thead th:first').removeClass('sorting_asc').addClass('sorting_disabled');
+        $('table#proveedor_presupuestos thead th:nth-child(2)').removeClass('sorting').addClass('sorting_asc');
+    });
+    $(document).ready(function () {
+        $('#eliminarElementosSeleccionados #botonEliminar').on("click", function (event) {
+            var tb = $(this).attr('title');
+            var sel = false;
+            var ch = $('#' + tb).find('tbody input[type=checkbox]');
+            var marcados = $('.checkbox:checked').not('#checkbox-all').size();
+            var contador = 0;
+            ch.each(function () {
+                var $this = $(this);
+                if ($this.is(':checked')) {
+                    sel = true;
+                    var fila = $this.parents('tr');
+                    fila.fadeOut(function () {
+                        fila.remove();
+                        verificarChecks();
+                    });
+                    contador++;
+                    if (contador == marcados) {
+                        $('#linkModalErrorEliminar').click();
+                    }
+                }
+            });
+            return false;
+        });
+    });
+
+    $(window).load(function () {
+        verificarChecks();
+    });
+
+    $(document).ready(function () {
+        $('#checkbox-all').click(function (event) {
+            var $this = $(this);
+            var tableBody = $('#proveedor_presupuestos').find('tbody tr[role=row] input[type=checkbox]');
+            tableBody.each(function() {
+                var check = $(this);
+                if ($this.is(':checked')) {
+                    check.prop('checked', true);
+                } else {
+                    check.prop('checked', false);
+                }
+            });
+        });
+    });
+    $(document).ready(function () {
+        $(document).on('click','.checkbox',function (event) {
+            verificarChecks();
+        });
+    });
+
+    function verificarChecks(){
+
+        var marcados = $('.checkbox:checked').not('#checkbox-all').size();
+        if (marcados >= 1) {
+            var elems = document.getElementsByClassName('opciones-seleccionados');
+            var e;
+            for (e in elems) {
+                elems[e].style.visibility = 'visible';
+            }
+        } else {
+            $('#checkbox-all').prop('checked', false);
+            var elems = document.getElementsByClassName('opciones-seleccionados');
+            var e;
+            for (e in elems) {
+                elems[e].style.visibility = 'hidden';
+            }
+        }
+    }
+
+    $(document).ready(function () {
+        $('.boton-opciones').sideNav({
+                // menuWidth: 0, // Default is 240
+                edge: 'right', // Choose the horizontal origin
+                closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            }
+        );
+
+        $('.dropdown-button').dropdown({
+                inDuration: 300,
+                outDuration: 225,
+                constrain_width: true, // Does not change width of dropdown to that of the activator
+                hover: false, // Activate on hover
+                gutter: 0, // Spacing from edge
+                belowOrigin: true, // Displays dropdown below the button
+                alignment: 'left' // Displays dropdown with edge aligned to the left of button
+            }
+        );
+    });
+</script>
+
 <!-- lista modals -->
 <div id="transaccionCorrecta" class="modal">
     <div class="modal-header">
@@ -662,6 +853,116 @@
         <p><?= label('confirmarEliminarContacto'); ?></p>
     </div>
     <div id="botonEliminar" class="modal-footer black-text">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+
+<div id="agregarPresupuesto" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <div class="input-field col s12">
+            <select id="agregarPresupuesto_tipo">
+                <option value="0" disabled selected>Seleccione uno</option>
+                <?php
+                    if(isset($tiposPresupuesto)) {
+                        foreach ($tiposPresupuesto as $tipo) { ?>
+                            <option value="<?= $tipo['idTipoPresupuesto']; ?>"><?= $tipo['nombre']; ?></option>
+                <?php
+                        }
+                    } ?>
+            </select>
+            <label for="agregarPresupuesto_tipo"><?= label('formProveedor_salarioTipo'); ?></label>
+        </div>
+        <div class="input-field col s12">
+            <input id="agregarPresupuesto_monto" type="text" value="">
+            <label for="agregarPresupuesto_monto"><?= label('formProveedor_salarioMonto'); ?></label>
+        </div>
+    </div>
+    <div class="modal-footer" id="btnAgregarPresupuesto">
+        <a class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="editarPresupuesto" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <div class="input-field col s12">
+            <select id="editarPresupuesto_tipo">
+                <option value="0" disabled>Seleccione uno</option>
+                <?php
+                    if(isset($tiposPresupuesto)) {
+                        foreach ($tiposPresupuesto as $tipo) { ?>
+                            <option value="<?= $tipo['idTipoPresupuesto']; ?>"><?= $tipo['nombre']; ?></option>
+                <?php
+                        }
+                    } ?>
+            </select>
+            <label for="editarPresupuesto_tipo"><?= label('formProveedor_salarioTipo'); ?></label>
+        </div>
+        <div class="input-field col s12">
+            <input id="editarPresupuesto_monto" type="text" value=" ">
+            <label for="editarPresupuesto_monto"><?= label('formProveedor_salarioMonto'); ?></label>
+        </div>
+    </div>
+    <div class="modal-footer" id="btnEditarPresupuesto">
+        <a class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="eliminarPresupuesto" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('confirmarEliminarSalario'); ?></p>
+    </div>
+    <div id="botonEliminar" class="modal-footer black-text">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="eliminarElementosSeleccionados" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('clientes_archivosSeleccionadosEliminar'); ?></p>
+    </div>
+    <div class="modal-footer black-text">
+        <div id="botonEliminar" title="proveedor_presupuestos">
+            <a href="#" class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        </div>
+    </div>
+</div>
+
+<div id="editarSalario" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <div class="input-field col s12">
+            <select>
+                <option value="">Seleccione</option>
+                <option value="1" selected><?= label('horas') ?></option>
+                <option value="2"><?= label('dia') ?></option>
+                <option value="3"><?= label('semana') ?></option>
+                <option value="4"><?= label('quincena') ?></option>
+                <option value="5"><?= label('mes') ?></option>
+            </select>
+            <label for=""><?= label('formProveedor_salarioTipo'); ?></label>
+        </div>
+        <div class="input-field col s12">
+            <input id="salario_monto" type="text" value="$10">
+            <label for="salario_monto"><?= label('formProveedor_salarioMonto'); ?></label>
+        </div>
+    </div>
+    <div class="modal-footer">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>

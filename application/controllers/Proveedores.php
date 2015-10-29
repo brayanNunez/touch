@@ -26,10 +26,16 @@ class Proveedores extends CI_Controller
 
     public function agregar()
     {
-        $this->load->view('layout/default/header');
-        $this->load->view('layout/default/left-sidebar');
-        $this->load->view('proveedores/proveedores');
-        $this->load->view('layout/default/footer');
+        $tipos = $this->Proveedor_model->tiposPresupuesto();
+        if ($tipos === false || $tipos === array()) {
+            echo "Error en la transacción";
+        } else {
+            $data['tiposPresupuesto'] = $tipos;
+            $this->load->view('layout/default/header');
+            $this->load->view('layout/default/left-sidebar');
+            $this->load->view('proveedores/proveedores', $data);
+            $this->load->view('layout/default/footer');
+        }
     }
 
     public function insertar() {
@@ -129,6 +135,25 @@ class Proveedores extends CI_Controller
             $contador++;
         }
         $data['contactos'] = $contactos;
+
+        $presupuestos = array();
+        $contadorPresupuestos = 0;
+        $presupuestosObtenidos = 0;
+        $cantidadPresupuestos = $this->input->post('cantidadPresupuestos');
+        while($presupuestosObtenidos < $cantidadPresupuestos) {
+            if(isset($_POST['presupuesto_'.$contadorPresupuestos])) {
+                $presupuesto = array(
+                    'tipoPresupuesto' => $this->input->post('presupuesto'.$contadorPresupuestos.'_tipo'),
+                    'monto' => $this->input->post('presupuesto'.$contadorPresupuestos.'_monto'),
+                    'principal' => 0,
+                    'eliminado' => 0
+                );
+                array_push($presupuestos, $presupuesto);
+                $presupuestosObtenidos++;
+            }
+            $contadorPresupuestos++;
+        }
+        $data['presupuestos'] = $presupuestos;
 
         $persona = $this->Proveedor_model->insertar($data);
         if (!$persona) {

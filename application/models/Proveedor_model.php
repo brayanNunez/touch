@@ -10,6 +10,25 @@ class Proveedor_model extends CI_Model
         $this->load->database();
     }
 
+    function tiposPresupuesto()
+    {
+        try{
+            $this->db->trans_begin();
+
+            $tipos = $this->db->get('tipopresupuesto');
+            if (!$tipos) {
+                throw new Exception("Error en la BD");
+            }
+            $tipos = $tipos->result_array();
+
+            $this->db->trans_commit();
+            return $tipos;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
     function insertar($data)
     {
         try{
@@ -41,6 +60,15 @@ class Proveedor_model extends CI_Model
             foreach ($contactos as $contacto) {
                 $contacto['idProveedor'] = $insert_id;
                 $query = $this->db->insert('proveedorcontacto', $contacto);
+                if (!$query) {
+                    throw new Exception("Error en la BD");
+                }
+            }
+
+            $presupuestos = $data['presupuestos'];
+            foreach ($presupuestos as $presupuesto) {
+                $presupuesto['idProveedor'] = $insert_id;
+                $query = $this->db->insert('presupuestoproveedor', $presupuesto);
                 if (!$query) {
                     throw new Exception("Error en la BD");
                 }
