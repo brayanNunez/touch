@@ -231,8 +231,8 @@ div#tab-contactos hr, div#tab-contactos-editar hr { height: 12px; border: 0; box
 div#tab-contactos-nuevo, div#tab-contactos-nuevo-editar { margin: 15px 0; }
 div#tab-contactos-nuevo a, div#tab-contactos-nuevo-editar a { cursor: pointer; font-size: large; text-decoration: underline; }
 
-div#card-graficos-inicio { height: 180px; padding: 41px 14px !important; }
-div#card-stats div.card { margin-bottom: 7.5px; }
+div#card-graficos-inicio { height: 160px; padding: 41px 14px !important; }
+/*div#card-stats div.card { margin-bottom: 7.5px; }*/
 div#card-stats div.card div.card-content { padding-bottom: 1px; }
 div#card-stats div.card div.card-action { padding: 8px 14px; }
 /*canvas#trending-line-chart { height: 245px !important; }*/

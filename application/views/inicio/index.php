@@ -169,10 +169,10 @@
 
 
                 <!--card stats start-->
-                <div id="card-stats" class="col s12 m12 l4">
+                <div id="card-stats">
                     <div class="row">
                         <a href="<?= base_url() ?>cotizacion">
-                            <div class="col s12 m6 l12">
+                            <div class="col s12 m6 l4">
                                 <div class="card">
                                     <div class="card-content  green white-text">
                                         <p class="card-stats-title"><i class="mdi-social-group-add"></i> Total
@@ -186,7 +186,7 @@
                             </div>
                         </a>
                         <a href="<?= base_url() ?>cotizacion">
-                            <div class="col s12 m6 l12">
+                            <div class="col s12 m6 l4">
                                 <div class="card">
                                     <div class="card-content purple white-text">
                                         <p class="card-stats-title"><i class="mdi-editor-attach-money"></i>Cotizaciones
@@ -201,7 +201,7 @@
                             </div>
                         </a>
                         <a href="<?= base_url() ?>cotizacion">
-                            <div class="col s12 m6 l12">
+                            <div class="col s12 m6 l4">
                                 <div class="card">
                                     <div class="card-content deep-purple white-text">
                                         <p class="card-stats-title"><i class="mdi-editor-insert-drive-file"></i>
@@ -216,7 +216,7 @@
                             </div>
                         </a>
                         <a href="<?= base_url() ?>cotizacion">
-                            <div class="col s12 m6 l12">
+                            <div class="col s12 m6 l4">
                                 <div class="card">
                                     <div class="card-content blue-grey white-text">
                                         <p class="card-stats-title"><i class="mdi-action-trending-up"></i> Cotizaciones
@@ -231,7 +231,7 @@
                             </div>
                         </a>
                         <a href="<?= base_url() ?>cotizacion">
-                            <div class="col s12 m6 l12">
+                            <div class="col s12 m6 l4">
                                 <div class="card">
                                     <div class="card-content  green white-text">
                                         <p class="card-stats-title"><i class="mdi-social-group-add"></i> Cotizaciones en
@@ -246,7 +246,7 @@
                             </div>
                         </a>
                         <a href="<?= base_url() ?>cotizacion">
-                            <div class="col s12 m6 l12">
+                            <div class="col s12 m6 l4">
                                 <div class="card">
                                     <div class="card-content deep-purple white-text">
                                         <p class="card-stats-title"><i class="mdi-editor-insert-drive-file"></i>
@@ -261,7 +261,7 @@
                             </div>
                         </a>
                         <a href="<?= base_url() ?>cotizacion">
-                            <div class="col s12 m6 l12">
+                            <div class="col s12 m6 l4">
                                 <div class="card">
                                     <div class="card-content green white-text">
                                         <p class="card-stats-title"><i class="mdi-editor-insert-drive-file"></i>
@@ -282,7 +282,7 @@
                 <!--card widgets start-->
                 <div id="card-widgets">
                     <div class="row">
-                        <div class="col s12 m6 14">
+                        <div class="col s12 m6 l8">
                             <div id="profile-card" class="card">
                                 <div class="card-image waves-effect waves-block waves-light">
                                     <img class="activator" src="<?= base_url() ?>assets/dashboard/images/user-bg.jpg"
@@ -312,7 +312,7 @@
                                             Empleados</p></a>-->
                                     <a href="<?= base_url() ?>proveedores/agregar"><p><i
                                                 class="mdi-action-perm-identity cyan-text text-darken-2"></i> Agregar
-                                            Proveedores</p></a>
+                                            Personas</p></a>
 
 
                                 </div>
