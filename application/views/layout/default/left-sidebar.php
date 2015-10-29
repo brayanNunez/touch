@@ -69,7 +69,7 @@
                 </li>
 
                 <li class="bold"><a href="<?= base_url(); ?>proveedores/" class="waves-effect waves-cyan"><i
-                            class="mdi-action-account-child"></i> <?= label('proveedores'); ?></a>
+                            class="mdi-action-account-child"></i> <?= label('personas'); ?></a>
                 </li>
 
 <!--                <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i-->

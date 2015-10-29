@@ -254,6 +254,9 @@
                         <li>
                             <a href="<?= base_url(); ?>impuesto"><?= label('horas'); ?></a>
                         </li>
+                        <li>
+                            <a href="<?= base_url(); ?>fases">Fases</a>
+                        </li>
                     </ul>
 
 

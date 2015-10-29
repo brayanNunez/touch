@@ -53,16 +53,16 @@
                                             </div>
                                             <div>
                                                 <div class="input-field col s12 m4 l4">
+                                                    <input id="cliente_nombre" name="cliente_nombre" type="text">
+                                                    <label for="cliente_nombre"><?= label('formCliente_nombre'); ?></label>
+                                                </div>
+                                                <div class="input-field col s12 m4 l4">
                                                     <input id="cliente_apellido1" name="cliente_apellido1" type="text">
                                                     <label for="cliente_apellido1"><?= label('formCliente_apellido1'); ?></label>
                                                 </div>
                                                 <div class="input-field col s12 m4 l4">
                                                     <input id="cliente_apellido2" name="cliente_apellido2" type="text">
                                                     <label for="cliente_apellido2"><?= label('formCliente_apellido2'); ?></label>
-                                                </div>
-                                                <div class="input-field col s12 m4 l4">
-                                                    <input id="cliente_nombre" name="cliente_nombre" type="text">
-                                                    <label for="cliente_nombre"><?= label('formCliente_nombre'); ?></label>
                                                 </div>
                                             </div>
                                             <div class="input-field col s12">

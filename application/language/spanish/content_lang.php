@@ -381,6 +381,7 @@ $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente
 	$lang['listarReporteCli'] = 'Reportes de clientes';
 	$lang['empleados'] = 'Empleados';
 	$lang['proveedores'] = 'Proveedores';
+    $lang['personas'] = 'Personas';
 	$lang['monedas'] = 'Monedas';
 	$lang['usuarios'] = 'Usuarios';
 	$lang['financiamiento'] = 'Formas de pago';
@@ -446,7 +447,7 @@ $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente
 
 //formulario cliente
     $lang['Cliente_tablaNombre'] = 'Nombre';
-    $lang['Cliente_tablaCodigo'] = 'Código';
+    $lang['Cliente_tablaCodigo'] = 'Número de identificación';
     $lang['Cliente_tablaTipo'] = 'Tipo';
     $lang['Cliente_tablaTelefono'] = 'Teléfono';
     $lang['Cliente_tablaCorreo'] = 'Correo electrónico';
@@ -459,7 +460,7 @@ $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente
 	$lang['formCliente_juridica'] = 'Jurídica';
 	$lang['formCliente_codigo'] = 'Código';
 	$lang['formCliente_nombre'] = 'Nombre';
-	$lang['formCliente_identificacion'] = 'Identificación';
+	$lang['formCliente_identificacion'] = 'Número de identificación';
 	$lang['formCliente_fechaNacimiento'] = 'Fecha de nacimiento';
 	$lang['formCliente_telefonoMovil'] = 'Teléfono móvil';
 	$lang['formCliente_telefonoFijo'] = 'Teléfono fijo';
