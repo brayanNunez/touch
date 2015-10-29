@@ -62,16 +62,16 @@
                                             </div>
                                             <div>
                                                 <div class="input-field col s12 m4 l4">
+                                                    <input id="persona_nombre" name="persona_nombre" type="text">
+                                                    <label for="persona_nombre"><?= label('formPersona_nombre'); ?></label>
+                                                </div>
+                                                <div class="input-field col s12 m4 l4">
                                                     <input id="persona_apellido1" name="persona_apellido1" type="text">
                                                     <label for="persona_apellido1"><?= label('formPersona_apellido1'); ?></label>
                                                 </div>
                                                 <div class="input-field col s12 m4 l4">
                                                     <input id="persona_apellido2" name="persona_apellido2" type="text">
                                                     <label for="persona_apellido2"><?= label('formPersona_apellido2'); ?></label>
-                                                </div>
-                                                <div class="input-field col s12 m4 l4">
-                                                    <input id="persona_nombre" name="persona_nombre" type="text">
-                                                    <label for="persona_nombre"><?= label('formPersona_nombre'); ?></label>
                                                 </div>
                                             </div>
                                             <div class="input-field col s12">
@@ -576,6 +576,10 @@
                 '<div class="col s12 m11 l11">' +
                     '<div class="row">' +
                         '<div class="input-field col s12 m4 l4">' +
+                            '<input id="proveedor_contactoNombre_' + contador + '" name="proveedor_contactoNombre_' + contador + '" type="text">' +
+                            '<label for="proveedor_contactoNombre_' + contador + '"><?= label("formContacto_nombre"); ?></label>' +
+                        '</div>' +
+                        '<div class="input-field col s12 m4 l4">' +
                             '<input style="display:none" name="contacto_'+ contador +'" type="text">' +
                             '<input id="proveedor_contactoApellido1_' + contador + '" name="proveedor_contactoApellido1_' + contador + '" type="text">' +
                             '<label for="proveedor_contactoApellido1_' + contador + '"><?= label("formContacto_apellido1"); ?></label>' +
@@ -583,10 +587,6 @@
                         '<div class="input-field col s12 m4 l4">' +
                             '<input id="proveedor_contactoApellido2_' + contador + '" name="proveedor_contactoApellido2_' + contador + '" type="text">' +
                             '<label for="proveedor_contactoApellido2_' + contador + '"><?= label("formContacto_apellido2"); ?></label>' +
-                        '</div>' +
-                        '<div class="input-field col s12 m4 l4">' +
-                            '<input id="proveedor_contactoNombre_' + contador + '" name="proveedor_contactoNombre_' + contador + '" type="text">' +
-                            '<label for="proveedor_contactoNombre_' + contador + '"><?= label("formContacto_nombre"); ?></label>' +
                         '</div>' +
                     '</div>' +
                 '<div class="row">' +

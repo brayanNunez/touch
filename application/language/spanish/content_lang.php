@@ -793,7 +793,8 @@ $lang['Persona_tablaOpciones'] = 'Opciones';
     $lang['Categorias_nuevo'] = 'Agregar nueva categoría';
     $lang['Categorias_codigo'] = 'Código';
     $lang['Categorias_nombre'] = 'Nombre';
-    $lang['Categorias_opciones'] = 'Opciones';$lang['confirmarEliminarSubcategoria'] = '¿Realmente desea eliminar la sub-categoría seleccionada?';
+    $lang['Categorias_opciones'] = 'Opciones';
+    $lang['confirmarEliminarSubcategoria'] = '¿Realmente desea eliminar la sub-categoría seleccionada?';
 
     $lang['Categorias_nuevo'] = 'Agregar nueva categoría';
     $lang['Categorias_editar'] = 'Editar categoría';

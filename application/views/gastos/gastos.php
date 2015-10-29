@@ -537,9 +537,6 @@
             </div>
         </div>
         <div class="row">
-            <a href="#" style="font-size: larger;float: left;text-decoration: underline;"
-               class="modal-action modal-close"><?= label('cancelar'); ?>
-            </a>
             <a href="#" class="waves-effect btn modal-action modal-close" style="margin: 0 20px;">
                 <?= label('guardarCerrar'); ?>
             </a>

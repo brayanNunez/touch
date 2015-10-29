@@ -120,16 +120,16 @@
                 </div>
                 <div>
                     <div class="input-field col s12 m4 l4">
+                        <input id="persona_nombre" name="persona_nombre" type="text" value="<?= $nombre; ?>">
+                        <label for="persona_nombre"><?= label('formPersona_nombre'); ?></label>
+                    </div>
+                    <div class="input-field col s12 m4 l4">
                         <input id="persona_apellido1" name="persona_apellido1" type="text" value="<?= $apellido1; ?>">
                         <label for="persona_apellido1"><?= label('formPersona_apellido1'); ?></label>
                     </div>
                     <div class="input-field col s12 m4 l4">
                         <input id="persona_apellido2" name="persona_apellido2" type="text" value="<?= $apellido2; ?>">
                         <label for="persona_apellido2"><?= label('formPersona_apellido2'); ?></label>
-                    </div>
-                    <div class="input-field col s12 m4 l4">
-                        <input id="persona_nombre" name="persona_nombre" type="text" value="<?= $nombre; ?>">
-                        <label for="persona_nombre"><?= label('formPersona_nombre'); ?></label>
                     </div>
                 </div>
                 <div class="input-field col s12">

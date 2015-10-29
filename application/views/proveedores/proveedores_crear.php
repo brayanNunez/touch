@@ -50,6 +50,11 @@
                                                 <label for="proveedor_id"><?= label('formProveedor_identificacion'); ?></label>
                                             </div>
                                             <div>
+                                                
+                                                <div class="input-field col s12 m4 l4">
+                                                    <input id="proveedor_nombre" type="text">
+                                                    <label for="proveedor_nombre"><?= label('formProveedor_nombre'); ?></label>
+                                                </div>
                                                 <div class="input-field col s12 m4 l4">
                                                     <input id="proveedor_apellido1" type="text">
                                                     <label for="proveedor_apellido1"><?= label('formProveedor_apellido1'); ?></label>
@@ -57,10 +62,6 @@
                                                 <div class="input-field col s12 m4 l4">
                                                     <input id="proveedor_apellido2" type="text">
                                                     <label for="proveedor_apellido2"><?= label('formProveedor_apellido2'); ?></label>
-                                                </div>
-                                                <div class="input-field col s12 m4 l4">
-                                                    <input id="proveedor_nombre" type="text">
-                                                    <label for="proveedor_nombre"><?= label('formProveedor_nombre'); ?></label>
                                                 </div>
                                             </div>
                                             <div class="input-field col s12">
