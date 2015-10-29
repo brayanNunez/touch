@@ -304,7 +304,7 @@
                 },
                 errorElement: 'div',
                 submitHandler: function(form) {
-                    validacionCorrecta();
+                    validacionCorrecta_Usuarios();
                 }
             });
 

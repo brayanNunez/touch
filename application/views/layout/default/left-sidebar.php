@@ -9,7 +9,7 @@
                 </div>
                 <div class="col col s8 m8 l8">
                     <ul id="profile-dropdown" class="dropdown-content menu-admin">
-                        <li><a href="<?= base_url(); ?>usuarios/editar"><i class="mdi-action-face-unlock"></i>
+                        <li><a href="<?= base_url(); ?>usuarios/editar/<?= encryptIt(1) ?>"><i class="mdi-action-face-unlock"></i>
                                 Perfil</a>
                         </li>
                         <li><a href="#"><i class="mdi-action-settings"></i> Settings</a>
