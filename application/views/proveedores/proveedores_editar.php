@@ -325,96 +325,69 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox"
-                                           id="checkbox_proveedor1_salario1"/>
-                                    <label for="checkbox_proveedor1_salario1"></label>
-                                </td>
-                                <td>Por hora</td>
-                                <td>$10</td>
-                                <td>
-                                    <input type="radio" name="radioPorDefecto" id="radio_pago1" checked="checked"/>
-                                    <label for="radio_pago1"></label>
-                                </td>
-                                <td>
-                                    <ul id="dropdown-proveedor1-salario1" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarSalario"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarSalario"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                       href="#!" data-activates="dropdown-proveedor1-salario1">
-                                        <?= label('menuOpciones_seleccionar') ?><i
-                                            class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox"
-                                           id="checkbox_proveedor1_salario2"/>
-                                    <label for="checkbox_proveedor1_salario2"></label>
-                                </td>
-                                <td>Diario</td>
-                                <td>$80</td>
-                                <td>
-                                    <input type="radio" name="radioPorDefecto" id="radio_pago2"/>
-                                    <label for="radio_pago2"></label>
-                                </td>
-                                <td>
-                                    <ul id="dropdown-proveedor1-salario2" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarSalario"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarSalario"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                       href="#!" data-activates="dropdown-proveedor1-salario2">
-                                        <?= label('menuOpciones_seleccionar') ?><i
-                                            class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox"
-                                           id="checkbox_proveedor1_salario3"/>
-                                    <label for="checkbox_proveedor1_salario3"></label>
-                                </td>
-                                <td>Mensual</td>
-                                <td>$1400</td>
-                                <td>
-                                    <input type="radio" name="radioPorDefecto" id="radio_pago3"/>
-                                    <label for="radio_pago3"></label>
-                                </td>
-                                <td>
-                                    <ul id="dropdown-proveedor1-salario3" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarSalario"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarSalario"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                       href="#!" data-activates="dropdown-proveedor1-salario3">
-                                        <?= label('menuOpciones_seleccionar') ?><i
-                                            class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                        <?php
+                        if(isset($resultado['presupuestos'])) {
+                            $presupuestos = $resultado['presupuestos'];
+                            if($presupuestos != false) {
+                                $contador= 0;
+                                foreach ($presupuestos as $presupuesto) {
+                                    $nombre = '';
+                                    if(isset($resultado['tipos'])) {
+                                        $tipos = $resultado['tipos'];
+                                        foreach ($tipos as $tipo) {
+                                            if($tipo['idTipoPresupuesto'] == $presupuesto['tipoPresupuesto']) {
+                                                $nombre = $tipo['nombre'];
+                                            }
+                                        }
+                                    }
+                                    ?>
+                                    <tr id="presupuesto<?= $contador; ?>">
+                                        <td style="text-align: center;">
+                                            <input class="accionAplicada" style="display:none" name="presupuesto_<?= $contador; ?>" type="text" value="1"> <!-- value 1 para existentes, 0 los nuevos y 2 los eliminados -->
+                                            <input style="display:none" name="idPresupuesto_<?= $contador; ?>" type="text" value="<?=encryptIt($presupuesto['idPresupuestoProveedor'])?>">
+
+                                            <input type="checkbox" class="filled-in checkbox" id="checkbox_presupuesto<?= $contador; ?>"/>
+                                            <label for="checkbox_presupuesto<?= $contador; ?>"></label>
+                                        </td>
+                                        <td>
+                                            <span id="span_presupuesto<?= $contador; ?>_tipo"><?= $nombre; ?></span>
+                                            <input type="text" name="presupuesto<?= $contador; ?>_tipo" id="presupuesto<?= $contador; ?>_tipo"
+                                                   value="<?= $presupuesto['tipoPresupuesto']; ?>" style="display: none;" />
+                                        </td>
+                                        <td>
+                                            <span id="span_presupuesto<?= $contador; ?>_monto"><?= $presupuesto['monto']; ?></span>
+                                            <input type="text" name="presupuesto<?= $contador; ?>_monto" id="presupuesto<?= $contador; ?>_monto"
+                                                   value="<?= $presupuesto['monto']; ?>" style="display: none;" />
+                                        </td>
+                                        <td>
+                                            <?php
+                                                if($presupuesto['principal']) { ?>
+                                                    <input type="radio" name="radioPresupuestoPrincipal" id="radio_presupuesto<?= $contador; ?>" value="<?= $contador; ?>" checked />
+                                                    <label for="radio_presupuesto<?= $contador; ?>"></label>
+                                            <?php
+                                                } else { ?>
+                                                    <input type="radio" name="radioPresupuestoPrincipal" id="radio_presupuesto<?= $contador; ?>" value="<?= $contador; ?>" />
+                                                    <label for="radio_presupuesto<?= $contador; ?>"></label>
+                                            <?php
+                                                } ?>
+                                        </td>
+                                        <td>
+                                            <ul id="dropdown_presupuesto<?= $contador; ?>" class="dropdown-content">
+                                                <li>
+                                                    <a href="#editarPresupuesto" class="-text modal-trigger abrirEditar" data-id-editar="<?= $contador; ?>"><?= label('menuOpciones_editar') ?></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#eliminarPresupuesto" class="-text modal-trigger confirmarEliminar" data-id-eliminar="<?= $contador; ?>" data-fila-eliminar="fila<?= $contador; ?>"><?= label('menuOpciones_eliminar') ?></a>
+                                                </li>
+                                            </ul>
+                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#" data-activates="dropdown_presupuesto<?= $contador; ?>"><?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i> </a>
+                                        </td>
+                                    </tr>
+                        <?php
+                                    $contador++;
+                                }
+                            }
+                        } ?>
                         </tbody>
                     </table>
                     <div style="padding: 20px;">
@@ -798,7 +771,7 @@
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <p><?= label('usuarioGuardadoCorrectamente'); ?></p>
+        <p><?= label('usuarioEditadoCorrectamente'); ?></p>
     </div>
     <div class="modal-footer">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>

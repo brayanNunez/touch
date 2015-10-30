@@ -204,21 +204,36 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Por hora</td>
-                                <td>$10</td>
-                                <td><i class="mdi-action-done"></i></td>
-                            </tr>
-                            <tr>
-                                <td>Diario</td>
-                                <td>$80</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Mensual</td>
-                                <td>$1400</td>
-                                <td></td>
-                            </tr>
+                        <?php
+                        if(isset($resultado['presupuestos'])) {
+                            $presupuestos = $resultado['presupuestos'];
+                            if($presupuestos != false) {
+                                foreach ($presupuestos as $presupuesto) {
+                                    $nombre = '';
+                                    if(isset($resultado['tipos'])) {
+                                        $tipos = $resultado['tipos'];
+                                        foreach ($tipos as $tipo) {
+                                            if($tipo['idTipoPresupuesto'] == $presupuesto['tipoPresupuesto']) {
+                                                $nombre = $tipo['nombre'];
+                                            }
+                                        }
+                                    }
+                                    ?>
+                                    <tr>
+                                        <td><?= $nombre; ?></td>
+                                        <td><?= $presupuesto['monto'] ?></td>
+                                        <td>
+                                            <?php
+                                            if($presupuesto['principal']) { ?>
+                                                <i class="mdi-action-done"></i>
+                                            <?php
+                                            } ?>
+                                        </td>
+                                    </tr>
+                            <?php
+                                }
+                            }
+                        } ?>
                         </tbody>
                     </table>
                 </div>

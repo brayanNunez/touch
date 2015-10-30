@@ -55,6 +55,7 @@ class Proveedor_model extends CI_Model
                     throw new Exception("Error en la BD");
                 }
             }
+
             $contactos = $data['contactos'];
 //            echo print_r($contactos); exit();
             foreach ($contactos as $contacto) {
@@ -66,6 +67,7 @@ class Proveedor_model extends CI_Model
             }
 
             $presupuestos = $data['presupuestos'];
+//            echo print_r($presupuestos); exit();
             foreach ($presupuestos as $presupuesto) {
                 $presupuesto['idProveedor'] = $insert_id;
                 $query = $this->db->insert('presupuestoproveedor', $presupuesto);
@@ -137,6 +139,18 @@ class Proveedor_model extends CI_Model
                     throw new Exception("Error en la BD");
                 }
                 $row['contactos'] = $contactos->result_array();
+
+                $presupuestos = $this->db->get_where('presupuestoproveedor', array('idProveedor' => $id,  'eliminado' => 0));
+                if (!$presupuestos) {
+                    throw new Exception("Error en la BD");
+                }
+                $row['presupuestos'] = $presupuestos->result_array();
+
+                $tipos = $this->db->get('tipopresupuesto');
+                if (!$tipos) {
+                    throw new Exception("Error en la BD");
+                }
+                $row['tipos'] = $tipos->result_array();
 
                 $archivos = $this->db->get_where('archivopersona', array('idPersona' => $id));
                 if (!$archivos) {
@@ -256,7 +270,7 @@ class Proveedor_model extends CI_Model
         try{
             $this->db->trans_begin();
 
-            $this->db->select('nombre');
+            $this->db->select('nombreOriginal');
             $this->db->where('idArchivoPersona', $id);
             $this->db->from('archivopersona');
             $query1 = $this->db->get();

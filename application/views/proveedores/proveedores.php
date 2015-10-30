@@ -629,7 +629,7 @@
                         '<span id="span_presupuesto'+ contadorPresupuesto +'_monto">' + monto + '</span><input type="text" name="presupuesto'+ contadorPresupuesto +'_monto" id="presupuesto'+ contadorPresupuesto +'_monto" value="'+ monto +'" style="display: none;" />' +
                     '</td>';
         var principal = '<td>' +
-                        '<input type="radio" name="radioPresupuestoPrincipal" id="radio_presupuesto'+ contadorPresupuesto +'" checked="checked"/>' +
+                        '<input type="radio" name="radioPresupuestoPrincipal" id="radio_presupuesto'+ contadorPresupuesto +'" value="' + contadorPresupuesto + '" />' +
                         '<label for="radio_presupuesto'+ contadorPresupuesto +'"></label>' +
                     '</td>';
         var opciones = '<td>' +

@@ -142,12 +142,25 @@ class Proveedores extends CI_Controller
         $cantidadPresupuestos = $this->input->post('cantidadPresupuestos');
         while($presupuestosObtenidos < $cantidadPresupuestos) {
             if(isset($_POST['presupuesto_'.$contadorPresupuestos])) {
-                $presupuesto = array(
-                    'tipoPresupuesto' => $this->input->post('presupuesto'.$contadorPresupuestos.'_tipo'),
-                    'monto' => $this->input->post('presupuesto'.$contadorPresupuestos.'_monto'),
-                    'principal' => 0,
-                    'eliminado' => 0
-                );
+                $principal = 1;
+                if(isset($_POST['radioPresupuestoPrincipal'])) {
+                    $principal = $this->input->post('radioPresupuestoPrincipal');
+                }
+                if($principal == $contadorPresupuestos) {
+                    $presupuesto = array(
+                        'tipoPresupuesto' => $this->input->post('presupuesto'.$contadorPresupuestos.'_tipo'),
+                        'monto' => $this->input->post('presupuesto'.$contadorPresupuestos.'_monto'),
+                        'principal' => 1,
+                        'eliminado' => 0
+                    );
+                } else {
+                    $presupuesto = array(
+                        'tipoPresupuesto' => $this->input->post('presupuesto' . $contadorPresupuestos . '_tipo'),
+                        'monto' => $this->input->post('presupuesto' . $contadorPresupuestos . '_monto'),
+                        'principal' => 0,
+                        'eliminado' => 0
+                    );
+                }
                 array_push($presupuestos, $presupuesto);
                 $presupuestosObtenidos++;
             }
@@ -230,7 +243,7 @@ class Proveedores extends CI_Controller
                 'eliminado' => 0
             );
         } else {
-            if ($juridico) {
+            if ($juridico == 2) {
                 $data['datos'] = array(
 //                    'empleado' => 0,
                     'juridico' => 1,
