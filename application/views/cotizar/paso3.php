@@ -102,7 +102,6 @@
                             <th>Item</th>
                             <th>Nombre</th>
                             <th>Descripción</th>
-                            <th>Imagen</th>
                             <th>Precio unitario</th>
                             <th>Cantidad</th>
                             <th>Impuesto</th>
@@ -114,9 +113,9 @@
                             <td>001</td>
                             <td>Un nombre</td>
                             <td>Una descripción</td>
-                            <td>
+                            <!-- <td>
                                 <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/almuerzo.jpg"/>
-                            </td>
+                            </td> -->
                             <td>$50</td>
                             <td>3</td>
                             <td>13%</td>
@@ -126,9 +125,9 @@
                             <td>001</td>
                             <td>Un nombre</td>
                             <td>Una descripción</td>
-                            <td>
+                            <!-- <td>
                                 <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/musica.jpg"/>
-                            </td>
+                            </td> -->
                             <td>$50</td>
                             <td>3</td>
                             <td>13%</td>
@@ -138,9 +137,9 @@
                             <td>001</td>
                             <td>Un nombre</td>
                             <td>Una descripción</td>
-                            <td>
+                            <!-- <td>
                                 <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/almuerzo.jpg"/>
-                            </td>
+                            </td> -->
                             <td>$50</td>
                             <td>3</td>
                             <td>13%</td>
@@ -150,9 +149,9 @@
                             <td>001</td>
                             <td>Un nombre</td>
                             <td>Una descripción</td>
-                            <td>
+                            <!-- <td>
                                 <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/musica.jpg"/>
-                            </td>
+                            </td> -->
                             <td>$50</td>
                             <td>3</td>
                             <td>13%</td>
@@ -162,9 +161,9 @@
                             <td>001</td>
                             <td>Un nombre</td>
                             <td>Una descripción</td>
-                            <td>
+                            <!-- <td>
                                 <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/almuerzo.jpg"/>
-                            </td>
+                            </td> -->
                             <td>$50</td>
                             <td>3</td>
                             <td>13%</td>
@@ -174,9 +173,9 @@
                             <td>001</td>
                             <td>Un nombre</td>
                             <td>Una descripción</td>
-                            <td>
+                            <!-- <td>
                                 <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/musica.jpg"/>
-                            </td>
+                            </td> -->
                             <td>$50</td>
                             <td>3</td>
                             <td>13%</td>
