@@ -634,6 +634,8 @@ $lang['proveedores_archivos_accionEliminar'] = 'Eliminar archivos seleccionados'
 $lang['proveedores_archivoNuevo'] = 'Agregar nuevo archivo';
 $lang['proveedores_archivoEliminar'] = '¿Realmente desea eliminar el archivo seleccionado?';
 $lang['proveedores_archivosSeleccionadosEliminar'] = '¿Realmente desea eliminar los archivos seleccionados?';
+$lang['formProveedor_nuevoPresupuesto'] = 'Nuevo presupuesto';
+$lang['persona_subirArchivo'] = 'Subir archivo';
 
 // Personas
 $lang['persona_info'] = 'Información de la persona';

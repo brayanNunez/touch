@@ -497,6 +497,7 @@
                         d = new Date();
                         $('#imagen_seleccionada').attr('src', '<?= $ruta; ?>?' + d.getTime());
                         $('#imagen_perfil_usuario').attr('src', '<?= $ruta; ?>?' + d.getTime());
+                        $('#imagen_perfil_usuario_ver').attr('src', '<?= $ruta; ?>?' + d.getTime());
                         formPW.find('input:file,input:text').val('');
                         break;
                 }

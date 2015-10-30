@@ -76,7 +76,7 @@
         <div class="col s12">
             <div class="col s12 m12 l3">
                 <div class="proveedor-ver-logo">
-                    <img src="<?= $ruta; ?>" />
+                    <img id="imagen_perfil_usuario_ver" src="<?= $ruta; ?>" />
                 </div>
             </div>
             <div class="col s12 m8 l5">

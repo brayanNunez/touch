@@ -237,7 +237,7 @@
                                                     </tbody>
                                                 </table>
                                                 <div style="padding: 20px;">
-                                                    <a href="#agregarPresupuesto"
+                                                    <a id="btn_accionAgregarPresupuesto" href="#agregarPresupuesto"
                                                        class="btn btn-default modal-trigger"><?= label('formProveedor_nuevoPresupuesto'); ?></a>
 
                                                     <div class="tabla-conAgregar tabla-salarios-proveedor">
@@ -582,6 +582,28 @@
     }
     var cantidadPresupuesto = 0;
     var contadorPresupuesto = 0;
+    $(document).on('click', '#btn_accionAgregarPresupuesto', function () {
+        var selectTipo = $('#agregarPresupuesto_tipo');
+        selectTipo.empty();
+        selectTipo.append($('<option>', {
+            value: 0,
+            text: 'Seleccione uno',
+            selected: true,
+            disabled: true
+        }));
+        var i;
+        for(i = 0; i < nombres.length; i++) {
+            var name = nombres[i];
+            if(name != null && name != '') {
+                selectTipo.append($('<option>', {
+                    value: i,
+                    text: nombres[i],
+                    selected: false
+                }));
+            }
+        }
+        selectTipo.material_select();
+    });
     $(document).on('click', '#agregarPresupuesto #btnAgregarPresupuesto', function () {
         var tipo = $('#agregarPresupuesto_tipo');
         var nombreTipo = nombres[tipo.val()];
@@ -601,10 +623,10 @@
                         '</div>' +
                     '</td>';
         var tipoP = '<td>' +
-                        nombreTipo + '<input type="text" name="presupuesto'+ contadorPresupuesto +'_tipo" id="presupuesto'+ contadorPresupuesto +'_tipo" value="'+ tipo +'" style="display: none;" />' +
+                        '<span id="span_presupuesto'+ contadorPresupuesto +'_tipo">' + nombreTipo + '</span><input type="text" name="presupuesto'+ contadorPresupuesto +'_tipo" id="presupuesto'+ contadorPresupuesto +'_tipo" value="'+ tipo +'" style="display: none;" />' +
                     '</td>';
         var montoP = '<td>'+
-                        monto + '<input type="text" name="presupuesto'+ contadorPresupuesto +'_monto" id="presupuesto'+ contadorPresupuesto +'_monto" value="'+ monto +'" style="display: none;" />' +
+                        '<span id="span_presupuesto'+ contadorPresupuesto +'_monto">' + monto + '</span><input type="text" name="presupuesto'+ contadorPresupuesto +'_monto" id="presupuesto'+ contadorPresupuesto +'_monto" value="'+ monto +'" style="display: none;" />' +
                     '</td>';
         var principal = '<td>' +
                         '<input type="radio" name="radioPresupuestoPrincipal" id="radio_presupuesto'+ contadorPresupuesto +'" checked="checked"/>' +
@@ -637,26 +659,51 @@
 
     $(document).on('click', '.abrirEditar', function () {
         idEditar = $(this).data('id-editar');
-//        row = table.row($(this).parents('tr'));
         var tipoActual = $('#presupuesto' + idEditar + '_tipo').val();
         var nombreTipo = nombres[tipoActual];
         var montoActual = $('#presupuesto' + idEditar + '_monto').val();
-        var tipoEditar = $('#editarPresupuesto_tipo');
+
+//        alert(tipoActual + '  -  ' + montoActual + '  -  ' + nombreTipo);
         var montoEditar = $('#editarPresupuesto_monto');
-
-        alert(tipoActual + '  -  ' + montoActual + '  -  ' + nombreTipo);
-
-        tipoEditar.val(tipoActual);
         montoEditar.val(montoActual);
+        var selectTipo = $('#editarPresupuesto_tipo');
+        selectTipo.empty();
+        selectTipo.append($('<option>', {
+            value: 0,
+            text: 'Seleccione uno',
+            disabled: true
+        }));
+        var i;
+        for(i = 0; i < nombres.length; i++) {
+            var name = nombres[i];
+            if(name != null && name != '') {
+                if(i == tipoActual) {
+                    selectTipo.append($('<option>', {
+                        value: i,
+                        text: nombres[i],
+                        selected: true
+                    }));
+                } else {
+                    selectTipo.append($('<option>', {
+                        value: i,
+                        text: nombres[i]
+                    }));
+                }
+            }
+        }
+        selectTipo.material_select();
     });
     $(document).on('click', '#editarPresupuesto #btnEditarPresupuesto', function () {
-        alert(idEditar);
         var tipo = $('#editarPresupuesto_tipo');
         var nombreTipo = nombres[tipo.val()];
         var monto = $('#editarPresupuesto_monto');
 
+//        alert(tipo.val() + '  -  ' + monto.val() + '  -  ' + nombreTipo);
+
         $('#presupuesto' + idEditar + '_tipo').val(tipo.val());
         $('#presupuesto' + idEditar + '_monto').val(monto.val());
+        $('#span_presupuesto' + idEditar + '_tipo').text(nombreTipo);
+        $('#span_presupuesto' + idEditar + '_monto').text(monto.val());
 
 //        tipo.val(0).change();
         monto.val('');
@@ -857,7 +904,7 @@
     </div>
 </div>
 
-<div id="agregarPresupuesto" class="modal">
+<div id="agregarPresupuesto" class="modal" style="height: 55%;">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
@@ -865,48 +912,33 @@
     <div class="modal-content">
         <div class="input-field col s12">
             <select id="agregarPresupuesto_tipo">
-                <option value="0" disabled selected>Seleccione uno</option>
-                <?php
-                    if(isset($tiposPresupuesto)) {
-                        foreach ($tiposPresupuesto as $tipo) { ?>
-                            <option value="<?= $tipo['idTipoPresupuesto']; ?>"><?= $tipo['nombre']; ?></option>
-                <?php
-                        }
-                    } ?>
             </select>
-            <label for="agregarPresupuesto_tipo"><?= label('formProveedor_salarioTipo'); ?></label>
+            <label for="agregarPresupuesto_tipo" class="label_modalPresupuesto"><?= label('formProveedor_salarioTipo'); ?></label>
         </div>
-        <div class="input-field col s12">
-            <input id="agregarPresupuesto_monto" type="text" value="">
-            <label for="agregarPresupuesto_monto"><?= label('formProveedor_salarioMonto'); ?></label>
+        <div class="input-field col s12" style="margin-top: 25px;">
+            <input id="agregarPresupuesto_monto" type="number" value="">
+            <label for="agregarPresupuesto_monto" class="label_modalPresupuesto"><?= label('formProveedor_salarioMonto'); ?></label>
         </div>
     </div>
     <div class="modal-footer" id="btnAgregarPresupuesto">
         <a class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
-<div id="editarPresupuesto" class="modal">
+<div id="editarPresupuesto" class="modal" style="height: 55%;">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
+        <div id="div_selectTipo"></div>
         <div class="input-field col s12">
             <select id="editarPresupuesto_tipo">
-                <option value="0" disabled>Seleccione uno</option>
-                <?php
-                    if(isset($tiposPresupuesto)) {
-                        foreach ($tiposPresupuesto as $tipo) { ?>
-                            <option value="<?= $tipo['idTipoPresupuesto']; ?>"><?= $tipo['nombre']; ?></option>
-                <?php
-                        }
-                    } ?>
             </select>
-            <label for="editarPresupuesto_tipo"><?= label('formProveedor_salarioTipo'); ?></label>
+            <label for="editarPresupuesto_tipo" class="label_modalPresupuesto"><?= label('formProveedor_salarioTipo'); ?></label>
         </div>
-        <div class="input-field col s12">
-            <input id="editarPresupuesto_monto" type="text" value=" ">
-            <label for="editarPresupuesto_monto"><?= label('formProveedor_salarioMonto'); ?></label>
+        <div class="input-field col s12" style="margin-top: 25px;">
+            <input id="editarPresupuesto_monto" type="number" value="0">
+            <label for="editarPresupuesto_monto" class="label_modalPresupuesto"><?= label('formProveedor_salarioMonto'); ?></label>
         </div>
     </div>
     <div class="modal-footer" id="btnEditarPresupuesto">
