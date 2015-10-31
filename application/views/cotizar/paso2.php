@@ -186,7 +186,7 @@ function generarListasBotones(){
                         <th class="context-menu-subTotal box" data-field="id">
                             <row>
                                 <div class="col s12 m12 l12 celdaTitulo">
-                                    Total individual
+                                    Total
                                 </div>
                             </row>
                         </th>
