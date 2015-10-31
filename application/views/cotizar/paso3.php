@@ -185,7 +185,7 @@
                     </table>
                      <div id="contenedorResultados">
                         <div id="resultados">
-                            <p class="box" id="descuento">Descuento: <spam id="resultadoDescuento">$15%</spam></p>
+                            <p class="box" id="descuento">Descuento: <spam id="resultadoDescuento">15%</spam></p>
                             <p class="box" id="impuesto">Impuesto: <spam id="resultadoImpuesto">13%</spam></p>
                             <p class="box" id="total">Total: <spam id="resultadoTotal">$780</spam></p>
                         </div>
