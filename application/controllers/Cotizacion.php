@@ -151,6 +151,48 @@ class Cotizacion extends CI_Controller
            $logoFooter = 1;
         }
 
+        $columnaItem = 0;
+        if (isset($_POST['checksDetalle_ColumnaItem'])) {
+           $columnaItem = 1;
+        }
+        $columnaNombre = 0;
+        if (isset($_POST['checksDetalle_ColumnaNombre'])) {
+           $columnaNombre = 1;
+        }
+        $columnaDescripcion = 0;
+        if (isset($_POST['checksDetalle_ColumnaDescripcion'])) {
+           $columnaDescripcion = 1;
+        }
+        $columnaPrecio = 0;
+        if (isset($_POST['checksDetalle_ColumnaPrecio'])) {
+           $columnaPrecio = 1;
+        }
+        $columnaCantidad = 0;
+        if (isset($_POST['checksDetalle_ColumnaCantidad'])) {
+           $columnaCantidad = 1;
+        }
+        $columnaImpuesto = 0;
+        if (isset($_POST['checksDetalle_ColumnaImpuesto'])) {
+           $columnaImpuesto = 1;
+        }
+        $columnaTotal = 0;
+        if (isset($_POST['checksDetalle_ColumnaTotal'])) {
+           $columnaTotal = 1;
+        }
+
+        $impuesto = 0;
+        if (isset($_POST['checksDetalle_impuesto'])) {
+           $impuesto = 1;
+        }
+        $descuento = 0;
+        if (isset($_POST['checksDetalle_descuento'])) {
+           $descuento = 1;
+        }
+        $total = 0;
+        if (isset($_POST['checksDetalle_total'])) {
+           $total = 1;
+        }
+
         $data['datos'] = array(
             'idEmpresa' => $idEmpresa, 
             'nombrePlantilla' => $this->input->post('nombrePlantilla'),
@@ -171,9 +213,9 @@ class Cotizacion extends CI_Controller
             'colorLetraDetalle' => $this->input->post('colorCuerpo_colorLetra'),
             'colorBarraHorizontal2' => $this->input->post('colorCuerpo_colorBarra'),
             'tipoLetraDeralle' => '',
-            'mostrarImpuesto' => '',
-            'mostrarDescuento' => '',
-            'mostrarTotal' => '',
+            'mostrarImpuesto' => $impuesto,
+            'mostrarDescuento' => $descuento,
+            'mostrarTotal' => $total,
             'colorInformacion' => $this->input->post('colorInformacion_colorFondo'),
             'colorLetraInformcion' => $this->input->post('colorInformacion_colorLetra'),  
             'colorBarraHorizontal3' => $this->input->post('colorInformacion_colorBarra'),  
@@ -184,14 +226,21 @@ class Cotizacion extends CI_Controller
             'mostrarFirma' => $firmaInformacion,  
             'imagenFirma' => '',  
             'textoAdicionalInformacion' => '',
-            'colorPie' => $this->input->post('colorFooter_colorFondo'),  
-            'colorLetraPie' => $this->input->post('colorFooter_colorLetra'),  
-            'tipoLetraPie' => '',
+            'colorFooter' => $this->input->post('colorFooter_colorFondo'),  
+            'colorLetraFooter' => $this->input->post('colorFooter_colorLetra'),  
+            'tipoLetraFooter' => '',
             'mostrarTelefono' => $telefonoFooter,  
             'mostrarSitioWeb' => $sitioFooter,  
             'mostrarCorreo' => $correoFooter,  
-            'mostrarImagenPie' => $logoFooter,  
-            'textoAdicionalPie' => ''
+            'mostrarImagenFooter' => $logoFooter,  
+            'textoAdicionalFooter' => '1',
+            'mostrarColumnaItem' => $columnaItem, 
+            'mostrarColumnaNombre' => $columnaNombre, 
+            'mostrarColumnaDescripcion' => $columnaDescripcion, 
+            'mostrarColumnaPrecio' => $columnaPrecio, 
+            'mostrarColumnaCantidad' => $columnaCantidad, 
+            'mostrarColumnaImpuesto' => $columnaImpuesto, 
+            'mostrarColumnaTotal' => $columnaTotal
         );
         if (!$this->Cotizacion_model->insertarPlantilla($data)) {
             //Error en la transacción

@@ -59,7 +59,7 @@
                 $fechaNacimiento = date('d/m/Y', strtotime($resultado['fechaNacimiento']));
             }
         }
-        if($resultado['fotografia'] != '') {
+        if($resultado['fotografia'] != '' && $resultado['fotografia'] != null && $resultado['fotografia'] != 'profile_picture_'.$resultado['idProveedor'].'.') {
             $ruta .= $resultado['idEmpresa'].'/proveedores/'.$resultado['idProveedor'].'/'.$resultado['fotografia'];
         } else {
             $ruta = base_url().'files/default-user-image.png';
@@ -310,13 +310,13 @@
                 <div id="tab-infoAdicional-editar" class="card col s12">
                     <h5>Presupuesto promedio del proveedor</h5>
                     <p>* Exclusivo para proveedores de servicios, no tiene fines contables</p>
-                    <table id="proveedor1-salarios" class="table striped">
+                    <table id="proveedor_presupuestos_editar" class="table striped">
                         <thead>
                             <tr>
                                 <th style="text-align: center;">
-                                    <input class="filled-in checkbox checkall" type="checkbox"
-                                           id="checkbox-all" onclick="toggleChecked(this.checked)"/>
-                                    <label for="checkbox-all"></label>
+                                    <input class="filled-in checkboxPresupuestos checkall" type="checkbox"
+                                           id="checkbox-allPresupuestos" onclick="toggleChecked(this.checked)"/>
+                                    <label for="checkbox-allPresupuestos"></label>
                                 </th>
                                 <th><?= label('formProveedor_salariosTipo'); ?></th>
                                 <th><?= label('formProveedor_salariosMonto'); ?></th>
@@ -325,107 +325,80 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox"
-                                           id="checkbox_proveedor1_salario1"/>
-                                    <label for="checkbox_proveedor1_salario1"></label>
-                                </td>
-                                <td>Por hora</td>
-                                <td>$10</td>
-                                <td>
-                                    <input type="radio" name="radioPorDefecto" id="radio_pago1" checked="checked"/>
-                                    <label for="radio_pago1"></label>
-                                </td>
-                                <td>
-                                    <ul id="dropdown-proveedor1-salario1" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarSalario"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarSalario"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                       href="#!" data-activates="dropdown-proveedor1-salario1">
-                                        <?= label('menuOpciones_seleccionar') ?><i
-                                            class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox"
-                                           id="checkbox_proveedor1_salario2"/>
-                                    <label for="checkbox_proveedor1_salario2"></label>
-                                </td>
-                                <td>Diario</td>
-                                <td>$80</td>
-                                <td>
-                                    <input type="radio" name="radioPorDefecto" id="radio_pago2"/>
-                                    <label for="radio_pago2"></label>
-                                </td>
-                                <td>
-                                    <ul id="dropdown-proveedor1-salario2" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarSalario"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarSalario"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                       href="#!" data-activates="dropdown-proveedor1-salario2">
-                                        <?= label('menuOpciones_seleccionar') ?><i
-                                            class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">
-                                    <input type="checkbox" class="filled-in checkbox"
-                                           id="checkbox_proveedor1_salario3"/>
-                                    <label for="checkbox_proveedor1_salario3"></label>
-                                </td>
-                                <td>Mensual</td>
-                                <td>$1400</td>
-                                <td>
-                                    <input type="radio" name="radioPorDefecto" id="radio_pago3"/>
-                                    <label for="radio_pago3"></label>
-                                </td>
-                                <td>
-                                    <ul id="dropdown-proveedor1-salario3" class="dropdown-content">
-                                        <li>
-                                            <a href="#editarSalario"
-                                               class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="#eliminarSalario"
-                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                        </li>
-                                    </ul>
-                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                       href="#!" data-activates="dropdown-proveedor1-salario3">
-                                        <?= label('menuOpciones_seleccionar') ?><i
-                                            class="mdi-navigation-arrow-drop-down"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                        <?php
+                        if(isset($resultado['presupuestos'])) {
+                            $presupuestos = $resultado['presupuestos'];
+                            if($presupuestos != false) {
+                                $contador= 0;
+                                foreach ($presupuestos as $presupuesto) {
+                                    $nombre = '';
+                                    if(isset($resultado['tipos'])) {
+                                        $tipos = $resultado['tipos'];
+                                        foreach ($tipos as $tipo) {
+                                            if($tipo['idTipoPresupuesto'] == $presupuesto['tipoPresupuesto']) {
+                                                $nombre = $tipo['nombre'];
+                                            }
+                                        }
+                                    }
+                                    ?>
+                                    <tr id="presupuesto<?= $contador; ?>">
+                                        <td style="text-align: center;">
+                                            <input class="accionAplicada" style="display:none" name="presupuesto_<?= $contador; ?>" type="text" value="1"> <!-- value 1 para existentes, 0 los nuevos y 2 los eliminados -->
+                                            <input style="display:none" name="idPresupuesto_<?= $contador; ?>" type="text" value="<?=encryptIt($presupuesto['idPresupuestoProveedor'])?>">
+
+                                            <input type="checkbox" class="filled-in checkboxPresupuestos" id="checkbox_presupuesto<?= $contador; ?>"/>
+                                            <label for="checkbox_presupuesto<?= $contador; ?>"></label>
+                                        </td>
+                                        <td>
+                                            <span id="span_presupuesto<?= $contador; ?>_tipo"><?= $nombre; ?></span>
+                                            <input type="text" name="presupuesto<?= $contador; ?>_tipo" id="presupuesto<?= $contador; ?>_tipo"
+                                                   value="<?= $presupuesto['tipoPresupuesto']; ?>" style="display: none;" />
+                                        </td>
+                                        <td>
+                                            <span id="span_presupuesto<?= $contador; ?>_monto"><?= $presupuesto['monto']; ?></span>
+                                            <input type="text" name="presupuesto<?= $contador; ?>_monto" id="presupuesto<?= $contador; ?>_monto"
+                                                   value="<?= $presupuesto['monto']; ?>" style="display: none;" />
+                                        </td>
+                                        <td>
+                                            <?php
+                                                if($presupuesto['principal']) { ?>
+                                                    <input type="radio" name="radioPresupuestoPrincipal" id="radio_presupuesto<?= $contador; ?>" value="<?= $contador; ?>" checked />
+                                                    <label for="radio_presupuesto<?= $contador; ?>"></label>
+                                            <?php
+                                                } else { ?>
+                                                    <input type="radio" name="radioPresupuestoPrincipal" id="radio_presupuesto<?= $contador; ?>" value="<?= $contador; ?>" />
+                                                    <label for="radio_presupuesto<?= $contador; ?>"></label>
+                                            <?php
+                                                } ?>
+                                        </td>
+                                        <td>
+                                            <ul id="dropdown_presupuesto<?= $contador; ?>" class="dropdown-content">
+                                                <li>
+                                                    <a href="#editarPresupuesto" class="-text modal-trigger abrirEditar" data-id-editar="<?= $contador; ?>"><?= label('menuOpciones_editar') ?></a>
+                                                </li>
+                                                <li>
+                                                    <a class="-text modal-trigger confirmarEliminarPresupuesto" data-id-eliminar="<?= $contador; ?>"><?= label('menuOpciones_eliminar') ?></a>
+                                                </li>
+                                            </ul>
+                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#" data-activates="dropdown_presupuesto<?= $contador; ?>"><?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i> </a>
+                                        </td>
+                                    </tr>
+                        <?php
+                                    $contador++;
+                                }
+                            }
+                        } ?>
                         </tbody>
                     </table>
                     <div style="padding: 20px;">
-                        <a href="#agregarSalario"
-                           class="btn btn-default modal-trigger"><?= label('formProveedor_nuevoSalario'); ?></a>
+                        <a id="btn_accionAgregarPresupuesto" href="#agregarPresupuesto"
+                           class="btn btn-default modal-trigger"><?= label('formProveedor_nuevoPresupuesto'); ?></a>
 
                         <div class="tabla-conAgregar tabla-salarios-proveedor">
                             <a id="opciones-seleccionados-delete"
                                class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements"
                                style="visibility: hidden;"
-                               href="#eliminarElementosSeleccionados" data-toggle="tooltip"
+                               href="#eliminarPresupuestosSeleccionados" data-toggle="tooltip"
                                title="<?= label('opciones_seleccionadosEliminar') ?>">
                                 <i class="mdi-action-delete icono-opciones-varios"></i>
                             </a>
@@ -449,8 +422,11 @@
 </div>
 <div style="visibility:hidden; position:absolute">
     <input id="cantidadContactos" form="formPersona" name="cantidadContactos" type="text" value="<?= count($resultado['contactos'])?>">
+    <input id="cantidadPresupuestos" form="formPersona" name="cantidadPresupuestos" type="text" value="<?= count($resultado['presupuestos'])?>">
     <a id="linkContactosElimminar" href="#eliminarContacto-editar" class="modal-trigger" data-fila-eliminar="1"
        title="<?= label('formProveedor_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>
+    <a id="linkPresupuestosElimminar" href="#eliminarPresupuesto-editar" class="modal-trigger" data-fila-eliminar="1"
+       title="<?= label('formProveedor_presupuestoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>
 </div>
 
 <?php
@@ -497,6 +473,7 @@
                         d = new Date();
                         $('#imagen_seleccionada').attr('src', '<?= $ruta; ?>?' + d.getTime());
                         $('#imagen_perfil_usuario').attr('src', '<?= $ruta; ?>?' + d.getTime());
+                        $('#imagen_perfil_usuario_ver').attr('src', '<?= $ruta; ?>?' + d.getTime());
                         formPW.find('input:file,input:text').val('');
                         break;
                 }
@@ -790,6 +767,343 @@
     }
 </script>
 
+<!--Funcion para presupuestos-->
+<script>
+    var nombres = [];
+    var idEditar = 0;
+    $(document).ready(function () {
+        <?php
+            $nombres = array();
+            if(isset($resultado['tipos'])) {
+                $tiposPresupuesto = $resultado['tipos'];
+                foreach ($tiposPresupuesto as $tipo) { ?>
+                    nombres['<?= $tipo['idTipoPresupuesto'] ?>'] = '<?= $tipo['nombre'] ?>';
+        <?php }
+            }
+        ?>
+    });
+
+    var presupuestoEliminar = null;
+    $(document).on('click','.confirmarEliminarPresupuesto', function () {
+        presupuestoEliminar = $(this).parents('tr');
+        $('#linkPresupuestosElimminar').click();//esto se hace porque al agregar un <a class="modal-trigger"> dinamicamente con el metodo de agregarNuevoContacto() pareciera no servir, entonces lo que se hace es llamar al evento click del modal-trigger con el id = linkContactosElimminar
+    });
+    $(document).on('click','#eliminarPresupuesto-editar #botonEliminar', function () {
+        event.preventDefault();
+        var tipo = presupuestoEliminar.find('.accionAplicada').val();
+        if (tipo == '0') {
+            presupuestoEliminar.fadeOut(function () {
+                presupuestoEliminar.remove();
+            });
+            cantidadPresupuesto--;
+            actualizarCantidadPresupuestos();
+        } else{
+            presupuestoEliminar.find('.accionAplicada').val('2');
+            presupuestoEliminar.fadeOut(function () {
+                presupuestoEliminar.hide();
+            });
+        }
+    });
+
+    function actualizarCantidadPresupuestos(){
+        $('#cantidadPresupuestos').val(cantidadPresupuesto);
+    }
+    var cantidadPresupuesto = '<?= count($resultado['presupuestos'])?>';
+    var contadorPresupuesto = cantidadPresupuesto;
+    $(document).on('click', '#btn_accionAgregarPresupuesto', function () {
+        var selectTipo = $('#agregarPresupuesto_tipo');
+        selectTipo.empty();
+        selectTipo.append($('<option>', {
+            value: 0,
+            text: 'Seleccione uno',
+            selected: true,
+            disabled: true
+        }));
+        var i;
+        for(i = 0; i < nombres.length; i++) {
+            var name = nombres[i];
+            if(name != null && name != '') {
+                selectTipo.append($('<option>', {
+                    value: i,
+                    text: nombres[i],
+                    selected: false
+                }));
+            }
+        }
+        selectTipo.material_select();
+    });
+    $(document).on('click', '#agregarPresupuesto #btnAgregarPresupuesto', function () {
+        var tipo = $('#agregarPresupuesto_tipo');
+        var nombreTipo = nombres[tipo.val()];
+        var monto = $('#agregarPresupuesto_monto');
+        agregarNuevoPresupuesto(tipo.val(), nombreTipo, monto.val());
+//        tipo.val(0).change();
+        monto.val('');
+    });
+    function agregarNuevoPresupuesto(tipo, nombreTipo, monto) {
+        cantidadPresupuesto++;
+        actualizarCantidadPresupuestos();
+        var check = '<td>' +
+                        '<div style="text-align: center;">' +
+                            '<input class="accionAplicada" style="display:none" name="presupuesto_'+ contadorPresupuesto +'" type="text" value="0">' +
+                            '<input type="checkbox" class="filled-in checkbox" id="checkbox_presupuesto'+ contadorPresupuesto +'"/>' +
+                            '<label for="checkbox_presupuesto'+ contadorPresupuesto +'"></label>' +
+                        '</div>' +
+                    '</td>';
+        var tipoP = '<td>' +
+                        '<span id="span_presupuesto'+ contadorPresupuesto +'_tipo">' + nombreTipo + '</span><input type="text" name="presupuesto'+ contadorPresupuesto +'_tipo" id="presupuesto'+ contadorPresupuesto +'_tipo" value="'+ tipo +'" style="display: none;" />' +
+                    '</td>';
+        var montoP = '<td>'+
+                        '<span id="span_presupuesto'+ contadorPresupuesto +'_monto">' + monto + '</span><input type="text" name="presupuesto'+ contadorPresupuesto +'_monto" id="presupuesto'+ contadorPresupuesto +'_monto" value="'+ monto +'" style="display: none;" />' +
+                    '</td>';
+        var principal = '<td>' +
+                            '<input type="radio" name="radioPresupuestoPrincipal" id="radio_presupuesto'+ contadorPresupuesto +'" value="' + contadorPresupuesto + '" />' +
+                            '<label for="radio_presupuesto'+ contadorPresupuesto +'"></label>' +
+                        '</td>';
+        var opciones = '<td>' +
+                            '<ul id="dropdown_presupuesto'+ contadorPresupuesto +'" class="dropdown-content">' +
+                                '<li>' +
+                                    '<a href="#editarPresupuesto" class="-text modal-trigger abrirEditar" data-id-editar="'+ contadorPresupuesto + '"><?= label('menuOpciones_editar') ?></a>' +
+                                '</li>' +
+                                '<li>' +
+                                    '<a class="-text modal-trigger confirmarEliminarPresupuesto" data-id-eliminar="'+ contadorPresupuesto +'" data-fila-eliminar="fila'+ contadorPresupuesto +'"><?= label('menuOpciones_eliminar') ?></a>' +
+                                '</li>' +
+                            '</ul>' +
+                            '<a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown_presupuesto'+ contadorPresupuesto +'"><?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i> </a>' +
+                        '</td>';
+        $('#proveedor_presupuestos_editar').dataTable().fnAddData([
+            check,
+            tipoP,
+            montoP,
+            principal,
+            opciones
+        ]);
+
+        generarListasBotones();
+        $('.modal-trigger').leanModal();
+        contadorPresupuesto++;
+    }
+
+    $(document).on('click', '.abrirEditar', function () {
+        idEditar = $(this).data('id-editar');
+        var tipoActual = $('#presupuesto' + idEditar + '_tipo').val();
+        var nombreTipo = nombres[tipoActual];
+        var montoActual = $('#presupuesto' + idEditar + '_monto').val();
+
+//        alert(tipoActual + '  -  ' + montoActual + '  -  ' + nombreTipo);
+        var montoEditar = $('#editarPresupuesto_monto');
+        montoEditar.val(montoActual);
+        var selectTipo = $('#editarPresupuesto_tipo');
+        selectTipo.empty();
+        selectTipo.append($('<option>', {
+            value: 0,
+            text: 'Seleccione uno',
+            disabled: true
+        }));
+        var i;
+        for(i = 0; i < nombres.length; i++) {
+            var name = nombres[i];
+            if(name != null && name != '') {
+                if(i == tipoActual) {
+                    selectTipo.append($('<option>', {
+                        value: i,
+                        text: nombres[i],
+                        selected: true
+                    }));
+                } else {
+                    selectTipo.append($('<option>', {
+                        value: i,
+                        text: nombres[i]
+                    }));
+                }
+            }
+        }
+        selectTipo.material_select();
+    });
+    $(document).on('click', '#editarPresupuesto #btnEditarPresupuesto', function () {
+        var tipo = $('#editarPresupuesto_tipo');
+        var nombreTipo = nombres[tipo.val()];
+        var monto = $('#editarPresupuesto_monto');
+
+//        alert(tipo.val() + '  -  ' + monto.val() + '  -  ' + nombreTipo);
+
+        $('#presupuesto' + idEditar + '_tipo').val(tipo.val());
+        $('#presupuesto' + idEditar + '_monto').val(monto.val());
+        $('#span_presupuesto' + idEditar + '_tipo').text(nombreTipo);
+        $('#span_presupuesto' + idEditar + '_monto').text(monto.val());
+
+//        tipo.val(0).change();
+        monto.val('');
+    });
+
+    function generarListasBotones(){
+        $('.boton-opciones').sideNav({
+                // menuWidth: 0, // Default is 240
+                edge: 'right', // Choose the horizontal origin
+                closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            }
+        );
+
+        $('.dropdown-button').dropdown({
+                inDuration: 300,
+                outDuration: 225,
+                constrain_width: true, // Does not change width of dropdown to that of the activator
+                hover: false, // Activate on hover
+                gutter: 0, // Spacing from edge
+                belowOrigin: true, // Displays dropdown below the button
+                alignment: 'left' // Displays dropdown with edge aligned to the left of button
+            }
+        );
+    }
+</script>
+
+<script>
+    $(document).on("ready", function () {
+
+        <?php
+       if (isset($lista)) {
+           if ($lista === false) {?>
+
+        $('#linkModalErrorCargarDatos').click();
+
+        <?php
+   }
+   }
+   ?>
+
+
+        var idEliminar = 0;
+        var fila = 0;
+
+        $(document).on('click','.confirmarEliminar', function () {
+//            idEliminar = $(this).data('id-eliminar');
+            fila = $(this).parents('tr');
+        });
+
+        $('#eliminarPresupuesto #botonEliminar').on('click', function () {
+            event.preventDefault();
+
+            fila.fadeOut(function () {
+                fila.remove();
+                verificarChecks();
+            });
+        });
+    });
+
+    $(document).ready( function () {
+        $('#proveedor_presupuestos_editar').dataTable( {
+            'aoColumnDefs': [{
+                'bSortable': false,
+                'aTargets': [0, -1] //desactiva en primer y última columna opción de ordenar
+            }]
+        });
+    });
+    $(document).ready(function () {
+        $('table#proveedor_presupuestos_editar thead th:first').removeClass('sorting_asc').addClass('sorting_disabled');
+        $('table#proveedor_presupuestos_editar thead th:nth-child(2)').removeClass('sorting').addClass('sorting_asc');
+    });
+    $(document).ready(function () {
+        $('#eliminarPresupuestosSeleccionados #botonEliminar').on("click", function (event) {
+            var tb = $(this).attr('title');
+            var sel = false;
+            var ch = $('#' + tb).find('tbody input[type=checkbox]');
+            var marcados = $('.checkbox:checked').not('#checkbox-all').size();
+            var contador = 0;
+            ch.each(function () {
+                var $this = $(this);
+                if ($this.is(':checked')) {
+                    sel = true;
+
+                    var fila = $this.parents('tr');
+                    var tipo = fila.find('.accionAplicada').val();
+                    if (tipo == '0') {
+                        fila.fadeOut(function () {
+                            fila.remove();
+                        });
+                        cantidadPresupuesto--;
+                        actualizarCantidadPresupuestos();
+                    } else{
+                        fila.find('.accionAplicada').val('2');
+                        fila.fadeOut(function () {
+                            fila.hide();
+                        });
+                    }
+
+                    contador++;
+                    if (contador == marcados) {
+                        $('#linkModalErrorEliminar').click();
+                    }
+                }
+            });
+            verificarChecksPresupuestos();
+            actualizarCantidadPresupuestos();
+            return false;
+        });
+    });
+
+    $(window).load(function () {
+        verificarChecks();
+    });
+
+    $(document).ready(function () {
+        $('#checkbox-allPresupuestos').click(function (event) {
+            var $this = $(this);
+            var tableBody = $('#proveedor_presupuestos_editar').find('tbody tr[role=row] input[type=checkbox]');
+            tableBody.each(function() {
+                var check = $(this);
+                if ($this.is(':checked')) {
+                    check.prop('checked', true);
+                } else {
+                    check.prop('checked', false);
+                }
+            });
+        });
+    });
+    $(document).ready(function () {
+        $(document).on('click','.checkboxPresupuestos',function (event) {
+            verificarChecksPresupuestos();
+        });
+    });
+
+    function verificarChecksPresupuestos(){
+        var marcados = $('.checkboxPresupuestos:checked').not('#checkbox-allPresupuestos').size();
+        if (marcados >= 1) {
+            var elems = document.getElementsByClassName('opciones-seleccionados');
+            var e;
+            for (e in elems) {
+                elems[e].style.visibility = 'visible';
+            }
+        } else {
+            $('#checkbox-all').prop('checked', false);
+            var elems = document.getElementsByClassName('opciones-seleccionados');
+            var e;
+            for (e in elems) {
+                elems[e].style.visibility = 'hidden';
+            }
+        }
+    }
+
+    $(document).ready(function () {
+        $('.boton-opciones').sideNav({
+                // menuWidth: 0, // Default is 240
+                edge: 'right', // Choose the horizontal origin
+                closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            }
+        );
+
+        $('.dropdown-button').dropdown({
+                inDuration: 300,
+                outDuration: 225,
+                constrain_width: true, // Does not change width of dropdown to that of the activator
+                hover: false, // Activate on hover
+                gutter: 0, // Spacing from edge
+                belowOrigin: true, // Displays dropdown below the button
+                alignment: 'left' // Displays dropdown with edge aligned to the left of button
+            }
+        );
+    });
+</script>
+
 <!-- lista modals -->
 <div id="transaccionCorrecta" class="modal">
     <div class="modal-header">
@@ -797,7 +1111,7 @@
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <p><?= label('usuarioGuardadoCorrectamente'); ?></p>
+        <p><?= label('usuarioEditadoCorrectamente'); ?></p>
     </div>
     <div class="modal-footer">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
@@ -861,6 +1175,74 @@
                         name="action"><?= label('formUsuario_editar'); ?></button>
             </div>
         </form>
+    </div>
+</div>
+
+<div id="agregarPresupuesto" class="modal" style="height: 55%;">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <div class="input-field col s12" style="padding: 0;">
+            <select id="agregarPresupuesto_tipo">
+            </select>
+            <label for="agregarPresupuesto_tipo" class="label_modalPresupuesto"><?= label('formProveedor_salarioTipo'); ?></label>
+        </div>
+        <div class="input-field col s12" style="margin-top: 25px;padding: 0;">
+            <input id="agregarPresupuesto_monto" type="number" value="">
+            <label for="agregarPresupuesto_monto" class="label_modalPresupuesto"><?= label('formProveedor_salarioMonto'); ?></label>
+        </div>
+    </div>
+    <div class="modal-footer" id="btnAgregarPresupuesto">
+        <a class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="editarPresupuesto" class="modal" style="height: 55%;">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <div id="div_selectTipo"></div>
+        <div class="input-field col s12" style="padding: 0;">
+            <select id="editarPresupuesto_tipo">
+            </select>
+            <label for="editarPresupuesto_tipo" class="label_modalPresupuesto"><?= label('formProveedor_salarioTipo'); ?></label>
+        </div>
+        <div class="input-field col s12" style="margin-top: 25px;padding: 0;">
+            <input id="editarPresupuesto_monto" type="number" value="0">
+            <label for="editarPresupuesto_monto" class="label_modalPresupuesto"><?= label('formProveedor_salarioMonto'); ?></label>
+        </div>
+    </div>
+    <div class="modal-footer" id="btnEditarPresupuesto">
+        <a class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="eliminarPresupuesto-editar" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('confirmarEliminarSalario'); ?></p>
+    </div>
+    <div id="botonEliminar" class="modal-footer black-text">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="eliminarPresupuestosSeleccionados" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('clientes_archivosSeleccionadosEliminar'); ?></p>
+    </div>
+    <div class="modal-footer black-text">
+        <div id="botonEliminar" title="proveedor_presupuestos_editar">
+            <a href="#" class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        </div>
     </div>
 </div>
 

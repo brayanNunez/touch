@@ -37,6 +37,17 @@
                                             <label
                                                 for="servicio_descripcion"><?= label('formServicio_descripcion'); ?></label>
                                         </div>
+
+                                        <div class="inputTag col s12">
+                                            <label for="impuestosProducto"><?= label('formProducto_impuestos'); ?></label>
+                                            <br>
+                                            <div id="impuestosProducto" class="example tags_Impuestos">
+                                                <div class="bs-example">
+                                                    <input placeholder="<?= label('formProducto_anadirImpuesto'); ?>" type="text"/>
+                                                </div>
+                                            </div>
+                                            <br>
+                                        </div>
                                         
                                         <!--<div class="file-field col s12">
                                             <br/>
@@ -371,6 +382,36 @@
 
 </section>
 <!-- END CONTENT-->
+<script>
+    $(document).ready(function () {
+
+        var Impuestos = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/Impuestos.json'
+            prefetch: {
+                url: '<?=base_url()?>Cotizacion/jsonImpuestos',
+                ttl: 1000
+            }
+        });
+
+        Impuestos.initialize();
+
+        elt = $('.tags_Impuestos > > input');
+        elt.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'Impuestos',
+                displayKey: 'text',
+                source: Impuestos.ttAdapter()
+            }
+        });
+
+        elt.tagsinput('add', {"value": 1, "text": "Impuestos directos", "continent": "Europe"});
+        elt.tagsinput('add', {"value": 2, "text": "Impuestos indirectos", "continent": "America"});
+    });
+</script>
 
 <script>
     $(window).load(function () {

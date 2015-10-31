@@ -5,7 +5,7 @@
     <thead>
         <tr>
             <th style="text-align: center;">
-                <input class="filled-in checkbox checkbox-file checkall" type="checkbox" id="checkbox-all-files"
+                <input class="filled-in checkbox-file checkall" type="checkbox" id="checkbox-all-files"
                        onclick="toggleChecked(this.checked)"/>
                 <label for="checkbox-all-files"></label>
             </th>
@@ -187,9 +187,10 @@
                     sel = true;
                     var fila = $this.parents('tr');
                     var idEliminar = $this.parents('tr').attr('data-idElemento');
+                    var idPersona = '<?= $idPersonaEncriptado; ?>';
 
                     $.ajax({
-                        data: {idEliminar : idEliminar},
+                        data: {idEliminar : idEliminar, idPersona : idPersona},
                         url:   '<?=base_url()?>proveedores/eliminarArchivo',
                         type:  'post',
                         // beforeSend: function () {

@@ -87,6 +87,8 @@ $('.modal-trigger').leanModal();
 contadorFilas++;
 });
 
+
+
 function generarListasBotones(){
 
   $('.boton-opciones').sideNav({
@@ -120,7 +122,7 @@ function generarListasBotones(){
             <!-- <input type="text" class="tags"> -->
 
             <div id="contenerdorTablaDetalles">
-                <table class="centered">
+                <table class="centered responsive-table">
                 <!-- <table id="cotizacion1-detalles" class="centered"> -->
                     <thead>
                     <tr>
@@ -148,13 +150,13 @@ function generarListasBotones(){
                                 </div>
                             </row>
                         </th>
-                        <th class="context-menu-imagen box" data-field="id">
+                     <!--    <th class="context-menu-imagen box" data-field="id">
                             <row>
                                 <div class="col s12 m12 l12 celdaTitulo">
                                     Imagen
                                 </div>
                             </row>
-                        </th>
+                        </th> -->
                         <th class="context-menu-precio box" data-field="id">
                             <row>
                                 <div class="col s12 m12 l12 celdaTitulo">
@@ -186,14 +188,13 @@ function generarListasBotones(){
                         <th class="context-menu-subTotal box" data-field="id">
                             <row>
                                 <div class="col s12 m12 l12 celdaTitulo">
-                                    Total individual
+                                    Total
                                 </div>
                             </row>
                         </th>
                         <th class="" data-field="id">
                             <row>
-                                <div class="col s12 m12 l12">
-                                </div>
+                                
                                 <div class="col s12 m12 l12 celdaTitulo">
                                     Opciones
                                 </div>
@@ -210,6 +211,102 @@ function generarListasBotones(){
                     </tr>
                     </thead>
                     <tbody id="contenedorLineas">
+
+                     <?php
+                    if (isset($lista)) {
+                        if ($lista !== false) {
+                             $contador = 0;
+                                foreach ($lista as $fila) {
+                                    $idEncriptado = encryptIt($fila['idLineaDetalle']);
+                                    ?>
+
+                                        <tr>
+                                            <td style="text-align: center;">
+                                                <input class="accionAplicada" style="display:none" name="linea_<?=$contador;?>" type="text" value="1"> <!-- value 1 para existentes, 0 los nuevos y 2 los eliminados -->
+                                                <input style="display:none" name="idLinea_<?=$contador;?>" type="text" value="<?=$idEncriptado?>">
+                                                <input type="checkbox" class="filled-in checkbox" id="checkbox_linea<?=$contador;?>"/>
+                                                <label for="checkbox_linea<?=$contador;?>"></label>
+                                            </td>
+
+                                            <td>
+                                                <row>
+                                                    <div id="contenedorSelectProductoItem<?=$contador;?>" name="item_<?=$contador;?>" class="contenedorSelectProductoItem"></div>     
+                                                </row>
+                                            </td>
+                                            <td>
+                                                <row>
+                                                    <div id="contenedorSelectProductoNombre<?=$contador;?>" name='nombre_<?=$contador;?>' class="contenedorSelectProductoNombre"></div>
+                                                </row>
+                                            </td>
+                                            <td>
+                                                <row>
+                                                    <input value="Arroz, ensalada, carne" type="text" name="descripcion_<?=$contador;?>">
+                                                </row>
+                                            </td>
+                                           <!--  <td>
+                                                <row>
+                                                    <input value="Almuerzo.jpg" type="text" name="imagen_<?=$contador;?>" readonly="true">
+                                                </row>
+                                            </td> -->
+                                            <td>
+                                                <row>
+                                                    <input value="$6" type="text" name="precio_<?=$contador;?>">
+                                                </row>
+                                            </td>
+                                            <td>
+                                                <row>
+                                                    <input value="20" type="number" name="cantidad_<?=$contador;?>">
+                                                </row>
+                                            </td>
+                                            <td>
+                                                <row>
+                                                    <div id="impuestosProducto<?=$contador;?>" class="example tags_Impuestos">
+                                                        <div class="bs-example">
+                                                            <input name="impuestos_<?=$contador;?>"> placeholder="<?= label('formProducto_anadirImpuesto'); ?>" type="text"/>
+                                                        </div>
+                                                    </div>
+                                                </row>
+                                            </td>
+                                            <td>
+                                                <row>
+                                                    <input value="2" type="number" name="utilidad_<?=$contador;?>">
+                                                </row>
+                                            </td>
+                                            <td>
+                                                <row>
+                                                    <input value="$020" type="text" name="subTotal_<?=$contador;?>" readonly="true">
+                                                </row>
+                                            </td>
+                                            <td>
+                                                <div class="btn-linea-eliminar">
+                                                    <a class="confirmarEliminarLinea" data-linea-eliminar="0" title="<?= label('paso2_lineaEliminar') ?>"><i class="mdi-action-delete small" style="color: black;"></i></a>
+                                                </div>
+                                               <!--  <div class="col s12 m12 l12 celdaBoton">
+                                                    <ul id="dropdown-cotizacion1-item<?=$contador;?>" class="dropdown-content">
+                                                        <li>
+                                                            <a href="#Elminar"
+                                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
+                                                        </li>
+                                                    </ul>
+                                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
+                                                       data-activates="dropdown-cotizacion1-item<?=$contador;?>">
+                                                        <?= label('menuOpciones_seleccionar') ?><i
+                                                            class="mdi-navigation-arrow-drop-down"></i>
+                                                    </a>
+                                                </div> -->
+                                            </td>
+                                        </tr>
+
+
+
+                                    <?php 
+                                }
+                            }
+                        }
+
+                    ?>
+
+
                     <tr>
                         <td style="text-align: center;">
                             <input type="checkbox" class="filled-in checkbox" id="checkbox_cotizacion1_item0"/>
@@ -230,11 +327,11 @@ function generarListasBotones(){
                                 <input value="Arroz, ensalada, carne" type="text" name="descripcion_0">
                             </row>
                         </td>
-                        <td>
+                       <!--  <td>
                             <row>
                                 <input value="Almuerzo.jpg" type="text" name="imagen_0" readonly="true">
                             </row>
-                        </td>
+                        </td> -->
                         <td>
                             <row>
                                 <input value="$6" type="text" name="precio_0">
@@ -265,18 +362,8 @@ function generarListasBotones(){
                             </row>
                         </td>
                         <td>
-                            <div class="col s12 m12 l12 celdaBoton">
-                                <ul id="dropdown-cotizacion1-item0" class="dropdown-content">
-                                    <li>
-                                        <a href="#Elminar"
-                                           class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                    </li>
-                                </ul>
-                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                   data-activates="dropdown-cotizacion1-item0">
-                                    <?= label('menuOpciones_seleccionar') ?><i
-                                        class="mdi-navigation-arrow-drop-down"></i>
-                                </a>
+                             <div class="btn-linea-eliminar">
+                                <a class="confirmarEliminarSubFase" data-linea-eliminar="0" title="<?= label('paso2_lineaEliminar') ?>"><i class="mdi-action-delete small" style="color: black;"></i></a>
                             </div>
                         </td>
                     </tr>

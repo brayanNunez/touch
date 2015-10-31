@@ -60,10 +60,11 @@
                     $fax = $resultado['fax'];
                 } else {
                     $tipoProveedor = 'Fisico';
+                    $nombre .= ' '.$resultado['primerApellido'].' '.$resultado['segundoApellido'];
                     $telefonoMovil = $resultado['telefonoMovil'];
                 }
             }
-            if($resultado['fotografia'] != '') {
+            if($resultado['fotografia'] != '' && $resultado['fotografia'] != null && $resultado['fotografia'] != 'profile_picture_'.$resultado['idProveedor'].'.') {
                 $ruta .= $resultado['idEmpresa'].'/proveedores/'.$resultado['idProveedor'].'/'.$resultado['fotografia'];
             } else {
                 $ruta = base_url().'files/default-user-image.png';
@@ -76,7 +77,7 @@
         <div class="col s12">
             <div class="col s12 m12 l3">
                 <div class="proveedor-ver-logo">
-                    <img src="<?= $ruta; ?>" />
+                    <img id="imagen_perfil_usuario_ver" src="<?= $ruta; ?>" />
                 </div>
             </div>
             <div class="col s12 m8 l5">
@@ -204,21 +205,36 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Por hora</td>
-                                <td>$10</td>
-                                <td><i class="mdi-action-done"></i></td>
-                            </tr>
-                            <tr>
-                                <td>Diario</td>
-                                <td>$80</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Mensual</td>
-                                <td>$1400</td>
-                                <td></td>
-                            </tr>
+                        <?php
+                        if(isset($resultado['presupuestos'])) {
+                            $presupuestos = $resultado['presupuestos'];
+                            if($presupuestos != false) {
+                                foreach ($presupuestos as $presupuesto) {
+                                    $nombre = '';
+                                    if(isset($resultado['tipos'])) {
+                                        $tipos = $resultado['tipos'];
+                                        foreach ($tipos as $tipo) {
+                                            if($tipo['idTipoPresupuesto'] == $presupuesto['tipoPresupuesto']) {
+                                                $nombre = $tipo['nombre'];
+                                            }
+                                        }
+                                    }
+                                    ?>
+                                    <tr>
+                                        <td><?= $nombre; ?></td>
+                                        <td><?= $presupuesto['monto'] ?></td>
+                                        <td>
+                                            <?php
+                                            if($presupuesto['principal']) { ?>
+                                                <i class="mdi-action-done"></i>
+                                            <?php
+                                            } ?>
+                                        </td>
+                                    </tr>
+                            <?php
+                                }
+                            }
+                        } ?>
                         </tbody>
                     </table>
                 </div>

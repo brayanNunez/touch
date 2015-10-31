@@ -79,6 +79,7 @@ $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente
 
     $lang['paso3_plantillaGuardadoCorrectamente'] = 'La plantilla ha sido creada correctamente.';
 
+
     
     $lang['fases_faseGuardadoCorrectamente'] = 'La fase ha sido creada correctamente.';
     $lang['fases_faseEditadaCorrectamente'] = 'La fase ha sido editada correctamente.';
@@ -122,7 +123,7 @@ $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente
     $lang['tituloFormularioFinanciamiento'] = 'Forma de pago';
     $lang['tituloListaFinanciamiento'] = 'Lista de formas de pago disponibles';
 	$lang['tituloListaCotizaciones'] = 'Lista de cotizaciones';
-    $lang['tituloListaImpuesto'] = 'Lista de impuestos';
+    $lang['tituloImpuestos'] = 'Impuestos';
     $lang['tituloListaUnidad'] = 'Lista de unidades';
     $lang['tituloCotizacion'] = 'Cotización';
 	$lang['tituloFormularioCliente'] = 'Agregar cliente';
@@ -361,6 +362,8 @@ $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente
 
     $lang['paso3_nombreNuevaPlantilla'] = 'Agregar nueva plantilla';
     $lang['paso3_labelNombrePlantilla'] = 'Nombre';
+    $lang['paso3_Diseno_mensajeFotter'] = 'Esta cotización ha sido desarrollada en la plataforma: ';
+    
 
     $lang['paso3_nombrePlantillaExiste'] = 'El nombre de la plantilla ya existe, por favor agregue un nombre diferente' ;
 
@@ -634,6 +637,8 @@ $lang['proveedores_archivos_accionEliminar'] = 'Eliminar archivos seleccionados'
 $lang['proveedores_archivoNuevo'] = 'Agregar nuevo archivo';
 $lang['proveedores_archivoEliminar'] = '¿Realmente desea eliminar el archivo seleccionado?';
 $lang['proveedores_archivosSeleccionadosEliminar'] = '¿Realmente desea eliminar los archivos seleccionados?';
+$lang['formProveedor_nuevoPresupuesto'] = 'Nuevo presupuesto';
+$lang['persona_subirArchivo'] = 'Subir archivo';
 
 // Personas
 $lang['persona_info'] = 'Información de la persona';
