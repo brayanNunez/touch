@@ -28,16 +28,16 @@
                                     <div class="row">
                                         <div>
                                             <div class="input-field col s12 m4 l4">
+                                                <input id="usuario_nombre" type="text" name="usuario_nombre">
+                                                <label for="usuario_nombre"><?= label('formUsuario_nombre'); ?></label>
+                                            </div>
+                                            <div class="input-field col s12 m4 l4">
                                                 <input id="usuario_primeroApellido" type="text" name="usuario_primeroApellido">
                                                 <label for="usuario_primeroApellido"><?= label('formUsuario_apellido1'); ?></label>
                                             </div>
                                             <div class="input-field col s12 m4 l4">
                                                 <input id="usuario_segundoApellido" type="text" name="usuario_segundoApellido">
                                                 <label for="usuario_segundoApellido"><?= label('formUsuario_apellido2'); ?></label>
-                                            </div>
-                                            <div class="input-field col s12 m4 l4">
-                                                <input id="usuario_nombre" type="text" name="usuario_nombre">
-                                                <label for="usuario_nombre"><?= label('formUsuario_nombre'); ?></label>
                                             </div>
                                         </div>
 

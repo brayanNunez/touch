@@ -169,34 +169,35 @@
 
 
         var idEliminar = 0;
-        var fila = 0;
-
-        $('.confirmarEliminar').on('click', function () {
-            idEliminar = $(this).data('id-eliminar');
-            fila = $(this).data('fila-eliminar');
-        });
-
+       var filaEliminar = null;
+   
+       $(document).on('click','.confirmarEliminar', function () {
+           idEliminar = $(this).data('id-eliminar');
+           filaEliminar = $(this).parents('tr');
+           
+       });
+   
         $('#eliminarUsuario #botonEliminar').on('click', function () {
-            event.preventDefault();
-            $.ajax({
-                data: {idEliminar : idEliminar},
-                url:   '<?=base_url()?>usuarios/eliminar',
-                type:  'post',
-                // beforeSend: function () {
-                //         $("#resultado").html("Procesando, espere por favor...");
-                // },
-                success:  function (response) {
-                    if (response==1) {
-                        $('#' + fila).fadeOut(function () {
-                            $('#' + fila).remove();
-                            verificarChecks();
-                        });
-
-                    } else{
-                        $('#linkModalErrorEliminar').click();
-                    };
-                }
-            });
+           event.preventDefault();
+           $.ajax({
+                  data: {idEliminar : idEliminar},
+                  url:   '<?=base_url()?>usuarios/eliminar',
+                  type:  'post',
+                  // beforeSend: function () {
+                  //         $("#resultado").html("Procesando, espere por favor...");
+                  // },
+                  success:  function (response) {
+                   if (response==1) {
+                       filaEliminar.fadeOut(function () {
+                       filaEliminar.remove();
+                       verificarChecks();
+                       });
+                       
+                   } else{
+                       $('#linkModalErrorEliminar').click();
+                   };
+               }
+           });
         });
 
 
@@ -217,48 +218,51 @@
         $('table#usuarios-tabla-lista thead th:nth-child(2)').removeClass('sorting').addClass('sorting_asc');
     });
     $(document).ready(function () {
-        $('#eliminarElementosSeleccionados #botonEliminar').on("click", function (event) {
-            var tb = $(this).attr('title');
-            var sel = false;
-            var ch = $('#' + tb).find('tbody input[type=checkbox]');
-            var marcados = $('.checkbox:checked').not('#checkbox-all').size();
-            var contador = 0;
-            ch.each(function () {
-                var $this = $(this);
-                if ($this.is(':checked')) {
-                    sel = true;
+       $('#eliminarElementosSeleccionados #botonEliminar').on("click", function (event) {
+           var tb = $(this).attr('title');
+           var sel = false;
+           var ch = $('#' + tb).find('tbody input[type=checkbox]');
+           var marcados = $('.checkbox:checked').not('#checkbox-all').size();
+           var contadorErrores = 0;
+           var contadorTotal = 0;
+           ch.each(function () {
+               var $this = $(this);
+               if ($this.is(':checked')) {
+                   sel = true;
                     var fila = $this.parents('tr');
-                    var idEliminar = $this.parents('tr').attr('data-idElemento');
+                   // var idEliminar = $this.parents('tr').attr('data-idElemento');
+                   var idEliminar = $this.attr('id');
+                   $.ajax({
+                          data: {idEliminar : idEliminar},
+                          url:   '<?=base_url()?>usuarios/eliminar',
+                          type:  'post',
+                          success:  function (response) {
 
-                    $.ajax({
-                        data: {idEliminar : idEliminar},
-                        url:   '<?=base_url()?>usuarios/eliminar',
-                        type:  'post',
-                        // beforeSend: function () {
-                        //         $("#resultado").html("Procesando, espere por favor...");
-                        // },
-                        success:  function (response) {
-                            if (response==1) {
-                                fila.fadeOut(function () {
-                                    fila.remove();
-                                    verificarChecks();
-                                });
-                            } else{
-                                contador++;
-                                if (contador == marcados) {
+                           contadorTotal++;
+                           if (response==1) {
+                              fila.fadeOut(function () {
+                               fila.remove();
+                               verificarChecks();
+                               });
+                           } else{ 
+                            contadorErrores++;
+                           };
+                            if (contadorTotal == marcados) {
+                                if (contadorErrores != 0) {
                                     $('#linkModalErrorEliminar').click();
-                                };
+                                } 
+                              
                             };
-                        }
-                    });
-
-                }
-            });
-
-            return false;
-
-        });
-    });
+                       }
+                   });
+  
+               }
+           });
+            
+           return false;
+   
+       });
+   });
 
     $(window).load(function () {
         verificarChecks();
@@ -279,10 +283,10 @@
         });
     });
     $(document).ready(function () {
-        $('.checkbox').click(function (event) {
-            verificarChecks();
-        });
-    });
+         $(document).on('click','.checkbox',function (event) {
+             verificarChecks();
+         });
+     });
 
     function verificarChecks(){
 

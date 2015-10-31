@@ -61,7 +61,7 @@
                                                                        class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="#Eliminar"
+                                                                    <a href="#EliminarFormaPago"
                                                                        class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
                                                                 </li>
                                                             </ul>
@@ -87,7 +87,7 @@
                                                                        class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="#Eliminar"
+                                                                    <a href="#EliminarFormaPago"
                                                                        class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
                                                                 </li>
                                                             </ul>
@@ -113,7 +113,7 @@
                                                                        class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="#Eliminar"
+                                                                    <a href="#EliminarFormaPago"
                                                                        class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
                                                                 </li>
                                                             </ul>
@@ -197,23 +197,94 @@
         }
         document.getElementById('checkbox-all').checked = false;
     });
+
     $(document).ready(function () {
-        $('#botonElimnar').on("click", function (event) {
-            var tb = $(this).attr('title');
-            var sel = false;
-            var ch = $('#' + tb).find('tbody input[type=checkbox]');
-            ch.each(function () {
-                var $this = $(this);
-                if ($this.is(':checked')) {
-                    sel = true;
-                    $this.parents('tr').fadeOut(function () {
-                        $this.remove();
-                    });
-                }
-            });
-            return false;
+       $('#eliminarElementosSeleccionados #botonEliminar').on("click", function (event) {
+           var tb = $(this).attr('title');
+           var sel = false;
+           var ch = $('#' + tb).find('tbody input[type=checkbox]');
+           var marcados = $('.checkbox:checked').not('#checkbox-all').size();
+           var contadorErrores = 0;
+           var contadorTotal = 0;
+           ch.each(function () {
+               var $this = $(this);
+               if ($this.is(':checked')) {
+                   sel = true;
+                    var fila = $this.parents('tr');
+                   // var idEliminar = $this.parents('tr').attr('data-idElemento');
+                   var idEliminar = $this.attr('id');
+                   $.ajax({
+                          data: {idEliminar : idEliminar},
+                          url:   '<?=base_url()?>financiamiento/eliminar',
+                          type:  'post',
+                          success:  function (response) {
+
+                           contadorTotal++;
+                           if (response==1) {
+                              fila.fadeOut(function () {
+                               fila.remove();
+                               verificarChecks();
+                               });
+                           } else{ 
+                            contadorErrores++;
+                           };
+                            if (contadorTotal == marcados) {
+                                if (contadorErrores != 0) {
+                                    $('#linkModalErrorEliminar').click();
+                                } 
+                              
+                            };
+                       }
+                   });
+  
+               }
+           });
+            
+           return false;
+   
+       });
+   });
+        
+        $(document).ready(function () {
+         $(document).on('click','.checkbox',function (event) {
+             verificarChecks();
+         });
+        });
+
+    $(document).ready(function () {
+        var idEliminar = 0;
+        var filaEliminar = null;
+   
+        $(document).on('click','.confirmarEliminar', function () {
+           idEliminar = $(this).data('id-eliminar');
+           filaEliminar = $(this).parents('tr');
+           
+        });
+   
+        $('#EliminarFormaPago #botonEliminar').on('click', function () {
+           event.preventDefault();
+           $.ajax({
+                  data: {idEliminar : idEliminar},
+                  url:   '<?=base_url()?>financiamiento/eliminar',
+                  type:  'post',
+                  // beforeSend: function () {
+                  //         $("#resultado").html("Procesando, espere por favor...");
+                  // },
+                  success:  function (response) {
+                   if (response==1) {
+                       filaEliminar.fadeOut(function () {
+                       filaEliminar.remove();
+                       verificarChecks();
+                       });
+                       
+                   } else{
+                       $('#linkModalErrorEliminar').click();
+                   };
+               }
+           });
         });
     });
+
     $(document).ready( function () {
         $('#formas-tabla-lista').dataTable( {
             'aoColumnDefs': [{
@@ -322,7 +393,7 @@
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
-<div id="Eliminar" class="modal">
+<div id="EliminarFormaPago" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
@@ -330,7 +401,7 @@
     <div class="modal-content">
         <p><?= label('confirmarEliminarFinanciamiento'); ?></p>
     </div>
-    <div class="modal-footer black-text">
+    <div id="botonEliminar" class="modal-footer black-text">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
@@ -343,7 +414,7 @@
         <p><?= label('clientes_archivosSeleccionadosEliminar'); ?></p>
     </div>
     <div class="modal-footer black-text">
-        <div id="botonElimnar" title="formas-tabla-lista">
+        <div id="botonEliminar" title="formas-tabla-lista">
             <a href="#"
                class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
         </div>

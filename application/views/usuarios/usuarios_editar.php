@@ -59,16 +59,16 @@
 
             <div style="margin-top: 15px;padding: 0;" class="col s12">
                 <div class="input-field col s12 m4 l4">
+                    <input id="usuario_nombre" type="text" name="usuario_nombre" value="<?= $nombre; ?>">
+                    <label for="usuario_nombre"><?= label('formUsuario_nombre'); ?></label>
+                </div>
+                <div class="input-field col s12 m4 l4">
                     <input id="usuario_primerApellido" type="text" name="usuario_primerApellido" value="<?= $primerApellido; ?>">
                     <label for="usuario_primerApellido"><?= label('formUsuario_apellido1'); ?></label>
                 </div>
                 <div class="input-field col s12 m4 l4">
                     <input id="usuario_segundoApellido" type="text" name="usuario_segundoApellido" value="<?= $segundoApellido; ?>">
                     <label for="usuario_segundoApellido"><?= label('formUsuario_apellido2'); ?></label>
-                </div>
-                <div class="input-field col s12 m4 l4">
-                    <input id="usuario_nombre" type="text" name="usuario_nombre" value="<?= $nombre; ?>">
-                    <label for="usuario_nombre"><?= label('formUsuario_nombre'); ?></label>
                 </div>
             </div>
 

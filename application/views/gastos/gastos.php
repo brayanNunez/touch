@@ -186,11 +186,12 @@
          
    
        var idEliminar = 0;
-       var fila = 0;
+       var filaEliminar = null;
    
-       $('.confirmarEliminar').on('click', function () {
+       $(document).on('click','.confirmarEliminar', function () {
            idEliminar = $(this).data('id-eliminar');
-           fila = $(this).data('fila-eliminar');
+           filaEliminar = $(this).parents('tr');
+           
        });
    
         $('#eliminarGasto #botonEliminar').on('click', function () {
@@ -204,8 +205,8 @@
                   // },
                   success:  function (response) {
                    if (response==1) {
-                       $('#' + fila).fadeOut(function () {
-                       $('#' + fila).remove();
+                       filaEliminar.fadeOut(function () {
+                       filaEliminar.remove();
                        verificarChecks();
                        });
                        
@@ -215,10 +216,6 @@
                }
            });
         });
-   
-   
-   
-   
    });
    
    $(document).ready( function () {
@@ -239,34 +236,36 @@
            var sel = false;
            var ch = $('#' + tb).find('tbody input[type=checkbox]');
            var marcados = $('.checkbox:checked').not('#checkbox-all').size();
-           var contador = 0;
-
+           var contadorErrores = 0;
+           var contadorTotal = 0;
            ch.each(function () {
                var $this = $(this);
                if ($this.is(':checked')) {
                    sel = true;
-                   var fila = $this.parents('tr');
-                   var idEliminar = $this.parents('tr').attr('data-idElemento');
-   
+                    var fila = $this.parents('tr');
+                   // var idEliminar = $this.parents('tr').attr('data-idElemento');
+                   var idEliminar = $this.attr('id');
                    $.ajax({
                           data: {idEliminar : idEliminar},
                           url:   '<?=base_url()?>gastos/eliminar',
                           type:  'post',
-                          // beforeSend: function () {
-                          //         $("#resultado").html("Procesando, espere por favor...");
-                          // },
                           success:  function (response) {
+
+                           contadorTotal++;
                            if (response==1) {
                               fila.fadeOut(function () {
                                fila.remove();
                                verificarChecks();
                                });
                            } else{ 
-                            contador++;
-                            if (contador == marcados) {
-                              $('#linkModalErrorEliminar').click();
-                            };
+                            contadorErrores++;
                            };
+                            if (contadorTotal == marcados) {
+                                if (contadorErrores != 0) {
+                                    $('#linkModalErrorEliminar').click();
+                                } 
+                              
+                            };
                        }
                    });
   
@@ -295,12 +294,12 @@
                }
            });
        });
-   });
-   $(document).ready(function () {
-       $('.checkbox').click(function (event) {
-           verificarChecks();
-       });
-   });
+    });
+    $(document).ready(function () {
+      $(document).on('click','.checkbox',function (event) {
+        verificarChecks();
+      });
+    });
    
    function verificarChecks(){
        
