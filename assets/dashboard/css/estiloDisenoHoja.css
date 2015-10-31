@@ -368,3 +368,21 @@ etiqueta*/
 p{
     margin: 0 0 10px;
 }
+
+#rellenoIzquierdo{
+	/*background: red;*/
+	width: 67%;
+	/*height: 30px;*/
+	display: inline-block;
+}
+
+#resultados{
+	/*background: blue;*/
+	width: 32%;
+	/*height: 30px;*/
+	display: inline-block;
+	vertical-align: top;
+}
+#contenedorResultados{
+	margin-top: 20px;
+}

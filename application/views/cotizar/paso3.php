@@ -39,7 +39,7 @@
 </div>
 <!-- <div class="contenedorHoja col s12"> -->
 <button id="crear">CREAR</button>
-<div id="inset_form"></div>
+<div style="display: none" id="inset_form"></div>
 
 <div id="contenedorDisenoHoja">
     
@@ -105,7 +105,7 @@
                             <th class="celdaColumna col_4">Precio unitario</th>
                             <th class="celdaColumna col_5">Cantidad</th>
                             <th class="celdaColumna col_6">Impuesto</th>
-                            <th class="celdaColumna col_7">Total individual</th>                    
+                            <th class="celdaColumna col_7">Total</th>                    
                         </tr>
                         </thead>
                         <tbody>
@@ -181,10 +181,15 @@
                             <td class="celdaColumna col_6">13%</td>
                             <td class="celdaColumna col_7">$155</td>
                         </tr>
-
-                        
                         </tbody>
                     </table>
+                     <div id="contenedorResultados">
+                        <div id="resultados">
+                            <p class="box" id="descuento">Descuento: <spam id="resultadoDescuento">$15%</spam></p>
+                            <p class="box" id="impuesto">Impuesto: <spam id="resultadoImpuesto">13%</spam></p>
+                            <p class="box" id="total">Total: <spam id="resultadoTotal">$780</spam></p>
+                        </div>
+                    </div>
                     <div id="prefooter">
                     </div>
                 </div>
@@ -244,7 +249,7 @@
             </div>
             <div id="informacionSistema">
              <span>
-                <p>Esta cotización ha sido desarrollada en la plataforma: touchcr.com</p>
+                <p><?= label('paso3_Diseno_mensajeFotter').label('link_paginaInicial'); ?> touchcr.com</p>
              </span>
             </div>
         </div>
@@ -410,7 +415,7 @@
                             </p>
 
                             <p>
-                                <input value="col_7" name="checksDetalle_ColumnaPrecioTotal" type="checkbox" class="filled-in checksCuerpo" id="cuerpofilled-in-box8">
+                                <input value="col_7" name="checksDetalle_ColumnaTotal" type="checkbox" class="filled-in checksCuerpo" id="cuerpofilled-in-box8">
                                 <label for="cuerpofilled-in-box8">Total</label>
                             </p>
 
@@ -692,11 +697,18 @@ function cargarDieseno(idPlantilla){
             $('.celdaColumna').each(function () {
                 $(this).hide();
             })
+            $('#contenedorResultados .box').each(function () {
+                $(this).hide();
+            })
 
             var seleccionados = $('.checksCuerpo:checked');
             if (seleccionados.length > 0) {
                 seleccionados.each(function () {
                     $('#cuerpoDocumento .' + $(this).val()).show();
+                });
+
+                 seleccionados.each(function () {
+                    $('#cuerpoDocumento .box#' + $(this).val()).show();
                 });
             }
 
@@ -899,15 +911,23 @@ function actualizarModalDetalle(plantilla){
     } else{
         $("#modalCuerpo input[value='col_7']").prop("checked", false );
     }
-    // if (plantilla['mostrarImpuesto'] == 1) {
-    //     $("#modalEncabezado input[value='nombreEmpresa']").attr("checked", "checked");
-    // };
-    // if (plantilla['mostrarDescuento'] == 1) {
-    //     $("#modalEncabezado input[value='codigoCotizacion']").attr("checked", "checked");
-    // };
-    // if (plantilla['mostrarTotal'] == 1) {
-    //     $("#modalEncabezado input[value='cliente']").attr("checked", "checked");
-    // };
+
+    if (plantilla['mostrarImpuesto'] == 1) {
+        $("#modalCuerpo input[value='impuesto']").prop("checked", true );
+    } else{
+        $("#modalCuerpo input[value='impuesto']").prop("checked", false );
+    }
+    if (plantilla['mostrarDescuento'] == 1) {
+        $("#modalCuerpo input[value='descuento']").prop("checked", true );
+    } else{
+        $("#modalCuerpo input[value='descuento']").prop("checked", false );
+    }
+    if (plantilla['mostrarTotal'] == 1) {
+        $("#modalCuerpo input[value='total']").prop("checked", true );
+    } else{
+        $("#modalCuerpo input[value='total']").prop("checked", false );
+    }
+
 }
 
 function actualizarModalInformacion(plantilla){
@@ -1109,11 +1129,11 @@ function obtenerDatosCuerpo(){
     'mostrarColumnaCantidad': $('#cuerpoDocumento thead .col_5').is(':visible'),
     'mostrarColumnaImpuesto': $('#cuerpoDocumento thead .col_6').is(':visible'),
     'mostrarColumnaTotal': $('#cuerpoDocumento thead .col_7').is(':visible'),
-    "mostrarImpuesto":"0",
-    "mostrarDescuento":"0",
-    "mostrarTotal":"0"
+    "mostrarImpuesto": $('#cuerpoDocumento .box#impuesto').is(':visible'),
+    "mostrarDescuento": $('#cuerpoDocumento .box#descuento').is(':visible'),
+    "mostrarTotal": $('#cuerpoDocumento .box#total').is(':visible')
     }
-    // alert('visible: ' + plantilla['mostrarColumnaImpuesto']);
+    // alert('visible: ' + plantilla['mostrarImpuesto']);
     actualizarModalDetalle(plantilla);
 }
 

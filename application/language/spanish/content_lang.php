@@ -79,6 +79,7 @@ $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente
 
     $lang['paso3_plantillaGuardadoCorrectamente'] = 'La plantilla ha sido creada correctamente.';
 
+
     
     $lang['fases_faseGuardadoCorrectamente'] = 'La fase ha sido creada correctamente.';
     $lang['fases_faseEditadaCorrectamente'] = 'La fase ha sido editada correctamente.';
@@ -361,6 +362,8 @@ $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente
 
     $lang['paso3_nombreNuevaPlantilla'] = 'Agregar nueva plantilla';
     $lang['paso3_labelNombrePlantilla'] = 'Nombre';
+    $lang['paso3_Diseno_mensajeFotter'] = 'Esta cotización ha sido desarrollada en la plataforma: ';
+    
 
     $lang['paso3_nombrePlantillaExiste'] = 'El nombre de la plantilla ya existe, por favor agregue un nombre diferente' ;
 
