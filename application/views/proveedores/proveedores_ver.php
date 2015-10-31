@@ -60,10 +60,11 @@
                     $fax = $resultado['fax'];
                 } else {
                     $tipoProveedor = 'Fisico';
+                    $nombre .= ' '.$resultado['primerApellido'].' '.$resultado['segundoApellido'];
                     $telefonoMovil = $resultado['telefonoMovil'];
                 }
             }
-            if($resultado['fotografia'] != '') {
+            if($resultado['fotografia'] != '' && $resultado['fotografia'] != null && $resultado['fotografia'] != 'profile_picture_'.$resultado['idProveedor'].'.') {
                 $ruta .= $resultado['idEmpresa'].'/proveedores/'.$resultado['idProveedor'].'/'.$resultado['fotografia'];
             } else {
                 $ruta = base_url().'files/default-user-image.png';

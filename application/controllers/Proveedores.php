@@ -337,6 +337,61 @@ class Proveedores extends CI_Controller
         $data['editados'] = $editados;
         $data['eliminados'] = $eliminados;
 
+        $presupuestosEditados = array();
+        $presupuestosEliminados = array();
+        $presupuestosNuevos = array();
+        $contadorPresupuestos = 0;
+        $presupuestosObtenidos = 0;
+        $cantidadPresupuestos = $this->input->post('cantidadPresupuestos');
+//        echo $presupuestosObtenidos.'  -  '.$cantidadPresupuestos;
+        $principal = 1;
+        if(isset($_POST['radioPresupuestoPrincipal'])) {
+            $principal = $this->input->post('radioPresupuestoPrincipal');
+        }
+        while($presupuestosObtenidos < $cantidadPresupuestos) {
+            if(isset($_POST['presupuesto_'.$contadorPresupuestos])) {
+                $valorPrincipal = 0;
+                if($principal == $contadorPresupuestos) {
+                    $valorPrincipal = 1;
+                }
+                $accionEfectuada = $this->input->post('presupuesto_'.$contadorPresupuestos);
+                if ($accionEfectuada == '2') {//fue eliminado
+                    $identificacion = decryptIt($this->input->post('idPresupuesto_'.$contadorPresupuestos));
+                    $presupuesto = array(
+                        'idPresupuestoProveedor' => $identificacion,
+                        'principal' => $valorPrincipal,
+                        'eliminado' => '1'
+                    );
+                    array_push($presupuestosEliminados, $presupuesto);
+                } else {
+                    if ($accionEfectuada == '1') {// no fue eliminado
+                        $presupuesto = array(
+                            'idPresupuestoProveedor' =>decryptIt($this->input->post('idPresupuesto_'.$contadorPresupuestos)),
+                            'tipoPresupuesto' => $this->input->post('presupuesto' . $contadorPresupuestos . '_tipo'),
+                            'monto' => $this->input->post('presupuesto' . $contadorPresupuestos . '_monto'),
+                            'principal' => $valorPrincipal,
+                            'eliminado' => 0
+                        );
+                        array_push($presupuestosEditados, $presupuesto);
+                    } else {// es nuevo
+                        $presupuesto = array(
+                            'idProveedor' => decryptIt($id),
+                            'tipoPresupuesto' => $this->input->post('presupuesto' . $contadorPresupuestos . '_tipo'),
+                            'monto' => $this->input->post('presupuesto' . $contadorPresupuestos . '_monto'),
+                            'principal' => $valorPrincipal,
+                            'eliminado' => 0
+                        );
+                        array_push($presupuestosNuevos, $presupuesto);
+                    }
+                }
+                $presupuestosObtenidos++;
+            }
+            $contadorPresupuestos++;
+        }
+        $data['presupuestosNuevos'] = $presupuestosNuevos;
+        $data['presupuestosEditados'] = $presupuestosEditados;
+        $data['presupuestosEliminados'] = $presupuestosEliminados;
+
         if (!$this->Proveedor_model->modificar($data)) {
             //Error en la transacción
             echo 0;

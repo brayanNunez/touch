@@ -40,9 +40,11 @@ class Proveedor_model extends CI_Model
             }
             $insert_id = $this->db->insert_id();
 
-            $nombreFotografia = 'profile_picture_'.$insert_id.'.'.$data['extension'];
-            $this->db->where('idProveedor', $insert_id);
-            $query = $this->db->update('proveedor', array('fotografia' => $nombreFotografia));
+            if($data['extension'] != '' && $data['extension'] != null) {
+                $nombreFotografia = 'profile_picture_' . $insert_id . '.' . $data['extension'];
+                $this->db->where('idProveedor', $insert_id);
+                $query = $this->db->update('proveedor', array('fotografia' => $nombreFotografia));
+            }
 
             $palabras = explode(",", $data['palabras']);
             foreach ($palabras as $palabra) {
@@ -221,6 +223,32 @@ class Proveedor_model extends CI_Model
                 }
             }
 
+            $presupuestosEliminados = $data['presupuestosEliminados'];
+            foreach ($presupuestosEliminados as $presupuestosEliminado) {
+                $this->db->where('idPresupuestoProveedor', $presupuestosEliminado['idPresupuestoProveedor']);
+                $query = $this->db->update('presupuestoproveedor', $presupuestosEliminado);
+                if (!$query) {
+                    throw new Exception("Error en la BD");
+                }
+            }
+
+            $presupuestosEditados = $data['presupuestosEditados'];
+            foreach ($presupuestosEditados as $presupuestosEditado) {
+                $this->db->where('idPresupuestoProveedor', $presupuestosEditado['idPresupuestoProveedor']);
+                $query = $this->db->update('presupuestoproveedor', $presupuestosEditado);
+                if (!$query) {
+                    throw new Exception("Error en la BD");
+                }
+            }
+
+            $presupuestosNuevos = $data['presupuestosNuevos'];
+            foreach ($presupuestosNuevos as $presupuestosNuevo) {
+                $query = $this->db->insert('presupuestoproveedor', $presupuestosNuevo);
+                if (!$query) {
+                    throw new Exception("Error en la BD");
+                }
+            }
+
             $this->db->trans_commit();
             return true;
         } catch (Exception $e) {
@@ -279,7 +307,7 @@ class Proveedor_model extends CI_Model
             }
             if($query1->num_rows() > 0) {
                 $datos = $query1->result_array();
-                $file = $datos[0]['nombre'];
+                $file = $datos[0]['nombreOriginal'];
                 if(!$file) {
                     $file = 'noArchivo';
                 }
