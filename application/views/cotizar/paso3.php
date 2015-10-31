@@ -99,87 +99,87 @@
                     <table>
                         <thead>
                         <tr>
-                            <th>Item</th>
-                            <th>Nombre</th>
-                            <th>Descripción</th>
-                            <th>Precio unitario</th>
-                            <th>Cantidad</th>
-                            <th>Impuesto</th>
-                            <th>Total individual</th>                    
+                            <th class="celdaColumna col_1">Item</th>
+                            <th class="celdaColumna col_2">Nombre</th>
+                            <th class="celdaColumna col_3">Descripción</th>
+                            <th class="celdaColumna col_4">Precio unitario</th>
+                            <th class="celdaColumna col_5">Cantidad</th>
+                            <th class="celdaColumna col_6">Impuesto</th>
+                            <th class="celdaColumna col_7">Total individual</th>                    
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td>001</td>
-                            <td>Un nombre</td>
-                            <td>Una descripción</td>
+                            <td class="celdaColumna col_1" >001</td>
+                            <td class="celdaColumna col_2">Un nombre</td>
+                            <td class="celdaColumna col_3">Una descripción</td>
                             <!-- <td>
                                 <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/almuerzo.jpg"/>
                             </td> -->
-                            <td>$50</td>
-                            <td>3</td>
-                            <td>13%</td>
-                            <td>$155</td>
+                            <td class="celdaColumna col_4">$50</td>
+                            <td class="celdaColumna col_5">3</td>
+                            <td class="celdaColumna col_6">13%</td>
+                            <td class="celdaColumna col_7">$155</td>
                         </tr>
                         <tr>
-                            <td>001</td>
-                            <td>Un nombre</td>
-                            <td>Una descripción</td>
+                            <td class="celdaColumna col_1" >001</td>
+                            <td class="celdaColumna col_2">Un nombre</td>
+                            <td class="celdaColumna col_3">Una descripción</td>
                             <!-- <td>
                                 <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/musica.jpg"/>
                             </td> -->
-                            <td>$50</td>
-                            <td>3</td>
-                            <td>13%</td>
-                            <td>$155</td>
+                            <td class="celdaColumna col_4">$50</td>
+                            <td class="celdaColumna col_5">3</td>
+                            <td class="celdaColumna col_6">13%</td>
+                            <td class="celdaColumna col_7">$155</td>
                         </tr>
                         <tr>
-                            <td>001</td>
-                            <td>Un nombre</td>
-                            <td>Una descripción</td>
+                            <td class="celdaColumna col_1" >001</td>
+                            <td class="celdaColumna col_2">Un nombre</td>
+                            <td class="celdaColumna col_3">Una descripción</td>
                             <!-- <td>
                                 <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/almuerzo.jpg"/>
                             </td> -->
-                            <td>$50</td>
-                            <td>3</td>
-                            <td>13%</td>
-                            <td>$155</td>
+                            <td class="celdaColumna col_4">$50</td>
+                            <td class="celdaColumna col_5">3</td>
+                            <td class="celdaColumna col_6">13%</td>
+                            <td class="celdaColumna col_7">$155</td>
                         </tr>
                         <tr>
-                            <td>001</td>
-                            <td>Un nombre</td>
-                            <td>Una descripción</td>
+                            <td class="celdaColumna col_1" >001</td>
+                            <td class="celdaColumna col_2">Un nombre</td>
+                            <td class="celdaColumna col_3">Una descripción</td>
                             <!-- <td>
                                 <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/musica.jpg"/>
                             </td> -->
-                            <td>$50</td>
-                            <td>3</td>
-                            <td>13%</td>
-                            <td>$155</td>
+                            <td class="celdaColumna col_4">$50</td>
+                            <td class="celdaColumna col_5">3</td>
+                            <td class="celdaColumna col_6">13%</td>
+                            <td class="celdaColumna col_7">$155</td>
                         </tr>
                         <tr>
-                            <td>001</td>
-                            <td>Un nombre</td>
-                            <td>Una descripción</td>
+                            <td class="celdaColumna col_1" >001</td>
+                            <td class="celdaColumna col_2">Un nombre</td>
+                            <td class="celdaColumna col_3">Una descripción</td>
                             <!-- <td>
                                 <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/almuerzo.jpg"/>
                             </td> -->
-                            <td>$50</td>
-                            <td>3</td>
-                            <td>13%</td>
-                            <td>$155</td>
+                            <td class="celdaColumna col_4">$50</td>
+                            <td class="celdaColumna col_5">3</td>
+                            <td class="celdaColumna col_6">13%</td>
+                            <td class="celdaColumna col_7">$155</td>
                         </tr>
                         <tr>
-                            <td>001</td>
-                            <td>Un nombre</td>
-                            <td>Una descripción</td>
+                            <td class="celdaColumna col_1" >001</td>
+                            <td class="celdaColumna col_2">Un nombre</td>
+                            <td class="celdaColumna col_3">Una descripción</td>
                             <!-- <td>
                                 <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/musica.jpg"/>
                             </td> -->
-                            <td>$50</td>
-                            <td>3</td>
-                            <td>13%</td>
-                            <td>$155</td>
+                            <td class="celdaColumna col_4">$50</td>
+                            <td class="celdaColumna col_5">3</td>
+                            <td class="celdaColumna col_6">13%</td>
+                            <td class="celdaColumna col_7">$155</td>
                         </tr>
 
                         
@@ -378,43 +378,40 @@
                         <div class="listaCecksModals">
                             <p>Mostrar las siguientes columnas:</p>
                             <p>
-                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box1">
+                                <input value="col_1" name="checksDetalle_ColumnaItem" type="checkbox" class="filled-in checksCuerpo" id="cuerpofilled-in-box1">
                                 <label for="cuerpofilled-in-box1">Item</label>
                             </p>
 
                             <p>
-                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box2">
+                                <input value="col_2" name="checksDetalle_ColumnaNombre" type="checkbox" class="filled-in checksCuerpo" id="cuerpofilled-in-box2">
                                 <label for="cuerpofilled-in-box2">Nombre</label>
                             </p>
 
                             <p>
-                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box3">
+                                <input value="col_3" name="checksDetalle_ColumnaDescripcion" type="checkbox" class="filled-in checksCuerpo" id="cuerpofilled-in-box3">
                                 <label for="cuerpofilled-in-box3">Descripción</label>
                             </p>
 
-                            <p>
-                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box3">
-                                <label for="cuerpofilled-in-box4">Imagen</label>
-                            </p>
+                            
 
                             <p>
-                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box5">
+                                <input value="col_4" name="checksDetalle_ColumnaPrecio" type="checkbox" class="filled-in checksCuerpo" id="cuerpofilled-in-box5">
                                 <label for="cuerpofilled-in-box5">Precio unitario</label>
                             </p>
 
                             <p>
-                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box6">
+                                <input value="col_5" name="checksDetalle_ColumnaCantidad" type="checkbox" class="filled-in checksCuerpo" id="cuerpofilled-in-box6">
                                 <label for="cuerpofilled-in-box6">Cantidad</label>
                             </p>
 
                             <p>
-                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box7">
+                                <input value="col_6" name="checksDetalle_ColumnaImpuesto" type="checkbox" class="filled-in checksCuerpo" id="cuerpofilled-in-box7">
                                 <label for="cuerpofilled-in-box7">Impuesto</label>
                             </p>
 
                             <p>
-                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box8">
-                                <label for="cuerpofilled-in-box8">Total individual</label>
+                                <input value="col_7" name="checksDetalle_ColumnaPrecioTotal" type="checkbox" class="filled-in checksCuerpo" id="cuerpofilled-in-box8">
+                                <label for="cuerpofilled-in-box8">Total</label>
                             </p>
 
                         </div>
@@ -425,17 +422,17 @@
                         <div class="listaCecksModals">
                             <p>Mostrar los siguientes totales:</p>
                             <p>
-                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box9">
+                                <input name="checksDetalle_impuesto" value="impuesto" type="checkbox" class="filled-in checksCuerpo" id="cuerpofilled-in-box9">
                                 <label for="cuerpofilled-in-box9">Impuesto</label>
                             </p>
 
                             <p>
-                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box10">
+                                <input name="checksDetalle_descuento" value="descuento" type="checkbox" class="filled-in checksCuerpo" id="cuerpofilled-in-box10">
                                 <label for="cuerpofilled-in-box10">Descuento</label>
                             </p>
 
                             <p>
-                                <input type="checkbox" class="filled-in" id="cuerpofilled-in-box11">
+                                <input name="checksDetalle_total" value="total" type="checkbox" class="filled-in checksCuerpo" id="cuerpofilled-in-box11">
                                 <label for="cuerpofilled-in-box11">Tolal</label>
                             </p>
                         </div>
@@ -692,6 +689,17 @@ function cargarDieseno(idPlantilla){
             var colorBarra = $('#modalCuerpo .colorBarra').val();
             $('#barra2').css("background", colorBarra);
 
+            $('.celdaColumna').each(function () {
+                $(this).hide();
+            })
+
+            var seleccionados = $('.checksCuerpo:checked');
+            if (seleccionados.length > 0) {
+                seleccionados.each(function () {
+                    $('#cuerpoDocumento .' + $(this).val()).show();
+                });
+            }
+
         }
         
 
@@ -852,6 +860,45 @@ function actualizarModalDetalle(plantilla){
     $('#modalCuerpo .colorFondo').val(plantilla['colorDetalle']);
     $('#modalCuerpo .colorLetra').val(plantilla['colorLetraDetalle']);
     $('#modalCuerpo .colorBarra').val(plantilla['colorBarraHorizontal2']);
+
+
+    if (plantilla['mostrarColumnaItem'] == 1) {
+        $("#modalCuerpo input[value='col_1']").prop("checked", true );
+    } else{
+        $("#modalCuerpo input[value='col_1']").prop("checked", false );
+    }
+
+    if (plantilla['mostrarColumnaNombre'] == 1) {
+        $("#modalCuerpo input[value='col_2']").prop("checked", true );
+    } else{
+        $("#modalCuerpo input[value='col_2']").prop("checked", false );
+    }
+
+    if (plantilla['mostrarColumnaDescripcion'] == 1) {
+        $("#modalCuerpo input[value='col_3']").prop("checked", true );
+    } else{
+        $("#modalCuerpo input[value='col_3']").prop("checked", false );
+    }
+    if (plantilla['mostrarColumnaPrecio'] == 1) {
+        $("#modalCuerpo input[value='col_4']").prop("checked", true );
+    } else{
+        $("#modalCuerpo input[value='col_4']").prop("checked", false );
+    }
+    if (plantilla['mostrarColumnaCantidad'] == 1) {
+        $("#modalCuerpo input[value='col_5']").prop("checked", true );
+    } else{
+        $("#modalCuerpo input[value='col_5']").prop("checked", false );
+    }
+    if (plantilla['mostrarColumnaImpuesto'] == 1) {
+        $("#modalCuerpo input[value='col_6']").prop("checked", true );
+    } else{
+        $("#modalCuerpo input[value='col_6']").prop("checked", false );
+    }
+    if (plantilla['mostrarColumnaTotal'] == 1) {
+        $("#modalCuerpo input[value='col_7']").prop("checked", true );
+    } else{
+        $("#modalCuerpo input[value='col_7']").prop("checked", false );
+    }
     // if (plantilla['mostrarImpuesto'] == 1) {
     //     $("#modalEncabezado input[value='nombreEmpresa']").attr("checked", "checked");
     // };
@@ -890,8 +937,8 @@ function actualizarModalInformacion(plantilla){
 }
 
 function actualizarModalFooter(plantilla){
-    $('#modalFooter .colorFondo').val(plantilla['colorPie']);
-    $('#modalFooter .colorLetra').val(plantilla['colorLetraPie']);
+    $('#modalFooter .colorFondo').val(plantilla['colorFooter']);
+    $('#modalFooter .colorLetra').val(plantilla['colorLetraFooter']);
      if (plantilla['mostrarTelefono'] == 1) {
         $("#modalFooter input[value='telefono']").prop("checked", true );
     } else {
@@ -908,12 +955,12 @@ function actualizarModalFooter(plantilla){
     } else {
         $("#modalFooter input[value='correo']").prop("checked", false );
     }
-    if (plantilla['mostrarImagenPie'] == 1) {
+    if (plantilla['mostrarImagenFooter'] == 1) {
         $("#modalFooter input[value='logo']").prop("checked", true );
     } else {
         $("#modalFooter input[value='logo']").prop("checked", false );
     }
-    // if (plantilla['textoAdicionalPie'] == 1) {
+    // if (plantilla['textoAdicionalFooter'] == 1) {
     //     $("#modalEncabezado input[value='logo']").attr("checked", "checked");
     // };
 }
@@ -1049,15 +1096,24 @@ function obtenerDatosEncabezado(){
 }
 
 function obtenerDatosCuerpo(){
+    // alert('hola');
+    // alert($('#cuerpoDocumento thead .col_7').is(':visible'));
     var plantilla = {"colorDetalle":rgbToHex($('#hoja').css("background-color")),
     "colorLetraDetalle":rgbToHex($('#hoja').css("color")),
     "colorBarraHorizontal2":rgbToHex($('#barra2').css("background-color")),
     "tipoLetraDeralle":"",
+    'mostrarColumnaItem': $('#cuerpoDocumento thead .col_1').is(':visible'),
+    'mostrarColumnaNombre': $('#cuerpoDocumento thead .col_2').is(':visible'),
+    'mostrarColumnaDescripcion': $('#cuerpoDocumento thead .col_3').is(':visible'),
+    'mostrarColumnaPrecio': $('#cuerpoDocumento thead .col_4').is(':visible'),
+    'mostrarColumnaCantidad': $('#cuerpoDocumento thead .col_5').is(':visible'),
+    'mostrarColumnaImpuesto': $('#cuerpoDocumento thead .col_6').is(':visible'),
+    'mostrarColumnaTotal': $('#cuerpoDocumento thead .col_7').is(':visible'),
     "mostrarImpuesto":"0",
     "mostrarDescuento":"0",
     "mostrarTotal":"0"
     }
-        // alert('visible: ' + (plantilla['colorEncabezado']));
+    // alert('visible: ' + plantilla['mostrarColumnaImpuesto']);
     actualizarModalDetalle(plantilla);
 }
 
@@ -1079,14 +1135,14 @@ function obtenerDatosInformacion(){
 }
 function obtenerDatosFooter(){
     var plantilla = {
-    "colorPie":rgbToHex($('#footerCotizacion').css("background-color")),
-    "colorLetraPie":rgbToHex($('#footerCotizacion').css("color")),
-    "tipoLetraPie":"",
+    "colorFooter":rgbToHex($('#footerCotizacion').css("background-color")),
+    "colorLetraFooter":rgbToHex($('#footerCotizacion').css("color")),
+    "tipoLetraFooter":"",
     "mostrarTelefono":$('#footerCotizacion .box#telefono').is(':visible'),
     "mostrarSitioWeb":$('#footerCotizacion .box#sitio').is(':visible'),
     "mostrarCorreo":$('#footerCotizacion .box#correo').is(':visible'),
-    "mostrarImagenPie":$('#footerCotizacion .box#logo').is(':visible'),
-    "textoAdicionalPie":"0"
+    "mostrarImagenFooter":$('#footerCotizacion .box#logo').is(':visible'),
+    "textoAdicionalFooter":"0"
     };
     // alert('visible: ' + (plantilla['colorEncabezado']));
     actualizarModalFooter(plantilla);
