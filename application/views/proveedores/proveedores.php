@@ -261,6 +261,10 @@
                                             </button>
                                         </div>
                                     </div>
+                                    <div style="visibility:hidden; position:absolute">
+                                        <input id="cantidadContactos" name="cantidadContactos" type="text" value="0">
+                                        <input id="cantidadPresupuestos" name="cantidadPresupuestos" type="text" value="0">
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -282,8 +286,6 @@
     <a id="linkModalError" href="#transaccionIncorrecta" class="btn btn-default modal-trigger"></a>
 </div>
 <div style="visibility:hidden; position:absolute">
-    <input id="cantidadContactos" form="formPersona" name="cantidadContactos" type="text" value="0">
-    <input id="cantidadPresupuestos" form="formPersona" name="cantidadPresupuestos" type="text" value="0">
     <a id="linkContactosElimminar" href="#eliminarContacto" class="modal-trigger" data-fila-eliminar="1"
        title="<?= label('formProveedor_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>
 </div>
