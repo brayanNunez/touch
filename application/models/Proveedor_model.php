@@ -29,6 +29,25 @@ class Proveedor_model extends CI_Model
         }
     }
 
+    function paises()
+    {
+        try{
+            $this->db->trans_begin();
+
+            $paises = $this->db->get('pais');
+            if (!$paises) {
+                throw new Exception("Error en la BD");
+            }
+            $paises = $paises->result_array();
+
+            $this->db->trans_commit();
+            return $paises;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
     function insertar($data)
     {
         try{
@@ -153,6 +172,12 @@ class Proveedor_model extends CI_Model
                     throw new Exception("Error en la BD");
                 }
                 $row['tipos'] = $tipos->result_array();
+
+                $paises = $this->db->get('pais');
+                if (!$paises) {
+                    throw new Exception("Error en la BD");
+                }
+                $row['paises'] = $paises->result_array();
 
                 $archivos = $this->db->get_where('archivopersona', array('idPersona' => $id));
                 if (!$archivos) {

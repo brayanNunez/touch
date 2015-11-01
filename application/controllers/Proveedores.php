@@ -27,9 +27,11 @@ class Proveedores extends CI_Controller
     public function agregar()
     {
         $tipos = $this->Proveedor_model->tiposPresupuesto();
-        if ($tipos === false || $tipos === array()) {
+        $paises = $this->Proveedor_model->paises();
+        if ($tipos === false || $tipos === array() || $paises === false || $paises === array()) {
             echo "Error en la transacción";
         } else {
+            $data['paises'] = $paises;
             $data['tiposPresupuesto'] = $tipos;
             $this->load->view('layout/default/header');
             $this->load->view('layout/default/left-sidebar');

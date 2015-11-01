@@ -45,12 +45,14 @@
                                         <div class="input-field col s12">
                                             <select id="persona_nacionalidad" name="persona_nacionalidad">
                                                 <option value="0" selected disabled><?= label('formPersona_seleccioneUno'); ?></option>
-                                                <option value="1">Costa Rica</option>
-                                                <option value="2">Colombia</option>
-                                                <option value="3">USA</option>
-                                                <option value="4">Brasil</option>
-                                                <option value="5">Uruguay</option>
-                                                <option value="6">Chile</option>
+                                                <?php
+                                                if(isset($paises)) {
+                                                    foreach ($paises as $pais) { ?>
+                                                        <option value="<?= $pais['idPais']; ?>"><?= $pais['nombre']; ?></option>
+                                                <?php
+                                                    }
+                                                }
+                                                ?>
                                             </select>
                                             <label for="persona_nacionalidad"><?= label('formPersona_nacionalidad'); ?></label>
                                         </div>
