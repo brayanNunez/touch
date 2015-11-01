@@ -169,6 +169,8 @@
         
 
         var row = null;
+        var checkActivo = false;
+        var idEditar = 0;
         $(document).on('ready', function(){
 
 
@@ -183,7 +185,9 @@
           $(document).on( 'click', '.abrirEditar', function () {
               limpiarFormEditar();
 
-              var idEditar = $(this).data('id-editar');
+              idEditar = $(this).data('id-editar');
+              checkActivo = false;
+              checkActivo = $('.checkbox#'+idEditar).is(':checked');// se verifica el estado del check para actualizarlo luego de editar la fila ya que este check se quita solo al editar
               row = table.row($(this).parents('tr'));
               // editarFila('22', 'impuesto', 'descripcion');
               // alert(idEditar);
@@ -215,10 +219,13 @@
             var d = row.data();
             d[1]= nombre;
             d[2]= descripcion;
-            d[3]= valor;
+            d[3]= valor + '%';
             row.data(d);
             generarListasBotones();
             $('.modal-trigger').leanModal();
+            if (checkActivo) {
+              $('.checkbox#'+idEditar).prop('checked', true);
+            }
         }
 
         var contadorFilas = 0;
@@ -420,7 +427,7 @@ function validacionCorrectaEditar(){
                      }); 
 
               } else{
-                alert("<?=label('impuestos_error_codigosExisteEnBD'); ?>");
+                alert("<?=label('impuesto_error_nombreExisteEnBD'); ?>");
                 $("#form_impuestoEditar input[name*='impuesto_codigo']").each(function () {
                     if ($(this).val() == response) {
                         $(this).focus();
@@ -592,10 +599,10 @@ function validacionCorrectaEditar(){
        });
    });
    $(document).ready(function () {
-       $('.checkbox').click(function (event) {
-           verificarChecks();
-       });
-   });
+         $(document).on('click','.checkbox',function (event) {
+             verificarChecks();
+         });
+     });
    
    function verificarChecks(){
        

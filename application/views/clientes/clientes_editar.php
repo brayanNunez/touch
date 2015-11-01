@@ -280,6 +280,7 @@
                     </div>
                 </div>
                 <div id="tab-contactos-editar" class="card col s12">
+                    <input style="display:none" id="cantidadContactos" name="cantidadContactos" type="text" value="<?= count($resultado['contactos'])?>">    
                     <div id="contenedorContactos">
 
                     <?php 
@@ -439,7 +440,7 @@
 
 <div style="visibility:hidden; position:absolute">
 <!-- <div style="display:none"> -->
-    <input id="cantidadContactos" form="form_cliente" name="cantidadContactos" type="text" value="<?= count($resultado['contactos'])?>">                                          
+                                         
     <a id="linkContactosElimminar" href="#eliminarContacto-editar" class="modal-trigger" data-fila-eliminar="1" title="<?= label('formCliente_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>
 </div>
 

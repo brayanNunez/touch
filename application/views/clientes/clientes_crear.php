@@ -182,6 +182,7 @@
                                                 </div>
                                             </div>
                                             <div id="tab-contactos" class="card col s12">
+                                                <input style="display:none" id="cantidadContactos" name="cantidadContactos" type="text" value="0">    
                                                 <div id="contenedorContactos">
                                                     
                                                 </div>
@@ -278,7 +279,7 @@
 
 </section>
 <div style="visibility:hidden; position:absolute">
-    <input id="cantidadContactos" form="form_cliente" name="cantidadContactos" type="text" value="0">                                          
+                                          
     <a id="linkContactosElimminar" href="#eliminarContacto" class="modal-trigger" data-fila-eliminar="1" title="<?= label('formCliente_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>
 </div>
 <!-- END CONTENT-->

@@ -162,8 +162,7 @@
     <a id="linkModalErrorCargarDatos" href="#transaccionIncorrectaCargar" class="btn btn-default modal-trigger"></a>
     <a id="linkModalErrorEliminar" href="#transaccionIncorrectaEliminar" class="btn btn-default modal-trigger"></a>
 
-    <input id="cantidadSubfases" form="form_fases" name="cantidadSubfases" type="text" value="0">        
-    <input id="cantidadSubfasesEditar" form="form_fasesEditar" name="cantidadSubfases" type="text" value="0">                                          
+                                            
   <!--   <a id="linkModalGuardado" href="#transaccionCorrecta" class="btn btn-default modal-trigger"></a>
     <a id="linkModalError" href="#transaccionIncorrecta" class="btn btn-default modal-trigger"></a> -->
 </div>
@@ -180,6 +179,8 @@
         
 
         var row = null;
+        var checkActivo = false;
+        var idEditar = 0;
         $(document).on('ready', function(){
 
 
@@ -196,7 +197,9 @@
           var table = $('table').DataTable(); 
           $(document).on( 'click', '.abrirEditar', function () {
               limpiarFormEditar();
-              var idEditar = $(this).data('id-editar');
+              idEditar = $(this).data('id-editar');
+              checkActivo = false;
+              checkActivo = $('.checkbox#'+idEditar).is(':checked');// se verifica el estado del check para actualizarlo luego de editar la fila ya que este check se quita solo al editar
               row = table.row($(this).parents('tr'));
               // editarFila('22', 'fase', 'descripcion');
 
@@ -235,6 +238,9 @@
             row.data(d);
             generarListasBotones();
             $('.modal-trigger').leanModal();
+            if (checkActivo) {
+              $('.checkbox#'+idEditar).prop('checked', true);
+            }
         }
 
         var contadorFilas = 0;
@@ -864,6 +870,8 @@ function validacionCorrectaEditar(){
                 <div class="col s12">
                     <hr class="estiloSombra" />
                 </div>
+                <input style="display:none" id="cantidadSubfases" name="cantidadSubfases" type="text" value="0">        
+                  
                 <div id="contenedorFases">
                     
                 </div>
@@ -912,6 +920,7 @@ function validacionCorrectaEditar(){
                 <div class="col s12">
                     <hr class="estiloSombra"/>
                 </div>
+                <input style="display:none" id="cantidadSubfasesEditar" name="cantidadSubfases" type="text" value="0">
                 <div id="contenedorFasesEditar">
                     
                 </div>
