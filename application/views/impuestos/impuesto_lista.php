@@ -27,7 +27,7 @@
                                         <div class="row">
                                             <div class="col s12 m12 l12">
                                                 <div class="agregar_nuevo">
-                                                    <a href="#agregarImpuesto"
+                                                    <a href="#agregarImpuesto" id="botonNuevaImpuesto"
                                                        class="btn btn-default modal-trigger"><?= label('impuestoNuevo'); ?></a>
                                                 </div>
                                                 <table id="impuestos-tabla-lista"
@@ -48,35 +48,6 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-<<<<<<< HEAD
-                                                    <tr>
-                                                        <td style="text-align: center;">
-                                                            <input type="checkbox" class="filled-in checkbox"
-                                                                   id="checkbox_impuesto1"/>
-                                                            <label for="checkbox_impuesto1"></label>
-                                                        </td>
-                                                        <td>IV</td>
-                                                        <td>Impuesto de venta</td>
-                                                        <td>13%</td>
-                                                        <td>
-                                                            <ul id="dropdown-cliente1" class="dropdown-content">
-                                                                <li>
-                                                                    <a href="#Editar"
-                                                                       class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#eliminarImpuesto"
-                                                                       class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                                </li>
-                                                            </ul>
-                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                               href="#!" data-activates="dropdown-cliente1">
-                                                                <?= label('menuOpciones_seleccionar') ?><i
-                                                                    class="mdi-navigation-arrow-drop-down"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-=======
 
 
                                                     <?php
@@ -97,7 +68,7 @@
 
                                                                             <td><?= $fila['nombre']?></td>
                                                                             <td><?= $fila['descripcion']?></td>
-                                                                            <td><?= $fila['valor']?></td>
+                                                                            <td><?= $fila['valor']?>%</td>
 
                                                                             <td>
                                                                               <ul id="dropdown-impuesto<?= $contador ?>"
@@ -131,7 +102,6 @@
                                                         ?>
 
                                                     
->>>>>>> b71c030511837543a76d6b57952653cfc366f512
                                                     </tbody>
                                                 </table>
                                        <div class="tabla-conAgregar">
@@ -191,35 +161,307 @@
 
 <!-- END CONTENT-->
 
-<<<<<<< HEAD
-<script>
-    $(window).load(function () {
-        var marcados = $('.checkbox:checked').size();
-        if (marcados >= 1) {
-            var elems = document.getElementsByClassName('opciones-seleccionados');
-            var e;
-            for (e in elems) {
-                elems[e].style.visibility = 'visible';
-            }
-        } else {
-            var elems = document.getElementsByClassName('opciones-seleccionados');
-            var e;
-            for (e in elems) {
-                elems[e].style.visibility = 'hidden';
-            }
-        }
-        document.getElementById('checkbox-all').checked = false;
-    });
-    $(document).ready(function () {
-        var idEliminar = 0;
-       var filaEliminar = null;
-   
-       $(document).on('click','.confirmarEliminar', function () {
-           idEliminar = $(this).data('id-eliminar');
-           filaEliminar = $(this).parents('tr');
-           
-=======
 <script type="text/javascript">
+
+        var menuOpciones_editar = '<?= label('menuOpciones_editar'); ?>';
+        var menuOpciones_eliminar = '<?= label('menuOpciones_eliminar'); ?>';
+        var menuOpciones_seleccionar = '<?= label('menuOpciones_seleccionar'); ?>';
+        
+
+        var row = null;
+        $(document).on('ready', function(){
+
+
+          function limpiarFormEditar(){
+            $('#form_impuestoEditar')[0].reset();
+            var validator = $("#form_impuestoEditar").validate();
+            validator.resetForm();
+            $('#form_impuestoEditar #impuesto_nombre').focus();
+          }
+
+          var table = $('table').DataTable(); 
+          $(document).on( 'click', '.abrirEditar', function () {
+              limpiarFormEditar();
+
+              var idEditar = $(this).data('id-editar');
+              row = table.row($(this).parents('tr'));
+              // editarFila('22', 'impuesto', 'descripcion');
+              // alert(idEditar);
+
+              var url = '<?=base_url()?>impuesto/editar';
+              var method = 'POST'; 
+
+              $.ajax({
+                 type: method,
+                 url: url,
+                 data: {idEditar : idEditar},
+                 success: function(response)
+                 {
+                  
+                  var impuesto = $.parseJSON(response);
+                  $('#form_impuestoEditar #impuesto_nombreOriginal').val(impuesto['nombre']);
+                  $('#form_impuestoEditar #impuesto_nombre').val(impuesto['nombre']);
+                  $('#form_impuestoEditar #impuesto_descripcion').val(impuesto['descripcion']);
+                  $('#form_impuestoEditar #impuesto_valor').val(impuesto['valor']);
+                  $('#form_impuestoEditar #idImpuesto').val(idEditar);
+                  
+                  $('label').addClass('active');
+                 }
+               }); 
+          });
+
+        });
+        function editarFila(nombre, descripcion, valor){
+            var d = row.data();
+            d[1]= nombre;
+            d[2]= descripcion;
+            d[3]= valor;
+            row.data(d);
+            generarListasBotones();
+            $('.modal-trigger').leanModal();
+        }
+
+        var contadorFilas = 0;
+        <?php
+          if (isset($lista)) {
+          
+              if ($lista !== false) {
+                ?>
+                contadorFilas = <?=count($lista);?>;//actualiza el contador con los que vienen desde la bd
+                <?php
+              }
+            }
+
+          ?>
+         
+       function agregarFila(idEncriptado, nombre, descripcion, valor){
+            // $('tbody').empty();
+           
+
+            var check = '<td>' +
+                        '<div style="text-align: center;">'+
+                       '<input type="checkbox" class="filled-in checkbox" id="'+idEncriptado+'"/>' +
+                       '<label for="'+idEncriptado+'"></label>' +
+                       '</div>'+
+                    '</td>';
+            var boton = '<td>' +
+                            '<ul id="dropdown-impuesto'+ contadorFilas +'" class="dropdown-content">' +
+                                '<li>' +
+                                    '<a href="#editarImpuesto" data-id-editar="'+idEncriptado+'"' +
+                                       'class="-text modal-trigger abrirEditar">'+ menuOpciones_editar + '</a>' +
+                                '</li>' +
+                                '<li>' +
+                                     '<a href="#eliminarImpuesto"' +
+                                        'class="-text modal-trigger confirmarEliminar"' +
+                                        'data-id-eliminar="'+idEncriptado+'"  data-fila-eliminar="fila'+ contadorFilas +'">'+menuOpciones_eliminar+'</a>' +
+                                  '</li>' +
+                            '</ul>' +
+                            '<a class="boton-opciones btn-flat dropdown-button waves-effect white-text"' +
+                              'href="#!"' +
+                              'data-activates="dropdown-impuesto'+ contadorFilas +'">' +
+                           ''+ menuOpciones_seleccionar +'<i class="mdi-navigation-arrow-drop-down"></i>' +
+                           '</a>' +
+                        '</td>';
+
+            var nombre = '<td>'+nombre+'</td>';
+            var descripcion = '<td>'+ descripcion +'</td>';
+            var valor = '<td>'+valor+'%</td>';
+
+
+            // //initialiase dataTable and set config options
+            // var table = $('table').dataTable({
+            //     'fnCreatedRow': function (nRow, aData, iDataIndex) {
+            //         $(nRow).attr('id', 'myTable'); // or whatever you choose to set as the id
+            //     }
+            // });
+
+
+           $('table').dataTable().fnAddData([
+            check,
+            nombre,
+            descripcion,
+            valor,
+            boton ]);
+
+
+            generarListasBotones();
+            $('.modal-trigger').leanModal();
+      
+            contadorFilas++;
+            
+            };
+
+        function generarListasBotones(){
+          $('.boton-opciones').sideNav({
+          // menuWidth: 0, // Default is 240
+           edge: 'right', // Choose the horizontal origin
+              closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            }
+          );
+
+          $('.dropdown-button').dropdown({
+              inDuration: 300,
+              outDuration: 225,
+              constrain_width: true, // Does not change width of dropdown to that of the activator
+              hover: false, // Activate on hover
+              gutter: 0, // Spacing from edge
+              belowOrigin: true, // Displays dropdown below the button
+              alignment: 'left' // Displays dropdown with edge aligned to the left of button
+            }
+          );
+      }
+
+
+    var cerrarModal = false; 
+
+      $(document).on('ready', function(){
+      $('#guardarOtro').on('click', function(){
+        cerrarModal = false; 
+      });
+
+      $('#guardarCerrar').on('click', function(){
+        cerrarModal = true; 
+      });
+
+      $('#botonNuevaImpuesto').click(function(){
+        limpiarForm();
+       });
+
+
+      });
+      
+      
+    function limpiarForm(){
+      $('#form_impuesto')[0].reset();
+      var validator = $("#form_impuesto").validate();
+      validator.resetForm();
+      $('#form_impuesto #impuesto_nombre').focus();
+    }
+
+
+ function validacionCorrecta(){
+    $.ajax({
+      data: $('#form_impuesto').serialize(), 
+      url:   '<?=base_url()?>impuesto/verificarNombre',
+      type:  'post',
+      success:  function (response) {
+        if (response == '0') {
+          alert("<?=label('errorGuardar'); ?>");
+          $('#agregarImpuesto .modal-header a').click();
+
+        } else{
+          if (response == '2') {
+                var url = $('#form_impuesto').attr('action');
+                var method = $('#form_impuesto').attr('method'); 
+                $.ajax({
+                   type: method,
+                   url: url,
+                   data: $('#form_impuesto').serialize(), 
+                   success: function(response)
+                   {
+                     if (response == 0) {
+                           alert("<?=label('errorGuardar'); ?>");
+                           $('#agregarImpuesto .modal-header a').click(); 
+                       } else {
+                        
+                        alert("<?=label('impuestos_impuestoGuardadoCorrectamente'); ?>");
+                        agregarFila(response, $('#form_impuesto #impuesto_nombre').val(), $('#form_impuesto #impuesto_descripcion').val(), $('#form_impuesto #impuesto_valor').val());
+                        if (cerrarModal) {
+                          $('#agregarImpuesto .modal-header a').click(); 
+                        } else{
+                          limpiarForm();
+                        }
+                        
+                       }   
+                   }
+                 }); 
+
+          } else{
+            alert("<?=label('impuesto_error_nombreExisteEnBD'); ?>");
+            $('#form_impuesto #impuesto_nombre').focus();
+          };
+        };
+   }
+});
+}
+
+function validacionCorrectaEditar(){
+    if ($('#form_impuestoEditar #impuesto_nombreOriginal').val() != $('#form_impuestoEditar #impuesto_nombre').val()) {
+        $.ajax({
+          data: $('#form_impuestoEditar').serialize(), 
+          url:   '<?=base_url()?>impuesto/verificarNombre', 
+          type:  'post',
+          success:  function (response) {
+            if (response == '0') {
+              alert("<?=label('errorGuardar'); ?>");
+              $('#agregarImpuesto .modal-header a').click();
+
+            } else{
+              if (response == '2') {
+                    var url = $('#form_impuestoEditar').attr('action');
+                    var method = $('#form_impuestoEditar').attr('method'); 
+                    $.ajax({
+                       type: method,
+                       url: url,
+                       data: $('#form_impuestoEditar').serialize(), 
+                       success: function(response)
+                       {
+                         if (response == 0) {
+                               alert("<?=label('errorEditar'); ?>");
+                               $('#editarimpuesto .modal-header a').click(); 
+                           } else {
+                            
+                            alert("<?=label('impuestos_impuestoEditadoCorrectamente'); ?>");
+                            editarFila($('#form_impuestoEditar #impuesto_nombre').val(), $('#form_impuestoEditar #impuesto_descripcion').val(), $('#form_impuestoEditar #impuesto_valor').val());
+                            $('#editarImpuesto .modal-header a').click(); 
+                            
+                           }   
+                       }
+                     }); 
+
+              } else{
+                alert("<?=label('impuestos_error_codigosExisteEnBD'); ?>");
+                $("#form_impuestoEditar input[name*='impuesto_codigo']").each(function () {
+                    if ($(this).val() == response) {
+                        $(this).focus();
+                    }
+                });
+              };
+            };
+       }
+   });
+
+    } else{
+
+        var url = $('#form_impuestoEditar').attr('action');
+        var method = $('#form_impuestoEditar').attr('method'); 
+        $.ajax({
+           type: method,
+           url: url,
+           data: $('#form_impuestoEditar').serialize(), 
+           success: function(response)
+           {
+             if (response == 0) {
+                   alert("<?=label('errorEditar'); ?>");
+                   $('#editarImpuesto .modal-header a').click(); 
+               } else {
+                
+                alert("<?=label('impuestos_impuestoEditadoCorrectamente'); ?>");
+                editarFila($('#form_impuestoEditar #impuesto_nombre').val(), $('#form_impuestoEditar #impuesto_descripcion').val(), $('#form_impuestoEditar #impuesto_valor').val());
+                $('#editarImpuesto .modal-header a').click(); 
+                
+               }   
+           }
+         }); 
+
+
+    };
+
+ 
+}
+
+
+
    $(document).on("ready", function () { 
    
        <?php
@@ -235,36 +477,27 @@
          
    
        var idEliminar = 0;
-       var fila = 0;
+       var filaEliminar = null;
    
-       $('.confirmarEliminar').on('click', function () {
+       $(document).on('click','.confirmarEliminar', function () {
            idEliminar = $(this).data('id-eliminar');
-           fila = $(this).data('fila-eliminar');
->>>>>>> b71c030511837543a76d6b57952653cfc366f512
+           filaEliminar = $(this).parents('tr');
+           
        });
    
         $('#eliminarImpuesto #botonEliminar').on('click', function () {
            event.preventDefault();
            $.ajax({
                   data: {idEliminar : idEliminar},
-<<<<<<< HEAD
                   url:   '<?=base_url()?>impuesto/eliminar',
-=======
-                  url:   '<?=base_url()?>impuestos/eliminar',
->>>>>>> b71c030511837543a76d6b57952653cfc366f512
                   type:  'post',
                   // beforeSend: function () {
                   //         $("#resultado").html("Procesando, espere por favor...");
                   // },
                   success:  function (response) {
                    if (response==1) {
-<<<<<<< HEAD
                        filaEliminar.fadeOut(function () {
                        filaEliminar.remove();
-=======
-                       $('#' + fila).fadeOut(function () {
-                       $('#' + fila).remove();
->>>>>>> b71c030511837543a76d6b57952653cfc366f512
                        verificarChecks();
                        });
                        
@@ -273,105 +506,6 @@
                    };
                }
            });
-<<<<<<< HEAD
-        });
-    });
-
-    $(document).ready(function () {
-       $('#eliminarElementosSeleccionados #botonEliminar').on("click", function (event) {
-           var tb = $(this).attr('title');
-           var sel = false;
-           var ch = $('#' + tb).find('tbody input[type=checkbox]');
-           var marcados = $('.checkbox:checked').not('#checkbox-all').size();
-           var contadorErrores = 0;
-           var contadorTotal = 0;
-           ch.each(function () {
-               var $this = $(this);
-               if ($this.is(':checked')) {
-                   sel = true;
-                    var fila = $this.parents('tr');
-                   // var idEliminar = $this.parents('tr').attr('data-idElemento');
-                   var idEliminar = $this.attr('id');
-                   $.ajax({
-                          data: {idEliminar : idEliminar},
-                          url:   '<?=base_url()?>impuesto/eliminar',
-                          type:  'post',
-                          success:  function (response) {
-
-                           contadorTotal++;
-                           if (response==1) {
-                              fila.fadeOut(function () {
-                               fila.remove();
-                               verificarChecks();
-                               });
-                           } else{ 
-                            contadorErrores++;
-                           };
-                            if (contadorTotal == marcados) {
-                                if (contadorErrores != 0) {
-                                    $('#linkModalErrorEliminar').click();
-                                } 
-                              
-                            };
-                       }
-                   });
-  
-               }
-           });
-            
-           return false;
-   
-       });
-   });
-
-    $(document).ready(function () {
-         $(document).on('click','.checkbox',function (event) {
-             verificarChecks();
-         });
-     });
-    
-    $(document).ready( function () {
-        $('#impuestos-tabla-lista').dataTable( {
-            'aoColumnDefs': [{
-                'bSortable': false,
-                'aTargets': [0, -1] /* 1st one, start by the right */
-            }]
-        });
-        $('table#impuestos-tabla-lista thead th:first').removeClass('sorting_asc').addClass('sorting_disabled');
-        $('table#impuestos-tabla-lista thead th:nth-child(2)').removeClass('sorting').addClass('sorting_asc');
-    });
-    $(document).ready(function () {
-        $('#checkbox-all').click(function (event) {
-            var $this = $(this);
-            var tableBody = $('#impuestos-tabla-lista').find('tbody tr[role=row] input[type=checkbox]');
-            tableBody.each(function() {
-                var check = $(this);
-                if ($this.is(':checked')) {
-                    check.prop('checked', true);
-                } else {
-                    check.prop('checked', false);
-                }
-            });
-        });
-    });
-    $(document).ready(function () {
-        $('.checkbox').click(function (event) {
-            var marcados = $('.checkbox:checked').size();
-            if (marcados >= 1) {
-                var elems = document.getElementsByClassName('opciones-seleccionados');
-                var e;
-                for (e in elems) {
-                    elems[e].style.visibility = 'visible';
-                }
-            } else {
-                var elems = document.getElementsByClassName('opciones-seleccionados');
-                var e;
-                for (e in elems) {
-                    elems[e].style.visibility = 'hidden';
-                }
-            }
-=======
->>>>>>> b71c030511837543a76d6b57952653cfc366f512
         });
    
    
@@ -391,50 +525,53 @@
        $('table#impuestos-tabla-lista thead th:first').removeClass('sorting_asc').addClass('sorting_disabled');
        $('table#impuestos-tabla-lista thead th:nth-child(2)').removeClass('sorting').addClass('sorting_asc');
    });
-   $(document).ready(function () {
-       $('#eliminarElementosSeleccionados #botonEliminar').on("click", function (event) {
-           var tb = $(this).attr('title');
-           var sel = false;
-           var ch = $('#' + tb).find('tbody input[type=checkbox]');
-           var marcados = $('.checkbox:checked').not('#checkbox-all').size();
-           var contador = 0;
 
-           ch.each(function () {
-               var $this = $(this);
-               if ($this.is(':checked')) {
-                   sel = true;
-                   var fila = $this.parents('tr');
-                   var idEliminar = $this.parents('tr').attr('data-idElemento');
-   
-                   $.ajax({
-                          data: {idEliminar : idEliminar},
-                          url:   '<?=base_url()?>impuestos/eliminar',
-                          type:  'post',
-                          // beforeSend: function () {
-                          //         $("#resultado").html("Procesando, espere por favor...");
-                          // },
-                          success:  function (response) {
-                           if (response==1) {
-                              fila.fadeOut(function () {
-                               fila.remove();
-                               verificarChecks();
-                               });
-                           } else{ 
-                            contador++;
-                            if (contador == marcados) {
-                              $('#linkModalErrorEliminar').click();
-                            };
-                           };
-                       }
-                   });
-  
-               }
-           });
-            
-           return false;
-   
+  $(document).ready(function () {
+   $('#eliminarElementosSeleccionados #botonEliminar').on("click", function (event) {
+       var tb = $(this).attr('title');
+       var sel = false;
+       var ch = $('#' + tb).find('tbody input[type=checkbox]');
+       var marcados = $('.checkbox:checked').not('#checkbox-all').size();
+       var contadorErrores = 0;
+       var contadorTotal = 0;
+       ch.each(function () {
+           var $this = $(this);
+           if ($this.is(':checked')) {
+               sel = true;
+                var fila = $this.parents('tr');
+               // var idEliminar = $this.parents('tr').attr('data-idElemento');
+               var idEliminar = $this.attr('id');
+               $.ajax({
+                      data: {idEliminar : idEliminar},
+                      url:   '<?=base_url()?>impuesto/eliminar',
+                      type:  'post',
+                      success:  function (response) {
+
+                       contadorTotal++;
+                       if (response==1) {
+                          fila.fadeOut(function () {
+                           fila.remove();
+                           verificarChecks();
+                           });
+                       } else{ 
+                        contadorErrores++;
+                       };
+                        if (contadorTotal == marcados) {
+                            if (contadorErrores != 0) {
+                                $('#linkModalErrorEliminar').click();
+                            } 
+                          
+                        };
+                   }
+               });
+
+           }
        });
+        
+       return false;
+
    });
+});
 
     $(window).load(function () {
         verificarChecks();
@@ -663,86 +800,76 @@
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
-    <div class="modal-content">
+    <form id="form_impuesto" action="<?=base_url()?>Impuesto/insertar" method="post">
+        <div class="modal-content">
+            <div class="row">
+                <div class="input-field col s12 m4">
+                    <input id="impuesto_nombre" name="impuesto_nombre" type="text">
+                    <label for="impuesto_nombre"><?= label('formImpuesto_nombre'); ?></label>
+                </div>
 
-        <div class="input-field col s12">
-            <input id="impuesto_nombre" type="text">
-            <label for="impuesto_nombre"><?= label('formImpuesto_nombre'); ?></label>
+                <div class="input-field col s12 m4"> 
+                    <input id="impuesto_descripcion" name="impuesto_descripcion"  type="text">
+                    <label for="impuesto_descripcion"><?= label('formImpuesto_descripcion'); ?></label>
+                </div>
+
+                <div class="input-field col s12 m4">
+                    <input id="impuesto_valor" name="impuesto_valor" type="number">
+                    <label for="impuesto_valor"><?= label('formImpuesto_valor'); ?></label>
+                </div>
+                
+            </div>
+            <div class="row">
+                <a href="#" style="font-size: larger;float: left;text-decoration: underline;"
+                   class="modal-action modal-close"><?= label('cancelar'); ?>
+                </a>
+                <a onclick="$(this).closest('form').submit()" id="guardarCerrar" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                    <?= label('guardarCerrar'); ?>
+                </a>
+                <a onclick="$(this).closest('form').submit()" id="guardarOtro" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                    <?= label('guardarAgregarOtro'); ?>
+                </a>
+            </div>
         </div>
-
-        <div class="input-field col s12">
-            <input id="impuesto_descripcion" type="text">
-            <label for="impuesto_descripcion"><?= label('formImpuesto_descripcion'); ?></label>
-        </div>
-
-        <div class="input-field col s12">
-            <input id="impuesto_valor" type="number">
-            <label for="impuesto_valor"><?= label('formImpuesto_valor'); ?></label>
-        </div>
-
-    </div>
-    <div class="modal-footer">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
-    </div>
+    </form>
 </div>
 <div id="editarImpuesto" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
-    <div class="modal-content">
+    <form id="form_impuestoEditar" action="<?=base_url()?>Impuesto/modificar" method="post">
+        <div class="modal-content">
+            <div class="row">
+                <div class="input-field col s12 m4">
+                    <input style="display:none" id="idImpuesto" name="idImpuesto" type="text">
+                    <input style="display:none" id="impuesto_nombreOriginal" name="impuesto_nombreOriginal" type="text">
+                    <input id="impuesto_nombre" name="impuesto_nombre" type="text">
+                    <label for="impuesto_nombre"><?= label('formImpuesto_nombre'); ?></label>
+                </div>
 
-        <div class="input-field col s12">
-            <input id="impuesto_nombre" type="text" value="IV">
-            <label for="impuesto_nombre"><?= label('formImpuesto_nombre'); ?></label>
+                <div class="input-field col s12 m4"> 
+                    <input id="impuesto_descripcion" name="impuesto_descripcion"  type="text">
+                    <label for="impuesto_descripcion"><?= label('formImpuesto_descripcion'); ?></label>
+                </div>
+
+                <div class="input-field col s12 m4">
+                    <input id="impuesto_valor" name="impuesto_valor" type="number">
+                    <label for="impuesto_valor"><?= label('formImpuesto_valor'); ?></label>
+                </div>
+                
+            </div>
+            <div class="row">
+              <a href="#" style="font-size: larger;float: left;text-decoration: underline;"
+                 class="modal-action modal-close"><?= label('cancelar'); ?>
+              </a>
+              <a onclick="$(this).closest('form').submit()" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                  <?= label('impuesto_guardarCambios'); ?>
+              </a>
+          </div>
         </div>
-
-        <div class="input-field col s12">
-            <input id="impuesto_descripcion" type="text" value="Impuesto de venta">
-            <label for="impuesto_descripcion"><?= label('formImpuesto_descripcion'); ?></label>
-        </div>
-
-        <div class="input-field col s12">
-            <input id="impuesto_valor" type="number" value="13">
-            <label for="impuesto_valor"><?= label('formImpuesto_valor'); ?></label>
-        </div>
-
-    </div>
-    <div class="modal-footer">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
-    </div>
+    </form>
 </div>
-<<<<<<< HEAD
-<div id="eliminarImpuesto" class="modal">
-    <div class="modal-header">
-        <p><?= label('nombreSistema'); ?></p>
-        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
-    </div>
-    <div class="modal-content">
-        <p><?= label('confirmarEliminarImpuesto'); ?></p>
-    </div>
-    <div id="botonEliminar" class="modal-footer black-text">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
-    </div>
-</div>
-<div id="eliminarElementosSeleccionados" class="modal">
-    <div class="modal-header">
-        <p><?= label('nombreSistema'); ?></p>
-        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
-    </div>
-    <div class="modal-content">
-        <p><?= label('clientes_archivosSeleccionadosEliminar'); ?></p>
-    </div>
-    <div class="modal-footer black-text">
-        <div id="botonEliminar" title="impuestos-tabla-lista">
-            <a href="#"
-               class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
-        </div>
-    </div>
-</div>
-<!--Fin lista modals -->
-=======
 
 
 <!-- Fin lista modals -->
->>>>>>> b71c030511837543a76d6b57952653cfc366f512

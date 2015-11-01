@@ -84,25 +84,25 @@
                                                                 
 
                                                                 <td>
-                                                                <ul id="dropdown-gasto<?= $contador ?>"
-                                                                  class="dropdown-content">
-                                                                    <li>
-                                                                        <a href="#editarGasto" data-id-editar="<?= $idEncriptado ?>"
-                                                                           class="-text modal-trigger abrirEditar"><?= label('menuOpciones_editar') ?></a>
-                                                                    </li>
-                                                                    <li>
-                                                                         <a href="#eliminarGasto"
-                                                                            class="-text modal-trigger confirmarEliminar"
-                                                                            data-id-eliminar="<?= $idEncriptado ?>"  data-fila-eliminar="fila<?= $contador?>"><?= label('menuOpciones_eliminar') ?></a>
+                                                                  <ul id="dropdown-gasto<?= $contador ?>"
+                                                                    class="dropdown-content">
+                                                                      <li>
+                                                                          <a href="#editarGasto" data-id-editar="<?= $idEncriptado ?>"
+                                                                             class="-text modal-trigger abrirEditar"><?= label('menuOpciones_editar') ?></a>
                                                                       </li>
-                                                                </ul>
-                                                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                                  href="#!"
-                                                                  data-activates="dropdown-gasto<?= $contador++ ?>">
-                                                               <?= label('menuOpciones_seleccionar') ?><i
-                                                                  class="mdi-navigation-arrow-drop-down"></i>
-                                                               </a>
-                                                            </td>
+                                                                      <li>
+                                                                           <a href="#eliminarGasto"
+                                                                              class="-text modal-trigger confirmarEliminar"
+                                                                              data-id-eliminar="<?= $idEncriptado ?>"  data-fila-eliminar="fila<?= $contador?>"><?= label('menuOpciones_eliminar') ?></a>
+                                                                        </li>
+                                                                  </ul>
+                                                                  <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
+                                                                    href="#!"
+                                                                    data-activates="dropdown-gasto<?= $contador++ ?>">
+                                                                 <?= label('menuOpciones_seleccionar') ?><i
+                                                                    class="mdi-navigation-arrow-drop-down"></i>
+                                                                 </a>
+                                                              </td>
                                                             </tr>
 
                                                                 <?php
