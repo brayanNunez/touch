@@ -101,11 +101,11 @@
                                                            <ul id="dropdown-cliente<?= $contador ?>"
                                                               class="dropdown-content">
                                                               <li>
-                                                                 <a href="<?= base_url(); ?>clientes/editar"
+                                                                 <a href="<?= base_url(); ?>clientes/editar/<?= $idEncriptado?>"
                                                                     class="-text"><?= label('menuOpciones_ver') ?></a>
                                                              </li>
                                                               <li>
-                                                                 <a href="<?= base_url() ?>clientes/editar/<?= $idEncriptado ?>"
+                                                                 <a href="<?= base_url() ?>clientes/editar/<?= $idEncriptado?>/#tab-edicion"
                                                                     class="-text"><?= label('menuOpciones_editar') ?></a>
                                                               </li>
                                                               <li>
