@@ -176,6 +176,10 @@ $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente
     $lang['tablaImpuesto_valor'] = 'Valor';
     $lang['impuestoNuevo'] = 'Agregar nuevo';
     $lang['impuesto'] = 'Impuestos';
+    $lang['impuestos_impuestoGuardadoCorrectamente'] = 'El impuesto ha sido creada correctamente.';
+    $lang['impuestos_impuestoEditadoCorrectamente'] = 'El impuesto ha sido editada correctamente.';
+    $lang['impuesto_error_nombreExisteEnBD'] = 'El nombre del impuesto ya existe, por favor agregue un nombre diferente';
+    $lang['impuesto_guardarCambios'] = 'Guardar cambios';
     
 //tabla de unidades
     $lang['unidadNueva'] = 'Agregar nuevo';

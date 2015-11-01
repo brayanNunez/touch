@@ -145,7 +145,7 @@ class Fase_model extends CI_Model
        
     }
 
-        function cargar($id)
+    function cargar($id)
     {
         try {
             $this->db->trans_begin();

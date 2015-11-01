@@ -2,6 +2,36 @@
 
         // $("button[type= 'submit']").on("click", function(){
              //event.preventDefault();
+
+
+
+
+             var reglasImpuesto =  {
+                    impuesto_nombre: {required: true, maxlength: 45},
+                    impuesto_descripcion: {required: true, maxlength: 45},
+                    impuesto_valor: {required: true, maxlength: 45}
+
+                };
+
+            $('#form_impuesto').validate({
+                rules: reglasImpuesto,
+                 errorElement: 'div',
+                 submitHandler: function(form) {
+                    validacionCorrecta();
+                  }
+            });
+
+            $('#form_impuestoEditar').validate({
+                rules: reglasImpuesto,
+                 errorElement: 'div',
+                 submitHandler: function(form) {
+                    validacionCorrectaEditar();
+                  }
+            });
+
+
+
+
              var cliente_contactoNombre = {required: true, maxlength: 45};
              var cliente_contactoApellido1 = {required: true, maxlength: 45};
              var cliente_contactoApellido2 = {required: true, maxlength: 45};
