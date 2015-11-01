@@ -124,8 +124,8 @@ class Empleados extends CI_Controller
     public function existeIdentificacion()
     {
         $data['identificacion'] = $_POST['empleado_id'];
-        $data['idEmpresa'] = 1;//obtener este dato  de la variable de Sesión
-        //la identificación se puede repetir solo en diferentes empresas
+        $sessionActual = $this->session->userdata('logged_in');
+        $data['idEmpresa'] =  $sessionActual['idEmpresa'];
         $resultado = $this->Empleado_model->existeIdentificacion($data);
         if ($resultado === false) {
             //Error en la transacción

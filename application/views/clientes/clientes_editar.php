@@ -446,6 +446,74 @@
 
 
 <script>
+
+    var miIdActual = "<?php if (isset($resultado)) {echo $resultado['identificacion'];} ?>";
+    function validacionCorrecta(){
+
+        var idNuevo = $('#cliente_id').val();
+        if (miIdActual == idNuevo) {
+
+            var url = $('form').attr('action');
+            var method = $('form').attr('method'); 
+            $.ajax({
+                   type: method,
+                   url: url,
+                   data: $('form').serialize(), 
+                   success: function(response)
+                   {
+                       if (response == 0) {
+                            $('#transaccionIncorrecta').openModal();
+                       } else {
+                            
+                            $('#transaccionCorrecta').openModal();
+                       }
+                   }
+                 });
+        } else {
+
+                $.ajax({
+                       data: {cliente_id : idNuevo},
+                       url:   '<?=base_url()?>clientes/existeIdentificacion',
+                       type:  'post',
+                       success:  function (response) {
+                        switch(response){
+                            case '0':
+                                $('#transaccionIncorrecta').openModal();
+                            break;
+                            case '1':
+                                alert('<?= label("clienteIdentificacionExistente"); ?>');
+                                $('#cliente_id').focus();
+                            break;
+                            case '2':
+
+                                var url = $('form').attr('action');
+                                var method = $('form').attr('method'); 
+                                $.ajax({
+                                       type: method,
+                                       url: url,
+                                       data: $('form').serialize(), 
+                                       success: function(response)
+                                       {
+                                           if (response == 0) {
+                                                $('#transaccionIncorrecta').openModal();
+                                           } else {
+                                                $('#transaccionCorrecta').openModal();
+                                                miIdActual = idNuevo;
+                                           }
+                                       }
+                                     });
+
+                            break;
+                        }
+                    }
+                });
+
+             };
+
+    }
+
+
+
     $(window).load(function () {
         var marcados = $('.checkbox-edicion:checked').size();
         var elems = document.getElementsByClassName('opciones-seleccionados');
@@ -638,6 +706,32 @@
         <p><?= label('confirmarEliminarContacto'); ?></p>
     </div>
     <div id="botonEliminar" class="modal-footer black-text">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+
+
+<div id="transaccionCorrecta" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a href="" class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('clienteEditadoCorrectamente'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="<?= base_url() ?>clientes" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="transaccionIncorrecta" class="modal">
+    <div  class="modal-header headerTransaccionIncorrecta">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('errorEditar'); ?></p>
+    </div>
+    <div class="modal-footer">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>

@@ -66,8 +66,13 @@ $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos selec
     $lang['empleadoEditadoCorrectamente'] = 'El empleado ha sido editado correctamente.';
     $lang['empleadoIdentificacionExistente'] = 'La identificación indicada ya existe.';
 
+    $lang['clienteGuardadoCorrectamente'] = 'El cliente ha sido creado correctamente.';
+    $lang['clienteEditadoCorrectamente'] = 'El cliente ha sido editado correctamente.';
+    $lang['clienteIdentificacionExistente'] = 'La identificación indicada ya existe.';
+
+
     $lang['usuarioGuardadoCorrectamente'] = 'El usuario ha sido creado correctamente.';
-$lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente.';
+    $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente.';
     $lang['usuarioErrorTamanoArchivo'] = 'El tamaño del archivo es superior a lo permitido.';
     $lang['usuarioErrorTipoArchivo'] = 'El tipo de archivo seleccionado no es permitido.';
     $lang['usuarioErrorCambioContrasena'] = 'Ha ocurrido un error al intentar hacer el cambio de contraseña';

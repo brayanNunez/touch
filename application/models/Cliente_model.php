@@ -16,7 +16,7 @@ class Cliente_model extends CI_Model
     {
         try {
             $this->db->trans_begin();
-            $query = $this->db->get_where('empleado', array('identificacion' => $data['identificacion'],  'eliminado' => 0, 'idEmpresa' => $data['idEmpresa']));
+            $query = $this->db->get_where('cliente', array('identificacion' => $data['identificacion'],  'eliminado' => 0, 'idEmpresa' => $data['idEmpresa']));
             if (!$query) throw new Exception("Error en la BD");   
             $existe = 0;
             if ($query->num_rows() > 0) {

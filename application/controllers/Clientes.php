@@ -411,6 +411,30 @@ class Clientes extends CI_Controller
         }
     }
 
+    //Metodo es llamado mediante ajax
+    public function existeIdentificacion()
+    {
+        $data['identificacion'] = $_POST['cliente_id'];
+        $sessionActual = $this->session->userdata('logged_in');
+        $data['idEmpresa'] =  $sessionActual['idEmpresa'];
+        $resultado = $this->Cliente_model->existeIdentificacion($data);
+        if ($resultado === false) {
+            //Error en la transacción
+            echo 0; 
+        } else {
+            if ($resultado == 1) {
+                //Ya existe esta identificacion
+                echo 1;
+            } else {
+                //Identificacion Valida
+                echo 2;
+            }
+        }
+
+    }
+
+
+
 }
 
 ?>

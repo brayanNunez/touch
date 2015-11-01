@@ -285,6 +285,50 @@
 <!-- END CONTENT-->
 
 <script>
+
+    function validacionCorrecta(){
+
+        $.ajax({
+           data: {cliente_id :  $('#cliente_id').val()},
+           url:   '<?=base_url()?>clientes/existeIdentificacion',
+           type:  'post',
+           success:  function (response) {
+            switch(response){
+                case '0':
+                    $('#transaccionIncorrecta').openModal();//error al ir a verificar identificación
+                break;
+                case '1':
+                    alert('<?= label("clienteIdentificacionExistente"); ?>');
+                    $('#cliente_id').focus();
+                break;
+                case '2':
+                    var url = $('form').attr('action');
+                    var method = $('form').attr('method'); 
+                    $.ajax({
+                           type: method,
+                           url: url,
+                           data: $('form').serialize(), 
+                           success: function(response)
+                           {
+                               if (response == 0) {
+                                   $('#transaccionIncorrecta').openModal();
+                               } else {
+                                    $('#transaccionCorrecta').openModal();
+                                    $('form')[0].reset();
+                               }
+                           }
+                         });
+
+                    break;
+                }
+            }
+        });
+    }
+
+
+
+
+
     $(window).load(function () {
         var marcados = $('.checkbox:checked').size();
         if (marcados >= 1) {
@@ -594,19 +638,30 @@
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
-<!-- <div id="eliminarElementosSeleccionados" class="modal">
+
+<div id="transaccionCorrecta" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <p><?= label('clientes_archivosSeleccionadosEliminar'); ?></p>
+        <p><?= label('clienteGuardadoCorrectamente'); ?></p>
     </div>
-    <div class="modal-footer black-text">
-        <div id="botonElimnar" title="cliente1-contactos">
-            <a href="#"
-               class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
-        </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
-</div> -->
+</div>
+
+<div id="transaccionIncorrecta" class="modal">
+    <div  class="modal-header headerTransaccionIncorrecta">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('errorGuardar'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
 <!-- Fin lista modals-->
