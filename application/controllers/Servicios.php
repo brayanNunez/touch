@@ -96,6 +96,7 @@ class Servicios extends CI_Controller
     }
 
     public function modificar($id) {
+        $data['impuestos'] = $this->input->post('servicio_impuestos');
         $data['datos'] = array(
             'codigo' => $this->input->post('servicio_codigo'),
             'nombre' => $this->input->post('servicio_nombre'),

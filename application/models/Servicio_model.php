@@ -41,18 +41,19 @@ class Servicio_model extends CI_Model
             if (!$query) {
                 throw new Exception("Error en la BD");
             }
+            $insert_id = $this->db->insert_id();
 
-//            $impuestos = explode(",", $data['impuestos']);
-//            foreach ($impuestos as $impuesto) {
-//                $row = array(
-//                    'idServicio' => $insert_id,
-//                    'idImpuesto' => $impuesto
-//                );
-//                $query = $this->db->insert('impuestoServicio', $row);
-//                if (!$query) {
-//                    throw new Exception("Error en la BD");
-//                }
-//            }
+            $impuestos = explode(",", $data['impuestos']);
+            foreach ($impuestos as $impuesto) {
+                $row = array(
+                    'idServicio' => $insert_id,
+                    'idImpuesto' => $impuesto
+                );
+                $query = $this->db->insert('impuesto_servicio', $row);
+                if (!$query) {
+                    throw new Exception("Error en la BD");
+                }
+            }
 
             $this->db->trans_commit();
 
@@ -95,7 +96,15 @@ class Servicio_model extends CI_Model
             if ($query->num_rows() > 0) {
                 $array = $query->result_array();
                 $row = array_shift($array);//obtiene el primer elemento.. el [0] no sirve en el server
+
+                $this->db->select('idImpuesto');
+                $impuestos = $this->db->get_where('impuesto_servicio', array('idServicio' => $id));
+                if (!$impuestos) {
+                    throw new Exception("Error en la BD");
+                }
+                $row['impuestos'] = $impuestos->result_array();
             }
+
             $this->db->trans_commit();
             return $row;
         } catch (Exception $e) {
@@ -108,6 +117,8 @@ class Servicio_model extends CI_Model
     {
         try{
             $this->db->trans_begin();
+
+            print_r($data); exit();
 
             $this->db->where('idServicio', $data['id']);
             $query = $this->db->update('servicio', $data['datos']);

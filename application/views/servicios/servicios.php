@@ -280,27 +280,25 @@
 
 <script>
     $(document).ready(function () {
-        var gusto = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+
+        var impuestos = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
+            // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/vendedores.json'
             prefetch: {
-                url: '<?=base_url()?>Cotizacion/jsonGustos',
-                ttl: 1000,
-                filter: function (list) {
-                    return $.map(list, function (gusto) {
-                        return {name: gusto};
-                    });
-                }
+                url: '<?=base_url()?>Cotizacion/jsonImpuestos',
+                ttl: 1000
             }
         });
-        gusto.initialize();
+        impuestos.initialize();
 
         $('.tags_Impuestos > > input').tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
             typeaheadjs: {
-                name: 'gusto',
-                displayKey: 'name',
-                valueKey: 'name',
-                source: gusto.ttAdapter()
+                name: 'impuestos',
+                displayKey: 'text',
+                source: impuestos.ttAdapter()
             }
         });
 

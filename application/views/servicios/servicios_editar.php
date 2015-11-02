@@ -19,6 +19,7 @@
     $descripcion = '';
     $utilidad = '';
     $total = '';
+    $impuestos = '';
     if (isset($resultado)) {
         $idServicio = encryptIt($resultado['idServicio']);;
         $codigo = $resultado['codigo'];
@@ -26,6 +27,9 @@
         $descripcion = $resultado['descripcion'];
         $utilidad = $resultado['utilidad'];
         $total = $resultado['total'];
+        foreach($resultado['impuestos'] as $impuesto) {
+            $impuestos.= $impuesto['idImpuesto'].', ';
+        }
     }
     ?>
 
@@ -57,7 +61,8 @@
                                             <br>
                                             <div id="impuestosServicio" class="example tags_Impuestos">
                                                 <div class="bs-example">
-                                                    <input id="servicio_impuestos" name="servicio_impuestos" placeholder="<?= label('formProducto_anadirImpuesto'); ?>" type="text"/>
+                                                    <input id="servicio_impuestos" name="servicio_impuestos" value="<?= $impuestos; ?>"
+                                                           placeholder="<?= label('formProducto_anadirImpuesto'); ?>" type="text"/>
                                                 </div>
                                             </div>
                                             <br>
@@ -317,32 +322,32 @@
 
 <script>
     $(document).ready(function () {
-        var gusto = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+        var impuestos = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
+            // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/vendedores.json'
             prefetch: {
-                url: '<?=base_url()?>Cotizacion/jsonGustos',
-                ttl: 1000,
-                filter: function (list) {
-                    return $.map(list, function (gusto) {
-                        return {name: gusto};
-                    });
-                }
+                url: '<?=base_url()?>Cotizacion/jsonImpuestos',
+                ttl: 1000
             }
         });
-        gusto.initialize();
+        impuestos.initialize();
 
         $('.tags_Impuestos > > input').tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
             typeaheadjs: {
-                name: 'gusto',
-                displayKey: 'name',
-                valueKey: 'name',
-                source: gusto.ttAdapter()
+                name: 'impuestos',
+                displayKey: 'text',
+                source: impuestos.ttAdapter()
             }
         });
 
         // elt.tagsinput('add', {"value": 1, "text": "Impuestos directos", "continent": "Europe"});
         // elt.tagsinput('add', {"value": 2, "text": "Impuestos indirectos", "continent": "America"});
+    });
+    $(document).ready(function () {
+        $('.tags_Impuestos > > input').tagsinput('add', { value: '1', text: 'Impuesto 1' });
     });
 </script>
 
