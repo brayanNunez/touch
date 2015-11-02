@@ -26,7 +26,7 @@ class Servicios extends CI_Controller
 
     public function agregar()
     {
-        $sessionActual = $this->session->userdata('logged_in');
+        verificarLogin();//helper
 
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');

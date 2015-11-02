@@ -253,43 +253,65 @@
 
 <script>
     function validacionCorrecta_Servicios(){
-        $.ajax({
-            data: {servicio_codigo :  $('#servicio_codigo').val()},
-            url:   '<?=base_url()?>servicios/existeCodigo',
-            type:  'post',
-            success:  function (response) {
-                switch(response){
-                    case '0':
-                        $('#linkModalError').click();//error al ir a verificar codigo
-                        break;
-                    case '1':
-                        alert('<?= label("servicioCodigoExistente"); ?>');
-                        $('#servicio_codigo').focus();
-                        break;
-                    case '2':
-                        var formulario = $('#form_servicio');
-                        var formData = formulario.serialize();
-                        var url = formulario.attr('action');
-                        var method = formulario.attr('method');
-                        $.ajax({
-                            type: method,
-                            url: url,
-                            data: formData,
-                            success: function(response) {
-                                switch(response) {
-                                    case '0':
-                                        $('#linkModalError').click();
-                                        break;
-                                    case '1':
-                                        $('#linkModalGuardado').click();
-                                        break;
-                                }
-                            }
-                        });
-                        break;
+        var codigoActual = '<?= $codigo; ?>';
+        var codigoNuevo = $('#servicio_codigo').val();
+        if(codigoActual == codigoNuevo) {
+            var formulario = $('#form_servicio');
+            var data = formulario.serialize();
+            var url = formulario.attr('action');
+            var method = formulario.attr('method');
+            $.ajax({
+                type: method,
+                url: url,
+                data: data,
+                success: function(response)
+                {
+                    if (response == 0) {
+                        $('#linkModalError').click();
+                    } else {
+                        $('#linkModalGuardado').click();
+                    }
                 }
-            }
-        });
+            });
+        } else {
+            $.ajax({
+                data: {servicio_codigo: $('#servicio_codigo').val()},
+                url: '<?=base_url()?>servicios/existeCodigo',
+                type: 'post',
+                success: function (response) {
+                    switch (response) {
+                        case '0':
+                            $('#linkModalError').click();//error al ir a verificar codigo
+                            break;
+                        case '1':
+                            alert('<?= label("servicioCodigoExistente"); ?>');
+                            $('#servicio_codigo').focus();
+                            break;
+                        case '2':
+                            var formulario = $('#form_servicio');
+                            var data = formulario.serialize();
+                            var url = formulario.attr('action');
+                            var method = formulario.attr('method');
+                            $.ajax({
+                                type: method,
+                                url: url,
+                                data: data,
+                                success: function (response) {
+                                    switch (response) {
+                                        case '0':
+                                            $('#linkModalError').click();
+                                            break;
+                                        case '1':
+                                            $('#linkModalGuardado').click();
+                                            break;
+                                    }
+                                }
+                            });
+                            break;
+                    }
+                }
+            });
+        }
     }
 </script>
 
