@@ -32,18 +32,22 @@
                                             </select>
                                             <label for="cliente_tipo"><?= label('formCliente_tipoPersona'); ?></label>
                                         </div>
-                                        <div class="input-field col s12">
-                                            <select name="cliente_nacionalidad">
-                                                <option value="" selected
-                                                        disabled><?= label('formCliente_seleccioneUno'); ?></option>
-                                                <option value="1">Costa Rica</option>
-                                                <option value="2">Colombia</option>
-                                                <option value="3">USA</option>
-                                                <option value="4">Brasil</option>
-                                                <option value="5">Uruguay</option>
-                                                <option value="6">Chile</option>
+                                        
+
+                                        <div class="input-field col s12 inputSelector" >
+                                            <label for="cleinte_nacionalidad"><?= label('formCliente_nacionalidad'); ?></label>
+                                            <br>
+                                            <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="cliente_nacionalidad" name="cliente_nacionalidad" class="browser-default chosen-select">
+                                                <option value=""></option>
+                                                <?php
+                                                if(isset($paises)) {
+                                                    foreach ($paises as $pais) { ?>
+                                                        <option value="<?= $pais['idPais']; ?>"><?= $pais['nombre']; ?></option>
+                                                <?php
+                                                    }
+                                                }
+                                                ?>
                                             </select>
-                                            <label for="cliente_nacionalidad"><?= label('formCliente_nacionalidad'); ?></label>
                                         </div>
 
                                         <div id="elementos-cliente-fisico" style="display: block;">
@@ -285,6 +289,15 @@
 <!-- END CONTENT-->
 
 <script>
+
+    $(document).on('ready', function(){
+
+        var config = {'.chosen-select'           : {}}
+          for (var selector in config) {
+            $(selector).chosen(config[selector]);
+          }
+
+    });
 
     function validacionCorrecta(){
 

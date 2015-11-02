@@ -26,10 +26,16 @@ class Clientes extends CI_Controller
 
     public function agregar()
     {
-        $this->load->view('layout/default/header');
+         $paises = $this->Cliente_model->paises();
+        if ($paises === false || $paises === array()) {
+            echo "Error en la transacción";
+        } else {
+            $data['paises'] = $paises;
+            $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
-        $this->load->view('clientes/clientes_crear');
+        $this->load->view('clientes/clientes_crear', $data);
         $this->load->view('layout/default/footer');
+        }
     }
 
     //Metodo llamado mediante ajax
