@@ -63,6 +63,25 @@ class Servicio_model extends CI_Model
         }
     }
 
+    function cargarTodos($idEmpresa)
+    {
+        try{
+            $this->db->trans_begin();
+
+            $servicios = $this->db->get_where('servicio', array('estado' => 0,'idEmpresa' => $idEmpresa));
+            if (!$servicios) {
+                throw new Exception("Error en la BD");
+            }
+            $servicios = $servicios->result_array();
+
+            $this->db->trans_commit();
+            return $servicios;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
 }
 
 ?>

@@ -14,8 +14,10 @@ class Usuarios extends CI_Controller
 
     public function index()
     {
-        $idEmpresa = 1;//Obtener de la variable de sesión
-        $data['lista'] = $this->Usuario_model->cargarTodos($idEmpresa);;
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+        $data['lista'] = $this->Usuario_model->cargarTodos($idEmpresa);
+
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
         $this->load->view('usuarios/usuarios_lista', $data);
@@ -32,10 +34,13 @@ class Usuarios extends CI_Controller
 
     public function insertar()
     {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
         $photo = explode('.',$this->input->post('usuario_fotografia'));
         $ext = end($photo);
         $data['datos'] = array(
-            'idEmpresa' => '1', //Obtener de la variable de sesión
+            'idEmpresa' => $idEmpresa, //Obtener de la variable de sesión
             'primerApellido' => $this->input->post('usuario_primeroApellido'),
             'segundoApellido' => $this->input->post('usuario_segundoApellido'),
             'nombre' => $this->input->post('usuario_nombre'),
@@ -56,7 +61,7 @@ class Usuarios extends CI_Controller
             //Error en la transacción
             echo 0;
         } else {
-            $config['upload_path'] = './files/empresas/'.$data['datos']['idEmpresa'].'/usuarios/'.$usuario;
+            $config['upload_path'] = './files/empresas/'.$idEmpresa.'/usuarios/'.$usuario;
             $config['file_name'] = 'profile_picture_'.$usuario;
             $config['allowed_types'] = 'jpg|png|jpeg';
             $config['max_size'] = '2048';

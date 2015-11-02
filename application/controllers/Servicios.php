@@ -13,9 +13,13 @@ class Servicios extends CI_Controller
 
     public function index()
     {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+        $data['lista'] = $this->Servicio_model->cargarTodos($idEmpresa);
+
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
-        $this->load->view('servicios/servicios_lista');
+        $this->load->view('servicios/servicios_lista', $data);
         $this->load->view('layout/default/footer');
     }
 
