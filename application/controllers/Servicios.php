@@ -80,12 +80,18 @@ class Servicios extends CI_Controller
         }
     }
 
-    public function editar()
+    public function editar($id)
     {
-        $this->load->view('layout/default/header');
-        $this->load->view('layout/default/left-sidebar');
-        $this->load->view('servicios/servicios_editar');
-        $this->load->view('layout/default/footer');
+        $resultado = $this->Servicio_model->cargar(decryptIt($id));
+        if ($resultado === false || $resultado === array()) {
+            echo "Error en la transacción";
+        } else {
+            $data['resultado'] = $resultado;
+            $this->load->view('layout/default/header');
+            $this->load->view('layout/default/left-sidebar');
+            $this->load->view('servicios/servicios_editar', $data);
+            $this->load->view('layout/default/footer');
+        }
     }
 
 }

@@ -66,7 +66,7 @@
                                                                         <label for="<?= $idEncriptado; ?>"></label>
                                                                     </td>
                                                                     <td><?= $codigo; ?></td>
-                                                                    <td><a href="<?= base_url() ?>servicios/editar"><?= $nombre; ?></a></td>
+                                                                    <td><a href="<?= base_url() ?>servicios/editar/<?= $idEncriptado; ?>"><?= $nombre; ?></a></td>
                                                                     <td><?= $descripcion; ?></td>
                                                                     <td><?= $total; ?></td>
                                                                     <td>

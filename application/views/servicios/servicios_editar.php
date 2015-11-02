@@ -1,5 +1,4 @@
 <!-- START CONTENT  -->
-
 <section id="content">
     <!--start breadcrumbs-->
     <div id="breadcrumbs-wrapper" class=" grey lighten-3">
@@ -13,6 +12,23 @@
     </div>
     <!--breadcrumbs end-->
 
+    <?php
+    $idServicio = '';
+    $codigo = '';
+    $nombre = '';
+    $descripcion = '';
+    $utilidad = '';
+    $total = '';
+    if (isset($resultado)) {
+        $idServicio = encryptIt($resultado['idServicio']);;
+        $codigo = $resultado['codigo'];
+        $nombre = $resultado['nombre'];
+        $descripcion = $resultado['descripcion'];
+        $utilidad = $resultado['utilidad'];
+        $total = $resultado['total'];
+    }
+    ?>
+
     <!--start container-->
     <div class="container">
         <div id="chart-dashboard">
@@ -21,184 +37,31 @@
                     <div id="submit-button" class="section">
                         <div class="row">
                             <div class="col s12">
-                                <form class="col s12">
+                                <form id="form_servicio" action="<?= base_url(); ?>servicios/editar/<?= $idServicio; ?>" method="post" class="col s12">
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <input id="servicio_codigo" type="text" value="0001">
+                                            <input id="servicio_codigo" name="servicio_codigo" type="text" value="<?= $codigo; ?>">
                                             <label for="servicio_codigo"><?= label('formServicio_codigo'); ?></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input id="servicio_nombre" type="text" value="Aplicación móvil">
+                                            <input id="servicio_nombre" name="servicio_nombre" type="text" value="<?= $nombre; ?>">
                                             <label for="servicio_nombre"><?= label('formServicio_nombre'); ?></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <textarea id="servicio_descripcion" class="materialize-textarea"
-                                                      length="120">Aplicación móvil para SO android</textarea>
-                                            <label
-                                                for="servicio_descripcion"><?= label('formServicio_descripcion'); ?></label>
+                                            <textarea id="servicio_descripcion" name="servicio_descripcion"
+                                                      class="materialize-textarea" rows="4"><?= $descripcion; ?></textarea>
+                                            <label for="servicio_descripcion"><?= label('formServicio_descripcion'); ?></label>
                                         </div>
-
                                         <div class="inputTag col s12">
-                                            <label for="impuestosProducto"><?= label('formProducto_impuestos'); ?></label>
+                                            <label for="impuestosServicio"><?= label('formProducto_impuestos'); ?></label>
                                             <br>
-                                            <div id="impuestosProducto" class="example tags_Impuestos">
+                                            <div id="impuestosServicio" class="example tags_Impuestos">
                                                 <div class="bs-example">
-                                                    <input placeholder="<?= label('formProducto_anadirImpuesto'); ?>" type="text"/>
+                                                    <input id="servicio_impuestos" name="servicio_impuestos" placeholder="<?= label('formProducto_anadirImpuesto'); ?>" type="text"/>
                                                 </div>
                                             </div>
                                             <br>
                                         </div>
-                                        
-                                        <!--<div class="file-field col s12">
-                                            <br/>
-                                            <label for="servicio_imagen"><?= label('formServicio_imagen'); ?></label>
-
-                                            <div class="file-field input-field col s12">
-                                                <input class="file-path validate" type="text"/>
-
-                                                <div class="btn" data-toggle="tooltip"
-                                                     title="<?= label('tooltip_examinar') ?>">
-                                                    <span><i class="mdi-action-search"></i></span>
-                                                    <input type="file"/>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="input-field col s12">
-                                            <label><?= label('formServicio_gastos'); ?></label>
-                                            <br/>
-                                            <br/>
-                                            <a href="#gastoNuevo" class="modal-trigger">Nuevo gasto </a>|
-                                            <a href="#agregarPersona" class="modal-trigger"> Nueva persona</a>
-                                            <br/>
-                                            <table id="servicio1-gastos" class="table striped">
-                                                <thead>
-                                                <tr>
-                                                    <th style="text-align: center;">
-                                                        <input class="filled-in checkbox checkall" type="checkbox"
-                                                               id="checkbox-all" onclick="toggleChecked(this.checked)"/>
-                                                        <label for="checkbox-all"></label>
-                                                    </th>
-                                                    <th><?= label('formServicio_gastosNombre'); ?></th>
-                                                    <th><?= label('formServicio_gastosCantidad'); ?></th>
-                                                    <th><?= label('formServicio_gastosSubtotal'); ?></th>
-                                                    <th><?= label('formServicio_gastosOpciones'); ?></th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <td style="text-align: center;">
-                                                        <input type="checkbox" class="filled-in checkbox"
-                                                               id="checkbox_servicio1_gasto1"/>
-                                                        <label for="checkbox_servicio1_gasto1"></label>
-                                                    </td>
-                                                    <td>Jorge Arias</td>
-                                                    <td>
-                                                        <div class="row">
-                                                            <div class="col s4 m4 l4">
-                                                                <input type="number" min="0" value="90">
-                                                            </div>
-                                                            <div class="col s8 m8 l8">
-                                                                <select>
-                                                                    <option value="">Seleccione</option>
-                                                                    <option value="1"><?= label('horas') ?></option>
-                                                                    <option value="2"><?= label('dia') ?></option>
-                                                                    <option value="3"><?= label('semana') ?></option>
-                                                                    <option value="4"><?= label('quincena') ?></option>
-                                                                    <option value="5"><?= label('mes') ?></option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>$300</td>
-                                                    <td>
-                                                        <ul id="dropdown-servicio1-gasto1" class="dropdown-content">
-                                                            <li>
-                                                                <a href="#editar"
-                                                                   class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#eliminarElemento"
-                                                                   class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                            </li>
-                                                        </ul>
-                                                        <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                           href="#!" data-activates="dropdown-servicio1-gasto1">
-                                                            <?= label('menuOpciones_seleccionar') ?><i
-                                                                class="mdi-navigation-arrow-drop-down"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="text-align: center;">
-                                                        <input type="checkbox" class="filled-in checkbox"
-                                                               id="checkbox_servicio1_gasto2"/>
-                                                        <label for="checkbox_servicio1_gasto2"></label>
-                                                    </td>
-                                                    <td>Licencias</td>
-                                                    <td><input type="number" min="0" value="2"></td>
-                                                    <td>$500</td>
-                                                    <td>
-                                                        <ul id="dropdown-servicio1-gasto2" class="dropdown-content">
-                                                            <li>
-                                                                <a href="#editar"
-                                                                   class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#eliminarElemento"
-                                                                   class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                            </li>
-                                                        </ul>
-                                                        <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                           href="#!" data-activates="dropdown-servicio1-gasto2">
-                                                            <?= label('menuOpciones_seleccionar') ?><i
-                                                                class="mdi-navigation-arrow-drop-down"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="text-align: center;">
-                                                        <input type="checkbox" class="filled-in checkbox"
-                                                               id="checkbox_servicio1_gasto3"/>
-                                                        <label for="checkbox_servicio1_gasto3"></label>
-                                                    </td>
-                                                    <td>Viaje a Guanacaste</td>
-                                                    <td><input type="number" min="0" value="2"></td>
-                                                    <td>$1000</td>
-                                                    <td>
-                                                        <ul id="dropdown-servicio1-gasto3" class="dropdown-content">
-                                                            <li>
-                                                                <a href="#editar"
-                                                                   class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#eliminarElemento"
-                                                                   class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                            </li>
-                                                        </ul>
-                                                        <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                           href="#!" data-activates="dropdown-servicio1-gasto3">
-                                                            <?= label('menuOpciones_seleccionar') ?><i
-                                                                class="mdi-navigation-arrow-drop-down"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            <br/>
-                                            <!--                                            <a href="#agregar" class="btn btn-default modal-trigger">-->
-                                            <? //=label('formServicio_nuevaPersona');?><!--</a>
-                                            <div class="tabla-sinAgregar tabla-gastos-servicio">
-                                                <a id="opciones-seleccionados-delete"
-                                                   class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements"
-                                                   style="visibility: hidden;"
-                                                   href="#eliminarElementosSeleccionados" data-toggle="tooltip"
-                                                   title="<?= label('opciones_seleccionadosEliminar') ?>">
-                                                    <i class="mdi-action-delete icono-opciones-varios"></i>
-                                                </a>
-                                            </div>
-                                            <hr/>
-                                        </div>-->
 
                                         <div class="col s8">
                                             <div class="input-field col s6">
@@ -351,12 +214,12 @@
                                             </div>
 
                                         <div class="input-field col offset-s6 s6">
-                                            <input id="servicio_utilidad" type="text" value="10%">
-                                            <label
-                                                for="servicio_utilidad"><?= label('formServicio_utilidad'); ?></label>
+                                            <input id="servicio_utilidad" name="servicio_utilidad" type="number" value="<?= $utilidad; ?>">
+                                            <label for="servicio_utilidad"><?= label('formServicio_utilidad'); ?>
+                                            </label>
                                         </div>
                                         <div class="input-field col offset-s6 s6">
-                                            <input id="servicio_total" type="text" value="$20000" disabled>
+                                            <input id="servicio_total" name="servicio_total" type="number" value="<?= $total; ?>" readonly>
                                             <label for="servicio_total"><?= label('formServicio_total'); ?></label>
                                         </div>
 
@@ -382,34 +245,78 @@
 
 </section>
 <!-- END CONTENT-->
+
+<script>
+    function validacionCorrecta_Servicios(){
+        $.ajax({
+            data: {servicio_codigo :  $('#servicio_codigo').val()},
+            url:   '<?=base_url()?>servicios/existeCodigo',
+            type:  'post',
+            success:  function (response) {
+                switch(response){
+                    case '0':
+                        $('#linkModalError').click();//error al ir a verificar codigo
+                        break;
+                    case '1':
+                        alert('<?= label("servicioCodigoExistente"); ?>');
+                        $('#servicio_codigo').focus();
+                        break;
+                    case '2':
+                        var formulario = $('#form_servicio');
+                        var formData = formulario.serialize();
+                        var url = formulario.attr('action');
+                        var method = formulario.attr('method');
+                        $.ajax({
+                            type: method,
+                            url: url,
+                            data: formData,
+                            success: function(response) {
+                                switch(response) {
+                                    case '0':
+                                        $('#linkModalError').click();
+                                        break;
+                                    case '1':
+                                        $('#linkModalGuardado').click();
+                                        $('form')[0].reset();
+                                        break;
+                                }
+                            }
+                        });
+                        break;
+                }
+            }
+        });
+    }
+</script>
+
 <script>
     $(document).ready(function () {
-
-        var Impuestos = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+        var gusto = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
-            // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/Impuestos.json'
             prefetch: {
-                url: '<?=base_url()?>Cotizacion/jsonImpuestos',
-                ttl: 1000
+                url: '<?=base_url()?>Cotizacion/jsonGustos',
+                ttl: 1000,
+                filter: function (list) {
+                    return $.map(list, function (gusto) {
+                        return {name: gusto};
+                    });
+                }
             }
         });
+        gusto.initialize();
 
-        Impuestos.initialize();
-
-        elt = $('.tags_Impuestos > > input');
-        elt.tagsinput({
-            itemValue: 'value',
-            itemText: 'text',
+        $('.tags_Impuestos > > input').tagsinput({
             typeaheadjs: {
-                name: 'Impuestos',
-                displayKey: 'text',
-                source: Impuestos.ttAdapter()
+                name: 'gusto',
+                displayKey: 'name',
+                valueKey: 'name',
+                source: gusto.ttAdapter()
             }
         });
 
-        elt.tagsinput('add', {"value": 1, "text": "Impuestos directos", "continent": "Europe"});
-        elt.tagsinput('add', {"value": 2, "text": "Impuestos indirectos", "continent": "America"});
+        // elt.tagsinput('add', {"value": 1, "text": "Impuestos directos", "continent": "Europe"});
+        // elt.tagsinput('add', {"value": 2, "text": "Impuestos indirectos", "continent": "America"});
     });
 </script>
 
@@ -500,6 +407,31 @@
 </script>
 
 <!-- lista modals -->
+<div id="transaccionCorrecta" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('servicioGuardadoCorrectamente'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="transaccionIncorrecta" class="modal">
+    <div  class="modal-header headerTransaccionIncorrecta">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('errorGuardar'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+
 <div id="gastoNuevo" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>

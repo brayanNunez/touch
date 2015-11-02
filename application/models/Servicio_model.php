@@ -82,6 +82,28 @@ class Servicio_model extends CI_Model
         }
     }
 
+    function cargar($id)
+    {
+        try {
+            $this->db->trans_begin();
+            $query = $this->db->get_where('servicio', array('idServicio' => $id, 'estado' => 0));
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+
+            $row = array();
+            if ($query->num_rows() > 0) {
+                $array = $query->result_array();
+                $row = array_shift($array);//obtiene el primer elemento.. el [0] no sirve en el server
+            }
+            $this->db->trans_commit();
+            return $row;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
 }
 
 ?>
