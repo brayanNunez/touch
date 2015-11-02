@@ -62,19 +62,19 @@
                                                                 </td>
 <!--                                                                <td>--><?//= $fila['nombre'] ?><!--</td>-->
                                                                 <td>
-                                                                    <a href="<?= base_url() ?>usuarios/editar/<?= $idEncriptado ?>">
+                                                                    <a href="<?= base_url() ?>usuarios/editar/<?= $idEncriptado ?>#tab-informacion">
                                                                         <?= $fila['nombre']." ".$fila['primerApellido']." ".$fila['segundoApellido'] ?>
                                                                     </a>
                                                                 </td>
                                                                 <td>
-                                                                    <a href="<?= base_url() ?>usuarios/editar/<?= $idEncriptado ?>">
+                                                                    <a href="<?= base_url() ?>usuarios/editar/<?= $idEncriptado ?>#tab-informacion">
                                                                         <?= $fila['correo'] ?>
                                                                     </a>
                                                                 </td>
                                                                 <td>
                                                                     <ul id="dropdown-usuario<?= $contador ?>" class="dropdown-content">
                                                                         <li>
-                                                                            <a href="<?= base_url() ?>usuarios/editar/<?= $idEncriptado ?>"
+                                                                            <a href="<?= base_url() ?>usuarios/editar/<?= $idEncriptado ?>#tab-edicion"
                                                                                class="-text"><?= label('menuOpciones_editar') ?></a>
                                                                         </li>
                                                                         <li>
