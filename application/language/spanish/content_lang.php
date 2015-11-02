@@ -71,6 +71,10 @@ $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos selec
     $lang['clienteIdentificacionExistente'] = 'La identificación indicada ya existe.';
 
 
+    $lang['servicioGuardadoCorrectamente'] = 'El servicio ha sido creado correctamente.';
+    $lang['servicioCodigoExistente'] = 'El código de servicio indicado ya existe.';
+
+
     $lang['usuarioGuardadoCorrectamente'] = 'El usuario ha sido creado correctamente.';
     $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente.';
     $lang['usuarioErrorTamanoArchivo'] = 'El tamaño del archivo es superior a lo permitido.';

@@ -21,28 +21,27 @@
                     <div id="submit-button" class="section">
                         <div class="row">
                             <div class="col s12">
-                                <form class="col s12">
+                                <form id="form_servicio" action="<?= base_url(); ?>servicios/insertar" method="post" class="col s12">
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <input id="servicio_codigo" type="text">
+                                            <input id="servicio_codigo" name="servicio_codigo" type="text">
                                             <label for="servicio_codigo"><?= label('formServicio_codigo'); ?></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input id="servicio_nombre" type="text">
+                                            <input id="servicio_nombre" name="servicio_nombre" type="text">
                                             <label for="servicio_nombre"><?= label('formServicio_nombre'); ?></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <textarea id="servicio_descripcion" class="materialize-textarea"
-                                                      length="120"></textarea>
-                                            <label
-                                                for="servicio_descripcion"><?= label('formServicio_descripcion'); ?></label>
+                                            <textarea id="servicio_descripcion" name="servicio_descripcion"
+                                                      class="materialize-textarea" rows="4"></textarea>
+                                            <label for="servicio_descripcion"><?= label('formServicio_descripcion'); ?></label>
                                         </div>
                                         <div class="inputTag col s12">
-                                            <label for="impuestosProducto"><?= label('formProducto_impuestos'); ?></label>
+                                            <label for="impuestosServicio"><?= label('formProducto_impuestos'); ?></label>
                                             <br>
-                                            <div id="impuestosProducto" class="example tags_Impuestos">
+                                            <div id="impuestosServicio" class="example tags_Impuestos">
                                                 <div class="bs-example">
-                                                    <input placeholder="<?= label('formProducto_anadirImpuesto'); ?>" type="text"/>
+                                                    <input id="servicio_impuestos" name="servicio_impuestos" placeholder="<?= label('formProducto_anadirImpuesto'); ?>" type="text"/>
                                                 </div>
                                             </div>
                                             <br>
@@ -352,14 +351,13 @@
                                             </div>
 
                                         <div class="input-field col offset-s6 s6">
-                                            <input id="servicio_utilidad" type="number">
-                                            <label
-                                                for="servicio_utilidad"><?= label('formServicio_utilidad'); ?>
+                                            <input id="servicio_utilidad" name="servicio_utilidad" type="number">
+                                            <label for="servicio_utilidad"><?= label('formServicio_utilidad'); ?>
                                             </label>
                                         </div>
 
                                         <div class="input-field col offset-s6 s6">
-                                            <input id="servicio_total" type="number" disabled>
+                                            <input id="servicio_total" name="servicio_total" type="number" value="0" readonly>
                                             <label for="servicio_total"><?= label('formServicio_total'); ?></label>
                                         </div>
 
@@ -384,31 +382,79 @@
     ?>
 
 </section>
+
+<div style="display: none">
+    <a id="linkModalGuardado" href="#transaccionCorrecta" class="btn btn-default modal-trigger"></a>
+    <a id="linkModalError" href="#transaccionIncorrecta" class="btn btn-default modal-trigger"></a>
+</div>
 <!-- END CONTENT-->
 
 <script>
-    $(document).ready(function () {
-
-        var Impuestos = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/Impuestos.json'
-            prefetch: {
-                url: '<?=base_url()?>Cotizacion/jsonImpuestos',
-                ttl: 1000
+    function validacionCorrecta_Servicios(){
+        $.ajax({
+            data: {servicio_codigo :  $('#servicio_codigo').val()},
+            url:   '<?=base_url()?>servicios/existeCodigo',
+            type:  'post',
+            success:  function (response) {
+                switch(response){
+                    case '0':
+                        $('#linkModalError').click();//error al ir a verificar codigo
+                        break;
+                    case '1':
+                        alert('<?= label("servicioCodigoExistente"); ?>');
+                        $('#servicio_codigo').focus();
+                        break;
+                    case '2':
+                        var formulario = $('#form_servicio');
+                        var formData = formulario.serialize();
+                        var url = formulario.attr('action');
+                        var method = formulario.attr('method');
+                        $.ajax({
+                            type: method,
+                            url: url,
+                            data: formData,
+                            success: function(response) {
+                                switch(response) {
+                                    case '0':
+                                        $('#linkModalError').click();
+                                        break;
+                                    case '1':
+                                        $('#linkModalGuardado').click();
+                                        $('form')[0].reset();
+                                        break;
+                                }
+                            }
+                        });
+                        break;
+                }
             }
         });
+    }
+</script>
 
-        Impuestos.initialize();
+<script>
+    $(document).ready(function () {
+        var gusto = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            prefetch: {
+                url: '<?=base_url()?>Cotizacion/jsonGustos',
+                ttl: 1000,
+                filter: function (list) {
+                    return $.map(list, function (gusto) {
+                        return {name: gusto};
+                    });
+                }
+            }
+        });
+        gusto.initialize();
 
-        elt = $('.tags_Impuestos > > input');
-        elt.tagsinput({
-            itemValue: 'value',
-            itemText: 'text',
+        $('.tags_Impuestos > > input').tagsinput({
             typeaheadjs: {
-                name: 'Impuestos',
-                displayKey: 'text',
-                source: Impuestos.ttAdapter()
+                name: 'gusto',
+                displayKey: 'name',
+                valueKey: 'name',
+                source: gusto.ttAdapter()
             }
         });
 
@@ -505,6 +551,31 @@
 </script>
 
 <!-- lista modals -->
+<div id="transaccionCorrecta" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('servicioGuardadoCorrectamente'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="transaccionIncorrecta" class="modal">
+    <div  class="modal-header headerTransaccionIncorrecta">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('errorGuardar'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+
 <div id="gastoNuevo" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>

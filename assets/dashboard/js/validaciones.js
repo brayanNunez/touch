@@ -536,4 +536,18 @@
             }
         });
 
+        $('#form_servicio').validate({
+            rules:
+            {
+                servicio_codigo: { required: true },
+                servicio_nombre: { required: true },
+                servicio_descripcion: { required: true },
+                servicio_utilidad: { required: true }
+            },
+            errorElement: 'div',
+            submitHandler: function(form) {
+                validacionCorrecta_Servicios();
+            }
+        });
+
     });
