@@ -13,6 +13,7 @@ class Servicios extends CI_Controller
 
     public function index()
     {
+        verificarLogin();//helper
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
         $data['lista'] = $this->Servicio_model->cargarTodos($idEmpresa);
@@ -91,6 +92,36 @@ class Servicios extends CI_Controller
             $this->load->view('layout/default/left-sidebar');
             $this->load->view('servicios/servicios_editar', $data);
             $this->load->view('layout/default/footer');
+        }
+    }
+
+    public function modificar($id) {
+        $data['datos'] = array(
+            'codigo' => $this->input->post('servicio_codigo'),
+            'nombre' => $this->input->post('servicio_nombre'),
+            'descripcion' => $this->input->post('servicio_descripcion'),
+            'utilidad' => $this->input->post('servicio_utilidad'),
+            'total' => $this->input->post('servicio_total'),
+            'estado' => 0
+        );
+        $data['id'] = decryptIt($id);
+        if (!$this->Servicio_model->modificar($data)) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            //correcto
+            echo 1;
+        }
+    }
+
+    public function eliminar() {
+        $id = $_POST['idEliminar'];
+        if (!$this->Servicio_model->eliminar(decryptIt($id))) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            //correcto
+            echo 1;
         }
     }
 

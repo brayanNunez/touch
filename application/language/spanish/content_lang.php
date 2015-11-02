@@ -72,6 +72,7 @@ $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos selec
 
 
     $lang['servicioGuardadoCorrectamente'] = 'El servicio ha sido creado correctamente.';
+    $lang['servicioEditadoCorrectamente'] = 'El servicio ha sido editado correctamente.';
     $lang['servicioCodigoExistente'] = 'El código de servicio indicado ya existe.';
 
 

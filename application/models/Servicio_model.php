@@ -104,6 +104,44 @@ class Servicio_model extends CI_Model
         }
     }
 
+    function modificar($data)
+    {
+        try{
+            $this->db->trans_begin();
+
+            $this->db->where('idServicio', $data['id']);
+            $query = $this->db->update('servicio', $data['datos']);
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+
+            $this->db->trans_commit();
+            return true;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+    function eliminar($id)
+    {
+        try{
+            $this->db->trans_begin();
+
+            $this->db->where('idServicio', $id);
+            $query = $this->db->update('servicio', array('estado' => 1));
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+
+            $this->db->trans_commit();
+            return true;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
 }
 
 ?>

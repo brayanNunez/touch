@@ -37,7 +37,7 @@
                     <div id="submit-button" class="section">
                         <div class="row">
                             <div class="col s12">
-                                <form id="form_servicio" action="<?= base_url(); ?>servicios/editar/<?= $idServicio; ?>" method="post" class="col s12">
+                                <form id="form_servicio" action="<?= base_url(); ?>servicios/modificar/<?= $idServicio; ?>" method="post" class="col s12">
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <input id="servicio_codigo" name="servicio_codigo" type="text" value="<?= $codigo; ?>">
@@ -244,6 +244,11 @@
     ?>
 
 </section>
+
+<div style="display: none">
+    <a id="linkModalGuardado" href="#transaccionCorrecta" class="btn btn-default modal-trigger"></a>
+    <a id="linkModalError" href="#transaccionIncorrecta" class="btn btn-default modal-trigger"></a>
+</div>
 <!-- END CONTENT-->
 
 <script>
@@ -277,7 +282,6 @@
                                         break;
                                     case '1':
                                         $('#linkModalGuardado').click();
-                                        $('form')[0].reset();
                                         break;
                                 }
                             }
@@ -413,7 +417,7 @@
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <p><?= label('servicioGuardadoCorrectamente'); ?></p>
+        <p><?= label('servicioEditadoCorrectamente'); ?></p>
     </div>
     <div class="modal-footer">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
