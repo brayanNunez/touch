@@ -85,16 +85,16 @@
                                                             <td><?= $tipo; ?></td>
                                                             <td><?= $tipoPersona; ?></td>
                                                             <td><?= $fila['identificacion']; ?></td>
-                                                            <td><a href="<?= base_url() ?>proveedores/editar/<?= $idEncriptado; ?>"><?= $nombre; ?></td>
+                                                            <td><a href="<?= base_url() ?>proveedores/editar/<?= $idEncriptado; ?>tab-informacion"><?= $nombre; ?></td>
                                                             <td><?= $fila['correo']; ?></td>
                                                             <td>
                                                                 <ul id="dropdown-proveedor<?= $contador; ?>" class="dropdown-content">
                                                                     <li>
-                                                                        <a href="<?= base_url(); ?>proveedores/editar/<?= $idEncriptado; ?>"
+                                                                        <a href="<?= base_url(); ?>proveedores/editar/<?= $idEncriptado; ?>#tab-informacion"
                                                                            class="-text"><?= label('menuOpciones_ver') ?></a>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="<?= base_url(); ?>proveedores/editar/<?= $idEncriptado; ?>"
+                                                                        <a href="<?= base_url(); ?>proveedores/editar/<?= $idEncriptado; ?>#tab-edicion"
                                                                            class="-text"><?= label('menuOpciones_editar') ?></a>
                                                                     </li>
                                                                     <li>
