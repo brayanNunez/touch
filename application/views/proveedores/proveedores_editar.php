@@ -98,19 +98,21 @@
                         <?php
                     } ?>
 
-                    <div class="input-field col s12">
-                        <select id="persona_nacionalidad" name="persona_nacionalidad">
-                            <option value="0" selected disabled><?= label('formPersona_seleccioneUno'); ?></option>
+                    <div class="input-field col s12 inputSelector">
+                        <label for="persona_nacionalidad"><?= label('formCliente_nacionalidad'); ?></label>
+                        <br>
+                        <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="persona_nacionalidad" name="persona_nacionalidad" class="browser-default chosen-select">
+                            <option value=""></option>
                             <?php
                             if(isset($resultado['paises'])) {
                                 $paises = $resultado['paises'];
-                                foreach ($paises as $p) { ?>
-                                    <option value="<?= $p['idPais']; ?>"><?= $p['nombre']; ?></option>
-                            <?php
+                                foreach ($paises as $pais) { ?>
+                                    <option value="<?= $pais['idPais']; ?>"><?= $pais['nombre']; ?></option>
+                                    <?php
                                 }
-                            } ?>
+                            }
+                            ?>
                         </select>
-                        <label for="persona_nacionalidad"><?= label('formPersona_nacionalidad'); ?></label>
                     </div>
                 </div>
             </div>
@@ -436,6 +438,16 @@
 <?php
     $this->load->view('layout/default/menu-crear.php');
 ?>
+
+<script>
+    $(document).on('ready', function(){
+        var config = {'.chosen-select'           : {}}
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+
+    });
+</script>
 
 <!-- Funcion de insercion de datos-->
 <script>
