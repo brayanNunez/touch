@@ -24,6 +24,32 @@ class Impuesto extends CI_Controller
         $this->load->view('layout/default/footer');
     }
 
+
+
+    public function impuestosSugerencia()
+    {
+        //  $json = '[ { "value": 1 , "text": "Impuestos directos" },
+        //           { "value": 2 , "text": "Impuestos indirectos"},
+        //           { "value": 3 , "text": "Impuestos 3"},
+        //           { "value": 4 , "text": "Impuestos 4"}
+        //         ]';
+        // echo $json; ;
+
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $resultado = $this->Impuesto_model->cargarTodos($idEmpresa); 
+        // $impuestos = array();
+
+
+
+        // foreach ($resultado as $v){
+        //     array_push($impuestos,$v['nombre']);
+        // }
+
+        echo json_encode($resultado); 
+    }
+
     public function eliminar()
     {
        $id = $_POST['idEliminar'];

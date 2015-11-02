@@ -29,6 +29,7 @@ class Impuesto_model extends CI_Model
        
     }
 
+
     public function eliminar($id)
     {
         try{

@@ -1,4 +1,4 @@
-<!-- START CONTENT  -->
+ <!--START CONTENT  -->
 <section id="content">
     <!--start breadcrumbs-->
     <div id="breadcrumbs-wrapper" class=" grey lighten-3">
@@ -19,7 +19,6 @@
     $descripcion = '';
     $utilidad = '';
     $total = '';
-    $impuestos = '';
     if (isset($resultado)) {
         $idServicio = encryptIt($resultado['idServicio']);;
         $codigo = $resultado['codigo'];
@@ -27,9 +26,6 @@
         $descripcion = $resultado['descripcion'];
         $utilidad = $resultado['utilidad'];
         $total = $resultado['total'];
-        foreach($resultado['impuestos'] as $impuesto) {
-            $impuestos.= $impuesto['idImpuesto'].', ';
-        }
     }
     ?>
 
@@ -61,12 +57,15 @@
                                             <br>
                                             <div id="impuestosServicio" class="example tags_Impuestos">
                                                 <div class="bs-example">
-                                                    <input id="servicio_impuestos" name="servicio_impuestos" value="<?= $impuestos; ?>"
+                                                    <input id="servicio_impuestos" name="servicio_impuestos"
                                                            placeholder="<?= label('formProducto_anadirImpuesto'); ?>" type="text"/>
                                                 </div>
                                             </div>
                                             <br>
                                         </div>
+
+                                        
+
 
                                         <div class="col s8">
                                             <div class="input-field col s6">
@@ -322,32 +321,40 @@
 
 <script>
     $(document).ready(function () {
-        var impuestos = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+
+        var Impuestos = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('nombre'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
-            // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/vendedores.json'
+            // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/Impuestos.json'
             prefetch: {
-                url: '<?=base_url()?>Cotizacion/jsonImpuestos',
+                url: '<?=base_url()?>Impuesto/impuestosSugerencia',
                 ttl: 1000
             }
         });
-        impuestos.initialize();
 
-        $('.tags_Impuestos > > input').tagsinput({
-            itemValue: 'value',
-            itemText: 'text',
+        Impuestos.initialize();
+
+        elt = $('.tags_Impuestos > > input');
+        elt.tagsinput({
+            itemValue: 'idImpuesto',
+            itemText: 'nombre', 
             typeaheadjs: {
-                name: 'impuestos',
-                displayKey: 'text',
-                source: impuestos.ttAdapter()
+                name: 'Impuestos',
+                displayKey: 'nombre',
+                source: Impuestos.ttAdapter()
             }
         });
 
+        <?php 
+        foreach ($resultado['impuestos'] as $impuesto) {
+             echo 'elt.tagsinput("add", '.json_encode($impuesto).');';
+        }
+        ?>
+         // elt.tagsinput("add", {"nombre":"Impuesto de venta"});
+
+
         // elt.tagsinput('add', {"value": 1, "text": "Impuestos directos", "continent": "Europe"});
         // elt.tagsinput('add', {"value": 2, "text": "Impuestos indirectos", "continent": "America"});
-    });
-    $(document).ready(function () {
-        $('.tags_Impuestos > > input').tagsinput('add', { value: '1', text: 'Impuesto 1' });
     });
 </script>
 
@@ -599,4 +606,4 @@
         </div>
     </div>
 </div>
-<!-- Fin lista modals -->
+<!-- Fin lista modals

@@ -294,10 +294,10 @@ class Cotizacion extends CI_Controller
 
     public function jsonImpuestos()
     {
-        $json = '[ { "value": 1 , "text": "Impuestos directos"   , "continent": "Europe"    },
-                  { "value": 2 , "text": "Impuestos indirectos"      , "continent": "Europe"    },
-                  { "value": 3 , "text": "Impuestos 3"       , "continent": "Europe"    },
-                  { "value": 4 , "text": "Impuestos 4"  , "continent": "America"   }
+        $json = '[ { "value": 1 , "text": "Impuestos directos" },
+                  { "value": 2 , "text": "Impuestos indirectos"},
+                  { "value": 3 , "text": "Impuestos 3"},
+                  { "value": 4 , "text": "Impuestos 4"}
                 ]';
         echo $json;
     }

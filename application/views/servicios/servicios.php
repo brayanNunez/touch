@@ -1,5 +1,24 @@
 <!-- START CONTENT  -->
 
+<button id="prueba">(PRUEBA)Ver el valor de los impuestos</button>
+
+
+<script type="text/javascript">
+    
+// $(document).on('ready', function()){
+    $('#prueba').click(function(){
+
+        $.each($("#servicio_impuestos").tagsinput('items'), function( index, value ) {
+          alert( index + ": " + value['valor'] );
+        });
+
+     });
+
+
+</script>
+
+
+
 <section id="content">
     <!--start breadcrumbs-->
     <div id="breadcrumbs-wrapper" class=" grey lighten-3">
@@ -267,6 +286,7 @@
                                     case '1':
                                         $('#linkModalGuardado').click();
                                         $('form')[0].reset();
+                                        $('#servicio_impuestos').tagsinput('removeAll');
                                         break;
                                 }
                             }
@@ -281,29 +301,33 @@
 <script>
     $(document).ready(function () {
 
-        var impuestos = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+        var Impuestos = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('nombre'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
-            // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/vendedores.json'
+            // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/Impuestos.json'
             prefetch: {
-                url: '<?=base_url()?>Cotizacion/jsonImpuestos',
+                url: '<?=base_url()?>Impuesto/impuestosSugerencia',
                 ttl: 1000
             }
         });
-        impuestos.initialize();
 
-        $('.tags_Impuestos > > input').tagsinput({
-            itemValue: 'value',
-            itemText: 'text',
+        Impuestos.initialize();
+
+        elt = $('.tags_Impuestos > > input');
+        elt.tagsinput({
+            itemValue: 'idImpuesto',
+            itemText: 'nombre', 
             typeaheadjs: {
-                name: 'impuestos',
-                displayKey: 'text',
-                source: impuestos.ttAdapter()
+                name: 'Impuestos',
+                displayKey: 'nombre',
+                source: Impuestos.ttAdapter()
             }
         });
 
-        // elt.tagsinput('add', {"value": 1, "text": "Impuestos directos", "continent": "Europe"});
-        // elt.tagsinput('add', {"value": 2, "text": "Impuestos indirectos", "continent": "America"});
+
+        
+        // elt.tagsinput('add', {"idImpuesto": 1, "nombre": "Impuestos directos"});
+        // elt.tagsinput('add', {"idImpuesto": 2, "nombre": "Impuestos indirectos"});
     });
 </script>
 

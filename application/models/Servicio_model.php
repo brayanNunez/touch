@@ -43,17 +43,20 @@ class Servicio_model extends CI_Model
             }
             $insert_id = $this->db->insert_id();
 
-            $impuestos = explode(",", $data['impuestos']);
-            foreach ($impuestos as $impuesto) {
-                $row = array(
-                    'idServicio' => $insert_id,
-                    'idImpuesto' => $impuesto
-                );
-                $query = $this->db->insert('impuesto_servicio', $row);
-                if (!$query) {
-                    throw new Exception("Error en la BD");
+            if ($data['impuestos'] != '') {
+                $impuestos = explode(",", $data['impuestos']);
+                foreach ($impuestos as $impuesto) {
+                    $row = array(
+                        'idServicio' => $insert_id,
+                        'idImpuesto' => $impuesto
+                    );
+                    $query = $this->db->insert('impuesto_servicio', $row);
+                    if (!$query) {
+                        throw new Exception("Error en la BD");
+                    }
                 }
             }
+            
 
             $this->db->trans_commit();
 
@@ -97,8 +100,14 @@ class Servicio_model extends CI_Model
                 $array = $query->result_array();
                 $row = array_shift($array);//obtiene el primer elemento.. el [0] no sirve en el server
 
-                $this->db->select('idImpuesto');
-                $impuestos = $this->db->get_where('impuesto_servicio', array('idServicio' => $id));
+                // $this->db->select('idImpuesto');
+                $this->db->select('im.*');
+                $this->db->from('impuesto im');
+                $this->db->join('impuesto_servicio is', 'is.idImpuesto = im.idImpuesto');
+                $this->db->join('servicio se', 'se.idServicio = is.idServicio');
+                $this->db->where('se.idServicio', $id);
+                $impuestos = $this->db->get();
+
                 if (!$impuestos) {
                     throw new Exception("Error en la BD");
                 }
@@ -112,6 +121,9 @@ class Servicio_model extends CI_Model
             return false;
         }
     }
+
+
+
 
     function modificar($data)
     {

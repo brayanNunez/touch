@@ -24,6 +24,7 @@ class Servicios extends CI_Controller
         $this->load->view('layout/default/footer');
     }
 
+
     public function agregar()
     {
         verificarLogin();//helper
