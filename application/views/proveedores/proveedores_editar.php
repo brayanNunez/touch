@@ -106,8 +106,8 @@
                             <?php
                             if(isset($resultado['paises'])) {
                                 $paises = $resultado['paises'];
-                                foreach ($paises as $pais) { ?>
-                                    <option value="<?= $pais['idPais']; ?>"><?= $pais['nombre']; ?></option>
+                                foreach ($paises as $p) { ?>
+                                    <option value="<?= $p['idPais']; ?>"><?= $p['nombre']; ?></option>
                                     <?php
                                 }
                             }
