@@ -79,7 +79,7 @@
                                                         if (!$juridico) {
                                                            ?>
                                                         <td>
-                                                           <a href="<?= base_url() ?>clientes/editar/<?= $idEncriptado ?>"><?= $fila['nombre']." ".$fila['primerApellido']." ".$fila['segundoApellido'] ?></a>
+                                                           <a href="<?= base_url() ?>clientes/editar/<?= $idEncriptado ?>/#tab-informacion"><?= $fila['nombre']." ".$fila['primerApellido']." ".$fila['segundoApellido'] ?></a>
                                                         </td>
 
                                                             <?php
@@ -101,11 +101,11 @@
                                                            <ul id="dropdown-cliente<?= $contador ?>"
                                                               class="dropdown-content">
                                                               <li>
-                                                                 <a href="<?= base_url(); ?>clientes/editar/<?= $idEncriptado?>"
+                                                                 <a href="<?= base_url(); ?>clientes/editar/<?= $idEncriptado?>#tab-informacion"
                                                                     class="-text"><?= label('menuOpciones_ver') ?></a>
                                                              </li>
                                                               <li>
-                                                                 <a href="<?= base_url() ?>clientes/editar/<?= $idEncriptado?>/#tab-edicion"
+                                                                 <a href="<?= base_url() ?>clientes/editar/<?= $idEncriptado?>#tab-edicion"
                                                                     class="-text"><?= label('menuOpciones_editar') ?></a>
                                                               </li>
                                                               <li>

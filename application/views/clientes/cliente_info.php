@@ -27,7 +27,7 @@
                                         <div class="col s12">
                                             <ul class="tabs tab-demo-active z-depth-1 cliente-info">
                                                 <li class="tab col s3">
-                                                    <a class="white-text darken-1 waves-effect waves-light active"
+                                                    <a class="white-text darken-1 waves-effect waves-light"
                                                        id="cliente-informacion" href="#tab-informacion"><i
                                                             class="mdi-action-perm-identity"></i>
                                                         <?= label('clientes_ver'); ?></a>
