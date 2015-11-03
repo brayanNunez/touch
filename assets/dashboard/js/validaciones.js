@@ -1,7 +1,11 @@
+    
+
     $(document).on("ready", function(){
 
         // $("button[type= 'submit']").on("click", function(){
              //event.preventDefault();
+             
+             $.validator.setDefaults({ ignore: ":hidden:not(select)" });// permite la validacion de los selects que usan el plugin chosen plugin
 
 
 
@@ -38,6 +42,7 @@
              var cliente_contactoCorreo = {required: true, maxlength: 45};
              var cliente_contactoPuesto = {required: true, maxlength: 45};
              var cliente_contactoTelefono = {required: true, maxlength: 45};
+
 
 
              $('#form_cliente').validate({
