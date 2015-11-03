@@ -130,12 +130,28 @@ class Servicio_model extends CI_Model
         try{
             $this->db->trans_begin();
 
-            print_r($data); exit();
-
             $this->db->where('idServicio', $data['id']);
             $query = $this->db->update('servicio', $data['datos']);
             if (!$query) {
                 throw new Exception("Error en la BD");
+            }
+
+            $this->db->where('idServicio', $data['id']);
+            $query = $this->db->delete('impuesto_servicio');
+            if (!$query) throw new Exception("Error en la BD"); 
+
+            if ($data['impuestos'] != '') {
+                $impuestos = explode(",", $data['impuestos']);
+                foreach ($impuestos as $impuesto) {
+                    $row = array(
+                        'idServicio' => $data['id'],
+                        'idImpuesto' => $impuesto
+                    );
+                    $query = $this->db->insert('impuesto_servicio', $row);
+                    if (!$query) {
+                        throw new Exception("Error en la BD");
+                    }
+                }
             }
 
             $this->db->trans_commit();
