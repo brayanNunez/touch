@@ -14,7 +14,10 @@ class TiposMoneda extends CI_Controller
     public function index()
     {
         verificarLogin();//helper
-        $lista = $this->TipoMoneda_model->cargarTodos();
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $lista = $this->TipoMoneda_model->cargarTodos($idEmpresa);
         $data['lista'] = $lista;
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
@@ -24,7 +27,11 @@ class TiposMoneda extends CI_Controller
 
     public function insertar()
     {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
         $data['moneda'] =array(
+            'idEmpresa' => $idEmpresa,
             'nombre' => $this->input->post('tipoMoneda_nombre'),
             'signo' => $this->input->post('tipoMoneda_signo'),
             'tipoCambio' => $this->input->post('tipoMoneda_tipoCambio'),
@@ -86,7 +93,11 @@ class TiposMoneda extends CI_Controller
     }
 
     public function verificarNombre(){
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
         $moneda = array(
+            'idEmpresa' => $idEmpresa,
             'nombre' => $this->input->post('impuesto_nombre'),
             'eliminado' => '0'
         );
@@ -109,7 +120,10 @@ class TiposMoneda extends CI_Controller
     }
 
     public function tiposMoneda() {
-        $resultado = $this->TipoMoneda_model->tiposMoneda();
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $resultado = $this->TipoMoneda_model->tiposMoneda($idEmpresa);
         if ($resultado === false || $resultado === array()) {
             echo 0;
         } else {

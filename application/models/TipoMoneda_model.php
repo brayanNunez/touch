@@ -29,12 +29,12 @@ class TipoMoneda_model extends CI_Model
         }
     }
 
-    function cargarTodos()
+    function cargarTodos($idEmpresa)
     {
         try{
             $this->db->trans_begin();
 
-            $monedas = $this->db->get_where('moneda', array('eliminado' => 0));
+            $monedas = $this->db->get_where('moneda', array('idEmpresa' => $idEmpresa, 'eliminado' => 0));
             if (!$monedas) {
                 throw new Exception("Error en la BD");
             }
@@ -133,12 +133,12 @@ class TipoMoneda_model extends CI_Model
         }
     }
 
-    function tiposMoneda() {
+    function tiposMoneda($idEmpresa) {
         try{
             $this->db->trans_begin();
 
             $this->db->select('idMoneda, nombre');
-            $this->db->where(array('eliminado' => 0));
+            $this->db->where(array('idEmpresa' => $idEmpresa, 'eliminado' => 0));
             $monedas = $this->db->get('moneda');
             if (!$monedas) {
                 throw new Exception("Error en la BD");

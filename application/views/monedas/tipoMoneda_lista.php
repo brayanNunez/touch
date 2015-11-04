@@ -30,14 +30,7 @@
                                                     <span style="font-size: larger;"><?= label('tiposMoneda_defecto'); ?></span>
                                                 </div>
                                                 <div class="col offset-s1 s11">
-                                                    <select id="tipoMoneda_principal">
-<!--                                                        <option value="" selected-->
-<!--                                                                disabled>--><?//= label('tiposMoneda_selecionarUno'); ?><!--</option>-->
-<!--                                                        <option value="1">Colón</option>-->
-<!--                                                        <option value="2">Dólar</option>-->
-<!--                                                        <option value="3">Euro</option>-->
-<!--                                                        <option value="4">Peso mexicano</option>-->
-                                                    </select>
+                                                    <select id="tipoMoneda_principal"></select>
                                                 </div>
                                             </div>
                                             <div>
@@ -105,7 +98,7 @@
                                                             } ?>
                                                         </tbody>
                                                     </table>
-                                                    <div class="tabla-conAgregar">
+                                                    <div class="tabla-conAgregar tabla-opciones-monedas">
                                                         <a id="opciones-seleccionados-print"
                                                            class="black-text opciones-seleccionados option-print-table"
                                                            style="visibility: hidden;"
@@ -468,7 +461,7 @@ function validacionCorrectaEditar(){
                      }); 
 
               } else{
-                alert("<?=label('impuesto_error_nombreExisteEnBD'); ?>");
+                alert("<?=label('tipoMoneda_error_nombreExisteEnBD'); ?>");
                 $("#form_tipoMonedaEditar input[name*='tipoMoneda_signo']").each(function () {
                     if ($(this).val() == response) {
                         $(this).focus();
@@ -832,7 +825,7 @@ function validacionCorrectaEditar(){
                 </div>
                 <div class="input-field col s12">
                     <input id="tipoMoneda_tipoCambio" name="tipoMoneda_tipoCambio" type="number">
-                    <label for="tipoMoneda_tipoCambio"><?= label('formTipoMoneda_signo'); ?></label>
+                    <label for="tipoMoneda_tipoCambio"><?= label('formTipoMoneda_tipoCambio'); ?></label>
                 </div>
             </div>
             <div class="row">
@@ -869,7 +862,7 @@ function validacionCorrectaEditar(){
                 </div>
                 <div class="input-field col s12">
                     <input id="tipoMoneda_tipoCambio" name="tipoMoneda_tipoCambio" type="number">
-                    <label for="tipoMoneda_tipoCambio"><?= label('formTipoMoneda_signo'); ?></label>
+                    <label for="tipoMoneda_tipoCambio"><?= label('formTipoMoneda_tipoCambio'); ?></label>
                 </div>
             </div>
             <div class="row">

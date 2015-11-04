@@ -271,6 +271,15 @@ $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos selec
 	$lang['tiposMoneda_opciones'] = 'Opciones';
 	$lang['tiposMoneda_nuevo'] = 'Nuevo tipo de moneda';
 
+    $lang['formTipoMoneda_nombre'] = 'Nombre';
+    $lang['formTipoMoneda_signo'] = 'Signo';
+    $lang['formTipoMoneda_tipoCambio'] = 'Tipo de cambio con respecto al tipo de moneda por defecto';
+    $lang['tiposMoneda_signo'] = 'Signo';
+    $lang['tipoMoneda_guardarCambios'] = 'Guardar cambios';
+    $lang['tiposMoneda_tipoMonedaGuardadoCorrectamente'] = 'El tipo de moneda fue guardado con éxito.';
+    $lang['tipoMoneda_error_nombreExisteEnBD'] = 'El nombre indicado ya existe.';
+    $lang['tiposMoneda_tipoMonedaEditadoCorrectamente'] = 'El tipo de moneda fue editado con éxito.';
+
 //columnas tabla de cotizaciones 
 	$lang['tablaCotizaciones_codigo'] = 'Código';
 	$lang['tablaCotizaciones_fecha'] = 'Fecha';
