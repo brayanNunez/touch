@@ -555,4 +555,24 @@
             }
         });
 
+        var reglasTipoMoneda =  {
+            tipoMoneda_nombre: {required: true, maxlength: 45},
+            tipoMoneda_signo: {required: true, maxlength: 45},
+            tipoMoneda_tipoCambio: {required: true, maxlength: 45}
+        };
+        $('#form_tipoMoneda').validate({
+            rules: reglasTipoMoneda,
+            errorElement: 'div',
+            submitHandler: function(form) {
+                validacionCorrecta();
+            }
+        });
+        $('#form_tipoMonedaEditar').validate({
+            rules: reglasTipoMoneda,
+            errorElement: 'div',
+            submitHandler: function(form) {
+                validacionCorrectaEditar();
+            }
+        });
+
     });
