@@ -520,3 +520,13 @@ margin-top: 2%;
 .btn-fase-eliminar{
 	margin-top: 80px;
 }
+
+tr.group,
+tr.group:hover {
+    background-color: hsla(111, 89%, 32%, 0.37) !important;
+}
+
+
+/*.datosPadre{
+	display: none;
+}*/

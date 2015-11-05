@@ -1,4 +1,4 @@
-<!-- START CONTENT  -->
+START CONTENT  -->
 
 <button id="prueba">(PRUEBA)Ver el valor de los impuestos</button>
 
@@ -126,10 +126,10 @@
                                                             <td>PROG-0001</td>
                                                             <td>ERS</td>
                                                             <td>Requerimientos de software</td>
-                                                            <td><input id="fase1_horas" type="number" value="30" /></td>
+                                                            <td><input class="cantidad" id="fase1_horas" type="number" value="30" /></td>
                                                             <td>
-    <!--                                                            <a href="" class="boton-opciones btn-flat white-text">--><?//= label('menuOpciones_eliminar'); ?><!--</a>-->
-                                                                <ul id="dropdown-fase1" class="dropdown-content">
+                                                                <a href="" class="boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>
+                                                                <!-- <ul id="dropdown-fase1" class="dropdown-content">
                                                                     <li>
                                                                         <a href="#Editar"
                                                                            class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
@@ -143,14 +143,38 @@
                                                                    href="#" data-activates="dropdown-fase1">
                                                                     <?= label('menuOpciones_seleccionar') ?><i
                                                                         class="mdi-navigation-arrow-drop-down"></i>
-                                                                </a>
+                                                                </a> -->
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>PROG-0001</td>
+                                                            <td>ERS</td>
+                                                            <td>Requerimientos de software</td>
+                                                            <td><input class="cantidad" id="fase1_horas" type="number" value="30" /></td>
+                                                            <td>
+                                                                <a href="" class="boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>
+                                                                <!-- <ul id="dropdown-fase1" class="dropdown-content">
+                                                                    <li>
+                                                                        <a href="#Editar"
+                                                                           class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#Eliminar"
+                                                                           class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
+                                                                    </li>
+                                                                </ul>
+                                                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
+                                                                   href="#" data-activates="dropdown-fase1">
+                                                                    <?= label('menuOpciones_seleccionar') ?><i
+                                                                        class="mdi-navigation-arrow-drop-down"></i>
+                                                                </a> -->
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>PROG-0002</td>
                                                             <td>Analisis</td>
                                                             <td>Fase de analisis del sistema</td>
-                                                            <td><input id="fase2_horas" type="number" value="30" /></td>
+                                                            <td><input class="cantidad" id="fase2_horas" type="number" value="30" /></td>
                                                             <td>
     <!--                                                            <a href="" class="boton-opciones btn-flat white-text">--><?//= label('menuOpciones_eliminar'); ?><!--</a>-->
                                                                 <ul id="dropdown-fase2" class="dropdown-content">
@@ -174,7 +198,7 @@
                                                             <td>PROG-0003</td>
                                                             <td>Desarrollo</td>
                                                             <td>Fase de desarrollo del sistema</td>
-                                                            <td><input id="fase3_horas" type="number" value="40" /></td>
+                                                            <td><input class="cantidad" id="fase3_horas" type="number" value="40" /></td>
                                                             <td>
     <!--                                                            <a href="" class="boton-opciones btn-flat white-text">--><?//= label('menuOpciones_eliminar'); ?><!--</a>-->
                                                                 <ul id="dropdown-fase3" class="dropdown-content">
@@ -195,11 +219,35 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
+                                                            <td>PROG-0003</td>
+                                                            <td>Desarrollo</td>
+                                                            <td>Fase de desarrollo del sistema</td>
+                                                            <td><input class="cantidad" id="fase3_horas" type="number" value="40" /></td>
+                                                            <td>
+    <!--                                                            <a href="" class="boton-opciones btn-flat white-text">--><?//= label('menuOpciones_eliminar'); ?><!--</a>-->
+                                                                <ul id="dropdown-fase3" class="dropdown-content">
+                                                                    <li>
+                                                                        <a href="#Editar"
+                                                                           class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#Eliminar"
+                                                                           class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
+                                                                    </li>
+                                                                </ul>
+                                                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
+                                                                   href="#" data-activates="dropdown-fase3">
+                                                                    <?= label('menuOpciones_seleccionar') ?><i
+                                                                        class="mdi-navigation-arrow-drop-down"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        <!-- <tr>
                                                             <td colspan="2"></td>
                                                             <td>TOTAL</td>
                                                             <td>100</td>
                                                             <td></td>
-                                                        </tr>
+                                                        </tr> -->
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -244,6 +292,53 @@
 <!-- END CONTENT-->
 
 <script>
+
+$(document).ready(function() {
+    var table = $('table').DataTable({
+        "columnDefs": [
+            { "visible": false, "targets": 1 }
+        ],
+        "order": [[ 2, 'asc' ]],
+        "displayLength": 25,
+        "drawCallback": function ( settings ) {
+            var api = this.api();
+            var rows = api.rows( {page:'current'} ).nodes();
+            var last=null;
+
+            var cantidadGrupo = '';
+            var contadorGrupo = 0;
+            api.column(1, {page:'current'} ).data().each( function ( group, i ) {
+
+                if ( last !== group ) {
+                    // alert('entre');
+                    $(rows).eq( i ).before(
+                        '<tr class="group"><td colspan="2">'+group+'</td><td id="grupo'+ contadorGrupo++ +'">0</td><td></td></tr>'
+                    );
+
+                    last = group;
+ 
+                }
+                cantidadGrupo = $(rows).eq( i ).find('.cantidad').val();
+                var valorActual = parseInt($("#grupo" + (contadorGrupo -1)).text()) + parseInt(cantidadGrupo);
+                $("#grupo" + (contadorGrupo -1)).text(valorActual);
+                
+            } );
+        }
+    } );
+ 
+    // Order by the grouping
+    $('table tbody').on( 'click', 'tr.group', function () {
+        var currentOrder = table.order()[0];
+        if ( currentOrder[0] === 2 && currentOrder[1] === 'asc' ) {
+            table.order( [ 2, 'desc' ] ).draw();
+        }
+        else {
+            table.order( [ 2, 'asc' ] ).draw();
+        }
+    } );
+} );
+
+
     function validacionCorrecta_Servicios(){
         $.ajax({
             data: {servicio_codigo :  $('#servicio_codigo').val()},
@@ -569,4 +664,4 @@
         </div>
     </div>
 </div>
-<!-- Fin lista modals -->
+<!-- Fin lista modals

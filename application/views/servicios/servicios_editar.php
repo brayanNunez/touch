@@ -1,3 +1,4 @@
+  <button id="pruebaInsertar">Insertar(Prueba)</button>
  <!--START CONTENT  -->
 <section id="content">
     <!--start breadcrumbs-->
@@ -108,6 +109,8 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                           
+
                                             <div class="col s12 table-responsive">
                                                 <table id="tabla-servicio" class="table striped" cellspacing="0">
                                                     <thead>
@@ -115,6 +118,9 @@
                                                         <th><?= label('tablaServicio_codigo'); ?></th>
                                                         <th><?= label('tablaServicio_fase'); ?></th>
                                                         <th><?= label('tablaServicio_descripcion'); ?></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th></th>
                                                         <th><?= label('tablaServicio_cantidad'); ?></th>
                                                         <th><?= label('tablaServicio_opciones'); ?></th>
                                                     </tr>
@@ -124,7 +130,10 @@
                                                         <td>PROG-0001</td>
                                                         <td>ERS</td>
                                                         <td>Requerimientos de software</td>
-                                                        <td><input id="fase1_horas" type="number" value="30" /></td>
+                                                        <td>PROG-0001Padre</td>
+                                                        <td>ERSPadre</td>
+                                                        <td>Requerimientos de softwarePadre</td>
+                                                        <td><input class="cantidad" id="fase1_horas" type="number" value="30" /></td>
                                                         <td>
                                                             <!--                                                            <a href="" class="boton-opciones btn-flat white-text">--><?//= label('menuOpciones_eliminar'); ?><!--</a>-->
                                                             <ul id="dropdown-fase1" class="dropdown-content">
@@ -145,13 +154,16 @@
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>PROG-0002</td>
-                                                        <td>Analisis</td>
-                                                        <td>Fase de analisis del sistema</td>
-                                                        <td><input id="fase2_horas" type="number" value="30" /></td>
+                                                        <td>PROG-0001</td>
+                                                        <td>ERS2</td>
+                                                        <td>Requerimientos de software</td>
+                                                        <td>PROG-0002Padre</td>
+                                                        <td>ERSPadre</td>
+                                                        <td>Requerimientos de softwarePadre</td>
+                                                        <td><input class="cantidad" id="fase1_horas" type="number" value="30" /></td>
                                                         <td>
                                                             <!--                                                            <a href="" class="boton-opciones btn-flat white-text">--><?//= label('menuOpciones_eliminar'); ?><!--</a>-->
-                                                            <ul id="dropdown-fase2" class="dropdown-content">
+                                                            <ul id="dropdown-fase1" class="dropdown-content">
                                                                 <li>
                                                                     <a href="#Editar"
                                                                        class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
@@ -162,42 +174,20 @@
                                                                 </li>
                                                             </ul>
                                                             <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                               href="#" data-activates="dropdown-fase2">
+                                                               href="#" data-activates="dropdown-fase1">
                                                                 <?= label('menuOpciones_seleccionar') ?><i
                                                                     class="mdi-navigation-arrow-drop-down"></i>
                                                             </a>
                                                         </td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>PROG-0003</td>
-                                                        <td>Desarrollo</td>
-                                                        <td>Fase de desarrollo del sistema</td>
-                                                        <td><input id="fase3_horas" type="number" value="40" /></td>
-                                                        <td>
-                                                            <!--                                                            <a href="" class="boton-opciones btn-flat white-text">--><?//= label('menuOpciones_eliminar'); ?><!--</a>-->
-                                                            <ul id="dropdown-fase3" class="dropdown-content">
-                                                                <li>
-                                                                    <a href="#Editar"
-                                                                       class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#Eliminar"
-                                                                       class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                                </li>
-                                                            </ul>
-                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                               href="#" data-activates="dropdown-fase3">
-                                                                <?= label('menuOpciones_seleccionar') ?><i
-                                                                    class="mdi-navigation-arrow-drop-down"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
+                                                    
+                                                   
+                                                    <!-- <tr>
                                                         <td colspan="2"></td>
                                                         <td>TOTAL</td>
                                                         <td>100</td>
                                                         <td></td>
-                                                    </tr>
+                                                    </tr> -->
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -242,6 +232,128 @@
 <!-- END CONTENT-->
 
 <script>
+
+
+$(document).ready(function() {
+
+
+
+    $('#pruebaInsertar').on('click', function(){
+       agregarFila();
+    });
+
+    function agregarFila(){
+
+            var boton = '<a href="" class="boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>';
+
+            var codigo = 'PROG-0001';
+            var nombre = 'ERS';
+            var des = 'Requerimientos de software Nuevo';
+            var cantidad = '<td><input class="cantidad" id="fase1_horas" type="number" value="30" /></td>';
+            var codigoPadre = 'PROG-0002Padre';
+            var nombrePadre = 'ERSPadre';
+            var desPadre = 'Requerimientos de softwarePadre';
+
+
+
+           $('table').dataTable().fnAddData([
+            codigo,
+            nombre,
+            des,
+            codigoPadre,
+            nombrePadre,
+            desPadre,
+            cantidad,
+            boton ]);
+
+
+            // generarListasBotones();
+            // $('.modal-trigger').leanModal();
+      
+            // contadorFilas++;
+            
+            };
+
+    //     function generarListasBotones(){
+    //       $('.boton-opciones').sideNav({
+    //       // menuWidth: 0, // Default is 240
+    //        edge: 'right', // Choose the horizontal origin
+    //           closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+    //         }
+    //       );
+
+    //       $('.dropdown-button').dropdown({
+    //           inDuration: 300,
+    //           outDuration: 225,
+    //           constrain_width: true, // Does not change width of dropdown to that of the activator
+    //           hover: false, // Activate on hover
+    //           gutter: 0, // Spacing from edge
+    //           belowOrigin: true, // Displays dropdown below the button
+    //           alignment: 'left' // Displays dropdown with edge aligned to the left of button
+    //         }
+          
+
+
+        var table = $('table').DataTable({
+            "columnDefs": [
+                { "visible": false, "targets": 3 },
+                { "visible": false, "targets": 4 },
+                { "visible": false, "targets": 5 }
+            ],
+            "order": [[ 3, 'asc' ]],
+            "displayLength": 25,
+            "drawCallback": function ( settings ) {
+
+                var api = this.api();
+                // alert(this.html());
+                var rows = api.rows( {page:'current'} ).nodes();
+                var last=null;
+
+                var cantidadGrupo = '';
+                var contadorGrupo = 0;
+                api.column(3, {page:'current'} ).data().each( function ( group, i ) {
+                    var codigo = group;
+                    var nombre =  api.column(4, {page:'current'} ).data()[i];
+                    var descripcion =  api.column(5, {page:'current'} ).data()[i];
+                     // alert(group +', '+nombre, +', '+descripcion);
+                    if ( last !== group ) {
+                         // alert(group);
+                        $(rows).eq( i ).before(
+                            '<tr class="group"><td>'+codigo+'</td><td>'+nombre+'</td><td>'+descripcion+'</td><td id="grupo'+ contadorGrupo++ +'">0</td><td></td></tr>'
+                        );
+
+                        last = group;
+     
+                    }
+                    cantidadGrupo = $(rows).eq( i ).find('.cantidad').val();
+                    var valorActual = parseInt($("#grupo" + (contadorGrupo -1)).text()) + parseInt(cantidadGrupo);
+                    $("#grupo" + (contadorGrupo -1)).text(valorActual);
+                    
+                });
+        }
+
+    } );
+
+ 
+    // Order by the grouping
+    $('table tbody').on( 'click', 'tr.group', function () {
+        var currentOrder = table.order()[0];
+        if ( currentOrder[0] === 2 && currentOrder[1] === 'asc' ) {
+            table.order( [ 2, 'desc' ] ).draw();
+        }
+        else {
+            table.order( [ 2, 'asc' ] ).draw();
+        }
+    } );
+
+    $('.cantidad').on('change', function(){
+        alert('hola');
+         
+    })
+});
+
+
+
     function validacionCorrecta_Servicios(){
         var codigoActual = '<?= $codigo; ?>';
         var codigoNuevo = $('#servicio_codigo').val();
