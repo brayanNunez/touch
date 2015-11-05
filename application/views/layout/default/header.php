@@ -207,7 +207,7 @@
                     </li> -->
 
 
-                    <ul id="listaNotificaciones" class="dropdown-content active"
+                    <!--<ul id="listaNotificaciones" class="dropdown-content active"
                         style="width: 250px; position: absolute; top: 622.250010172526px; left: 2182.9375px; opacity: 1; display: block;">
                         <li><a href="<?= base_url(); ?>cotizacion" class="-text">Revisadas 3</a>
                         </li>
@@ -221,7 +221,7 @@
                         </li>
                         </li>
                         <li><a href="<?= base_url(); ?>Solicitud/listaPendientes" class="-text">Solicitudes 1</a>
-                    </ul>
+                    </ul>-->
 
                     <ul id="listaConfiguracion" class="dropdown-content">
                         <li>
