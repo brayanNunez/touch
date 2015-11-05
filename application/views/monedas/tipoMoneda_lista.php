@@ -30,7 +30,7 @@
                                                     <span style="font-size: larger;"><?= label('tiposMoneda_defecto'); ?></span>
                                                 </div>
                                                 <div class="col offset-s1 s11">
-                                                    <select id="tipoMoneda_principal"></select>
+                                                    <select id="tipoMoneda_principal" onchange="actualizarTipoPrincipal(this)"></select>
                                                 </div>
                                             </div>
                                             <div>
@@ -156,6 +156,7 @@
 <!-- END CONTENT-->
 
 <script>
+    var tipoMonedaDefecto = '<?php if(isset($monedaDefecto)) { echo $monedaDefecto; } ?>';
     $(document).ready(function () {
         actualizarSelectTipoMoneda();
     });
@@ -169,26 +170,61 @@
             {
                 var tiposMoneda = $.parseJSON(response);
 
+                var valorTipoDefecto = parseInt(tipoMonedaDefecto);
                 var selectTipo = $('#tipoMoneda_principal');
                 selectTipo.empty();
-                selectTipo.append($('<option>', {
-                    value: 0,
-                    text: 'Seleccione uno',
-                    selected: true,
-                    disabled: true
-                }));
+                if(valorTipoDefecto != 0 && valorTipoDefecto != null) {
+                    selectTipo.append($('<option>', {
+                        value: 0,
+                        text: 'Seleccione uno',
+                        disabled: true
+                    }));
+                } else {
+                    selectTipo.append($('<option>', {
+                        value: 0,
+                        text: 'Seleccione uno',
+                        selected: true,
+                        disabled: true
+                    }));
+                }
+
                 var i;
                 for(i = 0; i < tiposMoneda.length; i++) {
                     var tipo = tiposMoneda[i];
                     if(tipo != null) {
-                        selectTipo.append($('<option>', {
-                            value: tipo['idMoneda'],
-                            text: tipo['nombre'],
-                            selected: false
-                        }));
+                        if(tipo['idMoneda'] == valorTipoDefecto) {
+                            selectTipo.append($('<option>', {
+                                value: tipo['idMoneda'],
+                                text: tipo['nombre'],
+                                selected: true
+                            }));
+                        } else {
+                            selectTipo.append($('<option>', {
+                                value: tipo['idMoneda'],
+                                text: tipo['nombre'],
+                                selected: false
+                            }));
+                        }
                     }
                 }
                 selectTipo.material_select();
+            }
+        });
+    }
+    function actualizarTipoPrincipal(opcionSeleccionada) {
+        var selectTipo = $('#tipoMoneda_principal');
+        $.ajax({
+            type: 'POST',
+            url: '<?= base_url(); ?>tiposMoneda/cambiarTipoPrincipal',
+            data: {idMoneda : opcionSeleccionada.value},
+            success: function(response)
+            {
+                if(response != 0) {
+                    alert('<?= label('tipoMonedaDefectoEditadoCorrectamente'); ?>');
+                    tipoMonedaDefecto = opcionSeleccionada;
+                } else {
+                    alert('<?= label('tipoMonedaDefectoNoEditado'); ?>');
+                }
             }
         });
     }
@@ -258,7 +294,6 @@
             if (checkActivo) {
               $('.checkbox#'+idEditar).prop('checked', true);
             }
-            actualizarSelectTipoMoneda();
         }
 
         var contadorFilas = 0;
@@ -328,8 +363,7 @@
             $('.modal-trigger').leanModal();
       
             contadorFilas++;
-           actualizarSelectTipoMoneda();
-            
+
             };
 
         function generarListasBotones(){
@@ -406,6 +440,7 @@
                        } else {
                         
                         alert("<?=label('tiposMoneda_tipoMonedaGuardadoCorrectamente'); ?>");
+                         actualizarSelectTipoMoneda();
                         agregarFila(response, $('#form_tipoMoneda #tipoMoneda_nombre').val(), $('#form_tipoMoneda #tipoMoneda_signo').val(), $('#form_tipoMoneda #tipoMoneda_tipoCambio').val());
                         if (cerrarModal) {
                           $('#agregarTipoMoneda .modal-header a').click();
@@ -453,6 +488,7 @@ function validacionCorrectaEditar(){
                            } else {
                             
                             alert("<?=label('tiposMoneda_tipoMonedaEditadoCorrectamente'); ?>");
+                             actualizarSelectTipoMoneda();
                             editarFila($('#form_tipoMonedaEditar #tipoMoneda_nombre').val(), $('#form_tipoMonedaEditar #tipoMoneda_signo').val(), $('#form_tipoMonedaEditar #tipoMoneda_tipoCambio').val());
                             $('#editarTipoMoneda .modal-header a').click();
                             
@@ -462,11 +498,12 @@ function validacionCorrectaEditar(){
 
               } else{
                 alert("<?=label('tipoMoneda_error_nombreExisteEnBD'); ?>");
-                $("#form_tipoMonedaEditar input[name*='tipoMoneda_signo']").each(function () {
-                    if ($(this).val() == response) {
-                        $(this).focus();
-                    }
-                });
+                  $('#form_tipoMonedaEditar #tipoMoneda_nombre').focus();
+//                $("#form_tipoMonedaEditar input[name*='tipoMoneda_nombre']").each(function () {
+//                    if ($(this).val() == response) {
+//                        $(this).focus();
+//                    }
+//                });
               };
             };
        }
@@ -488,6 +525,7 @@ function validacionCorrectaEditar(){
                } else {
                 
                 alert("<?=label('tiposMoneda_tipoMonedaEditadoCorrectamente'); ?>");
+                 actualizarSelectTipoMoneda();
                 editarFila($('#form_tipoMonedaEditar #tipoMoneda_nombre').val(), $('#form_tipoMonedaEditar #tipoMoneda_signo').val(), $('#form_tipoMonedaEditar #tipoMoneda_tipoCambio').val());
                 $('#editarTipoMoneda .modal-header a').click();
                 
@@ -539,6 +577,7 @@ function validacionCorrectaEditar(){
                    if (response==1) {
                        filaEliminar.fadeOut(function () {
                        filaEliminar.remove();
+                           actualizarSelectTipoMoneda();
                        verificarChecks();
                        });
                        
@@ -592,6 +631,7 @@ function validacionCorrectaEditar(){
                        if (response==1) {
                           fila.fadeOut(function () {
                            fila.remove();
+                              actualizarSelectTipoMoneda();
                            verificarChecks();
                            });
                        } else{ 

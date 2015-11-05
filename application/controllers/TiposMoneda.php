@@ -18,7 +18,9 @@ class TiposMoneda extends CI_Controller
         $idEmpresa = $sessionActual['idEmpresa'];
 
         $lista = $this->TipoMoneda_model->cargarTodos($idEmpresa);
+        $tipoDefecto = $this->TipoMoneda_model->tipoPrincipal($idEmpresa);
         $data['lista'] = $lista;
+        $data['monedaDefecto'] = $tipoDefecto;
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
         $this->load->view('monedas/tipoMoneda_lista', $data);
@@ -98,7 +100,7 @@ class TiposMoneda extends CI_Controller
 
         $moneda = array(
             'idEmpresa' => $idEmpresa,
-            'nombre' => $this->input->post('impuesto_nombre'),
+            'nombre' => $this->input->post('tipoMoneda_nombre'),
             'eliminado' => '0'
         );
         $data['moneda'] = $moneda;
@@ -124,6 +126,23 @@ class TiposMoneda extends CI_Controller
         $idEmpresa = $sessionActual['idEmpresa'];
 
         $resultado = $this->TipoMoneda_model->tiposMoneda($idEmpresa);
+        if ($resultado === false || $resultado === array()) {
+            echo 0;
+        } else {
+            echo json_encode($resultado);
+        }
+    }
+
+    public function cambiarTipoPrincipal()
+    {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+        $data['idEmpresa'] = $idEmpresa;
+        $idMoneda = $_POST['idMoneda'];
+        $data['datos'] = array(
+            'idMoneda' => $idMoneda
+        );
+        $resultado = $this->TipoMoneda_model->cambiarTipoPrincipal($data);
         if ($resultado === false || $resultado === array()) {
             echo 0;
         } else {

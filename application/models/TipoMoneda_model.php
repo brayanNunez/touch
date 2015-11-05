@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-
 class TipoMoneda_model extends CI_Model
 {
+
     function __construct()
     {
         parent:: __construct();
@@ -147,6 +147,53 @@ class TipoMoneda_model extends CI_Model
 
             $this->db->trans_commit();
             return $resultado;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+    function cambiarTipoPrincipal($data)
+    {
+        try{
+            $this->db->trans_begin();
+
+//            print_r($data);exit();
+            $this->db->where('idEmpresa', $data['idEmpresa']);
+            $query = $this->db->update('empresa', $data['datos']);
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+
+            $this->db->trans_commit();
+            return true;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+    function tipoPrincipal($idEmpresa)
+    {
+        try{
+            $this->db->trans_begin();
+
+            $this->db->select('idMoneda');
+            $this->db->where('idEmpresa', $idEmpresa);
+            $query = $this->db->get('empresa');
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+
+            $tipo = 0;
+            if($query->num_rows() > 0) {
+                $array = $query->result_array();
+                $valor = array_shift($array);
+                $tipo = $valor['idMoneda'];
+            }
+
+            $this->db->trans_commit();
+            return $tipo;
         } catch (Exception $e) {
             $this->db->trans_rollback();
             return false;

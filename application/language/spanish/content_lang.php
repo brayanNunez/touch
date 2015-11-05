@@ -279,6 +279,8 @@ $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos selec
     $lang['tiposMoneda_tipoMonedaGuardadoCorrectamente'] = 'El tipo de moneda fue guardado con éxito.';
     $lang['tipoMoneda_error_nombreExisteEnBD'] = 'El nombre indicado ya existe.';
     $lang['tiposMoneda_tipoMonedaEditadoCorrectamente'] = 'El tipo de moneda fue editado con éxito.';
+    $lang['tipoMonedaDefectoEditadoCorrectamente'] = 'El tipo de moneda por defecto fue cambiado con éxito';
+    $lang['tipoMonedaDefectoNoEditado'] = 'El tipo de moneda por defecto no pudo ser editado.';
 
 //columnas tabla de cotizaciones 
 	$lang['tablaCotizaciones_codigo'] = 'Código';
