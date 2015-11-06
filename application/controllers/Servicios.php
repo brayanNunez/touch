@@ -106,7 +106,34 @@ class Servicios extends CI_Controller
             'total' => $this->input->post('servicio_total'),
             'estado' => 0
         );
+
         $data['id'] = decryptIt($id);
+
+        $fases = array();
+        $contador = 0;
+        $fasesObtenidos = 0;
+        $cantidadFases = $this->input->post('cantidadFases');
+        // echo $_POST['id_0']; exit();
+        while ($fasesObtenidos < $cantidadFases) {
+            if (isset($_POST['id_'.$contador])) {
+                  
+                  $fase = array(
+                 'idFase' => $this->input->post('id_'.$contador),
+                 'cantidadTiempo' => $this->input->post('cantidadhoras_'.$contador),
+                 'idServicio' => $data['id']
+                 );
+                array_push($fases, $fase);
+                $fasesObtenidos++;
+            }
+            $contador++;
+         }
+
+         $data['fases'] = $fases;
+
+         // echo print_r($fases); exit();
+
+
+        
         if (!$this->Servicio_model->modificar($data)) {
             //Error en la transacción
             echo 0;

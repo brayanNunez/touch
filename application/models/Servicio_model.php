@@ -112,6 +112,21 @@ class Servicio_model extends CI_Model
                     throw new Exception("Error en la BD");
                 }
                 $row['impuestos'] = $impuestos->result_array();
+
+
+                $this->db->select('fs.cantidadTiempo, fa.*, fpadre.codigo as p_codigo, fpadre.nombre as p_nombre,fpadre.notas as p_notas');
+                $this->db->from('fase fa');
+                $this->db->join('fase fpadre', 'fa.idFasePadre= fpadre.idFase');
+                $this->db->join('fase_servicio fs', 'fs.idFase = fa.idFase');
+                $this->db->join('servicio se', 'se.idServicio = fs.idServicio');
+                $this->db->where('se.idServicio', $id);
+                $fases = $this->db->get();
+
+                if (!$fases) {
+                    throw new Exception("Error en la BD");
+                }
+                $row['fases'] = $fases->result_array();
+                // echo  print_r($fases); exit();
             }
 
             $this->db->trans_commit();
@@ -154,6 +169,16 @@ class Servicio_model extends CI_Model
                 }
             }
 
+            $this->db->where('idServicio', $data['id']);
+            $query = $this->db->delete('fase_servicio');
+            if (!$query) throw new Exception("Error en la BD");
+            foreach ($data['fases'] as $fase) {
+                $query = $this->db->insert('fase_servicio', $fase);
+                if (!$query) {
+                    throw new Exception("Error en la BD");
+                }
+            }
+            
             $this->db->trans_commit();
             return true;
         } catch (Exception $e) {
