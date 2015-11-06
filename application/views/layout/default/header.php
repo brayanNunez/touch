@@ -231,7 +231,7 @@
                             <a href="<?= base_url() ?>usuarios"><?= label('usuarios'); ?></a>
                         </li>
                         <li>
-                            <a href="<?= base_url(); ?>financiamiento"><?= label('financiamiento'); ?></a>
+                            <a href="<?= base_url(); ?>formasPago"><?= label('formasPago'); ?></a>
                         </li>
                         <!--<li>
                             <a href="<?= base_url(); ?>pagos"><?= label('pagos'); ?></a>

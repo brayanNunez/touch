@@ -575,4 +575,23 @@
             }
         });
 
+        var reglasFormaPago =  {
+            formaPago_nombre: {required: true, maxlength: 100},
+            formaPago_descripcion: {required: true, maxlength: 200}
+        };
+        $('#form_formaPago').validate({
+            rules: reglasFormaPago,
+            errorElement: 'div',
+            submitHandler: function(form) {
+                validacionCorrecta();
+            }
+        });
+        $('#form_formaPagoEditar').validate({
+            rules: reglasFormaPago,
+            errorElement: 'div',
+            submitHandler: function(form) {
+                validacionCorrectaEditar();
+            }
+        });
+
     });

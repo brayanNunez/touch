@@ -282,6 +282,21 @@ $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos selec
     $lang['tipoMonedaDefectoEditadoCorrectamente'] = 'El tipo de moneda por defecto fue cambiado con éxito';
     $lang['tipoMonedaDefectoNoEditado'] = 'El tipo de moneda por defecto no pudo ser editado.';
 
+//Formas de pago
+    $lang['formasPago'] = 'Formas de pago';
+    $lang['tituloFormasPago'] = 'Formas de pago disponibles';
+    $lang['formaPagoNueva'] = 'Nueva forma de pago';
+    $lang['tablaFormaPago_nombre'] = 'Nombre';
+    $lang['tablaFormaPago_descripcion'] = 'Descripción';
+    $lang['tablaFormaPago_opciones'] = 'Opciones';
+    $lang['formFormaPago_nombre'] = 'Nombre';
+    $lang['formFormaPago_descripcion'] = 'Descripción';
+    $lang['formaPago_guardarCambios'] = 'Guardar cambios';
+    $lang['confirmarEliminarFormaPago'] = '¿Realmente desea eliminar la forma de pago?';
+    $lang['formasPago_FormaPagoGuardadoCorrectamente'] = 'La forma de pago fue guardada correctamente';
+    $lang['formaPago_error_nombreExisteEnBD'] = 'El nombre indicado ya existe';
+    $lang['formasPago_formaPagoEditadoCorrectamente'] = 'La forma de pago fue editada correctamente';
+
 //columnas tabla de cotizaciones 
 	$lang['tablaCotizaciones_codigo'] = 'Código';
 	$lang['tablaCotizaciones_fecha'] = 'Fecha';
