@@ -86,7 +86,7 @@ class Servicio_model extends CI_Model
         }
     }
 
-    function cargar($id)
+    function cargar($id, $idEmpresa)
     {
         try {
             $this->db->trans_begin();
@@ -125,7 +125,32 @@ class Servicio_model extends CI_Model
                 if (!$fases) {
                     throw new Exception("Error en la BD");
                 }
-                $row['fases'] = $fases->result_array();
+                $row['misFases'] = $fases->result_array();
+
+
+
+                
+                $fasesPadre = $this->db->get_where('fase',array('idEmpresa' => $idEmpresa, 'eliminado' => 0, 'idFasePadre' => null));
+                if (!$fasesPadre) {
+                    throw new Exception("Error en la BD");
+                }
+
+                $fasesPadre = $fasesPadre->result_array();
+                $resultado = array();
+                 foreach ($fasesPadre as $fase)
+                {
+                    $idFase = $fase['idFase'];
+                    $query = $this->db->get_where('fase', array('idFasePadre' => $idFase));
+                    if (!$query) throw new Exception("Error en la BD"); 
+                    $fase['subfases'] = $query->result_array();
+                    array_push($resultado, $fase);
+                }
+
+                $row['fases'] = $resultado;
+
+
+
+                
                 // echo  print_r($fases); exit();
             }
 

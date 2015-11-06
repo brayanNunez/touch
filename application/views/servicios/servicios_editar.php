@@ -66,7 +66,7 @@
                                         </div>
 
                                         <div class="col s12" style="padding: 0;">
-                                            <div class="input-field col s12 m6 l5">
+                                            <!-- <div class="input-field col s12 m6 l5">
                                                 <select id="servicio_fase" name="servicio_fase">
                                                     <option value="" selected disabled>Seleccione uno</option>
                                                     <option value="1">Fase1</option>
@@ -74,8 +74,28 @@
                                                     <option value="3">Fase3</option>
                                                 </select>
                                                 <label for="servicio_fase"><?= label('formServicio_seleccioneFase'); ?></label>
+                                            </div> -->
+                                            <div class="input-field col s12 m6 l6 inputSelector" >
+                                                <label for="servicioFase"><?= label('formServicio_seleccioneFase'); ?></label>
+                                                <br>
+                                                <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="servicioFase" id="servicioFase" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("servicio_elegirFase"); ?>" class="browser-default chosen-select" style="width:350px;" tabindex="2">
+                                                    <option value="0" disabled selected style="display:none;"><?= label("servicio_elegirFase"); ?></option>
+                                                    <option value="nuevo"><?= label("agregarNuevo"); ?></option>
+                                                    <?php
+                                                    if(isset($paises)) {
+                                                        foreach ($paises as $pais) { ?>
+                                                            <option value="<?= $pais['idPais']; ?>"><?= $pais['nombre']; ?></option>
+                                                    <?php
+                                                        }
+                                                    }
+                                                    ?>
+                                                    <option value="1">Fase1</option>
+                                                    <option value="2">Fase2</option>
+                                                    <option value="3">Fase3</option>
+
+                                                </select>
                                             </div>
-                                            <div class="input-field col s12 m6 l5">
+                                            <!-- <div class="input-field col s12 m6 l5">
                                                 <select id="servicio_subFase" name="servicio_subFase">
                                                     <option value="" selected disabled>Seleccione uno</option>
                                                     <option value="1">Subfase1</option>
@@ -83,10 +103,30 @@
                                                     <option value="3">Subfase3</option>
                                                 </select>
                                                 <label for="servicio_subFase"><?= label('formServicio_seleccioneSubfase'); ?></label>
+                                            </div> -->
+                                            <div class="input-field col s12 m6 l6 inputSelector" >
+                                                <label for="servicio_subFase"><?= label('formServicio_seleccioneSubfase'); ?></label>
+                                                <br>
+                                                <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="servicio_subFase" id="servicio_subFase" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("servicio_elegirFase"); ?>" class="browser-default chosen-select" style="width:350px;" tabindex="2">
+                                                    <option value="0" disabled selected style="display:none;"><?= label("servicio_elegirFase"); ?></option>
+                                                    <option value="nuevo"><?= label("agregarNuevo"); ?></option>
+                                                    <?php
+                                                    if(isset($paises)) {
+                                                        foreach ($paises as $pais) { ?>
+                                                            <option value="<?= $pais['idPais']; ?>"><?= $pais['nombre']; ?></option>
+                                                    <?php
+                                                        }
+                                                    }
+                                                    ?>
+                                                    <option value="1">Fase1</option>
+                                                    <option value="2">Fase2</option>
+                                                    <option value="3">Fase3</option>
+
+                                                </select>
                                             </div>
-                                            <div class="input-field col s12 m6 l10" style="margin-top: 5px;">
+                                            <div class="input-field col s12 m6 l12" style="margin-top: 5px;">
                                                 <a href="" style="text-decoration: underline;float: left;"><?= label('formServicio_agregarTodasFases'); ?></a>
-                                                <a href="" class="btn" style="display: block;margin: 0 auto;width: 40%;"><?= label('agregar'); ?></a>
+                                                <a id= "agregarFase" class="btn" style="display: block;margin: 0 auto;width: 40%;"><?= label('agregar'); ?></a>
                                             </div>
                                             <div class="col s12" style="margin-top: 15px;padding: 0;">
                                                 <div class="col s12 m6 l4">
@@ -110,7 +150,7 @@
                                                 </div>
                                             </div>
                                            
-                                            <input style="display:none" id="cantidadFases" name="cantidadFases" type="text" value="<?= count($resultado['fases'])?>">    
+                                            <input style="display:none" id="cantidadFases" name="cantidadFases" type="text" value="<?= count($resultado['misFases'])?>">    
                                             <div class="col s12 table-responsive">
                                                 <table id="tabla-servicio" class="table striped" cellspacing="0">
                                                     <thead>
@@ -134,7 +174,7 @@
                                                         
                                                             if ($resultado !== false) {   
                                                             $contador = 0;                                                                 
-                                                                    foreach ($resultado['fases'] as $fase) {
+                                                                    foreach ($resultado['misFases'] as $fase) {
                                                                         ?>
 
                                                                          <tr>
@@ -235,8 +275,77 @@
 
 <script>
 
+<?php 
+$js_array = json_encode($resultado['fases']); 
+echo "var arrayFases =". $js_array;?> 
 
-$(document).ready(function() {
+    $(document).on('ready', function(){
+
+        $('#agregarFase').on('click', function(){
+            alert('ahora');
+            agregarFila('codigo', 'nombre', 'des', 'cantidad', 'codigoPadre', 'nombrePadre', 'desPadre');
+        });
+
+        var config = {'.chosen-select'           : {}}
+          for (var selector in config) {
+            $(selector).chosen(config[selector]);
+          }
+
+          cargarFases();
+
+
+          $(document).on('change','.chosen-select',function(){
+            var valor = $(this).val();
+            var tipo = $(this).attr("data-tipo");
+            if (valor=="nuevo") {
+                var idBoton = $(this).attr("id");
+                var nuevoElementoAgregar = "";
+                botonEnLista(tipo, idBoton, nuevoElementoAgregar)
+            } else{
+                if (tipo == 'servicioFase') {
+                    cargarSubFases(valor);
+                } 
+                
+                
+            };
+            
+        });
+
+    // });
+
+    
+
+    function cargarSubFases(idFasePadre){
+        $('#servicio_subFase').empty(); //remove all child nodes
+        $('#servicio_subFase').append($('<option value="0" disabled selected style="display:none;"><?= label("servicio_elegirSubFase"); ?></option>'));
+        $('#servicio_subFase').append($('<option value="nuevo"><?= label("agregarNuevo"); ?></option>'));
+        for (var i = 0; i < arrayFases.length; i++) {
+            if (arrayFases[i]['idFase'] == idFasePadre) {
+                for (var j = 0; j < arrayFases[i]['subfases'].length; j++) {
+                    var newOption = $('<option value="'+arrayFases[i]['subfases'][j]['idFase']+'">'+arrayFases[i]['subfases'][j]['nombre']+'</option>');
+                    $('#servicio_subFase').append(newOption);
+                }
+            } 
+        };
+
+        $('#servicio_subFase').trigger("chosen:updated");
+
+    }
+
+    function cargarFases(){
+        $('#servicioFase').empty(); //remove all child nodes
+        $('#servicioFase').append($('<option value="0" disabled selected style="display:none;"><?= label("servicio_elegirFase"); ?></option>'));
+        $('#servicioFase').append($('<option value="nuevo"><?= label("agregarNuevo"); ?></option>'));
+        for (var i = 0; i < arrayFases.length; i++) {
+             var newOption = $('<option value="'+arrayFases[i]['idFase']+'">'+arrayFases[i]['nombre']+'</option>');
+             $('#servicioFase').append(newOption);
+        };
+        $('#servicioFase').trigger("chosen:updated");
+
+    }
+
+
+// $(document).ready(function() {
 
 
 
@@ -248,20 +357,21 @@ $(document).ready(function() {
         $('#cantidadFases').val(cantidad);
     }
 
-    var cantidad = <?= count($resultado['fases'])?>;
+    var cantidad = <?= count($resultado['misFases'])?>;
     var contador = cantidad;
-    function agregarFila(){
+    function agregarFila(codigo, nombre, des, cantidad, codigoPadre, nombrePadre, desPadre){
             cantidad++;
             actualizarCantidad();
        
             var boton = '<a href="#eliminarFase" data-id-eliminar="1" class="-text modal-trigger confirmarEliminar boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>';
-            var codigo = 'PROG-0001';
-            var nombre = 'ERS';
-            var des = 'Requerimientos de software Nuevo';
-            var cantidad = '<td><input class="cantidad" id="fase1_horas" type="number" value="30" /></td>';
-            var codigoPadre = 'PROG-0002Padre';
-            var nombrePadre = 'ERSPadre';
-            var desPadre = 'Requerimientos de softwarePadre';
+            // var codigo = 'PROG-0001';
+            // var nombre = 'ERS';
+            // var des = 'Requerimientos de software Nuevo';
+            var idFase = '<input class="id_fase"  name="id_'+contador+'" id="id_'+contador+'" type="number" value="<?=$fase['idFase']?>" />';                                                             
+            var cantidad = '<input class="cantidad" name="cantidadhoras_'+contador+'" id="cantidadhoras_'+contador+'" type="number" value="0" />';
+            // var codigoPadre = 'PROG-0002Padre';
+            // var nombrePadre = 'ERSPadre';
+            // var desPadre = 'Requerimientos de softwarePadre';
 
 
 
@@ -272,8 +382,11 @@ $(document).ready(function() {
             codigoPadre,
             nombrePadre,
             desPadre,
+            idFase,
             cantidad,
             boton ]);
+
+            $('.id_fase').parent('td').css('display', 'none');
 
             $('.modal-trigger').leanModal();
       
@@ -397,7 +510,7 @@ $(document).ready(function() {
 
 
 
-    function validacionCorrecta_Serviciosw(){
+    function validacionCorrecta_Servicios(){
         var codigoActual = '<?= $codigo; ?>';
         var codigoNuevo = $('#servicio_codigo').val();
         if(codigoActual == codigoNuevo) {

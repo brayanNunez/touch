@@ -84,7 +84,9 @@ class Servicios extends CI_Controller
 
     public function editar($id)
     {
-        $resultado = $this->Servicio_model->cargar(decryptIt($id));
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+        $resultado = $this->Servicio_model->cargar(decryptIt($id), $idEmpresa);
         if ($resultado === false || $resultado === array()) {
             echo "Error en la transacción";
         } else {
