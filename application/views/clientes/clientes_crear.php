@@ -32,7 +32,6 @@
                                             </select>
                                             <label for="cliente_tipo"><?= label('formCliente_tipoPersona'); ?></label>
                                         </div>
-                                        
 
                                         <div class="input-field col s12 inputSelector" >
                                             <label for="cleinte_nacionalidad"><?= label('formCliente_nacionalidad'); ?></label>

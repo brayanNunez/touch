@@ -161,6 +161,7 @@
                     </a>
                     <span class="logo-text">Touch!</span>
                 </h1>
+
                 <ul id="opciones-barra-superior" class="right hide-on-med-and-down">
 
 
@@ -183,7 +184,6 @@
                                 <i style="margin-left: 75px;" class="mdi-action-settings-applications"></i>
                             </a>
                         </li> -->
-
                     <li>
                         <a class="dropdown-button" href="#!" data-activates="listaConfiguracion"
                            title="<?= label('tooltip_configuracion') ?>">

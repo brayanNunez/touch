@@ -207,23 +207,262 @@
 </script>
 
 <!-- lista modals -->
+<div id="agregarCliente" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <div class="row">
+            <div class="col s12">
+                <form id="form_cliente" class="col s12" action="<?= base_url() ?>clientes/insertar" method="POST">
+                    <div class="row">
+
+                        <div class="input-field col s12">
+                            <select name="cliente_tipo" onchange="datosCliente(this)">
+                                <option value="0" selected><?= label('formCliente_fisica'); ?></option>
+                                <option value="1"><?= label('formCliente_juridica'); ?></option>
+                            </select>
+                            <label for="cliente_tipo"><?= label('formCliente_tipoPersona'); ?></label>
+                        </div>
+                        
+
+                        <div class="input-field col s12 inputSelector" >
+                            <label for="cleinte_nacionalidad"><?= label('formCliente_nacionalidad'); ?></label>
+                            <br>
+                            <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="cliente_nacionalidad" name="cliente_nacionalidad" class="required browser-default chosen-select">
+                                <option value=""></option>
+                                <?php
+                                if(isset($paises)) {
+                                    foreach ($paises as $pais) { ?>
+                                        <option value="<?= $pais['idPais']; ?>"><?= $pais['nombre']; ?></option>
+                                <?php
+                                    }
+                                }
+                                ?>
+                            </select>
+                        </div>
+
+                        <div id="elementos-cliente-fisico" style="display: block;">
+                            <div class="input-field col s12">
+                                <input id="cliente_id" name="cliente_id" type="text">
+                                <label for="cliente_id"><?= label('formCliente_identificacion'); ?></label>
+                            </div>
+                            <div>
+                                <div class="input-field col s12 m4 l4">
+                                    <input id="cliente_nombre" name="cliente_nombre" type="text">
+                                    <label for="cliente_nombre"><?= label('formCliente_nombre'); ?></label>
+                                </div>
+                                <div class="input-field col s12 m4 l4">
+                                    <input id="cliente_apellido1" name="cliente_apellido1" type="text">
+                                    <label for="cliente_apellido1"><?= label('formCliente_apellido1'); ?></label>
+                                </div>
+                                <div class="input-field col s12 m4 l4">
+                                    <input id="cliente_apellido2" name="cliente_apellido2" type="text">
+                                    <label for="cliente_apellido2"><?= label('formCliente_apellido2'); ?></label>
+                                </div>
+                            </div>
+                            <div class="input-field col s12">
+                                <div>
+                                    <input id="cliente_correo" name="cliente_correo" type="email" style="margin-bottom: 0;" >
+                                    <label for="cliente_correo"><?= label('formCliente_correo'); ?></label>
+                                </div>
+                                <div style="margin-bottom: 20px;">
+                                    <input value='1' type="checkbox" class="filled-in" id="checkbox_correoCliente" name="checkbox_correoCliente" />
+                                    <label for="checkbox_correoCliente">
+                                        <?= label('formCliente_correoCheck') ?>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="cliente_telefonoMovil" name="cliente_telefonoMovil" type="text">
+                                <label
+                                    for="cliente_telefonoMovil"><?= label('formCliente_telefonoMovil'); ?></label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="cliente_telefono" name="cliente_telefono" type="text">
+                                <label
+                                    for="cliente_telefono"><?= label('formCliente_telefonoFijo'); ?></label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="cliente_fechaNacimiento" name="cliente_fechaNacimiento" type="text" class="datepicker-fecha">
+                                <label for="cliente_fechaNacimiento"><?= label('formCliente_fechaNacimiento'); ?></label>
+                            </div>
+                        </div>
+
+                        <div id="elementos-cliente-juridico" style="display: none;">
+                            <div class="input-field col s12">
+                                <input id="clientejuridico_id" name="clientejuridico_id" type="text">
+                                <label for="clientejuridico_id"><?= label('formCliente_identificacionJuridica'); ?></label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="clientejuridico_nombre" name="clientejuridico_nombre" type="text">
+                                <label for="clientejuridico_nombre"><?= label('formCliente_nombreJuridico'); ?></label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="clientejuridico_nombreFantasia" name="clientejuridico_nombreFantasia" type="text">
+                                <label for="clientejuridico_nombreFantasia"><?= label('formCliente_nombreFantasia'); ?></label>
+                            </div>
+                            <div class="input-field col s12">
+                                <div>
+                                    <input id="clientejuridico_correo" name="clientejuridico_correo" type="email">
+                                    <label for="clientejuridico_correo"><?= label('formCliente_correo'); ?></label>
+                                </div>
+                                <div style="margin-bottom: 20px;">
+                                    <input type="checkbox" class="filled-in"
+                                           id="checkbox_correoClientejuridico" name="checkbox_correoClientejuridico" />
+                                    <label for="checkbox_correoClientejuridico">
+                                        <?= label('formCliente_correoCheck') ?>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="clientejuridico_telefono" name="clientejuridico_telefono" type="text">
+                                <label
+                                    for="clientejuridico_telefono"><?= label('formCliente_telefono'); ?></label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="clientejuridico_fax" name="clientejuridico_fax" type="text">
+                                <label
+                                    for="clientejuridico_fax"><?= label('formCliente_fax'); ?></label>
+                            </div>
+                        </div>
+                        <div class="input-field col s12 envio-formulario">
+                            <button class="btn waves-effect waves-light right" type="submit"
+                                    name="action"><?= label('formCliente_enviar'); ?>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="agregarAtencion" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <div class="input-field col s12">
-            <input id="client_code" type="text" value="">
-            <label for="client_code"><?= label('formCliente_nombreContacto'); ?></label>
+        <div class="row">
+            <div class="input-field col s12 m4 l4">
+                <input id="cliente_contactoNombre" type="text">
+                <label for="cliente_contactoNombre"><?= label('formContacto_nombre'); ?></label>
+            </div>
+            <div class="input-field col s12 m4 l4">
+                <input id="cliente_contactoApellido1" type="text">
+                <label for="cliente_contactoApellido1"><?= label('formContacto_apellido1'); ?></label>
+            </div>
+            <div class="input-field col s12 m4 l4">
+                <input id="cliente_contactoApellido2" type="text">
+                <label for="cliente_contactoApellido2"><?= label('formContacto_apellido2'); ?></label>
+            </div>
         </div>
-        <div class="input-field col s12">
-            <input id="client_code" type="text" value="">
-            <label for="client_code"><?= label('formCliente_correoContacto'); ?></label>
+        <div class="row">
+            <div class="input-field col s12 m6 l6">
+                <div>
+                    <input id="cliente_contactoCorreo" type="email" style="margin-bottom: 0;">
+                    <label for="cliente_contactoCorreo"><?= label('formCliente_correo'); ?></label>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <input type="checkbox" class="filled-in" id="checkbox_contactoCorreoCliente"/>
+                    <label for="checkbox_contactoCorreoCliente" style="margin-bottom: 20px;">
+                        <?= label('formCliente_correoCheck') ?>
+                    </label>
+                </div>
+            </div>
+            <div class="input-field col s12 m3 l3">
+                <input id="cliente_contactoPuesto" type="text">
+                <label for="cliente_contactoPuesto"><?= label('formContacto_puesto'); ?></label>
+            </div>
+            <div class="input-field col s12 m3 l3">
+                <input id="cliente_contactoTelefono" type="text">
+                <label
+                    for="cliente_contactoTelefono"><?= label('formContacto_telefono'); ?></label>
+            </div>
         </div>
     </div>
     <div class="modal-footer">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
+
+<div id="agregarFormaPago" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <form id="form_formaPago" action="<?=base_url()?>formasPago/insertar" method="post">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="formaPago_nombre" name="formaPago_nombre" type="text">
+                    <label for="formaPago_nombre"><?= label('formFormaPago_nombre'); ?></label>
+                </div>
+                <div class="input-field col s12">
+                    <textarea name="formaPago_descripcion" id="formaPago_descripcion" class="materialize-textarea" rows="4"></textarea>
+                    <label for="formaPago_descripcion"><?= label('formFormaPago_descripcion'); ?></label>
+                </div>
+            </div>
+            <div class="row">
+                <!--<a href="#" style="font-size: larger;float: left;text-decoration: underline;"
+                   class="modal-action modal-close"><?= label('cancelar'); ?>
+                </a>-->
+                <a onclick="$(this).closest('form').submit()" id="guardarCerrar" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                    <?= label('guardar'); ?>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="agregarTipoMoneda" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <form id="form_tipoMoneda" action="<?=base_url()?>tiposMoneda/insertar" method="post">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="tipoMoneda_nombre" name="tipoMoneda_nombre" type="text">
+                    <label for="tipoMoneda_nombre"><?= label('formTipoMoneda_nombre'); ?></label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="tipoMoneda_signo" name="tipoMoneda_signo" type="text">
+                    <label for="tipoMoneda_signo"><?= label('formTipoMoneda_signo'); ?></label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="tipoMoneda_tipoCambio" name="tipoMoneda_tipoCambio" type="number">
+                    <label for="tipoMoneda_tipoCambio"><?= label('formTipoMoneda_tipoCambio'); ?></label>
+                </div>
+            </div>
+            <div class="row">
+                <a onclick="$(this).closest('form').submit()" id="guardarCerrar" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                    <?= label('guardar'); ?>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div style="visibility:hidden; position:absolute">                                 
+    <a id="linkNuevaMoneda" href="#agregarTipoMoneda" class="modal-trigger"></a>
+    <a id="linkNuevaFormaPago" href="#agregarFormaPago" class="modal-trigger"></a>
+    <a id="linkNuevaAtencion" href="#agregarAtencion" class="modal-trigger"></a>
+    <a id="linkNuevoCliente" href="#agregarCliente" class="modal-trigger"></a>
+</div>
 <!--Fin lista modals-->
+
+<script>
+    function datosCliente(opcionSeleccionada) {
+        if (opcionSeleccionada.value == "0") {
+            document.getElementById('elementos-cliente-fisico').style.display = 'block';
+            document.getElementById('elementos-cliente-juridico').style.display = 'none';
+        } else {
+            document.getElementById('elementos-cliente-fisico').style.display = 'none';
+            document.getElementById('elementos-cliente-juridico').style.display = 'block';
+        }
+    }
+</script>

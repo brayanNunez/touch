@@ -18,12 +18,25 @@
             window.location.href = "<?= base_url() ?>productos/agregar";
         } 
         if (tipo == "paso1Atencion") {
-            var linkModal = $('<a id="cotizacion-agregarAtencion" class="btn modal-trigger" href="#agregarAtencion" data-toggle="tooltip" title="Agregar nuevo contacto">');   
-            linkModal.trigger('click');
+            $('#cliente_contactoNombre').val(nuevoElementoAgregar);
+            $('#linkNuevaAtencion').click();
+            $('#cliente_contactoNombre').focus();
         } 
         if (tipo == "paso1Cliente") {
-             window.location.href = "<?= base_url() ?>clientes/agregar";
+            $('#cliente_nombre').val(nuevoElementoAgregar);
+            $('#linkNuevoCliente').click();
+            $('#cliente_nombre').focus();
         } 
+        if (tipo == "paso1FormaPago") {
+            $('#formaPago_nombre').val(nuevoElementoAgregar);
+            $('#linkNuevaFormaPago').click();
+            $('#formaPago_nombre').focus();
+        }
+        if (tipo == "paso1Moneda") {
+            $('#tipoMoneda_nombre').val(nuevoElementoAgregar);
+            $('#linkNuevaMoneda').click();
+            $('#tipoMoneda_nombre').focus();
+        }
         if (tipo == "paso3_plantilla") {
             // alert('modal para crear plantilla');
             // $('#form_paso3AgregarPlantilla').reset();
@@ -48,7 +61,7 @@
     function generarAutocompletarMoneda(id){
         var miSelect = $('<select data-incluirBoton="0" placeholder="seleccionar" data-tipo="paso1Moneda" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirMoneda"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
         miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso1_elegirMoneda"); ?></option>');
-        // miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+        miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
         miSelect.append('<option value="Almuerzo">Dolar</option>');
         miSelect.append('<option value="Fresco">Peso</option>');
         miSelect.append('<option value="Hamburguesa">Colón</option>');
@@ -191,7 +204,7 @@
                 
                 switch(tipo){
                     case 'paso3_plantilla':
-                        cargarDieseno(valor);
+                        //cargarDieseno(valor);
                     break;
                 }
                 alert(valor);
