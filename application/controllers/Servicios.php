@@ -115,7 +115,7 @@ class Servicios extends CI_Controller
         $contador = 0;
         $fasesObtenidos = 0;
         $cantidadFases = $this->input->post('cantidadFases');
-        // echo $_POST['id_0']; exit();
+        // echo $cantidadFases; exit();
         while ($fasesObtenidos < $cantidadFases) {
             if (isset($_POST['id_'.$contador])) {
                   

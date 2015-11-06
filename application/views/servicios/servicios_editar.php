@@ -79,19 +79,7 @@
                                                 <label for="servicioFase"><?= label('formServicio_seleccioneFase'); ?></label>
                                                 <br>
                                                 <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="servicioFase" id="servicioFase" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("servicio_elegirFase"); ?>" class="browser-default chosen-select" style="width:350px;" tabindex="2">
-                                                    <option value="0" disabled selected style="display:none;"><?= label("servicio_elegirFase"); ?></option>
-                                                    <option value="nuevo"><?= label("agregarNuevo"); ?></option>
-                                                    <?php
-                                                    if(isset($paises)) {
-                                                        foreach ($paises as $pais) { ?>
-                                                            <option value="<?= $pais['idPais']; ?>"><?= $pais['nombre']; ?></option>
-                                                    <?php
-                                                        }
-                                                    }
-                                                    ?>
-                                                    <option value="1">Fase1</option>
-                                                    <option value="2">Fase2</option>
-                                                    <option value="3">Fase3</option>
+                                                    
 
                                                 </select>
                                             </div>
@@ -107,33 +95,21 @@
                                             <div class="input-field col s12 m6 l6 inputSelector" >
                                                 <label for="servicio_subFase"><?= label('formServicio_seleccioneSubfase'); ?></label>
                                                 <br>
-                                                <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="servicio_subFase" id="servicio_subFase" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("servicio_elegirFase"); ?>" class="browser-default chosen-select" style="width:350px;" tabindex="2">
-                                                    <option value="0" disabled selected style="display:none;"><?= label("servicio_elegirFase"); ?></option>
-                                                    <option value="nuevo"><?= label("agregarNuevo"); ?></option>
-                                                    <?php
-                                                    if(isset($paises)) {
-                                                        foreach ($paises as $pais) { ?>
-                                                            <option value="<?= $pais['idPais']; ?>"><?= $pais['nombre']; ?></option>
-                                                    <?php
-                                                        }
-                                                    }
-                                                    ?>
-                                                    <option value="1">Fase1</option>
-                                                    <option value="2">Fase2</option>
-                                                    <option value="3">Fase3</option>
+                                                <select disabled='disabled' data-incluirBoton="1" placeholder="seleccionar" data-tipo="servicio_subFase" id="servicio_subFase" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("servicio_elegirFase"); ?>" class="browser-default chosen-select" style="width:350px;" tabindex="2">
+                                                    
 
                                                 </select>
                                             </div>
                                             <div class="input-field col s12 m6 l12" style="margin-top: 5px;">
-                                                <a href="" style="text-decoration: underline;float: left;"><?= label('formServicio_agregarTodasFases'); ?></a>
+                                                <!-- <a href="" style="text-decoration: underline;float: left;"><?= label('formServicio_agregarTodasFases'); ?></a> -->
                                                 <a id= "agregarFase" class="btn" style="display: block;margin: 0 auto;width: 40%;"><?= label('agregar'); ?></a>
                                             </div>
                                             <div class="col s12" style="margin-top: 15px;padding: 0;">
                                                 <div class="col s12 m6 l4">
-                                                    <div class="input-field">
+                                                   <!--  <div class="input-field">
                                                         <input id="nuevoServicio_busqueda" type="text">
                                                         <label for="nuevoServicio_busqueda"><i class="mdi-action-search"></i><?= label('formServicio_agregarRapido') ?></label>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                                 <div class="col s12 m6 l8">
                                                     <div class="input-field col s4" style="padding-right: 0;">
@@ -184,8 +160,8 @@
                                                                             <td><?=$fase['p_codigo']?></td>
                                                                             <td><?=$fase['p_nombre']?></td>
                                                                             <td><?=$fase['p_notas']?></td>
-                                                                            <td style="display:none"><input  name="id_<?=$contador?>" id="id_<?=$contador?>" type="number" value="<?=$fase['idFase']?>" /></td>
-                                                                            <td><input class="cantidad" name="cantidadhoras_<?=$contador?>" id="cantidadhoras_<?=$contador?>" type="number" value="<?=$fase['cantidadTiempo']?>" /></td>
+                                                                            <td style="display:none"><input class="id_fase"  name="id_<?=$contador?>" id="id_<?=$contador?>" type="number" value="<?=$fase['idFase']?>" /></td>
+                                                                            <td><input class="cantidad" data-grupo="<?=$fase['p_codigo']?>" name="cantidadhoras_<?=$contador?>" id="cantidadhoras_<?=$contador?>" type="number" value="<?=$fase['cantidadTiempo']?>" /></td>
                                                                             <td>                                                       
                                                                                 <a href="#eliminarFase" data-id-eliminar="1" class="-text modal-trigger confirmarEliminar boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>
                                                                             </td>
@@ -232,6 +208,9 @@
                                                     </tr> -->
                                                     </tbody>
                                                 </table>
+                                                <div class="group">
+                                                    <p>Cantidad de tiempo total: <span id="cantidadTotal"></span></p>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -281,9 +260,67 @@ echo "var arrayFases =". $js_array;?>
 
     $(document).on('ready', function(){
 
+        function exiteEnTabla(idFase){
+            var existe = false;
+            $('.id_fase').each(function(){
+                if ($(this).val() == idFase) {
+                    existe = true;
+                } 
+            });
+            return existe;
+        }
+
         $('#agregarFase').on('click', function(){
-            alert('ahora');
-            agregarFila('codigo', 'nombre', 'des', 'cantidad', 'codigoPadre', 'nombrePadre', 'desPadre');
+            // alert('ahora');
+            var idFase = $('#servicioFase').val();
+            var idSubfase = $('#servicio_subFase').val();
+            if (idFase != 'todas') {
+                if (idSubfase != 'todas') {
+                    if (!exiteEnTabla(idSubfase)) {
+                        for (var i = 0; i < arrayFases.length; i++) {
+                            if (arrayFases[i]['idFase'] == idFase) {
+                                for (var j = 0; j < arrayFases[i]['subfases'].length; j++) {
+                                    var fase = arrayFases[i];
+                                    var subfase = fase['subfases'][j];
+                                    if (subfase['idFase'] == idSubfase) {  
+                                        agregarFila(subfase['codigo'], subfase['nombre'], subfase['notas'], fase['codigo'], fase['nombre'], fase['notas'], subfase['idFase']);
+                                    } 
+                                }
+                            } 
+                        };
+                    } 
+                } else{
+
+                    // if (!exiteEnTabla(idSubfase)) {
+                        for (var i = 0; i < arrayFases.length; i++) {
+                            if (arrayFases[i]['idFase'] == idFase) {
+                                for (var j = 0; j < arrayFases[i]['subfases'].length; j++) {
+                                    var fase = arrayFases[i];
+                                    var subfase = fase['subfases'][j];
+                                    if (!exiteEnTabla(subfase['idFase'])) {  
+                                        agregarFila(subfase['codigo'], subfase['nombre'], subfase['notas'], fase['codigo'], fase['nombre'], fase['notas'], subfase['idFase']);
+                                    } 
+                                }
+                            } 
+                        };
+                    // } 
+
+                };
+            } else{
+                for (var i = 0; i < arrayFases.length; i++) {
+                    // if (arrayFases[i]['idFase'] == idFase) {
+                        for (var j = 0; j < arrayFases[i]['subfases'].length; j++) {
+                            var fase = arrayFases[i];
+                            var subfase = fase['subfases'][j];
+                            if (!exiteEnTabla(subfase['idFase'])) {  
+                                agregarFila(subfase['codigo'], subfase['nombre'], subfase['notas'], fase['codigo'], fase['nombre'], fase['notas'], subfase['idFase']);
+                            } 
+                        }
+                    // } 
+                };
+
+            };
+            
         });
 
         var config = {'.chosen-select'           : {}}
@@ -292,6 +329,7 @@ echo "var arrayFases =". $js_array;?>
           }
 
           cargarFases();
+          // calcularTotal();
 
 
           $(document).on('change','.chosen-select',function(){
@@ -303,7 +341,14 @@ echo "var arrayFases =". $js_array;?>
                 botonEnLista(tipo, idBoton, nuevoElementoAgregar)
             } else{
                 if (tipo == 'servicioFase') {
-                    cargarSubFases(valor);
+                    if ($('#servicioFase').val() != 'todas') {
+                        cargarSubFases(valor);
+                    } else{
+                        $('#servicio_subFase').empty();
+                        $('#servicio_subFase').attr('disabled', 'disabled');
+                        $('#servicio_subFase').trigger("chosen:updated");
+                    }
+                    
                 } 
                 
                 
@@ -317,8 +362,10 @@ echo "var arrayFases =". $js_array;?>
 
     function cargarSubFases(idFasePadre){
         $('#servicio_subFase').empty(); //remove all child nodes
+        $('#servicio_subFase').removeAttr('disabled');
         $('#servicio_subFase').append($('<option value="0" disabled selected style="display:none;"><?= label("servicio_elegirSubFase"); ?></option>'));
         $('#servicio_subFase').append($('<option value="nuevo"><?= label("agregarNuevo"); ?></option>'));
+        $('#servicio_subFase').append($('<option value="todas"><?= label("formServicio_fases_agregarTodas"); ?></option>'));
         for (var i = 0; i < arrayFases.length; i++) {
             if (arrayFases[i]['idFase'] == idFasePadre) {
                 for (var j = 0; j < arrayFases[i]['subfases'].length; j++) {
@@ -336,6 +383,7 @@ echo "var arrayFases =". $js_array;?>
         $('#servicioFase').empty(); //remove all child nodes
         $('#servicioFase').append($('<option value="0" disabled selected style="display:none;"><?= label("servicio_elegirFase"); ?></option>'));
         $('#servicioFase').append($('<option value="nuevo"><?= label("agregarNuevo"); ?></option>'));
+        $('#servicioFase').append($('<option value="todas"><?= label("formServicio_fases_agregarTodas"); ?></option>'));
         for (var i = 0; i < arrayFases.length; i++) {
              var newOption = $('<option value="'+arrayFases[i]['idFase']+'">'+arrayFases[i]['nombre']+'</option>');
              $('#servicioFase').append(newOption);
@@ -359,16 +407,17 @@ echo "var arrayFases =". $js_array;?>
 
     var cantidad = <?= count($resultado['misFases'])?>;
     var contador = cantidad;
-    function agregarFila(codigo, nombre, des, cantidad, codigoPadre, nombrePadre, desPadre){
+    function agregarFila(codigo, nombre, des, codigoPadre, nombrePadre, desPadre, idFase){
             cantidad++;
+
             actualizarCantidad();
        
             var boton = '<a href="#eliminarFase" data-id-eliminar="1" class="-text modal-trigger confirmarEliminar boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>';
             // var codigo = 'PROG-0001';
             // var nombre = 'ERS';
             // var des = 'Requerimientos de software Nuevo';
-            var idFase = '<input class="id_fase"  name="id_'+contador+'" id="id_'+contador+'" type="number" value="<?=$fase['idFase']?>" />';                                                             
-            var cantidad = '<input class="cantidad" name="cantidadhoras_'+contador+'" id="cantidadhoras_'+contador+'" type="number" value="0" />';
+            var idFase = '<input class="id_fase"  name="id_'+contador+'" id="id_'+contador+'" type="number" value="'+idFase+'" />';                                                             
+            var cantidadTiempo = '<input class="cantidad" data-grupo="'+codigoPadre+'" name="cantidadhoras_'+contador+'" id="cantidadhoras_'+contador+'" type="number" value="0" />';
             // var codigoPadre = 'PROG-0002Padre';
             // var nombrePadre = 'ERSPadre';
             // var desPadre = 'Requerimientos de softwarePadre';
@@ -383,7 +432,7 @@ echo "var arrayFases =". $js_array;?>
             nombrePadre,
             desPadre,
             idFase,
-            cantidad,
+            cantidadTiempo,
             boton ]);
 
             $('.id_fase').parent('td').css('display', 'none');
@@ -437,6 +486,7 @@ echo "var arrayFases =". $js_array;?>
                        $('table').dataTable().fnDeleteRow(filaEliminar);
                        verificarChecks();
                        });
+                       
 
                         cantidad--;
                         actualizarCantidad();
@@ -466,7 +516,7 @@ echo "var arrayFases =". $js_array;?>
                 var last=null;
 
                 var cantidadGrupo = '';
-                var contadorGrupo = 0;
+                // var contadorGrupo = 0;
                 api.column(3, {page:'current'} ).data().each( function ( group, i ) {
                     var codigo = group;
                     var nombre =  api.column(4, {page:'current'} ).data()[i];
@@ -475,17 +525,18 @@ echo "var arrayFases =". $js_array;?>
                     if ( last !== group ) {
                          // alert(group);
                         $(rows).eq( i ).before(
-                            '<tr class="group"><td>'+codigo+'</td><td>'+nombre+'</td><td>'+descripcion+'</td><td id="grupo'+ contadorGrupo++ +'">0</td><td></td></tr>'
+                            '<tr class="group"><td>'+codigo+'</td><td>'+nombre+'</td><td>'+descripcion+'</td><td id="'+codigo+'">0</td><td></td></tr>'
                         );
 
                         last = group;
      
                     }
                     cantidadGrupo = $(rows).eq( i ).find('.cantidad').val();
-                    var valorActual = parseInt($("#grupo" + (contadorGrupo -1)).text()) + parseInt(cantidadGrupo);
-                    $("#grupo" + (contadorGrupo -1)).text(valorActual);
+                    var valorActual = parseInt($("#"+codigo).text()) + parseInt(cantidadGrupo);
+                    $("#"+codigo).text(valorActual);
                     
                 });
+                calcularTotal();
         }
 
     } );
@@ -502,11 +553,32 @@ echo "var arrayFases =". $js_array;?>
         }
     } );
 
-    $('.cantidad').on('change', function(){
-        alert('hola');
-         
-    })
+    $(document).on('change','.cantidad', function(){
+       var grupo = $(this).attr('data-grupo');
+       var sumatoria = 0;
+       $('input[data-grupo = '+grupo+']').each(function(){
+            sumatoria += parseInt($(this).val());
+       });
+       // alert('#'+grupo);
+       $('#'+grupo).text(sumatoria);
+       calcularTotal();
+      
+    });
+
+    function calcularTotal(){
+        // alert('entre mec');
+       var sumatoria = 0;
+       $('.cantidad').each(function(){
+            sumatoria += parseInt($(this).val());
+       });
+       $('#cantidadTotal').text(sumatoria);
+    }
+
+    
+
+
 });
+
 
 
 
@@ -571,6 +643,8 @@ echo "var arrayFases =". $js_array;?>
             });
         }
     }
+
+
 </script>
 
 <script>
@@ -642,6 +716,7 @@ echo "var arrayFases =". $js_array;?>
                     $this.parents('tr').fadeOut(function () {
                         $this.remove();
                     });
+                    
                 }
             });
             return false;
