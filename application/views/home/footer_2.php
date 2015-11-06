@@ -169,7 +169,7 @@
                 <div class="input-field col s8 m8 l8 btn-login-forgot">
                     <!--                            <p class="margin right-align medium-small">-->
                     <a class="modal-trigger" href="#forgot-password"
-                       onclick="document.getElementById('login-page').style.display = 'none';">
+                       onclick="//document.getElementById('login-page').style.display = 'none';">
                         <?= label('contrasena_olvido') ?>
                     </a>
                     <!--                            </p>-->
@@ -204,6 +204,7 @@
                 </div>
             </div>
         </form>
+        <a onclick="document.getElementById('forgot-password').style.display = 'none';">Cerrar modal</a>
     </div>
 </div>
 
