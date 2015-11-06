@@ -272,6 +272,8 @@ div#agregarServicio a.boton-opciones { display: block; margin: 0 auto; width: 11
 
 label.label_modalPresupuesto { left: 0; }
 
+div#editarGasto div.select-wrapper + label { top: 0.8rem; }
+
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/
     div#login-page { width: 380px !important; max-height: 408px !important; top: 0 !important; }
