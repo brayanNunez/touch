@@ -792,6 +792,7 @@ $lang['Persona_tablaOpciones'] = 'Opciones';
     $lang['formServicio_nuevaPersona'] = 'Nuevo gasto';
     $lang['formServicio_utilidad'] = 'Margen de utilidad';
     $lang['formServicio_total'] = 'Total';
+    $lang['formServicio_totalTiempo'] = 'Total de tiempo';
     $lang['formServicio_enviar'] = 'Agregar servicio';
     $lang['formServicio_editar'] = 'Guardar cambios';
     $lang['formServicio_gastoAdicionalNombre'] = 'Nombre';

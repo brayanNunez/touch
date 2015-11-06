@@ -102,18 +102,18 @@
                                             </div>
                                             <div class="input-field col s12 m6 l12" style="margin-top: 5px;">
                                                 <!-- <a href="" style="text-decoration: underline;float: left;"><?= label('formServicio_agregarTodasFases'); ?></a> -->
-                                                <a id= "agregarFase" class="btn" style="display: block;margin: 0 auto;width: 40%;"><?= label('agregar'); ?></a>
+                                                <a id= "agregarFase" class="btn" style="display: block;margin: 5px auto;width: 40%;"><?= label('agregar'); ?></a>
                                             </div>
-                                            <div class="col s12" style="margin-top: 15px;padding: 0;">
-                                                <div class="col s12 m6 l4">
+                                            <!-- <div class="col s12" style="margin-top: 15px;padding: 0;"> -->
+                                                <!-- <div class="col s12 m6 l4"> -->
                                                    <!--  <div class="input-field">
                                                         <input id="nuevoServicio_busqueda" type="text">
                                                         <label for="nuevoServicio_busqueda"><i class="mdi-action-search"></i><?= label('formServicio_agregarRapido') ?></label>
                                                     </div> -->
-                                                </div>
-                                                <div class="col s12 m6 l8">
+                                                <!-- </div> -->
+                                                <!-- <div class="col s12 m6 l6">
                                                     <div class="input-field col s4" style="padding-right: 0;">
-                                                        <p style="font-size: large;margin: 15px 0 0;float: right;"><?= label('formServicio_cotizarPor') ?>:</p>
+                                                        <p style="font-size: large;margin: 15px 0 0;"><?= label('formServicio_cotizarPor') ?>:</p>
                                                     </div>
                                                     <div class="input-field col s8">
                                                         <select name="servicio_tiempo">
@@ -124,7 +124,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                            
                                             <input style="display:none" id="cantidadFases" name="cantidadFases" type="text" value="<?= count($resultado['misFases'])?>">    
                                             <div class="col s12 table-responsive">
@@ -163,7 +163,7 @@
                                                                             <td style="display:none"><input class="id_fase"  name="id_<?=$contador?>" id="id_<?=$contador?>" type="number" value="<?=$fase['idFase']?>" /></td>
                                                                             <td><input class="cantidad" data-grupo="<?=$fase['p_codigo']?>" name="cantidadhoras_<?=$contador?>" id="cantidadhoras_<?=$contador?>" type="number" value="<?=$fase['cantidadTiempo']?>" /></td>
                                                                             <td>                                                       
-                                                                                <a href="#eliminarFase" data-id-eliminar="1" class="-text modal-trigger confirmarEliminar boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>
+                                                                                <a href="#eliminarSubFase" data-id-eliminar="1" class="-text modal-trigger confirmarEliminar boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>
                                                                             </td>
                                                                         </tr>
 
@@ -183,7 +183,7 @@
                                                         <td>Requerimientos de softwarePadre</td>
                                                         <td><input class="cantidad" id="fase1_horas" type="number" value="30" /></td>
                                                         <td>
-                                                            <a href="#eliminarFase" data-id-eliminar="1" class="-text modal-trigger confirmarEliminar boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>
+                                                            <a href="#eliminarSubFase" data-id-eliminar="1" class="-text modal-trigger confirmarEliminar boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -195,7 +195,7 @@
                                                         <td>Requerimientos de softwarePadre</td>
                                                         <td><input class="cantidad" id="fase1_horas" type="number" value="30" /></td>
                                                         <td>
-                                                            <a href="#eliminarFase" data-id-eliminar="1" class="-text modal-trigger confirmarEliminar boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>
+                                                            <a href="#eliminarSubFase" data-id-eliminar="1" class="-text modal-trigger confirmarEliminar boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>
                                                         </td>
                                                     </tr> -->
                                                     
@@ -208,11 +208,47 @@
                                                     </tr> -->
                                                     </tbody>
                                                 </table>
-                                                <div class="group">
-                                                    <p>Cantidad de tiempo total: <span id="cantidadTotal"></span></p>
-                                                </div>
+                                                
                                             </div>
                                         </div>
+
+                                        <!-- <div>
+                                            <p>Cantidad de tiempo total: <span id="cantidadTotal"></span></p>
+                                        </div> -->
+
+                                       <!--  <div class="input-field col s4" style="padding-right: 0;">
+                                            <p style="font-size: large;margin: 15px 0 0;"><?= label('formServicio_cotizarPor') ?>:</p>
+                                        </div>
+                                        <div class="input-field col s6">
+                                            <select name="servicio_tiempo">
+                                                <option value="1" selected>Horas</option>
+                                                <option value="2">Días</option>
+                                                <option value="3">Semanas</option>
+                                                <option value="4">Meses</option>
+                                            </select>
+                                        </div> -->
+                                        <div class="col s12">
+                                            <div class="input-field col s12 m6 l6 inputSelector" >
+                                                <label for="servicioFase"><?= label('formServicio_cotizarPor'); ?></label>
+                                                <br>
+                                                <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="servicioFase" id="servicioFase" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("servicio_elegirFase"); ?>" class="browser-default chosen-select" style="width:350px;" tabindex="2">
+                                                    <option value="0" disabled selected style="display:none;"><?= label("servicio_elegirSubFase"); ?></option>
+                                                    <option value="nuevo"><?= label("agregarNuevo"); ?></option>
+                                                    <option value="1" selected>Horas</option>
+                                                    <option value="2">Días</option>
+                                                    <option value="3">Semanas</option>
+                                                    <option value="4">Meses</option>
+                                                    </select>
+                                            </div>
+
+                                            <div class="input-field col s12 m6 l6 ">
+                                                <input id="cantidadTotal" name="servicio_cantidadTotal" type="number" value="0">
+                                                <label for="cantidadTotal"><?= label('formServicio_totalTiempo'); ?>
+                                                </label>
+                                            </div>  
+                                        </div>
+
+                                        
 
                                         <div class="input-field col offset-s6 s6">
                                             <input id="servicio_utilidad" name="servicio_utilidad" type="number" value="<?= $utilidad; ?>">
@@ -412,7 +448,7 @@ echo "var arrayFases =". $js_array;?>
 
             actualizarCantidad();
        
-            var boton = '<a href="#eliminarFase" data-id-eliminar="1" class="-text modal-trigger confirmarEliminar boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>';
+            var boton = '<a href="#eliminarSubFase" data-id-eliminar="1" class="-text modal-trigger confirmarEliminar boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>';
             // var codigo = 'PROG-0001';
             // var nombre = 'ERS';
             // var des = 'Requerimientos de software Nuevo';
@@ -469,35 +505,45 @@ echo "var arrayFases =". $js_array;?>
            filaEliminar = $(this).parents('tr');
            
        });
-   
-        $('#eliminarFase #botonEliminar').on('click', function () {
-           event.preventDefault();
-           // $.ajax({
-                  // data: {idEliminar : idEliminar},
-                  // url:   '<?=base_url()?>impuesto/eliminar',
-                  // type:  'post',
-                  // beforeSend: function () {
-                  //         $("#resultado").html("Procesando, espere por favor...");
-                  // },
-                  // success:  function (response) {
-                   // if (response==1) {
-                       filaEliminar.fadeOut(function () {
-                       // filaEliminar.remove();
-                       $('table').dataTable().fnDeleteRow(filaEliminar);
-                       verificarChecks();
-                       });
-                       
 
-                        cantidad--;
-                        actualizarCantidad();
-                       
-                   // } else{
-                       // $('#linkModalErrorEliminar').click();
-                   // };
-               // }
-           // });
+       var grupoEliminar = null;
+
+       $(document).on('click','.confirmarEliminarGrupo', function () {
+           // idEliminar = $(this).data('id-eliminar');
+           grupoEliminar = $(this).attr('data-grupo');
+           // filaEliminar = $(this).parents('tr');
+           
+       });
+   
+        $('#eliminarSubFase #botonEliminar').on('click', function () {
+           event.preventDefault();
+           filaEliminar.fadeOut(function () {
+           $('table').dataTable().fnDeleteRow(filaEliminar);
+           verificarChecks();
+           });
+            cantidad--;
+            actualizarCantidad();
+
         });
 
+        $('#eliminarFase #botonEliminar').on('click', function () {
+           event.preventDefault();
+
+           $('input[data-grupo='+grupoEliminar+']').parents('tr').each(function(){
+                // alert($(this).parents('tr').html);
+                $(this).fadeOut(function () {
+                 $('table').dataTable().fnDeleteRow($(this));
+               });
+                cantidad--;
+                actualizarCantidad();
+
+           });
+
+           verificarChecks();
+           cantidad--;
+           actualizarCantidad();
+
+        });
 
         var table = $('table').DataTable({
             "columnDefs": [
@@ -525,7 +571,7 @@ echo "var arrayFases =". $js_array;?>
                     if ( last !== group ) {
                          // alert(group);
                         $(rows).eq( i ).before(
-                            '<tr class="group"><td>'+codigo+'</td><td>'+nombre+'</td><td>'+descripcion+'</td><td id="'+codigo+'">0</td><td></td></tr>'
+                            '<tr class="group"><td>'+codigo+'</td><td>'+nombre+'</td><td>'+descripcion+'</td><td id="'+codigo+'">0</td><td><a href="#eliminarFase" data-grupo="'+codigo+'" class="-text modal-trigger confirmarEliminarGrupo boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a></td></tr>'
                         );
 
                         last = group;
@@ -536,6 +582,7 @@ echo "var arrayFases =". $js_array;?>
                     $("#"+codigo).text(valorActual);
                     
                 });
+                $('.modal-trigger').leanModal();
                 calcularTotal();
         }
 
@@ -543,15 +590,15 @@ echo "var arrayFases =". $js_array;?>
 
  
     // Order by the grouping
-    $('table tbody').on( 'click', 'tr.group', function () {
-        var currentOrder = table.order()[0];
-        if ( currentOrder[0] === 3 && currentOrder[1] === 'asc' ) {
-            table.order( [ 3, 'desc' ] ).draw();
-        }
-        else {
-            table.order( [ 3, 'asc' ] ).draw();
-        }
-    } );
+    // $('table tbody').on( 'click', 'tr.group', function () {
+    //     var currentOrder = table.order()[0];
+    //     if ( currentOrder[0] === 3 && currentOrder[1] === 'asc' ) {
+    //         table.order( [ 3, 'desc' ] ).draw();
+    //     }
+    //     else {
+    //         table.order( [ 3, 'asc' ] ).draw();
+    //     }
+    // } );
 
     $(document).on('change','.cantidad', function(){
        var grupo = $(this).attr('data-grupo');
@@ -571,7 +618,7 @@ echo "var arrayFases =". $js_array;?>
        $('.cantidad').each(function(){
             sumatoria += parseInt($(this).val());
        });
-       $('#cantidadTotal').text(sumatoria);
+       $('#cantidadTotal').val(sumatoria);
     }
 
     
@@ -937,6 +984,19 @@ echo "var arrayFases =". $js_array;?>
 </div>
 
 
+
+<div id="eliminarSubFase" class="modal">
+   <div class="modal-header">
+      <p><?= label('nombreSistema'); ?></p>
+      <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+   </div>
+   <div class="modal-content">
+      <p><?= label('confirmarEliminarSubFase'); ?></p>
+   </div>
+   <div id="botonEliminar" class="modal-footer black-text">
+      <a href="" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+   </div>
+</div>
 
 <div id="eliminarFase" class="modal">
    <div class="modal-header">
