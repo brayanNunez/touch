@@ -110,7 +110,7 @@
                                                 </div>
                                             </div>
                                            
-
+                                            <input style="display:none" id="cantidadFases" name="cantidadFases" type="text" value="<?= count($resultado['fases'])?>">    
                                             <div class="col s12 table-responsive">
                                                 <table id="tabla-servicio" class="table striped" cellspacing="0">
                                                     <thead>
@@ -121,12 +121,44 @@
                                                         <th></th>
                                                         <th></th>
                                                         <th></th>
+                                                        <th style="display:none"></th>
                                                         <th><?= label('tablaServicio_cantidad'); ?></th>
                                                         <th><?= label('tablaServicio_opciones'); ?></th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <tr>
+
+
+                                                    <?php
+                                                        if (isset($resultado)) {
+                                                        
+                                                            if ($resultado !== false) {   
+                                                            $contador = 0;                                                                 
+                                                                    foreach ($resultado['fases'] as $fase) {
+                                                                        ?>
+
+                                                                         <tr>
+                                                                            <td><?=$fase['codigo']?></td>
+                                                                            <td><?=$fase['nombre']?></td>
+                                                                            <td><?=$fase['notas']?></td>
+                                                                            <td><?=$fase['p_codigo']?></td>
+                                                                            <td><?=$fase['p_nombre']?></td>
+                                                                            <td><?=$fase['p_notas']?></td>
+                                                                            <td style="display:none"><input  name="id_<?=$contador?>" id="id_<?=$contador?>" type="number" value="<?=$fase['idFase']?>" /></td>
+                                                                            <td><input class="cantidad" name="cantidadhoras_<?=$contador?>" id="cantidadhoras_<?=$contador?>" type="number" value="<?=$fase['cantidadTiempo']?>" /></td>
+                                                                            <td>                                                       
+                                                                                <a href="#eliminarFase" data-id-eliminar="1" class="-text modal-trigger confirmarEliminar boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>
+                                                                            </td>
+                                                                        </tr>
+
+                                                                        <?php
+                                                                        $contador++;
+                                                                    }
+                                                                } 
+                                                            }
+                                                        ?>
+
+                                                   <!--  <tr>
                                                         <td>PROG-0001</td>
                                                         <td>ERS</td>
                                                         <td>Requerimientos de software</td>
@@ -135,22 +167,7 @@
                                                         <td>Requerimientos de softwarePadre</td>
                                                         <td><input class="cantidad" id="fase1_horas" type="number" value="30" /></td>
                                                         <td>
-                                                            <!--                                                            <a href="" class="boton-opciones btn-flat white-text">--><?//= label('menuOpciones_eliminar'); ?><!--</a>-->
-                                                            <ul id="dropdown-fase1" class="dropdown-content">
-                                                                <li>
-                                                                    <a href="#Editar"
-                                                                       class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#Eliminar"
-                                                                       class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                                </li>
-                                                            </ul>
-                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                               href="#" data-activates="dropdown-fase1">
-                                                                <?= label('menuOpciones_seleccionar') ?><i
-                                                                    class="mdi-navigation-arrow-drop-down"></i>
-                                                            </a>
+                                                            <a href="#eliminarFase" data-id-eliminar="1" class="-text modal-trigger confirmarEliminar boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -162,24 +179,9 @@
                                                         <td>Requerimientos de softwarePadre</td>
                                                         <td><input class="cantidad" id="fase1_horas" type="number" value="30" /></td>
                                                         <td>
-                                                            <!--                                                            <a href="" class="boton-opciones btn-flat white-text">--><?//= label('menuOpciones_eliminar'); ?><!--</a>-->
-                                                            <ul id="dropdown-fase1" class="dropdown-content">
-                                                                <li>
-                                                                    <a href="#Editar"
-                                                                       class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#Eliminar"
-                                                                       class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                                </li>
-                                                            </ul>
-                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                               href="#" data-activates="dropdown-fase1">
-                                                                <?= label('menuOpciones_seleccionar') ?><i
-                                                                    class="mdi-navigation-arrow-drop-down"></i>
-                                                            </a>
+                                                            <a href="#eliminarFase" data-id-eliminar="1" class="-text modal-trigger confirmarEliminar boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>
                                                         </td>
-                                                    </tr>
+                                                    </tr> -->
                                                     
                                                    
                                                     <!-- <tr>
@@ -242,10 +244,17 @@ $(document).ready(function() {
        agregarFila();
     });
 
+    function actualizarCantidad(){
+        $('#cantidadFases').val(cantidad);
+    }
+
+    var cantidad = <?= count($resultado['fases'])?>;
+    var contador = cantidad;
     function agregarFila(){
-
-            var boton = '<a href="" class="boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>';
-
+            cantidad++;
+            actualizarCantidad();
+       
+            var boton = '<a href="#eliminarFase" data-id-eliminar="1" class="-text modal-trigger confirmarEliminar boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>';
             var codigo = 'PROG-0001';
             var nombre = 'ERS';
             var des = 'Requerimientos de software Nuevo';
@@ -266,21 +275,19 @@ $(document).ready(function() {
             cantidad,
             boton ]);
 
-
-            // generarListasBotones();
-            // $('.modal-trigger').leanModal();
+            $('.modal-trigger').leanModal();
       
-            // contadorFilas++;
+            contador++;
             
             };
 
-    //     function generarListasBotones(){
-    //       $('.boton-opciones').sideNav({
-    //       // menuWidth: 0, // Default is 240
-    //        edge: 'right', // Choose the horizontal origin
-    //           closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-    //         }
-    //       );
+        // function generarListasBotones(){
+        //   $('.boton-opciones').sideNav({
+        //   // menuWidth: 0, // Default is 240
+        //    edge: 'right', // Choose the horizontal origin
+        //       closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+        //     }
+        //   );
 
     //       $('.dropdown-button').dropdown({
     //           inDuration: 300,
@@ -292,6 +299,41 @@ $(document).ready(function() {
     //           alignment: 'left' // Displays dropdown with edge aligned to the left of button
     //         }
           
+       // var idEliminar = 0;
+       var filaEliminar = null;
+   
+       $(document).on('click','.confirmarEliminar', function () {
+           // idEliminar = $(this).data('id-eliminar');
+           filaEliminar = $(this).parents('tr');
+           
+       });
+   
+        $('#eliminarFase #botonEliminar').on('click', function () {
+           event.preventDefault();
+           // $.ajax({
+                  // data: {idEliminar : idEliminar},
+                  // url:   '<?=base_url()?>impuesto/eliminar',
+                  // type:  'post',
+                  // beforeSend: function () {
+                  //         $("#resultado").html("Procesando, espere por favor...");
+                  // },
+                  // success:  function (response) {
+                   // if (response==1) {
+                       filaEliminar.fadeOut(function () {
+                       // filaEliminar.remove();
+                       $('table').dataTable().fnDeleteRow(filaEliminar);
+                       verificarChecks();
+                       });
+
+                        cantidad--;
+                        actualizarCantidad();
+                       
+                   // } else{
+                       // $('#linkModalErrorEliminar').click();
+                   // };
+               // }
+           // });
+        });
 
 
         var table = $('table').DataTable({
@@ -299,6 +341,7 @@ $(document).ready(function() {
                 { "visible": false, "targets": 3 },
                 { "visible": false, "targets": 4 },
                 { "visible": false, "targets": 5 }
+                // { "visible": false, "targets": 6 }
             ],
             "order": [[ 3, 'asc' ]],
             "displayLength": 25,
@@ -338,11 +381,11 @@ $(document).ready(function() {
     // Order by the grouping
     $('table tbody').on( 'click', 'tr.group', function () {
         var currentOrder = table.order()[0];
-        if ( currentOrder[0] === 2 && currentOrder[1] === 'asc' ) {
-            table.order( [ 2, 'desc' ] ).draw();
+        if ( currentOrder[0] === 3 && currentOrder[1] === 'asc' ) {
+            table.order( [ 3, 'desc' ] ).draw();
         }
         else {
-            table.order( [ 2, 'asc' ] ).draw();
+            table.order( [ 3, 'asc' ] ).draw();
         }
     } );
 
@@ -354,7 +397,7 @@ $(document).ready(function() {
 
 
 
-    function validacionCorrecta_Servicios(){
+    function validacionCorrecta_Serviciosw(){
         var codigoActual = '<?= $codigo; ?>';
         var codigoNuevo = $('#servicio_codigo').val();
         if(codigoActual == codigoNuevo) {
@@ -703,5 +746,20 @@ $(document).ready(function() {
                class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
         </div>
     </div>
+</div>
+
+
+
+<div id="eliminarFase" class="modal">
+   <div class="modal-header">
+      <p><?= label('nombreSistema'); ?></p>
+      <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+   </div>
+   <div class="modal-content">
+      <p><?= label('confirmarEliminarFase'); ?></p>
+   </div>
+   <div id="botonEliminar" class="modal-footer black-text">
+      <a href="" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+   </div>
 </div>
 <!-- Fin lista modals
