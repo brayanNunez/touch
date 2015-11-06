@@ -184,7 +184,7 @@
                                                                             <td><?=$fase['p_codigo']?></td>
                                                                             <td><?=$fase['p_nombre']?></td>
                                                                             <td><?=$fase['p_notas']?></td>
-                                                                            <td style="display:none"><input  name="id_<?=$contador?>" id="id_<?=$contador?>" type="number" value="<?=$fase['idFase']?>" /></td>
+                                                                            <td style="display:none"><input class="id_fase"  name="id_<?=$contador?>" id="id_<?=$contador?>" type="number" value="<?=$fase['idFase']?>" /></td>
                                                                             <td><input class="cantidad" name="cantidadhoras_<?=$contador?>" id="cantidadhoras_<?=$contador?>" type="number" value="<?=$fase['cantidadTiempo']?>" /></td>
                                                                             <td>                                                       
                                                                                 <a href="#eliminarFase" data-id-eliminar="1" class="-text modal-trigger confirmarEliminar boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>
@@ -281,9 +281,52 @@ echo "var arrayFases =". $js_array;?>
 
     $(document).on('ready', function(){
 
+        function exiteEnTabla(idFase){
+            var existe = false;
+            $('.id_fase').each(function(){
+                if ($(this).val() == idFase) {
+                    existe = true;
+                } 
+            });
+            return existe;
+        }
+
         $('#agregarFase').on('click', function(){
             alert('ahora');
-            agregarFila('codigo', 'nombre', 'des', 'cantidad', 'codigoPadre', 'nombrePadre', 'desPadre');
+            var idFase = $('#servicioFase').val();
+            var idSubfase = $('#servicio_subFase').val();
+            if (idSubfase != 'todas') {
+
+                if (!exiteEnTabla(idSubfase)) {
+                    for (var i = 0; i < arrayFases.length; i++) {
+                        if (arrayFases[i]['idFase'] == idFase) {
+                            for (var j = 0; j < arrayFases[i]['subfases'].length; j++) {
+                                var fase = arrayFases[i];
+                                var subfase = fase['subfases'][j];
+                                if (subfase['idFase'] == idSubfase) {  
+                                    agregarFila(subfase['codigo'], subfase['nombre'], subfase['notas'], fase['codigo'], fase['nombre'], fase['notas'], subfase['idFase']);
+                                } 
+                            }
+                        } 
+                    };
+                } 
+            } else{
+
+                // if (!exiteEnTabla(idSubfase)) {
+                    for (var i = 0; i < arrayFases.length; i++) {
+                        if (arrayFases[i]['idFase'] == idFase) {
+                            for (var j = 0; j < arrayFases[i]['subfases'].length; j++) {
+                                var fase = arrayFases[i];
+                                var subfase = fase['subfases'][j];
+                                if (!exiteEnTabla(subfase['idFase'])) {  
+                                    agregarFila(subfase['codigo'], subfase['nombre'], subfase['notas'], fase['codigo'], fase['nombre'], fase['notas'], subfase['idFase']);
+                                } 
+                            }
+                        } 
+                    };
+                // } 
+
+            };
         });
 
         var config = {'.chosen-select'           : {}}
@@ -319,6 +362,7 @@ echo "var arrayFases =". $js_array;?>
         $('#servicio_subFase').empty(); //remove all child nodes
         $('#servicio_subFase').append($('<option value="0" disabled selected style="display:none;"><?= label("servicio_elegirSubFase"); ?></option>'));
         $('#servicio_subFase').append($('<option value="nuevo"><?= label("agregarNuevo"); ?></option>'));
+        $('#servicio_subFase').append($('<option value="todas"><?= label("agregarTodas"); ?></option>'));
         for (var i = 0; i < arrayFases.length; i++) {
             if (arrayFases[i]['idFase'] == idFasePadre) {
                 for (var j = 0; j < arrayFases[i]['subfases'].length; j++) {
@@ -359,16 +403,17 @@ echo "var arrayFases =". $js_array;?>
 
     var cantidad = <?= count($resultado['misFases'])?>;
     var contador = cantidad;
-    function agregarFila(codigo, nombre, des, cantidad, codigoPadre, nombrePadre, desPadre){
+    function agregarFila(codigo, nombre, des, codigoPadre, nombrePadre, desPadre, idFase){
             cantidad++;
+
             actualizarCantidad();
        
             var boton = '<a href="#eliminarFase" data-id-eliminar="1" class="-text modal-trigger confirmarEliminar boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>';
             // var codigo = 'PROG-0001';
             // var nombre = 'ERS';
             // var des = 'Requerimientos de software Nuevo';
-            var idFase = '<input class="id_fase"  name="id_'+contador+'" id="id_'+contador+'" type="number" value="<?=$fase['idFase']?>" />';                                                             
-            var cantidad = '<input class="cantidad" name="cantidadhoras_'+contador+'" id="cantidadhoras_'+contador+'" type="number" value="0" />';
+            var idFase = '<input class="id_fase"  name="id_'+contador+'" id="id_'+contador+'" type="number" value="'+idFase+'" />';                                                             
+            var cantidadTiempo = '<input class="cantidad" name="cantidadhoras_'+contador+'" id="cantidadhoras_'+contador+'" type="number" value="0" />';
             // var codigoPadre = 'PROG-0002Padre';
             // var nombrePadre = 'ERSPadre';
             // var desPadre = 'Requerimientos de softwarePadre';
@@ -383,7 +428,7 @@ echo "var arrayFases =". $js_array;?>
             nombrePadre,
             desPadre,
             idFase,
-            cantidad,
+            cantidadTiempo,
             boton ]);
 
             $('.id_fase').parent('td').css('display', 'none');
