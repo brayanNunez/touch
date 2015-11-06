@@ -807,6 +807,8 @@ $lang['Persona_tablaOpciones'] = 'Opciones';
     $lang['formServicio_nuevaPersonaSalarioTipo'] = 'Tipo de salario';
     $lang['formServicio_nuevaPersonaSalarioMonto'] = 'Monto';
     $lang['formServicio_seleccioneFase'] = 'Seleccione la fase';
+    $lang['formServicio_fases_agregarTodas'] = 'Todas';
+    
     $lang['formServicio_seleccioneSubfase'] = 'Seleccione la subfase';
     $lang['formServicio_agregarTodasFases'] = 'Agregar todas las fases';
     $lang['formServicio_agregar'] = 'Agregar';
