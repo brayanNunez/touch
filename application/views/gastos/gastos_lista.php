@@ -503,16 +503,16 @@
         });
     });
     function validacionCorrecta_Categoria() {
-//        $.ajax({
-//            data: $('#form_categoria').serialize(),
-//            url:   '<?//=base_url()?>//gastos/verificarCodigo',
-//            type:  'post',
-//            success:  function (response) {
-//                if (response == '0') {
-//                    alert("<?//=label('errorGuardar'); ?>//");
-//                    $('#agregarGasto .modal-header a').click();
-//                } else {
-//                    if (response == '2') {
+        $.ajax({
+            data: $('#form_categoria').serialize(),
+            url:   '<?=base_url()?>gastos/verificarNombreCategoria',
+            type:  'post',
+            success:  function (response) {
+                if (response == '0') {
+                    alert("<?=label('errorGuardar'); ?>");
+                    $('#agregarCategoria .modal-header a').click();
+                } else {
+                    if (response == '2') {
                         var url = $('#form_categoria').attr('action');
                         var method = $('#form_categoria').attr('method');
                         $.ajax({
@@ -535,26 +535,25 @@
                                 }
                             }
                         });
-//                    } else {
-//                        alert("<?//=label('gasto_error_codigoExisteEnBD'); ?>//");
-//                        $('#form_gasto #gasto_codigo').focus();
-//                    }
-//                }
-//            }
-//        });
+                    } else {
+                        alert("<?=label('categoria_error_nombreExisteEnBD'); ?>");
+                        $('#form_categoria #categoria_nombre').focus();
+                    }
+                }
+            }
+        });
     }
     function validacionCorrecta_FormaPago() {
-//        $.ajax({
-//            data: $('#form_formaPago').serialize(),
-//            url:   '<?//=base_url()?>//formasPago/verificarNombre',
-//            type:  'post',
-//            success:  function (response) {
-//                if (response == '0') {
-//                    alert("<?//=label('errorGuardar'); ?>//");
-//                    $('#agregarFormaPago .modal-header a').click();
-//
-//                } else{
-//                    if (response == '2') {
+        $.ajax({
+            data: $('#form_formaPago_Gastos').serialize(),
+            url:   '<?=base_url()?>gastos/verificarNombreFormaPago',
+            type:  'post',
+            success:  function (response) {
+                if (response == '0') {
+                    alert("<?=label('errorGuardar'); ?>");
+                    $('#agregarFormaPago .modal-header a').click();
+                } else{
+                    if (response == '2') {
                         var url = $('#form_formaPago_Gastos').attr('action');
                         var method = $('#form_formaPago_Gastos').attr('method');
                         $.ajax({
@@ -576,13 +575,13 @@
                                 }
                             }
                         });
-//                    } else{
-//                        alert("<?//=label('formaPago_error_nombreExisteEnBD'); ?>//");
-//                        $('#form_formaPago #formaPago_nombre').focus();
-//                    };
-//                };
-//            }
-//        });
+                    } else{
+                        alert("<?=label('formaPago_error_nombreExisteEnBD'); ?>");
+                        $('#form_formaPago_Gastos #formaPago_nombre').focus();
+                    }
+                }
+            }
+        });
     }
 </script>
 

@@ -238,7 +238,27 @@ class Gasto_model extends CI_Model
             return false;
         }
     }
+    function verificarNombreCategoria($data)
+    {
+        try{
+            $this->db->trans_begin();
+            $existe = 0;
 
+            $query = $this->db->get_where('categoriagasto', $data['datos']);
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+            if ($query->num_rows() > 0) {
+                $existe = 1;
+            }
+
+            $this->db->trans_commit();
+            return $existe;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
     function insertarCategoria($data)
     {
         try{
@@ -278,7 +298,27 @@ class Gasto_model extends CI_Model
             return false;
         }
     }
+    function verificarNombreFormaPago($data)
+    {
+        try{
+            $this->db->trans_begin();
+            $existe = 0;
 
+            $query = $this->db->get_where('formapago', $data['datos']);
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+            if ($query->num_rows() > 0) {
+                $existe = 1;
+            }
+
+            $this->db->trans_commit();
+            return $existe;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
     function insertarFormaPago($data)
     {
         try{

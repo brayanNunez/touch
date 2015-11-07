@@ -170,7 +170,30 @@ class Gastos extends CI_Controller
             echo json_encode($resultado);
         }
     }
+    public function verificarNombreCategoria(){
+//        $sessionActual = $this->session->userdata('logged_in');
+//        $idEmpresa = $sessionActual['idEmpresa'];
 
+        $data['datos'] = array(
+//            'idEmpresa' => $idEmpresa,
+            'nombre' => $this->input->post('categoria_nombre'),
+        );
+
+        // echo print_r($impuesto); exit();
+        $resultado = $this->Gasto_model->verificarNombreCategoria($data);
+        if ($resultado === false) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            if ($resultado == 1) {
+                //Ya existe esta identificacion
+                echo 1;
+            } else {
+                //Identificacion Valida
+                echo 2;
+            }
+        }
+    }
     public function insertarCategoria()
     {
 //        $sessionActual = $this->session->userdata('logged_in');
@@ -200,7 +223,31 @@ class Gastos extends CI_Controller
             echo json_encode($resultado);
         }
     }
+    public function verificarNombreFormaPago(){
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
 
+        $data['datos'] = array(
+            'idEmpresa' => $idEmpresa,
+            'nombre' => $this->input->post('formaPago_nombre'),
+            'eliminado' => '0'
+        );
+
+        // echo print_r($impuesto); exit();
+        $resultado = $this->Gasto_model->verificarNombreFormaPago($data);
+        if ($resultado === false) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            if ($resultado == 1) {
+                //Ya existe esta identificacion
+                echo 1;
+            } else {
+                //Identificacion Valida
+                echo 2;
+            }
+        }
+    }
     public function insertarFormaPago()
     {
         $sessionActual = $this->session->userdata('logged_in');
