@@ -162,6 +162,39 @@ class Gastos extends CI_Controller
         }
     }
 
+    public function categoriasGasto() {
+        $resultado = $this->Gasto_model->categoriasGasto();
+        if ($resultado === false || $resultado === array()) {
+            echo 0;
+        } else {
+            echo json_encode($resultado);
+        }
+    }
+
+    public function formasPago() {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $resultado = $this->Gasto_model->formasPago($idEmpresa);
+        if ($resultado === false || $resultado === array()) {
+            echo 0;
+        } else {
+            echo json_encode($resultado);
+        }
+    }
+
+    public function personas() {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $resultado = $this->Gasto_model->proveedores($idEmpresa);
+        if ($resultado === false || $resultado === array()) {
+            echo 0;
+        } else {
+            echo json_encode($resultado);
+        }
+    }
+
 }
 
 ?>

@@ -73,11 +73,16 @@ class Gasto_model extends CI_Model
                     $valor = array_shift($valores_query3);
                     $persona = $valor['nombre'];
                 }
-                $resultado[$contador++]['datosAdicionales'] = array(
+                $resultado[$contador]['datosAdicionales'] = array(
                     'categoria' => $categoria,
                     'formaPago' => $formaPago,
                     'persona' => $persona
                 );
+                if($gasto['gastoFijo']) {
+                    $resultado[$contador++]['datosAdicionales']['tipo'] = 'Fijo';
+                } else {
+                    $resultado[$contador++]['datosAdicionales']['tipo'] = 'Variable';
+                }
             }
 
             $this->db->trans_commit();
@@ -139,6 +144,11 @@ class Gasto_model extends CI_Model
                 'formaPago' => $formaPago,
                 'persona' => $persona
             );
+            if($row['gastoFijo']) {
+                $row['datosAdicionales']['tipo'] = 'Fijo';
+            } else {
+                $row['datosAdicionales']['tipo'] = 'Variable';
+            }
 //            print_r ($row);exit();
 
             $this->db->trans_commit();
