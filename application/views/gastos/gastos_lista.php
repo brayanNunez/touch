@@ -64,6 +64,16 @@
                                                             if ($lista !== false) {
                                                                 $contador = 0;
                                                                 foreach ($lista as $fila) {
+                                                                    $categoriaGasto = '';
+                                                                    $formaPago = '';
+                                                                    $persona = '';
+                                                                    $tipo = '';
+                                                                    if(isset($fila['datosAdicionales'])) {
+                                                                        $categoriaGasto = $fila['datosAdicionales']['categoria'];
+                                                                        $formaPago = $fila['datosAdicionales']['formaPago'];
+                                                                        $persona = $fila['datosAdicionales']['persona'];
+                                                                        $tipo = $fila['datosAdicionales']['tipo'];
+                                                                    }
                                                                     $idEncriptado = encryptIt($fila['idGasto']); ?>
 
                                                                     <tr id="fila<?= $contador ?>" data-idElemento="<?= $idEncriptado ?>">
@@ -72,14 +82,14 @@
                                                                                    id="<?=$idEncriptado?>"/>
                                                                             <label for="<?=$idEncriptado?>"></label>
                                                                         </td>
-                                                                        <td><?= $fila['codigo']?></td>
-                                                                        <td><?= $fila['gastoFijo']?></td>
-                                                                        <td><?= $fila['idCategoriaGasto']?></td>
-                                                                        <td><?= $fila['formaPago'] ?></td>
-                                                                        <td><?= $fila['nombre']?></td>
-                                                                        <td><?= $fila['idProveedor']?></td>
+                                                                        <td><?= $fila['codigo']; ?></td>
+                                                                        <td><?= $tipo; ?></td>
+                                                                        <td><?= $categoriaGasto; ?></td>
+                                                                        <td><?= $formaPago; ?></td>
+                                                                        <td><?= $fila['nombre']; ?></td>
+                                                                        <td><?= $persona; ?></td>
                                                                         <td>Programador</td>
-                                                                        <td><?= $fila['monto']?></td>
+                                                                        <td><?= $fila['monto']; ?></td>
                                                                         <td>
                                                                             <ul id="dropdown-gasto<?= $contador ?>" class="dropdown-content">
                                                                                 <li>
@@ -167,6 +177,268 @@
 <!-- END CONTENT-->
 
 <script type="text/javascript">
+    $(document).ready(function () {
+        actualizarSelectCategoriasGasto();
+        actualizarSelectFormasPago();
+        actualizarSelectPersonas();
+//        actualizarSelectTipo_Editar(0);
+//        actualizarSelectCategoriasGasto_Editar(2);
+//        actualizarSelectFormasPago_Editar(3);
+//        actualizarSelectPersonas_Editar(2);
+    });
+    function actualizarSelectCategoriasGasto() {
+        var formulario = $('#form_gasto');
+        $.ajax({
+            type: formulario.attr('method'),
+            url: '<?= base_url(); ?>gastos/categoriasGasto',
+            data: {  },
+            success: function(response)
+            {
+                var categoriasGasto = $.parseJSON(response);
+                var selectCategoriaGasto = $('#form_gasto #gasto_categoria');
+                selectCategoriaGasto.empty();
+                selectCategoriaGasto.append($('<option>', {
+                    value: 0,
+                    text: 'Seleccione uno',
+                    selected: true,
+                    disabled: true
+                }));
+                for(var i = 0; i < categoriasGasto.length; i++) {
+                    var cat = categoriasGasto[i];
+                    if(cat != null) {
+                        selectCategoriaGasto.append($('<option>', {
+                            value: cat['idCategoriaGasto'],
+                            text: cat['nombre'],
+                            selected: false
+                        }));
+                    }
+                }
+                selectCategoriaGasto.material_select();
+            }
+        });
+    }
+    function actualizarSelectCategoriasGasto_Editar($idCategoria) {
+        var formulario = $('#form_gasto');
+        $.ajax({
+            type: formulario.attr('method'),
+            url: '<?= base_url(); ?>gastos/categoriasGasto',
+            data: {  },
+            success: function(response)
+            {
+                var categoriasGasto = $.parseJSON(response);
+                var selectCategoriaGasto = $('#form_gastoEditar #gasto_categoria');
+                selectCategoriaGasto.empty();
+                selectCategoriaGasto.append($('<option>', {
+                    value: 0,
+                    text: 'Seleccione uno',
+                    disabled: true
+                }));
+                for(var i = 0; i < categoriasGasto.length; i++) {
+                    var cat = categoriasGasto[i];
+                    if(cat != null) {
+                        if(cat['idCategoriaGasto'] == $idCategoria) {
+                            selectCategoriaGasto.append($('<option>', {
+                                value: cat['idCategoriaGasto'],
+                                text: cat['nombre'],
+                                selected: true
+                            }));
+                        } else {
+                            selectCategoriaGasto.append($('<option>', {
+                                value: cat['idCategoriaGasto'],
+                                text: cat['nombre'],
+                                selected: false
+                            }));
+                        }
+                    }
+                }
+                selectCategoriaGasto.material_select();
+            }
+        });
+    }
+    function actualizarSelectFormasPago() {
+        var formulario = $('#form_gasto');
+        $.ajax({
+            type: formulario.attr('method'),
+            url: '<?= base_url(); ?>gastos/formasPago',
+            data: {  },
+            success: function(response)
+            {
+                var formasPago = $.parseJSON(response);
+                var selectFormasPago = $('#form_gasto #gasto_formaPago');
+                selectFormasPago.empty();
+                selectFormasPago.append($('<option>', {
+                    value: 0,
+                    text: 'Seleccione uno',
+                    selected: true,
+                    disabled: true
+                }));
+                for(var i = 0; i < formasPago.length; i++) {
+                    var formaP = formasPago[i];
+                    if(formaP != null) {
+                        selectFormasPago.append($('<option>', {
+                            value: formaP['idFormaPago'],
+                            text: formaP['nombre'],
+                            selected: false
+                        }));
+                    }
+                }
+                selectFormasPago.material_select();
+            }
+        });
+    }
+    function actualizarSelectFormasPago_Editar($idFormaPago) {
+        var formulario = $('#form_gasto');
+        $.ajax({
+            type: formulario.attr('method'),
+            url: '<?= base_url(); ?>gastos/formasPago',
+            data: {  },
+            success: function(response)
+            {
+                var formasPago = $.parseJSON(response);
+                var selectFormasPago = $('#form_gastoEditar #gasto_formaPago');
+                selectFormasPago.empty();
+                selectFormasPago.append($('<option>', {
+                    value: 0,
+                    text: 'Seleccione uno',
+                    disabled: true
+                }));
+                for(var i = 0; i < formasPago.length; i++) {
+                    var formaP = formasPago[i];
+                    if(formaP != null) {
+                        if(formaP['idFormaPago'] == $idFormaPago) {
+                            selectFormasPago.append($('<option>', {
+                                value: formaP['idFormaPago'],
+                                text: formaP['nombre'],
+                                selected: true
+                            }));
+                        } else {
+                            selectFormasPago.append($('<option>', {
+                                value: formaP['idFormaPago'],
+                                text: formaP['nombre'],
+                                selected: false
+                            }));
+                        }
+                    }
+                }
+                selectFormasPago.material_select();
+            }
+        });
+    }
+    function actualizarSelectPersonas() {
+        var formulario = $('#form_gasto');
+        $.ajax({
+            type: formulario.attr('method'),
+            url: '<?= base_url(); ?>gastos/personas',
+            data: {  },
+            success: function(response)
+            {
+                var personas = $.parseJSON(response);
+                var selectPersona = $('#form_gasto #gasto_persona');
+                selectPersona.empty();
+                selectPersona.append($('<option>', {
+                    value: 0,
+                    text: 'Seleccione uno',
+                    selected: true,
+                    disabled: true
+                }));
+                for(var i = 0; i < personas.length; i++) {
+                    var pers = personas[i];
+                    if(pers != null) {
+                        selectPersona.append($('<option>', {
+                            value: pers['idProveedor'],
+                            text: pers['nombre'],
+                            selected: false
+                        }));
+                    }
+                }
+                selectPersona.material_select();
+            }
+        });
+    }
+    function actualizarSelectPersonas_Editar($idPersona) {
+        var formulario = $('#form_gasto');
+        $.ajax({
+            type: formulario.attr('method'),
+            url: '<?= base_url(); ?>gastos/personas',
+            data: {  },
+            success: function(response)
+            {
+                var personas = $.parseJSON(response);
+                var selectPersona = $('#form_gastoEditar #gasto_persona');
+                selectPersona.empty();
+                selectPersona.append($('<option>', {
+                    value: 0,
+                    text: 'Seleccione uno',
+                    disabled: true
+                }));
+                for(var i = 0; i < personas.length; i++) {
+                    var pers = personas[i];
+                    if(pers != null) {
+                        if(pers['idProveedor'] == $idPersona) {
+                            selectPersona.append($('<option>', {
+                                value: pers['idProveedor'],
+                                text: pers['nombre'],
+                                selected: true
+                            }));
+                        } else {
+                            selectPersona.append($('<option>', {
+                                value: pers['idProveedor'],
+                                text: pers['nombre'],
+                                selected: false
+                            }));
+                        }
+                    }
+                }
+                selectPersona.material_select();
+            }
+        });
+    }
+    function actualizarSelectTipo() {
+        var selectTipo = $('#form_gasto #gasto_tipo');
+        selectTipo.empty();
+        selectTipo.append($('<option>', {
+            value: 1,
+            text: 'Fijo',
+            selected: true
+        }));
+        selectTipo.append($('<option>', {
+            value: 2,
+            text: 'Variable',
+            selected: false
+        }));
+        selectTipo.material_select();
+    }
+    function actualizarSelectTipo_Editar($fijo) {
+        var selectTipo = $('#form_gastoEditar #gasto_tipo');
+        selectTipo.empty();
+        if($fijo === '1') {
+            selectTipo.append($('<option>', {
+                value: 1,
+                text: 'Fijo',
+                selected: true
+            }));
+            selectTipo.append($('<option>', {
+                value: 2,
+                text: 'Variable',
+                selected: false
+            }));
+        } else {
+            selectTipo.append($('<option>', {
+                value: 1,
+                text: 'Fijo',
+                selected: false
+            }));
+            selectTipo.append($('<option>', {
+                value: 2,
+                text: 'Variable',
+                selected: true
+            }));
+        }
+        selectTipo.material_select();
+    }
+</script>
+
+<script type="text/javascript">
     var menuOpciones_editar = '<?= label('menuOpciones_editar'); ?>';
     var menuOpciones_eliminar = '<?= label('menuOpciones_eliminar'); ?>';
     var menuOpciones_seleccionar = '<?= label('menuOpciones_seleccionar'); ?>';
@@ -201,21 +473,25 @@
                 success: function(response)
                 {
                     var gasto = $.parseJSON(response);
-                    alert(response);
-                    $('#form_gastoEditar #gasto_categoria').val(gasto['idCategoriaGasto']);
-                    $('#form_gastoEditar #gasto_persona').val(gasto['idProveedor']);
-                    $('#form_gastoEditar #gasto_tipo').val(gasto['gastoFijo']);
+//                    $('#form_gastoEditar #gasto_tipo').val(gasto['gastoFijo']);
+//                    $('#form_gastoEditar #gasto_categoria').val(gasto['idCategoriaGasto']);
+//                    $('#form_gastoEditar #gasto_persona').val(gasto['idProveedor']);
+//                    $('#form_gastoEditar #gasto_formaPago').val(gasto['formaPago']);
+                    $('#form_gastoEditar #gasto_codigoOriginal').val(gasto['codigo']);
                     $('#form_gastoEditar #gasto_codigo').val(gasto['codigo']);
                     $('#form_gastoEditar #gasto_nombre').val(gasto['nombre']);
                     $('#form_gastoEditar #gasto_monto').val(gasto['monto']);
-                    $('#form_gastoEditar #gasto_formaPago').val(gasto['formaPago']);
                     $('#form_gastoEditar #idGasto').val(idEditar);
+
+                    actualizarSelectTipo_Editar(gasto['gastoFijo']);
+                    actualizarSelectCategoriasGasto_Editar(gasto['idCategoriaGasto']);
+                    actualizarSelectFormasPago_Editar(gasto['formaPago']);
+                    actualizarSelectPersonas_Editar(gasto['idProveedor']);
                     $('label').addClass('active');
                 }
             });
         });
     });
-
     function editarFila(categoria, persona, tipo, codigo, nombre, monto, formaPago) {
         var d = row.data();
         d[1]= codigo;
@@ -242,7 +518,6 @@
     <?php
         }
     } ?>
-
     function agregarFila(idEncriptado, categoria, persona, tipo, codigo, nombre, monto, formaPago){
         var check = '<td>' +
                         '<div style="text-align: center;">'+
@@ -321,7 +596,6 @@
             limpiarForm();
         });
     });
-
     function limpiarForm() {
         $('#form_gasto')[0].reset();
         var validator = $("#form_gasto").validate();
@@ -330,52 +604,150 @@
     }
 
     function validacionCorrecta() {
-        var url = $('#form_gasto').attr('action');
-        var method = $('#form_gasto').attr('method');
         $.ajax({
-            type: method,
-            url: url,
             data: $('#form_gasto').serialize(),
-            success: function(response)
-            {
-                if (response == 0) {
+            url:   '<?=base_url()?>gastos/verificarCodigo',
+            type:  'post',
+            success:  function (response) {
+                if (response == '0') {
                     alert("<?=label('errorGuardar'); ?>");
                     $('#agregarGasto .modal-header a').click();
                 } else {
-                    alert("<?=label('gastos_gastoGuardadoCorrectamente'); ?>");
-                    agregarFila(response, $('#form_gasto #gasto_categoria').val(), $('#form_gasto #gasto_persona').val(), $('#form_gasto #gasto_tipo').val(),
-                        $('#form_gasto #gasto_codigo').val(), $('#form_gasto #gasto_nombre').val(), $('#form_gasto #gasto_monto').val(), $('#form_gasto #gasto_formaPago').val());
-                    if (cerrarModal) {
-                        $('#agregarGasto .modal-header a').click();
-                    } else{
-                        limpiarForm();
+                    if (response == '2') {
+                        var url = $('#form_gasto').attr('action');
+                        var method = $('#form_gasto').attr('method');
+                        $.ajax({
+                            type: method,
+                            url: url,
+                            data: $('#form_gasto').serialize(),
+                            success: function(response)
+                            {
+                                if (response == 0) {
+                                    alert("<?=label('errorGuardar'); ?>");
+                                    $('#agregarGasto .modal-header a').click();
+                                } else {
+                                    alert("<?=label('gastos_gastoGuardadoCorrectamente'); ?>");
+                                    var idGasto = response;
+                                    var url = '<?=base_url()?>gastos/editar';
+                                    var method = 'POST';
+                                    $.ajax({
+                                        type: method,
+                                        url: url,
+                                        data: {idEditar : idGasto},
+                                        success: function(response)
+                                        {
+                                            var gasto = $.parseJSON(response);
+                                            agregarFila(idGasto, gasto['datosAdicionales']['categoria'], gasto['datosAdicionales']['persona'],
+                                                gasto['datosAdicionales']['tipo'], gasto['codigo'], gasto['nombre'], gasto['monto'],
+                                                gasto['datosAdicionales']['formaPago']);
+                                        }
+                                    });
+                                    if (cerrarModal) {
+                                        $('#agregarGasto .modal-header a').click();
+                                    } else{
+                                        limpiarForm();
+                                    }
+                                }
+                            }
+                        });
+                    } else {
+                        alert("<?=label('gasto_error_codigoExisteEnBD'); ?>");
+                        $('#form_gasto #gasto_codigo').focus();
                     }
                 }
             }
         });
     }
     function validacionCorrectaEditar() {
-        var url = $('#form_gastoEditar').attr('action');
-        var method = $('#form_gastoEditar').attr('method');
-        $.ajax({
-            type: method,
-            url: url,
-            data: $('#form_gastoEditar').serialize(),
-            success: function(response)
-            {
-                if (response == 0) {
-                    alert("<?=label('errorEditar'); ?>");
-                    $('#editarGasto .modal-header a').click();
-                } else {
-                    alert("<?=label('gastos_gastoEditadoCorrectamente'); ?>");
-                    editarFila($('#form_gastoEditar #gasto_categoria').val(), $('#form_gastoEditar #gasto_persona').val(), $('#form_gastoEditar #gasto_tipo').val(),
-                        $('#form_gastoEditar #gasto_codigo').val(), $('#form_gastoEditar #gasto_nombre').val(), $('#form_gastoEditar #gasto_monto').val(), $('#form_gastoEditar #gasto_formaPago').val());
-                    $('#editarGasto .modal-header a').click();
+        if($('#form_gastoEditar #gasto_codigoOriginal').val() != $('#form_gastoEditar #gasto_codigo').val()) {
+            $.ajax({
+                data: $('#form_gastoEditar').serialize(),
+                url:   '<?=base_url()?>gastos/verificarCodigo',
+                type:  'post',
+                success:  function (response) {
+                    if (response == '0') {
+                        alert("<?=label('errorGuardar'); ?>");
+                        $('#editarGasto .modal-header a').click();
+                    } else{
+                        if (response == '2') {
+                            var url = $('#form_gastoEditar').attr('action');
+                            var method = $('#form_gastoEditar').attr('method');
+                            $.ajax({
+                                type: method,
+                                url: url,
+                                data: $('#form_gastoEditar').serialize(),
+                                success: function(response)
+                                {
+                                    if (response == 0) {
+                                        alert("<?=label('errorEditar'); ?>");
+                                        $('#editarGasto .modal-header a').click();
+                                    } else {
+                                        alert("<?=label('gastos_gastoEditadoCorrectamente'); ?>");
+
+                                        var idGastoEditar = $('#form_gastoEditar #idGasto').val();
+                                        var url = '<?=base_url()?>gastos/editar';
+                                        var method = 'POST';
+                                        $.ajax({
+                                            type: method,
+                                            url: url,
+                                            data: {idEditar : idGastoEditar},
+                                            success: function(response)
+                                            {
+                                                var gasto = $.parseJSON(response);
+                                                editarFila(gasto['datosAdicionales']['categoria'], gasto['datosAdicionales']['persona'],
+                                                    gasto['datosAdicionales']['tipo'], gasto['codigo'], gasto['nombre'], gasto['monto'],
+                                                    gasto['datosAdicionales']['formaPago']);
+                                            }
+                                        });
+                                        $('#editarGasto .modal-header a').click();
+                                    }
+                                }
+                            });
+                        } else{
+                            alert("<?=label('gasto_error_codigoExisteEnBD'); ?>");
+                            $('#form_gastoEditar #gasto_codigo').focus();
+                        }
+                    }
                 }
-            }
-        });
+            });
+        } else {
+            var url = $('#form_gastoEditar').attr('action');
+            var method = $('#form_gastoEditar').attr('method');
+            $.ajax({
+                type: method,
+                url: url,
+                data: $('#form_gastoEditar').serialize(),
+                success: function(response)
+                {
+                    if (response == 0) {
+                        alert("<?=label('errorEditar'); ?>");
+                        $('#editarGasto .modal-header a').click();
+                    } else {
+                        alert("<?=label('gastos_gastoEditadoCorrectamente'); ?>");
+
+                        var idGastoEditar = $('#form_gastoEditar #idGasto').val();
+                        var url = '<?=base_url()?>gastos/editar';
+                        var method = 'POST';
+                        $.ajax({
+                            type: method,
+                            url: url,
+                            data: {idEditar : idGastoEditar},
+                            success: function(response)
+                            {
+                                var gasto = $.parseJSON(response);
+                                editarFila(gasto['datosAdicionales']['categoria'], gasto['datosAdicionales']['persona'],
+                                    gasto['datosAdicionales']['tipo'], gasto['codigo'], gasto['nombre'], gasto['monto'],
+                                    gasto['datosAdicionales']['formaPago']);
+                            }
+                        });
+                        $('#editarGasto .modal-header a').click();
+                    }
+                }
+            });
+        }
     }
 </script>
+
 <script type="text/javascript">
    $(document).on("ready", function () {
 
@@ -689,10 +1061,7 @@
         <form id="form_gasto" action="<?=base_url()?>gastos/insertar" method="post">
             <div class="row">
                 <div class="input-field col s12 m4 l4">
-                    <select id="gasto_tipo" name="gasto_tipo">
-                        <option value="1" selected><?= label('gastos_tipoFijo'); ?></option>
-                        <option value="2"><?= label('gastos_tipoVariable'); ?></option>
-                    </select>
+                    <select id="gasto_tipo" name="gasto_tipo"></select>
                     <label for="gasto_tipo"><?= label('gastos_Tipo'); ?></label>
                 </div>
                 <div class="input-field col s12 m4 l4">
@@ -705,32 +1074,16 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m4 l4">
-                        <select id="gasto_categoria" name="gasto_categoria">
-                            <option value="1" selected>Todos</option>
-                            <option value="2">Servicios profesionales</option>
-                            <option value="3">Servicios profesionales</option>
-                            <option value="4">Servicios profesionales</option>
-                        </select>
+                        <select id="gasto_categoria" name="gasto_categoria"></select>
                         <label for="gasto_categoria"><?= label('gastos_Categoria'); ?></label>
                         <a href="#" style="text-decoration: underline;">Agregar categoria</a>
                     </div>
                     <div class="input-field col s12 m4 l4">
-                        <select id="gasto_formaPago" name="gasto_formaPago">
-                            <option value="1" selected>Todos</option>
-                            <option value="2">Horas</option>
-                            <option value="3">Diario</option>
-                            <option value="4">Semanal</option>
-                        </select>
+                        <select id="gasto_formaPago" name="gasto_formaPago"></select>
                         <label for="gasto_formaPago"><?= label('gastos_FormaPago'); ?></label>
                     </div>
                     <div class="input-field col s12 m4 l4">
-                        <select id="gasto_persona" name="gasto_persona">
-                            <option value="1" selected>Todos</option>
-                            <option value="2">Juan Gomez</option>
-                            <option value="3">Juan Perez</option>
-                            <option value="4">Ronald Alfaro</option>
-                            <option value="5">Pedro Mora</option>
-                        </select>
+                        <select id="gasto_persona" name="gasto_persona"></select>
                         <label for="gasto_persona"><?= label('gastos_Persona'); ?></label>
                         <a href="#" style="text-decoration: underline;">Agregar persona</a>
                     </div>
@@ -766,14 +1119,12 @@
         <form id="form_gastoEditar" action="<?=base_url()?>gastos/modificar" method="post">
             <div class="row">
                 <div class="input-field col s12 m4 l4">
-                    <input style="display:none" id="idGasto" name="idGasto" type="text">
-                    <select id="gasto_tipo" name="gasto_tipo">
-                        <option value="1" selected><?= label('gastos_tipoFijo'); ?></option>
-                        <option value="2"><?= label('gastos_tipoVariable'); ?></option>
-                    </select>
+                    <select id="gasto_tipo" name="gasto_tipo"></select>
                     <label for="gasto_tipo"><?= label('gastos_Tipo'); ?></label>
                 </div>
                 <div class="input-field col s12 m4 l4">
+                    <input style="display:none" id="idGasto" name="idGasto" type="text">
+                    <input style="display:none" id="gasto_codigoOriginal" name="gasto_codigoOriginal" type="text">
                     <input id="gasto_codigo" name="gasto_codigo" type="text">
                     <label for="gasto_codigo"><?= label('gastos_Codigo') ?></label>
                 </div>
@@ -783,32 +1134,16 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m4 l4">
-                        <select id="gasto_categoria" name="gasto_categoria">
-                            <option value="1" selected>Todos</option>
-                            <option value="2">Servicios profesionales</option>
-                            <option value="3">Servicios profesionales</option>
-                            <option value="4">Servicios profesionales</option>
-                        </select>
+                        <select id="gasto_categoria" name="gasto_categoria"></select>
                         <label for="gasto_categoria"><?= label('gastos_Categoria'); ?></label>
                         <a href="#" style="text-decoration: underline;">Agregar categoria</a>
                     </div>
                     <div class="input-field col s12 m4 l4">
-                        <select id="gasto_formaPago" name="gasto_formaPago">
-                            <option value="1" selected>Todos</option>
-                            <option value="2">Horas</option>
-                            <option value="3">Diario</option>
-                            <option value="4">Semanal</option>
-                        </select>
+                        <select id="gasto_formaPago" name="gasto_formaPago"></select>
                         <label for="gasto_formaPago"><?= label('gastos_FormaPago'); ?></label>
                     </div>
                     <div class="input-field col s12 m4 l4">
-                        <select id="gasto_persona" name="gasto_persona">
-                            <option value="1" selected>Todos</option>
-                            <option value="2">Juan Gomez</option>
-                            <option value="3">Juan Perez</option>
-                            <option value="4">Ronald Alfaro</option>
-                            <option value="5">Pedro Mora</option>
-                        </select>
+                        <select id="gasto_persona" name="gasto_persona"></select>
                         <label for="gasto_persona"><?= label('gastos_Persona'); ?></label>
                         <a href="#" style="text-decoration: underline;">Agregar persona</a>
                     </div>

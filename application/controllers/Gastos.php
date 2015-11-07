@@ -17,7 +17,14 @@ class Gastos extends CI_Controller
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
         $lista = $this->Gasto_model->cargarTodos($idEmpresa);
+        $categorias = $this->Gasto_model->categoriasGasto();
+        $formasPago = $this->Gasto_model->formasPago($idEmpresa);
+        $personas = $this->Gasto_model->proveedores($idEmpresa);
+
         $data['lista'] = $lista;
+        $data['categoriasGasto'] = $categorias;
+        $data['formasPago'] = $formasPago;
+        $data['personas'] = $personas;
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
         $this->load->view('gastos/gastos_lista', $data);
@@ -125,6 +132,66 @@ class Gastos extends CI_Controller
         } else {
             //correcto
             echo 1; 
+        }
+    }
+
+    public function verificarCodigo(){
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $gasto = array(
+            'idEmpresa' => $idEmpresa,
+            'codigo' => $this->input->post('gasto_codigo'),
+            'eliminado' => '0'
+        );
+        $data['gasto'] = $gasto;
+
+        // echo print_r($impuesto); exit();
+        $resultado = $this->Gasto_model->verificarCodigo($data);
+        if ($resultado === false) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            if ($resultado == 1) {
+                //Ya existe esta identificacion
+                echo 1;
+            } else {
+                //Identificacion Valida
+                echo 2;
+            }
+        }
+    }
+
+    public function categoriasGasto() {
+        $resultado = $this->Gasto_model->categoriasGasto();
+        if ($resultado === false || $resultado === array()) {
+            echo 0;
+        } else {
+            echo json_encode($resultado);
+        }
+    }
+
+    public function formasPago() {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $resultado = $this->Gasto_model->formasPago($idEmpresa);
+        if ($resultado === false || $resultado === array()) {
+            echo 0;
+        } else {
+            echo json_encode($resultado);
+        }
+    }
+
+    public function personas() {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $resultado = $this->Gasto_model->proveedores($idEmpresa);
+        if ($resultado === false || $resultado === array()) {
+            echo 0;
+        } else {
+            echo json_encode($resultado);
         }
     }
 
