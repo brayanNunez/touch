@@ -403,6 +403,10 @@ $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos selec
     $lang['paso3_nombreNuevaPlantilla'] = 'Agregar nueva plantilla';
     $lang['paso3_labelNombrePlantilla'] = 'Nombre';
     $lang['paso3_Diseno_mensajeFotter'] = 'Esta cotización ha sido desarrollada en la plataforma: ';
+    $lang['paso3_labelPlantilla'] = 'Plantilla';
+    $lang['paso3_elegirPlantilla'] = 'Elegir plantilla';
+    
+
     
 
     $lang['paso3_nombrePlantillaExiste'] = 'El nombre de la plantilla ya existe, por favor agregue un nombre diferente' ;

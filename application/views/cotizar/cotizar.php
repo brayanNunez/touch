@@ -98,7 +98,7 @@
 
     function generarAutocompletarPlantilla(id){
         var miSelect = $('<select data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso3_plantilla" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso3_elegirPalantilla"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
-        miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso1_elegirAtencion"); ?></option>');
+        miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso3_elegirPlantilla"); ?></option>');
         miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
        
         <?php 
