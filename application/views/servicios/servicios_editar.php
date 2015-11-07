@@ -95,7 +95,7 @@
                                             <div class="input-field col s12 m6 l6 inputSelector" >
                                                 <label for="servicio_subFase"><?= label('formServicio_seleccioneSubfase'); ?></label>
                                                 <br>
-                                                <select disabled='disabled' data-incluirBoton="1" placeholder="seleccionar" data-tipo="servicio_subFase" id="servicio_subFase" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("servicio_elegirFase"); ?>" class="browser-default chosen-select" style="width:350px;" tabindex="2">
+                                                <select disabled='disabled' data-incluirBoton="1" placeholder="seleccionar" data-tipo="servicio_subFase" id="servicio_subFase" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("servicio_elegirSubFase"); ?>" class="browser-default chosen-select" style="width:350px;" tabindex="2">
                                                     
 
                                                 </select>
@@ -231,10 +231,10 @@
                                             <div class="input-field col s12 m6 l6 inputSelector" >
                                                 <label for="servicioFase"><?= label('formServicio_cotizarPor'); ?></label>
                                                 <br>
-                                                <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="servicioFase" id="servicioFase" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("servicio_elegirFase"); ?>" class="browser-default chosen-select" style="width:350px;" tabindex="2">
+                                                <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="servicioFase" id="servicioFase" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("servicio_elegirTiempo"); ?>" class="browser-default chosen-select" style="width:350px;" tabindex="2">
                                                     <option value="0" disabled selected style="display:none;"><?= label("servicio_elegirSubFase"); ?></option>
                                                     <option value="nuevo"><?= label("agregarNuevo"); ?></option>
-                                                    <option value="1" selected>Horas</option>
+                                                    <option value="1">Horas</option>
                                                     <option value="2">Días</option>
                                                     <option value="3">Semanas</option>
                                                     <option value="4">Meses</option>
@@ -310,6 +310,14 @@ echo "var arrayFases =". $js_array;?>
             // alert('ahora');
             var idFase = $('#servicioFase').val();
             var idSubfase = $('#servicio_subFase').val();
+            if (idFase == null || (idFase != 'todas' && idSubfase == null)) {
+                if (idFase == null) {
+                    alert('<?=label("form_servicioDebeElegirFase")?>');
+                } else{
+                    alert('<?=label("form_servicioDebeElegirSubFase")?>');
+                };
+                return false;
+            } 
             if (idFase != 'todas') {
                 if (idSubfase != 'todas') {
                     if (!exiteEnTabla(idSubfase)) {

@@ -521,9 +521,9 @@ margin-top: 2%;
 	margin-top: 80px;
 }
 
-tr.group, div.group,
+tr.group, 
 tr.group:hover {
-    background-color: hsla(111, 89%, 32%, 0.37) !important;
+    background-color: #93D78F !important;
 }
 
 

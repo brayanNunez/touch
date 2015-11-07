@@ -807,11 +807,18 @@ $lang['Persona_tablaOpciones'] = 'Opciones';
     $lang['formServicio_nuevaPersonaSalario'] = 'Salario';
     $lang['formServicio_nuevaPersonaSalarioTipo'] = 'Tipo de salario';
     $lang['formServicio_nuevaPersonaSalarioMonto'] = 'Monto';
-    $lang['formServicio_seleccioneFase'] = 'Seleccione la fase';
+    $lang['formServicio_seleccioneFase'] = 'Fase';
     $lang['formServicio_fases_agregarTodas'] = 'Todas';
     
-    $lang['formServicio_seleccioneSubfase'] = 'Seleccione la subfase';
+    $lang['formServicio_seleccioneSubfase'] = 'Subfase';
     $lang['formServicio_agregarTodasFases'] = 'Agregar todas las fases';
+    $lang['form_servicioDebeElegirSubFase'] = 'Seleccione una subfase.';
+    $lang['form_servicioDebeElegirFase'] = 'Seleccione una fase.';
+    $lang['servicio_elegirFase'] = 'Elegir fase';
+    $lang['servicio_elegirSubFase'] = 'Elegir subfase';
+    $lang['servicio_elegirTiempo'] = 'Elegir';
+    
+
     $lang['formServicio_agregar'] = 'Agregar';
     $lang['formServicio_agregarRapido'] = 'Agregar rápido';
     $lang['formServicio_busqueda'] = 'Búsqueda';
