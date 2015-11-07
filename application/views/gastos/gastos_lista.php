@@ -173,50 +173,131 @@
 <div style="display: none">
     <a id="linkModalErrorCargarDatos" href="#transaccionIncorrectaCargar" class="btn btn-default modal-trigger"></a>
     <a id="linkModalErrorEliminar" href="#transaccionIncorrectaEliminar" class="btn btn-default modal-trigger"></a>
+
+    <a id="linkNuevaCategoria" href="#agregarCategoria" class="modal-trigger"></a>
+    <a id="linkNuevaFormaPago" href="#agregarFormaPago" class="modal-trigger"></a>
+    <a id="linkNuevaPersona" href="#agregarPersona" class="modal-trigger"></a>
 </div>
 <!-- END CONTENT-->
 
 <script type="text/javascript">
+    var categoriasGastos = [];
     $(document).ready(function () {
+        actualizarSelectTipo();
         actualizarSelectCategoriasGasto();
-        actualizarSelectFormasPago();
-        actualizarSelectPersonas();
-//        actualizarSelectTipo_Editar(0);
-//        actualizarSelectCategoriasGasto_Editar(2);
-//        actualizarSelectFormasPago_Editar(3);
-//        actualizarSelectPersonas_Editar(2);
+//        actualizarSelectFormasPago();
+//        actualizarSelectPersonas();
+
+//        actualizarSelectCategoriasGasto();
+//        actualizarSelectFormasPago();
+//        actualizarSelectPersonas();
+////        actualizarSelectTipo_Editar(0);
+////        actualizarSelectCategoriasGasto_Editar(2);
+////        actualizarSelectFormasPago_Editar(3);
+////        actualizarSelectPersonas_Editar(2);
     });
+
+    function actualizarSelectTipo() {
+        var selectTipo = $('#form_gasto #gasto_tipo');
+        selectTipo.empty();
+        selectTipo.append($('<option>', {
+            value: 1,
+            text: 'Fijo',
+            selected: true
+        }));
+        selectTipo.append($('<option>', {
+            value: 2,
+            text: 'Variable',
+            selected: false
+        }));
+        selectTipo.material_select();
+    }
     function actualizarSelectCategoriasGasto() {
         var formulario = $('#form_gasto');
+        $.ajax({
+            type: formulario.attr('method'),
+            url: '<?= base_url(); ?>gastos/personas',
+            data: {  },
+            success: function(response)
+            {
+                generarAutocompletarPersona($.parseJSON(response));
+            }
+        });
         $.ajax({
             type: formulario.attr('method'),
             url: '<?= base_url(); ?>gastos/categoriasGasto',
             data: {  },
             success: function(response)
             {
-                var categoriasGasto = $.parseJSON(response);
-                var selectCategoriaGasto = $('#form_gasto #gasto_categoria');
-                selectCategoriaGasto.empty();
-                selectCategoriaGasto.append($('<option>', {
-                    value: 0,
-                    text: 'Seleccione uno',
-                    selected: true,
-                    disabled: true
-                }));
-                for(var i = 0; i < categoriasGasto.length; i++) {
-                    var cat = categoriasGasto[i];
-                    if(cat != null) {
-                        selectCategoriaGasto.append($('<option>', {
-                            value: cat['idCategoriaGasto'],
-                            text: cat['nombre'],
-                            selected: false
-                        }));
-                    }
-                }
-                selectCategoriaGasto.material_select();
+                generarAutocompletarCategoria($.parseJSON(response));
+            }
+        });
+        $.ajax({
+            type: formulario.attr('method'),
+            url: '<?= base_url(); ?>gastos/formasPago',
+            data: {  },
+            success: function(response)
+            {
+                generarAutocompletarFormaPago($.parseJSON(response));
+                generarListas();
             }
         });
     }
+    function actualizarSelectFormasPago() {
+        var formulario = $('#form_gasto');
+        $.ajax({
+            type: formulario.attr('method'),
+            url: '<?= base_url(); ?>gastos/formasPago',
+            data: {  },
+            success: function(response)
+            {
+                generarAutocompletarFormaPago($.parseJSON(response));
+                generarListas();
+            }
+        });
+    }
+    function actualizarSelectPersonas() {
+        var formulario = $('#form_gasto');
+        $.ajax({
+            type: formulario.attr('method'),
+            url: '<?= base_url(); ?>gastos/personas',
+            data: {  },
+            success: function(response)
+            {
+                generarAutocompletarPersona($.parseJSON(response));
+                generarListas();
+            }
+        });
+    }
+    function actualizarSelectTipo_Editar($fijo) {
+        var selectTipo = $('#form_gastoEditar #gasto_tipo');
+        selectTipo.empty();
+        if($fijo === '1') {
+            selectTipo.append($('<option>', {
+                value: 1,
+                text: 'Fijo',
+                selected: true
+            }));
+            selectTipo.append($('<option>', {
+                value: 2,
+                text: 'Variable',
+                selected: false
+            }));
+        } else {
+            selectTipo.append($('<option>', {
+                value: 1,
+                text: 'Fijo',
+                selected: false
+            }));
+            selectTipo.append($('<option>', {
+                value: 2,
+                text: 'Variable',
+                selected: true
+            }));
+        }
+        selectTipo.material_select();
+    }
+
     function actualizarSelectCategoriasGasto_Editar($idCategoria) {
         var formulario = $('#form_gasto');
         $.ajax({
@@ -252,37 +333,6 @@
                     }
                 }
                 selectCategoriaGasto.material_select();
-            }
-        });
-    }
-    function actualizarSelectFormasPago() {
-        var formulario = $('#form_gasto');
-        $.ajax({
-            type: formulario.attr('method'),
-            url: '<?= base_url(); ?>gastos/formasPago',
-            data: {  },
-            success: function(response)
-            {
-                var formasPago = $.parseJSON(response);
-                var selectFormasPago = $('#form_gasto #gasto_formaPago');
-                selectFormasPago.empty();
-                selectFormasPago.append($('<option>', {
-                    value: 0,
-                    text: 'Seleccione uno',
-                    selected: true,
-                    disabled: true
-                }));
-                for(var i = 0; i < formasPago.length; i++) {
-                    var formaP = formasPago[i];
-                    if(formaP != null) {
-                        selectFormasPago.append($('<option>', {
-                            value: formaP['idFormaPago'],
-                            text: formaP['nombre'],
-                            selected: false
-                        }));
-                    }
-                }
-                selectFormasPago.material_select();
             }
         });
     }
@@ -324,37 +374,6 @@
             }
         });
     }
-    function actualizarSelectPersonas() {
-        var formulario = $('#form_gasto');
-        $.ajax({
-            type: formulario.attr('method'),
-            url: '<?= base_url(); ?>gastos/personas',
-            data: {  },
-            success: function(response)
-            {
-                var personas = $.parseJSON(response);
-                var selectPersona = $('#form_gasto #gasto_persona');
-                selectPersona.empty();
-                selectPersona.append($('<option>', {
-                    value: 0,
-                    text: 'Seleccione uno',
-                    selected: true,
-                    disabled: true
-                }));
-                for(var i = 0; i < personas.length; i++) {
-                    var pers = personas[i];
-                    if(pers != null) {
-                        selectPersona.append($('<option>', {
-                            value: pers['idProveedor'],
-                            text: pers['nombre'],
-                            selected: false
-                        }));
-                    }
-                }
-                selectPersona.material_select();
-            }
-        });
-    }
     function actualizarSelectPersonas_Editar($idPersona) {
         var formulario = $('#form_gasto');
         $.ajax({
@@ -393,48 +412,177 @@
             }
         });
     }
-    function actualizarSelectTipo() {
-        var selectTipo = $('#form_gasto #gasto_tipo');
-        selectTipo.empty();
-        selectTipo.append($('<option>', {
-            value: 1,
-            text: 'Fijo',
-            selected: true
-        }));
-        selectTipo.append($('<option>', {
-            value: 2,
-            text: 'Variable',
-            selected: false
-        }));
-        selectTipo.material_select();
-    }
-    function actualizarSelectTipo_Editar($fijo) {
-        var selectTipo = $('#form_gastoEditar #gasto_tipo');
-        selectTipo.empty();
-        if($fijo === '1') {
-            selectTipo.append($('<option>', {
-                value: 1,
-                text: 'Fijo',
-                selected: true
-            }));
-            selectTipo.append($('<option>', {
-                value: 2,
-                text: 'Variable',
-                selected: false
-            }));
-        } else {
-            selectTipo.append($('<option>', {
-                value: 1,
-                text: 'Fijo',
-                selected: false
-            }));
-            selectTipo.append($('<option>', {
-                value: 2,
-                text: 'Variable',
-                selected: true
-            }));
+
+    function botonEnLista(tipo, idBoton, nuevoElementoAgregar){
+        if (tipo == "agregarGasto_categoria") {
+            $('#categoria_nombre').val(nuevoElementoAgregar);
+            $('#linkNuevaCategoria').click();
+            $('#categoria_nombre').focus();
+            document.getElementById('agregarGasto').style.visibility = 'hidden';
         }
-        selectTipo.material_select();
+        if (tipo == "agregarGasto_formaPago") {
+            $('#formaPago_nombre').val(nuevoElementoAgregar);
+            $('#linkNuevaFormaPago').click();
+            $('#formaPago_nombre').focus();
+            document.getElementById('agregarGasto').style.visibility = 'hidden';
+        }
+        if (tipo == "agregarGasto_persona") {
+            $('#persona_nombre').val(nuevoElementoAgregar);
+            $('#linkNuevaPersona').click();
+            $('#persona_nombre').focus();
+            document.getElementById('agregarPersona').style.visibility = 'hidden';
+        }
+    }
+    function generarAutocompletarCategoria($array){
+        var miSelect = $('#gasto_categoria');
+        miSelect.empty();
+        miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("agregarGasto_elegirCategoria"); ?></option>');
+        miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+        for(var i = 0; i < $array.length; i++) {
+            var cat = $array[i];
+            if(cat != null) {
+                miSelect.append('<option value="' + cat['idCategoriaGasto'] + '">' + cat['nombre'] + '</option>');
+            }
+        }
+    }
+    function generarAutocompletarPersona($array){
+        var miSelect = $('#gasto_persona');
+        miSelect.empty();
+        miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("agregarGasto_elegirPersona"); ?></option>');
+        miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+        for(var i = 0; i < $array.length; i++) {
+            var pers = $array[i];
+            if(pers != null) {
+                miSelect.append('<option value="' + pers['idProveedor'] + '">' + pers['nombre'] + '</option>');
+            }
+        }
+    }
+    function generarAutocompletarFormaPago($array){
+        var miSelect = $('#gasto_formaPago');
+        miSelect.empty();
+        miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("agregarGasto_elegirFormaPago"); ?></option>');
+        miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+        for(var i = 0; i < $array.length; i++) {
+            var formaP = $array[i];
+            if(formaP != null) {
+                miSelect.append('<option value="' + formaP['idFormaPago'] + '">' + formaP['nombre'] + '</option>');
+            }
+        }
+    }
+    function generarListas(){
+        // alert("generando");
+
+        var config = {'.chosen-select'           : {}}
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    }
+    $(document).on('change','.chosen-select',function(){
+        var valor = $(this).val();
+        var tipo = $(this).attr("data-tipo");
+        if (valor=="nuevo") {
+            var idBoton = $(this).attr("id");
+            var nuevoElementoAgregar = "";
+            botonEnLista(tipo, idBoton, nuevoElementoAgregar)
+        } else{
+            alert(valor);
+        }
+    });
+
+    $(document).ready(function () {
+        $('#modalAgregar_agregarCategoria').on('click', function () {
+            document.getElementById('agregarGasto').style.visibility = 'hidden';
+        });
+        $('#modalAgregarCategoria_cerrar').on('click', function () {
+            document.getElementById('agregarGasto').style.visibility = 'visible';
+            document.getElementById('agregarCategoria').style.display = 'none';
+        });
+        $('#modalAgregarFormaPago_cerrar').on('click', function () {
+            document.getElementById('agregarGasto').style.visibility = 'visible';
+            document.getElementById('agregarFormaPago').style.display = 'none';
+        });
+    });
+    function validacionCorrecta_Categoria() {
+//        $.ajax({
+//            data: $('#form_categoria').serialize(),
+//            url:   '<?//=base_url()?>//gastos/verificarCodigo',
+//            type:  'post',
+//            success:  function (response) {
+//                if (response == '0') {
+//                    alert("<?//=label('errorGuardar'); ?>//");
+//                    $('#agregarGasto .modal-header a').click();
+//                } else {
+//                    if (response == '2') {
+                        var url = $('#form_categoria').attr('action');
+                        var method = $('#form_categoria').attr('method');
+                        $.ajax({
+                            type: method,
+                            url: url,
+                            data: $('#form_categoria').serialize(),
+                            success: function(response)
+                            {
+                                if (response == 0) {
+                                    alert("<?=label('errorGuardar'); ?>");
+                                    $('#agregarCategoria .modal-header a').click();
+                                } else {
+                                    alert("<?=label('gastos_categoriaGuardadoCorrectamente'); ?>");
+                                    actualizarSelectCategoriasGasto();
+//                                    if (cerrarModal) {
+                                        $('#agregarCategoria .modal-header a').click();
+//                                    } else{
+//                                        limpiarForm();
+//                                    }
+                                }
+                            }
+                        });
+//                    } else {
+//                        alert("<?//=label('gasto_error_codigoExisteEnBD'); ?>//");
+//                        $('#form_gasto #gasto_codigo').focus();
+//                    }
+//                }
+//            }
+//        });
+    }
+    function validacionCorrecta_FormaPago() {
+//        $.ajax({
+//            data: $('#form_formaPago').serialize(),
+//            url:   '<?//=base_url()?>//formasPago/verificarNombre',
+//            type:  'post',
+//            success:  function (response) {
+//                if (response == '0') {
+//                    alert("<?//=label('errorGuardar'); ?>//");
+//                    $('#agregarFormaPago .modal-header a').click();
+//
+//                } else{
+//                    if (response == '2') {
+                        var url = $('#form_formaPago_Gastos').attr('action');
+                        var method = $('#form_formaPago_Gastos').attr('method');
+                        $.ajax({
+                            type: method,
+                            url: url,
+                            data: $('#form_formaPago_Gastos').serialize(),
+                            success: function(response)
+                            {
+                                if (response == 0) {
+                                    alert("<?=label('errorGuardar'); ?>");
+                                    $('#agregarFormaPago .modal-header a').click();
+                                } else {
+                                    alert("<?=label('gastos_FormaPagoGuardadoCorrectamente'); ?>");
+//                                    if (cerrarModal) {
+                                        $('#agregarFormaPago .modal-header a').click();
+//                                    } else{
+//                                        limpiarForm();
+//                                    }
+                                }
+                            }
+                        });
+//                    } else{
+//                        alert("<?//=label('formaPago_error_nombreExisteEnBD'); ?>//");
+//                        $('#form_formaPago #formaPago_nombre').focus();
+//                    };
+//                };
+//            }
+//        });
     }
 </script>
 
@@ -1073,19 +1221,32 @@
                     <label for="gasto_nombre"><?= label('gastos_Nombre') ?></label>
                 </div>
                 <div class="row">
-                    <div class="input-field col s12 m4 l4">
-                        <select id="gasto_categoria" name="gasto_categoria"></select>
-                        <label for="gasto_categoria"><?= label('gastos_Categoria'); ?></label>
-                        <a href="#" style="text-decoration: underline;">Agregar categoria</a>
+                    <div class="input-field col s12 m4 l4 inputSelector">
+                        <label for="gasto_categoria"><?= label("gastos_Categoria"); ?></label>
+                        <br>
+                        <div id="contenedorSelectCategorias">
+                            <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="agregarGasto_categoria" id="gasto_categoria" name="gasto_categoria"
+                                    data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("agregarGasto_elegirCategoria"); ?>"
+                                    class="browser-default chosen-select" style="width:350px;" tabindex="2"></select>
+                        </div>
                     </div>
-                    <div class="input-field col s12 m4 l4">
-                        <select id="gasto_formaPago" name="gasto_formaPago"></select>
-                        <label for="gasto_formaPago"><?= label('gastos_FormaPago'); ?></label>
+                    <div class="input-field col s12 m4 l4 inputSelector">
+                        <label for="gasto_formaPago"><?= label("gastos_FormaPago"); ?></label>
+                        <br>
+                        <div id="contenedorSelectFormasPago">
+                            <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="agregarGasto_formaPago" id="gasto_formaPago" name="gasto_formaPago"
+                                    data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("agregarGasto_elegirFormaPago"); ?>"
+                                    class="browser-default chosen-select" style="width:350px;" tabindex="2"></select>
+                        </div>
                     </div>
-                    <div class="input-field col s12 m4 l4">
-                        <select id="gasto_persona" name="gasto_persona"></select>
-                        <label for="gasto_persona"><?= label('gastos_Persona'); ?></label>
-                        <a href="#" style="text-decoration: underline;">Agregar persona</a>
+                    <div class="input-field col s12 m4 l4 inputSelector">
+                        <label for="gasto_categoria"><?= label("gastos_Persona"); ?></label>
+                        <br>
+                        <div id="contenedorSelectPersonas">
+                            <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="agregarGasto_persona" id="gasto_persona" name="gasto_persona"
+                                    data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("agregarGasto_elegirPersona"); ?>"
+                                    class="browser-default chosen-select" style="width:350px;" tabindex="2"></select>
+                        </div>
                     </div>
                 </div>
                 <div class="input-field col s12 m6 l6">
@@ -1190,6 +1351,75 @@
             class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
       </div>
    </div>
+</div>
+
+<div id="agregarCategoria" class="modal" style="width: 70%;">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a id="modalAgregarCategoria_cerrar" class="modal-action cerrar-modal">
+            <i class="mdi-content-clear"></i>
+        </a>
+    </div>
+    <div class="modal-content" style="padding: 0 24px;">
+        <div class="row">
+            <h5 style="float: left;">Agregar categoria de gastos</h5>
+        </div>
+        <form id="form_categoria" action="<?=base_url()?>gastos/insertarCategoria" method="post">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="categoria_nombre" name="categoria_nombre" type="text">
+                    <label for="categoria_nombre"><?= label('categoriaGastos_Nombre') ?></label>
+                </div>
+            </div>
+            <div class="row">
+                <a href="#" style="font-size: larger;float: left;text-decoration: underline;"
+                   class="modal-action modal-close"><?= label('cancelar'); ?>
+                </a>
+                <a onclick="$(this).closest('form').submit()" id="guardarCerrar" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                    <?= label('guardarCerrar'); ?>
+                </a>
+                <a onclick="$(this).closest('form').submit()" id="guardarOtro" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                    <?= label('guardarAgregarOtro'); ?>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="agregarFormaPago" class="modal" style="width: 70%;">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a id="modalAgregarFormaPago_cerrar" class="modal-action cerrar-modal">
+            <i class="mdi-content-clear"></i>
+        </a>
+    </div>
+    <div class="modal-content" style="padding: 0 24px;">
+        <div class="row">
+            <h5 style="float: left;">Agregar forma de pago</h5>
+        </div>
+        <form id="form_formaPago_Gastos" action="<?=base_url()?>gastos/insertarFormaPago" method="post">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="formaPago_nombre" name="formaPago_nombre" type="text">
+                    <label for="formaPago_nombre"><?= label('formaPago_Nombre') ?></label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="formaPago_descripcion" name="formaPago_descripcion" type="text">
+                    <label for="formaPago_descripcion"><?= label('formaPago_descripcion') ?></label>
+                </div>
+            </div>
+            <div class="row">
+                <a href="#" style="font-size: larger;float: left;text-decoration: underline;"
+                   class="modal-action modal-close"><?= label('cancelar'); ?>
+                </a>
+                <a onclick="$(this).closest('form').submit()" id="guardarCerrar" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                    <?= label('guardarCerrar'); ?>
+                </a>
+                <a onclick="$(this).closest('form').submit()" id="guardarOtro" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                    <?= label('guardarAgregarOtro'); ?>
+                </a>
+            </div>
+        </form>
+    </div>
 </div>
 
 <div id="busquedaAvanzadaGastos" class="modal">

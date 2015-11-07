@@ -239,6 +239,26 @@ class Gasto_model extends CI_Model
         }
     }
 
+    function insertarCategoria($data)
+    {
+        try{
+            $this->db->trans_begin();
+
+//            print_r($data); exit();
+            $query = $this->db->insert('categoriagasto', $data['datos']);
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+            $insert_id = $this->db->insert_id();
+
+            $this->db->trans_commit();
+            return $insert_id;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
     function formasPago($idEmpresa) {
         try{
             $this->db->trans_begin();
@@ -253,6 +273,26 @@ class Gasto_model extends CI_Model
 
             $this->db->trans_commit();
             return $resultado;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+    function insertarFormaPago($data)
+    {
+        try{
+            $this->db->trans_begin();
+
+//            print_r($data); exit();
+            $query = $this->db->insert('formapago', $data['datos']);
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+            $insert_id = $this->db->insert_id();
+
+            $this->db->trans_commit();
+            return $insert_id;
         } catch (Exception $e) {
             $this->db->trans_rollback();
             return false;

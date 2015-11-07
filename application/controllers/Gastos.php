@@ -171,6 +171,24 @@ class Gastos extends CI_Controller
         }
     }
 
+    public function insertarCategoria()
+    {
+//        $sessionActual = $this->session->userdata('logged_in');
+//        $idEmpresa = $sessionActual['idEmpresa'];
+        $data['datos'] = array(
+            'nombre' => $this->input->post('categoria_nombre')
+        );
+
+        $res = $this->Gasto_model->insertarCategoria($data);
+        if (!$res) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            // correcto
+            echo encryptIt($res);
+        }
+    }
+
     public function formasPago() {
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
@@ -180,6 +198,27 @@ class Gastos extends CI_Controller
             echo 0;
         } else {
             echo json_encode($resultado);
+        }
+    }
+
+    public function insertarFormaPago()
+    {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+        $data['datos'] = array(
+            'idEmpresa' => $idEmpresa,
+            'nombre' => $this->input->post('formaPago_nombre'),
+            'descripcion' => $this->input->post('formaPago_descripcion'),
+            'eliminado' => 0
+        );
+
+        $res = $this->Gasto_model->insertarFormaPago($data);
+        if (!$res) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            // correcto
+            echo encryptIt($res);
         }
     }
 

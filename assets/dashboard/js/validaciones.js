@@ -612,5 +612,26 @@
                 validacionCorrectaEditar();
             }
         });
+        $('#form_categoria').validate({
+            rules:
+            {
+                categoria_nombre: { required: true }
+            },
+            errorElement: 'div',
+            submitHandler: function(form) {
+                validacionCorrecta_Categoria();
+            }
+        });
+        $('#form_formaPago_Gastos').validate({
+            rules:
+            {
+                formaPago_nombre: { required: true },
+                formaPago_descripcion: { required: true }
+            },
+            errorElement: 'div',
+            submitHandler: function(form) {
+                validacionCorrecta_FormaPago();
+            }
+        });
 
     });
