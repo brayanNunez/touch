@@ -64,6 +64,18 @@
                                                             if ($lista !== false) {
                                                                 $contador = 0;
                                                                 foreach ($lista as $fila) {
+                                                                    $categoriaGasto = '';
+                                                                    $formaPago = '';
+                                                                    $persona = '';
+                                                                    $tipo = 'Variable';
+                                                                    if($fila['gastoFijo']) {
+                                                                        $tipo = 'Fijo';
+                                                                    }
+                                                                    if(isset($fila['datosAdicionales'])) {
+                                                                        $categoriaGasto = $fila['datosAdicionales']['categoria'];
+                                                                        $formaPago = $fila['datosAdicionales']['formaPago'];
+                                                                        $persona = $fila['datosAdicionales']['persona'];
+                                                                    }
                                                                     $idEncriptado = encryptIt($fila['idGasto']); ?>
 
                                                                     <tr id="fila<?= $contador ?>" data-idElemento="<?= $idEncriptado ?>">
@@ -72,14 +84,14 @@
                                                                                    id="<?=$idEncriptado?>"/>
                                                                             <label for="<?=$idEncriptado?>"></label>
                                                                         </td>
-                                                                        <td><?= $fila['codigo']?></td>
-                                                                        <td><?= $fila['gastoFijo']?></td>
-                                                                        <td><?= $fila['idCategoriaGasto']?></td>
-                                                                        <td><?= $fila['formaPago'] ?></td>
-                                                                        <td><?= $fila['nombre']?></td>
-                                                                        <td><?= $fila['idProveedor']?></td>
+                                                                        <td><?= $fila['codigo']; ?></td>
+                                                                        <td><?= $tipo; ?></td>
+                                                                        <td><?= $categoriaGasto; ?></td>
+                                                                        <td><?= $formaPago; ?></td>
+                                                                        <td><?= $fila['nombre']; ?></td>
+                                                                        <td><?= $persona; ?></td>
                                                                         <td>Programador</td>
-                                                                        <td><?= $fila['monto']?></td>
+                                                                        <td><?= $fila['monto']; ?></td>
                                                                         <td>
                                                                             <ul id="dropdown-gasto<?= $contador ?>" class="dropdown-content">
                                                                                 <li>
@@ -205,6 +217,7 @@
                     $('#form_gastoEditar #gasto_categoria').val(gasto['idCategoriaGasto']);
                     $('#form_gastoEditar #gasto_persona').val(gasto['idProveedor']);
                     $('#form_gastoEditar #gasto_tipo').val(gasto['gastoFijo']);
+                    $('#form_gastoEditar #gasto_codigoOriginal').val(gasto['codigo']);
                     $('#form_gastoEditar #gasto_codigo').val(gasto['codigo']);
                     $('#form_gastoEditar #gasto_nombre').val(gasto['nombre']);
                     $('#form_gastoEditar #gasto_monto').val(gasto['monto']);
@@ -330,50 +343,106 @@
     }
 
     function validacionCorrecta() {
-        var url = $('#form_gasto').attr('action');
-        var method = $('#form_gasto').attr('method');
         $.ajax({
-            type: method,
-            url: url,
             data: $('#form_gasto').serialize(),
-            success: function(response)
-            {
-                if (response == 0) {
+            url:   '<?=base_url()?>gastos/verificarCodigo',
+            type:  'post',
+            success:  function (response) {
+                if (response == '0') {
                     alert("<?=label('errorGuardar'); ?>");
                     $('#agregarGasto .modal-header a').click();
                 } else {
-                    alert("<?=label('gastos_gastoGuardadoCorrectamente'); ?>");
-                    agregarFila(response, $('#form_gasto #gasto_categoria').val(), $('#form_gasto #gasto_persona').val(), $('#form_gasto #gasto_tipo').val(),
-                        $('#form_gasto #gasto_codigo').val(), $('#form_gasto #gasto_nombre').val(), $('#form_gasto #gasto_monto').val(), $('#form_gasto #gasto_formaPago').val());
-                    if (cerrarModal) {
-                        $('#agregarGasto .modal-header a').click();
-                    } else{
-                        limpiarForm();
+                    if (response == '2') {
+                        var url = $('#form_gasto').attr('action');
+                        var method = $('#form_gasto').attr('method');
+                        $.ajax({
+                            type: method,
+                            url: url,
+                            data: $('#form_gasto').serialize(),
+                            success: function(response)
+                            {
+                                if (response == 0) {
+                                    alert("<?=label('errorGuardar'); ?>");
+                                    $('#agregarGasto .modal-header a').click();
+                                } else {
+                                    alert("<?=label('gastos_gastoGuardadoCorrectamente'); ?>");
+                                    agregarFila(response, $('#form_gasto #gasto_categoria').val(), $('#form_gasto #gasto_persona').val(), $('#form_gasto #gasto_tipo').val(),
+                                        $('#form_gasto #gasto_codigo').val(), $('#form_gasto #gasto_nombre').val(), $('#form_gasto #gasto_monto').val(), $('#form_gasto #gasto_formaPago').val());
+                                    if (cerrarModal) {
+                                        $('#agregarGasto .modal-header a').click();
+                                    } else{
+                                        limpiarForm();
+                                    }
+                                }
+                            }
+                        });
+                    } else {
+                        alert("<?=label('gasto_error_codigoExisteEnBD'); ?>");
+                        $('#form_gasto #gasto_codigo').focus();
                     }
                 }
             }
         });
     }
     function validacionCorrectaEditar() {
-        var url = $('#form_gastoEditar').attr('action');
-        var method = $('#form_gastoEditar').attr('method');
-        $.ajax({
-            type: method,
-            url: url,
-            data: $('#form_gastoEditar').serialize(),
-            success: function(response)
-            {
-                if (response == 0) {
-                    alert("<?=label('errorEditar'); ?>");
-                    $('#editarGasto .modal-header a').click();
-                } else {
-                    alert("<?=label('gastos_gastoEditadoCorrectamente'); ?>");
-                    editarFila($('#form_gastoEditar #gasto_categoria').val(), $('#form_gastoEditar #gasto_persona').val(), $('#form_gastoEditar #gasto_tipo').val(),
-                        $('#form_gastoEditar #gasto_codigo').val(), $('#form_gastoEditar #gasto_nombre').val(), $('#form_gastoEditar #gasto_monto').val(), $('#form_gastoEditar #gasto_formaPago').val());
-                    $('#editarGasto .modal-header a').click();
+        if($('#form_gastoEditar #gasto_codigoOriginal').val() != $('#form_gastoEditar #gasto_codigo').val()) {
+            $.ajax({
+                data: $('#form_gastoEditar').serialize(),
+                url:   '<?=base_url()?>gastos/verificarCodigo',
+                type:  'post',
+                success:  function (response) {
+                    if (response == '0') {
+                        alert("<?=label('errorGuardar'); ?>");
+                        $('#editarGasto .modal-header a').click();
+                    } else{
+                        if (response == '2') {
+                            var url = $('#form_gastoEditar').attr('action');
+                            var method = $('#form_gastoEditar').attr('method');
+                            $.ajax({
+                                type: method,
+                                url: url,
+                                data: $('#form_gastoEditar').serialize(),
+                                success: function(response)
+                                {
+                                    if (response == 0) {
+                                        alert("<?=label('errorEditar'); ?>");
+                                        $('#editarGasto .modal-header a').click();
+                                    } else {
+                                        alert("<?=label('gastos_gastoEditadoCorrectamente'); ?>");
+                                        editarFila($('#form_gastoEditar #gasto_categoria').val(), $('#form_gastoEditar #gasto_persona').val(), $('#form_gastoEditar #gasto_tipo').val(),
+                                            $('#form_gastoEditar #gasto_codigo').val(), $('#form_gastoEditar #gasto_nombre').val(), $('#form_gastoEditar #gasto_monto').val(), $('#form_gastoEditar #gasto_formaPago').val());
+                                        $('#editarGasto .modal-header a').click();
+                                    }
+                                }
+                            });
+                        } else{
+                            alert("<?=label('gasto_error_codigoExisteEnBD'); ?>");
+                            $('#form_gastoEditar #gasto_codigo').focus();
+                        }
+                    }
                 }
-            }
-        });
+            });
+        } else {
+            var url = $('#form_gastoEditar').attr('action');
+            var method = $('#form_gastoEditar').attr('method');
+            $.ajax({
+                type: method,
+                url: url,
+                data: $('#form_gastoEditar').serialize(),
+                success: function(response)
+                {
+                    if (response == 0) {
+                        alert("<?=label('errorEditar'); ?>");
+                        $('#editarGasto .modal-header a').click();
+                    } else {
+                        alert("<?=label('gastos_gastoEditadoCorrectamente'); ?>");
+                        editarFila($('#form_gastoEditar #gasto_categoria').val(), $('#form_gastoEditar #gasto_persona').val(), $('#form_gastoEditar #gasto_tipo').val(),
+                            $('#form_gastoEditar #gasto_codigo').val(), $('#form_gastoEditar #gasto_nombre').val(), $('#form_gastoEditar #gasto_monto').val(), $('#form_gastoEditar #gasto_formaPago').val());
+                        $('#editarGasto .modal-header a').click();
+                    }
+                }
+            });
+        }
     }
 </script>
 <script type="text/javascript">
@@ -766,7 +835,6 @@
         <form id="form_gastoEditar" action="<?=base_url()?>gastos/modificar" method="post">
             <div class="row">
                 <div class="input-field col s12 m4 l4">
-                    <input style="display:none" id="idGasto" name="idGasto" type="text">
                     <select id="gasto_tipo" name="gasto_tipo">
                         <option value="1" selected><?= label('gastos_tipoFijo'); ?></option>
                         <option value="2"><?= label('gastos_tipoVariable'); ?></option>
@@ -774,6 +842,8 @@
                     <label for="gasto_tipo"><?= label('gastos_Tipo'); ?></label>
                 </div>
                 <div class="input-field col s12 m4 l4">
+                    <input style="display:none" id="idGasto" name="idGasto" type="text">
+                    <input style="display:none" id="gasto_codigoOriginal" name="gasto_codigoOriginal" type="text">
                     <input id="gasto_codigo" name="gasto_codigo" type="text">
                     <label for="gasto_codigo"><?= label('gastos_Codigo') ?></label>
                 </div>
