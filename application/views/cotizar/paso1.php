@@ -61,10 +61,10 @@
             <input id="paso1_tipoCambio" type="text">
             <label for="paso1_tipoCambio" class=""><?= label("paso1_labelTipoCambio"); ?></label>
         </div>
-        <div class="input-field col s12">
+     <!--    <div class="input-field col s12">
             <textarea id="paso1_detalle" class="materialize-textarea" style="height: 24px;"></textarea>
             <label for="paso1_detalle" class=""><?= label("paso1_labelDetalle"); ?></label>
-        </div>
+        </div> -->
     </div>
 
     <div class="row">

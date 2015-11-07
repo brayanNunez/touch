@@ -33,8 +33,10 @@ class Cotizacion extends CI_Controller
     public function cotizar()
     {
         verificarLogin();//helper
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
 
-        $plantillas = $this->Cotizacion_model->cargar(1); 
+        $plantillas = $this->Cotizacion_model->cargar($idEmpresa); 
         // if ($plantillas === false || $plantillas === array()) {
         if ($plantillas === false) {
             echo "Error en la transacción";
@@ -51,8 +53,10 @@ class Cotizacion extends CI_Controller
     public function cargarTodasPlnatillas()
     {
         verificarLogin();//helper
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
 
-        $plantillas = $this->Cotizacion_model->cargarTodasPlantillas(); 
+        $plantillas = $this->Cotizacion_model->cargarTodasPlantillas($idEmpresa); 
         // if ($plantillas === false || $plantillas === array()) {
         if ($plantillas === false) {
             echo "0";
@@ -240,7 +244,9 @@ class Cotizacion extends CI_Controller
             'mostrarColumnaPrecio' => $columnaPrecio, 
             'mostrarColumnaCantidad' => $columnaCantidad, 
             'mostrarColumnaImpuesto' => $columnaImpuesto, 
-            'mostrarColumnaTotal' => $columnaTotal
+            'mostrarColumnaTotal' => $columnaTotal,
+            'publica' => 1,
+            'eliminado' => 0
         );
         if (!$this->Cotizacion_model->insertarPlantilla($data)) {
             //Error en la transacción

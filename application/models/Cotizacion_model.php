@@ -10,11 +10,11 @@ class Cotizacion_model extends CI_Model
         $this->load->database();
     }
 
-    function cargar($id)
+    function cargar($idEmpresa)
     {
         try {
             $this->db->trans_begin();
-            $query = $this->db->get('plantilladiseno');
+            $query = $this->db->get_where('plantilladiseno', array('publica' => '1', 'eliminado'=>0, 'idEmpresa'=> $idEmpresa));
             if (!$query) throw new Exception("Error en la BD");   
             // $row = array();
             // if ($query->num_rows() > 0) {
@@ -30,11 +30,11 @@ class Cotizacion_model extends CI_Model
         }
     }
 
-    function cargarTodasPlantillas()
+    function cargarTodasPlantillas($idEmpresa)
     {
         try {
             $this->db->trans_begin();
-            $query = $this->db->get('plantilladiseno');
+            $query = $this->db->get_where('plantilladiseno', array('publica' => '1', 'eliminado'=>0, 'idEmpresa'=> $idEmpresa));
             if (!$query) throw new Exception("Error en la BD");   
             // $row = array();
             // if ($query->num_rows() > 0) {

@@ -232,7 +232,7 @@
                                                 <label for="servicioFase"><?= label('formServicio_cotizarPor'); ?></label>
                                                 <br>
                                                 <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="servicioFase" id="servicioFase" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("servicio_elegirTiempo"); ?>" class="browser-default chosen-select" style="width:350px;" tabindex="2">
-                                                    <option value="0" disabled selected style="display:none;"><?= label("servicio_elegirSubFase"); ?></option>
+                                                    <option value="0" disabled selected style="display:none;"><?= label("servicio_elegirTiempo"); ?></option>
                                                     <option value="nuevo"><?= label("agregarNuevo"); ?></option>
                                                     <option value="1">Horas</option>
                                                     <option value="2">Días</option>
