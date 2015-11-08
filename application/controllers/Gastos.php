@@ -208,7 +208,7 @@ class Gastos extends CI_Controller
             echo 0;
         } else {
             // correcto
-            echo encryptIt($res);
+            echo $res;
         }
     }
 

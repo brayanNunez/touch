@@ -181,10 +181,9 @@
 <!-- END CONTENT-->
 
 <script type="text/javascript">
-    var categoriasGastos = [];
     $(document).ready(function () {
         actualizarSelectTipo();
-        actualizarSelectCategoriasGasto();
+        actualizarSelects();
 //        actualizarSelectFormasPago();
 //        actualizarSelectPersonas();
 
@@ -212,7 +211,7 @@
         }));
         selectTipo.material_select();
     }
-    function actualizarSelectCategoriasGasto() {
+    function actualizarSelects() {
         var formulario = $('#form_gasto');
         $.ajax({
             type: formulario.attr('method'),
@@ -229,7 +228,7 @@
             data: {  },
             success: function(response)
             {
-                generarAutocompletarCategoria($.parseJSON(response));
+                generarAutocompletarCategoria($.parseJSON(response), 0);
             }
         });
         $.ajax({
@@ -239,6 +238,19 @@
             success: function(response)
             {
                 generarAutocompletarFormaPago($.parseJSON(response));
+                generarListas();
+            }
+        });
+    }
+    function actualizarSelectCategoriasGasto($id) {
+        var formulario = $('#form_gasto');
+        $.ajax({
+            type: formulario.attr('method'),
+            url: '<?= base_url(); ?>gastos/categoriasGasto',
+            data: {  },
+            success: function(response)
+            {
+                generarAutocompletarCategoria($.parseJSON(response), $id);
                 generarListas();
             }
         });
@@ -433,7 +445,7 @@
             document.getElementById('agregarPersona').style.visibility = 'hidden';
         }
     }
-    function generarAutocompletarCategoria($array){
+    function generarAutocompletarCategoria($array, $id){
         var miSelect = $('#gasto_categoria');
         miSelect.empty();
         miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("agregarGasto_elegirCategoria"); ?></option>');
@@ -441,9 +453,15 @@
         for(var i = 0; i < $array.length; i++) {
             var cat = $array[i];
             if(cat != null) {
-                miSelect.append('<option value="' + cat['idCategoriaGasto'] + '">' + cat['nombre'] + '</option>');
+                if(cat['idCategoriaGasto'] == $id){
+                    miSelect.append('<option value="' + cat['idCategoriaGasto'] + '" selected>' + cat['nombre'] + '</option>');
+                } else {
+                    miSelect.append('<option value="' + cat['idCategoriaGasto'] + '">' + cat['nombre'] + '</option>');
+                }
             }
         }
+        miSelect.trigger("chosen:updated");
+//        var opts = document.getElementById("gasto_categoria").options;
     }
     function generarAutocompletarPersona($array){
         var miSelect = $('#gasto_persona');
@@ -525,8 +543,8 @@
                                     alert("<?=label('errorGuardar'); ?>");
                                     $('#agregarCategoria .modal-header a').click();
                                 } else {
+                                    actualizarSelectCategoriasGasto(response);
                                     alert("<?=label('gastos_categoriaGuardadoCorrectamente'); ?>");
-                                    actualizarSelectCategoriasGasto();
 //                                    if (cerrarModal) {
                                         $('#agregarCategoria .modal-header a').click();
 //                                    } else{
