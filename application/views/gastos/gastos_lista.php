@@ -237,7 +237,7 @@
             data: {  },
             success: function(response)
             {
-                generarAutocompletarFormaPago($.parseJSON(response));
+                generarAutocompletarFormaPago($.parseJSON(response), 0);
                 generarListas();
             }
         });
@@ -255,7 +255,7 @@
             }
         });
     }
-    function actualizarSelectFormasPago() {
+    function actualizarSelectFormasPago($id) {
         var formulario = $('#form_gasto');
         $.ajax({
             type: formulario.attr('method'),
@@ -263,11 +263,12 @@
             data: {  },
             success: function(response)
             {
-                generarAutocompletarFormaPago($.parseJSON(response));
+                generarAutocompletarFormaPago($.parseJSON(response), $id);
                 generarListas();
             }
         });
     }
+
     function actualizarSelectPersonas() {
         var formulario = $('#form_gasto');
         $.ajax({
@@ -445,6 +446,7 @@
             document.getElementById('agregarPersona').style.visibility = 'hidden';
         }
     }
+
     function generarAutocompletarCategoria($array, $id){
         var miSelect = $('#gasto_categoria');
         miSelect.empty();
@@ -463,6 +465,23 @@
         miSelect.trigger("chosen:updated");
 //        var opts = document.getElementById("gasto_categoria").options;
     }
+    function generarAutocompletarFormaPago($array, $id){
+        var miSelect = $('#gasto_formaPago');
+        miSelect.empty();
+        miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("agregarGasto_elegirFormaPago"); ?></option>');
+        miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+        for(var i = 0; i < $array.length; i++) {
+            var formaP = $array[i];
+            if(formaP != null) {
+                if(formaP['idFormaPago'] == $id) {
+                    miSelect.append('<option value="' + formaP['idFormaPago'] + '" selected>' + formaP['nombre'] + '</option>');
+                } else {
+                    miSelect.append('<option value="' + formaP['idFormaPago'] + '">' + formaP['nombre'] + '</option>');
+                }
+            }
+        }
+        miSelect.trigger("chosen:updated");
+    }
     function generarAutocompletarPersona($array){
         var miSelect = $('#gasto_persona');
         miSelect.empty();
@@ -475,18 +494,7 @@
             }
         }
     }
-    function generarAutocompletarFormaPago($array){
-        var miSelect = $('#gasto_formaPago');
-        miSelect.empty();
-        miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("agregarGasto_elegirFormaPago"); ?></option>');
-        miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
-        for(var i = 0; i < $array.length; i++) {
-            var formaP = $array[i];
-            if(formaP != null) {
-                miSelect.append('<option value="' + formaP['idFormaPago'] + '">' + formaP['nombre'] + '</option>');
-            }
-        }
-    }
+
     function generarListas(){
         // alert("generando");
 
@@ -584,6 +592,7 @@
                                     alert("<?=label('errorGuardar'); ?>");
                                     $('#agregarFormaPago .modal-header a').click();
                                 } else {
+                                    actualizarSelectFormasPago(response);
                                     alert("<?=label('gastos_FormaPagoGuardadoCorrectamente'); ?>");
 //                                    if (cerrarModal) {
                                         $('#agregarFormaPago .modal-header a').click();
