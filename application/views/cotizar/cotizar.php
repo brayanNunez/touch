@@ -103,7 +103,7 @@
        
         <?php 
         $contador = 0;
-        foreach ($plantillas as $plantilla) {
+        foreach ($resultado['plantillas'] as $plantilla) {
             $valor = "value='".$contador++."'";
              echo 'miSelect.append("<option '.$valor.'>'.$plantilla['nombrePlantilla'].'</option>");';
         }
@@ -123,29 +123,42 @@
         var miSelect = $('<select data-incluirBoton="1" placeholder="seleccionar" data-tipo="productoNombre" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso2_elegirProductoNombre"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
         miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso2_elegirProductoNombre"); ?></option>');
         miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
-        miSelect.append('<option value="Almuerzo">Almuerzo</option>');
-        miSelect.append('<option value="Fresco">Fresco</option>');
-        miSelect.append('<option value="Hamburguesa">Hamburguesa</option>');
-        miSelect.append('<option value="Música">Música</option>');
-        miSelect.append('<option value="Pizza">Pizza</option>');
-        miSelect.append('<option value="Arroz">Arroz</option>');
-        miSelect.append('<option value="Frijoles">Frijoles</option>');
-        miSelect.append('<option value="Ensalada">Ensalada</option>');
-        miSelect.append('<option value="Carne en salsa">Carne en salsa</option>');
-        miSelect.append('<option value="Pollo">Pollo</option>');
+
+
+        <?php 
+        // echo print_r($resultado['servicios']);exit();
+
+        foreach ($resultado['servicios'] as $servicio) {
+            $valor = "value='".$servicio['idServicio']."'";
+            echo 'miSelect.append("<option '.$valor.'>'.$servicio['nombre'].'</option>");';
+        }
+        
+        ?>
+
+
+        // miSelect.append('<option value="Almuerzo">Almuerzo</option>');
+        // miSelect.append('<option value="Fresco">Fresco</option>');
+        // miSelect.append('<option value="Hamburguesa">Hamburguesa</option>');
+        // miSelect.append('<option value="Música">Música</option>');
         // miSelect.append('<option value="Pizza">Pizza</option>');
-        miSelect.append('<option value="Bolsa de confites">Bolsa de confites</option>');
-        miSelect.append('<option value="Piñata">Piñata</option>');
-        miSelect.append('<option value="Comediante">Comediante</option>');
-        miSelect.append('<option value="Animador">Animador</option>');
-        miSelect.append('<option value="Comparsa">Comparsa</option>');
-        miSelect.append('<option value="Mariachi">Mariachi</option>');
-        miSelect.append('<option value="Vino">Vino</option>');
-        miSelect.append('<option value="Tacos">Tacos</option>');
-        miSelect.append('<option value="Globos">Globos</option>');
-        miSelect.append('<option value="Payaso">Payaso</option>');
-        miSelect.append('<option value="Quque">Quque</option>');
-        miSelect.append('<option value="Helado">Helado</option>');
+        // miSelect.append('<option value="Arroz">Arroz</option>');
+        // miSelect.append('<option value="Frijoles">Frijoles</option>');
+        // miSelect.append('<option value="Ensalada">Ensalada</option>');
+        // miSelect.append('<option value="Carne en salsa">Carne en salsa</option>');
+        // miSelect.append('<option value="Pollo">Pollo</option>');
+        // // miSelect.append('<option value="Pizza">Pizza</option>');
+        // miSelect.append('<option value="Bolsa de confites">Bolsa de confites</option>');
+        // miSelect.append('<option value="Piñata">Piñata</option>');
+        // miSelect.append('<option value="Comediante">Comediante</option>');
+        // miSelect.append('<option value="Animador">Animador</option>');
+        // miSelect.append('<option value="Comparsa">Comparsa</option>');
+        // miSelect.append('<option value="Mariachi">Mariachi</option>');
+        // miSelect.append('<option value="Vino">Vino</option>');
+        // miSelect.append('<option value="Tacos">Tacos</option>');
+        // miSelect.append('<option value="Globos">Globos</option>');
+        // miSelect.append('<option value="Payaso">Payaso</option>');
+        // miSelect.append('<option value="Quque">Quque</option>');
+        // miSelect.append('<option value="Helado">Helado</option>');
 
         $('#contenedorSelectProductoNombre' + id + '').html(miSelect);
     }
@@ -153,12 +166,14 @@
         var miSelect = $('<select data-incluirBoton="1" placeholder="seleccionar" data-tipo="productoItem" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso2_elegirProductoItem"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
         miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso2_elegirProductoItem"); ?></option>');
         miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
-        miSelect.append('<option value="Uganda">001</option>');
-        miSelect.append('<option value="Ukraine">002</option>');
-        miSelect.append('<option value="United Arab Emirates">003</option>');
-        miSelect.append('<option value="United Kingdom">123</option>');
-        miSelect.append('<option value="United States">234</option>');
-        miSelect.append('<option value="United States Minor Outlying Islands">458</option>');
+
+        <?php 
+        foreach ($resultado['servicios'] as $servicio) {
+            $valor = "value='".$servicio['idServicio']."'";
+            echo 'miSelect.append("<option '.$valor.'>'.$servicio['codigo'].'</option>");';
+        }
+        
+        ?>
         $('#contenedorSelectProductoItem' + id + '').html(miSelect);
     }
     function generarListas(){

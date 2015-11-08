@@ -598,14 +598,14 @@
     });
 
  <?php 
-$js_array = json_encode($plantillas); 
+$js_array = json_encode($resultado['plantillas']); 
 echo "var arrayPlantillas =". $js_array;?> 
 
 function cargarDieseno(idPlantilla){
         recalcularAlturaContenido();
 
         function recalcularAlturaContenido() {
-            var tamanoHojaHTML = 1117; //aqui puede ajustar el tamano de la hoja que se vera en el html
+            var tamanoHojaHTML = 1117; //aqui puede ajustar el tamano de la hoja que se verá en el html
             var header = $('#headerDiseno').height();//212
             var footer = $('#footerDiseno').height();//226
             var informacionSistema = $('#informacionSistema').height();//20

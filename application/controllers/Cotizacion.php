@@ -36,12 +36,13 @@ class Cotizacion extends CI_Controller
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
 
-        $plantillas = $this->Cotizacion_model->cargar($idEmpresa); 
-        // if ($plantillas === false || $plantillas === array()) {
-        if ($plantillas === false) {
+        $resultado = $this->Cotizacion_model->cargar($idEmpresa); 
+        // if ($resultado === false || $resultado === array()) {
+        // print_r($resultado['servicios']); exit();
+        if ($resultado === false) {
             echo "Error en la transacción";
         } else {
-            $data['plantillas'] = $plantillas;
+            $data['resultado'] = $resultado;
             $this->load->view('layout/default/header');
             $this->load->view('layout/default/left-sidebar');
             $this->load->view('cotizar/cotizar', $data);
