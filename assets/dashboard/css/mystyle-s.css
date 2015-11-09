@@ -172,7 +172,7 @@ table.tabla-categorias tbody tr td label { padding-left: 25px; }
 table.tabla-categorias tbody tr td span.nivel1 { margin-left: 0; }
 table.tabla-categorias tbody tr td span.nivel2 { margin-left: 20px; }
 
-div#agregarCategoria { top: 5% !important; width: 70%; }
+div#agregarCategoria { top: 10% !important; width: 70%; } /* Era top: 5%; */
 a.editar-subcategoria { margin-right: 10px; }
 
 p.titulo-modal { font-size: larger; text-align: left; margin-left: 2%; font-weight: bold; }
