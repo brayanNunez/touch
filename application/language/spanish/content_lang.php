@@ -278,6 +278,9 @@ $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos selec
     $lang['formaPago_Nombre'] = 'Nombre';
     $lang['formaPago_descripcion'] = 'Descripción';
 
+    $lang['gasto_agregarPersona'] = 'Agregar nueva persona';
+    $lang['gastos_PersonaGuardadoCorrectamente'] = 'La persona fue guardada con éxito.';
+
 //Tipos de moneda
 	$lang['tituloTiposMoneda'] = 'Tipos de moneda';
 	$lang['tiposMoneda_defecto'] = 'Tipo de moneda por defecto';

@@ -633,5 +633,34 @@
                 validacionCorrecta_FormaPago();
             }
         });
+        $('#form_persona_Gastos').validate({
+            rules:
+            {
+                persona_identificacion: { required: true, maxlength: 45},
+                persona_apellido1: { required: true, maxlength: 45},
+                persona_apellido2: { required: false, maxlength: 45},
+                persona_nombre: { required: true, maxlength: 45},
+                persona_correo: { required: true, maxlength: 45},
+                persona_telefonoMovil: { required: true, maxlength: 45},
+                persona_telefono: { required: true, maxlength: 45},
+                persona_fechaNacimiento: { required: true, maxlength: 45},
+                personajuridico_identificacion: { required: true, maxlength: 45},
+                personajuridico_nombre: { required: true, maxlength: 45},
+                personajuridico_nombreFantasia: { required: true, maxlength: 45},
+                personajuridico_correo: { required: true, maxlength: 45},
+                personajuridico_telefono: { required: true, maxlength: 45},
+                personajuridico_fax: { required: true, maxlength: 45},
+                persona_palabras: { required: true, maxlength: 45},
+                persona_descripcion: { required: true, maxlength: 200},
+                persona_direccionPais: { required: true, maxlength: 45},
+                persona_direccionProvincia: { required: true, maxlength: 45},
+                persona_direccionCanton: { required: true, maxlength: 45},
+                persona_direccionDomicilio: { required: true, maxlength: 200}
+            },
+            errorElement: 'div',
+            submitHandler: function(form) {
+                validacionCorrecta_Persona();
+            }
+        });
 
     });

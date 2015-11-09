@@ -369,7 +369,7 @@
             $('#persona_nombre').val(nuevoElementoAgregar);
             $('#linkNuevaPersona').click();
             $('#persona_nombre').focus();
-            document.getElementById('agregarPersona').style.visibility = 'hidden';
+            document.getElementById('agregarGasto').style.visibility = 'hidden';
             document.getElementById('editarGasto').style.visibility = 'hidden';
         }
     }
@@ -498,6 +498,7 @@
 
     var cerrarModalCategoria = false;
     var cerrarModalFormaPago = false;
+    var cerrarModalPersona = false;
     $(document).on('ready', function(){
         $('#guardarOtroCategoria').on('click', function(){
             cerrarModalCategoria = false;
@@ -511,6 +512,12 @@
         $('#guardarCerrarFormaPago').on('click', function(){
             cerrarModalFormaPago = true;
         });
+        $('#guardarOtroPersona').on('click', function(){
+            cerrarModalPersona = false;
+        });
+        $('#guardarCerrarPersona').on('click', function(){
+            cerrarModalPersona = true;
+        });
     });
     function limpiarFormCategoria() {
         $('#form_categoria')[0].reset();
@@ -520,6 +527,11 @@
     function limpiarFormFormaPago() {
         $('#form_formaPago_Gastos')[0].reset();
         var validator = $("#form_formaPago_Gastos").validate();
+        validator.resetForm();
+    }
+    function limpiarFormPersona() {
+        $('#form_persona_Gastos')[0].reset();
+        var validator = $("#form_persona_Gastos").validate();
         validator.resetForm();
     }
 
@@ -533,6 +545,11 @@
             document.getElementById('agregarGasto').style.visibility = 'visible';
             document.getElementById('editarGasto').style.visibility = 'visible';
             document.getElementById('agregarFormaPago').style.display = 'none';
+        });
+        $('#modalAgregarPersona_cerrar').on('click', function () {
+            document.getElementById('agregarGasto').style.visibility = 'visible';
+            document.getElementById('editarGasto').style.visibility = 'visible';
+            document.getElementById('agregarPersona').style.display = 'none';
         });
     });
     function validacionCorrecta_Categoria() {
@@ -618,6 +635,48 @@
                 }
             }
         });
+    }
+    function validacionCorrecta_Persona() {
+//        $.ajax({
+//            data: $('#form_formaPago_Gastos').serialize(),
+//            url:   '<?//=base_url()?>//gastos/verificarNombreFormaPago',
+//            type:  'post',
+//            success:  function (response) {
+//                if (response == '0') {
+//                    alert("<?//=label('errorGuardar'); ?>//");
+//                    $('#agregarFormaPago .modal-header a').click();
+//                } else{
+//                    if (response == '2') {
+                        var url = $('#form_persona_Gastos').attr('action');
+                        var method = $('#form_persona_Gastos').attr('method');
+                        $.ajax({
+                            type: method,
+                            url: url,
+                            data: $('#form_persona_Gastos').serialize(),
+                            success: function(response)
+                            {
+                                if (response == 0) {
+                                    alert("<?=label('errorGuardar'); ?>");
+                                    $('#agregarPersona .modal-header a').click();
+                                } else {
+                                    actualizarSelectPersonas(response);
+                                    actualizarSelectPersonas_Editar(response);
+                                    alert("<?=label('gastos_PersonaGuardadoCorrectamente'); ?>");
+                                    if (cerrarModalPersona) {
+                                        $('#agregarPersona .modal-header a').click();
+                                    } else{
+                                        limpiarFormPersona();
+                                    }
+                                }
+                            }
+                        });
+//                    } else{
+//                        alert("<?//=label('formaPago_error_nombreExisteEnBD'); ?>//");
+//                        $('#form_formaPago_Gastos #formaPago_nombre').focus();
+//                    }
+//                }
+//            }
+//        });
     }
 </script>
 
@@ -1205,6 +1264,141 @@
 
 </script>
 
+<!--Scripts para manejo de persona-->
+<script type="text/javascript">
+    $(document).on('ready', function(){
+        var config = {'.chosen-select'           : {}}
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    });
+    function tipoProveedor(opcionSeleccionada) {
+        if (opcionSeleccionada.value == "1") {
+            document.getElementById('seleccion_TipoProveedor').style.display = 'block';
+        } else {
+            document.getElementById('seleccion_TipoProveedor').style.display = 'none';
+            document.getElementById('campos-proveedor-fisico').style.display = 'block';
+            document.getElementById('campos-proveedor-juridico').style.display = 'none';
+        }
+    }
+    function datosProveedor(opcionSeleccionada) {
+        if (opcionSeleccionada.value == "1") {
+            document.getElementById('campos-proveedor-fisico').style.display = 'block';
+            document.getElementById('campos-proveedor-juridico').style.display = 'none';
+//            document.getElementById('tabs-proveedor-fisico').style.display = 'block';
+//            document.getElementById('tabs-proveedor-juridico').style.display = 'none';
+        } else {
+            document.getElementById('campos-proveedor-fisico').style.display = 'none';
+            document.getElementById('campos-proveedor-juridico').style.display = 'block';
+//            document.getElementById('tabs-proveedor-fisico').style.display = 'none';
+//            document.getElementById('tabs-proveedor-juridico').style.display = 'block';
+        }
+    }
+</script>
+<!-- Script para tags -->
+<script>
+    $(document).ready(function () {
+
+        var vendedores = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/vendedores.json'
+            prefetch: {
+                url: '<?=base_url()?>Cotizacion/jsonVendedores',
+                ttl: 1000
+            }
+        });
+
+        vendedores.initialize();
+
+        elt = $('.tags_vendedores > > input');
+        elt.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'vendedores',
+                displayKey: 'text',
+                source: vendedores.ttAdapter()
+            }
+        });
+
+//        elt.tagsinput('add', {"value": 1, "text": "Brayan Nuñez Rojas", "continent": "Europe"});
+//        elt.tagsinput('add', {"value": 4, "text": "Anthony Nuñez Rojas", "continent": "America"});
+//        elt.tagsinput('add', {"value": 7, "text": "Maria Perez Salas", "continent": "Australia"});
+//        elt.tagsinput('add', {"value": 10, "text": "Carlos David Rojas", "continent": "Asia"});
+//        elt.tagsinput('add', {"value": 13, "text": "Diego Alfaro Rojas", "continent": "Africa"});
+
+
+        var gusto = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            prefetch: {
+                url: '<?=base_url()?>Cotizacion/jsonGustos',
+                ttl: 1000,
+                filter: function (list) {
+                    return $.map(list, function (gusto) {
+                        return {name: gusto};
+                    });
+                }
+            }
+        });
+        gusto.initialize();
+
+
+        $('.tags_keywords  > > input').tagsinput({
+            typeaheadjs: {
+                name: 'gusto',
+                displayKey: 'name',
+                valueKey: 'name',
+                source: gusto.ttAdapter()
+            }
+        });
+
+
+        var mediosContacto = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/gustos.json'
+            prefetch: {
+                url: '<?=base_url()?>Cotizacion/jsonContactos',
+                ttl: 1000,
+                filter: function (list) {
+                    return $.map(list, function (mediosContacto) {
+                        return {name: mediosContacto};
+                    });
+                }
+            }
+        });
+        mediosContacto.initialize();
+
+
+        var elt = $('.tags_mediosContacto > > input');
+        elt.tagsinput({
+            typeaheadjs: {
+                name: 'mediosContacto',
+                displayKey: 'name',
+                valueKey: 'name',
+                source: mediosContacto.ttAdapter()
+            }
+        });
+
+
+        $('.boton-opciones').on('click', function (event) {
+            var elementoActivo = $(this).siblings('ul.active');
+            if (elementoActivo.length > 0) {
+                var estado = elementoActivo.css("display");
+                if (estado == "block") {
+                    elementoActivo.css("display", "none");
+                    elementoActivo.style.display = 'none';
+                } else {
+                    elementoActivo.css("display", "block");
+                    elementoActivo.style.display = 'block';
+                }
+            }
+        });
+    });
+</script>
+
 <!-- lista modals -->
 <div id="transaccionIncorrectaCargar" class="modal">
     <div  class="modal-header headerTransaccionIncorrecta">
@@ -1290,9 +1484,9 @@
                 </div>
             </div>
             <div class="row">
-                <a href="#" style="font-size: larger;float: left;text-decoration: underline;"
-                   class="modal-action modal-close"><?= label('cancelar'); ?>
-                </a>
+<!--                <a href="#" style="font-size: larger;float: left;text-decoration: underline;"-->
+<!--                   class="modal-action modal-close">--><?//= label('cancelar'); ?>
+<!--                </a>-->
                 <a onclick="$(this).closest('form').submit()" id="guardarCerrar" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
                     <?= label('guardarCerrar'); ?>
                 </a>
@@ -1363,9 +1557,9 @@
                 </div>
             </div>
             <div class="row">
-                <a href="#" style="font-size: larger;float: left;text-decoration: underline;"
-                   class="modal-action modal-close"><?= label('cancelar'); ?>
-                </a>
+<!--                <a href="#" style="font-size: larger;float: left;text-decoration: underline;"-->
+<!--                   class="modal-action modal-close">--><?//= label('cancelar'); ?>
+<!--                </a>-->
                 <a onclick="$(this).closest('form').submit()" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
                     <?= label('tipoMoneda_guardarCambios'); ?>
                 </a>
@@ -1420,9 +1614,9 @@
                 </div>
             </div>
             <div class="row">
-                <a href="#" style="font-size: larger;float: left;text-decoration: underline;"
-                   class="modal-action modal-close"><?= label('cancelar'); ?>
-                </a>
+<!--                <a href="#" style="font-size: larger;float: left;text-decoration: underline;"-->
+<!--                   class="modal-action modal-close">--><?//= label('cancelar'); ?>
+<!--                </a>-->
                 <a onclick="$(this).closest('form').submit()" id="guardarCerrarCategoria" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
                     <?= label('guardarCerrar'); ?>
                 </a>
@@ -1456,13 +1650,174 @@
                 </div>
             </div>
             <div class="row">
-                <a href="#" style="font-size: larger;float: left;text-decoration: underline;"
-                   class="modal-action modal-close"><?= label('cancelar'); ?>
-                </a>
+<!--                <a href="#" style="font-size: larger;float: left;text-decoration: underline;"-->
+<!--                   class="modal-action modal-close">--><?//= label('cancelar'); ?>
+<!--                </a>-->
                 <a onclick="$(this).closest('form').submit()" id="guardarCerrarFormaPago" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
                     <?= label('guardarCerrar'); ?>
                 </a>
                 <a onclick="$(this).closest('form').submit()" id="guardarOtroFormaPago" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                    <?= label('guardarAgregarOtro'); ?>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="agregarPersona" class="modal" style="width: 70%;">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a id="modalAgregarPersona_cerrar" class="modal-action cerrar-modal">
+            <i class="mdi-content-clear"></i>
+        </a>
+    </div>
+    <div class="modal-content" style="padding: 0 24px;">
+        <div class="row">
+            <h5 style="float: left;"><?= label('gasto_agregarPersona'); ?></h5>
+        </div>
+        <form id="form_persona_Gastos" action="<?=base_url()?>gastos/insertarPersona" method="post">
+            <div class="row">
+                <div class="input-field col s12">
+                    <select id="persona_tipoProveedor" name="persona_tipoProveedor"
+                            onchange="tipoProveedor(this)">
+                        <option value="1" selected><?= label('formPersona_proveedor'); ?></option>
+                        <option value="2"><?= label('formPersona_empleado'); ?></option>
+                    </select>
+                    <label for="persona_tipoProveedor"><?= label('formPersona_tipoProveedor'); ?></label>
+                </div>
+                <div id="seleccion_TipoProveedor" class="input-field col s12">
+                    <select id="persona_tipo" name="persona_tipo" onchange="datosProveedor(this)">
+                        <option value="1" selected><?= label('formPersona_fisico'); ?></option>
+                        <option value="2"><?= label('formPersona_juridico'); ?></option>
+                    </select>
+                    <label for="persona_tipo"><?= label('formPersona_tipo'); ?></label>
+                </div>
+                <div class="input-field col s12 inputSelector">
+                    <label for="persona_nacionalidad"><?= label('formCliente_nacionalidad'); ?></label>
+                    <br>
+                    <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="persona_nacionalidad" name="persona_nacionalidad" class="required browser-default chosen-select">
+                        <option value=""></option>
+                        <?php
+                        if(isset($paises)) {
+                            foreach ($paises as $pais) { ?>
+                                <option value="<?= $pais['idPais']; ?>"><?= $pais['nombre']; ?></option>
+                                <?php
+                            }
+                        }
+                        ?>
+                    </select>
+                </div>
+
+                <div id="campos-proveedor-fisico" style="display: block;">
+                    <div class="input-field col s12">
+                        <input id="persona_identificacion" name="persona_identificacion" type="text">
+                        <label for="persona_identificacion"><?= label('formPersona_identificacion'); ?></label>
+                    </div>
+                    <div>
+                        <div class="input-field col s12 m4 l4">
+                            <input id="persona_nombre" name="persona_nombre" type="text">
+                            <label for="persona_nombre"><?= label('formPersona_nombre'); ?></label>
+                        </div>
+                        <div class="input-field col s12 m4 l4">
+                            <input id="persona_apellido1" name="persona_apellido1" type="text">
+                            <label for="persona_apellido1"><?= label('formPersona_apellido1'); ?></label>
+                        </div>
+                        <div class="input-field col s12 m4 l4">
+                            <input id="persona_apellido2" name="persona_apellido2" type="text">
+                            <label for="persona_apellido2"><?= label('formPersona_apellido2'); ?></label>
+                        </div>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="persona_correo" name="persona_correo" type="email">
+                        <label for="persona_correo"><?= label('formPersona_correo'); ?></label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="persona_telefonoMovil" name="persona_telefonoMovil" type="text">
+                        <label for="persona_telefonoMovil">
+                            <?= label('formPersona_telefonoMovil'); ?></label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="persona_telefono" name="persona_telefono" type="text">
+                        <label for="persona_telefono">
+                            <?= label('formProveedor_telefonoFijo'); ?></label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="persona_fechaNacimiento" name="persona_fechaNacimiento" type="text" class="datepicker-fecha">
+                        <label for="persona_fechaNacimiento">
+                            <?= label('formPersona_fechaNacimiento'); ?></label>
+                    </div>
+                </div>
+                <div id="campos-proveedor-juridico" style="display: none;">
+                    <div class="input-field col s12">
+                        <input id="personajuridico_identificacion" name="personajuridico_identificacion" type="text">
+                        <label for="personajuridico_identificacion">
+                            <?= label('formPersona_identificacionJuridica'); ?></label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="personajuridico_nombre" name="personajuridico_nombre" type="text">
+                        <label for="personajuridico_nombre">
+                            <?= label('formPersona_nombreJuridico'); ?></label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="personajuridico_nombreFantasia" name="personajuridico_nombreFantasia" type="text">
+                        <label for="personajuridico_nombreFantasia">
+                            <?= label('formPersona_nombreFantasia'); ?></label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="personajuridico_correo" name="personajuridico_correo" type="email">
+                        <label for="personajuridico_correo"><?= label('formPersona_correo'); ?></label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="personajuridico_telefono" name="personajuridico_telefono" type="text">
+                        <label for="personajuridico_telefono"><?= label('formPersona_telefono'); ?></label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="personajuridico_fax" name="personajuridico_fax" type="text">
+                        <label for="personajuridico_fax"><?= label('formPersona_fax'); ?></label>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="inputTag col s12" style="margin-bottom: 10px;">
+                        <label for="persona_palabrasClave"><?= label('formPersona_palabrasClave'); ?></label>
+                        <div id="persona_palabrasClave" class="example tags_keywords" style="margin-top: 10px;">
+                            <div class="bs-example">
+                                <input id="persona_palabras" name="persona_palabras" placeholder="<?= label('formPersona_palabrasClaveAnadir'); ?>" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-field col s12">
+                                                <textarea id="persona_descripcion" name="persona_descripcion"
+                                                          class="materialize-textarea" rows="4"></textarea>
+                        <label for="persona_descripcion"><?= label('formPersona_descripcion'); ?></label>
+                    </div>
+                </div>
+                <div>
+                    <div class="input-field col s12 m4 l4">
+                        <input id="persona_direccionPais" name="persona_direccionPais" type="text">
+                        <label for="persona_direccionPais"><?= label('formPersona_direccionPais'); ?></label>
+                    </div>
+                    <div class="input-field col s12 m4 l4">
+                        <input id="persona_direccionProvincia" name="persona_direccionProvincia" type="text">
+                        <label for="persona_direccionProvincia"><?= label('formPersona_direccionProvincia'); ?></label>
+                    </div>
+                    <div class="input-field col s12 m4 l4">
+                        <input id="persona_direccionCanton" name="persona_direccionCanton" type="text">
+                        <label for="persona_direccionCanton"><?= label('formPersona_direccionCanton'); ?></label>
+                    </div>
+                    <div class="input-field col s12 m12 l12">
+                        <input id="persona_direccionDomicilio" name="persona_direccionDomicilio" type="text">
+                        <label for="persona_direccionDomicilio"><?= label('formPersona_direccionDomicilio'); ?></label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+<!--                <a href="#" style="font-size: larger;float: left;text-decoration: underline;"-->
+<!--                   class="modal-action modal-close">--><?//= label('cancelar'); ?>
+<!--                </a>-->
+                <a onclick="$(this).closest('form').submit()" id="guardarCerrarPersona" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                    <?= label('guardarCerrar'); ?>
+                </a>
+                <a onclick="$(this).closest('form').submit()" id="guardarOtroPersona" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
                     <?= label('guardarAgregarOtro'); ?>
                 </a>
             </div>

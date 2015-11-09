@@ -20,11 +20,13 @@ class Gastos extends CI_Controller
         $categorias = $this->Gasto_model->categoriasGasto();
         $formasPago = $this->Gasto_model->formasPago($idEmpresa);
         $personas = $this->Gasto_model->proveedores($idEmpresa);
+        $paises = $this->Gasto_model->paises();
 
         $data['lista'] = $lista;
         $data['categoriasGasto'] = $categorias;
         $data['formasPago'] = $formasPago;
         $data['personas'] = $personas;
+        $data['paises'] = $paises;
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
         $this->load->view('gastos/gastos_lista', $data);
@@ -278,6 +280,113 @@ class Gastos extends CI_Controller
             echo 0;
         } else {
             echo json_encode($resultado);
+        }
+    }
+    public function verificarIdentificacionPersona(){
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $data['datos'] = array(
+            'idEmpresa' => $idEmpresa,
+            'identificacion' => $this->input->post('formaPago_nombre'),
+            'eliminado' => '0'
+        );
+
+        // echo print_r($impuesto); exit();
+        $resultado = $this->Gasto_model->verificarNombreFormaPago($data);
+        if ($resultado === false) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            if ($resultado == 1) {
+                //Ya existe esta identificacion
+                echo 1;
+            } else {
+                //Identificacion Valida
+                echo 2;
+            }
+        }
+    }
+    public function insertarPersona()
+    {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $empleado = $this->input->post('persona_tipoProveedor');
+        $juridico = $this->input->post('persona_tipo');
+        $data['palabras'] = $this->input->post('persona_palabras');
+        if($empleado == 2) {
+            $data['datos'] = array(
+                'idEmpresa' => $idEmpresa,
+                'empleado' => 1,
+                'juridico' => 0,
+                'identificacion' => $this->input->post('persona_identificacion'),
+                'nacionalidad' => $this->input->post('persona_nacionalidad'),
+                'primerApellido' => $this->input->post('persona_apellido1'),
+                'segundoApellido' => $this->input->post('persona_apellido2'),
+                'nombre' => $this->input->post('persona_nombre'),
+                'correo' => $this->input->post('persona_correo'),
+                'telefonoFijo' => $this->input->post('persona_telefono'),
+                'telefonoMovil' => $this->input->post('persona_telefonoMovil'),
+                'fechaNacimiento' => date('Y-m-d', strtotime($this->input->post('persona_fechaNacimiento'))),
+                'descripcion' => $this->input->post('persona_descripcion'),
+                'pais' => $this->input->post('persona_direccionPais'),
+                'provincia' => $this->input->post('persona_direccionProvincia'),
+                'canton' => $this->input->post('persona_direccionCanton'),
+                'domicilio' => $this->input->post('persona_direccionDomicilio'),
+                'eliminado' => 0
+            );
+        } else {
+            if($juridico == 2) {
+                $data['datos'] = array(
+                    'idEmpresa' => $idEmpresa,
+                    'empleado' => 0,
+                    'juridico' => 1,
+                    'identificacion' => $this->input->post('personajuridico_identificacion'),
+                    'nacionalidad' => $this->input->post('persona_nacionalidad'),
+                    'nombre' => $this->input->post('personajuridico_nombre'),
+                    'nombreFantasia' => $this->input->post('personajuridico_nombreFantasia'),
+                    'correo' => $this->input->post('personajuridico_correo'),
+                    'telefonoFijo' => $this->input->post('personajuridico_telefono'),
+                    'fax' => $this->input->post('personajuridico_fax'),
+                    'descripcion' => $this->input->post('persona_descripcion'),
+                    'pais' => $this->input->post('persona_direccionPais'),
+                    'provincia' => $this->input->post('persona_direccionProvincia'),
+                    'canton' => $this->input->post('persona_direccionCanton'),
+                    'domicilio' => $this->input->post('persona_direccionDomicilio'),
+                    'eliminado' => 0
+                );
+            } else {
+                $data['datos'] = array(
+                    'idEmpresa' => $idEmpresa,
+                    'empleado' => 0,
+                    'juridico' => 0,
+                    'identificacion' => $this->input->post('persona_identificacion'),
+                    'nacionalidad' => $this->input->post('persona_nacionalidad'),
+                    'primerApellido' => $this->input->post('persona_apellido1'),
+                    'segundoApellido' => $this->input->post('persona_apellido2'),
+                    'nombre' => $this->input->post('persona_nombre'),
+                    'correo' => $this->input->post('persona_correo'),
+                    'telefonoFijo' => $this->input->post('persona_telefono'),
+                    'telefonoMovil' => $this->input->post('persona_telefonoMovil'),
+                    'fechaNacimiento' => date('Y-m-d', strtotime($this->input->post('persona_fechaNacimiento'))),
+                    'descripcion' => $this->input->post('persona_descripcion'),
+                    'pais' => $this->input->post('persona_direccionPais'),
+                    'provincia' => $this->input->post('persona_direccionProvincia'),
+                    'canton' => $this->input->post('persona_direccionCanton'),
+                    'domicilio' => $this->input->post('persona_direccionDomicilio'),
+                    'eliminado' => 0
+                );
+            }
+        }
+
+        $res = $this->Gasto_model->insertarPersona($data);
+        if (!$res) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            // correcto
+            echo $res;
         }
     }
 

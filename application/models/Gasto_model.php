@@ -358,6 +358,61 @@ class Gasto_model extends CI_Model
             return false;
         }
     }
+    function insertarPersona($data)
+    {
+        try{
+            $this->db->trans_begin();
+
+//            print_r($data); exit();
+            $query = $this->db->insert('proveedor', $data['datos']);
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+            $insert_id = $this->db->insert_id();
+
+            $palabras = explode(",", $data['palabras']);
+            foreach ($palabras as $palabra) {
+                $row = array(
+                    'idProveedor' => $insert_id,
+                    'descripcion' => $palabra
+                );
+                $query = $this->db->insert('palabraclaveproveedor', $row);
+                if (!$query) {
+                    throw new Exception("Error en la BD");
+                }
+            }
+
+            $pathProveedor = 'files/empresas/'.$data['datos']['idEmpresa'].'/proveedores/'.$insert_id;
+            if(!is_dir($pathProveedor)) {
+                mkdir($pathProveedor);
+            }
+
+            $this->db->trans_commit();
+            return $insert_id;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+    function paises()
+    {
+        try{
+            $this->db->trans_begin();
+
+            $paises = $this->db->get('pais');
+            if (!$paises) {
+                throw new Exception("Error en la BD");
+            }
+            $paises = $paises->result_array();
+
+            $this->db->trans_commit();
+            return $paises;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
 
 }
 
