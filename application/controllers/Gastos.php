@@ -286,14 +286,38 @@ class Gastos extends CI_Controller
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
 
-        $data['datos'] = array(
-            'idEmpresa' => $idEmpresa,
-            'identificacion' => $this->input->post('formaPago_nombre'),
-            'eliminado' => '0'
-        );
+        $empleado = $this->input->post('persona_tipoProveedor');
+        $juridico = $this->input->post('persona_tipo');
+        $data['palabras'] = $this->input->post('persona_palabras');
+        if($empleado == 2) {
+            $data['datos'] = array(
+                'idEmpresa' => $idEmpresa,
+//                'empleado' => 1,
+//                'juridico' => 0,
+                'identificacion' => $this->input->post('persona_identificacion'),
+                'eliminado' => 0
+            );
+        } else {
+            if($juridico == 2) {
+                $data['datos'] = array(
+                    'idEmpresa' => $idEmpresa,
+//                    'empleado' => 0,
+//                    'juridico' => 1,
+                    'identificacion' => $this->input->post('personajuridico_identificacion'),
+                    'eliminado' => 0
+                );
+            } else {
+                $data['datos'] = array(
+                    'idEmpresa' => $idEmpresa,
+//                    'empleado' => 0,
+//                    'juridico' => 0,
+                    'identificacion' => $this->input->post('persona_identificacion'),
+                    'eliminado' => 0
+                );
+            }
+        }
 
-        // echo print_r($impuesto); exit();
-        $resultado = $this->Gasto_model->verificarNombreFormaPago($data);
+        $resultado = $this->Gasto_model->verificarIdentificacionPersona($data);
         if ($resultado === false) {
             //Error en la transacción
             echo 0;

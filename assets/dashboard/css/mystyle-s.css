@@ -273,6 +273,7 @@ div#agregarServicio a.boton-opciones { display: block; margin: 0 auto; width: 11
 label.label_modalPresupuesto { left: 0; }
 
 div#editarGasto div.select-wrapper + label { top: 0.8rem; }
+div#agregarPersona { top: 5% !important; }
 
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/

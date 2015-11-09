@@ -637,16 +637,16 @@
         });
     }
     function validacionCorrecta_Persona() {
-//        $.ajax({
-//            data: $('#form_formaPago_Gastos').serialize(),
-//            url:   '<?//=base_url()?>//gastos/verificarNombreFormaPago',
-//            type:  'post',
-//            success:  function (response) {
-//                if (response == '0') {
-//                    alert("<?//=label('errorGuardar'); ?>//");
-//                    $('#agregarFormaPago .modal-header a').click();
-//                } else{
-//                    if (response == '2') {
+        $.ajax({
+            data: $('#form_persona_Gastos').serialize(),
+            url:   '<?=base_url()?>gastos/verificarIdentificacionPersona',
+            type:  'post',
+            success:  function (response) {
+                if (response == '0') {
+                    alert("<?=label('errorGuardar'); ?>");
+                    $('#agregarPersona .modal-header a').click();
+                } else{
+                    if (response == '2') {
                         var url = $('#form_persona_Gastos').attr('action');
                         var method = $('#form_persona_Gastos').attr('method');
                         $.ajax({
@@ -670,13 +670,14 @@
                                 }
                             }
                         });
-//                    } else{
-//                        alert("<?//=label('formaPago_error_nombreExisteEnBD'); ?>//");
-//                        $('#form_formaPago_Gastos #formaPago_nombre').focus();
-//                    }
-//                }
-//            }
-//        });
+                    } else{
+                        alert("<?=label('persona_error_identificacionExisteEnBD'); ?>");
+                        $('#form_persona_Gastos #persona_identificacion').focus();
+                        $('#form_persona_Gastos #personajuridico_identificacion').focus();
+                    }
+                }
+            }
+        });
     }
 </script>
 
@@ -1663,7 +1664,7 @@
         </form>
     </div>
 </div>
-<div id="agregarPersona" class="modal" style="width: 70%;">
+<div id="agregarPersona" class="modal" style="width: 95%;max-height: 90%;">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
         <a id="modalAgregarPersona_cerrar" class="modal-action cerrar-modal">
