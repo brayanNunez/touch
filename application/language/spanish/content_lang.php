@@ -261,6 +261,23 @@ $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos selec
     $lang['guardarCerrar'] = 'Guardar y cerrar';
     $lang['guardarAgregarOtro'] = 'Guardar y agregar otro';
 
+    $lang['gastos_categoriaGuardadoCorrectamente'] = 'La categoría de gasto fue guardada con éxito.';
+    $lang['categoria_error_nombreExisteEnBD'] = 'El nombre de categoría indicado ya existe.';
+    $lang['gastos_FormaPagoGuardadoCorrectamente'] = 'La froma de pago fue guardada con éxito.';
+    $lang['formaPago_error_nombreExisteEnBD'] = 'El nombre de forma de pago indicado ya existe.';
+    $lang['gastos_gastoGuardadoCorrectamente'] = 'El gasto fue guardado con éxito.';
+    $lang['gasto_error_codigoExisteEnBD'] = 'El código de gasto indicado ya existe.';
+    $lang['gastos_gastoEditadoCorrectamente'] = 'El gasto fue modificado correctamente.';
+    $lang['agregarGasto_elegirCategoria'] = 'Elegir categoría';
+    $lang['agregarGasto_elegirFormaPago'] = 'Elegir forma de pago';
+    $lang['agregarGasto_elegirPersona'] = 'Elegir persona';
+    $lang['agregarGasto_titulo'] = 'Agregar gasto';
+    $lang['gasto_agregarCategoria'] = 'Agregar categoría de gasto';
+    $lang['gasto_agregarFormaPago'] = 'Agregar forma de pago';
+    $lang['categoriaGastos_Nombre'] = 'Nombre';
+    $lang['formaPago_Nombre'] = 'Nombre';
+    $lang['formaPago_descripcion'] = 'Descripción';
+
 //Tipos de moneda
 	$lang['tituloTiposMoneda'] = 'Tipos de moneda';
 	$lang['tiposMoneda_defecto'] = 'Tipo de moneda por defecto';

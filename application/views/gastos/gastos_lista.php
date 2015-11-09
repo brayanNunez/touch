@@ -493,10 +493,35 @@
             var idBoton = $(this).attr("id");
             var nuevoElementoAgregar = "";
             botonEnLista(tipo, idBoton, nuevoElementoAgregar)
-        } //else{
-//            alert(valor);
-//        }
+        }
     });
+
+    var cerrarModalCategoria = false;
+    var cerrarModalFormaPago = false;
+    $(document).on('ready', function(){
+        $('#guardarOtroCategoria').on('click', function(){
+            cerrarModalCategoria = false;
+        });
+        $('#guardarCerrarCategoria').on('click', function(){
+            cerrarModalCategoria = true;
+        });
+        $('#guardarOtroFormaPago').on('click', function(){
+            cerrarModalFormaPago = false;
+        });
+        $('#guardarCerrarFormaPago').on('click', function(){
+            cerrarModalFormaPago = true;
+        });
+    });
+    function limpiarFormCategoria() {
+        $('#form_categoria')[0].reset();
+        var validator = $("#form_categoria").validate();
+        validator.resetForm();
+    }
+    function limpiarFormFormaPago() {
+        $('#form_formaPago_Gastos')[0].reset();
+        var validator = $("#form_formaPago_Gastos").validate();
+        validator.resetForm();
+    }
 
     $(document).ready(function () {
         $('#modalAgregarCategoria_cerrar').on('click', function () {
@@ -536,11 +561,11 @@
                                     actualizarSelectCategoriasGasto(response);
                                     actualizarSelectCategoriasGasto_Editar(response);
                                     alert("<?=label('gastos_categoriaGuardadoCorrectamente'); ?>");
-//                                    if (cerrarModal) {
+                                    if (cerrarModalCategoria) {
                                         $('#agregarCategoria .modal-header a').click();
-//                                    } else{
-//                                        limpiarForm();
-//                                    }
+                                    } else{
+                                        limpiarFormCategoria();
+                                    }
                                 }
                             }
                         });
@@ -578,11 +603,11 @@
                                     actualizarSelectFormasPago(response);
                                     actualizarSelectFormasPago_Editar(response);
                                     alert("<?=label('gastos_FormaPagoGuardadoCorrectamente'); ?>");
-//                                    if (cerrarModal) {
+                                    if (cerrarModalFormaPago) {
                                         $('#agregarFormaPago .modal-header a').click();
-//                                    } else{
-//                                        limpiarForm();
-//                                    }
+                                    } else{
+                                        limpiarFormFormaPago();
+                                    }
                                 }
                             }
                         });
@@ -1213,7 +1238,7 @@
     </div>
     <div class="modal-content" style="padding: 0 24px;">
         <div class="row">
-            <h5 style="float: left;">Agregar gasto</h5>
+            <h5 style="float: left;"><?= label('agregarGasto_titulo'); ?></h5>
             <a href="#" style="float: left;margin: 15px 25px;text-decoration: underline;">Importar csv - xls</a>
         </div>
         <form id="form_gasto" action="<?=base_url()?>gastos/insertar" method="post">
@@ -1385,7 +1410,7 @@
     </div>
     <div class="modal-content" style="padding: 0 24px;">
         <div class="row">
-            <h5 style="float: left;">Agregar categoria de gastos</h5>
+            <h5 style="float: left;"><?= label('gasto_agregarCategoria'); ?></h5>
         </div>
         <form id="form_categoria" action="<?=base_url()?>gastos/insertarCategoria" method="post">
             <div class="row">
@@ -1398,10 +1423,10 @@
                 <a href="#" style="font-size: larger;float: left;text-decoration: underline;"
                    class="modal-action modal-close"><?= label('cancelar'); ?>
                 </a>
-                <a onclick="$(this).closest('form').submit()" id="guardarCerrar" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                <a onclick="$(this).closest('form').submit()" id="guardarCerrarCategoria" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
                     <?= label('guardarCerrar'); ?>
                 </a>
-                <a onclick="$(this).closest('form').submit()" id="guardarOtro" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                <a onclick="$(this).closest('form').submit()" id="guardarOtroCategoria" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
                     <?= label('guardarAgregarOtro'); ?>
                 </a>
             </div>
@@ -1417,7 +1442,7 @@
     </div>
     <div class="modal-content" style="padding: 0 24px;">
         <div class="row">
-            <h5 style="float: left;">Agregar forma de pago</h5>
+            <h5 style="float: left;"><?= label('gasto_agregarFormaPago'); ?></h5>
         </div>
         <form id="form_formaPago_Gastos" action="<?=base_url()?>gastos/insertarFormaPago" method="post">
             <div class="row">
@@ -1434,10 +1459,10 @@
                 <a href="#" style="font-size: larger;float: left;text-decoration: underline;"
                    class="modal-action modal-close"><?= label('cancelar'); ?>
                 </a>
-                <a onclick="$(this).closest('form').submit()" id="guardarCerrar" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                <a onclick="$(this).closest('form').submit()" id="guardarCerrarFormaPago" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
                     <?= label('guardarCerrar'); ?>
                 </a>
-                <a onclick="$(this).closest('form').submit()" id="guardarOtro" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                <a onclick="$(this).closest('form').submit()" id="guardarOtroFormaPago" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
                     <?= label('guardarAgregarOtro'); ?>
                 </a>
             </div>
