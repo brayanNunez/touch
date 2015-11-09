@@ -479,8 +479,6 @@
     }
 
     function generarListas(){
-        // alert("generando");
-
         var config = {'.chosen-select'           : {}}
         for (var selector in config) {
             $(selector).chosen(config[selector]);
@@ -550,6 +548,10 @@
             document.getElementById('agregarGasto').style.visibility = 'visible';
             document.getElementById('editarGasto').style.visibility = 'visible';
             document.getElementById('agregarPersona').style.display = 'none';
+        });
+        $(document).on('click', '#lean-overlay', function () {
+            document.getElementById('agregarGasto').style.visibility = 'visible';
+            document.getElementById('editarGasto').style.visibility = 'visible';
         });
     });
     function validacionCorrecta_Categoria() {

@@ -292,6 +292,9 @@ $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos selec
 	$lang['tiposMoneda_opciones'] = 'Opciones';
 	$lang['tiposMoneda_nuevo'] = 'Nuevo tipo de moneda';
 
+    $lang['gastos_Nombre'] = 'Nombre';
+    $lang['gastos_FormaPago'] = 'Forma de pago';
+
     $lang['formTipoMoneda_nombre'] = 'Nombre';
     $lang['formTipoMoneda_signo'] = 'Signo';
     $lang['formTipoMoneda_tipoCambio'] = 'Tipo de cambio con respecto al tipo de moneda por defecto';
