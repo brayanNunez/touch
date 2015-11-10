@@ -198,10 +198,14 @@ class Gastos extends CI_Controller
     }
     public function insertarCategoria()
     {
-//        $sessionActual = $this->session->userdata('logged_in');
-//        $idEmpresa = $sessionActual['idEmpresa'];
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
         $data['datos'] = array(
-            'nombre' => $this->input->post('categoria_nombre')
+            'idEmpresa' => $idEmpresa,
+            'nombre' => $this->input->post('categoria_nombre'),
+            'descripcion' => $this->input->post('categoria_descripcion'),
+            'eliminado' => 0
         );
 
         $res = $this->Gasto_model->insertarCategoria($data);

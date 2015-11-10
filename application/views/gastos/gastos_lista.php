@@ -1615,11 +1615,12 @@
                     <input id="categoria_nombre" name="categoria_nombre" type="text">
                     <label for="categoria_nombre"><?= label('categoriaGastos_Nombre') ?></label>
                 </div>
+                <div class="input-field col s12">
+                    <textarea name="categoria_descripcion" id="categoria_descripcion" class="materialize-textarea" rows="4"></textarea>
+                    <label for="categoria_descripcion"><?= label('formCategoriaGasto_descripcion'); ?></label>
+                </div>
             </div>
             <div class="row">
-<!--                <a href="#" style="font-size: larger;float: left;text-decoration: underline;"-->
-<!--                   class="modal-action modal-close">--><?//= label('cancelar'); ?>
-<!--                </a>-->
                 <a onclick="$(this).closest('form').submit()" id="guardarCerrarCategoria" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
                     <?= label('guardarCerrar'); ?>
                 </a>
