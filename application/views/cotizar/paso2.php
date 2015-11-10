@@ -54,7 +54,7 @@
                 $('#cantidad_' + numeroFila).val(1);  
                 cargarImpuestosPorServicio(numeroFila, servicio['impuestos'])
                 $('#utilidad_' + numeroFila).val(servicio['utilidad']);  
-                alert(servicio['nombre'] + ', ' + servicio['descripcion']);
+                // alert(servicio['nombre'] + ', ' + servicio['descripcion']);
             } 
             
         };
@@ -75,7 +75,7 @@ function actualizarCantidad(){
 
          var check = '<td>'+
             '<div style="text-align: center;">'+
-                '<input class="accionAplicada" style="display:none" name="linea_'+contadorFilas+'" type="text" value="0">'+ 
+                '<input class="accionAplicada" style="display:none" name="linea_'+contadorFilas+'" type="text" value="1">'+ 
                 '<input style="display:none" name="idLinea_'+contadorFilas+'" type="text" value="">'+
                 '<input type="checkbox" class="filled-in checkbox" id="checkbox_linea'+contadorFilas+'"/>'+
                 '<label for="checkbox_linea'+contadorFilas+'"></label>'+
@@ -98,19 +98,19 @@ function actualizarCantidad(){
 
         var des = '<td>'+
             '<row>'+
-                '<input value="Arroz, ensalada, carne" type="text" id="descripcion_'+contadorFilas+'" name="descripcion_'+contadorFilas+'">'+
+                '<input class="descripcion" value="Arroz, ensalada, carne" type="text" id="descripcion_'+contadorFilas+'" name="descripcion_'+contadorFilas+'">'+
             '</row>'+
         '</td>';
 
         var precio ='<td>'+
             '<row>'+
-                '<input value="$6" type="text" id="precio_'+contadorFilas+'" name="precio_'+contadorFilas+'">'+
+                '<input class="precio" value="$6" type="text" id="precio_'+contadorFilas+'" name="precio_'+contadorFilas+'">'+
             '</row>'+
         '</td>';
 
         var cantidad = '<td>'+
             '<row>'+
-                '<input value="20" type="number" id="cantidad_'+contadorFilas+'" name="cantidad_'+contadorFilas+'">'+
+                '<input class="cantidad" value="20" type="number" id="cantidad_'+contadorFilas+'" name="cantidad_'+contadorFilas+'">'+
             '</row>'+
         '</td>';
 
@@ -126,13 +126,13 @@ function actualizarCantidad(){
 
         var utilidad ='<td>'+
             '<row>'+
-                '<input value="2" type="number" id="utilidad_'+contadorFilas+'" name="utilidad_'+contadorFilas+'">'+
+                '<input class="utilidad" value="2" type="number" id="utilidad_'+contadorFilas+'" name="utilidad_'+contadorFilas+'">'+
             '</row>'+
         '</td>';
 
         var total ='<td>'+
             '<row>'+
-                '<input value="$020" type="text" id="subTotal_'+contadorFilas+'" name="subTotal_'+contadorFilas+'" readonly="true">'+
+                '<input class="subTotal" value="$020" type="text" id="subTotal_'+contadorFilas+'" name="subTotal_'+contadorFilas+'" readonly="true">'+
             '</row>'+
         '</td>';
 
@@ -292,8 +292,9 @@ function actualizarCantidad(){
                         <!--                        <th data-field="price">Opciones</th>-->
                     </tr>
                     </thead>
-                    <tbody id="contenedorLineas">
                     <input style="display:none" id="cantidadLineasDetalle" name="cantidadLineasDetalle" type="text" value="<?= count($resultado['lineasDetalle'])?>">
+                    
+                    <tbody id="contenedorLineas">
                      <?php
                     if (isset($lista)) {
                         if ($resultado['lineasDetalle'] !== false) {

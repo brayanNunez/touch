@@ -21,7 +21,7 @@
                      <div class="card" id="card-diseno"> -->
 
 
-
+<button id="actualizarDiseno">Actualizar</button>
 
 
 <div class="row">
@@ -108,14 +108,11 @@
                             <th class="celdaColumna col_7">Total</th>                    
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="lineasDiseno">
                         <tr>
                             <td class="celdaColumna col_1" >001</td>
                             <td class="celdaColumna col_2">Un nombre</td>
                             <td class="celdaColumna col_3">Una descripción</td>
-                            <!-- <td>
-                                <img style="width: 100px; height: 100px; " class="imagen" src="<?= base_url() ?>assets/dashboard/images/almuerzo.jpg"/>
-                            </td> -->
                             <td class="celdaColumna col_4">$50</td>
                             <td class="celdaColumna col_5">3</td>
                             <td class="celdaColumna col_6">13%</td>
@@ -592,6 +589,33 @@
 <script type="text/javascript">
 
 
+    
+
+    $(document).ready(function(){
+        $('#actualizarDiseno').on('click', function(){
+            // alert($('#contenedorLineas').html());
+            $('#lineasDiseno').empty();
+            $('#contenedorLineas').find('tr').each(function(){
+                var fila = $(this);
+                if(fila.find('.accionAplicada').val() != 2){
+                    // alert('bien');
+                    
+                    var lineaDetalle=    '<tr>'+
+                            '<td class="celdaColumna col_1" >'+ fila.find('.itemServicio option:selected').text() +'</td>'+
+                            '<td class="celdaColumna col_2">'+ fila.find('.nombreServicio option:selected').text() +'</td>'+
+                            '<td class="celdaColumna col_3">'+ fila.find('.descripcion').val() +'</td>'+
+                            '<td class="celdaColumna col_4">'+ fila.find('.precio').val() +'</td>'+  
+                            '<td class="celdaColumna col_5">'+ fila.find('.cantidad').val() +'</td>'+
+                            '<td class="celdaColumna col_6">13%</td>'+
+                            '<td class="celdaColumna col_7">'+ fila.find('.subTotal').val() +'</td>'+
+                        '</tr>';
+                    $('#lineasDiseno').append(lineaDetalle);
+
+                }
+            });
+
+        });
+    });
 
      $(document).ready(function(){
         cargarDieseno(0);
