@@ -135,6 +135,7 @@ class ManejadorPDF extends CI_Controller
             //si el pdf se guarda correctamente lo mostramos en pantalla
 
             $path = $this->html2pdf->create('save');
+            echo 'bien';
         }
 
     }

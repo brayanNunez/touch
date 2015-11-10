@@ -1014,7 +1014,24 @@ function actualizarModalFooter(plantilla){
 
  $(document).on('ready', function(){
     $('#botonPaso4').parents('li').on('click', function(){
-        crearPDF();
+        event.preventDefault();
+        var html = crearPDF();
+        // alert(html);
+
+            $.ajax({
+               data: {miHtml :  html},
+               url:   '<?=base_url()?>ManejadorPDF/index',
+               type:  'post',
+               beforeSend: function(){
+                    $('#botonPaso4').text('Cargando..');
+                },
+               success:  function (response) {
+                    $('#botonPaso4').text('<?= label('paso4'); ?>');
+                    document.getElementById('vistaPrevia').contentDocument.location.reload(true);
+                    // $('#vistaPrevia').contentDocument.location.reload(true);
+                }
+    });
+
     });
 
  });
@@ -1046,14 +1063,19 @@ function actualizarModalFooter(plantilla){
             html += '<div id="informacionSistema">' + $('#informacionSistema').html() + '</div>';
             html += '<div id="cuerpoDocumento">' + $('#cuerpoDocumento').html() + '</div></body></html>';
             // target="iframe"
-            $('#inset_form').html('<form  action="<?=base_url()?>ManejadorPDF/index" name="form" method="post" style="display:block;"><textarea name="miHtml">' + html + '</textarea></form>');
-            document.forms['form'].submit();
+            // $('#inset_form').html('<form  action="<?=base_url()?>ManejadorPDF/index" name="form" method="post" style="display:block;"><textarea name="miHtml">' + html + '</textarea></form>');
+            // document.forms['form'].submit();
+
+
 
             //eliminar la propiedead height para que siga adaptandose a los cambios de tamano en el html
             $('#footerDiseno').css("height", "");
             $('#informacion').css("height", "");
             $('#prefooter').css("height", "");
             $('.editarExterno').css("display", "");
+
+            return html;
+
 
         }
 // });
