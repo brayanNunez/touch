@@ -246,7 +246,7 @@
                             <a href="<?= base_url(); ?>categorias"><?= label('Categorias_titulo'); ?></a>
                         </li>-->
                         <li>
-                            <a href="<?= base_url(); ?>impuesto"><?= label('categoriaDeGastos'); ?></a>
+                            <a href="<?= base_url(); ?>categoriasGasto"><?= label('categoriaDeGastos'); ?></a>
                         </li>
                         <li>
                             <a href="<?= base_url(); ?>impuesto"><?= label('categoriaDeProveedores'); ?></a>

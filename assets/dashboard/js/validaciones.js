@@ -663,4 +663,23 @@
             }
         });
 
+        var reglasCategoriaGasto =  {
+            categoriaGasto_nombre: {required: true, maxlength: 45},
+            categoriaGasto_descripcion: {required: true, maxlength: 200}
+        };
+        $('#form_categoriaGasto').validate({
+            rules: reglasCategoriaGasto,
+            errorElement: 'div',
+            submitHandler: function(form) {
+                validacionCorrecta();
+            }
+        });
+        $('#form_categoriaGastoEditar').validate({
+            rules: reglasCategoriaGasto,
+            errorElement: 'div',
+            submitHandler: function(form) {
+                validacionCorrectaEditar();
+            }
+        });
+
     });

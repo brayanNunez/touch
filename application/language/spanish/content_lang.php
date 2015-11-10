@@ -284,6 +284,20 @@ $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos selec
 
     $lang['proveedor_error_nombreExisteEnBD'] = 'La identificación de persona indicada ya existe.';
 
+//Categorias de gastos
+    $lang['tituloCategoriasGastos'] = 'Categorías de gastos';
+    $lang['categoriaGastoNueva'] = 'Agregar categoría de gastos';
+    $lang['tablaCategoriasGasto_nombre'] = 'Nombre';
+    $lang['tablaCategoriasGasto_descripcion'] = 'Descripción';
+    $lang['tablaCategoriasGasto_opciones'] = 'Opciones';
+    $lang['formCategoriaGasto_nombre'] = 'Nombre';
+    $lang['formCategoriaGasto_descripcion'] = 'Descripción';
+    $lang['categoriaGasto_guardarCambios'] = 'Guardar cambios';
+    $lang['confirmarEliminarCategoriaGasto'] = '¿Desea eliminar la categoría de gastos seleccionada?';
+    $lang['categoriasGasto_categoriaGuardadoCorrectamente'] = 'La categoría de gastos fue guardada correctamente.';
+    $lang['categoriaGasto_error_nombreExisteEnBD'] = 'El nombre de categoría de gastos indicado ya existe.';
+    $lang['categoriasGasto_categoriaEditadoCorrectamente'] = 'La categoría de gastos fue editada correctamente.';
+
 //Tipos de moneda
 	$lang['tituloTiposMoneda'] = 'Tipos de moneda';
 	$lang['tiposMoneda_defecto'] = 'Tipo de moneda por defecto';
