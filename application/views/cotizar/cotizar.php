@@ -171,10 +171,8 @@
 </script>
 
 <script type="text/javascript">
+
     $(document).on("ready", function(){
-
-
-
 
         generarAutocompletarProductoNombre(0);
         // generarAutocompletarProductoNombre(2);

@@ -531,7 +531,6 @@ echo "var arrayFases =". $js_array;?>
            });
             cantidad--;
             actualizarCantidad();
-
         });
 
         $('#eliminarFase #botonEliminar').on('click', function () {

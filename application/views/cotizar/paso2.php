@@ -5,6 +5,40 @@
 
 <script type="text/javascript">
 
+    
+
+   $(document).on('ready', function(){
+
+    var filaEliminar = null;
+   
+
+   $(document).on('click','.confirmarEliminarLinea', function () {
+       filaEliminar = $(this).parents('tr');  
+   });
+
+     $('#eliminarLinea #botonEliminar').on('click', function () {
+            // alert('eliminar');
+           event.preventDefault();
+           var tipo = filaEliminar.find('.accionAplicada').val();
+           if (tipo == '0') {
+                filaEliminar.fadeOut(function () {
+                    filaEliminar.remove();
+               });
+               cantidad--;
+               actualizarCantidad();
+           } else{
+            filaEliminar.find('.accionAplicada').val('2');
+            filaEliminar.fadeOut(function () {
+                filaEliminar.hide();
+           });
+
+           }
+        });
+
+   });
+
+   
+
 // $(document).on('ready', function(){
      <?php 
     $js_array = json_encode($resultado['servicios']); 
@@ -41,7 +75,7 @@ function actualizarCantidad(){
 
          var check = '<td>'+
             '<div style="text-align: center;">'+
-                '<input class="accionAplicada" style="display:none" name="linea_'+contadorFilas+'" type="text" value="1">'+ 
+                '<input class="accionAplicada" style="display:none" name="linea_'+contadorFilas+'" type="text" value="0">'+ 
                 '<input style="display:none" name="idLinea_'+contadorFilas+'" type="text" value="">'+
                 '<input type="checkbox" class="filled-in checkbox" id="checkbox_linea'+contadorFilas+'"/>'+
                 '<label for="checkbox_linea'+contadorFilas+'"></label>'+
@@ -103,9 +137,10 @@ function actualizarCantidad(){
         '</td>';
 
         var eliminar = '<td>'+
-            '<div class="btn-linea-eliminar">'+
-                '<a class="confirmarEliminarLinea" data-linea-eliminar="'+contadorFilas+'" title="<?= label('paso2_lineaEliminar') ?>"><i class="mdi-action-delete small" style="color: black;"></i></a>'+
-            '</div>'+
+            '<a href="#eliminarLinea" data-id-eliminar="'+contadorFilas+'" class="-text modal-trigger confirmarEliminarLinea boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>';
+            // '<div class="btn-linea-eliminar">'+
+            //     '<a class="confirmarEliminarLinea" data-linea-eliminar="'+contadorFilas+'" title="<?= label('paso2_lineaEliminar') ?>"><i class="mdi-action-delete small" style="color: black;"></i></a>'+
+            // '</div>'+
         '</td>';
 
 
@@ -127,7 +162,7 @@ function actualizarCantidad(){
         generarAutocompletarProductoNombre(contadorFilas);
         generarAutocompletarProductoItem(contadorFilas);
         generarListas();
-        generarListasBotones();
+        // generarListasBotones();
         $('.modal-trigger').leanModal(); 
 
         contadorFilas++;
@@ -136,30 +171,30 @@ function actualizarCantidad(){
 
 
 
-function generarListasBotones(){
+// function generarListasBotones(){
 
-  $('.boton-opciones').sideNav({
-  // menuWidth: 0, // Default is 240
-   edge: 'right', // Choose the horizontal origin
-      closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-    }
-  );
+//   $('.boton-opciones').sideNav({
+//   // menuWidth: 0, // Default is 240
+//       edge: 'right', // Choose the horizontal origin
+//       closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+//     }
+//   );
 
-  $('.dropdown-button').dropdown({
-      inDuration: 300,
-      outDuration: 225,
-      constrain_width: true, // Does not change width of dropdown to that of the activator
-      hover: false, // Activate on hover
-      gutter: 0, // Spacing from edge
-      belowOrigin: true, // Displays dropdown below the button
-      alignment: 'left' // Displays dropdown with edge aligned to the left of button
-    }
-  );
+//   $('.dropdown-button').dropdown({
+//       inDuration: 300,
+//       outDuration: 225,
+//       constrain_width: true, // Does not change width of dropdown to that of the activator
+//       hover: false, // Activate on hover
+//       gutter: 0, // Spacing from edge
+//       belowOrigin: true, // Displays dropdown below the button
+//       alignment: 'left' // Displays dropdown with edge aligned to the left of button
+//     }
+//   );
 
-  // $(".boton-opciones").sideNav();
+//   // $(".boton-opciones").sideNav();
 
 
-}
+// }
 
 </script>
 
@@ -373,191 +408,10 @@ function generarListasBotones(){
     </div>
 </div>
 
-<script>
-    // function check(nombre, elemnto) {
-    //     var lista = document.getElementsByClassName(nombre);
-    //     var titulo = document.getElementById(elemnto.id)
-    //     if (!titulo.checked) {
-    //         for (var i = 0; i < lista.length; i++) {
-    //             lista[i].checked = false;
-    //         }
-    //         ;
-    //     } else {
-    //         for (var i = 0; i < lista.length; i++) {
-    //             lista[i].checked = true;
-    //         }
-    //         ;
-    //     }
-    //     ;
-    // }
-    // function check(nombre) {
-    //     var lista = document.getElementsByClassName(nombre);
-    //     for (var i = 0; i < lista.length; i++) {
-    //         lista[i].checked = true;
-    //     }
-    //     ;
-    // }
-    // function quitarCheck(nombre) {
-    //     var lista = document.getElementsByClassName(nombre);
-    //     for (var i = 0; i < lista.length; i++) {
-    //         lista[i].checked = false;
-    //     }
-    //     ;
-    // }
-    // $(function () {
-    //     var availableTags = [
-    //         "Almuerzo",
-    //         "Fresco",
-    //         "Hamburguesa",
-    //         "Música",
-    //         "Pizza",
-    //         "Arroz",
-    //         "Frijoles",
-    //         "Ensalada",
-    //         "Carne en salsa",
-    //         "Pollo",
-    //         "Bolsa de confites",
-    //         "Piñata",
-    //         "Comediante",
-    //         "Animador",
-    //         "Comparsa",
-    //         "Mariachi",
-    //         "Vino",
-    //         "Tacos",
-    //         "Globos",
-    //         "Payaso",
-    //         "Quque",
-    //         "Helado"
-    //     ];
-    //     $(".tags").autocomplete({
-    //         source: availableTags
-    //     });
 
-    //      $('.tags').bind('autocompleteopen', function(event,data){
-
-    //       $('<li tabindex="-1" class="ui-menu-item" id=""><a href="....">Agregar producto</a></li>').prependTo('ul.ui-autocomplete');
-       
-    //     });
-
-    //     $('.tags').on("input", function(){
-            
-    //         var primero = "true";
-    //         $(".ui-menu-item").each(function(index, val) {
-    //             if (!primero) {
-    //                 val.remove();
-    //             } 
-    //             primero = false;
-              
-    //         });
-
-    //         // $('.ui-menu-item').remove();
-    //         $('#ui-id-2').css('display', 'block');
-
-    //      });
-           
-           
-
-    // });
-</script>
 
 <!--Funciones de checkboxes y eliminar-->
-<script>
-    $(window).load(function () {
-        var marcados = $('.checkbox:checked').size();
-        if (marcados >= 1) {
-            var elems = document.getElementsByClassName('opciones-seleccionados');
-            var e;
-            for (e in elems) {
-                elems[e].style.visibility = 'visible';
-            }
-        } else {
-            var elems = document.getElementsByClassName('opciones-seleccionados');
-            var e;
-            for (e in elems) {
-                elems[e].style.visibility = 'hidden';
-            }
-        }
-        document.getElementById('checkbox-all').checked = false;
-    });
-    $(document).ready(function () {
-        $('#botonElimnar').on("click", function (event) {
-            var tb = $(this).attr('title');
-            var sel = false;
-            var ch = $('#' + tb).find('tbody input[type=checkbox]');
-            ch.each(function () {
-                var $this = $(this);
-                if ($this.is(':checked')) {
-                    sel = true;
-                    $this.parents('tr').fadeOut(function () {
-                        $this.remove();
-                    });
-                }
-            });
-            return false;
-        });
-    });
-    $(document).ready( function () {
-        $('#cotizacion1-detalles').dataTable( {
-            'aoColumnDefs': [{
-                'bSortable': false,
-                'aTargets': [0, -1] /* 1st one, start by the right */
-            }]
-        });
-        $('table#cotizacion1-detalles thead th:first').removeClass('sorting_asc').addClass('sorting_disabled');
-        $('table#cotizacion1-detalles thead th:nth-child(2)').removeClass('sorting').addClass('sorting_asc');
-    });
-    $(document).ready(function () {
-        $('#checkbox-all').click(function (event) {
-            var $this = $(this);
-            var tableBody = $('#cotizacion1-detalles').find('tbody tr[role=row] input[type=checkbox]');
-            tableBody.each(function() {
-                var check = $(this);
-                if ($this.is(':checked')) {
-                    check.prop('checked', true);
-                } else {
-                    check.prop('checked', false);
-                }
-            });
-        });
-    });
-    $(document).ready(function () {
-        $('.checkbox').click(function (event) {
-            var marcados = $('.checkbox:checked').size();
-            if (marcados >= 1) {
-                var elems = document.getElementsByClassName('opciones-seleccionados');
-                var e;
-                for (e in elems) {
-                    elems[e].style.visibility = 'visible';
-                }
-            } else {
-                var elems = document.getElementsByClassName('opciones-seleccionados');
-                var e;
-                for (e in elems) {
-                    elems[e].style.visibility = 'hidden';
-                }
-            }
-        });
-    });
-    $(document).ready(function () {
-          $('.boton-opciones').sideNav({
-          // menuWidth: 0, // Default is 240
-           edge: 'right', // Choose the horizontal origin
-              closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-            }
-          );
 
-          $('.dropdown-button').dropdown({
-              inDuration: 300,
-              outDuration: 225,
-              constrain_width: true, // Does not change width of dropdown to that of the activator
-              hover: false, // Activate on hover
-              gutter: 0, // Spacing from edge
-              belowOrigin: true, // Displays dropdown below the button
-              alignment: 'left' // Displays dropdown with edge aligned to the left of button
-            }
-          );
-    });
-</script>
 
 <script>
 
@@ -584,8 +438,8 @@ function generarListasBotones(){
                 source: Impuestos.ttAdapter()
             }
         });
-        
     }
+
     function cargarImpuestosPorServicio(numeroFila, impuestos){
         $('#impuestos_'+ numeroFila).tagsinput('removeAll');
         for (var i = impuestos.length - 1; i >= 0; i--) {
@@ -593,237 +447,11 @@ function generarListasBotones(){
         };
     }
 
-    $(document).ready(function () {
-        // cargarTags_Impuestos();
-    });
+    
+
+
 </script>
 
-<script type="text/javascript" class="showcase">
-    // $(function () {
-    //     $.contextMenu({
-    //         selector: '.context-menu-miItem',
-    //         callback: function (key, options) {
-    //             if (key == 'check') {
-    //                 check('item');
-    //             }
-    //             if (key == 'noCheck') {
-    //                 quitarCheck('item');
-    //             }
-    //             // window.console && console.log(m) || alert(m);
-    //         },
-    //         items: {
-    //             "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
-    //             "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
-    //             "noCheck": {name: "No mostrar esta columna", icon: "delete"},
-    //             "check": {name: "Mostrar esta columna", icon: "quit"}
-    //             // "Salir": {name: "Salir", icon: "quit"}
-    //         }
-    //     });
-    //     $('.context-menu-miItem').on('click', function (e) {
-    //         console.log('clicked', this);
-    //     })
-    // });
-
-    // $(function () {
-    //     $.contextMenu({
-    //         selector: '.context-menu-nombre',
-    //         callback: function (key, options) {
-    //             if (key == 'check') {
-    //                 check('nombre');
-    //             }
-    //             if (key == 'noCheck') {
-    //                 quitarCheck('nombre');
-    //             }
-    //             // window.console && console.log(m) || alert(m);
-    //         },
-    //         items: {
-    //             "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
-    //             "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
-    //             "noCheck": {name: "No mostrar esta columna", icon: "delete"},
-    //             "check": {name: "Mostrar esta columna", icon: "quit"}
-    //             // "Salir": {name: "Salir", icon: "quit"}
-    //         }
-    //     });
-    //     $('.context-menu-nombre').on('click', function (e) {
-    //         console.log('clicked', this);
-    //     })
-    // });
-
-    // $(function () {
-    //     $.contextMenu({
-    //         selector: '.context-menu-descripcion',
-    //         callback: function (key, options) {
-    //             if (key == 'check') {
-    //                 check('descripcion');
-    //             }
-    //             if (key == 'noCheck') {
-    //                 quitarCheck('descripcion');
-    //             }
-    //             // window.console && console.log(m) || alert(m);
-    //         },
-    //         items: {
-    //             "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
-    //             "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
-    //             "noCheck": {name: "No mostrar esta columna", icon: "delete"},
-    //             "check": {name: "Mostrar esta columna", icon: "quit"}
-    //             // "Salir": {name: "Salir", icon: "quit"}
-    //         }
-    //     });
-    //     $('.context-menu-descripcion').on('click', function (e) {
-    //         console.log('clicked', this);
-    //     })
-    // });
-
-    // $(function () {
-    //     $.contextMenu({
-    //         selector: '.context-menu-imagen',
-    //         callback: function (key, options) {
-    //             if (key == 'check') {
-    //                 check('imagen');
-    //             }
-    //             if (key == 'noCheck') {
-    //                 quitarCheck('imagen');
-    //             }
-    //             // window.console && console.log(m) || alert(m);
-    //         },
-    //         items: {
-    //             "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
-    //             "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
-    //             "noCheck": {name: "No mostrar esta columna", icon: "delete"},
-    //             "check": {name: "Mostrar esta columna", icon: "quit"}
-    //             // "Salir": {name: "Salir", icon: "quit"}
-    //         }
-    //     });
-    //     $('.context-menu-imagen').on('click', function (e) {
-    //         console.log('clicked', this);
-    //     })
-    // });
-
-    // $(function () {
-    //     $.contextMenu({
-    //         selector: '.context-menu-precio',
-    //         callback: function (key, options) {
-    //             if (key == 'check') {
-    //                 check('precio');
-    //             }
-    //             if (key == 'noCheck') {
-    //                 quitarCheck('precio');
-    //             }
-    //             // window.console && console.log(m) || alert(m);
-    //         },
-    //         items: {
-    //             "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
-    //             "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
-    //             "noCheck": {name: "No mostrar esta columna", icon: "delete"},
-    //             "check": {name: "Mostrar esta columna", icon: "quit"}
-    //             // "Salir": {name: "Salir", icon: "quit"}
-    //         }
-    //     });
-    //     $('.context-menu-precio').on('click', function (e) {
-    //         console.log('clicked', this);
-    //     })
-    // });
-
-    // $(function () {
-    //     $.contextMenu({
-    //         selector: '.context-menu-cantidad',
-    //         callback: function (key, options) {
-    //             if (key == 'check') {
-    //                 check('cantidad');
-    //             }
-    //             if (key == 'noCheck') {
-    //                 quitarCheck('cantidad');
-    //             }
-    //             // window.console && console.log(m) || alert(m);
-    //         },
-    //         items: {
-    //             "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
-    //             "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
-    //             "noCheck": {name: "No mostrar esta columna", icon: "delete"},
-    //             "check": {name: "Mostrar esta columna", icon: "quit"}
-    //             // "Salir": {name: "Salir", icon: "quit"}
-    //         }
-    //     });
-    //     $('.context-menu-cantidad').on('click', function (e) {
-    //         console.log('clicked', this);
-    //     })
-    // });
-
-    // $(function () {
-    //     $.contextMenu({
-    //         selector: '.context-menu-impuestoVenta',
-    //         callback: function (key, options) {
-    //             if (key == 'check') {
-    //                 check('impuestoVenta');
-    //             }
-    //             if (key == 'noCheck') {
-    //                 quitarCheck('impuestoVenta');
-    //             }
-    //             // window.console && console.log(m) || alert(m);
-    //         },
-    //         items: {
-    //             "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
-    //             "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
-    //             "noCheck": {name: "No mostrar esta columna", icon: "delete"},
-    //             "check": {name: "Mostrar esta columna", icon: "quit"}
-    //             // "Salir": {name: "Salir", icon: "quit"}
-    //         }
-    //     });
-    //     $('.context-menu-impuestoVenta').on('click', function (e) {
-    //         console.log('clicked', this);
-    //     })
-    // });
-
-    // $(function () {
-    //     $.contextMenu({
-    //         selector: '.context-menu-utilidad',
-    //         callback: function (key, options) {
-    //             if (key == 'check') {
-    //                 check('utilidad');
-    //             }
-    //             if (key == 'noCheck') {
-    //                 quitarCheck('utilidad');
-    //             }
-    //             // window.console && console.log(m) || alert(m);
-    //         },
-    //         items: {
-    //             "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
-    //             "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
-    //             "noCheck": {name: "No mostrar esta columna", icon: "delete"},
-    //             "check": {name: "Mostrar esta columna", icon: "quit"}
-    //             // "Salir": {name: "Salir", icon: "quit"}
-    //         }
-    //     });
-    //     $('.context-menu-utilidad').on('click', function (e) {
-    //         console.log('clicked', this);
-    //     })
-    // });
-
-    // $(function () {
-    //     $.contextMenu({
-    //         selector: '.context-menu-subTotal',
-    //         callback: function (key, options) {
-    //             if (key == 'check') {
-    //                 check('subTotal');
-    //             }
-    //             if (key == 'noCheck') {
-    //                 quitarCheck('subTotal');
-    //             }
-    //             // window.console && console.log(m) || alert(m);
-    //         },
-    //         items: {
-    //             "Agregar columna a la izquierda": {name: "Agregar columna a la izquierda", icon: "add"},
-    //             "Agregar columna a la derecha": {name: "Agregar columna a la derecha", icon: "add"},
-    //             "noCheck": {name: "No mostrar esta columna", icon: "delete"},
-    //             "check": {name: "Mostrar esta columna", icon: "quit"}
-    //             // "Salir": {name: "Salir", icon: "quit"}
-    //         }
-    //     });
-    //     $('.context-menu-subTotal').on('click', function (e) {
-    //         console.log('clicked', this);
-    //     })
-    // });
-</script>
 
 <!-- lista modals -->
 <div id="agregarServicio" class="modal" style="width: 80%;">
@@ -1028,5 +656,18 @@ function generarListasBotones(){
                class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
         </div>
     </div>
+</div>
+
+<div id="eliminarLinea" class="modal">
+   <div class="modal-header">
+      <p><?= label('nombreSistema'); ?></p>
+      <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+   </div>
+   <div class="modal-content">
+      <p><?= label('confirmarEliminarSubFase'); ?></p>
+   </div>
+   <div id="botonEliminar" class="modal-footer black-text">
+      <a class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+   </div>
 </div>
 <!-- Fin lista modals -->
