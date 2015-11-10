@@ -4,88 +4,135 @@
 <!-- <button id="myFunction">Vamos tu puedes</button> -->
 
 <script type="text/javascript">
-    
-var contadorFilas = 1; //inicia en 1 porque siempre se va a mostrar uno fila con sus valores en 0
-$('#botonAgregarFila').on('click', function(){
-    // alert('agregar fila');
-    var html = '<tr>'+
-    '<td style="text-align: center;">'+
-        '<input type="checkbox" class="filled-in checkbox" id="checkbox_cotizacion1_item'+contadorFilas+'"/>'+
-        '<label for="checkbox_cotizacion1_item'+contadorFilas+'"></label>'+
-    '</td>'+
-    '<td>'+
-        '<row>'+
-            '<div id="contenedorSelectProductoItem'+contadorFilas+'" class="contenedorSelectProductoItem"></div>'+
-        '</row>'+
-    '</td>'+
-    '<td>'+
-        '<row>'+
-            '<div id="contenedorSelectProductoNombre'+contadorFilas+'" class="contenedorSelectProductoNombre"></div>'+
-       '</row>'+
-    '</td>'+
-    '<td>'+
-        '<row>'+
-            '<input value="Música en vivo" type="text" name="descripcion_'+contadorFilas+'">'+
-        '</row>'+
-    '</td>'+
-    '<td>'+
-        '<row>'+
-            '<input value="musica.jpg" type="text" name="imagen_'+contadorFilas+'" readonly="true">'+
-        '</row>'+
-    '</td>'+
-    '<td>'+
-        '<row>'+
-            '<input value="$200" type="text" name="precio_'+contadorFilas+'">'+
-        '</row>'+
-    '</td>'+
-    '<td>'+
-        '<row>'+
-            '<input value="1" type="number" name="cantidad_'+contadorFilas+'">'+
-        '</row>'+
-    '</td>'+
-    '<td>'+
-        '<row>'+
-             '<div id="impuestosProducto" class="example tags_Impuestos">'+
-                '<div class="bs-example">'+
-                    '<input placeholder="<?= label('formProducto_anadirImpuesto'); ?>" type="text"/>'+
-                '</div>'+
+
+// $(document).on('ready', function(){
+     <?php 
+    $js_array = json_encode($resultado['servicios']); 
+    echo "var arrayServicios =". $js_array;
+    ?>  
+
+    function cargarFila(idServicio, numeroFila){
+        for (var i = arrayServicios.length - 1; i >= 0; i--) {
+            var servicio = arrayServicios[i];
+            if (servicio['idServicio'] == idServicio) {
+                $('#descripcion_' + numeroFila).val(servicio['descripcion']);
+                $('#precio_' + numeroFila).val(servicio['total']);  
+                $('#cantidad_' + numeroFila).val(1);  
+                cargarImpuestosPorServicio(numeroFila, servicio['impuestos'])
+                $('#utilidad_' + numeroFila).val(servicio['utilidad']);  
+                alert(servicio['nombre'] + ', ' + servicio['descripcion']);
+            } 
+            
+        };
+     // alert('bien');
+    }
+// });
+
+
+function actualizarCantidad(){
+        $('#cantidadLineasDetalle').val(cantidad);
+
+    }
+
+    var cantidad = <?= count($resultado['lineasDetalle'])?>;
+    var contadorFilas = cantidad;
+
+    $('#botonAgregarFila').on('click', function(){
+
+         var check = '<td>'+
+            '<div style="text-align: center;">'+
+                '<input class="accionAplicada" style="display:none" name="linea_'+contadorFilas+'" type="text" value="1">'+ 
+                '<input style="display:none" name="idLinea_'+contadorFilas+'" type="text" value="">'+
+                '<input type="checkbox" class="filled-in checkbox" id="checkbox_linea'+contadorFilas+'"/>'+
+                '<label for="checkbox_linea'+contadorFilas+'"></label>'+
             '</div>'+
-        '</row>'+
-    '</td>'+
-    '<td>'+
-        '<row>'+
-            '<input value="10" type="number" name="utilidad_'+contadorFilas+'">'+
-        '</row>'+
-    '</td>'+
-    '<td>'+
-        '<row>'+
-            '<input value="$200" type="text" name="subTotal_'+contadorFilas+'" readonly="true">'+
-        '</row>'+
-    '</td>'+
-    '<td>'+
-        '<div class="col s12 m12 l12 celdaBoton">'+
-            '<ul id="dropdown-cotizacion1-item'+contadorFilas+'" class="dropdown-content">'+
-                '<li>'+
-                    '<a href="#Elminar" class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>'+
-                '</li>'+
-            '</ul>'+
-            '<a data-beloworigin="true" class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown-cotizacion1-item'+contadorFilas+'">'+
-                '<?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>'+
-            '</a>'+
-        '</div>'+
-    '</td>'+
-'</tr>';
+        '</td>';
 
-$('#contenedorLineas').append(html);
-cargarTags_Impuestos();
-generarAutocompletarProductoNombre(contadorFilas);
-generarAutocompletarProductoItem(contadorFilas);
-generarListas();
-generarListasBotones();
-$('.modal-trigger').leanModal(); 
+        var item = '<td>'+
+            '<row>'+
+                '<div id="contenedorSelectProductoItem'+contadorFilas+'" name="item_'+contadorFilas+'" class="contenedorSelectProductoItem">'+
+                '</div>'+
+            '</row>'+
+        '</td>';
 
-contadorFilas++;
-});
+        var nombre ='<td>'+
+            '<row>'+
+                '<div id="contenedorSelectProductoNombre'+contadorFilas+'" name="nombre_'+contadorFilas+'" class="contenedorSelectProductoNombre">'+
+                '</div>'+
+            '</row>'+
+        '</td>';
+
+        var des = '<td>'+
+            '<row>'+
+                '<input value="Arroz, ensalada, carne" type="text" id="descripcion_'+contadorFilas+'" name="descripcion_'+contadorFilas+'">'+
+            '</row>'+
+        '</td>';
+
+        var precio ='<td>'+
+            '<row>'+
+                '<input value="$6" type="text" id="precio_'+contadorFilas+'" name="precio_'+contadorFilas+'">'+
+            '</row>'+
+        '</td>';
+
+        var cantidad = '<td>'+
+            '<row>'+
+                '<input value="20" type="number" id="cantidad_'+contadorFilas+'" name="cantidad_'+contadorFilas+'">'+
+            '</row>'+
+        '</td>';
+
+        var impuestos = '<td>'+
+            '<row>'+
+                '<div id="impuestosProducto'+contadorFilas+'" class="example tags_Impuestos">'+
+                    '<div class="bs-example">'+
+                        '<input id="impuestos_'+contadorFilas+'" name="impuestos_'+contadorFilas+'" placeholder="<?= label('formProducto_anadirImpuesto'); ?>" type="text"/>'+
+                    '</div>'+
+                '</div>'+
+            '</row>'+
+        '</td>';
+
+        var utilidad ='<td>'+
+            '<row>'+
+                '<input value="2" type="number" id="utilidad_'+contadorFilas+'" name="utilidad_'+contadorFilas+'">'+
+            '</row>'+
+        '</td>';
+
+        var total ='<td>'+
+            '<row>'+
+                '<input value="$020" type="text" id="subTotal_'+contadorFilas+'" name="subTotal_'+contadorFilas+'" readonly="true">'+
+            '</row>'+
+        '</td>';
+
+        var eliminar = '<td>'+
+            '<div class="btn-linea-eliminar">'+
+                '<a class="confirmarEliminarLinea" data-linea-eliminar="'+contadorFilas+'" title="<?= label('paso2_lineaEliminar') ?>"><i class="mdi-action-delete small" style="color: black;"></i></a>'+
+            '</div>'+
+        '</td>';
+
+
+        $('#tablaLineasDetalle').dataTable().fnAddData([
+            check,
+            item,
+            nombre,
+            des,
+            precio,
+            cantidad,
+            impuestos,
+            utilidad,
+            total,
+            eliminar]);
+
+        
+        // $('#contenedorLineas').append(html);
+        cargarTags_Impuestos(contadorFilas);
+        generarAutocompletarProductoNombre(contadorFilas);
+        generarAutocompletarProductoItem(contadorFilas);
+        generarListas();
+        generarListasBotones();
+        $('.modal-trigger').leanModal(); 
+
+        contadorFilas++;
+
+        });
 
 
 
@@ -122,7 +169,7 @@ function generarListasBotones(){
             <!-- <input type="text" class="tags"> -->
 
             <div id="contenerdorTablaDetalles">
-                <table class="centered responsive-table">
+                <table id="tablaLineasDetalle" class="centered responsive-table">
                 <!-- <table id="cotizacion1-detalles" class="centered"> -->
                     <thead>
                     <tr>
@@ -211,13 +258,13 @@ function generarListasBotones(){
                     </tr>
                     </thead>
                     <tbody id="contenedorLineas">
-
+                    <input style="display:none" id="cantidadLineasDetalle" name="cantidadLineasDetalle" type="text" value="<?= count($resultado['lineasDetalle'])?>">
                      <?php
                     if (isset($lista)) {
-                        if ($lista !== false) {
+                        if ($resultado['lineasDetalle'] !== false) {
                              $contador = 0;
-                                foreach ($lista as $fila) {
-                                    $idEncriptado = encryptIt($fila['idLineaDetalle']);
+                                foreach ($resultado['lineasDetalle'] as $lineaDealle) {
+                                    $idEncriptado = encryptIt($lineaDealle['idLineaDetalle']);
                                     ?>
 
                                         <tr>
@@ -240,133 +287,51 @@ function generarListasBotones(){
                                             </td>
                                             <td>
                                                 <row>
-                                                    <input value="Arroz, ensalada, carne" type="text" name="descripcion_<?=$contador;?>">
-                                                </row>
-                                            </td>
-                                           <!--  <td>
-                                                <row>
-                                                    <input value="Almuerzo.jpg" type="text" name="imagen_<?=$contador;?>" readonly="true">
-                                                </row>
-                                            </td> -->
-                                            <td>
-                                                <row>
-                                                    <input value="$6" type="text" name="precio_<?=$contador;?>">
+                                                    <input value="Arroz, ensalada, carne" type="text" id="descripcion_<?=$contador;?>" name="descripcion_<?=$contador;?>">
                                                 </row>
                                             </td>
                                             <td>
                                                 <row>
-                                                    <input value="20" type="number" name="cantidad_<?=$contador;?>">
+                                                    <input value="$6" type="text" id="precio_<?=$contador;?>" name="precio_<?=$contador;?>">
+                                                </row>
+                                            </td>
+                                            <td>
+                                                <row>
+                                                    <input value="20" type="number" id="cantidad_<?=$contador;?>" name="cantidad_<?=$contador;?>">
                                                 </row>
                                             </td>
                                             <td>
                                                 <row>
                                                     <div id="impuestosProducto<?=$contador;?>" class="example tags_Impuestos">
                                                         <div class="bs-example">
-                                                            <input name="impuestos_<?=$contador;?>"> placeholder="<?= label('formProducto_anadirImpuesto'); ?>" type="text"/>
+                                                            <input id="impuestos_<?=$contador;?>" name="impuestos_<?=$contador;?>"> placeholder="<?= label('formProducto_anadirImpuesto'); ?>" type="text"/>
                                                         </div>
                                                     </div>
                                                 </row>
                                             </td>
                                             <td>
                                                 <row>
-                                                    <input value="2" type="number" name="utilidad_<?=$contador;?>">
+                                                    <input value="2" type="number" id="utilidad_<?=$contador;?>" name="utilidad_<?=$contador;?>">
                                                 </row>
                                             </td>
                                             <td>
                                                 <row>
-                                                    <input value="$020" type="text" name="subTotal_<?=$contador;?>" readonly="true">
+                                                    <input value="$020" type="text" id="subTotal_<?=$contador;?>" name="subTotal_<?=$contador;?>" readonly="true">
                                                 </row>
                                             </td>
                                             <td>
                                                 <div class="btn-linea-eliminar">
-                                                    <a class="confirmarEliminarLinea" data-linea-eliminar="0" title="<?= label('paso2_lineaEliminar') ?>"><i class="mdi-action-delete small" style="color: black;"></i></a>
+                                                    <a class="confirmarEliminarLinea" data-linea-eliminar="<?=$contador;?>" title="<?= label('paso2_lineaEliminar') ?>"><i class="mdi-action-delete small" style="color: black;"></i></a>
                                                 </div>
-                                               <!--  <div class="col s12 m12 l12 celdaBoton">
-                                                    <ul id="dropdown-cotizacion1-item<?=$contador;?>" class="dropdown-content">
-                                                        <li>
-                                                            <a href="#Elminar"
-                                                               class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                        </li>
-                                                    </ul>
-                                                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                                                       data-activates="dropdown-cotizacion1-item<?=$contador;?>">
-                                                        <?= label('menuOpciones_seleccionar') ?><i
-                                                            class="mdi-navigation-arrow-drop-down"></i>
-                                                    </a>
-                                                </div> -->
                                             </td>
                                         </tr>
-
-
-
                                     <?php 
                                 }
+                                $contador++;
                             }
                         }
 
                     ?>
-
-
-                    <tr>
-                        <td style="text-align: center;">
-                            <input type="checkbox" class="filled-in checkbox" id="checkbox_cotizacion1_item0"/>
-                            <label for="checkbox_cotizacion1_item0"></label>
-                        </td>
-                        <td>
-                            <row>
-                                <div id="contenedorSelectProductoItem0" class="contenedorSelectProductoItem"></div>     
-                            </row>
-                        </td>
-                        <td>
-                            <row>
-                                <div id="contenedorSelectProductoNombre0" class="contenedorSelectProductoNombre"></div>
-                            </row>
-                        </td>
-                        <td>
-                            <row>
-                                <input value="Arroz, ensalada, carne" type="text" name="descripcion_0">
-                            </row>
-                        </td>
-                       <!--  <td>
-                            <row>
-                                <input value="Almuerzo.jpg" type="text" name="imagen_0" readonly="true">
-                            </row>
-                        </td> -->
-                        <td>
-                            <row>
-                                <input value="$6" type="text" name="precio_0">
-                            </row>
-                        </td>
-                        <td>
-                            <row>
-                                <input value="20" type="number" name="cantidad_0">
-                            </row>
-                        </td>
-                        <td>
-                            <row>
-                                <div id="impuestosProducto" class="example tags_Impuestos">
-                                    <div class="bs-example">
-                                        <input placeholder="<?= label('formProducto_anadirImpuesto'); ?>" type="text"/>
-                                    </div>
-                                </div>
-                            </row>
-                        </td>
-                        <td>
-                            <row>
-                                <input value="2" type="number" name="utilidad_0">
-                            </row>
-                        </td>
-                        <td>
-                            <row>
-                                <input value="$020" type="text" name="subTotal_0" readonly="true">
-                            </row>
-                        </td>
-                        <td>
-                             <div class="btn-linea-eliminar">
-                                <a class="confirmarEliminarSubFase" data-linea-eliminar="0" title="<?= label('paso2_lineaEliminar') ?>"><i class="mdi-action-delete small" style="color: black;"></i></a>
-                            </div>
-                        </td>
-                    </tr>
                     </tbody>
                 </table>
             </div>
@@ -596,35 +561,40 @@ function generarListasBotones(){
 
 <script>
 
-    function cargarTags_Impuestos(){
+    function cargarTags_Impuestos(contadorFilas){
         var Impuestos = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('nombre'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/Impuestos.json'
             prefetch: {
-                url: '<?=base_url()?>Cotizacion/jsonImpuestos',
+                url: '<?=base_url()?>Impuesto/impuestosSugerencia',
                 ttl: 1000
             }
         });
 
         Impuestos.initialize();
 
-        elt = $('.tags_Impuestos > > input');
+        elt = $('#impuestos_' + contadorFilas);
         elt.tagsinput({
-            itemValue: 'value',
-            itemText: 'text',
+            itemValue: 'idImpuesto',
+            itemText: 'nombre', 
             typeaheadjs: {
                 name: 'Impuestos',
-                displayKey: 'text',
+                displayKey: 'nombre',
                 source: Impuestos.ttAdapter()
             }
         });
-
-        elt.tagsinput('add', {"value": 1, "text": "Impuestos directos", "continent": "Europe"});
-        elt.tagsinput('add', {"value": 2, "text": "Impuestos indirectos", "continent": "America"});
+        
     }
+    function cargarImpuestosPorServicio(numeroFila, impuestos){
+        $('#impuestos_'+ numeroFila).tagsinput('removeAll');
+        for (var i = impuestos.length - 1; i >= 0; i--) {
+            $('#impuestos_'+ numeroFila).tagsinput('add', impuestos[i]);
+        };
+    }
+
     $(document).ready(function () {
-        cargarTags_Impuestos();
+        // cargarTags_Impuestos();
     });
 </script>
 

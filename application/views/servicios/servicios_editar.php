@@ -733,11 +733,6 @@ echo "var arrayFases =". $js_array;?>
              echo 'elt.tagsinput("add", '.json_encode($impuesto).');';
         }
         ?>
-         // elt.tagsinput("add", {"nombre":"Impuesto de venta"});
-
-
-        // elt.tagsinput('add', {"value": 1, "text": "Impuestos directos", "continent": "Europe"});
-        // elt.tagsinput('add', {"value": 2, "text": "Impuestos indirectos", "continent": "America"});
     });
 </script>
 

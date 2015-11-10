@@ -120,7 +120,7 @@
 
 
      function generarAutocompletarProductoNombre(id){
-        var miSelect = $('<select data-incluirBoton="1" placeholder="seleccionar" data-tipo="productoNombre" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso2_elegirProductoNombre"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
+        var miSelect = $('<select data-incluirBoton="1" placeholder="seleccionar" data-tipo="productoNombre" data-fila="' + id + '" id="productoNombre_' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso2_elegirProductoNombre"); ?>" class="chosen-select " style="width:350px;" tabindex="2"></select>');
         miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso2_elegirProductoNombre"); ?></option>');
         miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
 
@@ -142,28 +142,12 @@
         // miSelect.append('<option value="Música">Música</option>');
         // miSelect.append('<option value="Pizza">Pizza</option>');
         // miSelect.append('<option value="Arroz">Arroz</option>');
-        // miSelect.append('<option value="Frijoles">Frijoles</option>');
-        // miSelect.append('<option value="Ensalada">Ensalada</option>');
-        // miSelect.append('<option value="Carne en salsa">Carne en salsa</option>');
-        // miSelect.append('<option value="Pollo">Pollo</option>');
-        // // miSelect.append('<option value="Pizza">Pizza</option>');
-        // miSelect.append('<option value="Bolsa de confites">Bolsa de confites</option>');
-        // miSelect.append('<option value="Piñata">Piñata</option>');
-        // miSelect.append('<option value="Comediante">Comediante</option>');
-        // miSelect.append('<option value="Animador">Animador</option>');
-        // miSelect.append('<option value="Comparsa">Comparsa</option>');
-        // miSelect.append('<option value="Mariachi">Mariachi</option>');
-        // miSelect.append('<option value="Vino">Vino</option>');
-        // miSelect.append('<option value="Tacos">Tacos</option>');
-        // miSelect.append('<option value="Globos">Globos</option>');
-        // miSelect.append('<option value="Payaso">Payaso</option>');
-        // miSelect.append('<option value="Quque">Quque</option>');
-        // miSelect.append('<option value="Helado">Helado</option>');
+
 
         $('#contenedorSelectProductoNombre' + id + '').html(miSelect);
     }
     function generarAutocompletarProductoItem(id){
-        var miSelect = $('<select data-incluirBoton="1" placeholder="seleccionar" data-tipo="productoItem" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso2_elegirProductoItem"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
+        var miSelect = $('<select data-incluirBoton="1" placeholder="seleccionar" data-tipo="productoItem" data-fila="' + id + '" id="productoItem_' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso2_elegirProductoItem"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
         miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso2_elegirProductoItem"); ?></option>');
         miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
 
@@ -188,6 +172,8 @@
 
 <script type="text/javascript">
     $(document).on("ready", function(){
+
+
 
 
         generarAutocompletarProductoNombre(0);
@@ -216,13 +202,30 @@
                 var nuevoElementoAgregar = "";
                 botonEnLista(tipo, idBoton, nuevoElementoAgregar)
             } else{
-                
+                // alert('entre 1');
                 switch(tipo){
                     case 'paso3_plantilla':
                         //cargarDieseno(valor);
                     break;
+                    case 'productoItem':
+
+                        var numeroFila = $(this).attr('data-fila');
+                        var select = $('#productoNombre_' + numeroFila);
+                        select.val(valor);
+                        select.trigger("chosen:updated");
+                        cargarFila(valor, numeroFila);
+                    break;
+                    case 'productoNombre':
+                        var numeroFila = $(this).attr('data-fila');
+                        var select = $('#productoItem_' + numeroFila);
+                        select.val(valor);
+                        select.trigger("chosen:updated");
+                        cargarFila(valor, numeroFila);
+                    break;
                 }
-                alert(valor);
+                // var numeroFila = $(this).attr('id');
+                // alert(valor+', ' + tipo+ ',id: ' + idFila);
+                // mostrarDatos(valor);
             };
             
         });

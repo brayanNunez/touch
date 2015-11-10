@@ -631,7 +631,6 @@
 
     function actualizarCantidad(){
         $('#cantidadContactos').val(cantidad);
-
     }
     var cantidad = <?= count($resultado['contactos'])?>;
     var contador = cantidad;
