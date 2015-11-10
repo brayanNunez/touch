@@ -5,9 +5,19 @@
 
 <script type="text/javascript">
 
+
     
 
    $(document).on('ready', function(){
+
+    $('#tablaLineasDetalle').dataTable( {
+      "bPaginate": false,
+      "ordering": false,
+      "searching": false
+    });
+
+
+
 
     var filaEliminar = null;
    
@@ -204,7 +214,7 @@ function actualizarCantidad(){
             <!-- <input type="text" class="tags"> -->
 
             <div id="contenerdorTablaDetalles">
-                <table id="tablaLineasDetalle" class="centered responsive-table">
+                <table id="tablaLineasDetalle"  class="centered">
                 <!-- <table id="cotizacion1-detalles" class="centered"> -->
                     <thead>
                     <tr>
@@ -295,6 +305,7 @@ function actualizarCantidad(){
                     <input style="display:none" id="cantidadLineasDetalle" name="cantidadLineasDetalle" type="text" value="<?= count($resultado['lineasDetalle'])?>">
                     
                     <tbody id="contenedorLineas">
+
                      <?php
                     if (isset($lista)) {
                         if ($resultado['lineasDetalle'] !== false) {
@@ -665,7 +676,7 @@ function actualizarCantidad(){
       <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
    </div>
    <div class="modal-content">
-      <p><?= label('confirmarEliminarSubFase'); ?></p>
+      <p><?= label('confirmarEliminarLineaDetalle'); ?></p>
    </div>
    <div id="botonEliminar" class="modal-footer black-text">
       <a class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>

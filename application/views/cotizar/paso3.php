@@ -21,8 +21,6 @@
                      <div class="card" id="card-diseno"> -->
 
 
-<button id="actualizarDiseno">Actualizar</button>
-
 
 <div class="row">
     <div class="input-field col s12 m3 l3 inputSelector">            
@@ -592,12 +590,17 @@
     
 
     $(document).ready(function(){
-        $('#actualizarDiseno').on('click', function(){
+
+            $('#botonPaso3').parents('li').on('click', function(){
+                actualizarDiseno();
+            });
+
+        function actualizarDiseno(){
             // alert($('#contenedorLineas').html());
             $('#lineasDiseno').empty();
             $('#contenedorLineas').find('tr').each(function(){
                 var fila = $(this);
-                if(fila.find('.accionAplicada').val() != 2){
+                if(fila.find('.accionAplicada').val() != 2){// si no esta eliminada la fila
                     // alert('bien');
                     
                     var lineaDetalle=    '<tr>'+
@@ -614,7 +617,7 @@
                 }
             });
 
-        });
+        }
     });
 
      $(document).ready(function(){
@@ -1009,8 +1012,18 @@ function actualizarModalFooter(plantilla){
     // };
 }
 
-// $(document).ready(function(){
-        $("#crear").click(function () {
+ $(document).on('ready', function(){
+    $('#botonPaso4').parents('li').on('click', function(){
+        crearPDF();
+    });
+
+ });
+
+
+
+    
+
+        function crearPDF() {
             // alert("hola");
             var height = $('#footerDiseno').css("height");
             $('#footerDiseno').css("height", height);
@@ -1042,7 +1055,7 @@ function actualizarModalFooter(plantilla){
             $('#prefooter').css("height", "");
             $('.editarExterno').css("display", "");
 
-        });
+        }
 // });
 
 

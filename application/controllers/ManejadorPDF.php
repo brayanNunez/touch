@@ -134,13 +134,45 @@ class ManejadorPDF extends CI_Controller
             $this->html2pdf->html(utf8_decode($htmlEntrada));
             //si el pdf se guarda correctamente lo mostramos en pantalla
 
+            $path = $this->html2pdf->create('save');
+        }
+
+    }
+
+    public function indexRespaldo()//borrar este metodo
+    {
+
+        if (isset($_POST['miHtml'])) {
+            $htmlEntrada = $_POST['miHtml'];
+
+            //establecemos la carpeta en la que queremos guardar los pdfs,
+            //si no existen las creamos y damos permisos
+            $this->createFolder();
+
+            //importante el slash del final o no funcionará correctamente
+            $this->html2pdf->folder('./files/pdfs/');
+
+            //establecemos el nombre del archivo
+            $this->html2pdf->filename('test.pdf');
+
+            //establecemos el tipo de papel
+            $this->html2pdf->paper('a4', 'portrait');
+
+            //datos que queremos enviar a la vista, lo mismo de siempre
+            $data = "";
+
+            //hacemos que coja la vista como datos a imprimir
+            //importante utf8_decode para mostrar bien las tildes, ñ y demás
+            // $this->html2pdf->html(utf8_decode($this->load->view('index', $data, true)));
+            $this->html2pdf->html(utf8_decode($htmlEntrada));
+            //si el pdf se guarda correctamente lo mostramos en pantalla
+
             if ($path = $this->html2pdf->create('save')) {
 
                 $this->load->library('email');
 
                 $this->email->from('brayannr@hotmail.es', 'Brayan');
                 $this->email->to('brayan.nunez@ucrso.info');
-                // $this->email->cc('jose.rodriguez@ucrso.info'); 
 
                 $this->email->subject('Email PDF Test');
                 $this->email->message('Testing the email a freshly created PDF');
