@@ -451,27 +451,72 @@
 
 <!-- Funcion de insercion de datos-->
 <script>
-    function validacionCorrecta_Persona(){
-        var formulario = $('#formPersona');
-        var data = formulario.serialize();
-        var url = formulario.attr('action');
-        var method = formulario.attr('method');
-        $.ajax({
-            type: method,
-            url: url,
-            data: data,
-            success: function(response) {
-                switch(response) {
-                    case '0':
-                        $('#linkModalError').click();
-                        break;
-                    case '1':
-                        $('#linkModalGuardado').click();
-//                        $('form')[0].reset();
-                        break;
+    function validacionCorrecta_Persona() {
+        var identificacionActual = '<?= $identificacion; ?>';
+        var identificacionNueva = '';
+        var tipoPersona = $('#persona_tipo').val();
+        if (tipoPersona == 1) {
+            identificacionNueva = $('#persona_identificacion').val();
+        } else {
+            identificacionNueva = $('#personajuridico_identificacion').val();
+        }
+        if(identificacionNueva == identificacionActual) {
+            var data = formulario.serialize();
+            var url = formulario.attr('action');
+            var method = formulario.attr('method');
+            $.ajax({
+                type: method,
+                url: url,
+                data: data,
+                success: function (response) {
+                    switch (response) {
+                        case '0':
+                            $('#linkModalError').click();
+                            break;
+                        case '1':
+                            $('#linkModalGuardado').click();
+                            break;
+                    }
                 }
-            }
-        });
+            });
+        } else {
+            var formulario = $('#formPersona');
+            $.ajax({
+                data: formulario.serialize(),
+                url: '<?=base_url()?>proveedores/verificarIdentificacion',
+                type: 'post',
+                success: function (response) {
+                    if (response == '0') {
+                        $('#linkModalError').click();
+                    } else {
+                        if (response == '2') {
+                            var data = formulario.serialize();
+                            var url = formulario.attr('action');
+                            var method = formulario.attr('method');
+                            $.ajax({
+                                type: method,
+                                url: url,
+                                data: data,
+                                success: function (response) {
+                                    switch (response) {
+                                        case '0':
+                                            $('#linkModalError').click();
+                                            break;
+                                        case '1':
+                                            $('#linkModalGuardado').click();
+                                            break;
+                                    }
+                                }
+                            });
+                        } else {
+                            alert("<?=label('proveedor_error_nombreExisteEnBD'); ?>");
+                            $('#formPersona #persona_identificacion').focus();
+                            $('#formPersona #personajuridico_identificacion').focus();
+                        }
+                    }
+                }
+            });
+        }
     }
     function validacionCorrecta_Imagen(){
         var formPW = $('#persona-cambio-imagen');

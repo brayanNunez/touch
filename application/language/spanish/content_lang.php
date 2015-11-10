@@ -280,7 +280,9 @@ $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos selec
 
     $lang['gasto_agregarPersona'] = 'Agregar nueva persona';
     $lang['gastos_PersonaGuardadoCorrectamente'] = 'La persona fue guardada con éxito.';
-    $lang['persona_error_identificacionExisteEnBD'] = 'La identificación de persona indicada ya existe. ';
+    $lang['persona_error_identificacionExisteEnBD'] = 'La identificación de persona indicada ya existe.';
+
+    $lang['proveedor_error_nombreExisteEnBD'] = 'La identificación de persona indicada ya existe.';
 
 //Tipos de moneda
 	$lang['tituloTiposMoneda'] = 'Tipos de moneda';

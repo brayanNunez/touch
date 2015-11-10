@@ -403,6 +403,49 @@ class Proveedores extends CI_Controller
         }
     }
 
+    public function verificarIdentificacion(){
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $empleado = $this->input->post('persona_tipoProveedor');
+        $juridico = $this->input->post('persona_tipo');
+        if($empleado == 2) {
+            $data['datos'] = array(
+                'idEmpresa' => $idEmpresa,
+                'identificacion' => $this->input->post('persona_identificacion'),
+                'eliminado' => 0
+            );
+        } else {
+            if($juridico == 2) {
+                $data['datos'] = array(
+                    'idEmpresa' => $idEmpresa,
+                    'identificacion' => $this->input->post('personajuridico_identificacion'),
+                    'eliminado' => 0
+                );
+            } else {
+                $data['datos'] = array(
+                    'idEmpresa' => $idEmpresa,
+                    'identificacion' => $this->input->post('persona_identificacion'),
+                    'eliminado' => 0
+                );
+            }
+        }
+
+        $resultado = $this->Proveedor_model->verificarIdentificacion($data);
+        if ($resultado === false) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            if ($resultado == 1) {
+                //Ya existe esta identificacion
+                echo 1;
+            } else {
+                //Identificacion Valida
+                echo 2;
+            }
+        }
+    }
+
     public function agregarArchivo($id)
     {
         $data = array();

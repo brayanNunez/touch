@@ -303,30 +303,47 @@
 
 <!-- Funcion de insercion de datos-->
 <script>
-    function validacionCorrecta_Persona(){
+    function validacionCorrecta_Persona() {
         var formulario = $('#formPersona');
-        var data = new FormData(formulario[0]);
-        var url = formulario.attr('action');
-        var method = formulario.attr('method');
         $.ajax({
-            type: method,
-            url: url,
-            data: data,
-            success: function(response) {
-                switch(response) {
-                    case '0':
-                        $('#linkModalError').click();
-                        break;
-                    case '1':
-                        $('#linkModalGuardado').click();
-                        $('form')[0].reset();
-                        $('#persona_nacionalidad').val('').trigger('chosen:updated');
-                        break;
+            data: formulario.serialize(),
+            url:   '<?=base_url()?>proveedores/verificarIdentificacion',
+            type:  'post',
+            success:  function (response) {
+                if (response == '0') {
+                    $('#linkModalError').click();
+                } else{
+                    if (response == '2') {
+                        var data = new FormData(formulario[0]);
+                        var url = formulario.attr('action');
+                        var method = formulario.attr('method');
+                        $.ajax({
+                            type: method,
+                            url: url,
+                            data: data,
+                            success: function(response) {
+                                switch(response) {
+                                    case '0':
+                                        $('#linkModalError').click();
+                                        break;
+                                    case '1':
+                                        $('#linkModalGuardado').click();
+                                        $('form')[0].reset();
+                                        $('#persona_nacionalidad').val('').trigger('chosen:updated');
+                                        break;
+                                }
+                            },
+                            cache: false,
+                            contentType: false,
+                            processData: false
+                        });
+                    } else {
+                        alert("<?=label('proveedor_error_nombreExisteEnBD'); ?>");
+                        $('#formPersona #persona_identificacion').focus();
+                        $('#formPersona #personajuridico_identificacion').focus();
+                    }
                 }
-            },
-            cache: false,
-            contentType: false,
-            processData: false
+            }
         });
     }
 </script>
