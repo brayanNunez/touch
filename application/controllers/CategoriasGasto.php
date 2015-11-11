@@ -8,7 +8,7 @@ class CategoriasGasto extends CI_Controller
     {
         parent::__construct();
         $this->lang->load('content');
-        $this->load->model('CategoriaGasto_model');
+        $this->load->model('Categoriagasto_model');
     }
 
     public function index()
@@ -17,7 +17,7 @@ class CategoriasGasto extends CI_Controller
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
 
-        $lista = $this->CategoriaGasto_model->cargarTodos($idEmpresa);
+        $lista = $this->Categoriagasto_model->cargarTodos($idEmpresa);
         $data['lista'] = $lista;
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
@@ -37,7 +37,7 @@ class CategoriasGasto extends CI_Controller
             'eliminado' => '0'
         );
 
-        $res = $this->CategoriaGasto_model->insertar($data);
+        $res = $this->Categoriagasto_model->insertar($data);
         if (!$res) {
             //Error en la transacción
             echo 0;
@@ -50,7 +50,7 @@ class CategoriasGasto extends CI_Controller
     public function editar()
     {
         $id = $_POST['idEditar'];
-        $resultado = $this->CategoriaGasto_model->cargar(decryptIt($id));
+        $resultado = $this->Categoriagasto_model->cargar(decryptIt($id));
         if ($resultado === false || $resultado === array()) {
             echo 0;
         } else {
@@ -68,7 +68,7 @@ class CategoriasGasto extends CI_Controller
         );
 //        echo print_r($data); exit();
 
-        if (!$this->CategoriaGasto_model->modificar($data)) {
+        if (!$this->Categoriagasto_model->modificar($data)) {
             //Error en la transacción
             echo 0;
         } else {
@@ -81,7 +81,7 @@ class CategoriasGasto extends CI_Controller
     public function eliminar()
     {
         $id = $_POST['idEliminar'];
-        if (!$this->CategoriaGasto_model->eliminar(decryptIt($id))) {
+        if (!$this->Categoriagasto_model->eliminar(decryptIt($id))) {
             //Error en la transacción
             echo 0;
         } else {
@@ -101,7 +101,7 @@ class CategoriasGasto extends CI_Controller
         );
 
         // echo print_r($impuesto); exit();
-        $resultado = $this->CategoriaGasto_model->verificarNombre($data);
+        $resultado = $this->Categoriagasto_model->verificarNombre($data);
         if ($resultado === false) {
             //Error en la transacción
             echo 0;
