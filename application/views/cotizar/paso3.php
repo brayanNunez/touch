@@ -591,6 +591,28 @@
 
     $(document).ready(function(){
 
+          $('#botonPaso4').parents('li').on('click', function(){
+           event.preventDefault();
+           actualizarDiseno();
+           var html = crearPDF();
+           // alert(html);
+
+               $.ajax({
+                  data: {miHtml :  html},
+                  url:   '<?=base_url()?>ManejadorPDF/index',
+                  type:  'post',
+                  beforeSend: function(){
+                       $('#botonPaso4').text('Cargando..');
+                   },
+                  success:  function (response) {
+                       $('#botonPaso4').text('<?= label('paso4'); ?>');
+                       document.getElementById('vistaPrevia').contentDocument.location.reload(true);
+                       // $('#vistaPrevia').contentDocument.location.reload(true);
+                   }
+         });
+
+    });
+
             $('#botonPaso3').parents('li').on('click', function(){
                 actualizarDiseno();
             });
@@ -1012,29 +1034,10 @@ function actualizarModalFooter(plantilla){
     // };
 }
 
- $(document).on('ready', function(){
-    $('#botonPaso4').parents('li').on('click', function(){
-        event.preventDefault();
-        var html = crearPDF();
-        // alert(html);
+ // $(document).on('ready', function(){
 
-            $.ajax({
-               data: {miHtml :  html},
-               url:   '<?=base_url()?>ManejadorPDF/index',
-               type:  'post',
-               beforeSend: function(){
-                    $('#botonPaso4').text('Cargando..');
-                },
-               success:  function (response) {
-                    $('#botonPaso4').text('<?= label('paso4'); ?>');
-                    document.getElementById('vistaPrevia').contentDocument.location.reload(true);
-                    // $('#vistaPrevia').contentDocument.location.reload(true);
-                }
-    });
 
-    });
-
- });
+ // });
 
 
 
