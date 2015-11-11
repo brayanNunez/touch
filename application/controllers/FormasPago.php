@@ -8,7 +8,7 @@ class FormasPago extends CI_Controller
     {
         parent::__construct();
         $this->lang->load('content');
-        $this->load->model('FormaPago_model');
+        $this->load->model('Formapago_model');
     }
 
     public function index()
@@ -17,7 +17,7 @@ class FormasPago extends CI_Controller
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
 
-        $lista = $this->FormaPago_model->cargarTodos($idEmpresa);
+        $lista = $this->Formapago_model->cargarTodos($idEmpresa);
         $data['lista'] = $lista;
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
@@ -37,7 +37,7 @@ class FormasPago extends CI_Controller
             'eliminado' => '0'
         );
 
-        $res = $this->FormaPago_model->insertar($data);
+        $res = $this->Formapago_model->insertar($data);
         if (!$res) {
             //Error en la transacción
             echo 0;
@@ -50,7 +50,7 @@ class FormasPago extends CI_Controller
     public function editar()
     {
         $id = $_POST['idEditar'];
-        $resultado = $this->FormaPago_model->cargar(decryptIt($id));
+        $resultado = $this->Formapago_model->cargar(decryptIt($id));
         if ($resultado === false || $resultado === array()) {
             echo 0;
         } else {
@@ -68,7 +68,7 @@ class FormasPago extends CI_Controller
         );
         // echo print_r($data); exit();
 
-        if (!$this->FormaPago_model->modificar($data)) {
+        if (!$this->Formapago_model->modificar($data)) {
             //Error en la transacción
             echo 0;
         } else {
@@ -81,7 +81,7 @@ class FormasPago extends CI_Controller
     public function eliminar()
     {
         $id = $_POST['idEliminar'];
-        if (!$this->FormaPago_model->eliminar(decryptIt($id))) {
+        if (!$this->Formapago_model->eliminar(decryptIt($id))) {
             //Error en la transacción
             echo 0;
         } else {
@@ -102,7 +102,7 @@ class FormasPago extends CI_Controller
         $data['formaPago'] = $formaPago;
 
         // echo print_r($impuesto); exit();
-        $resultado = $this->FormaPago_model->verificarNombre($data);
+        $resultado = $this->Formapago_model->verificarNombre($data);
         if ($resultado === false) {
             //Error en la transacción
             echo 0;

@@ -8,7 +8,7 @@ class TiposMoneda extends CI_Controller
     {
         parent::__construct();
         $this->lang->load('content');
-        $this->load->model('TipoMoneda_model');
+        $this->load->model('Tipomoneda_model');
     }
 
     public function index()
@@ -17,8 +17,8 @@ class TiposMoneda extends CI_Controller
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
 
-        $lista = $this->TipoMoneda_model->cargarTodos($idEmpresa);
-        $tipoDefecto = $this->TipoMoneda_model->tipoPrincipal($idEmpresa);
+        $lista = $this->Tipomoneda_model->cargarTodos($idEmpresa);
+        $tipoDefecto = $this->Tipomoneda_model->tipoPrincipal($idEmpresa);
         $data['lista'] = $lista;
         $data['monedaDefecto'] = $tipoDefecto;
         $this->load->view('layout/default/header');
@@ -40,7 +40,7 @@ class TiposMoneda extends CI_Controller
             'eliminado' => '0'
         );
 
-        $res = $this->TipoMoneda_model->insertar($data);
+        $res = $this->Tipomoneda_model->insertar($data);
         if (!$res) {
             //Error en la transacción
             echo 0;
@@ -53,7 +53,7 @@ class TiposMoneda extends CI_Controller
     public function editar()
     {
         $id = $_POST['idEditar'];
-        $resultado = $this->TipoMoneda_model->cargar(decryptIt($id));
+        $resultado = $this->Tipomoneda_model->cargar(decryptIt($id));
         if ($resultado === false || $resultado === array()) {
             echo 0;
         } else {
@@ -72,7 +72,7 @@ class TiposMoneda extends CI_Controller
         );
         // echo print_r($data); exit();
 
-        if (!$this->TipoMoneda_model->modificar($data)) {
+        if (!$this->Tipomoneda_model->modificar($data)) {
             //Error en la transacción
             echo 0;
         } else {
@@ -85,7 +85,7 @@ class TiposMoneda extends CI_Controller
     public function eliminar()
     {
         $id = $_POST['idEliminar'];
-        if (!$this->TipoMoneda_model->eliminar(decryptIt($id))) {
+        if (!$this->Tipomoneda_model->eliminar(decryptIt($id))) {
             //Error en la transacción
             echo 0;
         } else {
@@ -106,7 +106,7 @@ class TiposMoneda extends CI_Controller
         $data['moneda'] = $moneda;
 
         // echo print_r($impuesto); exit();
-        $resultado = $this->TipoMoneda_model->verificarNombre($data);
+        $resultado = $this->Tipomoneda_model->verificarNombre($data);
         if ($resultado === false) {
             //Error en la transacción
             echo 0;
@@ -125,7 +125,7 @@ class TiposMoneda extends CI_Controller
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
 
-        $resultado = $this->TipoMoneda_model->tiposMoneda($idEmpresa);
+        $resultado = $this->Tipomoneda_model->tiposMoneda($idEmpresa);
         if ($resultado === false || $resultado === array()) {
             echo 0;
         } else {
@@ -142,7 +142,7 @@ class TiposMoneda extends CI_Controller
         $data['datos'] = array(
             'idMoneda' => $idMoneda
         );
-        $resultado = $this->TipoMoneda_model->cambiarTipoPrincipal($data);
+        $resultado = $this->Tipomoneda_model->cambiarTipoPrincipal($data);
         if ($resultado === false || $resultado === array()) {
             echo 0;
         } else {
