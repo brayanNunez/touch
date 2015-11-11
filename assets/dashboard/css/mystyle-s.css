@@ -215,7 +215,7 @@ table.data-table-information thead tr th:first-child { width: 6% !important; }
 
 .liquid ul { margin-top: 5px !important; }
 .liquid ul li { width:220px; padding:0 10px; margin:0; }
-.liquid ul li div.info-contacto { width: auto; height: 260px; border: 2px solid black; border-radius: 5px; position: relative; }
+.liquid ul li div.info-contacto { width: auto; min-height: 220px; border: 2px solid black; border-radius: 5px; position: relative; }
 .liquid ul li div.info-contacto div { margin: 5px; word-wrap: break-word; }
 .liquid ul li div.info-contacto div div.contacto-opciones { position: absolute; bottom: 0; right: 0; margin: 0 3px 3px 0; }
 .liquid ul li div.info-contacto div div.contacto-opciones a { padding: 0 10px; }

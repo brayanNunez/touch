@@ -460,6 +460,7 @@
         } else {
             identificacionNueva = $('#personajuridico_identificacion').val();
         }
+        var formulario = $('#formPersona');
         if(identificacionNueva == identificacionActual) {
             var data = formulario.serialize();
             var url = formulario.attr('action');
@@ -480,7 +481,6 @@
                 }
             });
         } else {
-            var formulario = $('#formPersona');
             $.ajax({
                 data: formulario.serialize(),
                 url: '<?=base_url()?>proveedores/verificarIdentificacion',

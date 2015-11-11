@@ -159,18 +159,18 @@
                                                         <p><?= $contacto['puesto']; ?></p>
                                                         <p><?= $contacto['correo']; ?></p>
                                                         <p>Tel. <?= $contacto['telefono']; ?></p>
-                                                        <div class="contacto-opciones">
-                                                            <a href="#editarContacto" class="modal-trigger"
-                                                               title="<?= label('formProveedor_contactoEditar') ?>">
-                                                                <i class="mdi-editor-mode-edit"></i>
-                                                            </a>
-                                                            <a href="#" title="<?= label('formProveedor_contactoDescargar')?>">
-                                                                <i class="mdi-file-file-download"></i>
-                                                            </a>
-                                                            <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formProveedor_contactoEliminar')?>">
-                                                                <i class="mdi-action-delete"></i>
-                                                            </a>
-                                                        </div>
+<!--                                                        <div class="contacto-opciones">-->
+<!--                                                            <a href="#editarContacto" class="modal-trigger"-->
+<!--                                                               title="--><?//= label('formProveedor_contactoEditar') ?><!--">-->
+<!--                                                                <i class="mdi-editor-mode-edit"></i>-->
+<!--                                                            </a>-->
+<!--                                                            <a href="#" title="--><?//= label('formProveedor_contactoDescargar')?><!--">-->
+<!--                                                                <i class="mdi-file-file-download"></i>-->
+<!--                                                            </a>-->
+<!--                                                            <a href="#eliminarContacto" class="modal-trigger" title="--><?//= label('formProveedor_contactoEliminar')?><!--">-->
+<!--                                                                <i class="mdi-action-delete"></i>-->
+<!--                                                            </a>-->
+<!--                                                        </div>-->
 <!--                                                        El principal se pone con la clase es-principal-->
                                                         <div class="contacto-principal">
                                                             <a href="#cambiarPrincipal" class="modal-trigger" title="<?= label('formProveedor_contactoPrincipal') ?>">

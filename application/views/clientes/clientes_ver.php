@@ -102,18 +102,18 @@
                                         <p><?=$contacto['puesto']?></p>
                                         <p><?=$contacto['correo']?></p>
                                         <p><?=$contacto['telefono']?></p>
-                                        <div class="contacto-opciones">
-                                            <a href="#editarContacto" class="modal-trigger"
-                                               title="<?= label('formCliente_contactoEditar') ?>">
-                                                <i class="mdi-editor-mode-edit"></i>
-                                            </a>
-                                            <a href="#" title="<?= label('formCliente_contactoDescargar')?>">
-                                                <i class="mdi-file-file-download"></i>
-                                            </a>
-                                            <a href="#eliminarContacto" class="modal-trigger" title="<?= label('formCliente_contactoEliminar')?>">
-                                                <i class="mdi-action-delete"></i>
-                                            </a>
-                                        </div>
+<!--                                        <div class="contacto-opciones">-->
+<!--                                            <a href="#editarContacto" class="modal-trigger"-->
+<!--                                               title="--><?//= label('formCliente_contactoEditar') ?><!--">-->
+<!--                                                <i class="mdi-editor-mode-edit"></i>-->
+<!--                                            </a>-->
+<!--                                            <a href="#" title="--><?//= label('formCliente_contactoDescargar')?><!--">-->
+<!--                                                <i class="mdi-file-file-download"></i>-->
+<!--                                            </a>-->
+<!--                                            <a href="#eliminarContacto" class="modal-trigger" title="--><?//= label('formCliente_contactoEliminar')?><!--">-->
+<!--                                                <i class="mdi-action-delete"></i>-->
+<!--                                            </a>-->
+<!--                                        </div>-->
                                         <div class="contacto-principal es-principal">
                                             <a href="#cambiarPrincipal" class="modal-trigger" title="<?= label('formCliente_contactoPrincipal') ?>">
                                                 <i class="mdi-action-done"></i>
