@@ -17,6 +17,7 @@ class Servicios extends CI_Controller
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
         $data['lista'] = $this->Servicio_model->cargarTodos($idEmpresa);
+        $data['gastos'] = $this->Servicio_model->gastosVariables($idEmpresa);
 
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
@@ -24,14 +25,18 @@ class Servicios extends CI_Controller
         $this->load->view('layout/default/footer');
     }
 
-
     public function agregar()
     {
         verificarLogin();//helper
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+        $data['gastos'] = $this->Servicio_model->gastosVariables($idEmpresa);
+        $data['personas'] = $this->Servicio_model->personas($idEmpresa);
+        $data['categorias'] = $this->Servicio_model->categorias($idEmpresa);
 
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
-        $this->load->view('servicios/servicios');
+        $this->load->view('servicios/servicios', $data);
         $this->load->view('layout/default/footer');
     }
 
@@ -153,6 +158,17 @@ class Servicios extends CI_Controller
         } else {
             //correcto
             echo 1;
+        }
+    }
+
+    public function cargarGasto()
+    {
+        $id = $_POST['idEditar'];
+        $resultado = $this->Servicio_model->cargarGasto(decryptIt($id));
+        if ($resultado === false || $resultado === array()) {
+            echo 0;
+        } else {
+            echo json_encode($resultado);
         }
     }
 

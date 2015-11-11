@@ -162,9 +162,6 @@ class Servicio_model extends CI_Model
         }
     }
 
-
-
-
     function modificar($data)
     {
         try{
@@ -225,6 +222,124 @@ class Servicio_model extends CI_Model
 
             $this->db->trans_commit();
             return true;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+    function gastosVariables($idEmpresa) {
+        try{
+            $this->db->trans_begin();
+
+            $gastos = $this->db->get_where('gasto', array('idEmpresa' => $idEmpresa, 'gastoFijo' => 0, 'eliminado' => 0));
+            if (!$gastos) {
+                throw new Exception("Error en la BD");
+            }
+            $resultado = $gastos->result_array();
+
+            $this->db->trans_commit();
+            return $resultado;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+    function personas($idEmpresa) {
+        try{
+            $this->db->trans_begin();
+
+            $personas = $this->db->get_where('proveedor', array('idEmpresa' => $idEmpresa, 'eliminado' => 0));
+            if (!$personas) {
+                throw new Exception("Error en la BD");
+            }
+            $resultado = $personas->result_array();
+
+            $this->db->trans_commit();
+            return $resultado;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+    function categorias($idEmpresa) {
+        try{
+            $this->db->trans_begin();
+
+            $categorias = $this->db->get_where('categoriagasto', array('idEmpresa' => $idEmpresa, 'eliminado' => 0));
+            if (!$categorias) {
+                throw new Exception("Error en la BD");
+            }
+            $resultado = $categorias->result_array();
+
+            $this->db->trans_commit();
+            return $resultado;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+    function cargarGasto($id)
+    {
+        try {
+            $this->db->trans_begin();
+
+            $query = $this->db->get_where('gasto', array('idGasto' => $id, 'eliminado' => 0));
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+            $row = array();
+            if ($query->num_rows() > 0) {
+                $array = $query->result_array();
+                $row = array_shift($array);//obtiene el primer elemento.. el [0] no sirve en el server
+            }
+
+            $this->db->select('nombre');
+            $this->db->where('idCategoriaGasto' , $row['idCategoriaGasto']);
+            $query1 = $this->db->get('categoriagasto');
+            $this->db->select('nombre');
+            $this->db->where('idFormaPago', $row['formaPago']);
+            $query2 = $this->db->get('formaPago');
+            $this->db->select('nombre');
+            $this->db->where('idProveedor', $row['idProveedor']);
+            $query3 = $this->db->get('proveedor');
+            if (!$query1 || !$query2 || !$query3) {
+                throw new Exception("Error en la BD");
+            }
+
+            $categoria = '';
+            if($query1->num_rows() > 0) {
+                $valores_query1 = $query1->result_array();
+                $valor = array_shift($valores_query1);
+                $categoria = $valor['nombre'];
+            }
+            $formaPago = '';
+            if($query2->num_rows() > 0) {
+                $valores_query2 = $query2->result_array();
+                $valor = array_shift($valores_query2);
+                $formaPago = $valor['nombre'];
+            }
+            $persona = '';
+            if($query3->num_rows() > 0) {
+                $valores_query3 = $query3->result_array();
+                $valor = array_shift($valores_query3);
+                $persona = $valor['nombre'];
+            }
+            $row['datosAdicionales'] = array(
+                'categoria' => $categoria,
+                'formaPago' => $formaPago,
+                'persona' => $persona
+            );
+            if($row['gastoFijo']) {
+                $row['datosAdicionales']['tipo'] = 'Fijo';
+            } else {
+                $row['datosAdicionales']['tipo'] = 'Variable';
+            }
+//            print_r ($row);exit();
+
+            $this->db->trans_commit();
+            return $row;
         } catch (Exception $e) {
             $this->db->trans_rollback();
             return false;

@@ -298,6 +298,12 @@ $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos selec
     $lang['categoriaGasto_error_nombreExisteEnBD'] = 'El nombre de categoría de gastos indicado ya existe.';
     $lang['categoriasGasto_categoriaEditadoCorrectamente'] = 'La categoría de gastos fue editada correctamente.';
 
+//Gastos en servicio
+    $lang['formServicio_seleccioneGasto'] = 'Seleccione el gasto';
+    $lang['formServicio_seleccioneCategoria'] = 'Seleccione la categoría';
+    $lang['formServicio_seleccioneProveedor'] = 'Seleccione el proveedor';
+    $lang['agregarGastos_categoriaGasto'] = 'Categoría de gasto';
+
 //Tipos de moneda
 	$lang['tituloTiposMoneda'] = 'Tipos de moneda';
 	$lang['tiposMoneda_defecto'] = 'Tipo de moneda por defecto';
