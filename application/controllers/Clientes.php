@@ -50,12 +50,19 @@ class Clientes extends CI_Controller
         $data['medios'] = $this->input->post('cliente_medios');
 
         $juridico = $this->input->post('cliente_tipo');
+
+        $todosVendedores = 0;
+        if ($this->input->post('checkbox_todosVendedores')) {
+            $todosVendedores = 1;
+        }
         
         if ($juridico) {
             $enviarFacturas = 0;
             if ($this->input->post('checkbox_correoClientejuridico')) {
                 $enviarFacturas = 1;
             }
+             
+            
             $data['datos'] = array(
                 'idEmpresa' => $idEmpresa, 
                 'juridico' => $juridico,
@@ -74,6 +81,7 @@ class Clientes extends CI_Controller
                 // 'fechaNacimiento' => null,
                 'correo' => $this->input->post('clientejuridico_correo'),
                 'fax' => $this->input->post('clientejuridico_fax'),
+                'todosVendedores' => $todosVendedores, 
                 'activo' => '1',
                 'eliminado' => '0'
             );
@@ -100,6 +108,7 @@ class Clientes extends CI_Controller
                 'fechaNacimiento' => date("Y-m-d", strtotime($this->input->post('cliente_fechaNacimiento'))),
                 'correo' => $this->input->post('cliente_correo'),
                 // 'fax' => null,
+                'todosVendedores' => $todosVendedores, 
                 'activo' => '1',
                 'eliminado' => '0'
             );

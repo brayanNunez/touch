@@ -614,6 +614,8 @@ $lang['formCliente_contactoSecundario'] = 'Cambiar a contacto principal';
     $lang['formCliente_nombreFantasia'] = 'Nombre de fantasía';
     $lang['formCliente_telefono'] = 'Número telefónico';
     $lang['formCliente_fax'] = 'Fax';
+    $lang['formCliente_todos'] = 'Todos los vendedores';
+    
 
 //Formulario de empleados
     $lang['Empleado_tablaNombre'] = 'Nombre';

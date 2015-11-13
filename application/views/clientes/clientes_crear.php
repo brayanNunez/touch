@@ -26,7 +26,7 @@
                                     <div class="row">
 
                                         <div class="input-field col s12">
-                                            <select name="cliente_tipo" onchange="datosCliente(this)">
+                                            <select  id="cliente_tipo" name="cliente_tipo" onchange="datosCliente(this)">
                                                 <option value="0" selected><?= label('formCliente_fisica'); ?></option>
                                                 <option value="1"><?= label('formCliente_juridica'); ?></option>
                                             </select>
@@ -197,9 +197,18 @@
                                                 </div>
                                             </div>
                                             <div id="tab-infoAdicional" class="card col s12">
+
                                                 <div class="inputTag col s12">
                                                     <label for="vendedoresCliente"><?= label('formCliente_cotizador'); ?></label>
-                                                    <br>
+
+                                                    <div>
+                                                        <input value='1' type="checkbox" class="filled-in" id="checkbox_todosVendedores" name="checkbox_todosVendedores" />
+                                                        <label for="checkbox_todosVendedores">
+                                                            <?= label('formCliente_todos') ?>
+                                                        </label>
+                                                    </div>
+                                                    
+                                                    <!-- <br> -->
                                                     <div id="vendedoresCliente" class="example tags_vendedores">
                                                         <div class="bs-example">
                                                             <input placeholder="<?= label('formCliente_anadirVendedor'); ?>" type="text"/>
@@ -289,6 +298,15 @@
 
 <script>
 
+    $('#checkbox_todosVendedores').on('click', function(){
+         if ($(this).prop('checked')) {
+            $('#vendedoresCliente').hide();
+        } else {
+            $('#vendedoresCliente').show();
+        }
+    });
+
+
     $(document).on('ready', function(){
 
         var config = {'.chosen-select'           : {}}
@@ -300,9 +318,18 @@
 
 
     function validacionCorrecta(){
+         var tipoCliente = $('#cliente_tipo option:selected').val();
+         // alert(tipoCliente);
+         var identificacion = '';
+         if (tipoCliente == 0) {
+            identificacion = $('#cliente_id').val();
+         } else{
+            identificacion = $('#clientejuridico_id').val();
+         };
+         alert(tipoCliente + ', '+ identificacion)
 
         $.ajax({
-           data: {cliente_id :  $('#cliente_id').val()},
+           data: {cliente_id :  identificacion},
            url:   '<?=base_url()?>clientes/existeIdentificacion',
            type:  'post',
            success:  function (response) {
@@ -312,7 +339,12 @@
                 break;
                 case '1':
                     alert('<?= label("clienteIdentificacionExistente"); ?>');
-                    $('#cliente_id').focus();
+                    if (tipoCliente == 0) {
+                        $('#cliente_id').focus();
+                     } else{
+                        $('#clientejuridico_id').focus();
+                     };
+                    
                 break;
                 case '2':
                     var url = $('form').attr('action');
