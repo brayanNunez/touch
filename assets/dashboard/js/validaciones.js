@@ -682,4 +682,23 @@
             }
         });
 
+        var reglasCategoriaPersona =  {
+            categoriaPersona_nombre: {required: true, maxlength: 45},
+            categoriaPersona_descripcion: {required: true, maxlength: 200}
+        };
+        $('#form_categoriaPersona').validate({
+            rules: reglasCategoriaPersona,
+            errorElement: 'div',
+            submitHandler: function(form) {
+                validacionCorrecta();
+            }
+        });
+        $('#form_categoriaPersonaEditar').validate({
+            rules: reglasCategoriaPersona,
+            errorElement: 'div',
+            submitHandler: function(form) {
+                validacionCorrectaEditar();
+            }
+        });
+
     });

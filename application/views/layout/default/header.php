@@ -249,7 +249,7 @@
                             <a href="<?= base_url(); ?>categoriasGasto"><?= label('categoriaDeGastos'); ?></a>
                         </li>
                         <li>
-                            <a href="<?= base_url(); ?>impuesto"><?= label('categoriaDeProveedores'); ?></a>
+                            <a href="<?= base_url(); ?>categoriasPersona"><?= label('categoriaDeProveedores'); ?></a>
                         </li>
                         <li>
                             <a href="<?= base_url(); ?>impuesto"><?= label('horas'); ?></a>

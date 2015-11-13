@@ -298,6 +298,20 @@ $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos selec
     $lang['categoriaGasto_error_nombreExisteEnBD'] = 'El nombre de categoría de gastos indicado ya existe.';
     $lang['categoriasGasto_categoriaEditadoCorrectamente'] = 'La categoría de gastos fue editada correctamente.';
 
+//Categorias de persona
+    $lang['tituloCategoriasPersonas'] = 'Categorías de personas';
+    $lang['categoriaPersonaNueva'] = 'Agregar categoría de personas';
+    $lang['tablaCategoriasPersona_nombre'] = 'Nombre';
+    $lang['tablaCategoriasPersona_descripcion'] = 'Descripción';
+    $lang['tablaCategoriasPersona_opciones'] = 'Opciones';
+    $lang['formCategoriaPersona_nombre'] = 'Nombre';
+    $lang['formCategoriaPersona_descripcion'] = 'Descripción';
+    $lang['categoriaPersona_guardarCambios'] = 'Guardar cambios';
+    $lang['confirmarEliminarCategoriaPersona'] = '¿Desea eliminar la categoría de personas seleccionada?';
+    $lang['categoriasPersona_categoriaGuardadoCorrectamente'] = 'La categoría de personas fue guardada correctamente.';
+    $lang['categoriaPersona_error_nombreExisteEnBD'] = 'El nombre de categoría de personas indicado ya existe.';
+    $lang['categoriasPersona_categoriaEditadoCorrectamente'] = 'La categoría de personas fue editada correctamente.';
+
 //Gastos en servicio
     $lang['formServicio_seleccioneGasto'] = 'Seleccione el gasto';
     $lang['formServicio_seleccioneCategoria'] = 'Seleccione la categoría';
