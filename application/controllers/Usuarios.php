@@ -234,6 +234,18 @@ class Usuarios extends CI_Controller
             echo 1;
     }
 
+    public function vendedorSugerencia()
+    {
+
+
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $resultado = $this->Usuario_model->cargarVendedores($idEmpresa); 
+
+        echo json_encode($resultado); 
+    }
+
 
 
     //Metodo llamado mediante ajax
