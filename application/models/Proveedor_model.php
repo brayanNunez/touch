@@ -65,15 +65,17 @@ class Proveedor_model extends CI_Model
                 $query = $this->db->update('proveedor', array('fotografia' => $nombreFotografia));
             }
 
-            $palabras = explode(",", $data['palabras']);
-            foreach ($palabras as $palabra) {
-                $row = array(
-                    'idProveedor' => $insert_id,
-                    'descripcion' => $palabra
-                );
-                $query = $this->db->insert('palabraclaveproveedor', $row);
-                if (!$query) {
-                    throw new Exception("Error en la BD");
+            if ($data['palabras'] != '') {
+                $palabras = explode(",", $data['palabras']);
+                foreach ($palabras as $palabra) {
+                    $row = array(
+                        'idProveedor' => $insert_id,
+                        'descripcion' => $palabra
+                    );
+                    $query = $this->db->insert('palabraclaveproveedor', $row);
+                    if (!$query) {
+                        throw new Exception("Error en la BD");
+                    }
                 }
             }
 
@@ -205,20 +207,22 @@ class Proveedor_model extends CI_Model
                 throw new Exception("Error en la BD");
             }
 
-            $palabras = explode(",", $data['palabras']); ;
             $this->db->where('idProveedor', $data['id']);
             $query = $this->db->delete('palabraclaveproveedor');
-            if (!$query) {
-                throw new Exception("Error en la BD");
-            }
-            foreach ($palabras as $palabra) {
-                $row = array(
-                    'idProveedor' => $data['id'],
-                    'descripcion' => $palabra
-                );
-                $query = $this->db->insert('palabraclaveproveedor', $row);
+            if ($data['palabras'] != '') {
+                $palabras = explode(",", $data['palabras']); 
                 if (!$query) {
                     throw new Exception("Error en la BD");
+                }
+                foreach ($palabras as $palabra) {
+                    $row = array(
+                        'idProveedor' => $data['id'],
+                        'descripcion' => $palabra
+                    );
+                    $query = $this->db->insert('palabraclaveproveedor', $row);
+                    if (!$query) {
+                        throw new Exception("Error en la BD");
+                    }
                 }
             }
 

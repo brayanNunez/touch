@@ -211,7 +211,7 @@
                                                     <!-- <br> -->
                                                     <div id="vendedoresCliente" class="example tags_vendedores">
                                                         <div class="bs-example">
-                                                            <input placeholder="<?= label('formCliente_anadirVendedor'); ?>" type="text"/>
+                                                            <input id="cliente_vendedores" name="cliente_vendedores" placeholder="<?= label('formCliente_anadirVendedor'); ?>" type="text"/>
                                                         </div>
                                                     </div>
                                                     <br>
@@ -363,6 +363,7 @@
                                     $('#cliente_nacionalidad').val('').trigger('chosen:updated');
                                     document.getElementById('elementos-cliente-fisico').style.display = 'block';
                                     document.getElementById('elementos-cliente-juridico').style.display = 'none';
+                                    $('#cliente_vendedores').tagsinput('removeAll');
                                }
                            }
                          });

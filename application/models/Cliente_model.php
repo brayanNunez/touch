@@ -57,24 +57,43 @@ class Cliente_model extends CI_Model
             $query = $this->db->insert('cliente', $data['datos']);
             if (!$query) throw new Exception("Error en la BD");   
             $insert_id = $this->db->insert_id();
-            $gustos = explode(",", $data['gustos']); ;
-            foreach ($gustos as $gusto) {
-                $row = array(
-                'idCliente' => $insert_id,
-                'nombre' => $gusto
-                );
-                $query = $this->db->insert('gusto', $row);
-                if (!$query) throw new Exception("Error en la BD");   
+
+            if ($data['gustos'] != '') {
+                $gustos = explode(",", $data['gustos']); ;
+                foreach ($gustos as $gusto) {
+                    $row = array(
+                    'idCliente' => $insert_id,
+                    'nombre' => $gusto
+                    );
+                    $query = $this->db->insert('gusto', $row);
+                    if (!$query) throw new Exception("Error en la BD");   
+                }
             }
 
-            $medios = explode(",", $data['medios']); ;
-            foreach ($medios as $medio) {
-                $row = array(
-                'idCliente' => $insert_id,
-                'nombre' => $medio
-                );
-                $query = $this->db->insert('medio', $row);
-                if (!$query) throw new Exception("Error en la BD");   
+            if ($data['medios'] != '') {
+                $medios = explode(",", $data['medios']); ;
+                foreach ($medios as $medio) {
+                    $row = array(
+                    'idCliente' => $insert_id,
+                    'nombre' => $medio
+                    );
+                    $query = $this->db->insert('medio', $row);
+                    if (!$query) throw new Exception("Error en la BD");   
+                }
+            }
+
+            if ($data['vendedores'] != '') {
+                $vendedores = explode(",", $data['vendedores']);
+                foreach ($vendedores as $vendedor) {
+                    $row = array(
+                        'idCliente' => $insert_id,
+                        'idUsuario' => $vendedor
+                    );
+                    $query = $this->db->insert('usuario_Cliente', $row);
+                    if (!$query) {
+                        throw new Exception("Error en la BD");
+                    }
+                }
             }
 
             $contactos = $data['contactos'];
@@ -188,30 +207,34 @@ class Cliente_model extends CI_Model
             $query = $this->db->update('cliente', $data['datos']);
             if (!$query) throw new Exception("Error en la BD");   
             
-            $gustos = explode(",", $data['gustos']); ;
             $this->db->where('idCliente', $data['id']);
             $query = $this->db->delete('gusto');
-            if (!$query) throw new Exception("Error en la BD"); 
-            foreach ($gustos as $gusto) {
-                $row = array(
-                'idCliente' => $data['id'],
-                'nombre' => $gusto
-                );
-                $query = $this->db->insert('gusto', $row);
+            if ($data['gustos'] != '') {
+                $gustos = explode(",", $data['gustos']); ;
                 if (!$query) throw new Exception("Error en la BD"); 
+                foreach ($gustos as $gusto) {
+                    $row = array(
+                    'idCliente' => $data['id'],
+                    'nombre' => $gusto
+                    );
+                    $query = $this->db->insert('gusto', $row);
+                    if (!$query) throw new Exception("Error en la BD"); 
+                }
             }
 
-            $medios = explode(",", $data['medios']); ;
             $this->db->where('idCliente', $data['id']);
             $query = $this->db->delete('medio');
-            if (!$query) throw new Exception("Error en la BD"); 
-            foreach ($medios as $medio) {
-                $row = array(
-                'idCliente' => $data['id'],
-                'nombre' => $medio
-                );
-                $query = $this->db->insert('medio', $row);
+            if ($data['medios'] != '') {
+                $medios = explode(",", $data['medios']); ;
                 if (!$query) throw new Exception("Error en la BD"); 
+                foreach ($medios as $medio) {
+                    $row = array(
+                    'idCliente' => $data['id'],
+                    'nombre' => $medio
+                    );
+                    $query = $this->db->insert('medio', $row);
+                    if (!$query) throw new Exception("Error en la BD"); 
+                }
             }
 
             $nuevos = $data['nuevos'];

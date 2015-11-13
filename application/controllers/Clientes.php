@@ -48,6 +48,7 @@ class Clientes extends CI_Controller
 
         $data['gustos'] = $this->input->post('cliente_gustos');
         $data['medios'] = $this->input->post('cliente_medios');
+        $data['vendedores'] = $this->input->post('cliente_vendedores');
 
         $juridico = $this->input->post('cliente_tipo');
 
