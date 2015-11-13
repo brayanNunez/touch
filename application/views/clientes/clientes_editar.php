@@ -2,18 +2,20 @@
     <form id="form_cliente" class="col s12" action="<?= base_url() ?>clientes/modificar/<?php if (isset($resultado)) echo encryptIt($resultado['idCliente']);?>" method="POST">
 
         <div class="row">
-            <?php
-            if (isset($resultado)) {
-                $juridico = $resultado['juridico'];
-                if (!$juridico) {
-                   ?>
+
                     <div class="input-field col s12">
-                        <select name="cliente_tipo" onchange="datosCliente(this)">
+                        <select id="cliente_tipo" name="cliente_tipo" onchange="datosCliente(this)">
                             <option value="0" selected><?= label('formCliente_fisica'); ?></option>
                             <option value="1"><?= label('formCliente_juridica'); ?></option>
                         </select>
                         <label for="cliente_tipo"><?= label('formCliente_tipoPersona'); ?></label>
                     </div>
+            <?php
+            if (isset($resultado)) {
+                $juridico = $resultado['juridico'];
+                if (!$juridico) {
+                   ?>
+                    
                     <div class="input-field col s12">
                         <select name="cliente_nacionalidad">
                             <option value="" selected disabled><?= label('formCliente_seleccioneUno'); ?></option>
@@ -117,13 +119,7 @@
                          } else {
                         ?>
 
-                            <div class="input-field col s12">
-                                <select name="cliente_tipo" onchange="datosCliente(this)">
-                                    <option value="0" ><?= label('formCliente_fisica'); ?></option>
-                                    <option value="1" selected><?= label('formCliente_juridica'); ?></option>
-                                </select>
-                                <label for="cliente_tipo"><?= label('formCliente_tipoPersona'); ?></label>
-                            </div>
+                        
                             <div class="input-field col s12">
                                 <select name="cliente_nacionalidad">
                                     <option value="" selected
@@ -447,11 +443,30 @@
 
 <script>
 
+    $(document).ready(function () {
+        // $juridico = $resultado['juridico'];
+        var tipo = "<?= $resultado['juridico'] ?>";
+        // alert(tipo);
+        if(tipo == 1) {
+            $('#cliente_tipo').val(1).change();
+        } else {
+            $('#cliente_tipo').val(0).change();
+        }
+    });
+
     var miIdActual = "<?php if (isset($resultado)) {echo $resultado['identificacion'];} ?>";
     function validacionCorrecta(){
 
-        var idNuevo = $('#cliente_id').val();
-        if (miIdActual == idNuevo) {
+        var tipoCliente = $('#cliente_tipo option:selected').val();
+        // alert(tipoCliente);
+         var identificacion = '';
+         if (tipoCliente == 0) {
+            identificacion = $('#cliente_id').val();
+         } else{
+            identificacion = $('#clientejuridico_id').val();
+         };
+
+        if (miIdActual == identificacion) {
 
             var url = $('form').attr('action');
             var method = $('form').attr('method'); 
@@ -472,7 +487,7 @@
         } else {
 
                 $.ajax({
-                       data: {cliente_id : idNuevo},
+                       data: {cliente_id : identificacion},
                        url:   '<?=base_url()?>clientes/existeIdentificacion',
                        type:  'post',
                        success:  function (response) {
@@ -482,7 +497,11 @@
                             break;
                             case '1':
                                 alert('<?= label("clienteIdentificacionExistente"); ?>');
-                                $('#cliente_id').focus();
+                                if (tipoCliente == 0) {
+                                    $('#cliente_id').focus();
+                                 } else{
+                                    $('#clientejuridico_id').focus();
+                                 };
                             break;
                             case '2':
 

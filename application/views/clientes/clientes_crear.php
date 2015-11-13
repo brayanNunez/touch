@@ -298,6 +298,8 @@
 
 <script>
 
+  
+
     $('#checkbox_todosVendedores').on('click', function(){
          if ($(this).prop('checked')) {
             $('#vendedoresCliente').hide();
@@ -319,14 +321,12 @@
 
     function validacionCorrecta(){
          var tipoCliente = $('#cliente_tipo option:selected').val();
-         // alert(tipoCliente);
          var identificacion = '';
          if (tipoCliente == 0) {
             identificacion = $('#cliente_id').val();
          } else{
             identificacion = $('#clientejuridico_id').val();
          };
-         alert(tipoCliente + ', '+ identificacion)
 
         $.ajax({
            data: {cliente_id :  identificacion},
@@ -361,6 +361,8 @@
                                     $('#transaccionCorrecta').openModal();
                                     $('form')[0].reset();
                                     $('#cliente_nacionalidad').val('').trigger('chosen:updated');
+                                    document.getElementById('elementos-cliente-fisico').style.display = 'block';
+                                    document.getElementById('elementos-cliente-juridico').style.display = 'none';
                                }
                            }
                          });

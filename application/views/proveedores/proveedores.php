@@ -329,7 +329,7 @@
                                     case '1':
                                         $('#linkModalGuardado').click();
                                         $('form')[0].reset();
-                                        $('#persona_nacionalidad').val('').trigger('chosen:updated');
+                                        $('#persona_nacionalidad').val('').trigger('chosen:updated');      
                                         break;
                                 }
                             },
