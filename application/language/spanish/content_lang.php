@@ -320,6 +320,16 @@ $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos selec
     $lang['formPersona_anadirCategoria'] = 'Añadir categoría';
     $lang['formPersona_categorias'] = 'Categorías de persona';
 
+//Gastos en persona
+    $lang['formProveedor_gastosTipo'] = 'Tipo';
+    $lang['formProveedor_gastosCategoria'] = 'Categoría';
+    $lang['formProveedor_gastosCodigo'] = 'Código';
+    $lang['formProveedor_gastosNombre'] = 'Nombre';
+    $lang['formProveedor_gastosTiempo'] = 'Forma de pago';
+    $lang['formProveedor_gastosMonto'] = 'Monto';
+    $lang['formProveedor_gastosOpciones'] = 'Opciones';
+    $lang['formProveedor_nuevoGasto'] = 'Agregar nuevo gasto';
+
 //Gastos en servicio
     $lang['formServicio_seleccioneGasto'] = 'Seleccione el gasto';
     $lang['formServicio_seleccioneCategoria'] = 'Seleccione la categoría';

@@ -200,17 +200,45 @@ class Proveedor_model extends CI_Model
                 }
                 $row['contactos'] = $contactos->result_array();
 
-                $presupuestos = $this->db->get_where('presupuestoproveedor', array('idProveedor' => $id,  'eliminado' => 0));
-                if (!$presupuestos) {
+                $gastos = $this->db->get_where('gasto', array('idProveedor' => $id,  'eliminado' => 0));
+                if (!$gastos) {
                     throw new Exception("Error en la BD");
                 }
-                $row['presupuestos'] = $presupuestos->result_array();
+                $row['gastos'] = $gastos->result_array();
+                $contador = 0;
+                foreach ($row['gastos'] as $gasto) {
+                    $this->db->select('nombre');
+                    $this->db->where('idCategoriaGasto' , $gasto['idCategoriaGasto']);
+                    $query1 = $this->db->get('categoriagasto');
+                    $this->db->select('nombre');
+                    $this->db->where('idFormaPago', $gasto['formaPago']);
+                    $query2 = $this->db->get('formaPago');
+                    if (!$query1 || !$query2) {
+                        throw new Exception("Error en la BD");
+                    }
 
-                $tipos = $this->db->get('tipopresupuesto');
-                if (!$tipos) {
-                    throw new Exception("Error en la BD");
+                    $categoria = '';
+                    if($query1->num_rows() > 0) {
+                        $valores_query1 = $query1->result_array();
+                        $valor = array_shift($valores_query1);
+                        $categoria = $valor['nombre'];
+                    }
+                    $formaPago = '';
+                    if($query2->num_rows() > 0) {
+                        $valores_query2 = $query2->result_array();
+                        $valor = array_shift($valores_query2);
+                        $formaPago = $valor['nombre'];
+                    }
+                    $row['gastos'][$contador]['datosAdicionales'] = array(
+                        'categoria' => $categoria,
+                        'formaPago' => $formaPago
+                    );
+                    if($gasto['gastoFijo']) {
+                        $row['gastos'][$contador++]['datosAdicionales']['tipo'] = 'Fijo';
+                    } else {
+                        $row['gastos'][$contador++]['datosAdicionales']['tipo'] = 'Variable';
+                    }
                 }
-                $row['tipos'] = $tipos->result_array();
 
                 $paises = $this->db->get('pais');
                 if (!$paises) {
