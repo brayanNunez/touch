@@ -50,6 +50,7 @@ class Proveedores extends CI_Controller
         $photo = explode('.',$this->input->post('persona_fotografia'));
         $data['extension'] = end($photo);
 
+        $data['categorias'] = $this->input->post('categorias_persona');
         $data['palabras'] = $this->input->post('persona_palabras');
         if($empleado == 2) {
             $data['datos'] = array(

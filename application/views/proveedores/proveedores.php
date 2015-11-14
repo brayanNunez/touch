@@ -141,6 +141,17 @@
                                                           class="materialize-textarea" rows="4"></textarea>
                                                 <label for="persona_descripcion"><?= label('formPersona_descripcion'); ?></label>
                                             </div>
+
+                                            <div class="inputTag col s12">
+                                                <label for="categorias_persona"><?= label('formPersona_categorias'); ?></label>
+                                                <br>
+                                                <div id="categoriasPersona" class="example tags_Categorias">
+                                                    <div class="bs-example">
+                                                        <input id="categorias_persona" name="categorias_persona" placeholder="<?= label('formPersona_anadirCategoria'); ?>" type="text"/>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                            </div>
                                         </div>
 
                                         <div class="col s12">
@@ -485,6 +496,32 @@
                     elementoActivo.css("display", "block");
                     elementoActivo.style.display = 'block';
                 }
+            }
+        });
+    });
+</script>
+<!--Script de tags de categorias-->
+<script>
+    $(document).ready(function () {
+        var CategoriasPersona = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('nombre'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/CategoriasPersona.json'
+            prefetch: {
+                url: '<?=base_url()?>categoriasPersona/categoriasSugerencia',
+                ttl: 1000
+            }
+        });
+        CategoriasPersona.initialize();
+
+        elt = $('.tags_Categorias > > input');
+        elt.tagsinput({
+            itemValue: 'idCategoriaPersona',
+            itemText: 'nombre',
+            typeaheadjs: {
+                name: 'CategoriasPersona',
+                displayKey: 'nombre',
+                source: CategoriasPersona.ttAdapter()
             }
         });
     });
