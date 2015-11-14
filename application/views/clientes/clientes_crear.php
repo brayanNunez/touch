@@ -355,6 +355,7 @@
                            data: $('form').serialize(), 
                            success: function(response)
                            {
+                                // alert(response);
                                if (response == 0) {
                                    $('#transaccionIncorrecta').openModal();
                                } else {
@@ -366,6 +367,7 @@
                                     $('#cliente_vendedores').tagsinput('removeAll');
                                     $('#cliente_gustos').tagsinput('removeAll');
                                     $('#cliente_medios').tagsinput('removeAll');
+                                    $('#vendedoresCliente').show();
                                }
                            }
                          });

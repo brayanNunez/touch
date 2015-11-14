@@ -46,9 +46,22 @@ class Clientes extends CI_Controller
         $idEmpresa = $sessionActual['idEmpresa'];
         // $data['palabras'] = $this->input->post('empleado_palabras');
 
+        $todosVendedores = 0;
+        if ($this->input->post('checkbox_todosVendedores')) {
+            $todosVendedores = 1;
+        }
+        
+        $listaVendedores = '';
+        if($todosVendedores == 0) {
+           $listaVendedores = $this->input->post('cliente_vendedores');
+        }
+        // echo $listaVendedores; exit();
+
+
+
         $data['gustos'] = $this->input->post('cliente_gustos');
         $data['medios'] = $this->input->post('cliente_medios');
-        $data['vendedores'] = $this->input->post('cliente_vendedores');
+        $data['vendedores'] = $listaVendedores;
 
         $juridico = $this->input->post('cliente_tipo');
 
@@ -192,18 +205,24 @@ class Clientes extends CI_Controller
         // $idEmpresa = $sessionActual['idEmpresa'];
         // $data['palabras'] = $this->input->post('empleado_palabras');
 
+        $todosVendedores = 0;
+        if ($this->input->post('checkbox_todosVendedores')) {
+            $todosVendedores = 1;
+        }
+        
+        $listaVendedores = '';
+        if($todosVendedores == 0) {
+           $listaVendedores = $this->input->post('cliente_vendedores');
+        }
+
         $data['gustos'] = $this->input->post('cliente_gustos');
         $data['medios'] = $this->input->post('cliente_medios');
-        $data['vendedores'] = $this->input->post('cliente_vendedores');
+        $data['vendedores'] = $listaVendedores;
         // echo $data['vendedores']; exit();
         // $data['vendedores'] = $this->input->post('cliente_vendedores');
 
         $juridico = $this->input->post('cliente_tipo');
 
-        $todosVendedores = 0;
-        if ($this->input->post('checkbox_todosVendedores')) {
-            $todosVendedores = 1;
-        }
         
         if ($juridico) {
             $enviarFacturas = 0;

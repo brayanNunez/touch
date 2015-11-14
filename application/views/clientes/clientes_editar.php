@@ -476,6 +476,12 @@
         } else {
             $('#cliente_tipo').val(0).change();
         }
+
+        var checkVendedores = "<?= $resultado['todosVendedores'] ?>";
+        // alert(checkVendedores
+        if(checkVendedores == 1) {
+            $('#checkbox_todosVendedores').click();
+        }
     });
 
     var miIdActual = "<?php if (isset($resultado)) {echo $resultado['identificacion'];} ?>";
