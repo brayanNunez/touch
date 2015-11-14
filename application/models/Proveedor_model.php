@@ -171,6 +171,17 @@ class Proveedor_model extends CI_Model
                 }
                 $row['palabras'] = $palabras->result_array();
 
+                $this->db->select('cp.*');
+                $this->db->from('categoriapersona cp');
+                $this->db->join('categoriapersona_persona cpp', 'cpp.idCategoriaPersona = cp.idCategoriaPersona');
+                $this->db->join('proveedor pr', 'pr.idProveedor = cpp.idPersona');
+                $this->db->where('pr.idProveedor', $id);
+                $categoriasPersona = $this->db->get();
+                if (!$categoriasPersona) {
+                    throw new Exception("Error en la BD");
+                }
+                $row['categorias'] = $categoriasPersona->result_array();
+
                 $this->db->select('im.*');
                 $this->db->from('impuesto im');
                 $this->db->join('impuesto_servicio is', 'is.idImpuesto = im.idImpuesto');

@@ -317,6 +317,9 @@ $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos selec
     $lang['servicio_elegirGastoGasto'] = 'Elegir gasto';
     $lang['servicio_gastoExistente'] = 'El gasto seleccionado ya existe para este servicio.';
 
+    $lang['formPersona_anadirCategoria'] = 'Añadir categoría';
+    $lang['formPersona_categorias'] = 'Categorías de persona';
+
 //Gastos en servicio
     $lang['formServicio_seleccioneGasto'] = 'Seleccione el gasto';
     $lang['formServicio_seleccioneCategoria'] = 'Seleccione la categoría';
