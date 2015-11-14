@@ -16,8 +16,15 @@ class Cotizacion_model extends CI_Model
             $this->db->trans_begin();
             $plantillas = $this->db->get_where('plantilladiseno', array('publica' => '1', 'eliminado'=>0, 'idEmpresa'=> $datos['idEmpresa']));
             if (!$plantillas) throw new Exception("Error en la BD");   
-
             $plantillas = $plantillas->result_array();
+
+            $formaPago = $this->db->get_where('formapago', array('eliminado' => 0,'idEmpresa' => $datos['idEmpresa']));
+            if (!$formaPago)throw new Exception("Error en la BD");
+            $formaPago = $formaPago->result_array();
+
+            $moneda = $this->db->get_where('moneda', array('eliminado' => 0,'idEmpresa' => $datos['idEmpresa']));
+            if (!$moneda)throw new Exception("Error en la BD");
+            $moneda = $moneda->result_array();
 
             $servicios = $this->db->get_where('servicio', array('estado' => 0,'idEmpresa' => $datos['idEmpresa']));
             if (!$servicios)throw new Exception("Error en la BD");
@@ -57,7 +64,10 @@ class Cotizacion_model extends CI_Model
             $data['clientes'] = $misClientes;
             $data['plantillas'] = $plantillas;
             $data['servicios'] = $resultado;
-            // print_r($data['clientes']);exit();
+            $data['formasPago'] = $formaPago;
+            $data['monedas'] = $moneda;
+
+            // print_r($data);exit();
 
             $this->db->trans_commit();
             return $data;

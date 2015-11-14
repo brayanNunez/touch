@@ -47,27 +47,27 @@
         
     }
 
-    function generarAutocompletarFormaPago(id){
-        var miSelect = $('<select data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso1FormaPago" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirFormaPago"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
-        miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso1_elegirFormaPago"); ?></option>');
-        miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
-        miSelect.append('<option value="Almuerzo">Contado</option>');
-        miSelect.append('<option value="Fresco">50-50</option>');
-        miSelect.append('<option value="Hamburguesa">Entrega</option>');
+    // function generarAutocompletarFormaPago(id){
+    //     var miSelect = $('<select data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso1FormaPago" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirFormaPago"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
+    //     miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso1_elegirFormaPago"); ?></option>');
+    //     miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+    //     miSelect.append('<option value="Almuerzo">Contado</option>');
+    //     miSelect.append('<option value="Fresco">50-50</option>');
+    //     miSelect.append('<option value="Hamburguesa">Entrega</option>');
 
-        $('#contenedorSelectFormaPago').html(miSelect);
-    }
+    //     $('#contenedorSelectFormaPago').html(miSelect);
+    // }
 
-    function generarAutocompletarMoneda(id){
-        var miSelect = $('<select data-incluirBoton="0" placeholder="seleccionar" data-tipo="paso1Moneda" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirMoneda"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
-        miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso1_elegirMoneda"); ?></option>');
-        miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
-        miSelect.append('<option value="Almuerzo">Dolar</option>');
-        miSelect.append('<option value="Fresco">Peso</option>');
-        miSelect.append('<option value="Hamburguesa">Colón</option>');
+    // function generarAutocompletarMoneda(id){
+    //     var miSelect = $('<select data-incluirBoton="0" placeholder="seleccionar" data-tipo="paso1Moneda" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirMoneda"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
+    //     miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso1_elegirMoneda"); ?></option>');
+    //     miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+    //     miSelect.append('<option value="Almuerzo">Dolar</option>');
+    //     miSelect.append('<option value="Fresco">Peso</option>');
+    //     miSelect.append('<option value="Hamburguesa">Colón</option>');
 
-        $('#contenedorSelectMoneda').html(miSelect);
-    }
+    //     $('#contenedorSelectMoneda').html(miSelect);
+    // }
 
     // function generarAutocompletarCliente(id){
     //     var miSelect = $('<select data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso1Cliente" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirCliente"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
@@ -186,8 +186,8 @@
         generarAutocompletarPlantilla("paso3_plantilla");
         // generarAutocompletarAtencion("paso1_atencion");
         // generarAutocompletarCliente("paso1_cliente");
-        generarAutocompletarMoneda("paso1_moneda");
-        generarAutocompletarFormaPago("paso1_formaPago");
+        // generarAutocompletarMoneda("paso1_moneda");
+        // generarAutocompletarFormaPago("paso1_formaPago");
 
         generarListas();
 
@@ -221,6 +221,9 @@
                     break;
                     case 'paso1Cliente':
                         cargarAtencion(valor);
+                    break;
+                    case 'paso1Moneda':
+                        cargarTipoCambio(valor);
                     break;
 
 

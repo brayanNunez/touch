@@ -65,13 +65,33 @@
         <div class="input-field col s12 m6 l6 inputSelector">            
             <label for="contenedorSelectFormaPago"><?= label("paso1_labelFormaPago"); ?></label>
             <br>
-            <div id="contenedorSelectFormaPago">    
+            <div id="contenedorSelectFormaPago">
+                <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso1FormaPago" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirFormaPago"); ?>" class="chosen-select browser-default" style="width:350px;" tabindex="2">
+                    <option value="0" disabled selected style="display:none;"><?= label("paso1_elegirFormaPago"); ?></option>
+                    <option value="nuevo"><?= label("agregarNuevo"); ?></option>
+                    <?php 
+                        foreach ($resultado['formasPago'] as $forma) {
+                            $valor = "value='".$forma['idFormaPago']."'";
+                            echo '<option '.$valor.'>'.$forma['nombre'].'</option>");';
+                        }
+                    ?>
+                </select>    
              </div>
         </div>
         <div class="input-field col s12 m6 l6 inputSelector">            
             <label for="contenedorSelectMoneda"><?= label("paso1_labelTipoMoneda"); ?></label>
             <br>
-            <div id="contenedorSelectMoneda">    
+            <div id="contenedorSelectMoneda"> 
+                <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso1Moneda" id="paso1Moneda" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirMoneda"); ?>" class="chosen-select browser-default" style="width:350px;" tabindex="2">
+                    <option value="0" disabled selected style="display:none;"><?= label("paso1_elegirMoneda"); ?></option>
+                    <option value="nuevo"><?= label("agregarNuevo"); ?></option>
+                    <?php 
+                        foreach ($resultado['monedas'] as $moneda) {
+                            $valor = "value='".$moneda['idMoneda']."'";
+                            echo '<option '.$valor.'>'.$moneda['nombre'].'</option>");';
+                        }
+                    ?>
+                </select>   
              </div>
         </div>
         
@@ -206,8 +226,22 @@
 
     <?php 
         $js_array = json_encode($resultado['clientes']); 
-        echo "var arrayClientes =". $js_array;
+        echo "var arrayClientes =". $js_array.";";
+
+        $js_array = json_encode($resultado['monedas']); 
+        echo "var arrayMonedas =". $js_array;
     ?> 
+
+    function cargarTipoCambio(idMoneda){
+        // alert('aqui');
+        for (var i = 0; i < arrayMonedas.length; i++) {
+            if (arrayMonedas[i]['idMoneda'] == idMoneda) {
+                $('#paso1_tipoCambio').val(arrayMonedas[i]['tipoCambio']);
+                $('#paso1_tipoCambio').focus();
+            } 
+        };
+    }
+
 
     function cargarAtencion(idCliente){
         $('#paso1Atencion').empty(); //remove all child nodes
