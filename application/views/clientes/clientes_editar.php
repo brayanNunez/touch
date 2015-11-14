@@ -352,12 +352,28 @@
                     </div>
                 </div>
                 <div id="tab-infoAdicional-editar" class="card col s12">
-                    <div class="inputTag col s12">
+                    <!-- <div class="inputTag col s12">
                         <label for="vendedoresCliente"><?= label('formCliente_cotizador'); ?></label>
                         <br>
                         <div id="vendedoresCliente" class="example tags_vendedores">
                             <div class="bs-example">
                                 <input placeholder="<?= label('formCliente_anadirVendedor'); ?>" type="text"/>
+                            </div>
+                        </div>
+                        <br>
+                    </div> -->
+                    <div class="inputTag col s12">
+                        <label for="vendedoresCliente"><?= label('formCliente_cotizador'); ?></label>
+
+                        <div>
+                            <input value='1' type="checkbox" class="filled-in" id="checkbox_todosVendedores" name="checkbox_todosVendedores" />
+                            <label for="checkbox_todosVendedores">
+                                <?= label('formCliente_todos') ?>
+                            </label>
+                        </div>
+                        <div id="vendedoresCliente" class="example tags_vendedores">
+                            <div class="bs-example">
+                                <input id="cliente_vendedores" name="cliente_vendedores" placeholder="<?= label('formCliente_anadirVendedor'); ?>" type="text"/>
                             </div>
                         </div>
                         <br>
@@ -443,6 +459,14 @@
 
 <script>
 
+    $('#checkbox_todosVendedores').on('click', function(){
+         if ($(this).prop('checked')) {
+            $('#vendedoresCliente').hide();
+        } else {
+            $('#vendedoresCliente').show();
+        }
+    });
+
     $(document).ready(function () {
         // $juridico = $resultado['juridico'];
         var tipo = "<?= $resultado['juridico'] ?>";
@@ -476,6 +500,7 @@
                    data: $('form').serialize(), 
                    success: function(response)
                    {
+                        // alert(response);
                        if (response == 0) {
                             $('#transaccionIncorrecta').openModal();
                        } else {

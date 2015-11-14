@@ -89,7 +89,7 @@ class Cliente_model extends CI_Model
                         'idCliente' => $insert_id,
                         'idUsuario' => $vendedor
                     );
-                    $query = $this->db->insert('usuario_Cliente', $row);
+                    $query = $this->db->insert('usuario_cliente', $row);
                     if (!$query) {
                         throw new Exception("Error en la BD");
                     }
@@ -185,6 +185,16 @@ class Cliente_model extends CI_Model
                 if (!$contactos) throw new Exception("Error en la BD");   
                 $row['contactos'] = $contactos->result_array();
 
+                $this->db->select("CONCAT(us.nombre, ' ', us.primerApellido, ' ', us.segundoApellido) as nombre, us.idUsuario", false);
+                $this->db->from('usuario us');
+                $this->db->join('usuario_cliente uc', 'uc.idUsuario = us.idUsuario');
+                $this->db->join('cliente cl', 'cl.idCliente = uc.idCliente');
+                $this->db->where('cl.idCliente', $id);
+                $vendedores = $this->db->get();
+                if (!$vendedores) throw new Exception("Error en la BD");   
+                $row['vendedores'] = $vendedores->result_array();
+
+
                 $archivos = $this->db->get_where('archivo', array('idCliente' => $id));
                 if (!$archivos) throw new Exception("Error en la BD");
                 $row['archivos'] = $archivos->result_array();
@@ -236,6 +246,25 @@ class Cliente_model extends CI_Model
                     if (!$query) throw new Exception("Error en la BD"); 
                 }
             }
+
+            $this->db->where('idCliente', $data['id']);
+            $query = $this->db->delete('usuario_cliente');
+            if (!$query) throw new Exception("Error en la BD"); 
+
+            if ($data['vendedores'] != '') {
+                $vendedores = explode(",", $data['vendedores']);
+                foreach ($vendedores as $vendedor) {
+                    $row = array(
+                        'idCliente' =>  $data['id'],
+                        'idUsuario' => $vendedor
+                    );
+                    $query = $this->db->insert('usuario_cliente', $row);
+                    if (!$query) {
+                        throw new Exception("Error en la BD");
+                    }
+                }
+            }
+
 
             $nuevos = $data['nuevos'];
 

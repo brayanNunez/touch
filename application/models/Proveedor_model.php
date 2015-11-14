@@ -157,6 +157,18 @@ class Proveedor_model extends CI_Model
                 }
                 $row['palabras'] = $palabras->result_array();
 
+                $this->db->select('im.*');
+                $this->db->from('impuesto im');
+                $this->db->join('impuesto_servicio is', 'is.idImpuesto = im.idImpuesto');
+                $this->db->join('servicio se', 'se.idServicio = is.idServicio');
+                $this->db->where('se.idServicio', $id);
+                $impuestos = $this->db->get();
+
+                if (!$impuestos) {
+                    throw new Exception("Error en la BD");
+                }
+                $row['impuestos'] = $impuestos->result_array();
+
                 $contactos = $this->db->get_where('proveedorcontacto', array('idProveedor' => $id,  'eliminado' => 0));
                 if (!$contactos) {
                     throw new Exception("Error en la BD");

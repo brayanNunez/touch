@@ -221,7 +221,7 @@
                                                     <br>
                                                     <div id="gustosCliente" class="example tags_gustosCliente">
                                                         <div class="bs-example">
-                                                            <input name="cliente_gustos" placeholder="<?= label('formCliente_anadirGusto'); ?>" type="text"
+                                                            <input id="cliente_gustos" name="cliente_gustos" placeholder="<?= label('formCliente_anadirGusto'); ?>" type="text"
                                                                    value=""/>
                                                         </div>
                                                     </div>
@@ -232,7 +232,7 @@
                                                     <br>
                                                     <div id="mediosCliente" class="example tags_mediosContacto">
                                                         <div class="bs-example">
-                                                            <input name="cliente_medios" placeholder="<?= label('formCliente_anadirMedio'); ?>" type="text"
+                                                            <input id="cliente_medios" name="cliente_medios" placeholder="<?= label('formCliente_anadirMedio'); ?>" type="text"
                                                                    value=""/>
                                                         </div>
                                                     </div>
@@ -364,6 +364,8 @@
                                     document.getElementById('elementos-cliente-fisico').style.display = 'block';
                                     document.getElementById('elementos-cliente-juridico').style.display = 'none';
                                     $('#cliente_vendedores').tagsinput('removeAll');
+                                    $('#cliente_gustos').tagsinput('removeAll');
+                                    $('#cliente_medios').tagsinput('removeAll');
                                }
                            }
                          });

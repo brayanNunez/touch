@@ -93,34 +93,35 @@
 <script>
     $(document).ready(function () {
 
-        var vendedores = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+        var Vendedores = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('nombre'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
-            // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/vendedores.json'
+            // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/Vendedores.json'
             prefetch: {
-                url: '<?=base_url()?>Cotizacion/jsonVendedores',
+                url: '<?=base_url()?>Usuarios/vendedorSugerencia',
                 ttl: 1000
             }
         });
 
-        vendedores.initialize();
+        Vendedores.initialize();
+
 
         elt = $('.tags_vendedores > > input');
         elt.tagsinput({
-            itemValue: 'value',
-            itemText: 'text',
+            itemValue: 'idUsuario',
+            itemText: 'nombre', 
             typeaheadjs: {
-                name: 'vendedores',
-                displayKey: 'text',
-                source: vendedores.ttAdapter()
+                name: 'Vendedor',
+                displayKey: 'nombre',
+                source: Vendedores.ttAdapter()
             }
         });
 
-        elt.tagsinput('add', {"value": 1, "text": "Brayan Nuñez Rojas", "continent": "Europe"});
-        elt.tagsinput('add', {"value": 4, "text": "Anthony Nuñez Rojas", "continent": "America"});
-        elt.tagsinput('add', {"value": 7, "text": "Maria Perez Salas", "continent": "Australia"});
-        elt.tagsinput('add', {"value": 10, "text": "Carlos David Rojas", "continent": "Asia"});
-        elt.tagsinput('add', {"value": 13, "text": "Diego Alfaro Rojas", "continent": "Africa"});
+        <?php 
+        foreach ($resultado['vendedores'] as $vendedor) {
+             echo 'elt.tagsinput("add", '.json_encode($vendedor).');';
+        }
+        ?>
 
 
         var gusto = new Bloodhound({
