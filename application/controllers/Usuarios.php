@@ -224,6 +224,7 @@ class Usuarios extends CI_Controller
         
                 $sess_array = array(
                     'idEmpresa' => 1,
+                    'idUsuario' => 1,
                     'administrador' => true,
                     'aprobador' => true,
                     'cotizador' => true,

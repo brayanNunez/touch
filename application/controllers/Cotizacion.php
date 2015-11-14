@@ -35,6 +35,7 @@ class Cotizacion extends CI_Controller
         verificarLogin();//helper
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
+        $idEmpresa = $sessionActual['idUsuario'];
 
         $resultado = $this->Cotizacion_model->cargar($idEmpresa); 
         $resultado['lineasDetalle'] = array();

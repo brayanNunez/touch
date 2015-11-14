@@ -10,16 +10,16 @@ class Cotizacion_model extends CI_Model
         $this->load->database();
     }
 
-    function cargar($idEmpresa)
+    function cargar($datos)
     {
         try {
             $this->db->trans_begin();
-            $plantillas = $this->db->get_where('plantilladiseno', array('publica' => '1', 'eliminado'=>0, 'idEmpresa'=> $idEmpresa));
+            $plantillas = $this->db->get_where('plantilladiseno', array('publica' => '1', 'eliminado'=>0, 'idEmpresa'=> $datos['idEmpresa']));
             if (!$plantillas) throw new Exception("Error en la BD");   
 
             $plantillas = $plantillas->result_array();
 
-            $servicios = $this->db->get_where('servicio', array('estado' => 0,'idEmpresa' => $idEmpresa));
+            $servicios = $this->db->get_where('servicio', array('estado' => 0,'idEmpresa' => $datos['idEmpresa']));
             if (!$servicios)throw new Exception("Error en la BD");
             $servicios = $servicios->result_array();
             $resultado = array();
