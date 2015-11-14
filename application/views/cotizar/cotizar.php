@@ -185,7 +185,7 @@
 
         generarAutocompletarPlantilla("paso3_plantilla");
         generarAutocompletarAtencion("paso1_atencion");
-        generarAutocompletarCliente("paso1_cliente");
+        // generarAutocompletarCliente("paso1_cliente");
         generarAutocompletarMoneda("paso1_moneda");
         generarAutocompletarFormaPago("paso1_formaPago");
 

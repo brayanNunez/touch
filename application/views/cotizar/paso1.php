@@ -17,7 +17,22 @@
         <div class="input-field col s12 m6 l6 inputSelector">            
             <label for="contenedorSelectCliente"><?= label("paso1_labelCliente"); ?></label>
             <br>
-            <div id="contenedorSelectCliente">    
+            <div id="contenedorSelectCliente">  
+                <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso1Cliente" id="paso1_cliente" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirCliente"); ?>" class="chosen-select browser-default" style="width:350px;" tabindex="2">
+                    <option value="0" disabled selected style="display:none;"><?= label("paso1_elegirCliente"); ?></option>
+                    <option value="nuevo"><?= label("agregarNuevo"); ?></option>
+                    <?php 
+                        foreach ($resultado['clientes'] as $cliente) {
+                            $valor = "value='".$cliente['idCliente']."'";
+                            if ($cliente['todosVendedores'] == 1 || $cliente['valido'] == 1) {
+                                echo '<option '.$valor.'>'.$cliente['nombre'].' '.$cliente['primerApellido'].' '.$cliente['segundoApellido'].'</option>");';
+                            } else{
+                                echo '<option '.$valor.' disabled>'.$cliente['nombre'].' '.$cliente['primerApellido'].' '.$cliente['segundoApellido'].'</option>");';
+                            }
+                        }
+                            
+                    ?>
+                </select>  
              </div>
         </div>
         <div class="input-field col s12 m6 l6 inputSelector">

@@ -34,10 +34,10 @@ class Cotizacion extends CI_Controller
     {
         verificarLogin();//helper
         $sessionActual = $this->session->userdata('logged_in');
-        $idEmpresa = $sessionActual['idEmpresa'];
-        $idEmpresa = $sessionActual['idUsuario'];
+        $data['idEmpresa'] = $sessionActual['idEmpresa'];
+        $data['idUsuario'] = $sessionActual['idUsuario'];
 
-        $resultado = $this->Cotizacion_model->cargar($idEmpresa); 
+        $resultado = $this->Cotizacion_model->cargar($data); 
         $resultado['lineasDetalle'] = array();
         // if ($resultado === false || $resultado === array()) {
         // print_r($resultado['servicios']); exit();

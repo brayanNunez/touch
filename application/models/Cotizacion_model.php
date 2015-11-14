@@ -35,10 +35,29 @@ class Cotizacion_model extends CI_Model
                 $row['impuestos'] = $impuestos->result_array();
                 array_push($resultado, $row);
             }
+
+            // echo $datos['idUsuario']; exit();
+
+            $clientes = $this->db->query("SELECT cl.idCliente, cl.nombre, cl.primerApellido, cl.segundoApellido, cl.todosVendedores, mec.valido  FROM touch.cliente as cl left join (SELECT uc.idCliente, 1 as valido FROM usuario_cliente as uc inner join usuario as u on u.idUsuario = uc.idUsuario where u.idUsuario = ".$datos['idUsuario'].") as mec on mec.idCliente = cl.idCliente where cl.eliminado = 0 order by nombre ASC ;");
+            if (!$clientes)  throw new Exception("Error en la BD");
+            $clientes = $clientes->result_array();
+            $misClientes = array();
+            foreach ($clientes as $row) {
+                $idCliente = $row['idCliente'];
+                $this->db->select('pc.*');
+                $this->db->from('personacontacto pc');
+                $this->db->where('pc.idCliente', $idCliente);
+                $contactos = $this->db->get();
+                if (!$contactos)  throw new Exception("Error en la BD");
+                $row['contactos'] = $contactos->result_array();
+                array_push($misClientes, $row);
+            }
+
             // print_r($plantillas);exit();
+            $data['clientes'] = $misClientes;
             $data['plantillas'] = $plantillas;
             $data['servicios'] = $resultado;
-            // print_r($data);exit();
+            // print_r($data['clientes']);exit();
 
             $this->db->trans_commit();
             return $data;
