@@ -224,6 +224,7 @@ $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos selec
     $lang['tituloGastos'] = 'Gastos';
     $lang['tituloGastos_codigo'] = 'Código';
     $lang['tituloGastos_cantidad'] = 'Cantidad';
+    $lang['tituloGastos_subtotal'] = 'Subtotal';
     $lang['tituloGastos_tipo'] = 'Tipo';
     $lang['tituloGastos_categoria'] = 'Categoría';
     $lang['tituloGastos_tiempo'] = 'Tiempo';
@@ -311,6 +312,10 @@ $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos selec
     $lang['categoriasPersona_categoriaGuardadoCorrectamente'] = 'La categoría de personas fue guardada correctamente.';
     $lang['categoriaPersona_error_nombreExisteEnBD'] = 'El nombre de categoría de personas indicado ya existe.';
     $lang['categoriasPersona_categoriaEditadoCorrectamente'] = 'La categoría de personas fue editada correctamente.';
+
+    $lang['servicio_elegirPersonaGasto'] = 'Elegir persona';
+    $lang['servicio_elegirGastoGasto'] = 'Elegir gasto';
+    $lang['servicio_gastoExistente'] = 'El gasto seleccionado ya existe para este servicio.';
 
 //Gastos en servicio
     $lang['formServicio_seleccioneGasto'] = 'Seleccione el gasto';

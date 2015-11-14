@@ -78,6 +78,23 @@ class Servicios extends CI_Controller
             'estado' => 0
         );
 
+        $gastos = array();
+        $contador = 0;
+        $gastosObtenidos = 0;
+        $cantidadGastos = $this->input->post('cantidadGastos');
+        while ($gastosObtenidos < $cantidadGastos) {
+            if (isset($_POST['gasto_'.$contador])) {
+                $gasto = array(
+                    'idGasto' => $this->input->post('gasto'.$contador.'_idGasto'),
+                    'cantidad' => $this->input->post('gasto'.$contador.'_cantidad')
+                );
+                array_push($gastos, $gasto);
+                $gastosObtenidos++;
+            }
+            $contador++;
+        }
+        $data['gastos'] = $gastos;
+
         $servicio = $this->Servicio_model->insertar($data);
         if(!$servicio) {
             //Error en la transaccion
@@ -164,7 +181,7 @@ class Servicios extends CI_Controller
     public function cargarGasto()
     {
         $id = $_POST['idEditar'];
-        $resultado = $this->Servicio_model->cargarGasto(decryptIt($id));
+        $resultado = $this->Servicio_model->cargarGasto($id);
         if ($resultado === false || $resultado === array()) {
             echo 0;
         } else {

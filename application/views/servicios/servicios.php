@@ -268,7 +268,7 @@ START CONTENT  -->
                                                             <?php
                                                             if(isset($gastos)) {
                                                                 foreach ($gastos as $gasto) { ?>
-                                                                    <option value="<?= encryptIt($gasto['idGasto']); ?>"><?= $gasto['nombre']; ?></option>
+                                                                    <option value="<?= $gasto['idGasto']; ?>"><?= $gasto['nombre']; ?></option>
                                                             <?php
                                                                 }
                                                             } ?>
@@ -281,14 +281,14 @@ START CONTENT  -->
                                                         </div>
                                                         <div id="opcionesBusquedaGasto" class="col s12" style="display: none;margin-bottom: 20px;padding: 0;">
                                                             <div class="input-field col s12 inputSelector">
-                                                                <label for="agregarGastos_categoria"><?= label('agregarGastos_categoriaGasto'); ?></label>
+                                                                <label for="agregarGastos_categoria"><?= label('agregarGastos_categoria'); ?></label>
                                                                 <br>
-                                                                <select data-placeholder="<?= label('formServicio_seleccioneCategoria'); ?>" data-incluirBoton="0" id="agregarGastos_categoria" name="agregarGastos_categoria" class="required browser-default chosen-select">
+                                                                <select data-placeholder="<?= label('formServicio_seleccioneCategoria'); ?>" data-tipo="servicioCategoriaGasto" data-incluirBoton="0" id="agregarGastos_categoria" name="agregarGastos_categoria" class="required browser-default chosen-select">
                                                                     <option value=""></option>
                                                                     <?php
                                                                     if(isset($categorias)) {
                                                                         foreach ($categorias as $categoria) { ?>
-                                                                            <option value="<?= $categoria['idCategoriaGasto']; ?>"><?= $categoria['nombre']; ?></option>
+                                                                            <option value="<?= $categoria['idCategoriaPersona']; ?>"><?= $categoria['nombre']; ?></option>
                                                                             <?php
                                                                         }
                                                                     } ?>
@@ -297,29 +297,29 @@ START CONTENT  -->
                                                             <div class="input-field col s12 inputSelector">
                                                                 <label for="agregarGastos_proveedor"><?= label('agregarGastos_proveedor'); ?></label>
                                                                 <br>
-                                                                <select data-placeholder="<?= label('formServicio_seleccioneProveedor'); ?>" data-incluirBoton="0" id="agregarGastos_proveedor" name="agregarGastos_proveedor" class="required browser-default chosen-select">
-                                                                    <option value=""></option>
-                                                                    <?php
-                                                                    if(isset($personas)) {
-                                                                        foreach ($personas as $persona) { ?>
-                                                                            <option value="<?= $persona['idProveedor']; ?>"><?= $persona['nombre']; ?></option>
-                                                                            <?php
-                                                                        }
-                                                                    } ?>
+                                                                <select data-placeholder="<?= label('formServicio_seleccioneProveedor'); ?>" data-tipo="servicioPersonaGasto"  data-incluirBoton="0" id="agregarGastos_proveedor" name="agregarGastos_proveedor" class="required browser-default chosen-select">
+<!--                                                                    <option value=""></option>-->
+<!--                                                                    --><?php
+//                                                                    if(isset($personas)) {
+//                                                                        foreach ($personas as $persona) { ?>
+<!--                                                                            <option value="--><?//= $persona['idProveedor']; ?><!--">--><?//= $persona['nombre']; ?><!--</option>-->
+<!--                                                                            --><?php
+//                                                                        }
+//                                                                    } ?>
                                                                 </select>
                                                             </div>
                                                             <div class="input-field col s12 inputSelector">
                                                                 <label for="agregarGastos_gasto"><?= label('agregarGastos_gasto'); ?></label>
                                                                 <br>
                                                                 <select data-placeholder="<?= label('formServicio_seleccioneGasto'); ?>" data-incluirBoton="0" id="agregarGastos_gasto" name="agregarGastos_gasto" class="required browser-default chosen-select">
-                                                                    <option value=""></option>
-                                                                    <?php
-                                                                    if(isset($gastos)) {
-                                                                        foreach ($gastos as $gasto) { ?>
-                                                                            <option value="<?= encryptIt($gasto['idGasto']); ?>"><?= $gasto['nombre']; ?></option>
-                                                                            <?php
-                                                                        }
-                                                                    } ?>
+<!--                                                                    <option value=""></option>-->
+<!--                                                                    --><?php
+//                                                                    if(isset($gastos)) {
+//                                                                        foreach ($gastos as $gasto) { ?>
+<!--                                                                            <option value="--><?//= $gasto['idGasto']; ?><!--">--><?//= $gasto['nombre']; ?><!--</option>-->
+<!--                                                                            --><?php
+//                                                                        }
+//                                                                    } ?>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -341,8 +341,9 @@ START CONTENT  -->
                                                                 <th><?= label('tituloGastos_proveedor'); ?></th>
                                                                 <th><?= label('tituloGastos_proveedorCategoria'); ?></th>
                                                                 <th><?= label('tituloGastos_tiempo'); ?></th>
-                                                                <th><?= label('tituloGastos_cantidad'); ?></th>
                                                                 <th><?= label('tituloGastos_monto'); ?></th>
+                                                                <th><?= label('tituloGastos_cantidad'); ?></th>
+                                                                <th><?= label('tituloGastos_subtotal'); ?></th>
                                                                 <th><?= label('tituloGastos_opciones'); ?></th>
                                                             </tr>
                                                             </thead>
@@ -353,8 +354,9 @@ START CONTENT  -->
                                                                     <td></td>
                                                                     <td></td>
                                                                     <td></td>
+                                                                    <td></td>
                                                                     <td>TOTAL</td>
-                                                                    <td><span id="totalGastosVariables">0</span></td>
+                                                                    <td>$<span class="total_gastos_variables">0</span></td>
                                                                     <td></td>
                                                                 </tr>
                                                             </tbody>
@@ -362,7 +364,7 @@ START CONTENT  -->
                                                     </div>
                                                 </div>
                                                 <div class="col s12" style="margin-top: 20px;">
-                                                    <h5><?= label('cotizacionGastos_total'); ?>: $2,000,000.00</h5>
+                                                    <h5><?= label('cotizacionGastos_total'); ?>: $<span class="total_gastos_variables">0</span></h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -382,6 +384,9 @@ START CONTENT  -->
                                                     name="action"><?= label('formServicio_enviar'); ?>
                                             </button>
                                         </div>
+                                    </div>
+                                    <div style="visibility:hidden; position:absolute">
+                                        <input id="cantidadGastos" name="cantidadGastos" type="text" value="0">
                                     </div>
                                 </form>
                             </div>
@@ -417,7 +422,10 @@ START CONTENT  -->
 </script>
 <!--Script para mostrar elementos de agregar gastos-->
 <script>
+    gastosTabla = [];
     $(document).ready(function () {
+        $('#agregarGastos_proveedor').attr('disabled', 'disabled');
+        $('#agregarGastos_gasto').attr('disabled', 'disabled');
         $('#busqueda_masOpciones').click(function (event) {
             var $elementos = $('#opcionesBusquedaGasto');
             var $buscar = $('#agregarGastos_buscar');
@@ -425,11 +433,26 @@ START CONTENT  -->
             if($display == 'none') {
                 $elementos.css('display', 'block');
                 $(this).text('<?= label('agregarGastos_menosOpciones'); ?>');
-//                $buscar.css('display', 'none');
+                $buscar.val('0');
+                $buscar.attr('disabled', 'disabled');
+                $buscar.trigger("chosen:updated");
             } else {
                 $elementos.css('display', 'none');
                 $(this).text('<?= label('agregarGastos_masOpciones'); ?>');
-//                $buscar.css('display', 'block');
+                $buscar.removeAttr('disabled');
+                $buscar.trigger("chosen:updated");
+
+                var select_categoria = $('#agregarGastos_categoria');
+                select_categoria.val('0');
+                select_categoria.trigger("chosen:updated");
+                var select_persona = $('#agregarGastos_proveedor');
+                select_persona.val('0');
+                select_persona.attr('disabled', 'disabled');
+                select_persona.trigger("chosen:updated");
+                var select_gastos = $('#agregarGastos_gasto');
+                select_gastos.val('0');
+                select_gastos.attr('disabled', 'disabled');
+                select_gastos.trigger("chosen:updated");
             }
         });
         $('#cotizacion_incluirGastosVariables').click(function (event) {
@@ -440,13 +463,75 @@ START CONTENT  -->
             } else {
                 $gastos.css('display', 'none');
             }
-        })
+        });
+        <?php
+        $js_arrayPersonas = json_encode($personas);
+        $js_arrayGastos = json_encode($gastos);
+        echo "var arrayPersonas =". $js_arrayPersonas.';';
+        echo "var arrayGastos =". $js_arrayGastos.';';
+        ?>
+        $(document).on('change','.chosen-select',function(){
+            var valor = $(this).val();
+            var tipo = $(this).attr("data-tipo");
+            var $gastos_categoria = $('#agregarGastos_categoria');
+            var $gastos_persona = $('#agregarGastos_proveedor');
+            var $gastos_gasto = $('#agregarGastos_gasto');
+            if (tipo == 'servicioCategoriaGasto') {
+                $gastos_persona.empty(); //remove all child nodes
+                $gastos_persona.removeAttr('disabled');
+                $gastos_persona.append($('<option value="0" disabled selected style="display:none;"><?= label("servicio_elegirPersonaGasto"); ?></option>'));
+//                $gastos_persona.append($('<option value="nuevo"><?//= label("agregarNuevo"); ?>//</option>'));
+                for (var i = 0; i < arrayPersonas.length; i++) {
+                    //Falta validar categoria
+                    var newOption = $('<option value="'+ arrayPersonas[i]['idProveedor'] + '">' + arrayPersonas[i]['nombre'] + '</option>');
+                    $gastos_persona.append(newOption);
+                }
+                $gastos_gasto.attr('disabled', 'disabled');
+                $gastos_gasto.trigger("chosen:updated");
+                $gastos_persona.trigger("chosen:updated");
+            } else {
+                if(tipo == 'servicioPersonaGasto') {
+                    var persona_id = $gastos_persona.val();
+                    $gastos_gasto.empty(); //remove all child nodes
+                    $gastos_gasto.removeAttr('disabled');
+                    $gastos_gasto.append($('<option value="0" disabled selected style="display:none;"><?= label("servicio_elegirGastoGasto"); ?></option>'));
+//                    $gastos_gasto.append($('<option value="nuevo"><?//= label("agregarNuevo"); ?>//</option>'));
+                    for (var i = 0; i < arrayGastos.length; i++) {
+                        var gasto_persona = arrayGastos[i]['idProveedor'];
+                        if(gasto_persona == persona_id) {
+                            var newOption = $('<option value="' + arrayGastos[i]['idGasto'] + '">' + arrayGastos[i]['nombre'] + '</option>');
+                            $gastos_gasto.append(newOption);
+                        }
+                    }
+                    $gastos_gasto.trigger("chosen:updated");
+                }
+            }
+        });
+        $(document).on('change', '.input_cantidad_gasto', function () {
+            var elementos = $('.total_gastos_variables');
+            var totalGastos = 0;//parseInt(elementos.first().text());
+            $('.input_cantidad_gasto').each(function () {
+                var padre = $(this).parents('tr');
+                var monto = padre.find('td input.input_monto_gasto').first().val();
+                var cantidad = $(this).val();
+                var subtotal = padre.find('td span.subtotal_fila').first();
+                var resultado = monto * cantidad;
+                subtotal.text(resultado);
+                totalGastos += resultado;
+            });
+            elementos.each(function () {
+                $(this).text(totalGastos);
+            });
+        });
     });
 </script>
 <!--Script para manejo de gastos-->
 <script type="text/javascript">
     var menuOpciones_eliminar = '<?= label('menuOpciones_eliminar'); ?>';
     var totalGastosVariables = 0;
+    function actualizarCantidadGastos(){
+        $('#cantidadGastos').val(contadorFilasGastos);
+    }
     $(document).ready(function () {
         $('#btn_agregarGasto').on('click', function () {
             var idGastoPrincipal = $('#agregarGastos_buscar').val();
@@ -454,7 +539,18 @@ START CONTENT  -->
             var idPersona = $('#agregarGastos_proveedor').val();
             var idGasto = $('#agregarGastos_gasto').val();
             if(idGasto != null && idGasto != '') {
-                alert(idCategoria + '  -  ' + idPersona + '  -  ' + idGasto);
+                $.ajax({
+                    type: 'post',
+                    url: '<?= base_url(); ?>servicios/cargarGasto',
+                    data: {idEditar : idGasto},
+                    success: function(response)
+                    {
+                        var gasto = $.parseJSON(response);
+                        agregarFilaGasto(idGasto, gasto['codigo'], gasto['nombre'], gasto['datosAdicionales']['persona'],
+                            gasto['datosAdicionales']['persona'], gasto['datosAdicionales']['formaPago'], gasto['monto']);
+                        actualizarCantidadGastos();
+                    }
+                });
             } else {
                 $.ajax({
                     type: 'post',
@@ -465,6 +561,7 @@ START CONTENT  -->
                         var gasto = $.parseJSON(response);
                         agregarFilaGasto(idGastoPrincipal, gasto['codigo'], gasto['nombre'], gasto['datosAdicionales']['persona'],
                             gasto['datosAdicionales']['persona'], gasto['datosAdicionales']['formaPago'], gasto['monto']);
+                        actualizarCantidadGastos();
                     }
                 });
             }
@@ -476,32 +573,53 @@ START CONTENT  -->
                         '<a href="#eliminarGasto" class="boton-opciones btn-flat white-text modal-trigger confirmarEliminar"' +
                         'data-id-eliminar="' + idEncriptado + '"  data-fila-eliminar="fila'+ contadorFilasGastos +'">' + menuOpciones_eliminar +'</a>' +
                     '</td>';
-        var codigo = '<td><input name="gasto' + contadorFilasGastos + '_idGasto" type="text" style="display: none;" value="' + idEncriptado + '" />' + cod + '</td>';
+        var codigo = '<td>' +
+                        '<input style="display:none" name="gasto_'+ contadorFilasGastos +'" type="text">' +
+                        '<input name="gasto' + contadorFilasGastos + '_idGasto" type="text" style="display: none;" value="' + idEncriptado + '" />' + cod + '</td>';
         var nombre = '<td>' + nom + '</td>';
         var persona = '<td>' + per + '</td>';
         var categoriaPersona = '<td>' + categoria + '</td>';
         var tiempo = '<td>' + tmp +' </td>';
-        var cantidad = '<td><input name="gasto' + contadorFilasGastos + '_cantidad" type="number" value="0"/></td>';
-        var monto = '<td>' + mont + '</td>';
-        var tBody = $('#gastos-tabla-lista').find('tbody');
-        tBody.append('' +
-            '<tr>' +
-                codigo + nombre + persona + categoriaPersona + tiempo + cantidad + monto + boton +
-            '</tr>'
-        );
-//        $('#gastos-tabla-lista').dataTable().fnAddData([
-//            codigo,
-//            nombre,
-//            persona,
-//            categoriaPersona,
-//            tiempo,
-//            cantidad,
-//            monto,
-//            boton]);
-//        generarListasBotones();
-        $('.modal-trigger').leanModal();
-        contadorFilasGastos++;
-        $('#totalGastosVariables').text(totalGastosVariables);
+        var cantidad = '<td><input class="input_cantidad_gasto" min="0" name="gasto' + contadorFilasGastos + '_cantidad" type="number" value="0"/></td>';
+        var monto = '<td><input class="input_monto_gasto" style="display: none;" name="gasto' + contadorFilasGastos + '_monto" type="text" value="' + mont + '" />' + mont + '</td>';
+        var subtotal = '<td>$<span class="subtotal_fila">0</pan></td>';
+
+        var tBody = $('#gastos-tabla-lista');
+
+        if(gastosTabla.indexOf(idEncriptado) == -1) {
+            if (tBody.find('tbody tr').length == 1) {
+                tBody.find('tbody tr:first').before('' +
+                    '<tr>' +
+                    codigo + nombre + persona + categoriaPersona + tiempo + monto + cantidad + subtotal + boton +
+                    '</tr>'
+                );
+            } else {
+                tBody.find('tbody tr:last').before('' +
+                    '<tr>' +
+                    codigo + nombre + persona + categoriaPersona + tiempo + monto + cantidad + subtotal + boton +
+                    '</tr>'
+                );
+            }
+            contadorFilasGastos++;
+            gastosTabla.push(idEncriptado);
+        } else {
+            alert('<?= label('servicio_gastoExistente'); ?>');
+        }
+
+        var select_principal = $('#agregarGastos_buscar');
+        select_principal.val('0');
+        select_principal.trigger("chosen:updated");
+        var select_categoria = $('#agregarGastos_categoria');
+        select_categoria.val('0');
+        select_categoria.trigger("chosen:updated");
+        var select_persona = $('#agregarGastos_proveedor');
+        select_persona.val('0');
+        select_persona.attr('disabled', 'disabled');
+        select_persona.trigger("chosen:updated");
+        var select_gastos = $('#agregarGastos_gasto');
+        select_gastos.val('0');
+        select_gastos.attr('disabled', 'disabled');
+        select_gastos.trigger("chosen:updated");
     }
 </script>
 

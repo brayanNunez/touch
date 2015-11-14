@@ -56,7 +56,16 @@ class Servicio_model extends CI_Model
                     }
                 }
             }
-            
+
+            $gastos = $data['gastos'];
+//            echo print_r($gastos); exit();
+            foreach ($gastos as $gasto) {
+                $gasto['idServicio'] = $insert_id;
+                $query = $this->db->insert('gastoservicio', $gasto);
+                if (!$query) {
+                    throw new Exception("Error en la BD");
+                }
+            }
 
             $this->db->trans_commit();
 
@@ -266,7 +275,7 @@ class Servicio_model extends CI_Model
         try{
             $this->db->trans_begin();
 
-            $categorias = $this->db->get_where('categoriagasto', array('idEmpresa' => $idEmpresa, 'eliminado' => 0));
+            $categorias = $this->db->get_where('categoriapersona', array('idEmpresa' => $idEmpresa, 'eliminado' => 0));
             if (!$categorias) {
                 throw new Exception("Error en la BD");
             }
