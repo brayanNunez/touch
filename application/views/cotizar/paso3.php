@@ -244,7 +244,7 @@
             </div>
             <div id="informacionSistema">
              <span>
-                <p><?= label('paso3_Diseno_mensajeFotter').label('link_paginaInicial'); ?> touchcr.com</p>
+                <p><?= label('paso3_Diseno_mensajeFotter').label('link_paginaInicial'); ?></p>
              </span>
             </div>
         </div>
