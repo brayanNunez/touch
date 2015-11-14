@@ -116,4 +116,14 @@ class CategoriasPersona extends CI_Controller
         }
     }
 
+    public function categoriasSugerencia()
+    {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $resultado = $this->Categoriapersona_model->cargarTodos($idEmpresa);
+
+        echo json_encode($resultado);
+    }
+
 }
