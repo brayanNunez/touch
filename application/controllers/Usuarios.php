@@ -237,8 +237,6 @@ class Usuarios extends CI_Controller
 
     public function vendedorSugerencia()
     {
-
-
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
 

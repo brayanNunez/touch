@@ -69,32 +69,32 @@
         $('#contenedorSelectMoneda').html(miSelect);
     }
 
-    function generarAutocompletarCliente(id){
-        var miSelect = $('<select data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso1Cliente" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirCliente"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
-        miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso1_elegirCliente"); ?></option>');
-        miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
-        miSelect.append('<option value="Almuerzo">Brayan Nunez Rojas</option>');
-        miSelect.append('<option value="Fresco">María Alfaro Alfaro</option>');
-        miSelect.append('<option value="Hamburguesa">Diego Rojas Salas</option>');
-        miSelect.append('<option value="Música">Juan Manuel Rojas</option>');
+    // function generarAutocompletarCliente(id){
+    //     var miSelect = $('<select data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso1Cliente" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirCliente"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
+    //     miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso1_elegirCliente"); ?></option>');
+    //     miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+    //     miSelect.append('<option value="Almuerzo">Brayan Nunez Rojas</option>');
+    //     miSelect.append('<option value="Fresco">María Alfaro Alfaro</option>');
+    //     miSelect.append('<option value="Hamburguesa">Diego Rojas Salas</option>');
+    //     miSelect.append('<option value="Música">Juan Manuel Rojas</option>');
 
-        $('#contenedorSelectCliente').html(miSelect);
-    }
+    //     $('#contenedorSelectCliente').html(miSelect);
+    // }
 
-    function generarAutocompletarAtencion(id){
-        var miSelect = $('<select data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso1Atencion" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirAtencion"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
-        miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso1_elegirAtencion"); ?></option>');
-        miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+    // function generarAutocompletarAtencion(id){
+    //     var miSelect = $('<select data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso1Atencion" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirAtencion"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
+    //     miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso1_elegirAtencion"); ?></option>');
+    //     miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
         
-        miSelect.append('<option value="Almuerzo">Brayan Nunez Rojas</option>');
-        miSelect.append('<option value="Fresco">María Alfaro Alfaro</option>');
-        miSelect.append('<option value="Hamburguesa">Diego Rojas Salas</option>');
-        miSelect.append('<option value="Música">Juan Manuel Rojas</option>');
+    //     miSelect.append('<option value="Almuerzo">Brayan Nunez Rojas</option>');
+    //     miSelect.append('<option value="Fresco">María Alfaro Alfaro</option>');
+    //     miSelect.append('<option value="Hamburguesa">Diego Rojas Salas</option>');
+    //     miSelect.append('<option value="Música">Juan Manuel Rojas</option>');
 
-        $('#contenedorSelectAtencion').html(miSelect);
+    //     $('#contenedorSelectAtencion').html(miSelect);
 
 
-    }
+    // }
 
     function generarAutocompletarPlantilla(id){
         var miSelect = $('<select data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso3_plantilla" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso3_elegirPalantilla"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
@@ -184,7 +184,7 @@
 
 
         generarAutocompletarPlantilla("paso3_plantilla");
-        generarAutocompletarAtencion("paso1_atencion");
+        // generarAutocompletarAtencion("paso1_atencion");
         // generarAutocompletarCliente("paso1_cliente");
         generarAutocompletarMoneda("paso1_moneda");
         generarAutocompletarFormaPago("paso1_formaPago");
@@ -219,6 +219,11 @@
                         select.trigger("chosen:updated");
                         cargarFila(valor, numeroFila);
                     break;
+                    case 'paso1Cliente':
+                        cargarAtencion(valor);
+                    break;
+
+
                 }
                 // var numeroFila = $(this).attr('id');
                 // alert(valor+', ' + tipo+ ',id: ' + idFila);

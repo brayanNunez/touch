@@ -18,7 +18,7 @@
             <label for="contenedorSelectCliente"><?= label("paso1_labelCliente"); ?></label>
             <br>
             <div id="contenedorSelectCliente">  
-                <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso1Cliente" id="paso1_cliente" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirCliente"); ?>" class="chosen-select browser-default" style="width:350px;" tabindex="2">
+                <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso1Cliente" id="paso1Cliente" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirCliente"); ?>" class="chosen-select browser-default" style="width:350px;" tabindex="2">
                     <option value="0" disabled selected style="display:none;"><?= label("paso1_elegirCliente"); ?></option>
                     <option value="nuevo"><?= label("agregarNuevo"); ?></option>
                     <?php 
@@ -48,7 +48,16 @@
             
             <label for="contenedorSelectAtencion"><?= label("paso1_labelContacto"); ?></label>
             <br>
-            <div id="contenedorSelectAtencion">    
+            <div id="contenedorSelectAtencion">  
+                <select disabled='disabled' data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso1Atencion" id="paso1Atencion" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirAtencion"); ?>" class="chosen-select browser-default" style="width:350px;" tabindex="2">
+                   <!-- <option value="0" disabled selected style="display:none;"><?= label("paso1_elegirAtencion"); ?></option>
+                   <option value="nuevo"><?= label("agregarNuevo"); ?></option>
+                    
+                   <option value="Almuerzo">Brayan Nunez Rojas</option>
+                   <option value="Fresco">María Alfaro Alfaro</option>
+                   <option value="Hamburguesa">Diego Rojas Salas</option>
+                   <option value="Música">Juan Manuel Rojas</option> -->
+                </select>
              </div>
         </div>
     </div>
@@ -194,6 +203,33 @@
 </form>
 
 <script>
+
+    <?php 
+        $js_array = json_encode($resultado['clientes']); 
+        echo "var arrayClientes =". $js_array;
+    ?> 
+
+    function cargarAtencion(idCliente){
+        $('#paso1Atencion').empty(); //remove all child nodes
+        $('#paso1Atencion').removeAttr('disabled');
+        $('#paso1Atencion').append($('<option value="0" disabled selected style="display:none;"><?= label("paso1_elegirAtencion"); ?></option>'));
+        $('#paso1Atencion').append($('<option value="nuevo"><?= label("agregarNuevo"); ?></option>'));
+        // $('#paso1Atencion').append($('<option value="todas"><?= label("formServicio_fases_agregarTodas"); ?></option>'));
+        for (var i = 0; i < arrayClientes.length; i++) {
+            if (arrayClientes[i]['idCliente'] == idCliente) {
+                for (var j = 0; j < arrayClientes[i]['contactos'].length; j++) {
+                    var contacto = arrayClientes[i]['contactos'][j];
+                    var newOption = $('<option value="'+contacto['idCliente']+'">'+contacto['nombre'] + ' ' + contacto['primerApellido'] + ' ' + contacto['segundoApellido']+'</option>');
+                    $('#paso1Atencion').append(newOption);
+                }
+            } 
+        };
+
+        $('#paso1Atencion').trigger("chosen:updated");
+
+    }
+
+
     $(document).ready(function () {
         $('#busqueda_masOpciones').click(function (event) {
             var $elementos = $('#opcionesBusquedaGasto');
