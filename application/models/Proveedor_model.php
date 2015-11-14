@@ -263,6 +263,25 @@ class Proveedor_model extends CI_Model
                 }
             }
 
+            $this->db->where('idPersona', $data['id']);
+            $query = $this->db->delete('categoriapersona_persona');
+            if ($data['categorias'] != '') {
+                $categorias = explode(",", $data['categorias']);
+                if (!$query) {
+                    throw new Exception("Error en la BD");
+                }
+                foreach ($categorias as $categoria) {
+                    $row = array(
+                        'idPersona' => $data['id'],
+                        'idCategoriaPersona' => $categoria
+                    );
+                    $query = $this->db->insert('categoriapersona_persona', $row);
+                    if (!$query) {
+                        throw new Exception("Error en la BD");
+                    }
+                }
+            }
+
             $nuevos = $data['nuevos'];
             foreach ($nuevos as $nuevo) {
                 $query = $this->db->insert('proveedorcontacto', $nuevo);

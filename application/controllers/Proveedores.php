@@ -221,6 +221,7 @@ class Proveedores extends CI_Controller
     public function modificar($id)
     {
         $data = array();
+        $data['categorias'] = $this->input->post('categorias_persona');
         $data['palabras'] = $this->input->post('persona_palabras');
 
         $tipo = $this->input->post('persona_tipoProveedor');
