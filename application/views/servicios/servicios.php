@@ -477,14 +477,19 @@ START CONTENT  -->
             var $gastos_persona = $('#agregarGastos_proveedor');
             var $gastos_gasto = $('#agregarGastos_gasto');
             if (tipo == 'servicioCategoriaGasto') {
+                var categoria_id = $gastos_categoria.val();
                 $gastos_persona.empty(); //remove all child nodes
                 $gastos_persona.removeAttr('disabled');
                 $gastos_persona.append($('<option value="0" disabled selected style="display:none;"><?= label("servicio_elegirPersonaGasto"); ?></option>'));
-//                $gastos_persona.append($('<option value="nuevo"><?//= label("agregarNuevo"); ?>//</option>'));
                 for (var i = 0; i < arrayPersonas.length; i++) {
-                    //Falta validar categoria
-                    var newOption = $('<option value="'+ arrayPersonas[i]['idProveedor'] + '">' + arrayPersonas[i]['nombre'] + '</option>');
-                    $gastos_persona.append(newOption);
+                    var persona_categorias = arrayPersonas[i]['categorias'];
+                    for(var j = 0; j < persona_categorias.length; j++) {
+                        var categorias_ids = persona_categorias[j]['idCategoriaPersona'];
+                        if(categorias_ids.indexOf(categoria_id) != -1) {
+                            var newOption = $('<option value="'+ arrayPersonas[i]['idProveedor'] + '">' + arrayPersonas[i]['nombre'] + '</option>');
+                            $gastos_persona.append(newOption);
+                        }
+                    }
                 }
                 $gastos_gasto.attr('disabled', 'disabled');
                 $gastos_gasto.trigger("chosen:updated");
@@ -495,7 +500,6 @@ START CONTENT  -->
                     $gastos_gasto.empty(); //remove all child nodes
                     $gastos_gasto.removeAttr('disabled');
                     $gastos_gasto.append($('<option value="0" disabled selected style="display:none;"><?= label("servicio_elegirGastoGasto"); ?></option>'));
-//                    $gastos_gasto.append($('<option value="nuevo"><?//= label("agregarNuevo"); ?>//</option>'));
                     for (var i = 0; i < arrayGastos.length; i++) {
                         var gasto_persona = arrayGastos[i]['idProveedor'];
                         if(gasto_persona == persona_id) {

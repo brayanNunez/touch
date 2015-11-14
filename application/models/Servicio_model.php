@@ -264,6 +264,20 @@ class Servicio_model extends CI_Model
             }
             $resultado = $personas->result_array();
 
+            $contador = 0;
+            foreach ($resultado as $persona) {
+                $this->db->select('cp.*');
+                $this->db->from('categoriapersona cp');
+                $this->db->join('categoriapersona_persona cpp', 'cpp.idCategoriaPersona = cp.idCategoriaPersona');
+                $this->db->join('proveedor pr', 'pr.idProveedor = cpp.idPersona');
+                $this->db->where('pr.idProveedor', $persona['idProveedor']);
+                $categoriasPersona = $this->db->get();
+                if (!$categoriasPersona) {
+                    throw new Exception("Error en la BD");
+                }
+                $resultado[$contador++]['categorias'] = $categoriasPersona->result_array();
+            }
+
             $this->db->trans_commit();
             return $resultado;
         } catch (Exception $e) {
