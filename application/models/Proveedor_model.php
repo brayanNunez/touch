@@ -317,7 +317,6 @@ class Proveedor_model extends CI_Model
                     throw new Exception("Error en la BD");
                 }
             }
-
             $editados = $data['editados'];
             foreach ($editados as $editado) {
                 $this->db->where('idProveedorContacto', $editado['idProveedorContacto']);
@@ -326,7 +325,6 @@ class Proveedor_model extends CI_Model
                     throw new Exception("Error en la BD");
                 }
             }
-
             $eliminados = $data['eliminados'];
             foreach ($eliminados as $eliminado) {
                 $this->db->where('idProveedorContacto', $eliminado['idProveedorContacto']);
@@ -336,27 +334,25 @@ class Proveedor_model extends CI_Model
                 }
             }
 
-            $presupuestosEliminados = $data['presupuestosEliminados'];
-            foreach ($presupuestosEliminados as $presupuestosEliminado) {
-                $this->db->where('idPresupuestoProveedor', $presupuestosEliminado['idPresupuestoProveedor']);
-                $query = $this->db->update('presupuestoproveedor', $presupuestosEliminado);
+            $gastosEliminados = $data['gastosEliminados'];
+            foreach ($gastosEliminados as $gastosEliminado) {
+                $this->db->where('idGasto', $gastosEliminado['idGasto']);
+                $query = $this->db->update('gasto', $gastosEliminado);
                 if (!$query) {
                     throw new Exception("Error en la BD");
                 }
             }
-
-            $presupuestosEditados = $data['presupuestosEditados'];
-            foreach ($presupuestosEditados as $presupuestosEditado) {
-                $this->db->where('idPresupuestoProveedor', $presupuestosEditado['idPresupuestoProveedor']);
-                $query = $this->db->update('presupuestoproveedor', $presupuestosEditado);
+            $gastosEditados = $data['gastosEditados'];
+            foreach ($gastosEditados as $gastosEditado) {
+                $this->db->where('idGasto', $gastosEditado['idGasto']);
+                $query = $this->db->update('gasto', $gastosEditado);
                 if (!$query) {
                     throw new Exception("Error en la BD");
                 }
             }
-
-            $presupuestosNuevos = $data['presupuestosNuevos'];
-            foreach ($presupuestosNuevos as $presupuestosNuevo) {
-                $query = $this->db->insert('presupuestoproveedor', $presupuestosNuevo);
+            $gastosNuevos = $data['gastosNuevos'];
+            foreach ($gastosNuevos as $gastosNuevo) {
+                $query = $this->db->insert('gasto', $gastosNuevo);
                 if (!$query) {
                     throw new Exception("Error en la BD");
                 }

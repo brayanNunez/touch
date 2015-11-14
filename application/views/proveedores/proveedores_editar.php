@@ -349,6 +349,10 @@
                             if($gastos != false) {
                                 $contador= 0;
                                 foreach ($gastos as $gasto) {
+                                    $tipoGasto = 0;
+                                    if($gasto['gastoFijo']) {
+                                        $tipoGasto = 1;
+                                    }
                                     ?>
                                     <tr id="gasto<?= $contador; ?>">
                                         <td style="text-align: center;">
@@ -361,12 +365,12 @@
                                         <td>
                                             <span id="span_gasto<?= $contador; ?>_tipo"><?= $gasto['datosAdicionales']['tipo']; ?></span>
                                             <input type="text" name="gasto<?= $contador; ?>_tipo" id="gasto<?= $contador; ?>_tipo"
-                                                   value="<?= $gasto['datosAdicionales']['tipo']; ?>" style="display: none;" />
+                                                   value="<?= $tipoGasto; ?>" style="display: none;" />
                                         </td>
                                         <td>
-                                            <span id="span_gasto<?= $contador; ?>_tipo"><?= $gasto['datosAdicionales']['categoria']; ?></span>
-                                            <input type="text" name="gasto<?= $contador; ?>_tipo" id="gasto<?= $contador; ?>_tipo"
-                                                   value="<?= $gasto['datosAdicionales']['categoria']; ?>" style="display: none;" />
+                                            <span id="span_gasto<?= $contador; ?>_categoria"><?= $gasto['datosAdicionales']['categoria']; ?></span>
+                                            <input type="text" name="gasto<?= $contador; ?>_categoria" id="gasto<?= $contador; ?>_categoria"
+                                                   value="<?= $gasto['idCategoriaGasto']; ?>" style="display: none;" />
                                         </td>
                                         <td>
                                             <span id="span_gasto<?= $contador; ?>_codigo"><?= $gasto['codigo']; ?></span>
@@ -381,7 +385,7 @@
                                         <td>
                                             <span id="span_gasto<?= $contador; ?>_formaPago"><?= $gasto['datosAdicionales']['formaPago']; ?></span>
                                             <input type="text" name="gasto<?= $contador; ?>_formaPago" id="gasto<?= $contador; ?>_formaPago"
-                                                   value="<?= $gasto['datosAdicionales']['formaPago']; ?>" style="display: none;" />
+                                                   value="<?= $gasto['formaPago']; ?>" style="display: none;" />
                                         </td>
                                         <td>
                                             <span id="span_gasto<?= $contador; ?>_monto"><?= $gasto['monto']; ?></span>

@@ -221,6 +221,9 @@ class Proveedores extends CI_Controller
     public function modificar($id)
     {
         $data = array();
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
         $data['categorias'] = $this->input->post('categorias_persona');
         $data['palabras'] = $this->input->post('persona_palabras');
 
@@ -341,60 +344,64 @@ class Proveedores extends CI_Controller
         $data['editados'] = $editados;
         $data['eliminados'] = $eliminados;
 
-        $presupuestosEditados = array();
-        $presupuestosEliminados = array();
-        $presupuestosNuevos = array();
-        $contadorPresupuestos = 0;
-        $presupuestosObtenidos = 0;
-        $cantidadPresupuestos = $this->input->post('cantidadPresupuestos');
-//        echo $presupuestosObtenidos.'  -  '.$cantidadPresupuestos;
-        $principal = 1;
-        if(isset($_POST['radioPresupuestoPrincipal'])) {
-            $principal = $this->input->post('radioPresupuestoPrincipal');
-        }
-        while($presupuestosObtenidos < $cantidadPresupuestos) {
-            if(isset($_POST['presupuesto_'.$contadorPresupuestos])) {
-                $valorPrincipal = 0;
-                if($principal == $contadorPresupuestos) {
-                    $valorPrincipal = 1;
+        $gastosEditados = array();
+        $gastosEliminados = array();
+        $gastosNuevos = array();
+        $contadorGastos = 0;
+        $gastosObtenidos = 0;
+        $cantidadGastos = $this->input->post('cantidadGastos');
+//        echo $gastosObtenidos.'  -  '.$cantidadGastos;
+        while($gastosObtenidos < $cantidadGastos) {
+            if(isset($_POST['gasto_'.$contadorGastos])) {
+                $accionEfectuada = $this->input->post('gasto_'.$contadorGastos);
+                $gastoFijo = 1;
+                $inputTipo = $this->input->post('gasto'.$contadorGastos.'_tipo');
+                if($inputTipo == 2) {
+                    $gastoFijo = 0;
                 }
-                $accionEfectuada = $this->input->post('presupuesto_'.$contadorPresupuestos);
                 if ($accionEfectuada == '2') {//fue eliminado
-                    $identificacion = decryptIt($this->input->post('idPresupuesto_'.$contadorPresupuestos));
-                    $presupuesto = array(
-                        'idPresupuestoProveedor' => $identificacion,
-                        'principal' => $valorPrincipal,
+                    $identificacion = decryptIt($this->input->post('idGasto_'.$contadorGastos));
+                    $gasto = array(
+                        'idGasto' => $identificacion,
                         'eliminado' => '1'
                     );
-                    array_push($presupuestosEliminados, $presupuesto);
+                    array_push($gastosEliminados, $gasto);
                 } else {
                     if ($accionEfectuada == '1') {// no fue eliminado
-                        $presupuesto = array(
-                            'idPresupuestoProveedor' =>decryptIt($this->input->post('idPresupuesto_'.$contadorPresupuestos)),
-                            'tipoPresupuesto' => $this->input->post('presupuesto' . $contadorPresupuestos . '_tipo'),
-                            'monto' => $this->input->post('presupuesto' . $contadorPresupuestos . '_monto'),
-                            'principal' => $valorPrincipal,
-                            'eliminado' => 0
+                        $identificacion = decryptIt($this->input->post('idGasto_'.$contadorGastos));
+                        $gasto = array(
+                            'idGasto' => $identificacion,
+                            'idCategoriaGasto' => $this->input->post('gasto'.$contadorGastos.'_categoria'),
+                            'gastoFijo' => $gastoFijo,
+                            'codigo' => $this->input->post('gasto'.$contadorGastos.'_codigo'),
+                            'nombre' => $this->input->post('gasto'.$contadorGastos.'_nombre'),
+                            'monto' => $this->input->post('gasto'.$contadorGastos.'_monto'),
+                            'formaPago' => $this->input->post('gasto'.$contadorGastos.'_formaPago'),
+                            'eliminado' => '0'
                         );
-                        array_push($presupuestosEditados, $presupuesto);
+                        array_push($gastosEditados, $gasto);
                     } else {// es nuevo
-                        $presupuesto = array(
+                        $gasto = array(
+                            'idEmpresa' => $idEmpresa,
+                            'idCategoriaGasto' => $this->input->post('gasto'.$contadorGastos.'_categoria'),
                             'idProveedor' => decryptIt($id),
-                            'tipoPresupuesto' => $this->input->post('presupuesto' . $contadorPresupuestos . '_tipo'),
-                            'monto' => $this->input->post('presupuesto' . $contadorPresupuestos . '_monto'),
-                            'principal' => $valorPrincipal,
-                            'eliminado' => 0
+                            'gastoFijo' => $gastoFijo,
+                            'codigo' => $this->input->post('gasto'.$contadorGastos.'_codigo'),
+                            'nombre' => $this->input->post('gasto'.$contadorGastos.'_nombre'),
+                            'monto' => $this->input->post('gasto'.$contadorGastos.'_monto'),
+                            'formaPago' => $this->input->post('gasto'.$contadorGastos.'_formaPago'),
+                            'eliminado' => '0'
                         );
-                        array_push($presupuestosNuevos, $presupuesto);
+                        array_push($gastosNuevos, $gasto);
                     }
                 }
-                $presupuestosObtenidos++;
+                $gastosObtenidos++;
             }
-            $contadorPresupuestos++;
+            $contadorGastos++;
         }
-        $data['presupuestosNuevos'] = $presupuestosNuevos;
-        $data['presupuestosEditados'] = $presupuestosEditados;
-        $data['presupuestosEliminados'] = $presupuestosEliminados;
+        $data['gastosNuevos'] = $gastosNuevos;
+        $data['gastosEditados'] = $gastosEditados;
+        $data['gastosEliminados'] = $gastosEliminados;
 
         if (!$this->Proveedor_model->modificar($data)) {
             //Error en la transacción
