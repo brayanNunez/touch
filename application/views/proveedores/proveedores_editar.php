@@ -1079,28 +1079,7 @@
     }
     var cantidadGasto = '<?= count($resultado['gastos'])?>';
     var contadorGasto = cantidadGasto;
-    $(document).on('click', '#btn_accionAgregarGasto', function () {
-        var selectTipo = $('#agregarGasto_tipo');
-        selectTipo.empty();
-        selectTipo.append($('<option>', {
-            value: 0,
-            text: 'Seleccione uno',
-            selected: true,
-            disabled: true
-        }));
-        var i;
-        for(i = 0; i < nombres.length; i++) {
-            var name = nombres[i];
-            if(name != null && name != '') {
-                selectTipo.append($('<option>', {
-                    value: i,
-                    text: nombres[i],
-                    selected: false
-                }));
-            }
-        }
-        selectTipo.material_select();
-    });
+
     $(document).on('click', '#agregarGasto #btnAgregarGasto', function () {
         var tipo = $('#agregarGasto #gasto_tipo');
         var codigo = $('#agregarGasto #gasto_codigo');

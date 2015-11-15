@@ -230,34 +230,37 @@
                                                 </div>
                                             </div>
                                             <div id="tab-infoAdicional" class="card col s12">
-                                                <h5>Presupuesto promedio del proveedor</h5>
-                                                <p>* Exclusivo para proveedores de servicios, no tiene fines contables</p>
-                                                <table id="proveedor_presupuestos" class="data-table-information responsive-table display">
+                                                <h5>Gastos del proveedor</h5>
+                                                <div class="agregar_nuevo">
+                                                    <a id="btn_accionAgregarGasto" href="#agregarGasto"
+                                                       class="btn btn-default modal-trigger"><?= label('formProveedor_nuevoGasto'); ?></a>
+                                                </div>
+                                                <table id="proveedor_gastos" class="data-table-information responsive-table display">
                                                     <thead>
                                                         <tr>
                                                             <th style="text-align: center;">
-                                                                <input class="filled-in checkbox checkall" type="checkbox"
-                                                                       id="checkbox-all" onclick="toggleChecked(this.checked)"/>
-                                                                <label for="checkbox-all"></label>
+                                                                <input class="filled-in checkboxGastos checkall" type="checkbox"
+                                                                       id="checkbox-allGastos" onclick="toggleChecked(this.checked)"/>
+                                                                <label for="checkbox-allGastos"></label>
                                                             </th>
-                                                            <th><?= label('formProveedor_salariosTipo'); ?></th>
-                                                            <th><?= label('formProveedor_salariosMonto'); ?></th>
-                                                            <th><?= label('formProveedor_salariosPorDefecto'); ?></th>
-                                                            <th><?= label('formProveedor_salariosOpciones'); ?></th>
+                                                            <th><?= label('formProveedor_gastosTipo'); ?></th>
+                                                            <th><?= label('formProveedor_gastosCategoria'); ?></th>
+                                                            <th><?= label('formProveedor_gastosCodigo'); ?></th>
+                                                            <th><?= label('formProveedor_gastosNombre'); ?></th>
+                                                            <th><?= label('formProveedor_gastosTiempo'); ?></th>
+                                                            <th><?= label('formProveedor_gastosMonto'); ?></th>
+                                                            <th><?= label('formProveedor_gastosOpciones'); ?></th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody id="tablaPresupuestos">
+                                                    <tbody>
                                                     </tbody>
                                                 </table>
                                                 <div style="padding: 20px;">
-                                                    <a id="btn_accionAgregarPresupuesto" href="#agregarPresupuesto"
-                                                       class="btn btn-default modal-trigger"><?= label('formProveedor_nuevoPresupuesto'); ?></a>
-
-                                                    <div class="tabla-conAgregar tabla-salarios-proveedor">
+                                                    <div class="tabla-conAgregar">
                                                         <a id="opciones-seleccionados-delete"
                                                            class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements"
                                                            style="visibility: hidden;"
-                                                           href="#eliminarElementosSeleccionados" data-toggle="tooltip"
+                                                           href="#eliminarGastosSeleccionados" data-toggle="tooltip"
                                                            title="<?= label('opciones_seleccionadosEliminar') ?>">
                                                             <i class="mdi-action-delete icono-opciones-varios"></i>
                                                         </a>
@@ -274,7 +277,7 @@
                                     </div>
                                     <div style="visibility:hidden; position:absolute">
                                         <input id="cantidadContactos" name="cantidadContactos" type="text" value="0">
-                                        <input id="cantidadPresupuestos" name="cantidadPresupuestos" type="text" value="0">
+                                        <input id="cantidadGastos" name="cantidadGastos" type="text" value="0">
                                     </div>
                                 </form>
                             </div>
@@ -299,6 +302,8 @@
 <div style="visibility:hidden; position:absolute">
     <a id="linkContactosElimminar" href="#eliminarContacto" class="modal-trigger" data-fila-eliminar="1"
        title="<?= label('formProveedor_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>
+    <a id="linkGastosElimminar" href="#eliminarGasto" class="modal-trigger" data-fila-eliminar="1"
+       title="<?= label('formProveedor_gastoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>
 </div>
 <!-- END CONTENT-->
 
@@ -632,150 +637,325 @@
 
 
 
-<!--Funciones para presupuestos-->
+<!--Funciones para gastos-->
 <script>
+    $(document).ready(function () {
+        actualizarSelectTipo();
+        actualizarSelects();
+    });
     var nombres = [];
     var idEditar = 0;
-    $(document).ready(function () {
-        <?php
-            $nombres = array();
-            if(isset($tiposPresupuesto)) {
-                foreach ($tiposPresupuesto as $tipo) { ?>
-        nombres['<?= $tipo['idTipoPresupuesto'] ?>'] = '<?= $tipo['nombre'] ?>';
-                <?php }
-            }
-        ?>
-    });
-    function actualizarCantidadPresupuestos(){
-        $('#cantidadPresupuestos').val(cantidadPresupuesto);
-    }
-    var cantidadPresupuesto = 0;
-    var contadorPresupuesto = 0;
-    $(document).on('click', '#btn_accionAgregarPresupuesto', function () {
-        var selectTipo = $('#agregarPresupuesto_tipo');
+    function actualizarSelectTipo() {
+        var selectTipo = $('#agregarGasto #gasto_tipo');
         selectTipo.empty();
         selectTipo.append($('<option>', {
-            value: 0,
-            text: 'Seleccione uno',
-            selected: true,
-            disabled: true
+            value: 1,
+            text: 'Fijo',
+            selected: true
         }));
-        var i;
-        for(i = 0; i < nombres.length; i++) {
-            var name = nombres[i];
-            if(name != null && name != '') {
-                selectTipo.append($('<option>', {
-                    value: i,
-                    text: nombres[i],
-                    selected: false
-                }));
+        selectTipo.append($('<option>', {
+            value: 2,
+            text: 'Variable',
+            selected: false
+        }));
+        selectTipo.material_select();
+    }
+    function actualizarSelects() {
+        $.ajax({
+            type: 'POST',
+            url: '<?= base_url(); ?>gastos/categoriasGasto',
+            data: {  },
+            success: function(response)
+            {
+                generarAutocompletarCategoria($.parseJSON(response), 0);
             }
+        });
+        $.ajax({
+            type: 'POST',
+            url: '<?= base_url(); ?>gastos/formasPago',
+            data: {  },
+            success: function(response)
+            {
+                generarAutocompletarFormaPago($.parseJSON(response), 0);
+                generarListas();
+            }
+        });
+    }
+
+    function actualizarSelectTipo_Editar($fijo) {
+        var selectTipo = $('#editarGasto #gasto_tipo');
+        selectTipo.empty();
+        if($fijo === '1') {
+            selectTipo.append($('<option>', {
+                value: 1,
+                text: 'Fijo',
+                selected: true
+            }));
+            selectTipo.append($('<option>', {
+                value: 2,
+                text: 'Variable',
+                selected: false
+            }));
+        } else {
+            selectTipo.append($('<option>', {
+                value: 1,
+                text: 'Fijo',
+                selected: false
+            }));
+            selectTipo.append($('<option>', {
+                value: 2,
+                text: 'Variable',
+                selected: true
+            }));
         }
         selectTipo.material_select();
-    });
-    $(document).on('click', '#agregarPresupuesto #btnAgregarPresupuesto', function () {
-        var tipo = $('#agregarPresupuesto_tipo');
-        var nombreTipo = nombres[tipo.val()];
-        var monto = $('#agregarPresupuesto_monto');
-        agregarNuevoPresupuesto(tipo.val(), nombreTipo, monto.val());
-//        tipo.val(0).change();
-        monto.val('');
-    });
-    function agregarNuevoPresupuesto(tipo, nombreTipo, monto) {
-        cantidadPresupuesto++;
-        actualizarCantidadPresupuestos();
-        var check = '<td>' +
-                        '<div style="text-align: center;">' +
-                            '<input style="display:none" name="presupuesto_'+ contadorPresupuesto +'" type="text">' +
-                            '<input type="checkbox" class="filled-in checkbox" id="checkbox_presupuesto'+ contadorPresupuesto +'"/>' +
-                            '<label for="checkbox_presupuesto'+ contadorPresupuesto +'"></label>' +
-                        '</div>' +
-                    '</td>';
-        var tipoP = '<td>' +
-                        '<span id="span_presupuesto'+ contadorPresupuesto +'_tipo">' + nombreTipo + '</span><input type="text" name="presupuesto'+ contadorPresupuesto +'_tipo" id="presupuesto'+ contadorPresupuesto +'_tipo" value="'+ tipo +'" style="display: none;" />' +
-                    '</td>';
-        var montoP = '<td>'+
-                        '<span id="span_presupuesto'+ contadorPresupuesto +'_monto">' + monto + '</span><input type="text" name="presupuesto'+ contadorPresupuesto +'_monto" id="presupuesto'+ contadorPresupuesto +'_monto" value="'+ monto +'" style="display: none;" />' +
-                    '</td>';
-        var principal = '<td>' +
-                        '<input type="radio" name="radioPresupuestoPrincipal" id="radio_presupuesto'+ contadorPresupuesto +'" value="' + contadorPresupuesto + '" />' +
-                        '<label for="radio_presupuesto'+ contadorPresupuesto +'"></label>' +
-                    '</td>';
-        var opciones = '<td>' +
-                            '<ul id="dropdown_presupuesto'+ contadorPresupuesto +'" class="dropdown-content">' +
-                                '<li>' +
-                                    '<a href="#editarPresupuesto" class="-text modal-trigger abrirEditar" data-id-editar="'+ contadorPresupuesto + '"><?= label('menuOpciones_editar') ?></a>' +
-                                '</li>' +
-                                '<li>' +
-                                    '<a href="#eliminarPresupuesto" class="-text modal-trigger confirmarEliminar" data-id-eliminar="'+ contadorPresupuesto +'" data-fila-eliminar="fila'+ contadorPresupuesto +'"><?= label('menuOpciones_eliminar') ?></a>' +
-                                '</li>' +
-                            '</ul>' +
-                            '<a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown_presupuesto'+ contadorPresupuesto +'"><?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i> </a>' +
-                        '</td>';
+    }
+    function actualizarSelectCategoriasGasto_Editar($idCategoria) {
+        $.ajax({
+            type: 'POST',
+            url: '<?= base_url(); ?>gastos/categoriasGasto',
+            data: {  },
+            success: function(response)
+            {
+                generarAutocompletarCategoriaEditar($.parseJSON(response), $idCategoria);
+                generarListas();
+            }
+        });
+    }
+    function actualizarSelectFormasPago_Editar($idFormaPago) {
+        $.ajax({
+            type: 'POST',
+            url: '<?= base_url(); ?>gastos/formasPago',
+            data: {  },
+            success: function(response)
+            {
+                generarAutocompletarFormaPagoEditar($.parseJSON(response), $idFormaPago);
+                generarListas();
+            }
+        });
+    }
 
-        $('#proveedor_presupuestos').dataTable().fnAddData([
+    function generarAutocompletarCategoria($array, $id){
+        var miSelect = $('#agregarGasto #gasto_categoria');
+        miSelect.empty();
+        miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("agregarGasto_elegirCategoria"); ?></option>');
+        miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+        for(var i = 0; i < $array.length; i++) {
+            var cat = $array[i];
+            if(cat != null) {
+                if(cat['idCategoriaGasto'] == $id){
+                    miSelect.append('<option value="' + cat['idCategoriaGasto'] + '" selected>' + cat['nombre'] + '</option>');
+                } else {
+                    miSelect.append('<option value="' + cat['idCategoriaGasto'] + '">' + cat['nombre'] + '</option>');
+                }
+            }
+        }
+        miSelect.trigger("chosen:updated");
+    }
+    function generarAutocompletarFormaPago($array, $id){
+        var miSelect = $('#agregarGasto #gasto_formaPago');
+        miSelect.empty();
+        miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("agregarGasto_elegirFormaPago"); ?></option>');
+        miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+        for(var i = 0; i < $array.length; i++) {
+            var formaP = $array[i];
+            if(formaP != null) {
+                if(formaP['idFormaPago'] == $id) {
+                    miSelect.append('<option value="' + formaP['idFormaPago'] + '" selected>' + formaP['nombre'] + '</option>');
+                } else {
+                    miSelect.append('<option value="' + formaP['idFormaPago'] + '">' + formaP['nombre'] + '</option>');
+                }
+            }
+        }
+        miSelect.trigger("chosen:updated");
+    }
+    function generarAutocompletarCategoriaEditar($array, $id){
+        var miSelect = $('#editarGasto #gasto_categoria');
+        miSelect.empty();
+        miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("agregarGasto_elegirCategoria"); ?></option>');
+        miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+        for(var i = 0; i < $array.length; i++) {
+            var cat = $array[i];
+            if(cat != null) {
+                if(cat['idCategoriaGasto'] == $id){
+                    miSelect.append('<option value="' + cat['idCategoriaGasto'] + '" selected>' + cat['nombre'] + '</option>');
+                } else {
+                    miSelect.append('<option value="' + cat['idCategoriaGasto'] + '">' + cat['nombre'] + '</option>');
+                }
+            }
+        }
+        miSelect.trigger("chosen:updated");
+    }
+    function generarAutocompletarFormaPagoEditar($array, $id){
+        var miSelect = $('#editarGasto #gasto_formaPago');
+        miSelect.empty();
+        miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("agregarGasto_elegirFormaPago"); ?></option>');
+        miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+        for(var i = 0; i < $array.length; i++) {
+            var formaP = $array[i];
+            if(formaP != null) {
+                if(formaP['idFormaPago'] == $id) {
+                    miSelect.append('<option value="' + formaP['idFormaPago'] + '" selected>' + formaP['nombre'] + '</option>');
+                } else {
+                    miSelect.append('<option value="' + formaP['idFormaPago'] + '">' + formaP['nombre'] + '</option>');
+                }
+            }
+        }
+        miSelect.trigger("chosen:updated");
+    }
+    function generarListas(){
+        var config = {'.chosen-select'           : {}}
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    }
+
+    var gastoEliminar = null;
+    $(document).on('click','.confirmarEliminarGasto', function () {
+        gastoEliminar = $(this).parents('tr');
+        $('#linkGastosElimminar').click();//esto se hace porque al agregar un <a class="modal-trigger"> dinamicamente con el metodo de agregarNuevoContacto() pareciera no servir, entonces lo que se hace es llamar al evento click del modal-trigger con el id = linkContactosElimminar
+    });
+    $(document).on('click','#eliminarGasto #botonEliminar', function () {
+        event.preventDefault();
+        gastoEliminar.fadeOut(function () {
+            gastoEliminar.remove();
+        });
+        cantidadGasto--;
+        actualizarCantidadGastos();
+    });
+
+    function actualizarCantidadGastos(){
+        $('#cantidadGastos').val(cantidadGasto);
+    }
+    var cantidadGasto = 0;
+    var contadorGasto = 0;
+    
+    $(document).on('click', '#agregarGasto #btnAgregarGasto', function () {
+        var tipo = $('#agregarGasto #gasto_tipo');
+        var codigo = $('#agregarGasto #gasto_codigo');
+        var nombre = $('#agregarGasto #gasto_nombre');
+        var categoria = $('#agregarGasto #gasto_categoria');
+        var formaPago = $('#agregarGasto #gasto_formaPago');
+        var monto = $('#agregarGasto #gasto_monto');
+        agregarNuevoGasto(tipo.val(), codigo.val(), nombre.val(), categoria.val(), formaPago.val(), monto.val());
+    });
+    function agregarNuevoGasto(tipo, codigo, nombre, categoria, formaPago, monto) {
+        cantidadGasto++;
+        actualizarCantidadGastos();
+        var check = '<td>' +
+            '<div style="text-align: center;">' +
+            '<input class="accionAplicada" style="display:none" name="gasto_'+ contadorGasto +'" type="text" value="0">' +
+            '<input type="checkbox" class="filled-in checkbox" id="checkbox_gasto'+ contadorGasto +'"/>' +
+            '<label for="checkbox_gasto'+ contadorGasto +'"></label>' +
+            '</div>' +
+            '</td>';
+        var nombreTipo = 'Fijo';
+        if(tipo == 2) {
+            nombreTipo = 'Variable';
+        }
+        var tipoP = '<td>' +
+            '<span id="span_gasto'+ contadorGasto +'_tipo">' + nombreTipo + '</span><input type="text" name="gasto'+ contadorGasto +'_tipo" id="gasto'+ contadorGasto +'_tipo" value="'+ tipo +'" style="display: none;" />' +
+            '</td>';
+        var nombreCategoria = $("#agregarGasto #gasto_categoria option[value='" + categoria + "']").text();
+        var categoriaP = '<td>' +
+            '<span id="span_gasto'+ contadorGasto +'_categoria">' + nombreCategoria + '</span><input type="text" name="gasto'+ contadorGasto +'_categoria" id="gasto'+ contadorGasto +'_categoria" value="'+ categoria +'" style="display: none;" />' +
+            '</td>';
+        var codigoP = '<td>' +
+            '<span id="span_gasto'+ contadorGasto +'_codigo">' + codigo + '</span><input type="text" name="gasto'+ contadorGasto +'_codigo" id="gasto'+ contadorGasto +'_codigo" value="'+ codigo +'" style="display: none;" />' +
+            '</td>';
+        var nombreP = '<td>' +
+            '<span id="span_gasto'+ contadorGasto +'_nombre">' + nombre + '</span><input type="text" name="gasto'+ contadorGasto +'_nombre" id="gasto'+ contadorGasto +'_nombre" value="'+ nombre +'" style="display: none;" />' +
+            '</td>';
+        var nombreFormaPago = $("#agregarGasto #gasto_formaPago option[value='" + formaPago + "']").text();
+        var formaP = '<td>' +
+            '<span id="span_gasto'+ contadorGasto +'_formaPago">' + nombreFormaPago + '</span><input type="text" name="gasto'+ contadorGasto +'_formaPago" id="gasto'+ contadorGasto +'_formaPago" value="'+ formaPago +'" style="display: none;" />' +
+            '</td>';
+        var montoP = '<td>'+
+            '<span id="span_gasto'+ contadorGasto +'_monto">' + monto + '</span><input type="text" name="gasto'+ contadorGasto +'_monto" id="gasto'+ contadorGasto +'_monto" value="'+ monto +'" style="display: none;" />' +
+            '</td>';
+//        var principal = '<td>' +
+//                            '<input type="radio" name="radioGastoPrincipal" id="radio_gasto'+ contadorGasto +'" value="' + contadorGasto + '" />' +
+//                            '<label for="radio_gasto'+ contadorGasto +'"></label>' +
+//                        '</td>';
+        var opciones = '<td>' +
+            '<ul id="dropdown_gasto'+ contadorGasto +'" class="dropdown-content">' +
+            '<li>' +
+            '<a href="#editarGasto" class="-text modal-trigger abrirEditar" data-id-editar="'+ contadorGasto + '"><?= label('menuOpciones_editar') ?></a>' +
+            '</li>' +
+            '<li>' +
+            '<a class="-text modal-trigger confirmarEliminarGasto" data-id-eliminar="'+ contadorGasto +'" data-fila-eliminar="fila'+ contadorGasto +'"><?= label('menuOpciones_eliminar') ?></a>' +
+            '</li>' +
+            '</ul>' +
+            '<a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown_gasto'+ contadorGasto +'"><?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i> </a>' +
+            '</td>';
+        $('#proveedor_gastos').dataTable().fnAddData([
             check,
             tipoP,
+            categoriaP,
+            codigoP,
+            nombreP,
+            formaP,
             montoP,
-            principal,
+//            principal,
             opciones
         ]);
 
         generarListasBotones();
         $('.modal-trigger').leanModal();
-        contadorPresupuesto++;
+        contadorGasto++;
     }
 
     $(document).on('click', '.abrirEditar', function () {
         idEditar = $(this).data('id-editar');
-        var tipoActual = $('#presupuesto' + idEditar + '_tipo').val();
-        var nombreTipo = nombres[tipoActual];
-        var montoActual = $('#presupuesto' + idEditar + '_monto').val();
+        var tipo = $('#gasto' + idEditar + '_tipo').val();
+        var codigo = $('#gasto' + idEditar + '_codigo').val();
+        var nombre = $('#gasto' + idEditar + '_nombre').val();
+        var categoria = $('#gasto' + idEditar + '_categoria').val();
+        var formaPago = $('#gasto' + idEditar + '_formaPago').val();
+        var monto = $('#gasto' + idEditar + '_monto').val();
 
-//        alert(tipoActual + '  -  ' + montoActual + '  -  ' + nombreTipo);
-        var montoEditar = $('#editarPresupuesto_monto');
-        montoEditar.val(montoActual);
-        var selectTipo = $('#editarPresupuesto_tipo');
-        selectTipo.empty();
-        selectTipo.append($('<option>', {
-            value: 0,
-            text: 'Seleccione uno',
-            disabled: true
-        }));
-        var i;
-        for(i = 0; i < nombres.length; i++) {
-            var name = nombres[i];
-            if(name != null && name != '') {
-                if(i == tipoActual) {
-                    selectTipo.append($('<option>', {
-                        value: i,
-                        text: nombres[i],
-                        selected: true
-                    }));
-                } else {
-                    selectTipo.append($('<option>', {
-                        value: i,
-                        text: nombres[i]
-                    }));
-                }
-            }
-        }
-        selectTipo.material_select();
+//        alert(tipo + '  -  ' + codigo + '  -  ' + nombre + '  -  ' + categoria + '  -  ' + formaPago + '  -  ' + monto);
+//        $('#editarGasto #gasto_tipo').val(tipo);
+//        $('#editarGasto #gasto_categoria').val(categoria);
+//        $('#editarGasto #gasto_formaPago').val(formaPago);
+        $('#editarGasto #gasto_codigo').val(codigo);
+        $('#editarGasto #gasto_nombre').val(nombre);
+        $('#editarGasto #gasto_monto').val(monto);
+
+        actualizarSelectTipo_Editar(tipo);
+        actualizarSelectCategoriasGasto_Editar(categoria);
+        actualizarSelectFormasPago_Editar(formaPago);
+        $('label').addClass('active');
     });
-    $(document).on('click', '#editarPresupuesto #btnEditarPresupuesto', function () {
-        var tipo = $('#editarPresupuesto_tipo');
-        var nombreTipo = nombres[tipo.val()];
-        var monto = $('#editarPresupuesto_monto');
+    $(document).on('click', '#editarGasto #btnEditarGasto', function () {
+        var tipo = $('#editarGasto #gasto_tipo').val();
+        var codigo = $('#editarGasto #gasto_codigo').val();
+        var nombre = $('#editarGasto #gasto_nombre').val();
+        var categoria = $('#editarGasto #gasto_categoria').val();
+        var formaPago = $('#editarGasto #gasto_formaPago').val();
+        var monto = $('#editarGasto #gasto_monto').val();
 
-//        alert(tipo.val() + '  -  ' + monto.val() + '  -  ' + nombreTipo);
+        $('#gasto' + idEditar + '_tipo').val(tipo);
+        $('#gasto' + idEditar + '_codigo').val(codigo);
+        $('#gasto' + idEditar + '_nombre').val(nombre);
+        $('#gasto' + idEditar + '_categoria').val(categoria);
+        $('#gasto' + idEditar + '_formaPago').val(formaPago);
+        $('#gasto' + idEditar + '_monto').val(monto);
 
-        $('#presupuesto' + idEditar + '_tipo').val(tipo.val());
-        $('#presupuesto' + idEditar + '_monto').val(monto.val());
-        $('#span_presupuesto' + idEditar + '_tipo').text(nombreTipo);
-        $('#span_presupuesto' + idEditar + '_monto').text(monto.val());
+        var nombreTipo = 'Fijo';
+        if(tipo == 2) {
+            nombreTipo = 'Variable';
+        }
+        var nombreCategoria = $("#editarGasto #gasto_categoria option[value='" + categoria + "']").text();
+        var nombreFormaPago = $("#editarGasto #gasto_formaPago option[value='" + formaPago + "']").text();
 
-//        tipo.val(0).change();
-        monto.val('');
+//        alert(nombreTipo + '  -  ' + codigo + '  -  ' + nombre + '  -  ' + nombreCategoria + '  -  ' + nombreFormaPago + '  -  ' + monto);
+        $('#span_gasto' + idEditar + '_tipo').text(nombreTipo);
+        $('#span_gasto' + idEditar + '_codigo').text(codigo);
+        $('#span_gasto' + idEditar + '_nombre').text(nombre);
+        $('#span_gasto' + idEditar + '_categoria').text(nombreCategoria);
+        $('#span_gasto' + idEditar + '_formaPago').text(nombreFormaPago);
+        $('#span_gasto' + idEditar + '_monto').text(monto);
     });
 
     function generarListasBotones(){
@@ -822,7 +1002,7 @@
             fila = $(this).parents('tr');
         });
 
-        $('#eliminarPresupuesto #botonEliminar').on('click', function () {
+        $('#eliminarGasto #botonEliminar').on('click', function () {
             event.preventDefault();
 
             fila.fadeOut(function () {
@@ -833,7 +1013,7 @@
     });
 
     $(document).ready( function () {
-        $('#proveedor_presupuestos').dataTable( {
+        $('#proveedor_gastos').dataTable( {
             'aoColumnDefs': [{
                 'bSortable': false,
                 'aTargets': [0, -1] //desactiva en primer y última columna opción de ordenar
@@ -841,8 +1021,8 @@
         });
     });
     $(document).ready(function () {
-        $('table#proveedor_presupuestos thead th:first').removeClass('sorting_asc').addClass('sorting_disabled');
-        $('table#proveedor_presupuestos thead th:nth-child(2)').removeClass('sorting').addClass('sorting_asc');
+        $('table#proveedor_gastos thead th:first').removeClass('sorting_asc').addClass('sorting_disabled');
+        $('table#proveedor_gastos thead th:nth-child(2)').removeClass('sorting').addClass('sorting_asc');
     });
     $(document).ready(function () {
         $('#eliminarElementosSeleccionados #botonEliminar').on("click", function (event) {
@@ -877,7 +1057,7 @@
     $(document).ready(function () {
         $('#checkbox-all').click(function (event) {
             var $this = $(this);
-            var tableBody = $('#proveedor_presupuestos').find('tbody tr[role=row] input[type=checkbox]');
+            var tableBody = $('#proveedor_gastos').find('tbody tr[role=row] input[type=checkbox]');
             tableBody.each(function() {
                 var check = $(this);
                 if ($this.is(':checked')) {
@@ -973,48 +1153,105 @@
     </div>
 </div>
 
-<div id="agregarPresupuesto" class="modal" style="height: 55%;">
+<div id="agregarGasto" class="modal" style="width: 70%;">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <div class="input-field col s12">
-            <select id="agregarPresupuesto_tipo">
-            </select>
-            <label for="agregarPresupuesto_tipo" class="label_modalPresupuesto"><?= label('formProveedor_salarioTipo'); ?></label>
-        </div>
-        <div class="input-field col s12" style="margin-top: 25px;">
-            <input id="agregarPresupuesto_monto" type="number" value="">
-            <label for="agregarPresupuesto_monto" class="label_modalPresupuesto"><?= label('formProveedor_salarioMonto'); ?></label>
+        <div class="row">
+            <div class="input-field col s12 m4 l4">
+                <select id="gasto_tipo" name="gasto_tipo"></select>
+                <label for="gasto_tipo"><?= label('gastos_Tipo'); ?></label>
+            </div>
+            <div class="input-field col s12 m4 l4">
+                <input id="gasto_codigo" name="gasto_codigo" type="text">
+                <label for="gasto_codigo"><?= label('gastos_Codigo') ?></label>
+            </div>
+            <div class="input-field col s12 m4 l4">
+                <input id="gasto_nombre" name="gasto_nombre" type="text">
+                <label for="gasto_nombre"><?= label('gastos_Nombre') ?></label>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 m6 l6 inputSelector">
+                    <label for="gasto_categoria"><?= label("gastos_Categoria"); ?></label>
+                    <br>
+                    <div id="contenedorSelectCategorias">
+                        <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="agregarGasto_categoria" id="gasto_categoria" name="gasto_categoria"
+                                data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("agregarGasto_elegirCategoria"); ?>"
+                                class="browser-default chosen-select" style="width:350px;" tabindex="2"></select>
+                    </div>
+                </div>
+                <div class="input-field col s12 m6 l6 inputSelector">
+                    <label for="gasto_formaPago"><?= label("gastos_FormaPago"); ?></label>
+                    <br>
+                    <div id="contenedorSelectFormasPago">
+                        <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="agregarGasto_formaPago" id="gasto_formaPago" name="gasto_formaPago"
+                                data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("agregarGasto_elegirFormaPago"); ?>"
+                                class="browser-default chosen-select" style="width:350px;" tabindex="2"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="input-field col s12 m6 l6">
+                <input id="gasto_monto" name="gasto_monto" type="text">
+                <label for="gasto_monto"><?= label('gastos_Monto') ?></label>
+            </div>
         </div>
     </div>
-    <div class="modal-footer" id="btnAgregarPresupuesto">
+    <div class="modal-footer" id="btnAgregarGasto">
         <a class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
-<div id="editarPresupuesto" class="modal" style="height: 55%;">
+<div id="editarGasto" class="modal" style="width: 70%;">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <div id="div_selectTipo"></div>
-        <div class="input-field col s12">
-            <select id="editarPresupuesto_tipo">
-            </select>
-            <label for="editarPresupuesto_tipo" class="label_modalPresupuesto"><?= label('formProveedor_salarioTipo'); ?></label>
-        </div>
-        <div class="input-field col s12" style="margin-top: 25px;">
-            <input id="editarPresupuesto_monto" type="number" value="0">
-            <label for="editarPresupuesto_monto" class="label_modalPresupuesto"><?= label('formProveedor_salarioMonto'); ?></label>
+        <div class="row">
+            <div class="input-field col s12 m4 l4">
+                <select id="gasto_tipo" name="gasto_tipo"></select>
+                <label for="gasto_tipo"><?= label('gastos_Tipo'); ?></label>
+            </div>
+            <div class="input-field col s12 m4 l4">
+                <input id="gasto_codigo" name="gasto_codigo" type="text">
+                <label for="gasto_codigo"><?= label('gastos_Codigo') ?></label>
+            </div>
+            <div class="input-field col s12 m4 l4">
+                <input id="gasto_nombre" name="gasto_nombre" type="text">
+                <label for="gasto_nombre"><?= label('gastos_Nombre') ?></label>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 m6 l6 inputSelector">
+                    <label for="gasto_categoria"><?= label("gastos_Categoria"); ?></label>
+                    <br>
+                    <div id="contenedorSelectCategorias">
+                        <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="agregarGasto_categoria" id="gasto_categoria" name="gasto_categoria"
+                                data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("agregarGasto_elegirCategoria"); ?>"
+                                class="browser-default chosen-select" style="width:350px;" tabindex="2"></select>
+                    </div>
+                </div>
+                <div class="input-field col s12 m6 l6 inputSelector">
+                    <label for="gasto_formaPago"><?= label("gastos_FormaPago"); ?></label>
+                    <br>
+                    <div id="contenedorSelectFormasPago">
+                        <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="agregarGasto_formaPago" id="gasto_formaPago" name="gasto_formaPago"
+                                data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("agregarGasto_elegirFormaPago"); ?>"
+                                class="browser-default chosen-select" style="width:350px;" tabindex="2"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="input-field col s12 m6 l6">
+                <input id="gasto_monto" name="gasto_monto" type="text">
+                <label for="gasto_monto"><?= label('gastos_Monto') ?></label>
+            </div>
         </div>
     </div>
-    <div class="modal-footer" id="btnEditarPresupuesto">
+    <div class="modal-footer" id="btnEditarGasto">
         <a class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
-<div id="eliminarPresupuesto" class="modal">
+<div id="eliminarGasto" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
@@ -1035,7 +1272,7 @@
         <p><?= label('clientes_archivosSeleccionadosEliminar'); ?></p>
     </div>
     <div class="modal-footer black-text">
-        <div id="botonEliminar" title="proveedor_presupuestos">
+        <div id="botonEliminar" title="proveedor_gastos_editar">
             <a href="#" class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
         </div>
     </div>

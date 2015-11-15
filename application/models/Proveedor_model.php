@@ -103,11 +103,10 @@ class Proveedor_model extends CI_Model
                 }
             }
 
-            $presupuestos = $data['presupuestos'];
-//            echo print_r($presupuestos); exit();
-            foreach ($presupuestos as $presupuesto) {
-                $presupuesto['idProveedor'] = $insert_id;
-                $query = $this->db->insert('presupuestoproveedor', $presupuesto);
+            $gastos = $data['gastos'];
+            foreach ($gastos as $gasto) {
+                $gasto['idProveedor'] = $insert_id;
+                $query = $this->db->insert('gasto', $gasto);
                 if (!$query) {
                     throw new Exception("Error en la BD");
                 }

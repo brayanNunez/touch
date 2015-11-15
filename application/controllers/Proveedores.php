@@ -139,37 +139,33 @@ class Proveedores extends CI_Controller
         }
         $data['contactos'] = $contactos;
 
-        $presupuestos = array();
-        $contadorPresupuestos = 0;
-        $presupuestosObtenidos = 0;
-        $cantidadPresupuestos = $this->input->post('cantidadPresupuestos');
-        while($presupuestosObtenidos < $cantidadPresupuestos) {
-            if(isset($_POST['presupuesto_'.$contadorPresupuestos])) {
-                $principal = 1;
-                if(isset($_POST['radioPresupuestoPrincipal'])) {
-                    $principal = $this->input->post('radioPresupuestoPrincipal');
+        $gastos = array();
+        $contadorGastos = 0;
+        $gastosObtenidos = 0;
+        $cantidadGastos = $this->input->post('cantidadGastos');
+        while($gastosObtenidos < $cantidadGastos) {
+            if(isset($_POST['gasto_'.$contadorGastos])) {
+                $gastoFijo = 1;
+                $inputTipo = $this->input->post('gasto'.$contadorGastos.'_tipo');
+                if($inputTipo == 2) {
+                    $gastoFijo = 0;
                 }
-                if($principal == $contadorPresupuestos) {
-                    $presupuesto = array(
-                        'tipoPresupuesto' => $this->input->post('presupuesto'.$contadorPresupuestos.'_tipo'),
-                        'monto' => $this->input->post('presupuesto'.$contadorPresupuestos.'_monto'),
-                        'principal' => 1,
-                        'eliminado' => 0
-                    );
-                } else {
-                    $presupuesto = array(
-                        'tipoPresupuesto' => $this->input->post('presupuesto' . $contadorPresupuestos . '_tipo'),
-                        'monto' => $this->input->post('presupuesto' . $contadorPresupuestos . '_monto'),
-                        'principal' => 0,
-                        'eliminado' => 0
-                    );
-                }
-                array_push($presupuestos, $presupuesto);
-                $presupuestosObtenidos++;
+                $gasto = array(
+                    'idEmpresa' => $idEmpresa,
+                    'idCategoriaGasto' => $this->input->post('gasto'.$contadorGastos.'_categoria'),
+                    'gastoFijo' => $gastoFijo,
+                    'codigo' => $this->input->post('gasto'.$contadorGastos.'_codigo'),
+                    'nombre' => $this->input->post('gasto'.$contadorGastos.'_nombre'),
+                    'monto' => $this->input->post('gasto'.$contadorGastos.'_monto'),
+                    'formaPago' => $this->input->post('gasto'.$contadorGastos.'_formaPago'),
+                    'eliminado' => '0'
+                );
+                array_push($gastos, $gasto);
             }
-            $contadorPresupuestos++;
+            $gastosObtenidos++;
+            $contadorGastos++;
         }
-        $data['presupuestos'] = $presupuestos;
+        $data['gastos'] = $gastos;
 
         $persona = $this->Proveedor_model->insertar($data);
         if (!$persona) {
