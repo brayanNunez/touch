@@ -325,6 +325,10 @@
                 </div>
                 <div id="tab-infoAdicional-editar" class="card col s12">
                     <h5>Gastos del proveedor</h5>
+                    <div class="agregar_nuevo">
+                        <a id="btn_accionAgregarGasto" href="#agregarGasto"
+                           class="btn btn-default modal-trigger"><?= label('formProveedor_nuevoGasto'); ?></a>
+                    </div>
                     <table id="proveedor_gastos_editar" class="table striped">
                         <thead>
                             <tr>
@@ -412,10 +416,7 @@
                         </tbody>
                     </table>
                     <div style="padding: 20px;">
-                        <a id="btn_accionAgregarGasto" href="#agregarGasto"
-                           class="btn btn-default modal-trigger"><?= label('formProveedor_nuevoGasto'); ?></a>
-
-                        <div class="tabla-conAgregar tabla-salarios-proveedor">
+                        <div class="tabla-conAgregar">
                             <a id="opciones-seleccionados-delete"
                                class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements"
                                style="visibility: hidden;"
@@ -923,8 +924,61 @@
         });
     }
 
+    function actualizarSelectTipo_Editar($fijo) {
+        var selectTipo = $('#editarGasto #gasto_tipo');
+        selectTipo.empty();
+        if($fijo === '1') {
+            selectTipo.append($('<option>', {
+                value: 1,
+                text: 'Fijo',
+                selected: true
+            }));
+            selectTipo.append($('<option>', {
+                value: 2,
+                text: 'Variable',
+                selected: false
+            }));
+        } else {
+            selectTipo.append($('<option>', {
+                value: 1,
+                text: 'Fijo',
+                selected: false
+            }));
+            selectTipo.append($('<option>', {
+                value: 2,
+                text: 'Variable',
+                selected: true
+            }));
+        }
+        selectTipo.material_select();
+    }
+    function actualizarSelectCategoriasGasto_Editar($idCategoria) {
+        $.ajax({
+            type: 'POST',
+            url: '<?= base_url(); ?>gastos/categoriasGasto',
+            data: {  },
+            success: function(response)
+            {
+                generarAutocompletarCategoriaEditar($.parseJSON(response), $idCategoria);
+                generarListas();
+            }
+        });
+    }
+    function actualizarSelectFormasPago_Editar($idFormaPago) {
+        $.ajax({
+            type: 'POST',
+            url: '<?= base_url(); ?>gastos/formasPago',
+            data: {  },
+            success: function(response)
+            {
+                generarAutocompletarFormaPagoEditar($.parseJSON(response), $idFormaPago);
+                generarListas();
+            }
+        });
+    }
+
     function generarAutocompletarCategoria($array, $id){
-        var miSelect = $('#gasto_categoria');
+        var miSelect = $('#agregarGasto #gasto_categoria');
         miSelect.empty();
         miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("agregarGasto_elegirCategoria"); ?></option>');
         miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
@@ -941,7 +995,41 @@
         miSelect.trigger("chosen:updated");
     }
     function generarAutocompletarFormaPago($array, $id){
-        var miSelect = $('#gasto_formaPago');
+        var miSelect = $('#agregarGasto #gasto_formaPago');
+        miSelect.empty();
+        miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("agregarGasto_elegirFormaPago"); ?></option>');
+        miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+        for(var i = 0; i < $array.length; i++) {
+            var formaP = $array[i];
+            if(formaP != null) {
+                if(formaP['idFormaPago'] == $id) {
+                    miSelect.append('<option value="' + formaP['idFormaPago'] + '" selected>' + formaP['nombre'] + '</option>');
+                } else {
+                    miSelect.append('<option value="' + formaP['idFormaPago'] + '">' + formaP['nombre'] + '</option>');
+                }
+            }
+        }
+        miSelect.trigger("chosen:updated");
+    }
+    function generarAutocompletarCategoriaEditar($array, $id){
+        var miSelect = $('#editarGasto #gasto_categoria');
+        miSelect.empty();
+        miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("agregarGasto_elegirCategoria"); ?></option>');
+        miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+        for(var i = 0; i < $array.length; i++) {
+            var cat = $array[i];
+            if(cat != null) {
+                if(cat['idCategoriaGasto'] == $id){
+                    miSelect.append('<option value="' + cat['idCategoriaGasto'] + '" selected>' + cat['nombre'] + '</option>');
+                } else {
+                    miSelect.append('<option value="' + cat['idCategoriaGasto'] + '">' + cat['nombre'] + '</option>');
+                }
+            }
+        }
+        miSelect.trigger("chosen:updated");
+    }
+    function generarAutocompletarFormaPagoEditar($array, $id){
+        var miSelect = $('#editarGasto #gasto_formaPago');
         miSelect.empty();
         miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("agregarGasto_elegirFormaPago"); ?></option>');
         miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
@@ -1021,7 +1109,6 @@
         var formaPago = $('#agregarGasto #gasto_formaPago');
         var monto = $('#agregarGasto #gasto_monto');
         agregarNuevoGasto(tipo.val(), codigo.val(), nombre.val(), categoria.val(), formaPago.val(), monto.val());
-        monto.val('');
     });
     function agregarNuevoGasto(tipo, codigo, nombre, categoria, formaPago, monto) {
         cantidadGasto++;
@@ -1040,7 +1127,7 @@
         var tipoP = '<td>' +
                         '<span id="span_gasto'+ contadorGasto +'_tipo">' + nombreTipo + '</span><input type="text" name="gasto'+ contadorGasto +'_tipo" id="gasto'+ contadorGasto +'_tipo" value="'+ tipo +'" style="display: none;" />' +
                     '</td>';
-        var nombreCategoria = $("#gasto_categoria option[value='" + categoria + "']").text();
+        var nombreCategoria = $("#agregarGasto #gasto_categoria option[value='" + categoria + "']").text();
         var categoriaP = '<td>' +
                         '<span id="span_gasto'+ contadorGasto +'_categoria">' + nombreCategoria + '</span><input type="text" name="gasto'+ contadorGasto +'_categoria" id="gasto'+ contadorGasto +'_categoria" value="'+ categoria +'" style="display: none;" />' +
                     '</td>';
@@ -1050,7 +1137,7 @@
         var nombreP = '<td>' +
                         '<span id="span_gasto'+ contadorGasto +'_nombre">' + nombre + '</span><input type="text" name="gasto'+ contadorGasto +'_nombre" id="gasto'+ contadorGasto +'_nombre" value="'+ nombre +'" style="display: none;" />' +
                     '</td>';
-        var nombreFormaPago = $("#gasto_formaPago option[value='" + formaPago + "']").text();
+        var nombreFormaPago = $("#agregarGasto #gasto_formaPago option[value='" + formaPago + "']").text();
         var formaP = '<td>' +
                         '<span id="span_gasto'+ contadorGasto +'_formaPago">' + nombreFormaPago + '</span><input type="text" name="gasto'+ contadorGasto +'_formaPago" id="gasto'+ contadorGasto +'_formaPago" value="'+ formaPago +'" style="display: none;" />' +
                     '</td>';
@@ -1091,54 +1178,55 @@
 
     $(document).on('click', '.abrirEditar', function () {
         idEditar = $(this).data('id-editar');
-        var tipoActual = $('#gasto' + idEditar + '_tipo').val();
-        var nombreTipo = nombres[tipoActual];
-        var montoActual = $('#gasto' + idEditar + '_monto').val();
+        var tipo = $('#gasto' + idEditar + '_tipo').val();
+        var codigo = $('#gasto' + idEditar + '_codigo').val();
+        var nombre = $('#gasto' + idEditar + '_nombre').val();
+        var categoria = $('#gasto' + idEditar + '_categoria').val();
+        var formaPago = $('#gasto' + idEditar + '_formaPago').val();
+        var monto = $('#gasto' + idEditar + '_monto').val();
 
-//        alert(tipoActual + '  -  ' + montoActual + '  -  ' + nombreTipo);
-        var montoEditar = $('#editarGasto_monto');
-        montoEditar.val(montoActual);
-        var selectTipo = $('#editarGasto_tipo');
-        selectTipo.empty();
-        selectTipo.append($('<option>', {
-            value: 0,
-            text: 'Seleccione uno',
-            disabled: true
-        }));
-        var i;
-        for(i = 0; i < nombres.length; i++) {
-            var name = nombres[i];
-            if(name != null && name != '') {
-                if(i == tipoActual) {
-                    selectTipo.append($('<option>', {
-                        value: i,
-                        text: nombres[i],
-                        selected: true
-                    }));
-                } else {
-                    selectTipo.append($('<option>', {
-                        value: i,
-                        text: nombres[i]
-                    }));
-                }
-            }
-        }
-        selectTipo.material_select();
+//        alert(tipo + '  -  ' + codigo + '  -  ' + nombre + '  -  ' + categoria + '  -  ' + formaPago + '  -  ' + monto);
+//        $('#editarGasto #gasto_tipo').val(tipo);
+//        $('#editarGasto #gasto_categoria').val(categoria);
+//        $('#editarGasto #gasto_formaPago').val(formaPago);
+        $('#editarGasto #gasto_codigo').val(codigo);
+        $('#editarGasto #gasto_nombre').val(nombre);
+        $('#editarGasto #gasto_monto').val(monto);
+
+        actualizarSelectTipo_Editar(tipo);
+        actualizarSelectCategoriasGasto_Editar(categoria);
+        actualizarSelectFormasPago_Editar(formaPago);
+        $('label').addClass('active');
     });
     $(document).on('click', '#editarGasto #btnEditarGasto', function () {
-        var tipo = $('#editarGasto_tipo');
-        var nombreTipo = nombres[tipo.val()];
-        var monto = $('#editarGasto_monto');
+        var tipo = $('#editarGasto #gasto_tipo').val();
+        var codigo = $('#editarGasto #gasto_codigo').val();
+        var nombre = $('#editarGasto #gasto_nombre').val();
+        var categoria = $('#editarGasto #gasto_categoria').val();
+        var formaPago = $('#editarGasto #gasto_formaPago').val();
+        var monto = $('#editarGasto #gasto_monto').val();
 
-//        alert(tipo.val() + '  -  ' + monto.val() + '  -  ' + nombreTipo);
+        $('#gasto' + idEditar + '_tipo').val(tipo);
+        $('#gasto' + idEditar + '_codigo').val(codigo);
+        $('#gasto' + idEditar + '_nombre').val(nombre);
+        $('#gasto' + idEditar + '_categoria').val(categoria);
+        $('#gasto' + idEditar + '_formaPago').val(formaPago);
+        $('#gasto' + idEditar + '_monto').val(monto);
 
-        $('#gasto' + idEditar + '_tipo').val(tipo.val());
-        $('#gasto' + idEditar + '_monto').val(monto.val());
+        var nombreTipo = 'Fijo';
+        if(tipo == 2) {
+            nombreTipo = 'Variable';
+        }
+        var nombreCategoria = $("#editarGasto #gasto_categoria option[value='" + categoria + "']").text();
+        var nombreFormaPago = $("#editarGasto #gasto_formaPago option[value='" + formaPago + "']").text();
+
+//        alert(nombreTipo + '  -  ' + codigo + '  -  ' + nombre + '  -  ' + nombreCategoria + '  -  ' + nombreFormaPago + '  -  ' + monto);
         $('#span_gasto' + idEditar + '_tipo').text(nombreTipo);
-        $('#span_gasto' + idEditar + '_monto').text(monto.val());
-
-//        tipo.val(0).change();
-        monto.val('');
+        $('#span_gasto' + idEditar + '_codigo').text(codigo);
+        $('#span_gasto' + idEditar + '_nombre').text(nombre);
+        $('#span_gasto' + idEditar + '_categoria').text(nombreCategoria);
+        $('#span_gasto' + idEditar + '_formaPago').text(nombreFormaPago);
+        $('#span_gasto' + idEditar + '_monto').text(monto);
     });
 
     function generarListasBotones(){
@@ -1432,21 +1520,49 @@
         <a class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
-<div id="editarGasto" class="modal" style="height: 55%;">
+<div id="editarGasto" class="modal" style="width: 70%;">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <div id="div_selectTipo"></div>
-        <div class="input-field col s12" style="padding: 0;">
-            <select id="editarGasto_tipo">
-            </select>
-            <label for="editarGasto_tipo" class="label_modalGasto"><?= label('formProveedor_salarioTipo'); ?></label>
-        </div>
-        <div class="input-field col s12" style="margin-top: 25px;padding: 0;">
-            <input id="editarGasto_monto" type="number" value="0">
-            <label for="editarGasto_monto" class="label_modalGasto"><?= label('formProveedor_salarioMonto'); ?></label>
+        <div class="row">
+            <div class="input-field col s12 m4 l4">
+                <select id="gasto_tipo" name="gasto_tipo"></select>
+                <label for="gasto_tipo"><?= label('gastos_Tipo'); ?></label>
+            </div>
+            <div class="input-field col s12 m4 l4">
+                <input id="gasto_codigo" name="gasto_codigo" type="text">
+                <label for="gasto_codigo"><?= label('gastos_Codigo') ?></label>
+            </div>
+            <div class="input-field col s12 m4 l4">
+                <input id="gasto_nombre" name="gasto_nombre" type="text">
+                <label for="gasto_nombre"><?= label('gastos_Nombre') ?></label>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 m6 l6 inputSelector">
+                    <label for="gasto_categoria"><?= label("gastos_Categoria"); ?></label>
+                    <br>
+                    <div id="contenedorSelectCategorias">
+                        <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="agregarGasto_categoria" id="gasto_categoria" name="gasto_categoria"
+                                data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("agregarGasto_elegirCategoria"); ?>"
+                                class="browser-default chosen-select" style="width:350px;" tabindex="2"></select>
+                    </div>
+                </div>
+                <div class="input-field col s12 m6 l6 inputSelector">
+                    <label for="gasto_formaPago"><?= label("gastos_FormaPago"); ?></label>
+                    <br>
+                    <div id="contenedorSelectFormasPago">
+                        <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="agregarGasto_formaPago" id="gasto_formaPago" name="gasto_formaPago"
+                                data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("agregarGasto_elegirFormaPago"); ?>"
+                                class="browser-default chosen-select" style="width:350px;" tabindex="2"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="input-field col s12 m6 l6">
+                <input id="gasto_monto" name="gasto_monto" type="text">
+                <label for="gasto_monto"><?= label('gastos_Monto') ?></label>
+            </div>
         </div>
     </div>
     <div class="modal-footer" id="btnEditarGasto">
