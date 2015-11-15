@@ -194,42 +194,36 @@
             </div>
             <div id="tab-infoAdicional" class="card col s12">
                 <div class="table-responsive">
-                    <h5>Presupuesto promedio del proveedor</h5>
-                    <p>* Exclusivo para proveedores de servicios, no tiene fines contables</p>
+                    <h5>Gastos del proveedor</h5>
                     <table id="proveedor1-presupuestos" class="striped">
                         <thead>
                             <tr>
-                                <th style="width: 30%;"><?= label('formProveedor_salariosTipo'); ?></th>
-                                <th><?= label('formProveedor_salariosMonto'); ?></th>
-                                <th><?= label('formProveedor_salariosPorDefecto'); ?></th>
+                                <th><?= label('formProveedor_gastosCodigo'); ?></th>
+                                <th><?= label('formProveedor_gastosNombre'); ?></th>
+                                <th><?= label('formProveedor_gastosTipo'); ?></th>
+                                <th><?= label('formProveedor_gastosCategoria'); ?></th>
+                                <th><?= label('formProveedor_gastosTiempo'); ?></th>
+                                <th><?= label('formProveedor_gastosMonto'); ?></th>
                             </tr>
                         </thead>
                         <tbody>
                         <?php
-                        if(isset($resultado['presupuestos'])) {
-                            $presupuestos = $resultado['presupuestos'];
-                            if($presupuestos != false) {
-                                foreach ($presupuestos as $presupuesto) {
-                                    $nombre = '';
-                                    if(isset($resultado['tipos'])) {
-                                        $tipos = $resultado['tipos'];
-                                        foreach ($tipos as $tipo) {
-                                            if($tipo['idTipoPresupuesto'] == $presupuesto['tipoPresupuesto']) {
-                                                $nombre = $tipo['nombre'];
-                                            }
-                                        }
+                        if(isset($resultado['gastos'])) {
+                            $gastos = $resultado['gastos'];
+                            if($gastos != false) {
+                                foreach ($gastos as $gasto) {
+                                    $tipoGasto = 0;
+                                    if($gasto['gastoFijo']) {
+                                        $tipoGasto = 1;
                                     }
                                     ?>
                                     <tr>
-                                        <td><?= $nombre; ?></td>
-                                        <td><?= $presupuesto['monto'] ?></td>
-                                        <td>
-                                            <?php
-                                            if($presupuesto['principal']) { ?>
-                                                <i class="mdi-action-done"></i>
-                                            <?php
-                                            } ?>
-                                        </td>
+                                        <td><?= $gasto['codigo']; ?></td>
+                                        <td><?= $gasto['nombre']; ?></td>
+                                        <td><?= $gasto['datosAdicionales']['tipo']; ?></td>
+                                        <td><?= $gasto['datosAdicionales']['tipo']; ?></td>
+                                        <td><?= $gasto['datosAdicionales']['formaPago']; ?></td>
+                                        <td><?= $gasto['monto']; ?></td>
                                     </tr>
                             <?php
                                 }
