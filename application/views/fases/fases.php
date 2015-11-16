@@ -881,9 +881,9 @@ function validacionCorrectaEditar(){
                 </div>
             </div>
             <div class="row">
-                <a href="#" style="font-size: larger;float: left;text-decoration: underline;"
+                <!--<a href="#" style="font-size: larger;float: left;text-decoration: underline;"
                    class="modal-action modal-close"><?= label('cancelar'); ?>
-                </a>
+                </a>-->
                 <a onclick="$(this).closest('form').submit()" id="guardarCerrar" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
                     <?= label('guardarCerrar'); ?>
                 </a>
