@@ -282,7 +282,7 @@
                 <!--card widgets start-->
                 <div id="card-widgets">
                     <div class="row">
-                        <div class="col s12 m6 l8">
+                        <div class="col s12 m12 l12">
                             <div id="profile-card" class="card">
                                 <div class="card-image waves-effect waves-block waves-light">
                                     <img class="activator" src="<?= base_url() ?>assets/dashboard/images/user-bg.jpg"

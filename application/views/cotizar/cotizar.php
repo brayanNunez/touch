@@ -14,9 +14,16 @@
     //ubicado en este archivo.
     function botonEnLista(tipo, idBoton, nuevoElementoAgregar){
         alert("tipo: " +tipo+ " id: " + idBoton + " palabra: " + nuevoElementoAgregar);
-        if (tipo == "productoNombre" || tipo == "productoItem") {
-            window.location.href = "<?= base_url() ?>productos/agregar";
+        if (tipo == "productoItem") {
+            $('#nuevoServicio_codigo').val(nuevoElementoAgregar);
+            $('#linkNuevaServicio').click();
+            $('#nuevoServicio_codigo').focus();
         } 
+        if (tipo == "productoNombre") {
+            $('#nuevoServicio_nombre').val(nuevoElementoAgregar);
+            $('#linkNuevaServicio').click();
+            $('#nuevoServicio_nombre').focus();
+        }
         if (tipo == "paso1Atencion") {
             $('#cliente_contactoNombre').val(nuevoElementoAgregar);
             $('#linkNuevaAtencion').click();

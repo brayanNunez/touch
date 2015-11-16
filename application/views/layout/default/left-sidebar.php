@@ -45,23 +45,9 @@
                             class="mdi-action-subject"></i><?= label('gastos'); ?></a>
                 </li>
 
-                <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i
-                            class="mdi-editor-format-list-numbered"></i> <?= label('cotizaciones'); ?></a>
-
-                    <div class="collapsible-body">
-                        <ul>
-                            <li>
-                                <a href="<?= base_url(); ?>cotizacion/cotizar"><?= label('agregarCotizacion'); ?></a>
-                            </li>
-                            <li>
-                                <a href="<?= base_url(); ?>cotizacion"><?= label('listarCotizacion'); ?></a>
-                            </li>
-                            <!--                                        <li>-->
-                            <!--                                            <a href="-->
-                            <? //=base_url();?><!--reporte">--><? //=label('listarReporteCot');?><!--</a>-->
-                            <!--                                        </li>-->
-                        </ul>
-                    </div>
+                <li class="bold">
+                    <a href="<?= base_url(); ?>cotizacion" class="waves-effect waves-cyan"><i
+                            class="mdi-editor-format-list-numbered"></i><?= label('cotizaciones'); ?></a>
                 </li>
 
                 <li class="bold"><a href="<?= base_url(); ?>servicios/" class="waves-effect waves-cyan"><i

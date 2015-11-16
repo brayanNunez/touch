@@ -655,16 +655,16 @@
                     '<div class="row">' +
                         '<div class="input-field col s12 m4 l4">' +
                             '<input style="display:none" name="contacto_'+ contador +'" type="text">' +
+                            '<input id="cliente_contactoNombre_'+ contador +'" name="cliente_contactoNombre_'+ contador +'" type="text">' +
+                            '<label for="cliente_contactoNombre_'+ contador +'"><?= label("formContacto_nombre"); ?></label>' +
+                        '</div>' +
+                        '<div class="input-field col s12 m4 l4">' +
                             '<input id="cliente_contactoApellido1_'+ contador +'" name="cliente_contactoApellido1_'+ contador +'" type="text">' +
                             '<label for="cliente_contactoApellido1_'+ contador +'"><?= label("formContacto_apellido1"); ?></label>' +
                         '</div>' +
                         '<div class="input-field col s12 m4 l4">' +
                             '<input id="cliente_contactoApellido2_'+ contador +'" name="cliente_contactoApellido2_'+ contador +'" type="text">' +
                             '<label for="cliente_contactoApellido2_'+ contador +'"><?= label("formContacto_apellido2"); ?></label>' +
-                        '</div>' +
-                        '<div class="input-field col s12 m4 l4">' +
-                            '<input id="cliente_contactoNombre_'+ contador +'" name="cliente_contactoNombre_'+ contador +'" type="text">' +
-                            '<label for="cliente_contactoNombre_'+ contador +'"><?= label("formContacto_nombre"); ?></label>' +
                         '</div>' +
                     '</div>' +
 

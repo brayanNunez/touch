@@ -386,9 +386,9 @@ function actualizarCantidad(){
 
             <div>
                 <div class="col s12 m6 l7">
-                    <div class="col s12">
+                    <!--<div class="col s12">
                         <a href="#agregarServicio" class="modal-trigger opcionesDetalles">Agregar servicio</a>
-                    </div>
+                    </div>-->
                     <div class="col s12" style="margin-top: 20px;">
                         <a href="" class="opcionesDetalles btn-newLine">Agregar linea</a>
                     </div>
@@ -626,9 +626,9 @@ function actualizarCantidad(){
             </div>
         </div>
         <div class="row" style="margin-bottom: 25px;margin-top: 30px;">
-            <a href="#" style="font-size: larger;float: left;text-decoration: underline;"
+            <!--<a href="#" style="font-size: larger;float: left;text-decoration: underline;"
                class="modal-action modal-close"><?= label('cancelar'); ?>
-            </a>
+            </a>-->
             <a href="#" class="waves-effect btn modal-action modal-close" style="margin: 0 20px;">
                 <?= label('insertarSoloLinea'); ?>
             </a>
@@ -683,3 +683,6 @@ function actualizarCantidad(){
    </div>
 </div>
 <!-- Fin lista modals -->
+<div style="visibility:hidden; position:absolute">                                 
+    <a id="linkNuevaServicio" href="#agregarServicio" class="modal-trigger"></a>
+</div>
