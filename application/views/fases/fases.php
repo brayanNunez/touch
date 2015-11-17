@@ -377,6 +377,7 @@
 
 
  function validacionCorrecta(){
+    alert(cantidadNuevasFases);
     var repetidos = false;
     $("#form_fases input[name*='fase_codigo']").each(function () {
         var codigoEvaluar = $(this);
@@ -442,6 +443,7 @@
 }
 
 function validacionCorrectaEditar(){
+  alert(cantidadNuevasFases);
     var repetidos = false;
     $("#form_fasesEditar input[name*='fase_codigo']").each(function () {
         var codigoEvaluar = $(this);

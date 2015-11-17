@@ -39,6 +39,7 @@ class Cotizacion extends CI_Controller
 
         $resultado = $this->Cotizacion_model->cargar($data); 
         $resultado['lineasDetalle'] = array();
+        $resultado['idCotizacion'] = '123';
         // if ($resultado === false || $resultado === array()) {
         // print_r($resultado['servicios']); exit();
         if ($resultado === false) {

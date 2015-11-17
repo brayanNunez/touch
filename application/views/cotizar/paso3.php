@@ -605,6 +605,7 @@
                        $('#botonPaso4').text('Cargando..');
                    },
                   success:  function (response) {
+                        // alert(response);
                        $('#botonPaso4').text('<?= label('paso4'); ?>');
                        document.getElementById('vistaPrevia').contentDocument.location.reload(true);
                        // $('#vistaPrevia').contentDocument.location.reload(true);

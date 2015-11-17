@@ -16,11 +16,33 @@ class ManejadorPDF extends CI_Controller
         // $this->load->library('simple_html_dom');
     }
 
-    private function createFolder()
+    // private function createFolder()
+    // {
+    //     if (!is_dir("./files")) {
+    //         mkdir("./files", 0777);
+    //         mkdir("./files/pdfs", 0777);
+    //     }
+    // }
+    // private function createFolder($idEmpresa, $idCotizacion)
+    // {
+    //     // echo 'is_dir("./files/empresas/1/cotizaciones/124")'; exit();
+    //     if (!is_dir("./files/empresas/1/cotizaciones/124")) {
+    //         mkdir("./files/empresas/1/cotizaciones/123/cliente", 0777);
+    //         mkdir("./files/empresas/1/cotizaciones/123/sistema", 0777);
+    //     }
+    // }
+
+    private function createFolder($idEmpresa, $idCotizacion)
     {
-        if (!is_dir("./files")) {
-            mkdir("./files", 0777);
-            mkdir("./files/pdfs", 0777);
+        // echo 'is_dir("./files/empresas/1/cotizaciones/124")'; exit();
+        // echo 'llegue'; exit();
+        if (!is_dir("./files/empresas/".$idEmpresa."/cotizaciones/".$idCotizacion)) {
+            // echo 'entre'; exit();
+            mkdir("./files/empresas/".$idEmpresa."/cotizaciones/".$idCotizacion, 0777);
+            mkdir("./files/empresas/".$idEmpresa."/cotizaciones/".$idCotizacion."/cliente", 0777);
+            mkdir("./files/empresas/".$idEmpresa."/cotizaciones/".$idCotizacion."/sistema", 0777);
+            // echo 'entre'; exit();
+            // mkdir("./files/empresas/1/cotizaciones/123/sistema", 0777);
         }
     }
 
@@ -114,10 +136,10 @@ class ManejadorPDF extends CI_Controller
 
             //establecemos la carpeta en la que queremos guardar los pdfs,
             //si no existen las creamos y damos permisos
-            $this->createFolder();
+            $this->createFolder('1', '323');
 
             //importante el slash del final o no funcionará correctamente
-            $this->html2pdf->folder('./files/pdfs/');
+            $this->html2pdf->folder("./files/empresas/1/cotizaciones/323/sistema/");
 
             //establecemos el nombre del archivo
             $this->html2pdf->filename('test.pdf');
@@ -135,57 +157,7 @@ class ManejadorPDF extends CI_Controller
             //si el pdf se guarda correctamente lo mostramos en pantalla
 
             $path = $this->html2pdf->create('save');
-            echo 'bien';
-        }
-
-    }
-
-    public function indexRespaldo()//borrar este metodo
-    {
-
-        if (isset($_POST['miHtml'])) {
-            $htmlEntrada = $_POST['miHtml'];
-
-            //establecemos la carpeta en la que queremos guardar los pdfs,
-            //si no existen las creamos y damos permisos
-            $this->createFolder();
-
-            //importante el slash del final o no funcionará correctamente
-            $this->html2pdf->folder('./files/pdfs/');
-
-            //establecemos el nombre del archivo
-            $this->html2pdf->filename('test.pdf');
-
-            //establecemos el tipo de papel
-            $this->html2pdf->paper('a4', 'portrait');
-
-            //datos que queremos enviar a la vista, lo mismo de siempre
-            $data = "";
-
-            //hacemos que coja la vista como datos a imprimir
-            //importante utf8_decode para mostrar bien las tildes, ñ y demás
-            // $this->html2pdf->html(utf8_decode($this->load->view('index', $data, true)));
-            $this->html2pdf->html(utf8_decode($htmlEntrada));
-            //si el pdf se guarda correctamente lo mostramos en pantalla
-
-            if ($path = $this->html2pdf->create('save')) {
-
-                $this->load->library('email');
-
-                $this->email->from('brayannr@hotmail.es', 'Brayan');
-                $this->email->to('brayan.nunez@ucrso.info');
-
-                $this->email->subject('Email PDF Test');
-                $this->email->message('Testing the email a freshly created PDF');
-
-                $this->email->attach($path);
-
-                $this->email->send();
-                $this->html2pdf->create();
-                echo "El email ha sido enviado correctamente";
-
-            }
-
+            // echo 'bien';
         }
 
     }
