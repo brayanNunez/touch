@@ -133,7 +133,7 @@
                     <a class="white-text darken-1 waves-effect waves-light"
                        id="cliente-informacion" href="#tab-infoAdicional"><i
                             class="mdi-av-queue"></i>
-                        <?= label('formProveedor_infoCotizacion'); ?></a>
+                        <?= label('formProveedor_infoGastos'); ?></a>
                 </li>
             </ul>
         </div>
@@ -194,7 +194,7 @@
             </div>
             <div id="tab-infoAdicional" class="card col s12">
                 <div class="table-responsive">
-                    <h5>Gastos del proveedor</h5>
+                    <h5><?= label('gastosRelacionados'); ?></h5>
                     <table id="proveedor1-presupuestos" class="striped">
                         <thead>
                             <tr>

@@ -138,6 +138,7 @@ $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos selec
     $lang['tituloCotizacion'] = 'Cotización';
 	$lang['tituloFormularioCliente'] = 'Agregar cliente';
 	$lang['tituloFormularioClienteEditar'] = 'Editar cliente';
+    $lang['gastosRelacionados'] = 'Gastos relacionados a la persona';
 	$lang['tituloFormularioSolicitudes'] = 'Solitud de cotización';
 	$lang['tituloFormularioEmpleado'] = 'Agregar empleado';
 	$lang['tituloFormularioEmpleadoEditar'] = 'Editar empleado';

@@ -230,7 +230,7 @@
                                                 </div>
                                             </div>
                                             <div id="tab-infoAdicional" class="card col s12">
-                                                <h5>Gastos relacionados a la persona</h5>
+                                                <h5><?= label('gastosRelacionados'); ?></h5>
                                                 <div class="agregar_nuevo">
                                                     <a id="btn_accionAgregarGasto" href="#agregarGasto"
                                                        class="btn btn-default modal-trigger"><?= label('formProveedor_nuevoGasto'); ?></a>

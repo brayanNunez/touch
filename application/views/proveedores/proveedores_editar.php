@@ -228,7 +228,7 @@
                         <a class="white-text darken-1 waves-effect waves-light"
                            id="proveedor-tab-informacion" href="#tab-infoAdicional-editar"><i
                                 class="mdi-av-queue"></i>
-                            <?= label('formProveedor_infoCotizacion'); ?></a>
+                            <?= label('formProveedor_infoGastos'); ?></a>
                     </li>
                 </ul>
             </div>
@@ -324,7 +324,7 @@
                     </div>
                 </div>
                 <div id="tab-infoAdicional-editar" class="card col s12">
-                    <h5>Gastos del proveedor</h5>
+                    <h5><?= label('gastosRelacionados'); ?></h5>
                     <div class="agregar_nuevo">
                         <a id="btn_accionAgregarGasto" href="#agregarGasto"
                            class="btn btn-default modal-trigger"><?= label('formProveedor_nuevoGasto'); ?></a>
