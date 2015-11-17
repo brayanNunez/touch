@@ -8,7 +8,7 @@
         </div>
         <div class="input-field col s6 m3 l3">
             <div class="input-field col s12">
-                <input id="paso1_numero" type="text">
+                <input id="paso1_numero" name="paso1_numero" type="text">
                 <label for="paso1_numero" class=""><?= label("paso1_labelNumero"); ?></label>
             </div>
         </div>
@@ -18,7 +18,7 @@
             <label for="contenedorSelectCliente"><?= label("paso1_labelCliente"); ?></label>
             <br>
             <div id="contenedorSelectCliente">  
-                <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso1Cliente" id="paso1Cliente" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirCliente"); ?>" class="chosen-select browser-default" style="width:350px;" tabindex="2">
+                <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso1Cliente" id="paso1Cliente" name="paso1Cliente" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirCliente"); ?>" class="chosen-select browser-default" style="width:350px;" tabindex="2">
                     <option value="0" disabled selected style="display:none;"><?= label("paso1_elegirCliente"); ?></option>
                     <option value="nuevo"><?= label("agregarNuevo"); ?></option>
                     <?php 
@@ -49,7 +49,7 @@
             <label for="contenedorSelectAtencion"><?= label("paso1_labelContacto"); ?></label>
             <br>
             <div id="contenedorSelectAtencion">  
-                <select disabled='disabled' data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso1Atencion" id="paso1Atencion" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirAtencion"); ?>" class="chosen-select browser-default" style="width:350px;" tabindex="2">
+                <select disabled='disabled' data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso1Atencion" id="paso1Atencion" name="paso1Atencion" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirAtencion"); ?>" class="chosen-select browser-default" style="width:350px;" tabindex="2">
                    <!-- <option value="0" disabled selected style="display:none;"><?= label("paso1_elegirAtencion"); ?></option>
                    <option value="nuevo"><?= label("agregarNuevo"); ?></option>
                     
@@ -66,7 +66,7 @@
             <label for="contenedorSelectFormaPago"><?= label("paso1_labelFormaPago"); ?></label>
             <br>
             <div id="contenedorSelectFormaPago">
-                <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso1FormaPago" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirFormaPago"); ?>" class="chosen-select browser-default" style="width:350px;" tabindex="2">
+                <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso1FormaPago" id="paso1FormaPago" name="paso1FormaPago" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirFormaPago"); ?>" class="chosen-select browser-default" style="width:350px;" tabindex="2">
                     <option value="0" disabled selected style="display:none;"><?= label("paso1_elegirFormaPago"); ?></option>
                     <option value="nuevo"><?= label("agregarNuevo"); ?></option>
                     <?php 
@@ -82,7 +82,7 @@
             <label for="contenedorSelectMoneda"><?= label("paso1_labelTipoMoneda"); ?></label>
             <br>
             <div id="contenedorSelectMoneda"> 
-                <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso1Moneda" id="paso1Moneda" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirMoneda"); ?>" class="chosen-select browser-default" style="width:350px;" tabindex="2">
+                <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso1Moneda" id="paso1Moneda" name="paso1Moneda" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirMoneda"); ?>" class="chosen-select browser-default" style="width:350px;" tabindex="2">
                     <option value="0" disabled selected style="display:none;"><?= label("paso1_elegirMoneda"); ?></option>
                     <option value="nuevo"><?= label("agregarNuevo"); ?></option>
                     <?php 
@@ -98,11 +98,11 @@
     </div>
     <div class="row">
         <div class="input-field col s12 m6 l6">
-            <input id="paso1_validez" class="datepicker-fecha" type="text">
+            <input id="paso1_validez" name="paso1_validez" class="datepicker-fecha" type="text">
             <label for="paso1_validez"><?= label("paso1_labelTiempoVlidez"); ?></label>
         </div>
         <div class="input-field col s12 m6 l6">
-            <input id="paso1_tipoCambio" type="text">
+            <input id="paso1_tipoCambio" name="paso1_tipoCambio" type="text">
             <label for="paso1_tipoCambio" class=""><?= label("paso1_labelTipoCambio"); ?></label>
         </div>
      <!--    <div class="input-field col s12">
