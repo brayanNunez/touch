@@ -1,5 +1,6 @@
-<div style="display: none" id="inset_form"></div>
 
+
+<div style="display: none" id="inset_form"></div>
 <!-- START CONTENT -->
 
 <section id="content">
@@ -9,7 +10,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 m12 l12">
-                    <h1 class="breadcrumbs-title"><?= label('tituloListaCotizaciones'); ?></h1>
+                    <h1 class="breadcrumbs-title"><?= label('tituloCotizaciones'); ?></h1>
                 </div>
             </div>
         </div>
@@ -19,43 +20,44 @@
     <div class="container">
         <div id="chart-dashboard">
             <div class="row">
-                <div class="col s12 m12 l12">
+                <div class="col s12">
                     <div id="submit-button" class="section">
                         <div class="row">
-                            <div class="col s12 m12 l12">
-                                <div class="card" id="listaCotizaciones">
+                            <div class="col s12">
+                                <div class="card lista-elementos">
                                     <div id="table-datatables">
                                         <div class="row">
-                                            <div class="col s12 m12 l12">
+                                            <div class="col s12">
                                                 <div class="agregar_nuevo">
                                                     <a href="<?= base_url() ?>cotizacion/cotizar"
                                                        class="btn btn-default"><?= label('agregarCotizacion'); ?></a>
                                                 </div>
                                                 <div>
                                                     <a id="busqueda-avanzada-agregar" href="#busquedaAvanzada"
-                                                       class="modal-trigger"><?= label('clientes_busquedaAvanzada') ?></a>
+                                                       class="modal-trigger"><?= label('cotizaciones_busquedaAvanzada') ?></a>
                                                 </div>
-                                                <table id="tabla-cotizaciones-lista"
+                                                <div id="contenedorTabla">
+                                                <table id="cotizaciones-tabla-lista"
                                                        class="data-table-information responsive-table display"
                                                        cellspacing="0">
                                                     <thead>
-                                                    <tr>
-                                                        <th style="text-align: center;">
-                                                            <input class="filled-in checkbox checkall" type="checkbox"
-                                                                   id="checkbox-all"
-                                                                   onclick="toggleChecked(this.checked)"/>
-                                                            <label for="checkbox-all"></label>
-                                                        </th>
-                                                        <th><?= label('tablaCotizaciones_codigo'); ?></th>
-                                                        <th><?= label('tablaCotizaciones_fecha'); ?></th>
-                                                        <th><?= label('tablaCotizaciones_cliente'); ?></th>
-                                                        <th><?= label('tablaCotizaciones_monto'); ?></th>
-                                                        <th><?= label('tablaCotizaciones_estado'); ?></th>
-                                                        <th><?= label('tablaCotizaciones_opciones'); ?></th>
-                                                    </tr>
+                                                        <tr>
+                                                            <th style="text-align: center;">
+                                                                <input class="filled-in checkbox checkall" type="checkbox"
+                                                                       id="checkbox-all"
+                                                                       onclick="toggleChecked(this.checked)"/>
+                                                                <label for="checkbox-all"></label>
+                                                            </th>
+                                                            <th><?= label('tablaCotizaciones_codigo'); ?></th>
+                                                            <th><?= label('tablaCotizaciones_fecha'); ?></th>
+                                                            <th><?= label('tablaCotizaciones_cliente'); ?></th>
+                                                            <th><?= label('tablaCotizaciones_monto'); ?></th>
+                                                            <th><?= label('tablaCotizaciones_estado'); ?></th>
+                                                            <th><?= label('tablaCotizaciones_opciones'); ?></th>
+                                                        </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <?php
+                                                     <?php
                                                         if (isset($lista)) {
                                                         
                                                             if ($lista !== false) {
@@ -63,57 +65,56 @@
                                                                     foreach ($lista as $fila) {
                                                                         $idEncriptado = encryptIt($fila['idCotizacion']);
                                                                         ?>
-                                                        <tr id="fila<?= $contador ?>" data-idElemento="<?= $idEncriptado ?>">
-                                                            <td style="text-align: center;">
-                                                               <input type="checkbox" class="filled-in checkbox"
-                                                                  id="<?=$idEncriptado?>"/>
-                                                               <label for="<?=$idEncriptado?>"></label>
-                                                            </td>
-                                                            <td><?= $fila['codigo'].'-'.$fila['numero']?></td>
-                                                            <td><?= $fila['fechaCreacion'] ?></td>
-                                                            <td><?= $fila['idCliente'] ?></td>
-                                                            <td>HOLA</td>
-                                                            <td><?= $fila['idEstadoCotizacion'] ?></td>
-                                                            <td>
-                                                               <ul id="dropdown-cotizacion<?= $contador ?>"
-                                                                  class="dropdown-content">
-                                                                  <li>
-                                                                     <a href="<?= base_url(); ?>cotizacion/editar/<?= $idEncriptado?>#tab-informacion"
-                                                                        class="-text"><?= label('menuOpciones_ver') ?></a>
-                                                                 </li>
-                                                                  <li>
-                                                                     <a href="<?= base_url() ?>cotizacion/editar/<?= $idEncriptado?>#tab-edicion"
-                                                                        class="-text"><?= label('menuOpciones_editar') ?></a>
-                                                                  </li>
-                                                                  <li>
-                                                                      <a class="btn_duplicar modal-trigger icono-edicion"
-                                                                         href="#duplicar">
-                                                                          <?= label('tablaCotizaciones_opcionDuplicar') ?>
-                                                                      </a>
-                                                                  </li>
-                                                                  <li>
-                                                                     <a href="#eliminarCliente"
-                                                                        class="-text modal-trigger confirmarEliminar"
-                                                                        data-id-eliminar="<?= $idEncriptado ?>"  data-fila-eliminar="fila<?= $contador?>"><?= label('menuOpciones_eliminar') ?></a>
-                                                                  </li>
-                                                               </ul>
-                                                               <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                                  href="#!"
-                                                                  data-activates="dropdown-cotizacion<?= $contador++ ?>">
-                                                               <?= label('menuOpciones_seleccionar') ?><i
-                                                                  class="mdi-navigation-arrow-drop-down"></i>
-                                                               </a>
-                                                            </td>
-
-                                                        </tr>
+                                                     <tr id="fila<?= $contador ?>" data-idElemento="<?= $idEncriptado ?>">
+                                                        <td style="text-align: center;">
+                                                           <input type="checkbox" class="filled-in checkbox"
+                                                              id="<?=$idEncriptado?>"/>
+                                                           <label for="<?=$idEncriptado?>"></label>
+                                                        </td>
+                                                        <td><?= $fila['codigo'].'-'.$fila['numero']?></td>
+                                                        <td><?= $fila['fechaCreacion'] ?></td>
+                                                        <td><?= $fila['idCliente'] ?></td>
+                                                        <td>HOLA</td>
+                                                        <td><?= $fila['idEstadoCotizacion'] ?></td>
+                                                        <td>
+                                                           <ul id="dropdown-cotizacion<?= $contador ?>"
+                                                              class="dropdown-content">
+                                                              <li>
+                                                                 <a href="<?= base_url(); ?>cotizacion/editar/<?= $idEncriptado?>#tab-informacion"
+                                                                    class="-text"><?= label('menuOpciones_ver') ?></a>
+                                                             </li>
+                                                              <li>
+                                                                 <a href="<?= base_url() ?>cotizacion/editar/<?= $idEncriptado?>#tab-edicion"
+                                                                    class="-text"><?= label('menuOpciones_editar') ?></a>
+                                                              </li>
+                                                              <li>
+                                                                  <a class="btn_duplicar modal-trigger icono-edicion"
+                                                                     href="#duplicar">
+                                                                      <?= label('tablaCotizaciones_opcionDuplicar') ?>
+                                                                  </a>
+                                                              </li>
+                                                              <li>
+                                                                 <a href="#eliminarCotizacion"
+                                                                    class="-text modal-trigger confirmarEliminar"
+                                                                    data-id-eliminar="<?= $idEncriptado ?>"  data-fila-eliminar="fila<?= $contador?>"><?= label('menuOpciones_eliminar') ?></a>
+                                                              </li>
+                                                           </ul>
+                                                           <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
+                                                              href="#!"
+                                                              data-activates="dropdown-cotizacion<?= $contador++ ?>">
+                                                           <?= label('menuOpciones_seleccionar') ?><i
+                                                              class="mdi-navigation-arrow-drop-down"></i>
+                                                           </a>
+                                                        </td>
+                                                     </tr>
                                                      <?php
                                                         }
                                                         } 
                                                         }
                                                         ?>
-                                                     
-                                                    </tbody>
+                                                  </tbody>
                                                 </table>
+                                                </div>
 
                                                 <div class="tabla-conAgregar">
                                                  <a id="opciones-seleccionados-print"
@@ -203,7 +204,7 @@
            event.preventDefault();
            $.ajax({
                   data: {idEliminar : idEliminar},
-                  url:   '<?=base_url()?>cotizacion/eliminar',
+                  url:   '<?=base_url()?>cotizaciones/eliminar',
                   type:  'post',
                   // beforeSend: function () {
                   //         $("#resultado").html("Procesando, espere por favor...");
@@ -224,7 +225,7 @@
    });
    
    $(document).ready( function () {
-       $('#cotizacion-tabla-lista').dataTable( {
+       $('#cotizaciones-tabla-lista').dataTable( {
            'aoColumnDefs': [{
                'bSortable': false,
                'aTargets': [0, -1] //desactiva en primer y última columna opción de ordenar
@@ -232,8 +233,8 @@
        });
    });
    $(document).ready(function () {
-       $('table#cotizacion-tabla-lista thead th:first').removeClass('sorting_asc').addClass('sorting_disabled');
-       $('table#cotizacion-tabla-lista thead th:nth-child(2)').removeClass('sorting').addClass('sorting_asc');
+       $('table#cotizaciones-tabla-lista thead th:first').removeClass('sorting_asc').addClass('sorting_disabled');
+       $('table#cotizaciones-tabla-lista thead th:nth-child(2)').removeClass('sorting').addClass('sorting_asc');
    });
    $(document).ready(function () {
        $('#eliminarElementosSeleccionados #botonEliminar').on("click", function (event) {
@@ -252,7 +253,7 @@
                    var idEliminar = $this.attr('id');
                    $.ajax({
                           data: {idEliminar : idEliminar},
-                          url:   '<?=base_url()?>cotizacion/eliminar',
+                          url:   '<?=base_url()?>cotizaciones/eliminar',
                           type:  'post',
                           success:  function (response) {
 
@@ -289,7 +290,7 @@
    $(document).ready(function () {
        $('#checkbox-all').click(function (event) {
            var $this = $(this);
-           var tableBody = $('#cotizacion-tabla-lista').find('tbody tr[role=row] input[type=checkbox]');
+           var tableBody = $('#cotizaciones-tabla-lista').find('tbody tr[role=row] input[type=checkbox]');
            tableBody.each(function() {
                var check = $(this);
                if ($this.is(':checked')) {
@@ -349,7 +350,7 @@
    $(document).on('ready', function(){
    
        $('#opciones-seleccionados-print').on("click", function(){
-           tablaHtml = htmlTabla('cotizacion-tabla-lista', true);
+           tablaHtml = htmlTabla('cotizaciones-tabla-lista', true);
            Popup(tablaHtml);
        });
    
@@ -357,7 +358,7 @@
        {
            // var mywindow = window.open('', 'my div', 'height=400,width=600');
            var mywindow = window.open('', 'my div', '');
-           mywindow.document.write('<html><head><title><?= label('tituloCotizacions'); ?></title>');
+           mywindow.document.write('<html><head><title><?= label('tituloCotizaciones'); ?></title>');
           // mywindow.document.write('<link media="print,screen" href="<?= base_url() ?>assets/dashboard/css/estiloTablasDescarga.css" rel="stylesheet" type="text/css" >');
            mywindow.document.write('</head><body>');
            mywindow.document.write(data);
@@ -371,19 +372,19 @@
    
    
        $('#opciones-seleccionados-Excel').on("click", function(){
-           var html = htmlTabla('cotizacion-tabla-lista', false);
-           $('#inset_form').html('<form  action="<?=base_url()?>ManejadorExcel/tablaDescarga" name="form" method="post" style="display:block;"><input type="text" name="titulo" value="<?= label('tituloCotizacions'); ?>"><textarea name="miHtml">' + html + '</textarea></form>');
+           var html = htmlTabla('cotizaciones-tabla-lista', false);
+           $('#inset_form').html('<form  action="<?=base_url()?>ManejadorExcel/tablaDescarga" name="form" method="post" style="display:block;"><input type="text" name="titulo" value="<?= label('tituloCotizaciones'); ?>"><textarea name="miHtml">' + html + '</textarea></form>');
            document.forms['form'].submit();
        });
        
        $('#opciones-seleccionados-PDF').on("click", function(){
            var informacionSistema = '<div id="informacionSistema"><div id="linkPagina"><a href="<?=base_url()?>"><?= label('link_paginaInicial'); ?></a></div><span class="numeracion"></span></div>';
-           var encabezado = '<div id="encabezado"><?= label('tituloCotizacions'); ?></div>';
+           var encabezado = '<div id="encabezado"><?= label('tituloCotizaciones'); ?></div>';
            var body = encabezado + informacionSistema;
-           body += htmlTabla('cotizacion-tabla-lista', false);
+           body += htmlTabla('cotizaciones-tabla-lista', false);
            var html = '<!DOCTYPE html><html><head><title>403 Forbidden</title><link rel="stylesheet" href="<?= base_url() ?>assets/dashboard/css/estiloTablasDescarga.css"></head><body id="hojaPDF">';
            html +=  body + '</body></html>';
-           $('#inset_form').html('<form  action="<?=base_url()?>ManejadorPDF/tablaDescarga" name="form" method="post" style="display:block;"><input type="text" name="titulo" value="<?= label('tituloCotizacions'); ?>"><textarea name="miHtml">' + html + '</textarea></form>');
+           $('#inset_form').html('<form  action="<?=base_url()?>ManejadorPDF/tablaDescarga" name="form" method="post" style="display:block;"><input type="text" name="titulo" value="<?= label('tituloCotizaciones'); ?>"><textarea name="miHtml">' + html + '</textarea></form>');
            document.forms['form'].submit();
        });
        
@@ -494,7 +495,7 @@
       <p><?= label('eliminarSeleccionados'); ?></p>
    </div>
    <div class="modal-footer black-text">
-      <div id="botonEliminar" class="modal-footer black-text" title="cotizacion-tabla-lista">
+      <div id="botonEliminar" class="modal-footer black-text" title="cotizaciones-tabla-lista">
          <a href="#"
             class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
       </div>
@@ -515,7 +516,6 @@
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
-
 
 
 <div id="busquedaAvanzada" class="modal">
@@ -541,7 +541,7 @@
 
                 <div class="input-field col s12 m6 l6">
                     <select class="input-field col s12">
-                        <!--                                   <option value="" disabled selected>Estado</option>-->
+                        <!--                                     <option value="" disabled selected>Estado</option>-->
                         <option value="1" selected>Todos</option>
                         <option value="2">Enviada</option>
                         <option value="3">Finalizada</option>
@@ -551,7 +551,7 @@
                 </div>
                 <div class="input-field col s12 m4 l4">
                     <select class="input-field col s12">
-                        <!--                                   <option value="" disabled selected>Cliente</option>-->
+                        <!--                                     <option value="" disabled selected>Cliente</option>-->
                         <option value="1" selected>Todos</option>
                         <option value="2">Juan Alfaro Alfaro</option>
                         <option value="3">Diego Rojas</option>
@@ -560,7 +560,7 @@
                 </div>
                 <div class="input-field col s12 m4 l4">
                     <select class="input-field col s12">
-                        <!--                                   <option value="" disabled selected>Empleados</option>-->
+                        <!--                                     <option value="" disabled selected>Empleados</option>-->
                         <option value="1" selected>Todos</option>
                         <option value="2">Juan Carlos Porras</option>
                         <option value="3">Ana Bolaños Rojas</option>
