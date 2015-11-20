@@ -639,6 +639,10 @@
 
 <!--Funciones para gastos-->
 <script>
+    <?php
+        $js_arrayNombres = json_encode($codigosGasto);
+        echo "var arrayNombres =". $js_arrayNombres.';';
+        ?>
     $(document).ready(function () {
         actualizarSelectTipo();
         actualizarSelects();
@@ -837,56 +841,77 @@
         var categoria = $('#agregarGasto #gasto_categoria');
         var formaPago = $('#agregarGasto #gasto_formaPago');
         var monto = $('#agregarGasto #gasto_monto');
-        agregarNuevoGasto(tipo.val(), codigo.val(), nombre.val(), categoria.val(), formaPago.val(), monto.val());
+
+        var existeCodigoAgregar = false;
+        for(var j = 0; j < arrayNombres.length; j++) {
+            if(arrayNombres[j]['codigo'] == codigo.val()) {
+                existeCodigoAgregar = true;
+                break;
+            }
+        }
+        for(var k = 0; k < nombres.length; k++) {
+            if(nombres[k]['codigo'] == codigo.val()) {
+                existeCodigoAgregar = true;
+                break;
+            }
+        }
+        if(!existeCodigoAgregar) {
+            agregarNuevoGasto(tipo.val(), codigo.val(), nombre.val(), categoria.val(), formaPago.val(), monto.val());
+            $('#agregarGasto .modal-header a').click();
+            limpiarFormGasto();
+        } else {
+            alert('<?= label('proveedores_codigoGastoNoValido'); ?>');
+            $('#agregarGasto #gasto_codigo').focus();
+        }
     });
     function agregarNuevoGasto(tipo, codigo, nombre, categoria, formaPago, monto) {
         cantidadGasto++;
         actualizarCantidadGastos();
         var check = '<td>' +
             '<div style="text-align: center;">' +
-            '<input class="accionAplicada" style="display:none" name="gasto_'+ contadorGasto +'" type="text" value="0">' +
-            '<input type="checkbox" class="filled-in checkbox" id="checkbox_gasto'+ contadorGasto +'"/>' +
-            '<label for="checkbox_gasto'+ contadorGasto +'"></label>' +
+            '<input class="accionAplicada" style="display:none" name="gasto_' + contadorGasto + '" type="text" value="0">' +
+            '<input type="checkbox" class="filled-in checkbox" id="checkbox_gasto' + contadorGasto + '"/>' +
+            '<label for="checkbox_gasto' + contadorGasto + '"></label>' +
             '</div>' +
             '</td>';
         var nombreTipo = 'Fijo';
-        if(tipo == 2) {
+        if (tipo == 2) {
             nombreTipo = 'Variable';
         }
         var tipoP = '<td>' +
-            '<span id="span_gasto'+ contadorGasto +'_tipo">' + nombreTipo + '</span><input type="text" name="gasto'+ contadorGasto +'_tipo" id="gasto'+ contadorGasto +'_tipo" value="'+ tipo +'" style="display: none;" />' +
+            '<span id="span_gasto' + contadorGasto + '_tipo">' + nombreTipo + '</span><input type="text" name="gasto' + contadorGasto + '_tipo" id="gasto' + contadorGasto + '_tipo" value="' + tipo + '" style="display: none;" />' +
             '</td>';
         var nombreCategoria = $("#agregarGasto #gasto_categoria option[value='" + categoria + "']").text();
         var categoriaP = '<td>' +
-            '<span id="span_gasto'+ contadorGasto +'_categoria">' + nombreCategoria + '</span><input type="text" name="gasto'+ contadorGasto +'_categoria" id="gasto'+ contadorGasto +'_categoria" value="'+ categoria +'" style="display: none;" />' +
+            '<span id="span_gasto' + contadorGasto + '_categoria">' + nombreCategoria + '</span><input type="text" name="gasto' + contadorGasto + '_categoria" id="gasto' + contadorGasto + '_categoria" value="' + categoria + '" style="display: none;" />' +
             '</td>';
         var codigoP = '<td>' +
-            '<span id="span_gasto'+ contadorGasto +'_codigo">' + codigo + '</span><input type="text" name="gasto'+ contadorGasto +'_codigo" id="gasto'+ contadorGasto +'_codigo" value="'+ codigo +'" style="display: none;" />' +
+            '<span id="span_gasto' + contadorGasto + '_codigo">' + codigo + '</span><input type="text" name="gasto' + contadorGasto + '_codigo" id="gasto' + contadorGasto + '_codigo" value="' + codigo + '" style="display: none;" />' +
             '</td>';
         var nombreP = '<td>' +
-            '<span id="span_gasto'+ contadorGasto +'_nombre">' + nombre + '</span><input type="text" name="gasto'+ contadorGasto +'_nombre" id="gasto'+ contadorGasto +'_nombre" value="'+ nombre +'" style="display: none;" />' +
+            '<span id="span_gasto' + contadorGasto + '_nombre">' + nombre + '</span><input type="text" name="gasto' + contadorGasto + '_nombre" id="gasto' + contadorGasto + '_nombre" value="' + nombre + '" style="display: none;" />' +
             '</td>';
         var nombreFormaPago = $("#agregarGasto #gasto_formaPago option[value='" + formaPago + "']").text();
         var formaP = '<td>' +
-            '<span id="span_gasto'+ contadorGasto +'_formaPago">' + nombreFormaPago + '</span><input type="text" name="gasto'+ contadorGasto +'_formaPago" id="gasto'+ contadorGasto +'_formaPago" value="'+ formaPago +'" style="display: none;" />' +
+            '<span id="span_gasto' + contadorGasto + '_formaPago">' + nombreFormaPago + '</span><input type="text" name="gasto' + contadorGasto + '_formaPago" id="gasto' + contadorGasto + '_formaPago" value="' + formaPago + '" style="display: none;" />' +
             '</td>';
-        var montoP = '<td>'+
-            '<span id="span_gasto'+ contadorGasto +'_monto">' + monto + '</span><input type="text" name="gasto'+ contadorGasto +'_monto" id="gasto'+ contadorGasto +'_monto" value="'+ monto +'" style="display: none;" />' +
+        var montoP = '<td>' +
+            '<span id="span_gasto' + contadorGasto + '_monto">' + monto + '</span><input type="text" name="gasto' + contadorGasto + '_monto" id="gasto' + contadorGasto + '_monto" value="' + monto + '" style="display: none;" />' +
             '</td>';
 //        var principal = '<td>' +
 //                            '<input type="radio" name="radioGastoPrincipal" id="radio_gasto'+ contadorGasto +'" value="' + contadorGasto + '" />' +
 //                            '<label for="radio_gasto'+ contadorGasto +'"></label>' +
 //                        '</td>';
         var opciones = '<td>' +
-            '<ul id="dropdown_gasto'+ contadorGasto +'" class="dropdown-content">' +
+            '<ul id="dropdown_gasto' + contadorGasto + '" class="dropdown-content">' +
             '<li>' +
-            '<a href="#editarGasto" class="-text modal-trigger abrirEditar" data-id-editar="'+ contadorGasto + '"><?= label('menuOpciones_editar') ?></a>' +
+            '<a href="#editarGasto" class="-text modal-trigger abrirEditar" data-id-editar="' + contadorGasto + '"><?= label('menuOpciones_editar') ?></a>' +
             '</li>' +
             '<li>' +
-            '<a class="-text modal-trigger confirmarEliminarGasto" data-id-eliminar="'+ contadorGasto +'" data-fila-eliminar="fila'+ contadorGasto +'"><?= label('menuOpciones_eliminar') ?></a>' +
+            '<a class="-text modal-trigger confirmarEliminarGasto" data-id-eliminar="' + contadorGasto + '" data-fila-eliminar="fila' + contadorGasto + '"><?= label('menuOpciones_eliminar') ?></a>' +
             '</li>' +
             '</ul>' +
-            '<a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown_gasto'+ contadorGasto +'"><?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i> </a>' +
+            '<a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!" data-activates="dropdown_gasto' + contadorGasto + '"><?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i> </a>' +
             '</td>';
         $('#proveedor_gastos').dataTable().fnAddData([
             check,
@@ -902,6 +927,7 @@
 
         generarListasBotones();
         $('.modal-trigger').leanModal();
+        nombres.push({"idGasto": contadorGasto, "codigo": codigo});
         contadorGasto++;
     }
 
@@ -935,29 +961,61 @@
         var formaPago = $('#editarGasto #gasto_formaPago').val();
         var monto = $('#editarGasto #gasto_monto').val();
 
-        $('#gasto' + idEditar + '_tipo').val(tipo);
-        $('#gasto' + idEditar + '_codigo').val(codigo);
-        $('#gasto' + idEditar + '_nombre').val(nombre);
-        $('#gasto' + idEditar + '_categoria').val(categoria);
-        $('#gasto' + idEditar + '_formaPago').val(formaPago);
-        $('#gasto' + idEditar + '_monto').val(monto);
-
-        var nombreTipo = 'Fijo';
-        if(tipo == 2) {
-            nombreTipo = 'Variable';
+        var existeCodigo = false;
+        for(var j = 0; j < arrayNombres.length; j++) {
+            if(arrayNombres[j]['codigo'] == codigo) {
+                existeCodigo = true;
+                break;
+            }
         }
-        var nombreCategoria = $("#editarGasto #gasto_categoria option[value='" + categoria + "']").text();
-        var nombreFormaPago = $("#editarGasto #gasto_formaPago option[value='" + formaPago + "']").text();
+        for(var k = 0; k < nombres.length; k++) {
+            if(nombres[k]['codigo'] == codigo && nombres[k]['idGasto'] != idEditar) {
+                existeCodigo = true;
+                break;
+            }
+        }
+        if(!existeCodigo) {
+            $('#gasto' + idEditar + '_tipo').val(tipo);
+            $('#gasto' + idEditar + '_codigo').val(codigo);
+            $('#gasto' + idEditar + '_nombre').val(nombre);
+            $('#gasto' + idEditar + '_categoria').val(categoria);
+            $('#gasto' + idEditar + '_formaPago').val(formaPago);
+            $('#gasto' + idEditar + '_monto').val(monto);
+
+            var nombreTipo = 'Fijo';
+            if (tipo == 2) {
+                nombreTipo = 'Variable';
+            }
+            var nombreCategoria = $("#editarGasto #gasto_categoria option[value='" + categoria + "']").text();
+            var nombreFormaPago = $("#editarGasto #gasto_formaPago option[value='" + formaPago + "']").text();
 
 //        alert(nombreTipo + '  -  ' + codigo + '  -  ' + nombre + '  -  ' + nombreCategoria + '  -  ' + nombreFormaPago + '  -  ' + monto);
-        $('#span_gasto' + idEditar + '_tipo').text(nombreTipo);
-        $('#span_gasto' + idEditar + '_codigo').text(codigo);
-        $('#span_gasto' + idEditar + '_nombre').text(nombre);
-        $('#span_gasto' + idEditar + '_categoria').text(nombreCategoria);
-        $('#span_gasto' + idEditar + '_formaPago').text(nombreFormaPago);
-        $('#span_gasto' + idEditar + '_monto').text(monto);
+            $('#span_gasto' + idEditar + '_tipo').text(nombreTipo);
+            $('#span_gasto' + idEditar + '_codigo').text(codigo);
+            $('#span_gasto' + idEditar + '_nombre').text(nombre);
+            $('#span_gasto' + idEditar + '_categoria').text(nombreCategoria);
+            $('#span_gasto' + idEditar + '_formaPago').text(nombreFormaPago);
+            $('#span_gasto' + idEditar + '_monto').text(monto);
+
+            for (var i = 0; i < nombres.length; i++) {
+                if (nombres[i]['idGasto'] == idEditar) {
+                    nombres[i]['codigo'] = codigo;
+                }
+            }
+            $('#editarGasto .modal-header a').click();
+        } else {
+            alert('<?= label('proveedores_codigoGastoNoValido'); ?>');
+            $('#editarGasto #gasto_codigo').focus();
+        }
     });
 
+    function limpiarFormGasto() {
+        $('#agregarGasto #gasto_codigo').val('');
+        $('#agregarGasto #gasto_nombre').val('');
+        $('#agregarGasto #gasto_monto').val('');
+        actualizarSelectTipo();
+        actualizarSelects();
+    }
     function generarListasBotones(){
         $('.boton-opciones').sideNav({
                 // menuWidth: 0, // Default is 240
@@ -1199,7 +1257,7 @@
         </div>
     </div>
     <div class="modal-footer" id="btnAgregarGasto">
-        <a class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <a class="waves-effect waves-red btn-flat"><?= label('aceptar'); ?></a>
     </div>
 </div>
 <div id="editarGasto" class="modal" style="width: 70%;">
@@ -1248,7 +1306,7 @@
         </div>
     </div>
     <div class="modal-footer" id="btnEditarGasto">
-        <a class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <a class="waves-effect waves-red btn-flat"><?= label('aceptar'); ?></a>
     </div>
 </div>
 <div id="eliminarGasto" class="modal">

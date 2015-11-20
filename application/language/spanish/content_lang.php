@@ -331,6 +331,8 @@ $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos selec
     $lang['formProveedor_gastosOpciones'] = 'Opciones';
     $lang['formProveedor_nuevoGasto'] = 'Agregar nuevo gasto';
 
+    $lang['proveedores_codigoGastoNoValido'] = 'El código de gasto indicado ya existe.';
+
 //Gastos en servicio
     $lang['formServicio_seleccioneGasto'] = 'Seleccione el gasto';
     $lang['formServicio_seleccioneCategoria'] = 'Seleccione la categoría';

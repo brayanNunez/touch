@@ -26,13 +26,20 @@ class Proveedores extends CI_Controller
 
     public function agregar()
     {
+
+        verificarLogin();//helper
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
         $tipos = $this->Proveedor_model->tiposPresupuesto();
         $paises = $this->Proveedor_model->paises();
+        $gastos = $this->Proveedor_model->NombresGasto($idEmpresa);
         if ($tipos === false || $tipos === array() || $paises === false || $paises === array()) {
             echo "Error en la transacción";
         } else {
             $data['paises'] = $paises;
             $data['tiposPresupuesto'] = $tipos;
+            $data['codigosGasto'] = $gastos;
             $this->load->view('layout/default/header');
             $this->load->view('layout/default/left-sidebar');
             $this->load->view('proveedores/proveedores', $data);

@@ -47,6 +47,25 @@ class Proveedor_model extends CI_Model
             return false;
         }
     }
+    function NombresGasto($idEmpresa) {
+        try{
+            $this->db->trans_begin();
+
+            $this->db->select('idGasto, codigo');
+            $this->db->where(array('idEmpresa' => $idEmpresa, 'eliminado' => 0));
+            $gastos = $this->db->get('gasto');
+            if (!$gastos) {
+                throw new Exception("Error en la BD");
+            }
+            $resultado = $gastos->result_array();
+
+            $this->db->trans_commit();
+            return $resultado;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
 
     function insertar($data)
     {
