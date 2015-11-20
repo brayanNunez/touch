@@ -59,7 +59,7 @@
                     <div id="datosEncabezado">
                         <div class="datos" id="datos1">
                             <div></div>
-                            <p class="box" id="nombreEmpresa">Mr Rabbit</p>
+                            <p class="box" id="nombreEmpresa"><?= $resultado['nombreEmpresa']?></p>
 
                             <p class="box" id="codigoCotizacion">Código de cotización: <span id="disenoCodigo"></span>-<span id="disenoNumero"></span></p>
 
