@@ -61,12 +61,11 @@
                             <div></div>
                             <p class="box" id="nombreEmpresa">Mr Rabbit</p>
 
-                            <p class="box" id="codigoCotizacion">Código de cotización: MR-123</p>
+                            <p class="box" id="codigoCotizacion">Código de cotización: <span id="disenoCodigo"></span>-<span id="disenoNumero"></span></p>
 
-                            <p class="box" id="cliente">Cliente: faytur</p>
+                            <p class="box" id="cliente">Cliente: <span id="disenoCliente"></span></p>
 
-                            <p class="box" id="atencion">Atención: Juan Carlos Rodríguez Salas sasassasassq lkmds sdflkm
-                                dsfklm sdflkmd</p>
+                            <p class="box" id="atencion">Atención: <span id='disenoAtencion'></span></p>
 
                             <p class="box" id="vendedor">Vendedor: Brayan Nuñez Rojas</p>
                         </div>
@@ -622,7 +621,24 @@
             });
 
         function actualizarDiseno(){
-            // alert($('#contenedorLineas').html());
+            if ($('#paso1Cliente option:selected').val() != 0) {
+                var cliente = $('#paso1Cliente option:selected').text();
+                $('#disenoCliente').text(cliente);
+            }
+            if ($('#paso1Atencion option:selected').val() != 0) {
+                var atencion = $('#paso1Atencion option:selected').text();
+                $('#disenoAtencion').text(atencion);
+            } 
+            // alert($('#paso1_codigo').val());
+            if ($('#paso1_codigo').val() != '') {
+                var codigo = $('#paso1_codigo').val();
+                $('#disenoCodigo').text(codigo);
+            } 
+            if ($('#paso1_numero').val() != '') {
+                var numero = $('#paso1_numero').val();
+                $('#disenoNumero').text(numero);
+            } 
+            
             $('#lineasDiseno').empty();
             $('#contenedorLineas').find('tr').each(function(){
                 var fila = $(this);
