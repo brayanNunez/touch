@@ -22,13 +22,20 @@ class Cotizacion extends CI_Controller
     }
 
 
-    // public function pasos()
-    // {
-    //     $this->load->view('layout/default/header');
-    //     $this->load->view('layout/default/left-sidebar');
-    //     $this->load->view('cotizar/paso3');
-    //     $this->load->view('layout/default/footer');
-    // }
+    public function guardar($idCotizacion){
+        $data['datosGenerales'] = array(
+            'numero' => $this->input->post('paso1_numero'),
+            'codigo' => $this->input->post('paso1_codigo'),
+            'idCliente' => $this->input->post('paso1Cliente'),
+            'idPersonaContacto' => $this->input->post('paso1Atencion'),
+            'idTipoFinanciamiento' => $this->input->post('paso1FormaPago'),
+            'idMoneda' => $this->input->post('paso1Moneda'),  
+            'tipoCambio' => $this->input->post('paso1_tipoCambio'),
+            'fechaValidez' => date("Y-m-d", strtotime($this->input->post('paso1_validez')))
+            
+            );
+        echo print_r($data['datosGenerales']); exit();
+    }
 
     public function cotizar()
     {
