@@ -32,6 +32,8 @@ class ManejadorPDF extends CI_Controller
     //     }
     // }
 
+    //Se crean 2 carpetas, una para el sistema y poder editarla y otra que es la que ve el cliente cuando se le 
+    //evia el link
     private function createFolder($idEmpresa, $idCotizacion)
     {
         // echo 'is_dir("./files/empresas/1/cotizaciones/124")'; exit();
@@ -128,18 +130,20 @@ class ManejadorPDF extends CI_Controller
 
     }
 
-    public function index()
+    public function generarCotizacion()
     {
 
         if (isset($_POST['miHtml'])) {
             $htmlEntrada = $_POST['miHtml'];
+            $idEmpresa = $_POST['idEmpresa'];
+            $idCotizacion = $_POST['idCotizacion'];
 
             //establecemos la carpeta en la que queremos guardar los pdfs,
             //si no existen las creamos y damos permisos
-            $this->createFolder('1', '323');
+            $this->createFolder($idEmpresa, $idCotizacion);
 
             //importante el slash del final o no funcionará correctamente
-            $this->html2pdf->folder("./files/empresas/1/cotizaciones/323/sistema/");
+            $this->html2pdf->folder("./files/empresas/".$idEmpresa."/cotizaciones/".$idCotizacion."/sistema/");
 
             //establecemos el nombre del archivo
             $this->html2pdf->filename('test.pdf');

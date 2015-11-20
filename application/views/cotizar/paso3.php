@@ -595,11 +595,14 @@
            event.preventDefault();
            actualizarDiseno();
            var html = crearPDF();
+           var idEmpresa = "<?= $resultado['idEmpresa'];?>";
+           var idCotizacion = "<?= encryptIt($resultado['idCotizacion']);?>";
+
            // alert(html);
 
                $.ajax({
-                  data: {miHtml :  html},
-                  url:   '<?=base_url()?>ManejadorPDF/index',
+                  data: {miHtml :  html, idEmpresa :  idEmpresa, idCotizacion :  idCotizacion},
+                  url:   '<?=base_url()?>ManejadorPDF/generarCotizacion',
                   type:  'post',
                   beforeSend: function(){
                        $('#botonPaso4').text('Cargando..');

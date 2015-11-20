@@ -10,7 +10,7 @@ class Cotizacion_model extends CI_Model
         $this->load->database();
     }
 
-    function cargar($datos)
+    function nueva($datos)
     {
         try {
             $this->db->trans_begin();
@@ -66,6 +66,13 @@ class Cotizacion_model extends CI_Model
             $data['servicios'] = $resultado;
             $data['formasPago'] = $formaPago;
             $data['monedas'] = $moneda;
+
+            $query = $this->db->insert('cotizacion', array('idEmpresa' => $datos['idEmpresa'],'idEstadoCotizacion' => 1,'idUsuario' => $datos['idUsuario']));
+            if (!$query) throw new Exception("Error en la BD"); 
+            $data['idCotizacion'] = $this->db->insert_id();
+            // echo $data['idCotizacion']; exit();
+
+            // INSERT INTO `touch`.`cotizacion` (`idEmpresa`, `idEstadoCotizacion`, `idUsuario`) VALUES ('1', '1', '1');
 
             // print_r($data);exit();
 

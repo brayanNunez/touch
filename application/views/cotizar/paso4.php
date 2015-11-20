@@ -34,7 +34,7 @@
       <a href="#modalVistaPrevia" class=" right btn btn-default modal-trigger">Vista previa</a>
    </div>
 </div> -->
-<iframe id="vistaPrevia" class="col s12" height="500px" src="<?= base_url() ?>files/empresas/1/cotizaciones/323/sistema/test.pdf">
+<iframe id="vistaPrevia" class="col s12" height="500px" src="<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/cotizaciones/<?= encryptIt($resultado['idCotizacion']);?>/sistema/test.pdf">
 
 </iframe>
 

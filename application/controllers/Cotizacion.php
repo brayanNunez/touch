@@ -37,9 +37,10 @@ class Cotizacion extends CI_Controller
         $data['idEmpresa'] = $sessionActual['idEmpresa'];
         $data['idUsuario'] = $sessionActual['idUsuario'];
 
-        $resultado = $this->Cotizacion_model->cargar($data); 
+        $resultado = $this->Cotizacion_model->nueva($data); 
         $resultado['lineasDetalle'] = array();
-        $resultado['idCotizacion'] = '123';
+        $resultado['idEmpresa'] = $data['idEmpresa'];
+        // $resultado['idCotizacion'] = '123';
         // if ($resultado === false || $resultado === array()) {
         // print_r($resultado['servicios']); exit();
         if ($resultado === false) {
