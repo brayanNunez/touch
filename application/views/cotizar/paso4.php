@@ -55,7 +55,7 @@
     </div>
     <div class="input-field col s12 m4 l4">
         <div class="input-field col s12">
-            <a id="btnGuardarCerrar" class="left btn btn-default opt-finalizar"
+            <a href="#guardar-cerrar" id="btnGuardarCerrar" class="left btn btn-default modal-trigger opt-finalizar"
                title="<?= label('tooltip_guardarCerrar'); ?>"><?= label('guardarCerrar'); ?></a>
         </div>
     </div>
@@ -149,7 +149,7 @@
 </div>
 
 
-<!-- <div id="guardar-cerrar" class="modal">
+<div id="guardar-cerrar" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
@@ -161,7 +161,7 @@
         <a href="<?= base_url() ?>cotizacion"
            class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
-</div> -->
+</div>
 
 
 <div id="cancelar-cot" class="modal">
@@ -189,32 +189,6 @@
 
         });
 
-        $('#btnGuardarCerrar').on("click", function () {
-            var url = '<?= base_url() ?>Cotizacion/guardar/<?= encryptIt($resultado['idCotizacion']);?>';
-            var method = 'POST'; 
-            $.ajax({
-                   type: method,
-                   url: url,
-                   data: $('#formGeneral, #form_encabezado, #form_paso3AgregarPlantilla, #form_cuerpo, #form_informacion, #form_footer').serialize(), 
-                   success: function(response)
-                   {
-                    alert(response);
-
-                       // if (response == 0) {
-                       //      $('#linkModalError').click();
-                       // } else {
-                       //      $('#linkModalEditado').click();
-                       // }
-                   }
-                 });
-
-        });
-        
-
-
-
 
     });
-
-    
 </script>
