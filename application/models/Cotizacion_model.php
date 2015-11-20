@@ -71,14 +71,22 @@ class Cotizacion_model extends CI_Model
             if (!$query) throw new Exception("Error en la BD"); 
             $data['idCotizacion'] = $this->db->insert_id();
 
-            $this->db->select('nombre');
+            $this->db->select('nombre, correo, telefono');
             $query = $this->db->get_where('empresa', array('idEmpresa'=> $datos['idEmpresa']));
             if (!$query) throw new Exception("Error en la BD");   
 
             $array = $query->result_array(); 
-            $empresa = array_shift($array);
-            $data['nombreEmpresa'] = $empresa['nombre'];
-            // echo $data['idCotizacion']; exit();
+            $data['empresa'] = array_shift($array);
+            
+
+            $this->db->select('nombre, primerApellido, segundoApellido');
+            $query = $this->db->get_where('usuario', array('idUsuario'=> $datos['idUsuario']));
+            if (!$query) throw new Exception("Error en la BD");   
+
+            $array = $query->result_array(); 
+            $data['usuario'] = array_shift($array);
+
+            // echo print_r($data['usuario']); exit();
 
             // INSERT INTO `touch`.`cotizacion` (`idEmpresa`, `idEstadoCotizacion`, `idUsuario`) VALUES ('1', '1', '1');
 

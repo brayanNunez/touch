@@ -8,7 +8,7 @@
         </div>
         <div class="input-field col s6 m3 l3">
             <div class="input-field col s12">
-                <input id="paso1_numero" name="paso1_numero" type="text">
+                <input id="paso1_numero" name="paso1_numero" type="number">
                 <label for="paso1_numero" class=""><?= label("paso1_labelNumero"); ?></label>
             </div>
         </div>

@@ -59,15 +59,15 @@
                     <div id="datosEncabezado">
                         <div class="datos" id="datos1">
                             <div></div>
-                            <p class="box" id="nombreEmpresa"><?= $resultado['nombreEmpresa']?></p>
+                            <p class="box" id="nombreEmpresa"><?= $resultado['empresa']['nombre']?></p>
 
-                            <p class="box" id="codigoCotizacion">Código de cotización: <span id="disenoCodigo"></span>-<span id="disenoNumero"></span></p>
+                            <p class="box" id="codigoCotizacion">Código de cotización: <span id="disenoCodigo"></span><span id="separador">-</span><span id="disenoNumero"></span></p>
 
                             <p class="box" id="cliente">Cliente: <span id="disenoCliente"></span></p>
 
                             <p class="box" id="atencion">Atención: <span id='disenoAtencion'></span></p>
 
-                            <p class="box" id="vendedor">Vendedor: Brayan Nuñez Rojas</p>
+                            <p class="box" id="vendedor">Vendedor: <?= $resultado['usuario']['nombre'].' '.$resultado['usuario']['primerApellido'].' '.$resultado['usuario']['segundoApellido']?></p>
                         </div>
                         <div class="datos" id="datos2">
                             <div></div>
@@ -199,7 +199,7 @@
                     <div id="informacion">
                         <p class="box" id="formaPago">Forma de pago: 50% primer mes, 50% segundo mes.</p>
 
-                        <p class="box" id="validez">Válido por: 1,5 meses</p>
+                        <p class="box" id="validez">Válido hasta: <span id="disenoValidez"></span></p>
 
                         <p class="box" id="informacionDetalle">Detalle: Por las especificaciones del equipo, es posible que
                             existan variantes entre impresiones sin que esto represente para nosotros problemas de calidad.
@@ -227,11 +227,11 @@
                         <div id="datosFooter">
                             <div class="datos" id="datos1">
                                 <div></div>
-                                <p class="box" id="telefono">Teléfono: 2494-33-44</p>
+                                <p class="box" id="telefono">Teléfono: <span><?= $resultado['empresa']['telefono'];?></span></p>
 
                                 <p class="box" id="sitio">Sitio web: www.mrrabbit.cr</p>
 
-                                <p class="box" id="correo">Correo: info@mrrabbit.cr</p>
+                                <p class="box" id="correo">Correo: <span><?= $resultado['empresa']['correo'];?></span></p>
                             </div>
                             <div class="datos" id="datos2">
                                 <div></div>
@@ -621,23 +621,34 @@
             });
 
         function actualizarDiseno(){
-            if ($('#paso1Cliente option:selected').val() != 0) {
+            // if ($('#paso1Cliente option:selected').val() != 0) {
                 var cliente = $('#paso1Cliente option:selected').text();
                 $('#disenoCliente').text(cliente);
-            }
-            if ($('#paso1Atencion option:selected').val() != 0) {
+            // }
+            // if ($('#paso1Atencion option:selected').val() != 0) {
                 var atencion = $('#paso1Atencion option:selected').text();
                 $('#disenoAtencion').text(atencion);
-            } 
+            // } 
             // alert($('#paso1_codigo').val());
-            if ($('#paso1_codigo').val() != '') {
+            // if ($('#paso1_codigo').val() != '') {
                 var codigo = $('#paso1_codigo').val();
                 $('#disenoCodigo').text(codigo);
-            } 
-            if ($('#paso1_numero').val() != '') {
+            // } 
+            // if ($('#paso1_numero').val() != '') {
                 var numero = $('#paso1_numero').val();
                 $('#disenoNumero').text(numero);
-            } 
+            // }
+            // if ($('#paso1_validez').val() != '') {
+                var validez = $('#paso1_validez').val();
+                $('#disenoValidez').text(validez);
+            // } 
+
+            if (codigo != '' && numero != '') {
+                $('#separador').show();
+            } else{
+                $('#separador').hide();
+            };
+            
             
             $('#lineasDiseno').empty();
             $('#contenedorLineas').find('tr').each(function(){
