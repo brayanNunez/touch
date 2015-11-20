@@ -13,16 +13,24 @@ class Cotizacion extends CI_Controller
 
     public function index()
     {
+        // verificarLogin();//helper
+        // esAdministrador();//helper
+
         verificarLogin();//helper
-        esAdministrador();//helper
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+        $lista = $this->Cotizacion_model->cargarTodos($idEmpresa);
+        $data['lista'] = $lista;
+        // echo  print_r($lista); exit();
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
-        $this->load->view('cotizar/lista');
+        $this->load->view('cotizar/lista', $data);
         $this->load->view('layout/default/footer');
     }
 
 
     public function guardar($idCotizacion){
+        $data['idCotizacion'] = decryptIt($idCotizacion);
         $data['datosGenerales'] = array(
             'numero' => $this->input->post('paso1_numero'),
             'codigo' => $this->input->post('paso1_codigo'),
@@ -32,9 +40,9 @@ class Cotizacion extends CI_Controller
             'idMoneda' => $this->input->post('paso1Moneda'),  
             'tipoCambio' => $this->input->post('paso1_tipoCambio'),
             'fechaValidez' => date("Y-m-d", strtotime($this->input->post('paso1_validez')))
-            
             );
-        echo print_r($data['datosGenerales']); exit();
+        $resultado = $this->Cotizacion_model->guardarCambios($data); 
+        echo $resultado; exit();
     }
 
     public function cotizar()

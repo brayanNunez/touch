@@ -10,6 +10,38 @@ class Cotizacion_model extends CI_Model
         $this->load->database();
     }
 
+     function cargarTodos($idEmpresa)
+    {
+        try{
+            $this->db->trans_begin();
+            $cotizaciones = $this->db->get_where('cotizacion', array('idEmpresa' => $idEmpresa));
+            //$cotizaciones = $this->db->get_where('cotizacion', array('eliminado' => 0,'idEmpresa' => $idEmpresa));
+            if (!$cotizaciones) throw new Exception("Error en la BD"); 
+            $cotizaciones = $cotizaciones->result_array();
+
+            $this->db->trans_commit();
+            return $cotizaciones;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+       
+    }
+
+    function guardarCambios($data){
+        try {
+            $this->db->trans_begin();
+            $this->db->where('idCotizacion', $data['idCotizacion']);
+            $query = $this->db->update('cotizacion', $data['datosGenerales']);
+            if (!$query) throw new Exception("Error en la BD"); 
+            $this->db->trans_commit();
+            return 1;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return 0;
+        }
+    }
+
     function nueva($datos)
     {
         try {
