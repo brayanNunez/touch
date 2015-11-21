@@ -85,7 +85,7 @@
                                                             <td><?= $tipo; ?></td>
                                                             <td><?= $tipoPersona; ?></td>
                                                             <td><?= $fila['identificacion']; ?></td>
-                                                            <td><a href="<?= base_url() ?>proveedores/editar/<?= $idEncriptado; ?>tab-informacion"><?= $nombre; ?></td>
+                                                            <td><a href="<?= base_url() ?>proveedores/editar/<?= $idEncriptado; ?>#tab-informacion"><?= $nombre; ?></td>
                                                             <td><?= $fila['correo']; ?></td>
                                                             <td>
                                                                 <ul id="dropdown-proveedor<?= $contador; ?>" class="dropdown-content">

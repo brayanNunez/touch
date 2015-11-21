@@ -255,16 +255,14 @@
                                                     <tbody>
                                                     </tbody>
                                                 </table>
-                                                <div style="padding: 20px;">
-                                                    <div class="tabla-conAgregar">
-                                                        <a id="opciones-seleccionados-delete"
-                                                           class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements"
-                                                           style="visibility: hidden;"
-                                                           href="#eliminarGastosSeleccionados" data-toggle="tooltip"
-                                                           title="<?= label('opciones_seleccionadosEliminar') ?>">
-                                                            <i class="mdi-action-delete icono-opciones-varios"></i>
-                                                        </a>
-                                                    </div>
+                                                <div class="tabla_GastosPersona_agregar">
+                                                    <a id="opciones-seleccionados-delete"
+                                                       class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements"
+                                                       style="visibility: hidden;"
+                                                       href="#eliminarElementosSeleccionados" data-toggle="tooltip"
+                                                       title="<?= label('opciones_seleccionadosEliminar') ?>">
+                                                        <i class="mdi-action-delete icono-opciones-varios"></i>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -815,17 +813,26 @@
     }
 
     var gastoEliminar = null;
+    var idEliminar = 0;
     $(document).on('click','.confirmarEliminarGasto', function () {
         gastoEliminar = $(this).parents('tr');
+        idEliminar = $(this).data('id-eliminar');
         $('#linkGastosElimminar').click();//esto se hace porque al agregar un <a class="modal-trigger"> dinamicamente con el metodo de agregarNuevoContacto() pareciera no servir, entonces lo que se hace es llamar al evento click del modal-trigger con el id = linkContactosElimminar
     });
     $(document).on('click','#eliminarGasto #botonEliminar', function () {
         event.preventDefault();
         gastoEliminar.fadeOut(function () {
+            gastoEliminar.empty();
             gastoEliminar.remove();
         });
         cantidadGasto--;
         actualizarCantidadGastos();
+        for (var i = 0; i < nombres.length; i++) {
+            if (nombres[i]['idGasto'] == idEliminar) {
+                nombres[i]['codigo'] = '';
+            }
+        }
+        $('#eliminarGasto .modal-header a').click();
     });
 
     function actualizarCantidadGastos(){
@@ -870,7 +877,7 @@
         var check = '<td>' +
             '<div style="text-align: center;">' +
             '<input class="accionAplicada" style="display:none" name="gasto_' + contadorGasto + '" type="text" value="0">' +
-            '<input type="checkbox" class="filled-in checkbox" id="checkbox_gasto' + contadorGasto + '"/>' +
+            '<input type="checkbox" class="filled-in checkboxGastos" id="checkbox_gasto' + contadorGasto + '"/>' +
             '<label for="checkbox_gasto' + contadorGasto + '"></label>' +
             '</div>' +
             '</td>';
@@ -1036,38 +1043,15 @@
         );
     }
 </script>
-
 <script>
     $(document).on("ready", function () {
-
         <?php
-       if (isset($lista)) {
-           if ($lista === false) {?>
-
-        $('#linkModalErrorCargarDatos').click();
-
+            if (isset($lista)) {
+                if ($lista === false) { ?>
+                    $('#linkModalErrorCargarDatos').click();
         <?php
-   }
-   }
-   ?>
-
-
-        var idEliminar = 0;
-        var fila = 0;
-
-        $(document).on('click','.confirmarEliminar', function () {
-//            idEliminar = $(this).data('id-eliminar');
-            fila = $(this).parents('tr');
-        });
-
-        $('#eliminarGasto #botonEliminar').on('click', function () {
-            event.preventDefault();
-
-            fila.fadeOut(function () {
-                fila.remove();
-                verificarChecks();
-            });
-        });
+                }
+            } ?>
     });
 
     $(document).ready( function () {
@@ -1087,17 +1071,25 @@
             var tb = $(this).attr('title');
             var sel = false;
             var ch = $('#' + tb).find('tbody input[type=checkbox]');
-            var marcados = $('.checkbox:checked').not('#checkbox-all').size();
+            var marcados = $('.checkboxGastos:checked').not('#checkbox-allGastos').size();
             var contador = 0;
             ch.each(function () {
                 var $this = $(this);
                 if ($this.is(':checked')) {
                     sel = true;
                     var fila = $this.parents('tr');
+                    var gastoEliminar = fila.find('.confirmarEliminarGasto');
+                    var idGastoEliminar = gastoEliminar.data('id-eliminar');
                     fila.fadeOut(function () {
+                        fila.empty();
                         fila.remove();
                         verificarChecks();
                     });
+                    for (var i = 0; i < nombres.length; i++) {
+                        if (nombres[i]['idGasto'] == idGastoEliminar) {
+                            nombres[i]['codigo'] = '';
+                        }
+                    }
                     contador++;
                     if (contador == marcados) {
                         $('#linkModalErrorEliminar').click();
@@ -1113,7 +1105,7 @@
     });
 
     $(document).ready(function () {
-        $('#checkbox-all').click(function (event) {
+        $('#checkbox-allGastos').click(function (event) {
             var $this = $(this);
             var tableBody = $('#proveedor_gastos').find('tbody tr[role=row] input[type=checkbox]');
             tableBody.each(function() {
@@ -1127,14 +1119,14 @@
         });
     });
     $(document).ready(function () {
-        $(document).on('click','.checkbox',function (event) {
+        $(document).on('click','.checkboxGastos',function (event) {
             verificarChecks();
         });
     });
 
     function verificarChecks(){
 
-        var marcados = $('.checkbox:checked').not('#checkbox-all').size();
+        var marcados = $('.checkboxGastos:checked').not('#checkbox-allGastos').size();
         if (marcados >= 1) {
             var elems = document.getElementsByClassName('opciones-seleccionados');
             var e;
@@ -1318,7 +1310,7 @@
         <p><?= label('confirmarEliminarSalario'); ?></p>
     </div>
     <div id="botonEliminar" class="modal-footer black-text">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <a href="#" class="waves-effect waves-red btn-flat"><?= label('aceptar'); ?></a>
     </div>
 </div>
 <div id="eliminarElementosSeleccionados" class="modal">
@@ -1330,7 +1322,7 @@
         <p><?= label('clientes_archivosSeleccionadosEliminar'); ?></p>
     </div>
     <div class="modal-footer black-text">
-        <div id="botonEliminar" title="proveedor_gastos_editar">
+        <div id="botonEliminar" title="proveedor_gastos">
             <a href="#" class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
         </div>
     </div>

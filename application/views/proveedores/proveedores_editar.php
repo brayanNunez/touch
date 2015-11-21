@@ -325,6 +325,7 @@
                 </div>
                 <div id="tab-infoAdicional-editar" class="card col s12">
                     <h5><?= label('gastosRelacionados'); ?></h5>
+                    <p>* Debe guardar los cambios realizados</p>
                     <div class="agregar_nuevo">
                         <a id="btn_accionAgregarGasto" href="#agregarGasto"
                            class="btn btn-default modal-trigger"><?= label('formProveedor_nuevoGasto'); ?></a>
@@ -415,16 +416,14 @@
                         } ?>
                         </tbody>
                     </table>
-                    <div style="padding: 20px;">
-                        <div class="tabla-conAgregar">
-                            <a id="opciones-seleccionados-delete"
-                               class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements"
-                               style="visibility: hidden;"
-                               href="#eliminarGastosSeleccionados" data-toggle="tooltip"
-                               title="<?= label('opciones_seleccionadosEliminar') ?>">
-                                <i class="mdi-action-delete icono-opciones-varios"></i>
-                            </a>
-                        </div>
+                    <div class="tabla_GastosPersona">
+                        <a id="opciones-seleccionados-delete"
+                           class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements"
+                           style="visibility: hidden;"
+                           href="#eliminarGastosSeleccionados" data-toggle="tooltip"
+                           title="<?= label('opciones_seleccionadosEliminar') ?>">
+                            <i class="mdi-action-delete icono-opciones-varios"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -881,6 +880,21 @@
 
 <!--Funcion para gastos-->
 <script>
+    <?php
+        $js_arrayNombres = json_encode($codigosGasto);
+        echo "var arrayNombres =". $js_arrayNombres.';';
+        $gastosExistentes = array();
+        $contadorGastosExistentes = 0;
+        foreach ($resultado['gastos'] as $gasto) {
+            $gastosExistentes[] = array(
+                'posicion' => $contadorGastosExistentes++,
+                'id' => $gasto['idGasto'],
+                'codigo' => $gasto['codigo']
+            );
+        }
+        $js_gastosExistentes = json_encode($gastosExistentes);
+        echo 'var arrayGastosExistentes = '.$js_gastosExistentes.';';
+    ?>
     $(document).ready(function () {
         actualizarSelectTipo();
         actualizarSelects();
@@ -1053,8 +1067,10 @@
     }
 
     var gastoEliminar = null;
+    var idEliminar = 0;
     $(document).on('click','.confirmarEliminarGasto', function () {
         gastoEliminar = $(this).parents('tr');
+        idEliminar = $(this).data('id-eliminar');
         $('#linkGastosElimminar').click();//esto se hace porque al agregar un <a class="modal-trigger"> dinamicamente con el metodo de agregarNuevoContacto() pareciera no servir, entonces lo que se hace es llamar al evento click del modal-trigger con el id = linkContactosElimminar
     });
     $(document).on('click','#eliminarGasto-editar #botonEliminar', function () {
@@ -1062,22 +1078,35 @@
         var tipo = gastoEliminar.find('.accionAplicada').val();
         if (tipo == '0') {
             gastoEliminar.fadeOut(function () {
+                gastoEliminar.empty();
                 gastoEliminar.remove();
             });
             cantidadGasto--;
             actualizarCantidadGastos();
+            for (var i = 0; i < nombres.length; i++) {
+                if (nombres[i]['idGasto'] == idEliminar) {
+                    nombres[i]['codigo'] = '';
+                }
+            }
         } else{
             gastoEliminar.find('.accionAplicada').val('2');
             gastoEliminar.fadeOut(function () {
                 gastoEliminar.hide();
             });
+            var idGE = arrayGastosExistentes[idEliminar]['id'];
+            for (var i = 0; i < arrayNombres.length; i++) {
+                if (arrayNombres[i]['idGasto'] == idGE) {
+                    arrayNombres[i]['codigo'] = '';
+                }
+            }
         }
+        $('#eliminarGasto-editar .modal-header a').click();
     });
 
     function actualizarCantidadGastos(){
         $('#cantidadGastos').val(cantidadGasto);
     }
-    var cantidadGasto = '<?= count($resultado['gastos'])?>';
+    var cantidadGasto = '<?= count($resultado['gastos']); ?>';
     var contadorGasto = cantidadGasto;
 
     $(document).on('click', '#agregarGasto #btnAgregarGasto', function () {
@@ -1087,7 +1116,28 @@
         var categoria = $('#agregarGasto #gasto_categoria');
         var formaPago = $('#agregarGasto #gasto_formaPago');
         var monto = $('#agregarGasto #gasto_monto');
-        agregarNuevoGasto(tipo.val(), codigo.val(), nombre.val(), categoria.val(), formaPago.val(), monto.val());
+
+        var existeCodigoAgregar = false;
+        for(var j = 0; j < arrayNombres.length; j++) {
+            if(arrayNombres[j]['codigo'] == codigo.val()) {
+                existeCodigoAgregar = true;
+                break;
+            }
+        }
+        for(var k = 0; k < nombres.length; k++) {
+            if(nombres[k]['codigo'] == codigo.val()) {
+                existeCodigoAgregar = true;
+                break;
+            }
+        }
+        if(!existeCodigoAgregar) {
+            agregarNuevoGasto(tipo.val(), codigo.val(), nombre.val(), categoria.val(), formaPago.val(), monto.val());
+            $('#agregarGasto .modal-header a').click();
+            limpiarFormGasto();
+        } else {
+            alert('<?= label('proveedores_codigoGastoNoValido'); ?>');
+            $('#agregarGasto #gasto_codigo').focus();
+        }
     });
     function agregarNuevoGasto(tipo, codigo, nombre, categoria, formaPago, monto) {
         cantidadGasto++;
@@ -1095,7 +1145,7 @@
         var check = '<td>' +
                         '<div style="text-align: center;">' +
                             '<input class="accionAplicada" style="display:none" name="gasto_'+ contadorGasto +'" type="text" value="0">' +
-                            '<input type="checkbox" class="filled-in checkbox" id="checkbox_gasto'+ contadorGasto +'"/>' +
+                            '<input type="checkbox" class="filled-in checkboxGastos" id="checkbox_gasto'+ contadorGasto +'"/>' +
                             '<label for="checkbox_gasto'+ contadorGasto +'"></label>' +
                         '</div>' +
                     '</td>';
@@ -1152,6 +1202,7 @@
 
         generarListasBotones();
         $('.modal-trigger').leanModal();
+        nombres.push({"idGasto": contadorGasto, "codigo": codigo});
         contadorGasto++;
     }
 
@@ -1185,29 +1236,69 @@
         var formaPago = $('#editarGasto #gasto_formaPago').val();
         var monto = $('#editarGasto #gasto_monto').val();
 
-        $('#gasto' + idEditar + '_tipo').val(tipo);
-        $('#gasto' + idEditar + '_codigo').val(codigo);
-        $('#gasto' + idEditar + '_nombre').val(nombre);
-        $('#gasto' + idEditar + '_categoria').val(categoria);
-        $('#gasto' + idEditar + '_formaPago').val(formaPago);
-        $('#gasto' + idEditar + '_monto').val(monto);
-
-        var nombreTipo = 'Fijo';
-        if(tipo == 2) {
-            nombreTipo = 'Variable';
+        var existeCodigo = false;
+        for(var j = 0; j < arrayNombres.length; j++) {
+            if(arrayNombres[j]['codigo'] == codigo) {
+                if(arrayGastosExistentes[idEditar]['codigo'] != codigo) {
+                    existeCodigo = true;
+                    break;
+                }
+            }
         }
-        var nombreCategoria = $("#editarGasto #gasto_categoria option[value='" + categoria + "']").text();
-        var nombreFormaPago = $("#editarGasto #gasto_formaPago option[value='" + formaPago + "']").text();
+        for(var k = 0; k < nombres.length; k++) {
+            if(nombres[k]['codigo'] == codigo && nombres[k]['idGasto'] != idEditar) {
+                existeCodigo = true;
+                break;
+            }
+        }
+        if(!existeCodigo) {
+            $('#gasto' + idEditar + '_tipo').val(tipo);
+            $('#gasto' + idEditar + '_codigo').val(codigo);
+            $('#gasto' + idEditar + '_nombre').val(nombre);
+            $('#gasto' + idEditar + '_categoria').val(categoria);
+            $('#gasto' + idEditar + '_formaPago').val(formaPago);
+            $('#gasto' + idEditar + '_monto').val(monto);
 
-//        alert(nombreTipo + '  -  ' + codigo + '  -  ' + nombre + '  -  ' + nombreCategoria + '  -  ' + nombreFormaPago + '  -  ' + monto);
-        $('#span_gasto' + idEditar + '_tipo').text(nombreTipo);
-        $('#span_gasto' + idEditar + '_codigo').text(codigo);
-        $('#span_gasto' + idEditar + '_nombre').text(nombre);
-        $('#span_gasto' + idEditar + '_categoria').text(nombreCategoria);
-        $('#span_gasto' + idEditar + '_formaPago').text(nombreFormaPago);
-        $('#span_gasto' + idEditar + '_monto').text(monto);
+            var nombreTipo = 'Fijo';
+            if(tipo == 2) {
+                nombreTipo = 'Variable';
+            }
+            var nombreCategoria = $("#editarGasto #gasto_categoria option[value='" + categoria + "']").text();
+            var nombreFormaPago = $("#editarGasto #gasto_formaPago option[value='" + formaPago + "']").text();
+
+    //        alert(nombreTipo + '  -  ' + codigo + '  -  ' + nombre + '  -  ' + nombreCategoria + '  -  ' + nombreFormaPago + '  -  ' + monto);
+            $('#span_gasto' + idEditar + '_tipo').text(nombreTipo);
+            $('#span_gasto' + idEditar + '_codigo').text(codigo);
+            $('#span_gasto' + idEditar + '_nombre').text(nombre);
+            $('#span_gasto' + idEditar + '_categoria').text(nombreCategoria);
+            $('#span_gasto' + idEditar + '_formaPago').text(nombreFormaPago);
+            $('#span_gasto' + idEditar + '_monto').text(monto);
+
+            for (var i = 0; i < nombres.length; i++) {
+                if (nombres[i]['idGasto'] == idEditar) {
+                    nombres[i]['codigo'] = codigo;
+                }
+            }
+            var idGE = arrayGastosExistentes[idEditar]['id'];
+            for (var j = 0; j < arrayNombres.length; j++) {
+                if (arrayNombres[j]['idGasto'] == idGE) {
+                    arrayNombres[j]['codigo'] = codigo;
+                }
+            }
+            $('#editarGasto .modal-header a').click();
+        } else {
+            alert('<?= label('proveedores_codigoGastoNoValido'); ?>');
+            $('#editarGasto #gasto_codigo').focus();
+        }
     });
 
+    function limpiarFormGasto() {
+        $('#agregarGasto #gasto_codigo').val('');
+        $('#agregarGasto #gasto_nombre').val('');
+        $('#agregarGasto #gasto_monto').val('');
+        actualizarSelectTipo();
+        actualizarSelects();
+    }
     function generarListasBotones(){
         $('.boton-opciones').sideNav({
                 // menuWidth: 0, // Default is 240
@@ -1228,38 +1319,15 @@
         );
     }
 </script>
-
 <script>
     $(document).on("ready", function () {
-
         <?php
-       if (isset($lista)) {
-           if ($lista === false) {?>
-
-        $('#linkModalErrorCargarDatos').click();
-
+            if (isset($lista)) {
+                if ($lista === false) { ?>
+                    $('#linkModalErrorCargarDatos').click();
         <?php
-   }
-   }
-   ?>
-
-
-        var idEliminar = 0;
-        var fila = 0;
-
-        $(document).on('click','.confirmarEliminar', function () {
-//            idEliminar = $(this).data('id-eliminar');
-            fila = $(this).parents('tr');
-        });
-
-        $('#eliminarGasto #botonEliminar').on('click', function () {
-            event.preventDefault();
-
-            fila.fadeOut(function () {
-                fila.remove();
-                verificarChecks();
-            });
-        });
+                }
+            } ?>
     });
 
     $(document).ready( function () {
@@ -1279,7 +1347,7 @@
             var tb = $(this).attr('title');
             var sel = false;
             var ch = $('#' + tb).find('tbody input[type=checkbox]');
-            var marcados = $('.checkbox:checked').not('#checkbox-all').size();
+            var marcados = $('.checkboxGastos:checked').not('#checkbox-allGastos').size();
             var contador = 0;
             ch.each(function () {
                 var $this = $(this);
@@ -1288,19 +1356,32 @@
 
                     var fila = $this.parents('tr');
                     var tipo = fila.find('.accionAplicada').val();
+                    var gastoEliminar = fila.find('.confirmarEliminarGasto');
+                    var idGastoEliminar = gastoEliminar.data('id-eliminar');
                     if (tipo == '0') {
                         fila.fadeOut(function () {
+                            fila.empty();
                             fila.remove();
                         });
                         cantidadGasto--;
                         actualizarCantidadGastos();
+                        for (var i = 0; i < nombres.length; i++) {
+                            if (nombres[i]['idGasto'] == idGastoEliminar) {
+                                nombres[i]['codigo'] = '';
+                            }
+                        }
                     } else{
                         fila.find('.accionAplicada').val('2');
                         fila.fadeOut(function () {
                             fila.hide();
                         });
+                        var idGE = arrayGastosExistentes[idGastoEliminar]['id'];
+                        for (var i = 0; i < arrayNombres.length; i++) {
+                            if (arrayNombres[i]['idGasto'] == idGE) {
+                                arrayNombres[i]['codigo'] = '';
+                            }
+                        }
                     }
-
                     contador++;
                     if (contador == marcados) {
                         $('#linkModalErrorEliminar').click();
@@ -1346,7 +1427,7 @@
                 elems[e].style.visibility = 'visible';
             }
         } else {
-            $('#checkbox-all').prop('checked', false);
+            $('#checkbox-allGastos').prop('checked', false);
             var elems = document.getElementsByClassName('opciones-seleccionados');
             var e;
             for (e in elems) {
@@ -1496,7 +1577,7 @@
         </div>
     </div>
     <div class="modal-footer" id="btnAgregarGasto">
-        <a class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <a class="waves-effect waves-red btn-flat"><?= label('aceptar'); ?></a>
     </div>
 </div>
 <div id="editarGasto" class="modal" style="width: 70%;">
@@ -1545,7 +1626,7 @@
         </div>
     </div>
     <div class="modal-footer" id="btnEditarGasto">
-        <a class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <a class="waves-effect waves-red btn-flat"><?= label('aceptar'); ?></a>
     </div>
 </div>
 <div id="eliminarGasto-editar" class="modal">
@@ -1557,7 +1638,7 @@
         <p><?= label('confirmarEliminarSalario'); ?></p>
     </div>
     <div id="botonEliminar" class="modal-footer black-text">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <a href="#" class="waves-effect waves-red btn-flat"><?= label('aceptar'); ?></a>
     </div>
 </div>
 <div id="eliminarGastosSeleccionados" class="modal">
@@ -1571,86 +1652,6 @@
     <div class="modal-footer black-text">
         <div id="botonEliminar" title="proveedor_gastos_editar">
             <a href="#" class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
-        </div>
-    </div>
-</div>
-
-<div id="agregarSalario" class="modal">
-    <div class="modal-header">
-        <p><?= label('nombreSistema'); ?></p>
-        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
-    </div>
-    <div class="modal-content">
-        <div class="input-field col s12">
-            <select>
-                <option value="">Seleccione</option>
-                <option value="1"><?= label('horas') ?></option>
-                <option value="2"><?= label('dia') ?></option>
-                <option value="3"><?= label('semana') ?></option>
-                <option value="4"><?= label('quincena') ?></option>
-                <option value="5"><?= label('mes') ?></option>
-            </select>
-            <label for=""><?= label('formProveedor_salarioTipo'); ?></label>
-        </div>
-        <div class="input-field col s12">
-            <input id="salario_monto" type="text" value="">
-            <label for="salario_monto"><?= label('formProveedor_salarioMonto'); ?></label>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
-    </div>
-</div>
-<div id="editarSalario" class="modal">
-    <div class="modal-header">
-        <p><?= label('nombreSistema'); ?></p>
-        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
-    </div>
-    <div class="modal-content">
-        <div class="input-field col s12">
-            <select>
-                <option value="">Seleccione</option>
-                <option value="1" selected><?= label('horas') ?></option>
-                <option value="2"><?= label('dia') ?></option>
-                <option value="3"><?= label('semana') ?></option>
-                <option value="4"><?= label('quincena') ?></option>
-                <option value="5"><?= label('mes') ?></option>
-            </select>
-            <label for=""><?= label('formProveedor_salarioTipo'); ?></label>
-        </div>
-        <div class="input-field col s12">
-            <input id="salario_monto" type="text" value="$10">
-            <label for="salario_monto"><?= label('formProveedor_salarioMonto'); ?></label>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
-    </div>
-</div>
-<div id="eliminarSalario" class="modal">
-    <div class="modal-header">
-        <p><?= label('nombreSistema'); ?></p>
-        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
-    </div>
-    <div class="modal-content">
-        <p><?= label('confirmarEliminarSalario'); ?></p>
-    </div>
-    <div class="modal-footer black-text">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
-    </div>
-</div>
-<div id="eliminarElementosSeleccionados" class="modal">
-    <div class="modal-header">
-        <p><?= label('nombreSistema'); ?></p>
-        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
-    </div>
-    <div class="modal-content">
-        <p><?= label('clientes_archivosSeleccionadosEliminar'); ?></p>
-    </div>
-    <div class="modal-footer black-text">
-        <div id="botonElimnar" title="proveedor1-salarios">
-            <a href="#"
-               class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
         </div>
     </div>
 </div>

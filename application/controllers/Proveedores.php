@@ -26,7 +26,6 @@ class Proveedores extends CI_Controller
 
     public function agregar()
     {
-
         verificarLogin();//helper
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
@@ -209,11 +208,18 @@ class Proveedores extends CI_Controller
 
     public function editar($id)
     {
+        verificarLogin();//helper
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+        $gastos = $this->Proveedor_model->NombresGasto($idEmpresa);
+
         $resultado = $this->Proveedor_model->cargar(decryptIt($id));
+
         if ($resultado === false || $resultado === array()) {
             echo "Error en la transacción";
         } else {
             $data['resultado'] = $resultado;
+            $data['codigosGasto'] = $gastos;
             $this->load->view('layout/default/header');
             $this->load->view('layout/default/left-sidebar');
             $this->load->view('proveedores/proveedores_info', $data);
