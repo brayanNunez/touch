@@ -221,7 +221,7 @@
                                         <td><?= $gasto['codigo']; ?></td>
                                         <td><?= $gasto['nombre']; ?></td>
                                         <td><?= $gasto['datosAdicionales']['tipo']; ?></td>
-                                        <td><?= $gasto['datosAdicionales']['tipo']; ?></td>
+                                        <td><?= $gasto['datosAdicionales']['categoria']; ?></td>
                                         <td><?= $gasto['datosAdicionales']['formaPago']; ?></td>
                                         <td><?= $gasto['monto']; ?></td>
                                     </tr>
