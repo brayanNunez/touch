@@ -444,6 +444,9 @@
 <div style="display: none">
     <a id="linkModalGuardado" href="#transaccionCorrecta" class="btn btn-default modal-trigger"></a>
     <a id="linkModalError" href="#transaccionIncorrecta" class="btn btn-default modal-trigger"></a>
+
+    <a id="linkNuevaCategoria" href="#agregarCategoria" class="modal-trigger"></a>
+    <a id="linkNuevaFormaPago" href="#agregarFormaPago" class="modal-trigger"></a>
 </div>
 <div style="visibility:hidden; position:absolute">
     <a id="linkContactosElimminar" href="#eliminarContacto-editar" class="modal-trigger" data-fila-eliminar="1"
@@ -966,6 +969,32 @@
         }
         selectTipo.material_select();
     }
+    function actualizarSelectCategoriasGasto($id) {
+        var formulario = $('#form_gasto');
+        $.ajax({
+            type: formulario.attr('method'),
+            url: '<?= base_url(); ?>gastos/categoriasGasto',
+            data: {  },
+            success: function(response)
+            {
+                generarAutocompletarCategoria($.parseJSON(response), $id);
+                generarListas();
+            }
+        });
+    }
+    function actualizarSelectFormasPago($id) {
+        var formulario = $('#form_gasto');
+        $.ajax({
+            type: formulario.attr('method'),
+            url: '<?= base_url(); ?>gastos/formasPago',
+            data: {  },
+            success: function(response)
+            {
+                generarAutocompletarFormaPago($.parseJSON(response), $id);
+                generarListas();
+            }
+        });
+    }
     function actualizarSelectCategoriasGasto_Editar($idCategoria) {
         $.ajax({
             type: 'POST',
@@ -989,6 +1018,23 @@
                 generarListas();
             }
         });
+    }
+
+    function botonEnLista(tipo, idBoton, nuevoElementoAgregar){
+        if (tipo == "agregarGasto_categoria") {
+            $('#categoria_nombre').val(nuevoElementoAgregar);
+            $('#linkNuevaCategoria').click();
+            $('#categoria_nombre').focus();
+            document.getElementById('agregarGasto').style.visibility = 'hidden';
+            document.getElementById('editarGasto').style.visibility = 'hidden';
+        }
+        if (tipo == "agregarGasto_formaPago") {
+            $('#formaPago_nombre').val(nuevoElementoAgregar);
+            $('#linkNuevaFormaPago').click();
+            $('#formaPago_nombre').focus();
+            document.getElementById('agregarGasto').style.visibility = 'hidden';
+            document.getElementById('editarGasto').style.visibility = 'hidden';
+        }
     }
 
     function generarAutocompletarCategoria($array, $id){
@@ -1059,12 +1105,22 @@
         }
         miSelect.trigger("chosen:updated");
     }
+
     function generarListas(){
         var config = {'.chosen-select'           : {}}
         for (var selector in config) {
             $(selector).chosen(config[selector]);
         }
     }
+    $(document).on('change','.chosen-select',function(){
+        var valor = $(this).val();
+        var tipo = $(this).attr("data-tipo");
+        if (valor=="nuevo") {
+            var idBoton = $(this).attr("id");
+            var nuevoElementoAgregar = "";
+            botonEnLista(tipo, idBoton, nuevoElementoAgregar)
+        }
+    });
 
     var gastoEliminar = null;
     var idEliminar = 0;
@@ -1317,6 +1373,136 @@
                 alignment: 'left' // Displays dropdown with edge aligned to the left of button
             }
         );
+    }
+
+    var cerrarModalCategoria = false;
+    var cerrarModalFormaPago = false;
+    $(document).on('ready', function(){
+        $('#guardarOtroCategoria').on('click', function(){
+            cerrarModalCategoria = false;
+        });
+        $('#guardarCerrarCategoria').on('click', function(){
+            cerrarModalCategoria = true;
+        });
+        $('#guardarOtroFormaPago').on('click', function(){
+            cerrarModalFormaPago = false;
+        });
+        $('#guardarCerrarFormaPago').on('click', function(){
+            cerrarModalFormaPago = true;
+        });
+    });
+    function limpiarFormCategoria() {
+        $('#form_categoria')[0].reset();
+        var validator = $("#form_categoria").validate();
+        validator.resetForm();
+    }
+    function limpiarFormFormaPago() {
+        $('#form_formaPago_Gastos')[0].reset();
+        var validator = $("#form_formaPago_Gastos").validate();
+        validator.resetForm();
+    }
+
+    $(document).ready(function () {
+        $('#modalAgregarCategoria_cerrar').on('click', function () {
+            document.getElementById('agregarGasto').style.visibility = 'visible';
+            document.getElementById('editarGasto').style.visibility = 'visible';
+            document.getElementById('agregarCategoria').style.display = 'none';
+        });
+        $('#modalAgregarFormaPago_cerrar').on('click', function () {
+            document.getElementById('agregarGasto').style.visibility = 'visible';
+            document.getElementById('editarGasto').style.visibility = 'visible';
+            document.getElementById('agregarFormaPago').style.display = 'none';
+        });
+        $(document).on('click', '#lean-overlay', function () {
+            document.getElementById('agregarGasto').style.visibility = 'visible';
+            document.getElementById('editarGasto').style.visibility = 'visible';
+        });
+    });
+    function validacionCorrecta_Categoria() {
+        $.ajax({
+            data: $('#form_categoria').serialize(),
+            url:   '<?=base_url()?>gastos/verificarNombreCategoria',
+            type:  'post',
+            success:  function (response) {
+                if (response == '0') {
+                    alert("<?=label('errorGuardar'); ?>");
+                    $('#agregarCategoria .modal-header a').click();
+                } else {
+                    if (response == '2') {
+                        var url = $('#form_categoria').attr('action');
+                        var method = $('#form_categoria').attr('method');
+                        $.ajax({
+                            type: method,
+                            url: url,
+                            data: $('#form_categoria').serialize(),
+                            success: function(response)
+                            {
+                                if (response == 0) {
+                                    alert("<?=label('errorGuardar'); ?>");
+                                    $('#agregarCategoria .modal-header a').click();
+                                } else {
+                                    actualizarSelectCategoriasGasto(response);
+                                    actualizarSelectCategoriasGasto_Editar(response);
+                                    alert("<?=label('gastos_categoriaGuardadoCorrectamente'); ?>");
+                                    if (cerrarModalCategoria) {
+                                        limpiarFormCategoria();
+                                        $('#agregarCategoria .modal-header a').click();
+                                    } else{
+                                        limpiarFormCategoria();
+                                    }
+                                }
+                            }
+                        });
+                    } else {
+                        alert("<?=label('categoria_error_nombreExisteEnBD'); ?>");
+                        $('#form_categoria #categoria_nombre').focus();
+                    }
+                }
+            }
+        });
+    }
+    function validacionCorrecta_FormaPago() {
+        $.ajax({
+            data: $('#form_formaPago_Gastos').serialize(),
+            url:   '<?=base_url()?>gastos/verificarNombreFormaPago',
+            type:  'post',
+            success:  function (response) {
+                if (response == '0') {
+                    alert("<?=label('errorGuardar'); ?>");
+                    $('#agregarFormaPago .modal-header a').click();
+                } else{
+                    if (response == '2') {
+                        var url = $('#form_formaPago_Gastos').attr('action');
+                        var method = $('#form_formaPago_Gastos').attr('method');
+                        $.ajax({
+                            type: method,
+                            url: url,
+                            data: $('#form_formaPago_Gastos').serialize(),
+                            success: function(response)
+                            {
+                                if (response == 0) {
+                                    alert("<?=label('errorGuardar'); ?>");
+                                    $('#agregarFormaPago .modal-header a').click();
+                                } else {
+                                    actualizarSelectFormasPago(response);
+                                    actualizarSelectFormasPago_Editar(response);
+                                    alert("<?=label('gastos_FormaPagoGuardadoCorrectamente'); ?>");
+                                    if (cerrarModalFormaPago) {
+                                        limpiarFormFormaPago();
+                                        $('#agregarFormaPago .modal-header a').click();
+                                    } else{
+                                        limpiarFormFormaPago();
+                                    }
+                                }
+                            }
+                        });
+                    } else{
+                        alert("<?=label('formaPago_error_nombreExisteEnBD'); ?>");
+                        $('#form_formaPago_Gastos #formaPago_nombre').focus();
+                    }
+                }
+            }
+        });
     }
 </script>
 <script>
@@ -1653,6 +1839,76 @@
         <div id="botonEliminar" title="proveedor_gastos_editar">
             <a href="#" class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
         </div>
+    </div>
+</div>
+
+<div id="agregarCategoria" class="modal" style="width: 70%;">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a id="modalAgregarCategoria_cerrar" class="modal-action cerrar-modal">
+            <i class="mdi-content-clear"></i>
+        </a>
+    </div>
+    <div class="modal-content" style="padding: 0 24px;">
+        <div class="row">
+            <h5 style="float: left;"><?= label('gasto_agregarCategoria'); ?></h5>
+        </div>
+        <form id="form_categoria" action="<?=base_url()?>gastos/insertarCategoria" method="post">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="categoria_nombre" name="categoria_nombre" type="text">
+                    <label for="categoria_nombre"><?= label('categoriaGastos_Nombre') ?></label>
+                </div>
+                <div class="input-field col s12">
+                    <textarea name="categoria_descripcion" id="categoria_descripcion" class="materialize-textarea" rows="4"></textarea>
+                    <label for="categoria_descripcion"><?= label('formCategoriaGasto_descripcion'); ?></label>
+                </div>
+            </div>
+            <div class="row">
+                <a onclick="$(this).closest('form').submit()" id="guardarCerrarCategoria" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                    <?= label('guardarCerrar'); ?>
+                </a>
+                <a onclick="$(this).closest('form').submit()" id="guardarOtroCategoria" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                    <?= label('guardarAgregarOtro'); ?>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="agregarFormaPago" class="modal" style="width: 70%;">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a id="modalAgregarFormaPago_cerrar" class="modal-action cerrar-modal">
+            <i class="mdi-content-clear"></i>
+        </a>
+    </div>
+    <div class="modal-content" style="padding: 0 24px;">
+        <div class="row">
+            <h5 style="float: left;"><?= label('gasto_agregarFormaPago'); ?></h5>
+        </div>
+        <form id="form_formaPago_Gastos" action="<?=base_url()?>gastos/insertarFormaPago" method="post">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="formaPago_nombre" name="formaPago_nombre" type="text">
+                    <label for="formaPago_nombre"><?= label('formaPago_Nombre') ?></label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="formaPago_descripcion" name="formaPago_descripcion" type="text">
+                    <label for="formaPago_descripcion"><?= label('formaPago_descripcion') ?></label>
+                </div>
+            </div>
+            <div class="row">
+                <!--                <a href="#" style="font-size: larger;float: left;text-decoration: underline;"-->
+                <!--                   class="modal-action modal-close">--><?//= label('cancelar'); ?>
+                <!--                </a>-->
+                <a onclick="$(this).closest('form').submit()" id="guardarCerrarFormaPago" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                    <?= label('guardarCerrar'); ?>
+                </a>
+                <a onclick="$(this).closest('form').submit()" id="guardarOtroFormaPago" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                    <?= label('guardarAgregarOtro'); ?>
+                </a>
+            </div>
+        </form>
     </div>
 </div>
 <!-- Fin lista modals-->
