@@ -68,6 +68,31 @@ class Cotizacion extends CI_Controller
             $this->load->view('layout/default/footer');
         }
     }
+    public function editar($idCotizacion)
+    {
+        verificarLogin();//helper
+        $sessionActual = $this->session->userdata('logged_in');
+        $data['idEmpresa'] = $sessionActual['idEmpresa'];
+        $data['idUsuario'] = $sessionActual['idUsuario'];
+        $data['idCotizacion'] = decryptIt($idCotizacion);
+
+        $resultado = $this->Cotizacion_model->cargar($data); 
+        $resultado['lineasDetalle'] = array();
+        $resultado['idEmpresa'] = $data['idEmpresa'];
+        $resultado['idCotizacion'] = decryptIt($idCotizacion);
+        // $resultado['idCotizacion'] = '123';
+        // if ($resultado === false || $resultado === array()) {
+        // print_r($resultado['servicios']); exit();
+        if ($resultado === false) {
+            echo "Error en la transacción";
+        } else {
+            $data['resultado'] = $resultado;
+            $this->load->view('layout/default/header');
+            $this->load->view('layout/default/left-sidebar');
+            $this->load->view('cotizar/cotizar', $data);
+            $this->load->view('layout/default/footer');
+        }
+    }
 
     //Metodo llamado mediante ajax
     public function cargarTodasPlnatillas()

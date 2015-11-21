@@ -80,17 +80,16 @@
                                                            <ul id="dropdown-cotizacion<?= $contador ?>"
                                                               class="dropdown-content">
                                                               <li>
-                                                                 <a href="<?= base_url(); ?>cotizacion/editar/<?= $idEncriptado?>#tab-informacion"
+                                                                 <a href="<?= base_url(); ?>cotizacion/editar/<?= $idEncriptado?>"
                                                                     class="-text"><?= label('menuOpciones_ver') ?></a>
                                                              </li>
                                                               <li>
-                                                                 <a href="<?= base_url() ?>cotizacion/editar/<?= $idEncriptado?>#tab-edicion"
+                                                                 <a href="<?= base_url() ?>cotizacion/editar/<?= $idEncriptado?>"
                                                                     class="-text"><?= label('menuOpciones_editar') ?></a>
                                                               </li>
                                                               <li>
-                                                                  <a class="btn_duplicar modal-trigger icono-edicion"
-                                                                     href="#duplicar">
-                                                                      <?= label('tablaCotizaciones_opcionDuplicar') ?>
+                                                                  <a class="-text modal-trigger confirmarDuplicar"
+                                                                     href="#duplicar"><?= label('tablaCotizaciones_opcionDuplicar') ?>
                                                                   </a>
                                                               </li>
                                                               <li>

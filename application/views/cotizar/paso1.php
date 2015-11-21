@@ -229,8 +229,36 @@
         echo "var arrayClientes =". $js_array.";";
 
         $js_array = json_encode($resultado['monedas']); 
-        echo "var arrayMonedas =". $js_array;
+        echo "var arrayMonedas =". $js_array.";";
+
+
+        if (isset($resultado['cotizacion'])) {// se esta editando una cotizacion
+            $js_array = json_encode($resultado['cotizacion']); 
+            echo "var arrayCotizacion =". $js_array.";";
+            ?>
+                $('#paso1_codigo').val(arrayCotizacion['codigo']);
+                $('#paso1_numero').val(arrayCotizacion['numero']);
+                $('#paso1Cliente option[value='+ arrayCotizacion['idCliente'] +']').prop('selected', true);
+                cargarAtencion(arrayCotizacion['idCliente']);
+                $('#paso1Atencion option[value='+ arrayCotizacion['idPersonaContacto'] +']').prop('selected', true);
+                $('#paso1FormaPago option[value='+ arrayCotizacion['idTipoFinanciamiento'] +']').prop('selected', true);
+                $('#paso1Moneda option[value='+ arrayCotizacion['idMoneda'] +']').prop('selected', true);
+                $('#paso1_tipoCambio').val(arrayCotizacion['tipoCambio']);
+
+                // var date = new Date(arrayCotizacion['fechaValidez']);
+                // var fecha = (date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear();
+                // $('#paso1_validez').val(fecha);
+
+
+                // alert(arrayCotizacion['codigo']);
+            <?php
+        } 
     ?> 
+
+    // $(document).on('ready', function(){
+    //     alert('hola');
+    // });
+    
 
     function cargarTipoCambio(idMoneda){
         // alert('aqui');
