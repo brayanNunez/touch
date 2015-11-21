@@ -111,6 +111,12 @@ class Fase_model extends CI_Model
             $query = $this->db->insert('fase', $data['fasePadre']);
             if (!$query) throw new Exception("Error en la BD");   
             $insert_id = $this->db->insert_id();
+
+            $this->db->where('idFase', $insert_id);
+            $query = $this->db->update('fase', array('idFasePadre' => $insert_id));
+            if (!$query) throw new Exception("Error en la BD"); 
+
+
             $fases = $data['subFases'];
             // echo print_r($fases); exit();
             foreach ($fases as $fase) {
@@ -133,7 +139,7 @@ class Fase_model extends CI_Model
         try{
             $this->db->trans_begin();
             
-            $fases = $this->db->get_where('fase', array('eliminado' => 0,'idEmpresa' => $idEmpresa, 'idFasePadre' => null));
+            $fases = $this->db->get_where('fase', array('eliminado' => 0,'idEmpresa' => $idEmpresa, 'fasePadre' => 0));
             if (!$fases) throw new Exception("Error en la BD"); 
             $fases = $fases->result_array();
             $this->db->trans_commit();

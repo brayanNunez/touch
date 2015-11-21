@@ -139,7 +139,7 @@ class Servicio_model extends CI_Model
 
 
                 
-                $fasesPadre = $this->db->get_where('fase',array('idEmpresa' => $idEmpresa, 'eliminado' => 0, 'idFasePadre' => null));
+                $fasesPadre = $this->db->get_where('fase',array('idEmpresa' => $idEmpresa, 'eliminado' => 0, 'fasePadre' => 1));
                 if (!$fasesPadre) {
                     throw new Exception("Error en la BD");
                 }

@@ -263,7 +263,7 @@ START CONTENT  -->
                                                     <div class="input-field col s12 inputSelector">
                                                         <label for="agregarGastos_buscar"><?= label('agregarGatos_buscar'); ?></label>
                                                         <br>
-                                                        <select data-placeholder="<?= label('formServicio_seleccioneGasto'); ?>" data-incluirBoton="0" id="agregarGastos_buscar" name="agregarGastos_buscar" class="required browser-default chosen-select">
+                                                        <select data-placeholder="<?= label('formServicio_seleccioneGasto'); ?>" data-incluirBoton="0" id="agregarGastos_buscar" name="agregarGastos_buscar" class="browser-default chosen-select">
                                                             <option value=""></option>
                                                             <?php
                                                             if(isset($gastos)) {
@@ -283,7 +283,7 @@ START CONTENT  -->
                                                             <div class="input-field col s12 inputSelector">
                                                                 <label for="agregarGastos_categoria"><?= label('agregarGastos_categoria'); ?></label>
                                                                 <br>
-                                                                <select data-placeholder="<?= label('formServicio_seleccioneCategoria'); ?>" data-tipo="servicioCategoriaGasto" data-incluirBoton="0" id="agregarGastos_categoria" name="agregarGastos_categoria" class="required browser-default chosen-select">
+                                                                <select data-placeholder="<?= label('formServicio_seleccioneCategoria'); ?>" data-tipo="servicioCategoriaGasto" data-incluirBoton="0" id="agregarGastos_categoria" name="agregarGastos_categoria" class="browser-default chosen-select">
                                                                     <option value=""></option>
                                                                     <?php
                                                                     if(isset($categorias)) {
@@ -297,7 +297,7 @@ START CONTENT  -->
                                                             <div class="input-field col s12 inputSelector">
                                                                 <label for="agregarGastos_proveedor"><?= label('agregarGastos_proveedor'); ?></label>
                                                                 <br>
-                                                                <select data-placeholder="<?= label('formServicio_seleccioneProveedor'); ?>" data-tipo="servicioPersonaGasto"  data-incluirBoton="0" id="agregarGastos_proveedor" name="agregarGastos_proveedor" class="required browser-default chosen-select">
+                                                                <select data-placeholder="<?= label('formServicio_seleccioneProveedor'); ?>" data-tipo="servicioPersonaGasto"  data-incluirBoton="0" id="agregarGastos_proveedor" name="agregarGastos_proveedor" class="browser-default chosen-select">
 <!--                                                                    <option value=""></option>-->
 <!--                                                                    --><?php
 //                                                                    if(isset($personas)) {
@@ -311,7 +311,7 @@ START CONTENT  -->
                                                             <div class="input-field col s12 inputSelector">
                                                                 <label for="agregarGastos_gasto"><?= label('agregarGastos_gasto'); ?></label>
                                                                 <br>
-                                                                <select data-placeholder="<?= label('formServicio_seleccioneGasto'); ?>" data-incluirBoton="0" id="agregarGastos_gasto" name="agregarGastos_gasto" class="required browser-default chosen-select">
+                                                                <select data-placeholder="<?= label('formServicio_seleccioneGasto'); ?>" data-incluirBoton="0" id="agregarGastos_gasto" name="agregarGastos_gasto" class="browser-default chosen-select">
 <!--                                                                    <option value=""></option>-->
 <!--                                                                    --><?php
 //                                                                    if(isset($gastos)) {
