@@ -36,11 +36,13 @@ class Cotizacion extends CI_Controller
             'codigo' => $this->input->post('paso1_codigo'),
             'idCliente' => $this->input->post('paso1Cliente'),
             'idPersonaContacto' => $this->input->post('paso1Atencion'),
-            'idTipoFinanciamiento' => $this->input->post('paso1FormaPago'),
+            'idFormaPago' => $this->input->post('paso1FormaPago'),
             'idMoneda' => $this->input->post('paso1Moneda'),  
             'tipoCambio' => $this->input->post('paso1_tipoCambio'),
+            'eliminado' => 0,
             'fechaValidez' => date("Y-m-d", strtotime($this->input->post('paso1_validez')))
             );
+        // echo print_r($data['datosGenerales']);exit();
         $resultado = $this->Cotizacion_model->guardarCambios($data); 
         echo $resultado; exit();
     }

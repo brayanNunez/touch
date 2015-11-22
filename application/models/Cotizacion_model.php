@@ -102,7 +102,7 @@ class Cotizacion_model extends CI_Model
             $data['formasPago'] = $formaPago;
             $data['monedas'] = $moneda;
 
-            $query = $this->db->insert('cotizacion', array('idEmpresa' => $datos['idEmpresa'],'idEstadoCotizacion' => 1,'idUsuario' => $datos['idUsuario'], 'eliminado' => 0,));
+            $query = $this->db->insert('cotizacion', array('idEmpresa' => $datos['idEmpresa'],'idEstadoCotizacion' => 1,'idUsuario' => $datos['idUsuario'], 'eliminado' => 1,));
             if (!$query) throw new Exception("Error en la BD"); 
             $data['idCotizacion'] = $this->db->insert_id();
 
