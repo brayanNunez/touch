@@ -51,6 +51,7 @@
                                                             <th><?= label('tablaCotizaciones_codigo'); ?></th>
                                                             <th><?= label('tablaCotizaciones_fecha'); ?></th>
                                                             <th><?= label('tablaCotizaciones_cliente'); ?></th>
+                                                            <th><?= label('tablaCotizaciones_vendedor'); ?></th>
                                                             <th><?= label('tablaCotizaciones_monto'); ?></th>
                                                             <th><?= label('tablaCotizaciones_estado'); ?></th>
                                                             <th><?= label('tablaCotizaciones_opciones'); ?></th>
@@ -71,11 +72,24 @@
                                                               id="<?=$idEncriptado?>"/>
                                                            <label for="<?=$idEncriptado?>"></label>
                                                         </td>
-                                                        <td><?= $fila['codigo'].'-'.$fila['numero']?></td>
+                                                        <td>
+                                                          <a href="<?= base_url(); ?>cotizacion/editar/<?= encryptIt($fila['idCotizacion'])?>">
+                                                          <?= $fila['codigo'].'-'.$fila['numero']?>
+                                                          <a>
+                                                        </td>
                                                         <td><?= $fila['fechaCreacion'] ?></td>
-                                                        <td><?= $fila['idCliente'] ?></td>
+                                                        <td>
+                                                          <a href="<?= base_url(); ?>clientes/editar/<?= encryptIt($fila['idCliente'])?>#tab-informacion">
+                                                          <?= $fila['cliente'] ?>
+                                                          <a>
+                                                        </td>
+                                                        <td>
+                                                          <a href="<?= base_url(); ?>usuarios/editar/<?= encryptIt($fila['idUsuario'])?>#tab-informacion">
+                                                          <?= $fila['vendedor'] ?>
+                                                          <a>
+                                                        </td>
                                                         <td>HOLA</td>
-                                                        <td><?= $fila['idEstadoCotizacion'] ?></td>
+                                                        <td><?= $fila['estado'] ?></td>
                                                         <td>
                                                            <ul id="dropdown-cotizacion<?= $contador ?>"
                                                               class="dropdown-content">

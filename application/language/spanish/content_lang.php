@@ -382,6 +382,7 @@ $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos selec
 	$lang['tablaCotizaciones_codigo'] = 'Código';
 	$lang['tablaCotizaciones_fecha'] = 'Fecha';
 	$lang['tablaCotizaciones_cliente'] = 'Cliente';
+    $lang['tablaCotizaciones_vendedor'] = 'Vendedor';
 	$lang['tablaCotizaciones_monto'] = 'Monto';
 	$lang['tablaCotizaciones_estado'] = 'Estado';
 	$lang['tablaCotizaciones_opciones'] = 'Opciones';
