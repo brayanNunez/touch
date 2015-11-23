@@ -162,6 +162,8 @@
                     <span class="logo-text">Touch!</span>
                 </h1>
 
+                <span class="texto-completar-registro">Recuerda que tu perfil esta incompleto<a href="#RegistroIndependiente" class="enlace-completar-registro -text modal-trigger"> editar</a></span>
+
                 <ul id="opciones-barra-superior" class="right hide-on-med-and-down">
 
 
@@ -184,6 +186,8 @@
                                 <i style="margin-left: 75px;" class="mdi-action-settings-applications"></i>
                             </a>
                         </li> -->
+                    
+
                     <li>
                         <a class="dropdown-button" href="#!" data-activates="listaConfiguracion"
                            title="<?= label('tooltip_configuracion') ?>">

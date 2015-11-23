@@ -307,9 +307,6 @@
                                     <a href="<?= base_url() ?>clientes/agregar"><p><i
                                                 class="mdi-action-perm-identity cyan-text text-darken-2"></i> Agregar
                                             Clientes</p></a>
-                                    <!--<a href="<?= base_url() ?>empleados/agregar"><p><i
-                                                class="mdi-action-perm-identity cyan-text text-darken-2"></i> Agregar
-                                            Empleados</p></a>-->
                                     <a href="<?= base_url() ?>proveedores/agregar"><p><i
                                                 class="mdi-action-perm-identity cyan-text text-darken-2"></i> Agregar
                                             Personas</p></a>
@@ -319,117 +316,19 @@
 
                             </div>
                         </div>
-                        <!--<div class="col s12 m6 l4">
-                            <div id="profile-card" class="card">
-                                <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" src="<?= base_url() ?>assets/dashboard/images/user-bg.jpg"
-                                         alt="user background">
-                                </div>
-                                <div class="card-content">
-                                    <img src="<?= base_url() ?>assets/dashboard/images/embed.png" alt=""
-                                         class="circle responsive-img activator card-profile-image">
-                                    <a class="btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
-                                        <i class="mdi-editor-mode-edit"></i>
-                                    </a>
-
-                                    <span class="card-title activator grey-text text-darken-4">Embed</span>
-
-
-                                </div>
-                                <div class="card-reveal">
-                                    <span class="card-title grey-text text-darken-4">Embed <i
-                                            class="mdi-navigation-close right"></i></span>
-
-                                    <a href="<?= base_url() ?>embed"><p><i
-                                                class="mdi-action-perm-identity cyan-text text-darken-2"></i> Llévate tu
-                                            embed ...</p></a>
-
-
-                                </div>
-
-
-                            </div>
-                        </div>-->
-                        <!--<div class="col s12 m6 14">
-                            <div id="profile-card" class="card">
-                                <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" src="<?= base_url() ?>assets/dashboard/images/user-bg.jpg"
-                                         alt="user background">
-                                </div>
-                                <div class="card-content">
-                                    <img src="<?= base_url() ?>assets/dashboard/images/reporte.png" alt=""
-                                         class="circle responsive-img activator card-profile-image">
-                                    <a class="btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
-                                        <i class="mdi-editor-mode-edit"></i>
-                                    </a>
-
-                                    <span class="card-title activator grey-text text-darken-4">Reportes</span>
-
-
-                                </div>
-                                <div class="card-reveal">
-                                    <span class="card-title grey-text text-darken-4">Reportes <i
-                                            class="mdi-navigation-close right"></i></span>
-                                    <a href="<?= base_url() ?>reporte"><p><i
-                                                class="mdi-action-perm-identity cyan-text text-darken-2"></i>Reportes de
-                                            cotización</p></a>
-                                    <a href="<?= base_url() ?>clientes/reporte"><p><i
-                                                class="mdi-action-perm-identity cyan-text text-darken-2"></i>Reportes de
-                                            clientes</p></a>
-
-
-                                </div>
-
-
-                            </div>
-                        </div>
                     </div>
-                </div>-->
+                </div>
                 <!--card widgets end-->
-
-                <!-- //////////////////////////////////////////////////////////////////////////// -->
 
 
                 <!-- Floating Action Button -->
                 <?php
                     $this->load->view('layout/default/menu-crear.php');
                 ?>
-                <a href="#RegistroIndependiente" class="-text modal-trigger">Completar registro independiente</a>
-                <a href="#RegistroEmpresa" class="-text modal-trigger">Completar registro empresa</a>
-                <!--<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-                    <a class="btn-floating btn-large red" href="">
-                        <i class="large mdi-content-add"></i>
-                    </a>
-                    <ul class="">
-                        <li>
-                            <a href="<?= base_url(); ?>servicios/agregar" class="btn-floating">
-                                <span><i class="mdi-maps-beenhere"></i><?= label('agregarS'); ?></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?= base_url(); ?>productos/agregar" class="btn-floating">
-                                <span><i class="mdi-communication-vpn-key"></i><?= label('agregarP'); ?></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?= base_url(); ?>proveedores/agregar" class="btn-floating">
-                                <span><i class="mdi-action-account-child"></i><?= label('agregarProveedor'); ?></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?= base_url(); ?>clientes/agregar" class="btn-floating">
-                                <span><i class="mdi-social-person"></i><?= label('agregarCliente'); ?></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?= base_url(); ?>cotizacion/cotizar" class="btn-floating">
-                                <span><i class="mdi-editor-format-list-numbered"></i><?= label('agregarCotizacion'); ?></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>-->
-                <!-- Floating Action Button -->
 
+                <!--<a href="#RegistroIndependiente" class="-text modal-trigger">Completar registro independiente</a>
+                <a href="#RegistroEmpresa" class="-text modal-trigger">Completar registro empresa</a>-->
+                
             </div>
         </div>
 
@@ -513,7 +412,7 @@
     <div class="modal-footer">
         <div class="input-field col s12 m6 l6">
             <div class="input-field col s12 opt-modal-registro">
-                <a style="float:left;" href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Ignorar</a>
+                <a style="float:left;" href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Omitir</a>
             </div>
         </div>
         <div class="input-field col s12 m6 l6">
@@ -644,7 +543,7 @@
     <div class="modal-footer">
         <div class="input-field col s12 m6 l6">
             <div class="input-field col s12  opt-modal-registro">
-                <a href="#" style="float:left;" class="waves-effect waves-red btn-flat modal-action modal-close">Ignorar</a>
+                <a href="#" style="float:left;" class="waves-effect waves-red btn-flat modal-action modal-close">Omitir</a>
             </div>
         </div>
         <div class="input-field col s12 m6 l6">

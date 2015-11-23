@@ -522,7 +522,7 @@ $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos selec
 	$lang['agregarProducto'] = 'Producto';
 	$lang['agregarServicio'] = 'Servicio';
 	$lang['agregarEmpleado'] = 'Agregar empleado';
-	$lang['agregarProveedor'] = 'Agregar proveedor';
+	$lang['agregarProveedor'] = 'Agregar persona';
 	$lang['agregarS'] = 'Agregar servicio';
 	$lang['reportes'] = 'Reportes';
 

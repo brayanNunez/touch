@@ -117,15 +117,20 @@ div.fixed-action-btn ul li a { width: 165px;}
 
 .opt-finalizar-cancelar a{font-size: 15px;}
 
+@media only screen and (min-width: 1201px) {
+	.texto-completar-registro {margin-left: 68%;}
+}
 
 @media only screen and (max-width: 1200px) {
 	.opt-finalizar{font-size: 11px;}
 	.opt-finalizar-cancelar a{font-size: 11px;}
+	.texto-completar-registro {margin-left: 63%;}
 }
 
 @media only screen and (max-width: 992px) {
 	.opt-finalizar{font-size: 13px;}
 	.opt-finalizar-cancelar a{font-size: 13px;}
+	.texto-completar-registro {margin-left: 55%;}
 }
 
 @media only screen and (max-width: 768px) {
@@ -160,6 +165,14 @@ ul.empleado-info li a { background-color: #009966; }
 ul.empleado-info li a.active { color: green !important; background-color: lightgray;}
 
 span.informacion-empleado { font-weight: bold; }
+
+.texto-completar-registro {
+	color: black;
+}
+
+.enlace-completar-registro{
+	color: blue;
+}
 
 
 
