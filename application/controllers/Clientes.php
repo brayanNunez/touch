@@ -41,7 +41,6 @@ class Clientes extends CI_Controller
     //Metodo llamado mediante ajax
      public function insertar()
     {
-
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
         // $data['palabras'] = $this->input->post('empleado_palabras');
@@ -50,33 +49,26 @@ class Clientes extends CI_Controller
         if ($this->input->post('checkbox_todosVendedores')) {
             $todosVendedores = 1;
         }
-        
         $listaVendedores = '';
         if($todosVendedores == 0) {
            $listaVendedores = $this->input->post('cliente_vendedores');
         }
         // echo $listaVendedores; exit();
 
-
-
         $data['gustos'] = $this->input->post('cliente_gustos');
         $data['medios'] = $this->input->post('cliente_medios');
         $data['vendedores'] = $listaVendedores;
 
         $juridico = $this->input->post('cliente_tipo');
-
         $todosVendedores = 0;
         if ($this->input->post('checkbox_todosVendedores')) {
             $todosVendedores = 1;
         }
-        
         if ($juridico) {
             $enviarFacturas = 0;
             if ($this->input->post('checkbox_correoClientejuridico')) {
                 $enviarFacturas = 1;
             }
-             
-            
             $data['datos'] = array(
                 'idEmpresa' => $idEmpresa, 
                 'juridico' => $juridico,
@@ -128,9 +120,6 @@ class Clientes extends CI_Controller
             );
         }
 
-
-
-
         $contactos = array();
         $contador = 0;
         $contactosObtenidos = 0;
@@ -156,17 +145,31 @@ class Clientes extends CI_Controller
             }
             $contador++;
          }
+        $data['contactos'] = $contactos;
 
-         $data['contactos'] = $contactos;
+        $photo = explode('.',$this->input->post('cliente_fotografia'));
+        $data['extension'] = end($photo);
 
-        if (!$this->Cliente_model->insertar($data)) {
+        $cliente = $this->Cliente_model->insertar($data);
+        if (!$cliente) {
             //Error en la transacción
             echo 0;
         } else {
+            $config['upload_path'] = './files/empresas/'.$idEmpresa.'/clientes/'.$cliente;
+            $config['file_name'] = 'profile_picture_'.$cliente.'.'.$data['extension'];
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['max_size'] = '2048';
+
+            $this->load->library('upload', $config);
+            if(!$this->upload->do_upload('userfile')) {
+                $error = array('error' => $this->upload->display_errors());echo $error['error'];
+            }
+//            echo './files/empresas/'.$idEmpresa.'/clientes/'.$cliente.'<br/>';
+//            echo 'profile_picture_'.$cliente.'.'.$data['extension'].'<br/>';
+
             // correcto
             echo 1;
         }
-        
     }
 
     public function editar($id)

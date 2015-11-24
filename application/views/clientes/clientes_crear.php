@@ -22,7 +22,10 @@
                     <div id="submit-button" class="section">
                         <div class="row">
                             <div class="col s12">
-                                <form id="form_cliente" class="col s12" action="<?= base_url() ?>clientes/insertar" method="POST">
+<!--                                <form id="form_cliente" class="col s12" action="--><?//= base_url() ?><!--clientes/insertar" method="POST">-->
+                                <?php $this->load->helper('form'); ?>
+                                <?php echo form_open_multipart(base_url().'clientes/insertar',
+                                    array('id' => 'form_cliente', 'method' => 'POST', 'class' => 'col s12')); ?>
                                     <div class="row">
 
                                         <div class="input-field col s12">
@@ -131,6 +134,27 @@
                                                 <input id="clientejuridico_fax" name="clientejuridico_fax" type="text">
                                                 <label
                                                     for="clientejuridico_fax"><?= label('formCliente_fax'); ?></label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col s12">
+                                            <div class="file-field col s12 m7 l9" style="margin-top:45px;">
+                                                <label for="cliente_fotografia"><?= label('formCliente_fotografia'); ?></label>
+
+                                                <div class="file-field input-field col s12">
+                                                    <input name="cliente_fotografia" class="file-path" type="text" readonly/>
+
+                                                    <div class="btn" data-toggle="tooltip" title="<?= label('tooltip_examinar') ?>">
+                                                        <span><i class="mdi-action-search"></i></span>
+                                                        <input style="padding-right: 800px;" id="userfile" type="file" name="userfile"
+                                                               accept="image/jpeg,image/png"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col s12 m5 l3">
+                                                <figure>
+                                                    <img id="imagen_seleccionada" src="<?= base_url(); ?>files/default-user-image.png">
+                                                </figure>
                                             </div>
                                         </div>
 
@@ -297,68 +321,57 @@
 <!-- END CONTENT-->
 
 <script>
-
-  
-
     $('#checkbox_todosVendedores').on('click', function(){
-         if ($(this).prop('checked')) {
+        if ($(this).prop('checked')) {
             $('#vendedoresCliente').hide();
         } else {
             $('#vendedoresCliente').show();
         }
     });
-
-
     $(document).on('ready', function(){
-
         var config = {'.chosen-select'           : {}}
           for (var selector in config) {
             $(selector).chosen(config[selector]);
           }
-
     });
-
-
     function validacionCorrecta(){
-         var tipoCliente = $('#cliente_tipo option:selected').val();
-         var identificacion = '';
-         if (tipoCliente == 0) {
+        var tipoCliente = $('#cliente_tipo option:selected').val();
+        var identificacion = '';
+        if (tipoCliente == 0) {
             identificacion = $('#cliente_id').val();
-         } else{
+        } else{
             identificacion = $('#clientejuridico_id').val();
-         };
-
+        }
         $.ajax({
-           data: {cliente_id :  identificacion},
-           url:   '<?=base_url()?>clientes/existeIdentificacion',
-           type:  'post',
-           success:  function (response) {
-            switch(response){
-                case '0':
-                    $('#transaccionIncorrecta').openModal();//error al ir a verificar identificación
-                break;
-                case '1':
-                    alert('<?= label("clienteIdentificacionExistente"); ?>');
-                    if (tipoCliente == 0) {
-                        $('#cliente_id').focus();
-                     } else{
-                        $('#clientejuridico_id').focus();
-                     };
-                    
-                break;
-                case '2':
-                    var url = $('form').attr('action');
-                    var method = $('form').attr('method'); 
-                    $.ajax({
-                           type: method,
-                           url: url,
-                           data: $('form').serialize(), 
-                           success: function(response)
-                           {
-                                // alert(response);
-                               if (response == 0) {
-                                   $('#transaccionIncorrecta').openModal();
-                               } else {
+            data: {cliente_id :  identificacion},
+            url:   '<?=base_url()?>clientes/existeIdentificacion',
+            type:  'post',
+            success:  function (response) {
+                switch(response){
+                    case '0':
+                        $('#transaccionIncorrecta').openModal();//error al ir a verificar identificaciï¿½n
+                    break;
+                    case '1':
+                        alert('<?= label("clienteIdentificacionExistente"); ?>');
+                        if (tipoCliente == 0) {
+                            $('#cliente_id').focus();
+                        } else{
+                            $('#clientejuridico_id').focus();
+                        }
+                        break;
+                    case '2':
+                        var formulario = $('#form_cliente');
+                        var data = new FormData(formulario[0]);
+                        var url = formulario.attr('action');
+                        var method = formulario.attr('method');
+                        $.ajax({
+                            type: method,
+                            url: url,
+                            data: data,
+                            success: function(response) {
+                                if (response == 0) {
+                                    $('#transaccionIncorrecta').openModal();
+                                } else {
                                     $('#transaccionCorrecta').openModal();
                                     $('form')[0].reset();
                                     $('#cliente_nacionalidad').val('').trigger('chosen:updated');
@@ -368,19 +381,17 @@
                                     $('#cliente_gustos').tagsinput('removeAll');
                                     $('#cliente_medios').tagsinput('removeAll');
                                     $('#vendedoresCliente').show();
-                               }
-                           }
-                         });
-
-                    break;
+                                }
+                            },
+                            cache: false,
+                            contentType: false,
+                            processData: false
+                        });
+                        break;
                 }
             }
         });
     }
-
-
-
-
 
     $(window).load(function () {
         var marcados = $('.checkbox:checked').size();
@@ -478,6 +489,42 @@
         });
     });
 </script>
+<!--script para el manejo de la imagen del cliente -->
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imagen_seleccionada').attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#userfile").change(function(){
+        var file = this.files[0];
+        var name = file.name;
+        var size = file.size;
+        var type = file.type;
+        var t = type.split('/');
+        var ext = t.slice(1, 2);
+        if(size > 2097150) { //2097152
+            alert("<?= label('usuarioErrorTamanoArchivo') ?>");
+            document.getElementById('userfile').value = '';
+        }
+        var valid_ext = ['image/png','image/jpg','image/jpeg'];
+        if(valid_ext.indexOf(type)==-1) {
+            alert("<?= label('usuarioErrorTipoArchivo') ?>");
+            document.getElementById('userfile').value = '';
+        }
+        if(document.getElementById('userfile').value == ''){
+            $('#imagen_seleccionada').attr('src', '<?= base_url(); ?>files/default-user-image.png');
+        } else {
+//            $('#usuario_fotografia').attr('value', ext);
+            readURL(this);
+        }
+    });
+</script>
 
 <!-- Script para tags -->
 <script>
@@ -534,8 +581,8 @@
         //     }
         // });
 
-//        elt.tagsinput('add', {"value": 1, "text": "Brayan Nuñez Rojas", "continent": "Europe"});
-//        elt.tagsinput('add', {"value": 4, "text": "Anthony Nuñez Rojas", "continent": "America"});
+//        elt.tagsinput('add', {"value": 1, "text": "Brayan Nuï¿½ez Rojas", "continent": "Europe"});
+//        elt.tagsinput('add', {"value": 4, "text": "Anthony Nuï¿½ez Rojas", "continent": "America"});
 //        elt.tagsinput('add', {"value": 7, "text": "Maria Perez Salas", "continent": "Australia"});
 //        elt.tagsinput('add', {"value": 10, "text": "Carlos David Rojas", "continent": "Asia"});
 //        elt.tagsinput('add', {"value": 13, "text": "Diego Alfaro Rojas", "continent": "Africa"});
@@ -731,7 +778,6 @@
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
-
 <div id="transaccionIncorrecta" class="modal">
     <div  class="modal-header headerTransaccionIncorrecta">
         <p><?= label('nombreSistema'); ?></p>

@@ -58,6 +58,12 @@ class Cliente_model extends CI_Model
             if (!$query) throw new Exception("Error en la BD");   
             $insert_id = $this->db->insert_id();
 
+            if($data['extension'] != '' && $data['extension'] != null) {
+                $nombreFotografia = 'profile_picture_' . $insert_id . '.' . $data['extension'];
+                $this->db->where('idCliente', $insert_id);
+                $query = $this->db->update('cliente', array('fotografia' => $nombreFotografia));
+            }
+
             if ($data['gustos'] != '') {
                 $gustos = explode(",", $data['gustos']); ;
                 foreach ($gustos as $gusto) {
@@ -103,12 +109,13 @@ class Cliente_model extends CI_Model
                 $query = $this->db->insert('personacontacto', $contacto);
                 if (!$query) throw new Exception("Error en la BD");   
             }
+
             $pathCliente = 'files/empresas/'.$data['datos']['idEmpresa'].'/clientes/'.$insert_id;
             if(!is_dir($pathCliente)) {
                 mkdir($pathCliente);
             }
             $this->db->trans_commit();
-            return true;
+            return $insert_id;
         } catch (Exception $e) {
             $this->db->trans_rollback();
             return false;
