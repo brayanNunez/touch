@@ -40,7 +40,7 @@ class Usuarios extends CI_Controller
         $photo = explode('.',$this->input->post('usuario_fotografia'));
         $ext = end($photo);
         $data['datos'] = array(
-            'idEmpresa' => $idEmpresa, //Obtener de la variable de sesión
+            'idEmpresa' => $idEmpresa, //Obtener de la variable de sesiï¿½n
             'primerApellido' => $this->input->post('usuario_primeroApellido'),
             'segundoApellido' => $this->input->post('usuario_segundoApellido'),
             'nombre' => $this->input->post('usuario_nombre'),
@@ -58,7 +58,7 @@ class Usuarios extends CI_Controller
 
         $usuario = $this->Usuario_model->insertar($data);
         if (!$usuario) {
-            //Error en la transacción
+            //Error en la transacciï¿½n
             echo 0;
         } else {
             $config['upload_path'] = './files/empresas/'.$idEmpresa.'/usuarios/'.$usuario;
@@ -83,7 +83,7 @@ class Usuarios extends CI_Controller
     {
         $resultado = $this->Usuario_model->cargar(decryptIt($id));
         if ($resultado === false || $resultado === array()) {
-            echo "Error en la transacción";
+            echo "Error en la transacciï¿½n";
         } else {
 
             $data['resultado'] = $resultado;
@@ -109,7 +109,7 @@ class Usuarios extends CI_Controller
         );
         $data['id'] = decryptIt($id);
         if (!$this->Usuario_model->modificar($data)) {
-            //Error en la transacción
+            //Error en la transacciï¿½n
             echo 0;
         } else {
             //correcto
@@ -120,7 +120,7 @@ class Usuarios extends CI_Controller
     public function eliminar() {
         $id = $_POST['idEliminar'];
         if (!$this->Usuario_model->eliminar(decryptIt($id))) {
-            //Error en la transacción
+            //Error en la transacciï¿½n
             echo 0;
         } else {
             //correcto
@@ -134,7 +134,7 @@ class Usuarios extends CI_Controller
         //el correo se puede repetir solo en diferentes empresas
         $resultado = $this->Usuario_model->existeCorreo($data);
         if ($resultado === false) {
-            //Error en la transacción
+            //Error en la transacciï¿½n
             echo 0;
         } else {
             if ($resultado == 1) {
@@ -156,7 +156,7 @@ class Usuarios extends CI_Controller
         $data['id'] = decryptIt($id);
         $resultado = $this->Usuario_model->cambiar_contrasena($data);
         if (!$resultado) {
-            //Error en la transacción
+            //Error en la transacciï¿½n
             echo 0;
         } else {
             if($resultado === 'errorE') {
@@ -171,32 +171,40 @@ class Usuarios extends CI_Controller
     }
 
     public function cambio_imagen($id) {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+        $idUsuario = decryptIt($id);
+
         $photo = explode('.',$this->input->post('usuario_fotografia'));
         $ext = end($photo);
         $data['datos'] = array(
-            'idEmpresa' => 1,
-            'fotografia' => $ext
+            'fotografia' => 'profile_picture_'.$idUsuario.'.'.$ext
         );
-        $data['id'] = decryptIt($id);
-        $usuario = $this->Usuario_model->cambiar_imagen($data);
-        if (!$usuario) {
+        $data['id'] = $idUsuario;
+
+        $fotografia = $this->Usuario_model->cambiar_imagen($data);
+        if (!$fotografia) {
             echo 0;
         } else {
-            $ruta = './files/empresas/'.$data['datos']['idEmpresa'].'/usuarios/'. $data['id'];
-            if($usuario != 'sinFoto') {
-                unlink($ruta . '/profile_picture_' . $data['id'] . '.' . $usuario);
+            $ruta = './files/empresas/'.$idEmpresa.'/usuarios/'.$idUsuario;
+            if($fotografia != 'sinFoto') {
+                $path = $ruta . '/'.$fotografia;
+                if(is_file($path)) {
+                    unlink($path);
+                }
             }
+            $nombreFotografia = 'profile_picture_'.$idUsuario;
             $config['upload_path'] = $ruta;
-            $config['file_name'] = 'profile_picture_'.$data['id'];
+            $config['file_name'] = $nombreFotografia;
             $config['allowed_types'] = 'jpg|png|jpeg';
             $config['max_size'] = '2048';
 
             $this->load->library('upload', $config);
             if(!$this->upload->do_upload()) {
+                echo 2;
             } else {
-                $archivo = $this->upload->data();
+                echo base_url().'files/empresas/'.$idEmpresa.'/usuarios/'.$idUsuario.'/'.$nombreFotografia.'.'.$ext;
             }
-            echo 1;
         }
     }
 
@@ -256,7 +264,7 @@ class Usuarios extends CI_Controller
     //     $resultado = $this->Usuario_model->cargarPorCorreoUsuarioContrasena($data);
 
     //     if ($resultado == 0) {
-    //         echo 0; //Error en la transacción
+    //         echo 0; //Error en la transacciï¿½n
     //     } else {
     //         if ($resultado == 1) {
     //             echo 1; //no encontrado

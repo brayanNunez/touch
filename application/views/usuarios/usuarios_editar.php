@@ -25,13 +25,14 @@
         $rolCotizador = $resultado['roles']['rolCotizador'];
         $rolContador = $resultado['roles']['rolContador'];
         $contrasena = $resultado['contrasena'];
-        if(isset($resultado['fotografia'])) {
-            $ruta .= $resultado['idEmpresa'].'/usuarios/'.$resultado['idUsuario'].'/profile_picture_'.$resultado['idUsuario'].'.'.$resultado['fotografia'];
+
+        if($resultado['fotografia'] != '' && $resultado['fotografia'] != null && $resultado['fotografia'] != 'profile_picture_'.$resultado['idUsuario'].'.') {
+            $ruta .= $resultado['idEmpresa'].'/usuarios/'.$resultado['idUsuario'].'/'.$resultado['fotografia'];
         } else {
-            $ruta.= 'default-user-image.png';
+            $ruta = base_url().'files/default-user-image.png';
         }
     } else {
-        $ruta.= 'default-user-image.png';
+        $ruta = base_url().'files/default-user-image.png';
     }
     ?>
     <?php echo form_open_multipart($accion, array('id' => 'form_usuario_editar', 'method' => 'POST', 'class' => 'col s12')); ?>
@@ -266,7 +267,7 @@
             success: function (response) {
                 switch (response) {
                     case '0':
-                        alert('<?= label('usuarioErrorCambioContrasena'); ?>');//error al ir a verificar identificación
+                        alert('<?= label('usuarioErrorCambioContrasena'); ?>');//error al ir a verificar identificaciï¿½n
                         break;
                     case '1':
                         alert('<?= label('usuarioExitoCambioContrasena'); ?>');
@@ -291,17 +292,15 @@
             url: formPW.attr('action'),
             type: formPW.attr('method'),
             success:  function (response) {
-                switch(response){
-                    case '0':
-                        alert('<?= label('usuarioErrorCambioImagen'); ?>');//error al ir a verificar identificación
-                        break;
-                    case '1':
-                        alert('<?= label('usuarioExitoCambioEmagen'); ?>');
-                        d = new Date();
-                        $('#imagen_seleccionada').attr('src', '<?= $ruta; ?>?' + d.getTime());
-                        $('#imagen_perfil_usuario').attr('src', '<?= $ruta; ?>?' + d.getTime());
-                        formPW.find('input:file,input:text').val('');
-                        break;
+                if(response == 0) {
+                    alert('<?= label('usuarioErrorCambioImagen'); ?>');//error al ir a verificar identificaciï¿½n
+                } else {
+                    alert('<?= label('usuarioExitoCambioEmagen'); ?>');
+                    d = new Date();
+                    $('#imagen_seleccionada').attr('src', response);
+                    $('#imagen_perfil_usuario').attr('src', response);
+                    $('#imagen_perfil_usuario_ver').attr('src', response);
+                    formPW.find('input:file,input:text').val('');
                 }
             },
             cache: false,

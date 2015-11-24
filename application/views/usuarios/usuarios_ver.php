@@ -18,18 +18,21 @@
         $rolAprobador = $resultado['roles']['rolAprobador'];
         $rolCotizador = $resultado['roles']['rolCotizador'];
         $rolContador = $resultado['roles']['rolContador'];
-        if(isset($resultado['fotografia'])) {
-            $ruta .= $resultado['idEmpresa'].'/usuarios/'.$resultado['idUsuario'].'/profile_picture_'.$resultado['idUsuario'].'.'.$resultado['fotografia'];
+
+        if($resultado['fotografia'] != '' && $resultado['fotografia'] != null && $resultado['fotografia'] != 'profile_picture_'.$resultado['idUsuario'].'.') {
+            $ruta .= $resultado['idEmpresa'].'/usuarios/'.$resultado['idUsuario'].'/'.$resultado['fotografia'];
         } else {
-            $ruta.= 'default-user-image.png';
+            $ruta = base_url().'files/default-user-image.png';
         }
+    } else {
+        $ruta = base_url().'files/default-user-image.png';
     }
     ?>
     <div class="row">
         <div class="col s12" style="margin-bottom: 30px;">
             <div class="col s12 m12 l4">
                 <div class="cliente-ver-logo">
-                    <img alt="Imagen de perfil del usuario" style="width: 250px;height: 250px;display: block;margin: 0 auto;" src="<?= $ruta; ?>" />
+                    <img id="imagen_perfil_usuario_ver"  alt="Imagen de perfil del usuario" style="width: 250px;height: 250px;display: block;margin: 0 auto;" src="<?= $ruta; ?>" />
                 </div>
             </div>
             <div class="col s12 m12 l8">

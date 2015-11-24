@@ -558,7 +558,7 @@ class Proveedores extends CI_Controller
             }
             $nombreFotografia = 'profile_picture_'.$idPersona;
             $config['upload_path'] = $ruta;
-            $config['file_name'] = 'profile_picture_'.$idPersona;
+            $config['file_name'] = $nombreFotografia;
             $config['allowed_types'] = 'jpg|png|jpeg';
             $config['max_size'] = '2048';
 
