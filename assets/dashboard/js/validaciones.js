@@ -149,6 +149,16 @@
                     validacionCorrecta();
                   }
             });
+            $('#cliente-cambio-imagen').validate({
+                rules:
+                {
+                    userfile: { required: false}
+                },
+                errorElement: 'div',
+                submitHandler: function(form) {
+                    validacionCorrecta_Imagen();
+                }
+            });
 
         
             var subfase_codigo = {required: true, maxlength: 45};

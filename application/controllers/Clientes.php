@@ -465,7 +465,43 @@ class Clientes extends CI_Controller
 
     }
 
+    public function cambio_imagen($id) {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+        $idCliente = decryptIt($id);
 
+        $photo = explode('.',$this->input->post('cliente_fotografia'));
+        $ext = end($photo);
+        $data['datos'] = array(
+            'fotografia' => 'profile_picture_'.$idCliente.'.'.$ext
+        );
+        $data['id'] = $idCliente;
+
+        $fotografia = $this->Cliente_model->cambiar_imagen($data);
+        if (!$fotografia) {
+            echo 0;
+        } else {
+            $ruta = './files/empresas/'.$idEmpresa.'/clientes/'. $idCliente;
+            if($fotografia != 'sinFoto') {
+                $path = $ruta . '/'.$fotografia;
+                if(is_file($path)) {
+                    unlink($path);
+                }
+            }
+            $nombreFotografia = 'profile_picture_'.$idCliente;
+            $config['upload_path'] = $ruta;
+            $config['file_name'] = $nombreFotografia;
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['max_size'] = '2048';
+
+            $this->load->library('upload', $config);
+            if(!$this->upload->do_upload()) {
+                echo 2;
+            } else {
+                echo base_url().'files/empresas/'.$idEmpresa.'/clientes/'.$idCliente.'/'.$nombreFotografia.'.'.$ext;
+            }
+        }
+    }
 
 }
 

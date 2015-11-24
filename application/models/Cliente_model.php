@@ -394,6 +394,42 @@ class Cliente_model extends CI_Model
             return false;
         }
     }
+
+    function cambiar_imagen($data) {
+        try{
+            $photo = '';
+            $this->db->trans_begin();
+
+            $this->db->select('fotografia');
+            $this->db->where('idCliente', $data['id']);
+            $this->db->from('cliente');
+            $query1 = $this->db->get();
+            if (!$query1) {
+                throw new Exception("Error en la BD");
+            }
+            if($query1->num_rows() > 0) {
+                $datos = $query1->result_array();
+                $photo = $datos[0]['fotografia'];
+                if(!$photo) {
+                    $photo = 'sinFoto';
+                }
+            } else {
+                $photo = 'sinFoto';
+            }
+            if($photo) {
+                $this->db->where('idCliente', $data['id']);
+                $query2 = $this->db->update('cliente', $data['datos']);
+                if (!$query2) {
+                    throw new Exception("Error en la BD");
+                }
+            }
+            $this->db->trans_commit();
+            return $photo;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
     
 }
 
