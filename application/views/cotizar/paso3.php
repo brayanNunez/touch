@@ -586,6 +586,8 @@
 <script type="text/javascript">
 
 
+
+
     
 
     $(document).ready(function(){
@@ -674,14 +676,38 @@
     });
 
      $(document).ready(function(){
-        cargarDieseno(0);
+        // cargarDieseno(0, false);
+
+        <?php 
+
+
+        if (isset($resultado['plantilla'])) {// se esta editando una cotizacion
+            ?>
+            cargarDieseno(0, false);
+            <?php
+                
+        }  else {
+             ?>
+            cargarDieseno(0, true);
+            <?php
+        }
+    ?>
+
+
     });
 
  <?php 
 $js_array = json_encode($resultado['plantillas']); 
-echo "var arrayPlantillas =". $js_array;?> 
+echo "var arrayPlantillas =". $js_array.";";
 
-function cargarDieseno(idPlantilla){
+if (isset($resultado['plantilla'])) {// se esta editando una cotizacion
+    $js_array = json_encode($resultado['plantilla']); 
+    echo "var arrayPlantilla =". $js_array.";";       
+}
+
+?> 
+
+function cargarDieseno(idPlantilla, cotizacionNueva){
         recalcularAlturaContenido();
 
         function recalcularAlturaContenido() {
@@ -871,7 +897,16 @@ function cargarDieseno(idPlantilla){
         function desplegarPlantilla(idPlantilla){
             // alert('hola mundo');
             var plantilla =  arrayPlantillas[idPlantilla];
+            if(!cotizacionNueva){
+                desplegar(arrayPlantilla);
+            } else {
+                desplegar(plantilla);
+            }
+            
 
+        }
+
+        function desplegar(plantilla){
             actualizarModalEncabezado(plantilla);
             actualizarModalDetalle(plantilla);
             actualizarModalInformacion(plantilla);
@@ -882,7 +917,6 @@ function cargarDieseno(idPlantilla){
             actualizarFooter();
             actualizarInformacion();
             recalcularAlturaContenido();
-
         }
 
 
