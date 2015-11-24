@@ -19,9 +19,9 @@ class Horas extends CI_Controller
         $idEmpresa = $sessionActual['idEmpresa'];
 
         $incluirFestivosNoObligatorios = $this->input->post('checkbox_festivosNoObligatorios');
+        $data['idEmpresa'] = $idEmpresa;
         if($incluirFestivosNoObligatorios) {
             $data['datos'] = array(
-                'idEmpresa' => $idEmpresa,
                 'diasAnno' => $this->input->post('horas_diasAnno'),
                 'finesSemana' => $this->input->post('horas_finesSemana'),
                 'festivosObligatorios' => $this->input->post('horas_festivosObligatorios'),
@@ -35,7 +35,6 @@ class Horas extends CI_Controller
             );
         } else {
             $data['datos'] = array(
-                'idEmpresa' => $idEmpresa,
                 'diasAnno' => $this->input->post('horas_diasAnno'),
                 'finesSemana' => $this->input->post('horas_finesSemana'),
                 'festivosObligatorios' => $this->input->post('horas_festivosObligatorios'),
@@ -49,7 +48,7 @@ class Horas extends CI_Controller
             );
         }
 
-        $resultado = $this->Horas_model->insertar($data);
+        $resultado = $this->Horas_model->guardarCambios($data);
         if (!$resultado) {
             //Error en la transacci�n
             echo 0;

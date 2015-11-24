@@ -10,20 +10,21 @@ class Horas_model extends CI_Model
         $this->load->database();
     }
 
-    function insertar($data)
+    function guardarCambios($data)
     {
         try{
             $this->db->trans_begin();
 
-            $query = $this->db->insert('horas', $data['datos']);
+            $this->db->where('idEmpresa', $data['idEmpresa']);
+            $query = $this->db->update('horas', $data['datos']);
             if (!$query) {
                 throw new Exception("Error en la BD");
             }
-            $insert_id = $this->db->insert_id();
 
             $this->db->trans_commit();
-            return $insert_id;
+            return true;
         } catch (Exception $e) {
+            echo $e;
             $this->db->trans_rollback();
             return false;
         }
