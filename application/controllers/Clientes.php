@@ -174,22 +174,6 @@ class Clientes extends CI_Controller
 
     public function editar($id)
     {
-//        $data['archivos'] = array();
-//        $data['archivos'][] = array('file_name' => 'archivo1', 'file_ext' => '.png', 'file_date' => '2015/08/04',
-//            'file_description' => 'Imagen del cliente', 'file_size' => '13 KB');
-//        $data['archivos'][] = array('file_name' => 'archivo2', 'file_ext' => '.pdf', 'file_date' => '2015/08/04',
-//            'file_description' => 'Contrato individual de trabajo', 'file_size' => '187 KB');
-//        $data['archivos'][] = array('file_name' => 'archivo3', 'file_ext' => '.jpg', 'file_date' => '2015/08/04',
-//            'file_description' => 'Planta de trabajo', 'file_size' => '152 KB');
-//        $data['archivos'][] = array('file_name' => 'archivo4', 'file_ext' => '.docx', 'file_date' => '2015/08/04',
-//            'file_description' => 'Contrato en formato .docx', 'file_size' => '24 KB');
-//        $data['archivos'][] = array('file_name' => 'archivo5', 'file_ext' => '.jpg', 'file_date' => '2015/08/04',
-//            'file_description' => 'Productos ofrecidos', 'file_size' => '48 KB');
-//        $data['archivos'][] = array('file_name' => 'archivo6', 'file_ext' => '.pdf', 'file_date' => '2015/08/04',
-//            'file_description' => 'Contrato por tiempo determinado', 'file_size' => '48 KB');
-
-        
-
         $resultado = $this->Cliente_model->cargar(decryptIt($id)); 
         if ($resultado === false || $resultado === array()) {
             echo "Error en la transacción";
@@ -212,7 +196,7 @@ class Clientes extends CI_Controller
         if ($this->input->post('checkbox_todosVendedores')) {
             $todosVendedores = 1;
         }
-        
+
         $listaVendedores = '';
         if($todosVendedores == 0) {
            $listaVendedores = $this->input->post('cliente_vendedores');
@@ -226,14 +210,14 @@ class Clientes extends CI_Controller
 
         $juridico = $this->input->post('cliente_tipo');
 
-        
+
         if ($juridico) {
             $enviarFacturas = 0;
             if ($this->input->post('checkbox_correoClientejuridico')) {
                 $enviarFacturas = 1;
             }
             $data['datos'] = array(
-                // 'idEmpresa' => $idEmpresa, 
+                // 'idEmpresa' => $idEmpresa,
                 'juridico' => $juridico,
                 'identificacion' => $this->input->post('clientejuridico_id'),
                 'primerApellido' => null,
@@ -245,12 +229,12 @@ class Clientes extends CI_Controller
                 'estadoProvincia' => $this->input->post('cliente_direccionProvincia'),
                 'ciudadCanton' => $this->input->post('cliente_direccionCanton'),
                 'domicilio' => $this->input->post('cliente_direccionDomicilio'),
-                'enviarFacturas' => $enviarFacturas,  
-                'descuentoFijo' => $this->input->post('cliente_descuento'),  
+                'enviarFacturas' => $enviarFacturas,
+                'descuentoFijo' => $this->input->post('cliente_descuento'),
                 'fechaNacimiento' => null,
                 'correo' => $this->input->post('clientejuridico_correo'),
                 'fax' => $this->input->post('clientejuridico_fax'),
-                'todosVendedores' => $todosVendedores, 
+                'todosVendedores' => $todosVendedores,
                 'activo' => '1',
                 'eliminado' => '0'
             );
@@ -260,7 +244,7 @@ class Clientes extends CI_Controller
                 $enviarFacturas = 1;
             }
             $data['datos'] = array(
-                // 'idEmpresa' => $idEmpresa, 
+                // 'idEmpresa' => $idEmpresa,
                 'juridico' => $juridico,
                 'identificacion' => $this->input->post('cliente_id'),
                 'nombre' => $this->input->post('cliente_nombre'),
@@ -272,12 +256,12 @@ class Clientes extends CI_Controller
                 'estadoProvincia' => $this->input->post('cliente_direccionProvincia'),
                 'ciudadCanton' => $this->input->post('cliente_direccionCanton'),
                 'domicilio' => $this->input->post('cliente_direccionDomicilio'),
-                'enviarFacturas' => $enviarFacturas,  
-                'descuentoFijo' => $this->input->post('cliente_descuento'),  
+                'enviarFacturas' => $enviarFacturas,
+                'descuentoFijo' => $this->input->post('cliente_descuento'),
                 'fechaNacimiento' => date("Y-m-d", strtotime($this->input->post('cliente_fechaNacimiento'))),
                 'correo' => $this->input->post('cliente_correo'),
                 'fax' => null,
-                'todosVendedores' => $todosVendedores, 
+                'todosVendedores' => $todosVendedores,
                 'activo' => '1',
                 'eliminado' => '0'
             );
@@ -319,7 +303,7 @@ class Clientes extends CI_Controller
                          'correo' => $this->input->post('cliente_contactoCorreo_'.$contador),
                          'telefono' => $this->input->post('cliente_contactoTelefono_'.$contador),
                          'puesto' => $this->input->post('cliente_contactoPuesto_'.$contador),
-                         'enviarFacturas' => $enviarFacturas,   
+                         'enviarFacturas' => $enviarFacturas,
                          'eliminado' => '0'
                          );
                         array_push($editados, $contacto);
@@ -337,14 +321,14 @@ class Clientes extends CI_Controller
                          'correo' => $this->input->post('cliente_contactoCorreo_'.$contador),
                          'telefono' => $this->input->post('cliente_contactoTelefono_'.$contador),
                          'puesto' => $this->input->post('cliente_contactoPuesto_'.$contador),
-                         'enviarFacturas' => $enviarFacturas,   
+                         'enviarFacturas' => $enviarFacturas,
                          'eliminado' => '0'
                          );
                         array_push($nuevos, $contacto);
                     }
-                    
-                } 
-                $contactosObtenidos++;  
+
+                }
+                $contactosObtenidos++;
             }
             $contador++;
          }
@@ -360,7 +344,7 @@ class Clientes extends CI_Controller
             //correcto
             echo 1;
         }
-        
+
     }
 
 

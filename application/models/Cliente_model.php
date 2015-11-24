@@ -123,9 +123,6 @@ class Cliente_model extends CI_Model
 
     }
 
-
-
-
     //Retorna los gustos que tienen los clientes en la misma 
     //empresa para ser sugeridos a la hora de agregar nuevos gustos
     function gustosSugerencia($idEmpresa){

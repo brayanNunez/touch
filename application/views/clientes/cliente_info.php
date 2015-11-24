@@ -54,10 +54,18 @@
                                         </div>
                                         <div class="col s12">
                                             <div id="tab-informacion" class="card col s12">
-                                                <?php $this->load->view('clientes/clientes_ver'); ?>
+                                                <?php
+                                                    if(isset($resultado)) {
+                                                        $this->load->view('clientes/clientes_ver');
+                                                    }
+                                                ?>
                                             </div>
                                             <div id="tab-edicion" class="card col s12">
-                                                <?php $this->load->view('clientes/clientes_editar'); ?>
+                                                <?php
+                                                    if(isset($resultado)) {
+                                                        $this->load->view('clientes/clientes_editar');
+                                                    }
+                                                ?>
                                             </div>
                                             <div id="tab-archivos" class="card col s12">
                                                 <?php $archivos = array();
