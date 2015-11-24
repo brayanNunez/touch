@@ -180,9 +180,13 @@
 
 
 <script type="text/javascript">
+
     $(document).on("ready", function () {
 
+
         $('#botonPaso4').on("click", function () {
+
+
             // alert("ahora2");
             document.getElementById('vistaPrevia').contentDocument.location.reload(true);
             // $('#vistaPrevia').attr("src", $('#vistaPrevia').attr("src"));
