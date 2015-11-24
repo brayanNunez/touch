@@ -544,9 +544,9 @@
                 } else {
                     alert('<?= label('usuarioExitoCambioEmagen'); ?>');
                     d = new Date();
-                    $('#imagen_seleccionada').attr('src', response);
-                    $('#imagen_perfil_usuario').attr('src', response);
-                    $('#imagen_perfil_usuario_ver').attr('src', response);
+                    $('#imagen_seleccionada').attr('src', response + '?' + d.getTime());
+                    $('#imagen_perfil_usuario').attr('src', response + '?' + d.getTime());
+                    $('#imagen_perfil_usuario_ver').attr('src', response + '?' + d.getTime());
                     formPW.find('input:file,input:text').val('');
                 }
             },
@@ -816,3 +816,38 @@
     </div>
 </div>
 <!-- Fin lista modals-->
+
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imagen_seleccionada').attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#userfile").change(function(){
+        var file = this.files[0];
+        var name = file.name;
+        var size = file.size;
+        var type = file.type;
+        var t = type.split('/');
+        var ext = t.slice(1, 2);
+        if(size > 2097150) { //2097152
+            alert("<?= label('usuarioErrorTamanoArchivo') ?>");
+            document.getElementById('userfile').value = '';
+        }
+        var valid_ext = ['image/png','image/jpg','image/jpeg'];
+        if(valid_ext.indexOf(type)==-1) {
+            alert("<?= label('usuarioErrorTipoArchivo') ?>");
+            document.getElementById('userfile').value = '';
+        }
+        if(document.getElementById('userfile').value == ''){
+            $('#imagen_seleccionada').attr('src', '<?= base_url(); ?>files/default-user-image.png');
+        } else {
+            $('#usuario_fotografia').attr('value', ext);
+            readURL(this);
+        }
+    });
+</script>

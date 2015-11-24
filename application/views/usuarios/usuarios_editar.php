@@ -297,9 +297,9 @@
                 } else {
                     alert('<?= label('usuarioExitoCambioEmagen'); ?>');
                     d = new Date();
-                    $('#imagen_seleccionada').attr('src', response);
-                    $('#imagen_perfil_usuario').attr('src', response);
-                    $('#imagen_perfil_usuario_ver').attr('src', response);
+                    $('#imagen_seleccionada').attr('src', response + '?' + d.getTime());
+                    $('#imagen_perfil_usuario').attr('src', response + '?' + d.getTime());
+                    $('#imagen_perfil_usuario_ver').attr('src', response + '?' + d.getTime());
                     formPW.find('input:file,input:text').val('');
                 }
             },
