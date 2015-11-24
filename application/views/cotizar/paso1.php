@@ -111,7 +111,7 @@
         </div> -->
     </div>
 
-    <div class="row">
+    <!-- <div class="row">
         <div class="input-field col s12" style="margin-top: 0;">
             <input class="filled-in" type="checkbox" id="cotizacion_incluirGastosVariables"/>
             <label for="cotizacion_incluirGastosVariables"><?= label('cotizacion_incluirGastosVariables'); ?></label>
@@ -219,7 +219,7 @@
                 <h5><?= label('cotizacionGastos_total'); ?>: $2,000,000.00</h5>
             </div>
         </div>
-    </div>
+    </div> -->
 </form>
 
 <script>

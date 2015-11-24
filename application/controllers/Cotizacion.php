@@ -42,7 +42,8 @@ class Cotizacion extends CI_Controller
             'eliminado' => 0,
             'fechaValidez' => date("Y-m-d", strtotime($this->input->post('paso1_validez')))
             );
-        // echo print_r($data['datosGenerales']);exit();
+        $data['diseno'] = $this->obtenerPlantilla(0);
+        // echo print_r($data['diseno']);exit();
         $resultado = $this->Cotizacion_model->guardarCambios($data); 
         echo $resultado; exit();
     }
@@ -55,14 +56,16 @@ class Cotizacion extends CI_Controller
         $data['idUsuario'] = $sessionActual['idUsuario'];
 
         $resultado = $this->Cotizacion_model->nueva($data); 
-        $resultado['lineasDetalle'] = array();
-        $resultado['idEmpresa'] = $data['idEmpresa'];
-        // $resultado['idCotizacion'] = '123';
-        // if ($resultado === false || $resultado === array()) {
-        // print_r($resultado['servicios']); exit();
-        if ($resultado === false) {
+        if ($resultado == false) {
             echo "Error en la transacción";
         } else {
+
+            $resultado['lineasDetalle'] = array();
+            $resultado['idEmpresa'] = $data['idEmpresa'];
+            // $resultado['idCotizacion'] = '123';
+            // if ($resultado === false || $resultado === array()) {
+            // print_r($resultado['servicios']); exit();
+        
             $data['resultado'] = $resultado;
             $this->load->view('layout/default/header');
             $this->load->view('layout/default/left-sidebar');
@@ -79,15 +82,16 @@ class Cotizacion extends CI_Controller
         $data['idCotizacion'] = decryptIt($idCotizacion);
 
         $resultado = $this->Cotizacion_model->cargar($data); 
-        $resultado['lineasDetalle'] = array();
-        $resultado['idEmpresa'] = $data['idEmpresa'];
-        $resultado['idCotizacion'] = decryptIt($idCotizacion);
-        // $resultado['idCotizacion'] = '123';
-        // if ($resultado === false || $resultado === array()) {
-        // print_r($resultado['servicios']); exit();
         if ($resultado === false) {
             echo "Error en la transacción";
         } else {
+            $resultado['lineasDetalle'] = array();
+            $resultado['idEmpresa'] = $data['idEmpresa'];
+            $resultado['idCotizacion'] = decryptIt($idCotizacion);
+            // $resultado['idCotizacion'] = '123';
+            // if ($resultado === false || $resultado === array()) {
+            // print_r($resultado['servicios']); exit();
+        
             $data['resultado'] = $resultado;
             $this->load->view('layout/default/header');
             $this->load->view('layout/default/left-sidebar');
@@ -115,6 +119,20 @@ class Cotizacion extends CI_Controller
     //Metodo llamado mediante ajax
      public function nuevaPlantilla()
     {
+        $data['diseno'] = $this->obtenerPlantilla(1);
+        if (!$this->Cotizacion_model->insertarPlantilla($data)) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            // correcto
+            echo 1;
+        }
+
+    // echo print_r($data);
+        
+    }
+
+    public function obtenerPlantilla($publica){
         // if (isset($this->input->post('checksEncabezado_hora'])) {
         //     # code...
         // }
@@ -244,7 +262,7 @@ class Cotizacion extends CI_Controller
            $total = 1;
         }
 
-        $data['datos'] = array(
+        $diseno = array(
             'idEmpresa' => $idEmpresa, 
             'nombrePlantilla' => $this->input->post('nombrePlantilla'),
             'colorEncabezado' => $this->input->post('colorEncabezado_colorFondo'),
@@ -292,19 +310,10 @@ class Cotizacion extends CI_Controller
             'mostrarColumnaCantidad' => $columnaCantidad, 
             'mostrarColumnaImpuesto' => $columnaImpuesto, 
             'mostrarColumnaTotal' => $columnaTotal,
-            'publica' => 1,
+            'publica' => $publica,
             'eliminado' => 0
         );
-        if (!$this->Cotizacion_model->insertarPlantilla($data)) {
-            //Error en la transacción
-            echo 0;
-        } else {
-            // correcto
-            echo 1;
-        }
-
-    // echo print_r($data);
-        
+        return $diseno;
     }
 
     public function ver()

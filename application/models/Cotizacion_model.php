@@ -37,6 +37,11 @@ class Cotizacion_model extends CI_Model
             $this->db->where('idCotizacion', $data['idCotizacion']);
             $query = $this->db->update('cotizacion', $data['datosGenerales']);
             if (!$query) throw new Exception("Error en la BD"); 
+
+            $this->db->where('idCotizacion', $data['idCotizacion']);
+            $query = $this->db->update('plantilladiseno', $data['diseno']);
+            if (!$query) throw new Exception("Error en la BD"); 
+            
             $this->db->trans_commit();
             return 1;
         } catch (Exception $e) {
@@ -102,9 +107,14 @@ class Cotizacion_model extends CI_Model
             $data['formasPago'] = $formaPago;
             $data['monedas'] = $moneda;
 
-            $query = $this->db->insert('cotizacion', array('idEmpresa' => $datos['idEmpresa'],'idEstadoCotizacion' => 1,'idUsuario' => $datos['idUsuario'], 'eliminado' => 1,));
+            
+            
+            $query = $this->db->insert('cotizacion', array('idEmpresa' => $datos['idEmpresa'],'idEstadoCotizacion' => 1,'idUsuario' => $datos['idUsuario'], 'eliminado' => 1));
             if (!$query) throw new Exception("Error en la BD"); 
             $data['idCotizacion'] = $this->db->insert_id();
+
+             $query = $this->db->insert('plantilladiseno', array('idEmpresa' => $datos['idEmpresa'],'idCotizacion' => $data['idCotizacion'],'publica' => 0, 'eliminado' => 0));
+            if (!$query) throw new Exception("Error en la BD");
 
             $this->db->select('nombre, correo, telefono');
             $query = $this->db->get_where('empresa', array('idEmpresa'=> $datos['idEmpresa']));
@@ -218,6 +228,12 @@ class Cotizacion_model extends CI_Model
             $array = $query->result_array(); 
             $data['cotizacion'] = array_shift($array);
 
+            $query = $this->db->get_where('plantilladiseno', array('idCotizacion'=> $datos['idCotizacion']));
+            if (!$query) throw new Exception("Error en la BD");   
+
+            $array = $query->result_array(); 
+            $data['plantilla'] = array_shift($array);
+
             // echo print_r($data['cotizacion']); exit();
 
             // INSERT INTO `touch`.`cotizacion` (`idEmpresa`, `idEstadoCotizacion`, `idUsuario`) VALUES ('1', '1', '1');
@@ -260,7 +276,7 @@ class Cotizacion_model extends CI_Model
         try{
             $this->db->trans_begin();
 
-            $query = $this->db->insert('plantilladiseno', $data['datos']);
+            $query = $this->db->insert('plantilladiseno', $data['diseno']);
             if (!$query) throw new Exception("Error en la BD");   
             // $insert_id = $this->db->insert_id();
             // $palabras = explode(",", $data['palabras']); ;
