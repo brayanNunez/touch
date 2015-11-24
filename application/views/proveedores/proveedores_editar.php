@@ -578,18 +578,15 @@
             url: formPW.attr('action'),
             type: formPW.attr('method'),
             success:  function (response) {
-                switch(response){
-                    case '0':
-                        alert('<?= label('usuarioErrorCambioImagen'); ?>');//error al ir a verificar identificación
-                        break;
-                    case '1':
-                        alert('<?= label('usuarioExitoCambioEmagen'); ?>');
-                        d = new Date();
-                        $('#imagen_seleccionada').attr('src', '<?= $ruta; ?>?' + d.getTime());
-                        $('#imagen_perfil_usuario').attr('src', '<?= $ruta; ?>?' + d.getTime());
-                        $('#imagen_perfil_usuario_ver').attr('src', '<?= $ruta; ?>?' + d.getTime());
-                        formPW.find('input:file,input:text').val('');
-                        break;
+                if(response == 0) {
+                    alert('<?= label('usuarioErrorCambioImagen'); ?>');//error al ir a verificar identificaciï¿½n
+                } else {
+                    alert('<?= label('usuarioExitoCambioEmagen'); ?>');
+                    d = new Date();
+                    $('#imagen_seleccionada').attr('src', response);
+                    $('#imagen_perfil_usuario').attr('src', response);
+                    $('#imagen_perfil_usuario_ver').attr('src', response);
+                    formPW.find('input:file,input:text').val('');
                 }
             },
             cache: false,
@@ -695,8 +692,8 @@
             }
         });
 
-//        elt.tagsinput('add', {"value": 1, "text": "Brayan Nuñez Rojas", "continent": "Europe"});
-//        elt.tagsinput('add', {"value": 4, "text": "Anthony Nuñez Rojas", "continent": "America"});
+//        elt.tagsinput('add', {"value": 1, "text": "Brayan Nuï¿½ez Rojas", "continent": "Europe"});
+//        elt.tagsinput('add', {"value": 4, "text": "Anthony Nuï¿½ez Rojas", "continent": "America"});
 //        elt.tagsinput('add', {"value": 7, "text": "Maria Perez Salas", "continent": "Australia"});
 //        elt.tagsinput('add', {"value": 10, "text": "Carlos David Rojas", "continent": "Asia"});
 //        elt.tagsinput('add', {"value": 13, "text": "Diego Alfaro Rojas", "continent": "Africa"});
@@ -1520,7 +1517,7 @@
         $('#proveedor_gastos_editar').dataTable( {
             'aoColumnDefs': [{
                 'bSortable': false,
-                'aTargets': [0, -1] //desactiva en primer y última columna opción de ordenar
+                'aTargets': [0, -1] //desactiva en primer y ï¿½ltima columna opciï¿½n de ordenar
             }]
         });
     });

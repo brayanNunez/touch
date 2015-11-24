@@ -34,7 +34,7 @@ class Proveedores extends CI_Controller
         $paises = $this->Proveedor_model->paises();
         $gastos = $this->Proveedor_model->NombresGasto($idEmpresa);
         if ($tipos === false || $tipos === array() || $paises === false || $paises === array()) {
-            echo "Error en la transacción";
+            echo "Error en la transacciï¿½n";
         } else {
             $data['paises'] = $paises;
             $data['tiposPresupuesto'] = $tipos;
@@ -175,7 +175,7 @@ class Proveedores extends CI_Controller
 
         $persona = $this->Proveedor_model->insertar($data);
         if (!$persona) {
-            //Error en la transacción
+            //Error en la transacciï¿½n
             echo 0;
         } else {
             $config['upload_path'] = './files/empresas/'.$idEmpresa.'/proveedores/'.$persona;
@@ -198,7 +198,7 @@ class Proveedores extends CI_Controller
     {
         $id = $_POST['idEliminar'];
         if (!$this->Proveedor_model->eliminar(decryptIt($id))) {
-            //Error en la transacción
+            //Error en la transacciï¿½n
             echo 0;
         } else {
             //correcto
@@ -216,7 +216,7 @@ class Proveedores extends CI_Controller
         $resultado = $this->Proveedor_model->cargar(decryptIt($id));
 
         if ($resultado === false || $resultado === array()) {
-            echo "Error en la transacción";
+            echo "Error en la transacciï¿½n";
         } else {
             $data['resultado'] = $resultado;
             $data['codigosGasto'] = $gastos;
@@ -413,7 +413,7 @@ class Proveedores extends CI_Controller
         $data['gastosEliminados'] = $gastosEliminados;
 
         if (!$this->Proveedor_model->modificar($data)) {
-            //Error en la transacción
+            //Error en la transacciï¿½n
             echo 0;
         } else {
             //correcto
@@ -451,7 +451,7 @@ class Proveedores extends CI_Controller
 
         $resultado = $this->Proveedor_model->verificarIdentificacion($data);
         if ($resultado === false) {
-            //Error en la transacción
+            //Error en la transacciï¿½n
             echo 0;
         } else {
             if ($resultado == 1) {
@@ -518,7 +518,7 @@ class Proveedores extends CI_Controller
         $persona = decryptIt($_POST['idPersona']);
         $resultado = $this->Proveedor_model->eliminarArchivo(decryptIt($id));
         if (!$resultado) {
-            //Error en la transacción
+            //Error en la transacciï¿½n
             echo 0;
         } else {
             //correcto
@@ -556,6 +556,7 @@ class Proveedores extends CI_Controller
                     unlink($path);
                 }
             }
+            $nombreFotografia = 'profile_picture_'.$idPersona;
             $config['upload_path'] = $ruta;
             $config['file_name'] = 'profile_picture_'.$idPersona;
             $config['allowed_types'] = 'jpg|png|jpeg';
@@ -565,7 +566,7 @@ class Proveedores extends CI_Controller
             if(!$this->upload->do_upload()) {
                 echo 2;
             } else {
-                echo 1;
+                echo base_url().'files/empresas/'.$idEmpresa.'/proveedores/'.$idPersona.'/'.$nombreFotografia.'.'.$ext;
             }
         }
     }
@@ -576,7 +577,7 @@ class Proveedores extends CI_Controller
 
         $str = preg_replace('#&([A-za-z])(?:acute|cedil|caron|circ|grave|orn|ring|slash|th|tilde|uml);#', '\1', $str);
         $str = preg_replace('#&([A-za-z]{2})(?:lig);#', '\1', $str); // pour les ligatures e.g. '&oelig;'
-        $str = preg_replace('#&[^;]+;#', '', $str); // supprime les autres caractères
+        $str = preg_replace('#&[^;]+;#', '', $str); // supprime les autres caractï¿½res
 
         return $str;
     }
