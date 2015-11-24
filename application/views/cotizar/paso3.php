@@ -683,6 +683,7 @@
 
         if (isset($resultado['plantilla'])) {// se esta editando una cotizacion
             ?>
+            // alert(arrayPlantilla['colorEncabezado']);
             cargarDieseno(0, false);
             <?php
                 
@@ -707,7 +708,7 @@ if (isset($resultado['plantilla'])) {// se esta editando una cotizacion
 
 ?> 
 
-function cargarDieseno(idPlantilla, cotizacionNueva){
+function cargarDieseno(idPlantilla, plantillaDesdeLista){
         recalcularAlturaContenido();
 
         function recalcularAlturaContenido() {
@@ -889,29 +890,46 @@ function cargarDieseno(idPlantilla, cotizacionNueva){
                 $('#footerCotizacion #datos2').css('width', '100%');
             }
         }
+
+
+
        
-        if (arrayPlantillas.length != 0) {
+        // if (arrayPlantillas.length != 0 || !plantillaDesdeLista) {
             desplegarPlantilla(idPlantilla);
-        };
+        // };
 
         function desplegarPlantilla(idPlantilla){
             // alert('hola mundo');
-            var plantilla =  arrayPlantillas[idPlantilla];
-            if(!cotizacionNueva){
+           
+            if(!plantillaDesdeLista){
+                // alert(arrayPlantilla['']);
+            
                 desplegar(arrayPlantilla);
             } else {
-                desplegar(plantilla);
+                if (arrayPlantillas.length != 0) {
+                    
+                     var plantilla =  arrayPlantillas[idPlantilla];
+                    desplegar(plantilla);
+                } else{
+                    obtenerDatosEncabezado();
+                    obtenerDatosCuerpo();
+                    obtenerDatosInformacion();
+                    obtenerDatosFooter();
+
+                };
+                
             }
             
 
         }
 
         function desplegar(plantilla){
+
             actualizarModalEncabezado(plantilla);
             actualizarModalDetalle(plantilla);
             actualizarModalInformacion(plantilla);
             actualizarModalFooter(plantilla);
-            
+            // alert('hola');
             actualizarEncabezado();
             actualizarCuerpo();
             actualizarFooter();

@@ -210,7 +210,7 @@
                 // alert('entre 1');
                 switch(tipo){
                     case 'paso3_plantilla':
-                        cargarDieseno(valor);
+                        cargarDieseno(valor, true);
                     break;
                     case 'productoItem':
                         var numeroFila = $(this).attr('data-fila');
