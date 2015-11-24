@@ -38,7 +38,8 @@ class Usuarios extends CI_Controller
         $idEmpresa = $sessionActual['idEmpresa'];
 
         $photo = explode('.',$this->input->post('usuario_fotografia'));
-        $ext = end($photo);
+        $data['extension'] = end($photo);
+
         $data['datos'] = array(
             'idEmpresa' => $idEmpresa, //Obtener de la variable de sesi�n
             'primerApellido' => $this->input->post('usuario_primeroApellido'),
@@ -46,7 +47,6 @@ class Usuarios extends CI_Controller
             'nombre' => $this->input->post('usuario_nombre'),
             'correo' => $this->input->post('usuario_correo'),
             'contrasena' => $this->input->post('usuario_contrasena'),
-            'fotografia' => $ext,
             'eliminado' => '0'
         );
         $data['roles'] = array(
@@ -62,19 +62,18 @@ class Usuarios extends CI_Controller
             echo 0;
         } else {
             $config['upload_path'] = './files/empresas/'.$idEmpresa.'/usuarios/'.$usuario;
-            $config['file_name'] = 'profile_picture_'.$usuario;
+            $config['file_name'] = 'profile_picture_'.$usuario.'.'.$data['extension'];
             $config['allowed_types'] = 'jpg|png|jpeg';
             $config['max_size'] = '2048';
 
             $this->load->library('upload', $config);
             if(!$this->upload->do_upload()) {
-//            echo $this->upload->display_errors();
-//                echo 2;
+//                $error = array('error' => $this->upload->display_errors());echo $error['error'];
             }
-//             else {
-//                $archivo = $this->upload->data();
-//                $data['datos']['fotografia'] = $archivo['raw_name'] . $archivo['file_ext'];
-//            }
+//            echo './files/empresas/'.$idEmpresa.'/clientes/'.$cliente.'<br/>';
+//            echo 'profile_picture_'.$cliente.'.'.$data['extension'].'<br/>';
+
+            // correcto
             echo 1;
         }
     }

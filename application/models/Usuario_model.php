@@ -39,6 +39,13 @@ class Usuario_model extends CI_Model
                 throw new Exception("Error en la BD");
             }
             $insert_id = $this->db->insert_id();
+
+            if($data['extension'] != '' && $data['extension'] != null) {
+                $nombreFotografia = 'profile_picture_' . $insert_id . '.' . $data['extension'];
+                $this->db->where('idUsuario', $insert_id);
+                $query = $this->db->update('usuario', array('fotografia' => $nombreFotografia));
+            }
+
             $roles = $data['roles'];
             foreach ($roles as $rol=>$valor) {
                 if($valor) {
@@ -65,6 +72,7 @@ class Usuario_model extends CI_Model
             return false;
         }
     }
+
     function cargarPorCorreoUsuarioContrasena($data)
     {
         try {

@@ -162,7 +162,7 @@ class Clientes extends CI_Controller
 
             $this->load->library('upload', $config);
             if(!$this->upload->do_upload('userfile')) {
-                $error = array('error' => $this->upload->display_errors());echo $error['error'];
+//                $error = array('error' => $this->upload->display_errors());echo $error['error'];
             }
 //            echo './files/empresas/'.$idEmpresa.'/clientes/'.$cliente.'<br/>';
 //            echo 'profile_picture_'.$cliente.'.'.$data['extension'].'<br/>';
