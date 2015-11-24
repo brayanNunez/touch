@@ -701,4 +701,23 @@
             }
         });
 
+        $('#form_horas').validate({
+            rules:
+            {
+                horas_diasAnno: {required: true},
+                horas_finesSemana: {required: true},
+                horas_festivosObligatorios: {required: true},
+                horas_festivosNoObligatorios: {required: false},
+                horas_vacaciones: {required: false},
+                horas_promedioBajas: {required: false},
+                horas_diasFacturables: {required: false},
+                horas_promedioHorasDiarias: {required: false},
+                horas_cantidadManoObra: {required: false}
+            },
+            errorElement: 'div',
+            submitHandler: function(form) {
+                validacionCorrecta_horas();
+            }
+        });
+
     });

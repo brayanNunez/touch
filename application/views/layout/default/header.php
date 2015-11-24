@@ -60,9 +60,9 @@
                 dateFormat: "dd-mm-yy",
                 monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre" ],
                 monthNamesShort: [ "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic" ],
-                dayNames: [ "Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado" ],
+                dayNames: [ "Domingo", "Lunes", "Martes", "MiÃ©rcoles", "Jueves", "Viernes", "SÃ¡bado" ],
                 dayNamesMin: [ "Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa" ],
-                dayNamesShort: [ "Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sab" ]
+                dayNamesShort: [ "Dom", "Lun", "Mar", "MiÃ©", "Jue", "Vie", "Sab" ]
             });
         });
     </script>
@@ -256,7 +256,7 @@
                             <a href="<?= base_url(); ?>categoriasPersona"><?= label('categoriaDeProveedores'); ?></a>
                         </li>
                         <li>
-                            <a href="<?= base_url(); ?>impuesto"><?= label('horas'); ?></a>
+                            <a id="btn_horasLaborales" href="#horasLaborales" class="modal-trigger"><?= label('horas'); ?></a>
                         </li>
                         <li>
                             <a href="<?= base_url(); ?>fases">Fases</a>

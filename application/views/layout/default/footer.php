@@ -162,7 +162,6 @@ Scripts
 <!-- chartist -->
 <script type="text/javascript" src="<?= base_url() ?>assets/dashboard/js/plugins/chartist-js/chartist.min.js"></script>
 
-
 <!-- data-tables -->
 <script type="text/javascript"
         src="<?= base_url() ?>assets/dashboard/js/plugins/data-tables/js/jquery.dataTables.min.js"></script>
@@ -192,10 +191,10 @@ Scripts
 <script type="text/javascript" src="<?= base_url() ?>assets/dashboard/js/plugins.js"></script>
 <!-- Toast Notification -->
 
-  <!-- autocompletar con boton dentro -->
-  <script src="<?= base_url()?>assets/dashboard/js/chosen.jquery.js" type="text/javascript"></script>
+<!-- autocompletar con boton dentro -->
+<script src="<?= base_url()?>assets/dashboard/js/chosen.jquery.js" type="text/javascript"></script>
 
-
+<!--Inicio lista de modals-->
 <div id="login-page" class="modal fade in" style="width: 25%; max-height: none; ">
     <div class="col s12 z-depth-4 card-panel" style="box-shadow: none; margin: 0px; padding-bottom: 0px; ">
         <form class="login-form" style="width: auto; ">
@@ -247,22 +246,154 @@ Scripts
         </form>
     </div>
 </div>
+<div id="horasLaborales" class="modal" style="width: 70%; min-height: 85%;">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal">
+            <i class="mdi-content-clear"></i>
+        </a>
+    </div>
+    <div class="modal-content" style="padding: 0 24px;">
+        <div class="row">
+            <h5 style="float: left;"><?= label('horas_titulo'); ?></h5>
+        </div>
+        <div class="row">
+            <form id="form_horas" action="<?=base_url()?>horas/guardarCambios" method="post">
+                <div class="input-field col s12">
+                    <input id="horas_diasAnno" name="horas_diasAnno" type="number">
+                    <label for="horas_diasAnno"><?= label('horas_diasAnno') ?></label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="horas_finesSemana" name="horas_finesSemana" type="number">
+                    <label for="horas_finesSemana"><?= label('horas_finesSemana') ?></label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="horas_festivosObligatorios" name="horas_festivosObligatorios" type="number">
+                    <label for="horas_festivosObligatorios"><?= label('horas_festivosObligatorios') ?></label>
+                    <div style="margin-bottom: 35px;">
+                        <input value='1' type="checkbox" class="filled-in" id="checkbox_festivosNoObligatorios" name="checkbox_festivosNoObligatorios" />
+                        <label id="label_checkboxFestivosNoObligatorios" for="checkbox_festivosNoObligatorios" style="float: left; top: 0;"><?= label('horas_asignarFestivosNoObligatorios') ?></label>
+                    </div>
+                </div>
+                <div id="horas_inputFestivosNoObligatorios" class="input-field col s12" style="display: none;">
+                    <input id="horas_festivosNoObligatorios" name="horas_festivosNoObligatorios" type="number">
+                    <label for="horas_festivosNoObligatorios"><?= label('horas_festivosNoObligatorios') ?></label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="horas_vacaciones" name="horas_vacaciones" type="number">
+                    <label for="horas_vacaciones"><?= label('horas_vacaciones') ?></label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="horas_promedioBajas" name="horas_promedioBajas" type="number">
+                    <label for="horas_promedioBajas"><?= label('horas_promedioBajas') ?></label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="horas_diasFacturables" name="horas_diasFacturables" type="number">
+                    <label for="horas_diasFacturables"><?= label('horas_diasFacturables') ?></label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="horas_promedioHorasDiarias" name="horas_promedioHorasDiarias" type="number">
+                    <label for="horas_promedioHorasDiarias"><?= label('horas_promedioHorasDiarias') ?></label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="horas_cantidadManoObra" name="horas_cantidadManoObra" type="number">
+                    <label for="horas_cantidadManoObra"><?= label('horas_cantidadManoObra') ?></label>
+                </div>
+                <div class="col s12">
+                    <div class="col s6">
+                        <h5>Total horas anuales: <span id="horas_totalAnual"></span></h5>
+                    </div>
+                    <div class="col s6">
+                        <h5>Promedio de horas mensuales: <span id="horas_promedioMensual"></span></h5>
+                    </div>
+                </div>
+                <div class="input-field col s12 envio-formulario">
+                        <button class="btn waves-effect waves-light right" type="submit" name="action">
+                            <?= label('horas_guardarCambios'); ?>
+                        </button>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--Fin lista de modals-->
 
+<script type="text/javascript">
+    $(document).on('click', '#checkbox_festivosNoObligatorios', function () {
+        var incluirFestivosNoObligatorios = $(this).is(':checked');
+        if(incluirFestivosNoObligatorios) {
+            document.getElementById('horas_inputFestivosNoObligatorios').style.display = 'block';
+        } else {
+            document.getElementById('horas_inputFestivosNoObligatorios').style.display = 'none';
+        }
+    });
+    function validacionCorrecta_horas() {
+        var formulario = $('#form_horas');
+        $.ajax({
+            data: formulario.serialize(),
+            url: formulario.attr('action'),
+            type:  formulario.attr('method'),
+            success:  function (response) {
+                if (response == '0') {
+                    alert("<?=label('errorGuardar'); ?>");
+                } else {
+                    alert("Cambios gurdados correctamente.");
+                    $('#horasLaborales .modal-header a').click();
+                }
+            }
+        });
+    }
+    $(document).on('click', '#btn_horasLaborales', function () {
+        $.ajax({
+            type: 'post',
+            url: '<?= base_url(); ?>horas/cargarDatos',
+            data: {  },
+            success: function(response)
+            {
+                if(response != 'null') {
+                    var datosHoras = $.parseJSON(response);
+                    var incluirNoObligatorios = datosHoras['incluirNoObligatorios'];
+                    $('#form_horas #horas_diasAnno').val(datosHoras['diasAnno']);
+                    $('#form_horas #horas_finesSemana').val(datosHoras['finesSemana']);
+                    $('#form_horas #horas_festivosObligatorios').val(datosHoras['festivosObligatorios']);
+                    $('#form_horas #horas_festivosNoObligatorios').val(datosHoras['festivosNoObligatorios']);
+                    if (incluirNoObligatorios == 0) {
+                        $('#form_horas #checkbox_festivosNoObligatorios').prop('checked', false);
+                        document.getElementById('horas_inputFestivosNoObligatorios').style.display = 'none';
+                    } else {
+                        $('#form_horas #checkbox_festivosNoObligatorios').prop('checked', true);
+                        document.getElementById('horas_inputFestivosNoObligatorios').style.display = 'block';
+                    }
+                    $('#form_horas #horas_vacaciones').val(datosHoras['vacaciones']);
+                    $('#form_horas #horas_promedioBajas').val(datosHoras['promedioBajas']);
+                    $('#form_horas #horas_diasFacturables').val(datosHoras['diasFacturables']);
+                    $('#form_horas #horas_promedioHorasDiarias').val(datosHoras['promedioHorasDiarias']);
+                    $('#form_horas #horas_cantidadManoObra').val(datosHoras['cantidadManoObra']);
 
-  
-  <script type="text/javascript">
+                    var totalHorasAnual = (datosHoras['diasFacturables'] * datosHoras['promedioHorasDiarias']).toFixed(2);
+                    var promedioHorasMensual = (totalHorasAnual / 12).toFixed(2);
+                    $('#horas_totalAnual').text(totalHorasAnual);
+                    $('#horas_promedioMensual').text(promedioHorasMensual);
 
+                    $('#horasLaborales label').addClass('active');
+                    $('#label_checkboxFestivosNoObligatorios').removeClass('active');
+                } else {
+                    $('#horas_totalAnual').text('0');
+                    $('#horas_promedioMensual').text('0');
+                }
+            }
+        });
+    });
+</script>
 
-      // $(document).on("ready", function(){
-      //     var config = {'.chosen-select select'           : {}}
-      //     for (var selector in config) {
-      //       $(selector).chosen(config[selector]);
-      //     }
-      // });
+<script type="text/javascript">
+//    $(document).on("ready", function(){
+//        var config = {'.chosen-select select'           : {}}
+//        for (var selector in config) {
+//            $(selector).chosen(config[selector]);
+//        }
+//    });
+</script>
 
-
-  </script>
-
-</body>
-
+    </body>
 </html>

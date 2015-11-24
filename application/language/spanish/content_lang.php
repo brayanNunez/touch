@@ -333,6 +333,20 @@ $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos selec
 
     $lang['proveedores_codigoGastoNoValido'] = 'El código de gasto indicado ya existe.';
 
+//Horas
+    $lang['horas_titulo'] = 'Tiempo facturable';
+    $lang['horas_diasAnno'] = 'Días del año';
+    $lang['horas_finesSemana'] = 'Fines de semana';
+    $lang['horas_festivosObligatorios'] = 'Festivos obligatorios';
+    $lang['horas_festivosNoObligatorios'] = 'Festivos no obligatorios';
+    $lang['horas_vacaciones'] = 'Vacaciones';
+    $lang['horas_promedioBajas'] = 'Promedio de bajas por mano de obra directa';
+    $lang['horas_diasFacturables'] = 'Días facturables';
+    $lang['horas_promedioHorasDiarias'] = 'Promedio de horas diarias trabajadas';
+    $lang['horas_cantidadManoObra'] = 'Cantidad de mano de obra directa';
+    $lang['horas_guardarCambios'] = 'Guardar cambios';
+    $lang['horas_asignarFestivosNoObligatorios'] = 'Asigna su empresa también festivos no obligatorios';
+
 //Gastos en servicio
     $lang['formServicio_seleccioneGasto'] = 'Seleccione el gasto';
     $lang['formServicio_seleccioneCategoria'] = 'Seleccione la categoría';
