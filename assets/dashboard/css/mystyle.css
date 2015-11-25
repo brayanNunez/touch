@@ -530,3 +530,8 @@ tr.group:hover {
 /*.datosPadre{
 	display: none;
 }*/
+
+#preCarga{
+	background: #CCC;
+	height: 500px;
+}

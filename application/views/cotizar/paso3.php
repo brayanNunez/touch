@@ -447,15 +447,21 @@
    $(document).ready(function(){
    
          $('#botonPaso4').parents('li').on('click', function(){
-          event.preventDefault();
+            // alert('hola');
+
+          // event.preventDefault();
           // $('#botonPaso3').parents('li').click();
+          // alert('hola');
           actualizarDiseno();
+
           var html = crearPDF();
-          // alert(html);
+          // alert('hola');
+
           var idEmpresa = "<?= $resultado['idEmpresa'];?>";
           var idCotizacion = "<?= encryptIt($resultado['idCotizacion']);?>";
    
           // alert(html);
+
    
           $.ajax({
              data: {miHtml :  html, idEmpresa :  idEmpresa, idCotizacion :  idCotizacion},
@@ -463,11 +469,19 @@
              type:  'post',
              beforeSend: function(){
                   $('#botonPaso4').text('Cargando...');
+                  $('#vistaPrevia').hide();
+                  $('#preCarga').show();
+
               },
              success:  function (response) {
                    // alert(response);
                   $('#botonPaso4').text('<?= label('paso4'); ?>');
-                  document.getElementById('vistaPrevia').contentDocument.location.reload(true);
+                  // document.getElementById('vistaPrevia').contentDocument.location.reload(true);
+                  // document.getElementById('vistaPrevia').contentWindow.location.reload();
+
+                  $('#vistaPrevia').attr('src', $('#vistaPrevia').attr('src'));
+                  $('#vistaPrevia').show();
+                  $('#preCarga').hide();
                   // $('#vistaPrevia').contentDocument.location.reload(true);
               }
         });

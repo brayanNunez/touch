@@ -35,8 +35,9 @@
    </div>
 </div> -->
 <iframe id="vistaPrevia" class="col s12" height="500px" src="<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/cotizaciones/<?= encryptIt($resultado['idCotizacion']);?>/sistema/test.pdf">
-
 </iframe>
+<div id="preCarga" class="col s12">
+</div>
 
 
 <div class="col s12 m12 l12">
@@ -184,11 +185,11 @@
     $(document).on("ready", function () {
 
 
-        $('#botonPaso4').on("click", function () {
+        // $('#botonPaso4').on("click", function () {
 
 
             // alert("ahora2");
-            document.getElementById('vistaPrevia').contentDocument.location.reload(true);
+             $('#vistaPrevia').attr('src', $('#vistaPrevia').attr('src'));
             // $('#vistaPrevia').attr("src", $('#vistaPrevia').attr("src"));
 
         });
