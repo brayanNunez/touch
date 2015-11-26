@@ -148,13 +148,14 @@ class Servicio_model extends CI_Model
                 }
                 $row['fases'] = $resultado;
 
-                $this->db->select('ga.idGasto, ga.codigo, ga.nombre as nombreGasto, ga.monto, gs.cantidad, pe.juridico, pe.nombre as nombrePersona, pe.primerApellido, pe.segundoApellido, fp.nombre as formaPago');
+                $this->db->select('gs.idGastoServicio, ga.idGasto, ga.codigo, ga.nombre as nombreGasto, ga.monto, gs.cantidad, pe.juridico, pe.nombre as nombrePersona, pe.primerApellido, pe.segundoApellido, fp.nombre as formaPago');
                 $this->db->from('gasto ga');
                 $this->db->join('proveedor pe', 'ga.idProveedor = pe.idProveedor');
                 $this->db->join('formaPago fp', 'ga.formaPago = fp.idFormaPago');
                 $this->db->join('gastoservicio gs', 'ga.idGasto = gs.idGasto');
                 $this->db->join('servicio se', 'gs.idServicio = se.idServicio');
                 $this->db->where('se.idServicio', $id);
+                $this->db->where('gs.eliminado', 0);
                 $gastos = $this->db->get();
                 if (!$gastos) {
                     throw new Exception("Error en la BD");
@@ -206,6 +207,30 @@ class Servicio_model extends CI_Model
             if (!$query) throw new Exception("Error en la BD");
             foreach ($data['fases'] as $fase) {
                 $query = $this->db->insert('fase_servicio', $fase);
+                if (!$query) {
+                    throw new Exception("Error en la BD");
+                }
+            }
+
+            $gastosEliminados = $data['gastosEliminados'];
+            foreach ($gastosEliminados as $gastosEliminado) {
+                $this->db->where('idGastoServicio', $gastosEliminado['idGastoServicio']);
+                $query = $this->db->update('gastoservicio', $gastosEliminado);
+                if (!$query) {
+                    throw new Exception("Error en la BD");
+                }
+            }
+            $gastosEditados = $data['gastosEditados'];
+            foreach ($gastosEditados as $gastosEditado) {
+                $this->db->where('idGastoServicio', $gastosEditado['idGastoServicio']);
+                $query = $this->db->update('gastoservicio', $gastosEditado);
+                if (!$query) {
+                    throw new Exception("Error en la BD");
+                }
+            }
+            $gastosNuevos = $data['gastosNuevos'];
+            foreach ($gastosNuevos as $gastosNuevo) {
+                $query = $this->db->insert('gastoservicio', $gastosNuevo);
                 if (!$query) {
                     throw new Exception("Error en la BD");
                 }

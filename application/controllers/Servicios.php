@@ -68,15 +68,30 @@ class Servicios extends CI_Controller
         $idEmpresa = $sessionActual['idEmpresa'];
 
         $data['impuestos'] = $this->input->post('servicio_impuestos');
-        $data['datos'] = array(
-            'idEmpresa' => $idEmpresa,
-            'codigo' => $this->input->post('servicio_codigo'),
-            'nombre' => $this->input->post('servicio_nombre'),
-            'descripcion' => $this->input->post('servicio_descripcion'),
-            'utilidad' => $this->input->post('servicio_utilidad'),
-            'total' => $this->input->post('servicio_total'),
-            'estado' => 0
-        );
+        $incluirGastos = $this->input->post('cotizacion_incluirGastosVariables');
+        if($incluirGastos) {
+            $data['datos'] = array(
+                'idEmpresa' => $idEmpresa,
+                'codigo' => $this->input->post('servicio_codigo'),
+                'nombre' => $this->input->post('servicio_nombre'),
+                'descripcion' => $this->input->post('servicio_descripcion'),
+                'utilidad' => $this->input->post('servicio_utilidad'),
+                'total' => $this->input->post('servicio_total'),
+                'incluirGastos' => 1,
+                'estado' => 0
+            );
+        } else {
+            $data['datos'] = array(
+                'idEmpresa' => $idEmpresa,
+                'codigo' => $this->input->post('servicio_codigo'),
+                'nombre' => $this->input->post('servicio_nombre'),
+                'descripcion' => $this->input->post('servicio_descripcion'),
+                'utilidad' => $this->input->post('servicio_utilidad'),
+                'total' => $this->input->post('servicio_total'),
+                'incluirGastos' => 0,
+                'estado' => 0
+            );
+        }
 
         $gastos = array();
         $contador = 0;
@@ -126,15 +141,28 @@ class Servicios extends CI_Controller
 
     public function modificar($id) {
         $data['impuestos'] = $this->input->post('servicio_impuestos');
-        $data['datos'] = array(
-            'codigo' => $this->input->post('servicio_codigo'),
-            'nombre' => $this->input->post('servicio_nombre'),
-            'descripcion' => $this->input->post('servicio_descripcion'),
-            'utilidad' => $this->input->post('servicio_utilidad'),
-            'total' => $this->input->post('servicio_total'),
-            'estado' => 0
-        );
-
+        $incluirGastos = $this->input->post('cotizacion_incluirGastosVariables');
+        if($incluirGastos == 'on') {
+            $data['datos'] = array(
+                'codigo' => $this->input->post('servicio_codigo'),
+                'nombre' => $this->input->post('servicio_nombre'),
+                'descripcion' => $this->input->post('servicio_descripcion'),
+                'utilidad' => $this->input->post('servicio_utilidad'),
+                'total' => $this->input->post('servicio_total'),
+                'incluirGastos' => 1,
+                'estado' => 0
+            );
+        } else {
+            $data['datos'] = array(
+                'codigo' => $this->input->post('servicio_codigo'),
+                'nombre' => $this->input->post('servicio_nombre'),
+                'descripcion' => $this->input->post('servicio_descripcion'),
+                'utilidad' => $this->input->post('servicio_utilidad'),
+                'total' => $this->input->post('servicio_total'),
+                'incluirGastos' => 0,
+                'estado' => 0
+            );
+        }
         $data['id'] = decryptIt($id);
 
         $fases = array();
@@ -144,24 +172,64 @@ class Servicios extends CI_Controller
         // echo $cantidadFases; exit();
         while ($fasesObtenidos < $cantidadFases) {
             if (isset($_POST['id_'.$contador])) {
-                  
-                  $fase = array(
-                 'idFase' => $this->input->post('id_'.$contador),
-                 'cantidadTiempo' => $this->input->post('cantidadhoras_'.$contador),
-                 'idServicio' => $data['id']
-                 );
+                $fase = array(
+                    'idFase' => $this->input->post('id_'.$contador),
+                    'cantidadTiempo' => $this->input->post('cantidadhoras_'.$contador),
+                    'idServicio' => $data['id']
+                );
                 array_push($fases, $fase);
                 $fasesObtenidos++;
             }
             $contador++;
-         }
+        }
+        $data['fases'] = $fases;
+        // echo print_r($fases); exit();
 
-         $data['fases'] = $fases;
+        $gastosEditados = array();
+        $gastosEliminados = array();
+        $gastosNuevos = array();
+        $contadorGastos = 0;
+        $gastosObtenidos = 0;
+        $cantidadGastos = $this->input->post('cantidadGastos');
 
-         // echo print_r($fases); exit();
+        while ($gastosObtenidos < $cantidadGastos) {
+            if(isset($_POST['gasto_'.$contadorGastos])) {
+                $accionEfectuada = $this->input->post('gasto_'.$contadorGastos);
+                if ($accionEfectuada == '2') {//fue eliminado
+                    $identificacion = $this->input->post('gasto'.$contadorGastos.'_idGasto');
+                    $gasto = array(
+                        'idGastoServicio' => $this->input->post('gasto'.$contadorGastos.'_gastoServicio'),
+                        'eliminado' => 1
+                    );
+                    array_push($gastosEliminados, $gasto);
+                } else {
+                    if ($accionEfectuada == '1') {// no fue eliminado
+                        $identificacion = $this->input->post('gasto'.$contadorGastos.'_idGasto');
+                        $gasto = array(
+                            'idGastoServicio' => $this->input->post('gasto'.$contadorGastos.'_gastoServicio'),
+                            'cantidad' => $this->input->post('gasto'.$contadorGastos.'_cantidad')
+                        );
+                        array_push($gastosEditados, $gasto);
+                    } else {// es nuevo
+                        $identificacion = $this->input->post('gasto'.$contadorGastos.'_idGasto');
+                        $gasto = array(
+                            'idGasto' => $identificacion,
+                            'idServicio' => $data['id'],
+                            'cantidad' => $this->input->post('gasto'.$contadorGastos.'_cantidad'),
+                            'eliminado' => 0
+                        );
+                        array_push($gastosNuevos, $gasto);
+                    }
+                }
+                $gastosObtenidos++;
+            }
+            $contadorGastos++;
+        }
+        $data['gastosNuevos'] = $gastosNuevos;
+        $data['gastosEditados'] = $gastosEditados;
+        $data['gastosEliminados'] = $gastosEliminados;
+//        print_r($data);exit();
 
-
-        
         if (!$this->Servicio_model->modificar($data)) {
             //Error en la transacci�n
             echo 0;

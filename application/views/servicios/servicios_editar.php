@@ -216,7 +216,7 @@
 
                                         <div class="col s12" style="margin: 10px 0 25px;">
                                             <div class="input-field col s12" style="margin-top: 0;">
-                                                <input class="filled-in" type="checkbox" id="cotizacion_incluirGastosVariables"/>
+                                                <input class="filled-in" type="checkbox" id="cotizacion_incluirGastosVariables" name="cotizacion_incluirGastosVariables"/>
                                                 <label for="cotizacion_incluirGastosVariables"><?= label('cotizacion_incluirGastosVariables'); ?></label>
                                             </div>
                                             <div id="cotizacion_gastosVariables" style="display: none;padding: 0;">
@@ -295,14 +295,15 @@
                                                             <tbody>
                                                             <?php
                                                             $totalGastos = 0;
+                                                            $contador = 0;
                                                             if(isset($resultado['gastos'])) {
                                                                 $gastosServicio = $resultado['gastos'];
                                                                 if($gastosServicio != false) {
-                                                                    $contador = 0;
                                                                     foreach ($gastosServicio as $gasto) {
+                                                                        $idGastoServicio = $gasto['idGastoServicio'];
                                                                         $idGasto = $gasto['idGasto'];
                                                                         $proveedor = $gasto['nombrePersona'];
-                                                                        $codigo = $gasto['codigo'];
+                                                                        $codigoG = $gasto['codigo'];
                                                                         $juridico = $gasto['juridico'];
                                                                         $nombre = $gasto['nombreGasto'];
                                                                         $monto = $gasto['monto'];
@@ -319,9 +320,9 @@
                                                                                 <!-- value 1 para existentes, 0 los nuevos y 2 los eliminados -->
                                                                                 <input class="accionAplicada" style="display:none" name="gasto_<?= $contador; ?>" type="text" value="1">
 
-                                                                                <input style="display:none" name="gasto_<?= $contador; ?>" type="text">
+                                                                                <input name="gasto<?= $contador; ?>_gastoServicio" type="text" style="display: none;" value="<?= $idGastoServicio; ?>" />
                                                                                 <input name="gasto<?= $contador; ?>_idGasto" type="text" style="display: none;" value="<?= $idGasto; ?>" />
-                                                                                <?= $codigo; ?>
+                                                                                <?= $codigoG; ?>
                                                                             </td>
                                                                             <td>
                                                                                 <?= $nombre; ?>
@@ -347,7 +348,7 @@
                                                                             </td>
                                                                             <td>
                                                                                 <a class="boton-opciones btn-flat white-text confirmarEliminarGasto"
-                                                                                   data-id-eliminar="<?= $idGasto; ?>"  data-fila-eliminar="fila<?= $contador; ?>"><?= label('menuOpciones_eliminar'); ?></a>
+                                                                                   data-id-eliminar="<?= $idGasto; ?>"  data-fila-eliminar="fila<?= $contador++; ?>"><?= label('menuOpciones_eliminar'); ?></a>
                                                                             </td>
                                                                         </tr>
                                                             <?php
@@ -411,7 +412,7 @@
                                         </div>
                                     </div>
                                     <div style="visibility:hidden; position:absolute">
-                                        <input id="cantidadGastos" name="cantidadGastos" type="text" value="0">
+                                        <input id="cantidadGastos" name="cantidadGastos" type="text" value="<?= $contador; ?>">
                                     </div>
                                 </form>
                             </div>
@@ -467,7 +468,7 @@
     ?>
 
     $(document).ready(function () {
-        var incluirGastos = '<?= $resultado['incluirGastos'];?>';
+        var incluirGastos = '<?= $incluirGastos; ?>';
         var $gastos = $('#cotizacion_gastosVariables');
         var $check = $('#cotizacion_incluirGastosVariables');
         if(incluirGastos == 1) {
@@ -634,7 +635,7 @@
             '</td>';
         var codigo = '<td>' +
             '<input class="accionAplicada" style="display:none" name="gasto_' + contadorFilasGastos + '" type="text" value="0">' +
-            '<input style="display:none" name="gasto_'+ contadorFilasGastos +'" type="text">' +
+            '<input name="gasto' + contadorFilasGastos + '_gastoServicio" type="text" style="display: none;" value="0" />' +
             '<input name="gasto' + contadorFilasGastos + '_idGasto" type="text" style="display: none;" value="' + idEncriptado + '" />' + cod + '</td>';
         var nombre = '<td>' + nom + '</td>';
         var persona = '<td>' + per + '</td>';
@@ -1262,7 +1263,7 @@ echo "var arrayFases =". $js_array;?>
         <p><?= label('servicioEditadoCorrectamente'); ?></p>
     </div>
     <div class="modal-footer">
-        <a href="<?= base_url(); ?>servicios?>" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
 <div id="transaccionIncorrecta" class="modal">
