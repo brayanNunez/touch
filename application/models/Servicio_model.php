@@ -116,12 +116,10 @@ class Servicio_model extends CI_Model
                 $this->db->join('servicio se', 'se.idServicio = is.idServicio');
                 $this->db->where('se.idServicio', $id);
                 $impuestos = $this->db->get();
-
                 if (!$impuestos) {
                     throw new Exception("Error en la BD");
                 }
                 $row['impuestos'] = $impuestos->result_array();
-
 
                 $this->db->select('fs.cantidadTiempo, fa.*, fpadre.codigo as p_codigo, fpadre.nombre as p_nombre,fpadre.notas as p_notas');
                 $this->db->from('fase fa');
@@ -130,20 +128,14 @@ class Servicio_model extends CI_Model
                 $this->db->join('servicio se', 'se.idServicio = fs.idServicio');
                 $this->db->where('se.idServicio', $id);
                 $fases = $this->db->get();
-
                 if (!$fases) {
                     throw new Exception("Error en la BD");
                 }
                 $row['misFases'] = $fases->result_array();
-
-
-
-                
                 $fasesPadre = $this->db->get_where('fase',array('idEmpresa' => $idEmpresa, 'eliminado' => 0, 'fasePadre' => 1));
                 if (!$fasesPadre) {
                     throw new Exception("Error en la BD");
                 }
-
                 $fasesPadre = $fasesPadre->result_array();
                 $resultado = array();
                  foreach ($fasesPadre as $fase)
@@ -154,13 +146,22 @@ class Servicio_model extends CI_Model
                     $fase['subfases'] = $query->result_array();
                     array_push($resultado, $fase);
                 }
-
                 $row['fases'] = $resultado;
 
+                $this->db->select('ga.idGasto, ga.codigo, ga.nombre as nombreGasto, ga.monto, gs.cantidad, pe.juridico, pe.nombre as nombrePersona, pe.primerApellido, pe.segundoApellido, fp.nombre as formaPago');
+                $this->db->from('gasto ga');
+                $this->db->join('proveedor pe', 'ga.idProveedor = pe.idProveedor');
+                $this->db->join('formaPago fp', 'ga.formaPago = fp.idFormaPago');
+                $this->db->join('gastoservicio gs', 'ga.idGasto = gs.idGasto');
+                $this->db->join('servicio se', 'gs.idServicio = se.idServicio');
+                $this->db->where('se.idServicio', $id);
+                $gastos = $this->db->get();
+                if (!$gastos) {
+                    throw new Exception("Error en la BD");
+                }
+                $row['gastos'] = $gastos->result_array();
 
-
-                
-                // echo  print_r($fases); exit();
+//                print_r($row['gastos']); exit();
             }
 
             $this->db->trans_commit();

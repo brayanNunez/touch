@@ -49,7 +49,7 @@ class Servicios extends CI_Controller
         //el codigo se puede repetir solo en diferentes empresas
         $resultado = $this->Servicio_model->existeCodigo($data);
         if ($resultado === false) {
-            //Error en la transacción
+            //Error en la transacciï¿½n
             echo 0;
         } else {
             if ($resultado == 1) {
@@ -108,9 +108,13 @@ class Servicios extends CI_Controller
     {
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
+        $data['gastos'] = $this->Servicio_model->gastosVariables($idEmpresa);
+        $data['personas'] = $this->Servicio_model->personas($idEmpresa);
+        $data['categorias'] = $this->Servicio_model->categorias($idEmpresa);
+
         $resultado = $this->Servicio_model->cargar(decryptIt($id), $idEmpresa);
         if ($resultado === false || $resultado === array()) {
-            echo "Error en la transacción";
+            echo "Error en la transacciï¿½n";
         } else {
             $data['resultado'] = $resultado;
             $this->load->view('layout/default/header');
@@ -159,7 +163,7 @@ class Servicios extends CI_Controller
 
         
         if (!$this->Servicio_model->modificar($data)) {
-            //Error en la transacción
+            //Error en la transacciï¿½n
             echo 0;
         } else {
             //correcto
@@ -170,7 +174,7 @@ class Servicios extends CI_Controller
     public function eliminar() {
         $id = $_POST['idEliminar'];
         if (!$this->Servicio_model->eliminar(decryptIt($id))) {
-            //Error en la transacción
+            //Error en la transacciï¿½n
             echo 0;
         } else {
             //correcto
