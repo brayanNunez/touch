@@ -298,34 +298,18 @@ START CONTENT  -->
                                                                 <label for="agregarGastos_proveedor"><?= label('agregarGastos_proveedor'); ?></label>
                                                                 <br>
                                                                 <select data-placeholder="<?= label('formServicio_seleccioneProveedor'); ?>" data-tipo="servicioPersonaGasto"  data-incluirBoton="0" id="agregarGastos_proveedor" name="agregarGastos_proveedor" class="browser-default chosen-select">
-<!--                                                                    <option value=""></option>-->
-<!--                                                                    --><?php
-//                                                                    if(isset($personas)) {
-//                                                                        foreach ($personas as $persona) { ?>
-<!--                                                                            <option value="--><?//= $persona['idProveedor']; ?><!--">--><?//= $persona['nombre']; ?><!--</option>-->
-<!--                                                                            --><?php
-//                                                                        }
-//                                                                    } ?>
                                                                 </select>
                                                             </div>
                                                             <div class="input-field col s12 inputSelector">
                                                                 <label for="agregarGastos_gasto"><?= label('agregarGastos_gasto'); ?></label>
                                                                 <br>
                                                                 <select data-placeholder="<?= label('formServicio_seleccioneGasto'); ?>" data-incluirBoton="0" id="agregarGastos_gasto" name="agregarGastos_gasto" class="browser-default chosen-select">
-<!--                                                                    <option value=""></option>-->
-<!--                                                                    --><?php
-//                                                                    if(isset($gastos)) {
-//                                                                        foreach ($gastos as $gasto) { ?>
-<!--                                                                            <option value="--><?//= $gasto['idGasto']; ?><!--">--><?//= $gasto['nombre']; ?><!--</option>-->
-<!--                                                                            --><?php
-//                                                                        }
-//                                                                    } ?>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div>
-                                                        <a class="waves-effect btn modal-action modal-close" id="btn_agregarGasto"
+                                                        <a class="waves-effect btn" id="btn_agregarGasto"
                                                            style="width: 200px;float: none;display: block;margin: 0 auto;text-align: center;color: white;cursor:pointer;">
                                                             <?= label('agregarGatos_agregar'); ?>
                                                         </a>
@@ -407,6 +391,10 @@ START CONTENT  -->
 <div style="display: none">
     <a id="linkModalGuardado" href="#transaccionCorrecta" class="btn btn-default modal-trigger"></a>
     <a id="linkModalError" href="#transaccionIncorrecta" class="btn btn-default modal-trigger"></a>
+</div>
+<div style="visibility:hidden; position:absolute">
+    <a id="linkGastosEliminar" href="#eliminarGasto" class="modal-trigger" data-fila-eliminar="1"
+       title="<?= label('formProveedor_gastoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>
 </div>
 <!-- END CONTENT-->
 
@@ -574,8 +562,8 @@ START CONTENT  -->
     var contadorFilasGastos = 0;
     function agregarFilaGasto(idEncriptado, cod, nom, per, categoria, tmp, mont){
         var boton = '<td>' +
-                        '<a href="#eliminarGasto" class="boton-opciones btn-flat white-text modal-trigger confirmarEliminar"' +
-                        'data-id-eliminar="' + idEncriptado + '"  data-fila-eliminar="fila'+ contadorFilasGastos +'">' + menuOpciones_eliminar +'</a>' +
+                        '<a class="boton-opciones btn-flat white-text confirmarEliminarGasto"' +
+                        'data-id-eliminar="' + idEncriptado + '" data-fila-eliminar="fila'+ contadorFilasGastos +'">' + menuOpciones_eliminar +'</a>' +
                     '</td>';
         var codigo = '<td>' +
                         '<input style="display:none" name="gasto_'+ contadorFilasGastos +'" type="text">' +
@@ -586,10 +574,9 @@ START CONTENT  -->
         var tiempo = '<td>' + tmp +' </td>';
         var cantidad = '<td><input class="input_cantidad_gasto" min="0" name="gasto' + contadorFilasGastos + '_cantidad" type="number" value="0"/></td>';
         var monto = '<td><input class="input_monto_gasto" style="display: none;" name="gasto' + contadorFilasGastos + '_monto" type="text" value="' + mont + '" />' + mont + '</td>';
-        var subtotal = '<td>$<span class="subtotal_fila">0</pan></td>';
+        var subtotal = '<td>$<span class="subtotal_fila">0</span></td>';
 
         var tBody = $('#gastos-tabla-lista');
-
         if(gastosTabla.indexOf(idEncriptado) == -1) {
             if (tBody.find('tbody tr').length == 1) {
                 tBody.find('tbody tr:first').before('' +
@@ -597,6 +584,7 @@ START CONTENT  -->
                     codigo + nombre + persona + categoriaPersona + tiempo + monto + cantidad + subtotal + boton +
                     '</tr>'
                 );
+
             } else {
                 tBody.find('tbody tr:last').before('' +
                     '<tr>' +
@@ -629,26 +617,23 @@ START CONTENT  -->
 
 <script type="text/javascript">
     $(document).on("ready", function () {
-        <?php
-            if (isset($lista)) {
-                if ($lista === false) { ?>
-        $('#linkModalErrorCargarDatos').click();
-        <?php
-                }
-            } ?>
-
         var idEliminarGasto = 0;
         var filaEliminarGasto = null;
 
-        $(document).on('click','.confirmarEliminar', function () {
+        $(document).on('click','.confirmarEliminarGasto', function () {
             idEliminarGasto = $(this).data('id-eliminar');
             filaEliminarGasto = $(this).parents('tr');
+            $('#linkGastosEliminar').click();
+            //esto se hace porque al agregar un <a class="modal-trigger"> dinamicamente con el metodo de agregarNuevoContacto() pareciera no servir, entonces lo que se hace es llamar al evento click del modal-trigger con el id = linkContactosElimminar
         });
         $('#eliminarGasto #botonEliminar').on('click', function () {
             event.preventDefault();
             filaEliminarGasto.fadeOut(function () {
+                filaEliminarGasto.empty();
                 filaEliminarGasto.remove();
             });
+            var id = gastosTabla.indexOf(''+idEliminarGasto);
+            gastosTabla[id] = '';
         });
     });
 </script>
