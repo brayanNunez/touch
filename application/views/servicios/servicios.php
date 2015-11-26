@@ -1,23 +1,13 @@
-START CONTENT  -->
-
 <button id="prueba">(PRUEBA)Ver el valor de los impuestos</button>
 
-
 <script type="text/javascript">
-    
 // $(document).on('ready', function()){
     $('#prueba').click(function(){
-
         $.each($("#servicio_impuestos").tagsinput('items'), function( index, value ) {
-          alert( index + ": " + value['valor'] );
+            alert( index + ": " + value['valor'] );
         });
-
      });
-
-
 </script>
-
-
 
 <section id="content">
     <!--start breadcrumbs-->
@@ -385,7 +375,6 @@ START CONTENT  -->
     <?php
     $this->load->view('layout/default/menu-crear.php');
     ?>
-
 </section>
 
 <div style="display: none">
@@ -500,22 +489,25 @@ START CONTENT  -->
             }
         });
         $(document).on('change', '.input_cantidad_gasto', function () {
-            var elementos = $('.total_gastos_variables');
-            var totalGastos = 0;//parseInt(elementos.first().text());
-            $('.input_cantidad_gasto').each(function () {
-                var padre = $(this).parents('tr');
-                var monto = padre.find('td input.input_monto_gasto').first().val();
-                var cantidad = $(this).val();
-                var subtotal = padre.find('td span.subtotal_fila').first();
-                var resultado = monto * cantidad;
-                subtotal.text(resultado);
-                totalGastos += resultado;
-            });
-            elementos.each(function () {
-                $(this).text(totalGastos);
-            });
+            actualizarMontos();
         });
     });
+    function actualizarMontos() {
+        var elementos = $('.total_gastos_variables');
+        var totalGastos = 0;//parseInt(elementos.first().text());
+        $('.input_cantidad_gasto').each(function () {
+            var padre = $(this).parents('tr');
+            var monto = padre.find('td input.input_monto_gasto').first().val();
+            var cantidad = $(this).val();
+            var subtotal = padre.find('td span.subtotal_fila').first();
+            var resultado = monto * cantidad;
+            subtotal.text(resultado);
+            totalGastos += resultado;
+        });
+        elementos.each(function () {
+            $(this).text(totalGastos);
+        });
+    }
 </script>
 <!--Script para manejo de gastos-->
 <script type="text/javascript">
@@ -614,7 +606,7 @@ START CONTENT  -->
         select_gastos.trigger("chosen:updated");
     }
 </script>
-
+<!--Script para eliminar gastos-->
 <script type="text/javascript">
     $(document).on("ready", function () {
         var idEliminarGasto = 0;
@@ -631,6 +623,7 @@ START CONTENT  -->
             filaEliminarGasto.fadeOut(function () {
                 filaEliminarGasto.empty();
                 filaEliminarGasto.remove();
+                actualizarMontos();
             });
             var id = gastosTabla.indexOf(''+idEliminarGasto);
             gastosTabla[id] = '';
@@ -638,54 +631,51 @@ START CONTENT  -->
     });
 </script>
 
-
+<!--Script para tabla de fases e insercion de datos-->
 <script>
+    $(document).ready(function() {
+        var table = $('#tabla-servicio').DataTable({
+            "columnDefs": [
+                { "visible": false, "targets": 1 }
+            ],
+            "order": [[ 2, 'asc' ]],
+            "displayLength": 25,
+            "drawCallback": function ( settings ) {
+                var api = this.api();
+                var rows = api.rows( {page:'current'} ).nodes();
+                var last=null;
 
-$(document).ready(function() {
-    var table = $('#tabla-servicio').DataTable({
-        "columnDefs": [
-            { "visible": false, "targets": 1 }
-        ],
-        "order": [[ 2, 'asc' ]],
-        "displayLength": 25,
-        "drawCallback": function ( settings ) {
-            var api = this.api();
-            var rows = api.rows( {page:'current'} ).nodes();
-            var last=null;
+                var cantidadGrupo = '';
+                var contadorGrupo = 0;
+                api.column(1, {page:'current'} ).data().each( function ( group, i ) {
 
-            var cantidadGrupo = '';
-            var contadorGrupo = 0;
-            api.column(1, {page:'current'} ).data().each( function ( group, i ) {
+                    if ( last !== group ) {
+                        // alert('entre');
+                        $(rows).eq( i ).before(
+                            '<tr class="group"><td colspan="2">'+group+'</td><td id="grupo'+ contadorGrupo++ +'">0</td><td></td></tr>'
+                        );
 
-                if ( last !== group ) {
-                    // alert('entre');
-                    $(rows).eq( i ).before(
-                        '<tr class="group"><td colspan="2">'+group+'</td><td id="grupo'+ contadorGrupo++ +'">0</td><td></td></tr>'
-                    );
+                        last = group;
 
-                    last = group;
- 
-                }
-                cantidadGrupo = $(rows).eq( i ).find('.cantidad').val();
-                var valorActual = parseInt($("#grupo" + (contadorGrupo -1)).text()) + parseInt(cantidadGrupo);
-                $("#grupo" + (contadorGrupo -1)).text(valorActual);
-                
-            } );
-        }
-    } );
- 
-    // Order by the grouping
-    $('#tabla-servicio tbody').on( 'click', 'tr.group', function () {
-        var currentOrder = table.order()[0];
-        if ( currentOrder[0] === 2 && currentOrder[1] === 'asc' ) {
-            table.order( [ 2, 'desc' ] ).draw();
-        }
-        else {
-            table.order( [ 2, 'asc' ] ).draw();
-        }
-    } );
-} );
+                    }
+                    cantidadGrupo = $(rows).eq( i ).find('.cantidad').val();
+                    var valorActual = parseInt($("#grupo" + (contadorGrupo -1)).text()) + parseInt(cantidadGrupo);
+                    $("#grupo" + (contadorGrupo -1)).text(valorActual);
 
+                } );
+            }
+        } );
+
+        // Order by the grouping
+        $('#tabla-servicio tbody').on( 'click', 'tr.group', function () {
+            var currentOrder = table.order()[0];
+            if ( currentOrder[0] === 2 && currentOrder[1] === 'asc' ) {
+                table.order( [ 2, 'desc' ] ).draw();
+            } else {
+                table.order( [ 2, 'asc' ] ).draw();
+            }
+        });
+    });
 
     function validacionCorrecta_Servicios(){
         $.ajax({
@@ -729,10 +719,9 @@ $(document).ready(function() {
         });
     }
 </script>
-
+<!--Script para tags de impuestos-->
 <script>
     $(document).ready(function () {
-
         var Impuestos = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('nombre'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -742,7 +731,6 @@ $(document).ready(function() {
                 ttl: 1000
             }
         });
-
         Impuestos.initialize();
 
         elt = $('.tags_Impuestos > > input');
@@ -755,14 +743,11 @@ $(document).ready(function() {
                 source: Impuestos.ttAdapter()
             }
         });
-
-
-        
-        // elt.tagsinput('add', {"idImpuesto": 1, "nombre": "Impuestos directos"});
-        // elt.tagsinput('add', {"idImpuesto": 2, "nombre": "Impuestos indirectos"});
+//        elt.tagsinput('add', {"idImpuesto": 1, "nombre": "Impuestos directos"});
+//        elt.tagsinput('add', {"idImpuesto": 2, "nombre": "Impuestos indirectos"});
     });
 </script>
-
+<!--Script para opciones y checks-->
 <script>
     $(window).load(function () {
         var marcados = $('.checkbox:checked').size();
@@ -849,7 +834,8 @@ $(document).ready(function() {
     });
 </script>
 
-<!-- lista modals -->
+
+<!-- Inicio lista modals -->
 <div id="transaccionCorrecta" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
@@ -1024,4 +1010,4 @@ $(document).ready(function() {
         </div>
     </div>
 </div>
-<!-- Fin lista modals
+<!-- Fin lista modals -->
