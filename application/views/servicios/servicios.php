@@ -255,7 +255,7 @@ START CONTENT  -->
 
                                         <div class="row" style="margin-top: 25px;">
                                             <div class="input-field col s12" style="margin-top: 0;">
-                                                <input class="filled-in" type="checkbox" id="cotizacion_incluirGastosVariables"/>
+                                                <input class="filled-in" type="checkbox" id="cotizacion_incluirGastosVariables" name="cotizacion_incluirGastosVariables"/>
                                                 <label for="cotizacion_incluirGastosVariables"><?= label('cotizacion_incluirGastosVariables'); ?></label>
                                             </div>
                                             <div id="cotizacion_gastosVariables" style="display: none;padding: 0;">
