@@ -278,6 +278,9 @@ div#agregarPersona { top: 5% !important; }
 div.tabla_GastosPersona { position: absolute; top: 174px; left: 50%; width: 44px; margin-left: -22px; }
 div.tabla_GastosPersona_agregar { position: absolute; top: 135px; left: 50%; width: 44px; margin-left: -22px; }
 
+a.btn_mostrarElementosOcultos { float: left; font-size: large; text-decoration: underline; cursor: pointer; }
+div#agregarPersona hr { height: 12px; border: 0; box-shadow: inset 0 15px 15px -11px gray; }
+
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/
     div#login-page { width: 380px !important; max-height: 408px !important; top: 0 !important; }
