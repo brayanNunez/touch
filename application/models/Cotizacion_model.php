@@ -145,7 +145,7 @@ class Cotizacion_model extends CI_Model
         }
     }
 
-        function cargar($datos)
+    function cargar($datos)
     {
         try {
             $this->db->trans_begin();
@@ -195,7 +195,27 @@ class Cotizacion_model extends CI_Model
                 array_push($misClientes, $row);
             }
 
+            $lineas = $this->db->get_where('lineadetalle', array('eliminado' => 0,'idCotizacion' => $datos['idCotizacion']));
+            if (!$lineas)throw new Exception("Error en la BD");
+            $lineas = $lineas->result_array();
+            $lineasDetalle = array();
+            foreach ($lineas as $row) {
+                $idLinea = $row['idLineaDetalle'];
+                $this->db->select('im.*');
+                $this->db->from('impuesto im');
+                $this->db->join('impuesto_lineadetalle il', 'il.idImpuesto = im.idImpuesto');
+                $this->db->join('lineadetalle ld', 'ld.idServicio = il.idServicio');
+                $this->db->where('ld.idServicio', $idLinea);
+                $impuestos = $this->db->get();
+                if (!$impuestos)  throw new Exception("Error en la BD");
+                $row['impuestos'] = $impuestos->result_array();
+                array_push($lineasDetalle, $row);
+            }
+
+
             // print_r($plantillas);exit();
+            
+            $data['lineasDetalle'] = $lineasDetalle;
             $data['clientes'] = $misClientes;
             $data['plantillas'] = $plantillas;
             $data['servicios'] = $resultado;

@@ -65,7 +65,7 @@ class Cotizacion extends CI_Controller
             echo "Error en la transacción";
         } else {
 
-            $resultado['lineasDetalle'] = array();
+            
             $resultado['idEmpresa'] = $data['idEmpresa'];
             // $resultado['idCotizacion'] = '123';
             // if ($resultado === false || $resultado === array()) {
@@ -90,7 +90,7 @@ class Cotizacion extends CI_Controller
         if ($resultado === false) {
             echo "Error en la transacción";
         } else {
-            $resultado['lineasDetalle'] = array();
+            // $resultado['lineasDetalle'] = array();
             $resultado['idEmpresa'] = $data['idEmpresa'];
             $resultado['idCotizacion'] = decryptIt($idCotizacion);
             // $resultado['idCotizacion'] = '123';
