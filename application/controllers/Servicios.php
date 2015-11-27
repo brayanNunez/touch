@@ -68,7 +68,7 @@ class Servicios extends CI_Controller
         $idEmpresa = $sessionActual['idEmpresa'];
 
         $data['impuestos'] = $this->input->post('servicio_impuestos');
-        $incluirGastos = $this->input->post('cotizacion_incluirGastosVariables');
+        $incluirGastos = $this->input->post('servicio_incluirGastosVariables');
         if($incluirGastos) {
             $data['datos'] = array(
                 'idEmpresa' => $idEmpresa,
@@ -101,7 +101,8 @@ class Servicios extends CI_Controller
             if (isset($_POST['gasto_'.$contador])) {
                 $gasto = array(
                     'idGasto' => $this->input->post('gasto'.$contador.'_idGasto'),
-                    'cantidad' => $this->input->post('gasto'.$contador.'_cantidad')
+                    'cantidad' => $this->input->post('gasto'.$contador.'_cantidad'),
+                    'eliminado' => 0
                 );
                 array_push($gastos, $gasto);
                 $gastosObtenidos++;
@@ -141,7 +142,7 @@ class Servicios extends CI_Controller
 
     public function modificar($id) {
         $data['impuestos'] = $this->input->post('servicio_impuestos');
-        $incluirGastos = $this->input->post('cotizacion_incluirGastosVariables');
+        $incluirGastos = $this->input->post('servicio_incluirGastosVariables');
         if($incluirGastos == 'on') {
             $data['datos'] = array(
                 'codigo' => $this->input->post('servicio_codigo'),

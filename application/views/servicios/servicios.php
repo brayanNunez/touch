@@ -625,6 +625,8 @@
                 filaEliminarGasto.remove();
                 actualizarMontos();
             });
+            contadorFilasGastos--;
+            actualizarCantidadGastos();
             var id = gastosTabla.indexOf(''+idEliminarGasto);
             gastosTabla[id] = '';
         });
