@@ -61,6 +61,30 @@
     
     ?>  
 
+    $(document).on('ready', function(){
+        cargarLineasDetalle();
+    });
+
+    
+    function cargarLineasDetalle(){
+        // alert('hola');
+        for (var i = arrayLineasDetalle.length - 1; i >= 0; i--) {
+            agregarFila(1);//1 porque liena de detalle viene desde la BD
+            var linea = arrayLineasDetalle[i];
+            var numeroFila = i;
+            // if (linea['idServicio'] == idServicio) {
+                $('#descripcion_' + numeroFila).val(linea['descripcion']);
+                $('#precio_' + numeroFila).val(linea['precioUnidad']);  
+                $('#cantidad_' + numeroFila).val(linea['cantidad']);  
+                cargarImpuestosPorServicio(numeroFila, linea['impuestos'])
+                $('#utilidad_' + numeroFila).val(linea['utilidad']);  
+                // alert(servicio['nombre'] + ', ' + servicio['descripcion']);
+            // } 
+            
+        };
+     // alert('bien');
+    }
+
 
 
     function cargarFila(idServicio, numeroFila){

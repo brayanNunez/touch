@@ -204,8 +204,8 @@ class Cotizacion_model extends CI_Model
                 $this->db->select('im.*');
                 $this->db->from('impuesto im');
                 $this->db->join('impuesto_lineadetalle il', 'il.idImpuesto = im.idImpuesto');
-                $this->db->join('lineadetalle ld', 'ld.idServicio = il.idServicio');
-                $this->db->where('ld.idServicio', $idLinea);
+                $this->db->join('lineadetalle ld', 'ld.idLineaDetalle = il.idLineaDetalle');
+                $this->db->where('ld.idLineaDetalle', $idLinea);
                 $impuestos = $this->db->get();
                 if (!$impuestos)  throw new Exception("Error en la BD");
                 $row['impuestos'] = $impuestos->result_array();
