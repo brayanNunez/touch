@@ -201,7 +201,7 @@
             $.ajax({
                    type: method,
                    url: url,
-                   data: $('#formGeneral, #form_encabezado, #form_paso3AgregarPlantilla, #form_cuerpo, #form_informacion, #form_footer').serialize(), 
+                   data: $('#formLineasDetalle, #formGeneral, #form_encabezado, #form_paso3AgregarPlantilla, #form_cuerpo, #form_informacion, #form_footer').serialize(), 
                    success: function(response)
                    {
                     alert(response);

@@ -35,7 +35,76 @@ class Cotizacion extends CI_Controller
 
 
     public function guardar($idCotizacion){
+
         $data['idCotizacion'] = decryptIt($idCotizacion);
+
+        // echo  $this->input->post('cantidadLineasDetalle'); exit();
+
+        $editados = array();
+        $eliminados = array();
+        $nuevos = array();
+
+        $contador = 0;
+        $lineasObtenidos = 0;
+        $cantidadLineas = $this->input->post('cantidadLineasDetalle');
+
+
+        while ($lineasObtenidos < $cantidadLineas) {
+            if (isset($_POST['linea_'.$contador])) {
+                $accionEfectuada = $this->input->post('linea_'.$contador);
+                if ($accionEfectuada=='2') {//fue eliminado
+                    $identificacion =  decryptIt($this->input->post('idLinea_'.$contador));
+                    $linea = array(
+                         'idLineaDetalle' =>$this->input->post('idLinea_'.$contador),
+                         'eliminado' => '1'
+                         );
+                    array_push($eliminados, $linea);
+                } else {
+                    if ($accionEfectuada=='1') {// no fue eliminado
+                        
+                          $linea = array(
+                         'idLineaDetalle' =>$this->input->post('idLinea_'.$contador),
+                         'idServicio' => $this->input->post('productoNombre_'.$contador),
+                         'descripcion' => $this->input->post('descripcion_'.$contador),
+                         'precioUnidad' => $this->input->post('precio_'.$contador),
+                         'cantidad' => $this->input->post('cantidad_'.$contador),
+                         'utilidad' => $this->input->post('utilidad_'.$contador),
+                         // 'impuestos' => $this->input->post('impuestos_'.$contador),
+                         'eliminado' => '0'
+                         );
+                        array_push($editados, $linea);
+
+                    } else {// es nuevo
+                         $enviarFacturas = 0;
+                         if ($this->input->post('checkbox_lineaCorreoCliente_'.$contador)) {
+                            $enviarFacturas = 1;
+                         }
+                          $linea = array(
+                         'idCotizacion' => $data['idCotizacion'],
+                         'idServicio' => $this->input->post('productoNombre_'.$contador),
+                         'descripcion' => $this->input->post('descripcion_'.$contador),
+                         'precioUnidad' => $this->input->post('precio_'.$contador),
+                         'cantidad' => $this->input->post('cantidad_'.$contador),
+                         'utilidad' => $this->input->post('utilidad_'.$contador),
+                         // 'impuestos' => $this->input->post('impuestos_'.$contador),
+                         'eliminado' => '0'
+                         );
+                        array_push($nuevos, $linea);
+                    }
+
+                }
+                $lineasObtenidos++;
+            }
+            $contador++;
+         }
+
+         $data['nuevos'] = $nuevos;
+         $data['editados'] = $editados;
+         $data['eliminados'] = $eliminados;
+         // echo print_r($data); exit();
+
+
+        
         $data['datosGenerales'] = array(
             'numero' => $this->input->post('paso1_numero'),
             'codigo' => $this->input->post('paso1_codigo'),

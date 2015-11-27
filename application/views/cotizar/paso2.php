@@ -69,8 +69,9 @@
     function cargarLineasDetalle(){
         // alert('hola');
         for (var i = 0; i < arrayLineasDetalle.length; i++) {
-            agregarFila(1);//1 porque liena de detalle viene desde la BD
+            
             var linea = arrayLineasDetalle[i];
+            agregarFila(1, linea['idLineaDetalle']);//1 porque liena de detalle viene desde la BD
             var numeroFila = i;
 
             // var numeroFila = $(this).attr('data-fila');
@@ -126,17 +127,17 @@
     var contadorFilas = cantidadLineas;
 
     $('#botonAgregarFila').on('click', function(){
-        agregarFila(0);// 0 porque es nueva
+        agregarFila(0, null);// 0 porque es nueva
     });
 
 
-    function agregarFila(accionAplicada){
+    function agregarFila(accionAplicada, idLinea){
         cantidadLineas++;
         actualizarCantidad();
         var check = '<td>'+
             '<div style="text-align: center;">'+
                 '<input class="accionAplicada" style="display:none" name="linea_'+contadorFilas+'" type="text" value="'+ accionAplicada + '">'+ 
-                '<input style="display:none" name="idLinea_'+contadorFilas+'" type="text" value="">'+
+                '<input style="display:none" name="idLinea_'+contadorFilas+'" type="text" value="'+ idLinea +'">'+
                 '<input type="checkbox" class="filled-in checkbox" id="checkbox_linea'+contadorFilas+'"/>'+
                 '<label for="checkbox_linea'+contadorFilas+'"></label>'+
             '</div>'+
@@ -263,173 +264,103 @@
             <!-- <input type="text" class="tags"> -->
 
             <div id="contenerdorTablaDetalles">
-                <table id="tablaLineasDetalle"  class="centered">
-                <!-- <table id="cotizacion1-detalles" class="centered"> -->
-                    <thead>
-                    <tr>
-                        <th style="text-align: center;">
-                            <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all"
-                                   onclick="toggleChecked(this.checked)"/>
-                            <label for="checkbox-all"></label>
-                        </th>
-                        <th class="context-menu-miItem box" data-field="id">
-                            <row>
-                                <div class="col s12 m12 l12 celdaTitulo">Item</div>
-                            </row>
-                        </th>
-                        <th class="context-menu-nombre box" data-field="id">
-                            <row>
-                                <div class="col s12 m12 l12 celdaTitulo">
-                                    Nombre
-                                </div>
-                            </row>
-                        </th>
-                        <th class="context-menu-descripcion box" data-field="id">
-                            <row>
-                                <div class="col s12 m12 l12 celdaTitulo">
-                                    Descripción
-                                </div>
-                            </row>
-                        </th>
-                     <!--    <th class="context-menu-imagen box" data-field="id">
-                            <row>
-                                <div class="col s12 m12 l12 celdaTitulo">
-                                    Imagen
-                                </div>
-                            </row>
-                        </th> -->
-                        <th class="context-menu-precio box" data-field="id">
-                            <row>
-                                <div class="col s12 m12 l12 celdaTitulo">
-                                    Precio unitario
-                                </div>
-                            </row>
-                        </th>
-                        <th class="context-menu-cantidad box" data-field="id">
-                            <row>
-                                <div class="col s12 m12 l12 celdaTitulo">
-                                    Cantidad
-                                </div>
-                            </row>
-                        </th>
-                        <th class="context-menu-impuestoVenta box" data-field="id">
-                            <row>
-                                <div class="col s12 m12 l12 celdaTitulo">
-                                    Impuesto de venta
-                                </div>
-                            </row>
-                        </th>
-                        <th class="context-menu-utilidad box" data-field="id">
-                            <row>
-                                <div class="col s12 m12 l12 celdaTitulo">
-                                    Margen de utilidad
-                                </div>
-                            </row>
-                        </th>
-                        <th class="context-menu-subTotal box" data-field="id">
-                            <row>
-                                <div class="col s12 m12 l12 celdaTitulo">
-                                    Total
-                                </div>
-                            </row>
-                        </th>
-                        <th class="" data-field="id">
-                            <row>
-                                
-                                <div class="col s12 m12 l12 celdaTitulo">
-                                    Opciones
-                                </div>
-                            </row>
-                        </th>
-                        <!--                        <th data-field="name">Descripción</th>-->
-                        <!--                        <th data-field="price">Imagen</th>-->
-                        <!--                        <th data-field="price">Precio unitario</th>-->
-                        <!--                        <th data-field="price">cantidad</th>-->
-                        <!--                        <th data-field="price">IV</th>-->
-                        <!--                        <th data-field="price">Utilidad</th>-->
-                        <!--                        <th data-field="price">Subtotal</th>-->
-                        <!--                        <th data-field="price">Opciones</th>-->
-                    </tr>
-                    </thead>
-                    <input style="display:none" id="cantidadLineasDetalle" name="cantidadLineasDetalle" type="text" value="0">
-                    
-                    <tbody id="contenedorLineas">
+                <form id="formLineasDetalle">
+                    <table id="tablaLineasDetalle"  class="centered">
+                    <!-- <table id="cotizacion1-detalles" class="centered"> -->
+                        <thead>
+                            <tr>
+                                <th style="text-align: center;">
+                                    <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all"
+                                           onclick="toggleChecked(this.checked)"/>
+                                    <label for="checkbox-all"></label>
+                                </th>
+                                <th class="context-menu-miItem box" data-field="id">
+                                    <row>
+                                        <div class="col s12 m12 l12 celdaTitulo">Item</div>
+                                    </row>
+                                </th>
+                                <th class="context-menu-nombre box" data-field="id">
+                                    <row>
+                                        <div class="col s12 m12 l12 celdaTitulo">
+                                            Nombre
+                                        </div>
+                                    </row>
+                                </th>
+                                <th class="context-menu-descripcion box" data-field="id">
+                                    <row>
+                                        <div class="col s12 m12 l12 celdaTitulo">
+                                            Descripción
+                                        </div>
+                                    </row>
+                                </th>
+                             <!--    <th class="context-menu-imagen box" data-field="id">
+                                    <row>
+                                        <div class="col s12 m12 l12 celdaTitulo">
+                                            Imagen
+                                        </div>
+                                    </row>
+                                </th> -->
+                                <th class="context-menu-precio box" data-field="id">
+                                    <row>
+                                        <div class="col s12 m12 l12 celdaTitulo">
+                                            Precio unitario
+                                        </div>
+                                    </row>
+                                </th>
+                                <th class="context-menu-cantidad box" data-field="id">
+                                    <row>
+                                        <div class="col s12 m12 l12 celdaTitulo">
+                                            Cantidad
+                                        </div>
+                                    </row>
+                                </th>
+                                <th class="context-menu-impuestoVenta box" data-field="id">
+                                    <row>
+                                        <div class="col s12 m12 l12 celdaTitulo">
+                                            Impuesto de venta
+                                        </div>
+                                    </row>
+                                </th>
+                                <th class="context-menu-utilidad box" data-field="id">
+                                    <row>
+                                        <div class="col s12 m12 l12 celdaTitulo">
+                                            Margen de utilidad
+                                        </div>
+                                    </row>
+                                </th>
+                                <th class="context-menu-subTotal box" data-field="id">
+                                    <row>
+                                        <div class="col s12 m12 l12 celdaTitulo">
+                                            Total
+                                        </div>
+                                    </row>
+                                </th>
+                                <th class="" data-field="id">
+                                    <row>
+                                        
+                                        <div class="col s12 m12 l12 celdaTitulo">
+                                            Opciones
+                                        </div>
+                                    </row>
+                                </th>
+                                <!--                        <th data-field="name">Descripción</th>-->
+                                <!--                        <th data-field="price">Imagen</th>-->
+                                <!--                        <th data-field="price">Precio unitario</th>-->
+                                <!--                        <th data-field="price">cantidad</th>-->
+                                <!--                        <th data-field="price">IV</th>-->
+                                <!--                        <th data-field="price">Utilidad</th>-->
+                                <!--                        <th data-field="price">Subtotal</th>-->
+                                <!--                        <th data-field="price">Opciones</th>-->
+                            </tr>
+                        </thead>
+                        
+                        <input style="display:none" id="cantidadLineasDetalle" name="cantidadLineasDetalle" type="text" value="0">
+                        <tbody id="contenedorLineas">
 
-                     <?php
-                    if (isset($lista)) {
-                        if ($resultado['lineasDetalle'] !== false) {
-                             $contador = 0;
-                                foreach ($resultado['lineasDetalle'] as $lineaDealle) {
-                                    $idEncriptado = encryptIt($lineaDealle['idLineaDetalle']);
-                                    ?>
-
-                                        <tr>
-                                            <td style="text-align: center;">
-                                                <input class="accionAplicada" style="display:none" name="linea_<?=$contador;?>" type="text" value="1"> <!-- value 1 para existentes, 0 los nuevos y 2 los eliminados -->
-                                                <input style="display:none" name="idLinea_<?=$contador;?>" type="text" value="<?=$idEncriptado?>">
-                                                <input type="checkbox" class="filled-in checkbox" id="checkbox_linea<?=$contador;?>"/>
-                                                <label for="checkbox_linea<?=$contador;?>"></label>
-                                            </td>
-
-                                            <td>
-                                                <row>
-                                                    <div id="contenedorSelectProductoItem<?=$contador;?>" name="item_<?=$contador;?>" class="contenedorSelectProductoItem"></div>     
-                                                </row>
-                                            </td>
-                                            <td>
-                                                <row>
-                                                    <div id="contenedorSelectProductoNombre<?=$contador;?>" name='nombre_<?=$contador;?>' class="contenedorSelectProductoNombre"></div>
-                                                </row>
-                                            </td>
-                                            <td>
-                                                <row>
-                                                    <input value="Arroz, ensalada, carne" type="text" id="descripcion_<?=$contador;?>" name="descripcion_<?=$contador;?>">
-                                                </row>
-                                            </td>
-                                            <td>
-                                                <row>
-                                                    <input value="$6" type="text" id="precio_<?=$contador;?>" name="precio_<?=$contador;?>">
-                                                </row>
-                                            </td>
-                                            <td>
-                                                <row>
-                                                    <input value="20" type="number" id="cantidad_<?=$contador;?>" name="cantidad_<?=$contador;?>">
-                                                </row>
-                                            </td>
-                                            <td>
-                                                <row>
-                                                    <div id="impuestosProducto<?=$contador;?>" class="example tags_Impuestos">
-                                                        <div class="bs-example">
-                                                            <input id="impuestos_<?=$contador;?>" name="impuestos_<?=$contador;?>"> placeholder="<?= label('formProducto_anadirImpuesto'); ?>" type="text"/>
-                                                        </div>
-                                                    </div>
-                                                </row>
-                                            </td>
-                                            <td>
-                                                <row>
-                                                    <input value="2" type="number" id="utilidad_<?=$contador;?>" name="utilidad_<?=$contador;?>">
-                                                </row>
-                                            </td>
-                                            <td>
-                                                <row>
-                                                    <input value="$020" type="text" id="subTotal_<?=$contador;?>" name="subTotal_<?=$contador;?>" readonly="true">
-                                                </row>
-                                            </td>
-                                            <td>
-                                                <div class="btn-linea-eliminar">
-                                                    <a class="confirmarEliminarLinea" data-linea-eliminar="<?=$contador;?>" title="<?= label('paso2_lineaEliminar') ?>"><i class="mdi-action-delete small" style="color: black;"></i></a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    <?php 
-                                }
-                                $contador++;
-                            }
-                        }
-
-                    ?>
-                    </tbody>
-                </table>
+                        </tbody>
+                        
+                    </table>
+                </form>
             </div>
             <br>
 

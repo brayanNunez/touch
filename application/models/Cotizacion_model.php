@@ -41,6 +41,31 @@ class Cotizacion_model extends CI_Model
             $this->db->where('idCotizacion', $data['idCotizacion']);
             $query = $this->db->update('plantilladiseno', $data['diseno']);
             if (!$query) throw new Exception("Error en la BD"); 
+
+
+            $nuevos = $data['nuevos'];
+
+            foreach ($nuevos as $nuevo) {
+                $query = $this->db->insert('lineadetalle', $nuevo);
+                if (!$query) throw new Exception("Error en la BD"); 
+            }
+
+            $editados = $data['editados'];
+
+            foreach ($editados as $editado) {
+                $this->db->where('idLineaDetalle', $editado['idLineaDetalle']);
+                $query = $this->db->update('lineadetalle', $editado);
+                if (!$query) throw new Exception("Error en la BD"); 
+            }
+
+            $eliminados = $data['eliminados'];
+
+            foreach ($eliminados as $eliminado) {
+                $this->db->where('idLineaDetalle', $eliminado['idLineaDetalle']);
+                $query = $this->db->update('lineadetalle', $eliminado);
+                if (!$query) throw new Exception("Error en la BD"); 
+            }
+
             
             $this->db->trans_commit();
             return 1;
