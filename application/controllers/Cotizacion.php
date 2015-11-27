@@ -28,6 +28,11 @@ class Cotizacion extends CI_Controller
         $this->load->view('layout/default/footer');
     }
 
+    public function preCarga()
+    {
+        $this->load->view('cotizar/precarga');
+    }
+
 
     public function guardar($idCotizacion){
         $data['idCotizacion'] = decryptIt($idCotizacion);

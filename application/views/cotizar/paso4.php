@@ -34,10 +34,10 @@
       <a href="#modalVistaPrevia" class=" right btn btn-default modal-trigger">Vista previa</a>
    </div>
 </div> -->
-<iframe id="vistaPrevia" class="col s12" height="500px" src="<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/cotizaciones/<?= encryptIt($resultado['idCotizacion']);?>/sistema/test.pdf">
+<iframe id="vistaPrevia" class="col s12" height="500px" src="<?= base_url() ?>/cotizacion/preCarga">
 </iframe>
-<div id="preCarga" class="col s12">
-</div>
+<!-- <div id="preCarga" class="col s12">
+</div> -->
 
 
 <div class="col s12 m12 l12">

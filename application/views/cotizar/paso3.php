@@ -469,8 +469,8 @@
              type:  'post',
              beforeSend: function(){
                   $('#botonPaso4').text('Cargando...');
-                  $('#vistaPrevia').hide();
-                  $('#preCarga').show();
+                  // $('#vistaPrevia').hide();
+                  // $('#preCarga').show();
 
               },
              success:  function (response) {
@@ -479,9 +479,8 @@
                   // document.getElementById('vistaPrevia').contentDocument.location.reload(true);
                   // document.getElementById('vistaPrevia').contentWindow.location.reload();
 
-                  $('#vistaPrevia').attr('src', $('#vistaPrevia').attr('src'));
-                  $('#vistaPrevia').show();
-                  $('#preCarga').hide();
+                  $('#vistaPrevia').attr('src', "<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/cotizaciones/<?= encryptIt($resultado['idCotizacion']);?>/sistema/test.pdf");
+                  // $('#vistaPrevia').show()"<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/cotizaciones/<?= encryptIt($resultado['idCotizacion']);?>/sistema/test.pdf"                  // $('#preCarga').hide();
                   // $('#vistaPrevia').contentDocument.location.reload(true);
               }
         });
@@ -527,7 +526,8 @@
            $('#contenedorLineas').find('tr').each(function(){
                var fila = $(this);
                if(fila.find('.accionAplicada').val() != 2){// si no esta eliminada la fila
-                   // alert('bien');
+                   
+                   // alert($('th.col_1').is(':visible'));
                    
                    var lineaDetalle=    '<tr>'+
                            '<td class="celdaColumna col_1" >'+ fila.find('.itemServicio option:selected').text() +'</td>'+
@@ -542,6 +542,7 @@
    
                }
            });
+         // actualizarCuerpo();
    
        }
    });
