@@ -430,8 +430,8 @@
             }
         });
 
-//        elt.tagsinput('add', {"value": 1, "text": "Brayan Nuñez Rojas", "continent": "Europe"});
-//        elt.tagsinput('add', {"value": 4, "text": "Anthony Nuñez Rojas", "continent": "America"});
+//        elt.tagsinput('add', {"value": 1, "text": "Brayan Nuï¿½ez Rojas", "continent": "Europe"});
+//        elt.tagsinput('add', {"value": 4, "text": "Anthony Nuï¿½ez Rojas", "continent": "America"});
 //        elt.tagsinput('add', {"value": 7, "text": "Maria Perez Salas", "continent": "Australia"});
 //        elt.tagsinput('add', {"value": 10, "text": "Carlos David Rojas", "continent": "Asia"});
 //        elt.tagsinput('add', {"value": 13, "text": "Diego Alfaro Rojas", "continent": "Africa"});
@@ -533,7 +533,7 @@
     });
 </script>
 
-<!-- Funcion para mostrar elementos -->
+<!-- Funcion para mostrar elementos y manejo de datos de contactos -->
 <script>
     function tipoProveedor(opcionSeleccionada) {
         if (opcionSeleccionada.value == "1") {
@@ -1241,7 +1241,7 @@
         $('#proveedor_gastos').dataTable( {
             'aoColumnDefs': [{
                 'bSortable': false,
-                'aTargets': [0, -1] //desactiva en primer y última columna opción de ordenar
+                'aTargets': [0, -1] //desactiva en primer y ï¿½ltima columna opciï¿½n de ordenar
             }]
         });
     });

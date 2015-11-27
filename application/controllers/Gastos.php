@@ -343,6 +343,7 @@ class Gastos extends CI_Controller
         $empleado = $this->input->post('persona_tipoProveedor');
         $juridico = $this->input->post('persona_tipo');
         $data['palabras'] = $this->input->post('persona_palabras');
+        $data['categorias'] = $this->input->post('categorias_persona');
         if($empleado == 2) {
             $data['datos'] = array(
                 'idEmpresa' => $idEmpresa,
@@ -407,6 +408,28 @@ class Gastos extends CI_Controller
                 );
             }
         }
+
+        $contactos = array();
+        $contador = 0;
+        $contactosObtenidos = 0;
+        $cantidadContactos = $this->input->post('cantidadContactos');
+        while ($contactosObtenidos < $cantidadContactos) {
+            if (isset($_POST['contacto_'.$contador])) {
+                $contacto = array(
+                    'nombre' => $this->input->post('proveedor_contactoNombre_'.$contador),
+                    'primerApellido' => $this->input->post('proveedor_contactoApellido1_'.$contador),
+                    'segundoApellido' => $this->input->post('proveedor_contactoApellido2_'.$contador),
+                    'correo' => $this->input->post('proveedor_contactoCorreo_'.$contador),
+                    'telefono' => $this->input->post('proveedor_contactoTelefono_'.$contador),
+                    'puesto' => $this->input->post('proveedor_contactoPuesto_'.$contador),
+                    'eliminado' => '0'
+                );
+                array_push($contactos, $contacto);
+                $contactosObtenidos++;
+            }
+            $contador++;
+        }
+        $data['contactos'] = $contactos;
 
         $res = $this->Gasto_model->insertarPersona($data);
         if (!$res) {

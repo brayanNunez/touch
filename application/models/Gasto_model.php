@@ -391,13 +391,38 @@ class Gasto_model extends CI_Model
             }
             $insert_id = $this->db->insert_id();
 
-            $palabras = explode(",", $data['palabras']);
-            foreach ($palabras as $palabra) {
-                $row = array(
-                    'idProveedor' => $insert_id,
-                    'descripcion' => $palabra
-                );
-                $query = $this->db->insert('palabraclaveproveedor', $row);
+            if ($data['palabras'] != '') {
+                $palabras = explode(",", $data['palabras']);
+                foreach ($palabras as $palabra) {
+                    $row = array(
+                        'idProveedor' => $insert_id,
+                        'descripcion' => $palabra
+                    );
+                    $query = $this->db->insert('palabraclaveproveedor', $row);
+                    if (!$query) {
+                        throw new Exception("Error en la BD");
+                    }
+                }
+            }
+            if ($data['categorias'] != '') {
+                $categorias = explode(",", $data['categorias']);
+                foreach ($categorias as $categoria) {
+                    $row = array(
+                        'idPersona' => $insert_id,
+                        'idCategoriaPersona' => $categoria
+                    );
+                    $query = $this->db->insert('categoriaPersona_persona', $row);
+                    if (!$query) {
+                        throw new Exception("Error en la BD");
+                    }
+                }
+            }
+
+            $contactos = $data['contactos'];
+//            echo print_r($contactos); exit();
+            foreach ($contactos as $contacto) {
+                $contacto['idProveedor'] = $insert_id;
+                $query = $this->db->insert('proveedorcontacto', $contacto);
                 if (!$query) {
                     throw new Exception("Error en la BD");
                 }

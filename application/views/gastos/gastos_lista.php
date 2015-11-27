@@ -178,6 +178,11 @@
     <a id="linkNuevaFormaPago" href="#agregarFormaPago" class="modal-trigger"></a>
     <a id="linkNuevaPersona" href="#agregarPersona" class="modal-trigger"></a>
 </div>
+<div style="visibility:hidden; position:absolute">
+    <a id="linkContactosElimminar" href="#eliminarContacto" class="modal-trigger" data-fila-eliminar="1"
+       title="<?= label('formProveedor_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i>
+    </a>
+</div>
 <!-- END CONTENT-->
 
 <!--Script para el manejo de selects de busqueda y datos de categorias, formas de pago y personas-->
@@ -1267,23 +1272,40 @@
             document.getElementById('seleccion_TipoProveedor').style.display = 'block';
         } else {
             document.getElementById('seleccion_TipoProveedor').style.display = 'none';
-            document.getElementById('campos-proveedor-fisico').style.display = 'block';
-            document.getElementById('campos-proveedor-juridico').style.display = 'none';
+            document.getElementById('camposObligatorios_fisico').style.display = 'block';
+            document.getElementById('camposObligatorios_juridico').style.display = 'none';
         }
     }
     function datosProveedor(opcionSeleccionada) {
         if (opcionSeleccionada.value == "1") {
+            document.getElementById('camposObligatorios_fisico').style.display = 'block';
+            document.getElementById('camposObligatorios_juridico').style.display = 'none';
             document.getElementById('campos-proveedor-fisico').style.display = 'block';
             document.getElementById('campos-proveedor-juridico').style.display = 'none';
-//            document.getElementById('tabs-proveedor-fisico').style.display = 'block';
-//            document.getElementById('tabs-proveedor-juridico').style.display = 'none';
         } else {
+            document.getElementById('camposObligatorios_fisico').style.display = 'none';
+            document.getElementById('camposObligatorios_juridico').style.display = 'block';
             document.getElementById('campos-proveedor-fisico').style.display = 'none';
             document.getElementById('campos-proveedor-juridico').style.display = 'block';
-//            document.getElementById('tabs-proveedor-fisico').style.display = 'none';
-//            document.getElementById('tabs-proveedor-juridico').style.display = 'block';
         }
     }
+
+    $(document).on('click', '#btn_persona_otrosDatos', function () {
+        var estadoOtrosDatos = document.getElementById('datosNoObligatorios').style.display;
+        if(estadoOtrosDatos == 'none') {
+            document.getElementById('datosNoObligatorios').style.display = 'block';
+        } else {
+            document.getElementById('datosNoObligatorios').style.display = 'none';
+        }
+    });
+    $(document).on('click', '#btn_persona_contactos', function () {
+        var estadoDatosContactos = document.getElementById('datosContactos').style.display;
+        if(estadoDatosContactos == 'none') {
+            document.getElementById('datosContactos').style.display = 'block';
+        } else {
+            document.getElementById('datosContactos').style.display = 'none';
+        }
+    });
 </script>
 <!-- Script para tags -->
 <script>
@@ -1379,6 +1401,110 @@
             }
         });
     });
+</script>
+<!--Script de tags de categorias-->
+<script>
+    $(document).ready(function () {
+        var CategoriasPersona = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('nombre'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/CategoriasPersona.json'
+            prefetch: {
+                url: '<?=base_url()?>categoriasPersona/categoriasSugerencia',
+                ttl: 1000
+            }
+        });
+        CategoriasPersona.initialize();
+
+        elt = $('.tags_Categorias > > input');
+        elt.tagsinput({
+            itemValue: 'idCategoriaPersona',
+            itemText: 'nombre',
+            typeaheadjs: {
+                name: 'CategoriasPersona',
+                displayKey: 'nombre',
+                source: CategoriasPersona.ttAdapter()
+            }
+        });
+    });
+</script>
+<!--Script para el manejo de contactos de persona -->
+<script type="text/javascript">
+    var contactoEliminar = null;
+    $(document).on('click','.confirmarEliminarContacto', function () {
+        contactoEliminar = $(this).parent().parent();
+        $('#linkContactosElimminar').click();//esto se hace porque al agregar un <a class="modal-trigger"> dinamicamente con el metodo de agregarNuevoContacto() pareciera no servir, entonces lo que se hace es llamar al evento click del modal-trigger con el id = linkContactosElimminar
+    });
+    $(document).on('click','#eliminarContacto #botonEliminar', function () {
+        event.preventDefault();
+        contactoEliminar.fadeOut(function () {
+            contactoEliminar.remove();
+        });
+        cantidad--;
+        actualizarCantidad();
+    });
+    function actualizarCantidad(){
+        $('#cantidadContactos').val(cantidad);
+    }
+    var cantidad = 0;
+    var contador = 0;
+    function agregarNuevoContacto() {
+        cantidad++;
+        actualizarCantidad();
+        $('#contenedorContactos').append('' +
+            '<div id="' + contador + '" class="row">' +
+            '<div class="col s12 m11 l11">' +
+            '<div class="row">' +
+            '<div class="input-field col s12 m4 l4">' +
+            '<input id="proveedor_contactoNombre_' + contador + '" name="proveedor_contactoNombre_' + contador + '" type="text">' +
+            '<label for="proveedor_contactoNombre_' + contador + '"><?= label("formContacto_nombre"); ?></label>' +
+            '</div>' +
+            '<div class="input-field col s12 m4 l4">' +
+            '<input style="display:none" name="contacto_'+ contador +'" type="text">' +
+            '<input id="proveedor_contactoApellido1_' + contador + '" name="proveedor_contactoApellido1_' + contador + '" type="text">' +
+            '<label for="proveedor_contactoApellido1_' + contador + '"><?= label("formContacto_apellido1"); ?></label>' +
+            '</div>' +
+            '<div class="input-field col s12 m4 l4">' +
+            '<input id="proveedor_contactoApellido2_' + contador + '" name="proveedor_contactoApellido2_' + contador + '" type="text">' +
+            '<label for="proveedor_contactoApellido2_' + contador + '"><?= label("formContacto_apellido2"); ?></label>' +
+            '</div>' +
+            '</div>' +
+            '<div class="row">' +
+            '<div class="input-field col s12 m6 l6">' +
+            '<div>' +
+//                            '<input id="proveedor_contactoCorreo_' + contador + '" name="proveedor_contactoCorreo_' + contador + '" type="email" style="margin-bottom: 0;">' +
+            '<input id="proveedor_contactoCorreo_' + contador + '" name="proveedor_contactoCorreo_' + contador + '" type="email">' +
+            '<label for="proveedor_contactoCorreo_' + contador + '"><?= label('formProveedor_correo'); ?></label>' +
+            '</div>' +
+//                        '<div style="margin-bottom: 20px;">' +
+//                            '<input type="checkbox" class="filled-in" id="checkbox_contactoCorreoProveedor_' + contador + '" name="checkbox_contactoCorreoProveedor_' + contador + '" />' +
+//                            '<label for="checkbox_contactoCorreoProveedor_' + contador + '" style="margin-bottom: 20px;">' +
+//                            '<?//= label('formProveedor_correoCheck') ?>//' +
+//                            '</label>' +
+//                        '</div>' +
+            '</div>' +
+            '<div class="input-field col s12 m3 l3">' +
+            '<input id="proveedor_contactoPuesto_' + contador + '" name="proveedor_contactoPuesto_' + contador + '" type="text">' +
+            '<label for="proveedor_contactoPuesto_' + contador + '"><?= label('formContacto_puesto'); ?></label>' +
+            '</div>' +
+            '<div class="input-field col s12 m3 l3">' +
+            '<input id="proveedor_contactoTelefono_' + contador + '" name="proveedor_contactoTelefono_' + contador + '" type="text">' +
+            '<label for="proveedor_contactoTelefono_' + contador + '"><?= label('formContacto_telefono'); ?></label>' +
+            '</div>' +
+            '</div>' +
+
+            '</div>' +
+            '<div class="col s12 m1 l1 btn-contacto-eliminar-edicion">' +
+//                    '<a href="#eliminarContacto" class="modal-trigger" title="<?//= label('formProveedor_contactoEliminar') ?>//"><i class="mdi-action-delete medium" style="color: black;"></i></a>' +
+            '<a class="confirmarEliminarContacto" data-fila-eliminar="' + contador + '" title="<?= label('formProveedor_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>' +
+            '</div>' +
+            '</div>' +
+            '<div class="col s12">' +
+            '<hr />' +
+            '</div>'
+        );
+        contador++;
+    }
 </script>
 
 <!-- Inicio lista modals -->
@@ -1646,7 +1772,7 @@
         </form>
     </div>
 </div>
-<div id="agregarPersona" class="modal" style="width: 95%;max-height: 90%;">
+<div id="agregarPersona" class="modal" style="width: 70%;max-height: 80%;">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
         <a id="modalAgregarPersona_cerrar" class="modal-action cerrar-modal">
@@ -1659,6 +1785,7 @@
         </div>
         <form id="form_persona_Gastos" action="<?=base_url()?>gastos/insertarPersona" method="post">
             <div class="row">
+                <!-- Campos obligatorios -->
                 <div class="input-field col s12">
                     <select id="persona_tipoProveedor" name="persona_tipoProveedor"
                             onchange="tipoProveedor(this)">
@@ -1689,8 +1816,7 @@
                         ?>
                     </select>
                 </div>
-
-                <div id="campos-proveedor-fisico" style="display: block;">
+                <div id="camposObligatorios_fisico" style="display: block;">
                     <div class="input-field col s12">
                         <input id="persona_identificacion" name="persona_identificacion" type="text">
                         <label for="persona_identificacion"><?= label('formPersona_identificacion'); ?></label>
@@ -1713,23 +1839,8 @@
                         <input id="persona_correo" name="persona_correo" type="email">
                         <label for="persona_correo"><?= label('formPersona_correo'); ?></label>
                     </div>
-                    <div class="input-field col s12">
-                        <input id="persona_telefonoMovil" name="persona_telefonoMovil" type="text">
-                        <label for="persona_telefonoMovil">
-                            <?= label('formPersona_telefonoMovil'); ?></label>
-                    </div>
-                    <div class="input-field col s12">
-                        <input id="persona_telefono" name="persona_telefono" type="text">
-                        <label for="persona_telefono">
-                            <?= label('formProveedor_telefonoFijo'); ?></label>
-                    </div>
-                    <div class="input-field col s12">
-                        <input id="persona_fechaNacimiento" name="persona_fechaNacimiento" type="text" class="datepicker-fecha">
-                        <label for="persona_fechaNacimiento">
-                            <?= label('formPersona_fechaNacimiento'); ?></label>
-                    </div>
                 </div>
-                <div id="campos-proveedor-juridico" style="display: none;">
+                <div id="camposObligatorios_juridico" style="display: none;">
                     <div class="input-field col s12">
                         <input id="personajuridico_identificacion" name="personajuridico_identificacion" type="text">
                         <label for="personajuridico_identificacion">
@@ -1741,68 +1852,116 @@
                             <?= label('formPersona_nombreJuridico'); ?></label>
                     </div>
                     <div class="input-field col s12">
-                        <input id="personajuridico_nombreFantasia" name="personajuridico_nombreFantasia" type="text">
-                        <label for="personajuridico_nombreFantasia">
-                            <?= label('formPersona_nombreFantasia'); ?></label>
-                    </div>
-                    <div class="input-field col s12">
                         <input id="personajuridico_correo" name="personajuridico_correo" type="email">
                         <label for="personajuridico_correo"><?= label('formPersona_correo'); ?></label>
                     </div>
-                    <div class="input-field col s12">
-                        <input id="personajuridico_telefono" name="personajuridico_telefono" type="text">
-                        <label for="personajuridico_telefono"><?= label('formPersona_telefono'); ?></label>
+                </div>
+
+                <!-- Otros datos -->
+                <div class="col s12">
+                    <a id="btn_persona_otrosDatos" class="btn_mostrarElementosOcultos">Otros datos</a>
+                </div>
+                <div id="datosNoObligatorios" style="display: none;">
+                    <div id="campos-proveedor-fisico" style="display: block;">
+                        <div class="input-field col s12">
+                            <input id="persona_telefonoMovil" name="persona_telefonoMovil" type="text">
+                            <label for="persona_telefonoMovil">
+                                <?= label('formPersona_telefonoMovil'); ?></label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input id="persona_telefono" name="persona_telefono" type="text">
+                            <label for="persona_telefono">
+                                <?= label('formProveedor_telefonoFijo'); ?></label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input id="persona_fechaNacimiento" name="persona_fechaNacimiento" type="text" class="datepicker-fecha">
+                            <label for="persona_fechaNacimiento">
+                                <?= label('formPersona_fechaNacimiento'); ?></label>
+                        </div>
                     </div>
-                    <div class="input-field col s12">
-                        <input id="personajuridico_fax" name="personajuridico_fax" type="text">
-                        <label for="personajuridico_fax"><?= label('formPersona_fax'); ?></label>
+                    <div id="campos-proveedor-juridico" style="display: none;">
+                        <div class="input-field col s12">
+                            <input id="personajuridico_nombreFantasia" name="personajuridico_nombreFantasia" type="text">
+                            <label for="personajuridico_nombreFantasia">
+                                <?= label('formPersona_nombreFantasia'); ?></label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input id="personajuridico_telefono" name="personajuridico_telefono" type="text">
+                            <label for="personajuridico_telefono"><?= label('formPersona_telefono'); ?></label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input id="personajuridico_fax" name="personajuridico_fax" type="text">
+                            <label for="personajuridico_fax"><?= label('formPersona_fax'); ?></label>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inputTag col s12" style="margin-bottom: 10px;">
+                            <label for="persona_palabrasClave"><?= label('formPersona_palabrasClave'); ?></label>
+                            <div id="persona_palabrasClave" class="example tags_keywords" style="margin-top: 10px;">
+                                <div class="bs-example">
+                                    <input id="persona_palabras" name="persona_palabras" placeholder="<?= label('formPersona_palabrasClaveAnadir'); ?>" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-field col s12">
+                            <textarea id="persona_descripcion" name="persona_descripcion"
+                                      class="materialize-textarea" rows="4"></textarea>
+                            <label for="persona_descripcion"><?= label('formPersona_descripcion'); ?></label>
+                        </div>
+                        <div class="inputTag col s12">
+                            <label for="categorias_persona"><?= label('formPersona_categorias'); ?></label>
+                            <br>
+                            <div id="categoriasPersona" class="example tags_Categorias">
+                                <div class="bs-example">
+                                    <input id="categorias_persona" name="categorias_persona" placeholder="<?= label('formPersona_anadirCategoria'); ?>" type="text"/>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="input-field col s12 m4 l4">
+                            <input id="persona_direccionPais" name="persona_direccionPais" type="text">
+                            <label for="persona_direccionPais"><?= label('formPersona_direccionPais'); ?></label>
+                        </div>
+                        <div class="input-field col s12 m4 l4">
+                            <input id="persona_direccionProvincia" name="persona_direccionProvincia" type="text">
+                            <label for="persona_direccionProvincia"><?= label('formPersona_direccionProvincia'); ?></label>
+                        </div>
+                        <div class="input-field col s12 m4 l4">
+                            <input id="persona_direccionCanton" name="persona_direccionCanton" type="text">
+                            <label for="persona_direccionCanton"><?= label('formPersona_direccionCanton'); ?></label>
+                        </div>
+                        <div class="input-field col s12 m12 l12">
+                            <input id="persona_direccionDomicilio" name="persona_direccionDomicilio" type="text">
+                            <label for="persona_direccionDomicilio"><?= label('formPersona_direccionDomicilio'); ?></label>
+                        </div>
                     </div>
                 </div>
 
-                <div>
-                    <div class="inputTag col s12" style="margin-bottom: 10px;">
-                        <label for="persona_palabrasClave"><?= label('formPersona_palabrasClave'); ?></label>
-                        <div id="persona_palabrasClave" class="example tags_keywords" style="margin-top: 10px;">
-                            <div class="bs-example">
-                                <input id="persona_palabras" name="persona_palabras" placeholder="<?= label('formPersona_palabrasClaveAnadir'); ?>" type="text"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-field col s12">
-                                                <textarea id="persona_descripcion" name="persona_descripcion"
-                                                          class="materialize-textarea" rows="4"></textarea>
-                        <label for="persona_descripcion"><?= label('formPersona_descripcion'); ?></label>
-                    </div>
+                <!-- Datos de contactos -->
+                <div class="col s12">
+                    <a id="btn_persona_contactos" class="btn_mostrarElementosOcultos">Contactos</a>
                 </div>
-                <div>
-                    <div class="input-field col s12 m4 l4">
-                        <input id="persona_direccionPais" name="persona_direccionPais" type="text">
-                        <label for="persona_direccionPais"><?= label('formPersona_direccionPais'); ?></label>
-                    </div>
-                    <div class="input-field col s12 m4 l4">
-                        <input id="persona_direccionProvincia" name="persona_direccionProvincia" type="text">
-                        <label for="persona_direccionProvincia"><?= label('formPersona_direccionProvincia'); ?></label>
-                    </div>
-                    <div class="input-field col s12 m4 l4">
-                        <input id="persona_direccionCanton" name="persona_direccionCanton" type="text">
-                        <label for="persona_direccionCanton"><?= label('formPersona_direccionCanton'); ?></label>
-                    </div>
-                    <div class="input-field col s12 m12 l12">
-                        <input id="persona_direccionDomicilio" name="persona_direccionDomicilio" type="text">
-                        <label for="persona_direccionDomicilio"><?= label('formPersona_direccionDomicilio'); ?></label>
+                <div id="datosContactos" style="display: none;">
+                    <div id="contenedorContactos"></div>
+                    <div class="row" id="tab-contactos-nuevo" style="padding: 20px;">
+                        <a onclick="agregarNuevoContacto();">
+                            <?= label('formProveedor_contactoAgregar') ?>
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="row">
-<!--                <a href="#" style="font-size: larger;float: left;text-decoration: underline;"-->
-<!--                   class="modal-action modal-close">--><?//= label('cancelar'); ?>
-<!--                </a>-->
                 <a onclick="$(this).closest('form').submit()" id="guardarCerrarPersona" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
                     <?= label('guardarCerrar'); ?>
                 </a>
                 <a onclick="$(this).closest('form').submit()" id="guardarOtroPersona" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
                     <?= label('guardarAgregarOtro'); ?>
                 </a>
+            </div>
+            <div style="visibility:hidden; position:absolute">
+                <input id="cantidadContactos" name="cantidadContactos" type="text" value="0">
             </div>
         </form>
     </div>
