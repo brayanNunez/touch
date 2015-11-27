@@ -68,10 +68,20 @@
     
     function cargarLineasDetalle(){
         // alert('hola');
-        for (var i = arrayLineasDetalle.length - 1; i >= 0; i--) {
+        for (var i = 0; i < arrayLineasDetalle.length; i++) {
             agregarFila(1);//1 porque liena de detalle viene desde la BD
             var linea = arrayLineasDetalle[i];
             var numeroFila = i;
+
+            // var numeroFila = $(this).attr('data-fila');
+            var select = $('#productoNombre_' + numeroFila);
+            select.val(linea['idServicio']);
+            select.trigger("chosen:updated");
+
+            select = $('#productoItem_' + numeroFila);
+            select.val(linea['idServicio']);
+            select.trigger("chosen:updated");
+
             // if (linea['idServicio'] == idServicio) {
                 $('#descripcion_' + numeroFila).val(linea['descripcion']);
                 $('#precio_' + numeroFila).val(linea['precioUnidad']);  
@@ -80,6 +90,8 @@
                 $('#utilidad_' + numeroFila).val(linea['utilidad']);  
                 // alert(servicio['nombre'] + ', ' + servicio['descripcion']);
             // } 
+
+            // alert('hola');
             
         };
      // alert('bien');
