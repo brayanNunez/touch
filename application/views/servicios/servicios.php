@@ -245,10 +245,10 @@
 
                                         <div class="row" style="margin-top: 25px;">
                                             <div class="input-field col s12" style="margin-top: 0;">
-                                                <input class="filled-in" type="checkbox" id="cotizacion_incluirGastosVariables" name="cotizacion_incluirGastosVariables"/>
-                                                <label for="cotizacion_incluirGastosVariables"><?= label('cotizacion_incluirGastosVariables'); ?></label>
+                                                <input class="filled-in" type="checkbox" id="servicio_incluirGastosVariables" name="servicio_incluirGastosVariables"/>
+                                                <label for="servicio_incluirGastosVariables"><?= label('servicio_incluirGastosVariables'); ?></label>
                                             </div>
-                                            <div id="cotizacion_gastosVariables" style="display: none;padding: 0;">
+                                            <div id="servicio_gastosVariables" style="display: none;padding: 0;">
                                                 <div class="col s12 m6 l3" style="margin-top: 20px;">
                                                     <div class="input-field col s12 inputSelector">
                                                         <label for="agregarGastos_buscar"><?= label('agregarGatos_buscar'); ?></label>
@@ -338,7 +338,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col s12" style="margin-top: 20px;">
-                                                    <h5><?= label('cotizacionGastos_total'); ?>: $<span class="total_gastos_variables">0</span></h5>
+                                                    <h5><?= label('servicioGastos_total'); ?>: $<span class="total_gastos_variables">0</span></h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -432,9 +432,9 @@
                 select_gastos.trigger("chosen:updated");
             }
         });
-        $('#cotizacion_incluirGastosVariables').click(function (event) {
+        $('#servicio_incluirGastosVariables').click(function (event) {
             var $incluir = $(this).is(':checked');
-            var $gastos = $('#cotizacion_gastosVariables');
+            var $gastos = $('#servicio_gastosVariables');
             if($incluir) {
                 $gastos.css('display', 'block');
             } else {

@@ -180,20 +180,11 @@
 </div>
 <!-- END CONTENT-->
 
+<!--Script para el manejo de selects de busqueda y datos de categorias, formas de pago y personas-->
 <script type="text/javascript">
     $(document).ready(function () {
         actualizarSelectTipo();
         actualizarSelects();
-//        actualizarSelectFormasPago();
-//        actualizarSelectPersonas();
-
-//        actualizarSelectCategoriasGasto();
-//        actualizarSelectFormasPago();
-//        actualizarSelectPersonas();
-////        actualizarSelectTipo_Editar(0);
-////        actualizarSelectCategoriasGasto_Editar(2);
-////        actualizarSelectFormasPago_Editar(3);
-////        actualizarSelectPersonas_Editar(2);
     });
 
     function actualizarSelects() {
@@ -682,7 +673,7 @@
         });
     }
 </script>
-
+<!--Script para el manejo de gastos-->
 <script type="text/javascript">
     var menuOpciones_editar = '<?= label('menuOpciones_editar'); ?>';
     var menuOpciones_eliminar = '<?= label('menuOpciones_eliminar'); ?>';
@@ -692,13 +683,6 @@
     var checkActivo = false;
     var idEditar = 0;
     $(document).on('ready', function() {
-        function limpiarFormEditar(){
-            $('#form_gastoEditar')[0].reset();
-            var validator = $("#form_gastoEditar").validate();
-            validator.resetForm();
-//            $('#form_gastoEditar #gasto_nombre').focus();
-        }
-
         var table = $('table').DataTable();
         $(document).on( 'click', '.abrirEditar', function () {
             limpiarFormEditar();
@@ -706,8 +690,6 @@
             checkActivo = false;
             checkActivo = $('.checkbox#'+idEditar).is(':checked');// se verifica el estado del check para actualizarlo luego de editar la fila ya que este check se quita solo al editar
             row = table.row($(this).parents('tr'));
-            // editarFila('22', 'impuesto', 'descripcion');
-            // alert(idEditar);
 
             var url = '<?=base_url()?>gastos/editar';
             var method = 'POST';
@@ -737,6 +719,11 @@
             });
         });
     });
+    function limpiarFormEditar(){
+        $('#form_gastoEditar')[0].reset();
+        var validator = $("#form_gastoEditar").validate();
+        validator.resetForm();
+    }
     function editarFila(categoria, persona, tipo, codigo, nombre, monto, formaPago) {
         var d = row.data();
         d[1]= codigo;
@@ -845,7 +832,6 @@
         $('#form_gasto')[0].reset();
         var validator = $("#form_gasto").validate();
         validator.resetForm();
-//        $('#form_gasto #gasto_nombre').focus();
     }
 
     function validacionCorrecta() {
@@ -889,6 +875,7 @@
                                     });
                                     if (cerrarModal) {
                                         $('#agregarGasto .modal-header a').click();
+                                        limpiarForm();
                                     } else{
                                         limpiarForm();
                                     }
@@ -992,7 +979,7 @@
         }
     }
 </script>
-
+<!--Script para el control de la tabla, checks y opciones de elementos marcados-->
 <script type="text/javascript">
    $(document).on("ready", function () {
 
@@ -1301,7 +1288,6 @@
 <!-- Script para tags -->
 <script>
     $(document).ready(function () {
-
         var vendedores = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -1311,7 +1297,6 @@
                 ttl: 1000
             }
         });
-
         vendedores.initialize();
 
         elt = $('.tags_vendedores > > input');
@@ -1324,13 +1309,11 @@
                 source: vendedores.ttAdapter()
             }
         });
-
 //        elt.tagsinput('add', {"value": 1, "text": "Brayan Nuñez Rojas", "continent": "Europe"});
 //        elt.tagsinput('add', {"value": 4, "text": "Anthony Nuñez Rojas", "continent": "America"});
 //        elt.tagsinput('add', {"value": 7, "text": "Maria Perez Salas", "continent": "Australia"});
 //        elt.tagsinput('add', {"value": 10, "text": "Carlos David Rojas", "continent": "Asia"});
 //        elt.tagsinput('add', {"value": 13, "text": "Diego Alfaro Rojas", "continent": "Africa"});
-
 
         var gusto = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
@@ -1347,7 +1330,6 @@
         });
         gusto.initialize();
 
-
         $('.tags_keywords  > > input').tagsinput({
             typeaheadjs: {
                 name: 'gusto',
@@ -1356,7 +1338,6 @@
                 source: gusto.ttAdapter()
             }
         });
-
 
         var mediosContacto = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
@@ -1374,7 +1355,6 @@
         });
         mediosContacto.initialize();
 
-
         var elt = $('.tags_mediosContacto > > input');
         elt.tagsinput({
             typeaheadjs: {
@@ -1384,7 +1364,6 @@
                 source: mediosContacto.ttAdapter()
             }
         });
-
 
         $('.boton-opciones').on('click', function (event) {
             var elementoActivo = $(this).siblings('ul.active');
@@ -1402,7 +1381,7 @@
     });
 </script>
 
-<!-- lista modals -->
+<!-- Inicio lista modals -->
 <div id="transaccionIncorrectaCargar" class="modal">
     <div  class="modal-header headerTransaccionIncorrecta">
         <p><?= label('nombreSistema'); ?></p>
@@ -1436,7 +1415,7 @@
     <div class="modal-content" style="padding: 0 24px;">
         <div class="row">
             <h5 style="float: left;"><?= label('agregarGasto_titulo'); ?></h5>
-            <a href="#" style="float: left;margin: 15px 25px;text-decoration: underline;">Importar csv - xls</a>
+<!--            <a href="#" style="float: left;margin: 15px 25px;text-decoration: underline;">Importar csv - xls</a>-->
         </div>
         <form id="form_gasto" action="<?=base_url()?>gastos/insertar" method="post">
             <div class="row">

@@ -347,6 +347,10 @@ $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos selec
     $lang['horas_guardarCambios'] = 'Guardar cambios';
     $lang['horas_asignarFestivosNoObligatorios'] = 'Asigna su empresa también festivos no obligatorios';
 
+    $lang['formCliente_fotografia'] = 'Imagen del cliente';
+    $lang['servicioGastos_total'] = 'Total de gasto variable';
+    $lang['servicio_incluirGastosVariables'] = 'Desea agregar gastos variables';
+
 //Gastos en servicio
     $lang['formServicio_seleccioneGasto'] = 'Seleccione el gasto';
     $lang['formServicio_seleccioneCategoria'] = 'Seleccione la categoría';
