@@ -57,13 +57,18 @@
     if (isset($resultado['lineasDetalle'])) {
         $js_array = json_encode($resultado['lineasDetalle']); 
         echo "var arrayLineasDetalle =". $js_array .";";
-    };
-    
-    ?>  
+        ?>
 
     $(document).on('ready', function(){
         cargarLineasDetalle();
     });
+
+        <?php
+    };
+    
+    ?>  
+
+    
 
     
     function cargarLineasDetalle(){
