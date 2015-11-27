@@ -34,7 +34,7 @@
                 filaEliminar.fadeOut(function () {
                     filaEliminar.remove();
                });
-               cantidad--;
+               cantidadLineas--;
                actualizarCantidad();
            } else{
             filaEliminar.find('.accionAplicada').val('2');
@@ -50,10 +50,42 @@
    
 
 // $(document).on('ready', function(){
-     <?php 
+    <?php 
     $js_array = json_encode($resultado['servicios']); 
-    echo "var arrayServicios =". $js_array;
+    echo "var arrayServicios =". $js_array .";";
+
+    if (isset($resultado['lineasDetalle'])) {
+        $js_array = json_encode($resultado['lineasDetalle']); 
+        echo "var arrayLineasDetalle =". $js_array .";";
+    };
+    
     ?>  
+
+    $(document).on('ready', function(){
+        cargarLineasDetalle();
+    });
+
+    
+    function cargarLineasDetalle(){
+        // alert('hola');
+        for (var i = arrayLineasDetalle.length - 1; i >= 0; i--) {
+            agregarFila(1);//1 porque liena de detalle viene desde la BD
+            var linea = arrayLineasDetalle[i];
+            var numeroFila = i;
+            // if (linea['idServicio'] == idServicio) {
+                $('#descripcion_' + numeroFila).val(linea['descripcion']);
+                $('#precio_' + numeroFila).val(linea['precioUnidad']);  
+                $('#cantidad_' + numeroFila).val(linea['cantidad']);  
+                cargarImpuestosPorServicio(numeroFila, linea['impuestos'])
+                $('#utilidad_' + numeroFila).val(linea['utilidad']);  
+                // alert(servicio['nombre'] + ', ' + servicio['descripcion']);
+            // } 
+            
+        };
+     // alert('bien');
+    }
+
+
 
     function cargarFila(idServicio, numeroFila){
         for (var i = arrayServicios.length - 1; i >= 0; i--) {
@@ -73,19 +105,25 @@
 // });
 
 
-function actualizarCantidad(){
-        $('#cantidadLineasDetalle').val(cantidad);
+    function actualizarCantidad(){
+        $('#cantidadLineasDetalle').val(cantidadLineas);
 
     }
 
-    var cantidad = <?= count($resultado['lineasDetalle'])?>;
-    var contadorFilas = cantidad;
+    var cantidadLineas = 0;
+    var contadorFilas = cantidadLineas;
 
     $('#botonAgregarFila').on('click', function(){
+        agregarFila(0);// 0 porque es nueva
+    });
 
-         var check = '<td>'+
+
+    function agregarFila(accionAplicada){
+        cantidadLineas++;
+        actualizarCantidad();
+        var check = '<td>'+
             '<div style="text-align: center;">'+
-                '<input class="accionAplicada" style="display:none" name="linea_'+contadorFilas+'" type="text" value="1">'+ 
+                '<input class="accionAplicada" style="display:none" name="linea_'+contadorFilas+'" type="text" value="'+ accionAplicada + '">'+ 
                 '<input style="display:none" name="idLinea_'+contadorFilas+'" type="text" value="">'+
                 '<input type="checkbox" class="filled-in checkbox" id="checkbox_linea'+contadorFilas+'"/>'+
                 '<label for="checkbox_linea'+contadorFilas+'"></label>'+
@@ -108,19 +146,19 @@ function actualizarCantidad(){
 
         var des = '<td>'+
             '<row>'+
-                '<input class="descripcion" value="Arroz, ensalada, carne" type="text" id="descripcion_'+contadorFilas+'" name="descripcion_'+contadorFilas+'">'+
+                '<input class="descripcion" value="" type="text" id="descripcion_'+contadorFilas+'" name="descripcion_'+contadorFilas+'">'+
             '</row>'+
         '</td>';
 
         var precio ='<td>'+
             '<row>'+
-                '<input class="precio" value="$6" type="text" id="precio_'+contadorFilas+'" name="precio_'+contadorFilas+'">'+
+                '<input class="precio" value="" type="text" id="precio_'+contadorFilas+'" name="precio_'+contadorFilas+'">'+
             '</row>'+
         '</td>';
 
         var cantidad = '<td>'+
             '<row>'+
-                '<input class="cantidad" value="20" type="number" id="cantidad_'+contadorFilas+'" name="cantidad_'+contadorFilas+'">'+
+                '<input class="cantidad" value="" type="number" id="cantidad_'+contadorFilas+'" name="cantidad_'+contadorFilas+'">'+
             '</row>'+
         '</td>';
 
@@ -136,13 +174,13 @@ function actualizarCantidad(){
 
         var utilidad ='<td>'+
             '<row>'+
-                '<input class="utilidad" value="2" type="number" id="utilidad_'+contadorFilas+'" name="utilidad_'+contadorFilas+'">'+
+                '<input class="utilidad" value="" type="number" id="utilidad_'+contadorFilas+'" name="utilidad_'+contadorFilas+'">'+
             '</row>'+
         '</td>';
 
         var total ='<td>'+
             '<row>'+
-                '<input class="subTotal" value="$020" type="text" id="subTotal_'+contadorFilas+'" name="subTotal_'+contadorFilas+'" readonly="true">'+
+                '<input class="subTotal" value="" type="text" id="subTotal_'+contadorFilas+'" name="subTotal_'+contadorFilas+'" readonly="true">'+
             '</row>'+
         '</td>';
 
@@ -176,8 +214,7 @@ function actualizarCantidad(){
         $('.modal-trigger').leanModal(); 
 
         contadorFilas++;
-
-        });
+    }
 
 
 
@@ -302,7 +339,7 @@ function actualizarCantidad(){
                         <!--                        <th data-field="price">Opciones</th>-->
                     </tr>
                     </thead>
-                    <input style="display:none" id="cantidadLineasDetalle" name="cantidadLineasDetalle" type="text" value="<?= count($resultado['lineasDetalle'])?>">
+                    <input style="display:none" id="cantidadLineasDetalle" name="cantidadLineasDetalle" type="text" value="0">
                     
                     <tbody id="contenedorLineas">
 

@@ -189,12 +189,13 @@
 
 
             // alert("ahora2");
-             $('#vistaPrevia').attr('src', $('#vistaPrevia').attr('src'));
+             // $('#vistaPrevia').attr('src', $('#vistaPrevia').attr('src'));
             // $('#vistaPrevia').attr("src", $('#vistaPrevia').attr("src"));
 
-        });
+        // });
 
         $('#btnGuardarCerrar').on("click", function () {
+          // alert('hola');
             var url = '<?= base_url() ?>Cotizacion/guardar/<?= encryptIt($resultado['idCotizacion']);?>';
             var method = 'POST'; 
             $.ajax({
