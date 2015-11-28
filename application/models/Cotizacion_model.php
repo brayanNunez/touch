@@ -119,6 +119,26 @@ class Cotizacion_model extends CI_Model
                 if (!$query) throw new Exception("Error en la BD"); 
             }
 
+            $aprobadores = $data['aprobadores'];
+
+            $this->db->where('idCotizacion', $data['idCotizacion']);
+            $query = $this->db->delete('aprobador_cotizacion');
+            if (!$query) throw new Exception("Error en la BD"); 
+
+            foreach ($aprobadores as $aprobador) {
+                $row = array(
+                    'idUsuario' => $aprobador,
+                    'idCotizacion' => $data['idCotizacion']
+                );
+                $query = $this->db->insert('aprobador_cotizacion', $row);
+                if (!$query) {
+                    throw new Exception("Error en la BD");
+                }
+            }
+
+
+
+
             
             $this->db->trans_commit();
             return 1;
@@ -323,6 +343,20 @@ class Cotizacion_model extends CI_Model
             }
             $aprobadores = $aprobadores->result_array();
 
+            $this->db->select("us.*");
+            $this->db->from('usuario as us');
+            $this->db->join('aprobador_cotizacion as ac', 'ac.idUsuario = us.idUsuario');
+            $this->db->join('cotizacion as co', 'co.idCotizacion = ac.idCotizacion');
+            $this->db->where(array('us.eliminado' => 0,'co.idCotizacion' => $datos['idCotizacion']));
+
+            $aprobadoresCotizacion = $this->db->get();
+
+            if (!$aprobadoresCotizacion) {
+                throw new Exception("Error en la BD");
+            }
+            $aprobadoresCotizacion = $aprobadoresCotizacion->result_array();
+
+            $data['aprobadoresCotizacion'] = $aprobadoresCotizacion;
             $data['aprobadores'] = $aprobadores;
             $data['lineasDetalle'] = $lineasDetalle;
             $data['clientes'] = $misClientes;
