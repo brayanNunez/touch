@@ -351,6 +351,8 @@ $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos selec
     $lang['servicioGastos_total'] = 'Total de gasto variable';
     $lang['servicio_incluirGastosVariables'] = 'Desea agregar gastos variables';
 
+    $lang['gastos_personaContactos_confirmarEliminar'] = '¿Realmente desea eliminar el contacto seleccionado?';
+
 //Gastos en servicio
     $lang['formServicio_seleccioneGasto'] = 'Seleccione el gasto';
     $lang['formServicio_seleccioneCategoria'] = 'Seleccione la categoría';

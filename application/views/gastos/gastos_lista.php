@@ -53,7 +53,6 @@
                                                                 <th><?= label('tituloGastos_tiempo'); ?></th>
                                                                 <th><?= label('tituloGastos_gasto'); ?></th>
                                                                 <th><?= label('tituloGastos_proveedor'); ?></th>
-                                                                <th><?= label('tituloGastos_proveedorCategoria'); ?></th>
                                                                 <th><?= label('tituloGastos_monto'); ?></th>
                                                                 <th><?= label('tituloGastos_opciones'); ?></th>
                                                             </tr>
@@ -88,7 +87,6 @@
                                                                         <td><?= $formaPago; ?></td>
                                                                         <td><?= $fila['nombre']; ?></td>
                                                                         <td><?= $persona; ?></td>
-                                                                        <td>Programador</td>
                                                                         <td><?= $fila['monto']; ?></td>
                                                                         <td>
                                                                             <ul id="dropdown-gasto<?= $contador ?>" class="dropdown-content">
@@ -177,11 +175,6 @@
     <a id="linkNuevaCategoria" href="#agregarCategoria" class="modal-trigger"></a>
     <a id="linkNuevaFormaPago" href="#agregarFormaPago" class="modal-trigger"></a>
     <a id="linkNuevaPersona" href="#agregarPersona" class="modal-trigger"></a>
-</div>
-<div style="visibility:hidden; position:absolute">
-    <a id="linkContactosElimminar" href="#eliminarContacto" class="modal-trigger" data-fila-eliminar="1"
-       title="<?= label('formProveedor_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i>
-    </a>
 </div>
 <!-- END CONTENT-->
 
@@ -710,10 +703,6 @@
                 success: function(response)
                 {
                     var gasto = $.parseJSON(response);
-//                    $('#form_gastoEditar #gasto_tipo').val(gasto['gastoFijo']);
-//                    $('#form_gastoEditar #gasto_categoria').val(gasto['idCategoriaGasto']);
-//                    $('#form_gastoEditar #gasto_persona').val(gasto['idProveedor']);
-//                    $('#form_gastoEditar #gasto_formaPago').val(gasto['formaPago']);
                     $('#form_gastoEditar #gasto_codigoOriginal').val(gasto['codigo']);
                     $('#form_gastoEditar #gasto_codigo').val(gasto['codigo']);
                     $('#form_gastoEditar #gasto_nombre').val(gasto['nombre']);
@@ -742,8 +731,7 @@
         d[4]= formaPago;
         d[5]= nombre;
         d[6]= persona;
-        d[7]= persona;
-        d[8]= monto;
+        d[7]= monto;
         row.data(d);
         generarListasBotones();
         $('.modal-trigger').leanModal();
@@ -770,11 +758,11 @@
         var boton = '<td>' +
                         '<ul id="dropdown-gasto'+ contadorFilas +'" class="dropdown-content">' +
                             '<li>' +
-                                '<a href="#editarTipoMoneda" data-id-editar="'+idEncriptado+'"' +
+                                '<a href="#" data-id-editar="'+idEncriptado+'"' +
                                     'class="-text modal-trigger abrirEditar">'+ menuOpciones_editar + '</a>' +
                             '</li>' +
                             '<li>' +
-                                '<a href="#eliminarTipoMoneda"' +
+                                '<a href="#"' +
                                     'class="-text modal-trigger confirmarEliminar"' +
                                     'data-id-eliminar="'+idEncriptado+'"  data-fila-eliminar="fila'+ contadorFilas +'">'+menuOpciones_eliminar+'</a>' +
                             '</li>' +
@@ -787,7 +775,6 @@
                     '</td>';
         var categoria = '<td>' + categoria + '</td>';
         var persona = '<td>' + persona + '</td>';
-        var categoriaPersona = '<td>' + persona + '</td>';
         var tipo = '<td>' + tipo +' </td>';
         var codigo = '<td>' + codigo + '</td>';
         var nombre = '<td>' + nombre + '</td>';
@@ -801,7 +788,6 @@
             formaPago,
             nombre,
             persona,
-            categoriaPersona,
             monto,
             boton ]);
         generarListasBotones();
@@ -1437,16 +1423,15 @@
 <script type="text/javascript">
     var contactoEliminar = null;
     $(document).on('click','.confirmarEliminarContacto', function () {
-        contactoEliminar = $(this).parent().parent();
-        $('#linkContactosElimminar').click();//esto se hace porque al agregar un <a class="modal-trigger"> dinamicamente con el metodo de agregarNuevoContacto() pareciera no servir, entonces lo que se hace es llamar al evento click del modal-trigger con el id = linkContactosElimminar
-    });
-    $(document).on('click','#eliminarContacto #botonEliminar', function () {
-        event.preventDefault();
-        contactoEliminar.fadeOut(function () {
-            contactoEliminar.remove();
-        });
-        cantidad--;
-        actualizarCantidad();
+        contactoEliminar = $(this).parent().parent().parent();
+        var confirmarEliminar = confirm('<?= label('gastos_personaContactos_confirmarEliminar'); ?>');
+        if(confirmarEliminar) {
+            contactoEliminar.fadeOut(function () {
+                contactoEliminar.remove();
+            });
+            cantidad--;
+            actualizarCantidad();
+        }
     });
     function actualizarCantidad(){
         $('#cantidadContactos').val(cantidad);
@@ -1457,55 +1442,54 @@
         cantidad++;
         actualizarCantidad();
         $('#contenedorContactos').append('' +
-            '<div id="' + contador + '" class="row">' +
-            '<div class="col s12 m11 l11">' +
-            '<div class="row">' +
-            '<div class="input-field col s12 m4 l4">' +
-            '<input id="proveedor_contactoNombre_' + contador + '" name="proveedor_contactoNombre_' + contador + '" type="text">' +
-            '<label for="proveedor_contactoNombre_' + contador + '"><?= label("formContacto_nombre"); ?></label>' +
-            '</div>' +
-            '<div class="input-field col s12 m4 l4">' +
-            '<input style="display:none" name="contacto_'+ contador +'" type="text">' +
-            '<input id="proveedor_contactoApellido1_' + contador + '" name="proveedor_contactoApellido1_' + contador + '" type="text">' +
-            '<label for="proveedor_contactoApellido1_' + contador + '"><?= label("formContacto_apellido1"); ?></label>' +
-            '</div>' +
-            '<div class="input-field col s12 m4 l4">' +
-            '<input id="proveedor_contactoApellido2_' + contador + '" name="proveedor_contactoApellido2_' + contador + '" type="text">' +
-            '<label for="proveedor_contactoApellido2_' + contador + '"><?= label("formContacto_apellido2"); ?></label>' +
-            '</div>' +
-            '</div>' +
-            '<div class="row">' +
-            '<div class="input-field col s12 m6 l6">' +
             '<div>' +
-//                            '<input id="proveedor_contactoCorreo_' + contador + '" name="proveedor_contactoCorreo_' + contador + '" type="email" style="margin-bottom: 0;">' +
-            '<input id="proveedor_contactoCorreo_' + contador + '" name="proveedor_contactoCorreo_' + contador + '" type="email">' +
-            '<label for="proveedor_contactoCorreo_' + contador + '"><?= label('formProveedor_correo'); ?></label>' +
-            '</div>' +
-//                        '<div style="margin-bottom: 20px;">' +
-//                            '<input type="checkbox" class="filled-in" id="checkbox_contactoCorreoProveedor_' + contador + '" name="checkbox_contactoCorreoProveedor_' + contador + '" />' +
-//                            '<label for="checkbox_contactoCorreoProveedor_' + contador + '" style="margin-bottom: 20px;">' +
-//                            '<?//= label('formProveedor_correoCheck') ?>//' +
-//                            '</label>' +
-//                        '</div>' +
-            '</div>' +
-            '<div class="input-field col s12 m3 l3">' +
-            '<input id="proveedor_contactoPuesto_' + contador + '" name="proveedor_contactoPuesto_' + contador + '" type="text">' +
-            '<label for="proveedor_contactoPuesto_' + contador + '"><?= label('formContacto_puesto'); ?></label>' +
-            '</div>' +
-            '<div class="input-field col s12 m3 l3">' +
-            '<input id="proveedor_contactoTelefono_' + contador + '" name="proveedor_contactoTelefono_' + contador + '" type="text">' +
-            '<label for="proveedor_contactoTelefono_' + contador + '"><?= label('formContacto_telefono'); ?></label>' +
-            '</div>' +
-            '</div>' +
-
-            '</div>' +
-            '<div class="col s12 m1 l1 btn-contacto-eliminar-edicion">' +
-//                    '<a href="#eliminarContacto" class="modal-trigger" title="<?//= label('formProveedor_contactoEliminar') ?>//"><i class="mdi-action-delete medium" style="color: black;"></i></a>' +
-            '<a class="confirmarEliminarContacto" data-fila-eliminar="' + contador + '" title="<?= label('formProveedor_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>' +
-            '</div>' +
-            '</div>' +
-            '<div class="col s12">' +
-            '<hr />' +
+                '<div id="' + contador + '" class="row">' +
+                    '<div class="col s12 m11 l11">' +
+                        '<div class="row">' +
+                            '<div class="input-field col s12 m4 l4">' +
+                                '<input id="proveedor_contactoNombre_' + contador + '" name="proveedor_contactoNombre_' + contador + '" type="text">' +
+                                '<label for="proveedor_contactoNombre_' + contador + '"><?= label("formContacto_nombre"); ?></label>' +
+                            '</div>' +
+                            '<div class="input-field col s12 m4 l4">' +
+                                '<input style="display:none" name="contacto_'+ contador +'" type="text">' +
+                                '<input id="proveedor_contactoApellido1_' + contador + '" name="proveedor_contactoApellido1_' + contador + '" type="text">' +
+                                '<label for="proveedor_contactoApellido1_' + contador + '"><?= label("formContacto_apellido1"); ?></label>' +
+                            '</div>' +
+                            '<div class="input-field col s12 m4 l4">' +
+                                '<input id="proveedor_contactoApellido2_' + contador + '" name="proveedor_contactoApellido2_' + contador + '" type="text">' +
+                                '<label for="proveedor_contactoApellido2_' + contador + '"><?= label("formContacto_apellido2"); ?></label>' +
+                            '</div>' +
+                        '</div>' +
+                        '<div class="row">' +
+                            '<div class="input-field col s12 m6 l6">' +
+                                '<div>' +
+                                    '<input id="proveedor_contactoCorreo_' + contador + '" name="proveedor_contactoCorreo_' + contador + '" type="email">' +
+                                    '<label for="proveedor_contactoCorreo_' + contador + '"><?= label('formProveedor_correo'); ?></label>' +
+                                '</div>' +
+//                                '<div style="margin-bottom: 20px;">' +
+//                                    '<input type="checkbox" class="filled-in" id="checkbox_contactoCorreoProveedor_' + contador + '" name="checkbox_contactoCorreoProveedor_' + contador + '" />' +
+//                                    '<label for="checkbox_contactoCorreoProveedor_' + contador + '" style="margin-bottom: 20px;">' +
+//                                    '<?//= label('formProveedor_correoCheck') ?>//' +
+//                                    '</label>' +
+//                                '</div>' +
+                            '</div>' +
+                            '<div class="input-field col s12 m3 l3">' +
+                                '<input id="proveedor_contactoPuesto_' + contador + '" name="proveedor_contactoPuesto_' + contador + '" type="text">' +
+                                '<label for="proveedor_contactoPuesto_' + contador + '"><?= label('formContacto_puesto'); ?></label>' +
+                            '</div>' +
+                            '<div class="input-field col s12 m3 l3">' +
+                                '<input id="proveedor_contactoTelefono_' + contador + '" name="proveedor_contactoTelefono_' + contador + '" type="text">' +
+                                '<label for="proveedor_contactoTelefono_' + contador + '"><?= label('formContacto_telefono'); ?></label>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="col s12 m1 l1 btn-contacto-eliminar-edicion">' +
+                        '<a class="confirmarEliminarContacto" data-fila-eliminar="' + contador + '" title="<?= label('formProveedor_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>' +
+                    '</div>' +
+                '</div>' +
+                '<div class="col s12">' +
+                    '<hr />' +
+                '</div>' +
             '</div>'
         );
         contador++;
