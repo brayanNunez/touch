@@ -340,6 +340,9 @@ class Gastos extends CI_Controller
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
 
+        $photo = explode('.',$this->input->post('persona_fotografia'));
+        $data['extension'] = end($photo);
+
         $empleado = $this->input->post('persona_tipoProveedor');
         $juridico = $this->input->post('persona_tipo');
         $data['palabras'] = $this->input->post('persona_palabras');
@@ -436,6 +439,15 @@ class Gastos extends CI_Controller
             //Error en la transacción
             echo 0;
         } else {
+            $config['upload_path'] = './files/empresas/'.$idEmpresa.'/proveedores/'.$res;
+            $config['file_name'] = 'profile_picture_'.$res.'.'.$data['extension'];
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['max_size'] = '2048';
+
+            $this->load->library('upload', $config);
+            if(!$this->upload->do_upload()) {
+//                $error = array('error' => $this->upload->display_errors());echo $error['error'];
+            }
             // correcto
             echo $res;
         }

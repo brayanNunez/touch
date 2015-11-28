@@ -391,6 +391,12 @@ class Gasto_model extends CI_Model
             }
             $insert_id = $this->db->insert_id();
 
+            if($data['extension'] != '' && $data['extension'] != null) {
+                $nombreFotografia = 'profile_picture_' . $insert_id . '.' . $data['extension'];
+                $this->db->where('idProveedor', $insert_id);
+                $query = $this->db->update('proveedor', array('fotografia' => $nombreFotografia));
+            }
+
             if ($data['palabras'] != '') {
                 $palabras = explode(",", $data['palabras']);
                 foreach ($palabras as $palabra) {

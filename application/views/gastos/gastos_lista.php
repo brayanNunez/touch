@@ -645,12 +645,14 @@
                     $('#agregarPersona .modal-header a').click();
                 } else{
                     if (response == '2') {
-                        var url = $('#form_persona_Gastos').attr('action');
-                        var method = $('#form_persona_Gastos').attr('method');
+                        var formulario = $('#form_persona_Gastos');
+                        var url = formulario.attr('action');
+                        var method = formulario.attr('method');
+                        var data = new FormData(formulario[0]);
                         $.ajax({
                             type: method,
                             url: url,
-                            data: $('#form_persona_Gastos').serialize(),
+                            data: data,
                             success: function(response)
                             {
                                 if (response == 0) {
@@ -666,7 +668,10 @@
                                         limpiarFormPersona();
                                     }
                                 }
-                            }
+                            },
+                            cache: false,
+                            contentType: false,
+                            processData: false
                         });
                     } else{
                         alert("<?=label('persona_error_identificacionExisteEnBD'); ?>");
@@ -1783,7 +1788,10 @@
         <div class="row">
             <h5 style="float: left;"><?= label('gasto_agregarPersona'); ?></h5>
         </div>
-        <form id="form_persona_Gastos" action="<?=base_url()?>gastos/insertarPersona" method="post">
+        <?php $this->load->helper('form'); ?>
+        <?php echo form_open_multipart(base_url().'gastos/insertarPersona',
+            array('id' => 'form_persona_Gastos', 'method' => 'POST', 'class' => 'col s12')); ?>
+<!--        <form id="form_persona_Gastos" action="--><?//=base_url()?><!--gastos/insertarPersona" method="post">-->
             <div class="row">
                 <!-- Campos obligatorios -->
                 <div class="input-field col s12">
@@ -1937,6 +1945,26 @@
                             <label for="persona_direccionDomicilio"><?= label('formPersona_direccionDomicilio'); ?></label>
                         </div>
                     </div>
+                    <div class="col s12">
+                        <div class="file-field col s12 m7 l9" style="margin-top:45px;">
+                            <label for="persona_fotografia"><?= label('formPersona_fotografia'); ?></label>
+
+                            <div class="file-field input-field col s12">
+                                <input name="persona_fotografia" class="file-path" type="text" readonly/>
+
+                                <div class="btn" data-toggle="tooltip" title="<?= label('tooltip_examinar') ?>">
+                                    <span><i class="mdi-action-search"></i></span>
+                                    <input style="padding-right: 800px;" id="userfile" type="file" name="userfile"
+                                           accept="image/jpeg,image/png"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s12 m5 l3">
+                            <figure>
+                                <img id="imagen_seleccionada" src="<?= base_url(); ?>files/default-user-image.png">
+                            </figure>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Datos de contactos -->
@@ -2055,3 +2083,39 @@
     </div>
 </div>
 <!-- Fin lista modals -->
+
+<!--script para el manejo de la imagen de la persona-->
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imagen_seleccionada').attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#userfile").change(function(){
+        var file = this.files[0];
+        var name = file.name;
+        var size = file.size;
+        var type = file.type;
+        var t = type.split('/');
+        var ext = t.slice(1, 2);
+        if(size > 2097150) { //2097152
+            alert("<?= label('usuarioErrorTamanoArchivo') ?>");
+            document.getElementById('userfile').value = '';
+        }
+        var valid_ext = ['image/png','image/jpg','image/jpeg'];
+        if(valid_ext.indexOf(type)==-1) {
+            alert("<?= label('usuarioErrorTipoArchivo') ?>");
+            document.getElementById('userfile').value = '';
+        }
+        if(document.getElementById('userfile').value == ''){
+            $('#imagen_seleccionada').attr('src', '<?= base_url(); ?>files/default-user-image.png');
+        } else {
+            $('#usuario_fotografia').attr('value', ext);
+            readURL(this);
+        }
+    });
+</script>
