@@ -48,7 +48,7 @@ class Gasto_model extends CI_Model
                 $this->db->select('nombre');
                 $this->db->where('idFormaPago', $gasto['formaPago']);
                 $query2 = $this->db->get('formaPago');
-                $this->db->select('nombre');
+                $this->db->select('juridico, nombre, primerApellido, segundoApellido');
                 $this->db->where('idProveedor', $gasto['idProveedor']);
                 $query3 = $this->db->get('proveedor');
                 if (!$query1 || !$query2 || !$query3) {
@@ -70,8 +70,11 @@ class Gasto_model extends CI_Model
                 $persona = '';
                 if($query3->num_rows() > 0) {
                     $valores_query3 = $query3->result_array();
-                    $valor = array_shift($valores_query3);
-                    $persona = $valor['nombre'];
+                    $valores = array_shift($valores_query3);
+                    $persona = $valores['nombre'];
+                    if($valores['juridico'] == 0) {
+                        $persona .= ' '.$valores['primerApellido'].' '.$valores['segundoApellido'];
+                    }
                 }
                 $resultado[$contador]['datosAdicionales'] = array(
                     'categoria' => $categoria,
@@ -114,7 +117,7 @@ class Gasto_model extends CI_Model
             $this->db->select('nombre');
             $this->db->where('idFormaPago', $row['formaPago']);
             $query2 = $this->db->get('formaPago');
-            $this->db->select('nombre');
+            $this->db->select('juridico, nombre, primerApellido, segundoApellido');
             $this->db->where('idProveedor', $row['idProveedor']);
             $query3 = $this->db->get('proveedor');
             if (!$query1 || !$query2 || !$query3) {
@@ -136,8 +139,11 @@ class Gasto_model extends CI_Model
             $persona = '';
             if($query3->num_rows() > 0) {
                 $valores_query3 = $query3->result_array();
-                $valor = array_shift($valores_query3);
-                $persona = $valor['nombre'];
+                $valores = array_shift($valores_query3);
+                $persona = $valores['nombre'];
+                if($valores['juridico'] == 0) {
+                    $persona .= ' '.$valores['primerApellido'].' '.$valores['segundoApellido'];
+                }
             }
             $row['datosAdicionales'] = array(
                 'categoria' => $categoria,
@@ -343,7 +349,7 @@ class Gasto_model extends CI_Model
         try{
             $this->db->trans_begin();
 
-            $this->db->select('idProveedor, nombre');
+            $this->db->select('idProveedor, juridico, nombre, primerApellido, segundoApellido');
             $this->db->where(array('idEmpresa' => $idEmpresa, 'eliminado' => 0));
             $proveedores = $this->db->get('proveedor');
             if (!$proveedores) {

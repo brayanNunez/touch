@@ -406,10 +406,15 @@
         for(var i = 0; i < $array.length; i++) {
             var pers = $array[i];
             if(pers != null) {
+                var tipoPersona = pers['juridico'];
+                var nombreCompleto = pers['nombre'];
+                if(tipoPersona == '0') {
+                    nombreCompleto += ' ' + pers['primerApellido'] + ' ' + pers['segundoApellido'];
+                }
                 if(pers['idProveedor'] == $id) {
-                    miSelect.append('<option value="' + pers['idProveedor'] + '" selected>' + pers['nombre'] + '</option>');
+                    miSelect.append('<option value="' + pers['idProveedor'] + '" selected>' + nombreCompleto + '</option>');
                 } else {
-                    miSelect.append('<option value="' + pers['idProveedor'] + '">' + pers['nombre'] + '</option>');
+                    miSelect.append('<option value="' + pers['idProveedor'] + '">' + nombreCompleto + '</option>');
                 }
             }
         }
@@ -457,10 +462,15 @@
         for(var i = 0; i < $array.length; i++) {
             var pers = $array[i];
             if(pers != null) {
+                var tipoPersona = pers['juridico'];
+                var nombreCompleto = pers['nombre'];
+                if(tipoPersona == '0') {
+                    nombreCompleto += ' ' + pers['primerApellido'] + ' ' + pers['segundoApellido'];
+                }
                 if(pers['idProveedor'] == $id) {
-                    miSelect.append('<option value="' + pers['idProveedor'] + '" selected>' + pers['nombre'] + '</option>');
+                    miSelect.append('<option value="' + pers['idProveedor'] + '" selected>' + nombreCompleto + '</option>');
                 } else {
-                    miSelect.append('<option value="' + pers['idProveedor'] + '">' + pers['nombre'] + '</option>');
+                    miSelect.append('<option value="' + pers['idProveedor'] + '">' + nombreCompleto + '</option>');
                 }
             }
         }
