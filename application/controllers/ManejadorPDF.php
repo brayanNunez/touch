@@ -161,7 +161,47 @@ class ManejadorPDF extends CI_Controller
             //si el pdf se guarda correctamente lo mostramos en pantalla
 
             $path = $this->html2pdf->create('save');
+            // $path = $this->html2pdf->create();
             // echo 'bien';
+        }
+
+    }
+
+    public function descargarCotizacion($idEmpresa, $idCotizacion)
+    {
+        // echo $idEmpresa.'/'.$idCotizacion; exit();
+
+        if (isset($_POST['miHtml'])) {
+            $htmlEntrada = $_POST['miHtml'];
+
+            //establecemos la carpeta en la que queremos guardar los pdfs,
+            //si no existen las creamos y damos permisos
+            $this->createFolder($idEmpresa, $idCotizacion);
+
+            //importante el slash del final o no funcionará correctamente
+            $this->html2pdf->folder('./files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacion.'/sistema/');//http://localhost/Proyectos/touch/files/empresas/1/cotizaciones/sUHDEO5uALpWDV9EYoz7nwX5kRlMa_OcdGtdOhB2-es/sistema/test.pdf
+
+            //establecemos el nombre del archivo
+            $this->html2pdf->filename('test.pdf');
+
+            //establecemos el tipo de papel
+            $this->html2pdf->paper('a4', 'portrait');
+
+            //datos que queremos enviar a la vista, lo mismo de siempre
+            $data = "";
+
+            //hacemos que coja la vista como datos a imprimir
+            //importante utf8_decode para mostrar bien las tildes, ñ y demás
+            // $this->html2pdf->html(utf8_decode($this->load->view('index', $data, true)));
+            $this->html2pdf->html(utf8_decode($htmlEntrada));
+            //si el pdf se guarda correctamente lo mostramos en pantalla
+
+            if ($path = $this->html2pdf->create('save')) {
+
+                $this->html2pdf->create();
+
+            }
+
         }
 
     }
@@ -211,7 +251,7 @@ class ManejadorPDF extends CI_Controller
             //nombre del archivo
             $filename = "test.pdf";
             //si existe el archivo empezamos la descarga del pdf
-            if (file_exists("./files/pdfs/" . $filename)) {
+            if (file_exists("./files/empresas/1/cotizaciones/1Wne37xEaHvwxOH8dvJ9-XHuNfMq8NtfPawpbQqLB7w/sistema" . $filename)) {
                 header("Cache-Control: public");
                 header("Content-Description: File Transfer");
                 header('Content-disposition: attachment; filename=' . basename($route));

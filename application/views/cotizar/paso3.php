@@ -438,6 +438,7 @@
       </div>
    </div>
 </div>
+
 <!--Fin lista modals-->
 <script type="text/javascript">
 
@@ -445,6 +446,8 @@
 
 
    $(document).ready(function(){
+
+         
    
          $('#botonPaso4').parents('li').on('click', function(){
             // alert('hola');

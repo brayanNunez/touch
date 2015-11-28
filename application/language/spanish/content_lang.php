@@ -469,6 +469,8 @@ $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos selec
 	$lang['pasoAnterior'] = 'Atrás';
 	$lang['pasoSiguiente'] = 'Siguiente';
     $lang['paso2_elegirProducto'] = 'Elija un producto';
+    $lang['paso2_agregarLinea'] = 'Agregar linea';
+    
 
    
     $lang['paso1_elegirFormaPago'] = 'Elegir forma de pago';

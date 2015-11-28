@@ -34,6 +34,7 @@
       <a href="#modalVistaPrevia" class=" right btn btn-default modal-trigger">Vista previa</a>
    </div>
 </div> -->
+<div id="inset_form"></div>
 <iframe id="vistaPrevia" class="col s12" height="500px" src="<?= base_url() ?>/cotizacion/preCarga">
 </iframe>
 <!-- <div id="preCarga" class="col s12">
@@ -65,6 +66,8 @@
     <a href="#cancelar-cot" id="btnCancelarCot" class="modal-trigger opt-finalizar"
        title="<?= label('tooltip_cancelarCot'); ?>"><?= label('cancelarCot'); ?></a>
 </div>
+
+<a href="<?=base_url()?>ManejadorPDF/downloadPdf">PRUEBA</a>
 
 
 <!-- </div>
@@ -183,6 +186,13 @@
 <script type="text/javascript">
 
     $(document).on("ready", function () {
+
+      $('#btnGuardarDescargar').on('click', function(){
+            alert('descargar');
+            var html = crearPDF();
+            $('#inset_form').html('<form  action="<?=base_url()?>ManejadorPDF/descargarCotizacion/<?= $resultado['idEmpresa'];?>/<?= encryptIt($resultado['idCotizacion']);?>" name="form" method="post" style="display:block;"><textarea name="miHtml">' + html + '</textarea></form>');
+            document.forms['form'].submit();
+         });
 
 
         // $('#botonPaso4').on("click", function () {
