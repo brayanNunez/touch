@@ -1,5 +1,5 @@
 
-<button id="botonAgregarFila">Agregar Fila(boton de prueba)</button>
+<!-- <button id="botonAgregarFila">Agregar Fila(boton de prueba)</button> -->
 
 <!-- <button id="myFunction">Vamos tu puedes</button> -->
 
@@ -131,9 +131,12 @@
     var cantidadLineas = 0;
     var contadorFilas = cantidadLineas;
 
-    $('#botonAgregarFila').on('click', function(){
-        agregarFila(0, null);// 0 porque es nueva
+    $(document).on('ready', function(){
+        $('#botonAgregarFila').on('click', function(){
+            agregarFila(0, null);// 0 porque es nueva
+        });
     });
+    
 
 
     function agregarFila(accionAplicada, idLinea){
@@ -374,8 +377,12 @@
                     <!--<div class="col s12">
                         <a href="#agregarServicio" class="modal-trigger opcionesDetalles">Agregar servicio</a>
                     </div>-->
-                    <div class="col s12" style="margin-top: 20px;">
-                        <a href="" class="opcionesDetalles btn-newLine">Agregar linea</a>
+                    <!-- <div class="col s12" style="margin-top: 20px;">
+                        <a id="botonAgregarFila" class="btn-default opcionesDetalles btn-newLine">Agregar linea</a>
+                    </div> -->
+
+                    <div id="botonAgregarFila" class="col s12">
+                        <a class="btn btn-default"><?= label('paso2_agregarLinea'); ?></a>
                     </div>
 
                     <div class="tabla-conAgregar tabla-detalles-cotizacion">

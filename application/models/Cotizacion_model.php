@@ -46,16 +46,69 @@ class Cotizacion_model extends CI_Model
             $nuevos = $data['nuevos'];
 
             foreach ($nuevos as $nuevo) {
+                $impuestos = $nuevo['impuestos'];
+                $nuevo = array(
+                     'idCotizacion' => $nuevo['idCotizacion'],
+                     'idServicio' => $nuevo['idServicio'],
+                     'descripcion' => $nuevo['descripcion'],
+                     'precioUnidad' => $nuevo['precioUnidad'],
+                     'cantidad' => $nuevo['cantidad'],
+                     'utilidad' => $nuevo['utilidad'],
+                     'eliminado' => '0'
+                     );
                 $query = $this->db->insert('lineadetalle', $nuevo);
                 if (!$query) throw new Exception("Error en la BD"); 
+                $insert_id = $this->db->insert_id();
+
+                if ($impuestos != '') {
+                $impuestos = explode(",", $impuestos);
+                foreach ($impuestos as $impuesto) {
+                    $row = array(
+                        'idLineaDetalle' => $insert_id,
+                        'idImpuesto' => $impuesto
+                    );
+                    $query = $this->db->insert('impuesto_lineadetalle', $row);
+                    if (!$query) {
+                        throw new Exception("Error en la BD");
+                    }
+                }
+            }
             }
 
             $editados = $data['editados'];
 
             foreach ($editados as $editado) {
+                $impuestos = $editado['impuestos'];
+                $editado = array(
+                     'idLineaDetalle' => $editado['idLineaDetalle'],
+                     'idServicio' => $editado['idServicio'],
+                     'descripcion' => $editado['descripcion'],
+                     'precioUnidad' => $editado['precioUnidad'],
+                     'cantidad' => $editado['cantidad'],
+                     'utilidad' => $editado['utilidad'],
+                     'eliminado' => '0'
+                     );
                 $this->db->where('idLineaDetalle', $editado['idLineaDetalle']);
                 $query = $this->db->update('lineadetalle', $editado);
                 if (!$query) throw new Exception("Error en la BD"); 
+
+                $this->db->where('idLineaDetalle', $editado['idLineaDetalle']);
+                $query = $this->db->delete('impuesto_lineadetalle');
+                if (!$query) throw new Exception("Error en la BD"); 
+
+                if ($impuestos != '') {
+                    $impuestos = explode(",", $impuestos);
+                    foreach ($impuestos as $impuesto) {
+                        $row = array(
+                            'idLineaDetalle' => $editado['idLineaDetalle'],
+                            'idImpuesto' => $impuesto
+                        );
+                        $query = $this->db->insert('impuesto_lineadetalle', $row);
+                        if (!$query) {
+                            throw new Exception("Error en la BD");
+                        }
+                    }
+                }
             }
 
             $eliminados = $data['eliminados'];

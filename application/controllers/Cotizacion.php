@@ -69,7 +69,7 @@ class Cotizacion extends CI_Controller
                          'precioUnidad' => $this->input->post('precio_'.$contador),
                          'cantidad' => $this->input->post('cantidad_'.$contador),
                          'utilidad' => $this->input->post('utilidad_'.$contador),
-                         // 'impuestos' => $this->input->post('impuestos_'.$contador),
+                         'impuestos' => $this->input->post('impuestos_'.$contador),
                          'eliminado' => '0'
                          );
                         array_push($editados, $linea);
@@ -86,7 +86,7 @@ class Cotizacion extends CI_Controller
                          'precioUnidad' => $this->input->post('precio_'.$contador),
                          'cantidad' => $this->input->post('cantidad_'.$contador),
                          'utilidad' => $this->input->post('utilidad_'.$contador),
-                         // 'impuestos' => $this->input->post('impuestos_'.$contador),
+                         'impuestos' => $this->input->post('impuestos_'.$contador),
                          'eliminado' => '0'
                          );
                         array_push($nuevos, $linea);
