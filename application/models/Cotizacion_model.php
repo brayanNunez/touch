@@ -18,7 +18,15 @@ class Cotizacion_model extends CI_Model
             // $this->db->from('cotizacion');
 
             
-            $cotizaciones = $this->db->query("SELECT co.idCotizacion, co.numero, co.codigo, co.fechaCreacion, if(cl.juridico = 1,cl.nombre,CONCAT(cl.nombre, ' ', cl.primerApellido, ' ', cl.segundoApellido)) as cliente, cl.idCliente, CONCAT(us.nombre, ' ', us.primerApellido, ' ', us.segundoApellido) as vendedor, us.idUsuario,ec.descripcion as estado FROM touch.cotizacion as co left join cliente as cl on co.idCliente = cl.idCliente left join estadocotizacion as ec on co.idEstadoCotizacion = ec.idEstadoCotizacion left join usuario as us on co.idUsuario = us.idUsuario where co.idEmpresa = ".$idEmpresa." AND co.eliminado=0;");
+            $cotizaciones = $this->db->query("SELECT co.idCotizacion, co.numero, co.codigo, co.fechaCreacion, if(cl.juridico = 1,cl.nombre,CONCAT(cl.nombre, ' ', cl.primerApellido, ' ', cl.segundoApellido)) as cliente, cl.idCliente, CONCAT(us.nombre, ' ', us.primerApellido, ' ', us.segundoApellido) as vendedor, us.idUsuario,ec.descripcion as estado FROM cotizacion as co left join cliente as cl on co.idCliente = cl.idCliente left join estadocotizacion as ec on co.idEstadoCotizacion = ec.idEstadoCotizacion left join usuario as us on co.idUsuario = us.idUsuario where co.idEmpresa = ".$idEmpresa." AND co.eliminado=0;");
+            // $this->db->select("co.idCotizacion, co.numero, co.codigo, co.fechaCreacion, if(cl.juridico = 1,cl.nombre,CONCAT(cl.nombre, ' ', cl.primerApellido, ' ', cl.segundoApellido)) as cliente, cl.idCliente, CONCAT(us.nombre, ' ', us.primerApellido, ' ', us.segundoApellido) as vendedor, us.idUsuario,ec.descripcion as estado");
+            // $this->db->from('');
+            // $this->db->join( FROM touch.cotizacion as co left join cliente as cl on co.idCliente = cl.idCliente left join estadocotizacion as ec on co.idEstadoCotizacion = ec.idEstadoCotizacion left join usuario as us on co.idUsuario = us.idUsuario where co.idEmpresa = ".$idEmpresa." AND co.eliminado=0;");
+            
+
+
+
+
             if (!$cotizaciones) throw new Exception("Error en la BD"); 
             $cotizaciones = $cotizaciones->result_array();
 
@@ -125,19 +133,18 @@ class Cotizacion_model extends CI_Model
             $query = $this->db->delete('aprobador_cotizacion');
             if (!$query) throw new Exception("Error en la BD"); 
 
-            foreach ($aprobadores as $aprobador) {
-                $row = array(
-                    'idUsuario' => $aprobador,
-                    'idCotizacion' => $data['idCotizacion']
-                );
-                $query = $this->db->insert('aprobador_cotizacion', $row);
-                if (!$query) {
-                    throw new Exception("Error en la BD");
+            if ($aprobadores != null) {
+                foreach ($aprobadores as $aprobador) {
+                    $row = array(
+                        'idUsuario' => $aprobador,
+                        'idCotizacion' => $data['idCotizacion']
+                    );
+                    $query = $this->db->insert('aprobador_cotizacion', $row);
+                    if (!$query) {
+                        throw new Exception("Error en la BD");
+                    }
                 }
             }
-
-
-
 
             
             $this->db->trans_commit();
@@ -183,7 +190,7 @@ class Cotizacion_model extends CI_Model
 
             // echo $datos['idUsuario']; exit();
 
-            $clientes = $this->db->query("SELECT cl.idCliente, cl.nombre, cl.primerApellido, cl.segundoApellido, cl.todosVendedores, mec.valido  FROM touch.cliente as cl left join (SELECT uc.idCliente, 1 as valido FROM usuario_cliente as uc inner join usuario as u on u.idUsuario = uc.idUsuario where u.idUsuario = ".$datos['idUsuario'].") as mec on mec.idCliente = cl.idCliente where cl.eliminado = 0 order by nombre ASC ;");
+            $clientes = $this->db->query("SELECT cl.idCliente, cl.nombre, cl.primerApellido, cl.segundoApellido, cl.todosVendedores, mec.valido  FROM cliente as cl left join (SELECT uc.idCliente, 1 as valido FROM usuario_cliente as uc inner join usuario as u on u.idUsuario = uc.idUsuario where u.idUsuario = ".$datos['idUsuario'].") as mec on mec.idCliente = cl.idCliente where cl.eliminado = 0 order by nombre ASC ;");
             if (!$clientes)  throw new Exception("Error en la BD");
             $clientes = $clientes->result_array();
             $misClientes = array();
@@ -200,7 +207,7 @@ class Cotizacion_model extends CI_Model
 
             $this->db->select("us.*");
             $this->db->from('usuario as us');
-            $this->db->join('privilegio_Usuario as pu', 'pu.idUsuario = us.idUsuario');
+            $this->db->join('privilegio_usuario as pu', 'pu.idUsuario = us.idUsuario');
             $this->db->join('privilegio as pr', 'pr.idPrivilegio = pu.idPrivilegio');
             $this->db->where(array('us.eliminado' => 0,'us.idEmpresa' => $datos['idEmpresa'], 'pr.nombre' => 'Aprobador'));
 
@@ -293,7 +300,7 @@ class Cotizacion_model extends CI_Model
 
             // echo $datos['idUsuario']; exit();
 
-            $clientes = $this->db->query("SELECT cl.idCliente, cl.nombre, cl.primerApellido, cl.segundoApellido, cl.todosVendedores, mec.valido  FROM touch.cliente as cl left join (SELECT uc.idCliente, 1 as valido FROM usuario_cliente as uc inner join usuario as u on u.idUsuario = uc.idUsuario where u.idUsuario = ".$datos['idUsuario'].") as mec on mec.idCliente = cl.idCliente where cl.eliminado = 0 order by nombre ASC ;");
+            $clientes = $this->db->query("SELECT cl.idCliente, cl.nombre, cl.primerApellido, cl.segundoApellido, cl.todosVendedores, mec.valido  FROM cliente as cl left join (SELECT uc.idCliente, 1 as valido FROM usuario_cliente as uc inner join usuario as u on u.idUsuario = uc.idUsuario where u.idUsuario = ".$datos['idUsuario'].") as mec on mec.idCliente = cl.idCliente where cl.eliminado = 0 order by nombre ASC ;");
             if (!$clientes)  throw new Exception("Error en la BD");
             $clientes = $clientes->result_array();
             $misClientes = array();
@@ -330,7 +337,7 @@ class Cotizacion_model extends CI_Model
 
             $this->db->select("us.*");
             $this->db->from('usuario as us');
-            $this->db->join('privilegio_Usuario as pu', 'pu.idUsuario = us.idUsuario');
+            $this->db->join('privilegio_usuario as pu', 'pu.idUsuario = us.idUsuario');
             $this->db->join('privilegio as pr', 'pr.idPrivilegio = pu.idPrivilegio');
             $this->db->where(array('us.eliminado' => 0,'us.idEmpresa' => $datos['idEmpresa'], 'pr.nombre' => 'Aprobador'));
 

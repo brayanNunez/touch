@@ -35,7 +35,7 @@
    </div>
 </div> -->
 <div id="inset_form"></div>
-<iframe id="vistaPrevia" class="col s12" height="500px" src="<?= base_url() ?>/cotizacion/preCarga">
+<iframe id="vistaPrevia" class="col s12" height="500px" src="<?= base_url() ?>cotizacion/precarga">
 </iframe>
 <!-- <div id="preCarga" class="col s12">
 </div> -->
@@ -177,17 +177,29 @@
     $js_array = json_encode($resultado['aprobadores']); 
     echo "var arrayAprobadores =". $js_array .";";
 
-    $js_array = json_encode($resultado['aprobadoresCotizacion']); 
-    echo "var arrayAprobadoresCotizacion =". $js_array .";";
-    ?>
+    if (isset($resultado['aprobadoresCotizacion'])) {
+      $js_array = json_encode($resultado['aprobadoresCotizacion']); 
+      echo "var arrayAprobadoresCotizacion =". $js_array .";";
 
-    $(document).on("ready", function () {
+      ?>
+
+      $(document).on("ready", function () {
 
       //Activar los checks de los aprobadores de esta cotizacion
       for (var i = 0; i < arrayAprobadoresCotizacion.length; i++) {
-        var idAprobador = arrayAprobadoresCotizacion[i]['idUsuario'];
-        $("#listaAprobadores input[value='"+idAprobador+"']").prop("checked", true );
-      };
+          var idAprobador = arrayAprobadoresCotizacion[i]['idUsuario'];
+          $("#listaAprobadores input[value='"+idAprobador+"']").prop("checked", true );
+        };
+      });
+
+      <?php
+
+    };
+
+    
+    ?>
+
+    $(document).on("ready", function () {
 
       $('#btnGuardarDescargar').on('click', function(){
           guardar(1);

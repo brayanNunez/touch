@@ -286,7 +286,7 @@ class ManejadorPDF extends CI_Controller
         $this->email->cc('brayan.nunez@ucrso.info');
 
         $this->email->subject('Email PDF Test');
-        $this->email->message('Testing the email a freshly created PDF');
+        $this->email->message('Testing the email a freshly created PDF http://touchcr.com/cotizacion/editar/j-QjQ_V3KYYA9j9W4mD01cy-MDZPANq145FI-KQATkc');
 
         // $this->email->attach($path);
 
