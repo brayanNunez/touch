@@ -38,7 +38,7 @@ class Cotizacion extends CI_Controller
 
         $data['idCotizacion'] = decryptIt($idCotizacion);
 
-        // echo  $this->input->post('cantidadLineasDetalle'); exit();
+        echo  print_r($this->input->post('aprobadores')); exit();
 
         $editados = array();
         $eliminados = array();

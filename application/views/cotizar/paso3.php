@@ -237,7 +237,7 @@
    </div>
    <div class="modal-footer">
       <div class="aplicarCambios">
-         <a href="#" class="waves-effect btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+         <a class="waves-effect btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
       </div>
    </div>
 </div>
@@ -317,7 +317,7 @@
    </div>
    <div class="modal-footer">
       <div class="aplicarCambios">
-         <a href="#" class="waves-effect btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+         <a class="waves-effect btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
       </div>
    </div>
 </div>
@@ -379,7 +379,7 @@
    </div>
    <div class="modal-footer">
       <div class="aplicarCambios">
-         <a href="#" class="waves-effect btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+         <a class="waves-effect btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
       </div>
    </div>
 </div>
@@ -434,7 +434,7 @@
    </div>
    <div class="modal-footer">
       <div class="aplicarCambios">
-         <a href="#" class="waves-effect btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+         <a class="waves-effect btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
       </div>
    </div>
 </div>
@@ -450,45 +450,43 @@
          
    
          $('#botonPaso4').parents('li').on('click', function(){
-            // alert('hola');
+            actualizarDiseno();
 
-          // event.preventDefault();
-          // $('#botonPaso3').parents('li').click();
-          // alert('hola');
-          actualizarDiseno();
+             var html = crearPDF();
+             // alert('hola');
 
-          var html = crearPDF();
-          // alert('hola');
+             var idEmpresa = "<?= $resultado['idEmpresa'];?>";
+             var idCotizacion = "<?= encryptIt($resultado['idCotizacion']);?>";
+      
+             // alert(html);
 
-          var idEmpresa = "<?= $resultado['idEmpresa'];?>";
-          var idCotizacion = "<?= encryptIt($resultado['idCotizacion']);?>";
+      
+             $.ajax({
+                data: {miHtml :  html, idEmpresa :  idEmpresa, idCotizacion :  idCotizacion},
+                url:   '<?=base_url()?>ManejadorPDF/generarCotizacion',
+                type:  'post',
+                beforeSend: function(){
+                     $('#botonPaso4').text('Cargando...');
+                     // $('#vistaPrevia').hide();
+                     // $('#preCarga').show();
+
+                 },
+                success:  function (response) {
+                      // alert(response);
+                     $('#botonPaso4').text('<?= label('paso4'); ?>');
+                     // document.getElementById('vistaPrevia').contentDocument.location.reload(true);
+                     // document.getElementById('vistaPrevia').contentWindow.location.reload();
+
+                     $('#vistaPrevia').attr('src', "<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/cotizaciones/<?= encryptIt($resultado['idCotizacion']);?>/sistema/test.pdf");
+                     // $('#vistaPrevia').show()"<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/cotizaciones/<?= encryptIt($resultado['idCotizacion']);?>/sistema/test.pdf"                  // $('#preCarga').hide();
+                     // $('#vistaPrevia').contentDocument.location.reload(true);
+                 }
+           });
+          
    
-          // alert(html);
+         });
 
-   
-          $.ajax({
-             data: {miHtml :  html, idEmpresa :  idEmpresa, idCotizacion :  idCotizacion},
-             url:   '<?=base_url()?>ManejadorPDF/generarCotizacion',
-             type:  'post',
-             beforeSend: function(){
-                  $('#botonPaso4').text('Cargando...');
-                  // $('#vistaPrevia').hide();
-                  // $('#preCarga').show();
-
-              },
-             success:  function (response) {
-                   // alert(response);
-                  $('#botonPaso4').text('<?= label('paso4'); ?>');
-                  // document.getElementById('vistaPrevia').contentDocument.location.reload(true);
-                  // document.getElementById('vistaPrevia').contentWindow.location.reload();
-
-                  $('#vistaPrevia').attr('src', "<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/cotizaciones/<?= encryptIt($resultado['idCotizacion']);?>/sistema/test.pdf");
-                  // $('#vistaPrevia').show()"<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/cotizaciones/<?= encryptIt($resultado['idCotizacion']);?>/sistema/test.pdf"                  // $('#preCarga').hide();
-                  // $('#vistaPrevia').contentDocument.location.reload(true);
-              }
-        });
-   
-   });
+         
    
            $('#botonPaso3').parents('li').on('click', function(){
                actualizarDiseno();
