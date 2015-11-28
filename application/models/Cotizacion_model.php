@@ -178,7 +178,22 @@ class Cotizacion_model extends CI_Model
                 array_push($misClientes, $row);
             }
 
-            // print_r($plantillas);exit();
+            $this->db->select("us.*");
+            $this->db->from('usuario as us');
+            $this->db->join('privilegio_Usuario as pu', 'pu.idUsuario = us.idUsuario');
+            $this->db->join('privilegio as pr', 'pr.idPrivilegio = pu.idPrivilegio');
+            $this->db->where(array('us.eliminado' => 0,'us.idEmpresa' => $datos['idEmpresa'], 'pr.nombre' => 'Aprobador'));
+
+            $aprobadores = $this->db->get();
+
+             // $aprobadores = $this->db->get_where('usuario', array('eliminado' => 0,'idEmpresa' => $idEmpresa));
+
+            if (!$aprobadores) {
+                throw new Exception("Error en la BD");
+            }
+            $aprobadores = $aprobadores->result_array();
+
+            $data['aprobadores'] = $aprobadores;
             $data['clientes'] = $misClientes;
             $data['plantillas'] = $plantillas;
             $data['servicios'] = $resultado;
@@ -292,7 +307,23 @@ class Cotizacion_model extends CI_Model
 
 
             // print_r($plantillas);exit();
-            
+
+            $this->db->select("us.*");
+            $this->db->from('usuario as us');
+            $this->db->join('privilegio_Usuario as pu', 'pu.idUsuario = us.idUsuario');
+            $this->db->join('privilegio as pr', 'pr.idPrivilegio = pu.idPrivilegio');
+            $this->db->where(array('us.eliminado' => 0,'us.idEmpresa' => $datos['idEmpresa'], 'pr.nombre' => 'Aprobador'));
+
+            $aprobadores = $this->db->get();
+
+             // $aprobadores = $this->db->get_where('usuario', array('eliminado' => 0,'idEmpresa' => $idEmpresa));
+
+            if (!$aprobadores) {
+                throw new Exception("Error en la BD");
+            }
+            $aprobadores = $aprobadores->result_array();
+
+            $data['aprobadores'] = $aprobadores;
             $data['lineasDetalle'] = $lineasDetalle;
             $data['clientes'] = $misClientes;
             $data['plantillas'] = $plantillas;

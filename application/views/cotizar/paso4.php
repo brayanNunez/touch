@@ -95,7 +95,23 @@
                 <form action="#">
                     <div class="row col s12 m6 l6">
                         <div class="listaCecksModals">
-                            <p>
+
+                        <?php
+                          if (isset($resultado['aprobadores'])) {
+                                   $contador = 0;
+                                      foreach ($resultado['aprobadores'] as $aprobador) {
+                                          ?>
+
+                                          <p>
+                                              <input type="checkbox" class="filled-in" id="filled-in-box_<?=$contador?>" value="<?=$aprobador['idUsuario'];?>" name="aprobadores" checked="checked">
+                                              <label for="filled-in-box_<?=$contador++?>"><?=$aprobador['nombre'].' '.$aprobador['primerApellido'].' '.$aprobador['segundoApellido']?></label>
+                                          </p>
+
+                                          <?php 
+                                        }
+                                      }
+                                  ?>
+                            <!-- <p>
                                 <input type="checkbox" class="filled-in" id="filled-in-box_1" checked="checked">
                                 <label for="filled-in-box_1">Esteban Nuñez Rojas</label>
                             </p>
@@ -108,7 +124,7 @@
                             <p>
                                 <input type="checkbox" class="filled-in" id="filled-in-box_3" checked="checked">
                                 <label for="filled-in-box_3">Juan Carlos Arias</label>
-                            </p>
+                            </p> -->
 
                         </div>
                     </div>
@@ -184,6 +200,11 @@
 
 
 <script type="text/javascript">
+
+  <?php 
+    $js_array = json_encode($resultado['aprobadores']); 
+    echo "var arrayAprobadores =". $js_array .";";
+    ?>
 
     $(document).on("ready", function () {
 
