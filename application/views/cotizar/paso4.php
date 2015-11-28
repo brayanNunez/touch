@@ -93,7 +93,7 @@
             <div class="col s12 m12 l12">
                 <form id="formAprobadores">
                     <div class="row col s12 m6 l6">
-                        <div class="listaCecksModals">
+                        <div id="listaAprobadores" class="listaCecksModals">
 
                         <?php
                           if (isset($resultado['aprobadores'])) {
@@ -102,7 +102,7 @@
                                           ?>
 
                                           <p>
-                                              <input type="checkbox" class="filled-in" id="filled-in-box_<?=$contador?>" value="<?=$aprobador['idUsuario'];?>" name="aprobadores[]" checked="checked">
+                                              <input type="checkbox" class="filled-in aprobadores" id="filled-in-box_<?=$contador?>" value="<?=$aprobador['idUsuario'];?>" name="aprobadores[]">
                                               <label for="filled-in-box_<?=$contador++?>"><?=$aprobador['nombre'].' '.$aprobador['primerApellido'].' '.$aprobador['segundoApellido']?></label>
                                           </p>
 
@@ -118,8 +118,10 @@
         </div>
     </div>
     <div class="modal-footer">
-        <a id="aprobadoresAceptar" href="#"
-           class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+      <div id="aprobadoresAceptar">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+      </div>
+        
     </div>
 </div>
 
@@ -174,13 +176,26 @@
   <?php 
     $js_array = json_encode($resultado['aprobadores']); 
     echo "var arrayAprobadores =". $js_array .";";
+
+    $js_array = json_encode($resultado['aprobadoresCotizacion']); 
+    echo "var arrayAprobadoresCotizacion =". $js_array .";";
     ?>
 
     $(document).on("ready", function () {
 
+      //Activar los checks de los aprobadores de esta cotizacion
+      for (var i = 0; i < arrayAprobadoresCotizacion.length; i++) {
+        var idAprobador = arrayAprobadoresCotizacion[i]['idUsuario'];
+        $("#listaAprobadores input[value='"+idAprobador+"']").prop("checked", true );
+      };
+
       $('#btnGuardarDescargar').on('click', function(){
-            guardar(1);
-         });
+          guardar(1);
+      });
+
+      $('#aprobadoresAceptar').on('click', function(){
+          guardar(2);
+      });
 
 
         // $('#botonPaso4').on("click", function () {
@@ -214,8 +229,20 @@
                       $('#inset_form').html('<form  action="<?=base_url()?>ManejadorPDF/descargarCotizacion/<?= $resultado['idEmpresa'];?>/<?= encryptIt($resultado['idCotizacion']);?>" name="form" method="post" style="display:block;"><textarea name="miHtml">' + html + '</textarea></form>');
                       document.forms['form'].submit();
 
-                    } 
+                    }
+                    if (accion == 2) {
+                      alert('enviar correo');
+                      $.ajax({
+                         type: 'POST',
+                         url: '<?=base_url()?>ManejadorPDF/enviarCorreoParaAprobacion',
+                         // data: $('#formAprobadores, #formLineasDetalle, #formGeneral, #form_encabezado, #form_paso3AgregarPlantilla, #form_cuerpo, #form_informacion, #form_footer').serialize(), 
+                         success: function(response) {
+                          alert(response);
+
+                         }
+                          });
                    }
+                 }
                  });
 
         }

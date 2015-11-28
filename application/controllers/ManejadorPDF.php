@@ -278,6 +278,24 @@ class ManejadorPDF extends CI_Controller
         }
     }
 
+    public function enviarCorreoParaAprobacion(){
+        $this->load->library('email');
+
+        $this->email->from('brayannr@hotmail.es', 'Brayan');
+        $this->email->to('brayan.nunez@ucrso.info');
+        $this->email->cc('brayan.nunez@ucrso.info');
+
+        $this->email->subject('Email PDF Test');
+        $this->email->message('Testing the email a freshly created PDF');
+
+        // $this->email->attach($path);
+
+        $this->email->send();
+
+        echo "El email ha sido enviado correctamente";
+
+    }
+
     //función para crear y enviar el pdf por email
     //ejemplo de la libreria sin modificar
     public function mail_pdf()
