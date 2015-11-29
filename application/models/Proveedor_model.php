@@ -425,6 +425,42 @@ class Proveedor_model extends CI_Model
         }
     }
 
+    function cambiar_imagen($data) {
+        try{
+            $photo = '';
+            $this->db->trans_begin();
+
+            $this->db->select('fotografia');
+            $this->db->where('idProveedor', $data['id']);
+            $this->db->from('proveedor');
+            $query1 = $this->db->get();
+            if (!$query1) {
+                throw new Exception("Error en la BD");
+            }
+            if($query1->num_rows() > 0) {
+                $datos = $query1->result_array();
+                $photo = $datos[0]['fotografia'];
+                if(!$photo) {
+                    $photo = 'sinFoto';
+                }
+            } else {
+                $photo = 'sinFoto';
+            }
+            if($photo) {
+                $this->db->where('idProveedor', $data['id']);
+                $query2 = $this->db->update('proveedor', $data['datos']);
+                if (!$query2) {
+                    throw new Exception("Error en la BD");
+                }
+            }
+            $this->db->trans_commit();
+            return $photo;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
     public function agregarArchivo($data) {
         try{
             $this->db->trans_begin();
@@ -443,7 +479,6 @@ class Proveedor_model extends CI_Model
             return false;
         }
     }
-
     public function eliminarArchivo($id) {
         try{
             $this->db->trans_begin();
@@ -476,8 +511,7 @@ class Proveedor_model extends CI_Model
             return false;
         }
     }
-
-    function cargarArchivo($id)
+    public function cargarArchivo($id)
     {
         try {
             $this->db->trans_begin();
@@ -494,42 +528,6 @@ class Proveedor_model extends CI_Model
 
             $this->db->trans_commit();
             return $row;
-        } catch (Exception $e) {
-            $this->db->trans_rollback();
-            return false;
-        }
-    }
-
-    function cambiar_imagen($data) {
-        try{
-            $photo = '';
-            $this->db->trans_begin();
-
-            $this->db->select('fotografia');
-            $this->db->where('idProveedor', $data['id']);
-            $this->db->from('proveedor');
-            $query1 = $this->db->get();
-            if (!$query1) {
-                throw new Exception("Error en la BD");
-            }
-            if($query1->num_rows() > 0) {
-                $datos = $query1->result_array();
-                $photo = $datos[0]['fotografia'];
-                if(!$photo) {
-                    $photo = 'sinFoto';
-                }
-            } else {
-                $photo = 'sinFoto';
-            }
-            if($photo) {
-                $this->db->where('idProveedor', $data['id']);
-                $query2 = $this->db->update('proveedor', $data['datos']);
-                if (!$query2) {
-                    throw new Exception("Error en la BD");
-                }
-            }
-            $this->db->trans_commit();
-            return $photo;
         } catch (Exception $e) {
             $this->db->trans_rollback();
             return false;

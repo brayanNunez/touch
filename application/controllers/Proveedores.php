@@ -498,16 +498,15 @@ class Proveedores extends CI_Controller
             );
 //            print_r($data['datos']);
             $resultado = $this->Proveedor_model->agregarArchivo($data);
-            $archivo = $path.'/'.$data['datos']['nombre'];
+            $archivo = $path.'/'.$data['datos']['nombreOriginal'];
             if(!$resultado) {
                 unlink($archivo);
-                echo 1;
+                echo '-1';
             } else {
                 echo $resultado;
             }
         }
     }
-
     public function eliminarArchivo()
     {
         $data = array();
@@ -531,7 +530,6 @@ class Proveedores extends CI_Controller
             echo 1;
         }
     }
-
     public function cargarArchivo()
     {
         $sessionActual = $this->session->userdata('logged_in');

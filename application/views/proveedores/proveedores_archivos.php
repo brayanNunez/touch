@@ -65,8 +65,7 @@
                     </td>
                 </tr>
         <?php
-            } ?>
-    <?php
+            }
         } ?>
     </tbody>
 </table>
@@ -131,7 +130,7 @@
                 if(response == 0) {
                     alert('<?= label('personaErrorSubirArchivo'); ?>');
                 } else {
-                    if (response == 1) {
+                    if (response == '-1') {
                         alert('<?= label('personaErrorSubirArchivo'); ?>');
                     } else {
                         alert('<?= label('personaExitoSubirArchivo'); ?>');
@@ -524,7 +523,7 @@
             </div>
             <div class="col s12">
                 <label for="archivo_descripcion" style="float: left;text-align: left;"><?= label('archivo_descripcion'); ?></label>
-                <textarea id="archivo_descripcion" name="archivo_descripcion" class="materialize-textarea" length="120" style="padding: 0.6rem 0 1.6rem;"></textarea>
+                <textarea id="archivo_descripcion" name="archivo_descripcion" class="materialize-textarea" rows="3" style="padding: 0.6rem 0 1.6rem;"></textarea>
             </div>
             <div class="input-field col s12 envio-formulario" style="margin-bottom: 30px;">
                 <button id="subir_archivo" class="btn" type="submit" value="<?= label('archivo_upload'); ?>"
