@@ -53,8 +53,13 @@
     $lang['confirmarEliminarSubFase'] = '¿Realmente desea eliminar la subfase?';
     $lang['fases_eliminarElementosSeleccionados'] = '¿Realmente desea eliminar las fases seleccionadas?';
     $lang['gastos_eliminarElementosSeleccionados'] = '¿Realmente desea eliminar los gastos seleccionados?';
+    $lang['confirmarEnviarCliente'] = '¿Realmente desea aprobar y enviar la cotización?';
+    $lang['confirmarRechazar'] = '¿Realmente desea rechazar la cotización?';
 
-$lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos seleccionados?';
+    
+
+
+    $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos seleccionados?';
 
     $lang['confirmarEliminarProductoServicio'] = '¿Realmente desea eliminar el elemento seleccionado?';
     $lang['confirmarActivarProductoServicio'] = '¿Realmente desea activar el elemento seleccionado?';
