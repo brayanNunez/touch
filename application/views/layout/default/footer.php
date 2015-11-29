@@ -194,6 +194,84 @@ Scripts
 <!-- autocompletar con boton dentro -->
 <script src="<?= base_url()?>assets/dashboard/js/chosen.jquery.js" type="text/javascript"></script>
 
+<!--Script para manejo de horas laborales-->
+<script type="text/javascript">
+    $(document).on('click', '#checkbox_festivosNoObligatorios', function () {
+        var incluirFestivosNoObligatorios = $(this).is(':checked');
+        if(incluirFestivosNoObligatorios) {
+            document.getElementById('horas_inputFestivosNoObligatorios').style.display = 'block';
+        } else {
+            document.getElementById('horas_inputFestivosNoObligatorios').style.display = 'none';
+        }
+    });
+    function validacionCorrecta_horas() {
+        var formulario = $('#form_horas');
+        $.ajax({
+            data: formulario.serialize(),
+            url: formulario.attr('action'),
+            type:  formulario.attr('method'),
+            success:  function (response) {
+                if (response == '0') {
+                    alert("<?=label('errorGuardar'); ?>");
+                } else {
+                    alert("Cambios gurdados correctamente.");
+                    $('#horasLaborales .modal-header a').click();
+                }
+            }
+        });
+    }
+    $(document).on('click', '#btn_horasLaborales', function () {
+        $.ajax({
+            type: 'post',
+            url: '<?= base_url(); ?>horas/cargarDatos',
+            data: {  },
+            success: function(response)
+            {
+                if(response != 'null') {
+                    var datosHoras = $.parseJSON(response);
+                    var incluirNoObligatorios = datosHoras['incluirNoObligatorios'];
+                    $('#form_horas #horas_diasAnno').val(datosHoras['diasAnno']);
+                    $('#form_horas #horas_finesSemana').val(datosHoras['finesSemana']);
+                    $('#form_horas #horas_festivosObligatorios').val(datosHoras['festivosObligatorios']);
+                    $('#form_horas #horas_festivosNoObligatorios').val(datosHoras['festivosNoObligatorios']);
+                    if (incluirNoObligatorios == 0) {
+                        $('#form_horas #checkbox_festivosNoObligatorios').prop('checked', false);
+                        document.getElementById('horas_inputFestivosNoObligatorios').style.display = 'none';
+                    } else {
+                        $('#form_horas #checkbox_festivosNoObligatorios').prop('checked', true);
+                        document.getElementById('horas_inputFestivosNoObligatorios').style.display = 'block';
+                    }
+                    $('#form_horas #horas_vacaciones').val(datosHoras['vacaciones']);
+                    $('#form_horas #horas_promedioBajas').val(datosHoras['promedioBajas']);
+                    $('#form_horas #horas_diasFacturables').val(datosHoras['diasFacturables']);
+                    $('#form_horas #horas_promedioHorasDiarias').val(datosHoras['promedioHorasDiarias']);
+                    $('#form_horas #horas_cantidadManoObra').val(datosHoras['cantidadManoObra']);
+
+                    var totalHorasAnual = (datosHoras['diasFacturables'] * datosHoras['promedioHorasDiarias']).toFixed(2);
+                    var promedioHorasMensual = (totalHorasAnual / 12).toFixed(2);
+                    $('#horas_totalAnual').text(totalHorasAnual);
+                    $('#horas_promedioMensual').text(promedioHorasMensual);
+
+                    $('#horasLaborales label').addClass('active');
+                    $('#label_checkboxFestivosNoObligatorios').removeClass('active');
+                } else {
+                    $('#horas_totalAnual').text('0');
+                    $('#horas_promedioMensual').text('0');
+                }
+            }
+        });
+    });
+</script>
+<!--Script para selects de busqueda-->
+<script type="text/javascript">
+//    $(document).on("ready", function(){
+//        var config = {'.chosen-select select'           : {}}
+//        for (var selector in config) {
+//            $(selector).chosen(config[selector]);
+//        }
+//    });
+</script>
+
 <!--Inicio lista de modals-->
 <div id="login-page" class="modal fade in" style="width: 25%; max-height: none; ">
     <div class="col s12 z-depth-4 card-panel" style="box-shadow: none; margin: 0px; padding-bottom: 0px; ">
@@ -308,92 +386,209 @@ Scripts
                     </div>
                 </div>
                 <div class="input-field col s12 envio-formulario">
-                        <button class="btn waves-effect waves-light right" type="submit" name="action">
-                            <?= label('horas_guardarCambios'); ?>
-                        </button>
-                    </div>
+                    <button class="btn waves-effect waves-light right" type="submit" name="action">
+                        <?= label('horas_guardarCambios'); ?>
+                    </button>
+                </div>
             </form>
         </div>
     </div>
 </div>
+
+<div id="RegistroIndependiente" class="modal" style="width: 70%; min-height: 85%;">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content" style="padding: 0 24px;">
+        <div class="row" style="margin-bottom: 0;">
+            <h5 style="float: left;"><?= label('registro_completarPerfil'); ?></h5>
+        </div>
+        <div class="row" style="margin-bottom: 0;">
+            <div class="input-field col s12">
+                <select id="registro_actividadIndepediente" name="registro_actividadIndepediente">
+                    <option value="1" selected>Trabajador independiente</option>
+                    <option value="2">Empresa</option>
+                </select>
+                <label for="registro_actividadIndepediente"><?= label('completarRegistro_actividadComercial'); ?></label>
+            </div>
+            <div class="input-field col s12 m6 l6">
+                <input id="registro_telefonoIndepediente" type="text">
+                <label for="registro_telefonoIndepediente"><?= label('completarRegistro_telefono'); ?></label>
+            </div>
+            <div class="input-field col s12 m6 l6">
+                <input id="registro_celularIndepediente" type="text">
+                <label for="registro_celularIndepediente"><?= label('completarRegistro_celular'); ?></label>
+            </div>
+            <div class="input-field col s12">
+                <input id="registro_fechaNacIndependiente" class="datepicker-fecha" type="text">
+                <label for="registro_fechaNacIndependiente"><?= label('completarRegistro_fechaNacimiento'); ?></label>
+            </div>
+            <div class="input-field col s12">
+                <input id="registro_profesionIndepediente" type="text">
+                <label for="registro_profesionIndepediente"><?= label('completarRegistro_profesion'); ?></label>
+            </div>
+            <div class="input-field col s12">
+                <input id="registro_sitioIndepediente" type="text">
+                <label for="registro_sitioIndepediente"><?= label('completarRegistro_sitioWeb'); ?></label>
+            </div>
+            <div class="col s12">
+                <div class="file-field col s12 m7 l9" style="margin-top:45px;">
+                    <label for="registro_fotografiaIndependiente"><?= label('completarRegistro_fotografia'); ?></label>
+                    <div class="file-field input-field col s12">
+                        <input name="registro_fotografiaIndependiente" class="file-path" type="text" readonly/>
+                        <div class="btn" data-toggle="tooltip" title="<?= label('tooltip_examinar') ?>">
+                            <span><i class="mdi-action-search"></i></span>
+                            <input style="padding-right: 800px;" id="userfile" type="file" name="userfile" accept="image/jpeg,image/png"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m5 l3">
+                    <figure>
+                        <img id="imagen_seleccionada" src="<?= base_url(); ?>files/default-user-image.png">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="input-field col s12 m6 l6 opt-modal-registro">
+            <a style="float:left;" href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Omitir</a>
+        </div>
+        <div class="input-field col s12 m6 l6 opt-modal-registro">
+            <a style="float:right;" href="#" class="waves-effect waves-green btn-flat modal-action modal-close">Guardar</a>
+        </div>
+    </div>
+</div>
+<div id="RegistroEmpresa" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+
+        <div class="input-field col s12">
+            <h7>Termine de completar la información de su perfil</h7>
+        </div>
+
+        <div class="row">
+
+            <div class="file-field col s12">
+                <div class="file-field input-field col s12">
+                    <input id="registro_ImagenEmpresa" class="file-path validate campo-registro" type="text"
+                           placeholder="Foto o logo"/>
+                    <div class="btn modal-registro" data-toggle="tooltip"
+                         title="<?= label('tooltip_examinar') ?>"
+                         style="border-radius: 0px !important; min-width: 13%;">
+                        <span><i class="mdi-action-search"></i></span>
+                        <input type="file"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-field col s12">
+                <div class="input-field col s12">
+                    <input id="registro_correoEmpresa" class="campo-registro" type="email"
+                           placeholder="Correo electrónico empresarial">
+                </div>
+            </div>
+
+            <div class="input-field col s12 m6 l6">
+                <div class="input-field col s12">
+                    <input id="registro_telefonoEmpresa" class="campo-registro" type="text"
+                           placeholder="Teléfono">
+                </div>
+            </div>
+
+            <div class="input-field col s12 m6 l6">
+                <div class="input-field col s12">
+                    <input id="registro_celularEmpresa" class="campo-registro" type="text"
+                           placeholder="Celular">
+                </div>
+            </div>
+
+            <div class="input-field col s12">
+                <input id="registro-fechaCreacionEmpresa" class="datepicker-fecha" type="text">
+                <label for="registro-fechaCreacionEmpresa">Fecha de creación</label>
+            </div>
+
+            <div class="input-field col s12">
+                <select>
+                    <option class="selected-option" selected disabled>Tamaño de la empresa</option>
+                    <option>1 a 5</option>
+                    <option>6 a 10</option>
+                    <option>11 a 25</option>
+                    <option>26 a 50</option>
+                    <option>50+</option>
+                    <option>100+</option>
+                    <option>250+</option>
+                    <option>500+</option>
+                </select>
+            </div>
+
+            <div class="input-field col s12">
+                <select>
+                    <option class="selected-option" selected disabled>Actividad comercial</option>
+                    <option>Trabajador independiente</option>
+                    <option>Empresa</option>
+                </select>
+            </div>
+
+            <div class="input-field col s12">
+                <div class="input-field col s12">
+                    <input id="registro_sitioWebEmpresa" class="campo-registro" type="text"
+                           placeholder="Sitio web">
+                </div>
+            </div>
+
+            <div class="input-field col s12">
+                <h7 style="float: left;">Datos del contacto (Se recomienda representante legal)</h7>
+            </div>
+
+            <div class="input-field col s12">
+                <div class="input-field col s12">
+                    <input id="registro_contactoPuesto" class="campo-registro" type="text"
+                           placeholder="Puesto">
+                </div>
+            </div>
+
+            <div class="input-field col s12">
+                <input id="registro-fechaNacContacto" class="datepicker-fecha" type="text">
+                <label for="registro-fechaNacContacto">Fecha de nacimiento</label>
+            </div>
+
+            <div class="input-field col s12 m6 l6">
+                <div class="input-field col s12">
+                    <input id="registro_telefonoContacto" class="campo-registro" type="text"
+                           placeholder="Teléfono">
+                </div>
+            </div>
+
+            <div class="input-field col s12 m6 l6">
+                <div class="input-field col s12">
+                    <input id="registro_celularContacto" class="campo-registro" type="text"
+                           placeholder="Celular">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+        <div class="input-field col s12 m6 l6">
+            <div class="input-field col s12  opt-modal-registro">
+                <a href="#" style="float:left;" class="waves-effect waves-red btn-flat modal-action modal-close">Omitir</a>
+            </div>
+        </div>
+        <div class="input-field col s12 m6 l6">
+            <div class="input-field col s12  opt-modal-registro">
+                <a href="#" style="float:right;" class="waves-effect waves-green btn-flat modal-action modal-close">Guardar</a>
+            </div>
+        </div>
+    </div>
+</div>
 <!--Fin lista de modals-->
-
-<script type="text/javascript">
-    $(document).on('click', '#checkbox_festivosNoObligatorios', function () {
-        var incluirFestivosNoObligatorios = $(this).is(':checked');
-        if(incluirFestivosNoObligatorios) {
-            document.getElementById('horas_inputFestivosNoObligatorios').style.display = 'block';
-        } else {
-            document.getElementById('horas_inputFestivosNoObligatorios').style.display = 'none';
-        }
-    });
-    function validacionCorrecta_horas() {
-        var formulario = $('#form_horas');
-        $.ajax({
-            data: formulario.serialize(),
-            url: formulario.attr('action'),
-            type:  formulario.attr('method'),
-            success:  function (response) {
-                if (response == '0') {
-                    alert("<?=label('errorGuardar'); ?>");
-                } else {
-                    alert("Cambios gurdados correctamente.");
-                    $('#horasLaborales .modal-header a').click();
-                }
-            }
-        });
-    }
-    $(document).on('click', '#btn_horasLaborales', function () {
-        $.ajax({
-            type: 'post',
-            url: '<?= base_url(); ?>horas/cargarDatos',
-            data: {  },
-            success: function(response)
-            {
-                if(response != 'null') {
-                    var datosHoras = $.parseJSON(response);
-                    var incluirNoObligatorios = datosHoras['incluirNoObligatorios'];
-                    $('#form_horas #horas_diasAnno').val(datosHoras['diasAnno']);
-                    $('#form_horas #horas_finesSemana').val(datosHoras['finesSemana']);
-                    $('#form_horas #horas_festivosObligatorios').val(datosHoras['festivosObligatorios']);
-                    $('#form_horas #horas_festivosNoObligatorios').val(datosHoras['festivosNoObligatorios']);
-                    if (incluirNoObligatorios == 0) {
-                        $('#form_horas #checkbox_festivosNoObligatorios').prop('checked', false);
-                        document.getElementById('horas_inputFestivosNoObligatorios').style.display = 'none';
-                    } else {
-                        $('#form_horas #checkbox_festivosNoObligatorios').prop('checked', true);
-                        document.getElementById('horas_inputFestivosNoObligatorios').style.display = 'block';
-                    }
-                    $('#form_horas #horas_vacaciones').val(datosHoras['vacaciones']);
-                    $('#form_horas #horas_promedioBajas').val(datosHoras['promedioBajas']);
-                    $('#form_horas #horas_diasFacturables').val(datosHoras['diasFacturables']);
-                    $('#form_horas #horas_promedioHorasDiarias').val(datosHoras['promedioHorasDiarias']);
-                    $('#form_horas #horas_cantidadManoObra').val(datosHoras['cantidadManoObra']);
-
-                    var totalHorasAnual = (datosHoras['diasFacturables'] * datosHoras['promedioHorasDiarias']).toFixed(2);
-                    var promedioHorasMensual = (totalHorasAnual / 12).toFixed(2);
-                    $('#horas_totalAnual').text(totalHorasAnual);
-                    $('#horas_promedioMensual').text(promedioHorasMensual);
-
-                    $('#horasLaborales label').addClass('active');
-                    $('#label_checkboxFestivosNoObligatorios').removeClass('active');
-                } else {
-                    $('#horas_totalAnual').text('0');
-                    $('#horas_promedioMensual').text('0');
-                }
-            }
-        });
-    });
-</script>
-
-<script type="text/javascript">
-//    $(document).on("ready", function(){
-//        var config = {'.chosen-select select'           : {}}
-//        for (var selector in config) {
-//            $(selector).chosen(config[selector]);
-//        }
-//    });
-</script>
 
     </body>
 </html>

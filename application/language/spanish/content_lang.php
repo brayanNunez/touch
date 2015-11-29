@@ -333,6 +333,15 @@ $lang['eliminarSeleccionados'] = '¿Realmente desea eliminar los elementos selec
 
     $lang['proveedores_codigoGastoNoValido'] = 'El código de gasto indicado ya existe.';
 
+    $lang['registro_completarPerfil'] = 'Termine de completar la información de su perfil';
+    $lang['completarRegistro_telefono'] = 'Teléfono fijo';
+    $lang['completarRegistro_celular'] = 'Teléfono móvil';
+    $lang['completarRegistro_fechaNacimiento'] = 'Fecha de nacimiento';
+    $lang['completarRegistro_profesion'] = 'Profesión';
+    $lang['completarRegistro_actividadComercial'] = 'Actividad comercial';
+    $lang['completarRegistro_sitioWeb'] = 'Sitio web';
+    $lang['completarRegistro_fotografia'] = 'Fotografía o logo';
+
 //Horas
     $lang['horas_titulo'] = 'Tiempo facturable';
     $lang['horas_diasAnno'] = 'Días del año';
