@@ -110,63 +110,155 @@
     <a id="linkModalErrorEliminar" href="#transaccionIncorrectaEliminar" class="btn btn-default modal-trigger"></a>
 </div>
 
+<!--Script para el manejo de los archivos-->
+<script>
+    var contadorFilas = 0;
+    <?php
+    if (isset($resultado)) {
+        if ($resultado !== false) { ?>
+            contadorFilas = <?=count($resultado['archivos']);?>;//actualiza el contador con los que vienen desde la bd
+    <?php
+        }
+    }
+    ?>
+    function validacionCorrecta_Archivo(){
+        var formPW = $('#persona-archivo');
+        $.ajax({
+            data: new FormData(formPW[0]),
+            url: formPW.attr('action'),
+            type: formPW.attr('method'),
+            success:  function (response) {
+                if(response == 0) {
+                    alert('<?= label('personaErrorSubirArchivo'); ?>');
+                } else {
+                    if (response == 1) {
+                        alert('<?= label('personaErrorSubirArchivo'); ?>');
+                    } else {
+                        alert('<?= label('personaExitoSubirArchivo'); ?>');
+                        var idArchivoCargar = response;
+                        $.ajax({
+                            type: 'post',
+                            url: '<?= base_url(); ?>proveedores/cargarArchivo',
+                            data: {idArchivo : idArchivoCargar},
+                            success: function(response)
+                            {
+                                var archivo = $.parseJSON(response);
+                                agregarFilaArchivo(archivo['idEncriptado'], archivo['nombre'], archivo['ruta'], archivo['descripcion'],
+                                    archivo['tamano'], archivo['fechaArchivo']);
+                            }
+                        });
+                        formPW[0].reset();
+                    }
+                }
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    }
+    function agregarFilaArchivo(idEncriptado, nombre, ruta, descripcion, tamano, fecha) {
+        var check = '<td style="text-align: center;">' +
+                        '<input type="checkbox" class="filled-in checkbox-file" id="' + idEncriptado + '"/>' +
+                        '<label for="' + idEncriptado + '"></label>' +
+                    '</td>';
+        var boton = '<td>' +
+                        '<ul id="dropdown-archivo' + contadorFilas + '" class="dropdown-content">' +
+                            '<li>' +
+                                '<a href="' + ruta + '"  class="-text" target="_blank"><?= label('menuOpciones_abrir') ?></a>' +
+                            '</li>' +
+                            '<li>' +
+                                '<a href="#eliminarArchivo" data-id-eliminar="' + idEncriptado + '" data-fila-eliminar="' + contadorFilas + '"' +
+                                    ' class="-text modal-trigger confirmarEliminar"><?= label('menuOpciones_eliminar') ?></a>' +
+                            '</li>' +
+                        '</ul>' +
+                        '<a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#"' +
+                            'data-activates="dropdown-archivo' + contadorFilas + '">' +
+                            '<?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>' +
+                        '</a>' +
+                    '</td>';
+        var nombre = '<td>' +
+                        '<a href="' + ruta + '" target="_blank">' + nombre + '</a>' +
+                    '</td>';
+        var descripcion = '<td>' + descripcion + '</td>';
+        var tamano = '<td>' + tamano +' KB </td>';
+        var fecha = '<td>' + fecha + '</td>';
+
+        $('#files').dataTable().fnAddData([
+            check,
+            nombre,
+            descripcion,
+            tamano,
+            fecha,
+            boton ]);
+        generarListasBotones();
+        $('.modal-trigger').leanModal();
+        contadorFilas++;
+    }
+    function generarListasBotones() {
+        $('.boton-opciones').sideNav({
+                // menuWidth: 0, // Default is 240
+                edge: 'right', // Choose the horizontal origin
+                closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            }
+        );
+        $('.dropdown-button').dropdown({
+            inDuration: 300,
+            outDuration: 225,
+            constrain_width: true, // Does not change width of dropdown to that of the activator
+            hover: false, // Activate on hover
+            gutter: 0, // Spacing from edge
+            belowOrigin: true, // Displays dropdown below the button
+            alignment: 'left' // Displays dropdown with edge aligned to the left of button
+        });
+    }
+</script>
+<!--Script para el manejo de la tabla y los checks-->
 <script type="text/javascript">
     $(document).on("ready", function () {
-
         <?php
-       if (isset($lista)) {
-           if ($lista === false) {?>
-
+            if (isset($lista)) {
+                if ($lista === false) {?>
         $('#linkModalErrorCargarDatos').click();
-
         <?php
-   }
-   }
-   ?>
-
+                }
+            }
+        ?>
 
         var idEliminar = 0;
         var idPersona = 0;
-        var fila = 0;
-
-        $('.confirmarEliminar').on('click', function () {
+        var filaEliminar = null;
+        $(document).on('click', '.confirmarEliminar', function () {
             idEliminar = $(this).data('id-eliminar');
             idPersona = '<?= $idPersonaEncriptado; ?>';
-            fila = $(this).data('fila-eliminar');
+            filaEliminar = $(this).parents('tr');
         });
-
         $('#eliminarArchivo #botonEliminar').on('click', function () {
             event.preventDefault();
             $.ajax({
                 data: {idEliminar : idEliminar, idPersona : idPersona},
                 url:   '<?=base_url()?>proveedores/eliminarArchivo',
                 type:  'post',
-                // beforeSend: function () {
-                //         $("#resultado").html("Procesando, espere por favor...");
-                // },
                 success:  function (response) {
-                    if (response==1) {
-                        $('#' + fila).fadeOut(function () {
-                            $('#' + fila).remove();
+                    if (response == 1) {
+                        filaEliminar.fadeOut(function () {
+                            filaEliminar.empty();
+                            filaEliminar.remove();
                             verificarChecks();
+                            $('#files').dataTable();
                         });
-
                     } else{
                         $('#linkModalErrorEliminar').click();
-                    };
+                    }
                 }
             });
         });
-
-
-
     });
 
     $(document).ready( function () {
         $('#files').dataTable( {
             'aoColumnDefs': [{
                 'bSortable': false,
-                'aTargets': [0, -1] //desactiva en primer y última columna opción de ordenar
+                'aTargets': [0, -1] //desactiva en primer y ï¿½ltima columna opciï¿½n de ordenar
             }]
         });
     });
@@ -380,34 +472,6 @@
 
 </script>
 
-<script>
-    function validacionCorrecta_Archivo(){
-        var formPW = $('#persona-archivo');
-        $.ajax({
-            data: new FormData(formPW[0]),
-            url: formPW.attr('action'),
-            type: formPW.attr('method'),
-            success:  function (response) {
-                switch(response){
-                    case '0':
-                        alert('<?= label('personaErrorSubirArchivo'); ?>');//error al ir a verificar identificación
-                        break;
-                    case '1':
-                        alert('Error de bd, el archivo no pudo ser subido');
-                        break;
-                    case '2':
-                        alert('El archivo fue subido con exito');
-                        formPW[0].reset();
-                        break;
-                }
-            },
-            cache: false,
-            contentType: false,
-            processData: false
-        });
-    }
-</script>
-
 <!-- lista modals -->
 <div id="transaccionIncorrectaCargar" class="modal">
     <div  class="modal-header headerTransaccionIncorrecta">
@@ -445,7 +509,7 @@
             array('id' => 'persona-archivo', 'method' => 'POST', 'class' => 'col s12')); ?>
             <div class="col s12" style="padding: 0;">
                 <div class="file-field col s12" style="padding: 0;">
-                    <label for="persona_archivo"><?= label('formUsuario_fotografia'); ?></label>
+                    <label for="persona_archivo"><?= label('formPersona_archivo'); ?></label>
 
                     <div class="file-field input-field col s12" style="padding: 0;">
                         <input style="margin-left: 18% !important;width: 80% !important;"
@@ -463,9 +527,9 @@
                 <textarea id="archivo_descripcion" name="archivo_descripcion" class="materialize-textarea" length="120" style="padding: 0.6rem 0 1.6rem;"></textarea>
             </div>
             <div class="input-field col s12 envio-formulario" style="margin-bottom: 30px;">
-            <button id="subir_archivo" class="btn" type="submit" value="<?= label('archivo_upload'); ?>"
-                    name="action"><?= label('persona_subirArchivo'); ?></button>
-        </div>
+                <button id="subir_archivo" class="btn" type="submit" value="<?= label('archivo_upload'); ?>"
+                        name="action"><?= label('persona_subirArchivo'); ?></button>
+            </div>
         </form>
     </div>
 </div>

@@ -503,7 +503,7 @@ class Proveedores extends CI_Controller
                 unlink($archivo);
                 echo 1;
             } else {
-                echo 2;
+                echo $resultado;
             }
         }
     }
@@ -529,6 +529,23 @@ class Proveedores extends CI_Controller
                 }
             }
             echo 1;
+        }
+    }
+
+    public function cargarArchivo()
+    {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $id = $_POST['idArchivo'];
+        $resultado = $this->Proveedor_model->cargarArchivo($id);
+        if ($resultado === false || $resultado === array()) {
+            echo 0;
+        } else {
+            $resultado['idEncriptado'] = encryptIt($id);
+            $resultado['ruta'] = base_url().'files/empresas/'.$idEmpresa.'/proveedores/'.$resultado['idPersona'].'/'.$resultado['nombreOriginal'];
+            $resultado['fechaArchivo'] = date('d/m/Y  h:i a', strtotime($resultado['fecha']));
+            echo json_encode($resultado);
         }
     }
 
