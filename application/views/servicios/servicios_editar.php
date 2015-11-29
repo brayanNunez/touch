@@ -643,7 +643,7 @@
 <script>
 <?php 
 $js_array = json_encode($resultado['fases']); 
-echo "var arrayFases =". $js_array;
+echo "var arrayFases =". $js_array.";";
 ?>
     $(document).on('ready', function() {
         function exiteEnTabla(idFase){

@@ -28,7 +28,7 @@ class Cotizacion extends CI_Controller
         $this->load->view('layout/default/footer');
     }
 
-    public function preCarga()
+    public function precarga()
     {
         $this->load->view('cotizar/precarga');
     }
@@ -38,8 +38,16 @@ class Cotizacion extends CI_Controller
 
         $data['idCotizacion'] = decryptIt($idCotizacion);
 
-        $data['aprobadores'] = $this->input->post('aprobadores');
-        
+        // if (isset($_POST["aprobadores"])) {
+           $data['aprobadores'] = $this->input->post('aprobadores');
+        // } else{
+        //     $data['aprobadores'] = array();
+        // }
+
+        // $data['aprobadores'] = $this->input->post('aprobadores');
+
+        // echo 'hola'; exit();
+
         $editados = array();
         $eliminados = array();
         $nuevos = array();
@@ -170,6 +178,33 @@ class Cotizacion extends CI_Controller
             $this->load->view('layout/default/header');
             $this->load->view('layout/default/left-sidebar');
             $this->load->view('cotizar/cotizar', $data);
+            $this->load->view('layout/default/footer');
+        }
+    }
+
+    public function aprobar($idCotizacion)
+    {
+        verificarLogin();//helper
+        $sessionActual = $this->session->userdata('logged_in');
+        $data['idEmpresa'] = $sessionActual['idEmpresa'];
+        $data['idUsuario'] = $sessionActual['idUsuario'];
+        $data['idCotizacion'] = decryptIt($idCotizacion);
+
+        $resultado = $this->Cotizacion_model->cargar($data); 
+        if ($resultado === false) {
+            echo "Error en la transacción";
+        } else {
+            // $resultado['lineasDetalle'] = array();
+            $resultado['idEmpresa'] = $data['idEmpresa'];
+            $resultado['idCotizacion'] = decryptIt($idCotizacion);
+            // $resultado['idCotizacion'] = '123';
+            // if ($resultado === false || $resultado === array()) {
+            // print_r($resultado['servicios']); exit();
+        
+            $data['resultado'] = $resultado;
+            $this->load->view('layout/default/header');
+            $this->load->view('layout/default/left-sidebar');
+            $this->load->view('cotizar/aprobar', $data);
             $this->load->view('layout/default/footer');
         }
     }
