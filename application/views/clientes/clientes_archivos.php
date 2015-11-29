@@ -5,7 +5,7 @@
     <thead>
         <tr>
             <th style="text-align: center;">
-                <input class="filled-in checkbox checkbox-file checkall" type="checkbox" id="checkbox-all-files"
+                <input class="filled-in checkbox-file checkall" type="checkbox" id="checkbox-all-files"
                        onclick="toggleChecked(this.checked)"/>
                 <label for="checkbox-all-files"></label>
             </th>
@@ -17,49 +17,56 @@
         </tr>
     </thead>
     <tbody>
-    <?php if(isset($resultado['archivos'])): ?>
-        <?php $contador = 0; ?>
-        <?php foreach ($resultado['archivos'] as $file): ?>
-            <?php $idEncriptado = encryptIt($file['idArchivo']); ?>
-            <tr id="fila<?=$contador?>" data-idElemento="<?= $idEncriptado ?>">
-                <td style="text-align: center;">
-                    <input type="checkbox" class="filled-in checkbox-file" id="<?= $idEncriptado; ?>"/>
-                    <label for="<?= $idEncriptado; ?>"></label>
-                </td>
-                <td>
-                    <a href="<?= base_url() . 'files/empresas/1/clientes/1/' . $file['nombre']; ?>"
-                       target="_blank">
-                        <?= $file['nombre']; ?>
-                    </a>
-                </td>
-                <td>
-                    <p><?= $file['descripcion']; ?></p>
-                </td>
-                <td>
-                    <p><?= $file['tamano'].' KB'; ?></p>
-                </td>
-                <td>
-                    <p><?= date('d/m/Y  h:i a', strtotime($file['fecha'])); ?></p>
-                </td>
-                <td>
-                    <ul id="dropdown-archivo<?= $contador; ?>" class="dropdown-content">
-                        <li>
-                            <a href="<?= base_url() . 'files/empresas/1/clientes/1/' . $file['nombre']; ?>"
-                               class="-text" target="_blank"><?= label('menuOpciones_abrir') ?></a>
-                        </li>
-                        <li>
-                            <a href="#eliminarArchivo" data-id-eliminar="<?= $idEncriptado ?>"  data-fila-eliminar="fila<?= $contador?>"
-                               class="-text modal-trigger confirmarEliminar"><?= label('menuOpciones_eliminar') ?></a>
-                        </li>
-                    </ul>
-                    <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#!"
-                       data-activates="dropdown-archivo<?= $contador++; ?>">
-                        <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                    </a>
-                </td>
-            </tr>
-        <?php endforeach; ?>
-    <?php endif; ?>
+    <?php
+        $idClienteEncriptado = '';
+        if(isset($resultado)) {
+            $idClienteEncriptado = encryptIt($resultado['idCliente']);
+            $archivos = $resultado['archivos'];
+            $contador = 0;
+            foreach($archivos as $file) {
+                $idEmpresa = $resultado['idEmpresa'];
+                $idCliente = $file['idCliente'];
+                $idClienteEncriptado = encryptIt($file['idCliente']);
+                $idEncriptado = encryptIt($file['idArchivo']); ?>
+                <tr id="fila<?=$contador?>" data-idElemento="<?= $idEncriptado ?>">
+                    <td style="text-align: center;">
+                        <input type="checkbox" class="filled-in checkbox-file" id="<?= $idEncriptado; ?>"/>
+                        <label for="<?= $idEncriptado; ?>"></label>
+                    </td>
+                    <td>
+                        <a href="<?= base_url().'files/empresas/'.$idEmpresa.'/clientes/'.$idCliente.'/'.$file['nombreOriginal']; ?>" target="_blank">
+                            <?= $file['nombre']; ?>
+                        </a>
+                    </td>
+                    <td>
+                        <p><?= $file['descripcion']; ?></p>
+                    </td>
+                    <td>
+                        <p><?= $file['tamano'].' KB'; ?></p>
+                    </td>
+                    <td>
+                        <p><?= date('d/m/Y  h:i a', strtotime($file['fecha'])); ?></p>
+                    </td>
+                    <td>
+                        <ul id="dropdown-archivo<?= $contador; ?>" class="dropdown-content">
+                            <li>
+                                <a href="<?= base_url().'files/empresas/'.$idEmpresa.'/clientes/'.$idCliente.'/'.$file['nombreOriginal']; ?>" class="-text"
+                                   target="_blank"><?= label('menuOpciones_abrir') ?></a>
+                            </li>
+                            <li>
+                                <a href="#eliminarArchivo" data-id-eliminar="<?= $idEncriptado ?>"  data-fila-eliminar="fila<?= $contador?>"
+                                   class="-text modal-trigger confirmarEliminar"><?= label('menuOpciones_eliminar') ?></a>
+                            </li>
+                        </ul>
+                        <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#"
+                           data-activates="dropdown-archivo<?= $contador++; ?>">
+                            <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
+                        </a>
+                    </td>
+                </tr>
+    <?php
+            }
+        } ?>
     </tbody>
 </table>
 
@@ -97,68 +104,158 @@
         <i class="mdi-action-delete icono-opciones-varios"></i>
     </a>
 </div>
-
 <div style="display: none">
     <a id="linkModalErrorCargarDatos" href="#transaccionIncorrectaCargar" class="btn btn-default modal-trigger"></a>
     <a id="linkModalErrorEliminar" href="#transaccionIncorrectaEliminar" class="btn btn-default modal-trigger"></a>
 </div>
 
+<!--Script para el manejo de los archivos-->
+<script>
+    var contadorFilas = 0;
+    <?php
+    if (isset($resultado)) {
+        if ($resultado !== false) { ?>
+    contadorFilas = <?=count($resultado['archivos']);?>;//actualiza el contador con los que vienen desde la bd
+    <?php
+        }
+    }
+    ?>
+    function validacionCorrecta_Archivo(){
+        var formPW = $('#cliente-archivo');
+        $.ajax({
+            data: new FormData(formPW[0]),
+            url: formPW.attr('action'),
+            type: formPW.attr('method'),
+            success:  function (response) {
+                if(response == 0) {
+                    alert('<?= label('clienteErrorSubirArchivo'); ?>');
+                } else {
+                    if (response == '-1') {
+                        alert('<?= label('clienteErrorSubirArchivo'); ?>');
+                    } else {
+                        alert('<?= label('clienteExitoSubirArchivo'); ?>');
+                        var idArchivoCargar = response;
+                        $.ajax({
+                            type: 'post',
+                            url: '<?= base_url(); ?>clientes/cargarArchivo',
+                            data: {idArchivo : idArchivoCargar},
+                            success: function(response)
+                            {
+                                var archivo = $.parseJSON(response);
+                                agregarFilaArchivo(archivo['idEncriptado'], archivo['nombre'], archivo['ruta'], archivo['descripcion'],
+                                    archivo['tamano'], archivo['fechaArchivo']);
+                            }
+                        });
+                        formPW[0].reset();
+                    }
+                }
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    }
+    function agregarFilaArchivo(idEncriptado, nombre, ruta, descripcion, tamano, fecha) {
+        var check = '<td style="text-align: center;">' +
+                        '<input type="checkbox" class="filled-in checkbox-file" id="' + idEncriptado + '"/>' +
+                        '<label for="' + idEncriptado + '"></label>' +
+                    '</td>';
+        var boton = '<td>' +
+                        '<ul id="dropdown-archivo' + contadorFilas + '" class="dropdown-content">' +
+                            '<li>' +
+                                '<a href="' + ruta + '"  class="-text" target="_blank"><?= label('menuOpciones_abrir') ?></a>' +
+                            '</li>' +
+                            '<li>' +
+                                '<a href="#eliminarArchivo" data-id-eliminar="' + idEncriptado + '" data-fila-eliminar="' + contadorFilas + '"' +
+                                ' class="-text modal-trigger confirmarEliminar"><?= label('menuOpciones_eliminar') ?></a>' +
+                            '</li>' +
+                        '</ul>' +
+                        '<a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#"' +
+                        'data-activates="dropdown-archivo' + contadorFilas + '">' +
+                        '<?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>' +
+                        '</a>' +
+                    '</td>';
+        var nombre = '<td>' +
+                        '<a href="' + ruta + '" target="_blank">' + nombre + '</a>' +
+                    '</td>';
+        var descripcion = '<td>' + descripcion + '</td>';
+        var tamano = '<td>' + tamano +' KB </td>';
+        var fecha = '<td>' + fecha + '</td>';
+
+        $('#files').dataTable().fnAddData([
+            check,
+            nombre,
+            descripcion,
+            tamano,
+            fecha,
+            boton ]);
+        generarListasBotones();
+        $('.modal-trigger').leanModal();
+        contadorFilas++;
+    }
+    function generarListasBotones() {
+        $('.boton-opciones').sideNav({
+                // menuWidth: 0, // Default is 240
+                edge: 'right', // Choose the horizontal origin
+                closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            }
+        );
+        $('.dropdown-button').dropdown({
+            inDuration: 300,
+            outDuration: 225,
+            constrain_width: true, // Does not change width of dropdown to that of the activator
+            hover: false, // Activate on hover
+            gutter: 0, // Spacing from edge
+            belowOrigin: true, // Displays dropdown below the button
+            alignment: 'left' // Displays dropdown with edge aligned to the left of button
+        });
+    }
+</script>
+<!--Script para el manejo de la tabla y los checks-->
 <script type="text/javascript">
     $(document).on("ready", function () {
-
         <?php
-       if (isset($lista)) {
-           if ($lista === false) {?>
-
+            if (isset($lista)) {
+                if ($lista === false) { ?>
         $('#linkModalErrorCargarDatos').click();
-
         <?php
-   }
-   }
-   ?>
-
+                }
+            }
+        ?>
 
         var idEliminar = 0;
-        var fila = 0;
-
-        $('.confirmarEliminar').on('click', function () {
+        var idCliente = 0;
+        var filaEliminar = null;
+        $(document).on('click', '.confirmarEliminar', function () {
             idEliminar = $(this).data('id-eliminar');
-            fila = $(this).data('fila-eliminar');
+            idCliente = '<?= $idClienteEncriptado; ?>';
+            filaEliminar = $(this).parents('tr');
         });
-
         $('#eliminarArchivo #botonEliminar').on('click', function () {
             event.preventDefault();
             $.ajax({
-                data: {idEliminar : idEliminar},
+                data: {idEliminar : idEliminar, idCliente : idCliente},
                 url:   '<?=base_url()?>clientes/eliminarArchivo',
                 type:  'post',
-                // beforeSend: function () {
-                //         $("#resultado").html("Procesando, espere por favor...");
-                // },
                 success:  function (response) {
-                    if (response==1) {
-                        $('#' + fila).fadeOut(function () {
-                            $('#' + fila).remove();
+                    if (response == 1) {
+                        filaEliminar.fadeOut(function () {
+                            filaEliminar.empty();
+                            filaEliminar.remove();
                             verificarChecks();
                         });
-
-                    } else{
+                    } else {
                         $('#linkModalErrorEliminar').click();
-                    };
+                    }
                 }
             });
         });
-
-
-
-
     });
-
     $(document).ready( function () {
         $('#files').dataTable( {
             'aoColumnDefs': [{
                 'bSortable': false,
-                'aTargets': [0, -1] //desactiva en primer y última columna opción de ordenar
+                'aTargets': [0, -1] //desactiva en primer y ï¿½ltima columna opciï¿½n de ordenar
             }]
         });
     });
@@ -179,34 +276,29 @@
                     sel = true;
                     var fila = $this.parents('tr');
                     var idEliminar = $this.parents('tr').attr('data-idElemento');
-
+                    var idCliente = '<?= $idClienteEncriptado; ?>';
                     $.ajax({
-                        data: {idEliminar : idEliminar},
+                        data: {idEliminar : idEliminar, idCliente : idCliente},
                         url:   '<?=base_url()?>clientes/eliminarArchivo',
                         type:  'post',
-                        // beforeSend: function () {
-                        //         $("#resultado").html("Procesando, espere por favor...");
-                        // },
                         success:  function (response) {
                             if (response==1) {
                                 fila.fadeOut(function () {
-                                    fila.remove();
+                                    filaEliminar.empty();
+                                    filaEliminar.remove();
                                     verificarChecks();
                                 });
                             } else{
                                 contador++;
                                 if (contador == marcados) {
                                     $('#linkModalErrorEliminar').click();
-                                };
-                            };
+                                }
+                            }
                         }
                     });
-
                 }
             });
-
             return false;
-
         });
     });
 
@@ -373,34 +465,6 @@
 
 </script>
 
-<script>
-    function validacionCorrecta_Archivo(){
-        var formPW = $('#cliente-archivo');
-        $.ajax({
-            data: new FormData(formPW[0]),
-            url: formPW.attr('action'),
-            type: formPW.attr('method'),
-            success:  function (response) {
-                switch(response){
-                    case '0':
-                        alert('<?= label('clienteErrorSubirArchivo'); ?>');//error al ir a verificar identificación
-                        break;
-                    case '1':
-                        alert('Error de bd, el archivo no pudo ser subido');
-                        break;
-                    case '2':
-                        alert('El archivo fue subido con exito');
-                        formPW[0].reset();
-                        break;
-                }
-            },
-            cache: false,
-            contentType: false,
-            processData: false
-        });
-    }
-</script>
-
 <!-- lista modals -->
 <div id="transaccionIncorrectaCargar" class="modal">
     <div  class="modal-header headerTransaccionIncorrecta">
@@ -426,6 +490,42 @@
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
+
+<div id="agregarArchivo" class="modal">
+    <?php $this->load->helper('form'); ?>
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <?php echo form_open_multipart(base_url().'clientes/agregarArchivo/'.$idClienteEncriptado,
+            array('id' => 'cliente-archivo', 'method' => 'POST', 'class' => 'col s12')); ?>
+            <div class="col s12" style="padding: 0;">
+                <div class="file-field col s12" style="padding: 0;">
+                    <label for="cliente_archivo"><?= label('formCliente_archivo'); ?></label>
+
+                    <div class="file-field input-field col s12" style="padding: 0;">
+                        <input style="margin-left: 18% !important;width: 80% !important;"
+                               name="cliente_archivo" class="file-path" type="text" readonly/>
+
+                        <div class="btn" data-toggle="tooltip" title="<?= label('tooltip_examinar') ?>" style="top: -15px;">
+                            <span><i class="mdi-action-search"></i></span>
+                            <input style="padding-right: 100px;" id="userfile" type="file" name="userfile" accept=""/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12">
+                <label for="archivo_descripcion" style="float: left;text-align: left;"><?= label('archivo_descripcion'); ?></label>
+                <textarea id="archivo_descripcion" name="archivo_descripcion" class="materialize-textarea" rows="3" style="padding: 0.6rem 0 1.6rem;"></textarea>
+            </div>
+            <div class="input-field col s12 envio-formulario" style="margin-bottom: 30px;">
+                <button id="subir_archivo" class="btn" type="submit" value="<?= label('archivo_upload'); ?>"
+                        name="action"><?= label('cliente_subirArchivo'); ?></button>
+            </div>
+        </form>
+    </div>
+</div>
 <div id="eliminarArchivo" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
@@ -435,7 +535,9 @@
         <p><?= label('clientes_archivoEliminar'); ?></p>
     </div>
     <div class="modal-footer black-text">
-        <a id="botonEliminar" href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <div id="botonEliminar">
+            <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        </div>
     </div>
 </div>
 <div id="eliminarArchivosSeleccionados" class="modal">
@@ -452,44 +554,6 @@
                class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
         </div>
     </div>
-</div>
-<div id="agregarArchivo" class="modal">
-    <?php $this->load->helper('form'); ?>
-    <div class="modal-header">
-        <p><?= label('nombreSistema'); ?></p>
-        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
-    </div>
-    <div class="modal-content">
-        <?php echo form_open_multipart(base_url().'clientes/agregarArchivo', array('id' => 'cliente-archivo', 'method' => 'POST', 'class' => 'col s12')); ?>
-            <div class="col s12" style="padding: 0;">
-                <div class="file-field col s12" style="padding: 0;">
-                    <label for="cliente_archivo"><?= label('formUsuario_fotografia'); ?></label>
-
-                    <div class="file-field input-field col s12" style="padding: 0;">
-                        <input style="margin-left: 18% !important;width: 80% !important;"
-                               name="cliente_archivo" class="file-path" type="text" readonly/>
-
-                        <div class="btn" data-toggle="tooltip" title="<?= label('tooltip_examinar') ?>" style="top: -15px;">
-                            <span><i class="mdi-action-search"></i></span>
-                            <input style="padding-right: 100px;" id="userfile" type="file" name="userfile"
-                                   accept="image/jpeg,image/png"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12">
-                <label for="archivo_descripcion" style="float: left;text-align: left;"><?= label('archivo_descripcion'); ?></label>
-                <textarea id="archivo_descripcion" name="archivo_descripcion" class="materialize-textarea" length="120" style="padding: 0.6rem 0 1.6rem;"></textarea>
-            </div>
-            <div class="input-field col s12 envio-formulario" style="margin-bottom: 30px;">
-                <button id="subir_archivo" class="btn" type="submit" value="<?= label('archivo_upload'); ?>"
-                       name="action"><?= label('cliente_subirArchivo'); ?></button>
-            </div>
-        </form>
-    </div>
-<!--    <div class="modal-footer black-text">-->
-<!--        <a href="#" class="btn-flat modal-close"></a>-->
-<!--    </div>-->
 </div>
 <!--Fin lista modals -->
 

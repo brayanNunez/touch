@@ -339,6 +339,9 @@
     $lang['proveedores_codigoGastoNoValido'] = 'El código de gasto indicado ya existe.';
     $lang['formPersona_archivo'] = 'Archivo';
     $lang['personaExitoSubirArchivo'] = 'El archivo fue guardado con éxito';
+    $lang['clienteErrorSubirArchivo'] = 'El archivo no pudo ser guardado';
+    $lang['clienteExitoSubirArchivo'] = 'El archivo fue guardado con éxito';
+    $lang['formCliente_archivo'] = 'Archivo';
 
     $lang['registro_completarPerfil'] = 'Termine de completar la información de su perfil';
     $lang['completarRegistro_telefono'] = 'Teléfono fijo';

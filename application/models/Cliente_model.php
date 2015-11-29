@@ -1,16 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-
 class Cliente_model extends CI_Model
 {
+
     function __construct()
     {
         parent:: __construct();
         $this->load->database();
     }
-
-    
 
     function existeIdentificacion($data)
     {
@@ -348,53 +346,6 @@ class Cliente_model extends CI_Model
         }
     }
 
-    public function agregarArchivo($data) {
-        try{
-            $this->db->trans_begin();
-            $query = $this->db->insert('archivo', $data['datos']);
-            if (!$query) throw new Exception("Error en la BD");
-
-            $this->db->trans_commit();
-            return true;
-        } catch (Exception $e) {
-            $this->db->trans_rollback();
-            return false;
-        }
-    }
-
-    public function eliminarArchivo($id) {
-        try{
-            $this->db->trans_begin();
-
-            $this->db->select('nombre');
-            $this->db->where('idArchivo', $id);
-            $this->db->from('archivo');
-            $query1 = $this->db->get();
-            if (!$query1) {
-                throw new Exception("Error en la BD");
-            }
-            if($query1->num_rows() > 0) {
-                $datos = $query1->result_array();
-                $file = $datos[0]['nombre'];
-                if(!$file) {
-                    $file = 'noArchivo';
-                }
-            } else {
-                $file = 'noArchivo';
-            }
-
-            $this->db->where('idArchivo', $id);
-            $query = $this->db->delete('archivo');
-            if (!$query) throw new Exception("Error en la BD");
-
-            $this->db->trans_commit();
-            return $file;
-        } catch (Exception $e) {
-            $this->db->trans_rollback();
-            return false;
-        }
-    }
-
     function cambiar_imagen($data) {
         try{
             $photo = '';
@@ -425,6 +376,79 @@ class Cliente_model extends CI_Model
             }
             $this->db->trans_commit();
             return $photo;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+    public function agregarArchivo($data) {
+        try{
+            $this->db->trans_begin();
+
+            $this->db->set('fecha', 'NOW()', FALSE);
+            $query = $this->db->insert('archivo', $data['datos']);
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+            $insert_id = $this->db->insert_id();
+
+            $this->db->trans_commit();
+            return $insert_id;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+    public function eliminarArchivo($id) {
+        try{
+            $this->db->trans_begin();
+
+            $this->db->select('nombreOriginal');
+            $this->db->where('idArchivo', $id);
+            $this->db->from('archivo');
+            $query1 = $this->db->get();
+            if (!$query1) {
+                throw new Exception("Error en la BD");
+            }
+            if($query1->num_rows() > 0) {
+                $datos = $query1->result_array();
+                $file = $datos[0]['nombreOriginal'];
+                if(!$file) {
+                    $file = 'noArchivo';
+                }
+            } else {
+                $file = 'noArchivo';
+            }
+
+            $this->db->where('idArchivo', $id);
+            $query = $this->db->delete('archivo');
+            if (!$query) throw new Exception("Error en la BD");
+
+            $this->db->trans_commit();
+            return $file;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+    public function cargarArchivo($id)
+    {
+        try {
+            $this->db->trans_begin();
+
+            $query = $this->db->get_where('archivo', array('idArchivo' => $id));
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+            $row = array();
+            if ($query->num_rows() > 0) {
+                $array = $query->result_array();
+                $row = array_shift($array);//obtiene el primer elemento.. el [0] no sirve en el server
+            }
+
+            $this->db->trans_commit();
+            return $row;
         } catch (Exception $e) {
             $this->db->trans_rollback();
             return false;

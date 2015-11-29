@@ -39,7 +39,7 @@ class Clientes extends CI_Controller
     }
 
     //Metodo llamado mediante ajax
-     public function insertar()
+    public function insertar()
     {
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
@@ -186,7 +186,7 @@ class Clientes extends CI_Controller
         }
     }
 
-        public function modificar($id)
+    public function modificar($id)
     {
         // $sessionActual = $this->session->userdata('logged_in');
         // $idEmpresa = $sessionActual['idEmpresa'];
@@ -347,8 +347,6 @@ class Clientes extends CI_Controller
 
     }
 
-
-
     public function reporte()
     {
         $this->load->view('layout/default/header');
@@ -385,60 +383,14 @@ class Clientes extends CI_Controller
         echo json_encode($gustos);
     }
 
-    public function agregarArchivo() {
-        $path = './files/empresas/1/clientes/1';
-        $config['upload_path'] = $path;
-        $config['allowed_types'] = 'jpg|png';
-        $config['max_size'] = '2048';
-
-        $this->load->library('upload', $config);
-        if (!$this->upload->do_upload()) {
-//            $error = array('error' => $this->upload->display_errors());
-            echo 0;
-        } else {
-            $data['upload_data'] = $this->upload->data();
-            $data['datos'] = array(
-                'idCliente' => 1,
-                'nombre' => $data['upload_data']['raw_name'].$data['upload_data']['file_ext'],
-                'tamano' => $data['upload_data']['file_size'],
-//                'fecha' => 'curdate()',
-                'descripcion' => $this->input->post('archivo_descripcion')
-            );
-            $resultado = $this->Cliente_model->agregarArchivo($data);
-            $archivo = $path.'/'.$data['datos']['nombre'];
-            if(!$resultado) {
-                unlink($archivo);
-                echo 1;
-            } else {
-                echo 2;
-            }
-        }
-    }
-
     public function eliminar()
     {
-       $id = $_POST['idEliminar'];
-        if (!$this->Cliente_model->eliminar(decryptIt($id))) {
-            //Error en la transacción
-            echo 0; 
-        } else {
-            //correcto
-            echo 1; 
-        }
-    }
-
-    public function eliminarArchivo() {
         $id = $_POST['idEliminar'];
-        $resultado = $this->Cliente_model->eliminarArchivo(decryptIt($id));
-        if (!$resultado) {
+        if (!$this->Cliente_model->eliminar(decryptIt($id))) {
             //Error en la transacción
             echo 0;
         } else {
             //correcto
-            $ruta = './files/empresas/1/clientes/1/'.$resultado;
-            if($resultado != 'noArchivo') {
-                unlink($ruta);
-            }
             echo 1;
         }
     }
@@ -501,6 +453,94 @@ class Clientes extends CI_Controller
                 echo base_url().'files/empresas/'.$idEmpresa.'/clientes/'.$idCliente.'/'.$nombreFotografia.'.'.$ext;
             }
         }
+    }
+
+    public function agregarArchivo($id) {
+        $data = array();
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $nombreOriginal = $this->input->post('cliente_archivo');
+        $nuevoNombre = $this->convertirNombre($nombreOriginal);
+
+        $idCliente = decryptIt($id);
+        $path = './files/empresas/'.$idEmpresa.'/clientes/'.$idCliente;
+        $config['upload_path'] = $path;
+        $config['file_name'] = $nuevoNombre;
+        $config['allowed_types'] = 'jpg|png|jpeg|doc|docx|xls|pdf';
+        $config['max_size'] = '2048';
+
+        $this->load->library('upload', $config);
+        if (!$this->upload->do_upload()) {
+//            $error = array('error' => $this->upload->display_errors()); echo $error['error'];
+            echo 0;
+        } else {
+            $archivo = $this->upload->data();
+            $data['datos'] = array(
+                'idCliente' => $idCliente,
+                'nombre' => $nombreOriginal,
+                'nombreOriginal' => $archivo['raw_name'].$archivo['file_ext'],
+                'tamano' => $archivo['file_size'],
+                'descripcion' => $this->input->post('archivo_descripcion')
+            );
+            $resultado = $this->Cliente_model->agregarArchivo($data);
+            $archivo = $path.'/'.$data['datos']['nombreOriginal'];
+            if(!$resultado) {
+                unlink($archivo);
+                echo '-1';
+            } else {
+                echo $resultado;
+            }
+        }
+    }
+    public function eliminarArchivo() {
+        $data = array();
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $id = $_POST['idEliminar'];
+        $persona = decryptIt($_POST['idCliente']);
+        $resultado = $this->Cliente_model->eliminarArchivo(decryptIt($id));
+        if (!$resultado) {
+            //Error en la transacci�n
+            echo 0;
+        } else {
+            //correcto
+            $ruta = './files/empresas/'.$idEmpresa.'/clientes/'.$persona.'/'.$resultado;
+            if($resultado != 'noArchivo') {
+                if(is_file($ruta)) {
+                    unlink($ruta);
+                }
+            }
+            echo 1;
+        }
+    }
+    public function cargarArchivo()
+    {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $id = $_POST['idArchivo'];
+        $resultado = $this->Cliente_model->cargarArchivo($id);
+        if ($resultado === false || $resultado === array()) {
+            echo 0;
+        } else {
+            $resultado['idEncriptado'] = encryptIt($id);
+            $resultado['ruta'] = base_url().'files/empresas/'.$idEmpresa.'/clientes/'.$resultado['idCliente'].'/'.$resultado['nombreOriginal'];
+            $resultado['fechaArchivo'] = date('d/m/Y  h:i a', strtotime($resultado['fecha']));
+            echo json_encode($resultado);
+        }
+    }
+
+    //Funcion para eliminar el acento de los nombres de los archivos
+    public function convertirNombre($str, $charset='utf-8'){
+        $str = htmlentities($str, ENT_NOQUOTES, $charset);
+
+        $str = preg_replace('#&([A-za-z])(?:acute|cedil|caron|circ|grave|orn|ring|slash|th|tilde|uml);#', '\1', $str);
+        $str = preg_replace('#&([A-za-z]{2})(?:lig);#', '\1', $str); // pour les ligatures e.g. '&oelig;'
+        $str = preg_replace('#&[^;]+;#', '', $str); // supprime les autres caract�res
+
+        return $str;
     }
 
 }
