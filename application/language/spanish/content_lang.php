@@ -511,6 +511,10 @@
     $lang['paso1_labelTipoCambio'] = 'Tipo de cambio';
     $lang['paso1_labelDetalle'] = 'Detalle';
 
+    $lang['aprobacion_cotizacionTramitada'] = 'La cotización ya fue tramitada por otro aprobador.';
+
+    
+
     $lang['cotizacion_incluirGastosVariables'] = 'Desea agregar gastos variables';
     $lang['agregarGatos_buscar'] = 'Buscar';
     $lang['agregarGastos_masOpciones'] = 'Más opciones';
@@ -1160,6 +1164,8 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['tooltip_exportarSeleccionados'] = 'Exportar tabla';
     $lang['tooltip_guardarEnviar'] = 'Guardar y enviar';
     $lang['tooltip_guardarDescargar'] = 'Guardar y descargar';
+    $lang['tooltip_aprobar'] = 'Aprobar';
+    $lang['tooltip_rechazar'] = 'Rechazar';
     $lang['tooltip_guardarCerrar'] = 'Guardar y cerrar';
     $lang['tooltip_cancelarCot'] = 'Cancelar cotización';
     $lang['insertarSoloLinea'] = 'Insertar solo como línea';

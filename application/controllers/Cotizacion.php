@@ -32,9 +32,20 @@ class Cotizacion extends CI_Controller
     {
         $this->load->view('cotizar/precarga');
     }
+    
+
+    public function cambiarEstado($idCotizacion, $estado){
+
+        $data['idCotizacion'] = decryptIt($idCotizacion);
+
+        $data['estado'] = $estado;
+
+        $resultado = $this->Cotizacion_model->editarEstado($data); 
+        echo $resultado; exit();
+    }
 
 
-    public function guardar($idCotizacion){
+    public function guardar($idCotizacion, $estado){
 
         $data['idCotizacion'] = decryptIt($idCotizacion);
 
@@ -46,7 +57,7 @@ class Cotizacion extends CI_Controller
 
         // $data['aprobadores'] = $this->input->post('aprobadores');
 
-        // echo 'hola'; exit();
+        // echo $this->input->post('miHtml'); exit();
 
         $editados = array();
         $eliminados = array();
@@ -122,6 +133,7 @@ class Cotizacion extends CI_Controller
             'idMoneda' => $this->input->post('paso1Moneda'),  
             'tipoCambio' => $this->input->post('paso1_tipoCambio'),
             'eliminado' => 0,
+            'idEstadoCotizacion' => $estado,
             'fechaValidez' => date("Y-m-d", strtotime($this->input->post('paso1_validez')))
             );
         $data['diseno'] = $this->obtenerPlantilla(0);
@@ -190,16 +202,13 @@ class Cotizacion extends CI_Controller
         $data['idUsuario'] = $sessionActual['idUsuario'];
         $data['idCotizacion'] = decryptIt($idCotizacion);
 
-        $resultado = $this->Cotizacion_model->cargar($data); 
+        $resultado = $this->Cotizacion_model->cargarAprobacion($data); 
         if ($resultado === false) {
             echo "Error en la transacción";
         } else {
             // $resultado['lineasDetalle'] = array();
             $resultado['idEmpresa'] = $data['idEmpresa'];
             $resultado['idCotizacion'] = decryptIt($idCotizacion);
-            // $resultado['idCotizacion'] = '123';
-            // if ($resultado === false || $resultado === array()) {
-            // print_r($resultado['servicios']); exit();
         
             $data['resultado'] = $resultado;
             $this->load->view('layout/default/header');

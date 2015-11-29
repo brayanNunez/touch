@@ -31,14 +31,36 @@
                                               <iframe id="vistaPrevia" class="col s12" height="500px" src="<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/cotizaciones/<?= encryptIt($resultado['idCotizacion']);?>/sistema/test.pdf">
                                               </iframe>
                                                   <!-- <div class="input-field col s12 m4 l4"> -->
-                                                <div class="input-field col s12 m6 l6">
-                                                    <a href="#enviar" id="btnGuardarEnviar" class="left btn btn-default modal-trigger opt-finalizar"
-                                                       title="<?= label('tooltip_guardarEnviar'); ?>"><?= label('aprobar'); ?></a>
-                                                </div>
-                                                <div class="input-field col s12 m6 l6">
-                                                    <a href="#rechazar" id="btnGuardarEnviar" class="left btn btn-default modal-trigger opt-finalizar"
-                                                       title="<?= label('tooltip_guardarEnviar'); ?>"><?= label('rechazar'); ?></a>
-                                                </div>
+                                                  <?php
+                                                  // echo $resultado['estado'];
+                                                  if ($resultado['estado'] == 'espera' && $resultado['aprobadorEstaCotizacion'] == '1') {
+                                                    ?>
+
+                                                    <div class="input-field col s12 m6 l6">
+                                                      <a href="#enviar" id="btnGuardarEnviar" class="left btn btn-default modal-trigger opt-finalizar"
+                                                         title="<?= label('tooltip_aprobar'); ?>"><?= label('aprobar'); ?></a>
+                                                    </div>
+                                                    <div class="input-field col s12 m6 l6">
+                                                      <a href="#rechazar" id="btnGuardarEnviar" class="left btn btn-default modal-trigger opt-finalizar"
+                                                          title="<?= label('tooltip_rechazar'); ?>"><?= label('rechazar'); ?></a>
+                                                    </div>
+
+                                                    <?php
+                                                    } else {
+
+                                                      if ($resultado['estado'] != 'espera' && $resultado['aprobadorEstaCotizacion'] == '1') {
+                                                    ?>
+
+                                                    <p id="mensajeAprobacion"><?= label('aprobacion_cotizacionTramitada'); ?></p>
+
+                                                    <?php
+                                                    } 
+
+
+                                                    }
+                                                    ?>
+
+                                                
                                                 <!-- </div> -->
                                             </div>
                                         </div>
@@ -67,6 +89,35 @@
 
 
 <script type="text/javascript">
+
+  $(document).on('ready', function(){
+    $('#enviar #boton').on('click', function(){
+      alert('enviar');
+      editarEstado(4);
+    });
+
+    $('#rechazar #boton').on('click', function(){
+      alert('rechazar');
+      editarEstado(3);
+    });
+
+  });
+
+  function editarEstado(estado){
+    var url = '<?= base_url() ?>Cotizacion/cambiarEstado/<?= encryptIt($resultado['idCotizacion']);?>' + '/' + estado;
+      var method = 'POST'; 
+      $.ajax({
+             type: method,
+             url: url,
+             // data: $('#formAprobadores, #formLineasDetalle, #formGeneral, #form_encabezado, #form_paso3AgregarPlantilla, #form_cuerpo, #form_informacion, #form_footer').serialize(), 
+             success: function(response)
+             {
+              alert(response);
+            }
+          });
+
+  }
+
 
 
 </script>
