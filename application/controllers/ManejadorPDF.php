@@ -12,6 +12,8 @@ class ManejadorPDF extends CI_Controller
         //cargamos el modelo pdf_model
         // $this->load->model('pdf_model');
         $this->load->helper('file');
+        $this->lang->load('content');
+        $this->load->model('Cotizacion_model');
 
         // $this->load->library('simple_html_dom');
     }
@@ -174,6 +176,8 @@ class ManejadorPDF extends CI_Controller
         if (isset($_POST['miHtml'])) {
             $htmlEntrada = $_POST['miHtml'];
 
+            // echo $htmlEntrada; exit();
+
             //establecemos la carpeta en la que queremos guardar los pdfs,
             //si no existen las creamos y damos permisos
             $this->createFolder($idEmpresa, $idCotizacion);
@@ -197,6 +201,7 @@ class ManejadorPDF extends CI_Controller
             //si el pdf se guarda correctamente lo mostramos en pantalla
 
             if ($path = $this->html2pdf->create('save')) {
+                copy('./files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacion.'/sistema/test.pdf','./files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacion.'/cliente/test.pdf'); 
 
                 $this->html2pdf->create();
 
@@ -278,21 +283,33 @@ class ManejadorPDF extends CI_Controller
         }
     }
 
-    public function enviarCorreoParaAprobacion(){
-        $this->load->library('email');
+    public function enviarCorreoParaAprobacion($idCotizacionEncriptado){
+        $idCotizacion = decryptIt($idCotizacionEncriptado);
+        $listaCorreos = $this->Cotizacion_model->cargarCorreosAprobadores($idCotizacion);
+        $arrayCorreos = array();
+        foreach ($listaCorreos as $correo) {
+            array_push($arrayCorreos, $correo['correo']);
+        }
 
+        
+
+        $this->load->library('email');
         $this->email->from('brayannr@hotmail.es', 'Brayan');
-        $this->email->to('brayan.nunez@ucrso.info');
+        // echo print_r($arrayCorreos); exit();
+        $this->email->to($arrayCorreos);
         $this->email->cc('brayan.nunez@ucrso.info');
 
-        $this->email->subject('Email PDF Test');
-        $this->email->message('Testing the email a freshly created PDF http://touchcr.com/cotizacion/editar/j-QjQ_V3KYYA9j9W4mD01cy-MDZPANq145FI-KQATkc');
+        $this->email->subject('Aprobación touch');
+        $this->email->message('Cotización pendiente de aprobar http://touchcr.com/cotizacion/aprobar/'.$idCotizacionEncriptado);
 
         // $this->email->attach($path);
 
         $this->email->send();
 
-        echo "El email ha sido enviado correctamente";
+        echo 'correo enviado';
+
+
+        // echo print_r($listaCorreos);
 
     }
 

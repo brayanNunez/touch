@@ -202,11 +202,11 @@
     $(document).on("ready", function () {
 
       $('#btnGuardarDescargar').on('click', function(){
-          guardar(1);
+          guardar(1,1);
       });
 
       $('#aprobadoresAceptar').on('click', function(){
-          guardar(2);
+          guardar(2,2);
       });
 
 
@@ -220,12 +220,12 @@
         // });
 
         $('#btnGuardarCerrar').on("click", function () {
-          guardar(0);  
+          guardar(0,1);  
         });
 
-        function guardar(accion){
+        function guardar(accion, estado){
 
-          var url = '<?= base_url() ?>Cotizacion/guardar/<?= encryptIt($resultado['idCotizacion']);?>';
+          var url = '<?= base_url() ?>Cotizacion/guardar/<?= encryptIt($resultado['idCotizacion']);?>' + '/' + estado;
             var method = 'POST'; 
             $.ajax({
                    type: method,
@@ -246,7 +246,7 @@
                       alert('enviar correo');
                       $.ajax({
                          type: 'POST',
-                         url: '<?=base_url()?>ManejadorPDF/enviarCorreoParaAprobacion',
+                         url: '<?=base_url()?>ManejadorPDF/enviarCorreoParaAprobacion/<?= encryptIt($resultado['idCotizacion']);?>',
                          // data: $('#formAprobadores, #formLineasDetalle, #formGeneral, #form_encabezado, #form_paso3AgregarPlantilla, #form_cuerpo, #form_informacion, #form_footer').serialize(), 
                          success: function(response) {
                           alert(response);

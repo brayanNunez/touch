@@ -39,6 +39,23 @@ class Cotizacion_model extends CI_Model
        
     }
 
+    function editarEstado($data){
+        try {
+            $this->db->trans_begin();
+
+            $this->db->where('idCotizacion', $data['idCotizacion']);
+            $query = $this->db->update('cotizacion', array('idEstadoCotizacion' => $data['estado']));
+            if (!$query) throw new Exception("Error en la BD"); 
+
+            $this->db->trans_commit();
+            return 1;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return 0;
+        }
+
+    }
+
     function guardarCambios($data){
         try {
             $this->db->trans_begin();
@@ -265,6 +282,31 @@ class Cotizacion_model extends CI_Model
         }
     }
 
+    function cargarCorreosAprobadores($idCotizacion){
+         try {
+            $this->db->trans_begin();
+            $this->db->select("us.correo");
+            $this->db->from('usuario as us');
+            $this->db->join('aprobador_cotizacion as ac', 'ac.idUsuario = us.idUsuario');
+            $this->db->join('cotizacion as co', 'co.idCotizacion = ac.idCotizacion');
+            $this->db->where(array('co.idCotizacion' => $idCotizacion));
+            $correos = $this->db->get();
+            if (!$correos) {
+                throw new Exception("Error en la BD");
+            }
+            $correos = $correos->result_array();
+
+            // $data['correos'] = $correos;
+
+            $this->db->trans_commit();
+            return $correos;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+
+    }
+
     function cargar($datos)
     {
         try {
@@ -409,6 +451,41 @@ class Cotizacion_model extends CI_Model
             // INSERT INTO `touch`.`cotizacion` (`idEmpresa`, `idEstadoCotizacion`, `idUsuario`) VALUES ('1', '1', '1');
 
             // print_r($data);exit();
+
+            $this->db->trans_commit();
+            return $data;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+    function cargarAprobacion($datos)
+    {
+        try {
+            $this->db->trans_begin();
+
+            $this->db->select("ec.descripcion as estado");
+            $this->db->from('estadocotizacion as ec');
+            $this->db->join('cotizacion as co', 'co.idEstadoCotizacion = ec.idEstadoCotizacion');
+            $this->db->where(array('co.idCotizacion' => $datos['idCotizacion']));
+
+            $estado = $this->db->get();
+            if (!$estado) throw new Exception("Error en la BD");
+            $estado = $estado->result_array();
+            $data['estado'] = array_shift($estado)['estado'];
+            // echo print_r($data['estado']); exit();
+
+            $this->db->select("us.*");
+            $this->db->from('usuario as us');
+            $this->db->join('aprobador_cotizacion as ac', 'ac.idUsuario = us.idUsuario');
+            $this->db->join('cotizacion as co', 'co.idCotizacion = ac.idCotizacion');
+            $this->db->where(array('us.idUsuario' => $datos['idUsuario'],'co.idCotizacion' => $datos['idCotizacion']));
+            $aprobador = $this->db->get();
+            if (!$aprobador) throw new Exception("Error en la BD");
+            $aprobador = $aprobador->result_array();
+
+            $data['aprobadorEstaCotizacion'] = count($aprobador);
 
             $this->db->trans_commit();
             return $data;
