@@ -511,7 +511,7 @@
     $lang['paso1_labelTipoCambio'] = 'Tipo de cambio';
     $lang['paso1_labelDetalle'] = 'Detalle';
 
-    $lang['aprobacion_cotizacionTramitada'] = 'La cotización ya fue tramitada por otro aprobador.';
+    $lang['aprobacion_cotizacionTramitada'] = 'La cotización ya fue tramitada.';
 
     
 

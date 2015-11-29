@@ -43,6 +43,10 @@ class Cotizacion_model extends CI_Model
         try {
             $this->db->trans_begin();
 
+            $this->db->where('idCotizacion', $data['idCotizacion']);
+            $query = $this->db->update('cotizacion', array('idEstadoCotizacion' => $data['estado']));
+            if (!$query) throw new Exception("Error en la BD"); 
+
             $this->db->trans_commit();
             return 1;
         } catch (Exception $e) {

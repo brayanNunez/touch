@@ -92,12 +92,12 @@
 
   $(document).on('ready', function(){
     $('#enviar #boton').on('click', function(){
-      alert('enviar');
+      // alert('enviar');
       editarEstado(4);
     });
 
     $('#rechazar #boton').on('click', function(){
-      alert('rechazar');
+      // alert('rechazar');
       editarEstado(3);
     });
 
@@ -112,8 +112,17 @@
              // data: $('#formAprobadores, #formLineasDetalle, #formGeneral, #form_encabezado, #form_paso3AgregarPlantilla, #form_cuerpo, #form_informacion, #form_footer').serialize(), 
              success: function(response)
              {
-              alert(response);
-            }
+              // alert(response);
+              if (response ==1) {
+                if (estado ==3) {
+                  $('#cotizacionRechazada').openModal();
+                } else {
+                  $('#cotizacionEnviada').openModal();
+                }
+              } else {
+                $('#transaccionIncorrecta').openModal();
+            };
+          }
           });
 
   }
@@ -150,6 +159,46 @@
         <div id="boton" class="modal-footer black-text">
           <a class="waves-effect waves-green btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
        </div>
+    </div>
+</div>
+
+
+<div id="cotizacionEnviada" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('cotizacionEnviadaCliente'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+
+<div id="cotizacionRechazada" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('cotizacionRechazada'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+
+<div id="transaccionIncorrecta" class="modal">
+    <div  class="modal-header headerTransaccionIncorrecta">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('errorGuardar'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
 
