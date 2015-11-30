@@ -23,9 +23,12 @@ class Registro_model extends CI_Model
             $data['usuario']['idEmpresa'] = $idEmpresa;
             $queryU = $this->db->insert('usuario', $data['usuario']);
 
+
             if (!$queryE || !$queryD || !$queryU) {
                 throw new Exception("Error en la BD");
             }
+
+            $this->db->query("CALL insertarValoresPredeterminados('$idEmpresa')");
 
             $pathEmpresa = 'files/empresas/'.$idEmpresa;
             $pathUsuarios = 'files/empresas/'.$idEmpresa.'/usuarios';
