@@ -35,15 +35,17 @@
                                                   // echo $resultado['estado'];
                                                   if ($resultado['estado'] == 'espera' && $resultado['aprobadorEstaCotizacion'] == '1') {
                                                     ?>
-
-                                                    <div class="input-field col s12 m6 l6">
-                                                      <a href="#enviar" id="btnGuardarEnviar" class="left btn btn-default modal-trigger opt-finalizar"
-                                                         title="<?= label('tooltip_aprobar'); ?>"><?= label('aprobar'); ?></a>
+                                                    <div id="botonesAprobar">
+                                                      <div class="input-field col s12 m6 l6">
+                                                        <a href="#enviar" id="btnGuardarEnviar" class="left btn btn-default modal-trigger opt-finalizar"
+                                                           title="<?= label('tooltip_aprobar'); ?>"><?= label('aprobar'); ?></a>
+                                                      </div>
+                                                      <div class="input-field col s12 m6 l6">
+                                                        <a href="#rechazar" id="btnGuardarEnviar" class="left btn btn-default modal-trigger opt-finalizar"
+                                                            title="<?= label('tooltip_rechazar'); ?>"><?= label('rechazar'); ?></a>
+                                                      </div>
                                                     </div>
-                                                    <div class="input-field col s12 m6 l6">
-                                                      <a href="#rechazar" id="btnGuardarEnviar" class="left btn btn-default modal-trigger opt-finalizar"
-                                                          title="<?= label('tooltip_rechazar'); ?>"><?= label('rechazar'); ?></a>
-                                                    </div>
+                                                    <p style="display:none" id="mensajeAprobacion"><?= label('aprobacion_cotizacionTramitada'); ?></p>
 
                                                     <?php
                                                     } else {
@@ -114,9 +116,20 @@
              {
               // alert(response);
               if (response ==1) {
-                if (estado ==3) {
+                $('#mensajeAprobacion').css('display', 'block');
+                $('#botonesAprobar').css('display', 'none');
+                if (estado == 3) {
                   $('#cotizacionRechazada').openModal();
                 } else {
+                  $.ajax({
+                         type: 'POST',
+                         url: '<?=base_url()?>ManejadorPDF/enviarCotizacionCliente/<?= $resultado['idEmpresa'];?>/<?= encryptIt($resultado['idCotizacion']);?>',
+                         // data: $('#formAprobadores, #formLineasDetalle, #formGeneral, #form_encabezado, #form_paso3AgregarPlantilla, #form_cuerpo, #form_informacion, #form_footer').serialize(), 
+                         success: function(response) {
+                          alert(response);
+
+                         }
+                      });
                   $('#cotizacionEnviada').openModal();
                 }
               } else {

@@ -282,6 +282,32 @@ class Cotizacion_model extends CI_Model
         }
     }
 
+    
+    function cargarCorreoCliente($idCotizacion){
+         try {
+            $this->db->trans_begin();
+            $this->db->select("cl.correo");
+            $this->db->from('cliente as cl');
+            $this->db->join('cotizacion as co', 'co.idCliente = cl.idCliente');
+            $this->db->where(array('co.idCotizacion' => $idCotizacion));
+            $correo = $this->db->get();
+            if (!$correo) {
+                throw new Exception("Error en la BD");
+            }
+            $correo = $correo->result_array();
+            $correo = array_shift($correo);
+
+            // $data['correos'] = $correos;
+
+            $this->db->trans_commit();
+            return $correo;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+
+    }
+
     function cargarCorreosAprobadores($idCotizacion){
          try {
             $this->db->trans_begin();

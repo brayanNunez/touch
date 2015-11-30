@@ -86,6 +86,19 @@
                                                 <a id="agregarFase" class="btn" style="display: block;margin: 5px auto;width: 40%;"><?= label('agregar'); ?></a>
                                             </div>
 
+                                            <div class="input-field col s12 m6 l6 inputSelector" >
+                                                <label for="servicioFase"><?= label('formServicio_cotizarPor'); ?></label>
+                                                <br>
+                                                <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="servicioFase" id="servicioFase" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("servicio_elegirTiempo"); ?>" class="browser-default chosen-select" style="width:350px;" tabindex="2">
+                                                    <option value="0" disabled selected style="display:none;"><?= label("servicio_elegirTiempo"); ?></option>
+                                                    <option value="nuevo"><?= label("agregarNuevo"); ?></option>
+                                                    <option value="1">Horas</option>
+                                                    <option value="2">Días</option>
+                                                    <option value="3">Semanas</option>
+                                                    <option value="4">Meses</option>
+                                                </select>
+                                            </div>
+
                                             <input style="display:none" id="cantidadFases" name="cantidadFases" type="text" value="<?= count($resultado['misFases'])?>">    
                                             <div class="col s12 table-responsive">
                                                 <table id="tabla-servicio" class="table striped" cellspacing="0">
@@ -195,6 +208,7 @@
                                                         </a>
                                                     </div>
                                                 </div>
+
                                                 <div class="col s12 m12 l9">
                                                     <div class="table-responsive">
                                                         <table id="gastos-tabla-lista" class="table display striped" cellspacing="0">
@@ -292,25 +306,14 @@
                                             </div>
                                         </div>
 
-                                        <div class="col s12">
-                                            <div class="input-field col s12 m6 l6 inputSelector" >
-                                                <label for="servicioFase"><?= label('formServicio_cotizarPor'); ?></label>
-                                                <br>
-                                                <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="servicioFase" id="servicioFase" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("servicio_elegirTiempo"); ?>" class="browser-default chosen-select" style="width:350px;" tabindex="2">
-                                                    <option value="0" disabled selected style="display:none;"><?= label("servicio_elegirTiempo"); ?></option>
-                                                    <option value="nuevo"><?= label("agregarNuevo"); ?></option>
-                                                    <option value="1">Horas</option>
-                                                    <option value="2">Días</option>
-                                                    <option value="3">Semanas</option>
-                                                    <option value="4">Meses</option>
-                                                    </select>
-                                            </div>
-                                            <div class="input-field col s12 m6 l6 ">
+                                        <!-- <div class="col s12"> -->
+
+                                            <div class="input-field col offset-s6 s6">
                                                 <input id="cantidadTotal" name="servicio_cantidadTotal" type="number" value="0">
                                                 <label for="cantidadTotal"><?= label('formServicio_totalTiempo'); ?>
                                                 </label>
                                             </div>  
-                                        </div>
+                                        <!-- </div> -->
                                         <div class="input-field col offset-s6 s6">
                                             <input id="servicio_utilidad" name="servicio_utilidad" type="number" value="<?= $utilidad; ?>">
                                             <label for="servicio_utilidad"><?= label('formServicio_utilidad'); ?>
@@ -362,6 +365,16 @@
             $(selector).chosen(config[selector]);
         }
     });
+
+    // $(document).on('ready', function(){
+
+    //     $('#tabla-servicio').dataTable( {
+    //       "bPaginate": false,
+    //       // "ordering": false,
+    //       "searching": false
+    //     });
+    // });
+
 </script>
 <!--Script para mostrar elementos de agregar gastos-->
 <script>

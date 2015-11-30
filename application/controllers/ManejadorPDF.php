@@ -201,7 +201,7 @@ class ManejadorPDF extends CI_Controller
             //si el pdf se guarda correctamente lo mostramos en pantalla
 
             if ($path = $this->html2pdf->create('save')) {
-                copy('./files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacion.'/sistema/test.pdf','./files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacion.'/cliente/test.pdf'); 
+                
 
                 $this->html2pdf->create();
 
@@ -282,6 +282,33 @@ class ManejadorPDF extends CI_Controller
             }
         }
     }
+    
+    public function enviarCotizacionCliente($idEmpresa, $idCotizacionEncriptado){
+        $idCotizacion = decryptIt($idCotizacionEncriptado);
+        $correo = $this->Cotizacion_model->cargarCorreoCliente($idCotizacion);
+        $correo = $correo['correo'];
+        // echo $correo; exit();
+        copy('./files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/sistema/test.pdf','./files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/cliente/test.pdf'); 
+        
+
+        
+
+        $this->load->library('email');
+        $this->email->from('brayannr@hotmail.es', 'Brayan');
+        // echo print_r($arrayCorreos); exit();
+        $this->email->to($correo);
+        $this->email->cc('brayan.nunez@ucrso.info');
+
+        $this->email->subject('Cotización touch');
+        $this->email->message('Has recibido la siguiente cotización: '.base_url().'files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/cliente/test.pdf');
+
+        // $this->email->attach($path);
+
+        $this->email->send();
+
+        echo 'correo enviado';
+
+    }
 
     public function enviarCorreoParaAprobacion($idCotizacionEncriptado){
         $idCotizacion = decryptIt($idCotizacionEncriptado);
@@ -307,9 +334,6 @@ class ManejadorPDF extends CI_Controller
         $this->email->send();
 
         echo 'correo enviado';
-
-
-        // echo print_r($listaCorreos);
 
     }
 
