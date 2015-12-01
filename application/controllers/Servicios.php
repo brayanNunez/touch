@@ -33,6 +33,7 @@ class Servicios extends CI_Controller
         $data['gastos'] = $this->Servicio_model->gastosVariables($idEmpresa);
         $data['personas'] = $this->Servicio_model->personas($idEmpresa);
         $data['categorias'] = $this->Servicio_model->categorias($idEmpresa);
+        $data['tiempos'] = $this->Servicio_model->tiempos($idEmpresa);
 
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
@@ -127,6 +128,8 @@ class Servicios extends CI_Controller
         $data['gastos'] = $this->Servicio_model->gastosVariables($idEmpresa);
         $data['personas'] = $this->Servicio_model->personas($idEmpresa);
         $data['categorias'] = $this->Servicio_model->categorias($idEmpresa);
+        $data['tiempos'] = $this->Servicio_model->tiempos($idEmpresa);
+        // echo print_r($data['tiempos']);exit;
 
         $resultado = $this->Servicio_model->cargar(decryptIt($id), $idEmpresa);
         if ($resultado === false || $resultado === array()) {
@@ -151,6 +154,7 @@ class Servicios extends CI_Controller
                 'utilidad' => $this->input->post('servicio_utilidad'),
                 'total' => $this->input->post('servicio_total'),
                 'incluirGastos' => 1,
+                'idTiempo' => $this->input->post('servicioTiempo'),
                 'estado' => 0
             );
         } else {
@@ -161,6 +165,7 @@ class Servicios extends CI_Controller
                 'utilidad' => $this->input->post('servicio_utilidad'),
                 'total' => $this->input->post('servicio_total'),
                 'incluirGastos' => 0,
+                'idTiempo' => $this->input->post('servicioTiempo'),
                 'estado' => 0
             );
         }

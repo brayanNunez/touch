@@ -1,4 +1,4 @@
-<button id="pruebaInsertar">Insertar(Prueba)</button>
+
 
 <!--START CONTENT  -->
 <section id="content">
@@ -81,21 +81,30 @@
                                                 <select disabled='disabled' data-incluirBoton="1" placeholder="seleccionar" data-tipo="servicio_subFase" id="servicio_subFase" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("servicio_elegirSubFase"); ?>" class="browser-default chosen-select" style="width:350px;" tabindex="2">
                                                 </select>
                                             </div>
-                                            <div class="input-field col s12 m6 l12" style="margin-top: 5px;">
+                                            <div class="input-field col s12 m12 l12" style="margin-top: 5px;">
                                                 <!-- <a href="" style="text-decoration: underline;float: left;"><?= label('formServicio_agregarTodasFases'); ?></a> -->
                                                 <a id="agregarFase" class="btn" style="display: block;margin: 5px auto;width: 40%;"><?= label('agregar'); ?></a>
                                             </div>
 
-                                            <div class="input-field col s12 m6 l6 inputSelector" >
+                                            <div class="input-field col s12 m6 l3 inputSelector" >
                                                 <label for="servicioFase"><?= label('formServicio_cotizarPor'); ?></label>
                                                 <br>
-                                                <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="servicioFase" id="servicioFase" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("servicio_elegirTiempo"); ?>" class="browser-default chosen-select" style="width:350px;" tabindex="2">
+                                                <select data-incluirBoton="0" placeholder="seleccionar" data-tipo="servicioTiempo" id="servicioTiempo" name="servicioTiempo" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("servicio_elegirTiempo"); ?>" class="browser-default chosen-select" style="width:350px;" tabindex="2">
                                                     <option value="0" disabled selected style="display:none;"><?= label("servicio_elegirTiempo"); ?></option>
-                                                    <option value="nuevo"><?= label("agregarNuevo"); ?></option>
-                                                    <option value="1">Horas</option>
+                                                    <!-- <option value="nuevo"><?= label("agregarNuevo"); ?></option> -->
+                                                     <?php
+                                                        if (isset($tiempos)) {                                                               
+                                                                foreach ($tiempos as $tiempo) {
+                                                    ?>
+                                                    <option value="<?=$tiempo['idTiempo']?>"><?=$tiempo['nombre']?></option>
+                                                    <?php 
+                                                        }
+                                                    }
+                                                    ?>
+                                                    <!-- <option value="1">Horas</option>
                                                     <option value="2">Días</option>
                                                     <option value="3">Semanas</option>
-                                                    <option value="4">Meses</option>
+                                                    <option value="4">Meses</option> -->
                                                 </select>
                                             </div>
 
@@ -309,8 +318,8 @@
                                         <!-- <div class="col s12"> -->
 
                                             <div class="input-field col offset-s6 s6">
-                                                <input id="cantidadTotal" name="servicio_cantidadTotal" type="number" value="0">
-                                                <label for="cantidadTotal"><?= label('formServicio_totalTiempo'); ?>
+                                                <input readonly id="cantidadTotal" name="servicio_cantidadTotal" type="number" value="0">
+                                                <label for="cantidadTotal"><?= label('formServicio_totalTiempo'); ?> <span id='unidadTiempo'></span>
                                                 </label>
                                             </div>  
                                         <!-- </div> -->
@@ -364,16 +373,32 @@
         for (var selector in config) {
             $(selector).chosen(config[selector]);
         }
+
+        $('#servicioTiempo').on('change', function(){
+            cambioUnidadTiempo();
+        });
+        function cambioUnidadTiempo(){
+            var valor = $('#servicioTiempo option:selected').text().toLowerCase();
+            $('#unidadTiempo').text('en ' + valor);
+        }
+
+        // <?=$resultado['idTiempo']?>
+
+
+        $('#servicioTiempo option:eq(<?=$resultado["idTiempo"]?>)').prop('selected', true);
+        $('#servicioTiempo').trigger("chosen:updated");
+        cambioUnidadTiempo();
+        // $('#servicioTiempo option:eq(1)').attr('selected', 'selected');
+        // alert('hola');
+
+        // $('#prueba').on('click', function(){
+        //     alert('mmec');
+        // });
+
+
     });
 
-    // $(document).on('ready', function(){
 
-    //     $('#tabla-servicio').dataTable( {
-    //       "bPaginate": false,
-    //       // "ordering": false,
-    //       "searching": false
-    //     });
-    // });
 
 </script>
 <!--Script para mostrar elementos de agregar gastos-->
@@ -784,9 +809,9 @@ echo "var arrayFases =". $js_array.";";
 
 // $(document).ready(function() {
 
-        $('#pruebaInsertar').on('click', function(){
-            agregarFila();
-        });
+        // $('#pruebaInsertar').on('click', function(){
+        //     agregarFila();
+        // });
         function actualizarCantidad(){
             $('#cantidadFases').val(cantidad);
         }
@@ -861,7 +886,7 @@ echo "var arrayFases =". $js_array.";";
         $('#eliminarSubFase #botonEliminar').on('click', function () {
             event.preventDefault();
             filaEliminar.fadeOut(function () {
-                $('table').dataTable().fnDeleteRow(filaEliminar);
+                $('#tabla-servicio').dataTable().fnDeleteRow(filaEliminar);
                 verificarChecks();
             });
             cantidad--;
@@ -869,11 +894,12 @@ echo "var arrayFases =". $js_array.";";
         });
 
         $('#eliminarFase #botonEliminar').on('click', function () {
+            // alert('hola');
             event.preventDefault();
             $('input[data-grupo='+grupoEliminar+']').parents('tr').each(function(){
                 // alert($(this).parents('tr').html);
                 $(this).fadeOut(function () {
-                    $('table').dataTable().fnDeleteRow($(this));
+                    $('#tabla-servicio').dataTable().fnDeleteRow($(this));
                 });
                 cantidad--;
                 actualizarCantidad();
@@ -884,6 +910,9 @@ echo "var arrayFases =". $js_array.";";
         });
 
         var table = $('#tabla-servicio').DataTable({
+          "bPaginate": false,
+          "ordering": false,
+          "searching": false,
             "columnDefs": [
                 { "visible": false, "targets": 3 },
                 { "visible": false, "targets": 4 },
