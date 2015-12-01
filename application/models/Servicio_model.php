@@ -346,6 +346,34 @@ class Servicio_model extends CI_Model
         }
     }
 
+    function fases($idEmpresa){
+        try{
+            $this->db->trans_begin();
+            
+            $fasesPadre = $this->db->get_where('fase',array('idEmpresa' => $idEmpresa, 'eliminado' => 0, 'fasePadre' => 1));
+            if (!$fasesPadre) {
+                throw new Exception("Error en la BD");
+            }
+            $fasesPadre = $fasesPadre->result_array();
+            $resultado = array();
+             foreach ($fasesPadre as $fase)
+            {
+                $idFase = $fase['idFase'];
+                $query = $this->db->get_where('fase', array('idFasePadre' => $idFase));
+                if (!$query) throw new Exception("Error en la BD"); 
+                $fase['subfases'] = $query->result_array();
+                array_push($resultado, $fase);
+            }
+            // $row['fases'] = $resultado;
+            $this->db->trans_commit();
+
+            return $resultado;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
     function cargarGasto($id)
     {
         try {

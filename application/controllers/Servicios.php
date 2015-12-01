@@ -34,6 +34,7 @@ class Servicios extends CI_Controller
         $data['personas'] = $this->Servicio_model->personas($idEmpresa);
         $data['categorias'] = $this->Servicio_model->categorias($idEmpresa);
         $data['tiempos'] = $this->Servicio_model->tiempos($idEmpresa);
+        $data['fases'] = $this->Servicio_model->fases($idEmpresa);
 
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');

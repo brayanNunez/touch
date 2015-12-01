@@ -317,11 +317,11 @@
 
                                         <!-- <div class="col s12"> -->
 
-                                            <div class="input-field col offset-s6 s6">
-                                                <input readonly id="cantidadTotal" name="servicio_cantidadTotal" type="number" value="0">
-                                                <label for="cantidadTotal"><?= label('formServicio_totalTiempo'); ?> <span id='unidadTiempo'></span>
-                                                </label>
-                                            </div>  
+                                        <div class="input-field col offset-s6 s6">
+                                            <input readonly id="cantidadTotal" name="servicio_cantidadTotal" type="number" value="0">
+                                            <label for="cantidadTotal"><?= label('formServicio_totalTiempo'); ?> <span id='unidadTiempo'></span>
+                                            </label>
+                                        </div>  
                                         <!-- </div> -->
                                         <div class="input-field col offset-s6 s6">
                                             <input id="servicio_utilidad" name="servicio_utilidad" type="number" value="<?= $utilidad; ?>">

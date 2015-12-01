@@ -56,188 +56,65 @@
                                             <br>
                                         </div>
 
+                                        <!-- aqui -->
                                         <div class="col s12" style="padding: 0;">
-                                            <div class="input-field col s12 m6 l5">
-                                                <select id="servicio_fase" name="servicio_fase">
-                                                    <option value="" selected disabled>Seleccione uno</option>
-                                                    <option value="1">Fase1</option>
-                                                    <option value="2">Fase2</option>
-                                                    <option value="3">Fase3</option>
+                                            <div class="input-field col s12 m6 l6 inputSelector" >
+                                                <label for="servicioFase"><?= label('formServicio_seleccioneFase'); ?></label>
+                                                <br>
+                                                <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="servicioFase" id="servicioFase" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("servicio_elegirFase"); ?>" class="browser-default chosen-select" style="width:350px;" tabindex="2">
                                                 </select>
-                                                <label for="servicio_fase"><?= label('formServicio_seleccioneFase'); ?></label>
                                             </div>
-                                            <div class="input-field col s12 m6 l5">
-                                                <select id="servicio_subFase" name="servicio_subFase">
-                                                    <option value="" selected disabled>Seleccione uno</option>
-                                                    <option value="1">Subfase1</option>
-                                                    <option value="2">Subfase2</option>
-                                                    <option value="3">Subfase3</option>
-                                                </select>
+                                            <div class="input-field col s12 m6 l6 inputSelector" >
                                                 <label for="servicio_subFase"><?= label('formServicio_seleccioneSubfase'); ?></label>
+                                                <br>
+                                                <select disabled='disabled' data-incluirBoton="1" placeholder="seleccionar" data-tipo="servicio_subFase" id="servicio_subFase" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("servicio_elegirSubFase"); ?>" class="browser-default chosen-select" style="width:350px;" tabindex="2">
+                                                </select>
                                             </div>
-                                            <div class="input-field col s12 m6 l10" style="margin-top: 5px;">
-                                                <a href="" style="text-decoration: underline;float: left;"><?= label('formServicio_agregarTodasFases'); ?></a>
-                                                <a href="" class="btn" style="display: block;margin: 0 auto;width: 40%;"><?= label('agregar'); ?></a>
+                                            <div class="input-field col s12 m12 l12" style="margin-top: 5px;">
+                                                <!-- <a href="" style="text-decoration: underline;float: left;"><?= label('formServicio_agregarTodasFases'); ?></a> -->
+                                                <a id="agregarFase" class="btn" style="display: block;margin: 5px auto;width: 40%;"><?= label('agregar'); ?></a>
                                             </div>
-                                            <div class="col s12" style="margin-top: 15px;padding: 0;">
-                                                <div class="col s12 m6 l4">
-                                                    <div class="input-field">
-                                                        <input id="nuevoServicio_busqueda" type="text">
-                                                        <label for="nuevoServicio_busqueda"><i class="mdi-action-search"></i><?= label('formServicio_agregarRapido') ?></label>
-                                                    </div>
-                                                </div>
-                                                <div class="col s12 m6 l8">
-                                                    <div class="input-field col s4" style="padding-right: 0;">
-                                                        <p style="font-size: large;margin: 15px 0 0;float: right;"><?= label('formServicio_cotizarPor') ?>:</p>
-                                                    </div>
-                                                    <div class="input-field col s8">
-                                                        <select name="servicio_tiempo">
-                                                            <option value="1" selected>Horas</option>
-                                                            <option value="2">Días</option>
-                                                            <option value="3">Semanas</option>
-                                                            <option value="4">Meses</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
+
+                                            <div class="input-field col s12 m6 l3 inputSelector" >
+                                                <label for="servicioFase"><?= label('formServicio_cotizarPor'); ?></label>
+                                                <br>
+                                                <select data-incluirBoton="0" placeholder="seleccionar" data-tipo="servicioTiempo" id="servicioTiempo" name="servicioTiempo" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("servicio_elegirTiempo"); ?>" class="browser-default chosen-select" style="width:350px;" tabindex="2">
+                                                    <option value="0" disabled selected style="display:none;"><?= label("servicio_elegirTiempo"); ?></option>
+                                                    <!-- <option value="nuevo"><?= label("agregarNuevo"); ?></option> -->
+                                                     <?php
+                                                        if (isset($tiempos)) {                                                               
+                                                                foreach ($tiempos as $tiempo) {
+                                                    ?>
+                                                    <option value="<?=$tiempo['idTiempo']?>"><?=$tiempo['nombre']?></option>
+                                                    <?php 
+                                                        }
+                                                    }
+                                                    ?>
+                                                    <!-- <option value="1">Horas</option>
+                                                    <option value="2">Días</option>
+                                                    <option value="3">Semanas</option>
+                                                    <option value="4">Meses</option> -->
+                                                </select>
                                             </div>
+
+                                            <input style="display:none" id="cantidadFases" name="cantidadFases" type="text" value="0">    
                                             <div class="col s12 table-responsive">
                                                 <table id="tabla-servicio" class="table striped" cellspacing="0">
                                                     <thead>
-                                                        <tr>
-                                                            <th><?= label('tablaServicio_codigo'); ?></th>
-                                                            <th><?= label('tablaServicio_fase'); ?></th>
-                                                            <th><?= label('tablaServicio_descripcion'); ?></th>
-                                                            <th><?= label('tablaServicio_cantidad'); ?></th>
-                                                            <th><?= label('tablaServicio_opciones'); ?></th>
-                                                        </tr>
+                                                    <tr>
+                                                        <th><?= label('tablaServicio_codigo'); ?></th>
+                                                        <th><?= label('tablaServicio_fase'); ?></th>
+                                                        <th><?= label('tablaServicio_descripcion'); ?></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th style="display:none"></th>
+                                                        <th><?= label('tablaServicio_cantidad'); ?></th>
+                                                        <th><?= label('tablaServicio_opciones'); ?></th>
+                                                    </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>PROG-0001</td>
-                                                            <td>ERS</td>
-                                                            <td>Requerimientos de software</td>
-                                                            <td><input class="cantidad" id="fase1_horas" type="number" value="30" /></td>
-                                                            <td>
-                                                                <a href="" class="boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>
-                                                                <!-- <ul id="dropdown-fase1" class="dropdown-content">
-                                                                    <li>
-                                                                        <a href="#Editar"
-                                                                           class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#Eliminar"
-                                                                           class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                                    </li>
-                                                                </ul>
-                                                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                                   href="#" data-activates="dropdown-fase1">
-                                                                    <?= label('menuOpciones_seleccionar') ?><i
-                                                                        class="mdi-navigation-arrow-drop-down"></i>
-                                                                </a> -->
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>PROG-0001</td>
-                                                            <td>ERS</td>
-                                                            <td>Requerimientos de software</td>
-                                                            <td><input class="cantidad" id="fase1_horas" type="number" value="30" /></td>
-                                                            <td>
-                                                                <a href="" class="boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>
-                                                                <!-- <ul id="dropdown-fase1" class="dropdown-content">
-                                                                    <li>
-                                                                        <a href="#Editar"
-                                                                           class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#Eliminar"
-                                                                           class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                                    </li>
-                                                                </ul>
-                                                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                                   href="#" data-activates="dropdown-fase1">
-                                                                    <?= label('menuOpciones_seleccionar') ?><i
-                                                                        class="mdi-navigation-arrow-drop-down"></i>
-                                                                </a> -->
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>PROG-0002</td>
-                                                            <td>Analisis</td>
-                                                            <td>Fase de analisis del sistema</td>
-                                                            <td><input class="cantidad" id="fase2_horas" type="number" value="30" /></td>
-                                                            <td>
-    <!--                                                            <a href="" class="boton-opciones btn-flat white-text">--><?//= label('menuOpciones_eliminar'); ?><!--</a>-->
-                                                                <ul id="dropdown-fase2" class="dropdown-content">
-                                                                    <li>
-                                                                        <a href="#Editar"
-                                                                           class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#Eliminar"
-                                                                           class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                                    </li>
-                                                                </ul>
-                                                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                                   href="#" data-activates="dropdown-fase2">
-                                                                    <?= label('menuOpciones_seleccionar') ?><i
-                                                                        class="mdi-navigation-arrow-drop-down"></i>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>PROG-0003</td>
-                                                            <td>Desarrollo</td>
-                                                            <td>Fase de desarrollo del sistema</td>
-                                                            <td><input class="cantidad" id="fase3_horas" type="number" value="40" /></td>
-                                                            <td>
-    <!--                                                            <a href="" class="boton-opciones btn-flat white-text">--><?//= label('menuOpciones_eliminar'); ?><!--</a>-->
-                                                                <ul id="dropdown-fase3" class="dropdown-content">
-                                                                    <li>
-                                                                        <a href="#Editar"
-                                                                           class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#Eliminar"
-                                                                           class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                                    </li>
-                                                                </ul>
-                                                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                                   href="#" data-activates="dropdown-fase3">
-                                                                    <?= label('menuOpciones_seleccionar') ?><i
-                                                                        class="mdi-navigation-arrow-drop-down"></i>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>PROG-0003</td>
-                                                            <td>Desarrollo</td>
-                                                            <td>Fase de desarrollo del sistema</td>
-                                                            <td><input class="cantidad" id="fase3_horas" type="number" value="40" /></td>
-                                                            <td>
-    <!--                                                            <a href="" class="boton-opciones btn-flat white-text">--><?//= label('menuOpciones_eliminar'); ?><!--</a>-->
-                                                                <ul id="dropdown-fase3" class="dropdown-content">
-                                                                    <li>
-                                                                        <a href="#Editar"
-                                                                           class="-text modal-trigger"><?= label('menuOpciones_editar') ?></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#Eliminar"
-                                                                           class="-text modal-trigger"><?= label('menuOpciones_eliminar') ?></a>
-                                                                    </li>
-                                                                </ul>
-                                                                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                                   href="#" data-activates="dropdown-fase3">
-                                                                    <?= label('menuOpciones_seleccionar') ?><i
-                                                                        class="mdi-navigation-arrow-drop-down"></i>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                        <!-- <tr>
-                                                            <td colspan="2"></td>
-                                                            <td>TOTAL</td>
-                                                            <td>100</td>
-                                                            <td></td>
-                                                        </tr> -->
+                                                    
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -344,6 +221,12 @@
                                         </div>
 
                                         <div class="input-field col offset-s6 s6">
+                                            <input readonly id="cantidadTotal" name="servicio_cantidadTotal" type="number" value="0">
+                                            <label for="cantidadTotal"><?= label('formServicio_totalTiempo'); ?> <span id='unidadTiempo'></span>
+                                            </label>
+                                        </div>
+
+                                        <div class="input-field col offset-s6 s6">
                                             <input id="servicio_utilidad" name="servicio_utilidad" type="number">
                                             <label for="servicio_utilidad"><?= label('formServicio_utilidad'); ?>
                                             </label>
@@ -393,6 +276,14 @@
         var config = {'.chosen-select'           : {}}
         for (var selector in config) {
             $(selector).chosen(config[selector]);
+        }
+
+        $('#servicioTiempo').on('change', function(){
+            cambioUnidadTiempo();
+        });
+        function cambioUnidadTiempo(){
+            var valor = $('#servicioTiempo option:selected').text().toLowerCase();
+            $('#unidadTiempo').text('en ' + valor);
         }
 
     });
@@ -633,50 +524,313 @@
     });
 </script>
 
-<!--Script para tabla de fases e insercion de datos-->
+<!--Script para fases e insercion de datos-->
 <script>
-    $(document).ready(function() {
+<?php 
+$js_array = json_encode($fases); 
+echo "var arrayFases =". $js_array.";";
+?>
+    $(document).on('ready', function() {
+        function exiteEnTabla(idFase){
+            var existe = false;
+            $('.id_fase').each(function(){
+                if ($(this).val() == idFase) {
+                    existe = true;
+                } 
+            });
+            return existe;
+        }
+
+        $('#agregarFase').on('click', function() {
+            // alert('ahora');
+            var idFase = $('#servicioFase').val();
+            var idSubfase = $('#servicio_subFase').val();
+            if (idFase == null || (idFase != 'todas' && idSubfase == null)) {
+                if (idFase == null) {
+                    alert('<?=label("form_servicioDebeElegirFase")?>');
+                } else{
+                    alert('<?=label("form_servicioDebeElegirSubFase")?>');
+                }
+                return false;
+            } 
+            if (idFase != 'todas') {
+                if (idSubfase != 'todas') {
+                    if (!exiteEnTabla(idSubfase)) {
+                        for (var i = 0; i < arrayFases.length; i++) {
+                            if (arrayFases[i]['idFase'] == idFase) {
+                                for (var j = 0; j < arrayFases[i]['subfases'].length; j++) {
+                                    var fase = arrayFases[i];
+                                    var subfase = fase['subfases'][j];
+                                    if (subfase['idFase'] == idSubfase) {  
+                                        agregarFila(subfase['codigo'], subfase['nombre'], subfase['notas'], fase['codigo'], fase['nombre'], fase['notas'], subfase['idFase']);
+                                    } 
+                                }
+                            } 
+                        };
+                    } 
+                } else {
+                    // if (!exiteEnTabla(idSubfase)) {
+                        for (var i = 0; i < arrayFases.length; i++) {
+                            if (arrayFases[i]['idFase'] == idFase) {
+                                for (var j = 0; j < arrayFases[i]['subfases'].length; j++) {
+                                    var fase = arrayFases[i];
+                                    var subfase = fase['subfases'][j];
+                                    if (!exiteEnTabla(subfase['idFase'])) {  
+                                        agregarFila(subfase['codigo'], subfase['nombre'], subfase['notas'], fase['codigo'], fase['nombre'], fase['notas'], subfase['idFase']);
+                                    } 
+                                }
+                            } 
+                        }
+                    // }
+                }
+            } else {
+                for (var i = 0; i < arrayFases.length; i++) {
+                    // if (arrayFases[i]['idFase'] == idFase) {
+                        for (var j = 0; j < arrayFases[i]['subfases'].length; j++) {
+                            var fase = arrayFases[i];
+                            var subfase = fase['subfases'][j];
+                            if (!exiteEnTabla(subfase['idFase'])) {  
+                                agregarFila(subfase['codigo'], subfase['nombre'], subfase['notas'], fase['codigo'], fase['nombre'], fase['notas'], subfase['idFase']);
+                            } 
+                        }
+                    // } 
+                }
+            }
+        });
+        var config = {'.chosen-select'           : {}}
+            for (var selector in config) {
+                $(selector).chosen(config[selector]);
+            }
+            cargarFases();
+//            calcularTotal();
+
+        $(document).on('change','.chosen-select',function(){
+            var valor = $(this).val();
+            var tipo = $(this).attr("data-tipo");
+            if (valor=="nuevo") {
+                var idBoton = $(this).attr("id");
+                var nuevoElementoAgregar = "";
+                botonEnLista(tipo, idBoton, nuevoElementoAgregar)
+            } else {
+                if (tipo == 'servicioFase') {
+                    if ($('#servicioFase').val() != 'todas') {
+                        cargarSubFases(valor);
+                    } else{
+                        $('#servicio_subFase').empty();
+                        $('#servicio_subFase').attr('disabled', 'disabled');
+                        $('#servicio_subFase').trigger("chosen:updated");
+                    }
+                }
+            }
+        });
+    // });
+
+        function cargarSubFases(idFasePadre) {
+            $('#servicio_subFase').empty(); //remove all child nodes
+            $('#servicio_subFase').removeAttr('disabled');
+            $('#servicio_subFase').append($('<option value="0" disabled selected style="display:none;"><?= label("servicio_elegirSubFase"); ?></option>'));
+            $('#servicio_subFase').append($('<option value="nuevo"><?= label("agregarNuevo"); ?></option>'));
+            $('#servicio_subFase').append($('<option value="todas"><?= label("formServicio_fases_agregarTodas"); ?></option>'));
+            for (var i = 0; i < arrayFases.length; i++) {
+                if (arrayFases[i]['idFase'] == idFasePadre) {
+                    for (var j = 0; j < arrayFases[i]['subfases'].length; j++) {
+                        var newOption = $('<option value="'+arrayFases[i]['subfases'][j]['idFase']+'">'+arrayFases[i]['subfases'][j]['nombre']+'</option>');
+                        $('#servicio_subFase').append(newOption);
+                    }
+                }
+            }
+            $('#servicio_subFase').trigger("chosen:updated");
+        }
+
+        function cargarFases(){
+            $('#servicioFase').empty(); //remove all child nodes
+            $('#servicioFase').append($('<option value="0" disabled selected style="display:none;"><?= label("servicio_elegirFase"); ?></option>'));
+            $('#servicioFase').append($('<option value="nuevo"><?= label("agregarNuevo"); ?></option>'));
+            $('#servicioFase').append($('<option value="todas"><?= label("formServicio_fases_agregarTodas"); ?></option>'));
+            for (var i = 0; i < arrayFases.length; i++) {
+                 var newOption = $('<option value="'+arrayFases[i]['idFase']+'">'+arrayFases[i]['nombre']+'</option>');
+                 $('#servicioFase').append(newOption);
+            }
+            $('#servicioFase').trigger("chosen:updated");
+        }
+
+// $(document).ready(function() {
+
+        // $('#pruebaInsertar').on('click', function(){
+        //     agregarFila();
+        // });
+        function actualizarCantidad(){
+            $('#cantidadFases').val(cantidad);
+        }
+
+        var cantidad = 0;
+        var contador = cantidad;
+        function agregarFila(codigo, nombre, des, codigoPadre, nombrePadre, desPadre, idFase){
+            cantidad++;
+            actualizarCantidad();
+       
+            var boton = '<a href="#eliminarSubFase" data-id-eliminar="1" class="-text modal-trigger confirmarEliminar boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>';
+            // var codigo = 'PROG-0001';
+            // var nombre = 'ERS';
+            // var des = 'Requerimientos de software Nuevo';
+            var idFase = '<input class="id_fase"  name="id_'+contador+'" id="id_'+contador+'" type="number" value="'+idFase+'" />';                                                             
+            var cantidadTiempo = '<input class="cantidad" data-grupo="'+codigoPadre+'" name="cantidadhoras_'+contador+'" id="cantidadhoras_'+contador+'" type="number" value="0" />';
+            // var codigoPadre = 'PROG-0002Padre';
+            // var nombrePadre = 'ERSPadre';
+            // var desPadre = 'Requerimientos de softwarePadre';
+
+           $('#tabla-servicio').dataTable().fnAddData([
+            codigo,
+            nombre,
+            des,
+            codigoPadre,
+            nombrePadre,
+            desPadre,
+            idFase,
+            cantidadTiempo,
+            boton ]);
+
+            $('.id_fase').parent('td').css('display', 'none');
+
+            $('.modal-trigger').leanModal();
+      
+            contador++;
+        }
+
+        // function generarListasBotones(){
+        //   $('.boton-opciones').sideNav({
+        //   // menuWidth: 0, // Default is 240
+        //    edge: 'right', // Choose the horizontal origin
+        //       closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+        //     }
+        //   );
+
+        //       $('.dropdown-button').dropdown({
+        //           inDuration: 300,
+        //           outDuration: 225,
+        //           constrain_width: true, // Does not change width of dropdown to that of the activator
+        //           hover: false, // Activate on hover
+        //           gutter: 0, // Spacing from edge
+        //           belowOrigin: true, // Displays dropdown below the button
+        //           alignment: 'left' // Displays dropdown with edge aligned to the left of button
+        //         }
+          
+        // var idEliminar = 0;
+        var filaEliminar = null;
+   
+        $(document).on('click','.confirmarEliminar', function () {
+            // idEliminar = $(this).data('id-eliminar');
+            filaEliminar = $(this).parents('tr');
+        });
+        var grupoEliminar = null;
+
+        $(document).on('click','.confirmarEliminarGrupo', function () {
+            // idEliminar = $(this).data('id-eliminar');
+            grupoEliminar = $(this).attr('data-grupo');
+            // filaEliminar = $(this).parents('tr');
+        });
+   
+        $('#eliminarSubFase #botonEliminar').on('click', function () {
+            event.preventDefault();
+            filaEliminar.fadeOut(function () {
+                $('#tabla-servicio').dataTable().fnDeleteRow(filaEliminar);
+                verificarChecks();
+            });
+            cantidad--;
+            actualizarCantidad();
+        });
+
+        $('#eliminarFase #botonEliminar').on('click', function () {
+            // alert('hola');
+            event.preventDefault();
+            $('input[data-grupo='+grupoEliminar+']').parents('tr').each(function(){
+                // alert($(this).parents('tr').html);
+                $(this).fadeOut(function () {
+                    $('#tabla-servicio').dataTable().fnDeleteRow($(this));
+                });
+                cantidad--;
+                actualizarCantidad();
+            });
+            verificarChecks();
+            cantidad--;
+            actualizarCantidad();
+        });
+
         var table = $('#tabla-servicio').DataTable({
+          "bPaginate": false,
+          "ordering": false,
+          "searching": false,
             "columnDefs": [
-                { "visible": false, "targets": 1 }
+                { "visible": false, "targets": 3 },
+                { "visible": false, "targets": 4 },
+                { "visible": false, "targets": 5 }
+                // { "visible": false, "targets": 6 }
             ],
-            "order": [[ 2, 'asc' ]],
+            "order": [[ 3, 'asc' ]],
             "displayLength": 25,
             "drawCallback": function ( settings ) {
+
                 var api = this.api();
+                // alert(this.html());
                 var rows = api.rows( {page:'current'} ).nodes();
                 var last=null;
 
                 var cantidadGrupo = '';
-                var contadorGrupo = 0;
-                api.column(1, {page:'current'} ).data().each( function ( group, i ) {
-
+                // var contadorGrupo = 0;
+                api.column(3, {page:'current'} ).data().each( function ( group, i ) {
+                    var codigo = group;
+                    var nombre =  api.column(4, {page:'current'} ).data()[i];
+                    var descripcion =  api.column(5, {page:'current'} ).data()[i];
+                     // alert(group +', '+nombre, +', '+descripcion);
                     if ( last !== group ) {
-                        // alert('entre');
+                         // alert(group);
                         $(rows).eq( i ).before(
-                            '<tr class="group"><td colspan="2">'+group+'</td><td id="grupo'+ contadorGrupo++ +'">0</td><td></td></tr>'
+                            '<tr class="group"><td>'+codigo+'</td><td>'+nombre+'</td><td>'+descripcion+'</td><td id="'+codigo+'">0</td><td><a href="#eliminarFase" data-grupo="'+codigo+'" class="-text modal-trigger confirmarEliminarGrupo boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a></td></tr>'
                         );
 
                         last = group;
-
+     
                     }
                     cantidadGrupo = $(rows).eq( i ).find('.cantidad').val();
-                    var valorActual = parseInt($("#grupo" + (contadorGrupo -1)).text()) + parseInt(cantidadGrupo);
-                    $("#grupo" + (contadorGrupo -1)).text(valorActual);
-
-                } );
-            }
-        } );
-
-        // Order by the grouping
-        $('#tabla-servicio tbody').on( 'click', 'tr.group', function () {
-            var currentOrder = table.order()[0];
-            if ( currentOrder[0] === 2 && currentOrder[1] === 'asc' ) {
-                table.order( [ 2, 'desc' ] ).draw();
-            } else {
-                table.order( [ 2, 'asc' ] ).draw();
+                    var valorActual = parseInt($("#"+codigo).text()) + parseInt(cantidadGrupo);
+                    $("#"+codigo).text(valorActual);
+                    
+                });
+                $('.modal-trigger').leanModal();
+                calcularTotal();
             }
         });
+
+        // Order by the grouping
+        // $('table tbody').on( 'click', 'tr.group', function () {
+        //     var currentOrder = table.order()[0];
+        //     if ( currentOrder[0] === 3 && currentOrder[1] === 'asc' ) {
+        //         table.order( [ 3, 'desc' ] ).draw();
+        //     }
+        //     else {
+        //         table.order( [ 3, 'asc' ] ).draw();
+        //     }
+        // } );
+
+        $(document).on('change','.cantidad', function(){
+            var grupo = $(this).attr('data-grupo');
+            var sumatoria = 0;
+            $('input[data-grupo = '+grupo+']').each(function(){
+                sumatoria += parseInt($(this).val());
+            });
+            // alert('#'+grupo);
+            $('#'+grupo).text(sumatoria);
+            calcularTotal();
+        });
+
+        function calcularTotal(){
+            // alert('entre mec');
+            var sumatoria = 0;
+            $('.cantidad').each(function(){
+                sumatoria += parseInt($(this).val());
+            });
+            $('#cantidadTotal').val(sumatoria);
+        }
     });
 
     function validacionCorrecta_Servicios(){
@@ -1011,5 +1165,30 @@
                class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
         </div>
     </div>
+</div>
+
+<div id="eliminarSubFase" class="modal">
+   <div class="modal-header">
+      <p><?= label('nombreSistema'); ?></p>
+      <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+   </div>
+   <div class="modal-content">
+      <p><?= label('confirmarEliminarSubFase'); ?></p>
+   </div>
+   <div id="botonEliminar" class="modal-footer black-text">
+      <a href="" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+   </div>
+</div>
+<div id="eliminarFase" class="modal">
+   <div class="modal-header">
+      <p><?= label('nombreSistema'); ?></p>
+      <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+   </div>
+   <div class="modal-content">
+      <p><?= label('confirmarEliminarFase'); ?></p>
+   </div>
+   <div id="botonEliminar" class="modal-footer black-text">
+      <a href="" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+   </div>
 </div>
 <!-- Fin lista modals -->
