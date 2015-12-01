@@ -768,11 +768,11 @@
         var boton = '<td>' +
                         '<ul id="dropdown-gasto'+ contadorFilas +'" class="dropdown-content">' +
                             '<li>' +
-                                '<a href="#" data-id-editar="'+idEncriptado+'"' +
+                                '<a href="#editarGasto" data-id-editar="'+idEncriptado+'"' +
                                     'class="-text modal-trigger abrirEditar">'+ menuOpciones_editar + '</a>' +
                             '</li>' +
                             '<li>' +
-                                '<a href="#"' +
+                                '<a href="#eliminarGasto"' +
                                     'class="-text modal-trigger confirmarEliminar"' +
                                     'data-id-eliminar="'+idEncriptado+'"  data-fila-eliminar="fila'+ contadorFilas +'">'+menuOpciones_eliminar+'</a>' +
                             '</li>' +
