@@ -66,6 +66,14 @@ class Servicio_model extends CI_Model
                 }
             }
 
+            foreach ($data['fases'] as $fase) {
+                $fase['idServicio'] = $insert_id;
+                $query = $this->db->insert('fase_servicio', $fase);
+                if (!$query) {
+                    throw new Exception("Error en la BD");
+                }
+            }
+
             $this->db->trans_commit();
 
             return true;

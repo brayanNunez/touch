@@ -79,6 +79,7 @@ class Servicios extends CI_Controller
                 'descripcion' => $this->input->post('servicio_descripcion'),
                 'utilidad' => $this->input->post('servicio_utilidad'),
                 'total' => $this->input->post('servicio_total'),
+                'idTiempo' => $this->input->post('servicioTiempo'),
                 'incluirGastos' => 1,
                 'estado' => 0
             );
@@ -90,6 +91,7 @@ class Servicios extends CI_Controller
                 'descripcion' => $this->input->post('servicio_descripcion'),
                 'utilidad' => $this->input->post('servicio_utilidad'),
                 'total' => $this->input->post('servicio_total'),
+                'idTiempo' => $this->input->post('servicioTiempo'),
                 'incluirGastos' => 0,
                 'estado' => 0
             );
@@ -112,6 +114,24 @@ class Servicios extends CI_Controller
             $contador++;
         }
         $data['gastos'] = $gastos;
+
+        $fases = array();
+        $contador = 0;
+        $fasesObtenidos = 0;
+        $cantidadFases = $this->input->post('cantidadFases');
+        // echo $cantidadFases; exit();
+        while ($fasesObtenidos < $cantidadFases) {
+            if (isset($_POST['id_'.$contador])) {
+                $fase = array(
+                    'idFase' => $this->input->post('id_'.$contador),
+                    'cantidadTiempo' => $this->input->post('cantidadhoras_'.$contador)
+                );
+                array_push($fases, $fase);
+                $fasesObtenidos++;
+            }
+            $contador++;
+        }
+        $data['fases'] = $fases;
 
         $servicio = $this->Servicio_model->insertar($data);
         if(!$servicio) {
