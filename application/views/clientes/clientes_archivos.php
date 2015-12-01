@@ -156,9 +156,11 @@
         });
     }
     function agregarFilaArchivo(idEncriptado, nombre, ruta, descripcion, tamano, fecha) {
-        var check = '<td style="text-align: center;">' +
-                        '<input type="checkbox" class="filled-in checkbox-file" id="' + idEncriptado + '"/>' +
-                        '<label for="' + idEncriptado + '"></label>' +
+        var check = '<td>' +
+                        '<div style="text-align: center;">'+
+                            '<input type="checkbox" class="filled-in checkbox-file" id="' + idEncriptado + '"/>' +
+                            '<label for="' + idEncriptado + '"></label>' +
+                        '</div>'+
                     '</td>';
         var boton = '<td>' +
                         '<ul id="dropdown-archivo' + contadorFilas + '" class="dropdown-content">' +
