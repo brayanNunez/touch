@@ -328,6 +328,24 @@ class Servicio_model extends CI_Model
         }
     }
 
+    function tiempos() {
+        try{
+            $this->db->trans_begin();
+
+            $tiempo = $this->db->get('tiempo');
+            if (!$tiempo) {
+                throw new Exception("Error en la BD");
+            }
+            $resultado = $tiempo->result_array();
+
+            $this->db->trans_commit();
+            return $resultado;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
     function cargarGasto($id)
     {
         try {
