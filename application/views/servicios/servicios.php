@@ -524,12 +524,17 @@
     });
 </script>
 
+
 <!--Script para fases e insercion de datos-->
 <script>
 <?php 
 $js_array = json_encode($fases); 
 echo "var arrayFases =". $js_array.";";
 ?>
+
+    var cantidadFases = 0;
+    var contadorFases = cantidadFases;
+
     $(document).on('ready', function() {
         function exiteEnTabla(idFase){
             var existe = false;
@@ -602,7 +607,6 @@ echo "var arrayFases =". $js_array.";";
                 $(selector).chosen(config[selector]);
             }
             cargarFases();
-//            calcularTotal();
 
         $(document).on('change','.chosen-select',function(){
             var valor = $(this).val();
@@ -623,7 +627,6 @@ echo "var arrayFases =". $js_array.";";
                 }
             }
         });
-    // });
 
         function cargarSubFases(idFasePadre) {
             $('#servicio_subFase').empty(); //remove all child nodes
@@ -654,27 +657,23 @@ echo "var arrayFases =". $js_array.";";
             $('#servicioFase').trigger("chosen:updated");
         }
 
-// $(document).ready(function() {
-
-        // $('#pruebaInsertar').on('click', function(){
-        //     agregarFila();
-        // });
         function actualizarCantidad(){
-            $('#cantidadFases').val(cantidad);
+            // alert($('#cantidadFases').val());
+            $('#cantidadFases').val(cantidadFases);
         }
 
-        var cantidad = 0;
-        var contador = cantidad;
+        
         function agregarFila(codigo, nombre, des, codigoPadre, nombrePadre, desPadre, idFase){
-            cantidad++;
+            // alert(cantidadFases);
+            cantidadFases++;
             actualizarCantidad();
        
             var boton = '<a href="#eliminarSubFase" data-id-eliminar="1" class="-text modal-trigger confirmarEliminar boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>';
             // var codigo = 'PROG-0001';
             // var nombre = 'ERS';
             // var des = 'Requerimientos de software Nuevo';
-            var idFase = '<input class="id_fase"  name="id_'+contador+'" id="id_'+contador+'" type="number" value="'+idFase+'" />';                                                             
-            var cantidadTiempo = '<input class="cantidad" data-grupo="'+codigoPadre+'" name="cantidadhoras_'+contador+'" id="cantidadhoras_'+contador+'" type="number" value="0" />';
+            var idFase = '<input class="id_fase"  name="id_'+contadorFases+'" id="id_'+contadorFases+'" type="number" value="'+idFase+'" />';                                                             
+            var cantidadTiempo = '<input class="cantidad" data-grupo="'+codigoPadre+'" name="cantidadhoras_'+contadorFases+'" id="cantidadhoras_'+contadorFases+'" type="number" value="0" />';
             // var codigoPadre = 'PROG-0002Padre';
             // var nombrePadre = 'ERSPadre';
             // var desPadre = 'Requerimientos de softwarePadre';
@@ -694,28 +693,10 @@ echo "var arrayFases =". $js_array.";";
 
             $('.modal-trigger').leanModal();
       
-            contador++;
+            contadorFases++;
         }
 
-        // function generarListasBotones(){
-        //   $('.boton-opciones').sideNav({
-        //   // menuWidth: 0, // Default is 240
-        //    edge: 'right', // Choose the horizontal origin
-        //       closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-        //     }
-        //   );
-
-        //       $('.dropdown-button').dropdown({
-        //           inDuration: 300,
-        //           outDuration: 225,
-        //           constrain_width: true, // Does not change width of dropdown to that of the activator
-        //           hover: false, // Activate on hover
-        //           gutter: 0, // Spacing from edge
-        //           belowOrigin: true, // Displays dropdown below the button
-        //           alignment: 'left' // Displays dropdown with edge aligned to the left of button
-        //         }
-          
-        // var idEliminar = 0;
+       
         var filaEliminar = null;
    
         $(document).on('click','.confirmarEliminar', function () {
@@ -801,17 +782,6 @@ echo "var arrayFases =". $js_array.";";
             }
         });
 
-        // Order by the grouping
-        // $('table tbody').on( 'click', 'tr.group', function () {
-        //     var currentOrder = table.order()[0];
-        //     if ( currentOrder[0] === 3 && currentOrder[1] === 'asc' ) {
-        //         table.order( [ 3, 'desc' ] ).draw();
-        //     }
-        //     else {
-        //         table.order( [ 3, 'asc' ] ).draw();
-        //     }
-        // } );
-
         $(document).on('change','.cantidad', function(){
             var grupo = $(this).attr('data-grupo');
             var sumatoria = 0;
@@ -824,7 +794,6 @@ echo "var arrayFases =". $js_array.";";
         });
 
         function calcularTotal(){
-            // alert('entre mec');
             var sumatoria = 0;
             $('.cantidad').each(function(){
                 sumatoria += parseInt($(this).val());
@@ -865,6 +834,17 @@ echo "var arrayFases =". $js_array.";";
                                         $('#linkModalGuardado').click();
                                         $('form')[0].reset();
                                         $('#servicio_impuestos').tagsinput('removeAll');
+                                        $('#servicioTiempo').val('').trigger('chosen:updated');
+                                        cantidadFases = 0;
+                                        contadorFases = 0;
+                                        contadorFilasGastos = 0;
+                                        var table = $('#tabla-servicio').DataTable();
+                                        table.clear().draw();
+                                        table = $('#gastos-tabla-lista').DataTable();
+                                        table.clear().draw();
+                                        var $incluir = $(this).is(':checked');
+                                        var $gastos = $('#servicio_gastosVariables');
+                                        $gastos.css('display', 'none');
                                         break;
                                 }
                             }
@@ -874,7 +854,11 @@ echo "var arrayFases =". $js_array.";";
             }
         });
     }
+
+
+
 </script>
+
 <!--Script para tags de impuestos-->
 <script>
     $(document).ready(function () {
