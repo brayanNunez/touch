@@ -123,6 +123,14 @@
                                                 <label for="empresa_empresaCorreo"><?= label('formEmpresa_correoEmpresa'); ?></label>
                                             </div>
                                             <div class="input-field col s12 m6 l6">
+                                                <input id="empresa_empresaTelefonoFijo" name="empresa_empresaTelefonoFijo" type="text" value="<?= $telefono;?>">
+                                                <label for="empresa_empresaTelefonoFijo"><?= label('formEmpresa_telefonoFijo'); ?></label>
+                                            </div>
+                                            <div class="input-field col s12 m6 l6">
+                                                <input id="empresa_empresaTelefonoMovil" name="empresa_empresaTelefonoMovil" type="text" value="<?= $telefonoMovil;?>">
+                                                <label for="empresa_empresaTelefonoMovil"><?= label('formEmpresa_telefonoMovil'); ?></label>
+                                            </div>
+                                            <div class="input-field col s12 m6 l6">
                                                 <input id="empresa_empresaSitioweb" name="empresa_empresaSitioweb" type="text" value="<?= $sitioWeb;?>">
                                                 <label for="empresa_empresaSitioweb"><?= label('formEmpresa_sitioWeb'); ?></label>
                                             </div>
@@ -172,6 +180,14 @@
                                             <div class="input-field col s12">
                                                 <input id="empresa_trabajadorCorreo" name="empresa_trabajadorCorreo" type="text" value="<?= $correoContacto; ?>">
                                                 <label for="empresa_trabajadorCorreo"><?= label('formEmpresa_CorreoTrabajador'); ?></label>
+                                            </div>
+                                            <div class="input-field col s12 m6 l6">
+                                                <input id="empresa_trabajadortelefonoFijo" name="empresa_trabajadortelefonoFijo" type="text" value="<?= $telefonoFijoContacto; ?>">
+                                                <label for="empresa_trabajadortelefonoFijo"><?= label('formEmpresa_telefonoFijoTrabajador'); ?></label>
+                                            </div>
+                                            <div class="input-field col s12 m6 l6">
+                                                <input id="empresa_trabajadorTelefonoMovil" name="empresa_trabajadorTelefonoMovil" type="text" value="<?= $telefonoMovilContacto; ?>">
+                                                <label for="empresa_trabajadorTelefonoMovil"><?= label('formEmpresa_TelefonoMovilTrabajador'); ?></label>
                                             </div>
                                             <div class="input-field col s12 m6 l6">
                                                 <input id="empresa_trabajadorProfesion" name="empresa_trabajadorProfesion" type="text" value="<?= $profesion; ?>">
