@@ -96,8 +96,7 @@
                <div id="informacion">
                   <p class="box" id="formaPago">Forma de pago: 50% primer mes, 50% segundo mes.</p>
                   <p class="box" id="validez">Válido hasta: <span id="disenoValidez"></span></p>
-                  <p class="box" id="informacionDetalle">Detalle: Por las especificaciones del equipo, es posible que existan variantes entre impresiones sin que esto represente para nosotros problemas de calidad. La presente oferta tiene una validéz de 15 días naturales a partir de esta fecha. 
-                  </p>
+                  <p class="box" id="informacionDetalle"></p>
                   <div class="box" id="firma">
                      <p>Firma:__________________________</p>
                      <p id="nombreFirma">Emanuel Conejo</p>
@@ -123,8 +122,8 @@
                         <p class="box" id="correo">Correo: <span><?= $resultado['empresa']['correo'];?></span></p>
                      </div>
                      <div class="datos" id="datos2">
-                        <div></div>
-                        <p>Con el mayor deseo de servirle, me pongo a su entera disposición.</p>
+                        <div></div>  <!-- sin esta lina no sirve -->
+                        <p id="informacionFooter"></p>
                      </div>
                   </div>
                </div>
@@ -369,7 +368,7 @@
                   
                </div>
                <div class="input-field col s12">
-                     <textarea id="textoAdicionalInformacion" class="materialize-textarea" style="height: 24px;"></textarea>
+                     <textarea length="600" maxlength="600" id="textoAdicionalInformacion" name="textoAdicionalInformacion" class="materialize-textarea" style="height: 24px;"></textarea>
                      <label for="message" class="">Texto adicional</label>
                </div>
             </form>
@@ -423,7 +422,7 @@
                      <p>Color de letra: <input name="colorFooter_colorLetra" class="colorLetra" type="color" id="myColor2"></p>
                   </div>
                   <div class="input-field col s12">
-                     <textarea id="message" class="materialize-textarea" style="height: 24px;"></textarea>
+                     <textarea length="100" maxlength="100" id="textoAdicionalFooter" name="textoAdicionalFooter" class="materialize-textarea" style="height: 24px;"></textarea>
                      <label for="message" class="">Texto adicional</label>
                   </div>
                </div>
@@ -743,9 +742,8 @@
            $('#barra3').css("background", colorBarra);
 
            $('#informacionDetalle').text($('#textoAdicionalInformacion').val());
-
            
-   
+
    
            $('#informacion .box').each(function () {
                $(this).hide();
@@ -765,6 +763,8 @@
    
            var colorLetra = $('#modalFooter .colorLetra').val();
            $('#footerCotizacion').css("color", colorLetra);
+
+           $('#informacionFooter').text($('#textoAdicionalFooter').val());
    
            $('#footerCotizacion .box').each(function () {
                $(this).hide();
@@ -973,6 +973,8 @@
    $('#modalInformacion .colorLetra').val(plantilla['colorLetraInformcion']);
    $('#modalInformacion .colorBarra').val(plantilla['colorBarraHorizontal3']);
    $('#textoAdicionalInformacion').val(plantilla['textoAdicionalInformacion']);
+   
+
    if (plantilla['mostrarFormaPago'] == 1) {
        $("#modalInformacion input[value='formaPago']").prop("checked", true );
    } else {
@@ -998,6 +1000,9 @@
    function actualizarModalFooter(plantilla){
    $('#modalFooter .colorFondo').val(plantilla['colorFooter']);
    $('#modalFooter .colorLetra').val(plantilla['colorLetraFooter']);
+
+   $('#textoAdicionalFooter').val(plantilla['textoAdicionalFooter']);
+
     if (plantilla['mostrarTelefono'] == 1) {
        $("#modalFooter input[value='telefono']").prop("checked", true );
    } else {
@@ -1177,7 +1182,7 @@
    "mostrarSitioWeb":$('#footerCotizacion .box#sitio').is(':visible'),
    "mostrarCorreo":$('#footerCotizacion .box#correo').is(':visible'),
    "mostrarImagenFooter":$('#footerCotizacion .box#logo').is(':visible'),
-   "textoAdicionalFooter":"0"
+   "textoAdicionalFooter":$('#informacionFooter').text()
    };
    // alert('visible: ' + (plantilla['colorEncabezado']));
    actualizarModalFooter(plantilla);

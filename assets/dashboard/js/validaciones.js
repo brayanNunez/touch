@@ -9,7 +9,6 @@
 
 
 
-
              var reglasImpuesto =  {
                     impuesto_nombre: {required: true, maxlength: 45},
                     impuesto_descripcion: {required: true, maxlength: 45},
