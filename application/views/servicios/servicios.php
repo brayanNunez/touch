@@ -845,6 +845,7 @@ echo "var arrayFases =". $js_array.";";
                                         var $incluir = $(this).is(':checked');
                                         var $gastos = $('#servicio_gastosVariables');
                                         $gastos.css('display', 'none');
+                                        gastosTabla.splice(0, gastosTabla.length);
                                         break;
                                 }
                             }
