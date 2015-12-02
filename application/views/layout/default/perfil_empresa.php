@@ -182,11 +182,11 @@
                                                 <label for="empresa_trabajadorCorreo"><?= label('formEmpresa_CorreoTrabajador'); ?></label>
                                             </div>
                                             <div class="input-field col s12 m6 l6">
-                                                <input id="empresa_trabajadortelefonoFijo" name="empresa_trabajadortelefonoFijo" type="text" value="<?= $telefonoFijoContacto; ?>">
+                                                <input id="empresa_trabajadortelefonoFijo" name="empresa_trabajadortelefonoFijo" type="text" value="<?= $telefono; ?>">
                                                 <label for="empresa_trabajadortelefonoFijo"><?= label('formEmpresa_telefonoFijoTrabajador'); ?></label>
                                             </div>
                                             <div class="input-field col s12 m6 l6">
-                                                <input id="empresa_trabajadorTelefonoMovil" name="empresa_trabajadorTelefonoMovil" type="text" value="<?= $telefonoMovilContacto; ?>">
+                                                <input id="empresa_trabajadorTelefonoMovil" name="empresa_trabajadorTelefonoMovil" type="text" value="<?= $telefonoMovil; ?>">
                                                 <label for="empresa_trabajadorTelefonoMovil"><?= label('formEmpresa_TelefonoMovilTrabajador'); ?></label>
                                             </div>
                                             <div class="input-field col s12 m6 l6">
