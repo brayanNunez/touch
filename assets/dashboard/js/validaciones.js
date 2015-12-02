@@ -778,4 +778,48 @@
             }
         });
 
+        $('#registro_cambioImagen').validate({
+            rules: {
+                userfile: {required: false}
+            },
+            errorElement: 'div',
+            submitHandler: function (form) {
+                validacionCorrecta_Imagen();
+            }
+        });
+        $('#form_registroEditar').validate({
+            rules: {
+                empresa_idEmpresa: {required: true},
+                empresa_empresaNombre: {required: true},
+                empresa_empresaNombreFantasia: {required: false},
+                empresa_empresaTelefonoFijo: {required: true},
+                empresa_empresaCorreo: {required: true},
+                empresa_empresaSitioweb: {required: true},
+                empresa_fechaCreacion: {required: true},
+                empresa_tamano: {required: true},
+                empresa_idTrabajador: {required: true},
+                empresa_trabajadorNombreArtistico: {required: false},
+                empresa_trabajadorNombre: {required: true},
+                empresa_trabajadorPrimerApellido: {required: true},
+                empresa_trabajadorSegundoApellido: {required: false},
+                empresa_trabajadorCorreo: {required: true},
+                empresa_trabajadorProfesion: {required: false},
+                empresa_trabajadorSitioWeb: {required: true},
+                empresa_trabajadorFechaNacimiento: {required: true},
+                empresa_direccionPais: {required: true},
+                empresa_direccionProvincia: {required: true},
+                empresa_direccionCanton: {required: true},
+                empresa_direccionDomicilio: {required: true},
+                empresa_actividadComercial: {required: true},
+                empresa_nombreContacto: {required: true},
+                empresa_primerApellidoContacto: {required: true},
+                empresa_segundoApellidoContacto: {required: false},
+                empresa_correoContacto: {required: true}
+            },
+            errorElement: 'div',
+            submitHandler: function (form) {
+                validacionCorrecta();
+            }
+        });
+
     });

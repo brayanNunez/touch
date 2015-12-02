@@ -281,6 +281,8 @@ div.tabla_GastosPersona_agregar { position: absolute; top: 135px; left: 50%; wid
 a.btn_mostrarElementosOcultos { float: left; font-size: large; text-decoration: underline; cursor: pointer; }
 div#agregarPersona hr { height: 12px; border: 0; box-shadow: inset 0 15px 15px -11px gray; }
 
+div#empresa_logo_editar a { left: 50%; margin-left: -100px; }
+
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/
     div#login-page { width: 380px !important; max-height: 408px !important; top: 0 !important; }
@@ -408,6 +410,8 @@ div#agregarPersona hr { height: 12px; border: 0; box-shadow: inset 0 15px 15px -
     div.tabla_GastosPersona { top: 154px; width: 35px; margin-left: -17px; }
     div.tabla_GastosPersona_agregar { top: 120px; width: 35px; margin-left: -17px;}
     div.tabla_GastosPersona a i, div.tabla_GastosPersona_agregar a i { font-size: 30px; }
+
+    div#empresa_logo_editar a { left: 0; margin-left: 0; }
 }
 
 @media only screen and (max-width: 640px) {

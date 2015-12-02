@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-
 class Registro_model extends CI_Model
 {
+
     function __construct()
     {
         parent:: __construct();
@@ -64,6 +64,111 @@ class Registro_model extends CI_Model
             }
             $this->db->trans_commit();
             return $existe;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+    function cargar($id) {
+        try {
+            $this->db->trans_begin();
+
+            $query = $this->db->get_where('empresa', array('idEmpresa' => $id,  'activa' => 1));
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+            $row = array();
+            if ($query->num_rows() > 0) {
+                $array = $query->result_array();
+                $row = array_shift($array);//obtiene el primer elemento.. el [0] no sirve en el server
+
+                $query2 = $this->db->get_where('direccionempresa', array('idEmpresa' => $id));
+                if (!$query2) {
+                    throw new Exception("Error en la BD");
+                }
+                $arrayDireccion = $query2->result_array();
+                $row['direccion'] = array_shift($arrayDireccion);
+
+                $this->db->where('idEmpresa', $id);
+                $this->db->order_by("idUsuario", "asc");
+                $query3 = $this->db->get('usuario');
+                if (!$query3) {
+                    throw new Exception("Error en la BD");
+                }
+                $arrayUsuario = $query3->result_array();
+                $row['usuario'] = array_shift($arrayUsuario);
+            }
+            // print_r ($row);exit();
+            $this->db->trans_commit();
+            return $row;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+    function modificar($data)
+    {
+        try{
+            $this->db->trans_begin();
+
+            $this->db->where('idEmpresa', $data['id']);
+            $query = $this->db->update('empresa', $data['datos']);
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+
+            $this->db->where('idEmpresa', $data['id']);
+            $query = $this->db->update('direccionempresa', $data['direccion']);
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+
+            $this->db->where('idUsuario', $data['usuario']['idUsuario']);
+            $query = $this->db->update('usuario', $data['usuario']);
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+
+            $this->db->trans_commit();
+            return true;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+    function cambiar_imagen($data) {
+        try{
+            $photo = '';
+            $this->db->trans_begin();
+
+            $this->db->select('logo');
+            $this->db->where('idEmpresa', $data['id']);
+            $this->db->from('empresa');
+            $query1 = $this->db->get();
+            if (!$query1) {
+                throw new Exception("Error en la BD");
+            }
+            if($query1->num_rows() > 0) {
+                $datos = $query1->result_array();
+                $photo = $datos[0]['logo'];
+                if(!$photo) {
+                    $photo = 'sinFoto';
+                }
+            } else {
+                $photo = 'sinFoto';
+            }
+            if($photo) {
+                $this->db->where('idEmpresa', $data['id']);
+                $query2 = $this->db->update('empresa', $data['datos']);
+                if (!$query2) {
+                    throw new Exception("Error en la BD");
+                }
+            }
+            $this->db->trans_commit();
+            return $photo;
         } catch (Exception $e) {
             $this->db->trans_rollback();
             return false;
