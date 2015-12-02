@@ -607,7 +607,6 @@ echo "var arrayFases =". $js_array.";";
                 $(selector).chosen(config[selector]);
             }
             cargarFases();
-//            calcularTotal();
 
         $(document).on('change','.chosen-select',function(){
             var valor = $(this).val();
@@ -628,7 +627,6 @@ echo "var arrayFases =". $js_array.";";
                 }
             }
         });
-    // });
 
         function cargarSubFases(idFasePadre) {
             $('#servicio_subFase').empty(); //remove all child nodes
@@ -804,8 +802,6 @@ echo "var arrayFases =". $js_array.";";
         }
     });
 
-    
-
     function validacionCorrecta_Servicios(){
         $.ajax({
             data: {servicio_codigo :  $('#servicio_codigo').val()},
@@ -838,10 +834,17 @@ echo "var arrayFases =". $js_array.";";
                                         $('#linkModalGuardado').click();
                                         $('form')[0].reset();
                                         $('#servicio_impuestos').tagsinput('removeAll');
+                                        $('#servicioTiempo').val('').trigger('chosen:updated');
                                         cantidadFases = 0;
                                         contadorFases = 0;
+                                        contadorFilasGastos = 0;
                                         var table = $('#tabla-servicio').DataTable();
                                         table.clear().draw();
+                                        table = $('#gastos-tabla-lista').DataTable();
+                                        table.clear().draw();
+                                        var $incluir = $(this).is(':checked');
+                                        var $gastos = $('#servicio_gastosVariables');
+                                        $gastos.css('display', 'none');
                                         break;
                                 }
                             }
