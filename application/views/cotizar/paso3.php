@@ -96,9 +96,7 @@
                <div id="informacion">
                   <p class="box" id="formaPago">Forma de pago: 50% primer mes, 50% segundo mes.</p>
                   <p class="box" id="validez">Válido hasta: <span id="disenoValidez"></span></p>
-                  <p class="box" id="informacionDetalle">Detalle: Por las especificaciones del equipo, es posible que
-                     existan variantes entre impresiones sin que esto represente para nosotros problemas de calidad.
-                     La presente oferta tiene una validéz de 15 días naturales a partir de esta fecha. 
+                  <p class="box" id="informacionDetalle">Detalle: Por las especificaciones del equipo, es posible que existan variantes entre impresiones sin que esto represente para nosotros problemas de calidad. La presente oferta tiene una validéz de 15 días naturales a partir de esta fecha. 
                   </p>
                   <div class="box" id="firma">
                      <p>Firma:__________________________</p>
@@ -226,10 +224,10 @@
                   <div class="inputModals input-field col s12">
                      <p>Color de barra horizontal: <input name="colorEncabezado_colorBarra" class="colorBarra" type="color" id="myColor3"></p>
                   </div>
-                  <div class="input-field col s12">
+                  <!-- <div class="input-field col s12">
                      <textarea id="message" class="materialize-textarea" style="height: 24px;"></textarea>
                      <label for="message" class="">Texto adicional</label>
-                  </div>
+                  </div> -->
                </div>
             </form>
          </div>
@@ -351,11 +349,11 @@
                            id="informacionfilled-in-box4">
                         <label for="informacionfilled-in-box4">Firma</label>
                      </p>
-                     <div class="file-field input-field col s12">
+                     <!-- <div class="file-field input-field col s12">
                         <div class="inputModals">Firma electónica:<input type="file">
                         </div>
                         <input class="file-path validate" type="text">
-                     </div>
+                     </div> -->
                   </div>
                </div>
                <div class="row col s12 m6 l6">
@@ -368,10 +366,11 @@
                   <div class="inputModals input-field col s12">
                      <p>Color de barra horizontal: <input name="colorInformacion_colorBarra" class="colorBarra" type="color" id="myColor3"></p>
                   </div>
-                  <div class="input-field col s12">
-                     <textarea id="message" class="materialize-textarea" style="height: 24px;"></textarea>
+                  
+               </div>
+               <div class="input-field col s12">
+                     <textarea id="textoAdicionalInformacion" class="materialize-textarea" style="height: 24px;"></textarea>
                      <label for="message" class="">Texto adicional</label>
-                  </div>
                </div>
             </form>
          </div>
@@ -742,6 +741,10 @@
    
            var colorBarra = $('#modalInformacion .colorBarra').val();
            $('#barra3').css("background", colorBarra);
+
+           $('#informacionDetalle').text($('#textoAdicionalInformacion').val());
+
+           
    
    
            $('#informacion .box').each(function () {
@@ -969,6 +972,7 @@
    $('#modalInformacion .colorFondo').val(plantilla['colorInformacion']);
    $('#modalInformacion .colorLetra').val(plantilla['colorLetraInformcion']);
    $('#modalInformacion .colorBarra').val(plantilla['colorBarraHorizontal3']);
+   $('#textoAdicionalInformacion').val(plantilla['textoAdicionalInformacion']);
    if (plantilla['mostrarFormaPago'] == 1) {
        $("#modalInformacion input[value='formaPago']").prop("checked", true );
    } else {
@@ -1159,7 +1163,7 @@
    "mostrarDetalle":$('#informacion .box#informacionDetalle').is(':visible'),
    "mostrarFirma":$('#informacion .box#firma').is(':visible'),
    "imagenFirma":"",
-   "textoAdicionalInformacion":""
+   "textoAdicionalInformacion": $('#informacionDetalle').text()
    }
    // alert('visible: ' + (plantilla['colorEncabezado']));
    actualizarModalInformacion(plantilla);
