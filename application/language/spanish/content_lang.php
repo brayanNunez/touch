@@ -383,7 +383,9 @@
     $lang['formEmpresa_telefonoMovilContacto'] = 'Teléfono móvil';
     $lang['formEmpresa_enviar'] = 'Guardar cambios';
     $lang['formEmpresa_logo'] = 'Logo de la empresa';
-    $lang['formEmpresa_firma'] = 'Imagen de firma del representante de la empresa';
+    $lang['formEmpresa_tituloFirma'] = 'Firma electrónica del representante de la empresa';
+    $lang['formEmpresa_firma'] = 'Imagen de firma electrónica del representante de la empresa';
+    $lang['formEmpresa_imagenTipoPreferible'] = 'Se recomienda el uso de imagenes de tipo PNG o sin fondo, pues ofrecen una mejor visualización.';
     $lang['registroEditadoCorrectamente'] = 'El perfil de empresa fue editado correctamente';
 
     $lang['registro_completarPerfil'] = 'Termine de completar la información de su perfil';
