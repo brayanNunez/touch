@@ -1,4 +1,3 @@
-
 <!--START CONTENT  -->
 
 <section id="content">
@@ -37,7 +36,7 @@
                                         </div>
 
                                         <div class="input-field col s12 inputSelector" >
-                                            <label for="cleinte_nacionalidad"><?= label('formCliente_nacionalidad'); ?></label>
+                                            <label for="cliente_nacionalidad"><?= label('formCliente_nacionalidad'); ?></label>
                                             <br>
                                             <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="cliente_nacionalidad" name="cliente_nacionalidad" class="required browser-default chosen-select">
                                                 <option value=""></option>
@@ -190,9 +189,20 @@
                                         <div class="col s12">
                                             <div id="tab-direccion" class="card col s12">
                                                 <div>
-                                                    <div class="input-field col s12 m4 l4">
-                                                        <input id="cliente_direccionPais" name="cliente_direccionPais" type="text">
+                                                    <div class="input-field col s12 m4 l4 inputSelector" >
                                                         <label for="cliente_direccionPais"><?= label('formCliente_direccionPais'); ?></label>
+                                                        <br>
+                                                        <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="cliente_direccionPais" name="cliente_direccionPais" class="required browser-default chosen-select">
+                                                            <option value=""></option>
+                                                            <?php
+                                                            if(isset($paises)) {
+                                                                foreach ($paises as $pais) { ?>
+                                                                    <option value="<?= $pais['idPais']; ?>"><?= $pais['nombre']; ?></option>
+                                                                    <?php
+                                                                }
+                                                            }
+                                                            ?>
+                                                        </select>
                                                     </div>
                                                     <div class="input-field col s12 m4 l4">
                                                         <input id="cliente_direccionProvincia" name="cliente_direccionProvincia" type="text">

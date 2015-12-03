@@ -79,6 +79,8 @@ class Clientes extends CI_Controller
                 'nombreFantasia' => $this->input->post('clientejuridico_nombreFantasia'),
                 // 'telefonoMovil' => null,
                 'telefonoFijo' =>$this->input->post('clientejuridico_telefono'),
+                'nacionalidad' =>$this->input->post('cliente_nacionalidad'),
+                'pais' =>$this->input->post('cliente_direccionPais'),
                 'estadoProvincia' => $this->input->post('cliente_direccionProvincia'),
                 'ciudadCanton' => $this->input->post('cliente_direccionCanton'),
                 'domicilio' => $this->input->post('cliente_direccionDomicilio'),
@@ -106,6 +108,8 @@ class Clientes extends CI_Controller
                 // 'nombreFantasia' => null,
                 'telefonoMovil' => $this->input->post('cliente_telefonoMovil'),
                 'telefonoFijo' => $this->input->post('cliente_telefono'),
+                'nacionalidad' => $this->input->post('cliente_nacionalidad'),
+                'pais' => $this->input->post('cliente_direccionPais'),
                 'estadoProvincia' => $this->input->post('cliente_direccionProvincia'),
                 'ciudadCanton' => $this->input->post('cliente_direccionCanton'),
                 'domicilio' => $this->input->post('cliente_direccionDomicilio'),
@@ -174,15 +178,17 @@ class Clientes extends CI_Controller
 
     public function editar($id)
     {
-        $resultado = $this->Cliente_model->cargar(decryptIt($id)); 
-        if ($resultado === false || $resultado === array()) {
+        $resultado = $this->Cliente_model->cargar(decryptIt($id));
+        $paises = $this->Cliente_model->paises();
+        if ($resultado === false || $resultado === array() || $paises === false || $paises === array()) {
             echo "Error en la transacción";
         } else {
-                $data['resultado'] = $resultado;
-                $this->load->view('layout/default/header');
-                $this->load->view('layout/default/left-sidebar');
-                $this->load->view('clientes/cliente_info', $data);
-                $this->load->view('layout/default/footer');
+            $data['resultado'] = $resultado;
+            $data['paises'] = $paises;
+            $this->load->view('layout/default/header');
+            $this->load->view('layout/default/left-sidebar');
+            $this->load->view('clientes/cliente_info', $data);
+            $this->load->view('layout/default/footer');
         }
     }
 
@@ -226,6 +232,8 @@ class Clientes extends CI_Controller
                 'nombreFantasia' => $this->input->post('clientejuridico_nombreFantasia'),
                 'telefonoMovil' => null,
                 'telefonoFijo' =>$this->input->post('clientejuridico_telefono'),
+                'nacionalidad' =>$this->input->post('cliente_nacionalidad'),
+                'pais' =>$this->input->post('cliente_direccionPais'),
                 'estadoProvincia' => $this->input->post('cliente_direccionProvincia'),
                 'ciudadCanton' => $this->input->post('cliente_direccionCanton'),
                 'domicilio' => $this->input->post('cliente_direccionDomicilio'),
@@ -253,6 +261,8 @@ class Clientes extends CI_Controller
                 'nombreFantasia' => null,
                 'telefonoMovil' => $this->input->post('cliente_telefonoMovil'),
                 'telefonoFijo' => $this->input->post('cliente_telefono'),
+                'nacionalidad' =>$this->input->post('cliente_nacionalidad'),
+                'pais' =>$this->input->post('cliente_direccionPais'),
                 'estadoProvincia' => $this->input->post('cliente_direccionProvincia'),
                 'ciudadCanton' => $this->input->post('cliente_direccionCanton'),
                 'domicilio' => $this->input->post('cliente_direccionDomicilio'),

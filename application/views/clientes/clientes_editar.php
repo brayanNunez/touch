@@ -30,17 +30,20 @@
                         </select>
                         <label for="cliente_tipo"><?= label('formCliente_tipoPersona'); ?></label>
                     </div>
-                    <div class="input-field col s12">
-                        <select name="cliente_nacionalidad">
-                            <option value="" selected disabled><?= label('formCliente_seleccioneUno'); ?></option>
-                            <option value="1">Costa Rica</option>
-                            <option value="2">Colombia</option>
-                            <option value="3">USA</option>
-                            <option value="4">Brasil</option>
-                            <option value="5">Uruguay</option>
-                            <option value="6">Chile</option>
-                        </select>
+                    <div class="input-field col s12 inputSelector" >
                         <label for="cliente_nacionalidad"><?= label('formCliente_nacionalidad'); ?></label>
+                        <br>
+                        <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="cliente_nacionalidad" name="cliente_nacionalidad" class="required browser-default chosen-select">
+                            <option value=""></option>
+                            <?php
+                            if(isset($paises)) {
+                                foreach ($paises as $pais) { ?>
+                                    <option value="<?= $pais['idPais']; ?>"><?= $pais['nombre']; ?></option>
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -241,9 +244,20 @@
             <div class="col s12">
                 <div id="tab-direccion-editar" class="card col s12">
                     <div>
-                        <div class="input-field col s12 m4 l4">
-                            <input id="cliente_direccionPais" name="cliente_direccionPais" type="text">
+                        <div class="input-field col s12 m4 l4 inputSelector" >
                             <label for="cliente_direccionPais"><?= label('formCliente_direccionPais'); ?></label>
+                            <br>
+                            <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="cliente_direccionPais" name="cliente_direccionPais" class="required browser-default chosen-select">
+                                <option value=""></option>
+                                <?php
+                                if(isset($paises)) {
+                                    foreach ($paises as $pais) { ?>
+                                        <option value="<?= $pais['idPais']; ?>"><?= $pais['nombre']; ?></option>
+                                        <?php
+                                    }
+                                }
+                                ?>
+                            </select>
                         </div>
                         <div class="input-field col s12 m4 l4">
                             <input id="cliente_direccionProvincia" name="cliente_direccionProvincia" type="text" value='<?php if (isset($resultado)) echo $resultado['estadoProvincia'];?>'>
@@ -438,13 +452,19 @@
     <a id="linkContactosElimminar" href="#eliminarContacto-editar" class="modal-trigger" data-fila-eliminar="1" title="<?= label('formCliente_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>
 </div>
 
-
+<!--Script para manejo de tags, select de busqueda, insercion de datos, checks y tabla-->
 <script>
     $('#checkbox_todosVendedores').on('click', function(){
          if ($(this).prop('checked')) {
             $('#vendedoresCliente').hide();
         } else {
             $('#vendedoresCliente').show();
+        }
+    });
+    $(document).on('ready', function(){
+        var config = {'.chosen-select'           : {}}
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
         }
     });
     $(document).ready(function () {
@@ -634,9 +654,26 @@
         });
     });
 </script>
-
 <!-- Funcion para mostrar elementos -->
 <script>
+    $(document).ready(function () {
+    <?php
+    $nacionalidad = '';
+    $pais = '';
+    if(isset($resultado)) {
+        $nacionalidad = $resultado['nacionalidad'];
+        $pais = $resultado['pais'];
+    }
+    ?>
+        $('#cliente_nacionalidad').val('<?= $nacionalidad; ?>').change();
+        $('#cliente_direccionPais').val('<?= $pais; ?>').change();
+        var tipo = '<?= $juridico; ?>';
+        if(tipo == 1) {
+            $('#cliente_tipo').val(1).change();
+        } else {
+            $('#cliente_tipo').val(0).change();
+        }
+    });
     function datosCliente(opcionSeleccionada) {
         if (opcionSeleccionada.value == "0") {
             document.getElementById('elementos-cliente-fisico').style.display = 'block';
@@ -817,6 +854,7 @@
 </div>
 <!-- Fin lista modals-->
 
+<!--Script para manejo de la imagen-->
 <script>
     function readURL(input) {
         if (input.files && input.files[0]) {

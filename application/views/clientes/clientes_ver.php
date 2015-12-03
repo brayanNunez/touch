@@ -49,7 +49,7 @@
             </div>
             <div class="col s12 m4 l4">
                 <h5><?= label('cliente_direccion'); ?></h5>
-                <p>Costa Rica, <?=$resultado['estadoProvincia']?></p>
+                <p><?= $resultado['nombrePais']; ?>, <?=$resultado['estadoProvincia']?></p>
                 <p><?=$resultado['ciudadCanton']?>, <?=$resultado['domicilio']?></p>
             </div>
 

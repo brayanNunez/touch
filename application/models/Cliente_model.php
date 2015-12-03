@@ -174,9 +174,12 @@ class Cliente_model extends CI_Model
                 $row = array_shift($array);//obtiene el primer elemento.. el [0] no sirve en el server
 
                 $this->db->select('nombre');
-                $gustos = $this->db->get_where('gusto', array('idCliente' => $id));
-                if (!$gustos) throw new Exception("Error en la BD");   
-                $row['gustos'] = $gustos->result_array();
+
+                $this->db->select('nombre');
+                $nombrePais = $this->db->get_where('pais', array('idPais' => $row['pais']));
+                if (!$nombrePais) throw new Exception("Error en la BD");
+                $resultado = $nombrePais->result_array();
+                $row['nombrePais'] = array_shift($resultado)['nombre'];
 
                 $this->db->select('nombre');
                 $medios = $this->db->get_where('medio', array('idCliente' => $id));
