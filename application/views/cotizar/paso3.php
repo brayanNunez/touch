@@ -21,7 +21,7 @@
             </div>
             <div id="encabezado">
                <div id="logo" class="box">
-                  <img class="imagen" src="<?= base_url() ?>assets/dashboard/images/sombrero.png"/>
+                  <img class="imagen" src="<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/<?= $resultado['empresa']['logo'];?>"/>
                </div>
                <div id="datosEncabezado">
                   <div class="datos" id="datos1">
@@ -96,8 +96,7 @@
                <div id="informacion">
                   <p class="box" id="formaPago">Forma de pago: 50% primer mes, 50% segundo mes.</p>
                   <p class="box" id="validez">Válido hasta: <span id="disenoValidez"></span></p>
-                  <p class="box" id="informacionDetalle">Detalle: Por las especificaciones del equipo, es posible que existan variantes entre impresiones sin que esto represente para nosotros problemas de calidad. La presente oferta tiene una validéz de 15 días naturales a partir de esta fecha. 
-                  </p>
+                  <p class="box" id="informacionDetalle"></p>
                   <div class="box" id="firma">
                      <p>Firma:__________________________</p>
                      <p id="nombreFirma">Emanuel Conejo</p>
@@ -113,7 +112,7 @@
                </div>
                <div id="footerCotizacion">
                   <div class="box" id="logo">
-                     <img class="imagen" src="<?= base_url() ?>assets/dashboard/images/sombrero.png"/>
+                     <img id="imagenFooter" class="imagen" src="<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/<?= $resultado['empresa']['logo'];?>"/>
                   </div>
                   <div id="datosFooter">
                      <div class="datos" id="datos1">
@@ -123,8 +122,8 @@
                         <p class="box" id="correo">Correo: <span><?= $resultado['empresa']['correo'];?></span></p>
                      </div>
                      <div class="datos" id="datos2">
-                        <div></div>
-                        <p>Con el mayor deseo de servirle, me pongo a su entera disposición.</p>
+                        <div></div>  <!-- sin esta lina no sirve -->
+                        <p id="informacionFooter"></p>
                      </div>
                   </div>
                </div>
@@ -369,7 +368,7 @@
                   
                </div>
                <div class="input-field col s12">
-                     <textarea id="textoAdicionalInformacion" class="materialize-textarea" style="height: 24px;"></textarea>
+                     <textarea length="600" maxlength="600" id="textoAdicionalInformacion" name="textoAdicionalInformacion" class="materialize-textarea" style="height: 24px;"></textarea>
                      <label for="message" class="">Texto adicional</label>
                </div>
             </form>
@@ -423,7 +422,7 @@
                      <p>Color de letra: <input name="colorFooter_colorLetra" class="colorLetra" type="color" id="myColor2"></p>
                   </div>
                   <div class="input-field col s12">
-                     <textarea id="message" class="materialize-textarea" style="height: 24px;"></textarea>
+                     <textarea length="100" maxlength="100" id="textoAdicionalFooter" name="textoAdicionalFooter" class="materialize-textarea" style="height: 24px;"></textarea>
                      <label for="message" class="">Texto adicional</label>
                   </div>
                </div>
@@ -567,17 +566,13 @@
    });
 
     function crearPDF() {
-           // alert($('#footerDiseno').height());
-           // var height = $('#footerDiseno').css("height");
            $('#footerDiseno').css("height", footer);
            $('#prefooter').css("height", footer);
-   
-           // var height = $('#informacion').css("height");
+
            $('#informacion').css("height", informacion);
-           // alert(height);
-   
+           $('#footerCotizacion').css("height", footerCotizacion);
+
            $('.editarExterno').css("display", "none");
-   
    
            var backgroundcolor = $('#hoja').css("background-color");
            var fuente = $('#hoja').css("font-family");
@@ -588,15 +583,12 @@
            html += '<div id="headerDiseno">' + $('#headerDiseno').html() + '</div>';
            html += '<div id="informacionSistema">' + $('#informacionSistema').html() + '</div>';
            html += '<div id="cuerpoDocumento">' + $('#cuerpoDocumento').html() + '</div></body></html>';
-           // target="iframe"
-           // $('#inset_form').html('<form  action="<?=base_url()?>ManejadorPDF/index" name="form" method="post" style="display:block;"><textarea name="miHtml">' + html + '</textarea></form>');
-           // document.forms['form'].submit();
-   
    
    
            //eliminar la propiedead height para que siga adaptandose a los cambios de tamano en el html
            $('#footerDiseno').css("height", "");
            $('#informacion').css("height", "");
+           $('#footerCotizacion').css("height", "");
            $('#prefooter').css("height", "");
            $('.editarExterno').css("display", "");
    
@@ -617,7 +609,7 @@
 
    var footer = 0;// esta varable es actualizada por el metodo recalcularAlturaContenido y se usa en el metodo crearPDF.
    var informacion = 0;// esta varable es actualizada por el metodo recalcularAlturaContenido y se usa en el metodo crearPDF.
-   
+   var footerCotizacion = 0;// esta varable es actualizada por el metodo recalcularAlturaContenido y se usa en el metodo crearPDF.
    function cargarDieseno(idPlantilla, plantillaDesdeLista){
        recalcularAlturaContenido();
    
@@ -628,6 +620,7 @@
            footer = $('#footerDiseno').height();//226
            var informacionSistema = $('#informacionSistema').height();//20
            informacion = $('#informacion').height();
+           footerCotizacion = $('#footerCotizacion').height();
    
            var paddingTop = $('#contenidoDiseno').css("padding-top").replace("px", "");
            var paddingBottom = $('#contenidoDiseno').css("padding-bottom").replace("px", "");
@@ -743,9 +736,8 @@
            $('#barra3').css("background", colorBarra);
 
            $('#informacionDetalle').text($('#textoAdicionalInformacion').val());
-
            
-   
+
    
            $('#informacion .box').each(function () {
                $(this).hide();
@@ -765,6 +757,8 @@
    
            var colorLetra = $('#modalFooter .colorLetra').val();
            $('#footerCotizacion').css("color", colorLetra);
+
+           $('#informacionFooter').text($('#textoAdicionalFooter').val());
    
            $('#footerCotizacion .box').each(function () {
                $(this).hide();
@@ -973,6 +967,8 @@
    $('#modalInformacion .colorLetra').val(plantilla['colorLetraInformcion']);
    $('#modalInformacion .colorBarra').val(plantilla['colorBarraHorizontal3']);
    $('#textoAdicionalInformacion').val(plantilla['textoAdicionalInformacion']);
+   
+
    if (plantilla['mostrarFormaPago'] == 1) {
        $("#modalInformacion input[value='formaPago']").prop("checked", true );
    } else {
@@ -998,6 +994,9 @@
    function actualizarModalFooter(plantilla){
    $('#modalFooter .colorFondo').val(plantilla['colorFooter']);
    $('#modalFooter .colorLetra').val(plantilla['colorLetraFooter']);
+
+   $('#textoAdicionalFooter').val(plantilla['textoAdicionalFooter']);
+
     if (plantilla['mostrarTelefono'] == 1) {
        $("#modalFooter input[value='telefono']").prop("checked", true );
    } else {
@@ -1177,7 +1176,7 @@
    "mostrarSitioWeb":$('#footerCotizacion .box#sitio').is(':visible'),
    "mostrarCorreo":$('#footerCotizacion .box#correo').is(':visible'),
    "mostrarImagenFooter":$('#footerCotizacion .box#logo').is(':visible'),
-   "textoAdicionalFooter":"0"
+   "textoAdicionalFooter":$('#informacionFooter').text()
    };
    // alert('visible: ' + (plantilla['colorEncabezado']));
    actualizarModalFooter(plantilla);
