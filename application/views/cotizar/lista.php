@@ -74,7 +74,14 @@
                                                         </td>
                                                         <td>
                                                           <a href="<?= base_url(); ?>cotizacion/editar/<?= encryptIt($fila['idCotizacion'])?>">
-                                                          <?= $fila['codigo'].'-'.$fila['numero']?>
+
+                                                          <?php 
+                                                          if ($fila['codigo'] == '') {
+                                                            echo $fila['numero'];
+                                                          } else{
+                                                            echo $fila['codigo'].'-'.$fila['numero'];
+                                                          }
+                                                          ?>
                                                           <a>
                                                         </td>
                                                         <td><?= $fila['fechaCreacion'] ?></td>

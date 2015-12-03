@@ -333,7 +333,7 @@ class ManejadorPDF extends CI_Controller
 
         $this->email->send();
 
-        echo 'correo enviado';
+        echo 'enviado';
 
     }
 
