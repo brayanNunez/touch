@@ -821,4 +821,14 @@
             }
         });
 
+        $('#registro_cambioImagenFirma').validate({
+            rules: {
+                userfile: {required: false}
+            },
+            errorElement: 'div',
+            submitHandler: function (form) {
+                validacionCorrecta_ImagenFirma();
+            }
+        });
+
     });

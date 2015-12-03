@@ -42,6 +42,7 @@
     $telefonoMovilContacto = '';
     $contrasena = '';
     $ruta = base_url().'files/empresas/';
+    $rutaFirma = base_url().'files/empresas/';
     if (isset($resultado)) {
         $idEmpresa = encryptIt($resultado['idEmpresa']);
         $cedulaEmpresa = $resultado['cedula'];
@@ -77,8 +78,14 @@
         } else {
             $ruta = base_url().'files/default-user-image.png';
         }
+        if($resultado['firma'] != '' && $resultado['firma'] != null && $resultado['firma'] != 'img_firmaEmpresa_'.$resultado['idEmpresa'].'.') {
+            $rutaFirma .= $resultado['idEmpresa'].'/'.$resultado['firma'];
+        } else {
+            $rutaFirma = base_url().'files/default-sign-image.png';
+        }
     } else {
         $ruta = base_url().'files/default-user-image.png';
+        $rutaFirma = base_url().'files/default-sign-image.png';
     }
     ?>
 
@@ -258,6 +265,19 @@
                                                 <label for="empresa_correoContacto"><?= label('formEmpresa_correoContacto'); ?></label>
                                             </div>
                                         </div>
+                                        <div>
+                                            <div class="col s12">
+                                                <h5>Firma del representante</h5>
+                                            </div>
+                                            <div class="col s6 m4 l3">
+                                                <div id="empresa_firma_editar" class="cliente-ver-logo" style="margin: 5px 0;">
+                                                    <a class="modal-trigger" href="#cambio-imagenFirma" title="Cambiar firma" style="position: relative; cursor:pointer;">
+                                                        <img id="empresa_firma" alt="Logo de la empresa" src="<?= $rutaFirma; ?>" style="position:relative;height: 200px;width: 200px;" />
+                                                        <img id="icon-image-edit" src="<?= base_url() ?>files/edit-image.png">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <div class="input-field col s12 envio-formulario">
                                             <button class="btn waves-effect waves-light right" type="submit"
@@ -282,42 +302,6 @@
 </section>
 <!-- END CONTENT-->
 
-<!--script para el manejo de la imagen del cliente -->
-<script>
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#imagen_seleccionada').attr('src', e.target.result);
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-    $("#userfile").change(function(){
-        var file = this.files[0];
-        var name = file.name;
-        var size = file.size;
-        var type = file.type;
-        var t = type.split('/');
-        var ext = t.slice(1, 2);
-        if(size > 2097150) { //2097152
-            alert("<?= label('usuarioErrorTamanoArchivo') ?>");
-            document.getElementById('userfile').value = '';
-        }
-        var valid_ext = ['image/png','image/jpg','image/jpeg'];
-        if(valid_ext.indexOf(type)==-1) {
-            alert("<?= label('usuarioErrorTipoArchivo') ?>");
-            document.getElementById('userfile').value = '';
-        }
-        if(document.getElementById('userfile').value == ''){
-            $('#imagen_seleccionada').attr('src', '<?= base_url(); ?>files/default-user-image.png');
-        } else {
-//            $('#usuario_fotografia').attr('value', ext);
-            readURL(this);
-        }
-    });
-</script>
 <!-- Funcion para insercion de datos y para mostrar elementos -->
 <script>
     $(document).ready(function () {
@@ -364,6 +348,29 @@
                     $('#empresa_logo').attr('src', response + '?' + d.getTime());
                     formPW.find('input:file,input:text').val('');
                     $('#cambio-imagen .modal-header a').click();
+                }
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    }
+    function validacionCorrecta_ImagenFirma(){
+        var formPW = $('#registro_cambioImagenFirma');
+        $.ajax({
+            data: new FormData(formPW[0]),
+            url: formPW.attr('action'),
+            type: formPW.attr('method'),
+            success:  function (response) {
+                if(response == 0) {
+                    alert('<?= label('usuarioErrorCambioImagen'); ?>');//error al ir a verificar identificaci�n
+                } else {
+                    alert('<?= label('usuarioExitoCambioEmagen'); ?>');
+                    d = new Date();
+                    $('#imagen_seleccionadaFirma').attr('src', response + '?' + d.getTime());
+                    $('#empresa_firma').attr('src', response + '?' + d.getTime());
+                    formPW.find('input:file,input:text').val('');
+                    $('#cambio-imagenFirma .modal-header a').click();
                 }
             },
             cache: false,
@@ -446,15 +453,60 @@
         </form>
     </div>
 </div>
+<div id="cambio-imagenFirma" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <?php $this->load->helper('form'); ?>
+        <?php echo form_open_multipart(base_url().'registro/cambio_imagenFirma/', array('id' => 'registro_cambioImagenFirma', 'method' => 'POST', 'class' => 'col s12')); ?>
+            <div class="row">
+                <div class="file-field col s12 m7 l9" style="padding: 0;">
+                    <label for="empresa_imagenFirma"><?= label('formEmpresa_firma'); ?></label>
+
+                    <div class="file-field input-field col s12" style="padding: 0;">
+                        <input style="margin-left: 18% !important;width: 80% !important;"
+                               name="empresa_imagenFirma" class="file-path" type="text" readonly/>
+
+                        <div class="btn" data-toggle="tooltip" title="<?= label('tooltip_examinar') ?>" style="top: -15px;">
+                            <span><i class="mdi-action-search"></i></span>
+                            <input style="padding-right: 100px;" id="userfile2" type="file" name="userfile2"
+                                   accept="image/jpeg,image/png"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m5 l3">
+                    <figure style="margin:0 10px;">
+                        <img id="imagen_seleccionadaFirma" src="<?= $rutaFirma; ?>">
+                    </figure>
+                </div>
+            </div>
+            <div class="input-field col s12 envio-formulario" style="margin-bottom: 30px;">
+                <button class="btn waves-effect waves-light right" type="submit" id="guardar-cambios-usuario"
+                        name="action"><?= label('formUsuario_editar'); ?></button>
+            </div>
+        </form>
+    </div>
+</div>
 <!-- Fin lista modals-->
 
-<!--Script para el manejo de la imagen de perfil-->
+<!--Script para el manejo de la imagen de perfil e imagen de firma-->
 <script>
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
                 $('#imagen_seleccionada').attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    function readURL_Firma(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imagen_seleccionadaFirma').attr('src', e.target.result);
             };
             reader.readAsDataURL(input.files[0]);
         }
@@ -479,6 +531,28 @@
             $('#imagen_seleccionada').attr('src', '<?= base_url(); ?>files/default-user-image.png');
         } else {
             readURL(this);
+        }
+    });
+    $("#userfile2").change(function(){
+        var file = this.files[0];
+        var name = file.name;
+        var size = file.size;
+        var type = file.type;
+        var t = type.split('/');
+        var ext = t.slice(1, 2);
+        if(size > 2097150) { //2097152
+            alert("<?= label('usuarioErrorTamanoArchivo') ?>");
+            document.getElementById('userfile2').value = '';
+        }
+        var valid_ext = ['image/png','image/jpg','image/jpeg'];
+        if(valid_ext.indexOf(type)==-1) {
+            alert("<?= label('usuarioErrorTipoArchivo') ?>");
+            document.getElementById('userfile2').value = '';
+        }
+        if(document.getElementById('userfile2').value == ''){
+            $('#imagen_seleccionadaFirma').attr('src', '<?= base_url(); ?>files/default-sign-image.png');
+        } else {
+            readURL_Firma(this);
         }
     });
 </script>

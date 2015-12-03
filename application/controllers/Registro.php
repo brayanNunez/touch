@@ -267,6 +267,43 @@ class Registro extends CI_Controller
         }
     }
 
+    public function cambio_imagenFirma() {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $photo = explode('.',$this->input->post('empresa_imagenFirma'));
+        $ext = end($photo);
+        $data['datos'] = array(
+            'firma' => 'img_firmaEmpresa_'.$idEmpresa.'.'.$ext
+        );
+        $data['id'] = $idEmpresa;
+
+        $fotografia = $this->Registro_model->cambiar_imagenFirma($data);
+        if (!$fotografia) {
+            echo 0;
+        } else {
+            $ruta = './files/empresas/'.$idEmpresa.'/';
+            if($fotografia != 'sinFoto') {
+                $path = $ruta . '/'.$fotografia;
+                if(is_file($path)) {
+                    unlink($path);
+                }
+            }
+            $nombreFotografia = 'img_firmaEmpresa_'.$idEmpresa;
+            $config['upload_path'] = $ruta;
+            $config['file_name'] = $nombreFotografia;
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['max_size'] = '2048';
+
+            $this->load->library('upload', $config);
+            if(!$this->upload->do_upload('userfile2')) {
+                echo 2;
+            } else {
+                echo base_url().'files/empresas/'.$idEmpresa.'/'.$nombreFotografia.'.'.$ext;
+            }
+        }
+    }
+
     function rpHash($value) {
         $hash = 5381;
         $value = strtoupper($value);
