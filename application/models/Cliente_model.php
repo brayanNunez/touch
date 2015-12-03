@@ -46,6 +46,44 @@ class Cliente_model extends CI_Model
             return false;
         }
     }
+    function formasPago($idEmpresa) {
+        try{
+            $this->db->trans_begin();
+
+            $this->db->select('idFormaPago, nombre');
+            $this->db->where(array('idEmpresa' => $idEmpresa, 'eliminado' => 0));
+            $formasPago = $this->db->get('formapago');
+            if (!$formasPago) {
+                throw new Exception("Error en la BD");
+            }
+            $resultado = $formasPago->result_array();
+
+            $this->db->trans_commit();
+            return $resultado;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+    function monedas($idEmpresa) {
+        try{
+            $this->db->trans_begin();
+
+            $this->db->select('idMoneda, nombre');
+            $this->db->where(array('idEmpresa' => $idEmpresa, 'eliminado' => 0));
+            $monedas = $this->db->get('moneda');
+            if (!$monedas) {
+                throw new Exception("Error en la BD");
+            }
+            $resultado = $monedas->result_array();
+
+            $this->db->trans_commit();
+            return $resultado;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
 
     function insertar($data)
     {
