@@ -12,6 +12,9 @@
                         <li><a href="<?= base_url(); ?>usuarios/editar/<?= encryptIt(1) ?>"><i class="mdi-action-face-unlock"></i>
                                 Perfil</a>
                         </li>
+                        <li><a href="<?= base_url(); ?>registro/editar/"><i class="mdi-action-home"></i>
+                                Perfil empresa</a>
+                        </li>
                         <li><a href="#"><i class="mdi-action-settings"></i> Settings</a>
                         </li>
                         <li><a href="#"><i class="mdi-communication-live-help"></i> Ayuda</a>
