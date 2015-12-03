@@ -561,6 +561,13 @@
 
     $lang['aprobacion_cotizacionTramitada'] = 'La cotización ya fue tramitada.';
 
+    $lang['paso4_codigoCotizacion'] = 'Código de la cotización: ';
+    $lang['paso4_cotizacionGuardada'] = 'La cotización ha sido guardada.';
+    $lang['paso4_cotizacionGuardadaDescargando'] = 'La cotización ha sido guardada y está en proceso de descarga.';
+    $lang['paso4_cotizacionGuardadaEnviada'] = 'La cotización ha sido guardada y enviada para su aprobación.';
+
+
+
     
 
     $lang['cotizacion_incluirGastosVariables'] = 'Desea agregar gastos variables';

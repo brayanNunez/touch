@@ -124,15 +124,14 @@
         
     </div>
 </div>
-
-
+<!--  lista modals -->
 <div id="modal_guardarCerrar" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <p><?= label('paso4_codigoCotizacion');?><span class="codigoCotizacion"></span></p>
+        <p><?= label('paso4_codigoCotizacion');?><b><span class="codigoCotizacion"></span></b></p>
         <p><?= label('paso4_cotizacionGuardada'); ?></p>
     </div>
     <div class="modal-footer">
@@ -148,7 +147,7 @@
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <p><?= label('paso4_codigoCotizacion');?><span class="codigoCotizacion"></span></p>
+        <p><?= label('paso4_codigoCotizacion');?><b><span class="codigoCotizacion"></span></b></p>
         <p><?= label('paso4_cotizacionGuardadaDescargando'); ?></p>
     </div>
     <div class="modal-footer">
@@ -162,7 +161,7 @@
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <p><?= label('paso4_codigoCotizacion');?><span class="codigoCotizacion"></span></p>
+        <p><?= label('paso4_codigoCotizacion');?><b><span class="codigoCotizacion"></span></b></p>
         <p><?= label('paso4_cotizacionGuardadaEnviada'); ?></p>
     </div>
     <div class="modal-footer">
@@ -180,9 +179,23 @@
         <p><?= label('confirmarCancelarCotizacion'); ?></p>
     </div>
     <div class="modal-footer">
-        <a class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <a href="<?= base_url()?>cotizacion" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
+
+<div id="modal_transaccionIncorrecta" class="modal">
+    <div  class="modal-header headerTransaccionIncorrecta">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('errorGuardar'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<!--  fin lista modals -->
 
 
 <script type="text/javascript">
@@ -239,8 +252,7 @@
                    {
                     // alert(response);
                     if (response == 'false') {
-                      alert('Error');
-
+                      $('#modal_transaccionIncorrecta').openModal();
                     } else{
                       var cotizacionSinCodigo = false;
                       var codigo = $('#paso1_codigo').val();
