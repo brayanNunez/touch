@@ -50,8 +50,8 @@
     </div>
     <div class="input-field col s12 m4 l4">
         <div class="input-field col s12">
-            <a href="#guardar-descargar" id="btnGuardarDescargar"
-               class="left btn btn-default modal-trigger opt-finalizar"
+            <a id="btnGuardarDescargar"
+               class="left btn btn-default opt-finalizar"
                title="<?= label('tooltip_guardarDescargar'); ?>"><?= label('guardarDescargar'); ?></a>
         </div>
     </div>
@@ -126,34 +126,49 @@
 </div>
 
 
-<div id="guardar-descargar" class="modal">
+<div id="modal_guardarCerrar" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <p><?= label('confirmarGuardarDescargar'); ?></p>
+        <p><?= label('paso4_codigoCotizacion');?><span class="codigoCotizacion"></span></p>
+        <p><?= label('paso4_cotizacionGuardada'); ?></p>
     </div>
     <div class="modal-footer">
-        <a href="<?= base_url() ?>cotizacion"
+        <a href="<?= base_url()?>cotizacion"
            class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
 
 
-<!-- <div id="guardar-cerrar" class="modal">
+<div id="modal_guardarDescargar" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <p><?= label('confirmarGuardarCerrar'); ?></p>
+        <p><?= label('paso4_codigoCotizacion');?><span class="codigoCotizacion"></span></p>
+        <p><?= label('paso4_cotizacionGuardadaDescargando'); ?></p>
     </div>
     <div class="modal-footer">
-        <a href="<?= base_url() ?>cotizacion"
-           class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <a class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
-</div> -->
+</div>
+
+<div id="modal_guardarEnviada" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('paso4_codigoCotizacion');?><span class="codigoCotizacion"></span></p>
+        <p><?= label('paso4_cotizacionGuardadaEnviada'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
 
 
 <div id="cancelar-cot" class="modal">
@@ -165,8 +180,7 @@
         <p><?= label('confirmarCancelarCotizacion'); ?></p>
     </div>
     <div class="modal-footer">
-        <a href="<?= base_url() ?>cotizacion"
-           class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <a class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
 
@@ -199,7 +213,7 @@
     
     ?>
 
-    $(document).on("ready", function () {
+    $(document).on("ready", function(){
 
       $('#btnGuardarDescargar').on('click', function(){
           guardar(1,1);
@@ -209,17 +223,7 @@
           guardar(2,2);
       });
 
-
-        // $('#botonPaso4').on("click", function () {
-
-
-            // alert("ahora2");
-             // $('#vistaPrevia').attr('src', $('#vistaPrevia').attr('src'));
-            // $('#vistaPrevia').attr("src", $('#vistaPrevia').attr("src"));
-
-        // });
-
-        $('#btnGuardarCerrar').on("click", function () {
+        $('#btnGuardarCerrar').on("click", function() {
           guardar(0,1);  
         });
 
@@ -233,36 +237,68 @@
                    data: $('#formAprobadores, #formLineasDetalle, #formGeneral, #form_encabezado, #form_paso3AgregarPlantilla, #form_cuerpo, #form_informacion, #form_footer').serialize(), 
                    success: function(response)
                    {
-                    alert(response);
+                    // alert(response);
+                    if (response == 'false') {
+                      alert('Error');
 
-                    if (accion == 1) {
-                      alert('descargar');
-                      var html = crearPDF();
-                      $('#inset_form').html('<form  action="<?=base_url()?>ManejadorPDF/descargarCotizacion/<?= $resultado['idEmpresa'];?>/<?= encryptIt($resultado['idCotizacion']);?>" name="form" method="post" style="display:block;"><textarea name="miHtml">' + html + '</textarea></form>');
-                      document.forms['form'].submit();
+                    } else{
+                      var cotizacionSinCodigo = false;
+                      var codigo = $('#paso1_codigo').val();
+                      var numero = $('#paso1_numero').val();
 
-                    }
-                    if (accion == 2) {
-                      alert('enviar correo');
-                      $.ajax({
-                         type: 'POST',
-                         url: '<?=base_url()?>ManejadorPDF/enviarCorreoParaAprobacion/<?= encryptIt($resultado['idCotizacion']);?>',
-                         // data: $('#formAprobadores, #formLineasDetalle, #formGeneral, #form_encabezado, #form_paso3AgregarPlantilla, #form_cuerpo, #form_informacion, #form_footer').serialize(), 
-                         success: function(response) {
-                          alert(response);
+                      if (response != 0) {// la cotización no tiene número
+                        cotizacionSinCodigo = true;
+                        $('#paso1_numero').val(response);
+                        numero = response;
+                      };
+                      var codigoCompleto = '';
+                      if (codigo == '') {
+                        codigoCompleto = numero;
+                      } else{
+                        codigoCompleto = codigo + '-' + numero;
+                      };
+                      $('.codigoCotizacion').text(codigoCompleto);
 
-                         }
-                          });
-                   }
+                      if (accion ==0) {//guardar y cerrar
+                        $('#modal_guardarCerrar').openModal();
+                        if (cotizacionSinCodigo) {
+                          generarPDF();
+                        } 
+                      } 
+                      if (accion == 1) {// es una descarga. Nota: la descarga no se puede realizar mediante ajax por eso se hace de esta manera
+                        $('#modal_guardarDescargar').openModal();
+                        
+                        actualizarDiseno();
+                        var html = obtenerHTML();
+                        $('#inset_form').html('<form  action="<?=base_url()?>ManejadorPDF/descargarCotizacion/<?= $resultado['idEmpresa'];?>/<?= encryptIt($resultado['idCotizacion']);?>" name="form" method="post" style="display:block;"><textarea name="miHtml">' + html + '</textarea></form>');
+                        document.forms['form'].submit();
+                        if (cotizacionSinCodigo) {
+                          generarPDF();
+                        } 
+                      }
+
+                      if (accion == 2) {// enviar por correo
+                        // alert('enviar correo');
+                        $.ajax({
+                           type: 'POST',
+                           url: '<?=base_url()?>ManejadorPDF/enviarCorreoParaAprobacion/<?= encryptIt($resultado['idCotizacion']);?>',
+                           // data: $('#formAprobadores, #formLineasDetalle, #formGeneral, #form_encabezado, #form_paso3AgregarPlantilla, #form_cuerpo, #form_informacion, #form_footer').serialize(), 
+                           success: function(response) {
+                            $('#modal_guardarEnviada').openModal();
+
+                            if (cotizacionSinCodigo) {
+                              generarPDF();
+                            } 
+
+                           }
+                        });
+                     }
+                     };
                  }
                  });
 
         }
         
-
-
-
-
     });
 
     

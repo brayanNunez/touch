@@ -444,42 +444,9 @@
 
    $(document).ready(function(){
 
-         
-   
          $('#botonPaso4').parents('li').on('click', function(){
-            actualizarDiseno();
-
-             var html = crearPDF();
-             // alert('hola');
-
-             var idEmpresa = "<?= $resultado['idEmpresa'];?>";
-             var idCotizacion = "<?= encryptIt($resultado['idCotizacion']);?>";
-      
-             // alert(html);
-
-      
-             $.ajax({
-                data: {miHtml :  html, idEmpresa :  idEmpresa, idCotizacion :  idCotizacion},
-                url:   '<?=base_url()?>ManejadorPDF/generarCotizacion',
-                type:  'post',
-                beforeSend: function(){
-                     $('#botonPaso4').text('Cargando...');
-                     // $('#vistaPrevia').hide();
-                     // $('#preCarga').show();
-
-                 },
-                success:  function (response) {
-                      // alert(response);
-                     $('#botonPaso4').text('<?= label('paso4'); ?>');
-                     // document.getElementById('vistaPrevia').contentDocument.location.reload(true);
-                     // document.getElementById('vistaPrevia').contentWindow.location.reload();
-
-                     $('#vistaPrevia').attr('src', "<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/cotizaciones/<?= encryptIt($resultado['idCotizacion']);?>/sistema/test.pdf");
-                     // $('#vistaPrevia').show()"<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/cotizaciones/<?= encryptIt($resultado['idCotizacion']);?>/sistema/test.pdf"                  // $('#preCarga').hide();
-                     // $('#vistaPrevia').contentDocument.location.reload(true);
-                 }
-           });
-          
+            
+          generarPDF();
    
          });
 
@@ -489,7 +456,62 @@
                actualizarDiseno();
            });
    
-       function actualizarDiseno(){
+       
+   });
+   
+    $(document).ready(function(){
+       // cargarDieseno(0, false);
+   
+       <?php 
+      if (isset($resultado['plantilla'])) {// se esta editando una cotizacion
+          ?>
+           // alert(arrayPlantilla['colorEncabezado']);
+           cargarDieseno(0, false);
+           <?php
+      }  else {
+           ?>
+           cargarDieseno(0, true);
+           <?php
+      }
+      ?>
+   
+   
+   });
+
+    function generarPDF(){
+
+      actualizarDiseno();
+
+       var html = obtenerHTML();
+       // alert('hola');
+
+       var idEmpresa = "<?= $resultado['idEmpresa'];?>";
+       var idCotizacion = "<?= encryptIt($resultado['idCotizacion']);?>";
+
+       // alert(html);
+
+
+       $.ajax({
+          data: {miHtml :  html, idEmpresa :  idEmpresa, idCotizacion :  idCotizacion},
+          url:   '<?=base_url()?>ManejadorPDF/generarCotizacion',
+          type:  'post',
+          beforeSend: function(){
+               $('#botonPaso4').text('Cargando...');
+               // $('#vistaPrevia').hide();
+               // $('#preCarga').show();
+
+           },
+          success:  function (response) {
+                // alert(response);
+               $('#botonPaso4').text('<?= label('paso4'); ?>');
+
+               $('#vistaPrevia').attr('src', "<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/cotizaciones/<?= encryptIt($resultado['idCotizacion']);?>/sistema/test.pdf");
+           }
+     });
+
+    }
+
+    function actualizarDiseno(){
          // alert('actualizarInformacion');
            // if ($('#paso1Cliente option:selected').val() != 0) {
                var cliente = $('#paso1Cliente option:selected').text();
@@ -513,7 +535,7 @@
                $('#disenoValidez').text(validez);
            // } 
    
-           if (codigo != '' && numero != '') {
+           if (codigo != '') {
                $('#separador').show();
            } else{
                $('#separador').hide();
@@ -543,28 +565,8 @@
          // actualizarCuerpo();
    
        }
-   });
-   
-    $(document).ready(function(){
-       // cargarDieseno(0, false);
-   
-       <?php 
-      if (isset($resultado['plantilla'])) {// se esta editando una cotizacion
-          ?>
-           // alert(arrayPlantilla['colorEncabezado']);
-           cargarDieseno(0, false);
-           <?php
-      }  else {
-           ?>
-           cargarDieseno(0, true);
-           <?php
-      }
-      ?>
-   
-   
-   });
 
-    function crearPDF() {
+    function obtenerHTML() {
            $('#footerDiseno').css("height", footer);
            $('#prefooter').css("height", footer);
 
@@ -606,9 +608,9 @@
       
       ?> 
 
-   var footer = 0;// esta varable es actualizada por el metodo recalcularAlturaContenido y se usa en el metodo crearPDF.
-   var informacion = 0;// esta varable es actualizada por el metodo recalcularAlturaContenido y se usa en el metodo crearPDF.
-   var footerCotizacion = 0;// esta varable es actualizada por el metodo recalcularAlturaContenido y se usa en el metodo crearPDF.
+   var footer = 0;// esta varable es actualizada por el metodo recalcularAlturaContenido y se usa en el metodo obtenerHTML.
+   var informacion = 0;// esta varable es actualizada por el metodo recalcularAlturaContenido y se usa en el metodo obtenerHTML.
+   var footerCotizacion = 0;// esta varable es actualizada por el metodo recalcularAlturaContenido y se usa en el metodo obtenerHTML.
    function cargarDieseno(idPlantilla, plantillaDesdeLista){
        recalcularAlturaContenido();
    

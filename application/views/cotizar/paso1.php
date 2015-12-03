@@ -8,7 +8,7 @@
         </div>
         <div class="input-field col s6 m3 l3">
             <div class="input-field col s12">
-                <input readonly id="paso1_numero" name="paso1_numero" type="text">
+                <input readonly id="paso1_numero" name="paso1_numero" type="text" value='#'>
                 <label for="paso1_numero" class=""><?= label("paso1_labelNumero"); ?></label>
             </div>
         </div>
