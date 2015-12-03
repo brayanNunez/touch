@@ -235,9 +235,21 @@
 
             <div class="col s12 proveedor-editar-tabs-secundarios">
                 <div id="tab-direccion-editar" class="card col s12">
-                    <div class="input-field col s12 m4 l4">
-                        <input id="persona_direccionPais" name="persona_direccionPais" type="text" value="<?= $pais; ?>">
+                    <div class="input-field col s12 m4 l4 inputSelector">
                         <label for="persona_direccionPais"><?= label('formPersona_direccionPais'); ?></label>
+                        <br>
+                        <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="persona_direccionPais" name="persona_direccionPais" class="required browser-default chosen-select">
+                            <option value=""></option>
+                            <?php
+                            if(isset($resultado['paises'])) {
+                                $paises = $resultado['paises'];
+                                foreach ($paises as $p) { ?>
+                                    <option value="<?= $p['idPais']; ?>"><?= $p['nombre']; ?></option>
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </select>
                     </div>
                     <div class="input-field col s12 m4 l4">
                         <input id="persona_direccionProvincia" name="persona_direccionProvincia" type="text" value="<?= $provincia; ?>">
@@ -773,6 +785,7 @@
 <script>
     $(document).ready(function () {
         $('#persona_nacionalidad').val('<?= $nacionalidad; ?>').change();
+        $('#persona_direccionPais').val('<?= $pais; ?>').change();
         var tipo = '<?= $juridico; ?>';
         if(tipo == 1) {
             $('#persona_tipo').val(2).change();

@@ -201,9 +201,20 @@
                                         <div class="col s12">
                                             <div id="tab-direccion" class="card col s12">
                                                 <div>
-                                                    <div class="input-field col s12 m4 l4">
-                                                        <input id="persona_direccionPais" name="persona_direccionPais" type="text">
+                                                    <div class="input-field col s12 m4 l4 inputSelector">
                                                         <label for="persona_direccionPais"><?= label('formPersona_direccionPais'); ?></label>
+                                                        <br>
+                                                        <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="persona_direccionPais" name="persona_direccionPais" class="required browser-default chosen-select">
+                                                            <option value=""></option>
+                                                            <?php
+                                                            if(isset($paises)) {
+                                                                foreach ($paises as $pais) { ?>
+                                                                    <option value="<?= $pais['idPais']; ?>"><?= $pais['nombre']; ?></option>
+                                                                    <?php
+                                                                }
+                                                            }
+                                                            ?>
+                                                        </select>
                                                     </div>
                                                     <div class="input-field col s12 m4 l4">
                                                         <input id="persona_direccionProvincia" name="persona_direccionProvincia" type="text">

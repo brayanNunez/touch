@@ -34,7 +34,7 @@
             $correo = $resultado['correo'];
             $telefonoFijo = $resultado['telefonoFijo'];
             $descripcion = $resultado['descripcion'];
-            $pais = $resultado['pais'];
+            $pais = $resultado['nombrePais'];
             $provincia = $resultado['provincia'];
             $canton = $resultado['canton'];
             $domicilio = $resultado['domicilio'];
@@ -350,8 +350,8 @@
             }
         });
 
-//        elt.tagsinput('add', {"value": 1, "text": "Brayan Nuñez Rojas", "continent": "Europe"});
-//        elt.tagsinput('add', {"value": 4, "text": "Anthony Nuñez Rojas", "continent": "America"});
+//        elt.tagsinput('add', {"value": 1, "text": "Brayan Nuï¿½ez Rojas", "continent": "Europe"});
+//        elt.tagsinput('add', {"value": 4, "text": "Anthony Nuï¿½ez Rojas", "continent": "America"});
 //        elt.tagsinput('add', {"value": 7, "text": "Maria Perez Salas", "continent": "Australia"});
 //        elt.tagsinput('add', {"value": 10, "text": "Carlos David Rojas", "continent": "Asia"});
 //        elt.tagsinput('add', {"value": 13, "text": "Diego Alfaro Rojas", "continent": "Africa"});

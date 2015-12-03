@@ -182,6 +182,12 @@ class Proveedor_model extends CI_Model
                 $paisNacionalidad = $nacionalidad->result_array();
                 $row['paisNacionalidad'] = array_shift($paisNacionalidad)['nombre'];
 
+                $this->db->select('nombre');
+                $nombrePais = $this->db->get_where('pais', array('idPais' => $row['pais']));
+                if (!$nombrePais) throw new Exception("Error en la BD");
+                $resultado = $nombrePais->result_array();
+                $row['nombrePais'] = array_shift($resultado)['nombre'];
+
                 $this->db->select('descripcion');
                 $palabras = $this->db->get_where('palabraclaveproveedor', array('idProveedor' => $id));
                 if (!$palabras) {
