@@ -521,7 +521,7 @@
     $lang['aprobar'] = 'Aprobar y enviar';
     $lang['rechazar'] = 'Rechazar';
     $lang['guardarDescargar'] = 'Guardar y descargar';
-    $lang['guardarCerrar'] = 'Guardar y cerrar';
+    $lang['soloGuardar'] = 'Guardar';
     $lang['cancelarCot'] = 'Cancelar cotización';
     $lang['agregarNuevo'] = 'Agregar nuevo';
 

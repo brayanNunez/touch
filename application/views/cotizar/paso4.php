@@ -58,7 +58,7 @@
     <div class="input-field col s12 m4 l4">
         <div class="input-field col s12">
             <a id="btnGuardarCerrar" class="left btn btn-default opt-finalizar"
-               title="<?= label('tooltip_guardarCerrar'); ?>"><?= label('guardarCerrar'); ?></a>
+               title="<?= label('tooltip_guardarCerrar'); ?>"><?= label('soloGuardar'); ?></a>
         </div>
     </div>
 </div>
@@ -135,8 +135,7 @@
         <p><?= label('paso4_cotizacionGuardada'); ?></p>
     </div>
     <div class="modal-footer">
-        <a href="<?= base_url()?>cotizacion"
-           class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <a class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
 
