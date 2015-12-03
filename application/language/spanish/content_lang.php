@@ -1336,7 +1336,7 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
 
 
     $lang['categoriaDeGastos'] = 'Categoría de gastos';
-    $lang['categoriaDeProveedores'] = 'Categoría de proveedores';
+    $lang['categoriaDeProveedores'] = 'Categoría de personas';
     $lang['horas'] = 'Horas';
 
 ?>
