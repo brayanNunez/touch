@@ -50,7 +50,9 @@ class Cotizacion extends CI_Controller
         $data['idCotizacion'] = decryptIt($idCotizacion);
 
         // if (isset($_POST["aprobadores"])) {
-           $data['aprobadores'] = $this->input->post('aprobadores');
+        $data['aprobadores'] = $this->input->post('aprobadores');
+        $sessionActual = $this->session->userdata('logged_in');
+        $data['idEmpresa'] = $sessionActual['idEmpresa'];
         // } else{
         //     $data['aprobadores'] = array();
         // }
@@ -125,7 +127,7 @@ class Cotizacion extends CI_Controller
 
         
         $data['datosGenerales'] = array(
-            'numero' => $this->input->post('paso1_numero'),
+            // 'numero' => $this->input->post('paso1_numero'),
             'codigo' => $this->input->post('paso1_codigo'),
             'idCliente' => $this->input->post('paso1Cliente'),
             'idPersonaContacto' => $this->input->post('paso1Atencion'),

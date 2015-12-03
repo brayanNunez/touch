@@ -63,6 +63,31 @@ class Cotizacion_model extends CI_Model
             $query = $this->db->update('cotizacion', $data['datosGenerales']);
             if (!$query) throw new Exception("Error en la BD"); 
 
+
+            $this->db->select('count(*) as cantidad');
+            $query = $this->db->get_where('cotizacion', array('numero' => 0, 'idCotizacion' => $data['idCotizacion']));
+            if (!$query) throw new Exception("Error en la BD"); 
+
+            $query = $query->result_array();
+            $query = array_shift($query);
+
+            $requiereNumero = $query['cantidad'];
+
+            if ($requiereNumero) {
+                $this->db->select('MAX(numero) + 1 as suguiente');
+                $query = $this->db->get_where('cotizacion', array('idEmpresa' => $data['idEmpresa']));
+                if (!$query) throw new Exception("Error en la BD");
+                $query = $query->result_array();
+                $query = array_shift($query);
+                $suguiente = $query['suguiente'];
+
+                $this->db->where('idCotizacion', $data['idCotizacion']);
+                $query = $this->db->update('cotizacion', array('numero' => $suguiente));
+                if (!$query) throw new Exception("Error en la BD"); 
+
+                // SELECT MAX(numero) + 1 as suguiente FROM cotizacion where idEmpresa = 1
+            }
+
             $this->db->where('idCotizacion', $data['idCotizacion']);
             $query = $this->db->update('plantilladiseno', $data['diseno']);
             if (!$query) throw new Exception("Error en la BD"); 

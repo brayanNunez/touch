@@ -7,7 +7,6 @@
    </div>
 </div>
 <!-- <div class="contenedorHoja col s12"> -->
-<button id="crear">CREAR</button>
 <div style="display: none" id="inset_form"></div>
 <div id="contenedorDisenoHoja">
    <div id="contenedorHoja">
