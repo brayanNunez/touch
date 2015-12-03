@@ -21,7 +21,7 @@
             </div>
             <div id="encabezado">
                <div id="logo" class="box">
-                  <img class="imagen" src="<?= base_url() ?>assets/dashboard/images/sombrero.png"/>
+                  <img class="imagen" src="<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/<?= $resultado['empresa']['logo'];?>"/>
                </div>
                <div id="datosEncabezado">
                   <div class="datos" id="datos1">
@@ -112,7 +112,7 @@
                </div>
                <div id="footerCotizacion">
                   <div class="box" id="logo">
-                     <img class="imagen" src="<?= base_url() ?>assets/dashboard/images/sombrero.png"/>
+                     <img id="imagenFooter" class="imagen" src="<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/<?= $resultado['empresa']['logo'];?>"/>
                   </div>
                   <div id="datosFooter">
                      <div class="datos" id="datos1">
@@ -566,17 +566,13 @@
    });
 
     function crearPDF() {
-           // alert($('#footerDiseno').height());
-           // var height = $('#footerDiseno').css("height");
            $('#footerDiseno').css("height", footer);
            $('#prefooter').css("height", footer);
-   
-           // var height = $('#informacion').css("height");
+
            $('#informacion').css("height", informacion);
-           // alert(height);
-   
+           $('#footerCotizacion').css("height", footerCotizacion);
+
            $('.editarExterno').css("display", "none");
-   
    
            var backgroundcolor = $('#hoja').css("background-color");
            var fuente = $('#hoja').css("font-family");
@@ -587,15 +583,12 @@
            html += '<div id="headerDiseno">' + $('#headerDiseno').html() + '</div>';
            html += '<div id="informacionSistema">' + $('#informacionSistema').html() + '</div>';
            html += '<div id="cuerpoDocumento">' + $('#cuerpoDocumento').html() + '</div></body></html>';
-           // target="iframe"
-           // $('#inset_form').html('<form  action="<?=base_url()?>ManejadorPDF/index" name="form" method="post" style="display:block;"><textarea name="miHtml">' + html + '</textarea></form>');
-           // document.forms['form'].submit();
-   
    
    
            //eliminar la propiedead height para que siga adaptandose a los cambios de tamano en el html
            $('#footerDiseno').css("height", "");
            $('#informacion').css("height", "");
+           $('#footerCotizacion').css("height", "");
            $('#prefooter').css("height", "");
            $('.editarExterno').css("display", "");
    
@@ -616,7 +609,7 @@
 
    var footer = 0;// esta varable es actualizada por el metodo recalcularAlturaContenido y se usa en el metodo crearPDF.
    var informacion = 0;// esta varable es actualizada por el metodo recalcularAlturaContenido y se usa en el metodo crearPDF.
-   
+   var footerCotizacion = 0;// esta varable es actualizada por el metodo recalcularAlturaContenido y se usa en el metodo crearPDF.
    function cargarDieseno(idPlantilla, plantillaDesdeLista){
        recalcularAlturaContenido();
    
@@ -627,6 +620,7 @@
            footer = $('#footerDiseno').height();//226
            var informacionSistema = $('#informacionSistema').height();//20
            informacion = $('#informacion').height();
+           footerCotizacion = $('#footerCotizacion').height();
    
            var paddingTop = $('#contenidoDiseno').css("padding-top").replace("px", "");
            var paddingBottom = $('#contenidoDiseno').css("padding-bottom").replace("px", "");
