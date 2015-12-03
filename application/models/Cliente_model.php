@@ -182,6 +182,11 @@ class Cliente_model extends CI_Model
                 $row['nombrePais'] = array_shift($resultado)['nombre'];
 
                 $this->db->select('nombre');
+                $gustos = $this->db->get_where('gusto', array('idCliente' => $id));
+                if (!$gustos) throw new Exception("Error en la BD");
+                $row['gustos'] = $gustos->result_array();
+
+                $this->db->select('nombre');
                 $medios = $this->db->get_where('medio', array('idCliente' => $id));
                 if (!$medios) throw new Exception("Error en la BD");   
                 $row['medios'] = $medios->result_array();
