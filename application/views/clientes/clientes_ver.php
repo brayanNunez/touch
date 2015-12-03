@@ -31,7 +31,7 @@
                         if (!$juridico) { ?>
                             <h4><?= $resultado['nombre']." ".$resultado['primerApellido']." ".$resultado['segundoApellido']; ?></h4>
                            <p><span class="informacion-cliente"><?= label('formCliente_identificacion'); ?>: </span><?=$resultado['identificacion']?></p>
-                           <p><span class="informacion-cliente"><?= label('formCliente_nacionalidad'); ?>: </span> Costa Rica</p>
+                           <p><span class="informacion-cliente"><?= label('formCliente_nacionalidad'); ?>: </span><?= $resultado['paisNacionalidad']; ?></p>
                            <p><span class="informacion-cliente"><?= label('formCliente_fechaNacimiento'); ?>: </span><?=date("d-m-Y", strtotime($resultado['fechaNacimiento']))?></p>
                            <p><span class="informacion-cliente"><?= label('formCliente_telefonoMovil'); ?>: </span><?=$resultado['telefonoMovil']?></p>
                            <p><span class="informacion-cliente"><?= label('formCliente_telefonoFijo'); ?>: </span><?=$resultado['telefonoFijo']?></p>
@@ -40,7 +40,7 @@
                         } else { ?>
                            <h4><?=$resultado['nombre']?></h4>
                            <p><span class="informacion-cliente"><?= label('formCliente_identificacion'); ?>: </span><?=$resultado['identificacion']?></p>
-                           <p><span class="informacion-cliente"><?= label('formCliente_nacionalidad'); ?>: </span> Costa Rica</p>
+                           <p><span class="informacion-cliente"><?= label('formCliente_nacionalidad'); ?>: </span><?= $resultado['paisNacionalidad']; ?></p>
                            <p><span class="informacion-cliente"><?= label('formCliente_telefono'); ?>: </span><?=$resultado['telefonoFijo']?></p>
                            <p><span class="informacion-cliente"><?= label('formCliente_correo'); ?>: </span><?=$resultado['correo']?></p>
                            <p><span class="informacion-cliente"><?= label('formCliente_fax'); ?>: </span><?=$resultado['fax']?></p>

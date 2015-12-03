@@ -176,6 +176,14 @@ class Cliente_model extends CI_Model
                 $this->db->select('nombre');
 
                 $this->db->select('nombre');
+                $nacionalidad = $this->db->get_where('pais', array('idPais' => $row['nacionalidad']));
+                if (!$nacionalidad) {
+                    throw new Exception("Error en la BD");
+                }
+                $paisNacionalidad = $nacionalidad->result_array();
+                $row['paisNacionalidad'] = array_shift($paisNacionalidad)['nombre'];
+
+                $this->db->select('nombre');
                 $nombrePais = $this->db->get_where('pais', array('idPais' => $row['pais']));
                 if (!$nombrePais) throw new Exception("Error en la BD");
                 $resultado = $nombrePais->result_array();
