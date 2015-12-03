@@ -72,6 +72,7 @@ class Cotizacion_model extends CI_Model
             $query = array_shift($query);
 
             $requiereNumero = $query['cantidad'];
+            $suguiente = 0;
 
             if ($requiereNumero) {
                 $this->db->select('MAX(numero) + 1 as suguiente');
@@ -190,10 +191,10 @@ class Cotizacion_model extends CI_Model
 
             
             $this->db->trans_commit();
-            return 1;
+            return $suguiente;
         } catch (Exception $e) {
             $this->db->trans_rollback();
-            return 0;
+            return 'false';
         }
     }
 
