@@ -34,12 +34,14 @@ class Registro_model extends CI_Model
             $pathUsuarios = 'files/empresas/'.$idEmpresa.'/usuarios';
             $pathClientes = 'files/empresas/'.$idEmpresa.'/clientes';
             $pathProveedores = 'files/empresas/'.$idEmpresa.'/proveedores';
+            $pathCotizaciones = 'files/empresas/'.$idEmpresa.'/cotizaciones';
             if(!is_dir($pathEmpresa)){
                 mkdir($pathEmpresa);
                 if(is_dir($pathEmpresa)){
                     mkdir($pathUsuarios);
                     mkdir($pathClientes);
                     mkdir($pathProveedores);
+                    mkdir($pathCotizaciones);
                 }
             }
 
