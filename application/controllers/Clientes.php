@@ -26,15 +26,21 @@ class Clientes extends CI_Controller
 
     public function agregar()
     {
-         $paises = $this->Cliente_model->paises();
-        if ($paises === false || $paises === array()) {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+        $paises = $this->Cliente_model->paises();
+        $formasPago = $this->Cliente_model->formasPago($idEmpresa);
+        $monedas = $this->Cliente_model->monedas($idEmpresa);
+        if ($paises === false || $paises === array() || $formasPago === false || $formasPago === array() || $monedas === false || $monedas === array()) {
             echo "Error en la transacción";
         } else {
             $data['paises'] = $paises;
+            $data['formasPago'] = $formasPago;
+            $data['monedas'] = $monedas;
             $this->load->view('layout/default/header');
-        $this->load->view('layout/default/left-sidebar');
-        $this->load->view('clientes/clientes_crear', $data);
-        $this->load->view('layout/default/footer');
+            $this->load->view('layout/default/left-sidebar');
+            $this->load->view('clientes/clientes_crear', $data);
+            $this->load->view('layout/default/footer');
         }
     }
 
@@ -90,6 +96,8 @@ class Clientes extends CI_Controller
                 'correo' => $this->input->post('clientejuridico_correo'),
                 'fax' => $this->input->post('clientejuridico_fax'),
                 'todosVendedores' => $todosVendedores, 
+                'idMonedaDefecto' => $this->input->post('cliente_monedaCotizar'),
+                'idFormaPagoDefecto' => $this->input->post('cliente_formaPago'),
                 'activo' => '1',
                 'eliminado' => '0'
             );
@@ -118,7 +126,9 @@ class Clientes extends CI_Controller
                 'fechaNacimiento' => date("Y-m-d", strtotime($this->input->post('cliente_fechaNacimiento'))),
                 'correo' => $this->input->post('cliente_correo'),
                 // 'fax' => null,
-                'todosVendedores' => $todosVendedores, 
+                'todosVendedores' => $todosVendedores,
+                'idMonedaDefecto' => $this->input->post('cliente_monedaCotizar'),
+                'idFormaPagoDefecto' => $this->input->post('cliente_formaPago'),
                 'activo' => '1',
                 'eliminado' => '0'
             );
@@ -178,13 +188,19 @@ class Clientes extends CI_Controller
 
     public function editar($id)
     {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
         $resultado = $this->Cliente_model->cargar(decryptIt($id));
         $paises = $this->Cliente_model->paises();
-        if ($resultado === false || $resultado === array() || $paises === false || $paises === array()) {
+        $formasPago = $this->Cliente_model->formasPago($idEmpresa);
+        $monedas = $this->Cliente_model->monedas($idEmpresa);
+        if ($resultado === false || $resultado === array() || $paises === false || $paises === array() || $formasPago === false || $formasPago === array() || $monedas === false || $monedas === array()) {
             echo "Error en la transacción";
         } else {
             $data['resultado'] = $resultado;
             $data['paises'] = $paises;
+            $data['formasPago'] = $formasPago;
+            $data['monedas'] = $monedas;
             $this->load->view('layout/default/header');
             $this->load->view('layout/default/left-sidebar');
             $this->load->view('clientes/cliente_info', $data);
@@ -243,6 +259,8 @@ class Clientes extends CI_Controller
                 'correo' => $this->input->post('clientejuridico_correo'),
                 'fax' => $this->input->post('clientejuridico_fax'),
                 'todosVendedores' => $todosVendedores,
+                'idMonedaDefecto' => $this->input->post('cliente_monedaCotizar'),
+                'idFormaPagoDefecto' => $this->input->post('cliente_formaPago'),
                 'activo' => '1',
                 'eliminado' => '0'
             );
@@ -272,6 +290,8 @@ class Clientes extends CI_Controller
                 'correo' => $this->input->post('cliente_correo'),
                 'fax' => null,
                 'todosVendedores' => $todosVendedores,
+                'idMonedaDefecto' => $this->input->post('cliente_monedaCotizar'),
+                'idFormaPagoDefecto' => $this->input->post('cliente_formaPago'),
                 'activo' => '1',
                 'eliminado' => '0'
             );

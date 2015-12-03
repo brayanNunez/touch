@@ -267,7 +267,7 @@
                                         </div>
                                         <div>
                                             <div class="col s12">
-                                                <h5>Firma del representante</h5>
+                                                <h5><?= label('formEmpresa_tituloFirma'); ?></h5>
                                             </div>
                                             <div class="col s6 m4 l3">
                                                 <div id="empresa_firma_editar" class="cliente-ver-logo" style="margin: 5px 0;">
@@ -445,6 +445,10 @@
                     <img id="imagen_seleccionada" src="<?= $ruta; ?>">
                 </figure>
             </div>
+            <div class="col s12">
+                <h5 style="text-align: left;">* Nota:</h5>
+                <h6>- <?= label('formEmpresa_imagenTipoPreferible'); ?></h6>
+            </div>
         </div>
         <div class="input-field col s12 envio-formulario" style="margin-bottom: 30px;">
             <button class="btn waves-effect waves-light right" type="submit" id="guardar-cambios-usuario"
@@ -480,6 +484,10 @@
                     <figure style="margin:0 10px;">
                         <img id="imagen_seleccionadaFirma" src="<?= $rutaFirma; ?>">
                     </figure>
+                </div>
+                <div class="col s12">
+                    <h5 style="text-align: left;">* Nota:</h5>
+                    <h6>- <?= label('formEmpresa_imagenTipoPreferible'); ?></h6>
                 </div>
             </div>
             <div class="input-field col s12 envio-formulario" style="margin-bottom: 30px;">

@@ -273,17 +273,21 @@
                                                     <br>
                                                 </div>
                                             </div>
-                                            <div id="tab-infoFacturacion" class="card col s12">
-                                                <div class="input-field col s12">
-                                                    <select>
-                                                        <option value="" selected
-                                                                disabled><?= label('formCliente_seleccioneUno'); ?></option>
-                                                        <option value="1">Adelantado</option>
-                                                        <option value="2">Contado</option>
-                                                        <option value="3">A pagos</option>
+                                            <div id="tab-infoFacturacion" class="card col s12" style="padding-bottom: 20px;">
+                                                <div class="input-field col s12 inputSelector" >
+                                                    <label for="cliente_formaPago"><?= label('formCliente_formaPagoFavorita'); ?></label>
+                                                    <br>
+                                                    <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="cliente_formaPago" name="cliente_formaPago" class="required browser-default chosen-select">
+                                                        <option value=""></option>
+                                                        <?php
+                                                        if(isset($formasPago)) {
+                                                            foreach ($formasPago as $formaPago) { ?>
+                                                                <option value="<?= $formaPago['idFormaPago']; ?>"><?= $formaPago['nombre']; ?></option>
+                                                                <?php
+                                                            }
+                                                        }
+                                                        ?>
                                                     </select>
-                                                    <label for="cliente_formaPagoFavorita">
-                                                        <?= label('formCliente_formaPagoFavorita'); ?></label>
                                                 </div>
                                                 <div class="input-field col s12">
                                                     <input id="cliente_descuento" name="cliente_descuento" type="text">
@@ -291,15 +295,20 @@
                                                         for="cliente_descuento"><?= label('formCliente_descuento'); ?></label>
                                                     <span class="icono-porcentaje-descuento">%</span>
                                                 </div>
-                                                <div class="input-field col s12">
-                                                    <select>
-                                                        <option value="" selected
-                                                                disabled><?= label('formCliente_seleccioneUno'); ?></option>
-                                                        <option value="1">Dolar</option>
-                                                        <option value="2">Reales</option>
-                                                        <option value="3">Euros</option>
+                                                <div class="input-field col s12 inputSelector" >
+                                                    <label for="cliente_monedaCotizar"><?= label('formCliente_monedaCotizar'); ?></label>
+                                                    <br>
+                                                    <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="cliente_monedaCotizar" name="cliente_monedaCotizar" class="required browser-default chosen-select">
+                                                        <option value=""></option>
+                                                        <?php
+                                                        if(isset($monedas)) {
+                                                            foreach ($monedas as $moneda) { ?>
+                                                                <option value="<?= $moneda['idMoneda']; ?>"><?= $moneda['nombre']; ?></option>
+                                                                <?php
+                                                            }
+                                                        }
+                                                        ?>
                                                     </select>
-                                                    <label for="cliente_moneda"><?= label('formCliente_monedaCotizar'); ?></label>
                                                 </div>
                                             </div>
                                         </div>
@@ -330,6 +339,7 @@
 </div>
 <!-- END CONTENT-->
 
+<!--Script para insercion de datos, selects-->
 <script>
     $('#checkbox_todosVendedores').on('click', function(){
         if ($(this).prop('checked')) {
@@ -391,6 +401,9 @@
                                     $('#cliente_gustos').tagsinput('removeAll');
                                     $('#cliente_medios').tagsinput('removeAll');
                                     $('#vendedoresCliente').show();
+                                    $('#cliente_direccionPais').val('').trigger('chosen:updated');
+                                    $('#cliente_formaPago').val('').trigger('chosen:updated');
+                                    $('#cliente_monedaCotizar').val('').trigger('chosen:updated');
                                 }
                             },
                             cache: false,

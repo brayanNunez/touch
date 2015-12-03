@@ -46,6 +46,44 @@ class Cliente_model extends CI_Model
             return false;
         }
     }
+    function formasPago($idEmpresa) {
+        try{
+            $this->db->trans_begin();
+
+            $this->db->select('idFormaPago, nombre');
+            $this->db->where(array('idEmpresa' => $idEmpresa, 'eliminado' => 0));
+            $formasPago = $this->db->get('formapago');
+            if (!$formasPago) {
+                throw new Exception("Error en la BD");
+            }
+            $resultado = $formasPago->result_array();
+
+            $this->db->trans_commit();
+            return $resultado;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+    function monedas($idEmpresa) {
+        try{
+            $this->db->trans_begin();
+
+            $this->db->select('idMoneda, nombre');
+            $this->db->where(array('idEmpresa' => $idEmpresa, 'eliminado' => 0));
+            $monedas = $this->db->get('moneda');
+            if (!$monedas) {
+                throw new Exception("Error en la BD");
+            }
+            $resultado = $monedas->result_array();
+
+            $this->db->trans_commit();
+            return $resultado;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
 
     function insertar($data)
     {
@@ -182,6 +220,18 @@ class Cliente_model extends CI_Model
                 }
                 $paisNacionalidad = $nacionalidad->result_array();
                 $row['paisNacionalidad'] = array_shift($paisNacionalidad)['nombre'];
+
+                $this->db->select('nombre');
+                $formaPago = $this->db->get_where('formaPago', array('idFormaPago' => $row['idFormaPagoDefecto']));
+                if (!$formaPago) throw new Exception("Error en la BD");
+                $resultado = $formaPago->result_array();
+                $row['nombre_formaPago'] = array_shift($resultado)['nombre'];
+
+                $this->db->select("CONCAT(nombre, ' (', signo, ') ') as nombreMoneda", false);
+                $moneda = $this->db->get_where('moneda', array('idMoneda' => $row['idMonedaDefecto']));
+                if (!$moneda) throw new Exception("Error en la BD");
+                $resultado = $moneda->result_array();
+                $row['nombre_moneda'] = array_shift($resultado)['nombreMoneda'];
 
                 $this->db->select('nombre');
                 $nombrePais = $this->db->get_where('pais', array('idPais' => $row['pais']));
