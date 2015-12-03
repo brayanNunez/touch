@@ -25,6 +25,7 @@
     $fechaCreacion = '';
     $profesion = '';
     $tamano = '';
+    $codigoCotizacion = '';
     $pais = '';
     $provincia = '';
     $canton = '';
@@ -56,6 +57,7 @@
         $fechaCreacion = $resultado['fechaCreacion'];
         $profesion = $resultado['profesion'];
         $tamano = $resultado['tamano'];
+        $codigoCotizacion = $resultado['codigoCotizacion'];
         $pais = $resultado['direccion']['pais'];
         $provincia = $resultado['direccion']['provincia'];
         $canton = $resultado['direccion']['canton'];
@@ -265,16 +267,26 @@
                                                 <label for="empresa_correoContacto"><?= label('formEmpresa_correoContacto'); ?></label>
                                             </div>
                                         </div>
+
                                         <div>
                                             <div class="col s12">
-                                                <h5><?= label('formEmpresa_tituloFirma'); ?></h5>
+                                                <h5><?= label('formEmpresa_infoCotizacion'); ?></h5>
                                             </div>
-                                            <div class="col s6 m4 l3">
-                                                <div id="empresa_firma_editar" class="cliente-ver-logo" style="margin: 5px 0;">
-                                                    <a class="modal-trigger" href="#cambio-imagenFirma" title="Cambiar firma" style="position: relative; cursor:pointer;">
-                                                        <img id="empresa_firma" alt="Logo de la empresa" src="<?= $rutaFirma; ?>" style="position:relative;height: 200px;width: 200px;" />
-                                                        <img id="icon-image-edit" src="<?= base_url() ?>files/edit-image.png">
-                                                    </a>
+                                            <div class="col s12">
+                                                <div class="input-field">
+                                                    <input id="empresa_codigoCotizacion" name="empresa_codigoCotizacion" type="text" value="<?= $codigoCotizacion;?>">
+                                                    <label for="empresa_codigoCotizacion"><?= label('formEmpresa_codigoCotizacion'); ?></label>
+                                                </div>
+                                            </div>
+                                            <div class="col s12">
+                                                <label for="empresa_firma_editar" style="display: block;margin-bottom: 0.5rem;"><?= label('formEmpresa_tituloFirma'); ?></label>
+                                                <div class="col s6 offset-m1 m4 offset-l1 l3">
+                                                    <div id="empresa_firma_editar" class="cliente-ver-logo" style="margin: 5px 0;">
+                                                        <a class="modal-trigger" href="#cambio-imagenFirma" title="Cambiar firma" style="position: relative; cursor:pointer;">
+                                                            <img id="empresa_firma" alt="Logo de la empresa" src="<?= $rutaFirma; ?>" style="position:relative;height: 200px;width: 200px;" />
+                                                            <img id="icon-image-edit" src="<?= base_url() ?>files/edit-image.png">
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
