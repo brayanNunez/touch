@@ -222,6 +222,18 @@ class Cliente_model extends CI_Model
                 $row['paisNacionalidad'] = array_shift($paisNacionalidad)['nombre'];
 
                 $this->db->select('nombre');
+                $formaPago = $this->db->get_where('formaPago', array('idFormaPago' => $row['idFormaPagoDefecto']));
+                if (!$formaPago) throw new Exception("Error en la BD");
+                $resultado = $formaPago->result_array();
+                $row['nombre_formaPago'] = array_shift($resultado)['nombre'];
+
+                $this->db->select("CONCAT(nombre, ' (', signo, ') ') as nombreMoneda", false);
+                $moneda = $this->db->get_where('moneda', array('idMoneda' => $row['idMonedaDefecto']));
+                if (!$moneda) throw new Exception("Error en la BD");
+                $resultado = $moneda->result_array();
+                $row['nombre_moneda'] = array_shift($resultado)['nombreMoneda'];
+
+                $this->db->select('nombre');
                 $nombrePais = $this->db->get_where('pais', array('idPais' => $row['pais']));
                 if (!$nombrePais) throw new Exception("Error en la BD");
                 $resultado = $nombrePais->result_array();

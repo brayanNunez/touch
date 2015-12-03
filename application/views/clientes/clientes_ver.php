@@ -147,7 +147,8 @@
                             </tr>
                             <tr>
                                 <td><?= label('formCliente_gustos_preferencias'); ?></td>
-                                <td><?php if (isset($resultado)) {
+                                <td><?php
+                                    if (isset($resultado)) {
                                         $numItems = count($resultado['gustos']);
                                         $i = 0;
                                         foreach ($resultado['gustos'] as $gusto) {
@@ -156,16 +157,14 @@
                                             } else {
                                                 echo $gusto['nombre'].', ';
                                             }
-
-                                            
                                         }
-                                      
-                                   } ?>
+                                    } ?>
                                    </td>
                             </tr>
                             <tr>
                                 <td><?= label('formCliente_mediosContacto'); ?></td>
-                                <td><?php if (isset($resultado)) {
+                                <td><?php
+                                    if (isset($resultado)) {
                                         $numItems = count($resultado['medios']);
                                         $i = 0;
                                         foreach ($resultado['medios'] as $gusto) {
@@ -174,11 +173,8 @@
                                             } else {
                                                 echo $gusto['nombre'].', ';
                                             }
-
-                                            
                                         }
-                                      
-                                   } ?>
+                                    } ?>
                                    </td>
                             </tr>
                         </tbody>
@@ -197,15 +193,15 @@
                         <tbody>
                             <tr>
                                 <td><?= label('formCliente_formaPagoFavorita'); ?></td>
-                                <td>A pagos</td>
+                                <td><?php if (isset($resultado)) echo $resultado['nombre_formaPago'];?></td>
                             </tr>
                             <tr>
                                 <td><?= label('formCliente_descuento'); ?></td>
-                                <td>5%</td>
+                                <td><?php if (isset($resultado)) echo $resultado['descuentoFijo'];?>%</td>
                             </tr>
                             <tr>
                                 <td><?= label('formCliente_monedaCotizar'); ?></td>
-                                <td>Dolar ($)</td>
+                                <td><?php if (isset($resultado)) echo $resultado['nombre_moneda']; ?></td>
                             </tr>
                         </tbody>
                     </table>
