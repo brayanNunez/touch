@@ -2,7 +2,7 @@
     <div class="row">
         <div class="input-field col s6 m3 l3">
             <div class="input-field col s12">
-                <input id="paso1_codigo" name="paso1_codigo" type="text">
+                <input id="paso1_codigo" name="paso1_codigo" type="text" value="<?= $resultado['empresa']['codigoCotizacion']?>">
                 <label for="paso1_codigo" class=""><?= label("paso1_labelCodido"); ?></label>
             </div>
         </div>
