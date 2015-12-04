@@ -398,6 +398,10 @@
     $lang['completarRegistro_actividadComercial'] = 'Actividad comercial';
     $lang['completarRegistro_sitioWeb'] = 'Sitio web';
     $lang['completarRegistro_fotografia'] = 'Fotografía o logo';
+    $lang['completarRegistro_codigoCotizacion'] = 'Código de cotización';
+    $lang['completarRegistro_correo'] = 'Correo electrónico empresarial';
+    $lang['completarRegistro_fechaCreacion'] = 'Fecha de creación';
+    $lang['completarRegistro_tamano'] = 'Tamaño';
 
 //Horas
     $lang['horas_titulo'] = 'Tiempo facturable';

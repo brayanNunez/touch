@@ -194,84 +194,6 @@ Scripts
 <!-- autocompletar con boton dentro -->
 <script src="<?= base_url()?>assets/dashboard/js/chosen.jquery.js" type="text/javascript"></script>
 
-<!--Script para manejo de horas laborales-->
-<script type="text/javascript">
-    $(document).on('click', '#checkbox_festivosNoObligatorios', function () {
-        var incluirFestivosNoObligatorios = $(this).is(':checked');
-        if(incluirFestivosNoObligatorios) {
-            document.getElementById('horas_inputFestivosNoObligatorios').style.display = 'block';
-        } else {
-            document.getElementById('horas_inputFestivosNoObligatorios').style.display = 'none';
-        }
-    });
-    function validacionCorrecta_horas() {
-        var formulario = $('#form_horas');
-        $.ajax({
-            data: formulario.serialize(),
-            url: formulario.attr('action'),
-            type:  formulario.attr('method'),
-            success:  function (response) {
-                if (response == '0') {
-                    alert("<?=label('errorGuardar'); ?>");
-                } else {
-                    alert("Cambios gurdados correctamente.");
-                    $('#horasLaborales .modal-header a').click();
-                }
-            }
-        });
-    }
-    $(document).on('click', '#btn_horasLaborales', function () {
-        $.ajax({
-            type: 'post',
-            url: '<?= base_url(); ?>horas/cargarDatos',
-            data: {  },
-            success: function(response)
-            {
-                if(response != 'null') {
-                    var datosHoras = $.parseJSON(response);
-                    var incluirNoObligatorios = datosHoras['incluirNoObligatorios'];
-                    $('#form_horas #horas_diasAnno').val(datosHoras['diasAnno']);
-                    $('#form_horas #horas_finesSemana').val(datosHoras['finesSemana']);
-                    $('#form_horas #horas_festivosObligatorios').val(datosHoras['festivosObligatorios']);
-                    $('#form_horas #horas_festivosNoObligatorios').val(datosHoras['festivosNoObligatorios']);
-                    if (incluirNoObligatorios == 0) {
-                        $('#form_horas #checkbox_festivosNoObligatorios').prop('checked', false);
-                        document.getElementById('horas_inputFestivosNoObligatorios').style.display = 'none';
-                    } else {
-                        $('#form_horas #checkbox_festivosNoObligatorios').prop('checked', true);
-                        document.getElementById('horas_inputFestivosNoObligatorios').style.display = 'block';
-                    }
-                    $('#form_horas #horas_vacaciones').val(datosHoras['vacaciones']);
-                    $('#form_horas #horas_promedioBajas').val(datosHoras['promedioBajas']);
-                    $('#form_horas #horas_diasFacturables').val(datosHoras['diasFacturables']);
-                    $('#form_horas #horas_promedioHorasDiarias').val(datosHoras['promedioHorasDiarias']);
-                    $('#form_horas #horas_cantidadManoObra').val(datosHoras['cantidadManoObra']);
-
-                    var totalHorasAnual = (datosHoras['diasFacturables'] * datosHoras['promedioHorasDiarias']).toFixed(2);
-                    var promedioHorasMensual = (totalHorasAnual / 12).toFixed(2);
-                    $('#horas_totalAnual').text(totalHorasAnual);
-                    $('#horas_promedioMensual').text(promedioHorasMensual);
-
-                    $('#horasLaborales label').addClass('active');
-                    $('#label_checkboxFestivosNoObligatorios').removeClass('active');
-                } else {
-                    $('#horas_totalAnual').text('0');
-                    $('#horas_promedioMensual').text('0');
-                }
-            }
-        });
-    });
-</script>
-<!--Script para selects de busqueda-->
-<script type="text/javascript">
-//    $(document).on("ready", function(){
-//        var config = {'.chosen-select select'           : {}}
-//        for (var selector in config) {
-//            $(selector).chosen(config[selector]);
-//        }
-//    });
-</script>
-
 <!--Inicio lista de modals-->
 <div id="login-page" class="modal fade in" style="width: 25%; max-height: none; ">
     <div class="col s12 z-depth-4 card-panel" style="box-shadow: none; margin: 0px; padding-bottom: 0px; ">
@@ -395,7 +317,7 @@ Scripts
     </div>
 </div>
 
-<div id="RegistroIndependiente" class="modal" style="width: 70%; min-height: 85%;">
+<div id="completarRegistroEmpresa" class="modal" style="width: 70%; min-height: 85%;">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
@@ -405,50 +327,67 @@ Scripts
             <h5 style="float: left;"><?= label('registro_completarPerfil'); ?></h5>
         </div>
         <div class="row" style="margin-bottom: 0;">
-            <div class="input-field col s12">
-                <select id="registro_actividadIndepediente" name="registro_actividadIndepediente">
-                    <option value="1" selected>Trabajador independiente</option>
-                    <option value="2">Empresa</option>
-                </select>
-                <label for="registro_actividadIndepediente"><?= label('completarRegistro_actividadComercial'); ?></label>
-            </div>
-            <div class="input-field col s12 m6 l6">
-                <input id="registro_telefonoIndepediente" type="text">
-                <label for="registro_telefonoIndepediente"><?= label('completarRegistro_telefono'); ?></label>
-            </div>
-            <div class="input-field col s12 m6 l6">
-                <input id="registro_celularIndepediente" type="text">
-                <label for="registro_celularIndepediente"><?= label('completarRegistro_celular'); ?></label>
-            </div>
-            <div class="input-field col s12">
-                <input id="registro_fechaNacIndependiente" class="datepicker-fecha" type="text">
-                <label for="registro_fechaNacIndependiente"><?= label('completarRegistro_fechaNacimiento'); ?></label>
-            </div>
-            <div class="input-field col s12">
-                <input id="registro_profesionIndepediente" type="text">
-                <label for="registro_profesionIndepediente"><?= label('completarRegistro_profesion'); ?></label>
-            </div>
-            <div class="input-field col s12">
-                <input id="registro_sitioIndepediente" type="text">
-                <label for="registro_sitioIndepediente"><?= label('completarRegistro_sitioWeb'); ?></label>
-            </div>
-            <div class="col s12">
-                <div class="file-field col s12 m7 l9" style="margin-top:45px;">
-                    <label for="registro_fotografiaIndependiente"><?= label('completarRegistro_fotografia'); ?></label>
-                    <div class="file-field input-field col s12">
-                        <input name="registro_fotografiaIndependiente" class="file-path" type="text" readonly/>
-                        <div class="btn" data-toggle="tooltip" title="<?= label('tooltip_examinar') ?>">
-                            <span><i class="mdi-action-search"></i></span>
-                            <input style="padding-right: 800px;" id="userfile" type="file" name="userfile" accept="image/jpeg,image/png"/>
-                        </div>
+            <form id="form_completarRegistro" action="<?=base_url()?>registro/completar" method="post">
+                <div class="input-field col s12">
+                    <select id="registro_actividadComercial" name="registro_actividadComercial" onchange="datosRegistro(this)">
+                        <option value="1" selected>Trabajador independiente</option>
+                        <option value="2">Empresa</option>
+                    </select>
+                    <label class="label_select" for="registro_actividadComercial"><?= label('completarRegistro_actividadComercial'); ?></label>
+                </div>
+
+                <div id="campos_trabajadorIndependiente" style="display: block;">
+                    <div class="input-field col s12">
+                        <input id="registro_fechaNacIndependiente" name="registro_fechaNacIndependiente" class="datepicker-fecha" type="text">
+                        <label for="registro_fechaNacIndependiente"><?= label('completarRegistro_fechaNacimiento'); ?></label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="registro_profesionIndepediente" name="registro_profesionIndepediente" type="text">
+                        <label for="registro_profesionIndepediente"><?= label('completarRegistro_profesion'); ?></label>
                     </div>
                 </div>
-                <div class="col s12 m5 l3">
-                    <figure>
-                        <img id="imagen_seleccionada" src="<?= base_url(); ?>files/default-user-image.png">
-                    </figure>
+                <div id="campos_empresa" style="display: none;">
+                    <div class="input-field col s12">
+                        <input id="registro_correoEmpresa" name="registro_correoEmpresa" type="text">
+                        <label for="registro_correoEmpresa"><?= label('completarRegistro_correo'); ?></label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="registro_fechaCreacionEmpresa" name="registro_fechaCreacionEmpresa" class="datepicker-fecha" type="text">
+                        <label for="registro_fechaCreacionEmpresa"><?= label('completarRegistro_fechaCreacion'); ?></label>
+                    </div>
+                    <div class="input-field col s12">
+                        <select id="registro_tamanoEmpresa" name="registro_tamanoEmpresa">
+                            <option value="1">1 a 5</option>
+                            <option value="2">6 a 10</option>
+                            <option value="3">11 a 25</option>
+                            <option value="4">26 a 50</option>
+                            <option value="5">50+</option>
+                            <option value="6">100+</option>
+                            <option value="7">250+</option>
+                            <option value="8">500+</option>
+                        </select>
+                        <label class="label_select" for="registro_tamanoEmpresa"><?= label('completarRegistro_tamano'); ?></label>
+                    </div>
                 </div>
-            </div>
+                <div>
+                    <div class="input-field col s12">
+                        <input id="registro_telefonoFijo" name="registro_telefonoFijo" type="text">
+                        <label for="registro_telefonoFijo"><?= label('completarRegistro_telefono'); ?></label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="registro_telefonoMovil" name="registro_telefonoMovil" type="text">
+                        <label for="registro_telefonoMovil"><?= label('completarRegistro_celular'); ?></label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="registro_sitioWeb" name="registro_sitioWeb" type="text">
+                        <label for="registro_sitioWeb"><?= label('completarRegistro_sitioWeb'); ?></label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="registro_codigoCotizacion" name="registro_codigoCotizacion" type="text">
+                        <label for="registro_codigoCotizacion"><?= label('completarRegistro_codigoCotizacion'); ?></label>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
     <div class="modal-footer">
@@ -460,6 +399,7 @@ Scripts
         </div>
     </div>
 </div>
+
 <div id="RegistroEmpresa" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
@@ -589,6 +529,131 @@ Scripts
     </div>
 </div>
 <!--Fin lista de modals-->
+
+<!--Script para manejo de horas laborales-->
+<script type="text/javascript">
+    $(document).on('click', '#checkbox_festivosNoObligatorios', function () {
+        var incluirFestivosNoObligatorios = $(this).is(':checked');
+        if(incluirFestivosNoObligatorios) {
+            document.getElementById('horas_inputFestivosNoObligatorios').style.display = 'block';
+        } else {
+            document.getElementById('horas_inputFestivosNoObligatorios').style.display = 'none';
+        }
+    });
+    function validacionCorrecta_horas() {
+        var formulario = $('#form_horas');
+        $.ajax({
+            data: formulario.serialize(),
+            url: formulario.attr('action'),
+            type:  formulario.attr('method'),
+            success:  function (response) {
+                if (response == '0') {
+                    alert("<?=label('errorGuardar'); ?>");
+                } else {
+                    alert("Cambios gurdados correctamente.");
+                    $('#horasLaborales .modal-header a').click();
+                }
+            }
+        });
+    }
+    $(document).on('click', '#btn_horasLaborales', function () {
+        $.ajax({
+            type: 'post',
+            url: '<?= base_url(); ?>horas/cargarDatos',
+            data: {  },
+            success: function(response)
+            {
+                if(response != 'null') {
+                    var datosHoras = $.parseJSON(response);
+                    var incluirNoObligatorios = datosHoras['incluirNoObligatorios'];
+                    $('#form_horas #horas_diasAnno').val(datosHoras['diasAnno']);
+                    $('#form_horas #horas_finesSemana').val(datosHoras['finesSemana']);
+                    $('#form_horas #horas_festivosObligatorios').val(datosHoras['festivosObligatorios']);
+                    $('#form_horas #horas_festivosNoObligatorios').val(datosHoras['festivosNoObligatorios']);
+                    if (incluirNoObligatorios == 0) {
+                        $('#form_horas #checkbox_festivosNoObligatorios').prop('checked', false);
+                        document.getElementById('horas_inputFestivosNoObligatorios').style.display = 'none';
+                    } else {
+                        $('#form_horas #checkbox_festivosNoObligatorios').prop('checked', true);
+                        document.getElementById('horas_inputFestivosNoObligatorios').style.display = 'block';
+                    }
+                    $('#form_horas #horas_vacaciones').val(datosHoras['vacaciones']);
+                    $('#form_horas #horas_promedioBajas').val(datosHoras['promedioBajas']);
+                    $('#form_horas #horas_diasFacturables').val(datosHoras['diasFacturables']);
+                    $('#form_horas #horas_promedioHorasDiarias').val(datosHoras['promedioHorasDiarias']);
+                    $('#form_horas #horas_cantidadManoObra').val(datosHoras['cantidadManoObra']);
+
+                    var totalHorasAnual = (datosHoras['diasFacturables'] * datosHoras['promedioHorasDiarias']).toFixed(2);
+                    var promedioHorasMensual = (totalHorasAnual / 12).toFixed(2);
+                    $('#horas_totalAnual').text(totalHorasAnual);
+                    $('#horas_promedioMensual').text(promedioHorasMensual);
+
+                    $('#horasLaborales label').addClass('active');
+                    $('#label_checkboxFestivosNoObligatorios').removeClass('active');
+                } else {
+                    $('#horas_totalAnual').text('0');
+                    $('#horas_promedioMensual').text('0');
+                }
+            }
+        });
+    });
+</script>
+<!--Script para selects de busqueda-->
+<script type="text/javascript">
+    //    $(document).on("ready", function(){
+    //        var config = {'.chosen-select select'           : {}}
+    //        for (var selector in config) {
+    //            $(selector).chosen(config[selector]);
+    //        }
+    //    });
+</script>
+<!--Script para manejo de completar registro-->
+<script type="text/javascript">
+    function datosRegistro(opcionSeleccionada) {
+        if (opcionSeleccionada.value == "1") {
+            document.getElementById('campos_trabajadorIndependiente').style.display = 'block';
+            document.getElementById('campos_empresa').style.display = 'none';
+        } else {
+            document.getElementById('campos_empresa').style.display = 'block';
+            document.getElementById('campos_trabajadorIndependiente').style.display = 'none';
+        }
+    }
+    $(document).on('click', '#btn_completarRegistro', function () {
+        $.ajax({
+            type: 'post',
+            url: '<?= base_url(); ?>registro/cargarDatos',
+            data: {  },
+            success: function(response)
+            {
+                if(response != 'null') {
+                    var datosEmpresa = $.parseJSON(response);
+
+                    var tipoEmpresa = datosEmpresa['empresa'];
+                    $('#form_completarRegistro #registro_fechaNacIndependiente').val(datosEmpresa['fechaCreacion']);
+                    $('#form_completarRegistro #registro_profesionIndepediente').val(datosEmpresa['profesion']);
+                    $('#form_completarRegistro #registro_correoEmpresa').val(datosEmpresa['correo']);
+                    $('#form_completarRegistro #registro_fechaCreacionEmpresa').val(datosEmpresa['fechaCreacion']);
+                    $('#form_completarRegistro #registro_telefonoFijo').val(datosEmpresa['telefono']);
+                    $('#form_completarRegistro #registro_telefonoMovil').val(datosEmpresa['telefonoMovil']);
+                    $('#form_completarRegistro #registro_sitioWeb').val(datosEmpresa['sitioWeb']);
+                    $('#form_completarRegistro #registro_codigoCotizacion').val(datosEmpresa['codigoCotizacion']);
+                    $('#form_completarRegistro #registro_tamanoEmpresa').val(datosEmpresa['tamano']).change();
+
+                    if(tipoEmpresa == 1) {
+                        document.getElementById('campos_empresa').style.display = 'block';
+                        document.getElementById('campos_trabajadorIndependiente').style.display = 'none';
+                    } else {
+                        document.getElementById('campos_trabajadorIndependiente').style.display = 'block';
+                        document.getElementById('campos_empresa').style.display = 'none';
+                    }
+
+                    $('#completarRegistroEmpresa label').addClass('active');
+                    $('#completarRegistroEmpresa label.label_select').removeClass('active');
+                }
+            }
+        });
+    });
+</script>
 
     </body>
 </html>

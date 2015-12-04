@@ -306,6 +306,18 @@ class Registro extends CI_Controller
         }
     }
 
+    public function cargarDatos() {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $resultado = $this->Registro_model->cargar($idEmpresa);
+        if ($resultado === false || $resultado === array()) {
+            echo 0;
+        } else {
+            echo json_encode($resultado);
+        }
+    }
+
     function rpHash($value) {
         $hash = 5381;
         $value = strtoupper($value);
