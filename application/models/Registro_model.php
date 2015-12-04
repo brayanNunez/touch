@@ -213,6 +213,33 @@ class Registro_model extends CI_Model
         }
     }
 
+    function completar($data)
+    {
+        try{
+            $this->db->trans_begin();
+
+            $this->db->where('idEmpresa', $data['id']);
+            $query = $this->db->update('empresa', $data['datos']);
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+
+            if(isset($data['usuario'])) {
+                $this->db->where('idUsuario', $data['usuario']['idUsuario']);
+                $query = $this->db->update('usuario', $data['usuario']);
+                if (!$query) {
+                    throw new Exception("Error en la BD");
+                }
+            }
+
+            $this->db->trans_commit();
+            return true;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
 }
 
 ?>

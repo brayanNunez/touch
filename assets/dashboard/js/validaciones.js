@@ -793,9 +793,9 @@
                 empresa_empresaNombreFantasia: {required: false},
                 empresa_empresaTelefonoFijo: {required: true},
                 empresa_empresaCorreo: {required: true},
-                empresa_empresaSitioweb: {required: true},
-                empresa_fechaCreacion: {required: true},
-                empresa_tamano: {required: true},
+                empresa_empresaSitioweb: {required: false},
+                empresa_fechaCreacion: {required: false},
+                empresa_tamano: {required: false},
                 empresa_idTrabajador: {required: true},
                 empresa_trabajadorNombreArtistico: {required: false},
                 empresa_trabajadorNombre: {required: true},
@@ -803,8 +803,8 @@
                 empresa_trabajadorSegundoApellido: {required: false},
                 empresa_trabajadorCorreo: {required: true},
                 empresa_trabajadorProfesion: {required: false},
-                empresa_trabajadorSitioWeb: {required: true},
-                empresa_trabajadorFechaNacimiento: {required: true},
+                empresa_trabajadorSitioWeb: {required: false},
+                empresa_trabajadorFechaNacimiento: {required: false},
                 empresa_direccionPais: {required: true},
                 empresa_direccionProvincia: {required: true},
                 empresa_direccionCanton: {required: true},
@@ -828,6 +828,26 @@
             errorElement: 'div',
             submitHandler: function (form) {
                 validacionCorrecta_ImagenFirma();
+            }
+        });
+
+        $('#form_completarRegistro').validate({
+            rules:
+            {
+                //registro_actividadComercial: { required: true },
+                registro_fechaNacIndependiente: { required: false },
+                registro_profesionIndepediente: { required: false },
+                registro_correoEmpresa: { required: false },
+                registro_fechaCreacionEmpresa: { required: false },
+                registro_telefonoFijo: { required: false },
+                registro_telefonoMovil: { required: false },
+                registro_sitioWeb: { required: false },
+                registro_codigoCotizacion: { required: false },
+                registro_tamanoEmpresa: { required: false }
+            },
+            errorElement: 'div',
+            submitHandler: function(form) {
+                validacionCorrecta_registro();
             }
         });
 

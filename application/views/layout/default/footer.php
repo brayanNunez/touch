@@ -329,11 +329,11 @@ Scripts
         <div class="row" style="margin-bottom: 0;">
             <form id="form_completarRegistro" action="<?=base_url()?>registro/completar" method="post">
                 <div class="input-field col s12">
-                    <select id="registro_actividadComercial" name="registro_actividadComercial" onchange="datosRegistro(this)">
-                        <option value="1" selected>Trabajador independiente</option>
-                        <option value="2">Empresa</option>
-                    </select>
-                    <label class="label_select" for="registro_actividadComercial"><?= label('completarRegistro_actividadComercial'); ?></label>
+<!--                    <select id="registro_actividadComercial" name="registro_actividadComercial" onchange="datosRegistro(this)">-->
+<!--                        <option value="1" selected>Trabajador independiente</option>-->
+<!--                        <option value="2">Empresa</option>-->
+<!--                    </select>-->
+<!--                    <label class="label_select" for="registro_actividadComercial">--><?//= label('completarRegistro_actividadComercial'); ?><!--</label>-->
                 </div>
 
                 <div id="campos_trabajadorIndependiente" style="display: block;">
@@ -344,6 +344,8 @@ Scripts
                     <div class="input-field col s12">
                         <input id="registro_profesionIndepediente" name="registro_profesionIndepediente" type="text">
                         <label for="registro_profesionIndepediente"><?= label('completarRegistro_profesion'); ?></label>
+                        
+                        <input id="registro_idUsuario" name="registro_idUsuario" style="display: none;" type="text">
                     </div>
                 </div>
                 <div id="campos_empresa" style="display: none;">
@@ -387,15 +389,18 @@ Scripts
                         <label for="registro_codigoCotizacion"><?= label('completarRegistro_codigoCotizacion'); ?></label>
                     </div>
                 </div>
+
+                <div class="input-field col s12 envio-formulario">
+                    <button class="btn waves-effect waves-light right" type="submit"
+                            name="action"><?= label('registro_enviar'); ?>
+                    </button>
+                </div>
             </form>
         </div>
     </div>
     <div class="modal-footer">
         <div class="input-field col s12 m6 l6 opt-modal-registro">
             <a style="float:left;" href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Omitir</a>
-        </div>
-        <div class="input-field col s12 m6 l6 opt-modal-registro">
-            <a style="float:right;" href="#" class="waves-effect waves-green btn-flat modal-action modal-close">Guardar</a>
         </div>
     </div>
 </div>
@@ -550,7 +555,7 @@ Scripts
                 if (response == '0') {
                     alert("<?=label('errorGuardar'); ?>");
                 } else {
-                    alert("Cambios gurdados correctamente.");
+                    alert('<?= label('registro_exitoCompletar'); ?>');
                     $('#horasLaborales .modal-header a').click();
                 }
             }
@@ -618,6 +623,22 @@ Scripts
             document.getElementById('campos_trabajadorIndependiente').style.display = 'none';
         }
     }
+    function validacionCorrecta_registro() {
+        var formulario = $('#form_completarRegistro');
+        $.ajax({
+            data: formulario.serialize(),
+            url: formulario.attr('action'),
+            type:  formulario.attr('method'),
+            success:  function (response) {
+                if (response == '0') {
+                    alert("<?=label('errorGuardar'); ?>");
+                } else {
+                    alert('<?= label('registro_exitoCompletar'); ?>');
+                    $('#completarRegistroEmpresa .modal-header a').click();
+                }
+            }
+        });
+    }
     $(document).on('click', '#btn_completarRegistro', function () {
         $.ajax({
             type: 'post',
@@ -637,7 +658,8 @@ Scripts
                     $('#form_completarRegistro #registro_telefonoMovil').val(datosEmpresa['telefonoMovil']);
                     $('#form_completarRegistro #registro_sitioWeb').val(datosEmpresa['sitioWeb']);
                     $('#form_completarRegistro #registro_codigoCotizacion').val(datosEmpresa['codigoCotizacion']);
-                    $('#form_completarRegistro #registro_tamanoEmpresa').val(datosEmpresa['tamano']).change();
+                    $('#form_completarRegistro #registro_idUsuario').val(datosEmpresa['usuario']['idUsuario']);
+                    $('#registro_tamanoEmpresa').val(datosEmpresa['tamano']).change();
 
                     if(tipoEmpresa == 1) {
                         document.getElementById('campos_empresa').style.display = 'block';

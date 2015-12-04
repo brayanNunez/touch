@@ -318,6 +318,50 @@ class Registro extends CI_Controller
         }
     }
 
+    public function completar() {
+        $data = array();
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $tipo = $this->input->post('registro_actividadComercial');
+
+        if($tipo == 1) {
+            $data['datos'] = array(
+                'sitioWeb' => $this->input->post('registro_sitioWeb'),
+                'correo' => $this->input->post('registro_correoEmpresa'),
+                'telefono' => $this->input->post('registro_telefonoFijo'),
+                'telefonoMovil' => $this->input->post('registro_telefonoMovil'),
+                'fechaCreacion' => $this->input->post('registro_fechaNacIndependiente'),
+                'tamano' => $this->input->post('registro_tamanoEmpresa'),
+                'codigoCotizacion' => $this->input->post('registro_codigoCotizacion'),
+                'profesion' => $this->input->post('registro_profesionIndepediente'),
+            );
+            $data['usuario'] = array(
+                'idUsuario' => $this->input->post('registro_idUsuario'),
+                'correo' => $this->input->post('registro_correoEmpresa')
+            );
+        } else {
+            $data['datos'] = array(
+                'sitioWeb' => $this->input->post('registro_sitioWeb'),
+                'correo' => $this->input->post('registro_correoEmpresa'),
+                'telefono' => $this->input->post('registro_telefonoFijo'),
+                'telefonoMovil' => $this->input->post('registro_telefonoMovil'),
+                'fechaCreacion' => $this->input->post('registro_fechaCreacionEmpresa'),
+                'tamano' => $this->input->post('registro_tamanoEmpresa'),
+                'codigoCotizacion' => $this->input->post('registro_codigoCotizacion')
+            );
+        }
+        $data['id'] = $idEmpresa;
+
+        if (!$this->Registro_model->completar($data)) {
+            //Error en la transacci�n
+            echo 0;
+        } else {
+            //correcto
+            echo 1;
+        }
+    }
+
     function rpHash($value) {
         $hash = 5381;
         $value = strtoupper($value);

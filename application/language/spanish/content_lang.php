@@ -402,6 +402,8 @@
     $lang['completarRegistro_correo'] = 'Correo electrónico empresarial';
     $lang['completarRegistro_fechaCreacion'] = 'Fecha de creación';
     $lang['completarRegistro_tamano'] = 'Tamaño';
+    $lang['registro_enviar'] = 'Guardar cambios';
+    $lang['registro_exitoCompletar'] = 'Los cambios han sido guardados correctamente';
 
 //Horas
     $lang['horas_titulo'] = 'Tiempo facturable';
