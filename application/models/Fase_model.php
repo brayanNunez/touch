@@ -139,7 +139,7 @@ class Fase_model extends CI_Model
         try{
             $this->db->trans_begin();
             
-            $fases = $this->db->get_where('fase', array('eliminado' => 0,'idEmpresa' => $idEmpresa, 'fasePadre' => 0));
+            $fases = $this->db->get_where('fase', array('eliminado' => 0,'idEmpresa' => $idEmpresa, 'fasePadre' => 1));
             if (!$fases) throw new Exception("Error en la BD"); 
             $fases = $fases->result_array();
             $this->db->trans_commit();
@@ -162,7 +162,7 @@ class Fase_model extends CI_Model
                 $array = $query->result_array();
                 $row = array_shift($array);//obtiene el primer elemento.. el [0] no sirve en el server
 
-                $subfases = $this->db->get_where('fase', array('idFasePadre' => $id,  'eliminado' => 0));
+                $subfases = $this->db->get_where('fase', array('idFasePadre' => $id,  'eliminado' => 0, 'fasePadre' => null));
                 if (!$subfases) throw new Exception("Error en la BD");   
                 $row['subfases'] = $subfases->result_array();
 

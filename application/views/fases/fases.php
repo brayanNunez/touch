@@ -75,7 +75,7 @@
                                                             <td><?= $fila['codigo'] ?></td>
                                                             <td><?= $fila['nombre'] ?></td>
                                                             <td><?= $fila['notas'] ?></td>
-                                                            <td><a href="#"><?= label('tablaFases_verSubfases'); ?></a></td>
+                                                            <td><a href="#modal_verSubfases" class="modal-trigger abrirVer" data-id-ver="<?= $idEncriptado ?>"><?= label('tablaFases_verSubfases'); ?></a></td>
                                                             <td>
                                                                 <ul id="dropdown-fase<?= $contador ?>"
                                                                   class="dropdown-content">
@@ -225,6 +225,44 @@
                     agregarNuevaFaseEditar('1', subFases[i]['idFase'], subFases[i]['codigo'], subFases[i]['nombre'], subFases[i]['notas']);
                   };
                   $('label').addClass('active');
+                 }
+               }); 
+          });
+
+          $(document).on( 'click', '.abrirVer', function () {
+
+              // limpiarFormEditar();
+              idVer = $(this).data('id-ver');
+
+              var url = '<?=base_url()?>fases/editar';
+              var method = 'POST'; 
+              alert(idVer);
+
+              // datosFase
+
+              $.ajax({
+                 type: method,
+                 url: url,
+                 data: {idEditar : idVer},
+                 success: function(response)
+                 {
+                  
+                  var fase = $.parseJSON(response);
+                  var subFases = fase['subfases'];
+                  $('#datosFase').text(fase['codigo'] + ' ' + fase['nombre'] +': '+ fase['notas']);
+                  $('#form_fasesEditar #fase_nombre').val(fase['nombre']);
+                  $('#form_fasesEditar #fase_codigo').val(fase['codigo']);
+                  $('#form_fasesEditar #fase_notas').val(fase['notas']);
+                  $('#form_fasesEditar #idFase').val(fase['idFase']);
+                  $('#form_fasesEditar #codigoOriginal').val(fase['codigo']);
+                  
+                  $('#listaSubfases').empty();
+                  for (var i = 0; i < subFases.length; i++) {
+                    // alert(subFases[i]['nombre']);
+                    $("#listaSubfases").append('<li>' + subFases[i]['codigo'] + ' ' + subFases[i]['nombre'] +': '+ subFases[i]['notas'] + '</li>');
+                    // agregarNuevaFaseEditar('1', subFases[i]['idFase'], subFases[i]['codigo'], subFases[i]['nombre'], subFases[i]['notas']);
+                  };
+                  // $('label').addClass('active');
                  }
                }); 
           });
@@ -841,6 +879,25 @@ function validacionCorrectaEditar(){
     </div>
     <div class="modal-content">
         <p><?= label('confirmarDesactivarFase'); ?></p>
+    </div>
+    <div class="modal-footer black-text">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+
+
+
+
+<div id="modal_verSubfases" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('fases_verFase_fase'); ?><b id="datosFase"></b></p>
+        <p><?= label('fases_verFase_subfases'); ?></p>
+        <ul id="listaSubfases">
+        </ul>
     </div>
     <div class="modal-footer black-text">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>

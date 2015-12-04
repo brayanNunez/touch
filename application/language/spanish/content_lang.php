@@ -1004,6 +1004,9 @@ $lang['Persona_tablaOpciones'] = 'Opciones';
     $lang['formServicio_nuevaPersonaSalarioMonto'] = 'Monto';
     $lang['formServicio_seleccioneFase'] = 'Fase';
     $lang['formServicio_fases_agregarTodas'] = 'Todas';
+    $lang['fases_verFase_fase'] = 'Fase: ';
+    $lang['fases_verFase_subfases'] = 'Subfases: ';
+    
     
     $lang['formServicio_seleccioneSubfase'] = 'Subfase';
     $lang['formServicio_agregarTodasFases'] = 'Agregar todas las fases';
