@@ -143,15 +143,19 @@
                                                 <h5><?= label('formPerfil_direccion'); ?></h5>
                                             </div>
                                             <div>
-                                                <div class="input-field col s12 m12 l6 country-select" style="margin-top: 13px;">
-                                                    <select id="registro_paisTrabajador" name="registro_paisTrabajador">
-                                                        <option class="selected-option" value="0"><?= label('formPerfil_pais'); ?>
-                                                        </option>
-                                                        <option value="1">Costa Rica</option>
-                                                        <option value="2">Colombia</option>
-                                                        <option value="3">Brasil</option>
-                                                        <option value="4">USA</option>
-                                                        <option value="5">Chile</option>
+                                                <div class="input-field col s12 m12 l6 inputSelector" >
+                                                    <label for="registro_paisTrabajador"><?= label('formCliente_direccionPais'); ?></label>
+                                                    <br>
+                                                    <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="registro_paisTrabajador" name="registro_paisTrabajador" class="required browser-default chosen-select">
+                                                        <option value="0"><?= label('formPerfil_pais'); ?></option>
+                                                        <?php
+                                                        if(isset($paises)) {
+                                                            foreach ($paises as $pais) { ?>
+                                                                <option value="<?= $pais['idPais']; ?>"><?= $pais['nombre']; ?></option>
+                                                                <?php
+                                                            }
+                                                        }
+                                                        ?>
                                                     </select>
                                                 </div>
                                                 <div class="input-field col s12 m12 l6">
@@ -195,15 +199,19 @@
                                                 <h5><?= label('formPerfil_direccion'); ?></h5>
                                             </div>
                                             <div>
-                                                <div class="input-field col s12 m12 l6 country-select" style="margin-top: 13px;">
-                                                    <select id="registro_paisEmpresa" name="registro_paisEmpresa">
-                                                        <option class="selected-option" value="0"><?= label('formPerfil_pais'); ?>
-                                                        </option>
-                                                        <option value="1">Costa Rica</option>
-                                                        <option value="2">Colombia</option>
-                                                        <option value="3">Brasil</option>
-                                                        <option value="4">USA</option>
-                                                        <option value="5">Chile</option>
+                                                <div class="input-field col s12 m12 l6 inputSelector" >
+                                                    <label for="registro_paisEmpresa"><?= label('formCliente_direccionPais'); ?></label>
+                                                    <br>
+                                                    <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="registro_paisEmpresa" name="registro_paisEmpresa" class="required browser-default chosen-select">
+                                                        <option value="0"><?= label('formPerfil_pais'); ?></option>
+                                                        <?php
+                                                        if(isset($paises)) {
+                                                            foreach ($paises as $pais) { ?>
+                                                                <option value="<?= $pais['idPais']; ?>"><?= $pais['nombre']; ?></option>
+                                                                <?php
+                                                            }
+                                                        }
+                                                        ?>
                                                     </select>
                                                 </div>
                                                 <div class="input-field col s12 m12 l6">
@@ -299,6 +307,16 @@
 </section>
 <!-- END CONTENT-->
 
+<!--Script para selects de busqueda-->
+<script type="text/javascript">
+    $(document).on('ready', function(){
+        var config = {'.chosen-select'           : {}}
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    });
+</script>
+<!--Script para mostrar los datos correspondientes-->
 <script type="text/javascript">
     function datosRegistro(opcionSeleccionada) {
         if (opcionSeleccionada.value == "1") {

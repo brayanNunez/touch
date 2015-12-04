@@ -13,9 +13,15 @@ class Registro extends CI_Controller
 
     public function index()
     {
-        $this->load->view('home/header_2');
-        $this->load->view('home/registro');
-        $this->load->view('home/footer_2');
+        $paises = $this->Registro_model->paises();
+        if ($paises === false || $paises === array()) {
+            echo "Error en la transacción";
+        } else {
+            $data['paises'] = $paises;
+            $this->load->view('home/header_2');
+            $this->load->view('home/registro', $data);
+            $this->load->view('home/footer_2');
+        }
     }
 
     public function registrar()
@@ -31,10 +37,13 @@ class Registro extends CI_Controller
         }
         if ($tipoRegistro == 1) {
             $data['datos'] = array(
+                'empresa' => 0,
                 'cedula' => $this->input->post('registro_cedulaTrabajador'),
+                'correo' => $this->input->post('registro_correoTrabajador'),
                 'nombre' => $this->input->post('registro_nombreEmpresaTrabajador'),
                 'enviarCorreos' => $enviarCorreos,
-                'idMoneda' => 1
+                'idMoneda' => 1,
+                'activa' => 1
             );
             $data['direccion'] = array(
                 'pais' => $this->input->post('registro_paisTrabajador'),
@@ -54,11 +63,13 @@ class Registro extends CI_Controller
             $data['contrasenaConfirm'] = $this->input->post('registro_confirmarContrasenaTrabajador');
         } elseif ($tipoRegistro == 2) {
             $data['datos'] = array(
+                'empresa' => 1,
                 'cedula' => $this->input->post('registro_cedulaEmpresa'),
                 'nombre' => $this->input->post('registro_nombreEmpresa'),
                 'nombreFantasia' => $this->input->post('registro_nombreFantasiaEmpresa'),
                 'enviarCorreos' => $enviarCorreos,
-                'idMoneda' => 1
+                'idMoneda' => 1,
+                'activa' => 1
             );
             $data['direccion'] = array(
                 'pais' => $this->input->post('registro_paisEmpresa'),
@@ -85,6 +96,11 @@ class Registro extends CI_Controller
         $validacionCorreo = $resultado = $this->Usuario_model->existeCorreo($data);
         $validacionCedula = $resultado = $this->Registro_model->existeIdentificacion($data);
 
+        $paises = $this->Registro_model->paises();
+        if ($paises != false) {
+            $data['paises'] = $paises;
+        }
+
         if($validacionCorreo === false) {
             $data['error'] = 0;
             $this->load->view('home/header_2');
@@ -106,13 +122,13 @@ class Registro extends CI_Controller
                     $this->load->view('home/footer_2');
                 } else {
                     if ($validacionCedula == 1) {
-                        //Ya existe el correo
+                        //Ya existe el cedula
                         $data['error'] = 3;
                         $this->load->view('home/header_2');
                         $this->load->view('home/registro', $data);
                         $this->load->view('home/footer_2');
                     } else {
-                        //correo valido
+                        //cedula valido
                         if($captcha == $valor) {
                             $resultado = $this->Registro_model->registrar($data);
                             if (!$resultado) {
@@ -123,7 +139,7 @@ class Registro extends CI_Controller
                                 $this->load->view('home/footer_2');
                             } else {
                                 //Exito en la transaccion
-                                redirect('inicio/index');
+                                redirect('inicio/index', 'refresh');
                             }
                         } else {
                             //Error en el captcha
