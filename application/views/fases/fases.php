@@ -236,7 +236,7 @@
 
               var url = '<?=base_url()?>fases/editar';
               var method = 'POST'; 
-              alert(idVer);
+              // alert(idVer);
 
               // datosFase
 
@@ -250,11 +250,6 @@
                   var fase = $.parseJSON(response);
                   var subFases = fase['subfases'];
                   $('#datosFase').text(fase['codigo'] + ' ' + fase['nombre'] +': '+ fase['notas']);
-                  $('#form_fasesEditar #fase_nombre').val(fase['nombre']);
-                  $('#form_fasesEditar #fase_codigo').val(fase['codigo']);
-                  $('#form_fasesEditar #fase_notas').val(fase['notas']);
-                  $('#form_fasesEditar #idFase').val(fase['idFase']);
-                  $('#form_fasesEditar #codigoOriginal').val(fase['codigo']);
                   
                   $('#listaSubfases').empty();
                   for (var i = 0; i < subFases.length; i++) {
@@ -326,7 +321,7 @@
             var codigo = '<td>'+codigo+'</td>';
             var fase = '<td>'+fase+'</td>';
             var descripcion = '<td>'+ descripcion +'</td>';
-            var subfases = '<td><a>'+tablaFases_verSubfases+'</a></td>';
+            var subfases = '<td><a href="#modal_verSubfases" class="modal-trigger abrirVer" data-id-ver="'+idEncriptado+'">'+tablaFases_verSubfases+'</a></td>';
 
 
             // //initialiase dataTable and set config options
@@ -415,7 +410,7 @@
 
 
  function validacionCorrecta(){
-    alert(cantidadNuevasFases);
+    // alert(cantidadNuevasFases);
     var repetidos = false;
     $("#form_fases input[name*='fase_codigo']").each(function () {
         var codigoEvaluar = $(this);
@@ -481,7 +476,7 @@
 }
 
 function validacionCorrectaEditar(){
-  alert(cantidadNuevasFases);
+  // alert(cantidadNuevasFases);
     var repetidos = false;
     $("#form_fasesEditar input[name*='fase_codigo']").each(function () {
         var codigoEvaluar = $(this);
@@ -893,9 +888,10 @@ function validacionCorrectaEditar(){
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
-    <div class="modal-content">
-        <p><?= label('fases_verFase_fase'); ?><b id="datosFase"></b></p>
-        <p><?= label('fases_verFase_subfases'); ?></p>
+    <div class="modal-content" style="text-align: left">
+        <b><?= label('fases_verFase_fase'); ?></b>
+        <p id="datosFase"></p>
+        <b><?= label('fases_verFase_subfases'); ?></b>
         <ul id="listaSubfases">
         </ul>
     </div>

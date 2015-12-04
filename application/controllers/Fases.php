@@ -94,6 +94,7 @@ class Fases extends CI_Controller
                          'nombre' => $this->input->post('fase_nombre'.$contador),
                          'notas' => $this->input->post('fase_notas'.$contador),
                          'idEmpresa' => $idEmpresa,
+                         'fasePadre' => '0',
                          'eliminado' => '0'
                          );
                         array_push($nuevos, $fase);
@@ -258,7 +259,7 @@ class Fases extends CI_Controller
                  'nombre' => $this->input->post('fase_nombre'.$contador),
                  'notas' => $this->input->post('fase_notas'.$contador),
                  'idEmpresa' => $idEmpresa,
-                 'fasePadre' => 0,
+                 'fasePadre' => '0',
                  'eliminado' => '0'
                  );
                 array_push($fases, $fase);

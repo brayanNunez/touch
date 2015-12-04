@@ -162,7 +162,7 @@ class Fase_model extends CI_Model
                 $array = $query->result_array();
                 $row = array_shift($array);//obtiene el primer elemento.. el [0] no sirve en el server
 
-                $subfases = $this->db->get_where('fase', array('idFasePadre' => $id,  'eliminado' => 0, 'fasePadre' => null));
+                $subfases = $this->db->get_where('fase', array('idFasePadre' => $id,  'eliminado' => 0, 'fasePadre' => 0));
                 if (!$subfases) throw new Exception("Error en la BD");   
                 $row['subfases'] = $subfases->result_array();
 
