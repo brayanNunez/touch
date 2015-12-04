@@ -20,7 +20,19 @@
             </div>
             <div id="encabezado">
                <div id="logo" class="box">
-                  <img class="imagen" src="<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/<?= $resultado['empresa']['logo'];?>"/>
+
+                  <?php
+                  if ($resultado['empresa']['logo'] != '') {
+                     ?>
+                     <img class="imagen" src="<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/<?= $resultado['empresa']['logo'];?>"/>
+                     <?php
+                  } else {
+                      ?>
+                      <img class="imagen" src="<?= base_url() ?>files/imagenDiseno.png"/>
+                     <?php
+                  }
+                  ?>
+                  
                </div>
                <div id="datosEncabezado">
                   <div class="datos" id="datos1">
@@ -111,7 +123,18 @@
                </div>
                <div id="footerCotizacion">
                   <div class="box" id="logo">
-                     <img id="imagenFooter" class="imagen" src="<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/<?= $resultado['empresa']['logo'];?>"/>
+                     
+                     <?php
+                     if ($resultado['empresa']['logo'] != '') {
+                        ?>
+                        <img id="imagenFooter" class="imagen" src="<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/<?= $resultado['empresa']['logo'];?>"/>
+                        <?php
+                     } else {
+                         ?>
+                         <img id="imagenFooter" class="imagen" src="<?= base_url() ?>files/imagenDiseno.png"/>
+                        <?php
+                     }
+                     ?>
                   </div>
                   <div id="datosFooter">
                      <div class="datos" id="datos1">
@@ -460,17 +483,17 @@
    });
    
     $(document).ready(function(){
-       // cargarDieseno(0, false);
+       // cargarDiseno(0, false);
    
        <?php 
       if (isset($resultado['plantilla'])) {// se esta editando una cotizacion
           ?>
            // alert(arrayPlantilla['colorEncabezado']);
-           cargarDieseno(0, false);
+           cargarDiseno(0, false);
            <?php
       }  else {
            ?>
-           cargarDieseno(0, true);
+           cargarDiseno(0, true);
            <?php
       }
       ?>
@@ -562,7 +585,17 @@
    
                }
            });
-         // actualizarCuerpo();
+            
+            
+            //Las nuevas filas que se insertaron no están actualizadas en cuanto a si sus columnas son visibles o no. El siguiente código los actualiza según los th de la tabla  
+            $('td.col_1').css('display', $('th.col_1').css('display'));
+            $('td.col_2').css('display', $('th.col_2').css('display'));
+            $('td.col_3').css('display', $('th.col_3').css('display'));
+            $('td.col_4').css('display', $('th.col_4').css('display'));
+            $('td.col_5').css('display', $('th.col_5').css('display'));
+            $('td.col_6').css('display', $('th.col_6').css('display'));
+            $('td.col_7').css('display', $('th.col_7').css('display'));
+
    
        }
 
@@ -611,8 +644,10 @@
    var footer = 0;// esta varable es actualizada por el metodo recalcularAlturaContenido y se usa en el metodo obtenerHTML.
    var informacion = 0;// esta varable es actualizada por el metodo recalcularAlturaContenido y se usa en el metodo obtenerHTML.
    var footerCotizacion = 0;// esta varable es actualizada por el metodo recalcularAlturaContenido y se usa en el metodo obtenerHTML.
-   function cargarDieseno(idPlantilla, plantillaDesdeLista){
+   function cargarDiseno(idPlantilla, plantillaDesdeLista){
        recalcularAlturaContenido();
+
+
    
        function recalcularAlturaContenido() {
             // alert('calculando');
