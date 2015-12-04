@@ -1,8 +1,3 @@
-<button id="hola">prueba</button>
-
-
-
-
 <div style="display: none" id="inset_form"></div>
 <!-- START CONTENT  -->
 
@@ -985,9 +980,9 @@ function validacionCorrectaEditar(){
                 </div>
             </div>
             <div class="row">
-              <a href="#" style="font-size: larger;float: left;text-decoration: underline;"
+              <!--<a href="#" style="font-size: larger;float: left;text-decoration: underline;"
                  class="modal-action modal-close"><?= label('cancelar'); ?>
-              </a>
+              </a>-->
               <a onclick="$(this).closest('form').submit()" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
                   <?= label('fases_guardarCambios'); ?>
               </a>
