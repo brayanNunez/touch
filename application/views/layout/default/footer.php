@@ -328,13 +328,6 @@ Scripts
         </div>
         <div class="row" style="margin-bottom: 0;">
             <form id="form_completarRegistro" action="<?=base_url()?>registro/completar" method="post">
-                <div class="input-field col s12">
-<!--                    <select id="registro_actividadComercial" name="registro_actividadComercial" onchange="datosRegistro(this)">-->
-<!--                        <option value="1" selected>Trabajador independiente</option>-->
-<!--                        <option value="2">Empresa</option>-->
-<!--                    </select>-->
-<!--                    <label class="label_select" for="registro_actividadComercial">--><?//= label('completarRegistro_actividadComercial'); ?><!--</label>-->
-                </div>
 
                 <div id="campos_trabajadorIndependiente" style="display: block;">
                     <div class="input-field col s12">
@@ -346,6 +339,7 @@ Scripts
                         <label for="registro_profesionIndepediente"><?= label('completarRegistro_profesion'); ?></label>
                         
                         <input id="registro_idUsuario" name="registro_idUsuario" style="display: none;" type="text">
+                        <input id="registro_actividadComercial" name="registro_actividadComercial" style="display: none;" type="text">
                     </div>
                 </div>
                 <div id="campos_empresa" style="display: none;">
@@ -359,14 +353,6 @@ Scripts
                     </div>
                     <div class="input-field col s12">
                         <select id="registro_tamanoEmpresa" name="registro_tamanoEmpresa">
-                            <option value="1">1 a 5</option>
-                            <option value="2">6 a 10</option>
-                            <option value="3">11 a 25</option>
-                            <option value="4">26 a 50</option>
-                            <option value="5">50+</option>
-                            <option value="6">100+</option>
-                            <option value="7">250+</option>
-                            <option value="8">500+</option>
                         </select>
                         <label class="label_select" for="registro_tamanoEmpresa"><?= label('completarRegistro_tamano'); ?></label>
                     </div>
@@ -614,15 +600,6 @@ Scripts
 </script>
 <!--Script para manejo de completar registro-->
 <script type="text/javascript">
-    function datosRegistro(opcionSeleccionada) {
-        if (opcionSeleccionada.value == "1") {
-            document.getElementById('campos_trabajadorIndependiente').style.display = 'block';
-            document.getElementById('campos_empresa').style.display = 'none';
-        } else {
-            document.getElementById('campos_empresa').style.display = 'block';
-            document.getElementById('campos_trabajadorIndependiente').style.display = 'none';
-        }
-    }
     function validacionCorrecta_registro() {
         var formulario = $('#form_completarRegistro');
         $.ajax({
@@ -659,12 +636,15 @@ Scripts
                     $('#form_completarRegistro #registro_sitioWeb').val(datosEmpresa['sitioWeb']);
                     $('#form_completarRegistro #registro_codigoCotizacion').val(datosEmpresa['codigoCotizacion']);
                     $('#form_completarRegistro #registro_idUsuario').val(datosEmpresa['usuario']['idUsuario']);
-                    $('#registro_tamanoEmpresa').val(datosEmpresa['tamano']).change();
+
+                    generarSelectTamano(datosEmpresa['tamano']);
 
                     if(tipoEmpresa == 1) {
+                        $('#registro_actividadComercial').val(2);
                         document.getElementById('campos_empresa').style.display = 'block';
                         document.getElementById('campos_trabajadorIndependiente').style.display = 'none';
                     } else {
+                        $('#registro_actividadComercial').val(1);
                         document.getElementById('campos_trabajadorIndependiente').style.display = 'block';
                         document.getElementById('campos_empresa').style.display = 'none';
                     }
@@ -675,6 +655,55 @@ Scripts
             }
         });
     });
+    function generarSelectTamano($opcionSeleccionada) {
+        var arrayTamano = [];
+        arrayTamano[0] = ['1', '1 a 5'];
+        arrayTamano[1] = ['2', '6 a 10'];
+        arrayTamano[2] = ['3', '11 a 25'];
+        arrayTamano[3] = ['4', '26 a 50'];
+        arrayTamano[4] = ['5', '50+'];
+        arrayTamano[5] = ['6', '100+'];
+        arrayTamano[6] = ['7', '250+'];
+        arrayTamano[7] = ['8', '500+'];
+
+        var valorTamano = parseInt($opcionSeleccionada);
+        var selectTamano = $('#registro_tamanoEmpresa');
+        selectTamano.empty();
+        if(valorTamano != 0 && valorTamano != null) {
+            selectTamano.append($('<option>', {
+                value: 0,
+                text: 'Seleccione uno',
+                disabled: true
+            }));
+        } else {
+            selectTamano.append($('<option>', {
+                value: 0,
+                text: 'Seleccione uno',
+                selected: true,
+                disabled: true
+            }));
+        }
+
+        for(var i = 0; i < arrayTamano.length; i++) {
+            var opcionTamano = arrayTamano[i];
+            if(opcionTamano != null) {
+                if(opcionTamano[0] == valorTamano) {
+                    selectTamano.append($('<option>', {
+                        value: opcionTamano[0],
+                        text: opcionTamano[1],
+                        selected: true
+                    }));
+                } else {
+                    selectTamano.append($('<option>', {
+                        value: opcionTamano[0],
+                        text: opcionTamano[1],
+                        selected: false
+                    }));
+                }
+            }
+        }
+        selectTamano.material_select();
+    }
 </script>
 
     </body>
