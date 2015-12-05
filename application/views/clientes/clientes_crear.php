@@ -404,6 +404,12 @@
                                     $('#cliente_direccionPais').val('').trigger('chosen:updated');
                                     $('#cliente_formaPago').val('').trigger('chosen:updated');
                                     $('#cliente_monedaCotizar').val('').trigger('chosen:updated');
+
+                                    $('#imagen_seleccionada').attr('src', '<?= base_url(); ?>files/default-user-image.png');
+                                    cantidad = 0;
+                                    contador = 0;
+                                    actualizarCantidad();
+                                    $('#contenedorContactos').empty();
                                 }
                             },
                             cache: false,
