@@ -334,12 +334,11 @@
 
 </section>
 <div style="visibility:hidden; position:absolute">
-                                          
     <a id="linkContactosElimminar" href="#eliminarContacto" class="modal-trigger" data-fila-eliminar="1" title="<?= label('formCliente_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>
 </div>
 <!-- END CONTENT-->
 
-<!--Script para insercion de datos, selects-->
+<!-- Script para manejo de tabla, insercion de datos, selects de busqueda-->
 <script>
     $('#checkbox_todosVendedores').on('click', function(){
         if ($(this).prop('checked')) {
@@ -518,7 +517,7 @@
         });
     });
 </script>
-<!--script para el manejo de la imagen del cliente -->
+<!-- Script para manejo de la imagen del cliente -->
 <script>
     function readURL(input) {
         if (input.files && input.files[0]) {
@@ -554,8 +553,7 @@
         }
     });
 </script>
-
-<!-- Script para tags -->
+<!-- Script para manejo de tags -->
 <script>
     $(document).ready(function () {
 
@@ -686,10 +684,8 @@
         });
     });
 </script>
-
-<!-- Funcion para mostrar elementos -->
+<!-- Funcion para mostrar elementos y manejo de contactos -->
 <script>
-
     function datosCliente(opcionSeleccionada) {
         if (opcionSeleccionada.value == "0") {
             document.getElementById('elementos-cliente-fisico').style.display = 'block';

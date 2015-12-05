@@ -460,7 +460,7 @@
     <a id="linkContactosElimminar" href="#eliminarContacto-editar" class="modal-trigger" data-fila-eliminar="1" title="<?= label('formCliente_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>
 </div>
 
-<!--Script para manejo de tags, select de busqueda, insercion de datos, checks y tabla-->
+<!-- Script para manejo de tags, select de busqueda, insercion de datos, checks y tabla-->
 <script>
     $('#checkbox_todosVendedores').on('click', function(){
          if ($(this).prop('checked')) {
@@ -495,7 +495,6 @@
     var miIdActual = "<?php if (isset($resultado)) {echo $resultado['identificacion'];} ?>";
     function validacionCorrecta(){
         var tipoCliente = $('#cliente_tipo option:selected').val();
-        // alert(tipoCliente);
         var identificacion = '';
         if (tipoCliente == 0) {
             identificacion = $('#cliente_id').val();
@@ -503,15 +502,14 @@
             identificacion = $('#clientejuridico_id').val();
         }
         if (miIdActual == identificacion) {
-            var url = $('form').attr('action');
-            var method = $('form').attr('method'); 
+            var url = $('#form_cliente').attr('action');
+            var method = $('#form_cliente').attr('method');
             $.ajax({
                 type: method,
                 url: url,
-                data: $('form').serialize(),
+                data: $('#form_cliente').serialize(),
                 success: function(response)
                 {
-                    // alert(response);
                     if (response == 0) {
                         $('#transaccionIncorrecta').openModal();
                     } else {
@@ -538,12 +536,12 @@
                             }
                             break;
                         case '2':
-                            var url = $('form').attr('action');
-                            var method = $('form').attr('method');
+                            var url = $('#form_cliente').attr('action');
+                            var method = $('#form_cliente').attr('method');
                             $.ajax({
                                 type: method,
                                 url: url,
-                                data: $('form').serialize(),
+                                data: $('#form_cliente').serialize(),
                                 success: function(response)
                                 {
                                     if (response == 0) {
@@ -576,6 +574,8 @@
                     $('#imagen_perfil_usuario').attr('src', response + '?' + d.getTime());
                     $('#imagen_perfil_usuario_ver').attr('src', response + '?' + d.getTime());
                     formPW.find('input:file,input:text').val('');
+
+                    $('#cambio-imagen .modal-header a').click();
                 }
             },
             cache: false,
@@ -662,7 +662,7 @@
         });
     });
 </script>
-<!-- Funcion para mostrar elementos -->
+<!-- Script para mostrar elementos y manejo de contactos -->
 <script>
     $(document).ready(function () {
     <?php
@@ -788,7 +788,7 @@
     }
 </script>
 
-<!-- lista modals -->
+<!-- Inicio lista modals -->
 <div id="eliminarContacto-editar" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
@@ -851,7 +851,7 @@
         <p><?= label('clienteEditadoCorrectamente'); ?></p>
     </div>
     <div class="modal-footer">
-        <a href="<?= base_url() ?>clientes" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
 <div id="transaccionIncorrecta" class="modal">
@@ -868,7 +868,7 @@
 </div>
 <!-- Fin lista modals-->
 
-<!--Script para manejo de la imagen-->
+<!-- Script para manejo de la imagen-->
 <script>
     function readURL(input) {
         if (input.files && input.files[0]) {
