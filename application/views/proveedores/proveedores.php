@@ -319,6 +319,7 @@
 </div>
 <!-- END CONTENT-->
 
+<!--Script para select de busqueda-->
 <script>
     $(document).on('ready', function(){
         var config = {'.chosen-select'           : {}}
@@ -328,8 +329,7 @@
 
     });
 </script>
-
-<!-- Funcion de insercion de datos-->
+<!-- Script para insercion de datos-->
 <script>
     function validacionCorrecta_Persona() {
         var formulario = $('#formPersona');
@@ -358,6 +358,22 @@
                                         $('#linkModalGuardado').click();
                                         $('form')[0].reset();
                                         $('#persona_nacionalidad').val('').trigger('chosen:updated');      
+                                        $('#persona_direccionPais').val('').trigger('chosen:updated');
+                                        $('#imagen_seleccionada').attr('src', '<?= base_url(); ?>files/default-user-image.png');
+                                        $('#persona_palabras').tagsinput('removeAll');
+                                        $('#categorias_persona').tagsinput('removeAll');
+                                        cantidad = 0;
+                                        contador = 0;
+                                        actualizarCantidad();
+
+                                        nombres.splice(0, nombres.length);
+                                        cantidadGasto = 0;
+                                        contadorGasto = 0;
+                                        actualizarCantidadGastos();
+                                        var table = $('#proveedor_gastos').DataTable();
+                                        table.clear().draw();
+
+                                        $('#contenedorContactos').empty();
                                         break;
                                 }
                             },
@@ -375,8 +391,7 @@
         });
     }
 </script>
-
-<!--script para el manejo de la imagen de la persona-->
+<!-- Script para el manejo de la imagen de la persona-->
 <script>
     function readURL(input) {
         if (input.files && input.files[0]) {
@@ -413,8 +428,7 @@
         }
     });
 </script>
-
-<!-- Script para tags -->
+<!-- Script para manejo de tags -->
 <script>
     $(document).ready(function () {
 
@@ -517,7 +531,7 @@
         });
     });
 </script>
-<!--Script de tags de categorias-->
+<!--Script para manejo de tags de categorias-->
 <script>
     $(document).ready(function () {
         var CategoriasPersona = new Bloodhound({
@@ -543,8 +557,7 @@
         });
     });
 </script>
-
-<!-- Funcion para mostrar elementos y manejo de datos de contactos -->
+<!-- Script para mostrar elementos y manejo de datos de contactos -->
 <script>
     function tipoProveedor(opcionSeleccionada) {
         if (opcionSeleccionada.value == "1") {
@@ -645,8 +658,7 @@
         contador++;
     }
 </script>
-
-<!--Funciones para gastos-->
+<!--Funciones para gastos, formas de pago, categorias de gasto y selects de busqueda-->
 <script>
     <?php
         $js_arrayNombres = json_encode($codigosGasto);
@@ -1237,6 +1249,7 @@
         });
     }
 </script>
+<!--Script para eliminar gastos y manejo de la tabla de gastos-->
 <script>
     $(document).on("ready", function () {
         <?php
