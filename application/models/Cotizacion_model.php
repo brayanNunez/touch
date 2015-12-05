@@ -271,10 +271,19 @@ class Cotizacion_model extends CI_Model
             $data['monedas'] = $moneda;
 
             
-            
+            $this->db->set('fechaCreacion', 'NOW()', FALSE);
             $query = $this->db->insert('cotizacion', array('idEmpresa' => $datos['idEmpresa'],'idEstadoCotizacion' => 1,'idUsuario' => $datos['idUsuario'], 'eliminado' => 1));
             if (!$query) throw new Exception("Error en la BD"); 
             $data['idCotizacion'] = $this->db->insert_id();
+
+
+            $this->db->select('fechaCreacion');
+            $query = $this->db->get_where('cotizacion', array('idCotizacion' => $data['idCotizacion']));
+            if (!$query) throw new Exception("Error en la BD"); 
+
+            $query = $query->result_array();
+            $data['fechaCreacion'] = array_shift($query)['fechaCreacion'];
+
 
              $query = $this->db->insert('plantilladiseno', array('idEmpresa' => $datos['idEmpresa'],'idCotizacion' => $data['idCotizacion'],'publica' => 0, 'eliminado' => 0));
             if (!$query) throw new Exception("Error en la BD");

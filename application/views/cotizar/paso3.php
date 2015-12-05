@@ -45,8 +45,21 @@
                   </div>
                   <div class="datos" id="datos2">
                      <div></div>
-                     <p class="box" id="fecha">Fecha: 24/06/2015</p>
-                     <p class="box" id="hora">Hora: 09:45 am</p>
+                     <?php 
+                     $fecha = '';
+                     if (isset($resultado['cotizacion'])) {
+                        $fecha = $resultado['cotizacion']['fechaCreacion'];
+                     } else {
+                        $fecha = $resultado['fechaCreacion'];
+                     }
+
+                     ?>
+                     <p class="box" id="fecha">Fecha: <?= date("d-m-y", strtotime($fecha));?></p>
+                     <p class="box" id="hora">Hora: <?php 
+                        $date = new DateTime($fecha);
+                        echo $date->format('g:i a');
+
+                     ?></p>
                   </div>
                </div>
             </div>
