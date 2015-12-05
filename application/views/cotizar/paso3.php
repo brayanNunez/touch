@@ -118,12 +118,15 @@
                   </a>
                </div>
                <div id="informacion">
+                  <div></div>
                   <p class="box" id="formaPago">Forma de pago: 50% primer mes, 50% segundo mes.</p>
+
                   <p class="box" id="validez">Válido hasta: <span id="disenoValidez"></span></p>
                   <p class="box" id="informacionDetalle"></p>
                   <div class="box" id="firma">
-                     <p>Firma:__________________________</p>
-                     <p id="nombreFirma">Emanuel Conejo</p>
+                     <!-- <img id="imagenFirma" class="imagen" src="<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/img_firmaEmpresa_1.jpg"/> -->
+                     <p id="textoFirma">Firma:<span><img id="imagenFirma" class="imagen" src="<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/Firma.png"/></span></p>
+                     <p id="nombreFirma">Brayan Jose Nunez Rojas</p>
                   </div>
                </div>
                <div class="barra-horizontal" id="barra3">
