@@ -118,15 +118,31 @@
                   </a>
                </div>
                <div id="informacion">
-                  <div></div>
-                  <p class="box" id="formaPago">Forma de pago: 50% primer mes, 50% segundo mes.</p>
+                  <div></div>                  <p class="box" id="formaPago">Forma de pago: 50% primer mes, 50% segundo mes.</p>
 
                   <p class="box" id="validez">Válido hasta: <span id="disenoValidez"></span></p>
                   <p class="box" id="informacionDetalle"></p>
                   <div class="box" id="firma">
                      <!-- <img id="imagenFirma" class="imagen" src="<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/img_firmaEmpresa_1.jpg"/> -->
-                     <p id="textoFirma">Firma:<span><img id="imagenFirma" class="imagen" src="<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/Firma.png"/></span></p>
-                     <p id="nombreFirma">Brayan Jose Nunez Rojas</p>
+                     <p id="textoFirma">Firma:<span>
+                     <?php
+                     if ($resultado['empresa']['firma'] != '') {
+                        ?>
+                        <img id="imagenFirma" class="imagen" src="<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/<?= $resultado['empresa']['firma'];?>"/>
+                        <?php
+                     } else {
+                         ?>
+                         <img id="imagenSinFirma" class="imagen" src="<?= base_url() ?>files/imagenDiseno.png"/>
+                        <?php
+                     }
+                     ?>
+                     </span></p>
+
+
+                     <!-- <p id="textoFirma">Firma:<span><img id="imagenFirma" class="imagen" src="<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/Firma.png"/></span></p> -->
+                     <div id="contenedorNombreFirma">
+                        <p id="nombreFirma">Brayan Nunez Rojas</p>
+                     </div>
                   </div>
                </div>
                <div class="barra-horizontal" id="barra3">

@@ -322,9 +322,7 @@ etiqueta*/
 	 padding: 5px;
 }
 
-#nombreFirma{
-	margin-left: 7%;
-}
+
 /*td {
     background-color: #f6f6f6;
     border-bottom: 0.9px solid #ddd;
@@ -397,7 +395,18 @@ p{
     /*margin-left: 50px;*/
     border-bottom: 2px solid; 
 }
+#imagenSinFirma{
+	width:200px;
+    height: 75px;
+    border-bottom: 2px solid; 
+}
 
 #textoFirma{
 	margin-bottom: 0px;
+}
+
+#contenedorNombreFirma{
+	width:200px;
+	text-align: center;
+	margin-left: 6%;
 }
