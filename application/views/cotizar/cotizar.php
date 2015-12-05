@@ -199,6 +199,7 @@
         generarListas();
 
 
+
          $(document).on('change','.chosen-select',function(){
             var valor = $(this).val();
             var tipo = $(this).attr("data-tipo");
@@ -214,17 +215,31 @@
                     break;
                     case 'productoItem':
                         var numeroFila = $(this).attr('data-fila');
-                        var select = $('#productoNombre_' + numeroFila);
-                        select.val(valor);
-                        select.trigger("chosen:updated");
-                        cargarFila(valor, numeroFila);
+                        var existe = verificarExiste(valor, numeroFila);
+                        if (existe) {
+                            alert('<?=label('paso2_servicioRepetido'); ?>');
+                            $(this).val($('#productoNombre_' + numeroFila).val());
+                            $(this).trigger("chosen:updated");
+                        } else{
+                            var select = $('#productoNombre_' + numeroFila);
+                            select.val(valor);
+                            select.trigger("chosen:updated");
+                            cargarFila(valor, numeroFila);
+                        };
                     break;
                     case 'productoNombre':
                         var numeroFila = $(this).attr('data-fila');
-                        var select = $('#productoItem_' + numeroFila);
-                        select.val(valor);
-                        select.trigger("chosen:updated");
-                        cargarFila(valor, numeroFila);
+                        var existe = verificarExiste(valor, numeroFila);
+                        if (existe) {
+                            alert('<?=label('paso2_servicioRepetido'); ?>');
+                            $(this).val($('#productoItem_' + numeroFila).val());
+                            $(this).trigger("chosen:updated");
+                        } else {
+                            var select = $('#productoItem_' + numeroFila);
+                            select.val(valor);
+                            select.trigger("chosen:updated");
+                            cargarFila(valor, numeroFila);
+                        };
                     break;
                     case 'paso1Cliente':
                         cargarAtencion(valor);

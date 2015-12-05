@@ -538,6 +538,18 @@
 	$lang['comentar'] = 'Comentar';
 
 //pasos para una cotizacion
+    
+
+
+
+
+    $lang['estado_nueva'] = 'Nueva';
+    $lang['estado_espera'] = 'Espera';
+    $lang['estado_rechazada'] = 'Rechazada';
+    $lang['estado_enviada'] = 'Enviada';
+    $lang['estado_finalizada'] = 'Finalizada';
+
+
 	$lang['paso1'] = '1 General';
 	$lang['paso2'] = '2 Detalle';
 	$lang['paso3'] = '3 Diseño';
@@ -546,6 +558,9 @@
 	$lang['pasoSiguiente'] = 'Siguiente';
     $lang['paso2_elegirProducto'] = 'Elija un producto';
     $lang['paso2_agregarLinea'] = 'Agregar linea';
+    $lang['paso2_servicioRepetido'] = 'El servicio seleccionado ya fue agregado.';
+
+    
     
 
    

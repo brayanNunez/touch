@@ -96,7 +96,30 @@
                                                           <a>
                                                         </td>
                                                         <td>HOLA</td>
-                                                        <td><?= $fila['estado'] ?></td>
+                                                        <td>
+                                                        <?php
+                                                          $estado =  '';
+                                                          switch ($fila['estado']) {
+                                                            case 'nueva':
+                                                              $estado =  label('estado_nueva');
+                                                              break;
+                                                            case 'espera':
+                                                              $estado =  label('estado_espera');
+                                                              break;
+                                                            case 'rechazada':
+                                                              $estado =  label('estado_rechazada');
+                                                              break;
+                                                            case 'enviada':
+                                                              $estado =  label('estado_enviada');
+                                                              break;
+                                                            case 'finalizada':
+                                                              $estado =  label('estado_finalizada');
+                                                              break;
+                                                          }
+                                                          echo $estado;
+                                                        ?>
+                                                        
+                                                        </td>
                                                         <td>
                                                            <ul id="dropdown-cotizacion<?= $contador ?>"
                                                               class="dropdown-content">

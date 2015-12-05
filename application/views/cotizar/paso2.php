@@ -136,7 +136,23 @@
             agregarFila(0, null);// 0 porque es nueva
         });
     });
-    
+
+
+    function verificarExiste(valorVerificar, numeroFilaVerificar){
+        // alert('bien');
+        var existe = false;
+        $('.nombreServicio').each(function(){ 
+            var valor = $(this).val();
+            var numeroFila = $(this).data('fila');
+            var estadoFila = $('#linea_' + numeroFila).val();
+            if (estadoFila != 2) {
+                if (numeroFilaVerificar != numeroFila && valorVerificar == valor) {
+                    existe = true;
+                }
+            }
+        });
+        return existe;
+    }
 
 
     function agregarFila(accionAplicada, idLinea){
@@ -144,7 +160,7 @@
         actualizarCantidad();
         var check = '<td>'+
             '<div style="text-align: center;">'+
-                '<input class="accionAplicada" style="display:none" name="linea_'+contadorFilas+'" type="text" value="'+ accionAplicada + '">'+ 
+                '<input class="accionAplicada" style="display:none" name="linea_'+contadorFilas+'" id="linea_'+contadorFilas+'" type="text" value="'+ accionAplicada + '">'+ 
                 '<input style="display:none" name="idLinea_'+contadorFilas+'" type="text" value="'+ idLinea +'">'+
                 '<input type="checkbox" class="filled-in checkbox" id="checkbox_linea'+contadorFilas+'"/>'+
                 '<label for="checkbox_linea'+contadorFilas+'"></label>'+
