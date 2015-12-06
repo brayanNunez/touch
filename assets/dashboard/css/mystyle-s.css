@@ -228,8 +228,8 @@ table.data-table-information thead tr th:first-child { width: 6% !important; }
 span.informacion-cliente, span.informacion-proveedor { font-weight: bold; }
 
 div#tab-contactos hr, div#tab-contactos-editar hr { height: 12px; border: 0; box-shadow: inset 0 15px 15px -11px gray; }
-div#tab-contactos-nuevo, div#tab-contactos-nuevo-editar { margin: 15px 0; }
-div#tab-contactos-nuevo a, div#tab-contactos-nuevo-editar a { cursor: pointer; font-size: large; text-decoration: underline; }
+div#tab-contactos-nuevo, div#tab-contactos-editar-nuevo { margin: 15px 0; padding-bottom: 15px; }
+div#tab-contactos-nuevo a, div#tab-contactos-editar-nuevo a { cursor: pointer; font-size: large; text-decoration: underline; }
 
 div#card-graficos-inicio { height: 160px; padding: 41px 14px !important; }
 /*div#card-stats div.card { margin-bottom: 7.5px; }*/

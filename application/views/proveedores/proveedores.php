@@ -234,7 +234,7 @@
                                                 <div id="contenedorContactos">
 
                                                 </div>
-                                                <div class="row" id="tab-contactos-nuevo" style="padding: 20px;">
+                                                <div class="row" id="tab-contactos-nuevo">
                                                     <a onclick="agregarNuevoContacto();">
                                                         <?= label('formProveedor_contactoAgregar') ?>
                                                     </a>
