@@ -370,9 +370,22 @@ Scripts
                         <input id="registro_sitioWeb" name="registro_sitioWeb" type="text">
                         <label for="registro_sitioWeb"><?= label('completarRegistro_sitioWeb'); ?></label>
                     </div>
+
                     <div class="input-field col s12">
                         <input id="registro_codigoCotizacion" name="registro_codigoCotizacion" type="text">
                         <label for="registro_codigoCotizacion"><?= label('completarRegistro_codigoCotizacion'); ?></label>
+                    </div>
+                    <div class="input-field col s12 m4 l4">
+                        <input id="registro_nombreRepresentante" name="registro_nombreRepresentante" type="text">
+                        <label for="registro_nombreRepresentante"><?= label('completarRegistro_nombreRepresentante'); ?></label>
+                    </div>
+                    <div class="input-field col s12 m4 l4">
+                        <input id="registro_primerApellidoRepresentante" name="registro_primerApellidoRepresentante" type="text">
+                        <label for="registro_primerApellidoRepresentante"><?= label('completarRegistro_primerApellidoRepresentante'); ?></label>
+                    </div>
+                    <div class="input-field col s12 m4 l4">
+                        <input id="registro_segundoApellidoRepresentante" name="registro_segundoApellidoRepresentante" type="text">
+                        <label for="registro_segundoApellidoRepresentante"><?= label('completarRegistro_segundoApellidoRepresentante'); ?></label>
                     </div>
                 </div>
 
@@ -636,6 +649,10 @@ Scripts
                     $('#form_completarRegistro #registro_sitioWeb').val(datosEmpresa['sitioWeb']);
                     $('#form_completarRegistro #registro_codigoCotizacion').val(datosEmpresa['codigoCotizacion']);
                     $('#form_completarRegistro #registro_idUsuario').val(datosEmpresa['usuario']['idUsuario']);
+
+                    $('#form_completarRegistro #registro_nombreRepresentante').val(datosEmpresa['nombreRepresentante']);
+                    $('#form_completarRegistro #registro_primerApellidoRepresentante').val(datosEmpresa['primerApellidoRepresentante']);
+                    $('#form_completarRegistro #registro_segundoApellidoRepresentante').val(datosEmpresa['segundoApellidoRepresentante']);
 
                     generarSelectTamano(datosEmpresa['tamano']);
 

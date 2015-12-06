@@ -389,6 +389,9 @@
     $lang['formEmpresa_firma'] = 'Imagen de firma electrónica del representante de la empresa';
     $lang['formEmpresa_imagenTipoPreferible'] = 'Se recomienda el uso de imagenes de tipo PNG o sin fondo, pues ofrecen una mejor visualización.';
     $lang['registroEditadoCorrectamente'] = 'El perfil de empresa fue editado correctamente';
+    $lang['formEmpresa_nombreRepresentante'] = 'Nombre representante';
+    $lang['formEmpresa_primerApellidoRepresentante'] = 'Primer apellido representante';
+    $lang['formEmpresa_segundoApellidoRepresentante'] = 'Segundo apellido representante';
 
     $lang['registro_completarPerfil'] = 'Termine de completar la información de su perfil';
     $lang['completarRegistro_telefono'] = 'Teléfono fijo';
@@ -404,9 +407,9 @@
     $lang['completarRegistro_tamano'] = 'Tamaño';
     $lang['registro_enviar'] = 'Guardar cambios';
     $lang['registro_exitoCompletar'] = 'Los cambios han sido guardados correctamente';
-    $lang['formEmpresa_nombreRepresentante'] = 'Nombre representante';
-    $lang['formEmpresa_primerApellidoRepresentante'] = 'Primer apellido representante';
-    $lang['formEmpresa_segundoApellidoRepresentante'] = 'Segundo apellido representante';
+    $lang['completarRegistro_nombreRepresentante'] = 'Nombre representante';
+    $lang['completarRegistro_primerApellidoRepresentante'] = 'Primer apellido representante';
+    $lang['completarRegistro_segundoApellidoRepresentante'] = 'Segundo apellido representante';
 
 //Horas
     $lang['horas_titulo'] = 'Tiempo facturable';
