@@ -442,7 +442,7 @@ margin-top: 2%;
 }
 
 .contenedorSelectProductoNombre .chosen-container{
-	width: 200px !important;
+	width: 150px !important;
 	text-align: left;
 }
 /*.contenedorSelectProductoNombre .chosen-search input{
@@ -450,7 +450,7 @@ margin-top: 2%;
 }*/
 
 .contenedorSelectProductoItem .chosen-container{
-	width: 100px !important;
+	width: 75px !important;
 	text-align: left;
 }
 /*.contenedorSelectProductoItem .chosen-search input{

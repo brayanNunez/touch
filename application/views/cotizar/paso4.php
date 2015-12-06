@@ -241,12 +241,25 @@
 
         function guardar(accion, estado){
 
+          //El siguiente código me indica cual es la columna que ordena la tabla y si es ascendente o descendente 
+          //inicio
+          var asc = $('.sorting_asc').data('indice-columna');
+          var desc = $('.sorting_desc').data('indice-columna');
+          var ascendente = 1;
+          var columnaSeleccionada = asc;
+          if (desc != null) {
+              ascendente = 0;
+              var columnaSeleccionada = desc;
+          } 
+          //fin
+
           var url = '<?= base_url() ?>Cotizacion/guardar/<?= encryptIt($resultado['idCotizacion']);?>' + '/' + estado;
             var method = 'POST'; 
             $.ajax({
                    type: method,
                    url: url,
-                   data: $('#formAprobadores, #formLineasDetalle, #formGeneral, #form_encabezado, #form_paso3AgregarPlantilla, #form_cuerpo, #form_informacion, #form_footer').serialize(), 
+                   data: $('#formAprobadores, #formLineasDetalle, #formGeneral, #form_encabezado, #form_paso3AgregarPlantilla, #form_cuerpo, #form_informacion, #form_footer').serialize() + '&columna='+ columnaSeleccionada +'&ascendente='+ ascendente, 
+                   // data.push({name: 'columna', value: columnaSeleccionada}, {name: 'ascendente', value: ascendente});
                    success: function(response)
                    {
                     // alert(response);

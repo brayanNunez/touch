@@ -61,13 +61,13 @@
                                             <div class="input-field col s12 m6 l6 inputSelector" >
                                                 <label for="servicioFase"><?= label('formServicio_seleccioneFase'); ?></label>
                                                 <br>
-                                                <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="servicioFase" id="servicioFase" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("servicio_elegirFase"); ?>" class="browser-default chosen-select" style="width:350px;" tabindex="2">
+                                                <select data-incluirBoton="0" placeholder="seleccionar" data-tipo="servicioFase" id="servicioFase" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("servicio_elegirFase"); ?>" class="browser-default chosen-select" style="width:350px;" tabindex="2">
                                                 </select>
                                             </div>
                                             <div class="input-field col s12 m6 l6 inputSelector" >
                                                 <label for="servicio_subFase"><?= label('formServicio_seleccioneSubfase'); ?></label>
                                                 <br>
-                                                <select disabled='disabled' data-incluirBoton="1" placeholder="seleccionar" data-tipo="servicio_subFase" id="servicio_subFase" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("servicio_elegirSubFase"); ?>" class="browser-default chosen-select" style="width:350px;" tabindex="2">
+                                                <select disabled='disabled' data-incluirBoton="0" placeholder="seleccionar" data-tipo="servicio_subFase" id="servicio_subFase" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("servicio_elegirSubFase"); ?>" class="browser-default chosen-select" style="width:350px;" tabindex="2">
                                                 </select>
                                             </div>
                                             <div class="input-field col s12 m12 l12" style="margin-top: 5px;">

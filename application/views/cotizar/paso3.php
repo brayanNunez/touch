@@ -118,7 +118,7 @@
                   </a>
                </div>
                <div id="informacion">
-                  <div></div>                  <p class="box" id="formaPago">Forma de pago: 50% primer mes, 50% segundo mes.</p>
+                  <div></div>                  <p class="box" id="formaPago">Forma de pago: <span id="disenoFormaPago"></span></p>
 
                   <p class="box" id="validez">Válido hasta: <span id="disenoValidez"></span></p>
                   <p class="box" id="informacionDetalle"></p>
@@ -172,7 +172,7 @@
                      <div class="datos" id="datos1">
                         <div></div>
                         <p class="box" id="telefono">Teléfono: <span><?= $resultado['empresa']['telefono'];?></span></p>
-                        <p class="box" id="sitio">Sitio web: www.mrrabbit.cr</p>
+                        <p class="box" id="sitio">Sitio web: <span><?= $resultado['empresa']['sitioWeb'];?></span></p>
                         <p class="box" id="correo">Correo: <span><?= $resultado['empresa']['correo'];?></span></p>
                      </div>
                      <div class="datos" id="datos2">
@@ -588,6 +588,9 @@
            // if ($('#paso1_validez').val() != '') {
                var validez = $('#paso1_validez').val();
                $('#disenoValidez').text(validez);
+
+               var formaPago = $('#paso1FormaPago option:selected').text();
+               $('#disenoFormaPago').text(formaPago);
            // } 
    
            if (codigo != '') {
@@ -679,8 +682,6 @@
    function cargarDiseno(idPlantilla, plantillaDesdeLista){
        recalcularAlturaContenido();
 
-
-   
        function recalcularAlturaContenido() {
             // alert('calculando');
            var tamanoHojaHTML = 1117; //aqui puede ajustar el tamano de la hoja que se verá en el html

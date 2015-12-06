@@ -1,20 +1,87 @@
 
 <!-- <button id="botonAgregarFila">Agregar Fila(boton de prueba)</button> -->
 
-<!-- <button id="myFunction">Vamos tu puedes</button> -->
+<!-- <button id="myFunction">Prueba</button> -->
 
 <script type="text/javascript">
 
 
     
 
-   $(document).on('ready', function(){
+   $(document).ready(function(){
+
+    // $('#myFunction').on('click', function(){
+    //     var asc = $('.sorting_asc').data('indice-columna');
+    //     var desc = $('.sorting_desc').data('indice-columna');
+    //     var ascendente = true;
+    //     var valor = asc;
+    //     if (desc != null) {
+    //         ascendente = false;
+    //         var valor = desc;
+    //     } 
+    //     alert(valor + ', asc: ' + ascendente);
+    // });
+
+    //  $('#example').DataTable( {
+    //     "order": [[ 3, "desc" ]]
+    // } );
 
     $('#tablaLineasDetalle').dataTable( {
       "bPaginate": false,
-      "ordering": false,
+      <?php
+      if (isset($resultado['cotizacion'])) {// se esta editando una cotizacion
+        $valor = 'desc';
+        if ($resultado['cotizacion']['ascendente']) {
+            $valor = 'asc';
+        } 
+        ?>
+            "aaSorting": [[<?=$resultado['cotizacion']['columna']?>, "<?=$valor?>" ]],
+        <?php
+      }
+      ?>
+      // "aaSorting": [],
+      
+      "columns": [
+            null,
+            // { "orderDataType": "dom-text-numeric" },
+            { "orderDataType": "dom-select" },
+            { "orderDataType": "dom-select" },
+            { "orderDataType": "dom-text", type: 'string' },
+            // { "orderDataType": "dom-select" },
+            { "orderDataType": "dom-text-numeric" },
+            { "orderDataType": "dom-text-numeric" },
+            { "orderDataType": "dom-text-numeric" },
+            { "orderDataType": "dom-text-numeric" },
+            { "orderDataType": "dom-text-numeric" },
+            { "orderDataType": "dom-text-numeric" },
+        ],
+      // "ordering": false,
       "searching": false
     });
+
+/* Create an array with the values of all the input boxes in a column */
+$.fn.dataTable.ext.order['dom-text'] = function  ( settings, col )
+{
+    return this.api().column( col, {order:'index'} ).nodes().map( function ( td, i ) {
+        return $('input', td).val();
+    } );
+}
+ 
+/* Create an array with the values of all the input boxes in a column, parsed as numbers */
+$.fn.dataTable.ext.order['dom-text-numeric'] = function  ( settings, col )
+{
+    return this.api().column( col, {order:'index'} ).nodes().map( function ( td, i ) {
+        return $('input', td).val() * 1;
+    } );
+}
+ 
+/* Create an array with the values of all the select options in a column */
+$.fn.dataTable.ext.order['dom-select'] = function  ( settings, col )
+{
+    return this.api().column( col, {order:'index'} ).nodes().map( function ( td, i ) {
+        return $('select', td).val();
+    } );
+}
 
 
 
@@ -293,88 +360,38 @@
                     <!-- <table id="cotizacion1-detalles" class="centered"> -->
                         <thead>
                             <tr>
-                                <th style="text-align: center;">
+                                <th data-indice-columna="0" style="text-align: center;">
                                     <input class="filled-in checkbox checkall" type="checkbox" id="checkbox-all"
                                            onclick="toggleChecked(this.checked)"/>
                                     <label for="checkbox-all"></label>
                                 </th>
-                                <th class="context-menu-miItem box" data-field="id">
-                                    <row>
-                                        <div class="col s12 m12 l12 celdaTitulo">Item</div>
-                                    </row>
+                                <th data-indice-columna="1">
+                                    Item
                                 </th>
-                                <th class="context-menu-nombre box" data-field="id">
-                                    <row>
-                                        <div class="col s12 m12 l12 celdaTitulo">
-                                            Nombre
-                                        </div>
-                                    </row>
+                                <th  data-indice-columna="2">
+                                    Nombre
                                 </th>
-                                <th class="context-menu-descripcion box" data-field="id">
-                                    <row>
-                                        <div class="col s12 m12 l12 celdaTitulo">
-                                            Descripción
-                                        </div>
-                                    </row>
+                                <th  data-indice-columna="3">
+                                    Descripción
                                 </th>
-                             <!--    <th class="context-menu-imagen box" data-field="id">
-                                    <row>
-                                        <div class="col s12 m12 l12 celdaTitulo">
-                                            Imagen
-                                        </div>
-                                    </row>
-                                </th> -->
-                                <th class="context-menu-precio box" data-field="id">
-                                    <row>
-                                        <div class="col s12 m12 l12 celdaTitulo">
-                                            Precio unitario
-                                        </div>
-                                    </row>
+                                <th  data-indice-columna="4">
+                                    Precio unitario
                                 </th>
-                                <th class="context-menu-cantidad box" data-field="id">
-                                    <row>
-                                        <div class="col s12 m12 l12 celdaTitulo">
-                                            Cantidad
-                                        </div>
-                                    </row>
+                                <th  data-indice-columna="5">
+                                    Cantidad
                                 </th>
-                                <th class="context-menu-impuestoVenta box" data-field="id">
-                                    <row>
-                                        <div class="col s12 m12 l12 celdaTitulo">
-                                            Impuesto de venta
-                                        </div>
-                                    </row>
+                                <th  data-indice-columna="6">
+                                    Impuesto de venta
                                 </th>
-                                <th class="context-menu-utilidad box" data-field="id">
-                                    <row>
-                                        <div class="col s12 m12 l12 celdaTitulo">
-                                            Margen de utilidad
-                                        </div>
-                                    </row>
+                                <th  data-indice-columna="7">
+                                    Margen de utilidad
                                 </th>
-                                <th class="context-menu-subTotal box" data-field="id">
-                                    <row>
-                                        <div class="col s12 m12 l12 celdaTitulo">
-                                            Total
-                                        </div>
-                                    </row>
+                                <th data-indice-columna="8">
+                                    Total
                                 </th>
-                                <th class="" data-field="id">
-                                    <row>
-                                        
-                                        <div class="col s12 m12 l12 celdaTitulo">
-                                            Opciones
-                                        </div>
-                                    </row>
+                                <th data-indice-columna="9">
+                                    Opciones
                                 </th>
-                                <!--                        <th data-field="name">Descripción</th>-->
-                                <!--                        <th data-field="price">Imagen</th>-->
-                                <!--                        <th data-field="price">Precio unitario</th>-->
-                                <!--                        <th data-field="price">cantidad</th>-->
-                                <!--                        <th data-field="price">IV</th>-->
-                                <!--                        <th data-field="price">Utilidad</th>-->
-                                <!--                        <th data-field="price">Subtotal</th>-->
-                                <!--                        <th data-field="price">Opciones</th>-->
                             </tr>
                         </thead>
                         

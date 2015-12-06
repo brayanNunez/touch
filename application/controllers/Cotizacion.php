@@ -59,7 +59,7 @@ class Cotizacion extends CI_Controller
 
         // $data['aprobadores'] = $this->input->post('aprobadores');
 
-        // echo $this->input->post('miHtml'); exit();
+
 
         $editados = array();
         $eliminados = array();
@@ -136,6 +136,8 @@ class Cotizacion extends CI_Controller
             'tipoCambio' => $this->input->post('paso1_tipoCambio'),
             'eliminado' => 0,
             'idEstadoCotizacion' => $estado,
+            'ascendente' => $this->input->post('ascendente'),
+            'columna' => $this->input->post('columna'),
             'fechaValidez' => date("Y-m-d", strtotime($this->input->post('paso1_validez')))
             );
         $data['diseno'] = $this->obtenerPlantilla(0);
@@ -174,7 +176,7 @@ class Cotizacion extends CI_Controller
         verificarLogin();//helper
         $sessionActual = $this->session->userdata('logged_in');
         $data['idEmpresa'] = $sessionActual['idEmpresa'];
-        $data['idUsuario'] = $sessionActual['idUsuario'];
+        // $data['idUsuario'] = $sessionActual['idUsuario'];
         $data['idCotizacion'] = decryptIt($idCotizacion);
 
         $resultado = $this->Cotizacion_model->cargar($data); 
