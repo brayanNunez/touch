@@ -357,6 +357,9 @@ class Registro extends CI_Controller
                 'tamano' => $this->input->post('registro_tamanoEmpresa'),
                 'codigoCotizacion' => $this->input->post('registro_codigoCotizacion'),
                 'profesion' => $this->input->post('registro_profesionIndepediente'),
+                'nombreRepresentante' => $this->input->post('registro_nombreRepresentante'),
+                'primerApellidoRepresentante' => $this->input->post('registro_primerApellidoRepresentante'),
+                'segundoApellidoRepresentante' => $this->input->post('registro_segundoApellidoRepresentante')
             );
             $data['usuario'] = array(
                 'idUsuario' => $this->input->post('registro_idUsuario'),
@@ -370,7 +373,10 @@ class Registro extends CI_Controller
                 'telefonoMovil' => $this->input->post('registro_telefonoMovil'),
                 'fechaCreacion' => $this->input->post('registro_fechaCreacionEmpresa'),
                 'tamano' => $this->input->post('registro_tamanoEmpresa'),
-                'codigoCotizacion' => $this->input->post('registro_codigoCotizacion')
+                'codigoCotizacion' => $this->input->post('registro_codigoCotizacion'),
+                'nombreRepresentante' => $this->input->post('registro_nombreRepresentante'),
+                'primerApellidoRepresentante' => $this->input->post('registro_primerApellidoRepresentante'),
+                'segundoApellidoRepresentante' => $this->input->post('registro_segundoApellidoRepresentante')
             );
         }
         $data['id'] = $idEmpresa;
