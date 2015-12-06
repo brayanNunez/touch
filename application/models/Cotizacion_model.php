@@ -28,10 +28,14 @@ class Cotizacion_model extends CI_Model
 
 
             if (!$cotizaciones) throw new Exception("Error en la BD"); 
-            $cotizaciones = $cotizaciones->result_array();
+            $data['lista'] = $cotizaciones->result_array();
+
+            $clientes = $this->db->get_where('cliente', array('eliminado' => 0,'idEmpresa' => $idEmpresa));
+            if (!$clientes) throw new Exception("Error en la BD"); 
+            $data['clientes'] = $clientes->result_array();
 
             $this->db->trans_commit();
-            return $cotizaciones;
+            return $data;
         } catch (Exception $e) {
             $this->db->trans_rollback();
             return false;

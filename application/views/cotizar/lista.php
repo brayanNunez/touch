@@ -222,6 +222,11 @@
 
 <script type="text/javascript">
    $(document).on("ready", function () { 
+
+      var config = {'.chosen-select'           : {}}
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
    
        <?php
       if (isset($lista)) {
@@ -490,6 +495,27 @@
    });
    // Fin script de descarga pdf, excel e imprimir
 
+   // script busqueda avanzada
+   $(document).on('ready', function(){
+      $('#botonBusqueda').on('click', function(){
+        alert('iniciar busqueda');
+        var url = '<?= base_url() ?>Cotizacion/busqueda';
+            var method = 'POST'; 
+            $.ajax({
+                   type: method,
+                   url: url,
+                   data: $('#formBusqueda').serialize(), 
+                   success: function(response)
+                   {
+                      alert(response);
+                      $('#busquedaAvanzada').closeModal();
+                   }
+                 });
+        
+      })
+   });
+   
+
 
 
 </script>
@@ -568,7 +594,8 @@
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <div id="formGeneral" class="section">
+        <div  class="section">
+          <form id="formBusqueda">
             <div class="row">
                 <div class="input-field col s12 m3 l3">
                     <div class="input-field col s12">
@@ -587,20 +614,34 @@
                     <select class="input-field col s12">
                         <!--                                     <option value="" disabled selected>Estado</option>-->
                         <option value="1" selected>Todos</option>
-                        <option value="2">Enviada</option>
-                        <option value="3">Finalizada</option>
-                        <option value="4">Rechazada</option>
+                        <option value="2">Nueva</option>
+                        <option value="3">Enviada</option>
+                        <option value="4">Finalizada</option>
+                        <option value="5">Rechazada</option>
                     </select>
                     <label>Estado</label>
                 </div>
-                <div class="input-field col s12 m4 l4">
-                    <select class="input-field col s12">
-                        <!--                                     <option value="" disabled selected>Cliente</option>-->
-                        <option value="1" selected>Todos</option>
-                        <option value="2">Juan Alfaro Alfaro</option>
-                        <option value="3">Diego Rojas</option>
-                    </select>
-                    <label>Clientes</label>
+                <div class="input-field col s12 m6 l6 inputSelector">            
+                  <label for="contenedorSelectCliente"><?= label("paso1_labelCliente"); ?></label>
+                  <br>
+                  <div id="contenedorSelectCliente">  
+                      <select data-incluirBoton="0" placeholder="seleccionar" data-tipo="paso1Cliente" id="busquedaCotizacion_cliente" name="busquedaCotizacion_cliente" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirCliente"); ?>" class="chosen-select browser-default" style="width:350px;" tabindex="2">
+                          <!-- <option value="0" disabled selected style="display:none;"><?= label("paso1_elegirCliente"); ?></option> -->
+                          <!-- <option value="nuevo"><?= label("agregarNuevo"); ?></option> -->
+                          <option value="0" selected ><?= label("busquedaAvanzada_Todos"); ?></option>
+                          <?php 
+                              foreach ($clientes as $cliente) {
+                                  $valor = "value='".$cliente['idCliente']."'";
+                                  if ($cliente['todosVendedores'] == 1 || $cliente['valido'] == 1) {
+                                      echo '<option '.$valor.'>'.$cliente['nombre'].' '.$cliente['primerApellido'].' '.$cliente['segundoApellido'].'</option>");';
+                                  } else{
+                                      echo '<option '.$valor.' disabled>'.$cliente['nombre'].' '.$cliente['primerApellido'].' '.$cliente['segundoApellido'].'</option>");';
+                                  }
+                              }
+                                  
+                          ?>
+                      </select>  
+                   </div>
                 </div>
                 <div class="input-field col s12 m4 l4">
                     <select class="input-field col s12">
@@ -621,10 +662,11 @@
                     <label for="reporte-cliente">Proveedores</label>
                 </div>
             </div>
+          </form>
         </div>
     </div>
     <div class="modal-footer black-text">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <a id="botonBusqueda" class="waves-effect waves-red btn-flat modal-action"><?= label('aceptar'); ?></a>
     </div>
 </div>
 <!--Fin lista modals -->
