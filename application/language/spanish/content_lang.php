@@ -410,6 +410,9 @@
     $lang['completarRegistro_nombreRepresentante'] = 'Nombre representante';
     $lang['completarRegistro_primerApellidoRepresentante'] = 'Primer apellido representante';
     $lang['completarRegistro_segundoApellidoRepresentante'] = 'Segundo apellido representante';
+    $lang['completarRegistro_infoCotizacion'] = 'Información para cotización';
+    $lang['completarRegistro_tituloLogo'] = 'Imagen o logo de la empresa';
+    $lang['completarRegistro_tituloFirma'] = 'Imagen de firma electrónica del representante de la empresa';
 
 //Horas
     $lang['horas_titulo'] = 'Tiempo facturable';

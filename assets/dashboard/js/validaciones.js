@@ -851,4 +851,23 @@
             }
         });
 
+        $('#completarRegistro_cambioImagenFirma').validate({
+            rules: {
+                userfile: {required: false}
+            },
+            errorElement: 'div',
+            submitHandler: function (form) {
+                validacionCorrecta_ImagenFirma_completar();
+            }
+        });
+        $('#completarRegistro_cambioImagen').validate({
+            rules: {
+                userfile: {required: false}
+            },
+            errorElement: 'div',
+            submitHandler: function (form) {
+                validacionCorrecta_Imagen_completar();
+            }
+        });
+
     });

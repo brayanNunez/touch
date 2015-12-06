@@ -372,7 +372,7 @@
                 } else {
                     alert('<?= label('usuarioExitoCambioEmagen'); ?>');
                     d = new Date();
-                    $('#imagen_seleccionada').attr('src', response + '?' + d.getTime());
+                    $('#editarRegistro_imagen_seleccionada').attr('src', response + '?' + d.getTime());
                     $('#empresa_logo').attr('src', response + '?' + d.getTime());
                     formPW.find('input:file,input:text').val('');
                     $('#cambio-imagen .modal-header a').click();
@@ -395,7 +395,7 @@
                 } else {
                     alert('<?= label('usuarioExitoCambioEmagen'); ?>');
                     d = new Date();
-                    $('#imagen_seleccionadaFirma').attr('src', response + '?' + d.getTime());
+                    $('#editarRegistro_imagen_seleccionadaFirma').attr('src', response + '?' + d.getTime());
                     $('#empresa_firma').attr('src', response + '?' + d.getTime());
                     formPW.find('input:file,input:text').val('');
                     $('#cambio-imagenFirma .modal-header a').click();
@@ -470,7 +470,7 @@
             </div>
             <div class="col s12 m5 l3">
                 <figure style="margin:0 10px;">
-                    <img id="imagen_seleccionada" src="<?= $ruta; ?>">
+                    <img class="imagen_seleccionada" id="editarRegistro_imagen_seleccionada" src="<?= $ruta; ?>">
                 </figure>
             </div>
             <div class="col s12">
@@ -510,7 +510,7 @@
                 </div>
                 <div class="col s12 m5 l3">
                     <figure style="margin:0 10px;">
-                        <img id="imagen_seleccionadaFirma" src="<?= $rutaFirma; ?>">
+                        <img class="imagen_seleccionada" id="editarRegistro_imagen_seleccionadaFirma" src="<?= $rutaFirma; ?>">
                     </figure>
                 </div>
                 <div class="col s12">
@@ -533,7 +533,7 @@
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
-                $('#imagen_seleccionada').attr('src', e.target.result);
+                $('#editarRegistro_imagen_seleccionada').attr('src', e.target.result);
             };
             reader.readAsDataURL(input.files[0]);
         }
@@ -542,12 +542,12 @@
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
-                $('#imagen_seleccionadaFirma').attr('src', e.target.result);
+                $('#editarRegistro_imagen_seleccionadaFirma').attr('src', e.target.result);
             };
             reader.readAsDataURL(input.files[0]);
         }
     }
-    $("#userfile").change(function(){
+    $("#cambio-imagen #userfile").change(function(){
         var file = this.files[0];
         var name = file.name;
         var size = file.size;
@@ -564,12 +564,12 @@
             document.getElementById('userfile').value = '';
         }
         if(document.getElementById('userfile').value == ''){
-            $('#imagen_seleccionada').attr('src', '<?= base_url(); ?>files/default-user-image.png');
+            $('#editarRegistro_imagen_seleccionada').attr('src', '<?= base_url(); ?>files/default-user-image.png');
         } else {
             readURL(this);
         }
     });
-    $("#userfile2").change(function(){
+    $("#cambio-imagenFirma #userfile2").change(function(){
         var file = this.files[0];
         var name = file.name;
         var size = file.size;
@@ -586,7 +586,7 @@
             document.getElementById('userfile2').value = '';
         }
         if(document.getElementById('userfile2').value == ''){
-            $('#imagen_seleccionadaFirma').attr('src', '<?= base_url(); ?>files/default-sign-image.png');
+            $('#editarRegistro_imagen_seleccionadaFirma').attr('src', '<?= base_url(); ?>files/default-sign-image.png');
         } else {
             readURL_Firma(this);
         }

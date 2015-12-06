@@ -329,6 +329,20 @@ Scripts
         <div class="row" style="margin-bottom: 0;">
             <form id="form_completarRegistro" action="<?=base_url()?>registro/completar" method="post">
 
+                <div>
+                    <div class="col s12">
+                        <label for="registro_empresa_logo_editar" style="display: block;margin-bottom: 0.5rem;text-align: left;"><?= label('completarRegistro_tituloLogo'); ?></label>
+                        <div class="col s6 offset-m1 m5 l4">
+                            <div id="registro_empresa_logo_editar" class="cliente-ver-logo" style="margin: 5px 0;">
+                                <a id="btn_cambioLogoRegistro" class="modal-trigger" href="#cambio-imagen_registro" title="Cambiar firma" style="position: relative; cursor:pointer;">
+                                    <img id="registro_logo" alt="Logo de la empresa" style="position:relative;height: 200px;width: 200px;" />
+                                    <img id="icon-image-edit" src="<?= base_url() ?>files/edit-image.png">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div id="campos_trabajadorIndependiente" style="display: block;">
                     <div class="input-field col s12">
                         <input id="registro_fechaNacIndependiente" name="registro_fechaNacIndependiente" class="datepicker-fecha" type="text">
@@ -371,6 +385,9 @@ Scripts
                         <label for="registro_sitioWeb"><?= label('completarRegistro_sitioWeb'); ?></label>
                     </div>
 
+                    <div class="col s12">
+                        <h5 style="float: left;"><?= label('formEmpresa_infoCotizacion'); ?></h5>
+                    </div>
                     <div class="input-field col s12">
                         <input id="registro_codigoCotizacion" name="registro_codigoCotizacion" type="text">
                         <label for="registro_codigoCotizacion"><?= label('completarRegistro_codigoCotizacion'); ?></label>
@@ -387,6 +404,17 @@ Scripts
                         <input id="registro_segundoApellidoRepresentante" name="registro_segundoApellidoRepresentante" type="text">
                         <label for="registro_segundoApellidoRepresentante"><?= label('completarRegistro_segundoApellidoRepresentante'); ?></label>
                     </div>
+                    <div class="col s12">
+                        <label for="registro_empresa_firma_editar" style="display: block;margin-bottom: 0.5rem;text-align: left;"><?= label('completarRegistro_tituloFirma'); ?></label>
+                        <div class="col s6 offset-m1 m5 l4">
+                            <div id="registro_empresa_firma_editar" class="cliente-ver-logo" style="margin: 5px 0;">
+                                <a id="btn_cambioFirmaRegistro" class="modal-trigger" href="#cambio-imagenFirma_registro" title="Cambiar firma" style="position: relative; cursor:pointer;">
+                                    <img id="registro_firma" alt="Logo de la empresa" style="position:relative;height: 200px;width: 200px;" />
+                                    <img id="icon-image-edit" src="<?= base_url() ?>files/edit-image.png">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="input-field col s12 envio-formulario">
@@ -401,6 +429,87 @@ Scripts
         <div class="input-field col s12 m6 l6 opt-modal-registro">
             <a style="float:left;" href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Omitir</a>
         </div>
+    </div>
+</div>
+
+<div id="cambio-imagen_registro" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a id="modalcambiarLogo_cerrar" class="modal-action cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <?php $this->load->helper('form'); ?>
+        <?php echo form_open_multipart(base_url().'registro/cambio_imagen/', array('id' => 'completarRegistro_cambioImagen', 'method' => 'POST', 'class' => 'col s12')); ?>
+        <div class="row">
+            <div class="file-field col s12 m7 l9" style="padding: 0;">
+                <label for="empresa_imagenLogo"><?= label('formEmpresa_logo'); ?></label>
+
+                <div class="file-field input-field col s12" style="padding: 0;">
+                    <input style="margin-left: 18% !important;width: 80% !important;"
+                           name="empresa_imagenLogo" class="file-path" type="text" readonly/>
+
+                    <div class="btn" data-toggle="tooltip" title="<?= label('tooltip_examinar') ?>" style="top: -15px;">
+                        <span><i class="mdi-action-search"></i></span>
+                        <input style="padding-right: 100px;" id="userfile" type="file" name="userfile"
+                               accept="image/jpeg,image/png"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m5 l3">
+                <figure style="margin:0 10px;">
+                    <img class="imagen_seleccionada" id="completarRegistro_imagen_seleccionada">
+                </figure>
+            </div>
+            <div class="col s12">
+                <h5 style="text-align: left;">* Nota:</h5>
+                <h6>- <?= label('formEmpresa_imagenTipoPreferible'); ?></h6>
+            </div>
+        </div>
+        <div class="input-field col s12 envio-formulario" style="margin-bottom: 30px;">
+            <button class="btn waves-effect waves-light right" type="submit" id="guardar-cambios-usuario"
+                    name="action"><?= label('formUsuario_editar'); ?></button>
+        </div>
+        </form>
+    </div>
+</div>
+<div id="cambio-imagenFirma_registro" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a id="modalcambiarFirma_cerrar" class="modal-action cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <?php $this->load->helper('form'); ?>
+        <?php echo form_open_multipart(base_url().'registro/cambio_imagenFirma/', array('id' => 'completarRegistro_cambioImagenFirma', 'method' => 'POST', 'class' => 'col s12')); ?>
+        <div class="row">
+            <div class="file-field col s12 m7 l9" style="padding: 0;">
+                <label for="empresa_imagenFirma"><?= label('formEmpresa_firma'); ?></label>
+
+                <div class="file-field input-field col s12" style="padding: 0;">
+                    <input style="margin-left: 18% !important;width: 80% !important;"
+                           name="empresa_imagenFirma" class="file-path" type="text" readonly/>
+
+                    <div class="btn" data-toggle="tooltip" title="<?= label('tooltip_examinar') ?>" style="top: -15px;">
+                        <span><i class="mdi-action-search"></i></span>
+                        <input style="padding-right: 100px;" id="userfile2" type="file" name="userfile2"
+                               accept="image/jpeg,image/png"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m5 l3">
+                <figure style="margin:0 10px;">
+                    <img class="imagen_seleccionada" id="completarRegistro_imagen_seleccionadaFirma">
+                </figure>
+            </div>
+            <div class="col s12">
+                <h5 style="text-align: left;">* Nota:</h5>
+                <h6>- <?= label('formEmpresa_imagenTipoPreferible'); ?></h6>
+            </div>
+        </div>
+        <div class="input-field col s12 envio-formulario" style="margin-bottom: 30px;">
+            <button class="btn waves-effect waves-light right" type="submit" id="guardar-cambios-usuario"
+                    name="action"><?= label('formUsuario_editar'); ?></button>
+        </div>
+        </form>
     </div>
 </div>
 
@@ -654,6 +763,11 @@ Scripts
                     $('#form_completarRegistro #registro_primerApellidoRepresentante').val(datosEmpresa['primerApellidoRepresentante']);
                     $('#form_completarRegistro #registro_segundoApellidoRepresentante').val(datosEmpresa['segundoApellidoRepresentante']);
 
+                    $('#registro_firma').attr('src', '<?= base_url(); ?>files/empresas/' + datosEmpresa['idEmpresa'] + '/' + datosEmpresa['firma']);
+                    $('#completarRegistro_imagen_seleccionadaFirma').attr('src', '<?= base_url(); ?>files/empresas/' + datosEmpresa['idEmpresa'] + '/' + datosEmpresa['firma']);
+                    $('#registro_logo').attr('src', '<?= base_url(); ?>files/empresas/' + datosEmpresa['idEmpresa'] + '/' + datosEmpresa['logo']);
+                    $('#completarRegistro_imagen_seleccionada').attr('src', '<?= base_url(); ?>files/empresas/' + datosEmpresa['idEmpresa'] + '/' + datosEmpresa['logo']);
+
                     generarSelectTamano(datosEmpresa['tamano']);
 
                     if(tipoEmpresa == 1) {
@@ -721,6 +835,131 @@ Scripts
         }
         selectTamano.material_select();
     }
+    $(document).ready(function () {
+        $('#modalcambiarLogo_cerrar').on('click', function () {
+            document.getElementById('completarRegistroEmpresa').style.visibility = 'visible';
+            document.getElementById('cambio-imagen_registro').style.display = 'none';
+        });
+        $('#modalcambiarFirma_cerrar').on('click', function () {
+            document.getElementById('completarRegistroEmpresa').style.visibility = 'visible';
+            document.getElementById('cambio-imagenFirma_registro').style.display = 'none';
+        });
+        $(document).on('click', '#lean-overlay', function () {
+            document.getElementById('completarRegistroEmpresa').style.visibility = 'visible';
+        });
+        $(document).on('click', '#btn_cambioLogoRegistro', function () {
+            document.getElementById('completarRegistroEmpresa').style.visibility = 'hidden';
+        });
+        $(document).on('click', '#btn_cambioFirmaRegistro', function () {
+            document.getElementById('completarRegistroEmpresa').style.visibility = 'hidden';
+        });
+    });
+    function validacionCorrecta_Imagen_completar(){
+        var formPW = $('#completarRegistro_cambioImagen');
+        $.ajax({
+            data: new FormData(formPW[0]),
+            url: formPW.attr('action'),
+            type: formPW.attr('method'),
+            success:  function (response) {
+                if(response == 0) {
+                    alert('<?= label('usuarioErrorCambioImagen'); ?>');//error al ir a verificar identificaci�n
+                } else {
+                    alert('<?= label('usuarioExitoCambioEmagen'); ?>');
+                    d = new Date();
+                    $('#editarRegistro_imagen_seleccionada').attr('src', response + '?' + d.getTime());
+                    $('#empresa_logo').attr('src', response + '?' + d.getTime());
+                    $('#completarRegistro_imagen_seleccionada').attr('src', response + '?' + d.getTime());
+                    $('#registro_logo').attr('src', response + '?' + d.getTime());
+                    formPW.find('input:file,input:text').val('');
+                    $('#cambio-imagen_registro .modal-header a').click();
+                }
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    }
+    function validacionCorrecta_ImagenFirma_completar(){
+        var formPW = $('#completarRegistro_cambioImagenFirma');
+        $.ajax({
+            data: new FormData(formPW[0]),
+            url: formPW.attr('action'),
+            type: formPW.attr('method'),
+            success:  function (response) {
+                if(response == 0) {
+                    alert('<?= label('usuarioErrorCambioImagen'); ?>');//error al ir a verificar identificaci�n
+                } else {
+                    alert('<?= label('usuarioExitoCambioEmagen'); ?>');
+                    d = new Date();
+                    $('#editarRegistro_imagen_seleccionadaFirma').attr('src', response + '?' + d.getTime());
+                    $('#empresa_firma').attr('src', response + '?' + d.getTime());
+                    $('#completarRegistro_imagen_seleccionadaFirma').attr('src', response + '?' + d.getTime());
+                    $('#registro_firma').attr('src', response + '?' + d.getTime());
+                    formPW.find('input:file,input:text').val('');
+                    $('#cambio-imagenFirma_registro .modal-header a').click();
+                }
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    }
+</script><!--Script para el manejo de la imagen de perfil e imagen de firma-->
+<script>
+    function readURL_completar(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#completarRegistro_imagen_seleccionada').attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    function readURL_Firma_completar(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#completarRegistro_imagen_seleccionadaFirma').attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#cambio-imagen_registro #userfile").change(function(){
+        var file = this.files[0];
+        var name = file.name;
+        var size = file.size;
+        var type = file.type;
+        var t = type.split('/');
+        var ext = t.slice(1, 2);
+        if(size > 2097150) { //2097152
+            alert("<?= label('usuarioErrorTamanoArchivo') ?>");
+            document.getElementById('userfile').value = '';
+        }
+        var valid_ext = ['image/png','image/jpg','image/jpeg'];
+        if(valid_ext.indexOf(type)==-1) {
+            alert("<?= label('usuarioErrorTipoArchivo') ?>");
+            document.getElementById('userfile').value = '';
+        }
+        readURL_completar(this);
+    });
+    $("#cambio-imagenFirma_registro #userfile2").change(function(){
+        var file = this.files[0];
+        var name = file.name;
+        var size = file.size;
+        var type = file.type;
+        var t = type.split('/');
+        var ext = t.slice(1, 2);
+        if(size > 2097150) { //2097152
+            alert("<?= label('usuarioErrorTamanoArchivo') ?>");
+            document.getElementById('userfile2').value = '';
+        }
+        var valid_ext = ['image/png','image/jpg','image/jpeg'];
+        if(valid_ext.indexOf(type)==-1) {
+            alert("<?= label('usuarioErrorTipoArchivo') ?>");
+            document.getElementById('userfile2').value = '';
+        }
+        readURL_Firma_completar(this);
+    });
 </script>
 
     </body>
