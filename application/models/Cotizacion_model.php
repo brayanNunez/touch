@@ -288,7 +288,7 @@ class Cotizacion_model extends CI_Model
              $query = $this->db->insert('plantilladiseno', array('idEmpresa' => $datos['idEmpresa'],'idCotizacion' => $data['idCotizacion'],'publica' => 0, 'eliminado' => 0));
             if (!$query) throw new Exception("Error en la BD");
 
-            $this->db->select('nombre, correo, telefono, logo, codigoCotizacion');
+            $this->db->select('nombre, correo, telefono, logo, firma, codigoCotizacion');
             $query = $this->db->get_where('empresa', array('idEmpresa'=> $datos['idEmpresa']));
             if (!$query) throw new Exception("Error en la BD");   
 
@@ -479,7 +479,7 @@ class Cotizacion_model extends CI_Model
             // if (!$query) throw new Exception("Error en la BD"); 
             // $data['idCotizacion'] = $this->db->insert_id();
 
-            $this->db->select('nombre, correo, telefono, logo, codigoCotizacion');
+            $this->db->select('nombre, correo, telefono, logo, firma, codigoCotizacion');
             $query = $this->db->get_where('empresa', array('idEmpresa'=> $datos['idEmpresa']));
             if (!$query) throw new Exception("Error en la BD");   
 
