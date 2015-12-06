@@ -904,8 +904,9 @@ Scripts
             processData: false
         });
     }
-</script><!--Script para el manejo de la imagen de perfil e imagen de firma-->
-<script>
+</script>
+<!--Script para el manejo de la imagen de perfil e imagen de firma-->
+<script type="text/javascript">
     function readURL_completar(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -959,6 +960,32 @@ Scripts
             document.getElementById('userfile2').value = '';
         }
         readURL_Firma_completar(this);
+    });
+</script>
+<!--Script para el manejo de datos del usuario logueado-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            type: 'post',
+            url: '<?= base_url(); ?>usuarios/datosPerfil',
+            data: {  },
+            success: function(response)
+            {
+                if(response != 'null') {
+                    var datosUsuario = $.parseJSON(response);
+
+                    $('#horas_diasAnno').val(datosUsuario['diasAnno']);
+                    var rutaImagen = '<?= base_url(); ?>files/empresas/' + datosUsuario['idEmpresa'] + '/usuarios/' + datosUsuario['idUsuario'] + '/' + datosUsuario['fotografia'];
+                    if(datosUsuario['fotografia'] == null || datosUsuario['fotografia'] == '') {
+                        rutaImagen = '<?= base_url(); ?>files/default-user-image.png';
+                    }
+                    $('#btn_perfilUsuarioLogueado').attr('href', '<?= base_url(); ?>usuarios/editar/' + datosUsuario['idUsuarioEncriptado']);
+                    $('#span_nombreUsuarioLogueado').text(datosUsuario['nombreUsuario']);
+                    $('#span_rolesUsuarioLogueado').text(datosUsuario['roles']);
+                    $('#img_imagenUsuarioLogueado').attr('src', rutaImagen);
+                }
+            }
+        });
     });
 </script>
 

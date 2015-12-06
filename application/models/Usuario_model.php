@@ -1,7 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-
 class Usuario_model extends CI_Model
 {
     function __construct()
@@ -348,6 +347,59 @@ class Usuario_model extends CI_Model
             }
             $this->db->trans_commit();
             return $photo;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+    function datosPerfil($idUsuario)
+    {
+        try {
+            $this->db->trans_begin();
+
+            $this->db->select("idUsuario, idEmpresa, CONCAT(nombre, ' ', primerApellido, ' ', segundoApellido) as nombreUsuario, fotografia", false);
+            $this->db->where('idUsuario', $idUsuario);
+            $query = $this->db->get('usuario');
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+            $row = array();
+            if ($query->num_rows() > 0) {
+                $array = $query->result_array();
+                $row = array_shift($array);//obtiene el primer elemento.. el [0] no sirve en el server
+                $row['idUsuarioEncriptado'] = encryptIt($row['idUsuario']);
+
+                $query = $this->db->get_where('privilegio_usuario', array('idUsuario' => $idUsuario));
+                if (!$query) {
+                    throw new Exception("Error en la BD");
+                }
+                $privilegios = $query->result_array();
+
+                $rolesAsignados = '';
+                foreach ($privilegios as $pr) {
+                    if($rolesAsignados != '') {
+                        $rolesAsignados .= ', ';
+                    }
+                    switch($pr['idPrivilegio']) {
+                        case 1:
+                            $rolesAsignados .= 'Administrador';
+                            break;
+                        case 2:
+                            $rolesAsignados .= 'Aprobador';
+                            break;
+                        case 3:
+                            $rolesAsignados .= 'Cotizador';
+                            break;
+                        case 4:
+                            $rolesAsignados .= 'Contador';
+                            break;
+                    }
+                }
+                $row['roles'] = $rolesAsignados;
+            }
+            $this->db->trans_commit();
+            return $row;
         } catch (Exception $e) {
             $this->db->trans_rollback();
             return false;

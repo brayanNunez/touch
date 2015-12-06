@@ -207,6 +207,18 @@ class Usuarios extends CI_Controller
         }
     }
 
+    public function datosPerfil() {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idUsuario = $sessionActual['idUsuario'];
+
+        $resultado = $this->Usuario_model->datosPerfil($idUsuario);
+        if ($resultado === false || $resultado === array()) {
+            echo 0;
+        } else {
+            echo json_encode($resultado);
+        }
+    }
+
     //-----------------------------------------------------
 
     public function existeUsuario()
