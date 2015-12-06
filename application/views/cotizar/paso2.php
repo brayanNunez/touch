@@ -13,6 +13,10 @@
 
     $('#tablaLineasDetalle').dataTable( {
       "bPaginate": false,
+      'aoColumnDefs': [{
+               'bSortable': false,
+               'aTargets': [0, -1, 6] //desactiva en primer y última columna opción de ordenar
+           }],
       <?php
       if (isset($resultado['cotizacion'])) {// se esta editando una cotizacion
         $valor = 'desc';
@@ -35,10 +39,10 @@
             // { "orderDataType": "dom-select" },
             { "orderDataType": "dom-text-numeric" },
             { "orderDataType": "dom-text-numeric" },
+            null,
             { "orderDataType": "dom-text-numeric" },
             { "orderDataType": "dom-text-numeric" },
-            { "orderDataType": "dom-text-numeric" },
-            { "orderDataType": "dom-text-numeric" },
+            null
         ],
       // "ordering": false,
       "searching": false
