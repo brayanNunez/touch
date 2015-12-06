@@ -188,7 +188,10 @@ class Registro extends CI_Controller
                 'telefonoMovil' => $this->input->post('empresa_trabajadorTelefonoMovil'),
                 'fechaCreacion' => $this->input->post('empresa_trabajadorFechaNacimiento'),
                 'profesion' => $this->input->post('empresa_trabajadorProfesion'),
-                'codigoCotizacion' => $this->input->post('empresa_codigoCotizacion')
+                'codigoCotizacion' => $this->input->post('empresa_codigoCotizacion'),
+                'nombreRepresentante' => $this->input->post('empresa_nombreRepresentante'),
+                'primerApellidoRepresentante' => $this->input->post('empresa_primerApellidoRepresentante'),
+                'segundoApellidoRepresentante' => $this->input->post('empresa_segundoApellidoRepresentante')
             );
             $data['usuario'] = array(
                 'idUsuario' => $this->input->post('empresa_idUsuario'),
@@ -215,7 +218,10 @@ class Registro extends CI_Controller
                 'telefonoMovil' => $this->input->post('empresa_empresaTelefonoMovil'),
                 'fechaCreacion' => $this->input->post('empresa_fechaCreacion'),
                 'tamano' => $this->input->post('empresa_tamano'),
-                'codigoCotizacion' => $this->input->post('empresa_codigoCotizacion')
+                'codigoCotizacion' => $this->input->post('empresa_codigoCotizacion'),
+                'nombreRepresentante' => $this->input->post('empresa_nombreRepresentante'),
+                'primerApellidoRepresentante' => $this->input->post('empresa_primerApellidoRepresentante'),
+                'segundoApellidoRepresentante' => $this->input->post('empresa_segundoApellidoRepresentante')
             );
             $data['usuario'] = array(
                 'idUsuario' => $this->input->post('empresa_idUsuario'),

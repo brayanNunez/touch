@@ -404,6 +404,9 @@
     $lang['completarRegistro_tamano'] = 'Tamaño';
     $lang['registro_enviar'] = 'Guardar cambios';
     $lang['registro_exitoCompletar'] = 'Los cambios han sido guardados correctamente';
+    $lang['formEmpresa_nombreRepresentante'] = 'Nombre representante';
+    $lang['formEmpresa_primerApellidoRepresentante'] = 'Primer apellido representante';
+    $lang['formEmpresa_segundoApellidoRepresentante'] = 'Segundo apellido representante';
 
 //Horas
     $lang['horas_titulo'] = 'Tiempo facturable';

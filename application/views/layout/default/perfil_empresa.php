@@ -26,6 +26,9 @@
     $profesion = '';
     $tamano = '';
     $codigoCotizacion = '';
+    $nombreRepresentante = '';
+    $primerApellidoRepresentante = '';
+    $segundoApellidoRepresentante = '';
     $pais = '';
     $provincia = '';
     $canton = '';
@@ -58,6 +61,9 @@
         $profesion = $resultado['profesion'];
         $tamano = $resultado['tamano'];
         $codigoCotizacion = $resultado['codigoCotizacion'];
+        $nombreRepresentante = $resultado['nombreRepresentante'];
+        $primerApellidoRepresentante = $resultado['primerApellidoRepresentante'];
+        $segundoApellidoRepresentante = $resultado['segundoApellidoRepresentante'];
         $pais = $resultado['direccion']['pais'];
         $provincia = $resultado['direccion']['provincia'];
         $canton = $resultado['direccion']['canton'];
@@ -272,11 +278,21 @@
                                             <div class="col s12">
                                                 <h5><?= label('formEmpresa_infoCotizacion'); ?></h5>
                                             </div>
-                                            <div class="col s12">
-                                                <div class="input-field">
-                                                    <input id="empresa_codigoCotizacion" name="empresa_codigoCotizacion" type="text" value="<?= $codigoCotizacion;?>">
-                                                    <label for="empresa_codigoCotizacion"><?= label('formEmpresa_codigoCotizacion'); ?></label>
-                                                </div>
+                                            <div class="input-field col s12">
+                                                <input id="empresa_codigoCotizacion" name="empresa_codigoCotizacion" type="text" value="<?= $codigoCotizacion;?>">
+                                                <label for="empresa_codigoCotizacion"><?= label('formEmpresa_codigoCotizacion'); ?></label>
+                                            </div>
+                                            <div class="input-field col s12 m4 l4">
+                                                <input id="empresa_nombreRepresentante" name="empresa_nombreRepresentante" type="text" value="<?= $nombreRepresentante;?>">
+                                                <label for="empresa_nombreRepresentante"><?= label('formEmpresa_nombreRepresentante'); ?></label>
+                                            </div>
+                                            <div class="input-field col s12 m4 l4">
+                                                <input id="empresa_primerApellidoRepresentante" name="empresa_primerApellidoRepresentante" type="text" value="<?= $primerApellidoRepresentante;?>">
+                                                <label for="empresa_primerApellidoRepresentante"><?= label('formEmpresa_primerApellidoRepresentante'); ?></label>
+                                            </div>
+                                            <div class="input-field col s12 m4 l4">
+                                                <input id="empresa_segundoApellidoRepresentante" name="empresa_segundoApellidoRepresentante" type="text" value="<?= $segundoApellidoRepresentante;?>">
+                                                <label for="empresa_segundoApellidoRepresentante"><?= label('formEmpresa_segundoApellidoRepresentante'); ?></label>
                                             </div>
                                             <div class="col s12">
                                                 <label for="empresa_firma_editar" style="display: block;margin-bottom: 0.5rem;"><?= label('formEmpresa_tituloFirma'); ?></label>
