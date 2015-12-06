@@ -1,7 +1,7 @@
 
 <!-- <button id="botonAgregarFila">Agregar Fila(boton de prueba)</button> -->
 
-<!-- <button id="myFunction">Prueba</button> -->
+
 
 <script type="text/javascript">
 
@@ -10,32 +10,17 @@
 
    $(document).ready(function(){
 
-    // $('#myFunction').on('click', function(){
-    //     var asc = $('.sorting_asc').data('indice-columna');
-    //     var desc = $('.sorting_desc').data('indice-columna');
-    //     var ascendente = true;
-    //     var valor = asc;
-    //     if (desc != null) {
-    //         ascendente = false;
-    //         var valor = desc;
-    //     } 
-    //     alert(valor + ', asc: ' + ascendente);
-    // });
-
-    //  $('#example').DataTable( {
-    //     "order": [[ 3, "desc" ]]
-    // } );
 
     $('#tablaLineasDetalle').dataTable( {
       "bPaginate": false,
       <?php
       if (isset($resultado['cotizacion'])) {// se esta editando una cotizacion
         $valor = 'desc';
-        if ($resultado['cotizacion']['ascendente']) {
+        if ($resultado['cotizacion']['ascendente']=='1') {
             $valor = 'asc';
         } 
         ?>
-            "aaSorting": [[<?=$resultado['cotizacion']['columna']?>, "<?=$valor?>" ]],
+            "order": [[<?=$resultado['cotizacion']['columna']?>, "<?=$valor?>" ]],
         <?php
       }
       ?>
@@ -58,6 +43,7 @@
       // "ordering": false,
       "searching": false
     });
+    
 
 /* Create an array with the values of all the input boxes in a column */
 $.fn.dataTable.ext.order['dom-text'] = function  ( settings, col )
@@ -83,8 +69,11 @@ $.fn.dataTable.ext.order['dom-select'] = function  ( settings, col )
     } );
 }
 
+});
 
 
+
+$(document).ready(function(){
 
     var filaEliminar = null;
    
@@ -155,19 +144,14 @@ $.fn.dataTable.ext.order['dom-select'] = function  ( settings, col )
             select.val(linea['idServicio']);
             select.trigger("chosen:updated");
 
-            // if (linea['idServicio'] == idServicio) {
-                $('#descripcion_' + numeroFila).val(linea['descripcion']);
-                $('#precio_' + numeroFila).val(linea['precioUnidad']);  
-                $('#cantidad_' + numeroFila).val(linea['cantidad']);  
-                cargarImpuestosPorServicio(numeroFila, linea['impuestos'])
-                $('#utilidad_' + numeroFila).val(linea['utilidad']);  
-                // alert(servicio['nombre'] + ', ' + servicio['descripcion']);
-            // } 
+            $('#descripcion_' + numeroFila).val(linea['descripcion']);
+            $('#precio_' + numeroFila).val(linea['precioUnidad']);  
+            $('#cantidad_' + numeroFila).val(linea['cantidad']);  
+            cargarImpuestosPorServicio(numeroFila, linea['impuestos'])
+            $('#utilidad_' + numeroFila).val(linea['utilidad']);  
 
-            // alert('hola');
             
         };
-     // alert('bien');
     }
 
 
@@ -484,6 +468,26 @@ $.fn.dataTable.ext.order['dom-select'] = function  ( settings, col )
         };
     }
 
+// Esta es la solución para que las columnas se ordenaran cuando se carga la tabla ya que mediante [["order": 2, "asc”]] 
+//en la configuración del  datatable no sirve correctamente. La solución consiste en hacer doble click sobre la columna que debe ordenar la tabla.  
+$(document).on('ready', function(){
+     <?php
+      if (isset($resultado['cotizacion'])) {// se esta editando una cotizacion
+        $valor = 'desc';
+        if ($resultado['cotizacion']['ascendente']=='1') {
+        ?>
+            $('.sorting_asc').click();
+            $('.sorting_desc').click();
+        <?php
+      } else {
+        ?>
+            $('.sorting_desc').click();
+            $('.sorting_asc').click();
+        <?php
+      }
+  }
+      ?>      
+});
     
 
 
