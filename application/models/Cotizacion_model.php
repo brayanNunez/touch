@@ -288,7 +288,7 @@ class Cotizacion_model extends CI_Model
              $query = $this->db->insert('plantilladiseno', array('idEmpresa' => $datos['idEmpresa'],'idCotizacion' => $data['idCotizacion'],'publica' => 0, 'eliminado' => 0));
             if (!$query) throw new Exception("Error en la BD");
 
-            $this->db->select('nombre, correo, telefono, logo, firma, codigoCotizacion');
+            $this->db->select('nombre, correo, telefono, logo, firma, sitioWeb, codigoCotizacion');
             $query = $this->db->get_where('empresa', array('idEmpresa'=> $datos['idEmpresa']));
             if (!$query) throw new Exception("Error en la BD");   
 
@@ -402,8 +402,12 @@ class Cotizacion_model extends CI_Model
             }
 
             // echo $datos['idUsuario']; exit();
+            $query = $this->db->get_where('cotizacion', array('idCotizacion'=> $datos['idCotizacion']));
+            if (!$query) throw new Exception("Error en la BD");  
+            $array = $query->result_array(); 
+            $data['cotizacion'] = array_shift($array);
 
-            $clientes = $this->db->query("SELECT cl.idCliente, cl.nombre, cl.primerApellido, cl.segundoApellido, cl.todosVendedores, mec.valido  FROM cliente as cl left join (SELECT uc.idCliente, 1 as valido FROM usuario_cliente as uc inner join usuario as u on u.idUsuario = uc.idUsuario where u.idUsuario = ".$datos['idUsuario'].") as mec on mec.idCliente = cl.idCliente where cl.eliminado = 0 order by nombre ASC ;");
+            $clientes = $this->db->query("SELECT cl.idCliente, cl.nombre, cl.primerApellido, cl.segundoApellido, cl.todosVendedores, mec.valido  FROM cliente as cl left join (SELECT uc.idCliente, 1 as valido FROM usuario_cliente as uc inner join usuario as u on u.idUsuario = uc.idUsuario where u.idUsuario = ".$data['cotizacion']['idUsuario'].") as mec on mec.idCliente = cl.idCliente where cl.eliminado = 0 order by nombre ASC ;");
             if (!$clientes)  throw new Exception("Error en la BD");
             $clientes = $clientes->result_array();
             $misClientes = array();
@@ -479,27 +483,26 @@ class Cotizacion_model extends CI_Model
             // if (!$query) throw new Exception("Error en la BD"); 
             // $data['idCotizacion'] = $this->db->insert_id();
 
-            $this->db->select('nombre, correo, telefono, logo, firma, codigoCotizacion');
+            $this->db->select('nombre, correo, telefono, logo, firma, sitioWeb, codigoCotizacion');
             $query = $this->db->get_where('empresa', array('idEmpresa'=> $datos['idEmpresa']));
             if (!$query) throw new Exception("Error en la BD");   
 
             $array = $query->result_array(); 
             $data['empresa'] = array_shift($array);
-            
+
+
 
             $this->db->select('nombre, primerApellido, segundoApellido');
-            $query = $this->db->get_where('usuario', array('idUsuario'=> $datos['idUsuario']));
+            $query = $this->db->get_where('usuario', array('idUsuario'=> $data['cotizacion']['idUsuario']));
             if (!$query) throw new Exception("Error en la BD");   
 
             $array = $query->result_array(); 
             $data['usuario'] = array_shift($array);
 
             // $this->db->select('nombre, primerApellido, segundoApellido');
-            $query = $this->db->get_where('cotizacion', array('idCotizacion'=> $datos['idCotizacion']));
-            if (!$query) throw new Exception("Error en la BD");   
+             
 
-            $array = $query->result_array(); 
-            $data['cotizacion'] = array_shift($array);
+            
 
             $query = $this->db->get_where('plantilladiseno', array('idCotizacion'=> $datos['idCotizacion']));
             if (!$query) throw new Exception("Error en la BD");   

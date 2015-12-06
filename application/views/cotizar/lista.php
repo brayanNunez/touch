@@ -84,7 +84,8 @@
                                                           ?>
                                                           <a>
                                                         </td>
-                                                        <td><?= $fila['fechaCreacion'] ?></td>
+                                                        <td>
+                                                        <?= date("d-m-y", strtotime($fila['fechaCreacion']));?>
                                                         <td>
                                                           <a href="<?= base_url(); ?>clientes/editar/<?= encryptIt($fila['idCliente'])?>#tab-informacion">
                                                           <?= $fila['cliente'] ?>

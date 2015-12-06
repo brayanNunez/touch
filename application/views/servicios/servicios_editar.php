@@ -72,13 +72,13 @@
                                             <div class="input-field col s12 m6 l6 inputSelector" >
                                                 <label for="servicioFase"><?= label('formServicio_seleccioneFase'); ?></label>
                                                 <br>
-                                                <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="servicioFase" id="servicioFase" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("servicio_elegirFase"); ?>" class="browser-default chosen-select" style="width:350px;" tabindex="2">
+                                                <select data-incluirBoton="0" placeholder="seleccionar" data-tipo="servicioFase" id="servicioFase" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("servicio_elegirFase"); ?>" class="browser-default chosen-select" style="width:350px;" tabindex="2">
                                                 </select>
                                             </div>
                                             <div class="input-field col s12 m6 l6 inputSelector" >
                                                 <label for="servicio_subFase"><?= label('formServicio_seleccioneSubfase'); ?></label>
                                                 <br>
-                                                <select disabled='disabled' data-incluirBoton="1" placeholder="seleccionar" data-tipo="servicio_subFase" id="servicio_subFase" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("servicio_elegirSubFase"); ?>" class="browser-default chosen-select" style="width:350px;" tabindex="2">
+                                                <select disabled='disabled' data-incluirBoton="0" placeholder="seleccionar" data-tipo="servicio_subFase" id="servicio_subFase" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("servicio_elegirSubFase"); ?>" class="browser-default chosen-select" style="width:350px;" tabindex="2">
                                                 </select>
                                             </div>
                                             <div class="input-field col s12 m12 l12" style="margin-top: 5px;">
@@ -782,7 +782,7 @@ echo "var arrayFases =". $js_array.";";
             $('#servicio_subFase').empty(); //remove all child nodes
             $('#servicio_subFase').removeAttr('disabled');
             $('#servicio_subFase').append($('<option value="0" disabled selected style="display:none;"><?= label("servicio_elegirSubFase"); ?></option>'));
-            $('#servicio_subFase').append($('<option value="nuevo"><?= label("agregarNuevo"); ?></option>'));
+            // $('#servicio_subFase').append($('<option value="nuevo"><?= label("agregarNuevo"); ?></option>'));
             $('#servicio_subFase').append($('<option value="todas"><?= label("formServicio_fases_agregarTodas"); ?></option>'));
             for (var i = 0; i < arrayFases.length; i++) {
                 if (arrayFases[i]['idFase'] == idFasePadre) {
@@ -798,7 +798,7 @@ echo "var arrayFases =". $js_array.";";
         function cargarFases(){
             $('#servicioFase').empty(); //remove all child nodes
             $('#servicioFase').append($('<option value="0" disabled selected style="display:none;"><?= label("servicio_elegirFase"); ?></option>'));
-            $('#servicioFase').append($('<option value="nuevo"><?= label("agregarNuevo"); ?></option>'));
+            // $('#servicioFase').append($('<option value="nuevo"><?= label("agregarNuevo"); ?></option>'));
             $('#servicioFase').append($('<option value="todas"><?= label("formServicio_fases_agregarTodas"); ?></option>'));
             for (var i = 0; i < arrayFases.length; i++) {
                  var newOption = $('<option value="'+arrayFases[i]['idFase']+'">'+arrayFases[i]['nombre']+'</option>');
