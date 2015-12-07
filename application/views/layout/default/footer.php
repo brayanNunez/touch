@@ -260,43 +260,43 @@ Scripts
         <div class="row">
             <form id="form_horas" action="<?=base_url()?>horas/guardarCambios" method="post">
                 <div class="input-field col s12">
-                    <input id="horas_diasAnno" name="horas_diasAnno" type="number">
+                    <input id="horas_diasAnno" name="horas_diasAnno" type="number" readonly value="365">
                     <label for="horas_diasAnno"><?= label('horas_diasAnno') ?></label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="horas_finesSemana" name="horas_finesSemana" type="number">
+                    <input id="horas_finesSemana" class="campo_horas" name="horas_finesSemana" type="number">
                     <label for="horas_finesSemana"><?= label('horas_finesSemana') ?></label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="horas_festivosObligatorios" name="horas_festivosObligatorios" type="number">
+                    <input id="horas_festivosObligatorios" class="campo_horas" name="horas_festivosObligatorios" type="number">
                     <label for="horas_festivosObligatorios"><?= label('horas_festivosObligatorios') ?></label>
                     <div style="margin-bottom: 35px;">
-                        <input value='1' type="checkbox" class="filled-in" id="checkbox_festivosNoObligatorios" name="checkbox_festivosNoObligatorios" />
+                        <input value='1' type="checkbox" class="filled-in campo_horas" id="checkbox_festivosNoObligatorios" name="checkbox_festivosNoObligatorios" />
                         <label id="label_checkboxFestivosNoObligatorios" for="checkbox_festivosNoObligatorios" style="float: left; top: 0;"><?= label('horas_asignarFestivosNoObligatorios') ?></label>
                     </div>
                 </div>
                 <div id="horas_inputFestivosNoObligatorios" class="input-field col s12" style="display: none;">
-                    <input id="horas_festivosNoObligatorios" name="horas_festivosNoObligatorios" type="number">
+                    <input id="horas_festivosNoObligatorios" class="campo_horas" name="horas_festivosNoObligatorios" type="number">
                     <label for="horas_festivosNoObligatorios"><?= label('horas_festivosNoObligatorios') ?></label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="horas_vacaciones" name="horas_vacaciones" type="number">
+                    <input id="horas_vacaciones" class="campo_horas" name="horas_vacaciones" type="number">
                     <label for="horas_vacaciones"><?= label('horas_vacaciones') ?></label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="horas_promedioBajas" name="horas_promedioBajas" type="number">
+                    <input id="horas_promedioBajas" class="campo_horas" name="horas_promedioBajas" type="number">
                     <label for="horas_promedioBajas"><?= label('horas_promedioBajas') ?></label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="horas_diasFacturables" name="horas_diasFacturables" type="number">
+                    <input id="horas_diasFacturables" class="campo_horas" name="horas_diasFacturables" type="number" readonly>
                     <label for="horas_diasFacturables"><?= label('horas_diasFacturables') ?></label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="horas_promedioHorasDiarias" name="horas_promedioHorasDiarias" type="number">
+                    <input id="horas_promedioHorasDiarias" class="campo_horas" name="horas_promedioHorasDiarias" type="number">
                     <label for="horas_promedioHorasDiarias"><?= label('horas_promedioHorasDiarias') ?></label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="horas_cantidadManoObra" name="horas_cantidadManoObra" type="number">
+                    <input id="horas_cantidadManoObra" class="campo_horas" name="horas_cantidadManoObra" type="number">
                     <label for="horas_cantidadManoObra"><?= label('horas_cantidadManoObra') ?></label>
                 </div>
                 <div class="col s12">
@@ -679,10 +679,30 @@ Scripts
                 if(response != 'null') {
                     var datosHoras = $.parseJSON(response);
                     var incluirNoObligatorios = datosHoras['incluirNoObligatorios'];
-                    $('#form_horas #horas_diasAnno').val(datosHoras['diasAnno']);
-                    $('#form_horas #horas_finesSemana').val(datosHoras['finesSemana']);
-                    $('#form_horas #horas_festivosObligatorios').val(datosHoras['festivosObligatorios']);
-                    $('#form_horas #horas_festivosNoObligatorios').val(datosHoras['festivosNoObligatorios']);
+
+//                    var diasAnno = datosHoras['diasAnno'];
+                    var diasAnno = 365;
+                    var finesSemana = parseFloat(datosHoras['finesSemana']);
+                    var festivosObligatorios = parseFloat(datosHoras['festivosObligatorios']);
+                    var festivosNoObligatorios = parseFloat(datosHoras['festivosNoObligatorios']);
+                    var vacaciones = parseFloat(datosHoras['vacaciones']);
+                    var promedioBajas = parseFloat(datosHoras['promedioBajas']);
+                    var promedioHorasDiarias = parseFloat(datosHoras['promedioHorasDiarias']);
+                    var cantidadManoObra = parseFloat(datosHoras['cantidadManoObra']);
+
+                    var diasNoFacturables = finesSemana + festivosObligatorios + vacaciones + promedioBajas;
+                    if(incluirNoObligatorios == 1) {
+                        diasNoFacturables += festivosNoObligatorios;
+                    }
+                    var diasFacturables = (diasAnno - diasNoFacturables).toFixed(2);
+
+                    var totalHorasAnual = (diasFacturables * promedioHorasDiarias * cantidadManoObra).toFixed(2);
+                    var promedioHorasMensual = ((diasFacturables / 12) * promedioHorasDiarias * cantidadManoObra).toFixed(2);
+
+                    $('#form_horas #horas_diasAnno').val(diasAnno);
+                    $('#form_horas #horas_finesSemana').val(finesSemana);
+                    $('#form_horas #horas_festivosObligatorios').val(festivosObligatorios);
+                    $('#form_horas #horas_festivosNoObligatorios').val(festivosNoObligatorios);
                     if (incluirNoObligatorios == 0) {
                         $('#form_horas #checkbox_festivosNoObligatorios').prop('checked', false);
                         document.getElementById('horas_inputFestivosNoObligatorios').style.display = 'none';
@@ -690,14 +710,12 @@ Scripts
                         $('#form_horas #checkbox_festivosNoObligatorios').prop('checked', true);
                         document.getElementById('horas_inputFestivosNoObligatorios').style.display = 'block';
                     }
-                    $('#form_horas #horas_vacaciones').val(datosHoras['vacaciones']);
-                    $('#form_horas #horas_promedioBajas').val(datosHoras['promedioBajas']);
-                    $('#form_horas #horas_diasFacturables').val(datosHoras['diasFacturables']);
-                    $('#form_horas #horas_promedioHorasDiarias').val(datosHoras['promedioHorasDiarias']);
-                    $('#form_horas #horas_cantidadManoObra').val(datosHoras['cantidadManoObra']);
+                    $('#form_horas #horas_vacaciones').val(vacaciones);
+                    $('#form_horas #horas_promedioBajas').val(promedioBajas);
+                    $('#form_horas #horas_diasFacturables').val(diasFacturables);
+                    $('#form_horas #horas_promedioHorasDiarias').val(promedioHorasDiarias);
+                    $('#form_horas #horas_cantidadManoObra').val(cantidadManoObra);
 
-                    var totalHorasAnual = (datosHoras['diasFacturables'] * datosHoras['promedioHorasDiarias']).toFixed(2);
-                    var promedioHorasMensual = (totalHorasAnual / 12).toFixed(2);
                     $('#horas_totalAnual').text(totalHorasAnual);
                     $('#horas_promedioMensual').text(promedioHorasMensual);
 
@@ -709,6 +727,29 @@ Scripts
                 }
             }
         });
+    });
+    $(document).on('change', '.campo_horas', function () {
+        var diasAnno = 365;
+        var finesSemana = parseFloat($('#horas_finesSemana').val());
+        var festivosObligatorios = parseFloat($('#horas_festivosObligatorios').val());
+        var incluirNoObligatorios = $('#checkbox_festivosNoObligatorios').prop('checked');
+        var festivosNoObligatorios = parseFloat($('#horas_festivosNoObligatorios').val());
+        var vacaciones = parseFloat($('#horas_vacaciones').val());
+        var promedioBajas = parseFloat($('#horas_promedioBajas').val());
+        var promedioHorasDiarias = parseFloat($('#horas_promedioHorasDiarias').val());
+        var cantidadManoObra = parseFloat($('#horas_cantidadManoObra').val());
+
+        var diasNoFacturables = finesSemana + festivosObligatorios + vacaciones + promedioBajas;
+        if(incluirNoObligatorios == true) {
+            diasNoFacturables += festivosNoObligatorios;
+        }
+        var diasFacturables = (diasAnno - diasNoFacturables).toFixed(2);
+        var totalHorasAnual = (diasFacturables * promedioHorasDiarias * cantidadManoObra).toFixed(2);
+        var promedioHorasMensual = ((diasFacturables / 12) * promedioHorasDiarias * cantidadManoObra).toFixed(2);
+
+        $('#horas_diasFacturables').val(diasFacturables);
+        $('#horas_totalAnual').text(totalHorasAnual);
+        $('#horas_promedioMensual').text(promedioHorasMensual);
     });
 </script>
 <!--Script para selects de busqueda-->
