@@ -379,7 +379,7 @@ class Usuario_model extends CI_Model
                 $rolesAsignados = '';
                 foreach ($privilegios as $pr) {
                     if($rolesAsignados != '') {
-                        $rolesAsignados .= ', ';
+                        $rolesAsignados .= ',';
                     }
                     switch($pr['idPrivilegio']) {
                         case 1:

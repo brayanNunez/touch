@@ -284,6 +284,12 @@ div#agregarPersona hr { height: 12px; border: 0; box-shadow: inset 0 15px 15px -
 
 div#empresa_logo_editar a { left: 50%; margin-left: -100px; }
 
+a#btn_nombreUsuarioLogueado { height: auto; margin-top: 10px; }
+span#span_usuarioLogueado { display: block; width: 127px; word-wrap: break-word; line-height: 25px; }
+span#span_usuarioLogueado i { margin: 0; }
+ul#list_rolesUsuarioLogueado { margin-top: 20px; }
+ul#list_rolesUsuarioLogueado li { line-height: 25px; list-style: circle; color: #FFFFFF; text-shadow: 1px 1px 1px #444; }
+
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/
     div#login-page { width: 380px !important; max-height: 408px !important; top: 0 !important; }

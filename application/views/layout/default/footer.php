@@ -981,8 +981,13 @@ Scripts
                     }
                     $('#btn_perfilUsuarioLogueado').attr('href', '<?= base_url(); ?>usuarios/editar/' + datosUsuario['idUsuarioEncriptado']);
                     $('#span_nombreUsuarioLogueado').text(datosUsuario['nombreUsuario']);
-                    $('#span_rolesUsuarioLogueado').text(datosUsuario['roles']);
                     $('#img_imagenUsuarioLogueado').attr('src', rutaImagen);
+
+                    var roles = datosUsuario['roles'];
+                    var arrayRoles = roles.split(',');
+                    for(var i = 0; i < arrayRoles.length; i++) {
+                        $('#list_rolesUsuarioLogueado').append('<li>' + arrayRoles[i] + '</li>');
+                    }
                 }
             }
         });
