@@ -166,7 +166,7 @@ class Gastos extends CI_Controller
 
     public function categoriasGasto() {
         $resultado = $this->Gasto_model->categoriasGasto();
-        if ($resultado === false || $resultado === array()) {
+        if ($resultado === false) {
             echo 0;
         } else {
             echo json_encode($resultado);
@@ -223,7 +223,7 @@ class Gastos extends CI_Controller
         $idEmpresa = $sessionActual['idEmpresa'];
 
         $resultado = $this->Gasto_model->formasPago($idEmpresa);
-        if ($resultado === false || $resultado === array()) {
+        if ($resultado === false) {
             echo 0;
         } else {
             echo json_encode($resultado);
@@ -280,7 +280,7 @@ class Gastos extends CI_Controller
         $idEmpresa = $sessionActual['idEmpresa'];
 
         $resultado = $this->Gasto_model->proveedores($idEmpresa);
-        if ($resultado === false || $resultado === array()) {
+        if ($resultado === false) {
             echo 0;
         } else {
             echo json_encode($resultado);

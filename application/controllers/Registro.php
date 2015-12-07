@@ -14,7 +14,7 @@ class Registro extends CI_Controller
     public function index()
     {
         $paises = $this->Registro_model->paises();
-        if ($paises === false || $paises === array()) {
+        if ($paises === false) {
             echo "Error en la transacción";
         } else {
             $data['paises'] = $paises;

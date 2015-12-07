@@ -33,7 +33,7 @@ class Proveedores extends CI_Controller
         $tipos = $this->Proveedor_model->tiposPresupuesto();
         $paises = $this->Proveedor_model->paises();
         $gastos = $this->Proveedor_model->NombresGasto($idEmpresa);
-        if ($tipos === false || $tipos === array() || $paises === false || $paises === array()) {
+        if ($tipos === false || $paises === false) {
             echo "Error en la transacci�n";
         } else {
             $data['paises'] = $paises;

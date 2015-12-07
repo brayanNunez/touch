@@ -31,7 +31,7 @@ class Clientes extends CI_Controller
         $paises = $this->Cliente_model->paises();
         $formasPago = $this->Cliente_model->formasPago($idEmpresa);
         $monedas = $this->Cliente_model->monedas($idEmpresa);
-        if ($paises === false || $paises === array() || $formasPago === false || $formasPago === array() || $monedas === false || $monedas === array()) {
+        if ($paises === false || $formasPago === false || $monedas === false) {
             echo "Error en la transacción";
         } else {
             $data['paises'] = $paises;
@@ -194,7 +194,7 @@ class Clientes extends CI_Controller
         $paises = $this->Cliente_model->paises();
         $formasPago = $this->Cliente_model->formasPago($idEmpresa);
         $monedas = $this->Cliente_model->monedas($idEmpresa);
-        if ($resultado === false || $resultado === array() || $paises === false || $paises === array() || $formasPago === false || $formasPago === array() || $monedas === false || $monedas === array()) {
+        if ($resultado === false || $resultado === array() || $paises === false || $formasPago === false || $monedas === false) {
             echo "Error en la transacción";
         } else {
             $data['resultado'] = $resultado;
