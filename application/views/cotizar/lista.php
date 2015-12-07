@@ -597,22 +597,22 @@
         <div  class="section">
           <form id="formBusqueda">
             <div class="row">
-                <div class="input-field col s12 m3 l3">
+              <div class="row">
+                <div class="input-field col s12 m4 l4">
                     <div class="input-field col s12">
-                        <input id="busqueda-fecha-desde" type="text" class="datepicker-fecha">
+                        <input id="busqueda-fecha-desde" name="busqueda-fecha-desde" type="text" class="datepicker-fecha">
                         <label for="busqueda-fecha-desde" class=""><?= label('clientes_busquedaDesde') ?></label>
                     </div>
                 </div>
-                <div class="input-field col s12 m3 l3">
+                <div class="input-field col s12 m4 l4">
                     <div class="input-field col s12">
-                        <input id="busqueda-fecha-hasta" type="text" class="datepicker-fecha">
+                        <input id="busqueda-fecha-hasta" name="busqueda-fecha-hasta" type="text" class="datepicker-fecha">
                         <label for="busqueda-fecha-hasta" class=""><?= label('clientes_busquedaHasta') ?></label>
                     </div>
                 </div>
 
-                <div class="input-field col s12 m6 l6">
+              <!--   <div class="input-field col s12 m6 l6">
                     <select class="input-field col s12">
-                        <!--                                     <option value="" disabled selected>Estado</option>-->
                         <option value="1" selected>Todos</option>
                         <option value="2">Nueva</option>
                         <option value="3">Enviada</option>
@@ -620,13 +620,50 @@
                         <option value="5">Rechazada</option>
                     </select>
                     <label>Estado</label>
+                </div> -->
+
+                 <div class="input-field col s12 m4 l4 inputSelector">            
+                  <label for="contenedorSelectEstado"><?= label("busqueda_selectEstado"); ?></label>
+                  <br>
+                  <div id="contenedorSelectEstado">  
+                      <select data-incluirBoton="0" placeholder="seleccionar" id="busquedaCotizacion_estado" name="busquedaCotizacion_estado" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirCliente"); ?>" class="chosen-select browser-default" style="width:350px;" tabindex="2">
+                          <!-- <option value="nuevo"><?= label("agregarNuevo"); ?></option> -->
+                          <option value="0" selected ><?= label("busquedaAvanzada_Todos"); ?></option>
+                          <?php 
+                              foreach ($estados as $estado) {
+                                  $valor = "value='".$estado['idEstadoCotizacion']."'";
+                                  $miEstado =  '';
+                                  switch ($estado['descripcion']) {
+                                    case 'nueva':
+                                      $miEstado =  label('estado_nueva');
+                                      break;
+                                    case 'espera':
+                                      $miEstado =  label('estado_espera');
+                                      break;
+                                    case 'rechazada':
+                                      $miEstado =  label('estado_rechazada');
+                                      break;
+                                    case 'enviada':
+                                      $miEstado =  label('estado_enviada');
+                                      break;
+                                    case 'finalizada':
+                                      $miEstado =  label('estado_finalizada');
+                                      break;
+                                  }
+                                  echo '<option '.$valor.'>'.$miEstado.'</option>");';
+                              }
+                                  
+                          ?>
+                      </select>  
+                   </div>
                 </div>
-                <div class="input-field col s12 m6 l6 inputSelector">            
-                  <label for="contenedorSelectCliente"><?= label("paso1_labelCliente"); ?></label>
+              </div>
+              <div class="row">
+                <div class="input-field col s12 m12 l4 inputSelector">            
+                  <label for="contenedorSelectCliente"><?= label("busqueda_selectClientes"); ?></label>
                   <br>
                   <div id="contenedorSelectCliente">  
-                      <select data-incluirBoton="0" placeholder="seleccionar" data-tipo="paso1Cliente" id="busquedaCotizacion_cliente" name="busquedaCotizacion_cliente" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirCliente"); ?>" class="chosen-select browser-default" style="width:350px;" tabindex="2">
-                          <!-- <option value="0" disabled selected style="display:none;"><?= label("paso1_elegirCliente"); ?></option> -->
+                      <select data-incluirBoton="0" placeholder="seleccionar" id="busquedaCotizacion_cliente" name="busquedaCotizacion_cliente" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirCliente"); ?>" class="chosen-select browser-default" style="width:350px;" tabindex="2">
                           <!-- <option value="nuevo"><?= label("agregarNuevo"); ?></option> -->
                           <option value="0" selected ><?= label("busquedaAvanzada_Todos"); ?></option>
                           <?php 
@@ -643,24 +680,44 @@
                       </select>  
                    </div>
                 </div>
-                <div class="input-field col s12 m4 l4">
-                    <select class="input-field col s12">
-                        <!--                                     <option value="" disabled selected>Empleados</option>-->
-                        <option value="1" selected>Todos</option>
-                        <option value="2">Juan Carlos Porras</option>
-                        <option value="3">Ana Bolaños Rojas</option>
-                    </select>
-                    <label>Vendedores</label>
+
+                <div class="input-field col s12 m12 l4 inputSelector">            
+                  <label for="contenedorSelectVendedor"><?= label("busqueda_selectVendedores"); ?></label>
+                  <br>
+                  <div id="contenedorSelectVendedor">  
+                      <select data-incluirBoton="0" placeholder="seleccionar" id="busquedaCotizacion_vendedor" name="busquedaCotizacion_vendedor" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirVendedor"); ?>" class="chosen-select browser-default" style="width:350px;" tabindex="2">
+                          <!-- <option value="nuevo"><?= label("agregarNuevo"); ?></option> -->
+                          <option value="0" selected ><?= label("busquedaAvanzada_Todos"); ?></option>
+                          <?php 
+                              foreach ($vendedores as $vendedor) {
+                                  $valor = "value='".$vendedor['idUsuario']."'";
+                                  echo '<option '.$valor.'>'.$vendedor['nombre'].' '.$vendedor['primerApellido'].' '.$vendedor['segundoApellido'].'</option>");';
+                              }
+                                  
+                          ?>
+                      </select>  
+                   </div>
                 </div>
-                <div class="input-field col s12 m4 l4">
-                    <select id="reporte-cliente" class="input-field col s12">
-                        <!--                                     <option value="" disabled selected>Outsourcing</option>-->
-                        <option value="1" selected>Todos</option>
-                        <option value="2">Transportes Rojas</option>
-                        <option value="3">Música en vivo</option>
-                    </select>
-                    <label for="reporte-cliente">Proveedores</label>
+
+                <div class="input-field col s12 m12 l4 inputSelector">            
+                  <label for="contenedorSelectServicio"><?= label("busqueda_selectServicios"); ?></label>
+                  <br>
+                  <div id="contenedorSelectServicio">  
+                      <select data-incluirBoton="0" placeholder="seleccionar" id="busquedaCotizacion_servicio" name="busquedaCotizacion_servicio" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirServicio"); ?>" class="chosen-select browser-default" style="width:350px;" tabindex="2">
+                          <!-- <option value="nuevo"><?= label("agregarNuevo"); ?></option> -->
+                          <option value="0" selected ><?= label("busquedaAvanzada_Todos"); ?></option>
+                          <?php 
+                              foreach ($servicios as $servicio) {
+                                  $valor = "value='".$servicio['idServicio']."'";
+                                  echo '<option '.$valor.'>'.$servicio['nombre'].'</option>");';
+                              }
+                                  
+                          ?>
+                      </select>  
+                   </div>
                 </div>
+
+              </div>
             </div>
           </form>
         </div>

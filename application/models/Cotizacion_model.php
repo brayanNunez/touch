@@ -34,6 +34,18 @@ class Cotizacion_model extends CI_Model
             if (!$clientes) throw new Exception("Error en la BD"); 
             $data['clientes'] = $clientes->result_array();
 
+            $servicios = $this->db->get_where('servicio', array('estado' => 0,'idEmpresa' => $idEmpresa));
+            if (!$servicios) throw new Exception("Error en la BD"); 
+            $data['servicios'] = $servicios->result_array();
+
+            $usuarios = $this->db->get_where('usuario', array('eliminado' => 0,'idEmpresa' => $idEmpresa));
+            if (!$usuarios) throw new Exception("Error en la BD"); 
+            $data['vendedores'] = $usuarios->result_array();
+
+            $estado = $this->db->get_where('estadocotizacion');
+            if (!$estado) throw new Exception("Error en la BD"); 
+            $data['estados'] = $estado->result_array();
+
             $this->db->trans_commit();
             return $data;
         } catch (Exception $e) {

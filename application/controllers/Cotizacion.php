@@ -28,7 +28,7 @@ class Cotizacion extends CI_Controller
     }
 
     public function busqueda(){
-        echo $this->input->post('busquedaCotizacion_cliente');
+        echo $this->input->post('busquedaCotizacion_servicio');
     }
 
     public function precarga()
