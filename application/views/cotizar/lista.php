@@ -85,7 +85,7 @@
                                                           <a>
                                                         </td>
                                                         <td>
-                                                        <?= date("d-m-y", strtotime($fila['fechaCreacion']));?>
+                                                        <?= date("d-m-Y", strtotime($fila['fechaCreacion']));?>
                                                         <td>
                                                           <a href="<?= base_url(); ?>clientes/editar/<?= encryptIt($fila['idCliente'])?>#tab-informacion">
                                                           <?= $fila['cliente'] ?>
@@ -600,13 +600,13 @@
               <div class="row">
                 <div class="input-field col s12 m4 l4">
                     <div class="input-field col s12">
-                        <input id="busqueda-fecha-desde" name="busqueda-fecha-desde" type="text" class="datepicker-fecha">
+                        <input id="busqueda-fecha-desde" name="busqueda-fecha-desde" type="text" value="<?= date("d-m-Y", strtotime($fechaMinima))?>" class="datepicker-fecha">
                         <label for="busqueda-fecha-desde" class=""><?= label('clientes_busquedaDesde') ?></label>
                     </div>
                 </div>
                 <div class="input-field col s12 m4 l4">
                     <div class="input-field col s12">
-                        <input id="busqueda-fecha-hasta" name="busqueda-fecha-hasta" type="text" class="datepicker-fecha">
+                        <input id="busqueda-fecha-hasta" name="busqueda-fecha-hasta" type="text" class="datepicker-fecha" value="<?php echo date('Y-m-d'); ?>">
                         <label for="busqueda-fecha-hasta" class=""><?= label('clientes_busquedaHasta') ?></label>
                     </div>
                 </div>

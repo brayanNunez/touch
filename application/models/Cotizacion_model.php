@@ -42,9 +42,17 @@ class Cotizacion_model extends CI_Model
             if (!$usuarios) throw new Exception("Error en la BD"); 
             $data['vendedores'] = $usuarios->result_array();
 
-            $estado = $this->db->get_where('estadocotizacion');
+            $estado = $this->db->get('estadocotizacion');
             if (!$estado) throw new Exception("Error en la BD"); 
             $data['estados'] = $estado->result_array();
+
+            $this->db->select('MIN(fechaCreacion) as fecha');
+            $fecha = $this->db->get_where('cotizacion', array('eliminado' => 0,'idEmpresa' => $idEmpresa));
+            if (!$fecha) throw new Exception("Error en la BD"); 
+            $fecha = $fecha->result_array();
+            $fecha = array_shift($fecha);
+            $data['fechaMinima'] = $fecha['fecha'];
+            // echo $data['fechaMinima']; exit();
 
             $this->db->trans_commit();
             return $data;

@@ -1381,4 +1381,11 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['categoriaDeProveedores'] = 'Categoría de personas';
     $lang['horas'] = 'Horas';
 
+    $lang['busqueda_selectEstado'] = 'Estado';
+    $lang['busqueda_selectClientes'] = 'Cliente';
+    $lang['busqueda_selectVendedores'] = 'Vendedor';
+    $lang['busquedaAvanzada_Todos'] = 'Todos';
+    $lang['busqueda_selectServicios'] = 'Servicio';
+    $lang['cotizaciones_busquedaAvanzada'] = 'Búsqueda  avanzada';
+
 ?>

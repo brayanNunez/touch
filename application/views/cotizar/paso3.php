@@ -54,7 +54,7 @@
                      }
 
                      ?>
-                     <p class="box" id="fecha">Fecha: <?= date("d-m-y", strtotime($fecha));?></p>
+                     <p class="box" id="fecha">Fecha: <?= date("d-m-Y", strtotime($fecha));?></p>
                      <p class="box" id="hora">Hora: <?php 
                         $date = new DateTime($fecha);
                         echo $date->format('g:i a');
