@@ -399,6 +399,19 @@
             $(this).text(totalGastos);
         });
     }
+    function limpiarTablaGastos() {
+        $('.gasto_elementoTabla').each(function () {
+            var elementoPadre = $(this).parents('tr');
+            elementoPadre.fadeOut(function () {
+                elementoPadre.empty();
+                elementoPadre.remove();
+            });
+        });
+        actualizarMontos();
+        contadorFilasGastos = 0;
+        actualizarCantidadGastos();
+        gastosTabla.splice(0, gastosTabla.length);
+    }
 </script>
 <!--Script para manejo de gastos-->
 <script type="text/javascript">
@@ -449,7 +462,7 @@
                         'data-id-eliminar="' + idEncriptado + '" data-fila-eliminar="fila'+ contadorFilasGastos +'">' + menuOpciones_eliminar +'</a>' +
                     '</td>';
         var codigo = '<td>' +
-                        '<input style="display:none" name="gasto_'+ contadorFilasGastos +'" type="text">' +
+                        '<input class="gasto_elementoTabla" style="display:none" name="gasto_'+ contadorFilasGastos +'" type="text">' +
                         '<input name="gasto' + contadorFilasGastos + '_idGasto" type="text" style="display: none;" value="' + idEncriptado + '" />' + cod + '</td>';
         var nombre = '<td>' + nom + '</td>';
         var persona = '<td>' + per + '</td>';
@@ -523,8 +536,6 @@
         });
     });
 </script>
-
-
 <!--Script para fases e insercion de datos-->
 <script>
 <?php 
@@ -837,15 +848,15 @@ echo "var arrayFases =". $js_array.";";
                                         $('#servicioTiempo').val('').trigger('chosen:updated');
                                         cantidadFases = 0;
                                         contadorFases = 0;
-                                        contadorFilasGastos = 0;
+
                                         var table = $('#tabla-servicio').DataTable();
                                         table.clear().draw();
-                                        table = $('#gastos-tabla-lista').DataTable();
-                                        table.clear().draw();
+
                                         var $incluir = $(this).is(':checked');
                                         var $gastos = $('#servicio_gastosVariables');
                                         $gastos.css('display', 'none');
-                                        gastosTabla.splice(0, gastosTabla.length);
+
+                                        limpiarTablaGastos();
                                         break;
                                 }
                             }
@@ -859,7 +870,6 @@ echo "var arrayFases =". $js_array.";";
 
 
 </script>
-
 <!--Script para tags de impuestos-->
 <script>
     $(document).ready(function () {
@@ -974,7 +984,6 @@ echo "var arrayFases =". $js_array.";";
         });
     });
 </script>
-
 
 <!-- Inicio lista modals -->
 <div id="transaccionCorrecta" class="modal">
