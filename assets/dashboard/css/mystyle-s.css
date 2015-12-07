@@ -290,6 +290,9 @@ span#span_usuarioLogueado i { margin: 0; }
 ul#list_rolesUsuarioLogueado { margin-top: 20px; }
 ul#list_rolesUsuarioLogueado li { line-height: 25px; list-style: circle; color: #FFFFFF; text-shadow: 1px 1px 1px #444; }
 
+span#span_mensajeRegistroIncompleto { color: black; position: absolute; top: 0; right: 100px; }
+a#btn_completarRegistro { color: #039be5; text-decoration: underline; }
+
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/
     div#login-page { width: 380px !important; max-height: 408px !important; top: 0 !important; }
@@ -348,6 +351,11 @@ ul#list_rolesUsuarioLogueado li { line-height: 25px; list-style: circle; color: 
 
     div.cliente-ver-logo, div.proveedor-ver-logo { margin-top: 25px; }
     div.cliente-ver-logo img, div.proveedor-ver-logo img { width: 40% !important; }
+
+    div.navbar-fixed { height: 70px; }
+    nav.touch { height: 80px; }
+    span#span_mensajeRegistroIncompleto { position: absolute; top: 38px; right: 80px; }
+    aside#left-sidebar-nav a.sidebar-collapse { top: -43px; }
 }
 
 @media only screen and (max-width: 768px) {
@@ -419,6 +427,8 @@ ul#list_rolesUsuarioLogueado li { line-height: 25px; list-style: circle; color: 
     div.tabla_GastosPersona a i, div.tabla_GastosPersona_agregar a i { font-size: 30px; }
 
     div#empresa_logo_editar a { left: 0; margin-left: 0; }
+
+    span#span_mensajeRegistroIncompleto { right: 65px; }
 }
 
 @media only screen and (max-width: 640px) {
@@ -479,6 +489,10 @@ ul#list_rolesUsuarioLogueado li { line-height: 25px; list-style: circle; color: 
 
     div.cliente-ver-logo, div.proveedor-ver-logo { margin-top: 25px; }
     div.cliente-ver-logo img, div.proveedor-ver-logo img { width: 100% !important; }
+
+    div.navbar-fixed { height: 70px; }
+    nav.touch { height: 80px; }
+    span#span_mensajeRegistroIncompleto { top: 42px; }
 }
 
 @media only screen and (max-width: 480px) {
@@ -607,6 +621,8 @@ ul#list_rolesUsuarioLogueado li { line-height: 25px; list-style: circle; color: 
     /*canvas#trending-line-chart { height: 245px !important; }*/
     div#card-widgets div.card div.card-image { height: 130px; }
     div#card-widgets div.card div.card-content img { top: 30px; }
+
+    span#span_mensajeRegistroIncompleto { right: 50px; }
 }
 
 @media only screen and (max-width: 360px) {
@@ -620,4 +636,9 @@ ul#list_rolesUsuarioLogueado li { line-height: 25px; list-style: circle; color: 
     div#card-graficos-inicio { height: 490px; }
 
     .liquid ul li { width:170px; padding:0; margin:0; }
+
+    div.navbar-fixed { height: 85px; }
+    nav.touch { height: 95px; }
+    span#span_mensajeRegistroIncompleto { line-height: 18px; top: 58px; right: 5px; width: 200px; word-wrap: break-word; }
+    aside#left-sidebar-nav a.sidebar-collapse { top: -55px; }
 }

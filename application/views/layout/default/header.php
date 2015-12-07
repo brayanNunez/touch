@@ -162,8 +162,8 @@
                     <span class="logo-text">Touch!</span>
                 </h1>
 
-                <span class="texto-completar-registro">Recuerda que tu perfil esta incompleto
-                    <a id="btn_completarRegistro" href="#completarRegistroEmpresa" class="enlace-completar-registro -text modal-trigger"> editar</a>
+                <span id="span_mensajeRegistroIncompleto">Recuerda que tu perfil esta incompleto
+                    <a id="btn_completarRegistro" href="#completarRegistroEmpresa" class="-text modal-trigger"> editar</a>
                 </span>
 
                 <ul id="opciones-barra-superior" class="right hide-on-med-and-down">
