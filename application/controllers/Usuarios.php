@@ -112,6 +112,11 @@ class Usuarios extends CI_Controller
             echo 0;
         } else {
             //correcto
+            $sessionActual = $this->session->userdata('logged_in');
+            $idUsuarioLogueado = $sessionActual['idUsuario'];
+            if($data['id'] == $idUsuarioLogueado) {
+                $this->actualizarSesion();
+            }
             echo 1;
         }
     }
@@ -202,6 +207,11 @@ class Usuarios extends CI_Controller
             if(!$this->upload->do_upload()) {
                 echo 2;
             } else {
+                $sessionActual = $this->session->userdata('logged_in');
+                $idUsuarioLogueado = $sessionActual['idUsuario'];
+                if($idUsuario == $idUsuarioLogueado) {
+                    $this->actualizarSesion();
+                }
                 echo base_url().'files/empresas/'.$idEmpresa.'/usuarios/'.$idUsuario.'/'.$nombreFotografia.'.'.$ext;
             }
         }
@@ -217,6 +227,26 @@ class Usuarios extends CI_Controller
         } else {
             echo json_encode($resultado);
         }
+    }
+
+    private function actualizarSesion() {
+        $idUsuario = 1;
+        $idEmpresa = 1;
+        $resultado = $this->Usuario_model->datosPerfil($idUsuario);
+
+        $sess_array = array(
+            'idEmpresa' => $idEmpresa,
+            'idUsuario' => $idUsuario,
+            'idUsuarioEncriptado' => encryptIt($idUsuario),
+            'nombreUsuario' => $resultado['nombreUsuario'],
+            'rolesUsuario' => $resultado['roles'],
+            'rutaImagenUsuario' => base_url().'files/empresas/'.$idEmpresa.'/usuarios/'.$idUsuario.'/'.$resultado['fotografia'],
+            'administrador' => true,
+            'aprobador' => true,
+            'cotizador' => true,
+            'contador' => true
+        );
+        $this->session->set_userdata('logged_in', $sess_array);
     }
 
     //-----------------------------------------------------
