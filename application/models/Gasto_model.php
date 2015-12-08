@@ -46,8 +46,8 @@ class Gasto_model extends CI_Model
                 $this->db->where('idCategoriaGasto' , $gasto['idCategoriaGasto']);
                 $query1 = $this->db->get('categoriagasto');
                 $this->db->select('nombre');
-                $this->db->where('idFormaPago', $gasto['formaPago']);
-                $query2 = $this->db->get('formaPago');
+                $this->db->where('idTiempo', $gasto['formaPago']);
+                $query2 = $this->db->get('tiempo');
                 $this->db->select('juridico, nombre, primerApellido, segundoApellido');
                 $this->db->where('idProveedor', $gasto['idProveedor']);
                 $query3 = $this->db->get('proveedor');
