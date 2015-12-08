@@ -49,7 +49,7 @@
     $lang['confirmarGuardarCerrar'] = '¿Realmente desea guardar y cerrar la cotización en proceso?';
     $lang['confirmarCancelarCotizacion'] = '¿Realmente desea cancelar la cotización en proceso?';
     $lang['confirmarObtenerPlan'] = '¿Realmente desea obtener el plan?';
-    $lang['confirmarEliminarFase'] = '¿Realmente desea eliminar la fase?';
+    $lang['confirmarEliminarFase'] = '¿Realmente desea eliimnar la fase seleccionada?';
     $lang['confirmarEliminarSubFase'] = '¿Realmente desea eliminar la subfase?';
     $lang['fases_eliminarElementosSeleccionados'] = '¿Realmente desea eliminar las fases seleccionadas?';
     $lang['gastos_eliminarElementosSeleccionados'] = '¿Realmente desea eliminar los gastos seleccionados?';
@@ -195,7 +195,7 @@
     $lang['impuestoNuevo'] = 'Agregar nuevo';
     $lang['impuesto'] = 'Impuestos';
     $lang['impuestos_impuestoGuardadoCorrectamente'] = 'El impuesto ha sido creado correctamente.';
-    $lang['impuestos_impuestoEditadoCorrectamente'] = 'El impuesto ha sido editada correctamente.';
+    $lang['impuestos_impuestoEditadoCorrectamente'] = 'El impuesto ha sido editado correctamente.';
     $lang['impuesto_error_nombreExisteEnBD'] = 'El nombre del impuesto ya existe, por favor agregue un nombre diferente';
     $lang['impuesto_guardarCambios'] = 'Guardar cambios';
     
@@ -207,7 +207,7 @@
 
 //Fases
     $lang['tituloFases'] = 'Fases';
-    $lang['tituloFases_nuevo'] = 'Nueva fase';
+    $lang['tituloFases_nuevo'] = 'Agregar nueva';
     $lang['fases_busquedaAvanzada'] = 'Búsqueda avanzada';
     $lang['tituloFases_codigo'] = 'Código';
     $lang['tituloFases_fase'] = 'Fase';
@@ -241,7 +241,7 @@
     $lang['tituloGastos_proveedorCategoria'] = 'Categoría Proveedor';
     $lang['tituloGastos_monto'] = 'Monto';
     $lang['tituloGastos_opciones'] = 'Opciones';
-    $lang['tituloGastos_nuevo'] = 'Nuevo gasto';
+    $lang['tituloGastos_nuevo'] = 'Agregar nuevo';
     $lang['formGastos_nombre'] = 'Nombre del gasto';
     $lang['formGastos_monto'] = 'Monto del gasto';
     $lang['gastos_busquedaAvanzada'] = 'Búsqueda avanzada';
@@ -295,7 +295,7 @@
 
 //Categorias de gastos
     $lang['tituloCategoriasGastos'] = 'Categorías de gastos';
-    $lang['categoriaGastoNueva'] = 'Agregar categoría de gastos';
+    $lang['categoriaGastoNueva'] = 'Agregar nueva';
     $lang['tablaCategoriasGasto_nombre'] = 'Nombre';
     $lang['tablaCategoriasGasto_descripcion'] = 'Descripción';
     $lang['tablaCategoriasGasto_opciones'] = 'Opciones';
@@ -309,7 +309,7 @@
 
 //Categorias de persona
     $lang['tituloCategoriasPersonas'] = 'Categorías de personas';
-    $lang['categoriaPersonaNueva'] = 'Agregar categoría de personas';
+    $lang['categoriaPersonaNueva'] = 'Agregar nueva';
     $lang['tablaCategoriasPersona_nombre'] = 'Nombre';
     $lang['tablaCategoriasPersona_descripcion'] = 'Descripción';
     $lang['tablaCategoriasPersona_opciones'] = 'Opciones';
@@ -443,14 +443,14 @@
     $lang['agregarGastos_categoriaGasto'] = 'Categoría de gasto';
 
 //Tipos de moneda
-	$lang['tituloTiposMoneda'] = 'Tipos de moneda';
+	$lang['tituloTiposMoneda'] = 'Monedas';
 	$lang['tiposMoneda_defecto'] = 'Tipo de moneda por defecto';
 	$lang['tiposMoneda_selecionarUno'] = 'Seleccione uno';
 	$lang['tiposMoneda_permitidos'] = 'Tipos de moneda permitidos en las cotizaciones';
 	$lang['tiposMoneda_nombre'] = 'Moneda';
     $lang['tiposMoneda_tipoCambio'] = 'Tipo de cambio respecto a la moneda por defecto';
 	$lang['tiposMoneda_opciones'] = 'Opciones';
-	$lang['tiposMoneda_nuevo'] = 'Nuevo tipo de moneda';
+	$lang['tiposMoneda_nuevo'] = 'Agregar nueva';
 
     $lang['gastos_Nombre'] = 'Nombre';
     $lang['gastos_FormaPago'] = 'Forma de pago';
@@ -468,8 +468,8 @@
 
 //Formas de pago
     $lang['formasPago'] = 'Formas de pago';
-    $lang['tituloFormasPago'] = 'Formas de pago disponibles';
-    $lang['formaPagoNueva'] = 'Nueva forma de pago';
+    $lang['tituloFormasPago'] = 'Formas de pago';
+    $lang['formaPagoNueva'] = 'Agregar nueva';
     $lang['tablaFormaPago_nombre'] = 'Nombre';
     $lang['tablaFormaPago_descripcion'] = 'Descripción';
     $lang['tablaFormaPago_opciones'] = 'Opciones';

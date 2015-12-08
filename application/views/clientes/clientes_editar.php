@@ -138,16 +138,16 @@
                         </div>
                         <div>
                             <div class="input-field col s12 m4 l4">
+                                <input id="cliente_nombre" name="cliente_nombre" type="text">
+                                <label for="cliente_nombre"><?= label('formCliente_nombre'); ?></label>
+                            </div>
+                            <div class="input-field col s12 m4 l4">
                                 <input id="cliente_apellido1" name="cliente_apellido1" type="text">
                                 <label for="cliente_apellido1"><?= label('formCliente_apellido1'); ?></label>
                             </div>
                             <div class="input-field col s12 m4 l4">
                                 <input id="cliente_apellido2" name="cliente_apellido2" type="text">
                                 <label for="cliente_apellido2"><?= label('formCliente_apellido2'); ?></label>
-                            </div>
-                            <div class="input-field col s12 m4 l4">
-                                <input id="cliente_nombre" name="cliente_nombre" type="text">
-                                <label for="cliente_nombre"><?= label('formCliente_nombre'); ?></label>
                             </div>
                         </div>
                         <div class="input-field col s12">
@@ -289,16 +289,16 @@
                                     <input class="accionAplicada" style="display:none" name="contacto_<?=$contador?>" type="text" value="1"> <!-- value 1 para existentes, 0 los nuevos y 2 los eliminados -->
                                     <input style="display:none" name="idContacto_<?=$contador?>" type="text" value="<?=encryptIt($contacto['idPersonaContacto'])?>">
 
+                                    <input id="cliente_contactoNombre_<?=$contador?>" name="cliente_contactoNombre_<?=$contador?>" type="text" value="<?=$contacto['nombre']?>"> 
+                                    <label for="cliente_contactoNombre_<?=$contador?>"><?= label("formContacto_nombre"); ?></label> 
+                                </div> 
+                                <div class="input-field col s12 m4 l4"> 
                                     <input id="cliente_contactoApellido1_<?=$contador?>" name="cliente_contactoApellido1_<?=$contador?>" type="text" value="<?=$contacto['primerApellido']?>"> 
                                     <label for="cliente_contactoApellido1_<?=$contador?>"><?= label("formContacto_apellido1"); ?></label> 
                                 </div> 
                                 <div class="input-field col s12 m4 l4"> 
                                     <input id="cliente_contactoApellido2_<?=$contador?>" name="cliente_contactoApellido2_<?=$contador?>" type="text" value="<?=$contacto['segundoApellido']?>"> 
-                                    <label for="cliente_contactoApellido2_<?=$contador?>"><?= label("formContacto_apellido2"); ?></label> 
-                                </div> 
-                                <div class="input-field col s12 m4 l4"> 
-                                    <input id="cliente_contactoNombre_<?=$contador?>" name="cliente_contactoNombre_<?=$contador?>" type="text" value="<?=$contacto['nombre']?>"> 
-                                    <label for="cliente_contactoNombre_<?=$contador?>"><?= label("formContacto_nombre"); ?></label> 
+                                    <label for="cliente_contactoApellido2_<?=$contador?>"><?= label("formContacto_apellido2"); ?></label>                            
                                 </div> 
                             </div> 
 
@@ -736,16 +736,16 @@
                     '<div class="row">' +
                         '<div class="input-field col s12 m4 l4">' +
                             '<input class="accionAplicada" style="display:none" name="contacto_'+ contador +'" type="text" value="0">' +  
+                            '<input id="cliente_contactoNombre_'+ contador +'" name="cliente_contactoNombre_'+ contador +'" type="text">' +
+                            '<label for="cliente_contactoNombre_'+ contador +'"><?= label("formContacto_nombre"); ?></label>' +
+                        '</div>' +
+                        '<div class="input-field col s12 m4 l4">' +
                             '<input id="cliente_contactoApellido1_'+ contador +'" name="cliente_contactoApellido1_'+ contador +'" type="text">' +
                             '<label for="cliente_contactoApellido1_'+ contador +'"><?= label("formContacto_apellido1"); ?></label>' +
                         '</div>' +
                         '<div class="input-field col s12 m4 l4">' +
                             '<input id="cliente_contactoApellido2_'+ contador +'" name="cliente_contactoApellido2_'+ contador +'" type="text">' +
                             '<label for="cliente_contactoApellido2_'+ contador +'"><?= label("formContacto_apellido2"); ?></label>' +
-                        '</div>' +
-                        '<div class="input-field col s12 m4 l4">' +
-                            '<input id="cliente_contactoNombre_'+ contador +'" name="cliente_contactoNombre_'+ contador +'" type="text">' +
-                            '<label for="cliente_contactoNombre_'+ contador +'"><?= label("formContacto_nombre"); ?></label>' +
                         '</div>' +
                     '</div>' +
 
