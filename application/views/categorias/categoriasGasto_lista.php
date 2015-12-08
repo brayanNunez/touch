@@ -710,7 +710,7 @@
                     <label for="categoriaGasto_nombre"><?= label('formCategoriaGasto_nombre'); ?></label>
                 </div>
                 <div class="input-field col s12">
-                    <textarea name="categoriaGasto_descripcion" id="categoriaGasto_descripcion" class="materialize-textarea" rows="4"></textarea>
+                    <textarea length="200" maxlength="200" name="categoriaGasto_descripcion" id="categoriaGasto_descripcion" class="materialize-textarea" rows="4"></textarea>
                     <label for="categoriaGasto_descripcion"><?= label('formCategoriaGasto_descripcion'); ?></label>
                 </div>
             </div>
@@ -740,7 +740,7 @@
                     <label for="categoriaGasto_nombre"><?= label('formCategoriaGasto_nombre'); ?></label>
                 </div>
                 <div class="input-field col s12">
-                    <textarea name="categoriaGasto_descripcion" id="categoriaGasto_descripcion" class="materialize-textarea" rows="4"></textarea>
+                    <textarea length="200" maxlength="200" name="categoriaGasto_descripcion" id="categoriaGasto_descripcion" class="materialize-textarea" rows="4"></textarea>
                     <label for="categoriaGasto_descripcion"><?= label('formCategoriaGasto_descripcion'); ?></label>
                 </div>
             </div>

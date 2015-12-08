@@ -139,7 +139,7 @@
                     cliente_direccionPais: {required: true, maxlength: 45},
                     cliente_direccionProvincia: {required: true, maxlength: 45},
                     cliente_direccionCanton: {required: true, maxlength: 45},
-                    cliente_direccionDomicilio: {required: true, maxlength: 45},
+                    cliente_direccionDomicilio: {required: true, maxlength: 200},
 
                     cliente_descuento: {required: true, maxlength: 45}
                 },
@@ -233,7 +233,7 @@
                 {
                     servicio_codigo: {required: true, maxlength: 45},
                     servicio_nombre: {required: true, maxlength: 45},
-                    servicio_descripcion: {required: true, maxlength: 45},
+                    servicio_descripcion: {required: true, maxlength: 200},
                     servicio_utilidad: {required: true, maxlength: 45}
                 },
                 errorElement: 'div',
@@ -515,11 +515,11 @@
                     personajuridico_telefono: { required: true, maxlength: 45},
                     personajuridico_fax: { required: true, maxlength: 45},
                     persona_palabras: { required: true, maxlength: 45},
-                    persona_descripcion: { required: true, maxlength: 45},
+                    persona_descripcion: { required: true, maxlength: 200},
                     persona_direccionPais: { required: true, maxlength: 45},
                     persona_direccionProvincia: { required: true, maxlength: 45},
                     persona_direccionCanton: { required: true, maxlength: 45},
-                    persona_direccionDomicilio: { required: true, maxlength: 45}
+                    persona_direccionDomicilio: { required: true, maxlength: 200}
                 },
                 errorElement: 'div',
                 submitHandler: function(form) {
@@ -554,8 +554,8 @@
             rules:
             {
                 servicio_codigo: { required: true },
-                servicio_nombre: { required: true },
-                servicio_descripcion: { required: true },
+                servicio_nombre: { required: true, maxlength: 45},
+                servicio_descripcion: { required: true, maxlength: 200},
                 servicio_utilidad: { required: true }
             },
             errorElement: 'div',

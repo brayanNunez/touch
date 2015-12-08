@@ -41,7 +41,7 @@
                                             <label for="servicio_nombre"><?= label('formServicio_nombre'); ?></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <textarea id="servicio_descripcion" name="servicio_descripcion"
+                                            <textarea length="200" maxlength="200" id="servicio_descripcion" name="servicio_descripcion"
                                                       class="materialize-textarea" rows="4"></textarea>
                                             <label for="servicio_descripcion"><?= label('formServicio_descripcion'); ?></label>
                                         </div>

@@ -768,7 +768,7 @@ function validacionCorrectaEditar(){
                     <label for="formaPago_nombre"><?= label('formFormaPago_nombre'); ?></label>
                 </div>
                 <div class="input-field col s12">
-                    <textarea name="formaPago_descripcion" id="formaPago_descripcion" class="materialize-textarea" rows="4"></textarea>
+                    <textarea length="200" maxlength="200" name="formaPago_descripcion" id="formaPago_descripcion" class="materialize-textarea" rows="4"></textarea>
                     <label for="formaPago_descripcion"><?= label('formFormaPago_descripcion'); ?></label>
                 </div>
             </div>
@@ -801,7 +801,7 @@ function validacionCorrectaEditar(){
                     <label for="formaPago_nombre"><?= label('formFormaPago_nombre'); ?></label>
                 </div>
                 <div class="input-field col s12">
-                    <textarea name="formaPago_descripcion" id="formaPago_descripcion" class="materialize-textarea" rows="4"></textarea>
+                    <textarea length="200" maxlength="200" name="formaPago_descripcion" id="formaPago_descripcion" class="materialize-textarea" rows="4"></textarea>
                     <label for="formaPago_descripcion"><?= label('formFormaPago_descripcion'); ?></label>
                 </div>
             </div>

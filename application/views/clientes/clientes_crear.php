@@ -213,7 +213,7 @@
                                                         <label for="cliente_direccionCanton"><?= label('formCliente_direccionCanton'); ?></label>
                                                     </div>
                                                     <div class="input-field col s12 m12 l12">
-                                                        <input id="cliente_direccionDomicilio" name="cliente_direccionDomicilio" type="text">
+                                                        <textarea length="200" maxlength="200" id="cliente_direccionDomicilio" name="cliente_direccionDomicilio" class="materialize-textarea" rows="4"></textarea>
                                                         <label for="cliente_direccionDomicilio"><?= label('formCliente_direccionDomicilio'); ?></label>
                                                     </div>
                                                 </div>

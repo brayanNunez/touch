@@ -703,7 +703,7 @@
                     <label for="categoriaPersona_nombre"><?= label('formCategoriaPersona_nombre'); ?></label>
                 </div>
                 <div class="input-field col s12">
-                    <textarea name="categoriaPersona_descripcion" id="categoriaPersona_descripcion" class="materialize-textarea" rows="4"></textarea>
+                    <textarea length="200" maxlength="200" name="categoriaPersona_descripcion" id="categoriaPersona_descripcion" class="materialize-textarea" rows="4"></textarea>
                     <label for="categoriaPersona_descripcion"><?= label('formCategoriaPersona_descripcion'); ?></label>
                 </div>
             </div>
@@ -733,7 +733,7 @@
                     <label for="categoriaPersona_nombre"><?= label('formCategoriaPersona_nombre'); ?></label>
                 </div>
                 <div class="input-field col s12">
-                    <textarea name="categoriaPersona_descripcion" id="categoriaPersona_descripcion" class="materialize-textarea" rows="4"></textarea>
+                    <textarea length="200" maxlength="200" name="categoriaPersona_descripcion" id="categoriaPersona_descripcion" class="materialize-textarea" rows="4"></textarea>
                     <label for="categoriaPersona_descripcion"><?= label('formCategoriaPersona_descripcion'); ?></label>
                 </div>
             </div>

@@ -192,7 +192,7 @@
                     </div>
                 </div>
                 <div class="input-field col s12">
-                    <textarea id="persona_descripcion" name="persona_descripcion" class="materialize-textarea"
+                    <textarea length="200" maxlength="200" id="persona_descripcion" name="persona_descripcion" class="materialize-textarea"
                               rows="4"><?= $descripcion; ?></textarea>
                     <label for="persona_descripcion"><?= label('formPersona_descripcion'); ?></label>
                 </div>
@@ -260,7 +260,7 @@
                         <label for="persona_direccionCanton"><?= label('formPersona_direccionCanton'); ?></label>
                     </div>
                     <div class="input-field col s12 m12 l12">
-                        <input id="persona_direccionDomicilio" name="persona_direccionDomicilio" type="text" value="<?= $domicilio; ?>">
+                        <textarea length="200" maxlength="200" id="persona_direccionDomicilio" name="persona_direccionDomicilio" class="materialize-textarea" rows="4"><?= $domicilio; ?></textarea>
                         <label for="persona_direccionDomicilio"><?= label('formPersona_direccionDomicilio'); ?></label>
                     </div>
                 </div>
