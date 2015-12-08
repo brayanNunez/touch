@@ -134,7 +134,7 @@
                                                               </li>
                                                               <li>
                                                                   <a class="-text modal-trigger confirmarDuplicar"
-                                                                     href="#duplicar"><?= label('tablaCotizaciones_opcionDuplicar') ?>
+                                                                     ><?= label('tablaCotizaciones_opcionDuplicar') ?>
                                                                   </a>
                                                               </li>
                                                               <li>
@@ -507,14 +507,140 @@
                    data: $('#formBusqueda').serialize(), 
                    success: function(response)
                    {
-                      alert(response);
+                      if (response ==0) {
+                        alert('Error al cargar los datos');
+                      } else{
+                        arrayBusqueda = $.parseJSON(response);
+                        var table = $('#cotizaciones-tabla-lista').DataTable();
+                        table.clear().draw();
+
+                        for (var i = 0; i < arrayBusqueda.length; i++) {
+                          var fila = arrayBusqueda[i];
+                          agregarFila(fila['idCotizacion'], fila['codigo'], fila['numero'], fila['fechaCreacion'], fila['cliente'], fila['vendedor'], 'monto', fila['estado'], fila['idCliente'], fila['idUsuario'], i);
+                          // arrayBusqueda[i]
+                        };
+
+                        // alert(response);
+                        // agregarFila('idEncriptado', 'codigo', 23, '1-1-2015', 'cliente', 'vendedor', 'monto', 'nueva', 'idCliente', 'idUsuario', 0);
+                      };
                       $('#busquedaAvanzada').closeModal();
+                      
                    }
                  });
-        
       })
-   });
-   
+});
+
+   function agregarFila(idEncriptado, codigo, numero, fechaCreacion, cliente, vendedor, monto, estado, idCliente, idUsuario, contadorFilas){
+
+
+            var urlBase = '<?= base_url(); ?>';
+            var label_ver = '<?= label('menuOpciones_ver') ?>';
+            var label_editar = '<?= label('menuOpciones_editar') ?>';
+            var label_dublicar = '<?= label('tablaCotizaciones_opcionDuplicar') ?>';
+            var label_eliminar = '<?= label('menuOpciones_eliminar') ?>';
+            var label_seleccionar = '<?= label('menuOpciones_seleccionar') ?>';
+
+            
+            var check = '<td>' +
+                        '<div style="text-align: center;">'+
+                       '<input type="checkbox" class="filled-in checkbox" id="'+idEncriptado+'"/>' +
+                       '<label for="'+idEncriptado+'"></label>' +
+                       '</div>'+
+                    '</td>';
+            var boton = '<td>' +
+                            '<ul id="dropdown-cotizacion'+ contadorFilas +'" class="dropdown-content">' +
+                                '<li>' +
+                                    '<a href="<?= base_url(); ?>cotizacion/editar/'+idEncriptado+'" class="-text">'+label_ver+'</a>' +
+                                '</li>' +
+                                '<li>' +
+                                     '<a href="<?= base_url(); ?>cotizacion/editar/'+idEncriptado+'" class="-text">'+label_editar+'</a>' +
+                                '</li>' +
+                                '<li>' +
+                                     '<a class="-text modal-trigger confirmarDuplicar">'+label_dublicar+'</a>' +
+                                '</li>' +
+                                '<li>' +
+                                     '<a href="#eliminarCotizacion" class="-text modal-trigger confirmarEliminar" data-id-eliminar="'+idEncriptado+'"  data-fila-eliminar="fila'+ contadorFilas +'">'+label_eliminar+'</a>' +
+                                '</li>' +
+                            '</ul>' +
+                            '<a class="boton-opciones btn-flat dropdown-button waves-effect white-text"' +
+                              'href="#!"' +
+                              'data-activates="dropdown-cotizacion'+ contadorFilas +'">' +
+                           ''+ label_seleccionar +'<i class="mdi-navigation-arrow-drop-down"></i>' +
+                           '</a>' +
+                        '</td>';
+            
+            var miCodigo = '';
+
+            if (codigo == '') {
+               miCodigo = numero;
+            } else{
+              miCodigo = codigo +'-'+numero;
+            };
+
+            var codigo = '<td><a href="'+urlBase+'cotizacion/editar/'+idEncriptado+'">'+miCodigo+'<a></td>';
+            var fechaCreacion = '<td>'+fechaCreacion+'</td>';
+            var cliente = '<td><a href="'+urlBase+'clientes/editar/'+idCliente+'#tab-informacion">'+cliente+'<a></td>';
+            var vendedor = '<td><a href="'+urlBase+'usuarios/editar/'+idUsuario+'#tab-informacion">'+vendedor+'<a></td>';
+            var monto = '<td>Hola</td>';
+
+            var miEstado = '';
+            switch(estado){
+              case 'nueva':
+                miEstado =  '<?=label('estado_nueva')?>';
+                break;
+              case 'espera':
+                miEstado =  '<?=label('estado_espera')?>';
+                break;
+              case 'rechazada':
+                miEstado =  '<?=label('estado_rechazada')?>';
+                break;
+              case 'enviada':
+                miEstado =  '<?=label('estado_enviada')?>';
+                break;
+              case 'finalizada':
+                miEstado =  '<?=label('estado_finalizada')?>';
+                break;
+            }
+            var estado = '<td>' + miEstado +'</td>';
+
+
+           $('table').dataTable().fnAddData([
+            check,
+            codigo,
+            fechaCreacion,
+            cliente,
+            vendedor,
+            monto,
+            estado,
+            boton ]);
+
+
+            generarListasBotones();
+            $('.modal-trigger').leanModal();
+      
+            // contadorFilas++;
+            
+            };
+
+          function generarListasBotones(){
+            $('.boton-opciones').sideNav({
+            // menuWidth: 0, // Default is 240
+                edge: 'right', // Choose the horizontal origin
+                closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+              });
+          $('.dropdown-button').dropdown({
+              inDuration: 300,
+              outDuration: 225,
+              constrain_width: true, // Does not change width of dropdown to that of the activator
+              hover: false, // Activate on hover
+              gutter: 0, // Spacing from edge
+              belowOrigin: true, // Displays dropdown below the button
+              alignment: 'left' // Displays dropdown with edge aligned to the left of button
+            }
+          );
+      }
+
+      
 
 
 

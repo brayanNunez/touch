@@ -343,12 +343,12 @@
             
             };
 
-        function generarListasBotones(){
-          $('.boton-opciones').sideNav({
-          // menuWidth: 0, // Default is 240
-           edge: 'right', // Choose the horizontal origin
-              closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-            }
+          function generarListasBotones(){
+            $('.boton-opciones').sideNav({
+            // menuWidth: 0, // Default is 240
+             edge: 'right', // Choose the horizontal origin
+                closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+              }
           );
 
           $('.dropdown-button').dropdown({
