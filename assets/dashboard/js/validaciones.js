@@ -584,6 +584,14 @@
             }
         });
 
+        $('#form_tipoMoneda_cotizar').validate({
+            rules: reglasTipoMoneda,
+            errorElement: 'div',
+            submitHandler: function(form) {
+                validacionCorrecta_Moneda();
+            }
+        });
+
         var reglasFormaPago =  {
             formaPago_nombre: {required: true, maxlength: 100},
             formaPago_descripcion: {required: true, maxlength: 200}

@@ -1,7 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-
 class Cotizacion_model extends CI_Model
 {
     function __construct()
@@ -394,7 +393,6 @@ class Cotizacion_model extends CI_Model
         }
     }
 
-    
     function cargarCorreoCliente($idCotizacion){
          try {
             $this->db->trans_begin();
@@ -655,9 +653,6 @@ class Cotizacion_model extends CI_Model
             return false;
         }
     }
-    
-
-
 
     function insertarPlantilla($data)
     {
@@ -683,6 +678,146 @@ class Cotizacion_model extends CI_Model
             return false;
         }
 
+    }
+
+    function tiposMoneda($idEmpresa) {
+        try{
+            $this->db->trans_begin();
+
+            $this->db->select('idMoneda, nombre');
+            $this->db->where(array('idEmpresa' => $idEmpresa, 'eliminado' => 0));
+            $monedas = $this->db->get('moneda');
+            if (!$monedas) {
+                throw new Exception("Error en la BD");
+            }
+            $resultado = $monedas->result_array();
+
+            $this->db->trans_commit();
+            return $resultado;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+    function verificarNombreMoneda($data)
+    {
+        try{
+            $this->db->trans_begin();
+            $existe = 0;
+
+            $query = $this->db->get_where('moneda', $data['moneda']);
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+            if ($query->num_rows() > 0) {
+                $existe = 1;
+            }
+
+            $this->db->trans_commit();
+            return $existe;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+    function insertarMoneda($data)
+    {
+        try{
+            $this->db->trans_begin();
+
+//            print_r($data); exit();
+            $query = $this->db->insert('moneda', $data['datos']);
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+            $insert_id = $this->db->insert_id();
+
+            $this->db->trans_commit();
+            return $insert_id;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+    function formasPago($idEmpresa) {
+        try{
+            $this->db->trans_begin();
+
+            $this->db->select('idFormaPago, nombre');
+            $this->db->where(array('idEmpresa' => $idEmpresa, 'eliminado' => 0));
+            $formasPago = $this->db->get('formapago');
+            if (!$formasPago) {
+                throw new Exception("Error en la BD");
+            }
+            $resultado = $formasPago->result_array();
+
+            $this->db->trans_commit();
+            return $resultado;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+    function verificarNombreFormaPago($data)
+    {
+        try{
+            $this->db->trans_begin();
+            $existe = 0;
+
+            $query = $this->db->get_where('formapago', $data['datos']);
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+            if ($query->num_rows() > 0) {
+                $existe = 1;
+            }
+
+            $this->db->trans_commit();
+            return $existe;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+    function insertarFormaPago($data)
+    {
+        try{
+            $this->db->trans_begin();
+
+//            print_r($data); exit();
+            $query = $this->db->insert('formapago', $data['datos']);
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+            $insert_id = $this->db->insert_id();
+
+            $this->db->trans_commit();
+            return $insert_id;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+    function clientes($idEmpresa) {
+        try{
+            $this->db->trans_begin();
+
+            $this->db->select('idCliente, nombre');
+            $this->db->where(array('idEmpresa' => $idEmpresa, 'eliminado' => 0));
+            $clientes = $this->db->get('cliente');
+            if (!$clientes) {
+                throw new Exception("Error en la BD");
+            }
+            $resultado = $clientes->result_array();
+
+            $this->db->trans_commit();
+            return $resultado;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
     }
 }
 ?>

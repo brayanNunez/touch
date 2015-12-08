@@ -82,15 +82,9 @@
             <label for="contenedorSelectMoneda"><?= label("paso1_labelTipoMoneda"); ?></label>
             <br>
             <div id="contenedorSelectMoneda"> 
-                <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso1Moneda" id="paso1Moneda" name="paso1Moneda" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirMoneda"); ?>" class="chosen-select browser-default" style="width:350px;" tabindex="2">
-                    <option value="0" disabled selected style="display:none;"><?= label("paso1_elegirMoneda"); ?></option>
-                    <option value="nuevo"><?= label("agregarNuevo"); ?></option>
-                    <?php 
-                        foreach ($resultado['monedas'] as $moneda) {
-                            $valor = "value='".$moneda['idMoneda']."'";
-                            echo '<option '.$valor.'>'.$moneda['nombre'].'</option>");';
-                        }
-                    ?>
+                <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso1Moneda" id="paso1Moneda" name="paso1Moneda"
+                        data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirMoneda"); ?>"
+                        class="chosen-select browser-default" style="width:350px;" tabindex="2">
                 </select>   
              </div>
         </div>
@@ -110,118 +104,15 @@
             <label for="paso1_detalle" class=""><?= label("paso1_labelDetalle"); ?></label>
         </div> -->
     </div>
-
-    <!-- <div class="row">
-        <div class="input-field col s12" style="margin-top: 0;">
-            <input class="filled-in" type="checkbox" id="cotizacion_incluirGastosVariables"/>
-            <label for="cotizacion_incluirGastosVariables"><?= label('cotizacion_incluirGastosVariables'); ?></label>
-        </div>
-        <div id="cotizacion_gastosVariables" style="display: none;padding: 0;">
-            <div class="col s12 m6 l3" style="margin-top: 20px;">
-                <div class="input-field">
-                    <input id="agregarGatos_buscar" type="text">
-                    <label for="agregarGatos_buscar" class=""><?= label("agregarGatos_buscar"); ?></label>
-                </div>
-                <div>
-                    <div class="col s12">
-                        <a id="busqueda_masOpciones" style="text-decoration: underline;float: right;cursor: pointer;margin-bottom: 20px;">
-                            <?= label('agregarGastos_masOpciones'); ?></a>
-                    </div>
-                    <div id="opcionesBusquedaGasto" class="col s12" style="display: none;margin-bottom: 20px;padding: 0;">
-                        <div class="input-field" style="margin-top: 0.5rem;">
-                            <select id="agregarGastos_categoria" name="agregarGastos_categoria">
-                                <option class="selected-option" value="0" selected><?= label('agregarGastos_todos'); ?></option>
-                                <option value="1">Categoria1</option>
-                                <option value="2">Categoria2</option>
-                                <option value="3">Categoria3</option>
-                            </select>
-                            <label class="cotizacionPaso1_labelBusqueda" for="agregarGastos_categoria"><?= label('agregarGastos_categoria'); ?></label>
-                        </div>
-                        <div class="input-field" style="margin-top: 1.5rem;">
-                            <select id="agregarGastos_proveedor" name="agregarGastos_proveedor">
-                                <option class="selected-option" value="0" selected><?= label('agregarGastos_todos'); ?></option>
-                                <option value="1">Proveedor1</option>
-                                <option value="2">Proveedor2</option>
-                                <option value="3">Proveedor3</option>
-                            </select>
-                            <label class="cotizacionPaso1_labelBusqueda" for="agregarGastos_proveedor"><?= label('agregarGastos_proveedor'); ?></label>
-                        </div>
-                        <div class="input-field" style="margin-top: 1.5rem;">
-                            <select id="agregarGastos_gasto" name="agregarGastos_gasto">
-                                <option class="selected-option" value="0" selected><?= label('agregarGastos_todos'); ?></option>
-                                <option value="1">Gasto1</option>
-                                <option value="2">Gasto2</option>
-                                <option value="3">Gasto3</option>
-                            </select>
-                            <label class="cotizacionPaso1_labelBusqueda" for="agregarGastos_gasto"><?= label('agregarGastos_gasto'); ?></label>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <a href="#" class="waves-effect btn modal-action modal-close"
-                       style="width: 200px;float: none;display: block;margin: 0 auto;text-align: center;color: white;">
-                        <?= label('agregarGatos_agregar'); ?>
-                    </a>
-                </div>
-            </div>
-            <div class="col s12 m12 l9">
-                <div class="table-responsive">
-                    <table id="productos-tabla-lista" class="table display striped" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th><?= label('tituloGastos_codigo'); ?></th>
-                                <th><?= label('tituloGastos_gasto'); ?></th>
-                                <th><?= label('tituloGastos_proveedor'); ?></th>
-                                <th><?= label('tituloGastos_proveedorCategoria'); ?></th>
-                                <th><?= label('tituloGastos_tiempo'); ?></th>
-                                <th><?= label('tituloGastos_cantidad'); ?></th>
-                                <th><?= label('tituloGastos_monto'); ?></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>PROG-00001</td>
-                                <td>Mantenimiento web</td>
-                                <td>Ronald Alfaro</td>
-                                <td>Programador</td>
-                                <td>Hora</td>
-                                <td><input type="number" value="10"/></td>
-                                <td>$250,000.00</td>
-                            </tr>
-                            <tr>
-                                <td>PROG-00002</td>
-                                <td>Mantenimiento movil</td>
-                                <td>Juan Gomez</td>
-                                <td>Programador</td>
-                                <td>Hora</td>
-                                <td><input type="number" value="20"/></td>
-                                <td>$300,000.00</td>
-                            </tr>
-                            <tr>
-                                <td>PROG-00003</td>
-                                <td>Mantenimiento equipo</td>
-                                <td>Mauricio Fernandez</td>
-                                <td>Tecnico</td>
-                                <td>Hora</td>
-                                <td><input type="number" value="7"/></td>
-                                <td>$70,000.00</td>
-                            </tr>
-                            <tr>
-                                <td colspan="5"></td>
-                                <td>TOTAL</td>
-                                <td>$620,000.00</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="col s12" style="margin-top: 20px;">
-                <h5><?= label('cotizacionGastos_total'); ?>: $2,000,000.00</h5>
-            </div>
-        </div>
-    </div> -->
 </form>
+<div style="visibility:hidden; position:absolute">
+    <a id="linkNuevaMoneda" href="#agregarTipoMoneda" class="modal-trigger"></a>
+    <a id="linkNuevaFormaPago" href="#agregarFormaPago" class="modal-trigger"></a>
+    <a id="linkNuevaAtencion" href="#agregarAtencion" class="modal-trigger"></a>
+    <a id="linkNuevoCliente" href="#agregarCliente" class="modal-trigger"></a>
+</div>
 
+<!--Script para manejo de datos de cotizacion_editar y valores precargados (codigo) -->
 <script>
 
     <?php 
@@ -293,36 +184,392 @@
         $('#paso1Atencion').trigger("chosen:updated");
 
     }
+</script>
+<!--Script para manejo de datos de cliente-->
+<script>
+    function datosCliente(opcionSeleccionada) {
+        if (opcionSeleccionada.value == "0") {
+            document.getElementById('elementos-cliente-fisico').style.display = 'block';
+            document.getElementById('elementos-cliente-juridico').style.display = 'none';
+        } else {
+            document.getElementById('elementos-cliente-fisico').style.display = 'none';
+            document.getElementById('elementos-cliente-juridico').style.display = 'block';
+        }
+    }
+</script>
+<!--Script para select de busqueda-->
+<script>
+    $(document).on('ready', function(){
+        var config = {'.chosen-select'           : {}}
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
 
-
-    $(document).ready(function () {
-        $('#busqueda_masOpciones').click(function (event) {
-            var $elementos = $('#opcionesBusquedaGasto');
-            var $buscar = $('#agregarGatos_buscar');
-            var $display = $elementos.css('display');
-            if($display == 'none') {
-                $elementos.css('display', 'block');
-                $(this).text('<?= label('agregarGastos_menosOpciones'); ?>');
-                $buscar.attr('disabled', true);
-            } else {
-                $elementos.css('display', 'none');
-                $(this).text('<?= label('agregarGastos_masOpciones'); ?>');
-                $buscar.attr('disabled', false);
-            }
-        });
-        $('#cotizacion_incluirGastosVariables').click(function (event) {
-            var $incluir = $(this).is(':checked');
-            var $gastos = $('#cotizacion_gastosVariables');
-            if($incluir) {
-                $gastos.css('display', 'block');
-            } else {
-                $gastos.css('display', 'none');
-            }
-        })
     });
 </script>
+<!--Funciones para gastos, formas de pago, categorias de gasto y selects de busqueda-->
+<script>
+    $(document).ready(function () {
+        actualizarSelects();
+    });
+    var idEditar = 0;
+    function actualizarSelects() {
+        $.ajax({
+            type: 'POST',
+            url: '<?= base_url(); ?>cotizacion/tiposMoneda',
+            data: {  },
+            success: function(response)
+            {
+                generarAutocompletarMoneda($.parseJSON(response), 0);
+            }
+        });
+        $.ajax({
+            type: 'POST',
+            url: '<?= base_url(); ?>cotizacion/formasPago',
+            data: {  },
+            success: function(response)
+            {
+                generarAutocompletarFormaPago($.parseJSON(response), 0);
+            }
+        });
+        $.ajax({
+            type: 'POST',
+            url: '<?= base_url(); ?>cotizacion/clientes',
+            data: {  },
+            success: function(response)
+            {
+                generarAutocompletarClientes($.parseJSON(response), 0);
+                generarListas();
+            }
+        });
+    }
 
-<!-- lista modals -->
+    function actualizarSelectMonedas($id) {
+        $.ajax({
+            type: 'POST',
+            url: '<?= base_url(); ?>cotizacion/tiposMoneda',
+            data: {  },
+            success: function(response)
+            {
+                generarAutocompletarMoneda($.parseJSON(response), $id);
+                generarListas();
+            }
+        });
+    }
+    function actualizarSelectFormasPago($id) {
+        $.ajax({
+            type: 'POST',
+            url: '<?= base_url(); ?>cotizacion/formasPago',
+            data: {  },
+            success: function(response)
+            {
+                generarAutocompletarFormaPago($.parseJSON(response), $id);
+                generarListas();
+            }
+        });
+    }
+    function actualizarSelectClientes($id) {
+        $.ajax({
+            type: 'POST',
+            url: '<?= base_url(); ?>cotizacion/clientes',
+            data: {  },
+            success: function(response)
+            {
+                generarAutocompletarClientes($.parseJSON(response), $id);
+                generarListas();
+            }
+        });
+    }
+
+    function botonEnLista(tipo, idBoton, nuevoElementoAgregar){
+        if (tipo == "paso1Cliente") {
+            $('#cliente_nombre').val(nuevoElementoAgregar);
+            $('#linkNuevoCliente').click();
+            $('#cliente_nombre').focus();
+        }
+        if (tipo == "paso1FormaPago") {
+            $('#formaPago_nombre').val(nuevoElementoAgregar);
+            $('#linkNuevaFormaPago').click();
+            $('#formaPago_nombre').focus();
+        }
+        if (tipo == "paso1Moneda") {
+            $('#tipoMoneda_nombre').val(nuevoElementoAgregar);
+            $('#linkNuevaMoneda').click();
+            $('#tipoMoneda_nombre').focus();
+        }
+    }
+
+    function generarAutocompletarMoneda($array, $id){
+        var miSelect = $('#paso1Moneda');
+        miSelect.empty();
+        miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso1_elegirMoneda"); ?></option>');
+        miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+        for(var i = 0; i < $array.length; i++) {
+            var moneda = $array[i];
+            if(moneda != null) {
+                if(moneda['idMoneda'] == $id){
+                    miSelect.append('<option value="' + moneda['idMoneda'] + '" selected>' + moneda['nombre'] + '</option>');
+                } else {
+                    miSelect.append('<option value="' + moneda['idMoneda'] + '">' + moneda['nombre'] + '</option>');
+                }
+            }
+        }
+        miSelect.trigger("chosen:updated");
+    }
+    function generarAutocompletarFormaPago($array, $id){
+        var miSelect = $('#paso1FormaPago');
+        miSelect.empty();
+        miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso1_elegirFormaPago"); ?></option>');
+        miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+        for(var i = 0; i < $array.length; i++) {
+            var formaP = $array[i];
+            if(formaP != null) {
+                if(formaP['idFormaPago'] == $id) {
+                    miSelect.append('<option value="' + formaP['idFormaPago'] + '" selected>' + formaP['nombre'] + '</option>');
+                } else {
+                    miSelect.append('<option value="' + formaP['idFormaPago'] + '">' + formaP['nombre'] + '</option>');
+                }
+            }
+        }
+        miSelect.trigger("chosen:updated");
+    }
+    function generarAutocompletarClientes($array, $id){
+        var miSelect = $('#paso1Cliente');
+        miSelect.empty();
+        miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso1_elegirCliente"); ?></option>');
+        miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+        for(var i = 0; i < $array.length; i++) {
+            var cliente = $array[i];
+            if(cliente != null) {
+                if(cliente['idCliente'] == $id) {
+                    miSelect.append('<option value="' + cliente['idCliente'] + '" selected>' + cliente['nombre'] + '</option>');
+                } else {
+                    miSelect.append('<option value="' + cliente['idCliente'] + '">' + cliente['nombre'] + '</option>');
+                }
+            }
+        }
+        miSelect.trigger("chosen:updated");
+    }
+
+    function generarListas(){
+        var config = {'.chosen-select'           : {}}
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    }
+    $(document).on('change','.chosen-select',function(){
+        var valor = $(this).val();
+        var tipo = $(this).attr("data-tipo");
+        if (valor=="nuevo") {
+            var idBoton = $(this).attr("id");
+            var nuevoElementoAgregar = "";
+            botonEnLista(tipo, idBoton, nuevoElementoAgregar)
+        }
+    });
+
+    var cerrarModalMoneda = false;
+    var cerrarModalFormaPago = false;
+    var cerrarModalCliente = false;
+    $(document).on('ready', function(){
+        $('#guardarOtroMoneda').on('click', function(){
+            cerrarModalMoneda = false;
+        });
+        $('#guardarCerrarMoneda').on('click', function(){
+            cerrarModalMoneda = true;
+        });
+        $('#guardarOtroFormaPago').on('click', function(){
+            cerrarModalFormaPago = false;
+        });
+        $('#guardarCerrarFormaPago').on('click', function(){
+            cerrarModalFormaPago = true;
+        });
+        $('#guardarOtroCliente').on('click', function(){
+            cerrarModalCliente = false;
+        });
+        $('#guardarCerrarCliente').on('click', function(){
+            cerrarModalCliente = true;
+        });
+    });
+    function limpiarFormMoneda() {
+        $('#form_tipoMoneda_cotizar')[0].reset();
+        var validator = $("#form_tipoMoneda_cotizar").validate();
+        validator.resetForm();
+    }
+    function limpiarFormFormaPago() {
+        $('#form_formaPago')[0].reset();
+        var validator = $("#form_formaPago").validate();
+        validator.resetForm();
+    }
+    function limpiarFormCliente() {
+        $('#form_cliente')[0].reset();
+        var validator = $("#form_cliente").validate();
+        validator.resetForm();
+    }
+
+    function validacionCorrecta_Moneda() {
+        $.ajax({
+            data: $('#form_tipoMoneda_cotizar').serialize(),
+            url:   '<?=base_url()?>cotizacion/verificarNombreMoneda',
+            type:  'post',
+            success:  function (response) {
+                if (response == '0') {
+                    alert("<?=label('errorGuardar'); ?>");
+                    $('#agregarTipoMoneda .modal-header a').click();
+                } else {
+                    if (response == '2') {
+                        var url = $('#form_tipoMoneda_cotizar').attr('action');
+                        var method = $('#form_tipoMoneda_cotizar').attr('method');
+                        $.ajax({
+                            type: method,
+                            url: url,
+                            data: $('#form_tipoMoneda_cotizar').serialize(),
+                            success: function(response)
+                            {
+                                if (response == 0) {
+                                    alert("<?=label('errorGuardar'); ?>");
+                                    $('#agregarTipoMoneda .modal-header a').click();
+                                } else {
+                                    actualizarSelectMonedas(response);
+                                    alert("<?=label('cotizacion_tipoMonedaGuardadoCorrectamente'); ?>");
+                                    if (cerrarModalMoneda) {
+                                        limpiarFormMoneda();
+                                        $('#agregarTipoMoneda .modal-header a').click();
+                                    } else{
+                                        limpiarFormMoneda();
+                                    }
+                                }
+                            }
+                        });
+                    } else {
+                        alert("<?=label('tipoMoneda_error_nombreExisteEnBD'); ?>");
+                        $('#form_tipoMoneda_cotizar #tipoMoneda_nombre').focus();
+                    }
+                }
+            }
+        });
+    }
+    function validacionCorrecta_FormaPago() {
+        $.ajax({
+            data: $('#form_formaPago_Gastos').serialize(),
+            url:   '<?=base_url()?>gastos/verificarNombreFormaPago',
+            type:  'post',
+            success:  function (response) {
+                if (response == '0') {
+                    alert("<?=label('errorGuardar'); ?>");
+                    $('#agregarFormaPago .modal-header a').click();
+                } else{
+                    if (response == '2') {
+                        var url = $('#form_formaPago_Gastos').attr('action');
+                        var method = $('#form_formaPago_Gastos').attr('method');
+                        $.ajax({
+                            type: method,
+                            url: url,
+                            data: $('#form_formaPago_Gastos').serialize(),
+                            success: function(response)
+                            {
+                                if (response == 0) {
+                                    alert("<?=label('errorGuardar'); ?>");
+                                    $('#agregarFormaPago .modal-header a').click();
+                                } else {
+                                    actualizarSelectFormasPago(response);
+                                    actualizarSelectFormasPago_Editar(response);
+                                    alert("<?=label('gastos_FormaPagoGuardadoCorrectamente'); ?>");
+                                    if (cerrarModalFormaPago) {
+                                        limpiarFormFormaPago();
+                                        $('#agregarFormaPago .modal-header a').click();
+                                    } else{
+                                        limpiarFormFormaPago();
+                                    }
+                                }
+                            }
+                        });
+                    } else{
+                        alert("<?=label('formaPago_error_nombreExisteEnBD'); ?>");
+                        $('#form_formaPago_Gastos #formaPago_nombre').focus();
+                    }
+                }
+            }
+        });
+    }
+    function validacionCorrecta_Cliente() {
+        $.ajax({
+            data: $('#form_formaPago_Gastos').serialize(),
+            url:   '<?=base_url()?>gastos/verificarNombreFormaPago',
+            type:  'post',
+            success:  function (response) {
+                if (response == '0') {
+                    alert("<?=label('errorGuardar'); ?>");
+                    $('#agregarFormaPago .modal-header a').click();
+                } else{
+                    if (response == '2') {
+                        var url = $('#form_formaPago_Gastos').attr('action');
+                        var method = $('#form_formaPago_Gastos').attr('method');
+                        $.ajax({
+                            type: method,
+                            url: url,
+                            data: $('#form_formaPago_Gastos').serialize(),
+                            success: function(response)
+                            {
+                                if (response == 0) {
+                                    alert("<?=label('errorGuardar'); ?>");
+                                    $('#agregarFormaPago .modal-header a').click();
+                                } else {
+                                    actualizarSelectFormasPago(response);
+                                    actualizarSelectFormasPago_Editar(response);
+                                    alert("<?=label('gastos_FormaPagoGuardadoCorrectamente'); ?>");
+                                    if (cerrarModalFormaPago) {
+                                        limpiarFormFormaPago();
+                                        $('#agregarFormaPago .modal-header a').click();
+                                    } else{
+                                        limpiarFormFormaPago();
+                                    }
+                                }
+                            }
+                        });
+                    } else{
+                        alert("<?=label('formaPago_error_nombreExisteEnBD'); ?>");
+                        $('#form_formaPago_Gastos #formaPago_nombre').focus();
+                    }
+                }
+            }
+        });
+    }
+</script>
+
+<!-- Inicio lista modals -->
+<div id="agregarTipoMoneda" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <form id="form_tipoMoneda_cotizar" action="<?=base_url()?>cotizacion/insertarMoneda" method="post">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="tipoMoneda_nombre" name="tipoMoneda_nombre" type="text">
+                    <label for="tipoMoneda_nombre"><?= label('formTipoMoneda_nombre'); ?></label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="tipoMoneda_signo" name="tipoMoneda_signo" type="text">
+                    <label for="tipoMoneda_signo"><?= label('formTipoMoneda_signo'); ?></label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="tipoMoneda_tipoCambio" name="tipoMoneda_tipoCambio" type="number">
+                    <label for="tipoMoneda_tipoCambio"><?= label('formTipoMoneda_tipoCambio'); ?></label>
+                </div>
+            </div>
+            <div class="row">
+                <a onclick="$(this).closest('form').submit()" id="guardarCerrarMoneda" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                    <?= label('guardarCerrar'); ?>
+                </a>
+                <a onclick="$(this).closest('form').submit()" id="guardarOtroMoneda" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                    <?= label('guardarAgregarOtro'); ?>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
 <div id="agregarCliente" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
@@ -504,81 +751,41 @@
     </div>
 </div>
 
-<div id="agregarFormaPago" class="modal">
+<div id="agregarFormaPago" class="modal" style="width: 70%;">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
-        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+        <a id="modalAgregarFormaPago_cerrar" class="modal-action cerrar-modal">
+            <i class="mdi-content-clear"></i>
+        </a>
     </div>
-    <div class="modal-content">
-        <form id="form_formaPago" action="<?=base_url()?>formasPago/insertar" method="post">
+    <div class="modal-content" style="padding: 0 24px;">
+        <div class="row">
+            <h5 style="float: left;"><?= label('gasto_agregarFormaPago'); ?></h5>
+        </div>
+        <form id="form_formaPago" action="<?=base_url()?>gastos/insertarFormaPago" method="post">
             <div class="row">
                 <div class="input-field col s12">
                     <input id="formaPago_nombre" name="formaPago_nombre" type="text">
-                    <label for="formaPago_nombre"><?= label('formFormaPago_nombre'); ?></label>
+                    <label for="formaPago_nombre"><?= label('formaPago_Nombre') ?></label>
                 </div>
                 <div class="input-field col s12">
-                    <textarea name="formaPago_descripcion" id="formaPago_descripcion" class="materialize-textarea" rows="4"></textarea>
-                    <label for="formaPago_descripcion"><?= label('formFormaPago_descripcion'); ?></label>
+                    <input id="formaPago_descripcion" name="formaPago_descripcion" type="text">
+                    <label for="formaPago_descripcion"><?= label('formaPago_descripcion') ?></label>
                 </div>
             </div>
             <div class="row">
-                <!--<a href="#" style="font-size: larger;float: left;text-decoration: underline;"
-                   class="modal-action modal-close"><?= label('cancelar'); ?>
-                </a>-->
-                <a onclick="$(this).closest('form').submit()" id="guardarCerrar" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
-                    <?= label('guardar'); ?>
+                <!--                <a href="#" style="font-size: larger;float: left;text-decoration: underline;"-->
+                <!--                   class="modal-action modal-close">--><?//= label('cancelar'); ?>
+                <!--                </a>-->
+                <a onclick="$(this).closest('form').submit()" id="guardarCerrarFormaPago" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                    <?= label('guardarCerrar'); ?>
+                </a>
+                <a onclick="$(this).closest('form').submit()" id="guardarOtroFormaPago" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                    <?= label('guardarAgregarOtro'); ?>
                 </a>
             </div>
         </form>
     </div>
 </div>
 
-<div id="agregarTipoMoneda" class="modal">
-    <div class="modal-header">
-        <p><?= label('nombreSistema'); ?></p>
-        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
-    </div>
-    <div class="modal-content">
-        <form id="form_tipoMoneda" action="<?=base_url()?>tiposMoneda/insertar" method="post">
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="tipoMoneda_nombre" name="tipoMoneda_nombre" type="text">
-                    <label for="tipoMoneda_nombre"><?= label('formTipoMoneda_nombre'); ?></label>
-                </div>
-                <div class="input-field col s12">
-                    <input id="tipoMoneda_signo" name="tipoMoneda_signo" type="text">
-                    <label for="tipoMoneda_signo"><?= label('formTipoMoneda_signo'); ?></label>
-                </div>
-                <div class="input-field col s12">
-                    <input id="tipoMoneda_tipoCambio" name="tipoMoneda_tipoCambio" type="number">
-                    <label for="tipoMoneda_tipoCambio"><?= label('formTipoMoneda_tipoCambio'); ?></label>
-                </div>
-            </div>
-            <div class="row">
-                <a onclick="$(this).closest('form').submit()" id="guardarCerrar" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
-                    <?= label('guardar'); ?>
-                </a>
-            </div>
-        </form>
-    </div>
-</div>
-
-<div style="visibility:hidden; position:absolute">                                 
-    <a id="linkNuevaMoneda" href="#agregarTipoMoneda" class="modal-trigger"></a>
-    <a id="linkNuevaFormaPago" href="#agregarFormaPago" class="modal-trigger"></a>
-    <a id="linkNuevaAtencion" href="#agregarAtencion" class="modal-trigger"></a>
-    <a id="linkNuevoCliente" href="#agregarCliente" class="modal-trigger"></a>
-</div>
 <!--Fin lista modals-->
-
-<script>
-    function datosCliente(opcionSeleccionada) {
-        if (opcionSeleccionada.value == "0") {
-            document.getElementById('elementos-cliente-fisico').style.display = 'block';
-            document.getElementById('elementos-cliente-juridico').style.display = 'none';
-        } else {
-            document.getElementById('elementos-cliente-fisico').style.display = 'none';
-            document.getElementById('elementos-cliente-juridico').style.display = 'block';
-        }
-    }
-</script>

@@ -470,6 +470,134 @@ class Cotizacion extends CI_Controller
         $this->load->view('layout/default/footer');
     }
 
+    public function tiposMoneda() {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $resultado = $this->Cotizacion_model->tiposMoneda($idEmpresa);
+        if ($resultado === false || $resultado === array()) {
+            echo 0;
+        } else {
+            echo json_encode($resultado);
+        }
+    }
+    public function verificarNombreMoneda(){
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $moneda = array(
+            'idEmpresa' => $idEmpresa,
+            'nombre' => $this->input->post('tipoMoneda_nombre'),
+            'eliminado' => '0'
+        );
+        $data['moneda'] = $moneda;
+
+        // echo print_r($impuesto); exit();
+        $resultado = $this->Cotizacion_model->verificarNombreMoneda($data);
+        if ($resultado === false) {
+            //Error en la transacci�n
+            echo 0;
+        } else {
+            if ($resultado == 1) {
+                //Ya existe esta identificacion
+                echo 1;
+            } else {
+                //Identificacion Valida
+                echo 2;
+            }
+        }
+    }
+    public function insertarMoneda()
+    {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+        $data['datos'] = array(
+            'idEmpresa' => $idEmpresa,
+            'nombre' => $this->input->post('tipoMoneda_nombre'),
+            'signo' => $this->input->post('tipoMoneda_signo'),
+            'tipoCambio' => $this->input->post('tipoMoneda_tipoCambio'),
+            'eliminado' => '0'
+        );
+
+        $res = $this->Cotizacion_model->insertarMoneda($data);
+        if (!$res) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            // correcto
+            echo $res;
+        }
+    }
+
+    public function formasPago() {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $resultado = $this->Cotizacion_model->formasPago($idEmpresa);
+        if ($resultado === false || $resultado === array()) {
+            echo 0;
+        } else {
+            echo json_encode($resultado);
+        }
+    }
+    public function verificarNombreFormaPago(){
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $data['datos'] = array(
+            'idEmpresa' => $idEmpresa,
+            'nombre' => $this->input->post('formaPago_nombre'),
+            'eliminado' => '0'
+        );
+
+        // echo print_r($impuesto); exit();
+        $resultado = $this->Gasto_model->verificarNombreFormaPago($data);
+        if ($resultado === false) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            if ($resultado == 1) {
+                //Ya existe esta identificacion
+                echo 1;
+            } else {
+                //Identificacion Valida
+                echo 2;
+            }
+        }
+    }
+    public function insertarFormaPago()
+    {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+        $data['datos'] = array(
+            'idEmpresa' => $idEmpresa,
+            'nombre' => $this->input->post('formaPago_nombre'),
+            'descripcion' => $this->input->post('formaPago_descripcion'),
+            'eliminado' => 0
+        );
+
+        $res = $this->Gasto_model->insertarFormaPago($data);
+        if (!$res) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            // correcto
+            echo $res;
+        }
+    }
+
+    public function clientes() {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $resultado = $this->Cotizacion_model->clientes($idEmpresa);
+        if ($resultado === false || $resultado === array()) {
+            echo 0;
+        } else {
+            echo json_encode($resultado);
+        }
+    }
+
     // public function paso2()
     // {
     //     $this->load->view('layout/default/header');
