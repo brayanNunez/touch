@@ -10,6 +10,34 @@ class Cotizacion_model extends CI_Model
         $this->load->database();
     }
 
+    function busqueda($idEmpresa)
+    {
+        try{
+            $this->db->trans_begin();
+
+            $cotizaciones = $this->db->query("SELECT co.idCotizacion, co.numero, co.codigo, co.fechaCreacion, if(cl.juridico = 1,cl.nombre,CONCAT(cl.nombre, ' ', cl.primerApellido, ' ', cl.segundoApellido)) as cliente, cl.idCliente, CONCAT(us.nombre, ' ', us.primerApellido, ' ', us.segundoApellido) as vendedor, us.idUsuario,ec.descripcion as estado FROM cotizacion as co left join cliente as cl on co.idCliente = cl.idCliente left join estadocotizacion as ec on co.idEstadoCotizacion = ec.idEstadoCotizacion left join usuario as us on co.idUsuario = us.idUsuario where co.idEmpresa = ".$idEmpresa." AND co.eliminado=0;");
+
+
+            if (!$cotizaciones) throw new Exception("Error en la BD"); 
+            $cotizaciones = $cotizaciones->result_array();
+            $resultado = array();
+            foreach ($cotizaciones as $cotizacion) {
+                $cotizacion['idCotizacion'] = encryptIt($cotizacion['idCotizacion']);
+                $cotizacion['idCliente'] = encryptIt($cotizacion['idCliente']);
+                $cotizacion['idUsuario'] = encryptIt($cotizacion['idUsuario']);
+                $cotizacion['fechaCreacion'] = date("d-m-Y", strtotime($cotizacion['fechaCreacion']));
+                array_push($resultado, $cotizacion);
+            }
+
+            $this->db->trans_commit();
+            return $resultado;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+       
+    }
+
      function cargarTodos($idEmpresa)
     {
         try{
@@ -19,12 +47,6 @@ class Cotizacion_model extends CI_Model
 
             
             $cotizaciones = $this->db->query("SELECT co.idCotizacion, co.numero, co.codigo, co.fechaCreacion, if(cl.juridico = 1,cl.nombre,CONCAT(cl.nombre, ' ', cl.primerApellido, ' ', cl.segundoApellido)) as cliente, cl.idCliente, CONCAT(us.nombre, ' ', us.primerApellido, ' ', us.segundoApellido) as vendedor, us.idUsuario,ec.descripcion as estado FROM cotizacion as co left join cliente as cl on co.idCliente = cl.idCliente left join estadocotizacion as ec on co.idEstadoCotizacion = ec.idEstadoCotizacion left join usuario as us on co.idUsuario = us.idUsuario where co.idEmpresa = ".$idEmpresa." AND co.eliminado=0;");
-            // $this->db->select("co.idCotizacion, co.numero, co.codigo, co.fechaCreacion, if(cl.juridico = 1,cl.nombre,CONCAT(cl.nombre, ' ', cl.primerApellido, ' ', cl.segundoApellido)) as cliente, cl.idCliente, CONCAT(us.nombre, ' ', us.primerApellido, ' ', us.segundoApellido) as vendedor, us.idUsuario,ec.descripcion as estado");
-            // $this->db->from('');
-            // $this->db->join( FROM touch.cotizacion as co left join cliente as cl on co.idCliente = cl.idCliente left join estadocotizacion as ec on co.idEstadoCotizacion = ec.idEstadoCotizacion left join usuario as us on co.idUsuario = us.idUsuario where co.idEmpresa = ".$idEmpresa." AND co.eliminado=0;");
-            
-
-
 
 
             if (!$cotizaciones) throw new Exception("Error en la BD"); 

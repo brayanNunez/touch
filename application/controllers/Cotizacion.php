@@ -28,6 +28,9 @@ class Cotizacion extends CI_Controller
     }
 
     public function busqueda(){
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+        
         $busqueda = array('idServicio' => $this->input->post('busquedaCotizacion_servicio'),
             'idCliente' => $this->input->post('busquedaCotizacion_cliente'),
             'idUsuario' => $this->input->post('busquedaCotizacion_vendedor'),  
@@ -35,7 +38,15 @@ class Cotizacion extends CI_Controller
             'desde' => $this->input->post('busqueda-fecha-desde'),  
             'hasta' => $this->input->post('busqueda-fecha-hasta'),
             );
-        echo print_r($busqueda);
+        // echo print_r($busqueda);
+
+        $busqueda = $this->Cotizacion_model->busqueda($idEmpresa);
+
+        if ($busqueda === false) {
+            echo "0";
+        } else {
+            echo json_encode($busqueda); 
+        }
     }
 
     public function precarga()
