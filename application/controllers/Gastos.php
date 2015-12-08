@@ -18,7 +18,7 @@ class Gastos extends CI_Controller
         $idEmpresa = $sessionActual['idEmpresa'];
         $lista = $this->Gasto_model->cargarTodos($idEmpresa);
         $categorias = $this->Gasto_model->categoriasGasto();
-        $formasPago = $this->Gasto_model->formasPago($idEmpresa);
+        $formasPago = $this->Gasto_model->formasPago();
         $personas = $this->Gasto_model->proveedores($idEmpresa);
         $paises = $this->Gasto_model->paises();
 
@@ -219,16 +219,14 @@ class Gastos extends CI_Controller
     }
 
     public function formasPago() {
-        $sessionActual = $this->session->userdata('logged_in');
-        $idEmpresa = $sessionActual['idEmpresa'];
-
-        $resultado = $this->Gasto_model->formasPago($idEmpresa);
+        $resultado = $this->Gasto_model->formasPago();
         if ($resultado === false) {
             echo 0;
         } else {
             echo json_encode($resultado);
         }
     }
+    //Metodos ya no se usan
     public function verificarNombreFormaPago(){
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];

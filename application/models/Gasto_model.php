@@ -115,8 +115,8 @@ class Gasto_model extends CI_Model
             $this->db->where('idCategoriaGasto' , $row['idCategoriaGasto']);
             $query1 = $this->db->get('categoriagasto');
             $this->db->select('nombre');
-            $this->db->where('idFormaPago', $row['formaPago']);
-            $query2 = $this->db->get('formaPago');
+            $this->db->where('idTiempo', $row['formaPago']);
+            $query2 = $this->db->get('tiempo');
             $this->db->select('juridico, nombre, primerApellido, segundoApellido');
             $this->db->where('idProveedor', $row['idProveedor']);
             $query3 = $this->db->get('proveedor');
@@ -285,13 +285,11 @@ class Gasto_model extends CI_Model
         }
     }
 
-    function formasPago($idEmpresa) {
+    function formasPago() {
         try{
             $this->db->trans_begin();
 
-            $this->db->select('idFormaPago, nombre');
-            $this->db->where(array('idEmpresa' => $idEmpresa, 'eliminado' => 0));
-            $formasPago = $this->db->get('formapago');
+            $formasPago = $this->db->get('tiempo');
             if (!$formasPago) {
                 throw new Exception("Error en la BD");
             }
@@ -304,6 +302,7 @@ class Gasto_model extends CI_Model
             return false;
         }
     }
+    //Metodos ya no se usan
     function verificarNombreFormaPago($data)
     {
         try{
