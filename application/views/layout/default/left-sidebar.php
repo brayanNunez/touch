@@ -3,13 +3,20 @@
     <ul id="slide-out" class="side-nav fixed leftside-navigation">
         <li class="user-details cyan darken-2">
             <div class="row">
+                <?php
+                    $sessionActual = $this->session->userdata('logged_in');
+                    $idUsuarioLogueado = $sessionActual['idUsuarioEncriptado'];
+                    $nombreUsuarioLogueado = $sessionActual['nombreUsuario'];
+                    $rolesUsuarioLogueado = $sessionActual['rolesUsuario'];
+                    $imagenUsuarioLogueado = $sessionActual['rutaImagenUsuario'];
+                ?>
                 <div class="col col s4 m4 l4">
-                    <img src="<?= base_url(); ?>files/default-user-image.png" id="img_imagenUsuarioLogueado" alt="Imagen de perfil de usuario" class="circle responsive-img valign profile-image">
+                    <img src="<?= $imagenUsuarioLogueado; ?>" id="img_imagenUsuarioLogueado" alt="Imagen de perfil de usuario" class="circle responsive-img valign profile-image">
                 </div>
                 <div class="col col s8 m8 l8">
                     <ul id="profile-dropdown" class="dropdown-content menu-admin">
                         <li>
-                            <a id="btn_perfilUsuarioLogueado"><i class="mdi-action-face-unlock"></i>Perfil</a>
+                            <a id="btn_perfilUsuarioLogueado" href="<?= base_url().'usuarios/editar/'.$idUsuarioLogueado; ?>"><i class="mdi-action-face-unlock"></i>Perfil</a>
                         </li>
                         <li>
                             <a href="<?= base_url(); ?>registro/editar/">
@@ -27,10 +34,19 @@
                     <a id="btn_nombreUsuarioLogueado" class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#"
                        data-activates="profile-dropdown">
 <!--                        <span id="span_usuarioLogueado"><span id="span_nombreUsuarioLogueado"></span> &darr;<i class="mdi-navigation-arrow-drop-down right"></i></span>-->
-                        <span id="span_usuarioLogueado"><span id="span_nombreUsuarioLogueado"></span> &darr;</span>
+                        <span id="span_usuarioLogueado"><span id="span_nombreUsuarioLogueado"><?= $nombreUsuarioLogueado; ?></span> &darr;</span>
                     </a>
 
-                    <p class="user-roal"><ul id="list_rolesUsuarioLogueado"></ul></p>
+                    <p class="user-roal">
+                    <ul id="list_rolesUsuarioLogueado">
+                        <?php
+                        $arrayRoles = explode(",", $rolesUsuarioLogueado);
+                        foreach ($arrayRoles as $rol) { ?>
+                            <li><?= $rol; ?></li>
+                        <?php
+                        } ?>
+                    </ul>
+                    </p>
                 </div>
             </div>
         </li>

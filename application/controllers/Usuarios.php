@@ -240,18 +240,26 @@ class Usuarios extends CI_Controller
     public function verificar() {
         $username = $this->input->post('username');
         $password = $this->input->post('password');
-        
-                $sess_array = array(
-                    'idEmpresa' => 1,
-                    'idUsuario' => 1,
-                    'administrador' => true,
-                    'aprobador' => true,
-                    'cotizador' => true,
-                    'contador' => true
-                );
-                $this->session->set_userdata('logged_in', $sess_array);
-            // }
-            echo 1;
+
+        $idUsuario = 1;
+        $idEmpresa = 1;
+        $resultado = $this->Usuario_model->datosPerfil($idUsuario);
+
+        $sess_array = array(
+            'idEmpresa' => $idEmpresa,
+            'idUsuario' => $idUsuario,
+            'idUsuarioEncriptado' => encryptIt($idUsuario),
+            'nombreUsuario' => $resultado['nombreUsuario'],
+            'rolesUsuario' => $resultado['roles'],
+            'rutaImagenUsuario' => base_url().'files/empresas/'.$idEmpresa.'/usuarios/'.$idUsuario.'/'.$resultado['fotografia'],
+            'administrador' => true,
+            'aprobador' => true,
+            'cotizador' => true,
+            'contador' => true
+        );
+        $this->session->set_userdata('logged_in', $sess_array);
+        // }
+        echo 1;
     }
 
     public function vendedorSugerencia()
