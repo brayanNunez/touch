@@ -794,13 +794,6 @@
             document.getElementById('agregarGasto').style.visibility = 'hidden';
             document.getElementById('editarGasto').style.visibility = 'hidden';
         }
-        if (tipo == "agregarGasto_formaPago") {
-            $('#formaPago_nombre').val(nuevoElementoAgregar);
-            $('#linkNuevaFormaPago').click();
-            $('#formaPago_nombre').focus();
-            document.getElementById('agregarGasto').style.visibility = 'hidden';
-            document.getElementById('editarGasto').style.visibility = 'hidden';
-        }
     }
 
     function generarAutocompletarCategoria($array, $id){
@@ -824,14 +817,14 @@
         var miSelect = $('#agregarGasto #gasto_formaPago');
         miSelect.empty();
         miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("agregarGasto_elegirFormaPago"); ?></option>');
-        miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+//        miSelect.append('<option value="nuevo"><?//= label("agregarNuevo"); ?>//</option>');
         for(var i = 0; i < $array.length; i++) {
             var formaP = $array[i];
             if(formaP != null) {
-                if(formaP['idFormaPago'] == $id) {
-                    miSelect.append('<option value="' + formaP['idFormaPago'] + '" selected>' + formaP['nombre'] + '</option>');
+                if(formaP['idTiempo'] == $id) {
+                    miSelect.append('<option value="' + formaP['idTiempo'] + '" selected>' + formaP['nombre'] + '</option>');
                 } else {
-                    miSelect.append('<option value="' + formaP['idFormaPago'] + '">' + formaP['nombre'] + '</option>');
+                    miSelect.append('<option value="' + formaP['idTiempo'] + '">' + formaP['nombre'] + '</option>');
                 }
             }
         }
@@ -858,14 +851,14 @@
         var miSelect = $('#editarGasto #gasto_formaPago');
         miSelect.empty();
         miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("agregarGasto_elegirFormaPago"); ?></option>');
-        miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+//        miSelect.append('<option value="nuevo"><?//= label("agregarNuevo"); ?>//</option>');
         for(var i = 0; i < $array.length; i++) {
             var formaP = $array[i];
             if(formaP != null) {
-                if(formaP['idFormaPago'] == $id) {
-                    miSelect.append('<option value="' + formaP['idFormaPago'] + '" selected>' + formaP['nombre'] + '</option>');
+                if(formaP['idTiempo'] == $id) {
+                    miSelect.append('<option value="' + formaP['idTiempo'] + '" selected>' + formaP['nombre'] + '</option>');
                 } else {
-                    miSelect.append('<option value="' + formaP['idFormaPago'] + '">' + formaP['nombre'] + '</option>');
+                    miSelect.append('<option value="' + formaP['idTiempo'] + '">' + formaP['nombre'] + '</option>');
                 }
             }
         }
@@ -1128,21 +1121,10 @@
         $('#guardarCerrarCategoria').on('click', function(){
             cerrarModalCategoria = true;
         });
-        $('#guardarOtroFormaPago').on('click', function(){
-            cerrarModalFormaPago = false;
-        });
-        $('#guardarCerrarFormaPago').on('click', function(){
-            cerrarModalFormaPago = true;
-        });
     });
     function limpiarFormCategoria() {
         $('#form_categoria')[0].reset();
         var validator = $("#form_categoria").validate();
-        validator.resetForm();
-    }
-    function limpiarFormFormaPago() {
-        $('#form_formaPago_Gastos')[0].reset();
-        var validator = $("#form_formaPago_Gastos").validate();
         validator.resetForm();
     }
 
@@ -1151,11 +1133,6 @@
             document.getElementById('agregarGasto').style.visibility = 'visible';
             document.getElementById('editarGasto').style.visibility = 'visible';
             document.getElementById('agregarCategoria').style.display = 'none';
-        });
-        $('#modalAgregarFormaPago_cerrar').on('click', function () {
-            document.getElementById('agregarGasto').style.visibility = 'visible';
-            document.getElementById('editarGasto').style.visibility = 'visible';
-            document.getElementById('agregarFormaPago').style.display = 'none';
         });
         $(document).on('click', '#lean-overlay', function () {
             document.getElementById('agregarGasto').style.visibility = 'visible';
@@ -1200,49 +1177,6 @@
                     } else {
                         alert("<?=label('categoria_error_nombreExisteEnBD'); ?>");
                         $('#form_categoria #categoria_nombre').focus();
-                    }
-                }
-            }
-        });
-    }
-    function validacionCorrecta_FormaPago() {
-        $.ajax({
-            data: $('#form_formaPago_Gastos').serialize(),
-            url:   '<?=base_url()?>gastos/verificarNombreFormaPago',
-            type:  'post',
-            success:  function (response) {
-                if (response == '0') {
-                    alert("<?=label('errorGuardar'); ?>");
-                    $('#agregarFormaPago .modal-header a').click();
-                } else{
-                    if (response == '2') {
-                        var url = $('#form_formaPago_Gastos').attr('action');
-                        var method = $('#form_formaPago_Gastos').attr('method');
-                        $.ajax({
-                            type: method,
-                            url: url,
-                            data: $('#form_formaPago_Gastos').serialize(),
-                            success: function(response)
-                            {
-                                if (response == 0) {
-                                    alert("<?=label('errorGuardar'); ?>");
-                                    $('#agregarFormaPago .modal-header a').click();
-                                } else {
-                                    actualizarSelectFormasPago(response);
-                                    actualizarSelectFormasPago_Editar(response);
-                                    alert("<?=label('gastos_FormaPagoGuardadoCorrectamente'); ?>");
-                                    if (cerrarModalFormaPago) {
-                                        limpiarFormFormaPago();
-                                        $('#agregarFormaPago .modal-header a').click();
-                                    } else{
-                                        limpiarFormFormaPago();
-                                    }
-                                }
-                            }
-                        });
-                    } else{
-                        alert("<?=label('formaPago_error_nombreExisteEnBD'); ?>");
-                        $('#form_formaPago_Gastos #formaPago_nombre').focus();
                     }
                 }
             }
@@ -1442,7 +1376,7 @@
                     <label for="gasto_formaPago"><?= label("gastos_FormaPago"); ?></label>
                     <br>
                     <div id="contenedorSelectFormasPago">
-                        <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="agregarGasto_formaPago" id="gasto_formaPago" name="gasto_formaPago"
+                        <select data-incluirBoton="0" placeholder="seleccionar" data-tipo="agregarGasto_formaPago" id="gasto_formaPago" name="gasto_formaPago"
                                 data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("agregarGasto_elegirFormaPago"); ?>"
                                 class="browser-default chosen-select" style="width:350px;" tabindex="2"></select>
                     </div>
@@ -1491,7 +1425,7 @@
                     <label for="gasto_formaPago"><?= label("gastos_FormaPago"); ?></label>
                     <br>
                     <div id="contenedorSelectFormasPago">
-                        <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="agregarGasto_formaPago" id="gasto_formaPago" name="gasto_formaPago"
+                        <select data-incluirBoton="0" placeholder="seleccionar" data-tipo="agregarGasto_formaPago" id="gasto_formaPago" name="gasto_formaPago"
                                 data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("agregarGasto_elegirFormaPago"); ?>"
                                 class="browser-default chosen-select" style="width:350px;" tabindex="2"></select>
                     </div>
@@ -1561,42 +1495,6 @@
                     <?= label('guardarCerrar'); ?>
                 </a>
                 <a onclick="$(this).closest('form').submit()" id="guardarOtroCategoria" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
-                    <?= label('guardarAgregarOtro'); ?>
-                </a>
-            </div>
-        </form>
-    </div>
-</div>
-<div id="agregarFormaPago" class="modal" style="width: 70%;">
-    <div class="modal-header">
-        <p><?= label('nombreSistema'); ?></p>
-        <a id="modalAgregarFormaPago_cerrar" class="modal-action cerrar-modal">
-            <i class="mdi-content-clear"></i>
-        </a>
-    </div>
-    <div class="modal-content" style="padding: 0 24px;">
-        <div class="row">
-            <h5 style="float: left;"><?= label('gasto_agregarFormaPago'); ?></h5>
-        </div>
-        <form id="form_formaPago_Gastos" action="<?=base_url()?>gastos/insertarFormaPago" method="post">
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="formaPago_nombre" name="formaPago_nombre" type="text">
-                    <label for="formaPago_nombre"><?= label('formaPago_Nombre') ?></label>
-                </div>
-                <div class="input-field col s12">
-                    <input id="formaPago_descripcion" name="formaPago_descripcion" type="text">
-                    <label for="formaPago_descripcion"><?= label('formaPago_descripcion') ?></label>
-                </div>
-            </div>
-            <div class="row">
-                <!--                <a href="#" style="font-size: larger;float: left;text-decoration: underline;"-->
-                <!--                   class="modal-action modal-close">--><?//= label('cancelar'); ?>
-                <!--                </a>-->
-                <a onclick="$(this).closest('form').submit()" id="guardarCerrarFormaPago" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
-                    <?= label('guardarCerrar'); ?>
-                </a>
-                <a onclick="$(this).closest('form').submit()" id="guardarOtroFormaPago" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
                     <?= label('guardarAgregarOtro'); ?>
                 </a>
             </div>
