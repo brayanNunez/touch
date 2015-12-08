@@ -1003,37 +1003,7 @@ Scripts
         readURL_Firma_completar(this);
     });
 </script>
-<!--Script para el manejo de datos del usuario logueado-->
-<script type="text/javascript">
-    $(document).ready(function () {
-        $.ajax({
-            type: 'post',
-            url: '<?= base_url(); ?>usuarios/datosPerfil',
-            data: {  },
-            success: function(response)
-            {
-                if(response != 'null') {
-                    var datosUsuario = $.parseJSON(response);
 
-                    $('#horas_diasAnno').val(datosUsuario['diasAnno']);
-                    var rutaImagen = '<?= base_url(); ?>files/empresas/' + datosUsuario['idEmpresa'] + '/usuarios/' + datosUsuario['idUsuario'] + '/' + datosUsuario['fotografia'];
-                    if(datosUsuario['fotografia'] == null || datosUsuario['fotografia'] == '') {
-                        rutaImagen = '<?= base_url(); ?>files/default-user-image.png';
-                    }
-                    $('#btn_perfilUsuarioLogueado').attr('href', '<?= base_url(); ?>usuarios/editar/' + datosUsuario['idUsuarioEncriptado']);
-                    $('#span_nombreUsuarioLogueado').text(datosUsuario['nombreUsuario']);
-                    $('#img_imagenUsuarioLogueado').attr('src', rutaImagen);
-
-                    var roles = datosUsuario['roles'];
-                    var arrayRoles = roles.split(',');
-                    for(var i = 0; i < arrayRoles.length; i++) {
-                        $('#list_rolesUsuarioLogueado').append('<li>' + arrayRoles[i] + '</li>');
-                    }
-                }
-            }
-        });
-    });
-</script>
 
     </body>
 </html>
