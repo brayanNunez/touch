@@ -500,33 +500,31 @@
       $('#botonBusqueda').on('click', function(){
         alert('iniciar busqueda');
         var url = '<?= base_url() ?>Cotizacion/busqueda';
-            var method = 'POST'; 
-            $.ajax({
-                   type: method,
-                   url: url,
-                   data: $('#formBusqueda').serialize(), 
-                   success: function(response)
-                   {
-                      if (response ==0) {
-                        alert('Error al cargar los datos');
-                      } else{
-                        arrayBusqueda = $.parseJSON(response);
-                        var table = $('#cotizaciones-tabla-lista').DataTable();
-                        table.clear().draw();
+        var method = 'POST'; 
+        $.ajax({
+               type: method,
+               url: url,
+               data: $('#formBusqueda').serialize(), 
+               success: function(response)
+               {
+                // alert(response);
+                  if (response ==0) {
+                    alert('Error al cargar los datos');
+                  } else{
+                    arrayBusqueda = $.parseJSON(response);
+                    var table = $('#cotizaciones-tabla-lista').DataTable();
+                    table.clear().draw();
 
-                        for (var i = 0; i < arrayBusqueda.length; i++) {
-                          var fila = arrayBusqueda[i];
-                          agregarFila(fila['idCotizacion'], fila['codigo'], fila['numero'], fila['fechaCreacion'], fila['cliente'], fila['vendedor'], 'monto', fila['estado'], fila['idCliente'], fila['idUsuario'], i);
-                          // arrayBusqueda[i]
-                        };
-
-                        // alert(response);
-                        // agregarFila('idEncriptado', 'codigo', 23, '1-1-2015', 'cliente', 'vendedor', 'monto', 'nueva', 'idCliente', 'idUsuario', 0);
-                      };
-                      $('#busquedaAvanzada').closeModal();
-                      
-                   }
-                 });
+                    for (var i = 0; i < arrayBusqueda.length; i++) {
+                      var fila = arrayBusqueda[i];
+                      agregarFila(fila['idCotizacion'], fila['codigo'], fila['numero'], fila['fechaCreacion'], fila['cliente'], fila['vendedor'], 'monto', fila['estado'], fila['idCliente'], fila['idUsuario'], i);
+                    };
+                    
+                  };
+                  $('#busquedaAvanzada').closeModal();
+                  
+               }
+             });
       })
 });
 
@@ -732,7 +730,7 @@
                 </div>
                 <div class="input-field col s12 m4 l4">
                     <div class="input-field col s12">
-                        <input id="busqueda-fecha-hasta" name="busqueda-fecha-hasta" type="text" class="datepicker-fecha" value="<?php echo date('Y-m-d'); ?>">
+                        <input id="busqueda-fecha-hasta" name="busqueda-fecha-hasta" type="text" class="datepicker-fecha" value="<?php echo date('d-m-Y'); ?>">
                         <label for="busqueda-fecha-hasta" class=""><?= label('clientes_busquedaHasta') ?></label>
                     </div>
                 </div>

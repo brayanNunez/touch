@@ -40,7 +40,9 @@ class Cotizacion extends CI_Controller
             );
         // echo print_r($busqueda);
 
-        $busqueda = $this->Cotizacion_model->busqueda($idEmpresa);
+        $busqueda = $this->Cotizacion_model->busqueda($idEmpresa, $busqueda);
+
+        
 
         if ($busqueda === false) {
             echo "0";

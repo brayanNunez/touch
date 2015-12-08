@@ -10,12 +10,40 @@ class Cotizacion_model extends CI_Model
         $this->load->database();
     }
 
-    function busqueda($idEmpresa)
+    function busqueda($idEmpresa, $busqueda)
     {
         try{
             $this->db->trans_begin();
 
-            $cotizaciones = $this->db->query("SELECT co.idCotizacion, co.numero, co.codigo, co.fechaCreacion, if(cl.juridico = 1,cl.nombre,CONCAT(cl.nombre, ' ', cl.primerApellido, ' ', cl.segundoApellido)) as cliente, cl.idCliente, CONCAT(us.nombre, ' ', us.primerApellido, ' ', us.segundoApellido) as vendedor, us.idUsuario,ec.descripcion as estado FROM cotizacion as co left join cliente as cl on co.idCliente = cl.idCliente left join estadocotizacion as ec on co.idEstadoCotizacion = ec.idEstadoCotizacion left join usuario as us on co.idUsuario = us.idUsuario where co.idEmpresa = ".$idEmpresa." AND co.eliminado=0;");
+            $whereEstado = '';
+            if ($busqueda['idEstado'] != 0) {
+                $whereEstado = ' AND ec.idEstadoCotizacion = '.$busqueda["idEstado"];
+            }
+
+            $whereUsuario = '';
+            if ($busqueda['idUsuario'] != 0) {
+                $whereUsuario = ' AND us.idUsuario = '.$busqueda["idUsuario"];
+            }
+
+            $whereCliente = '';
+            if ($busqueda['idCliente'] != 0) {
+                $whereCliente = ' AND cl.idCliente = '.$busqueda["idCliente"];
+            }
+
+            
+            $desde = date("Y-m-d", strtotime($busqueda["desde"]));
+            $hasta = date("Y-m-d", strtotime($busqueda["hasta"]));
+
+            $hasta = strtotime('+1 day', strtotime($hasta));
+            $hasta = date('Y-m-d', $hasta); 
+            
+            $whereFechas = ' AND (co.fechaCreacion BETWEEN "'.$desde.'" AND "'.$hasta.'")';
+            // }
+
+            
+            // echo $whereEstado; exit();
+
+            $cotizaciones = $this->db->query("SELECT co.idCotizacion, co.numero, co.codigo, co.fechaCreacion, if(cl.juridico = 1,cl.nombre,CONCAT(cl.nombre, ' ', cl.primerApellido, ' ', cl.segundoApellido)) as cliente, cl.idCliente, CONCAT(us.nombre, ' ', us.primerApellido, ' ', us.segundoApellido) as vendedor, us.idUsuario,ec.descripcion as estado FROM cotizacion as co left join cliente as cl on co.idCliente = cl.idCliente left join estadocotizacion as ec on co.idEstadoCotizacion = ec.idEstadoCotizacion left join usuario as us on co.idUsuario = us.idUsuario where co.idEmpresa = ".$idEmpresa." AND co.eliminado=0".$whereEstado.$whereUsuario.$whereCliente.$whereFechas);
 
 
             if (!$cotizaciones) throw new Exception("Error en la BD"); 
