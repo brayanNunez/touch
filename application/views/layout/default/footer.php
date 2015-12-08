@@ -1003,7 +1003,24 @@ Scripts
         readURL_Firma_completar(this);
     });
 </script>
+<!--Script para el manejo de signo de moneda por defecto-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            type: 'post',
+            url: '<?= base_url(); ?>tiposMoneda/datosMonedaPrincipal',
+            data: {  },
+            success: function(response)
+            {
+                if(response != 'null') {
+                    var datosMonedaPrincipal = $.parseJSON(response);
 
+                    $('.moneda_signo').text(datosMonedaPrincipal['signo'] + ' ');
+                }
+            }
+        });
+    });
+</script>
 
     </body>
 </html>

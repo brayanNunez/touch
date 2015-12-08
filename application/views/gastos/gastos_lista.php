@@ -87,7 +87,7 @@
                                                                         <td><?= $formaPago; ?></td>
                                                                         <td><?= $fila['nombre']; ?></td>
                                                                         <td><?= $persona; ?></td>
-                                                                        <td><?= $fila['monto']; ?></td>
+                                                                        <td><span class="moneda_signo"></span><?= $fila['monto']; ?></td>
                                                                         <td>
                                                                             <ul id="dropdown-gasto<?= $contador ?>" class="dropdown-content">
                                                                                 <li>

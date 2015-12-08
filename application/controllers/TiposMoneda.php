@@ -42,7 +42,7 @@ class TiposMoneda extends CI_Controller
 
         $res = $this->Tipomoneda_model->insertar($data);
         if (!$res) {
-            //Error en la transacción
+            //Error en la transacciï¿½n
             echo 0;
         } else {
             // correcto
@@ -73,7 +73,7 @@ class TiposMoneda extends CI_Controller
         // echo print_r($data); exit();
 
         if (!$this->Tipomoneda_model->modificar($data)) {
-            //Error en la transacción
+            //Error en la transacciï¿½n
             echo 0;
         } else {
             //correcto
@@ -86,7 +86,7 @@ class TiposMoneda extends CI_Controller
     {
         $id = $_POST['idEliminar'];
         if (!$this->Tipomoneda_model->eliminar(decryptIt($id))) {
-            //Error en la transacción
+            //Error en la transacciï¿½n
             echo 0;
         } else {
             //correcto
@@ -108,7 +108,7 @@ class TiposMoneda extends CI_Controller
         // echo print_r($impuesto); exit();
         $resultado = $this->Tipomoneda_model->verificarNombre($data);
         if ($resultado === false) {
-            //Error en la transacción
+            //Error en la transacciï¿½n
             echo 0;
         } else {
             if ($resultado == 1) {
@@ -143,6 +143,20 @@ class TiposMoneda extends CI_Controller
             'idMoneda' => $idMoneda
         );
         $resultado = $this->Tipomoneda_model->cambiarTipoPrincipal($data);
+        if ($resultado === false || $resultado === array()) {
+            echo 0;
+        } else {
+            echo json_encode($resultado);
+        }
+    }
+
+    public function datosMonedaPrincipal() {
+        verificarLogin();//helper
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $tipoDefecto = $this->Tipomoneda_model->tipoPrincipal($idEmpresa);
+        $resultado = $this->Tipomoneda_model->cargar($tipoDefecto);
         if ($resultado === false || $resultado === array()) {
             echo 0;
         } else {
