@@ -235,8 +235,8 @@ class Proveedor_model extends CI_Model
                     $this->db->where('idCategoriaGasto' , $gasto['idCategoriaGasto']);
                     $query1 = $this->db->get('categoriagasto');
                     $this->db->select('nombre');
-                    $this->db->where('idFormaPago', $gasto['formaPago']);
-                    $query2 = $this->db->get('formaPago');
+                    $this->db->where('idTiempo', $gasto['formaPago']);
+                    $query2 = $this->db->get('tiempo');
                     if (!$query1 || !$query2) {
                         throw new Exception("Error en la BD");
                     }
