@@ -785,7 +785,6 @@ class Cotizacion_model extends CI_Model
         try{
             $this->db->trans_begin();
 
-//            print_r($data); exit();
             $query = $this->db->insert('formapago', $data['datos']);
             if (!$query) {
                 throw new Exception("Error en la BD");

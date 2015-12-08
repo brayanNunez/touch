@@ -610,6 +610,13 @@
                 validacionCorrectaEditar();
             }
         });
+        $('#form_formaPago_cotizar').validate({
+            rules: reglasFormaPago,
+            errorElement: 'div',
+            submitHandler: function(form) {
+                validacionCorrecta_FormaPago();
+            }
+        });
 
         var reglasGasto =  {
             gasto_codigo: {required: true},

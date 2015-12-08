@@ -549,9 +549,7 @@ class Cotizacion extends CI_Controller
             'nombre' => $this->input->post('formaPago_nombre'),
             'eliminado' => '0'
         );
-
-        // echo print_r($impuesto); exit();
-        $resultado = $this->Gasto_model->verificarNombreFormaPago($data);
+        $resultado = $this->Cotizacion_model->verificarNombreFormaPago($data);
         if ($resultado === false) {
             //Error en la transacción
             echo 0;
@@ -576,7 +574,7 @@ class Cotizacion extends CI_Controller
             'eliminado' => 0
         );
 
-        $res = $this->Gasto_model->insertarFormaPago($data);
+        $res = $this->Cotizacion_model->insertarFormaPago($data);
         if (!$res) {
             //Error en la transacción
             echo 0;
