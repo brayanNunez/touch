@@ -38,12 +38,15 @@ class Cotizacion_model extends CI_Model
             $hasta = date('Y-m-d', $hasta); 
             
             $whereFechas = ' AND (co.fechaCreacion BETWEEN "'.$desde.'" AND "'.$hasta.'")';
-            // }
 
+            $whereServicio = '';
+            $leftJoinServicio = '';
+            if ($busqueda['idServicio'] != 0) {
+                $whereServicio = ' AND li.idServicio = '.$busqueda["idServicio"];
+                $leftJoinServicio = ' left join lineadetalle as li on li.idCotizacion = co.idCotizacion ';
+            }
             
-            // echo $whereEstado; exit();
-
-            $cotizaciones = $this->db->query("SELECT co.idCotizacion, co.numero, co.codigo, co.fechaCreacion, if(cl.juridico = 1,cl.nombre,CONCAT(cl.nombre, ' ', cl.primerApellido, ' ', cl.segundoApellido)) as cliente, cl.idCliente, CONCAT(us.nombre, ' ', us.primerApellido, ' ', us.segundoApellido) as vendedor, us.idUsuario,ec.descripcion as estado FROM cotizacion as co left join cliente as cl on co.idCliente = cl.idCliente left join estadocotizacion as ec on co.idEstadoCotizacion = ec.idEstadoCotizacion left join usuario as us on co.idUsuario = us.idUsuario where co.idEmpresa = ".$idEmpresa." AND co.eliminado=0".$whereEstado.$whereUsuario.$whereCliente.$whereFechas);
+            $cotizaciones = $this->db->query("SELECT co.idCotizacion, co.numero, co.codigo, co.fechaCreacion, if(cl.juridico = 1,cl.nombre,CONCAT(cl.nombre, ' ', cl.primerApellido, ' ', cl.segundoApellido)) as cliente, cl.idCliente, CONCAT(us.nombre, ' ', us.primerApellido, ' ', us.segundoApellido) as vendedor, us.idUsuario,ec.descripcion as estado FROM cotizacion as co left join cliente as cl on co.idCliente = cl.idCliente left join estadocotizacion as ec on co.idEstadoCotizacion = ec.idEstadoCotizacion left join usuario as us on co.idUsuario = us.idUsuario".$leftJoinServicio." where co.idEmpresa = ".$idEmpresa." AND co.eliminado=0".$whereEstado.$whereUsuario.$whereCliente.$whereFechas.$whereServicio);
 
 
             if (!$cotizaciones) throw new Exception("Error en la BD"); 

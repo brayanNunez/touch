@@ -36,7 +36,7 @@ class Cotizacion extends CI_Controller
             'idUsuario' => $this->input->post('busquedaCotizacion_vendedor'),  
             'idEstado' => $this->input->post('busquedaCotizacion_estado'),
             'desde' => $this->input->post('busqueda-fecha-desde'),  
-            'hasta' => $this->input->post('busqueda-fecha-hasta'),
+            'hasta' => $this->input->post('busqueda-fecha-hasta')
             );
         // echo print_r($busqueda);
 
