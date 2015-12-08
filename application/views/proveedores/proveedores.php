@@ -1312,7 +1312,7 @@
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <p><?= label('usuarioGuardadoCorrectamente'); ?></p>
+        <p><?= label('personaGuardadoCorrectamente'); ?></p>
     </div>
     <div class="modal-footer">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>

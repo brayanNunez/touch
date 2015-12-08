@@ -83,6 +83,8 @@
 
     $lang['usuarioGuardadoCorrectamente'] = 'El usuario ha sido creado correctamente.';
     $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente.';
+    $lang['personaGuardadoCorrectamente'] = 'La persona ha sido creada correctamente.';
+    $lang['personaEditadoCorrectamente'] = 'La persona ha sido editada correctamente.';
     $lang['usuarioErrorTamanoArchivo'] = 'El tamaño del archivo es superior a lo permitido.';
     $lang['usuarioErrorTipoArchivo'] = 'El tipo de archivo seleccionado no es permitido.';
     $lang['usuarioErrorCambioContrasena'] = 'Ha ocurrido un error al intentar hacer el cambio de contraseña';
