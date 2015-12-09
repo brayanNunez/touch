@@ -818,5 +818,117 @@ class Cotizacion_model extends CI_Model
             return false;
         }
     }
+    function verificarIdentificacionCliente($data)
+    {
+        try{
+            $this->db->trans_begin();
+            $existe = 0;
+
+            $query = $this->db->get_where('cliente', $data['datos']);
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+            if ($query->num_rows() > 0) {
+                $existe = 1;
+            }
+
+            $this->db->trans_commit();
+            return $existe;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+    function insertarCliente($data)
+    {
+        try{
+            $this->db->trans_begin();
+
+            $query = $this->db->insert('cliente', $data['datos']);
+            if (!$query) throw new Exception("Error en la BD");
+            $insert_id = $this->db->insert_id();
+
+            if($data['extension'] != '' && $data['extension'] != null) {
+                $nombreFotografia = 'profile_picture_' . $insert_id . '.' . $data['extension'];
+                $this->db->where('idCliente', $insert_id);
+                $query = $this->db->update('cliente', array('fotografia' => $nombreFotografia));
+            }
+
+            if ($data['gustos'] != '') {
+                $gustos = explode(",", $data['gustos']); ;
+                foreach ($gustos as $gusto) {
+                    $row = array(
+                        'idCliente' => $insert_id,
+                        'nombre' => $gusto
+                    );
+                    $query = $this->db->insert('gusto', $row);
+                    if (!$query) throw new Exception("Error en la BD");
+                }
+            }
+
+            if ($data['medios'] != '') {
+                $medios = explode(",", $data['medios']); ;
+                foreach ($medios as $medio) {
+                    $row = array(
+                        'idCliente' => $insert_id,
+                        'nombre' => $medio
+                    );
+                    $query = $this->db->insert('medio', $row);
+                    if (!$query) throw new Exception("Error en la BD");
+                }
+            }
+
+            if ($data['vendedores'] != '') {
+                $vendedores = explode(",", $data['vendedores']);
+                foreach ($vendedores as $vendedor) {
+                    $row = array(
+                        'idCliente' => $insert_id,
+                        'idUsuario' => $vendedor
+                    );
+                    $query = $this->db->insert('usuario_cliente', $row);
+                    if (!$query) {
+                        throw new Exception("Error en la BD");
+                    }
+                }
+            }
+
+            $contactos = $data['contactos'];
+            // echo print_r($contactos); exit();
+            foreach ($contactos as $contacto) {
+                $contacto['idCliente'] = $insert_id;
+                $query = $this->db->insert('personacontacto', $contacto);
+                if (!$query) throw new Exception("Error en la BD");
+            }
+
+            $pathCliente = 'files/empresas/'.$data['datos']['idEmpresa'].'/clientes/'.$insert_id;
+            if(!is_dir($pathCliente)) {
+                mkdir($pathCliente);
+            }
+            $this->db->trans_commit();
+            return $insert_id;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+    function paises()
+    {
+        try{
+            $this->db->trans_begin();
+
+            $paises = $this->db->get('pais');
+            if (!$paises) {
+                throw new Exception("Error en la BD");
+            }
+            $paises = $paises->result_array();
+
+            $this->db->trans_commit();
+            return $paises;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
 }
 ?>
