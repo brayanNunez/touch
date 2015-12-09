@@ -121,7 +121,7 @@
                   <div></div>                  <p class="box" id="formaPago">Forma de pago: <span id="disenoFormaPago"></span></p>
 
                   <p class="box" id="validez">Válido hasta: <span id="disenoValidez"></span></p>
-                  <p class="box" id="informacionDetalle"></p>
+                  <p id="informacionDetalle"></p>
                   <div class="box" id="firma">
                      <!-- <img id="imagenFirma" class="imagen" src="<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/img_firmaEmpresa_1.jpg"/> -->
                      <p id="textoFirma">Firma:<span>
@@ -393,10 +393,10 @@
                            id="informacionfilled-in-box2">
                         <label for="informacionfilled-in-box2">Vlidez</label>
                      </p>
-                     <p>
+                     <!-- <p>
                         <input name="checksInformacion_informacionDetalle" value="informacionDetalle" type="checkbox" class="filled-in checksInformacion" id="informacionfilled-in-box3">
                         <label for="informacionfilled-in-box3">Detalle</label>
-                     </p>
+                     </p> -->
                      <p>
                         <input name="checksInformacion_firma" value="firma" type="checkbox" class="filled-in checksInformacion"
                            id="informacionfilled-in-box4">
@@ -1048,11 +1048,11 @@
    } else {
        $("#modalInformacion input[value='validez']").prop("checked", false );
    }
-   if (plantilla['mostrarDetalle'] == 1) {
-       $("#modalInformacion input[value='informacionDetalle']").prop("checked", true );
-   } else {
-       $("#modalInformacion input[value='informacionDetalle']").prop("checked", false );
-   }
+   // if (plantilla['mostrarDetalle'] == 1) {
+   //     $("#modalInformacion input[value='informacionDetalle']").prop("checked", true );
+   // } else {
+   //     $("#modalInformacion input[value='informacionDetalle']").prop("checked", false );
+   // }
    if (plantilla['mostrarFirma'] == 1) {
        $("#modalInformacion input[value='firma']").prop("checked", true );
    } else {
@@ -1228,7 +1228,7 @@
    "tipoLetraInformacion":"", 
    "mostrarFormaPago":$('#informacion .box#formaPago').is(':visible'),
    "mostrarValidez":$('#informacion .box#validez').is(':visible'),
-   "mostrarDetalle":$('#informacion .box#informacionDetalle').is(':visible'),
+   // "mostrarDetalle":$('#informacion .box#informacionDetalle').is(':visible'),
    "mostrarFirma":$('#informacion .box#firma').is(':visible'),
    "imagenFirma":"",
    "textoAdicionalInformacion": $('#informacionDetalle').text()

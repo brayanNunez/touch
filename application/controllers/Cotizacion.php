@@ -20,7 +20,9 @@ class Cotizacion extends CI_Controller
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
         $data = $this->Cotizacion_model->cargarTodos($idEmpresa);
-        // echo  print_r($lista); exit();
+        if ($data == false) {
+            $data['lista'] = false;
+        }
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
         $this->load->view('cotizar/lista', $data);
@@ -340,10 +342,10 @@ class Cotizacion extends CI_Controller
            $firmaInformacion = 1;
         }
 
-        $informacionDetalleInformacion = 0;
-        if (isset($_POST['checksInformacion_informacionDetalle'])) {
-           $informacionDetalleInformacion = 1;
-        }
+        // $informacionDetalleInformacion = 0;
+        // if (isset($_POST['checksInformacion_informacionDetalle'])) {
+        //    $informacionDetalleInformacion = 1;
+        // }
 
         $telefonoFooter = 0;
         if (isset($_POST['checksFooter_telefono'])) {
@@ -436,7 +438,7 @@ class Cotizacion extends CI_Controller
             'tipoLetraInformacion' => '',  
             'mostrarFormaPago' => $formaPagoInformacion,  
             'mostrarValidez' => $validezInformacion,  
-            'mostrarDetalle' => $informacionDetalleInformacion,  
+            // 'mostrarDetalle' => $informacionDetalleInformacion,  
             'mostrarFirma' => $firmaInformacion,  
             'imagenFirma' => '',  
             'textoAdicionalInformacion' => $this->input->post('textoAdicionalInformacion'),
