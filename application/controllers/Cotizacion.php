@@ -20,7 +20,9 @@ class Cotizacion extends CI_Controller
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
         $data = $this->Cotizacion_model->cargarTodos($idEmpresa);
-        // echo  print_r($lista); exit();
+        if ($data == false) {
+            $data['lista'] = false;
+        }
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
         $this->load->view('cotizar/lista', $data);

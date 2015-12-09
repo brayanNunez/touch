@@ -44,7 +44,7 @@ class Cotizacion_model extends CI_Model
                 $whereServicio = ' AND li.idServicio = '.$busqueda["idServicio"];
                 $leftJoinServicio = ' left join lineadetalle as li on li.idCotizacion = co.idCotizacion ';
             }
-            
+
             $cotizaciones = $this->db->query("SELECT co.idCotizacion, co.numero, co.codigo, co.fechaCreacion, if(cl.juridico = 1,cl.nombre,CONCAT(cl.nombre, ' ', cl.primerApellido, ' ', cl.segundoApellido)) as cliente, cl.idCliente, CONCAT(us.nombre, ' ', us.primerApellido, ' ', us.segundoApellido) as vendedor, us.idUsuario,ec.descripcion as estado FROM cotizacion as co left join cliente as cl on co.idCliente = cl.idCliente left join estadocotizacion as ec on co.idEstadoCotizacion = ec.idEstadoCotizacion left join usuario as us on co.idUsuario = us.idUsuario".$leftJoinServicio." where co.idEmpresa = ".$idEmpresa." AND co.eliminado=0".$whereEstado.$whereUsuario.$whereCliente.$whereFechas.$whereServicio);
 
 

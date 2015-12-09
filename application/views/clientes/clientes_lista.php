@@ -572,7 +572,7 @@
                     </select>
                     <label>Estado de la cotización</label>
                 </div>
-                <div class="input-field col s12 m6 l6">
+                <!-- <div class="input-field col s12 m6 l6">
                     <select class="input-field col s12">
                         <option value="1" selected>Todos</option>
                         <option value="2">Juan Alfaro Alfaro</option>
@@ -587,7 +587,7 @@
                         <option value="3">Música en vivo</option>
                     </select>
                     <label for="reporte-cliente">Proveedores</label>
-                </div>
+                </div> -->
                 <div class="col s12 m4 l4 tagsInput-div">
                     <div class="inputTag col s12">
                         <label for="vendedoresCliente"><?= label('formCliente_cotizador'); ?></label>

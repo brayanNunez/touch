@@ -212,10 +212,10 @@
 
     <!--end container-->
 </section>
-<div style="display: none">
-    <a id="linkModalErrorCargarDatos" href="#transaccionIncorrectaCargar" class="btn btn-default modal-trigger"></a>
-    <a id="linkModalErrorEliminar" href="#transaccionIncorrectaEliminar" class="btn btn-default modal-trigger"></a>
-</div>
+<!-- <div style="display: none"> -->
+    <!-- <a id="linkModalErrorCargarDatos" href="#transaccionIncorrectaCargar" class="btn btn-default modal-trigger"></a> -->
+    <!-- <a id="transaccionIncorrectaEliminar" hopenModal#transaccionIncorrectaEliminar" class="btn btn-default modal-trigger"></a> -->
+<!-- </div> -->
 
 <!-- END CONTENT-->
 
@@ -231,9 +231,7 @@
        <?php
       if (isset($lista)) {
           if ($lista === false) {?>
-   
-                $('#linkModalErrorCargarDatos').click();
-   
+                $('#transaccionIncorrectaCargar').openModal();
            <?php
       }
       }
@@ -266,7 +264,7 @@
                        });
                        
                    } else{
-                       $('#linkModalErrorEliminar').click();
+                       $('#transaccionIncorrectaEliminar').openModal();
                    };
                }
            });
@@ -317,7 +315,7 @@
                            };
                             if (contadorTotal == marcados) {
                                 if (contadorErrores != 0) {
-                                    $('#linkModalErrorEliminar').click();
+                                    $('#transaccionIncorrectaEliminar').openModal();
                                 } 
                               
                             };
@@ -498,7 +496,6 @@
    // script busqueda avanzada
    $(document).on('ready', function(){
       $('#botonBusqueda').on('click', function(){
-        alert('iniciar busqueda');
         var url = '<?= base_url() ?>Cotizacion/busqueda';
         var method = 'POST'; 
         $.ajax({
@@ -509,7 +506,7 @@
                {
                 // alert(response);
                   if (response ==0) {
-                    alert('Error al cargar los datos');
+                    alert('<?= label('errorLeerDatos'); ?>');
                   } else{
                     arrayBusqueda = $.parseJSON(response);
                     var table = $('#cotizaciones-tabla-lista').DataTable();
@@ -577,6 +574,9 @@
 
             var codigo = '<td><a href="'+urlBase+'cotizacion/editar/'+idEncriptado+'">'+miCodigo+'<a></td>';
             var fechaCreacion = '<td>'+fechaCreacion+'</td>';
+            if (cliente == null) {
+              cliente = '';
+            } 
             var cliente = '<td><a href="'+urlBase+'clientes/editar/'+idCliente+'#tab-informacion">'+cliente+'<a></td>';
             var vendedor = '<td><a href="'+urlBase+'usuarios/editar/'+idUsuario+'#tab-informacion">'+vendedor+'<a></td>';
             var monto = '<td>Hola</td>';
