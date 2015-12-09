@@ -818,4 +818,19 @@
             }
         });
 
+        $('#form_contacto_cotizar').validate({
+            rules: {
+                cliente_contactoNombre: {required: true, maxlength: 45},
+                cliente_contactoApellido1: {required: true, maxlength: 45},
+                cliente_contactoApellido2: {required: false, maxlength: 45},
+                cliente_contactoCorreo: {required: true, maxlength: 45},
+                cliente_contactoPuesto: {required: false, maxlength: 45},
+                cliente_contactoTelefono: {required: false, maxlength: 45}
+            },
+            errorElement: 'div',
+            submitHandler: function(form) {
+                validacionCorrecta_Contacto();
+            }
+        });
+
     });

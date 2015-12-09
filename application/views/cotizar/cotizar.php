@@ -29,12 +29,12 @@
             $('#cliente_contactoNombre').val(nuevoElementoAgregar);
             $('#linkNuevaAtencion').click();
             $('#cliente_contactoNombre').focus();
-        } 
+        }
         if (tipo == "paso1Cliente") {
             $('#cliente_nombre').val(nuevoElementoAgregar);
             $('#linkNuevoCliente').click();
             $('#cliente_nombre').focus();
-        } 
+        }
         if (tipo == "paso1FormaPago") {
             $('#formaPago_nombre').val(nuevoElementoAgregar);
             $('#linkNuevaFormaPago').click();

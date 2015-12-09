@@ -108,7 +108,7 @@
 <div style="visibility:hidden; position:absolute">
     <a id="linkNuevaMoneda" href="#agregarTipoMoneda" class="modal-trigger"></a>
     <a id="linkNuevaFormaPago" href="#agregarFormaPago" class="modal-trigger"></a>
-    <a id="linkNuevaAtencion" href="#agregarAtencion" class="modal-trigger"></a>
+    <a id="linkNuevaAtencion" href="#agregarContacto" class="modal-trigger"></a>
     <a id="linkNuevoCliente" href="#agregarCliente" class="modal-trigger"></a>
 </div>
 
@@ -297,6 +297,11 @@
             $('#linkNuevaMoneda').click();
             $('#tipoMoneda_nombre').focus();
         }
+        if (tipo == "paso1Atencion") {
+            $('#cliente_contactoNombre').val(nuevoElementoAgregar);
+            $('#linkNuevaAtencion').click();
+            $('#cliente_contactoNombre').focus();
+        }
     }
 
     function generarAutocompletarMoneda($array, $id){
@@ -388,6 +393,7 @@
     var cerrarModalMoneda = false;
     var cerrarModalFormaPago = false;
     var cerrarModalCliente = false;
+    var cerrarModalContacto = false;
     $(document).on('ready', function(){
         $('#guardarOtroMoneda').on('click', function(){
             cerrarModalMoneda = false;
@@ -407,6 +413,12 @@
         $('#guardarCerrarCliente').on('click', function(){
             cerrarModalCliente = true;
         });
+        $('#guardarOtroContacto').on('click', function(){
+            cerrarModalContacto = false;
+        });
+        $('#guardarCerrarContacto').on('click', function(){
+            cerrarModalContacto = true;
+        });
     });
     function limpiarFormMoneda() {
         $('#form_tipoMoneda_cotizar')[0].reset();
@@ -421,6 +433,11 @@
     function limpiarFormCliente() {
         $('#form_cliente_cotizar')[0].reset();
         var validator = $("#form_cliente_cotizar").validate();
+        validator.resetForm();
+    }
+    function limpiarFormContacto() {
+        $('#form_contacto_cotizar')[0].reset();
+        var validator = $("#form_contacto_cotizar").validate();
         validator.resetForm();
     }
 
@@ -563,6 +580,54 @@
             }
         });
     }
+    function validacionCorrecta_Contacto() {
+        var clienteElegido = $('#paso1Cliente').val();
+        $('#cliente_contactoIdCliente').val(clienteElegido);
+        $.ajax({
+            data: $('#form_contacto_cotizar').serialize(),
+            url:   '<?=base_url()?>cotizacion/verificarCorreoContacto',
+            type:  'post',
+            success:  function (response) {
+                if (response == '0') {
+                    alert("<?=label('errorGuardar'); ?>");
+                    $('#agregarContacto .modal-header a').click();
+                } else{
+                    if (response == '2') {
+                        var formulario = $('#form_contacto_cotizar');
+                        var url = formulario.attr('action');
+                        var method = formulario.attr('method');
+                        var data = formulario.serialize();
+                        $.ajax({
+                            type: method,
+                            url: url,
+                            data: data,
+                            success: function(response)
+                            {
+                                if (response == 0) {
+                                    alert("<?=label('errorGuardar'); ?>");
+                                    $('#agregarContacto .modal-header a').click();
+                                } else {
+                                    var clienteElegido = $('#paso1Cliente').val();
+                                    actualizarSelectContactos(clienteElegido, response);
+
+                                    alert("<?=label('cotizacion_contactoGuardadoCorrectamente'); ?>");
+                                    if (cerrarModalContacto) {
+                                        $('#agregarContacto .modal-header a').click();
+                                        limpiarFormContacto();
+                                    } else{
+                                        limpiarFormContacto();
+                                    }
+                                }
+                            }
+                        });
+                    } else{
+                        alert("<?=label('contacto_error_correoExisteEnBD'); ?>");
+                        $('#form_contacto_cotizar #cliente_contactoCorreo').focus();
+                    }
+                }
+            }
+        });
+    }
 
     $(document).on('change', '#paso1Moneda', function () {
         var monedaElegida = $(this).val();
@@ -585,6 +650,7 @@
     $(document).on('change', '#paso1Cliente', function () {
         var clienteElegido = $(this).val();
         actualizarSelectContactos(clienteElegido,  0);
+        $('#cliente_contactoIdCliente').val(clienteElegido);
     });
     function contactosClienteAgregado($idCliente) {
         actualizarSelectContactos($idCliente, 0);
@@ -1354,6 +1420,60 @@
         </form>
     </div>
 </div>
+<div id="agregarContacto" class="modal" style="width: 70%;">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <form id="form_contacto_cotizar" action="<?=base_url()?>cotizacion/insertarContacto" method="post">
+            <div class="row">
+                <div class="input-field col s12 m4 l4">
+                    <input id="cliente_contactoNombre" name="cliente_contactoNombre" type="text">
+                    <label for="cliente_contactoNombre"><?= label('formContacto_nombre'); ?></label>
+                </div>
+                <div class="input-field col s12 m4 l4">
+                    <input id="cliente_contactoApellido1" name="cliente_contactoApellido1" type="text">
+                    <label for="cliente_contactoApellido1"><?= label('formContacto_apellido1'); ?></label>
+                </div>
+                <div class="input-field col s12 m4 l4">
+                    <input id="cliente_contactoApellido2" name="cliente_contactoApellido2" type="text">
+                    <label for="cliente_contactoApellido2"><?= label('formContacto_apellido2'); ?></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 m6 l6">
+                    <div>
+                        <input id="cliente_contactoCorreo" name="cliente_contactoCorreo" type="email" style="margin-bottom: 0;">
+                        <label for="cliente_contactoCorreo"><?= label('formCliente_correo'); ?></label>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <input type="checkbox" class="filled-in" id="checkbox_contactoCorreoCliente" name="checkbox_contactoCorreoCliente"/>
+                        <label for="checkbox_contactoCorreoCliente" style="margin-bottom: 20px;"><?= label('formCliente_correoCheck') ?></label>
+                    </div>
+                </div>
+                <div class="input-field col s12 m3 l3">
+                    <input id="cliente_contactoPuesto" name="cliente_contactoPuesto" type="text">
+                    <label for="cliente_contactoPuesto"><?= label('formContacto_puesto'); ?></label>
+                </div>
+                <div class="input-field col s12 m3 l3">
+                    <input id="cliente_contactoTelefono" name="cliente_contactoTelefono" type="text">
+                    <label for="cliente_contactoTelefono"><?= label('formContacto_telefono'); ?></label>
+
+                    <input id="cliente_contactoIdCliente" name="cliente_contactoIdCliente" type="text" style="display: none;">
+                </div>
+            </div>
+            <div class="row">
+                <a onclick="$(this).closest('form').submit()" id="guardarCerrarContacto" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                    <?= label('guardarCerrar'); ?>
+                </a>
+                <a onclick="$(this).closest('form').submit()" id="guardarOtroContacto" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                    <?= label('guardarAgregarOtro'); ?>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
 
 <div id="agregarCliente2" class="modal">
     <div class="modal-header">
@@ -1484,55 +1604,6 @@
                 </form>
             </div>
         </div>
-    </div>
-</div>
-
-<div id="agregarAtencion" class="modal">
-    <div class="modal-header">
-        <p><?= label('nombreSistema'); ?></p>
-        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
-    </div>
-    <div class="modal-content">
-        <div class="row">
-            <div class="input-field col s12 m4 l4">
-                <input id="cliente_contactoNombre" type="text">
-                <label for="cliente_contactoNombre"><?= label('formContacto_nombre'); ?></label>
-            </div>
-            <div class="input-field col s12 m4 l4">
-                <input id="cliente_contactoApellido1" type="text">
-                <label for="cliente_contactoApellido1"><?= label('formContacto_apellido1'); ?></label>
-            </div>
-            <div class="input-field col s12 m4 l4">
-                <input id="cliente_contactoApellido2" type="text">
-                <label for="cliente_contactoApellido2"><?= label('formContacto_apellido2'); ?></label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12 m6 l6">
-                <div>
-                    <input id="cliente_contactoCorreo" type="email" style="margin-bottom: 0;">
-                    <label for="cliente_contactoCorreo"><?= label('formCliente_correo'); ?></label>
-                </div>
-                <div style="margin-bottom: 20px;">
-                    <input type="checkbox" class="filled-in" id="checkbox_contactoCorreoCliente"/>
-                    <label for="checkbox_contactoCorreoCliente" style="margin-bottom: 20px;">
-                        <?= label('formCliente_correoCheck') ?>
-                    </label>
-                </div>
-            </div>
-            <div class="input-field col s12 m3 l3">
-                <input id="cliente_contactoPuesto" type="text">
-                <label for="cliente_contactoPuesto"><?= label('formContacto_puesto'); ?></label>
-            </div>
-            <div class="input-field col s12 m3 l3">
-                <input id="cliente_contactoTelefono" type="text">
-                <label
-                    for="cliente_contactoTelefono"><?= label('formContacto_telefono'); ?></label>
-            </div>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
 <!--Fin lista modals-->

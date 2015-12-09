@@ -779,6 +779,53 @@ class Cotizacion extends CI_Controller
             echo json_encode($resultado);
         }
     }
+    public function verificarCorreoContacto(){
+        $data['datos'] = array(
+            'idCliente' => $this->input->post('cliente_contactoIdCliente'),
+            'correo' => $this->input->post('cliente_contactoCorreo'),
+            'eliminado' => '0'
+        );
+        $resultado = $this->Cotizacion_model->verificarCorreoContacto($data);
+        if ($resultado === false) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            if ($resultado == 1) {
+                //Ya existe esta identificacion
+                echo 1;
+            } else {
+                //Identificacion Valida
+                echo 2;
+            }
+        }
+    }
+    public function insertarContacto()
+    {
+        $enviarFacturas = 0;
+        if ($this->input->post('checkbox_contactoCorreoCliente')) {
+            $enviarFacturas = 1;
+        }
+        $data['datos'] = array(
+            'idCliente' => $this->input->post('cliente_contactoIdCliente'),
+            'nombre' => $this->input->post('cliente_contactoNombre'),
+            'primerApellido' => $this->input->post('cliente_contactoApellido1'),
+            'segundoApellido' => $this->input->post('cliente_contactoApellido2'),
+            'correo' => $this->input->post('cliente_contactoCorreo'),
+            'puesto' => $this->input->post('cliente_contactoPuesto'),
+            'telefono' => $this->input->post('cliente_contactoTelefono'),
+            'enviarFacturas' => $enviarFacturas,
+            'eliminado' => 0
+        );
+
+        $res = $this->Cotizacion_model->insertarContacto($data);
+        if (!$res) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            // correcto
+            echo $res;
+        }
+    }
 
     public function paises() {
         $resultado = $this->Cotizacion_model->paises();
