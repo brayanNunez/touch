@@ -933,6 +933,26 @@ class Cotizacion_model extends CI_Model
         }
     }
 
+    function contactos($idCliente) {
+        try{
+            $this->db->trans_begin();
+
+            $this->db->select("idPersonaContacto, CONCAT(nombre, ' ', primerApellido, ' ', segundoApellido) as nombreContacto", false);
+            $this->db->where(array('idCliente' => $idCliente, 'eliminado' => 0));
+            $contactosClientes = $this->db->get('personacontacto');
+            if (!$contactosClientes) {
+                throw new Exception("Error en la BD");
+            }
+            $resultado = $contactosClientes->result_array();
+
+            $this->db->trans_commit();
+            return $resultado;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
     function paises()
     {
         try{

@@ -242,9 +242,9 @@
                             cargarFila(valor, numeroFila);
                         };
                     break;
-                    case 'paso1Cliente':
-                        cargarAtencion(valor);
-                    break;
+//                    case 'paso1Cliente':
+//                        cargarAtencion(valor);
+//                    break;
 //                    case 'paso1Moneda':
 //                        cargarTipoCambio(valor);
 //                    break;

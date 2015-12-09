@@ -769,6 +769,17 @@ class Cotizacion extends CI_Controller
         }
     }
 
+    public function contactos() {
+        $idCliente = $_POST['idCliente'];
+
+        $resultado = $this->Cotizacion_model->contactos($idCliente);
+        if ($resultado === false || $resultado === array()) {
+            echo 0;
+        } else {
+            echo json_encode($resultado);
+        }
+    }
+
     public function paises() {
         $resultado = $this->Cotizacion_model->paises();
         if ($resultado === false || $resultado === array()) {

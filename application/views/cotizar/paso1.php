@@ -268,6 +268,18 @@
             }
         });
     }
+    function actualizarSelectContactos($idCliente, $id) {
+        $.ajax({
+            type: 'POST',
+            url: '<?= base_url(); ?>cotizacion/contactos',
+            data: { idCliente : $idCliente },
+            success: function(response)
+            {
+                generarAutocompletarContactos($.parseJSON(response), $id);
+                generarListas();
+            }
+        });
+    }
 
     function botonEnLista(tipo, idBoton, nuevoElementoAgregar){
         if (tipo == "paso1Cliente") {
@@ -333,6 +345,24 @@
                     miSelect.append('<option value="' + cliente['idCliente'] + '" selected>' + cliente['nombre'] + '</option>');
                 } else {
                     miSelect.append('<option value="' + cliente['idCliente'] + '">' + cliente['nombre'] + '</option>');
+                }
+            }
+        }
+        miSelect.trigger("chosen:updated");
+    }
+    function generarAutocompletarContactos($array, $id){
+        var miSelect = $('#paso1Atencion');
+        miSelect.empty();
+        miSelect.removeAttr('disabled');
+        miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso1_elegirAtencion"); ?></option>');
+        miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+        for(var i = 0; i < $array.length; i++) {
+            var cliente = $array[i];
+            if(cliente != null) {
+                if(cliente['idPersonaContacto'] == $id) {
+                    miSelect.append('<option value="' + cliente['idPersonaContacto'] + '" selected>' + cliente['nombreContacto'] + '</option>');
+                } else {
+                    miSelect.append('<option value="' + cliente['idPersonaContacto'] + '">' + cliente['nombreContacto'] + '</option>');
                 }
             }
         }
@@ -509,6 +539,8 @@
                                     $('#agregarCliente .modal-header a').click();
                                 } else {
                                     actualizarSelectClientes(response);
+                                    actualizarSelectContactos(response, 0);
+
                                     alert("<?=label('cotizacion_clienteGuardadoCorrectamente'); ?>");
                                     if (cerrarModalCliente) {
                                         $('#agregarCliente .modal-header a').click();
@@ -548,6 +580,14 @@
                 $('label[for="paso1_tipoCambio"]').addClass('active');
             }
         });
+    }
+
+    $(document).on('change', '#paso1Cliente', function () {
+        var clienteElegido = $(this).val();
+        actualizarSelectContactos(clienteElegido,  0);
+    });
+    function contactosClienteAgregado($idCliente) {
+        actualizarSelectContactos($idCliente, 0);
     }
 </script>
 <!--Scripts para manejo de cliente-->
