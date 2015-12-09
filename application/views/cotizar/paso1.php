@@ -3,13 +3,13 @@
         <div class="input-field col s6 m3 l3">
             <div class="input-field col s12">
                 <input id="paso1_codigo" name="paso1_codigo" type="text" value="<?= $resultado['empresa']['codigoCotizacion']?>">
-                <label for="paso1_codigo" class=""><?= label("paso1_labelCodido"); ?></label>
+                <label for="paso1_codigo" class="label_campoTexto"><?= label("paso1_labelCodido"); ?></label>
             </div>
         </div>
         <div class="input-field col s6 m3 l3">
             <div class="input-field col s12">
                 <input readonly id="paso1_numero" name="paso1_numero" type="text" value='#'>
-                <label for="paso1_numero" class=""><?= label("paso1_labelNumero"); ?></label>
+                <label for="paso1_numero" class="label_campoTexto"><?= label("paso1_labelNumero"); ?></label>
             </div>
         </div>
     </div>
@@ -97,7 +97,7 @@
         </div>
         <div class="input-field col s12 m6 l6">
             <input id="paso1_tipoCambio" name="paso1_tipoCambio" type="text">
-            <label for="paso1_tipoCambio" class=""><?= label("paso1_labelTipoCambio"); ?></label>
+            <label for="paso1_tipoCambio" class="label_campoTexto"><?= label("paso1_labelTipoCambio"); ?></label>
         </div>
      <!--    <div class="input-field col s12">
             <textarea id="paso1_detalle" class="materialize-textarea" style="height: 24px;"></textarea>
@@ -160,7 +160,7 @@
             if (arrayMonedas[i]['idMoneda'] == idMoneda) {
                 $('#paso1_tipoCambio').val(arrayMonedas[i]['tipoCambio']);
                 $('#paso1_tipoCambio').focus();
-            } 
+            }
         };
     }
 
@@ -418,6 +418,9 @@
                                     $('#agregarTipoMoneda .modal-header a').click();
                                 } else {
                                     actualizarSelectMonedas(response);
+
+                                    valorMonedaElegida(response);
+
                                     alert("<?=label('cotizacion_tipoMonedaGuardadoCorrectamente'); ?>");
                                     if (cerrarModalMoneda) {
                                         limpiarFormMoneda();
@@ -425,6 +428,8 @@
                                     } else{
                                         limpiarFormMoneda();
                                     }
+
+                                    $('.label_campoTexto').addClass('active');
                                 }
                             }
                         });
@@ -523,6 +528,24 @@
                         $('#form_cliente_cotizar #personajuridico_identificacion').focus();
                     }
                 }
+            }
+        });
+    }
+
+    $(document).on('change', '#paso1Moneda', function () {
+        var monedaElegida = $(this).val();
+        valorMonedaElegida(monedaElegida);
+    });
+    function valorMonedaElegida($idMoneda) {
+        $.ajax({
+            type: 'POST',
+            url: '<?= base_url(); ?>cotizacion/valorMoneda',
+            data: { idMoneda : $idMoneda },
+            success: function(response)
+            {
+                var tipoMoneda = $.parseJSON(response);
+                $('#paso1_tipoCambio').val(tipoMoneda['tipoCambio']);
+                $('label[for="paso1_tipoCambio"]').addClass('active');
             }
         });
     }

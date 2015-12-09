@@ -530,6 +530,15 @@ class Cotizacion extends CI_Controller
             echo $res;
         }
     }
+    public function valorMoneda() {
+        $id = $_POST['idMoneda'];
+        $resultado = $this->Cotizacion_model->valorMoneda($id);
+        if ($resultado === false || $resultado === array()) {
+            echo 0;
+        } else {
+            echo json_encode($resultado);
+        }
+    }
 
     public function formasPago() {
         $sessionActual = $this->session->userdata('logged_in');
