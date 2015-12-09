@@ -342,10 +342,10 @@ class Cotizacion extends CI_Controller
            $firmaInformacion = 1;
         }
 
-        $informacionDetalleInformacion = 0;
-        if (isset($_POST['checksInformacion_informacionDetalle'])) {
-           $informacionDetalleInformacion = 1;
-        }
+        // $informacionDetalleInformacion = 0;
+        // if (isset($_POST['checksInformacion_informacionDetalle'])) {
+        //    $informacionDetalleInformacion = 1;
+        // }
 
         $telefonoFooter = 0;
         if (isset($_POST['checksFooter_telefono'])) {
@@ -438,7 +438,7 @@ class Cotizacion extends CI_Controller
             'tipoLetraInformacion' => '',  
             'mostrarFormaPago' => $formaPagoInformacion,  
             'mostrarValidez' => $validezInformacion,  
-            'mostrarDetalle' => $informacionDetalleInformacion,  
+            // 'mostrarDetalle' => $informacionDetalleInformacion,  
             'mostrarFirma' => $firmaInformacion,  
             'imagenFirma' => '',  
             'textoAdicionalInformacion' => $this->input->post('textoAdicionalInformacion'),
