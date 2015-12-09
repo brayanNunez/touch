@@ -28,7 +28,7 @@
                                             <div class="col s12 m12 l12">
                                                 <div class="agregar_nuevo">
                                                     <a href="<?= base_url() ?>servicios/agregar"
-                                                       class="btn btn-default modal-trigger"><?= label('agregar_nuevo'); ?></a>
+                                                       class="btn btn-default modal-trigger"><?= label('agregar_servicio'); ?></a>
                                                 </div>
                                                 <table id="servicios-tabla-lista" cellspacing="0"
                                                        class="data-table-information responsive-table display">

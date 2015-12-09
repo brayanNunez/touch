@@ -29,7 +29,7 @@
                                             <div class="col s12 m12 l12">
                                                 <div class="agregar_nuevo">
                                                     <a href="<?= base_url() ?>proveedores/agregar"
-                                                       class="btn btn-default"><?= label('agregar_nuevo'); ?></a>
+                                                       class="btn btn-default"><?= label('agregar_persona'); ?></a>
                                                 </div>
                                                 <table id="proveedores-tabla-lista" cellspacing="0"
                                                        class="data-table-information responsive-table display">

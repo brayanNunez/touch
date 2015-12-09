@@ -49,7 +49,7 @@
     $lang['confirmarGuardarCerrar'] = '¿Realmente desea guardar y cerrar la cotización en proceso?';
     $lang['confirmarCancelarCotizacion'] = '¿Realmente desea cancelar la cotización en proceso?';
     $lang['confirmarObtenerPlan'] = '¿Realmente desea obtener el plan?';
-    $lang['confirmarEliminarFase'] = '¿Realmente desea eliimnar la fase seleccionada?';
+    $lang['confirmarEliminarFase'] = '¿Realmente desea eliminar la fase seleccionada?';
     $lang['confirmarEliminarSubFase'] = '¿Realmente desea eliminar la subfase?';
     $lang['fases_eliminarElementosSeleccionados'] = '¿Realmente desea eliminar las fases seleccionadas?';
     $lang['gastos_eliminarElementosSeleccionados'] = '¿Realmente desea eliminar los gastos seleccionados?';
@@ -155,6 +155,7 @@
 	$lang['tituloFormularioUsuarioEditar'] = 'Editar usuario';
 	$lang['tituloFormularioRegistro'] = 'Registro';
 	$lang['tituloFormularioServicio'] = 'Agregar servicio';
+    $lang['agregar_servicio'] = 'Agregar servicio';
 	$lang['tituloFormularioServicioEditar'] = 'Editar servicio';
 	$lang['tituloFormularioProducto'] = 'Agregar producto';
 	$lang['tituloFormularioProductoEditar'] = 'Editar producto';
@@ -188,11 +189,11 @@
     $lang['formImpuesto_descripcion'] = 'Descripción';
     $lang['formImpuesto_valor'] = 'Valor';
     $lang['formImpuesto_agregar'] = 'Agregar';
-    $lang['impuestoNuevo'] = 'Agregar nuevo';
+    $lang['impuestoNuevo'] = 'Agregar impuesto';
     $lang['tablaImpuesto_nombre'] = 'Nombre';
     $lang['tablaImpuesto_descripcion'] = 'Descripción';
     $lang['tablaImpuesto_valor'] = 'Valor';
-    $lang['impuestoNuevo'] = 'Agregar nuevo';
+    $lang['impuestoNuevo'] = 'Agregar impuesto';
     $lang['impuesto'] = 'Impuestos';
     $lang['impuestos_impuestoGuardadoCorrectamente'] = 'El impuesto ha sido creado correctamente.';
     $lang['impuestos_impuestoEditadoCorrectamente'] = 'El impuesto ha sido editado correctamente.';
@@ -207,7 +208,7 @@
 
 //Fases
     $lang['tituloFases'] = 'Fases';
-    $lang['tituloFases_nuevo'] = 'Agregar nueva';
+    $lang['tituloFases_nuevo'] = 'Agregar fase';
     $lang['fases_busquedaAvanzada'] = 'Búsqueda avanzada';
     $lang['tituloFases_codigo'] = 'Código';
     $lang['tituloFases_fase'] = 'Fase';
@@ -241,7 +242,7 @@
     $lang['tituloGastos_proveedorCategoria'] = 'Categoría Proveedor';
     $lang['tituloGastos_monto'] = 'Monto';
     $lang['tituloGastos_opciones'] = 'Opciones';
-    $lang['tituloGastos_nuevo'] = 'Agregar nuevo';
+    $lang['tituloGastos_nuevo'] = 'Agregar gasto';
     $lang['formGastos_nombre'] = 'Nombre del gasto';
     $lang['formGastos_monto'] = 'Monto del gasto';
     $lang['gastos_busquedaAvanzada'] = 'Búsqueda avanzada';
@@ -295,7 +296,7 @@
 
 //Categorias de gastos
     $lang['tituloCategoriasGastos'] = 'Categorías de gastos';
-    $lang['categoriaGastoNueva'] = 'Agregar nueva';
+    $lang['categoriaGastoNueva'] = 'Agregar categoría de gasto';
     $lang['tablaCategoriasGasto_nombre'] = 'Nombre';
     $lang['tablaCategoriasGasto_descripcion'] = 'Descripción';
     $lang['tablaCategoriasGasto_opciones'] = 'Opciones';
@@ -309,7 +310,7 @@
 
 //Categorias de persona
     $lang['tituloCategoriasPersonas'] = 'Categorías de personas';
-    $lang['categoriaPersonaNueva'] = 'Agregar nueva';
+    $lang['categoriaPersonaNueva'] = 'Agregar categoría de persona';
     $lang['tablaCategoriasPersona_nombre'] = 'Nombre';
     $lang['tablaCategoriasPersona_descripcion'] = 'Descripción';
     $lang['tablaCategoriasPersona_opciones'] = 'Opciones';
@@ -450,7 +451,7 @@
 	$lang['tiposMoneda_nombre'] = 'Moneda';
     $lang['tiposMoneda_tipoCambio'] = 'Tipo de cambio respecto a la moneda por defecto';
 	$lang['tiposMoneda_opciones'] = 'Opciones';
-	$lang['tiposMoneda_nuevo'] = 'Agregar nueva';
+	$lang['tiposMoneda_nuevo'] = 'Agregar moneda';
 
     $lang['gastos_Nombre'] = 'Nombre';
     $lang['gastos_FormaPago'] = 'Forma de pago';
@@ -469,7 +470,7 @@
 //Formas de pago
     $lang['formasPago'] = 'Formas de pago';
     $lang['tituloFormasPago'] = 'Formas de pago';
-    $lang['formaPagoNueva'] = 'Agregar nueva';
+    $lang['formaPagoNueva'] = 'Agregar forma de pago';
     $lang['tablaFormaPago_nombre'] = 'Nombre';
     $lang['tablaFormaPago_descripcion'] = 'Descripción';
     $lang['tablaFormaPago_opciones'] = 'Opciones';
@@ -715,7 +716,7 @@
     $lang['Cliente_tablaCorreo'] = 'Correo electrónico';
     $lang['Cliente_tablaCotizador'] = 'Vendedores';
     $lang['Cliente_tablaOpciones'] = 'Opciones';
-    $lang['Cliente_nuevo'] = 'Agregar nuevo';
+    $lang['Cliente_nuevo'] = 'Agregar cliente';
 	$lang['formCliente_tipoPersona'] = 'Tipo de persona';
 	$lang['formCliente_seleccioneUno'] = 'Seleccione uno';
 	$lang['formCliente_fisica'] = 'Física';
@@ -902,6 +903,7 @@ $lang['formProveedor_nuevoPresupuesto'] = 'Nuevo presupuesto';
 $lang['persona_subirArchivo'] = 'Subir archivo';
 
 // Personas
+$lang['agregar_persona'] = 'Agregar persona';
 $lang['persona_info'] = 'Información de la persona';
 $lang['tituloFormularioPersona'] = 'Agregar persona';
 $lang['tituloPersonas'] = 'Personas';
@@ -958,7 +960,7 @@ $lang['Persona_tablaOpciones'] = 'Opciones';
     $lang['Usuario_tablaIdentificacion'] = 'Identificación';
     $lang['Usuario_tablaCorreo'] = 'Correo electrónico';
     $lang['Usuario_tablaOpciones'] = 'Opciones';
-    $lang['Usuario_nuevo'] = 'Agregar nuevo';
+    $lang['Usuario_nuevo'] = 'Agregar usuario';
     $lang['formUsuario_nombre'] = 'Nombre';
     $lang['formUsuario_apellido1'] = 'Primer apellido';
     $lang['formUsuario_apellido2'] = 'Segundo apellido';
@@ -999,7 +1001,7 @@ $lang['Persona_tablaOpciones'] = 'Opciones';
     $lang['Servicio_tablaDescripcion'] = 'Descripción';
     $lang['Servicio_tablaPrecio'] = 'Precio';
     $lang['Servicio_tablaOpciones'] = 'Opciones';
-    $lang['Servicio_nuevo'] = 'Agregar nuevo';
+    $lang['Servicio_nuevo'] = 'Agregar servicio';
     $lang['formServicio_codigo'] = 'Código';
     $lang['formServicio_nombre'] = 'Nombre';
     $lang['formServicio_descripcion'] = 'Descripción';
@@ -1064,7 +1066,7 @@ $lang['Persona_tablaOpciones'] = 'Opciones';
     $lang['ProductosServicios_tablaImpuestos'] = 'Impuestos';
     $lang['ProductosServicios_tablaPrecioFinal'] = 'Precio final';
     $lang['ProductosServicios_tablaOpciones'] = 'Opciones';
-    $lang['ProductosServicios_nuevo'] = 'Agregar nuevo';
+    $lang['ProductosServicios_nuevo'] = 'Agregar servicio';
 
     $lang['ProductosServicios_seleccionarCategorias'] = 'Seleccione las categorías donde desea agregar el producto:';
     $lang['ProductosServicios_categorias'] = 'Categorías:';
@@ -1207,7 +1209,7 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['formMoneda_agregar'] = 'Agregar';
     $lang['formMoneda_nombre'] = 'Nombre';
     $lang['formMoneda_signo'] = 'Símbolo';
-    $lang['monedaNuevo'] = 'Agregar nuevo';
+    $lang['monedaNuevo'] = 'Agregar moneda';
 
     //Generar embed
     $lang['incluir'] = 'Incluir productos/servicios';
@@ -1288,6 +1290,7 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['cambiar_captcha'] = 'Cambiar captcha';
 
 //Clientes editar
+    $lang['clientes_agregar'] = 'Agregar cliente';
     $lang['clientes_busquedaAvanzada'] = 'Búsqueda avanzada';
     $lang['clientes_info'] = 'Información del cliente';
     $lang['clientes_ver'] = 'Información';

@@ -30,7 +30,7 @@
                                             <div class="col s12">
                                                 <div class="agregar_nuevo">
                                                     <a href="<?= base_url() ?>clientes/agregar"
-                                                       class="btn btn-default"><?= label('agregar_nuevo'); ?></a>
+                                                       class="btn btn-default"><?= label('clientes_agregar'); ?></a>
                                                 </div>
                                                 <div>
                                                     <a id="busqueda-avanzada-agregar" href="#busquedaAvanzada"
