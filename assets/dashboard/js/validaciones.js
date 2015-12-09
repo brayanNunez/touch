@@ -32,117 +32,113 @@
                   }
             });
 
-
-
-
              var cliente_contactoNombre = {required: true, maxlength: 45};
              var cliente_contactoApellido1 = {required: true, maxlength: 45};
              var cliente_contactoApellido2 = {required: true, maxlength: 45};
              var cliente_contactoCorreo = {required: true, maxlength: 45};
              var cliente_contactoPuesto = {required: true, maxlength: 45};
              var cliente_contactoTelefono = {required: true, maxlength: 45};
+             var reglasCliente = {
+                cliente_contactoNombre_0: cliente_contactoNombre,
+                cliente_contactoNombre_1: cliente_contactoNombre,
+                cliente_contactoNombre_2: cliente_contactoNombre,
+                cliente_contactoNombre_3: cliente_contactoNombre,
+                cliente_contactoNombre_4: cliente_contactoNombre,
+                cliente_contactoNombre_5: cliente_contactoNombre,
+                cliente_contactoNombre_6: cliente_contactoNombre,
+                cliente_contactoNombre_7: cliente_contactoNombre,
+                cliente_contactoNombre_8: cliente_contactoNombre,
+                cliente_contactoNombre_9: cliente_contactoNombre,
+                cliente_contactoNombre_10: cliente_contactoNombre,
 
+                cliente_contactoApellido1_0: cliente_contactoApellido1,
+                cliente_contactoApellido1_1: cliente_contactoApellido1,
+                cliente_contactoApellido1_2: cliente_contactoApellido1,
+                cliente_contactoApellido1_3: cliente_contactoApellido1,
+                cliente_contactoApellido1_4: cliente_contactoApellido1,
+                cliente_contactoApellido1_5: cliente_contactoApellido1,
+                cliente_contactoApellido1_6: cliente_contactoApellido1,
+                cliente_contactoApellido1_7: cliente_contactoApellido1,
+                cliente_contactoApellido1_8: cliente_contactoApellido1,
+                cliente_contactoApellido1_9: cliente_contactoApellido1,
+                cliente_contactoApellido1_10: cliente_contactoApellido1,
+
+
+                cliente_contactoApellido2_0: cliente_contactoApellido2,
+                cliente_contactoApellido2_1: cliente_contactoApellido2,
+                cliente_contactoApellido2_2: cliente_contactoApellido2,
+                cliente_contactoApellido2_3: cliente_contactoApellido2,
+                cliente_contactoApellido2_4: cliente_contactoApellido2,
+                cliente_contactoApellido2_5: cliente_contactoApellido2,
+                cliente_contactoApellido2_6: cliente_contactoApellido2,
+                cliente_contactoApellido2_7: cliente_contactoApellido2,
+                cliente_contactoApellido2_8: cliente_contactoApellido2,
+                cliente_contactoApellido2_9: cliente_contactoApellido2,
+                cliente_contactoApellido2_10: cliente_contactoApellido2,
+
+                cliente_contactoPuesto_0: cliente_contactoPuesto,
+                cliente_contactoPuesto_1: cliente_contactoPuesto,
+                cliente_contactoPuesto_2: cliente_contactoPuesto,
+                cliente_contactoPuesto_3: cliente_contactoPuesto,
+                cliente_contactoPuesto_4: cliente_contactoPuesto,
+                cliente_contactoPuesto_5: cliente_contactoPuesto,
+                cliente_contactoPuesto_6: cliente_contactoPuesto,
+                cliente_contactoPuesto_7: cliente_contactoPuesto,
+                cliente_contactoPuesto_8: cliente_contactoPuesto,
+                cliente_contactoPuesto_9: cliente_contactoPuesto,
+                cliente_contactoPuesto_10: cliente_contactoPuesto,
+
+                cliente_contactoCorreo_0: cliente_contactoCorreo,
+                cliente_contactoCorreo_1: cliente_contactoCorreo,
+                cliente_contactoCorreo_2: cliente_contactoCorreo,
+                cliente_contactoCorreo_3: cliente_contactoCorreo,
+                cliente_contactoCorreo_4: cliente_contactoCorreo,
+                cliente_contactoCorreo_5: cliente_contactoCorreo,
+                cliente_contactoCorreo_6: cliente_contactoCorreo,
+                cliente_contactoCorreo_7: cliente_contactoCorreo,
+                cliente_contactoCorreo_8: cliente_contactoCorreo,
+                cliente_contactoCorreo_9: cliente_contactoCorreo,
+                cliente_contactoCorreo_10: cliente_contactoCorreo,
+
+                cliente_contactoTelefono_0: cliente_contactoTelefono,
+                cliente_contactoTelefono_1: cliente_contactoTelefono,
+                cliente_contactoTelefono_2: cliente_contactoTelefono,
+                cliente_contactoTelefono_3: cliente_contactoTelefono,
+                cliente_contactoTelefono_4: cliente_contactoTelefono,
+                cliente_contactoTelefono_5: cliente_contactoTelefono,
+                cliente_contactoTelefono_6: cliente_contactoTelefono,
+                cliente_contactoTelefono_7: cliente_contactoTelefono,
+                cliente_contactoTelefono_8: cliente_contactoTelefono,
+                cliente_contactoTelefono_9: cliente_contactoTelefono,
+                cliente_contactoTelefono_10: cliente_contactoTelefono,
+
+                cliente_id: {required: true, maxlength: 45},
+                cliente_apellido1: {required: true, maxlength: 45},
+                cliente_apellido2: {required: true, maxlength: 45},
+                cliente_nombre: {required: true, maxlength: 45},
+                cliente_correo: {required: true, maxlength: 45},
+                cliente_telefonoMovil: {required: true, maxlength: 45},
+                cliente_telefono: {required: true, maxlength: 45},
+                cliente_fechaNacimiento: {required: true, maxlength: 45},
+
+                clientejuridico_id: {required: true, maxlength: 45},
+                clientejuridico_nombre: {required: true, maxlength: 45},
+                clientejuridico_nombreFantasia: {required: true, maxlength: 45},
+                clientejuridico_correo: {required: true, maxlength: 45},
+                clientejuridico_telefono: {required: true, maxlength: 45},
+                clientejuridico_fax: {required: true, maxlength: 45},
+
+                // cliente_direccionPais: {required: true, maxlength: 45},
+                // cliente_direccionProvincia: {required: true, maxlength: 45},
+                // cliente_direccionCanton: {required: true, maxlength: 45},
+                // cliente_direccionDomicilio: {required: true, maxlength: 200},
+
+                cliente_descuento: {required: true, maxlength: 45}
+             };
 
 
              $('#form_cliente').validate({
-                rules:
-                {
-                    cliente_contactoNombre_0: cliente_contactoNombre,
-                    cliente_contactoNombre_1: cliente_contactoNombre,
-                    cliente_contactoNombre_2: cliente_contactoNombre,
-                    cliente_contactoNombre_3: cliente_contactoNombre,
-                    cliente_contactoNombre_4: cliente_contactoNombre,
-                    cliente_contactoNombre_5: cliente_contactoNombre,
-                    cliente_contactoNombre_6: cliente_contactoNombre,
-                    cliente_contactoNombre_7: cliente_contactoNombre,
-                    cliente_contactoNombre_8: cliente_contactoNombre,
-                    cliente_contactoNombre_9: cliente_contactoNombre,
-                    cliente_contactoNombre_10: cliente_contactoNombre,
-
-                    cliente_contactoApellido1_0: cliente_contactoApellido1,
-                    cliente_contactoApellido1_1: cliente_contactoApellido1,
-                    cliente_contactoApellido1_2: cliente_contactoApellido1,
-                    cliente_contactoApellido1_3: cliente_contactoApellido1,
-                    cliente_contactoApellido1_4: cliente_contactoApellido1,
-                    cliente_contactoApellido1_5: cliente_contactoApellido1,
-                    cliente_contactoApellido1_6: cliente_contactoApellido1,
-                    cliente_contactoApellido1_7: cliente_contactoApellido1,
-                    cliente_contactoApellido1_8: cliente_contactoApellido1,
-                    cliente_contactoApellido1_9: cliente_contactoApellido1,
-                    cliente_contactoApellido1_10: cliente_contactoApellido1,
-
-
-                    cliente_contactoApellido2_0: cliente_contactoApellido2,
-                    cliente_contactoApellido2_1: cliente_contactoApellido2,
-                    cliente_contactoApellido2_2: cliente_contactoApellido2,
-                    cliente_contactoApellido2_3: cliente_contactoApellido2,
-                    cliente_contactoApellido2_4: cliente_contactoApellido2,
-                    cliente_contactoApellido2_5: cliente_contactoApellido2,
-                    cliente_contactoApellido2_6: cliente_contactoApellido2,
-                    cliente_contactoApellido2_7: cliente_contactoApellido2,
-                    cliente_contactoApellido2_8: cliente_contactoApellido2,
-                    cliente_contactoApellido2_9: cliente_contactoApellido2,
-                    cliente_contactoApellido2_10: cliente_contactoApellido2,
-
-                    cliente_contactoPuesto_0: cliente_contactoPuesto,
-                    cliente_contactoPuesto_1: cliente_contactoPuesto,
-                    cliente_contactoPuesto_2: cliente_contactoPuesto,
-                    cliente_contactoPuesto_3: cliente_contactoPuesto,
-                    cliente_contactoPuesto_4: cliente_contactoPuesto,
-                    cliente_contactoPuesto_5: cliente_contactoPuesto,
-                    cliente_contactoPuesto_6: cliente_contactoPuesto,
-                    cliente_contactoPuesto_7: cliente_contactoPuesto,
-                    cliente_contactoPuesto_8: cliente_contactoPuesto,
-                    cliente_contactoPuesto_9: cliente_contactoPuesto,
-                    cliente_contactoPuesto_10: cliente_contactoPuesto,
-
-                    cliente_contactoCorreo_0: cliente_contactoCorreo,
-                    cliente_contactoCorreo_1: cliente_contactoCorreo,
-                    cliente_contactoCorreo_2: cliente_contactoCorreo,
-                    cliente_contactoCorreo_3: cliente_contactoCorreo,
-                    cliente_contactoCorreo_4: cliente_contactoCorreo,
-                    cliente_contactoCorreo_5: cliente_contactoCorreo,
-                    cliente_contactoCorreo_6: cliente_contactoCorreo,
-                    cliente_contactoCorreo_7: cliente_contactoCorreo,
-                    cliente_contactoCorreo_8: cliente_contactoCorreo,
-                    cliente_contactoCorreo_9: cliente_contactoCorreo,
-                    cliente_contactoCorreo_10: cliente_contactoCorreo,
-
-                    cliente_contactoTelefono_0: cliente_contactoTelefono,
-                    cliente_contactoTelefono_1: cliente_contactoTelefono,
-                    cliente_contactoTelefono_2: cliente_contactoTelefono,
-                    cliente_contactoTelefono_3: cliente_contactoTelefono,
-                    cliente_contactoTelefono_4: cliente_contactoTelefono,
-                    cliente_contactoTelefono_5: cliente_contactoTelefono,
-                    cliente_contactoTelefono_6: cliente_contactoTelefono,
-                    cliente_contactoTelefono_7: cliente_contactoTelefono,
-                    cliente_contactoTelefono_8: cliente_contactoTelefono,
-                    cliente_contactoTelefono_9: cliente_contactoTelefono,
-                    cliente_contactoTelefono_10: cliente_contactoTelefono,
-
-                    cliente_id: {required: true, maxlength: 45},
-                    cliente_apellido1: {required: true, maxlength: 45},
-                    cliente_apellido2: {required: true, maxlength: 45},
-                    cliente_nombre: {required: true, maxlength: 45},
-                    cliente_correo: {required: true, maxlength: 45},
-                    cliente_telefonoMovil: {required: true, maxlength: 45},
-                    cliente_telefono: {required: true, maxlength: 45},
-                    cliente_fechaNacimiento: {required: true, maxlength: 45},
-
-                    clientejuridico_id: {required: true, maxlength: 45},
-                    clientejuridico_nombre: {required: true, maxlength: 45},
-                    clientejuridico_nombreFantasia: {required: true, maxlength: 45},
-                    clientejuridico_correo: {required: true, maxlength: 45},
-                    clientejuridico_telefono: {required: true, maxlength: 45},
-                    clientejuridico_fax: {required: true, maxlength: 45},
-
-                    // cliente_direccionPais: {required: true, maxlength: 45},
-                    // cliente_direccionProvincia: {required: true, maxlength: 45},
-                    // cliente_direccionCanton: {required: true, maxlength: 45},
-                    // cliente_direccionDomicilio: {required: true, maxlength: 200},
-
-                    cliente_descuento: {required: true, maxlength: 45}
-                },
+                rules: reglasCliente,
                  errorElement: 'div',
                  submitHandler: function(form) {
                     validacionCorrecta();
@@ -335,17 +331,17 @@
             //     }
             // });
 
-            $('#form_usuario').validate({
-                rules:
-                {
-                    usuario_primerApellido: {required: true, maxlength: 45},
-                    usuario_segundoApellido: {required: true, maxlength: 45},
-                    usuario_nombre: {required: true, maxlength: 45},
-                    usuario_correo: {required: true, maxlength: 45},
-                    usuario_contrasena: {required: true, maxlength: 45},
-                    usuario_contrasenaConfirm: {required: true, equalTo: "#usuario_contrasena"}
+            var reglasUsuario = {
+                usuario_primeroApellido: {required: true, maxlength: 45},
+                usuario_segundoApellido: {required: true, maxlength: 45},
+                usuario_nombre: {required: true, maxlength: 45},
+                usuario_correo: {required: true, maxlength: 45},
+                usuario_contrasena: {required: true, maxlength: 45},
+                usuario_contrasenaConfirm: {required: true, equalTo: "#usuario_contrasena"}
+            };
 
-                },
+            $('#form_usuario').validate({
+                rules: reglasUsuario,
                 errorElement: 'div',
                 submitHandler: function(form) {
                     validacionCorrecta_Usuarios();
@@ -429,12 +425,13 @@
             //}
         });
 
+            var reglasArchivo = {
+                userfile: { required: false},
+                archivo_descripcion: { required: true}
+            }
+
             $('#cliente-archivo').validate({
-                rules:
-                {
-                    userfile: { required: false},
-                    archivo_descripcion: { required: true}
-                },
+                rules: reglasArchivo,
                 errorElement: 'div',
                 submitHandler: function(form) {
                     validacionCorrecta_Archivo();
@@ -448,79 +445,79 @@
             var proveedor_contactoCorreo = {required: true, maxlength: 45};
             var proveedor_contactoPuesto = {required: true, maxlength: 45};
             var proveedor_contactoTelefono = {required: true, maxlength: 45};
+            var reglasPersona = {
+                proveedor_contactoNombre_0: proveedor_contactoNombre,
+                proveedor_contactoNombre_1: proveedor_contactoNombre,
+                proveedor_contactoNombre_2: proveedor_contactoNombre,
+                proveedor_contactoNombre_3: proveedor_contactoNombre,
+                proveedor_contactoNombre_4: proveedor_contactoNombre,
+                proveedor_contactoNombre_5: proveedor_contactoNombre,
+                proveedor_contactoNombre_6: proveedor_contactoNombre,
+
+                proveedor_contactoApellido1_0: proveedor_contactoApellido1,
+                proveedor_contactoApellido1_1: proveedor_contactoApellido1,
+                proveedor_contactoApellido1_2: proveedor_contactoApellido1,
+                proveedor_contactoApellido1_3: proveedor_contactoApellido1,
+                proveedor_contactoApellido1_4: proveedor_contactoApellido1,
+                proveedor_contactoApellido1_5: proveedor_contactoApellido1,
+                proveedor_contactoApellido1_6: proveedor_contactoApellido1,
+
+                proveedor_contactoApellido2_0: proveedor_contactoApellido2,
+                proveedor_contactoApellido2_1: proveedor_contactoApellido2,
+                proveedor_contactoApellido2_2: proveedor_contactoApellido2,
+                proveedor_contactoApellido2_3: proveedor_contactoApellido2,
+                proveedor_contactoApellido2_4: proveedor_contactoApellido2,
+                proveedor_contactoApellido2_5: proveedor_contactoApellido2,
+                proveedor_contactoApellido2_6: proveedor_contactoApellido2,
+
+                proveedor_contactoCorreo_0: proveedor_contactoCorreo,
+                proveedor_contactoCorreo_1: proveedor_contactoCorreo,
+                proveedor_contactoCorreo_2: proveedor_contactoCorreo,
+                proveedor_contactoCorreo_3: proveedor_contactoCorreo,
+                proveedor_contactoCorreo_4: proveedor_contactoCorreo,
+                proveedor_contactoCorreo_5: proveedor_contactoCorreo,
+                proveedor_contactoCorreo_6: proveedor_contactoCorreo,
+
+                proveedor_contactoPuesto_0: proveedor_contactoPuesto,
+                proveedor_contactoPuesto_1: proveedor_contactoPuesto,
+                proveedor_contactoPuesto_2: proveedor_contactoPuesto,
+                proveedor_contactoPuesto_3: proveedor_contactoPuesto,
+                proveedor_contactoPuesto_4: proveedor_contactoPuesto,
+                proveedor_contactoPuesto_5: proveedor_contactoPuesto,
+                proveedor_contactoPuesto_6: proveedor_contactoPuesto,
+
+                proveedor_contactoTelefono_0: proveedor_contactoTelefono,
+                proveedor_contactoTelefono_1: proveedor_contactoTelefono,
+                proveedor_contactoTelefono_2: proveedor_contactoTelefono,
+                proveedor_contactoTelefono_3: proveedor_contactoTelefono,
+                proveedor_contactoTelefono_4: proveedor_contactoTelefono,
+                proveedor_contactoTelefono_5: proveedor_contactoTelefono,
+                proveedor_contactoTelefono_6: proveedor_contactoTelefono,
+
+                persona_identificacion: { required: true, maxlength: 45},
+                persona_apellido1: { required: true, maxlength: 45},
+                persona_apellido2: { required: true, maxlength: 45},
+                persona_nombre: { required: true, maxlength: 45},
+                persona_correo: { required: true, maxlength: 45},
+                persona_telefonoMovil: { required: true, maxlength: 45},
+                persona_telefono: { required: true, maxlength: 45},
+                persona_fechaNacimiento: { required: true, maxlength: 45},
+                personajuridico_identificacion: { required: true, maxlength: 45},
+                personajuridico_nombre: { required: true, maxlength: 45},
+                personajuridico_nombreFantasia: { required: true, maxlength: 45},
+                personajuridico_correo: { required: true, maxlength: 45},
+                personajuridico_telefono: { required: true, maxlength: 45},
+                personajuridico_fax: { required: true, maxlength: 45},
+                persona_palabras: { required: true, maxlength: 45},
+                persona_descripcion: { required: true, maxlength: 200},
+                persona_direccionPais: { required: true, maxlength: 45},
+                persona_direccionProvincia: { required: true, maxlength: 45},
+                persona_direccionCanton: { required: true, maxlength: 45},
+                persona_direccionDomicilio: { required: true, maxlength: 200}
+            };
 
             $('#formPersona').validate({
-                rules:
-                {
-
-                    proveedor_contactoNombre_0: proveedor_contactoNombre,
-                    proveedor_contactoNombre_1: proveedor_contactoNombre,
-                    proveedor_contactoNombre_2: proveedor_contactoNombre,
-                    proveedor_contactoNombre_3: proveedor_contactoNombre,
-                    proveedor_contactoNombre_4: proveedor_contactoNombre,
-                    proveedor_contactoNombre_5: proveedor_contactoNombre,
-                    proveedor_contactoNombre_6: proveedor_contactoNombre,
-
-                    proveedor_contactoApellido1_1: proveedor_contactoApellido1,
-                    proveedor_contactoApellido1_2: proveedor_contactoApellido1,
-                    proveedor_contactoApellido1_3: proveedor_contactoApellido1,
-                    proveedor_contactoApellido1_4: proveedor_contactoApellido1,
-                    proveedor_contactoApellido1_5: proveedor_contactoApellido1,
-                    proveedor_contactoApellido1_6: proveedor_contactoApellido1,
-
-                    proveedor_contactoApellido2_0: proveedor_contactoApellido2,
-                    proveedor_contactoApellido2_1: proveedor_contactoApellido2,
-                    proveedor_contactoApellido2_2: proveedor_contactoApellido2,
-                    proveedor_contactoApellido2_3: proveedor_contactoApellido2,
-                    proveedor_contactoApellido2_4: proveedor_contactoApellido2,
-                    proveedor_contactoApellido2_5: proveedor_contactoApellido2,
-                    proveedor_contactoApellido2_6: proveedor_contactoApellido2,
-
-                    proveedor_contactoCorreo_0: proveedor_contactoCorreo,
-                    proveedor_contactoCorreo_1: proveedor_contactoCorreo,
-                    proveedor_contactoCorreo_2: proveedor_contactoCorreo,
-                    proveedor_contactoCorreo_3: proveedor_contactoCorreo,
-                    proveedor_contactoCorreo_4: proveedor_contactoCorreo,
-                    proveedor_contactoCorreo_5: proveedor_contactoCorreo,
-                    proveedor_contactoCorreo_6: proveedor_contactoCorreo,
-
-                    proveedor_contactoPuesto_0: proveedor_contactoPuesto,
-                    proveedor_contactoPuesto_1: proveedor_contactoPuesto,
-                    proveedor_contactoPuesto_2: proveedor_contactoPuesto,
-                    proveedor_contactoPuesto_3: proveedor_contactoPuesto,
-                    proveedor_contactoPuesto_4: proveedor_contactoPuesto,
-                    proveedor_contactoPuesto_5: proveedor_contactoPuesto,
-                    proveedor_contactoPuesto_6: proveedor_contactoPuesto,
-
-                    proveedor_contactoTelefono_0: proveedor_contactoTelefono,
-                    proveedor_contactoTelefono_1: proveedor_contactoTelefono,
-                    proveedor_contactoTelefono_2: proveedor_contactoTelefono,
-                    proveedor_contactoTelefono_3: proveedor_contactoTelefono,
-                    proveedor_contactoTelefono_4: proveedor_contactoTelefono,
-                    proveedor_contactoTelefono_5: proveedor_contactoTelefono,
-                    proveedor_contactoTelefono_6: proveedor_contactoTelefono,
-
-                    persona_identificacion: { required: true, maxlength: 45},
-                    persona_apellido1: { required: true, maxlength: 45},
-                    persona_apellido2: { required: true, maxlength: 45},
-                    persona_nombre: { required: true, maxlength: 45},
-                    persona_correo: { required: true, maxlength: 45},
-                    persona_telefonoMovil: { required: true, maxlength: 45},
-                    persona_telefono: { required: true, maxlength: 45},
-                    persona_fechaNacimiento: { required: true, maxlength: 45},
-                    personajuridico_identificacion: { required: true, maxlength: 45},
-                    personajuridico_nombre: { required: true, maxlength: 45},
-                    personajuridico_nombreFantasia: { required: true, maxlength: 45},
-                    personajuridico_correo: { required: true, maxlength: 45},
-                    personajuridico_telefono: { required: true, maxlength: 45},
-                    personajuridico_fax: { required: true, maxlength: 45},
-                    persona_palabras: { required: true, maxlength: 45},
-                    persona_descripcion: { required: true, maxlength: 200},
-                    persona_direccionPais: { required: true, maxlength: 45},
-                    persona_direccionProvincia: { required: true, maxlength: 45},
-                    persona_direccionCanton: { required: true, maxlength: 45},
-                    persona_direccionDomicilio: { required: true, maxlength: 200}
-                },
+                rules: reglasPersona,
                 errorElement: 'div',
                 submitHandler: function(form) {
                     validacionCorrecta_Persona();
@@ -528,11 +525,7 @@
             });
 
             $('#persona-archivo').validate({
-                rules:
-                {
-                    userfile: { required: false},
-                    archivo_descripcion: { required: true}
-                },
+                rules: reglasArchivo,
                 errorElement: 'div',
                 submitHandler: function(form) {
                     validacionCorrecta_Archivo();
@@ -550,14 +543,16 @@
             }
         });
 
+
+        var reglasServicio = {
+            servicio_codigo: { required: true },
+            servicio_nombre: { required: true, maxlength: 45},
+            servicio_descripcion: { required: true, maxlength: 200},
+            servicio_utilidad: { required: true }
+        };
+
         $('#form_servicio').validate({
-            rules:
-            {
-                servicio_codigo: { required: true },
-                servicio_nombre: { required: true, maxlength: 45},
-                servicio_descripcion: { required: true, maxlength: 200},
-                servicio_utilidad: { required: true }
-            },
+            rules: reglasServicio,
             errorElement: 'div',
             submitHandler: function(form) {
                 validacionCorrecta_Servicios();
@@ -658,77 +653,7 @@
             }
         });
         $('#form_persona_Gastos').validate({
-            rules:
-            {
-                proveedor_contactoNombre_0: proveedor_contactoNombre,
-                proveedor_contactoNombre_1: proveedor_contactoNombre,
-                proveedor_contactoNombre_2: proveedor_contactoNombre,
-                proveedor_contactoNombre_3: proveedor_contactoNombre,
-                proveedor_contactoNombre_4: proveedor_contactoNombre,
-                proveedor_contactoNombre_5: proveedor_contactoNombre,
-                proveedor_contactoNombre_6: proveedor_contactoNombre,
-
-                proveedor_contactoApellido1_0: proveedor_contactoApellido1,
-                proveedor_contactoApellido1_1: proveedor_contactoApellido1,
-                proveedor_contactoApellido1_2: proveedor_contactoApellido1,
-                proveedor_contactoApellido1_3: proveedor_contactoApellido1,
-                proveedor_contactoApellido1_4: proveedor_contactoApellido1,
-                proveedor_contactoApellido1_5: proveedor_contactoApellido1,
-                proveedor_contactoApellido1_6: proveedor_contactoApellido1,
-
-                proveedor_contactoApellido2_0: proveedor_contactoApellido2,
-                proveedor_contactoApellido2_1: proveedor_contactoApellido2,
-                proveedor_contactoApellido2_2: proveedor_contactoApellido2,
-                proveedor_contactoApellido2_3: proveedor_contactoApellido2,
-                proveedor_contactoApellido2_4: proveedor_contactoApellido2,
-                proveedor_contactoApellido2_5: proveedor_contactoApellido2,
-                proveedor_contactoApellido2_6: proveedor_contactoApellido2,
-
-                proveedor_contactoCorreo_0: proveedor_contactoCorreo,
-                proveedor_contactoCorreo_1: proveedor_contactoCorreo,
-                proveedor_contactoCorreo_2: proveedor_contactoCorreo,
-                proveedor_contactoCorreo_3: proveedor_contactoCorreo,
-                proveedor_contactoCorreo_4: proveedor_contactoCorreo,
-                proveedor_contactoCorreo_5: proveedor_contactoCorreo,
-                proveedor_contactoCorreo_6: proveedor_contactoCorreo,
-
-                proveedor_contactoPuesto_0: proveedor_contactoPuesto,
-                proveedor_contactoPuesto_1: proveedor_contactoPuesto,
-                proveedor_contactoPuesto_2: proveedor_contactoPuesto,
-                proveedor_contactoPuesto_3: proveedor_contactoPuesto,
-                proveedor_contactoPuesto_4: proveedor_contactoPuesto,
-                proveedor_contactoPuesto_5: proveedor_contactoPuesto,
-                proveedor_contactoPuesto_6: proveedor_contactoPuesto,
-
-                proveedor_contactoTelefono_0: proveedor_contactoTelefono,
-                proveedor_contactoTelefono_1: proveedor_contactoTelefono,
-                proveedor_contactoTelefono_2: proveedor_contactoTelefono,
-                proveedor_contactoTelefono_3: proveedor_contactoTelefono,
-                proveedor_contactoTelefono_4: proveedor_contactoTelefono,
-                proveedor_contactoTelefono_5: proveedor_contactoTelefono,
-                proveedor_contactoTelefono_6: proveedor_contactoTelefono,
-
-                persona_identificacion: { required: true, maxlength: 45},
-                persona_apellido1: { required: true, maxlength: 45},
-                persona_apellido2: { required: false, maxlength: 45},
-                persona_nombre: { required: true, maxlength: 45},
-                persona_correo: { required: true, maxlength: 45},
-                persona_telefonoMovil: { required: true, maxlength: 45},
-                persona_telefono: { required: true, maxlength: 45},
-                persona_fechaNacimiento: { required: true, maxlength: 45},
-                personajuridico_identificacion: { required: true, maxlength: 45},
-                personajuridico_nombre: { required: true, maxlength: 45},
-                personajuridico_nombreFantasia: { required: true, maxlength: 45},
-                personajuridico_correo: { required: true, maxlength: 45},
-                personajuridico_telefono: { required: true, maxlength: 45},
-                personajuridico_fax: { required: true, maxlength: 45},
-                persona_palabras: { required: true, maxlength: 45},
-                persona_descripcion: { required: true, maxlength: 200},
-                persona_direccionPais: { required: true, maxlength: 45},
-                persona_direccionProvincia: { required: true, maxlength: 45},
-                persona_direccionCanton: { required: true, maxlength: 45},
-                persona_direccionDomicilio: { required: true, maxlength: 200}
-            },
+            rules: reglasPersona,
             errorElement: 'div',
             submitHandler: function(form) {
                 validacionCorrecta_Persona();
@@ -886,104 +811,7 @@
         });
 
         $('#form_cliente_cotizar').validate({
-            rules:
-            {
-                cliente_contactoNombre_0: cliente_contactoNombre,
-                cliente_contactoNombre_1: cliente_contactoNombre,
-                cliente_contactoNombre_2: cliente_contactoNombre,
-                cliente_contactoNombre_3: cliente_contactoNombre,
-                cliente_contactoNombre_4: cliente_contactoNombre,
-                cliente_contactoNombre_5: cliente_contactoNombre,
-                cliente_contactoNombre_6: cliente_contactoNombre,
-                cliente_contactoNombre_7: cliente_contactoNombre,
-                cliente_contactoNombre_8: cliente_contactoNombre,
-                cliente_contactoNombre_9: cliente_contactoNombre,
-                cliente_contactoNombre_10: cliente_contactoNombre,
-
-                cliente_contactoApellido1_0: cliente_contactoApellido1,
-                cliente_contactoApellido1_1: cliente_contactoApellido1,
-                cliente_contactoApellido1_2: cliente_contactoApellido1,
-                cliente_contactoApellido1_3: cliente_contactoApellido1,
-                cliente_contactoApellido1_4: cliente_contactoApellido1,
-                cliente_contactoApellido1_5: cliente_contactoApellido1,
-                cliente_contactoApellido1_6: cliente_contactoApellido1,
-                cliente_contactoApellido1_7: cliente_contactoApellido1,
-                cliente_contactoApellido1_8: cliente_contactoApellido1,
-                cliente_contactoApellido1_9: cliente_contactoApellido1,
-                cliente_contactoApellido1_10: cliente_contactoApellido1,
-
-
-                cliente_contactoApellido2_0: cliente_contactoApellido2,
-                cliente_contactoApellido2_1: cliente_contactoApellido2,
-                cliente_contactoApellido2_2: cliente_contactoApellido2,
-                cliente_contactoApellido2_3: cliente_contactoApellido2,
-                cliente_contactoApellido2_4: cliente_contactoApellido2,
-                cliente_contactoApellido2_5: cliente_contactoApellido2,
-                cliente_contactoApellido2_6: cliente_contactoApellido2,
-                cliente_contactoApellido2_7: cliente_contactoApellido2,
-                cliente_contactoApellido2_8: cliente_contactoApellido2,
-                cliente_contactoApellido2_9: cliente_contactoApellido2,
-                cliente_contactoApellido2_10: cliente_contactoApellido2,
-
-                cliente_contactoPuesto_0: cliente_contactoPuesto,
-                cliente_contactoPuesto_1: cliente_contactoPuesto,
-                cliente_contactoPuesto_2: cliente_contactoPuesto,
-                cliente_contactoPuesto_3: cliente_contactoPuesto,
-                cliente_contactoPuesto_4: cliente_contactoPuesto,
-                cliente_contactoPuesto_5: cliente_contactoPuesto,
-                cliente_contactoPuesto_6: cliente_contactoPuesto,
-                cliente_contactoPuesto_7: cliente_contactoPuesto,
-                cliente_contactoPuesto_8: cliente_contactoPuesto,
-                cliente_contactoPuesto_9: cliente_contactoPuesto,
-                cliente_contactoPuesto_10: cliente_contactoPuesto,
-
-                cliente_contactoCorreo_0: cliente_contactoCorreo,
-                cliente_contactoCorreo_1: cliente_contactoCorreo,
-                cliente_contactoCorreo_2: cliente_contactoCorreo,
-                cliente_contactoCorreo_3: cliente_contactoCorreo,
-                cliente_contactoCorreo_4: cliente_contactoCorreo,
-                cliente_contactoCorreo_5: cliente_contactoCorreo,
-                cliente_contactoCorreo_6: cliente_contactoCorreo,
-                cliente_contactoCorreo_7: cliente_contactoCorreo,
-                cliente_contactoCorreo_8: cliente_contactoCorreo,
-                cliente_contactoCorreo_9: cliente_contactoCorreo,
-                cliente_contactoCorreo_10: cliente_contactoCorreo,
-
-                cliente_contactoTelefono_0: cliente_contactoTelefono,
-                cliente_contactoTelefono_1: cliente_contactoTelefono,
-                cliente_contactoTelefono_2: cliente_contactoTelefono,
-                cliente_contactoTelefono_3: cliente_contactoTelefono,
-                cliente_contactoTelefono_4: cliente_contactoTelefono,
-                cliente_contactoTelefono_5: cliente_contactoTelefono,
-                cliente_contactoTelefono_6: cliente_contactoTelefono,
-                cliente_contactoTelefono_7: cliente_contactoTelefono,
-                cliente_contactoTelefono_8: cliente_contactoTelefono,
-                cliente_contactoTelefono_9: cliente_contactoTelefono,
-                cliente_contactoTelefono_10: cliente_contactoTelefono,
-
-                cliente_id: {required: true, maxlength: 45},
-                cliente_apellido1: {required: true, maxlength: 45},
-                cliente_apellido2: {required: true, maxlength: 45},
-                cliente_nombre: {required: true, maxlength: 45},
-                cliente_correo: {required: true, maxlength: 45},
-                cliente_telefonoMovil: {required: true, maxlength: 45},
-                cliente_telefono: {required: true, maxlength: 45},
-                cliente_fechaNacimiento: {required: true, maxlength: 45},
-
-                clientejuridico_id: {required: true, maxlength: 45},
-                clientejuridico_nombre: {required: true, maxlength: 45},
-                clientejuridico_nombreFantasia: {required: true, maxlength: 45},
-                clientejuridico_correo: {required: true, maxlength: 45},
-                clientejuridico_telefono: {required: true, maxlength: 45},
-                clientejuridico_fax: {required: true, maxlength: 45},
-
-                cliente_direccionPais: {required: false, maxlength: 45},
-                cliente_direccionProvincia: {required: true, maxlength: 45},
-                cliente_direccionCanton: {required: true, maxlength: 45},
-                cliente_direccionDomicilio: {required: true, maxlength: 200},
-
-                cliente_descuento: {required: true, maxlength: 45}
-            },
+            rules: reglasCliente,
             errorElement: 'div',
             submitHandler: function(form) {
                 validacionCorrecta_Cliente();
