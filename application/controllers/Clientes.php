@@ -134,6 +134,8 @@ class Clientes extends CI_Controller
             );
         }
 
+        // echo print_r($data['datos']); exit();
+
         $contactos = array();
         $contador = 0;
         $contactosObtenidos = 0;

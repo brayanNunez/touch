@@ -39,7 +39,7 @@
                                             <label for="cliente_nacionalidad"><?= label('formCliente_nacionalidad'); ?></label>
                                             <br>
                                             <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="cliente_nacionalidad" name="cliente_nacionalidad" class="required browser-default chosen-select">
-                                                <option value=""></option>
+                                                <option value="0" disabled selected style="display:none;"><?= label("formCliente_seleccioneUno"); ?></option>
                                                 <?php
                                                 if(isset($paises)) {
                                                     foreach ($paises as $pais) { ?>
@@ -192,8 +192,8 @@
                                                     <div class="input-field col s12 m4 l4 inputSelector" >
                                                         <label for="cliente_direccionPais"><?= label('formCliente_direccionPais'); ?></label>
                                                         <br>
-                                                        <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="cliente_direccionPais" name="cliente_direccionPais" class="required browser-default chosen-select">
-                                                            <option value=""></option>
+                                                        <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="cliente_direccionPais" name="cliente_direccionPais" class="browser-default chosen-select">
+                                                            <option value="0" disabled selected style="display:none;"><?= label("formCliente_seleccioneUno"); ?></option>
                                                             <?php
                                                             if(isset($paises)) {
                                                                 foreach ($paises as $pais) { ?>
@@ -277,8 +277,9 @@
                                                 <div class="input-field col s12 inputSelector" >
                                                     <label for="cliente_formaPago"><?= label('formCliente_formaPagoFavorita'); ?></label>
                                                     <br>
-                                                    <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="cliente_formaPago" name="cliente_formaPago" class="required browser-default chosen-select">
-                                                        <option value=""></option>
+                                                    <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="cliente_formaPago" name="cliente_formaPago" class=" browser-default chosen-select">
+                                                        <!-- <option value=""></option> -->
+                                                        <option value="0" disabled selected style="display:none;"><?= label("formCliente_seleccioneUno"); ?></option>
                                                         <?php
                                                         if(isset($formasPago)) {
                                                             foreach ($formasPago as $formaPago) { ?>
@@ -298,8 +299,8 @@
                                                 <div class="input-field col s12 inputSelector" >
                                                     <label for="cliente_monedaCotizar"><?= label('formCliente_monedaCotizar'); ?></label>
                                                     <br>
-                                                    <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="cliente_monedaCotizar" name="cliente_monedaCotizar" class="required browser-default chosen-select">
-                                                        <option value=""></option>
+                                                    <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="cliente_monedaCotizar" name="cliente_monedaCotizar" class=" browser-default chosen-select">
+                                                        <option value="0" disabled selected style="display:none;"><?= label("formCliente_seleccioneUno"); ?></option>
                                                         <?php
                                                         if(isset($monedas)) {
                                                             foreach ($monedas as $moneda) { ?>
@@ -815,4 +816,4 @@
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
-<!-- Fin lista modals-->
+<!-- Fin lista modals
