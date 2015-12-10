@@ -558,6 +558,13 @@
                 validacionCorrecta_Servicios();
             }
         });
+        $('#form_servicio_cotizar').validate({
+            rules: reglasServicio,
+            errorElement: 'div',
+            submitHandler: function(form) {
+                validacionCorrecta_ServiciosCotizacion();
+            }
+        });
 
         var reglasTipoMoneda =  {
             tipoMoneda_nombre: {required: true, maxlength: 45},

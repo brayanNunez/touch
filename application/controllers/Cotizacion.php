@@ -178,6 +178,12 @@ class Cotizacion extends CI_Controller
         $data['idEmpresa'] = $sessionActual['idEmpresa'];
         $data['idUsuario'] = $sessionActual['idUsuario'];
 
+        $data['gastos'] = $this->Cotizacion_model->gastosVariables($data['idEmpresa']);
+        $data['personas'] = $this->Cotizacion_model->personas($data['idEmpresa']);
+        $data['categorias'] = $this->Cotizacion_model->categorias($data['idEmpresa']);
+        $data['tiempos'] = $this->Cotizacion_model->tiempos($data['idEmpresa']);
+        $data['fases'] = $this->Cotizacion_model->fases($data['idEmpresa']);
+
         $resultado = $this->Cotizacion_model->nueva($data); 
         if ($resultado == false) {
             echo "Error en la transacción";
@@ -824,6 +830,105 @@ class Cotizacion extends CI_Controller
         } else {
             // correcto
             echo $res;
+        }
+    }
+
+    public function verificarCodigoServicio() {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $data['codigo'] = $_POST['servicio_codigo'];
+        $data['idEmpresa'] = $idEmpresa;
+        //el codigo se puede repetir solo en diferentes empresas
+        $resultado = $this->Cotizacion_model->verificarCodigoServicio($data);
+        if ($resultado === false) {
+            //Error en la transacci�n
+            echo 0;
+        } else {
+            if ($resultado == 1) {
+                //Ya existe el codigo
+                echo 1;
+            } else {
+                //codigo valido
+                echo 2;
+            }
+        }
+    }
+    public function insertarServicio() {
+        $data = array();
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $data['impuestos'] = $this->input->post('servicio_impuestos');
+        $incluirGastos = $this->input->post('servicio_incluirGastosVariables');
+        if($incluirGastos) {
+            $data['datos'] = array(
+                'idEmpresa' => $idEmpresa,
+                'codigo' => $this->input->post('servicio_codigo'),
+                'nombre' => $this->input->post('servicio_nombre'),
+                'descripcion' => $this->input->post('servicio_descripcion'),
+                'utilidad' => $this->input->post('servicio_utilidad'),
+                'total' => $this->input->post('servicio_total'),
+                'idTiempo' => $this->input->post('servicioTiempo'),
+                'incluirGastos' => 1,
+                'estado' => 0
+            );
+        } else {
+            $data['datos'] = array(
+                'idEmpresa' => $idEmpresa,
+                'codigo' => $this->input->post('servicio_codigo'),
+                'nombre' => $this->input->post('servicio_nombre'),
+                'descripcion' => $this->input->post('servicio_descripcion'),
+                'utilidad' => $this->input->post('servicio_utilidad'),
+                'total' => $this->input->post('servicio_total'),
+                'idTiempo' => $this->input->post('servicioTiempo'),
+                'incluirGastos' => 0,
+                'estado' => 0
+            );
+        }
+
+        $gastos = array();
+        $contador = 0;
+        $gastosObtenidos = 0;
+        $cantidadGastos = $this->input->post('cantidadGastos');
+        while ($gastosObtenidos < $cantidadGastos) {
+            if (isset($_POST['gasto_'.$contador])) {
+                $gasto = array(
+                    'idGasto' => $this->input->post('gasto'.$contador.'_idGasto'),
+                    'cantidad' => $this->input->post('gasto'.$contador.'_cantidad'),
+                    'eliminado' => 0
+                );
+                array_push($gastos, $gasto);
+                $gastosObtenidos++;
+            }
+            $contador++;
+        }
+        $data['gastos'] = $gastos;
+
+        $fases = array();
+        $contador = 0;
+        $fasesObtenidos = 0;
+        $cantidadFases = $this->input->post('cantidadFases');
+        // echo $cantidadFases; exit();
+        while ($fasesObtenidos < $cantidadFases) {
+            if (isset($_POST['id_'.$contador])) {
+                $fase = array(
+                    'idFase' => $this->input->post('id_'.$contador),
+                    'cantidadTiempo' => $this->input->post('cantidadhoras_'.$contador)
+                );
+                array_push($fases, $fase);
+                $fasesObtenidos++;
+            }
+            $contador++;
+        }
+        $data['fases'] = $fases;
+
+        $servicio = $this->Cotizacion_model->insertarServicio($data);
+        if(!$servicio) {
+            //Error en la transaccion
+            echo 0;
+        } else {
+            echo 1;
         }
     }
 

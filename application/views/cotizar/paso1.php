@@ -281,7 +281,7 @@
         });
     }
 
-    function botonEnLista(tipo, idBoton, nuevoElementoAgregar){
+    function botonEnLista_2(tipo, idBoton, nuevoElementoAgregar){
         if (tipo == "paso1Cliente") {
             $('#cliente_nombre').val(nuevoElementoAgregar);
             $('#linkNuevoCliente').click();

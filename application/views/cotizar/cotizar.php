@@ -1,20 +1,16 @@
-
-<!-- <button id="myFunction">Prueba</button> -->
-
+<!--Script para el manejo de select de busqueda-->
 <script type="text/javascript">
+//     function agregarFila(){
+//         generarAutocompletarProductoNombre(3);
+//         generarAutocompletarProductoItem(3);
+//         generarListas();
+//     }
 
-    // function agregarFila(){
-    //     generarAutocompletarProductoNombre(3);
-    //     generarAutocompletarProductoItem(3);
-    //     generarListas();
-    // }
-
-    //El método botonEnLista es llamado desde el archivo chosen.jquery cuando se quiere agregar un nuevo elemento desde el select o bien puede ser llamado desde el método
-    //$('.chosen-select').on('change',function(){ que se encuentra es en este mismo archivo. La razón es que el plugin chosen.jquery solo  funciona
-    //el ciertos navegadores y en caso de no permitirlos (como la mayoría de los mobile) el llamado a este método (botonEnLista) se hace mediante el método $('.chosen-select').on('change',function(){
-    //ubicado en este archivo.
+//    El método botonEnLista es llamado desde el archivo chosen.jquery cuando se quiere agregar un nuevo elemento desde el select o bien puede ser llamado desde el método
+//    $('.chosen-select').on('change',function(){ que se encuentra es en este mismo archivo. La razón es que el plugin chosen.jquery solo  funciona
+//    el ciertos navegadores y en caso de no permitirlos (como la mayoría de los mobile) el llamado a este método (botonEnLista) se hace mediante el método $('.chosen-select').on('change',function(){
+//    ubicado en este archivo.
     function botonEnLista(tipo, idBoton, nuevoElementoAgregar){
-        alert("tipo: " +tipo+ " id: " + idBoton + " palabra: " + nuevoElementoAgregar);
         if (tipo == "productoItem") {
             $('#nuevoServicio_codigo').val(nuevoElementoAgregar);
             $('#linkNuevaServicio').click();
@@ -51,157 +47,66 @@
             $('#nombrePlantilla').val(nuevoElementoAgregar);
             $('#linkNuevaPlantilla').click();
             $('#nombrePlantilla').focus();
-        };
-        
+        }
     }
-
-    // function generarAutocompletarFormaPago(id){
-    //     var miSelect = $('<select data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso1FormaPago" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirFormaPago"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
-    //     miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso1_elegirFormaPago"); ?></option>');
-    //     miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
-    //     miSelect.append('<option value="Almuerzo">Contado</option>');
-    //     miSelect.append('<option value="Fresco">50-50</option>');
-    //     miSelect.append('<option value="Hamburguesa">Entrega</option>');
-
-    //     $('#contenedorSelectFormaPago').html(miSelect);
-    // }
-
-    // function generarAutocompletarMoneda(id){
-    //     var miSelect = $('<select data-incluirBoton="0" placeholder="seleccionar" data-tipo="paso1Moneda" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirMoneda"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
-    //     miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso1_elegirMoneda"); ?></option>');
-    //     miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
-    //     miSelect.append('<option value="Almuerzo">Dolar</option>');
-    //     miSelect.append('<option value="Fresco">Peso</option>');
-    //     miSelect.append('<option value="Hamburguesa">Colón</option>');
-
-    //     $('#contenedorSelectMoneda').html(miSelect);
-    // }
-
-    // function generarAutocompletarCliente(id){
-    //     var miSelect = $('<select data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso1Cliente" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirCliente"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
-    //     miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso1_elegirCliente"); ?></option>');
-    //     miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
-    //     miSelect.append('<option value="Almuerzo">Brayan Nunez Rojas</option>');
-    //     miSelect.append('<option value="Fresco">María Alfaro Alfaro</option>');
-    //     miSelect.append('<option value="Hamburguesa">Diego Rojas Salas</option>');
-    //     miSelect.append('<option value="Música">Juan Manuel Rojas</option>');
-
-    //     $('#contenedorSelectCliente').html(miSelect);
-    // }
-
-    // function generarAutocompletarAtencion(id){
-    //     var miSelect = $('<select data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso1Atencion" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirAtencion"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
-    //     miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso1_elegirAtencion"); ?></option>');
-    //     miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
-        
-    //     miSelect.append('<option value="Almuerzo">Brayan Nunez Rojas</option>');
-    //     miSelect.append('<option value="Fresco">María Alfaro Alfaro</option>');
-    //     miSelect.append('<option value="Hamburguesa">Diego Rojas Salas</option>');
-    //     miSelect.append('<option value="Música">Juan Manuel Rojas</option>');
-
-    //     $('#contenedorSelectAtencion').html(miSelect);
-
-
-    // }
-
     function generarAutocompletarPlantilla(id){
         var miSelect = $('<select data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso3_plantilla" id="' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso3_elegirPalantilla"); ?>" class="chosen-select" style="width:350px;" tabindex="2"></select>');
         miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso3_elegirPlantilla"); ?></option>');
         miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
-       
         <?php 
         $contador = 0;
         foreach ($resultado['plantillas'] as $plantilla) {
             $valor = "value='".$contador++."'";
-             echo 'miSelect.append("<option '.$valor.'>'.$plantilla['nombrePlantilla'].'</option>");';
+            echo 'miSelect.append("<option '.$valor.'>'.$plantilla['nombrePlantilla'].'</option>");';
         }
-        
         ?>
-
-        // miSelect.append('<option value="1">Formal</option>');
-        // miSelect.append('<option value="2">Para Dos Pinos</option>');
-        // miSelect.append('<option value="3">Para el gobierno</option>');
-        // miSelect.append('<option value="4">Simple</option>');
-
         $('#contenedorSelectPalntilla').html(miSelect);
     }
-
-
-     function generarAutocompletarProductoNombre(id){
+    function generarAutocompletarProductoNombre(id){
         var miSelect = $('<select data-incluirBoton="1" placeholder="seleccionar" data-tipo="productoNombre" data-fila="' + id + '" id="productoNombre_' + id + '" name="productoNombre_' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso2_elegirProductoNombre"); ?>" class="chosen-select nombreServicio" style="width:350px;" tabindex="2"></select>');
         miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso2_elegirProductoNombre"); ?></option>');
         miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
-
-
         <?php 
-        // echo print_r($resultado['servicios']);exit();
-
         foreach ($resultado['servicios'] as $servicio) {
             $valor = "value='".$servicio['idServicio']."'";
             echo 'miSelect.append("<option '.$valor.'>'.$servicio['nombre'].'</option>");';
         }
-        
         ?>
-
-
-        // miSelect.append('<option value="Almuerzo">Almuerzo</option>');
-        // miSelect.append('<option value="Fresco">Fresco</option>');
-        // miSelect.append('<option value="Hamburguesa">Hamburguesa</option>');
-        // miSelect.append('<option value="Música">Música</option>');
-        // miSelect.append('<option value="Pizza">Pizza</option>');
-        // miSelect.append('<option value="Arroz">Arroz</option>');
-
-
         $('#contenedorSelectProductoNombre' + id + '').html(miSelect);
     }
     function generarAutocompletarProductoItem(id){
         var miSelect = $('<select data-incluirBoton="1" placeholder="seleccionar" data-tipo="productoItem" data-fila="' + id + '" id="productoItem_' + id + '" name="productoItem_' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso2_elegirProductoItem"); ?>" class="chosen-select itemServicio" style="width:350px;" tabindex="2"></select>');
         miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso2_elegirProductoItem"); ?></option>');
         miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
-
         <?php 
         foreach ($resultado['servicios'] as $servicio) {
             $valor = "value='".$servicio['idServicio']."'";
             echo 'miSelect.append("<option '.$valor.'>'.$servicio['codigo'].'</option>");';
         }
-        
         ?>
         $('#contenedorSelectProductoItem' + id + '').html(miSelect);
     }
     function generarListas(){
-        // alert("generando");
-
         var config = {'.chosen-select'           : {}}
-          for (var selector in config) {
-            $(selector).chosen(config[selector]);
-          }
+            for (var selector in config) {
+                $(selector).chosen(config[selector]);
+            }
     }
 </script>
-
+<!--Script para cargar datos y botones de select-->
 <script type="text/javascript">
-
     $(document).on("ready", function(){
-
         generarAutocompletarProductoNombre(0);
         // generarAutocompletarProductoNombre(2);
-
         generarAutocompletarProductoItem(0);
         // generarAutocompletarProductoItem(2);
-
-        
-
-
         generarAutocompletarPlantilla("paso3_plantilla");
         // generarAutocompletarAtencion("paso1_atencion");
         // generarAutocompletarCliente("paso1_cliente");
         // generarAutocompletarMoneda("paso1_moneda");
         // generarAutocompletarFormaPago("paso1_formaPago");
-
         generarListas();
-
-
-
-         $(document).on('change','.chosen-select',function(){
+        $(document).on('change','.chosen-select',function(){
             var valor = $(this).val();
             var tipo = $(this).attr("data-tipo");
             if (valor=="nuevo") {
@@ -221,12 +126,12 @@
                             alert('<?=label('paso2_servicioRepetido'); ?>');
                             $(this).val($('#productoNombre_' + numeroFila).val());
                             $(this).trigger("chosen:updated");
-                        } else{
+                        } else {
                             var select = $('#productoNombre_' + numeroFila);
                             select.val(valor);
                             select.trigger("chosen:updated");
                             cargarFila(valor, numeroFila);
-                        };
+                        }
                     break;
                     case 'productoNombre':
                         var numeroFila = $(this).attr('data-fila');
@@ -240,7 +145,7 @@
                             select.val(valor);
                             select.trigger("chosen:updated");
                             cargarFila(valor, numeroFila);
-                        };
+                        }
                     break;
 //                    case 'paso1Cliente':
 //                        cargarAtencion(valor);
@@ -248,20 +153,13 @@
 //                    case 'paso1Moneda':
 //                        cargarTipoCambio(valor);
 //                    break;
-
-
                 }
                 // var numeroFila = $(this).attr('id');
                 // alert(valor+', ' + tipo+ ',id: ' + idFila);
                 // mostrarDatos(valor);
-            };
-            
+            }
         });
-
-
     });
-     
-
 </script>
 
 <!-- START CONTENT -->
@@ -377,16 +275,10 @@
 </section>
 <!-- END CONTENT-->
 
-
 <script type="text/javascript">
-
-
     function darclick(paso) {
-
         var obj = document.getElementById('botonPaso' + paso);
-
         obj.click();
-
     }
 </script>
 

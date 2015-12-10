@@ -611,6 +611,9 @@
     $lang['cotizacion_clienteGuardadoCorrectamente'] = 'El cliente ha sido guardado correctamente.';
     $lang['cotizacion_contactoGuardadoCorrectamente'] = 'El contacto ha sido guardado correctamente.';
 
+    $lang['servicio_error_codigoExisteEnBD'] = 'El código de servicio indicado ya existe';
+    $lang['cotizacion_servicioGuardadoCorrectamente'] = 'El servicio ha sido guardado correctamente.';
+
     $lang['cotizacion_incluirGastosVariables'] = 'Desea agregar gastos variables';
     $lang['agregarGatos_buscar'] = 'Buscar';
     $lang['agregarGastos_masOpciones'] = 'Más opciones';

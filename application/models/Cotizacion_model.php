@@ -992,6 +992,78 @@ class Cotizacion_model extends CI_Model
         }
     }
 
+    function verificarCodigoServicio($data) {
+        try {
+            $this->db->trans_begin();
+            $query = $this->db->get_where('servicio', array('idEmpresa' => $data['idEmpresa'], 'codigo' => $data['codigo'],  'estado' => 0));
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+
+            $existe = 0;
+            if ($query->num_rows() > 0) {
+                $existe = 1;
+            }
+
+            $this->db->trans_commit();
+            return $existe;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+    public function insertarServicio($data)
+    {
+        try{
+            $this->db->trans_begin();
+
+            $query = $this->db->insert('servicio', $data['datos']);
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+            $insert_id = $this->db->insert_id();
+
+            if ($data['impuestos'] != '') {
+                $impuestos = explode(",", $data['impuestos']);
+                foreach ($impuestos as $impuesto) {
+                    $row = array(
+                        'idServicio' => $insert_id,
+                        'idImpuesto' => $impuesto
+                    );
+                    $query = $this->db->insert('impuesto_servicio', $row);
+                    if (!$query) {
+                        throw new Exception("Error en la BD");
+                    }
+                }
+            }
+
+            $gastos = $data['gastos'];
+//            echo print_r($gastos); exit();
+            foreach ($gastos as $gasto) {
+                $gasto['idServicio'] = $insert_id;
+                $query = $this->db->insert('gastoservicio', $gasto);
+                if (!$query) {
+                    throw new Exception("Error en la BD");
+                }
+            }
+
+            foreach ($data['fases'] as $fase) {
+                $fase['idServicio'] = $insert_id;
+                $query = $this->db->insert('fase_servicio', $fase);
+                if (!$query) {
+                    throw new Exception("Error en la BD");
+                }
+            }
+
+            $this->db->trans_commit();
+
+            return true;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
     function paises()
     {
         try{
@@ -1010,5 +1082,115 @@ class Cotizacion_model extends CI_Model
             return false;
         }
     }
+    function gastosVariables($idEmpresa) {
+        try{
+            $this->db->trans_begin();
+
+            $gastos = $this->db->get_where('gasto', array('idEmpresa' => $idEmpresa, 'gastoFijo' => 0, 'eliminado' => 0));
+            if (!$gastos) {
+                throw new Exception("Error en la BD");
+            }
+            $resultado = $gastos->result_array();
+
+            $this->db->trans_commit();
+            return $resultado;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+    function personas($idEmpresa) {
+        try{
+            $this->db->trans_begin();
+
+            $personas = $this->db->get_where('proveedor', array('idEmpresa' => $idEmpresa, 'eliminado' => 0));
+            if (!$personas) {
+                throw new Exception("Error en la BD");
+            }
+            $resultado = $personas->result_array();
+
+            $contador = 0;
+            foreach ($resultado as $persona) {
+                $this->db->select('cp.*');
+                $this->db->from('categoriapersona cp');
+                $this->db->join('categoriapersona_persona cpp', 'cpp.idCategoriaPersona = cp.idCategoriaPersona');
+                $this->db->join('proveedor pr', 'pr.idProveedor = cpp.idPersona');
+                $this->db->where('pr.idProveedor', $persona['idProveedor']);
+                $categoriasPersona = $this->db->get();
+                if (!$categoriasPersona) {
+                    throw new Exception("Error en la BD");
+                }
+                $resultado[$contador++]['categorias'] = $categoriasPersona->result_array();
+            }
+
+            $this->db->trans_commit();
+            return $resultado;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+    function categorias($idEmpresa) {
+        try{
+            $this->db->trans_begin();
+
+            $categorias = $this->db->get_where('categoriapersona', array('idEmpresa' => $idEmpresa, 'eliminado' => 0));
+            if (!$categorias) {
+                throw new Exception("Error en la BD");
+            }
+            $resultado = $categorias->result_array();
+
+            $this->db->trans_commit();
+            return $resultado;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+    function tiempos() {
+        try{
+            $this->db->trans_begin();
+
+            $tiempo = $this->db->get('tiempo');
+            if (!$tiempo) {
+                throw new Exception("Error en la BD");
+            }
+            $resultado = $tiempo->result_array();
+
+            $this->db->trans_commit();
+            return $resultado;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+    function fases($idEmpresa){
+        try{
+            $this->db->trans_begin();
+
+            $fasesPadre = $this->db->get_where('fase',array('idEmpresa' => $idEmpresa, 'eliminado' => 0, 'fasePadre' => 1));
+            if (!$fasesPadre) {
+                throw new Exception("Error en la BD");
+            }
+            $fasesPadre = $fasesPadre->result_array();
+            $resultado = array();
+            foreach ($fasesPadre as $fase)
+            {
+                $idFase = $fase['idFase'];
+                $query = $this->db->get_where('fase', array('idFasePadre' => $idFase));
+                if (!$query) throw new Exception("Error en la BD");
+                $fase['subfases'] = $query->result_array();
+                array_push($resultado, $fase);
+            }
+            // $row['fases'] = $resultado;
+            $this->db->trans_commit();
+
+            return $resultado;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
 }
 ?>
