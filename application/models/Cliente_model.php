@@ -88,7 +88,7 @@ class Cliente_model extends CI_Model
                 }
             }
 
-            $query = 'SELECT cl.nombre, cl.idCliente from cliente as cl';
+            $query = 'SELECT cl.idCliente, cl.identificacion, cl.nombre, cl.juridico, cl.primerApellido, cl.segundoApellido, cl.telefonoFijo, cl.correo from cliente as cl';
             foreach ($arrayJoinGustos as $join) {
                 $query .= $join;
             }
@@ -120,7 +120,7 @@ class Cliente_model extends CI_Model
                 $cliente['idCliente'] = encryptIt($cliente['idCliente']);
                 array_push($resultado, $cliente);
             }
-            echo print_r($resultado);exit();
+            // echo print_r($resultado);exit();
 
             $this->db->trans_commit();
             return $resultado;
@@ -474,20 +474,10 @@ class Cliente_model extends CI_Model
         try{
             $this->db->trans_begin();
             
+            $this->db->get_where('idCliente, identificacion, nombre, juridico, primerApellido, segundoApellido, telefonoFijo, correo');
             $clientes = $this->db->get_where('cliente', array('eliminado' => 0,'idEmpresa' => $idEmpresa));
             if (!$clientes) throw new Exception("Error en la BD"); 
             $clientes = $clientes->result_array();
-            // $resultado = array();
-            //  foreach ($clientes as $row)
-            // {
-            //     $idEmpleado = $row['idEmpleado'];
-            //     $this->db->select('descripcion');
-            //     $query = $this->db->get_where('palabraClaveEmpleado', array('idEmpleado' => $idEmpleado));
-            //     if (!$query) throw new Exception("Error en la BD"); 
-            //     $row['palabras'] = $query->result_array();
-            //     array_push($resultado, $row);
-            // }
-
 
             $this->db->trans_commit();
             return $clientes;
