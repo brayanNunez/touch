@@ -405,7 +405,7 @@
                                                    value="<?= $gasto['formaPago']; ?>" style="display: none;" />
                                         </td>
                                         <td>
-                                            <span id="span_gasto<?= $contador; ?>_monto"><?= $gasto['monto']; ?></span>
+                                            <span id="span_gasto<?= $contador; ?>_monto"><span class="moneda_signo"></span><?= $gasto['monto']; ?></span>
                                             <input type="text" name="gasto<?= $contador; ?>_monto" id="gasto<?= $contador; ?>_monto"
                                                    value="<?= $gasto['monto']; ?>" style="display: none;" />
                                         </td>
@@ -1226,7 +1226,7 @@
                         '<span id="span_gasto'+ contadorGasto +'_formaPago">' + nombreFormaPago + '</span><input type="text" name="gasto'+ contadorGasto +'_formaPago" id="gasto'+ contadorGasto +'_formaPago" value="'+ formaPago +'" style="display: none;" />' +
                     '</td>';
         var montoP = '<td>'+
-                        '<span id="span_gasto'+ contadorGasto +'_monto">' + monto + '</span><input type="text" name="gasto'+ contadorGasto +'_monto" id="gasto'+ contadorGasto +'_monto" value="'+ monto +'" style="display: none;" />' +
+                        '<span id="span_gasto'+ contadorGasto +'_monto">' + '<span class="moneda_signo"></span>' + monto + '</span><input type="text" name="gasto'+ contadorGasto +'_monto" id="gasto'+ contadorGasto +'_monto" value="'+ monto +'" style="display: none;" />' +
                     '</td>';
 //        var principal = '<td>' +
 //                            '<input type="radio" name="radioGastoPrincipal" id="radio_gasto'+ contadorGasto +'" value="' + contadorGasto + '" />' +
@@ -1259,6 +1259,7 @@
         $('.modal-trigger').leanModal();
         nombres.push({"idGasto": contadorGasto, "codigo": codigo});
         contadorGasto++;
+        actualizarSignoMoneda();
     }
 
     $(document).on('click', '.abrirEditar', function () {
@@ -1345,6 +1346,7 @@
             alert('<?= label('proveedores_codigoGastoNoValido'); ?>');
             $('#editarGasto #gasto_codigo').focus();
         }
+        actualizarSignoMoneda();
     });
 
     function limpiarFormGasto() {

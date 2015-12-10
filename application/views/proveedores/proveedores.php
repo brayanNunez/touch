@@ -1037,7 +1037,6 @@
         var categoria = $('#editarGasto #gasto_categoria').val();
         var formaPago = $('#editarGasto #gasto_formaPago').val();
         var monto = $('#editarGasto #gasto_monto').val();
-
         var existeCodigo = false;
         for(var j = 0; j < arrayNombres.length; j++) {
             if(arrayNombres[j]['codigo'] == codigo) {

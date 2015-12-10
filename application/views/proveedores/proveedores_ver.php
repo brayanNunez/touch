@@ -223,7 +223,7 @@
                                         <td><?= $gasto['datosAdicionales']['tipo']; ?></td>
                                         <td><?= $gasto['datosAdicionales']['categoria']; ?></td>
                                         <td><?= $gasto['datosAdicionales']['formaPago']; ?></td>
-                                        <td><?= $gasto['monto']; ?></td>
+                                        <td><span class="moneda_signo"></span><?= $gasto['monto']; ?></td>
                                     </tr>
                             <?php
                                 }
