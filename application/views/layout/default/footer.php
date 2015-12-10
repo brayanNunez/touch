@@ -1020,6 +1020,21 @@ Scripts
             }
         });
     });
+    function actualizarSignoMoneda() {
+        $.ajax({
+            type: 'post',
+            url: '<?= base_url(); ?>tiposMoneda/datosMonedaPrincipal',
+            data: {  },
+            success: function(response)
+            {
+                if(response != 'null') {
+                    var datosMonedaPrincipal = $.parseJSON(response);
+
+                    $('.moneda_signo').text(datosMonedaPrincipal['signo'] + ' ');
+                }
+            }
+        });
+    }
 </script>
 
     </body>

@@ -676,13 +676,14 @@
         d[4]= formaPago;
         d[5]= nombre;
         d[6]= persona;
-        d[7]= monto;
+        d[7]= '<span class="moneda_signo"></span> ' + monto;
         row.data(d);
         generarListasBotones();
         $('.modal-trigger').leanModal();
         if (checkActivo) {
             $('.checkbox#'+idEditar).prop('checked', true);
         }
+        actualizarSignoMoneda();
     }
 
     var contadorFilas = 0;
@@ -723,7 +724,7 @@
         var tipo = '<td>' + tipo +' </td>';
         var codigo = '<td>' + codigo + '</td>';
         var nombre = '<td>' + nombre + '</td>';
-        var monto = '<td>' + monto + '</td>';
+        var monto = '<td><span class="moneda_signo"></span> ' + monto + '</td>';
         var formaPago = '<td>' + formaPago + '</td>';
         $('table').dataTable().fnAddData([
             check,
@@ -738,6 +739,7 @@
         generarListasBotones();
         $('.modal-trigger').leanModal();
         contadorFilas++;
+        actualizarSignoMoneda();
     }
     function generarListasBotones() {
         $('.boton-opciones').sideNav({
@@ -1194,7 +1196,7 @@
 
 
 </script>
-<!--Scripts para manejo de persona-->
+<!--Script para manejo de persona-->
 <script type="text/javascript">
     $(document).on('ready', function(){
         var config = {'.chosen-select'           : {}}
@@ -1976,7 +1978,7 @@
 </div>
 <!-- Fin lista modals -->
 
-<!--script para el manejo de la imagen de la persona-->
+<!--Script para el manejo de la imagen de la persona-->
 <script>
     function readURL(input) {
         if (input.files && input.files[0]) {
