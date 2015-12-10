@@ -1300,7 +1300,7 @@ $(document).on('ready', function(){
 
         function calcularTotal(){
             var sumatoria = 0;
-            $('.cantidad').each(function(){
+            $('#agregarServicio .cantidad').each(function(){
                 sumatoria += parseInt($(this).val());
             });
             $('#cantidadTotal').val(sumatoria);
