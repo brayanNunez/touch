@@ -33,8 +33,8 @@
                                                     </a>
                                                 </div>
                                                 <div>
-                                                    <a id="busqueda-avanzada-agregar" href="#busquedaAvanzadaGastos"
-                                                       class="modal-trigger"><?= label('gastos_busquedaAvanzada') ?></a>
+                                                   <!--  <a id="busqueda-avanzada-agregar" href="#busquedaAvanzadaGastos"
+                                                       class="modal-trigger"><?= label('gastos_busquedaAvanzada') ?></a> -->
                                                 </div>
                                                 <div id="contenedorTabla">
                                                     <table id="gastos-tabla-lista" cellspacing="0"

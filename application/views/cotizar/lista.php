@@ -125,7 +125,7 @@
                                                            <ul id="dropdown-cotizacion<?= $contador ?>"
                                                               class="dropdown-content">
                                                               <li>
-                                                                 <a href="<?= base_url(); ?>cotizacion/editar/<?= $idEncriptado?>"
+                                                                 <a href="<?= base_url(); ?>cotizacion/ver/<?= $idEncriptado?>"
                                                                     class="-text"><?= label('menuOpciones_ver') ?></a>
                                                              </li>
                                                               <li>
@@ -251,7 +251,7 @@
            event.preventDefault();
            $.ajax({
                   data: {idEliminar : idEliminar},
-                  url:   '<?=base_url()?>cotizaciones/eliminar',
+                  url:   '<?=base_url()?>cotizacion/eliminar',
                   type:  'post',
                   // beforeSend: function () {
                   //         $("#resultado").html("Procesando, espere por favor...");
@@ -300,7 +300,7 @@
                    var idEliminar = $this.attr('id');
                    $.ajax({
                           data: {idEliminar : idEliminar},
-                          url:   '<?=base_url()?>cotizaciones/eliminar',
+                          url:   '<?=base_url()?>cotizacion/eliminar',
                           type:  'post',
                           success:  function (response) {
 
@@ -545,7 +545,7 @@
             var boton = '<td>' +
                             '<ul id="dropdown-cotizacion'+ contadorFilas +'" class="dropdown-content">' +
                                 '<li>' +
-                                    '<a href="<?= base_url(); ?>cotizacion/editar/'+idEncriptado+'" class="-text">'+label_ver+'</a>' +
+                                    '<a href="<?= base_url(); ?>cotizacion/ver/'+idEncriptado+'" class="-text">'+label_ver+'</a>' +
                                 '</li>' +
                                 '<li>' +
                                      '<a href="<?= base_url(); ?>cotizacion/editar/'+idEncriptado+'" class="-text">'+label_editar+'</a>' +
