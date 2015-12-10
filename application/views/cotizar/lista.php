@@ -96,7 +96,7 @@
                                                           <?= $fila['vendedor'] ?>
                                                           <a>
                                                         </td>
-                                                        <td>HOLA</td>
+                                                        <td><span class="moneda_signo"></span>HOLA</td>
                                                         <td>
                                                         <?php
                                                           $estado =  '';

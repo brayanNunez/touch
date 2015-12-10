@@ -1522,7 +1522,7 @@
                     </div>
                 </div>
                 <div class="input-field col s12 m6 l6">
-                    <input id="gasto_monto" name="gasto_monto" type="text">
+                    <input id="gasto_monto" name="gasto_monto" type="number">
                     <label for="gasto_monto"><?= label('gastos_Monto') ?></label>
                 </div>
             </div>
@@ -1595,7 +1595,7 @@
                     </div>
                 </div>
                 <div class="input-field col s12 m6 l6">
-                    <input id="gasto_monto" name="gasto_monto" type="text">
+                    <input id="gasto_monto" name="gasto_monto" type="number">
                     <label for="gasto_monto"><?= label('gastos_Monto') ?></label>
                 </div>
             </div>

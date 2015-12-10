@@ -68,7 +68,7 @@
                                                                     <td><?= $codigo; ?></td>
                                                                     <td><a href="<?= base_url() ?>servicios/editar/<?= $idEncriptado; ?>"><?= $nombre; ?></a></td>
                                                                     <td><?= $descripcion; ?></td>
-                                                                    <td><?= $total; ?></td>
+                                                                    <td><span class="moneda_signo"></span><?= $total; ?></td>
                                                                     <td>
                                                                         <ul id="dropdown-servicio<?= $contador; ?>" class="dropdown-content">
                                                                             <li>

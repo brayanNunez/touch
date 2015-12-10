@@ -426,7 +426,7 @@
                         </select>
                     </div>
                     <div class="input-field col s12">
-                        <input id="cliente_descuento" name="cliente_descuento" type="text" value="<?php if (isset($resultado)) echo $resultado['descuentoFijo'];?>">
+                        <input id="cliente_descuento" name="cliente_descuento" type="number" value="<?php if (isset($resultado)) echo $resultado['descuentoFijo'];?>">
                         <label for="cliente_descuento"><?= label('formCliente_descuento'); ?></label>
                         <span class="icono-porcentaje-descuento">%</span>
                     </div>

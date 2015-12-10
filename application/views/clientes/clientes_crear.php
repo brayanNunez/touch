@@ -291,7 +291,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="input-field col s12">
-                                                    <input id="cliente_descuento" name="cliente_descuento" type="text">
+                                                    <input id="cliente_descuento" name="cliente_descuento" type="number">
                                                     <label
                                                         for="cliente_descuento"><?= label('formCliente_descuento'); ?></label>
                                                     <span class="icono-porcentaje-descuento">%</span>
