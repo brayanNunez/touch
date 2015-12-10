@@ -28,6 +28,109 @@ class Cliente_model extends CI_Model
         }
     }
 
+    function busqueda($idEmpresa, $busqueda)
+    {
+        try{
+            $this->db->trans_begin();
+
+            $arrayJoinUsuarios = array();
+            $arrayWhereUsuarios = array();
+            if ($busqueda['cliente_vendedores'] != '') {
+                $vendedores = explode(",", $busqueda['cliente_vendedores']);
+                $contador = 0;
+                foreach ($vendedores as $vendedor) {
+                    $join = ' left join usuario_cliente as uc'.$contador.' on uc'.$contador.'.idCliente = cl.idCliente ';
+                    $where = ' AND uc'.$contador.'.idUsuario = '.$vendedor.' ';
+                    array_push($arrayJoinUsuarios, $join);
+                    array_push($arrayWhereUsuarios, $where);
+                    $contador++;
+                }
+            }
+            $queryWhereUsuarios = '';
+            if ($busqueda['cliente_vendedores'] != '') {
+                $queryWhereUsuarios = " and ((true";
+                foreach ($arrayWhereUsuarios as $where) {
+                     $queryWhereUsuarios .= $where;
+                }
+                $queryWhereUsuarios .= ") OR cl.todosVendedores = 1)";
+            }
+
+            
+
+            // echo $queryWhereUsuarios; exit();
+
+
+            $arrayJoinGustos = array();
+            $arrayWhereGustos = array();
+            if ($busqueda['cliente_gustos'] != '') {
+                $gustos = explode(",", $busqueda['cliente_gustos']);
+                $contador = 0;
+                foreach ($gustos as $gusto) {
+                    $join = ' inner join gusto as gu'.$contador.' on gu'.$contador.'.idCliente = cl.idCliente ';
+                    $where = ' AND gu'.$contador.'.nombre = "'.$gusto.'" ';
+                    array_push($arrayJoinGustos, $join);
+                    array_push($arrayWhereGustos, $where);
+                    $contador++;
+                }
+            }
+
+            $arrayJoinMedios = array();
+            $arrayWhereMedios = array();
+            if ($busqueda['cliente_medios'] != '') {
+                $medios = explode(",", $busqueda['cliente_medios']);
+                $contador = 0;
+                foreach ($medios as $medio) {
+                    $join = ' inner join medio as me'.$contador.' on me'.$contador.'.idCliente = cl.idCliente ';
+                    $where = ' AND me'.$contador.'.nombre = "'.$medio.'" ';
+                    array_push($arrayJoinMedios, $join);
+                    array_push($arrayWhereMedios, $where);
+                    $contador++;
+                }
+            }
+
+            $query = 'SELECT cl.nombre, cl.idCliente from cliente as cl';
+            foreach ($arrayJoinGustos as $join) {
+                $query .= $join;
+            }
+            foreach ($arrayJoinMedios as $join) {
+                $query .= $join;
+            }
+            foreach ($arrayJoinUsuarios as $join) {
+                $query .= $join;
+            }
+            $query .= ' WHERE cl.idEmpresa = '.$idEmpresa;
+            foreach ($arrayWhereGustos as $where) {
+                $query .= $where;
+            }
+            foreach ($arrayWhereMedios as $where) {
+                $query .= $where;
+            }
+            $query .= $queryWhereUsuarios;
+            // echo $query; exit();
+
+            $clientes = $this->db->query($query);
+
+
+
+            if (!$clientes) throw new Exception("Error en la BD"); 
+            // echo 'jola'; exit();
+            $clientes = $clientes->result_array();
+            $resultado = array();
+            foreach ($clientes as $cliente) {
+                $cliente['idCliente'] = encryptIt($cliente['idCliente']);
+                array_push($resultado, $cliente);
+            }
+            echo print_r($resultado);exit();
+
+            $this->db->trans_commit();
+            return $resultado;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+       
+    }
+
     function paises()
     {
         try{

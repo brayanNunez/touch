@@ -469,6 +469,114 @@
    });
    // Fin script de descarga pdf, excel e imprimir
 
+   //inicio tags busqueda
+
+   $(document).ready(function () {
+
+
+        var Vendedores = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('nombre'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/Vendedores.json'
+            prefetch: {
+                url: '<?=base_url()?>Usuarios/vendedorSugerencia',
+                ttl: 1000
+            }
+        });
+
+        Vendedores.initialize();
+
+
+        elt = $('.tags_vendedores > > input');
+        elt.tagsinput({
+            itemValue: 'idUsuario',
+            itemText: 'nombre', 
+            typeaheadjs: {
+                name: 'Vendedor',
+                displayKey: 'nombre',
+                source: Vendedores.ttAdapter()
+            }
+        });
+
+        var gusto = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('nombre'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            prefetch: {
+                url: '<?=base_url()?>Clientes/gustosSugerenciaBusqueda',
+                ttl: 1000
+            }
+        });
+        gusto.initialize();
+
+        elt = $('.tags_gustosCliente > > input');
+        elt.tagsinput({
+            itemValue: 'nombre',
+            itemText: 'nombre', 
+            typeaheadjs: {
+                name: 'gusto',
+                displayKey: 'nombre',
+                source: gusto.ttAdapter()
+            }
+        });
+
+
+        var mediosContacto = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('nombre'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            prefetch: {
+                url: '<?=base_url()?>Clientes/mediosSugerenciaBusqueda',
+                ttl: 1000
+            }
+        });
+        mediosContacto.initialize();
+
+
+        var elt = $('.tags_mediosContacto > > input');
+        elt.tagsinput({
+            itemValue: 'nombre',
+            itemText: 'nombre', 
+            typeaheadjs: {
+                name: 'medio',
+                displayKey: 'nombre',
+                source: mediosContacto.ttAdapter()
+            }
+        });
+
+      });
+// fin tags busqueda
+
+   // script busqueda avanzada
+   $(document).on('ready', function(){
+      $('#botonBusqueda').on('click', function(){
+        var url = '<?= base_url() ?>Clientes/busqueda';
+        var method = 'POST'; 
+        $.ajax({
+               type: method,
+               url: url,
+               data: $('#formBusqueda').serialize(), 
+               success: function(response)
+               {
+                alert(response);
+                  // if (response ==0) {
+                  //   alert('<?= label('errorLeerDatos'); ?>');
+                  // } else{
+                  //   arrayBusqueda = $.parseJSON(response);
+                  //   var table = $('#cotizaciones-tabla-lista').DataTable();
+                  //   table.clear().draw();
+
+                  //   for (var i = 0; i < arrayBusqueda.length; i++) {
+                  //     var fila = arrayBusqueda[i];
+                  //     agregarFila(fila['idCotizacion'], fila['codigo'], fila['numero'], fila['fechaCreacion'], fila['cliente'], fila['vendedor'], 'monto', fila['estado'], fila['idCliente'], fila['idUsuario'], i);
+                  //   };
+                    
+                  // };
+                  // $('#busquedaAvanzada').closeModal();
+                  
+               }
+             });
+      })
+});
+
 
 
 </script>
@@ -549,6 +657,7 @@
     </div>
     <div class="modal-content">
         <div id="formGeneral" class="section" style="padding-bottom: 0;">
+          <form id="formBusqueda">
             <div class="row" style="margin-bottom: 0;">
                 <div class="input-field col s12 m3 l3">
                     <div class="input-field col s12">
@@ -588,51 +697,43 @@
                     </select>
                     <label for="reporte-cliente">Proveedores</label>
                 </div> -->
-                <div class="col s12 m4 l4 tagsInput-div">
-                    <div class="inputTag col s12">
-                        <label for="vendedoresCliente"><?= label('formCliente_cotizador'); ?></label>
-                        <br>
-
-                        <div id="vendedoresCliente" class="example campo-tags tags_vendedores">
-                            <div class="bs-example">
-                                <input placeholder="<?= label('formCliente_anadirVendedor'); ?>" type="text" value="Todos"/>
-                            </div>
+                <div class="inputTag col s12 m4">
+                    <label for="vendedoresCliente"><?= label('formCliente_cotizador'); ?></label>
+                    <br>
+                    <div id="vendedoresCliente" class="example tags_vendedores">
+                        <div class="bs-example">
+                            <input id="cliente_vendedores" name="cliente_vendedores" placeholder="<?= label('formCliente_anadirVendedor'); ?>" type="text"/>
                         </div>
-                        <br>
                     </div>
+                    <br>
                 </div>
-                <div class="col s12 m4 l4 tagsInput-div">
-                    <div class="inputTag col s12">
-                        <label for="gustosCliente"><?= label('formCliente_gustos_preferencias'); ?></label>
-                        <br>
-
-                        <div id="gustosCliente" class="example campo-tags tags_gustosCliente">
-                            <div class="bs-example">
-                                <input placeholder="<?= label('formCliente_anadirGusto'); ?>" type="text"
-                                       value="Todos"/>
-                            </div>
+                <div class="inputTag col s12 m4">
+                    <label for="gustosCliente"><?= label('formCliente_gustos_preferencias'); ?></label>
+                    <br>
+                    <div id="gustosCliente" class="example tags_gustosCliente">
+                        <div class="bs-example">
+                            <input id="cliente_gustos" name="cliente_gustos" placeholder="<?= label('formCliente_anadirGusto'); ?>" type="text"/>
                         </div>
-                        <br>
                     </div>
+                    <br>
                 </div>
-                <div class="col s12 m4 l4 tagsInput-div">
-                    <div class="inputTag col s12">
-                        <label for="mediosCliente"><?= label('formCliente_mediosContacto'); ?></label>
-                        <br>
-
-                        <div id="mediosCliente" class="example campo-tags tags_mediosContacto">
-                            <div class="bs-example">
-                                <input placeholder="<?= label('formCliente_anadirMedio'); ?>" type="text" value="Todos"/>
-                            </div>
+                <div class="inputTag col s12 m4">
+                    <label for="mediosCliente"><?= label('formCliente_mediosContacto'); ?></label>
+                    <br>
+                    <div id="mediosCliente" class="example tags_mediosContacto">
+                        <div class="bs-example">
+                            <input id="cliente_medios" name="cliente_medios" placeholder="<?= label('formCliente_anadirMedio'); ?>" type="text"/>
                         </div>
-                        <br>
                     </div>
+                    <br>
                 </div>
+
             </div>
+          </form>
         </div>
     </div>
     <div class="modal-footer black-text">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <a id="botonBusqueda" class="waves-effect waves-red btn-flat modal-action"><?= label('aceptar'); ?></a>
     </div>
 </div>
 <!--Fin lista modals -->
