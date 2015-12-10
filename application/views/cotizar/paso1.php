@@ -424,21 +424,72 @@
         $('#form_tipoMoneda_cotizar')[0].reset();
         var validator = $("#form_tipoMoneda_cotizar").validate();
         validator.resetForm();
+
+        $('label[for="paso1_codigo"]').addClass('active');
+        $('label[for="paso1_numero"]').addClass('active');
+        var tipoMonedaValor = $('#paso1_tipoCambio').val();
+        if(tipoMonedaValor != '' && tipoMonedaValor != null) {
+            $('label[for="paso1_tipoCambio"]').addClass('active');
+        }
     }
     function limpiarFormFormaPago() {
         $('#form_formaPago_cotizar')[0].reset();
         var validator = $("#form_formaPago_cotizar").validate();
         validator.resetForm();
+
+        $('label[for="paso1_codigo"]').addClass('active');
+        $('label[for="paso1_numero"]').addClass('active');
+        var tipoMonedaValor = $('#paso1_tipoCambio').val();
+        if(tipoMonedaValor != '' && tipoMonedaValor != null) {
+            $('label[for="paso1_tipoCambio"]').addClass('active');
+        }
     }
     function limpiarFormCliente() {
         $('#form_cliente_cotizar')[0].reset();
         var validator = $("#form_cliente_cotizar").validate();
         validator.resetForm();
+
+        $('#cliente_nacionalidad').val('').trigger('chosen:updated');
+        document.getElementById('camposObligatorios_fisico').style.display = 'block';
+        document.getElementById('camposObligatorios_juridico').style.display = 'none';
+
+        document.getElementById('datosNoObligatorios').style.display = 'none';
+        document.getElementById('datosContactos').style.display = 'none';
+        document.getElementById('datosInformacionAdicional').style.display = 'none';
+        document.getElementById('datosInformacionFacturacion').style.display = 'none';
+
+        $('#cliente_vendedores').tagsinput('removeAll');
+        $('#cliente_gustos').tagsinput('removeAll');
+        $('#cliente_medios').tagsinput('removeAll');
+        $('#vendedoresCliente').show();
+        $('#cliente_direccionPais').val('').trigger('chosen:updated');
+        $('#cliente_formaPago').val('').trigger('chosen:updated');
+        $('#cliente_monedaCotizar').val('').trigger('chosen:updated');
+
+        $('#imagen_seleccionada').attr('src', '<?= base_url(); ?>files/default-user-image.png');
+        cantidad = 0;
+        contador = 0;
+        actualizarCantidad_contactos();
+        $('#contenedorContactos').empty();
+
+        $('label[for="paso1_codigo"]').addClass('active');
+        $('label[for="paso1_numero"]').addClass('active');
+        var tipoMonedaValor = $('#paso1_tipoCambio').val();
+        if(tipoMonedaValor != '' && tipoMonedaValor != null) {
+            $('label[for="paso1_tipoCambio"]').addClass('active');
+        }
     }
     function limpiarFormContacto() {
         $('#form_contacto_cotizar')[0].reset();
         var validator = $("#form_contacto_cotizar").validate();
         validator.resetForm();
+
+        $('label[for="paso1_codigo"]').addClass('active');
+        $('label[for="paso1_numero"]').addClass('active');
+        var tipoMonedaValor = $('#paso1_tipoCambio').val();
+        if(tipoMonedaValor != '' && tipoMonedaValor != null) {
+            $('label[for="paso1_tipoCambio"]').addClass('active');
+        }
     }
 
     function validacionCorrecta_Moneda() {
@@ -475,8 +526,6 @@
                                     } else{
                                         limpiarFormMoneda();
                                     }
-
-                                    $('.label_campoTexto').addClass('active');
                                 }
                             }
                         });
