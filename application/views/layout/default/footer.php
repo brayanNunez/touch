@@ -1037,5 +1037,49 @@ Scripts
     }
 </script>
 
+<script type="text/javascript">
+
+   $(document).on('ready', function () {
+
+        $(document).on('click', '.paginate_button ', function(){
+            generarBotonesLista();
+        });
+        $('.dropdown-content').on('click', function(){
+            generarBotonesLista();
+        });
+
+        
+
+        function generarBotonesLista(){
+            $('.modal-trigger').leanModal();
+             // $(document).on('sideNav', '.boton-opciones', function(){
+          $('.boton-opciones').sideNav({
+          // menuWidth: 0, // Default is 240
+           edge: 'right', // Choose the horizontal origin
+              closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            }
+          );
+
+           // $(document).on('dropdown', '.dropdown-button', function(){
+          $('.dropdown-button').dropdown({
+              inDuration: 300,
+              outDuration: 225,
+              constrain_width: true, // Does not change width of dropdown to that of the activator
+              hover: false, // Activate on hover
+              gutter: 0, // Spacing from edge
+              belowOrigin: true, // Displays dropdown below the button
+              alignment: 'left' // Displays dropdown with edge aligned to the left of button
+            }
+          );
+
+        }
+
+          
+    });
+    
+
+
+</script>
+
     </body>
 </html>

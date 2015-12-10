@@ -108,24 +108,24 @@
                                        <a id="opciones-seleccionados-print"
                                           class="black-text opciones-seleccionados option-print-table"
                                           style="visibility: hidden;"
-                                          href="#" data-toggle="tooltip"
+                                           data-toggle="tooltip"
                                           title="<?= label('opciones_seleccionadosImprimir') ?>">
                                        <i class="mdi-action-print icono-opciones-varios"></i>
                                        </a>
                                        <ul id="dropdown-exportar" class="dropdown-content">
                                           <li>
-                                             <a id="opciones-seleccionados-PDF" href="#"
+                                             <a id="opciones-seleccionados-PDF" 
                                                 class="-text"><?= label('opciones_seleccionadosExportarPdf') ?></a>
                                           </li>
                                           <li>
-                                             <a id="opciones-seleccionados-Excel" href="#"
+                                             <a id="opciones-seleccionados-Excel" 
                                                 class="-text"><?= label('opciones_seleccionadosExportarExcel') ?></a>
                                           </li>
                                        </ul>
                                        <a id="opciones-seleccionados-export"
                                           style="visibility: hidden;"
                                           class="opciones-seleccionados boton-opciones black-text dropdown-button option-export-table"
-                                          href="#" data-toggle="tooltip"
+                                           data-toggle="tooltip"
                                           title="<?= label('opciones_seleccionadosExportar') ?>"
                                           data-activates="dropdown-exportar">
                                        <i class="mdi-file-file-download icono-opciones-varios"></i>
@@ -299,6 +299,7 @@
             };
 
         function generarListasBotones(){
+          // $(document).on('sideNav', '.boton-opciones', function(){
           $('.boton-opciones').sideNav({
           // menuWidth: 0, // Default is 240
            edge: 'right', // Choose the horizontal origin
@@ -306,6 +307,7 @@
             }
           );
 
+          // $(document).on('dropdown', '.dropdown-button', function(){
           $('.dropdown-button').dropdown({
               inDuration: 300,
               outDuration: 225,
@@ -624,6 +626,7 @@ function validacionCorrectaEditar(){
    }
    
    $(document).ready(function () {
+           // $(document).on('sideNav', '.boton-opciones', function(){
           $('.boton-opciones').sideNav({
           // menuWidth: 0, // Default is 240
            edge: 'right', // Choose the horizontal origin
@@ -631,6 +634,7 @@ function validacionCorrectaEditar(){
             }
           );
 
+           // $(document).on('dropdown', '.dropdown-button', function(){
           $('.dropdown-button').dropdown({
               inDuration: 300,
               outDuration: 225,
@@ -641,6 +645,25 @@ function validacionCorrectaEditar(){
               alignment: 'left' // Displays dropdown with edge aligned to the left of button
             }
           );
+
+          // $('.select-dropdown').sideNav({
+          // // menuWidth: 0, // Default is 240
+          //  edge: 'right', // Choose the horizontal origin
+          //     closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+          //   }
+          // );
+
+          //  // $(document).on('dropdown', '.dropdown-button', function(){
+          // $('select-dropdown').select({
+          //     inDuration: 300,
+          //     outDuration: 225,
+          //     constrain_width: true, // Does not change width of dropdown to that of the activator
+          //     hover: false, // Activate on hover
+          //     gutter: 0, // Spacing from edge
+          //     belowOrigin: true, // Displays dropdown below the button
+          //     alignment: 'left' // Displays dropdown with edge aligned to the left of button
+          //   }
+          // );
     });
 
    // Inicio script de descarga pdf, excel e imprimir
@@ -756,7 +779,7 @@ function validacionCorrectaEditar(){
         <p><?= label('errorLeerDatos'); ?></p>
     </div>
     <div class="modal-footer">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <a  class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
 <div id="transaccionIncorrectaEliminar" class="modal">
@@ -768,7 +791,7 @@ function validacionCorrectaEditar(){
         <p><?= label('errorEliminar'); ?></p>
     </div>
     <div class="modal-footer">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <a  class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
 
@@ -796,7 +819,7 @@ function validacionCorrectaEditar(){
    </div>
    <div class="modal-footer black-text">
       <div id="botonEliminar" class="modal-footer black-text" title="impuestos-tabla-lista">
-         <a href="#"
+         <a 
             class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
       </div>
    </div>
@@ -827,13 +850,13 @@ function validacionCorrectaEditar(){
                 
             </div>
             <div class="row">
-                <!--<a href="#" style="font-size: larger;float: left;text-decoration: underline;"
+                <!--<a  style="font-size: larger;float: left;text-decoration: underline;"
                    class="modal-action modal-close"><?= label('cancelar'); ?>
                 </a>-->
-                <a onclick="$(this).closest('form').submit()" id="guardarCerrar" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                <a onclick="$(this).closest('form').submit()" id="guardarCerrar"  class="waves-effect btn modal-action" style="margin: 0 20px;">
                     <?= label('guardarCerrar'); ?>
                 </a>
-                <a onclick="$(this).closest('form').submit()" id="guardarOtro" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                <a onclick="$(this).closest('form').submit()" id="guardarOtro"  class="waves-effect btn modal-action" style="margin: 0 20px;">
                     <?= label('guardarAgregarOtro'); ?>
                 </a>
             </div>
@@ -867,10 +890,10 @@ function validacionCorrectaEditar(){
                 
             </div>
             <div class="row">
-              <!--<a href="#" style="font-size: larger;float: left;text-decoration: underline;"
+              <!--<a  style="font-size: larger;float: left;text-decoration: underline;"
                  class="modal-action modal-close"><?= label('cancelar'); ?>
               </a>-->
-              <a onclick="$(this).closest('form').submit()" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+              <a onclick="$(this).closest('form').submit()" class="waves-effect btn modal-action" style="margin: 0 20px;">
                   <?= label('impuesto_guardarCambios'); ?>
               </a>
           </div>

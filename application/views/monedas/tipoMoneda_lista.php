@@ -86,7 +86,7 @@
                                                                                     </li>
                                                                                 </ul>
                                                                                 <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
-                                                                                   href="#" data-activates="dropdown-tipoMoneda<?= $contador++ ?>">
+                                                                                    data-activates="dropdown-tipoMoneda<?= $contador++ ?>">
                                                                                     <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
                                                                                 </a>
                                                                             </td>
@@ -102,24 +102,24 @@
                                                         <a id="opciones-seleccionados-print"
                                                            class="black-text opciones-seleccionados option-print-table"
                                                            style="visibility: hidden;"
-                                                           href="#" data-toggle="tooltip"
+                                                            data-toggle="tooltip"
                                                            title="<?= label('opciones_seleccionadosImprimir') ?>">
                                                             <i class="mdi-action-print icono-opciones-varios"></i>
                                                         </a>
                                                         <ul id="dropdown-exportar" class="dropdown-content">
                                                             <li>
-                                                                <a id="opciones-seleccionados-PDF" href="#"
+                                                                <a id="opciones-seleccionados-PDF" 
                                                                    class="-text"><?= label('opciones_seleccionadosExportarPdf') ?></a>
                                                             </li>
                                                             <li>
-                                                                <a id="opciones-seleccionados-Excel" href="#"
+                                                                <a id="opciones-seleccionados-Excel" 
                                                                    class="-text"><?= label('opciones_seleccionadosExportarExcel') ?></a>
                                                             </li>
                                                         </ul>
                                                         <a id="opciones-seleccionados-export"
                                                            style="visibility: hidden;"
                                                            class="opciones-seleccionados boton-opciones black-text dropdown-button option-export-table"
-                                                           href="#" data-toggle="tooltip"
+                                                            data-toggle="tooltip"
                                                            title="<?= label('opciones_seleccionadosExportar') ?>"
                                                            data-activates="dropdown-exportar">
                                                             <i class="mdi-file-file-download icono-opciones-varios"></i>
@@ -332,7 +332,7 @@
                                   '</li>' +
                             '</ul>' +
                             '<a class="boton-opciones btn-flat dropdown-button waves-effect white-text"' +
-                              'href="#"' +
+                              '' +
                               'data-activates="dropdown-tipoMoneda'+ contadorFilas +'">' +
                            ''+ menuOpciones_seleccionar +'<i class="mdi-navigation-arrow-drop-down"></i>' +
                            '</a>' +
@@ -831,7 +831,7 @@ function validacionCorrectaEditar(){
         <p><?= label('errorLeerDatos'); ?></p>
     </div>
     <div class="modal-footer">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <a  class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
 <div id="transaccionIncorrectaEliminar" class="modal">
@@ -843,7 +843,7 @@ function validacionCorrectaEditar(){
         <p><?= label('errorEliminar'); ?></p>
     </div>
     <div class="modal-footer">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <a  class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
 
@@ -869,13 +869,13 @@ function validacionCorrectaEditar(){
                 </div>
             </div>
             <div class="row">
-                <!--<a href="#" style="font-size: larger;float: left;text-decoration: underline;"
+                <!--<a  style="font-size: larger;float: left;text-decoration: underline;"
                    class="modal-action modal-close"><?= label('cancelar'); ?>
                 </a>-->
-                <a onclick="$(this).closest('form').submit()" id="guardarCerrar" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                <a onclick="$(this).closest('form').submit()" id="guardarCerrar"  class="waves-effect btn modal-action" style="margin: 0 20px;">
                     <?= label('guardarCerrar'); ?>
                 </a>
-                <a onclick="$(this).closest('form').submit()" id="guardarOtro" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                <a onclick="$(this).closest('form').submit()" id="guardarOtro"  class="waves-effect btn modal-action" style="margin: 0 20px;">
                     <?= label('guardarAgregarOtro'); ?>
                 </a>
             </div>
@@ -906,10 +906,10 @@ function validacionCorrectaEditar(){
                 </div>
             </div>
             <div class="row">
-                <!--<a href="#" style="font-size: larger;float: left;text-decoration: underline;"
+                <!--<a  style="font-size: larger;float: left;text-decoration: underline;"
                    class="modal-action modal-close"><?= label('cancelar'); ?>
                 </a>-->
-                <a onclick="$(this).closest('form').submit()" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                <a onclick="$(this).closest('form').submit()"  class="waves-effect btn modal-action" style="margin: 0 20px;">
                     <?= label('tipoMoneda_guardarCambios'); ?>
                 </a>
             </div>
@@ -938,7 +938,7 @@ function validacionCorrectaEditar(){
    </div>
    <div class="modal-footer black-text">
       <div id="botonEliminar" class="modal-footer black-text" title="tiposMoneda-tabla-lista">
-         <a href="#"
+         <a 
             class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
       </div>
    </div>
