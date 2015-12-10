@@ -251,7 +251,7 @@
            event.preventDefault();
            $.ajax({
                   data: {idEliminar : idEliminar},
-                  url:   '<?=base_url()?>cotizaciones/eliminar',
+                  url:   '<?=base_url()?>cotizacion/eliminar',
                   type:  'post',
                   // beforeSend: function () {
                   //         $("#resultado").html("Procesando, espere por favor...");
@@ -300,7 +300,7 @@
                    var idEliminar = $this.attr('id');
                    $.ajax({
                           data: {idEliminar : idEliminar},
-                          url:   '<?=base_url()?>cotizaciones/eliminar',
+                          url:   '<?=base_url()?>cotizacion/eliminar',
                           type:  'post',
                           success:  function (response) {
 
