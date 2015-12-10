@@ -346,10 +346,14 @@
         for(var i = 0; i < $array.length; i++) {
             var cliente = $array[i];
             if(cliente != null) {
+                var nombreCliente = cliente['nombre'];
+                if(cliente['juridico'] == 0) {
+                    nombreCliente = cliente['nombreFisico'];
+                }
                 if(cliente['idCliente'] == $id) {
-                    miSelect.append('<option value="' + cliente['idCliente'] + '" selected>' + cliente['nombre'] + '</option>');
+                    miSelect.append('<option value="' + cliente['idCliente'] + '" selected>' + nombreCliente + '</option>');
                 } else {
-                    miSelect.append('<option value="' + cliente['idCliente'] + '">' + cliente['nombre'] + '</option>');
+                    miSelect.append('<option value="' + cliente['idCliente'] + '">' + nombreCliente + '</option>');
                 }
             }
         }

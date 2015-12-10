@@ -824,7 +824,7 @@ class Cotizacion_model extends CI_Model
         try{
             $this->db->trans_begin();
 
-            $this->db->select('idCliente, nombre');
+            $this->db->select('idCliente, juridico, nombre, CONCAT(nombre, " ", primerApellido, " ", segundoApellido) as nombreFisico', false);
             $this->db->where(array('idEmpresa' => $idEmpresa, 'eliminado' => 0));
             $clientes = $this->db->get('cliente');
             if (!$clientes) {
