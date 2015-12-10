@@ -195,7 +195,7 @@
 
     });
 </script>
-<!--Funciones para gastos, formas de pago, categorias de gasto y selects de busqueda-->
+<!--Script para gastos, formas de pago, categorias de gasto y selects de busqueda-->
 <script>
     $(document).ready(function () {
         actualizarSelects();
@@ -656,7 +656,7 @@
         actualizarSelectContactos($idCliente, 0);
     }
 </script>
-<!--Scripts para manejo de cliente-->
+<!--Script para manejo de cliente-->
 <script type="text/javascript">
     $(document).on('ready', function(){
         var config = {'.chosen-select'           : {}}
@@ -702,7 +702,7 @@
             data: {  },
             success: function(response)
             {
-                generarAutocompletarMoneda_cliente($.parseJSON(response), $id);
+                generarSelectMoneda_cliente($.parseJSON(response), $id);
                 generarListas_cliente();
             }
         });
@@ -714,7 +714,7 @@
             data: {  },
             success: function(response)
             {
-                generarAutocompletarFormaPago_cliente($.parseJSON(response), $id);
+                generarSelectFormaPago_cliente($.parseJSON(response), $id);
                 generarListas_cliente();
             }
         });
@@ -726,7 +726,7 @@
             data: {  },
             success: function(response)
             {
-                generarAutocompletarPaises_cliente($.parseJSON(response), $id);
+                generarSelectPaises_cliente($.parseJSON(response), $id);
                 generarListas_cliente();
             }
         });
@@ -738,13 +738,13 @@
             data: {  },
             success: function(response)
             {
-                generarAutocompletarNacionalidad_cliente($.parseJSON(response), $id);
+                generarSelectNacionalidad_cliente($.parseJSON(response), $id);
                 generarListas_cliente();
             }
         });
     }
 
-    function generarAutocompletarMoneda_cliente($array, $id){
+    function generarSelectMoneda_cliente($array, $id){
         var miSelect = $('#cliente_monedaCotizar');
         miSelect.empty();
         miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("agregarCliente_elegirMoneda"); ?></option>');
@@ -761,7 +761,7 @@
         }
         miSelect.trigger("chosen:updated");
     }
-    function generarAutocompletarFormaPago_cliente($array, $id){
+    function generarSelectFormaPago_cliente($array, $id){
         var miSelect = $('#cliente_formaPago');
         miSelect.empty();
         miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("agregarCliente_elegirFormaPago"); ?></option>');
@@ -778,7 +778,7 @@
         }
         miSelect.trigger("chosen:updated");
     }
-    function generarAutocompletarPaises_cliente($array, $id){
+    function generarSelectPaises_cliente($array, $id){
         var miSelect = $('#cliente_direccionPais');
         miSelect.empty();
         miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("agregarCliente_elegirPais"); ?></option>');
@@ -795,7 +795,7 @@
         }
         miSelect.trigger("chosen:updated");
     }
-    function generarAutocompletarNacionalidad_cliente($array, $id){
+    function generarSelectNacionalidad_cliente($array, $id){
         var miSelect = $('#cliente_nacionalidad');
         miSelect.empty();
         miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("agregarCliente_elegirNacionalidad"); ?></option>');
@@ -1066,7 +1066,7 @@
 </script>
 
 <!-- Inicio lista modals -->
-<div id="agregarTipoMoneda" class="modal">
+<div id="agregarTipoMoneda" class="modal" style="width: 70%;">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
@@ -1141,282 +1141,246 @@
         <?php $this->load->helper('form'); ?>
         <?php echo form_open_multipart(base_url().'cotizacion/insertarCliente',
             array('id' => 'form_cliente_cotizar', 'method' => 'POST', 'class' => 'col s12')); ?>
-        <div class="row">
-            <!-- Campos obligatorios -->
-            <div id="seleccion_TipoCliente" class="input-field col s12">
-                <select id="cliente_tipo" name="cliente_tipo" onchange="datosCliente(this)">
-                    <option value="1" selected><?= label('formCliente_fisica'); ?></option>
-                    <option value="2"><?= label('formCliente_juridica'); ?></option>
-                </select>
-                <label for="cliente_tipo"><?= label('formCliente_tipoPersona'); ?></label>
-            </div>
-            <div class="input-field col s12 inputSelector">
-                <label for="cliente_nacionalidad"><?= label('formCliente_nacionalidad'); ?></label>
-                <br>
-                <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="cliente_nacionalidad" name="cliente_nacionalidad" class="browser-default chosen-select">
-                    <option value=""></option>
-                    <?php
-                    if(isset($paises)) {
-                        foreach ($paises as $pais) { ?>
-                            <option value="<?= $pais['idPais']; ?>"><?= $pais['nombre']; ?></option>
-                            <?php
-                        }
-                    }
-                    ?>
-                </select>
-            </div>
-            <div id="camposObligatorios_fisico" style="display: block;">
-                <div class="input-field col s12">
-                    <input id="cliente_identificacion" name="cliente_identificacion" type="text">
-                    <label for="cliente_identificacion"><?= label('formCliente_identificacion'); ?></label>
+            <div class="row">
+                <!-- Campos obligatorios -->
+                <div id="seleccion_TipoCliente" class="input-field col s12">
+                    <select id="cliente_tipo" name="cliente_tipo" onchange="datosCliente(this)">
+                        <option value="1" selected><?= label('formCliente_fisica'); ?></option>
+                        <option value="2"><?= label('formCliente_juridica'); ?></option>
+                    </select>
+                    <label for="cliente_tipo"><?= label('formCliente_tipoPersona'); ?></label>
                 </div>
-                <div>
-                    <div class="input-field col s12 m4 l4">
-                        <input id="cliente_nombre" name="cliente_nombre" type="text">
-                        <label for="cliente_nombre"><?= label('formCliente_nombre'); ?></label>
-                    </div>
-                    <div class="input-field col s12 m4 l4">
-                        <input id="cliente_apellido1" name="cliente_apellido1" type="text">
-                        <label for="cliente_apellido1"><?= label('formCliente_apellido1'); ?></label>
-                    </div>
-                    <div class="input-field col s12 m4 l4">
-                        <input id="cliente_apellido2" name="cliente_apellido2" type="text">
-                        <label for="cliente_apellido2"><?= label('formCliente_apellido2'); ?></label>
-                    </div>
+                <div class="input-field col s12 inputSelector">
+                    <label for="cliente_nacionalidad"><?= label('formCliente_nacionalidad'); ?></label>
+                    <br>
+                    <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="cliente_nacionalidad" name="cliente_nacionalidad" class="browser-default chosen-select">
+                    </select>
                 </div>
-                <div>
+                <div id="camposObligatorios_fisico" style="display: block;">
                     <div class="input-field col s12">
-                        <input id="cliente_correo" name="cliente_correo" type="email">
-                        <label for="cliente_correo"><?= label('formCliente_correo'); ?></label>
+                        <input id="cliente_identificacion" name="cliente_identificacion" type="text">
+                        <label for="cliente_identificacion"><?= label('formCliente_identificacion'); ?></label>
                     </div>
-                    <div style="margin-bottom: 20px;">
-                        <input value='1' type="checkbox" class="filled-in" id="checkbox_correoCliente" name="checkbox_correoCliente" />
-                        <label for="checkbox_correoCliente">
-                            <?= label('formCliente_correoCheck') ?>
-                        </label>
+                    <div>
+                        <div class="input-field col s12 m4 l4">
+                            <input id="cliente_nombre" name="cliente_nombre" type="text">
+                            <label for="cliente_nombre"><?= label('formCliente_nombre'); ?></label>
+                        </div>
+                        <div class="input-field col s12 m4 l4">
+                            <input id="cliente_apellido1" name="cliente_apellido1" type="text">
+                            <label for="cliente_apellido1"><?= label('formCliente_apellido1'); ?></label>
+                        </div>
+                        <div class="input-field col s12 m4 l4">
+                            <input id="cliente_apellido2" name="cliente_apellido2" type="text">
+                            <label for="cliente_apellido2"><?= label('formCliente_apellido2'); ?></label>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="input-field col s12">
+                            <input id="cliente_correo" name="cliente_correo" type="email">
+                            <label for="cliente_correo"><?= label('formCliente_correo'); ?></label>
+                        </div>
+                        <div class="col s12" style="margin-bottom: 20px; margin-left: 30px;">
+                            <input value='1' type="checkbox" class="filled-in" id="checkbox_correoCliente" name="checkbox_correoCliente" />
+                            <label for="checkbox_correoCliente" class="label_checkboxCorreoCliente">
+                                <?= label('formCliente_correoCheck') ?>
+                            </label>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="camposObligatorios_juridico" style="display: none;">
-                <div class="input-field col s12">
-                    <input id="clientejuridico_identificacion" name="clientejuridico_identificacion" type="text">
-                    <label for="clientejuridico_identificacion"><?= label('formCliente_identificacionJuridica'); ?></label>
-                </div>
-                <div class="input-field col s12">
-                    <input id="clientejuridico_nombre" name="clientejuridico_nombre" type="text">
-                    <label for="clientejuridico_nombre"><?= label('formCliente_nombreJuridico'); ?></label>
-                </div>
-                <div>
+                <div id="camposObligatorios_juridico" style="display: none;">
                     <div class="input-field col s12">
-                        <input id="clientejuridico_correo" name="clientejuridico_correo" type="email">
-                        <label for="clientejuridico_correo"><?= label('formCliente_correo'); ?></label>
+                        <input id="clientejuridico_identificacion" name="clientejuridico_identificacion" type="text">
+                        <label for="clientejuridico_identificacion"><?= label('formCliente_identificacionJuridica'); ?></label>
                     </div>
-                    <div style="margin-bottom: 20px;">
-                        <input type="checkbox" class="filled-in"
-                               id="checkbox_correoClientejuridico" name="checkbox_correoClientejuridico" />
-                        <label for="checkbox_correoClientejuridico">
-                            <?= label('formCliente_correoCheck') ?>
-                        </label>
+                    <div class="input-field col s12">
+                        <input id="clientejuridico_nombre" name="clientejuridico_nombre" type="text">
+                        <label for="clientejuridico_nombre"><?= label('formCliente_nombreJuridico'); ?></label>
+                    </div>
+                    <div>
+                        <div class="input-field col s12">
+                            <input id="clientejuridico_correo" name="clientejuridico_correo" type="email">
+                            <label for="clientejuridico_correo"><?= label('formCliente_correo'); ?></label>
+                        </div>
+                        <div class="col s12" style="margin-bottom: 20px; margin-left: 30px;">
+                            <input type="checkbox" class="filled-in"
+                                   id="checkbox_correoClientejuridico" name="checkbox_correoClientejuridico" />
+                            <label for="checkbox_correoClientejuridico" class="label_checkboxCorreoCliente">
+                                <?= label('formCliente_correoCheck') ?>
+                            </label>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Otros datos -->
-            <div class="col s12">
-                <a id="btn_cliente_otrosDatos" class="btn_mostrarElementosOcultos">Otros datos</a>
-            </div>
-            <div id="datosNoObligatorios" style="display: none;">
-                <div id="campos-cliente-fisico" style="display: block;">
-                    <div class="input-field col s12">
-                        <input id="cliente_telefonoMovil" name="cliente_telefonoMovil" type="text">
-                        <label for="cliente_telefonoMovil"><?= label('formCliente_telefonoMovil'); ?></label>
-                    </div>
-                    <div class="input-field col s12">
-                        <input id="cliente_telefono" name="cliente_telefono" type="text">
-                        <label for="cliente_telefono"><?= label('formCliente_telefonoFijo'); ?></label>
-                    </div>
-                    <div class="input-field col s12">
-                        <input id="cliente_fechaNacimiento" name="cliente_fechaNacimiento" type="text" class="datepicker-fecha">
-                        <label for="cliente_fechaNacimiento"><?= label('formCliente_fechaNacimiento'); ?></label>
-                    </div>
-                </div>
-                <div id="campos-cliente-juridico" style="display: none;">
-                    <div class="input-field col s12">
-                        <input id="clientejuridico_nombreFantasia" name="clientejuridico_nombreFantasia" type="text">
-                        <label for="clientejuridico_nombreFantasia"><?= label('formCliente_nombreFantasia'); ?></label>
-                    </div>
-                    <div class="input-field col s12">
-                        <input id="clientejuridico_telefono" name="clientejuridico_telefono" type="text">
-                        <label for="clientejuridico_telefono"><?= label('formCliente_telefono'); ?></label>
-                    </div>
-                    <div class="input-field col s12">
-                        <input id="clientejuridico_fax" name="clientejuridico_fax" type="text">
-                        <label for="clientejuridico_fax"><?= label('formCliente_fax'); ?></label>
-                    </div>
-                </div>
+                <!-- Otros datos -->
                 <div class="col s12">
-                    <div class="file-field col s12 m7 l9" style="margin-top:45px;">
-                        <label for="cliente_fotografia"><?= label('formCliente_fotografia'); ?></label>
+                    <a id="btn_cliente_otrosDatos" class="btn_mostrarElementosOcultos">Otros datos</a>
+                </div>
+                <div id="datosNoObligatorios" style="display: none;">
+                    <div id="campos-cliente-fisico" style="display: block;">
+                        <div class="input-field col s12">
+                            <input id="cliente_telefonoMovil" name="cliente_telefonoMovil" type="text">
+                            <label for="cliente_telefonoMovil"><?= label('formCliente_telefonoMovil'); ?></label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input id="cliente_telefono" name="cliente_telefono" type="text">
+                            <label for="cliente_telefono"><?= label('formCliente_telefonoFijo'); ?></label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input id="cliente_fechaNacimiento" name="cliente_fechaNacimiento" type="text" class="datepicker-fecha">
+                            <label for="cliente_fechaNacimiento"><?= label('formCliente_fechaNacimiento'); ?></label>
+                        </div>
+                    </div>
+                    <div id="campos-cliente-juridico" style="display: none;">
+                        <div class="input-field col s12">
+                            <input id="clientejuridico_nombreFantasia" name="clientejuridico_nombreFantasia" type="text">
+                            <label for="clientejuridico_nombreFantasia"><?= label('formCliente_nombreFantasia'); ?></label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input id="clientejuridico_telefono" name="clientejuridico_telefono" type="text">
+                            <label for="clientejuridico_telefono"><?= label('formCliente_telefono'); ?></label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input id="clientejuridico_fax" name="clientejuridico_fax" type="text">
+                            <label for="clientejuridico_fax"><?= label('formCliente_fax'); ?></label>
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <div class="file-field col s12 m7 l9" style="margin-top:45px;">
+                            <label for="cliente_fotografia"><?= label('formCliente_fotografia'); ?></label>
 
-                        <div class="file-field input-field col s12">
-                            <input name="cliente_fotografia" class="file-path" type="text" readonly/>
+                            <div class="file-field input-field col s12">
+                                <input name="cliente_fotografia" class="file-path" type="text" readonly/>
 
-                            <div class="btn" data-toggle="tooltip" title="<?= label('tooltip_examinar') ?>">
-                                <span><i class="mdi-action-search"></i></span>
-                                <input style="padding-right: 800px;" id="userfile" type="file" name="userfile"
-                                       accept="image/jpeg,image/png"/>
+                                <div class="btn" data-toggle="tooltip" title="<?= label('tooltip_examinar') ?>">
+                                    <span><i class="mdi-action-search"></i></span>
+                                    <input style="padding-right: 800px;" id="userfile" type="file" name="userfile"
+                                           accept="image/jpeg,image/png"/>
+                                </div>
                             </div>
                         </div>
+                        <div class="col s12 m5 l3">
+                            <figure>
+                                <img id="imagen_seleccionada" src="<?= base_url(); ?>files/default-user-image.png">
+                            </figure>
+                        </div>
                     </div>
-                    <div class="col s12 m5 l3">
-                        <figure>
-                            <img id="imagen_seleccionada" src="<?= base_url(); ?>files/default-user-image.png">
-                        </figure>
+                    <div>
+                        <div class="input-field col s12 m4 l4 inputSelector" >
+                            <label for="cliente_direccionPais"><?= label('formCliente_direccionPais'); ?></label>
+                            <br>
+                            <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="cliente_direccionPais" name="cliente_direccionPais" class="browser-default chosen-select">
+                            </select>
+                        </div>
+                        <div class="input-field col s12 m4 l4">
+                            <input id="cliente_direccionProvincia" name="cliente_direccionProvincia" type="text">
+                            <label for="cliente_direccionProvincia"><?= label('formCliente_direccionProvincia'); ?></label>
+                        </div>
+                        <div class="input-field col s12 m4 l4">
+                            <input id="cliente_direccionCanton" name="cliente_direccionCanton" type="text">
+                            <label for="cliente_direccionCanton"><?= label('formCliente_direccionCanton'); ?></label>
+                        </div>
+                        <div class="input-field col s12 m12 l12">
+                            <input id="cliente_direccionDomicilio" name="cliente_direccionDomicilio" type="text">
+                            <label for="cliente_direccionDomicilio"><?= label('formCliente_direccionDomicilio'); ?></label>
+                        </div>
                     </div>
                 </div>
-                <div>
-                    <div class="input-field col s12 m4 l4 inputSelector" >
-                        <label for="cliente_direccionPais"><?= label('formCliente_direccionPais'); ?></label>
+
+                <!-- Datos de contactos -->
+                <div class="col s12">
+                    <a id="btn_cliente_contactos" class="btn_mostrarElementosOcultos">Contactos</a>
+                </div>
+                <div id="datosContactos" style="display: none;">
+                    <div id="contenedorContactos"></div>
+                    <div class="row" id="tab-contactos-nuevo" style="padding: 20px;">
+                        <a onclick="agregarNuevoContacto();">
+                            <?= label('formCliente_contactoAgregar') ?>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Datos de informacion adicional-->
+                <div class="col s12">
+                    <a id="btn_cliente_informacionAdicional" class="btn_mostrarElementosOcultos">Info adicional</a>
+                </div>
+                <div id="datosInformacionAdicional" style="display: none;">
+                    <div class="inputTag col s12">
+                        <label for="vendedoresCliente"><?= label('formCliente_cotizador'); ?></label>
+                        <div class="col s12" style="padding: 10px;">
+                            <input value='1' type="checkbox" class="filled-in" id="checkbox_todosVendedores" name="checkbox_todosVendedores" />
+                            <label for="checkbox_todosVendedores">
+                                <?= label('formCliente_todos') ?>
+                            </label>
+                        </div>
+                        <!-- <br> -->
+                        <div id="vendedoresCliente" class="example tags_vendedores">
+                            <div class="bs-example">
+                                <input id="cliente_vendedores" name="cliente_vendedores" placeholder="<?= label('formCliente_anadirVendedor'); ?>" type="text"/>
+                            </div>
+                        </div>
                         <br>
-                        <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="cliente_direccionPais" name="cliente_direccionPais" class="browser-default chosen-select">
-                            <option value=""></option>
-                            <?php
-                            if(isset($paises)) {
-                                foreach ($paises as $pais) { ?>
-                                    <option value="<?= $pais['idPais']; ?>"><?= $pais['nombre']; ?></option>
-                                    <?php
-                                }
-                            }
-                            ?>
+                    </div>
+                    <div class="inputTag col s12">
+                        <label for="gustosCliente"><?= label('formCliente_gustos_preferencias'); ?></label>
+                        <br>
+                        <div id="gustosCliente" class="example tags_gustosCliente">
+                            <div class="bs-example">
+                                <input id="cliente_gustos" name="cliente_gustos" placeholder="<?= label('formCliente_anadirGusto'); ?>" type="text"
+                                       value=""/>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <div class="inputTag col s12">
+                        <label for="mediosCliente"><?= label('formCliente_mediosContacto'); ?></label>
+                        <br>
+                        <div id="mediosCliente" class="example tags_mediosContacto">
+                            <div class="bs-example">
+                                <input id="cliente_medios" name="cliente_medios" placeholder="<?= label('formCliente_anadirMedio'); ?>" type="text"
+                                       value=""/>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+
+                <!-- Datos de facturacion-->
+                <div class="col s12">
+                    <a id="btn_cliente_informacionFacturacion" class="btn_mostrarElementosOcultos">Info facturacion</a>
+                </div>
+                <div id="datosInformacionFacturacion" style="display: none;">
+                    <div class="input-field col s12 inputSelector" >
+                        <label for="cliente_formaPago"><?= label('formCliente_formaPagoFavorita'); ?></label>
+                        <br>
+                        <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="cliente_formaPago" name="cliente_formaPago" class="browser-default chosen-select">
                         </select>
                     </div>
-                    <div class="input-field col s12 m4 l4">
-                        <input id="cliente_direccionProvincia" name="cliente_direccionProvincia" type="text">
-                        <label for="cliente_direccionProvincia"><?= label('formCliente_direccionProvincia'); ?></label>
+                    <div class="input-field col s12">
+                        <input id="cliente_descuento" name="cliente_descuento" type="text">
+                        <label
+                            for="cliente_descuento"><?= label('formCliente_descuento'); ?></label>
+                        <span class="icono-porcentaje-descuento">%</span>
                     </div>
-                    <div class="input-field col s12 m4 l4">
-                        <input id="cliente_direccionCanton" name="cliente_direccionCanton" type="text">
-                        <label for="cliente_direccionCanton"><?= label('formCliente_direccionCanton'); ?></label>
-                    </div>
-                    <div class="input-field col s12 m12 l12">
-                        <input id="cliente_direccionDomicilio" name="cliente_direccionDomicilio" type="text">
-                        <label for="cliente_direccionDomicilio"><?= label('formCliente_direccionDomicilio'); ?></label>
+                    <div class="input-field col s12 inputSelector" >
+                        <label for="cliente_monedaCotizar"><?= label('formCliente_monedaCotizar'); ?></label>
+                        <br>
+                        <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="cliente_monedaCotizar" name="cliente_monedaCotizar" class="browser-default chosen-select">
+                        </select>
                     </div>
                 </div>
             </div>
-
-            <!-- Datos de contactos -->
-            <div class="col s12">
-                <a id="btn_cliente_contactos" class="btn_mostrarElementosOcultos">Contactos</a>
+            <div class="row" style="margin-top: 40px;">
+                <a onclick="$(this).closest('form').submit()" id="guardarCerrarCliente" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                    <?= label('guardarCerrar'); ?>
+                </a>
+                <a onclick="$(this).closest('form').submit()" id="guardarOtroCliente" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                    <?= label('guardarAgregarOtro'); ?>
+                </a>
             </div>
-            <div id="datosContactos" style="display: none;">
-                <div id="contenedorContactos"></div>
-                <div class="row" id="tab-contactos-nuevo" style="padding: 20px;">
-                    <a onclick="agregarNuevoContacto();">
-                        <?= label('formCliente_contactoAgregar') ?>
-                    </a>
-                </div>
+            <div style="visibility:hidden; position:absolute">
+                <input id="cantidadContactos" name="cantidadContactos" type="text" value="0">
             </div>
-
-            <!-- Datos de informacion adicional-->
-            <div class="col s12">
-                <a id="btn_cliente_informacionAdicional" class="btn_mostrarElementosOcultos">Info adicional</a>
-            </div>
-            <div id="datosInformacionAdicional" style="display: none;">
-                <div class="inputTag col s12">
-                    <label for="vendedoresCliente"><?= label('formCliente_cotizador'); ?></label>
-                    <div>
-                        <input value='1' type="checkbox" class="filled-in" id="checkbox_todosVendedores" name="checkbox_todosVendedores" />
-                        <label for="checkbox_todosVendedores">
-                            <?= label('formCliente_todos') ?>
-                        </label>
-                    </div>
-                    <!-- <br> -->
-                    <div id="vendedoresCliente" class="example tags_vendedores">
-                        <div class="bs-example">
-                            <input id="cliente_vendedores" name="cliente_vendedores" placeholder="<?= label('formCliente_anadirVendedor'); ?>" type="text"/>
-                        </div>
-                    </div>
-                    <br>
-                </div>
-                <div class="inputTag col s12">
-                    <label for="gustosCliente"><?= label('formCliente_gustos_preferencias'); ?></label>
-                    <br>
-                    <div id="gustosCliente" class="example tags_gustosCliente">
-                        <div class="bs-example">
-                            <input id="cliente_gustos" name="cliente_gustos" placeholder="<?= label('formCliente_anadirGusto'); ?>" type="text"
-                                   value=""/>
-                        </div>
-                    </div>
-                    <br>
-                </div>
-                <div class="inputTag col s12">
-                    <label for="mediosCliente"><?= label('formCliente_mediosContacto'); ?></label>
-                    <br>
-                    <div id="mediosCliente" class="example tags_mediosContacto">
-                        <div class="bs-example">
-                            <input id="cliente_medios" name="cliente_medios" placeholder="<?= label('formCliente_anadirMedio'); ?>" type="text"
-                                   value=""/>
-                        </div>
-                    </div>
-                    <br>
-                </div>
-            </div>
-
-            <!-- Datos de facturacion-->
-            <div class="col s12">
-                <a id="btn_cliente_informacionFacturacion" class="btn_mostrarElementosOcultos">Info facturacion</a>
-            </div>
-            <div id="datosInformacionFacturacion" style="display: none;">
-                <div class="input-field col s12 inputSelector" >
-                    <label for="cliente_formaPago"><?= label('formCliente_formaPagoFavorita'); ?></label>
-                    <br>
-                    <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="cliente_formaPago" name="cliente_formaPago" class="browser-default chosen-select">
-                        <option value=""></option>
-                        <?php
-                        if(isset($formasPago)) {
-                            foreach ($formasPago as $formaPago) { ?>
-                                <option value="<?= $formaPago['idFormaPago']; ?>"><?= $formaPago['nombre']; ?></option>
-                                <?php
-                            }
-                        }
-                        ?>
-                    </select>
-                </div>
-                <div class="input-field col s12">
-                    <input id="cliente_descuento" name="cliente_descuento" type="text">
-                    <label
-                        for="cliente_descuento"><?= label('formCliente_descuento'); ?></label>
-                    <span class="icono-porcentaje-descuento">%</span>
-                </div>
-                <div class="input-field col s12 inputSelector" >
-                    <label for="cliente_monedaCotizar"><?= label('formCliente_monedaCotizar'); ?></label>
-                    <br>
-                    <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="cliente_monedaCotizar" name="cliente_monedaCotizar" class="browser-default chosen-select">
-                        <option value=""></option>
-                        <?php
-                        if(isset($monedas)) {
-                            foreach ($monedas as $moneda) { ?>
-                                <option value="<?= $moneda['idMoneda']; ?>"><?= $moneda['nombre']; ?></option>
-                                <?php
-                            }
-                        }
-                        ?>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <a onclick="$(this).closest('form').submit()" id="guardarCerrarCliente" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
-                <?= label('guardarCerrar'); ?>
-            </a>
-            <a onclick="$(this).closest('form').submit()" id="guardarOtroCliente" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
-                <?= label('guardarAgregarOtro'); ?>
-            </a>
-        </div>
-        <div style="visibility:hidden; position:absolute">
-            <input id="cantidadContactos" name="cantidadContactos" type="text" value="0">
-        </div>
         </form>
     </div>
 </div>
@@ -1474,141 +1438,9 @@
         </form>
     </div>
 </div>
-
-<div id="agregarCliente2" class="modal">
-    <div class="modal-header">
-        <p><?= label('nombreSistema'); ?></p>
-        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
-    </div>
-    <div class="modal-content">
-        <div class="row">
-            <div class="col s12">
-                <form id="form_cliente" class="col s12" action="<?= base_url() ?>clientes/insertar" method="POST">
-                    <div class="row">
-
-                        <div class="input-field col s12">
-                            <select name="cliente_tipo" onchange="datosCliente(this)">
-                                <option value="0" selected><?= label('formCliente_fisica'); ?></option>
-                                <option value="1"><?= label('formCliente_juridica'); ?></option>
-                            </select>
-                            <label for="cliente_tipo"><?= label('formCliente_tipoPersona'); ?></label>
-                        </div>
-                        
-
-                        <div class="input-field col s12 inputSelector" >
-                            <label for="cleinte_nacionalidad"><?= label('formCliente_nacionalidad'); ?></label>
-                            <br>
-                            <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="cliente_nacionalidad" name="cliente_nacionalidad" class="required browser-default chosen-select">
-                                <option value=""></option>
-                                <?php
-                                if(isset($paises)) {
-                                    foreach ($paises as $pais) { ?>
-                                        <option value="<?= $pais['idPais']; ?>"><?= $pais['nombre']; ?></option>
-                                <?php
-                                    }
-                                }
-                                ?>
-                            </select>
-                        </div>
-
-                        <div id="elementos-cliente-fisico" style="display: block;">
-                            <div class="input-field col s12">
-                                <input id="cliente_id" name="cliente_id" type="text">
-                                <label for="cliente_id"><?= label('formCliente_identificacion'); ?></label>
-                            </div>
-                            <div>
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="cliente_nombre" name="cliente_nombre" type="text">
-                                    <label for="cliente_nombre"><?= label('formCliente_nombre'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="cliente_apellido1" name="cliente_apellido1" type="text">
-                                    <label for="cliente_apellido1"><?= label('formCliente_apellido1'); ?></label>
-                                </div>
-                                <div class="input-field col s12 m4 l4">
-                                    <input id="cliente_apellido2" name="cliente_apellido2" type="text">
-                                    <label for="cliente_apellido2"><?= label('formCliente_apellido2'); ?></label>
-                                </div>
-                            </div>
-                            <div class="input-field col s12">
-                                <div>
-                                    <input id="cliente_correo" name="cliente_correo" type="email" style="margin-bottom: 0;" >
-                                    <label for="cliente_correo"><?= label('formCliente_correo'); ?></label>
-                                </div>
-                                <div style="margin-bottom: 20px;">
-                                    <input value='1' type="checkbox" class="filled-in" id="checkbox_correoCliente" name="checkbox_correoCliente" />
-                                    <label for="checkbox_correoCliente">
-                                        <?= label('formCliente_correoCheck') ?>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="input-field col s12">
-                                <input id="cliente_telefonoMovil" name="cliente_telefonoMovil" type="text">
-                                <label
-                                    for="cliente_telefonoMovil"><?= label('formCliente_telefonoMovil'); ?></label>
-                            </div>
-                            <div class="input-field col s12">
-                                <input id="cliente_telefono" name="cliente_telefono" type="text">
-                                <label
-                                    for="cliente_telefono"><?= label('formCliente_telefonoFijo'); ?></label>
-                            </div>
-                            <div class="input-field col s12">
-                                <input id="cliente_fechaNacimiento" name="cliente_fechaNacimiento" type="text" class="datepicker-fecha">
-                                <label for="cliente_fechaNacimiento"><?= label('formCliente_fechaNacimiento'); ?></label>
-                            </div>
-                        </div>
-
-                        <div id="elementos-cliente-juridico" style="display: none;">
-                            <div class="input-field col s12">
-                                <input id="clientejuridico_id" name="clientejuridico_id" type="text">
-                                <label for="clientejuridico_id"><?= label('formCliente_identificacionJuridica'); ?></label>
-                            </div>
-                            <div class="input-field col s12">
-                                <input id="clientejuridico_nombre" name="clientejuridico_nombre" type="text">
-                                <label for="clientejuridico_nombre"><?= label('formCliente_nombreJuridico'); ?></label>
-                            </div>
-                            <div class="input-field col s12">
-                                <input id="clientejuridico_nombreFantasia" name="clientejuridico_nombreFantasia" type="text">
-                                <label for="clientejuridico_nombreFantasia"><?= label('formCliente_nombreFantasia'); ?></label>
-                            </div>
-                            <div class="input-field col s12">
-                                <div>
-                                    <input id="clientejuridico_correo" name="clientejuridico_correo" type="email">
-                                    <label for="clientejuridico_correo"><?= label('formCliente_correo'); ?></label>
-                                </div>
-                                <div style="margin-bottom: 20px;">
-                                    <input type="checkbox" class="filled-in"
-                                           id="checkbox_correoClientejuridico" name="checkbox_correoClientejuridico" />
-                                    <label for="checkbox_correoClientejuridico">
-                                        <?= label('formCliente_correoCheck') ?>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="input-field col s12">
-                                <input id="clientejuridico_telefono" name="clientejuridico_telefono" type="text">
-                                <label
-                                    for="clientejuridico_telefono"><?= label('formCliente_telefono'); ?></label>
-                            </div>
-                            <div class="input-field col s12">
-                                <input id="clientejuridico_fax" name="clientejuridico_fax" type="text">
-                                <label
-                                    for="clientejuridico_fax"><?= label('formCliente_fax'); ?></label>
-                            </div>
-                        </div>
-                        <div class="input-field col s12 envio-formulario">
-                            <button class="btn waves-effect waves-light right" type="submit"
-                                    name="action"><?= label('formCliente_enviar'); ?>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 <!--Fin lista modals-->
 
-<!--script para el manejo de la imagen del cliente-->
+<!--Script para el manejo de la imagen del cliente-->
 <script>
     function readURL(input) {
         if (input.files && input.files[0]) {

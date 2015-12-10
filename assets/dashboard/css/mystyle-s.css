@@ -293,6 +293,10 @@ ul#list_rolesUsuarioLogueado li { line-height: 25px; list-style: circle; color: 
 span#span_mensajeRegistroIncompleto { color: black; position: absolute; top: 0; right: 100px; }
 a#btn_completarRegistro { color: #039be5; text-decoration: underline; }
 
+div#agregarCliente hr { height: 12px; border: 0; box-shadow: inset 0 15px 15px -11px gray; }
+div#datosInformacionAdicional label { float: left; }
+label.label_checkboxCorreoCliente { float: left; }
+
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/
     div#login-page { width: 380px !important; max-height: 408px !important; top: 0 !important; }

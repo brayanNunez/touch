@@ -601,9 +601,15 @@
     $lang['paso4_cotizacionGuardadaDescargando'] = 'La cotización ha sido guardada y está en proceso de descarga.';
     $lang['paso4_cotizacionGuardadaEnviada'] = 'La cotización ha sido guardada y enviada para su aprobación.';
 
-
-
-    
+    $lang['cotizacion_agregarCliente'] = 'Agregar cliente';
+    $lang['agregarCliente_elegirMoneda'] = 'Tipo de moneda preferida para cotización';
+    $lang['agregarCliente_elegirFormaPago'] = 'Forma de pago preferida';
+    $lang['agregarCliente_elegirPais'] = 'Elegir país';
+    $lang['agregarCliente_elegirNacionalidad'] = 'Elegir país de nacionalidad';
+    $lang['cotizacion_tipoMonedaGuardadoCorrectamente'] = 'El tipo de moneda ha sido guardado correctamente.';
+    $lang['cotizacion_formaPagoGuardadoCorrectamente'] = 'La forma de pago ha sido guardada correctamente.';
+    $lang['cotizacion_clienteGuardadoCorrectamente'] = 'El cliente ha sido guardado correctamente.';
+    $lang['cotizacion_contactoGuardadoCorrectamente'] = 'El contacto ha sido guardado correctamente.';
 
     $lang['cotizacion_incluirGastosVariables'] = 'Desea agregar gastos variables';
     $lang['agregarGatos_buscar'] = 'Buscar';
