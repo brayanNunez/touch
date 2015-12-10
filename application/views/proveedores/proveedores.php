@@ -45,7 +45,7 @@
                                             <label for="persona_nacionalidad"><?= label('formCliente_nacionalidad'); ?></label>
                                             <br>
                                             <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="persona_nacionalidad" name="persona_nacionalidad" class="required browser-default chosen-select">
-                                                <option value=""></option>
+                                                <option value="0" disabled selected style="display:none;"><?= label("formCliente_seleccioneUno"); ?></option>
                                                 <?php
                                                 if(isset($paises)) {
                                                     foreach ($paises as $pais) { ?>
@@ -204,8 +204,8 @@
                                                     <div class="input-field col s12 m4 l4 inputSelector">
                                                         <label for="persona_direccionPais"><?= label('formPersona_direccionPais'); ?></label>
                                                         <br>
-                                                        <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="persona_direccionPais" name="persona_direccionPais" class="required browser-default chosen-select">
-                                                            <option value=""></option>
+                                                        <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="persona_direccionPais" name="persona_direccionPais" class=" browser-default chosen-select">
+                                                            <option value="0" disabled selected style="display:none;"><?= label("formCliente_seleccioneUno"); ?></option>
                                                             <?php
                                                             if(isset($paises)) {
                                                                 foreach ($paises as $pais) { ?>

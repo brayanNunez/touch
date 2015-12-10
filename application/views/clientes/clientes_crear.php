@@ -583,39 +583,6 @@
             }
         });
 
-
-
-
-        // var vendedores = new Bloodhound({
-        //     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-        //     queryTokenizer: Bloodhound.tokenizers.whitespace,
-        //     // prefetch: 'http://localhost/Proyectos/touch/assets/dashboard/js/json/vendedores.json'
-        //     prefetch: {
-        //         url: '<?=base_url()?>Cotizacion/jsonVendedores',
-        //         ttl: 1000
-        //     }
-        // });
-
-        // vendedores.initialize();
-
-        // elt = $('.tags_vendedores > > input');
-        // elt.tagsinput({
-        //     itemValue: 'value',
-        //     itemText: 'text',
-        //     typeaheadjs: {
-        //         name: 'vendedores',
-        //         displayKey: 'text',
-        //         source: vendedores.ttAdapter()
-        //     }
-        // });
-
-//        elt.tagsinput('add', {"value": 1, "text": "Brayan Nu�ez Rojas", "continent": "Europe"});
-//        elt.tagsinput('add', {"value": 4, "text": "Anthony Nu�ez Rojas", "continent": "America"});
-//        elt.tagsinput('add', {"value": 7, "text": "Maria Perez Salas", "continent": "Australia"});
-//        elt.tagsinput('add', {"value": 10, "text": "Carlos David Rojas", "continent": "Asia"});
-//        elt.tagsinput('add', {"value": 13, "text": "Diego Alfaro Rojas", "continent": "Africa"});
-
-
         var gusto = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,

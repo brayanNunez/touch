@@ -24,6 +24,26 @@ class Clientes extends CI_Controller
         $this->load->view('layout/default/footer');
     }
 
+    public function busqueda(){
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+        
+        $busqueda = array('cliente_vendedores' => $this->input->post('cliente_vendedores'),
+            'cliente_gustos' => $this->input->post('cliente_gustos'),
+            'cliente_medios' => $this->input->post('cliente_medios')
+            );
+        // echo print_r($busqueda); exit();
+
+        $busqueda = $this->Cliente_model->busqueda($idEmpresa, $busqueda);
+
+        
+        if ($busqueda === false) {
+            echo "0";
+        } else {
+            echo json_encode($busqueda); 
+        }
+    }
+
     public function agregar()
     {
         $sessionActual = $this->session->userdata('logged_in');
@@ -401,6 +421,20 @@ class Clientes extends CI_Controller
         echo json_encode($gustos);
     }
 
+    public function gustosSugerenciaBusqueda()
+    {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $resultado = $this->Cliente_model->gustosSugerencia($idEmpresa); 
+        // $gustos = array();
+        // foreach ($resultado as $v){
+        //     array_push($gustos,$v['nombre']);
+        // }
+
+        echo json_encode($resultado);
+    }
+
     public function mediosSugerencia()
     {
         $sessionActual = $this->session->userdata('logged_in');
@@ -413,6 +447,20 @@ class Clientes extends CI_Controller
         }
 
         echo json_encode($gustos);
+    }
+
+    public function mediosSugerenciaBusqueda()
+    {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $resultado = $this->Cliente_model->mediosSugerencia($idEmpresa); 
+        // $gustos = array();
+        // foreach ($resultado as $v){
+        //     array_push($gustos,$v['nombre']);
+        // }
+
+        echo json_encode($resultado);
     }
 
     public function eliminar()
