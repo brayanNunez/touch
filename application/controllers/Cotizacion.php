@@ -247,6 +247,22 @@ class Cotizacion extends CI_Controller
         }
     }
 
+    public function ver($idCotizacion)
+    {
+        verificarLogin();//helper
+        $sessionActual = $this->session->userdata('logged_in');
+        $data['idEmpresa'] = $sessionActual['idEmpresa'];
+        // $data['idUsuario'] = $sessionActual['idUsuario'];
+        $data['idCotizacion'] = decryptIt($idCotizacion);
+
+        // $resultado = $data;
+
+        $this->load->view('layout/default/header');
+        $this->load->view('layout/default/left-sidebar');
+        $this->load->view('cotizar/ver', $data);
+        $this->load->view('layout/default/footer');
+    }
+
     //Metodo llamado mediante ajax
     public function cargarTodasPlnatillas()
     {
@@ -463,14 +479,14 @@ class Cotizacion extends CI_Controller
         return $diseno;
     }
 
-    public function ver()
-    {
-        verificarLogin();//helper
-        $this->load->view('layout/default/header');
-        $this->load->view('layout/default/left-sidebar');
-        $this->load->view('cotizar/ver');
-        $this->load->view('layout/default/footer');
-    }
+    // public function ver()
+    // {
+    //     verificarLogin();//helper
+    //     $this->load->view('layout/default/header');
+    //     $this->load->view('layout/default/left-sidebar');
+    //     $this->load->view('cotizar/ver');
+    //     $this->load->view('layout/default/footer');
+    // }
 
     public function tiposMoneda() {
         $sessionActual = $this->session->userdata('logged_in');
