@@ -114,7 +114,7 @@
 
 <!--Script para manejo de datos de cotizacion_editar y valores precargados (codigo) -->
 <script>
-
+    var arrayCotizacion = [];
     <?php 
         $js_array = json_encode($resultado['clientes']); 
         echo "var arrayClientes =". $js_array.";";
@@ -125,7 +125,7 @@
 
         if (isset($resultado['cotizacion'])) {// se esta editando una cotizacion
             $js_array = json_encode($resultado['cotizacion']); 
-            echo "var arrayCotizacion =". $js_array.";";
+            echo "arrayCotizacion =". $js_array.";";
             ?>
                 $('#paso1_codigo').val(arrayCotizacion['codigo']);
                 $('#paso1_numero').val(arrayCotizacion['numero']);
