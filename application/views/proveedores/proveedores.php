@@ -972,7 +972,7 @@
             '<span id="span_gasto' + contadorGasto + '_formaPago">' + nombreFormaPago + '</span><input type="text" name="gasto' + contadorGasto + '_formaPago" id="gasto' + contadorGasto + '_formaPago" value="' + formaPago + '" style="display: none;" />' +
             '</td>';
         var montoP = '<td>' +
-            '<span id="span_gasto' + contadorGasto + '_monto">' + '<span class="moneda_signo"></span>' + monto + '</span><input type="text" name="gasto' + contadorGasto + '_monto" id="gasto' + contadorGasto + '_monto" value="' + monto + '" style="display: none;" />' +
+            '<span id="span_gasto' + contadorGasto + '_monto">' + '<span class="moneda_signo"></span>' + monto + '</span><input type="number" name="gasto' + contadorGasto + '_monto" id="gasto' + contadorGasto + '_monto" value="' + monto + '" style="display: none;" />' +
             '</td>';
 //        var principal = '<td>' +
 //                            '<input type="radio" name="radioGastoPrincipal" id="radio_gasto'+ contadorGasto +'" value="' + contadorGasto + '" />' +
@@ -1384,7 +1384,7 @@
                 </div>
             </div>
             <div class="input-field col s12 m6 l6">
-                <input id="gasto_monto" name="gasto_monto" type="text">
+                <input id="gasto_monto" name="gasto_monto" type="number">
                 <label for="gasto_monto"><?= label('gastos_Monto') ?></label>
             </div>
         </div>
@@ -1433,7 +1433,7 @@
                 </div>
             </div>
             <div class="input-field col s12 m6 l6">
-                <input id="gasto_monto" name="gasto_monto" type="text">
+                <input id="gasto_monto" name="gasto_monto" type="number">
                 <label for="gasto_monto"><?= label('gastos_Monto') ?></label>
             </div>
         </div>
