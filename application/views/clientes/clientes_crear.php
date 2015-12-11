@@ -348,6 +348,10 @@
             $('#vendedoresCliente').show();
         }
     });
+    
+    $(document).on('ready', function(){
+        $('#checkbox_todosVendedores').click();
+    });
     $(document).on('ready', function(){
         var config = {'.chosen-select'           : {}}
           for (var selector in config) {
