@@ -474,7 +474,7 @@ class Cliente_model extends CI_Model
         try{
             $this->db->trans_begin();
             
-            $this->db->get_where('idCliente, identificacion, nombre, juridico, primerApellido, segundoApellido, telefonoFijo, correo');
+            $this->db->select('idCliente, identificacion, nombre, juridico, primerApellido, segundoApellido, telefonoFijo, correo');
             $clientes = $this->db->get_where('cliente', array('eliminado' => 0,'idEmpresa' => $idEmpresa));
             if (!$clientes) throw new Exception("Error en la BD"); 
             $clientes = $clientes->result_array();

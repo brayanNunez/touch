@@ -204,7 +204,7 @@ class Clientes extends CI_Controller
 //            echo 'profile_picture_'.$cliente.'.'.$data['extension'].'<br/>';
 
             // correcto
-            echo 1;
+            echo $cliente;
         }
     }
 
