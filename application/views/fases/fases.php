@@ -29,10 +29,10 @@
                                                 <div class="agregar_nuevo">
                                                     <a id="botonNuevaFase" href="#agregarFase" class="btn modal-trigger"><?= label('tituloFases_nuevo'); ?></a>
                                                 </div>
-                                                <div>
+                                                <!-- <div>
                                                     <a id="busqueda-avanzada-agregar" href="#busquedaAvanzadaFases"
                                                        class="modal-trigger"><?= label('fases_busquedaAvanzada') ?></a>
-                                                </div>
+                                                </div> -->
                                                 <div id="contenedorTabla">
                                                 <table id="fases-tabla-lista"
                                                        class="data-table-information responsive-table display"

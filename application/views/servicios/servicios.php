@@ -643,7 +643,7 @@ echo "var arrayFases =". $js_array.";";
             $('#servicio_subFase').empty(); //remove all child nodes
             $('#servicio_subFase').removeAttr('disabled');
             $('#servicio_subFase').append($('<option value="0" disabled selected style="display:none;"><?= label("servicio_elegirSubFase"); ?></option>'));
-            $('#servicio_subFase').append($('<option value="nuevo"><?= label("agregarNuevo"); ?></option>'));
+            // $('#servicio_subFase').append($('<option value="nuevo"><?= label("agregarNuevo"); ?></option>'));
             $('#servicio_subFase').append($('<option value="todas"><?= label("formServicio_fases_agregarTodas"); ?></option>'));
             for (var i = 0; i < arrayFases.length; i++) {
                 if (arrayFases[i]['idFase'] == idFasePadre) {
@@ -659,7 +659,7 @@ echo "var arrayFases =". $js_array.";";
         function cargarFases(){
             $('#servicioFase').empty(); //remove all child nodes
             $('#servicioFase').append($('<option value="0" disabled selected style="display:none;"><?= label("servicio_elegirFase"); ?></option>'));
-            $('#servicioFase').append($('<option value="nuevo"><?= label("agregarNuevo"); ?></option>'));
+            // $('#servicioFase').append($('<option value="nuevo"><?= label("agregarNuevo"); ?></option>'));
             $('#servicioFase').append($('<option value="todas"><?= label("formServicio_fases_agregarTodas"); ?></option>'));
             for (var i = 0; i < arrayFases.length; i++) {
                  var newOption = $('<option value="'+arrayFases[i]['idFase']+'">'+arrayFases[i]['nombre']+'</option>');
