@@ -451,6 +451,18 @@ class Gastos extends CI_Controller
         }
     }
 
+    public function gastosFijos() {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $resultado = $this->Gasto_model->gastosFijos($idEmpresa);
+        if ($resultado === false) {
+            echo 0;
+        } else {
+            echo json_encode($resultado);
+        }
+    }
+
 }
 
 ?>

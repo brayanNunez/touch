@@ -471,6 +471,26 @@ class Gasto_model extends CI_Model
         }
     }
 
+    function gastosFijos($idEmpresa) {
+        try{
+            $this->db->trans_begin();
+
+            $this->db->select('idGasto, monto, formaPago');
+            $this->db->where(array('idEmpresa' => $idEmpresa, 'gastoFijo' => 1, 'eliminado' => 0));
+            $gastosFijos = $this->db->get('gasto');
+            if (!$gastosFijos) {
+                throw new Exception("Error en la BD");
+            }
+            $resultado = $gastosFijos->result_array();
+
+            $this->db->trans_commit();
+            return $resultado;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
 }
 
 ?>
