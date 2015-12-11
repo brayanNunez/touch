@@ -195,43 +195,43 @@
 </script>
 <!--Script para gastos, formas de pago, categorias de gasto y selects de busqueda-->
 <script>
-    $(document).ready(function () {
-        actualizarSelects();
-    });
-    var idEditar = 0;
-    function actualizarSelects() {
-        var idOpcionCliente = arrayCotizacion['idCliente'];
-        var idOpcionFormaPago = arrayCotizacion['idFormaPago'];
-        var idOpcionMoneda = arrayCotizacion['idMoneda'];
-        $.ajax({
-            type: 'POST',
-            url: '<?= base_url(); ?>cotizacion/tiposMoneda',
-            data: {  },
-            success: function(response)
-            {
-                generarAutocompletarMoneda($.parseJSON(response), idOpcionMoneda);
-            }
-        });
-        $.ajax({
-            type: 'POST',
-            url: '<?= base_url(); ?>cotizacion/formasPago',
-            data: {  },
-            success: function(response)
-            {
-                generarAutocompletarFormaPago($.parseJSON(response), idOpcionFormaPago);
-            }
-        });
-        $.ajax({
-            type: 'POST',
-            url: '<?= base_url(); ?>cotizacion/clientes',
-            data: {  },
-            success: function(response)
-            {
-                generarAutocompletarClientes($.parseJSON(response), idOpcionCliente);
-                generarListas();
-            }
-        });
-    }
+    // $(document).ready(function () {
+    //     // actualizarSelects();
+    // });
+    // var idEditar = 0;
+    // function actualizarSelects() {
+    //     var idOpcionCliente = arrayCotizacion['idCliente'];
+    //     var idOpcionFormaPago = arrayCotizacion['idFormaPago'];
+    //     var idOpcionMoneda = arrayCotizacion['idMoneda'];
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: '<?= base_url(); ?>cotizacion/tiposMoneda',
+    //         data: {  },
+    //         success: function(response)
+    //         {
+    //             generarAutocompletarMoneda($.parseJSON(response), idOpcionMoneda);
+    //         }
+    //     });
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: '<?= base_url(); ?>cotizacion/formasPago',
+    //         data: {  },
+    //         success: function(response)
+    //         {
+    //             generarAutocompletarFormaPago($.parseJSON(response), idOpcionFormaPago);
+    //         }
+    //     });
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: '<?= base_url(); ?>cotizacion/clientes',
+    //         data: {  },
+    //         success: function(response)
+    //         {
+    //             generarAutocompletarClientes($.parseJSON(response), idOpcionCliente);
+    //             generarListas();
+    //         }
+    //     });
+    // }
 
     function actualizarSelectMonedas($id) {
         $.ajax({
@@ -339,6 +339,30 @@
         }
         miSelect.trigger("chosen:updated");
     }
+    // function generarAutocompletarClientes($array, $id){
+    //     alert('hola');
+    //     var miSelect = $('#paso1Cliente');
+    //     miSelect.empty();
+    //     miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso1_elegirCliente"); ?></option>');
+    //     miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+    //     for(var i = 0; i < $array.length; i++) {
+    //         var cliente = $array[i];
+    //         if(cliente != null) {
+    //             var nombreCliente = cliente['nombre'] + ' ' + cliente['primerApellido'] + ' ' cliente['segundoApellido'];
+    //             var disabled = '';
+    //             if (cliente['todosVendedores'] == 1 || cliente['valido'] == 1) {
+    //                 disabled = 'disabled';
+    //             }
+    //             if(cliente['idCliente'] == $id) {
+    //                 miSelect.append('<option value="' + cliente['idCliente'] + '" selected '+disabled+'>' + nombreCliente + '</option>');
+    //             } else {
+    //                 miSelect.append('<option value="' + cliente['idCliente'] + ' '+disabled+'">' + nombreCliente + '</option>');
+    //             }
+    //         }
+    //     }
+    //     miSelect.trigger("chosen:updated");
+    // }
+
     function generarAutocompletarClientes($array, $id){
         var miSelect = $('#paso1Cliente');
         miSelect.empty();
@@ -347,19 +371,35 @@
         for(var i = 0; i < $array.length; i++) {
             var cliente = $array[i];
             if(cliente != null) {
-                var nombreCliente = cliente['nombre'];
-                if(cliente['juridico'] == 0) {
-                    nombreCliente = cliente['nombreFisico'];
+                if (cliente['primerApellido'] == null) {
+                    cliente['primerApellido'] = '';
+                }
+                if (cliente['segundoApellido'] == null) {
+                    cliente['segundoApellido'] = '';
+                } 
+                var nombreCliente = cliente['nombre'] + ' ' + cliente['primerApellido'] + ' ' + cliente['segundoApellido'];
+                // if(cliente['juridico'] == false) {
+                //     nombreCliente = cliente['nombre'] + ' ' + cliente['primerApellido'] + ' ' cliente['segundoApellido'];
+                // }
+                var disabled = '';
+                if (!(cliente['todosVendedores'] == 1 || cliente['valido'] == 1)) {
+                    disabled = 'disabled';
                 }
                 if(cliente['idCliente'] == $id) {
-                    miSelect.append('<option value="' + cliente['idCliente'] + '" selected>' + nombreCliente + '</option>');
+                    var selected = 'selected';
+                    if (disabled == 'disabled') {
+                        selected = '';
+                    } 
+                    miSelect.append('<option value="' + cliente['idCliente'] + '" '+disabled+' '+selected+'>' + nombreCliente + '</option>');
                 } else {
-                    miSelect.append('<option value="' + cliente['idCliente'] + '">' + nombreCliente + '</option>');
+                    miSelect.append('<option value="' + cliente['idCliente'] + '" '+disabled+'>' + nombreCliente + '</option>');
                 }
             }
         }
         miSelect.trigger("chosen:updated");
     }
+
+
     function generarAutocompletarContactos($array, $id){
         var miSelect = $('#paso1Atencion');
         miSelect.empty();
@@ -585,16 +625,32 @@
         });
     }
     function validacionCorrecta_Cliente() {
+        var tipoCliente = $('#cliente_tipo option:selected').val();
+        var identificacion = '';
+        if (tipoCliente == 0) {
+            identificacion = $('#cliente_id').val();
+        } else{
+            identificacion = $('#clientejuridico_id').val();
+        }
         $.ajax({
-            data: $('#form_cliente_cotizar').serialize(),
-            url:   '<?=base_url()?>cotizacion/verificarIdentificacionCliente',
+            data: {cliente_id :  identificacion},
+            url:   '<?=base_url()?>clientes/existeIdentificacion',
             type:  'post',
             success:  function (response) {
-                if (response == '0') {
-                    alert("<?=label('errorGuardar'); ?>");
-                    $('#agregarCliente .modal-header a').click();
-                } else{
-                    if (response == '2') {
+                switch(response){
+                    case '0':
+                        alert("<?=label('errorGuardar'); ?>");
+                        $('#agregarCliente .modal-header a').click();
+                    break;
+                    case '1':
+                        alert('<?= label("clienteIdentificacionExistente"); ?>');
+                        if (tipoCliente == 0) {
+                            $('#cliente_id').focus();
+                        } else{
+                            $('#clientejuridico_id').focus();
+                        }
+                        break;
+                    case '2':
                         var formulario = $('#form_cliente_cotizar');
                         var url = formulario.attr('action');
                         var method = formulario.attr('method');
@@ -605,6 +661,7 @@
                             data: data,
                             success: function(response)
                             {
+
                                 if (response == 0) {
                                     alert("<?=label('errorGuardar'); ?>");
                                     $('#agregarCliente .modal-header a').click();
@@ -625,11 +682,7 @@
                             contentType: false,
                             processData: false
                         });
-                    } else{
-                        alert("<?=label('persona_error_identificacionExisteEnBD'); ?>");
-                        $('#form_cliente_cotizar #persona_identificacion').focus();
-                        $('#form_cliente_cotizar #personajuridico_identificacion').focus();
-                    }
+                        break;
                 }
             }
         });
@@ -719,7 +772,7 @@
         }
     });
     function datosCliente(opcionSeleccionada) {
-        if (opcionSeleccionada.value == "1") {
+        if (opcionSeleccionada.value == "0") {
             document.getElementById('camposObligatorios_fisico').style.display = 'block';
             document.getElementById('camposObligatorios_juridico').style.display = 'none';
             document.getElementById('campos-cliente-fisico').style.display = 'block';
@@ -1193,14 +1246,14 @@
             <h5 style="float: left;"><?= label('cotizacion_agregarCliente'); ?></h5>
         </div>
         <?php $this->load->helper('form'); ?>
-        <?php echo form_open_multipart(base_url().'cotizacion/insertarCliente',
+        <?php echo form_open_multipart(base_url().'clientes/insertar',
             array('id' => 'form_cliente_cotizar', 'method' => 'POST', 'class' => 'col s12')); ?>
             <div class="row">
                 <!-- Campos obligatorios -->
                 <div id="seleccion_TipoCliente" class="input-field col s12">
                     <select id="cliente_tipo" name="cliente_tipo" onchange="datosCliente(this)">
-                        <option value="1" selected><?= label('formCliente_fisica'); ?></option>
-                        <option value="2"><?= label('formCliente_juridica'); ?></option>
+                        <option value="0" selected><?= label('formCliente_fisica'); ?></option>
+                        <option value="1"><?= label('formCliente_juridica'); ?></option>
                     </select>
                     <label for="cliente_tipo"><?= label('formCliente_tipoPersona'); ?></label>
                 </div>
@@ -1212,8 +1265,8 @@
                 </div>
                 <div id="camposObligatorios_fisico" style="display: block;">
                     <div class="input-field col s12">
-                        <input id="cliente_identificacion" name="cliente_identificacion" type="text">
-                        <label for="cliente_identificacion"><?= label('formCliente_identificacion'); ?></label>
+                        <input id="cliente_id" name="cliente_id" type="text">
+                        <label for="cliente_id"><?= label('formCliente_identificacion'); ?></label>
                     </div>
                     <div>
                         <div class="input-field col s12 m4 l4">
@@ -1244,8 +1297,8 @@
                 </div>
                 <div id="camposObligatorios_juridico" style="display: none;">
                     <div class="input-field col s12">
-                        <input id="clientejuridico_identificacion" name="clientejuridico_identificacion" type="text">
-                        <label for="clientejuridico_identificacion"><?= label('formCliente_identificacionJuridica'); ?></label>
+                        <input id="clientejuridico_id" name="clientejuridico_id" type="text">
+                        <label for="clientejuridico_id"><?= label('formCliente_identificacionJuridica'); ?></label>
                     </div>
                     <div class="input-field col s12">
                         <input id="clientejuridico_nombre" name="clientejuridico_nombre" type="text">

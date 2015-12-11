@@ -312,6 +312,7 @@ class Cotizacion_model extends CI_Model
             $clientes = $this->db->query("SELECT cl.idCliente, cl.nombre, cl.primerApellido, cl.segundoApellido, cl.todosVendedores, mec.valido  FROM cliente as cl left join (SELECT uc.idCliente, 1 as valido FROM usuario_cliente as uc inner join usuario as u on u.idUsuario = uc.idUsuario where u.idUsuario = ".$datos['idUsuario'].") as mec on mec.idCliente = cl.idCliente where cl.eliminado = 0 order by nombre ASC ;");
             if (!$clientes)  throw new Exception("Error en la BD");
             $clientes = $clientes->result_array();
+            // echo print_r($clientes); exit();
             $misClientes = array();
             foreach ($clientes as $row) {
                 $idCliente = $row['idCliente'];
@@ -820,118 +821,134 @@ class Cotizacion_model extends CI_Model
         }
     }
 
-    function clientes($idEmpresa) {
+    function clientes($idUsuario) {
         try{
             $this->db->trans_begin();
 
-            $this->db->select('idCliente, juridico, nombre, CONCAT(nombre, " ", primerApellido, " ", segundoApellido) as nombreFisico', false);
-            $this->db->where(array('idEmpresa' => $idEmpresa, 'eliminado' => 0));
-            $clientes = $this->db->get('cliente');
-            if (!$clientes) {
-                throw new Exception("Error en la BD");
+            // $this->db->select('idCliente, juridico, nombre, CONCAT(nombre, " ", primerApellido, " ", segundoApellido) as nombreFisico', false);
+            // $this->db->where(array('idEmpresa' => $idEmpresa, 'eliminado' => 0));
+            // $clientes = $this->db->get('cliente');
+            // if (!$clientes) {
+            //     throw new Exception("Error en la BD");
+            // }
+            // $resultado = $clientes->result_array();
+
+            $clientes = $this->db->query("SELECT cl.idCliente, cl.nombre, cl.primerApellido, cl.segundoApellido, cl.todosVendedores, mec.valido, cl.juridico  FROM cliente as cl left join (SELECT uc.idCliente, 1 as valido FROM usuario_cliente as uc inner join usuario as u on u.idUsuario = uc.idUsuario where u.idUsuario = ".$idUsuario.") as mec on mec.idCliente = cl.idCliente where cl.eliminado = 0 order by nombre ASC ;");
+            if (!$clientes)  throw new Exception("Error en la BD");
+            $clientes = $clientes->result_array();
+            // echo print_r($clientes); exit();
+            $misClientes = array();
+            foreach ($clientes as $row) {
+                $idCliente = $row['idCliente'];
+                $this->db->select('pc.*');
+                $this->db->from('personacontacto pc');
+                $this->db->where('pc.idCliente', $idCliente);
+                $contactos = $this->db->get();
+                if (!$contactos)  throw new Exception("Error en la BD");
+                $row['contactos'] = $contactos->result_array();
+                array_push($misClientes, $row);
             }
-            $resultado = $clientes->result_array();
 
             $this->db->trans_commit();
-            return $resultado;
+            return $misClientes;
         } catch (Exception $e) {
             $this->db->trans_rollback();
             return false;
         }
     }
-    function verificarIdentificacionCliente($data)
-    {
-        try{
-            $this->db->trans_begin();
-            $existe = 0;
+    // function verificarIdentificacionCliente($data)
+    // {
+    //     try{
+    //         $this->db->trans_begin();
+    //         $existe = 0;
 
-            $query = $this->db->get_where('cliente', $data['datos']);
-            if (!$query) {
-                throw new Exception("Error en la BD");
-            }
-            if ($query->num_rows() > 0) {
-                $existe = 1;
-            }
+    //         $query = $this->db->get_where('cliente', $data['datos']);
+    //         if (!$query) {
+    //             throw new Exception("Error en la BD");
+    //         }
+    //         if ($query->num_rows() > 0) {
+    //             $existe = 1;
+    //         }
 
-            $this->db->trans_commit();
-            return $existe;
-        } catch (Exception $e) {
-            $this->db->trans_rollback();
-            return false;
-        }
-    }
-    function insertarCliente($data)
-    {
-        try{
-            $this->db->trans_begin();
+    //         $this->db->trans_commit();
+    //         return $existe;
+    //     } catch (Exception $e) {
+    //         $this->db->trans_rollback();
+    //         return false;
+    //     }
+    // }
+    // function insertarCliente($data)
+    // {
+    //     try{
+    //         $this->db->trans_begin();
 
-            $query = $this->db->insert('cliente', $data['datos']);
-            if (!$query) throw new Exception("Error en la BD");
-            $insert_id = $this->db->insert_id();
+    //         $query = $this->db->insert('cliente', $data['datos']);
+    //         if (!$query) throw new Exception("Error en la BD");
+    //         $insert_id = $this->db->insert_id();
 
-            if($data['extension'] != '' && $data['extension'] != null) {
-                $nombreFotografia = 'profile_picture_' . $insert_id . '.' . $data['extension'];
-                $this->db->where('idCliente', $insert_id);
-                $query = $this->db->update('cliente', array('fotografia' => $nombreFotografia));
-            }
+    //         if($data['extension'] != '' && $data['extension'] != null) {
+    //             $nombreFotografia = 'profile_picture_' . $insert_id . '.' . $data['extension'];
+    //             $this->db->where('idCliente', $insert_id);
+    //             $query = $this->db->update('cliente', array('fotografia' => $nombreFotografia));
+    //         }
 
-            if ($data['gustos'] != '') {
-                $gustos = explode(",", $data['gustos']); ;
-                foreach ($gustos as $gusto) {
-                    $row = array(
-                        'idCliente' => $insert_id,
-                        'nombre' => $gusto
-                    );
-                    $query = $this->db->insert('gusto', $row);
-                    if (!$query) throw new Exception("Error en la BD");
-                }
-            }
+    //         if ($data['gustos'] != '') {
+    //             $gustos = explode(",", $data['gustos']); ;
+    //             foreach ($gustos as $gusto) {
+    //                 $row = array(
+    //                     'idCliente' => $insert_id,
+    //                     'nombre' => $gusto
+    //                 );
+    //                 $query = $this->db->insert('gusto', $row);
+    //                 if (!$query) throw new Exception("Error en la BD");
+    //             }
+    //         }
 
-            if ($data['medios'] != '') {
-                $medios = explode(",", $data['medios']); ;
-                foreach ($medios as $medio) {
-                    $row = array(
-                        'idCliente' => $insert_id,
-                        'nombre' => $medio
-                    );
-                    $query = $this->db->insert('medio', $row);
-                    if (!$query) throw new Exception("Error en la BD");
-                }
-            }
+    //         if ($data['medios'] != '') {
+    //             $medios = explode(",", $data['medios']); ;
+    //             foreach ($medios as $medio) {
+    //                 $row = array(
+    //                     'idCliente' => $insert_id,
+    //                     'nombre' => $medio
+    //                 );
+    //                 $query = $this->db->insert('medio', $row);
+    //                 if (!$query) throw new Exception("Error en la BD");
+    //             }
+    //         }
 
-            if ($data['vendedores'] != '') {
-                $vendedores = explode(",", $data['vendedores']);
-                foreach ($vendedores as $vendedor) {
-                    $row = array(
-                        'idCliente' => $insert_id,
-                        'idUsuario' => $vendedor
-                    );
-                    $query = $this->db->insert('usuario_cliente', $row);
-                    if (!$query) {
-                        throw new Exception("Error en la BD");
-                    }
-                }
-            }
+    //         if ($data['vendedores'] != '') {
+    //             $vendedores = explode(",", $data['vendedores']);
+    //             foreach ($vendedores as $vendedor) {
+    //                 $row = array(
+    //                     'idCliente' => $insert_id,
+    //                     'idUsuario' => $vendedor
+    //                 );
+    //                 $query = $this->db->insert('usuario_cliente', $row);
+    //                 if (!$query) {
+    //                     throw new Exception("Error en la BD");
+    //                 }
+    //             }
+    //         }
 
-            $contactos = $data['contactos'];
-            // echo print_r($contactos); exit();
-            foreach ($contactos as $contacto) {
-                $contacto['idCliente'] = $insert_id;
-                $query = $this->db->insert('personacontacto', $contacto);
-                if (!$query) throw new Exception("Error en la BD");
-            }
+    //         $contactos = $data['contactos'];
+    //         // echo print_r($contactos); exit();
+    //         foreach ($contactos as $contacto) {
+    //             $contacto['idCliente'] = $insert_id;
+    //             $query = $this->db->insert('personacontacto', $contacto);
+    //             if (!$query) throw new Exception("Error en la BD");
+    //         }
 
-            $pathCliente = 'files/empresas/'.$data['datos']['idEmpresa'].'/clientes/'.$insert_id;
-            if(!is_dir($pathCliente)) {
-                mkdir($pathCliente);
-            }
-            $this->db->trans_commit();
-            return $insert_id;
-        } catch (Exception $e) {
-            $this->db->trans_rollback();
-            return false;
-        }
-    }
+    //         $pathCliente = 'files/empresas/'.$data['datos']['idEmpresa'].'/clientes/'.$insert_id;
+    //         if(!is_dir($pathCliente)) {
+    //             mkdir($pathCliente);
+    //         }
+    //         $this->db->trans_commit();
+    //         return $insert_id;
+    //     } catch (Exception $e) {
+    //         $this->db->trans_rollback();
+    //         return false;
+    //     }
+    // }
 
     function contactos($idCliente) {
         try{

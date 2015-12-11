@@ -620,177 +620,177 @@ class Cotizacion extends CI_Controller
 
     public function clientes() {
         $sessionActual = $this->session->userdata('logged_in');
-        $idEmpresa = $sessionActual['idEmpresa'];
+        $idUsuario = $sessionActual['idUsuario'];
 
-        $resultado = $this->Cotizacion_model->clientes($idEmpresa);
+        $resultado = $this->Cotizacion_model->clientes($idUsuario);
         if ($resultado === false || $resultado === array()) {
             echo 0;
         } else {
             echo json_encode($resultado);
         }
     }
-    public function verificarIdentificacionCliente(){
-        $sessionActual = $this->session->userdata('logged_in');
-        $idEmpresa = $sessionActual['idEmpresa'];
+    // public function verificarIdentificacionCliente(){
+    //     $sessionActual = $this->session->userdata('logged_in');
+    //     $idEmpresa = $sessionActual['idEmpresa'];
 
-        $juridico = $this->input->post('cliente_tipo');
-        if($juridico == 2) {
-            $data['datos'] = array(
-                'idEmpresa' => $idEmpresa,
-                'identificacion' => $this->input->post('clientejuridico_identificacion'),
-                'eliminado' => 0
-            );
-        } else {
-            $data['datos'] = array(
-                'idEmpresa' => $idEmpresa,
-                'identificacion' => $this->input->post('cliente_identificacion'),
-                'eliminado' => 0
-            );
-        }
+    //     $juridico = $this->input->post('cliente_tipo');
+    //     if($juridico == 2) {
+    //         $data['datos'] = array(
+    //             'idEmpresa' => $idEmpresa,
+    //             'identificacion' => $this->input->post('clientejuridico_identificacion'),
+    //             'eliminado' => 0
+    //         );
+    //     } else {
+    //         $data['datos'] = array(
+    //             'idEmpresa' => $idEmpresa,
+    //             'identificacion' => $this->input->post('cliente_identificacion'),
+    //             'eliminado' => 0
+    //         );
+    //     }
 
-        $resultado = $this->Cotizacion_model->verificarIdentificacionCliente($data);
-        if ($resultado === false) {
-            //Error en la transacción
-            echo 0;
-        } else {
-            if ($resultado == 1) {
-                //Ya existe esta identificacion
-                echo 1;
-            } else {
-                //Identificacion Valida
-                echo 2;
-            }
-        }
-    }
-    public function insertarCliente()
-    {
-        $sessionActual = $this->session->userdata('logged_in');
-        $idEmpresa = $sessionActual['idEmpresa'];
+    //     $resultado = $this->Cotizacion_model->verificarIdentificacionCliente($data);
+    //     if ($resultado === false) {
+    //         //Error en la transacción
+    //         echo 0;
+    //     } else {
+    //         if ($resultado == 1) {
+    //             //Ya existe esta identificacion
+    //             echo 1;
+    //         } else {
+    //             //Identificacion Valida
+    //             echo 2;
+    //         }
+    //     }
+    // }
+    // public function insertarCliente()
+    // {
+    //     $sessionActual = $this->session->userdata('logged_in');
+    //     $idEmpresa = $sessionActual['idEmpresa'];
 
-        $todosVendedores = 0;
-        if ($this->input->post('checkbox_todosVendedores')) {
-            $todosVendedores = 1;
-        }
-        $listaVendedores = '';
-        if($todosVendedores == 0) {
-            $listaVendedores = $this->input->post('cliente_vendedores');
-        }
+    //     $todosVendedores = 0;
+    //     if ($this->input->post('checkbox_todosVendedores')) {
+    //         $todosVendedores = 1;
+    //     }
+    //     $listaVendedores = '';
+    //     if($todosVendedores == 0) {
+    //         $listaVendedores = $this->input->post('cliente_vendedores');
+    //     }
 
-        $data['gustos'] = $this->input->post('cliente_gustos');
-        $data['medios'] = $this->input->post('cliente_medios');
-        $data['vendedores'] = $listaVendedores;
+    //     $data['gustos'] = $this->input->post('cliente_gustos');
+    //     $data['medios'] = $this->input->post('cliente_medios');
+    //     $data['vendedores'] = $listaVendedores;
 
-        $juridico = $this->input->post('cliente_tipo');
-        $todosVendedores = 0;
-        if ($this->input->post('checkbox_todosVendedores')) {
-            $todosVendedores = 1;
-        }
-        if ($juridico == 2) {
-            $enviarFacturas = 0;
-            if ($this->input->post('checkbox_correoClientejuridico')) {
-                $enviarFacturas = 1;
-            }
-            $data['datos'] = array(
-                'idEmpresa' => $idEmpresa,
-                'juridico' => $juridico,
-                'identificacion' => $this->input->post('clientejuridico_identificacion'),
-                'nombre' => $this->input->post('clientejuridico_nombre'),
-                'nombreFantasia' => $this->input->post('clientejuridico_nombreFantasia'),
-                'telefonoFijo' =>$this->input->post('clientejuridico_telefono'),
-                'nacionalidad' =>$this->input->post('cliente_nacionalidad'),
-                'pais' =>$this->input->post('cliente_direccionPais'),
-                'estadoProvincia' => $this->input->post('cliente_direccionProvincia'),
-                'ciudadCanton' => $this->input->post('cliente_direccionCanton'),
-                'domicilio' => $this->input->post('cliente_direccionDomicilio'),
-                'enviarFacturas' => $enviarFacturas,
-                'descuentoFijo' => $this->input->post('cliente_descuento'),
-                'correo' => $this->input->post('clientejuridico_correo'),
-                'fax' => $this->input->post('clientejuridico_fax'),
-                'todosVendedores' => $todosVendedores,
-                'idMonedaDefecto' => $this->input->post('cliente_monedaCotizar'),
-                'idFormaPagoDefecto' => $this->input->post('cliente_formaPago'),
-                'activo' => '1',
-                'eliminado' => '0'
-            );
-        } else {
-            $enviarFacturas = 0;
-            if ($this->input->post('checkbox_correoCliente')) {
-                $enviarFacturas = 1;
-            }
-            $data['datos'] = array(
-                'idEmpresa' => $idEmpresa,
-                'juridico' => $juridico,
-                'identificacion' => $this->input->post('cliente_identificacion'),
-                'nombre' => $this->input->post('cliente_nombre'),
-                'primerApellido' => $this->input->post('cliente_apellido1'),
-                'segundoApellido' => $this->input->post('cliente_apellido2'),
-                'telefonoMovil' => $this->input->post('cliente_telefonoMovil'),
-                'telefonoFijo' => $this->input->post('cliente_telefono'),
-                'nacionalidad' => $this->input->post('cliente_nacionalidad'),
-                'pais' => $this->input->post('cliente_direccionPais'),
-                'estadoProvincia' => $this->input->post('cliente_direccionProvincia'),
-                'ciudadCanton' => $this->input->post('cliente_direccionCanton'),
-                'domicilio' => $this->input->post('cliente_direccionDomicilio'),
-                'enviarFacturas' => $enviarFacturas,
-                'descuentoFijo' => $this->input->post('cliente_descuento'),
-                'fechaNacimiento' => date("Y-m-d", strtotime($this->input->post('cliente_fechaNacimiento'))),
-                'correo' => $this->input->post('cliente_correo'),
-                'todosVendedores' => $todosVendedores,
-                'idMonedaDefecto' => $this->input->post('cliente_monedaCotizar'),
-                'idFormaPagoDefecto' => $this->input->post('cliente_formaPago'),
-                'activo' => '1',
-                'eliminado' => '0'
-            );
-        }
+    //     $juridico = $this->input->post('cliente_tipo');
+    //     $todosVendedores = 0;
+    //     if ($this->input->post('checkbox_todosVendedores')) {
+    //         $todosVendedores = 1;
+    //     }
+    //     if ($juridico == 2) {
+    //         $enviarFacturas = 0;
+    //         if ($this->input->post('checkbox_correoClientejuridico')) {
+    //             $enviarFacturas = 1;
+    //         }
+    //         $data['datos'] = array(
+    //             'idEmpresa' => $idEmpresa,
+    //             'juridico' => $juridico,
+    //             'identificacion' => $this->input->post('clientejuridico_identificacion'),
+    //             'nombre' => $this->input->post('clientejuridico_nombre'),
+    //             'nombreFantasia' => $this->input->post('clientejuridico_nombreFantasia'),
+    //             'telefonoFijo' =>$this->input->post('clientejuridico_telefono'),
+    //             'nacionalidad' =>$this->input->post('cliente_nacionalidad'),
+    //             'pais' =>$this->input->post('cliente_direccionPais'),
+    //             'estadoProvincia' => $this->input->post('cliente_direccionProvincia'),
+    //             'ciudadCanton' => $this->input->post('cliente_direccionCanton'),
+    //             'domicilio' => $this->input->post('cliente_direccionDomicilio'),
+    //             'enviarFacturas' => $enviarFacturas,
+    //             'descuentoFijo' => $this->input->post('cliente_descuento'),
+    //             'correo' => $this->input->post('clientejuridico_correo'),
+    //             'fax' => $this->input->post('clientejuridico_fax'),
+    //             'todosVendedores' => $todosVendedores,
+    //             'idMonedaDefecto' => $this->input->post('cliente_monedaCotizar'),
+    //             'idFormaPagoDefecto' => $this->input->post('cliente_formaPago'),
+    //             'activo' => '1',
+    //             'eliminado' => '0'
+    //         );
+    //     } else {
+    //         $enviarFacturas = 0;
+    //         if ($this->input->post('checkbox_correoCliente')) {
+    //             $enviarFacturas = 1;
+    //         }
+    //         $data['datos'] = array(
+    //             'idEmpresa' => $idEmpresa,
+    //             'juridico' => $juridico,
+    //             'identificacion' => $this->input->post('cliente_identificacion'),
+    //             'nombre' => $this->input->post('cliente_nombre'),
+    //             'primerApellido' => $this->input->post('cliente_apellido1'),
+    //             'segundoApellido' => $this->input->post('cliente_apellido2'),
+    //             'telefonoMovil' => $this->input->post('cliente_telefonoMovil'),
+    //             'telefonoFijo' => $this->input->post('cliente_telefono'),
+    //             'nacionalidad' => $this->input->post('cliente_nacionalidad'),
+    //             'pais' => $this->input->post('cliente_direccionPais'),
+    //             'estadoProvincia' => $this->input->post('cliente_direccionProvincia'),
+    //             'ciudadCanton' => $this->input->post('cliente_direccionCanton'),
+    //             'domicilio' => $this->input->post('cliente_direccionDomicilio'),
+    //             'enviarFacturas' => $enviarFacturas,
+    //             'descuentoFijo' => $this->input->post('cliente_descuento'),
+    //             'fechaNacimiento' => date("Y-m-d", strtotime($this->input->post('cliente_fechaNacimiento'))),
+    //             'correo' => $this->input->post('cliente_correo'),
+    //             'todosVendedores' => $todosVendedores,
+    //             'idMonedaDefecto' => $this->input->post('cliente_monedaCotizar'),
+    //             'idFormaPagoDefecto' => $this->input->post('cliente_formaPago'),
+    //             'activo' => '1',
+    //             'eliminado' => '0'
+    //         );
+    //     }
 
-        $contactos = array();
-        $contador = 0;
-        $contactosObtenidos = 0;
-        $cantidadContactos = $this->input->post('cantidadContactos');
-        while ($contactosObtenidos < $cantidadContactos) {
-            if (isset($_POST['contacto_'.$contador])) {
-                $enviarFacturas = 0;
-                if ($this->input->post('checkbox_contactoCorreoCliente_'.$contador)) {
-                    $enviarFacturas = 1;
-                }
-                $contacto = array(
-                    'nombre' => $this->input->post('cliente_contactoNombre_'.$contador),
-                    'primerApellido' => $this->input->post('cliente_contactoApellido1_'.$contador),
-                    'segundoApellido' => $this->input->post('cliente_contactoApellido2_'.$contador),
-                    'correo' => $this->input->post('cliente_contactoCorreo_'.$contador),
-                    'telefono' => $this->input->post('cliente_contactoTelefono_'.$contador),
-                    'puesto' => $this->input->post('cliente_contactoPuesto_'.$contador),
-                    'enviarFacturas' => $enviarFacturas,
-                    'eliminado' => '0'
-                );
-                array_push($contactos, $contacto);
-                $contactosObtenidos++;
-            }
-            $contador++;
-        }
-        $data['contactos'] = $contactos;
+    //     $contactos = array();
+    //     $contador = 0;
+    //     $contactosObtenidos = 0;
+    //     $cantidadContactos = $this->input->post('cantidadContactos');
+    //     while ($contactosObtenidos < $cantidadContactos) {
+    //         if (isset($_POST['contacto_'.$contador])) {
+    //             $enviarFacturas = 0;
+    //             if ($this->input->post('checkbox_contactoCorreoCliente_'.$contador)) {
+    //                 $enviarFacturas = 1;
+    //             }
+    //             $contacto = array(
+    //                 'nombre' => $this->input->post('cliente_contactoNombre_'.$contador),
+    //                 'primerApellido' => $this->input->post('cliente_contactoApellido1_'.$contador),
+    //                 'segundoApellido' => $this->input->post('cliente_contactoApellido2_'.$contador),
+    //                 'correo' => $this->input->post('cliente_contactoCorreo_'.$contador),
+    //                 'telefono' => $this->input->post('cliente_contactoTelefono_'.$contador),
+    //                 'puesto' => $this->input->post('cliente_contactoPuesto_'.$contador),
+    //                 'enviarFacturas' => $enviarFacturas,
+    //                 'eliminado' => '0'
+    //             );
+    //             array_push($contactos, $contacto);
+    //             $contactosObtenidos++;
+    //         }
+    //         $contador++;
+    //     }
+    //     $data['contactos'] = $contactos;
 
-        $photo = explode('.',$this->input->post('cliente_fotografia'));
-        $data['extension'] = end($photo);
+    //     $photo = explode('.',$this->input->post('cliente_fotografia'));
+    //     $data['extension'] = end($photo);
 
-        $cliente = $this->Cotizacion_model->insertarCliente($data);
-        if (!$cliente) {
-            //Error en la transacción
-            echo 0;
-        } else {
-            $config['upload_path'] = './files/empresas/'.$idEmpresa.'/clientes/'.$cliente;
-            $config['file_name'] = 'profile_picture_'.$cliente.'.'.$data['extension'];
-            $config['allowed_types'] = 'jpg|png|jpeg';
-            $config['max_size'] = '2048';
+    //     $cliente = $this->Cotizacion_model->insertarCliente($data);
+    //     if (!$cliente) {
+    //         //Error en la transacción
+    //         echo 0;
+    //     } else {
+    //         $config['upload_path'] = './files/empresas/'.$idEmpresa.'/clientes/'.$cliente;
+    //         $config['file_name'] = 'profile_picture_'.$cliente.'.'.$data['extension'];
+    //         $config['allowed_types'] = 'jpg|png|jpeg';
+    //         $config['max_size'] = '2048';
 
-            $this->load->library('upload', $config);
-            if(!$this->upload->do_upload('userfile')) {
-            }
+    //         $this->load->library('upload', $config);
+    //         if(!$this->upload->do_upload('userfile')) {
+    //         }
 
-            // correcto
-            echo $cliente;
-        }
-    }
+    //         // correcto
+    //         echo $cliente;
+    //     }
+    // }
 
     public function contactos() {
         $idCliente = $_POST['idCliente'];
