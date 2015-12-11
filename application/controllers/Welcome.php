@@ -82,9 +82,10 @@ class Welcome extends CI_Controller
 
     public function registro()
     {
-        $this->load->view('home/header_2');
-        $this->load->view('home/registro');
-        $this->load->view('home/footer_2');
+//        $this->load->view('home/header_2');
+//        $this->load->view('home/registro');
+//        $this->load->view('home/footer_2');
+        redirect('registro/index');
     }
 
 }

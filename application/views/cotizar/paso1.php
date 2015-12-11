@@ -137,8 +137,6 @@
                 $('#paso1_tipoCambio').val(arrayCotizacion['tipoCambio']);
                 $('#paso1_validez').val('<?=date("d-m-Y", strtotime($resultado['cotizacion']['fechaValidez']))?>');
 
-                
-
                 // var date = new Date(arrayCotizacion['fechaValidez']);
                 // var fecha = (date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear();
                 // $('#paso1_validez').val(fecha);
@@ -202,13 +200,16 @@
     });
     var idEditar = 0;
     function actualizarSelects() {
+        var idOpcionCliente = arrayCotizacion['idCliente'];
+        var idOpcionFormaPago = arrayCotizacion['idFormaPago'];
+        var idOpcionMoneda = arrayCotizacion['idMoneda'];
         $.ajax({
             type: 'POST',
             url: '<?= base_url(); ?>cotizacion/tiposMoneda',
             data: {  },
             success: function(response)
             {
-                generarAutocompletarMoneda($.parseJSON(response), 0);
+                generarAutocompletarMoneda($.parseJSON(response), idOpcionMoneda);
             }
         });
         $.ajax({
@@ -217,7 +218,7 @@
             data: {  },
             success: function(response)
             {
-                generarAutocompletarFormaPago($.parseJSON(response), 0);
+                generarAutocompletarFormaPago($.parseJSON(response), idOpcionFormaPago);
             }
         });
         $.ajax({
@@ -226,7 +227,7 @@
             data: {  },
             success: function(response)
             {
-                generarAutocompletarClientes($.parseJSON(response), 0);
+                generarAutocompletarClientes($.parseJSON(response), idOpcionCliente);
                 generarListas();
             }
         });

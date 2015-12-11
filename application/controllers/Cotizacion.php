@@ -210,7 +210,8 @@ class Cotizacion extends CI_Controller
         // $data['idUsuario'] = $sessionActual['idUsuario'];
         $data['idCotizacion'] = decryptIt($idCotizacion);
 
-        $resultado = $this->Cotizacion_model->cargar($data); 
+        $resultado = $this->Cotizacion_model->cargar($data);
+
         if ($resultado === false) {
             echo "Error en la transacción";
         } else {
