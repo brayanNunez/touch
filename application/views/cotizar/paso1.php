@@ -120,6 +120,16 @@
     <a id="linkNuevoCliente" href="#agregarCliente" class="modal-trigger"></a>
 </div>
 
+<script>
+    $(document).on('ready', function(){
+        var config = {'.chosen-select'           : {}}
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+
+    });
+</script>
+
 <!--Script para manejo de datos de cotizacion_editar y valores precargados (codigo) -->
 <script>
     var arrayCotizacion = [];
@@ -139,9 +149,11 @@
                 $('#paso1_numero').val(arrayCotizacion['numero']);
                 $('#paso1Cliente option[value='+ arrayCotizacion['idCliente'] +']').prop('selected', true);
                 if(arrayCotizacion['idCliente'] != null){
-                    cargarAtencion(arrayCotizacion['idCliente']);
+                    // alert(arrayCotizacion['idCliente']);
+                    actualizarSelectContactos(arrayCotizacion['idCliente'], arrayCotizacion['idPersonaContacto']);
+                    // cargarAtencion(arrayCotizacion['idCliente']);
                 }
-                $('#paso1Atencion option[value='+ arrayCotizacion['idPersonaContacto'] +']').prop('selected', true);
+                // $('#paso1Atencion option[value='+ arrayCotizacion['idPersonaContacto'] +']').prop('selected', true);
                 $('#paso1FormaPago option[value='+ arrayCotizacion['idFormaPago'] +']').prop('selected', true);
                 $('#paso1Moneda option[value='+ arrayCotizacion['idMoneda'] +']').prop('selected', true);
                 $('#paso1_tipoCambio').val(arrayCotizacion['tipoCambio']);
@@ -173,38 +185,26 @@
     }
 
 
-    function cargarAtencion(idCliente){
-        $('#paso1Atencion').empty(); //remove all child nodes
-        $('#paso1Atencion').removeAttr('disabled');
-        $('#paso1Atencion').append($('<option value="0" disabled selected style="display:none;"><?= label("paso1_elegirAtencion"); ?></option>'));
-        $('#paso1Atencion').append($('<option value="nuevo"><?= label("agregarNuevo"); ?></option>'));
-        // $('#paso1Atencion').append($('<option value="todas"><?= label("formServicio_fases_agregarTodas"); ?></option>'));
-        for (var i = 0; i < arrayClientes.length; i++) {
-            if (arrayClientes[i]['idCliente'] == idCliente) {
-                for (var j = 0; j < arrayClientes[i]['contactos'].length; j++) {
-                    var contacto = arrayClientes[i]['contactos'][j];
-                    var newOption = $('<option value="'+contacto['idCliente']+'">'+contacto['nombre'] + ' ' + contacto['primerApellido'] + ' ' + contacto['segundoApellido']+'</option>');
-                    $('#paso1Atencion').append(newOption);
-                }
-            } 
-        };
+    // function cargarAtencion(idCliente){
+    //     $('#paso1Atencion').empty(); //remove all child nodes
+    //     $('#paso1Atencion').removeAttr('disabled');
+    //     $('#paso1Atencion').append($('<option value="0" disabled selected style="display:none;"><?= label("paso1_elegirAtencion"); ?></option>'));
+    //     $('#paso1Atencion').append($('<option value="nuevo"><?= label("agregarNuevo"); ?></option>'));
+    //     // $('#paso1Atencion').append($('<option value="todas"><?= label("formServicio_fases_agregarTodas"); ?></option>'));
+    //     for (var i = 0; i < arrayClientes.length; i++) {
+    //         if (arrayClientes[i]['idCliente'] == idCliente) {
+    //             for (var j = 0; j < arrayClientes[i]['contactos'].length; j++) {
+    //                 var contacto = arrayClientes[i]['contactos'][j];
+    //                 var newOption = $('<option value="'+contacto['idCliente']+'">'+contacto['nombre'] + ' ' + contacto['primerApellido'] + ' ' + contacto['segundoApellido']+'</option>');
+    //                 $('#paso1Atencion').append(newOption);
+    //             }
+    //         } 
+    //     };
 
-        $('#paso1Atencion').trigger("chosen:updated");
+    //     $('#paso1Atencion').trigger("chosen:updated");
 
-    }
-</script>
-<!--Script para select de busqueda-->
-<script>
-    $(document).on('ready', function(){
-        var config = {'.chosen-select'           : {}}
-        for (var selector in config) {
-            $(selector).chosen(config[selector]);
-        }
+    // }
 
-    });
-</script>
-<!--Script para gastos, formas de pago, categorias de gasto y selects de busqueda-->
-<script>
     // $(document).ready(function () {
     //     // actualizarSelects();
     // });
@@ -293,28 +293,28 @@
         });
     }
 
-    function botonEnLista_2(tipo, idBoton, nuevoElementoAgregar){
-        if (tipo == "paso1Cliente") {
-            $('#cliente_nombre').val(nuevoElementoAgregar);
-            $('#linkNuevoCliente').click();
-            $('#cliente_nombre').focus();
-        }
-        if (tipo == "paso1FormaPago") {
-            $('#formaPago_nombre').val(nuevoElementoAgregar);
-            $('#linkNuevaFormaPago').click();
-            $('#formaPago_nombre').focus();
-        }
-        if (tipo == "paso1Moneda") {
-            $('#tipoMoneda_nombre').val(nuevoElementoAgregar);
-            $('#linkNuevaMoneda').click();
-            $('#tipoMoneda_nombre').focus();
-        }
-        if (tipo == "paso1Atencion") {
-            $('#cliente_contactoNombre').val(nuevoElementoAgregar);
-            $('#linkNuevaAtencion').click();
-            $('#cliente_contactoNombre').focus();
-        }
-    }
+    // function botonEnLista_2(tipo, idBoton, nuevoElementoAgregar){
+    //     if (tipo == "paso1Cliente") {
+    //         $('#cliente_nombre').val(nuevoElementoAgregar);
+    //         $('#linkNuevoCliente').click();
+    //         $('#cliente_nombre').focus();
+    //     }
+    //     if (tipo == "paso1FormaPago") {
+    //         $('#formaPago_nombre').val(nuevoElementoAgregar);
+    //         $('#linkNuevaFormaPago').click();
+    //         $('#formaPago_nombre').focus();
+    //     }
+    //     if (tipo == "paso1Moneda") {
+    //         $('#tipoMoneda_nombre').val(nuevoElementoAgregar);
+    //         $('#linkNuevaMoneda').click();
+    //         $('#tipoMoneda_nombre').focus();
+    //     }
+    //     if (tipo == "paso1Atencion") {
+    //         $('#cliente_contactoNombre').val(nuevoElementoAgregar);
+    //         $('#linkNuevaAtencion').click();
+    //         $('#cliente_contactoNombre').focus();
+    //     }
+    // }
 
     function generarAutocompletarMoneda($array, $id){
         var miSelect = $('#paso1Moneda');
