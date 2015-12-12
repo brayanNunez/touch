@@ -847,7 +847,7 @@ echo "var arrayFases =". $js_array.";";
                                     case '0':
                                         $('#linkModalError').click();
                                         break;
-                                    case '1':
+                                    default:
                                         $('#linkModalGuardado').click();
                                         $('form')[0].reset();
                                         $('#servicio_impuestos').tagsinput('removeAll');

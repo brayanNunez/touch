@@ -138,7 +138,7 @@ class Servicios extends CI_Controller
             //Error en la transaccion
             echo 0;
         } else {
-            echo 1;
+            echo $servicio;
         }
     }
 

@@ -707,10 +707,10 @@ $(document).on('ready', function(){
             </div>
 
             <div class="row" style="margin-bottom: 25px;margin-top: 30px;">
-                <a onclick="$(this).closest('form').submit()" id="guardarCerrarMoneda" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                <a onclick="$(this).closest('form').submit()" id="guardarCerrarServicio" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
                     <?= label('guardarCerrar'); ?>
                 </a>
-                <a onclick="$(this).closest('form').submit()" id="guardarOtroMoneda" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                <a onclick="$(this).closest('form').submit()" id="guardarOtroServicio" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
                     <?= label('guardarAgregarOtro'); ?>
                 </a>
             </div>
@@ -1307,6 +1307,16 @@ $(document).on('ready', function(){
         }
     });
 
+    var cerrarModalServicio = false;
+    $(document).on('ready', function(){
+        $('#guardarOtroServicio').on('click', function(){
+            cerrarModalServicio = false;
+        });
+        $('#guardarCerrarServicio').on('click', function(){
+            cerrarModalServicio = true;
+        });
+    });
+
     function validacionCorrecta_ServiciosCotizacion(){
         $.ajax({
             data: {servicio_codigo :  $('#servicio_codigo').val()},
@@ -1337,9 +1347,9 @@ $(document).on('ready', function(){
                                         alert("<?=label('errorGuardar'); ?>");
                                         $('#agregarServicio .modal-header a').click();
                                         break;
-                                    case '1':
+                                    default:
                                         alert("<?=label('cotizacion_servicioGuardadoCorrectamente'); ?>");
-                                        $('#agregarServicio .modal-header a').click();
+                                        
 
                                         formulario[0].reset();
                                         $('#servicio_impuestos').tagsinput('removeAll');
@@ -1355,6 +1365,10 @@ $(document).on('ready', function(){
                                         $gastos.css('display', 'none');
 
                                         limpiarTablaGastos();
+                                        if (cerrarModalServicio) {
+                                            $('#agregarServicio .modal-header a').click();   
+                                        }
+                                        
                                         break;
                                 }
                             }

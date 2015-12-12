@@ -76,7 +76,7 @@ class Servicio_model extends CI_Model
 
             $this->db->trans_commit();
 
-            return true;
+            return $insert_id;
         } catch (Exception $e) {
             $this->db->trans_rollback();
             return false;
