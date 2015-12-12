@@ -1263,6 +1263,35 @@ echo "var arrayFases =". $js_array.";";
             }
         });
     }
+    function horasServicio() {
+        var tiempoServicio = parseFloat($('#cantidadTotal').val());
+        var tipoTiempo = $('#servicioTiempo').val();
+        if(tipoTiempo == null) {
+            var valorTipo = '<?php if(isset($resultado)) { echo $resultado["idTiempo"]; } ?>';
+            if(valorTipo != '') {
+                tipoTiempo = valorTipo;
+            }
+        }
+        var cantidadHoras = 0;
+        switch (tipoTiempo) {
+            case '1':
+                cantidadHoras = tiempoServicio;
+                break;
+            case '2':
+                cantidadHoras = tiempoServicio * 24;
+                break;
+            case '3':
+                cantidadHoras = tiempoServicio * 168;
+                break;
+            case '4':
+                cantidadHoras = tiempoServicio * 730.001;
+                break;
+            case '5':
+                cantidadHoras = tiempoServicio * 8760;
+                break;
+        }
+        return cantidadHoras;
+    }
 
     function calcularPrecio() {
         gastosFijosAnuales();
@@ -1270,7 +1299,7 @@ echo "var arrayFases =". $js_array.";";
         var totalGastos = totalGastosFijosAnuales + totalGastosVariables;
 
         var costoHora = totalGastos / totalHorasLaborales;
-        var cantidadHoras = parseFloat($('#cantidadTotal').val());
+        var cantidadHoras = horasServicio();
         var margenUtilidad = parseFloat($('#servicio_utilidad').val()) / 100;
 
         var precioServicio = (cantidadHoras * costoHora) / (1 - margenUtilidad);
@@ -1280,6 +1309,9 @@ echo "var arrayFases =". $js_array.";";
     }
 
     $(document).on('change', '#servicio_utilidad', function () {
+        calcularPrecio();
+    });
+    $(document).on('change', '#servicioTiempo', function () {
         calcularPrecio();
     });
 </script>
