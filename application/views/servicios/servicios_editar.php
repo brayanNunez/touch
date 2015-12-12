@@ -324,7 +324,7 @@
                                         </div>  
                                         <!-- </div> -->
                                         <div class="input-field col offset-s6 s6">
-                                            <input id="servicio_utilidad" name="servicio_utilidad" type="number" value="<?= $utilidad; ?>">
+                                            <input id="servicio_utilidad" name="servicio_utilidad" type="number" value="<?= $utilidad; ?>" min="0">
                                             <label for="servicio_utilidad"><?= label('formServicio_utilidad'); ?>
                                             </label>
                                         </div>
@@ -525,7 +525,7 @@
     });
     function actualizarMontos() {
         var elementos = $('.total_gastos_variables');
-        var totalGastos = 0;//parseInt(elementos.first().text());
+        var gastosVariablesServicios = 0;//parseInt(elementos.first().text());
         $('.input_cantidad_gasto').each(function () {
             var padre = $(this).parents('tr');
             var monto = padre.find('td input.input_monto_gasto').first().val();
@@ -533,11 +533,14 @@
             var subtotal = padre.find('td span.subtotal_fila').first();
             var resultado = monto * cantidad;
             subtotal.text(resultado);
-            totalGastos += resultado;
+            gastosVariablesServicios += resultado;
         });
         elementos.each(function () {
-            $(this).text(totalGastos);
+            $(this).text(gastosVariablesServicios);
         });
+        totalGastosVariables = gastosVariablesServicios;
+
+        calcularPrecio();
     }
 </script>
 <!--Script para manejo de gastos-->
@@ -974,18 +977,29 @@ echo "var arrayFases =". $js_array.";";
             // alert('#'+grupo);
             $('#'+grupo).text(sumatoria);
             calcularTotal();
+
+            calcularPrecio();
         });
 
-        function calcularTotal(){
-            // alert('entre mec');
-            var sumatoria = 0;
-            $('.cantidad').each(function(){
-                sumatoria += parseInt($(this).val());
-            });
-            $('#cantidadTotal').val(sumatoria);
-        }
+//        function calcularTotal(){
+//            // alert('entre mec');
+//            var sumatoria = 0;
+//            $('.cantidad').each(function(){
+//                sumatoria += parseInt($(this).val());
+//            });
+//            $('#cantidadTotal').val(sumatoria);
+//
+//            alert($('#cantidadTotal').val());
+//        }
     });
-
+    function calcularTotal(){
+        // alert('entre mec');
+        var sumatoria = 0;
+        $('.cantidad').each(function(){
+            sumatoria += parseInt($(this).val());
+        });
+        $('#cantidadTotal').val(sumatoria);
+    }
     function validacionCorrecta_Servicios(){
         var codigoActual = '<?= $codigo; ?>';
         var codigoNuevo = $('#servicio_codigo').val();
@@ -1165,6 +1179,108 @@ echo "var arrayFases =". $js_array.";";
                 }
             }
         });
+    });
+</script>
+<!--Script para calcular precio servicio-->
+<script type="text/javascript">
+    var totalGastosFijosAnuales = 0;
+    var totalHorasLaborales = 0;
+    $(document).ready(function (event) {
+        calcularTotal();
+        calcularPrecio();
+    });
+
+    function gastosFijosAnuales() {
+        $.ajax({
+            type: 'POST',
+            url: '<?= base_url(); ?>gastos/gastosFijos',
+            data: {  },
+            async: false,
+            success: function(response)
+            {
+                var $arrayGastosFijos = $.parseJSON(response);
+
+                var totalGastosFijos = 0;
+                for(var i = 0; i < $arrayGastosFijos.length; i++) {
+                    var gastoFijo = $arrayGastosFijos[i];
+                    var monto = 0;
+                    switch (gastoFijo['formaPago']) {
+                        case '1':
+                            monto = parseFloat(gastoFijo['monto']) * 8760;
+                            break;
+                        case '2':
+                            monto = parseFloat(gastoFijo['monto']) * 365;
+                            break;
+                        case '3':
+                            monto = parseFloat(gastoFijo['monto']) * 52.1429;
+                            break;
+                        case '4':
+                            monto = parseFloat(gastoFijo['monto']) * 12;
+                            break;
+                        case '5':
+                            monto = parseFloat(gastoFijo['monto']);
+                            break;
+                    }
+                    totalGastosFijos += monto;
+                }
+                totalGastosFijosAnuales = totalGastosFijos;
+            }
+        });
+    }
+    function horasLaborales() {
+        $.ajax({
+            type: 'post',
+            url: '<?= base_url(); ?>horas/cargarDatos',
+            data: {  },
+            async: false,
+            success: function(response)
+            {
+                if(response != 'null') {
+                    var datosHoras = $.parseJSON(response);
+
+                    var diasAnno = 365;
+                    var finesSemana = parseFloat(datosHoras['finesSemana']);
+                    var festivosObligatorios = parseFloat(datosHoras['festivosObligatorios']);
+                    var incluirNoObligatorios = datosHoras['incluirNoObligatorios'];
+                    var festivosNoObligatorios = parseFloat(datosHoras['festivosNoObligatorios']);
+                    var vacaciones = parseFloat(datosHoras['vacaciones']);
+                    var promedioBajas = parseFloat(datosHoras['promedioBajas']);
+                    var promedioHorasDiarias = parseFloat(datosHoras['promedioHorasDiarias']);
+                    var cantidadManoObra = parseFloat(datosHoras['cantidadManoObra']);
+
+                    var diasNoFacturables = finesSemana + festivosObligatorios + vacaciones + promedioBajas;
+                    if(incluirNoObligatorios == 1) {
+                        diasNoFacturables += festivosNoObligatorios;
+                    }
+                    var diasFacturables = (diasAnno - diasNoFacturables).toFixed(2);
+                    var totalHorasAnual = (diasFacturables * promedioHorasDiarias * cantidadManoObra).toFixed(2);
+                    var promedioHorasMensual = ((diasFacturables / 12) * promedioHorasDiarias * cantidadManoObra).toFixed(2);
+
+                    totalHorasLaborales = totalHorasAnual;
+                } else {
+                    totalHorasLaborales = 0;
+                }
+            }
+        });
+    }
+
+    function calcularPrecio() {
+        gastosFijosAnuales();
+        horasLaborales();
+        var totalGastos = totalGastosFijosAnuales + totalGastosVariables;
+
+        var costoHora = totalGastos / totalHorasLaborales;
+        var cantidadHoras = parseFloat($('#cantidadTotal').val());
+        var margenUtilidad = parseFloat($('#servicio_utilidad').val()) / 100;
+
+        var precioServicio = (cantidadHoras * costoHora) / (1 - margenUtilidad);
+        precioServicio = precioServicio.toFixed(2);
+
+        $('#servicio_total').val(precioServicio);
+    }
+
+    $(document).on('change', '#servicio_utilidad', function () {
+        calcularPrecio();
     });
 </script>
 

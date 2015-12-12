@@ -994,16 +994,13 @@ echo "var arrayFases =". $js_array.";";
 <script type="text/javascript">
     var totalGastosFijosAnuales = 0;
     var totalHorasLaborales = 0;
-    $(document).ready(function () {
-        gastosFijosAnuales();
-        horasLaborales();
-    });
 
     function gastosFijosAnuales() {
         $.ajax({
             type: 'POST',
             url: '<?= base_url(); ?>gastos/gastosFijos',
             data: {  },
+            async: false,
             success: function(response)
             {
                 var $arrayGastosFijos = $.parseJSON(response);
@@ -1041,6 +1038,7 @@ echo "var arrayFases =". $js_array.";";
             type: 'post',
             url: '<?= base_url(); ?>horas/cargarDatos',
             data: {  },
+            async: false,
             success: function(response)
             {
                 if(response != 'null') {
