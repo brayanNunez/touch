@@ -508,7 +508,7 @@ $(document).on('ready', function(){
         <div class="row">
             <h5 style="float: left;">Agregar servicio</h5>
         </div>
-        <form id="form_servicio_cotizar" action="<?= base_url(); ?>cotizacion/insertarServicio" method="POST" class="col s12">
+        <form id="form_servicio_cotizar" action="<?= base_url(); ?>servicios/insertar" method="POST" class="col s12">
             <div class="input-field col s12">
                 <input id="servicio_codigo" name="servicio_codigo" type="text">
                 <label for="servicio_codigo"><?= label('formServicio_codigo'); ?></label>
@@ -1310,7 +1310,7 @@ $(document).on('ready', function(){
     function validacionCorrecta_ServiciosCotizacion(){
         $.ajax({
             data: {servicio_codigo :  $('#servicio_codigo').val()},
-            url:   '<?=base_url()?>cotizacion/verificarCodigoServicio',
+            url:   '<?=base_url()?>servicios/existeCodigo',
             type:  'post',
             success:  function (response) {
                 switch(response){
