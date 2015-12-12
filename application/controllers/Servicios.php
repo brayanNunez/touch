@@ -25,6 +25,18 @@ class Servicios extends CI_Controller
         $this->load->view('layout/default/footer');
     }
 
+    public function servicios() {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $resultado = $this->Servicio_model->servicios($idEmpresa);
+        if ($resultado === false || $resultado === array()) {
+            echo 0;
+        } else {
+            echo json_encode($resultado);
+        }
+    }
+
     public function agregar()
     {
         verificarLogin();//helper

@@ -161,6 +161,7 @@ $(document).ready(function(){
 
 
     function cargarFila(idServicio, numeroFila){
+        // alert(idServicio + ', ' + numeroFila);
         for (var i = arrayServicios.length - 1; i >= 0; i--) {
             var servicio = arrayServicios[i];
             if (servicio['idServicio'] == idServicio) {
@@ -1317,6 +1318,12 @@ $(document).on('ready', function(){
         });
     });
 
+
+    var idSelectAgregarNuevo = 0;
+    function actualizarSelectSeleccionado(select){
+        idSelectAgregarNuevo = select;
+    }
+
     function validacionCorrecta_ServiciosCotizacion(){
         $.ajax({
             data: {servicio_codigo :  $('#servicio_codigo').val()},
@@ -1348,6 +1355,8 @@ $(document).on('ready', function(){
                                         $('#agregarServicio .modal-header a').click();
                                         break;
                                     default:
+                                        // alert(response + ', ' + idSelectAgregarNuevo);
+                                        actualizarSelectServicios(response, idSelectAgregarNuevo);
                                         alert("<?=label('cotizacion_servicioGuardadoCorrectamente'); ?>");
                                         
 
@@ -1365,6 +1374,7 @@ $(document).on('ready', function(){
                                         $gastos.css('display', 'none');
 
                                         limpiarTablaGastos();
+
                                         if (cerrarModalServicio) {
                                             $('#agregarServicio .modal-header a').click();   
                                         }
@@ -1377,6 +1387,71 @@ $(document).on('ready', function(){
                 }
             }
         });
+    }
+
+    function actualizarSelectServicios($idServicio, selectSeleccionado) {
+        // alert($idServicio + ' ' + selectSeleccionado);
+        $.ajax({
+            type: 'POST',
+            url: '<?= base_url(); ?>servicios/servicios',
+            data: {  },
+            success: function(response)
+            { 
+                // alert('hola');
+                arrayServicios = $.parseJSON(response);
+                generarAutocompletarServicios($.parseJSON(response), $idServicio, selectSeleccionado);
+                generarListas();
+            }
+        });
+    }
+
+    function generarAutocompletarServicios($array, $idServicio, selectSeleccionado){
+        var miSelect = $('.nombreServicio');
+        var numeroFilaNuevo = 0;
+        miSelect.each(function(){
+            var select = $(this);
+            var valorActual = $(this).val();
+            var numeroFilaSelect = $(this).attr('data-fila');
+            var selectNombre = $('#productoNombre_' + numeroFilaSelect);
+            var selectItem = $('#productoItem_' + numeroFilaSelect);
+
+            selectNombre.empty();
+            selectNombre.append('<option value="0" disabled selected style="display:none;"><?= label("paso2_elegirProductoNombre"); ?></option>');
+            selectNombre.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+
+            selectItem.empty();
+            selectItem.append('<option value="0" disabled selected style="display:none;"><?= label("paso2_elegirProductoItem"); ?></option>');
+            selectItem.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+
+            for(var i = 0; i < $array.length; i++) {
+                var servicio = $array[i];
+                if(servicio != null) {
+
+                    if (selectNombre.attr('id') == selectSeleccionado || selectItem.attr('id') == selectSeleccionado) {
+                        if(servicio['idServicio'] == $idServicio) {
+                            numeroFilaNuevo = numeroFilaSelect;
+                            selectNombre.append('<option value="' + servicio['idServicio'] + '" selected>' + servicio['nombre'] + '</option>');
+                            selectItem.append('<option value="' + servicio['idServicio'] + '" selected>' + servicio['codigo'] + '</option>');
+                        } else  {
+                            selectNombre.append('<option value="' + servicio['idServicio'] + '">' + servicio['nombre'] + '</option>');
+                            selectItem.append('<option value="' + servicio['idServicio'] + '">' + servicio['codigo'] + '</option>');
+                        }
+
+                    } else {
+                        if (servicio['idServicio'] == valorActual) {
+                            selectNombre.append('<option value="' + servicio['idServicio'] + '" selected>' + servicio['nombre'] + '</option>');
+                            selectItem.append('<option value="' + servicio['idServicio'] + '" selected>' + servicio['codigo'] + '</option>');
+                        } else  {
+                            selectNombre.append('<option value="' + servicio['idServicio'] + '">' + servicio['nombre'] + '</option>');
+                            selectItem.append('<option value="' + servicio['idServicio'] + '">' + servicio['codigo'] + '</option>');
+                        }
+                    }
+                }
+            }
+            selectNombre.trigger("chosen:updated");
+            selectItem.trigger("chosen:updated");
+        });
+        cargarFila($idServicio, numeroFilaNuevo);
     }
 
 

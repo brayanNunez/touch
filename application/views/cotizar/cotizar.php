@@ -12,14 +12,16 @@
 //    ubicado en este archivo.
     function botonEnLista(tipo, idBoton, nuevoElementoAgregar){
         if (tipo == "productoItem") {
-            $('#nuevoServicio_codigo').val(nuevoElementoAgregar);
+            actualizarSelectSeleccionado(idBoton);
+            $('#servicio_codigo').val(nuevoElementoAgregar);
             $('#linkNuevaServicio').click();
-            $('#nuevoServicio_codigo').focus();
+            $('#servicio_codigo').focus();
         } 
         if (tipo == "productoNombre") {
-            $('#nuevoServicio_nombre').val(nuevoElementoAgregar);
+            actualizarSelectSeleccionado(idBoton);
+            $('#servicio_nombre').val(nuevoElementoAgregar);
             $('#linkNuevaServicio').click();
-            $('#nuevoServicio_nombre').focus();
+            $('#servicio_nombre').focus();
         }
         if (tipo == "paso1Atencion") {
             $('#cliente_contactoNombre').val(nuevoElementoAgregar);
