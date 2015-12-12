@@ -85,6 +85,14 @@
                 <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="paso1Moneda" id="paso1Moneda" name="paso1Moneda"
                         data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirMoneda"); ?>"
                         class="chosen-select browser-default" style="width:350px;" tabindex="2">
+                    <option value="0" disabled selected style="display:none;"><?= label("paso1_elegirMoneda"); ?></option>
+                    <option value="nuevo"><?= label("agregarNuevo"); ?></option>
+                    <?php 
+                        foreach ($resultado['monedas'] as $moneda) {
+                            $valor = "value='".$moneda['idMoneda']."'";
+                            echo '<option '.$valor.'>'.$moneda['nombre'].'</option>");';
+                        }
+                    ?>
                 </select>   
              </div>
         </div>
