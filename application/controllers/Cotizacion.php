@@ -802,26 +802,26 @@ class Cotizacion extends CI_Controller
             echo json_encode($resultado);
         }
     }
-    public function verificarCorreoContacto(){
-        $data['datos'] = array(
-            'idCliente' => $this->input->post('cliente_contactoIdCliente'),
-            'correo' => $this->input->post('cliente_contactoCorreo'),
-            'eliminado' => '0'
-        );
-        $resultado = $this->Cotizacion_model->verificarCorreoContacto($data);
-        if ($resultado === false) {
-            //Error en la transacción
-            echo 0;
-        } else {
-            if ($resultado == 1) {
-                //Ya existe esta identificacion
-                echo 1;
-            } else {
-                //Identificacion Valida
-                echo 2;
-            }
-        }
-    }
+    // public function verificarCorreoContacto(){
+    //     $data['datos'] = array(
+    //         'idCliente' => $this->input->post('cliente_contactoIdCliente'),
+    //         'correo' => $this->input->post('cliente_contactoCorreo'),
+    //         'eliminado' => '0'
+    //     );
+    //     $resultado = $this->Cotizacion_model->verificarCorreoContacto($data);
+    //     if ($resultado === false) {
+    //         //Error en la transacción
+    //         echo 0;
+    //     } else {
+    //         if ($resultado == 1) {
+    //             //Ya existe esta identificacion
+    //             echo 1;
+    //         } else {
+    //             //Identificacion Valida
+    //             echo 2;
+    //         }
+    //     }
+    // }
     public function insertarContacto()
     {
         $enviarFacturas = 0;

@@ -130,7 +130,9 @@
                 $('#paso1_codigo').val(arrayCotizacion['codigo']);
                 $('#paso1_numero').val(arrayCotizacion['numero']);
                 $('#paso1Cliente option[value='+ arrayCotizacion['idCliente'] +']').prop('selected', true);
-                cargarAtencion(arrayCotizacion['idCliente']);
+                if(arrayCotizacion['idCliente'] != null){
+                    cargarAtencion(arrayCotizacion['idCliente']);
+                }
                 $('#paso1Atencion option[value='+ arrayCotizacion['idPersonaContacto'] +']').prop('selected', true);
                 $('#paso1FormaPago option[value='+ arrayCotizacion['idFormaPago'] +']').prop('selected', true);
                 $('#paso1Moneda option[value='+ arrayCotizacion['idMoneda'] +']').prop('selected', true);
@@ -270,6 +272,7 @@
         });
     }
     function actualizarSelectContactos($idCliente, $id) {
+        // alert('actualizando contactos');
         $.ajax({
             type: 'POST',
             url: '<?= base_url(); ?>cotizacion/contactos',
@@ -384,12 +387,15 @@
                 var disabled = '';
                 if (!(cliente['todosVendedores'] == 1 || cliente['valido'] == 1)) {
                     disabled = 'disabled';
-                }
+                } 
                 if(cliente['idCliente'] == $id) {
                     var selected = 'selected';
                     if (disabled == 'disabled') {
                         selected = '';
-                    } 
+                        bloquearAutocompletarContactos();
+                    } else {
+                        actualizarSelectContactos($id, 0);//Si el usuario actual es un vendedor de este cliente, quiere decir que el cliente va a salir seleccionado instantáneamente por lo que cargamos el select de contactos. Si no fuera vendedor de este cliente no se cargaría en el select de clientes como seleccionado y por ende tampoco se le cargan los  contactos.
+                    }
                     miSelect.append('<option value="' + cliente['idCliente'] + '" '+disabled+' '+selected+'>' + nombreCliente + '</option>');
                 } else {
                     miSelect.append('<option value="' + cliente['idCliente'] + '" '+disabled+'>' + nombreCliente + '</option>');
@@ -418,22 +424,28 @@
         }
         miSelect.trigger("chosen:updated");
     }
-
-    function generarListas(){
-        var config = {'.chosen-select'           : {}}
-        for (var selector in config) {
-            $(selector).chosen(config[selector]);
-        }
+    function bloquearAutocompletarContactos($array, $id){
+        var miSelect = $('#paso1Atencion');
+        miSelect.empty();
+        miSelect.attr('disabled', true);
+        miSelect.trigger("chosen:updated");
     }
-    $(document).on('change','.chosen-select',function(){
-        var valor = $(this).val();
-        var tipo = $(this).attr("data-tipo");
-        if (valor=="nuevo") {
-            var idBoton = $(this).attr("id");
-            var nuevoElementoAgregar = "";
-            botonEnLista(tipo, idBoton, nuevoElementoAgregar)
-        }
-    });
+
+    // function generarListas(){
+    //     var config = {'.chosen-select'           : {}}
+    //     for (var selector in config) {
+    //         $(selector).chosen(config[selector]);
+    //     }
+    // }
+    // $(document).on('change','.chosen-select',function(){
+    //     var valor = $(this).val();
+    //     var tipo = $(this).attr("data-tipo");
+    //     if (valor=="nuevo") {
+    //         var idBoton = $(this).attr("id");
+    //         var nuevoElementoAgregar = "";
+    //         botonEnLista(tipo, idBoton, nuevoElementoAgregar)
+    //     }
+    // });
 
     var cerrarModalMoneda = false;
     var cerrarModalFormaPago = false;
@@ -668,8 +680,6 @@
                                     $('#agregarCliente .modal-header a').click();
                                 } else {
                                     actualizarSelectClientes(response);
-                                    actualizarSelectContactos(response, 0);
-
                                     alert("<?=label('cotizacion_clienteGuardadoCorrectamente'); ?>");
                                     if (cerrarModalCliente) {
                                         $('#agregarCliente .modal-header a').click();
@@ -691,50 +701,35 @@
     function validacionCorrecta_Contacto() {
         var clienteElegido = $('#paso1Cliente').val();
         $('#cliente_contactoIdCliente').val(clienteElegido);
+        
+        var formulario = $('#form_contacto_cotizar');
+        var url = formulario.attr('action');
+        var method = formulario.attr('method');
+        var data = formulario.serialize();
         $.ajax({
-            data: $('#form_contacto_cotizar').serialize(),
-            url:   '<?=base_url()?>cotizacion/verificarCorreoContacto',
-            type:  'post',
-            success:  function (response) {
-                if (response == '0') {
+            type: method,
+            url: url,
+            data: data,
+            success: function(response)
+            {
+                if (response == 0) {
                     alert("<?=label('errorGuardar'); ?>");
                     $('#agregarContacto .modal-header a').click();
-                } else{
-                    if (response == '2') {
-                        var formulario = $('#form_contacto_cotizar');
-                        var url = formulario.attr('action');
-                        var method = formulario.attr('method');
-                        var data = formulario.serialize();
-                        $.ajax({
-                            type: method,
-                            url: url,
-                            data: data,
-                            success: function(response)
-                            {
-                                if (response == 0) {
-                                    alert("<?=label('errorGuardar'); ?>");
-                                    $('#agregarContacto .modal-header a').click();
-                                } else {
-                                    var clienteElegido = $('#paso1Cliente').val();
-                                    actualizarSelectContactos(clienteElegido, response);
+                } else {
+                    var clienteElegido = $('#paso1Cliente').val();
+                    actualizarSelectContactos(clienteElegido, response);
 
-                                    alert("<?=label('cotizacion_contactoGuardadoCorrectamente'); ?>");
-                                    if (cerrarModalContacto) {
-                                        $('#agregarContacto .modal-header a').click();
-                                        limpiarFormContacto();
-                                    } else{
-                                        limpiarFormContacto();
-                                    }
-                                }
-                            }
-                        });
+                    alert("<?=label('cotizacion_contactoGuardadoCorrectamente'); ?>");
+                    if (cerrarModalContacto) {
+                        $('#agregarContacto .modal-header a').click();
+                        limpiarFormContacto();
                     } else{
-                        alert("<?=label('contacto_error_correoExisteEnBD'); ?>");
-                        $('#form_contacto_cotizar #cliente_contactoCorreo').focus();
+                        limpiarFormContacto();
                     }
                 }
             }
         });
+
     }
 
     $(document).on('change', '#paso1Moneda', function () {
@@ -756,13 +751,16 @@
     }
 
     $(document).on('change', '#paso1Cliente', function () {
+        // alert('aqui es');
         var clienteElegido = $(this).val();
+        // cargarAtencion(clienteElegido);
+
         actualizarSelectContactos(clienteElegido,  0);
         $('#cliente_contactoIdCliente').val(clienteElegido);
     });
-    function contactosClienteAgregado($idCliente) {
-        actualizarSelectContactos($idCliente, 0);
-    }
+    // function contactosClienteAgregado($idCliente) {
+    //     actualizarSelectContactos($idCliente, 0);
+    // }
 </script>
 <!--Script para manejo de cliente-->
 <script type="text/javascript">
