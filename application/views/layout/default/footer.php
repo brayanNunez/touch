@@ -763,18 +763,99 @@ Scripts
 </script>
 <!--Script para manejo de completar registro-->
 <script type="text/javascript">
+    var registroCompleto = 1;
+    function validarRegistroCompleto() {
+        $.ajax({
+            type: 'post',
+            url: '<?= base_url(); ?>registro/cargarDatos',
+            data: {  },
+            async: false,
+            success: function(response)
+            {
+                if(response != 'null') {
+                    var datosEmpresa = $.parseJSON(response);
+                    var tipoEmpresa = datosEmpresa['empresa'];
+
+                    var fechaCreacion= datosEmpresa['fechaCreacion'];
+                    var tamanoEmpresa = datosEmpresa['tamano'];
+                    var correo = datosEmpresa['correo'];
+
+                    var profesion = datosEmpresa['profesion'];
+
+                    var telefonoFijo = datosEmpresa['telefono'];
+                    var telefonoMovil = datosEmpresa['telefonoMovil'];
+                    var nombreRepresentante = datosEmpresa['nombreRepresentante'];
+                    var primerApellidoRepresentante = datosEmpresa['primerApellidoRepresentante'];
+                    var segundoApellidoRepresentante = datosEmpresa['segundoApellidoRepresentante'];
+                    var sitio = datosEmpresa['sitioWeb'];
+                    var codigoCotizacion = datosEmpresa['codigoCotizacion'];
+                    var firmaRepresentate = datosEmpresa['firma'];
+                    var logoEmpresa = datosEmpresa['logo'];
+
+                    registroCompleto = 1;
+                    if(tipoEmpresa == 1) {
+                        if(tamanoEmpresa == '' || tamanoEmpresa == null || correo == '' || correo == null) {
+                            registroCompleto = 0;
+                        }
+                    } else {
+                        if(profesion == '' || profesion == null) {
+                            registroCompleto = 0;
+                        }
+                    }
+                    if(fechaCreacion == '' || fechaCreacion == null || fechaCreacion == '0000-00-00') {
+                        registroCompleto = 0;
+                    }
+                    if(telefonoFijo == '' || telefonoFijo == null || telefonoMovil == '' || telefonoMovil == null || nombreRepresentante == '' || nombreRepresentante == null
+                        || primerApellidoRepresentante == '' || primerApellidoRepresentante == null || segundoApellidoRepresentante == '' || segundoApellidoRepresentante == null
+                        || sitio == '' || sitio == null || codigoCotizacion == '' || codigoCotizacion == null || firmaRepresentate == '' || firmaRepresentate == null
+                        || logoEmpresa == '' || logoEmpresa == null) {
+                        registroCompleto = 0;
+                    }
+
+                    if(registroCompleto == 1) {
+                        document.getElementById('span_mensajeRegistroIncompleto').style.display = 'none';
+                    } else {
+                        mostrarRegistroIncompleto();
+                    }
+                }
+            }
+        });
+    }
+    $(document).ready(function () {
+        validarRegistroCompleto();
+    });
+    function mostrarRegistroIncompleto() {
+        if ($(window).width() <= 992) {
+            $('div.navbar-fixed').css('height', '70px');
+            $('nav.touch').css('height', '80px');
+            $('aside#left-sidebar-nav a.sidebar-collapse').css('top', '-43px');
+        }
+        if ($(window).width() <= 600) {
+            $('div.navbar-fixed').css('height', '70px');
+            $('nav.touch').css('height', '80px');
+        }
+        if ($(window).width() <= 360) {
+            $('div.navbar-fixed').css('height', '85px');
+            $('nav.touch').css('height', '95px');
+            $('aside#left-sidebar-nav a.sidebar-collapse').css('top', '-55px');
+        }
+    }
+
     function validacionCorrecta_registro() {
         var formulario = $('#form_completarRegistro');
         $.ajax({
             data: formulario.serialize(),
             url: formulario.attr('action'),
             type:  formulario.attr('method'),
+            async: false,
             success:  function (response) {
                 if (response == '0') {
                     alert("<?=label('errorGuardar'); ?>");
                 } else {
                     alert('<?= label('registro_exitoCompletar'); ?>');
                     $('#completarRegistroEmpresa .modal-header a').click();
+
+                    validarRegistroCompleto();
                 }
             }
         });

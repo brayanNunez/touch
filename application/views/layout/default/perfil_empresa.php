@@ -351,12 +351,15 @@
             type: method,
             url: url,
             data: data,
+            async: false,
             success: function(response) {
                 if (response == 0) {
                     $('#transaccionIncorrecta').openModal();
                 } else {
                     $('#transaccionCorrecta').openModal();
                 }
+
+                validarRegistroCompleto();
             }
         });
     }
@@ -366,6 +369,7 @@
             data: new FormData(formPW[0]),
             url: formPW.attr('action'),
             type: formPW.attr('method'),
+            async: false,
             success:  function (response) {
                 if(response == 0) {
                     alert('<?= label('usuarioErrorCambioImagen'); ?>');//error al ir a verificar identificaci�n
@@ -376,6 +380,8 @@
                     $('#empresa_logo').attr('src', response + '?' + d.getTime());
                     formPW.find('input:file,input:text').val('');
                     $('#cambio-imagen .modal-header a').click();
+
+                    validarRegistroCompleto();
                 }
             },
             cache: false,
@@ -389,6 +395,7 @@
             data: new FormData(formPW[0]),
             url: formPW.attr('action'),
             type: formPW.attr('method'),
+            async: false,
             success:  function (response) {
                 if(response == 0) {
                     alert('<?= label('usuarioErrorCambioImagen'); ?>');//error al ir a verificar identificaci�n
@@ -399,6 +406,8 @@
                     $('#empresa_firma').attr('src', response + '?' + d.getTime());
                     formPW.find('input:file,input:text').val('');
                     $('#cambio-imagenFirma .modal-header a').click();
+
+                    validarRegistroCompleto();
                 }
             },
             cache: false,
