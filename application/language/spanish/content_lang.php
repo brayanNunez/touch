@@ -53,7 +53,7 @@
     $lang['confirmarEliminarSubFase'] = '¿Realmente desea eliminar la subfase?';
     $lang['fases_eliminarElementosSeleccionados'] = '¿Realmente desea eliminar las fases seleccionadas?';
     $lang['gastos_eliminarElementosSeleccionados'] = '¿Realmente desea eliminar los gastos seleccionados?';
-    $lang['confirmarEnviarCliente'] = '¿Realmente desea aprobar y enviar la cotización?';
+    // $lang['confirmarEnviarCliente'] = '¿Realmente desea aprobar y enviar la cotización?';
     $lang['confirmarRechazar'] = '¿Realmente desea rechazar la cotización?';
 
     
@@ -1407,5 +1407,17 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['busquedaAvanzada_Todos'] = 'Todos';
     $lang['busqueda_selectServicios'] = 'Servicio';
     $lang['cotizaciones_busquedaAvanzada'] = 'Búsqueda  avanzada';
+
+
+    $lang['envio_titulo'] = 'Envío de cotización';
+    $lang['aprobar_destinatario'] = 'Destinatarios:';
+    $lang['aprobar_destinatarioCC'] = 'Cc:';
+
+    $lang['envio_asunto'] = 'Asunto';
+    $lang['envio_texto'] = 'Texto';
+    $lang['envio_pdf'] = 'Enviar PDF de la cotización';
+    $lang['envio_link'] = 'Enviar link de la cotización';
+    $lang['anvio_botonEnviar'] = 'Enviar';
+
 
 ?>

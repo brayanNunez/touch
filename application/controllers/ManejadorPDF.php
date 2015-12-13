@@ -284,6 +284,24 @@ class ManejadorPDF extends CI_Controller
     }
     
     public function enviarCotizacionCliente($idEmpresa, $idCotizacionEncriptado){
+        $envioPDF = 0;
+        if (isset($_POST['envio_pdf'])) {
+           $envioPDF = 1;
+        }
+
+        $envioLink = 0;
+        if (isset($_POST['envio_link'])) {
+           $envioLink = 1;
+        }
+
+        $data = array('aprobar_destinatario' => $this->input->post('aprobar_destinatario'),  
+            'aprobar_destinatarioCC' => $this->input->post('aprobar_destinatarioCC'),  
+            'envio_asunto' => $this->input->post('envio_asunto'),  
+            'envio_texto' => $this->input->post('envio_texto'),  
+            'envio_pdf' => $envioPDF,
+            'envio_link' => $envioLink
+            );
+        echo print_r($data); exit();
         $idCotizacion = decryptIt($idCotizacionEncriptado);
         $correo = $this->Cotizacion_model->cargarCorreoCliente($idCotizacion);
         $correo = $correo['correo'];

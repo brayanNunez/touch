@@ -166,7 +166,17 @@
   }
 
  function validacionCorrecta(){
-  alert('enviar datos');
+    var url = $('#formEnvio').attr('action');
+    var method = 'POST'; 
+    $.ajax({
+           type: method,
+           url: url,
+           data: $('#formEnvio').serialize(), 
+           success: function(response)
+           {
+            alert(response);
+          }
+        });
 
 }
   
@@ -210,10 +220,9 @@
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
-    <form id="formEnvio">
+    <form id="formEnvio" action="<?=base_url()?>ManejadorPDF/enviarCotizacionCliente/<?= $resultado['idEmpresa'];?>/<?= encryptIt($resultado['idCotizacion']);?>">
     <div class="modal-content" style="text-align: left">
-        <p><?= label('confirmarEnviarCliente'); ?></p>
-        <p><?= label('confirmarDestinatario'); ?></p>
+        <p><?= label('envio_titulo'); ?></p>
 
 
         <div class="inputTag col s12">
@@ -241,7 +250,7 @@
         </div>
 
         <div class="input-field col s12 m6">
-            <input id="envio_asunto" name="envio_asunto" type="text" value="<?= label('envio_asuntoDefecto'); ?>">
+            <input id="envio_asunto" name="envio_asunto" type="text" value="">
             <label for="envio_asunto"><?= label('envio_asunto'); ?></label>
         </div>
         <div class="input-field col s12">
@@ -250,12 +259,12 @@
         </div>
         <div id="contenedorEnvios">
           <p>
-              <input type="checkbox" class="filled-in aprobadores" id="filled-in-box_1" value="" name="aprobadores[]">
-              <label for="filled-in-box_1">PDF</label>
+              <input type="checkbox" class="filled-in aprobadores" id="filled-in-box_1" value="1" name="envio_pdf">
+              <label for="filled-in-box_1"><?= label('envio_pdf'); ?></label>
           </p>
           <p>
-              <input type="checkbox" class="filled-in aprobadores" id="filled-in-box_2" value="" name="aprobadores[]">
-              <label for="filled-in-box_2">Link</label>
+              <input type="checkbox" class="filled-in aprobadores" id="filled-in-box_2" value="1" name="envio_link">
+              <label for="filled-in-box_2"><?= label('envio_link'); ?></label>
           </p>
         </div>
 
@@ -263,7 +272,7 @@
 
     <div class="modal-footer">
         <div id="boton" class="modal-footer black-text">
-          <a onclick="$(this).closest('form').submit()" class="waves-effect waves-green btn-flat modal-action"><?= label('aceptar'); ?></a>
+          <a onclick="$(this).closest('form').submit()" class="waves-effect waves-green btn-flat modal-action"><?= label('anvio_botonEnviar'); ?></a>
        </div>
     </div>
     </form>
