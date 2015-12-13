@@ -490,6 +490,11 @@ $(document).on('ready', function(){
             $('.sorting_asc').click();
         <?php
       }
+  } else {//  cotizacion nueva
+    ?>
+     agregarFila(0, null);
+    <?php
+
   }
       ?>      
 });
@@ -1138,7 +1143,7 @@ $(document).on('ready', function(){
             $('#servicio_subFase').empty(); //remove all child nodes
             $('#servicio_subFase').removeAttr('disabled');
             $('#servicio_subFase').append($('<option value="0" disabled selected style="display:none;"><?= label("servicio_elegirSubFase"); ?></option>'));
-            $('#servicio_subFase').append($('<option value="nuevo"><?= label("agregarNuevo"); ?></option>'));
+            // $('#servicio_subFase').append($('<option value="nuevo"><?= label("agregarNuevo"); ?></option>'));
             $('#servicio_subFase').append($('<option value="todas"><?= label("formServicio_fases_agregarTodas"); ?></option>'));
             for (var i = 0; i < arrayFases.length; i++) {
                 if (arrayFases[i]['idFase'] == idFasePadre) {
@@ -1154,7 +1159,7 @@ $(document).on('ready', function(){
         function cargarFases(){
             $('#servicioFase').empty(); //remove all child nodes
             $('#servicioFase').append($('<option value="0" disabled selected style="display:none;"><?= label("servicio_elegirFase"); ?></option>'));
-            $('#servicioFase').append($('<option value="nuevo"><?= label("agregarNuevo"); ?></option>'));
+            // $('#servicioFase').append($('<option value="nuevo"><?= label("agregarNuevo"); ?></option>'));
             $('#servicioFase').append($('<option value="todas"><?= label("formServicio_fases_agregarTodas"); ?></option>'));
             for (var i = 0; i < arrayFases.length; i++) {
                 var newOption = $('<option value="'+arrayFases[i]['idFase']+'">'+arrayFases[i]['nombre']+'</option>');

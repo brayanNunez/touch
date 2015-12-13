@@ -596,6 +596,12 @@
 
     $lang['aprobacion_cotizacionTramitada'] = 'La cotización ya fue tramitada.';
 
+    $lang['cotizacionEnviadaCliente'] = 'Cotización enviada al cliente';
+    $lang['cotizacionRechazada'] = 'Cotización rechazada';
+
+    
+
+    
     $lang['paso4_codigoCotizacion'] = 'Código de la cotización: ';
     $lang['paso4_cotizacionGuardada'] = 'La cotización ha sido guardada.';
     $lang['paso4_cotizacionGuardadaDescargando'] = 'La cotización ha sido guardada y está en proceso de descarga.';
@@ -779,7 +785,7 @@ $lang['formCliente_contactoSecundario'] = 'Cambiar a contacto principal';
     $lang['formCliente_direccionDistrito'] = 'Distrito';
     $lang['formCliente_direccionDomicilio'] = 'Domicilio';
     $lang['formCliente_correo'] = 'Correo electrónico';
-    $lang['formCliente_correoCheck'] = 'Enviar facturas a este correo';
+    $lang['formCliente_correoCheck'] = 'Enviar cotizaciones a este correo';
 
     $lang['formContacto_apellido1'] = 'Primer apellido';
     $lang['formContacto_apellido2'] = 'Segundo apellido';
@@ -869,7 +875,7 @@ $lang['formProveedor_direccion'] = 'Dirección';
     $lang['formProveedor_direccionCanton'] = 'Ciudad o cantón';
     $lang['formProveedor_direccionDistrito'] = 'Distrito';
     $lang['formProveedor_direccionDomicilio'] = 'Domicilio';
-$lang['formProveedor_correoCheck'] = 'Enviar facturas a este correo';
+$lang['formProveedor_correoCheck'] = 'Enviar cotizaciones a este correo';
 $lang['formProveedor_contactos'] = 'Contactos';
 $lang['formProveedor_infoGastos'] = 'Información de gastos';
     $lang['formProveedor_correo'] = 'Correo electrónico';
@@ -944,7 +950,7 @@ $lang['formPersona_direccionProvincia'] = 'Estado o provincia';
 $lang['formPersona_direccionCanton'] = 'Ciudad o cantón';
 $lang['formPersona_direccionDistrito'] = 'Distrito';
 $lang['formPersona_direccionDomicilio'] = 'Domicilio';
-$lang['formPersona_correoCheck'] = 'Enviar facturas a este correo';
+$lang['formPersona_correoCheck'] = 'Enviar cotizaciones a este correo';
 $lang['formPersona_contactos'] = 'Contactos';
 $lang['formPersona_infoCotizacion'] = 'Información de cotización';
 $lang['formPersona_correo'] = 'Correo electrónico';
