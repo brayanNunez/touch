@@ -138,12 +138,31 @@
                         <tbody>
                             <tr>
                                 <td><?= label('formCliente_cotizador'); ?></td>
-                                <td>Brayan Nunez Rojas,
-                                    Anthony Nunez Rojas,
-                                    Maria Perez Salas,
-                                    Carlos David Rojas,
-                                    Diego Alfaro Rojas
-                                </td>
+                                <?php
+                                if($resultado['todosVendedores'] == 1) {
+                                ?>
+                                    <td>Todos</td>
+                                <?php
+                                } else {
+                                    if(isset($resultado['vendedores'])) {
+                                ?>
+                                        <td>
+                                <?php
+                                        $arrayVendedores = '';
+                                        foreach ($resultado['vendedores'] as $vendedor) {
+                                            if($arrayVendedores == '') {
+                                                $arrayVendedores .= $vendedor['nombre'];
+                                            } else {
+                                                $arrayVendedores .= ', '.$vendedor['nombre'];
+                                            }
+                                        }
+                                        echo $arrayVendedores;
+                                ?>
+                                        </td>
+                                <?php
+                                    }
+                                }
+                                ?>
                             </tr>
                             <tr>
                                 <td><?= label('formCliente_gustos_preferencias'); ?></td>
