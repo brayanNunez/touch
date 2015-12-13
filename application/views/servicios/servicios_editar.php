@@ -1,5 +1,3 @@
-
-
 <!--START CONTENT  -->
 <section id="content">
     <!--start breadcrumbs-->
@@ -1303,6 +1301,14 @@ echo "var arrayFases =". $js_array.";";
         var margenUtilidad = parseFloat($('#servicio_utilidad').val()) / 100;
 
         var precioServicio = (cantidadHoras * costoHora) / (1 - margenUtilidad);
+
+        var impuestosAgregados = 0;
+        $.each($("#servicio_impuestos").tagsinput('items'), function( index, value ) {
+//            precioServicio += precioServicio * (value['valor'] / 100);
+            impuestosAgregados += parseFloat(value['valor']);
+        });
+        precioServicio += precioServicio * (impuestosAgregados / 100);
+
         precioServicio = precioServicio.toFixed(2);
 
         $('#servicio_total').val(precioServicio);
@@ -1312,6 +1318,9 @@ echo "var arrayFases =". $js_array.";";
         calcularPrecio();
     });
     $(document).on('change', '#servicioTiempo', function () {
+        calcularPrecio();
+    });
+    $(document).on('change', '#servicio_impuestos', function () {
         calcularPrecio();
     });
 </script>
