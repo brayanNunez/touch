@@ -12,14 +12,16 @@
 //    ubicado en este archivo.
     function botonEnLista(tipo, idBoton, nuevoElementoAgregar){
         if (tipo == "productoItem") {
-            $('#nuevoServicio_codigo').val(nuevoElementoAgregar);
+            actualizarSelectSeleccionado(idBoton);
+            $('#servicio_codigo').val(nuevoElementoAgregar);
             $('#linkNuevaServicio').click();
-            $('#nuevoServicio_codigo').focus();
+            $('#servicio_codigo').focus();
         } 
         if (tipo == "productoNombre") {
-            $('#nuevoServicio_nombre').val(nuevoElementoAgregar);
+            actualizarSelectSeleccionado(idBoton);
+            $('#servicio_nombre').val(nuevoElementoAgregar);
             $('#linkNuevaServicio').click();
-            $('#nuevoServicio_nombre').focus();
+            $('#servicio_nombre').focus();
         }
         if (tipo == "paso1Atencion") {
             $('#cliente_contactoNombre').val(nuevoElementoAgregar);
@@ -184,9 +186,9 @@
                             <div class="col s12 m12 l12">
                                 <!-- <div class="card"> -->
                                 <div class="col s12 m12 l12">
-                                    <a id="comentariosCotizacion" href="#" data-activates="chat-out"
+                                    <!-- <a id="comentariosCotizacion" href="#" data-activates="chat-out"
                                        class="right waves-effect waves-block waves-light chat-collapse">
-                                        <i class="mdi-communication-chat"></i></a>
+                                        <i class="mdi-communication-chat"></i></a> -->
 
                                     <div class="row">
                                         <div class="col s12">

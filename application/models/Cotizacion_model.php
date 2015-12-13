@@ -1009,77 +1009,77 @@ class Cotizacion_model extends CI_Model
         }
     }
 
-    function verificarCodigoServicio($data) {
-        try {
-            $this->db->trans_begin();
-            $query = $this->db->get_where('servicio', array('idEmpresa' => $data['idEmpresa'], 'codigo' => $data['codigo'],  'estado' => 0));
-            if (!$query) {
-                throw new Exception("Error en la BD");
-            }
+    // function verificarCodigoServicio($data) {
+    //     try {
+    //         $this->db->trans_begin();
+    //         $query = $this->db->get_where('servicio', array('idEmpresa' => $data['idEmpresa'], 'codigo' => $data['codigo'],  'estado' => 0));
+    //         if (!$query) {
+    //             throw new Exception("Error en la BD");
+    //         }
 
-            $existe = 0;
-            if ($query->num_rows() > 0) {
-                $existe = 1;
-            }
+    //         $existe = 0;
+    //         if ($query->num_rows() > 0) {
+    //             $existe = 1;
+    //         }
 
-            $this->db->trans_commit();
-            return $existe;
-        } catch (Exception $e) {
-            $this->db->trans_rollback();
-            return false;
-        }
-    }
-    public function insertarServicio($data)
-    {
-        try{
-            $this->db->trans_begin();
+    //         $this->db->trans_commit();
+    //         return $existe;
+    //     } catch (Exception $e) {
+    //         $this->db->trans_rollback();
+    //         return false;
+    //     }
+    // }
+//     public function insertarServicio($data)
+//     {
+//         try{
+//             $this->db->trans_begin();
 
-            $query = $this->db->insert('servicio', $data['datos']);
-            if (!$query) {
-                throw new Exception("Error en la BD");
-            }
-            $insert_id = $this->db->insert_id();
+//             $query = $this->db->insert('servicio', $data['datos']);
+//             if (!$query) {
+//                 throw new Exception("Error en la BD");
+//             }
+//             $insert_id = $this->db->insert_id();
 
-            if ($data['impuestos'] != '') {
-                $impuestos = explode(",", $data['impuestos']);
-                foreach ($impuestos as $impuesto) {
-                    $row = array(
-                        'idServicio' => $insert_id,
-                        'idImpuesto' => $impuesto
-                    );
-                    $query = $this->db->insert('impuesto_servicio', $row);
-                    if (!$query) {
-                        throw new Exception("Error en la BD");
-                    }
-                }
-            }
+//             if ($data['impuestos'] != '') {
+//                 $impuestos = explode(",", $data['impuestos']);
+//                 foreach ($impuestos as $impuesto) {
+//                     $row = array(
+//                         'idServicio' => $insert_id,
+//                         'idImpuesto' => $impuesto
+//                     );
+//                     $query = $this->db->insert('impuesto_servicio', $row);
+//                     if (!$query) {
+//                         throw new Exception("Error en la BD");
+//                     }
+//                 }
+//             }
 
-            $gastos = $data['gastos'];
-//            echo print_r($gastos); exit();
-            foreach ($gastos as $gasto) {
-                $gasto['idServicio'] = $insert_id;
-                $query = $this->db->insert('gastoservicio', $gasto);
-                if (!$query) {
-                    throw new Exception("Error en la BD");
-                }
-            }
+//             $gastos = $data['gastos'];
+// //            echo print_r($gastos); exit();
+//             foreach ($gastos as $gasto) {
+//                 $gasto['idServicio'] = $insert_id;
+//                 $query = $this->db->insert('gastoservicio', $gasto);
+//                 if (!$query) {
+//                     throw new Exception("Error en la BD");
+//                 }
+//             }
 
-            foreach ($data['fases'] as $fase) {
-                $fase['idServicio'] = $insert_id;
-                $query = $this->db->insert('fase_servicio', $fase);
-                if (!$query) {
-                    throw new Exception("Error en la BD");
-                }
-            }
+//             foreach ($data['fases'] as $fase) {
+//                 $fase['idServicio'] = $insert_id;
+//                 $query = $this->db->insert('fase_servicio', $fase);
+//                 if (!$query) {
+//                     throw new Exception("Error en la BD");
+//                 }
+//             }
 
-            $this->db->trans_commit();
+//             $this->db->trans_commit();
 
-            return true;
-        } catch (Exception $e) {
-            $this->db->trans_rollback();
-            return false;
-        }
-    }
+//             return true;
+//         } catch (Exception $e) {
+//             $this->db->trans_rollback();
+//             return false;
+//         }
+//     }
 
     function paises()
     {

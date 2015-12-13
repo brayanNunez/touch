@@ -161,6 +161,7 @@ $(document).ready(function(){
 
 
     function cargarFila(idServicio, numeroFila){
+        // alert(idServicio + ', ' + numeroFila);
         for (var i = arrayServicios.length - 1; i >= 0; i--) {
             var servicio = arrayServicios[i];
             if (servicio['idServicio'] == idServicio) {
@@ -489,6 +490,11 @@ $(document).on('ready', function(){
             $('.sorting_asc').click();
         <?php
       }
+  } else {//  cotizacion nueva
+    ?>
+     agregarFila(0, null);
+    <?php
+
   }
       ?>      
 });
@@ -508,7 +514,7 @@ $(document).on('ready', function(){
         <div class="row">
             <h5 style="float: left;">Agregar servicio</h5>
         </div>
-        <form id="form_servicio_cotizar" action="<?= base_url(); ?>cotizacion/insertarServicio" method="POST" class="col s12">
+        <form id="form_servicio_cotizar" action="<?= base_url(); ?>servicios/insertar" method="POST" class="col s12">
             <div class="input-field col s12">
                 <input id="servicio_codigo" name="servicio_codigo" type="text">
                 <label for="servicio_codigo"><?= label('formServicio_codigo'); ?></label>
@@ -707,10 +713,10 @@ $(document).on('ready', function(){
             </div>
 
             <div class="row" style="margin-bottom: 25px;margin-top: 30px;">
-                <a onclick="$(this).closest('form').submit()" id="guardarCerrarMoneda" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                <a onclick="$(this).closest('form').submit()" id="guardarCerrarServicio" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
                     <?= label('guardarCerrar'); ?>
                 </a>
-                <a onclick="$(this).closest('form').submit()" id="guardarOtroMoneda" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                <a onclick="$(this).closest('form').submit()" id="guardarOtroServicio" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
                     <?= label('guardarAgregarOtro'); ?>
                 </a>
             </div>
@@ -1137,7 +1143,7 @@ $(document).on('ready', function(){
             $('#servicio_subFase').empty(); //remove all child nodes
             $('#servicio_subFase').removeAttr('disabled');
             $('#servicio_subFase').append($('<option value="0" disabled selected style="display:none;"><?= label("servicio_elegirSubFase"); ?></option>'));
-            $('#servicio_subFase').append($('<option value="nuevo"><?= label("agregarNuevo"); ?></option>'));
+            // $('#servicio_subFase').append($('<option value="nuevo"><?= label("agregarNuevo"); ?></option>'));
             $('#servicio_subFase').append($('<option value="todas"><?= label("formServicio_fases_agregarTodas"); ?></option>'));
             for (var i = 0; i < arrayFases.length; i++) {
                 if (arrayFases[i]['idFase'] == idFasePadre) {
@@ -1153,7 +1159,7 @@ $(document).on('ready', function(){
         function cargarFases(){
             $('#servicioFase').empty(); //remove all child nodes
             $('#servicioFase').append($('<option value="0" disabled selected style="display:none;"><?= label("servicio_elegirFase"); ?></option>'));
-            $('#servicioFase').append($('<option value="nuevo"><?= label("agregarNuevo"); ?></option>'));
+            // $('#servicioFase').append($('<option value="nuevo"><?= label("agregarNuevo"); ?></option>'));
             $('#servicioFase').append($('<option value="todas"><?= label("formServicio_fases_agregarTodas"); ?></option>'));
             for (var i = 0; i < arrayFases.length; i++) {
                 var newOption = $('<option value="'+arrayFases[i]['idFase']+'">'+arrayFases[i]['nombre']+'</option>');
@@ -1307,10 +1313,26 @@ $(document).on('ready', function(){
         }
     });
 
+    var cerrarModalServicio = false;
+    $(document).on('ready', function(){
+        $('#guardarOtroServicio').on('click', function(){
+            cerrarModalServicio = false;
+        });
+        $('#guardarCerrarServicio').on('click', function(){
+            cerrarModalServicio = true;
+        });
+    });
+
+
+    var idSelectAgregarNuevo = 0;
+    function actualizarSelectSeleccionado(select){
+        idSelectAgregarNuevo = select;
+    }
+
     function validacionCorrecta_ServiciosCotizacion(){
         $.ajax({
             data: {servicio_codigo :  $('#servicio_codigo').val()},
-            url:   '<?=base_url()?>cotizacion/verificarCodigoServicio',
+            url:   '<?=base_url()?>servicios/existeCodigo',
             type:  'post',
             success:  function (response) {
                 switch(response){
@@ -1337,9 +1359,11 @@ $(document).on('ready', function(){
                                         alert("<?=label('errorGuardar'); ?>");
                                         $('#agregarServicio .modal-header a').click();
                                         break;
-                                    case '1':
+                                    default:
+                                        // alert(response + ', ' + idSelectAgregarNuevo);
+                                        actualizarSelectServicios(response, idSelectAgregarNuevo);
                                         alert("<?=label('cotizacion_servicioGuardadoCorrectamente'); ?>");
-                                        $('#agregarServicio .modal-header a').click();
+                                        
 
                                         formulario[0].reset();
                                         $('#servicio_impuestos').tagsinput('removeAll');
@@ -1355,6 +1379,11 @@ $(document).on('ready', function(){
                                         $gastos.css('display', 'none');
 
                                         limpiarTablaGastos();
+
+                                        if (cerrarModalServicio) {
+                                            $('#agregarServicio .modal-header a').click();   
+                                        }
+                                        
                                         break;
                                 }
                             }
@@ -1363,6 +1392,71 @@ $(document).on('ready', function(){
                 }
             }
         });
+    }
+
+    function actualizarSelectServicios($idServicio, selectSeleccionado) {
+        // alert($idServicio + ' ' + selectSeleccionado);
+        $.ajax({
+            type: 'POST',
+            url: '<?= base_url(); ?>servicios/servicios',
+            data: {  },
+            success: function(response)
+            { 
+                // alert('hola');
+                arrayServicios = $.parseJSON(response);
+                generarAutocompletarServicios($.parseJSON(response), $idServicio, selectSeleccionado);
+                generarListas();
+            }
+        });
+    }
+
+    function generarAutocompletarServicios($array, $idServicio, selectSeleccionado){
+        var miSelect = $('.nombreServicio');
+        var numeroFilaNuevo = 0;
+        miSelect.each(function(){
+            var select = $(this);
+            var valorActual = $(this).val();
+            var numeroFilaSelect = $(this).attr('data-fila');
+            var selectNombre = $('#productoNombre_' + numeroFilaSelect);
+            var selectItem = $('#productoItem_' + numeroFilaSelect);
+
+            selectNombre.empty();
+            selectNombre.append('<option value="0" disabled selected style="display:none;"><?= label("paso2_elegirProductoNombre"); ?></option>');
+            selectNombre.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+
+            selectItem.empty();
+            selectItem.append('<option value="0" disabled selected style="display:none;"><?= label("paso2_elegirProductoItem"); ?></option>');
+            selectItem.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+
+            for(var i = 0; i < $array.length; i++) {
+                var servicio = $array[i];
+                if(servicio != null) {
+
+                    if (selectNombre.attr('id') == selectSeleccionado || selectItem.attr('id') == selectSeleccionado) {
+                        if(servicio['idServicio'] == $idServicio) {
+                            numeroFilaNuevo = numeroFilaSelect;
+                            selectNombre.append('<option value="' + servicio['idServicio'] + '" selected>' + servicio['nombre'] + '</option>');
+                            selectItem.append('<option value="' + servicio['idServicio'] + '" selected>' + servicio['codigo'] + '</option>');
+                        } else  {
+                            selectNombre.append('<option value="' + servicio['idServicio'] + '">' + servicio['nombre'] + '</option>');
+                            selectItem.append('<option value="' + servicio['idServicio'] + '">' + servicio['codigo'] + '</option>');
+                        }
+
+                    } else {
+                        if (servicio['idServicio'] == valorActual) {
+                            selectNombre.append('<option value="' + servicio['idServicio'] + '" selected>' + servicio['nombre'] + '</option>');
+                            selectItem.append('<option value="' + servicio['idServicio'] + '" selected>' + servicio['codigo'] + '</option>');
+                        } else  {
+                            selectNombre.append('<option value="' + servicio['idServicio'] + '">' + servicio['nombre'] + '</option>');
+                            selectItem.append('<option value="' + servicio['idServicio'] + '">' + servicio['codigo'] + '</option>');
+                        }
+                    }
+                }
+            }
+            selectNombre.trigger("chosen:updated");
+            selectItem.trigger("chosen:updated");
+        });
+        cargarFila($idServicio, numeroFilaNuevo);
     }
 
 

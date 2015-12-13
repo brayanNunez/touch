@@ -76,7 +76,38 @@ class Servicio_model extends CI_Model
 
             $this->db->trans_commit();
 
-            return true;
+            return $insert_id;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+            
+    function servicios($idEmpresa)
+    {
+        try{
+            $this->db->trans_begin();
+
+            $servicios = $this->db->get_where('servicio', array('estado' => 0,'idEmpresa' => $idEmpresa));
+            if (!$servicios)throw new Exception("Error en la BD");
+            $servicios = $servicios->result_array();
+            $resultado = array();
+            foreach ($servicios as $row) {
+                $idServicio = $row['idServicio'];
+                $this->db->select('im.*');
+                $this->db->from('impuesto im');
+                $this->db->join('impuesto_servicio is', 'is.idImpuesto = im.idImpuesto');
+                $this->db->join('servicio se', 'se.idServicio = is.idServicio');
+                $this->db->where('se.idServicio', $idServicio);
+                $impuestos = $this->db->get();
+                if (!$impuestos)  throw new Exception("Error en la BD");
+                $row['impuestos'] = $impuestos->result_array();
+                array_push($resultado, $row);
+            }
+
+            $this->db->trans_commit();
+            return $resultado;
         } catch (Exception $e) {
             $this->db->trans_rollback();
             return false;
