@@ -599,6 +599,40 @@ class Cotizacion_model extends CI_Model
             return false;
         }
     }
+    function correosSugerencia($idCotizacion)
+    {
+        try {
+            $this->db->trans_begin();
+
+            $this->db->select("cl.correo");
+            $this->db->from('cotizacion as co');
+            $this->db->join('cliente as cl', 'cl.idCliente =  co.idCliente ');
+            $this->db->where(array('co.idCotizacion' => $idCotizacion));
+
+            $cliente = $this->db->get();
+            if (!$cliente) throw new Exception("Error en la BD");
+            $cliente = $cliente->result_array();
+            $data['cliente'] = array_shift($cliente);
+
+            $this->db->select("pc.correo");
+            $this->db->from('cotizacion as co, personacontacto as pc');
+            $this->db->where(array('co.idCliente = pc.idCliente', 'co.idCotizacion' => $idCotizacion));
+
+            $atenciones = $this->db->get();
+            if (!$atenciones) throw new Exception("Error en la BD");
+            $atenciones = $atenciones->result_array();
+            $data['atenciones'] = $atenciones;
+
+
+            // echo print_r($data); exit();
+
+            $this->db->trans_commit();
+            return $data;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
 
     function cargarAprobacion($datos)
     {
@@ -615,15 +649,23 @@ class Cotizacion_model extends CI_Model
             $cliente = $cliente->result_array();
             $data['cliente'] = array_shift($cliente);
 
-            $this->db->select("pc.nombre,pc.primerApellido, pc.segundoApellido, pc.correo, pc.enviarFacturas");
+            $this->db->select("pc.idPersonaContacto, pc.nombre,pc.primerApellido, pc.segundoApellido, pc.correo, pc.enviarFacturas");
+            $this->db->from('cotizacion as co, personacontacto as pc');
+            $this->db->where(array('co.idCliente = pc.idCliente', 'co.idCotizacion' => $datos['idCotizacion']));
+
+            $atenciones = $this->db->get();
+            if (!$atenciones) throw new Exception("Error en la BD");
+            $atenciones = $atenciones->result_array();
+            $data['atenciones'] = $atenciones;
+
+            $this->db->select("co.idPersonaContacto");
             $this->db->from('cotizacion as co');
-            $this->db->join('personacontacto as pc', 'pc.idPersonaContacto =  co.idPersonaContacto');
             $this->db->where(array('co.idCotizacion' => $datos['idCotizacion']));
 
-            $atencion = $this->db->get();
-            if (!$atencion) throw new Exception("Error en la BD");
-            $atencion = $atencion->result_array();
-            $data['atencion'] = array_shift($atencion);
+            $idContactoSeleccionado = $this->db->get();
+            if (!$idContactoSeleccionado) throw new Exception("Error en la BD");
+            $idContactoSeleccionado = $idContactoSeleccionado->result_array();
+            $data['idContactoSeleccionado'] = array_shift($idContactoSeleccionado)['idPersonaContacto'] ;
 
             // echo print_r($data); exit();
 

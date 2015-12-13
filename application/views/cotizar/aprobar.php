@@ -93,15 +93,41 @@
 <script type="text/javascript">
 
   $(document).on('ready', function(){
-    $('#enviar #boton').on('click', function(){
-      // alert('enviar');
-      editarEstado(4);
-    });
+    // $('#enviar #boton').on('click', function(){
+    //   // alert('enviar');
+    //   editarEstado(4);
+    // });
 
     $('#rechazar #boton').on('click', function(){
       // alert('rechazar');
       editarEstado(3);
     });
+
+    var correo = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            prefetch: {
+                url: '<?=base_url()?>Cotizacion/correosSugerencia/<?= encryptIt($resultado['idCotizacion']);?>',
+                ttl: 1000,
+                filter: function (list) {
+                    return $.map(list, function (correo) {
+                        return {name: correo};
+                    });
+                }
+            }
+        });
+        correo.initialize();
+
+
+        $('.tags_aprobarDestinatario  > > input').tagsinput({
+            typeaheadjs: {
+                name: 'correo',
+                displayKey: 'name',
+                valueKey: 'name',
+                source: correo.ttAdapter()
+            },
+
+        });
 
   });
 
@@ -139,47 +165,81 @@
 
   }
 
+ function validacionCorrecta(){
+  alert('enviar datos');
+
+}
+  
+
 
 
 </script>
 <!-- lista modals -->
+
+<?php 
+      $destinatario = array();
+      $destinatarioCC = array();
+      $cliente = $resultado['cliente'];
+      if ($cliente['enviarFacturas'] || $resultado['idContactoSeleccionado'] == '') {
+        array_push($destinatario, $cliente['correo']);
+      }
+
+      $atenciones = $resultado['atenciones'];
+      foreach ($atenciones as $atencion ) {
+        if ($atencion['idPersonaContacto'] == $resultado['idContactoSeleccionado']) {
+          array_push($destinatario, $atencion['correo']);
+        } else {
+          if ($atencion['enviarFacturas']) {
+            array_push($destinatarioCC, $atencion['correo']);
+          }
+        }
+      }  
+      $valueDestinatario = '';
+      foreach ($destinatario as $correo) {
+        $valueDestinatario .= $correo.',';
+      } 
+      $valueDestinatarioCC = '';
+      foreach ($destinatarioCC as $correo) {
+        $valueDestinatarioCC .= $correo.',';
+      }      
+
+?>
 
 <div id="enviar" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
-    <div class="modal-content">
+    <form id="formEnvio">
+    <div class="modal-content" style="text-align: left">
         <p><?= label('confirmarEnviarCliente'); ?></p>
-        <?php
-          if (isset($resultado['cliente'])) {
-                   // $contador = 0;
-              $cliente = $resultado['cliente'];
-              ?>
+        <p><?= label('confirmarDestinatario'); ?></p>
 
-              <p>
-                  <input type="checkbox" class="filled-in cliente" id="clienteEnviar" value="<?=$cliente['correo'];?>" name="cliente[]">
-                  <label for="clienteEnviar"><?=$cliente['nombre'].' '.$cliente['primerApellido'].' '.$cliente['segundoApellido']?></label>
-              </p>
 
-              <?php 
-                        
-            }
+        <div class="inputTag col s12">
+            <label for="aprobarDestinatario"><?= label('aprobar_destinatario'); ?></label>
+            <br>
+            <div id="aprobarDestinatario" class="example tags_aprobarDestinatario">
+                <div class="bs-example">
+                    <input name="aprobar_destinatario" placeholder="<?= label('aprobar_anadir'); ?>" type="text"
+                           value="<?=$valueDestinatario;?>"/>
+                </div>
+            </div>
+            <br>
+        </div>
 
-          if (isset($resultado['atencion'])) {
-                   // $contador = 0;
-              $atencion = $resultado['atencion'];
-              ?>
+        <div class="inputTag col s12">
+            <label for="aprobarDestinatarioCC"><?= label('aprobar_destinatarioCC'); ?></label>
+            <br>
+            <div id="aprobarDestinatarioCC" class="example tags_aprobarDestinatario">
+                <div class="bs-example">
+                    <input name="aprobar_destinatarioCC" placeholder="<?= label('aprobar_anadir'); ?>" type="text"
+                           value="<?=$valueDestinatarioCC;?>"/>
+                </div>
+            </div>
+            <br>
+        </div>
 
-              <p>
-                  <input type="checkbox" class="filled-in atencion" id="atencionEnviar" value="<?=$atencion['correo'];?>" name="atencion[]">
-                  <label for="atencionEnviar"><?=$atencion['nombre'].' '.$atencion['primerApellido'].' '.$atencion['segundoApellido']?></label>
-              </p>
-
-              <?php 
-                        
-            }
-                  ?>
         <div class="input-field col s12 m6">
             <input id="envio_asunto" name="envio_asunto" type="text" value="<?= label('envio_asuntoDefecto'); ?>">
             <label for="envio_asunto"><?= label('envio_asunto'); ?></label>
@@ -203,9 +263,10 @@
 
     <div class="modal-footer">
         <div id="boton" class="modal-footer black-text">
-          <a class="waves-effect waves-green btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+          <a onclick="$(this).closest('form').submit()" class="waves-effect waves-green btn-flat modal-action"><?= label('aceptar'); ?></a>
        </div>
     </div>
+    </form>
 </div>
 
 <div id="rechazar" class="modal">

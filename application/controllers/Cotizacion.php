@@ -29,6 +29,20 @@ class Cotizacion extends CI_Controller
         $this->load->view('layout/default/footer');
     }
 
+    public function correosSugerencia($idCotizacion)
+    {
+        $idCotizacion = decryptIt($idCotizacion);
+
+        $resultado = $this->Cotizacion_model->correosSugerencia($idCotizacion); 
+        $correos = array();
+        foreach ($resultado['atenciones'] as $atencion){
+            array_push($correos, $atencion['correo']);
+        }
+        array_push($correos, $resultado['cliente']['correo']);
+
+        echo json_encode($correos);
+    }
+
     public function busqueda(){
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];

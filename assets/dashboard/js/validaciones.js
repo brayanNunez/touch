@@ -276,6 +276,19 @@
                   }
             });
 
+            
+
+            $('#formEnvio').validate({
+                rules:
+                {
+                    envio_asunto: {required: true}
+                },
+                 errorElement: 'div',
+                 submitHandler: function(form) {
+                    validacionCorrecta();
+                  }
+            });
+
             $('#form_empleado').validate({
                 rules:
                 {
