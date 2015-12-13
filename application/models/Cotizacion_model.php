@@ -605,6 +605,28 @@ class Cotizacion_model extends CI_Model
         try {
             $this->db->trans_begin();
 
+            $this->db->select("cl.nombre,cl.primerApellido, cl.segundoApellido, cl.correo, cl.enviarFacturas");
+            $this->db->from('cotizacion as co');
+            $this->db->join('cliente as cl', 'cl.idCliente =  co.idCliente ');
+            $this->db->where(array('co.idCotizacion' => $datos['idCotizacion']));
+
+            $cliente = $this->db->get();
+            if (!$cliente) throw new Exception("Error en la BD");
+            $cliente = $cliente->result_array();
+            $data['cliente'] = array_shift($cliente);
+
+            $this->db->select("pc.nombre,pc.primerApellido, pc.segundoApellido, pc.correo, pc.enviarFacturas");
+            $this->db->from('cotizacion as co');
+            $this->db->join('personacontacto as pc', 'pc.idPersonaContacto =  co.idPersonaContacto');
+            $this->db->where(array('co.idCotizacion' => $datos['idCotizacion']));
+
+            $atencion = $this->db->get();
+            if (!$atencion) throw new Exception("Error en la BD");
+            $atencion = $atencion->result_array();
+            $data['atencion'] = array_shift($atencion);
+
+            // echo print_r($data); exit();
+
             $this->db->select("ec.descripcion as estado");
             $this->db->from('estadocotizacion as ec');
             $this->db->join('cotizacion as co', 'co.idEstadoCotizacion = ec.idEstadoCotizacion');
