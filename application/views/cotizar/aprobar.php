@@ -126,7 +126,6 @@
                          url: '<?=base_url()?>ManejadorPDF/enviarCotizacionCliente/<?= $resultado['idEmpresa'];?>/<?= encryptIt($resultado['idCotizacion']);?>',
                          // data: $('#formAprobadores, #formLineasDetalle, #formGeneral, #form_encabezado, #form_paso3AgregarPlantilla, #form_cuerpo, #form_informacion, #form_footer').serialize(), 
                          success: function(response) {
-                          alert(response);
 
                          }
                       });
@@ -152,7 +151,56 @@
     </div>
     <div class="modal-content">
         <p><?= label('confirmarEnviarCliente'); ?></p>
+        <?php
+          if (isset($resultado['cliente'])) {
+                   // $contador = 0;
+              $cliente = $resultado['cliente'];
+              ?>
+
+              <p>
+                  <input type="checkbox" class="filled-in cliente" id="clienteEnviar" value="<?=$cliente['correo'];?>" name="cliente[]">
+                  <label for="clienteEnviar"><?=$cliente['nombre'].' '.$cliente['primerApellido'].' '.$cliente['segundoApellido']?></label>
+              </p>
+
+              <?php 
+                        
+            }
+
+          if (isset($resultado['atencion'])) {
+                   // $contador = 0;
+              $atencion = $resultado['atencion'];
+              ?>
+
+              <p>
+                  <input type="checkbox" class="filled-in atencion" id="atencionEnviar" value="<?=$atencion['correo'];?>" name="atencion[]">
+                  <label for="atencionEnviar"><?=$atencion['nombre'].' '.$atencion['primerApellido'].' '.$atencion['segundoApellido']?></label>
+              </p>
+
+              <?php 
+                        
+            }
+                  ?>
+        <div class="input-field col s12 m6">
+            <input id="envio_asunto" name="envio_asunto" type="text" value="<?= label('envio_asuntoDefecto'); ?>">
+            <label for="envio_asunto"><?= label('envio_asunto'); ?></label>
+        </div>
+        <div class="input-field col s12">
+          <textarea id="envio_texto" name="envio_texto" class="materialize-textarea" style="height: 24px;"></textarea>
+          <label for="envio_texto" class=""><?= label('envio_texto'); ?></label>
+        </div>
+        <div id="contenedorEnvios">
+          <p>
+              <input type="checkbox" class="filled-in aprobadores" id="filled-in-box_1" value="" name="aprobadores[]">
+              <label for="filled-in-box_1">PDF</label>
+          </p>
+          <p>
+              <input type="checkbox" class="filled-in aprobadores" id="filled-in-box_2" value="" name="aprobadores[]">
+              <label for="filled-in-box_2">Link</label>
+          </p>
+        </div>
+
     </div>
+
     <div class="modal-footer">
         <div id="boton" class="modal-footer black-text">
           <a class="waves-effect waves-green btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
