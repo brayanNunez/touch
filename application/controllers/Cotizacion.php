@@ -179,6 +179,9 @@ class Cotizacion extends CI_Controller
             'columna' => $this->input->post('columna'),
             'fechaValidez' => date("Y-m-d", strtotime($this->input->post('paso1_validez')))
             );
+        // echo print_r($data['datosGenerales']); exit();
+
+
         $data['diseno'] = $this->obtenerPlantilla(0);
         // echo print_r($data['diseno']);exit();
         $resultado = $this->Cotizacion_model->guardarCambios($data); 

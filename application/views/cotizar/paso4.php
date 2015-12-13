@@ -262,7 +262,7 @@
                    // data.push({name: 'columna', value: columnaSeleccionada}, {name: 'ascendente', value: ascendente});
                    success: function(response)
                    {
-                    // alert(response);
+                    alert(response);
                     if (response == 'false') {
                       $('#modal_transaccionIncorrecta').openModal();
                     } else{

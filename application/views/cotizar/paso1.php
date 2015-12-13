@@ -421,12 +421,12 @@
         miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("paso1_elegirAtencion"); ?></option>');
         miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
         for(var i = 0; i < $array.length; i++) {
-            var cliente = $array[i];
-            if(cliente != null) {
-                if(cliente['idPersonaContacto'] == $id) {
-                    miSelect.append('<option value="' + cliente['idPersonaContacto'] + '" selected>' + cliente['nombreContacto'] + '</option>');
+            var atencion = $array[i];
+            if(atencion != null) {
+                if(atencion['idPersonaContacto'] == $id) {
+                    miSelect.append('<option value="' + atencion['idPersonaContacto'] + '" selected>' + atencion['nombreContacto'] + '</option>');
                 } else {
-                    miSelect.append('<option value="' + cliente['idPersonaContacto'] + '">' + cliente['nombreContacto'] + '</option>');
+                    miSelect.append('<option value="' + atencion['idPersonaContacto'] + '">' + atencion['nombreContacto'] + '</option>');
                 }
             }
         }

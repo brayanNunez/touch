@@ -301,24 +301,40 @@ class ManejadorPDF extends CI_Controller
             'envio_pdf' => $envioPDF,
             'envio_link' => $envioLink
             );
-        echo print_r($data); exit();
-        $idCotizacion = decryptIt($idCotizacionEncriptado);
-        $correo = $this->Cotizacion_model->cargarCorreoCliente($idCotizacion);
-        $correo = $correo['correo'];
+
+        $arrayDestinatario = array();
+        if ($data['aprobar_destinatario'] != '') {
+            $destinatarios = explode(",", $data['aprobar_destinatario']);
+            foreach ($destinatarios as $correo) {
+                array_push($arrayDestinatario, $correo);
+            }
+        }
+
+        $arrayDestinatarioCC = array();
+        if ($data['aprobar_destinatarioCC'] != '') {
+            $destinatariosCC = explode(",", $data['aprobar_destinatarioCC']);
+            foreach ($destinatariosCC as $correo) {
+                array_push($arrayDestinatarioCC, $correo);
+            }
+        }
+        // echo print_r($arrayDestinatario); exit();
+
+
+        // $idCotizacion = decryptIt($idCotizacionEncriptado);
+        // $correo = $this->Cotizacion_model->cargarCorreoCliente($idCotizacion);
+        // $correo = $correo['correo'];
         // echo $correo; exit();
         copy('./files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/sistema/test.pdf','./files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/cliente/test.pdf'); 
         
-
         
-
         $this->load->library('email');
         $this->email->from('brayannr@hotmail.es', 'Brayan');
         // echo print_r($arrayCorreos); exit();
-        $this->email->to($correo);
-        $this->email->cc('brayan.nunez@ucrso.info');
+        $this->email->to($arrayDestinatario);
+        $this->email->cc($arrayDestinatarioCC);
 
-        $this->email->subject('Cotización touch');
-        $this->email->message('Has recibido la siguiente cotización: '.base_url().'files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/cliente/test.pdf');
+        $this->email->subject($data['envio_asunto']);
+        $this->email->message($data['envio_texto']. ' Link: '.base_url().'files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/cliente/test.pdf');
 
         // $this->email->attach($path);
 
