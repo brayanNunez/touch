@@ -1108,10 +1108,11 @@ echo "var arrayFases =". $js_array.";";
 
         var impuestosAgregados = 0;
         $.each($("#servicio_impuestos").tagsinput('items'), function( index, value ) {
-//            precioServicio += precioServicio * (value['valor'] / 100);
-            impuestosAgregados += parseFloat(value['valor']);
+            impuestosAgregados += precioServicio * (value['valor'] / 100);
+//            impuestosAgregados += parseFloat(value['valor']);
         });
-        precioServicio += precioServicio * (impuestosAgregados / 100);
+        precioServicio += impuestosAgregados;
+//        precioServicio += precioServicio * (impuestosAgregados / 100);
 
         precioServicio = precioServicio.toFixed(2);
 
