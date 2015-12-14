@@ -360,7 +360,7 @@
                     totalGastosFijos += monto;
                 }
 
-                $('#total_gastosMensuales').text(totalGastosFijos);
+                $('#total_gastosMensuales').text(totalGastosFijos.toFixed(2));
             }
         });
     }
