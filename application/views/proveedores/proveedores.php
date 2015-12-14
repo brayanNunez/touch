@@ -650,9 +650,9 @@
 //                    '<a href="#eliminarContacto" class="modal-trigger" title="<?//= label('formProveedor_contactoEliminar') ?>//"><i class="mdi-action-delete medium" style="color: black;"></i></a>' +
                     '<a class="confirmarEliminarContacto" data-fila-eliminar="' + contador + '" title="<?= label('formProveedor_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>' +
                 '</div>' +
-            '</div>' +
-            '<div class="col s12">' +
-                '<hr />' +
+                '<div class="col s12">' +
+                    '<hr />' +
+                '</div>' +
             '</div>'
         );
         contador++;
