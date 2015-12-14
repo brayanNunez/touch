@@ -82,49 +82,60 @@
 
         <div class="col s12">
             <div id="tab-contactos" class="card col s12" style="padding: 0;">
-                <div id="slider-contactos" class="liquid">
-                    <span id="btn-previous" class="previous" title="Elementos anteriores">
-                        <img src="<?= base_url(); ?>assets/img/lightbox/img_prev.png">
-                    </span>
-                    <div class="wrapper">
-                        <ul>
-                        <?php 
-                            foreach ($resultado['contactos'] as $contacto) { ?>
-                                <li>
-                                    <div class="info-contacto">
-                                        <div>
-                                            <h5><?=$contacto['nombre']." ".$contacto['primerApellido']." ".$contacto['segundoApellido']?></h5>
-                                            <p><?=$contacto['puesto']?></p>
-                                            <p><?=$contacto['correo']?></p>
-                                            <p><?=$contacto['telefono']?></p>
-<!--                                            <div class="contacto-opciones">-->
-<!--                                                <a href="#editarContacto" class="modal-trigger"-->
-<!--                                                   title="--><?//= label('formCliente_contactoEditar') ?><!--">-->
-<!--                                                    <i class="mdi-editor-mode-edit"></i>-->
-<!--                                                </a>-->
-<!--                                                <a href="#" title="--><?//= label('formCliente_contactoDescargar')?><!--">-->
-<!--                                                    <i class="mdi-file-file-download"></i>-->
-<!--                                                </a>-->
-<!--                                                <a href="#eliminarContacto" class="modal-trigger" title="--><?//= label('formCliente_contactoEliminar')?><!--">-->
-<!--                                                    <i class="mdi-action-delete"></i>-->
-<!--                                                </a>-->
-<!--                                            </div>-->
-                                            <div class="contacto-principal es-principal">
-                                                <a href="#cambiarPrincipal" class="modal-trigger" title="<?= label('formCliente_contactoPrincipal') ?>">
-                                                    <i class="mdi-action-done"></i>
-                                                </a>
+                <?php
+                if(isset($resultado['contactos'])) {
+                    $contactos = $resultado['contactos'];
+                    if($contactos != false && $contactos != null) { ?>
+                        <div id="slider-contactos" class="liquid">
+                            <span id="btn-previous" class="previous" title="Elementos anteriores">
+                                <img src="<?= base_url(); ?>assets/img/lightbox/img_prev.png">
+                            </span>
+                            <div class="wrapper">
+                                <ul>
+                <?php
+                        foreach ($contactos as $contacto) { ?>
+                                    <li>
+                                        <div class="info-contacto">
+                                            <div>
+                                                <h5><?=$contacto['nombre']." ".$contacto['primerApellido']." ".$contacto['segundoApellido']?></h5>
+                                                <p><?=$contacto['puesto']?></p>
+                                                <p><?=$contacto['correo']?></p>
+                                                <p><?=$contacto['telefono']?></p>
+<!--                                                    <div class="contacto-opciones">-->
+<!--                                                        <a href="#editarContacto" class="modal-trigger"-->
+<!--                                                           title="--><?//= label('formCliente_contactoEditar') ?><!--">-->
+<!--                                                            <i class="mdi-editor-mode-edit"></i>-->
+<!--                                                        </a>-->
+<!--                                                        <a href="#" title="--><?//= label('formCliente_contactoDescargar')?><!--">-->
+<!--                                                            <i class="mdi-file-file-download"></i>-->
+<!--                                                        </a>-->
+<!--                                                        <a href="#eliminarContacto" class="modal-trigger" title="--><?//= label('formCliente_contactoEliminar')?><!--">-->
+<!--                                                            <i class="mdi-action-delete"></i>-->
+<!--                                                        </a>-->
+<!--                                                    </div>-->
+                                                <div class="contacto-principal es-principal">
+                                                    <a href="#cambiarPrincipal" class="modal-trigger" title="<?= label('formCliente_contactoPrincipal') ?>">
+                                                        <i class="mdi-action-done"></i>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </li>
-                        <?php
-                            } ?>
-                        </ul>
-                    </div>
-                    <span id="btn-next" class="next" title="Elementos siguientes">
-                        <img src="<?= base_url(); ?>assets/img/lightbox/img_next.png">
-                    </span>
-                </div>
+                                    </li>
+                <?php
+                        } ?>
+                                </ul>
+                            </div>
+                            <span id="btn-next" class="next" title="Elementos siguientes">
+                                <img src="<?= base_url(); ?>assets/img/lightbox/img_next.png">
+                            </span>
+                        </div>
+                <?php
+                    } else { ?>
+                        <h5 style="padding: 25px;">No hay contactos disponibles para mostrar</h5>
+                <?php
+                    }
+                }
+                ?>
             </div>
             <div id="tab-infoAdicional" class="card col s12">
                 <div class="table-responsive">
