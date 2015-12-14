@@ -1328,7 +1328,7 @@
             $('#span_gasto' + idEditar + '_nombre').text(nombre);
             $('#span_gasto' + idEditar + '_categoria').text(nombreCategoria);
             $('#span_gasto' + idEditar + '_formaPago').text(nombreFormaPago);
-            $('#span_gasto' + idEditar + '_monto').text(monto);
+            $('#span_gasto' + idEditar + '_monto').empty().html('<span class="moneda_signo"></span>' + monto);
 
             for (var i = 0; i < nombres.length; i++) {
                 if (nombres[i]['idGasto'] == idEditar) {
