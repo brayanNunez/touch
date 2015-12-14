@@ -207,7 +207,7 @@
                                                                     <td></td>
                                                                     <td></td>
                                                                     <td>TOTAL</td>
-                                                                    <td>$<span class="total_gastos_variables">0</span></td>
+                                                                    <td><span class="moneda_signo"></span><span class="total_gastos_variables">0</span></td>
                                                                     <td></td>
                                                                 </tr>
                                                             </tbody>
@@ -215,7 +215,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col s12" style="margin-top: 20px;">
-                                                    <h5><?= label('servicioGastos_total'); ?>: $<span class="total_gastos_variables">0</span></h5>
+                                                    <h5><?= label('servicioGastos_total'); ?>: <span class="moneda_signo"></span><span class="total_gastos_variables">0</span></h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -474,7 +474,7 @@
         var tiempo = '<td>' + tmp +' </td>';
         var cantidad = '<td><input class="input_cantidad_gasto" min="0" name="gasto' + contadorFilasGastos + '_cantidad" type="number" value="0"/></td>';
         var monto = '<td><input class="input_monto_gasto" style="display: none;" name="gasto' + contadorFilasGastos + '_monto" type="text" value="' + mont + '" />' + mont + '</td>';
-        var subtotal = '<td>$<span class="subtotal_fila">0</span></td>';
+        var subtotal = '<td><span class="moneda_signo"></span><span class="subtotal_fila">0</span></td>';
 
         var tBody = $('#gastos-tabla-lista');
         if(gastosTabla.indexOf(idEncriptado) == -1) {
@@ -512,6 +512,8 @@
         select_gastos.val('0');
         select_gastos.attr('disabled', 'disabled');
         select_gastos.trigger("chosen:updated");
+
+        actualizarSignoMoneda();
     }
 </script>
 <!--Script para eliminar gastos-->

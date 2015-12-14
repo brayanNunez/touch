@@ -279,9 +279,7 @@
                                                                             <td>
                                                                                 <input class="input_cantidad_gasto" min="0" name="gasto<?= $contador; ?>_cantidad" type="number" value="<?= $cantidad; ?>"/>
                                                                             </td>
-                                                                            <td>
-                                                                                $<span class="subtotal_fila"><?= $subtotal; ?></span>
-                                                                            </td>
+                                                                            <td><span class="subtotal_fila"><span class="moneda_signo"></span><?= $subtotal; ?></span></td>
                                                                             <td>
                                                                                 <a class="boton-opciones btn-flat white-text confirmarEliminarGasto"
                                                                                    data-id-eliminar="<?= $idGasto; ?>"  data-fila-eliminar="fila<?= $contador++; ?>"><?= label('menuOpciones_eliminar'); ?></a>
@@ -300,7 +298,7 @@
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td>TOTAL</td>
-                                                                <td>$<span class="total_gastos_variables"><?= $totalGastos; ?></span></td>
+                                                                <td><span class="moneda_signo"></span><span class="total_gastos_variables"><?= $totalGastos; ?></span></td>
                                                                 <td></td>
                                                             </tr>
                                                             </tbody>
@@ -308,7 +306,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col s12" style="margin-top: 20px;">
-                                                    <h5><?= label('servicioGastos_total'); ?>: $<span class="total_gastos_variables"><?= $totalGastos; ?></span></h5>
+                                                    <h5><?= label('servicioGastos_total'); ?>: <span class="moneda_signo"></span><span class="total_gastos_variables"><?= $totalGastos; ?></span></h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -530,7 +528,7 @@
             var cantidad = $(this).val();
             var subtotal = padre.find('td span.subtotal_fila').first();
             var resultado = monto * cantidad;
-            subtotal.text(resultado);
+            subtotal.empty().html('<span class="moneda_signo"></span>' + resultado);
             gastosVariablesServicios += resultado;
         });
         elementos.each(function () {
@@ -538,6 +536,7 @@
         });
         totalGastosVariables = gastosVariablesServicios;
 
+        actualizarSignoMoneda();
         calcularPrecio();
     }
 </script>
@@ -599,7 +598,7 @@
         var tiempo = '<td>' + tmp +' </td>';
         var cantidad = '<td><input class="input_cantidad_gasto" min="0" name="gasto' + contadorFilasGastos + '_cantidad" type="number" value="0"/></td>';
         var monto = '<td><input class="input_monto_gasto" style="display: none;" name="gasto' + contadorFilasGastos + '_monto" type="text" value="' + mont + '" />' + mont + '</td>';
-        var subtotal = '<td>$<span class="subtotal_fila">0</pan></td>';
+        var subtotal = '<td><span class="moneda_signo"></span><span class="subtotal_fila">0</pan></td>';
 
         var tBody = $('#gastos-tabla-lista');
 
@@ -637,6 +636,8 @@
         select_gastos.val('0');
         select_gastos.attr('disabled', 'disabled');
         select_gastos.trigger("chosen:updated");
+
+        actualizarSignoMoneda();
     }
 </script>
 <!--Script para eliminar gastos-->
