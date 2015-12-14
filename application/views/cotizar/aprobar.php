@@ -174,7 +174,15 @@
            data: $('#formEnvio').serialize(), 
            success: function(response)
            {
-            alert(response);
+            if (response == 1) {
+              $('#mensajeAprobacion').css('display', 'block');
+              $('#botonesAprobar').css('display', 'none');
+              $('#enviar').closeModal();
+              $('#cotizacionEnviada').openModal();
+            } else {
+              $('#enviar').closeModal();
+              $('#modal_transaccionIncorrecta').openModal();
+            }
           }
         });
 
@@ -283,14 +291,28 @@
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
-    <div class="modal-content">
-        <p><?= label('confirmarRechazar'); ?></p>
-    </div>
-    <div class="modal-footer">
-        <div id="boton" class="modal-footer black-text">
-          <a class="waves-effect waves-green btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
-       </div>
-    </div>
+    <form id="formRechazar">
+      <div class="modal-content">
+          <p><?= label('confirmarRechazar'); ?></p>
+
+          <div class="input-field col s12 m6">
+              <input id="envio_asunto" name="envio_asunto" type="text" value="">
+              <label for="envio_asunto"><?= label('envio_asunto'); ?></label>
+          </div>
+          <div class="input-field col s12">
+            <textarea id="envio_texto" name="envio_texto" class="materialize-textarea" style="height: 24px;"></textarea>
+            <label for="envio_texto" class=""><?= label('envio_texto'); ?></label>
+          </div>
+
+      </div>
+      <div class="modal-footer">
+          <div id="boton" class="modal-footer black-text">
+            <a onclick="$(this).closest('form').submit()" class="waves-effect waves-green btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+         </div>
+      </div>
+      
+    </form>
+      
 </div>
 
 
@@ -321,6 +343,19 @@
 </div>
 
 <div id="transaccionIncorrecta" class="modal">
+    <div  class="modal-header headerTransaccionIncorrecta">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('errorGuardar'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+
+<div id="modal_transaccionIncorrecta" class="modal">
     <div  class="modal-header headerTransaccionIncorrecta">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>

@@ -284,66 +284,76 @@ class ManejadorPDF extends CI_Controller
     }
     
     public function enviarCotizacionCliente($idEmpresa, $idCotizacionEncriptado){
-        $envioPDF = 0;
-        if (isset($_POST['envio_pdf'])) {
-           $envioPDF = 1;
-        }
 
-        $envioLink = 0;
-        if (isset($_POST['envio_link'])) {
-           $envioLink = 1;
-        }
+        $data['idCotizacion'] = decryptIt($idCotizacionEncriptado);
 
-        $data = array('aprobar_destinatario' => $this->input->post('aprobar_destinatario'),  
-            'aprobar_destinatarioCC' => $this->input->post('aprobar_destinatarioCC'),  
-            'envio_asunto' => $this->input->post('envio_asunto'),  
-            'envio_texto' => $this->input->post('envio_texto'),  
-            'envio_pdf' => $envioPDF,
-            'envio_link' => $envioLink
-            );
+        $data['estado'] = 4; //estado aprobada
 
-        $arrayDestinatario = array();
-        if ($data['aprobar_destinatario'] != '') {
-            $destinatarios = explode(",", $data['aprobar_destinatario']);
-            foreach ($destinatarios as $correo) {
-                array_push($arrayDestinatario, $correo);
+        $resultado = $this->Cotizacion_model->editarEstado($data); 
+
+        if ($resultado) {
+            $envioPDF = 0;
+            if (isset($_POST['envio_pdf'])) {
+               $envioPDF = 1;
             }
-        }
 
-        $arrayDestinatarioCC = array();
-        if ($data['aprobar_destinatarioCC'] != '') {
-            $destinatariosCC = explode(",", $data['aprobar_destinatarioCC']);
-            foreach ($destinatariosCC as $correo) {
-                array_push($arrayDestinatarioCC, $correo);
+            $envioLink = 0;
+            if (isset($_POST['envio_link'])) {
+               $envioLink = 1;
             }
+
+            $data = array('aprobar_destinatario' => $this->input->post('aprobar_destinatario'),  
+                'aprobar_destinatarioCC' => $this->input->post('aprobar_destinatarioCC'),  
+                'envio_asunto' => $this->input->post('envio_asunto'),  
+                'envio_texto' => $this->input->post('envio_texto'),  
+                'envio_pdf' => $envioPDF,
+                'envio_link' => $envioLink
+                );
+
+            $arrayDestinatario = array();
+            if ($data['aprobar_destinatario'] != '') {
+                $destinatarios = explode(",", $data['aprobar_destinatario']);
+                foreach ($destinatarios as $correo) {
+                    array_push($arrayDestinatario, $correo);
+                }
+            }
+
+            $arrayDestinatarioCC = array();
+            if ($data['aprobar_destinatarioCC'] != '') {
+                $destinatariosCC = explode(",", $data['aprobar_destinatarioCC']);
+                foreach ($destinatariosCC as $correo) {
+                    array_push($arrayDestinatarioCC, $correo);
+                }
+            }
+            // echo print_r($arrayDestinatario); exit();
+
+
+            $rutaSistema = './files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/sistema/test.pdf';
+            $rutaCliente ='./files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/cliente/test.pdf';
+            copy($rutaSistema, $rutaCliente); 
+            
+            $this->load->library('email');
+            $this->email->from('brayannr@hotmail.es', 'Brayan');
+            // echo print_r($arrayCorreos); exit();
+            $this->email->to($arrayDestinatario);
+            $this->email->cc($arrayDestinatarioCC);
+
+            $this->email->subject($data['envio_asunto']);
+
+            $texto = $data['envio_texto'];
+            if ($data['envio_link']) {
+                $texto = $data['envio_texto'].''.base_url().'files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/cliente/test.pdf';
+            }
+            $this->email->message($texto);
+
+            if ($data['envio_pdf']) {
+                $this->email->attach($rutaCliente);
+            }
+            $this->email->send();
+
         }
-        // echo print_r($arrayDestinatario); exit();
 
-
-        $rutaSistema = './files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/sistema/test.pdf';
-        $rutaCliente ='./files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/cliente/test.pdf';
-        copy($rutaSistema, $rutaCliente); 
-        
-        $this->load->library('email');
-        $this->email->from('brayannr@hotmail.es', 'Brayan');
-        // echo print_r($arrayCorreos); exit();
-        $this->email->to($arrayDestinatario);
-        $this->email->cc($arrayDestinatarioCC);
-
-        $this->email->subject($data['envio_asunto']);
-
-        $texto = $data['envio_texto'];
-        if ($data['envio_link']) {
-            $texto = $data['envio_texto'].base_url().'files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/cliente/test.pdf';
-        }
-        $this->email->message($texto);
-
-        if ($data['envio_pdf']) {
-            $this->email->attach($rutaCliente);
-        }
-        $this->email->send();
-
-        echo 'correo enviado';
+        echo $resultado;
 
     }
 
