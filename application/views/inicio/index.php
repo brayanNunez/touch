@@ -260,7 +260,7 @@
                                     <div class="card-content green white-text">
                                         <p class="card-stats-title"><i class="mdi-editor-insert-drive-file"></i>
                                             Total gasto fijo mensual</p>
-                                        <h4 class="card-stats-number">$40.000</h4>
+                                        <h4 class="card-stats-number"><span class="moneda_signo"></span><span id="total_gastosMensuales"></span></h4>
 
                                     </div>
                                     <div class="card-action  green darken-2">
@@ -322,6 +322,53 @@
     <!--end container-->
 </section>
 <!-- END CONTENT -->
+
+
+<!--Script para calcular gastos fijos mensuales-->
+<script type="text/javascript">
+    function gastosFijosMensuales() {
+        $.ajax({
+            type: 'POST',
+            url: '<?= base_url(); ?>gastos/gastosFijos',
+            data: {  },
+            async: false,
+            success: function(response)
+            {
+                var $arrayGastosFijos = $.parseJSON(response);
+
+                var totalGastosFijos = 0;
+                for(var i = 0; i < $arrayGastosFijos.length; i++) {
+                    var gastoFijo = $arrayGastosFijos[i];
+                    var monto = 0;
+                    switch (gastoFijo['formaPago']) {
+                        case '1':
+                            monto = parseFloat(gastoFijo['monto']) * 730.001;
+                            break;
+                        case '2':
+                            monto = parseFloat(gastoFijo['monto']) * 30.4167;
+                            break;
+                        case '3':
+                            monto = parseFloat(gastoFijo['monto']) * 4.34524;
+                            break;
+                        case '4':
+                            monto = parseFloat(gastoFijo['monto']);
+                            break;
+                        case '5':
+                            monto = parseFloat(gastoFijo['monto']) * 0.0833334;
+                            break;
+                    }
+                    totalGastosFijos += monto;
+                }
+
+                $('#total_gastosMensuales').text(totalGastosFijos);
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        gastosFijosMensuales();
+    });
+</script>
 
 <!-- lista modals -->
 <!--Fin lista modals -->

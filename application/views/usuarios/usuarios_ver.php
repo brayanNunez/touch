@@ -70,14 +70,14 @@
                             ?>
                         </ul>
                     </div>
-                    <div class="col s12 m6 l6">
-                        <h5>Clientes asociados</h5>
-                        <ul class="ver-usuario-lista">
-                            <li>Dos Pinos S.A</li>
-                            <li>Faitur S.A.</li>
-                            <li>Springers</li>
-                        </ul>
-                    </div>
+<!--                    <div class="col s12 m6 l6">-->
+<!--                        <h5>Clientes asociados</h5>-->
+<!--                        <ul class="ver-usuario-lista">-->
+<!--                            <li>Dos Pinos S.A</li>-->
+<!--                            <li>Faitur S.A.</li>-->
+<!--                            <li>Springers</li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
                 </div>
             </div>
         </div>
