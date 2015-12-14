@@ -314,7 +314,7 @@ class Proveedores extends CI_Controller
                 if ($accionEfectuada == '2') {//fue eliminado
                     $identificacion =  decryptIt($this->input->post('idContacto_'.$contador));
                     $contacto = array(
-                        'idProveedorContacto' =>decryptIt($identificacion),
+                        'idProveedorContacto' =>$identificacion,
                         'eliminado' => '1'
                     );
                     array_push($eliminados, $contacto);

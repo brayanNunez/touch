@@ -314,14 +314,13 @@
                                                     <label for="proveedor_contactoTelefono_<?=$contador?>"><?= label("formContacto_telefono"); ?></label>
                                                 </div>
                                             </div>
-
                                         </div>
                                         <div class="col s12 m1 l1 btn-contacto-eliminar-edicion">
                                             <a class="confirmarEliminarContacto" data-fila-eliminar="<?= $contador; ?>" title="<?= label("formProveedor_contactoEliminar") ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>
                                         </div>
-                                    </div>
-                                    <div class="col s12">
-                                        <hr />
+                                        <div class="col s12">
+                                            <hr />
+                                        </div>
                                     </div>
                         <?php
                                     $contador++;
@@ -820,7 +819,6 @@
             contactoEliminar.fadeOut(function () {
                 contactoEliminar.hide();
             });
-
         }
     });
 
@@ -879,9 +877,9 @@
 //                    '<a href="#eliminarContacto" class="modal-trigger" title="<?//= label('formProveedor_contactoEliminar') ?>//"><i class="mdi-action-delete medium" style="color: black;"></i></a>' +
                     '<a class="confirmarEliminarContacto" data-fila-eliminar="' + contador + '" title="<?= label('formProveedor_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>' +
                 '</div>' +
-            '</div>' +
-            '<div class="col s12">' +
-                '<hr />' +
+                '<div class="col s12">' +
+                    '<hr />' +
+                '</div>' +
             '</div>'
         );
         contador++;
