@@ -320,12 +320,9 @@ class ManejadorPDF extends CI_Controller
         // echo print_r($arrayDestinatario); exit();
 
 
-        // $idCotizacion = decryptIt($idCotizacionEncriptado);
-        // $correo = $this->Cotizacion_model->cargarCorreoCliente($idCotizacion);
-        // $correo = $correo['correo'];
-        // echo $correo; exit();
-        copy('./files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/sistema/test.pdf','./files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/cliente/test.pdf'); 
-        
+        $rutaSistema = './files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/sistema/test.pdf';
+        $rutaCliente ='./files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/cliente/test.pdf';
+        copy($rutaSistema, $rutaCliente); 
         
         $this->load->library('email');
         $this->email->from('brayannr@hotmail.es', 'Brayan');
@@ -334,10 +331,16 @@ class ManejadorPDF extends CI_Controller
         $this->email->cc($arrayDestinatarioCC);
 
         $this->email->subject($data['envio_asunto']);
-        $this->email->message($data['envio_texto']. ' Link: '.base_url().'files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/cliente/test.pdf');
 
-        // $this->email->attach($path);
+        $texto = $data['envio_texto'];
+        if ($data['envio_link']) {
+            $texto = $data['envio_texto'].base_url().'files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/cliente/test.pdf';
+        }
+        $this->email->message($texto);
 
+        if ($data['envio_pdf']) {
+            $this->email->attach($rutaCliente);
+        }
         $this->email->send();
 
         echo 'correo enviado';
