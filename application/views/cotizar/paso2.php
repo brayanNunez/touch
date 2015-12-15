@@ -267,7 +267,7 @@ $(document).ready(function(){
 
         var cantidad = '<td>'+
             '<row>'+
-                '<input class="cantidad" value="" type="number" id="cantidad_'+contadorFilas+'" name="cantidad_'+contadorFilas+'">'+
+                '<input class="campo_cantidad" value="" type="number" id="cantidad_'+contadorFilas+'" name="cantidad_'+contadorFilas+'">'+
             '</row>'+
         '</td>';
 
@@ -717,7 +717,7 @@ $(document).on('ready', function(){
                 <label for="cantidadTotal"><?= label('formServicio_totalTiempo'); ?> <span id='unidadTiempo'></span></label>
             </div>
             <div class="input-field col offset-s6 s6">
-                <input id="servicio_utilidad" name="servicio_utilidad" type="number">
+                <input id="servicio_utilidad" name="servicio_utilidad" type="number" min="0" value="0">
                 <label for="servicio_utilidad"><?= label('formServicio_utilidad'); ?></label>
             </div>
             <div class="input-field col offset-s6 s6">
@@ -901,7 +901,7 @@ $(document).on('ready', function(){
     });
     function actualizarMontos() {
         var elementos = $('.total_gastos_variables');
-        var totalGastos = 0;//parseInt(elementos.first().text());
+        var gastosVariablesServicios = 0;//parseInt(elementos.first().text());
         $('.input_cantidad_gasto').each(function () {
             var padre = $(this).parents('tr');
             var monto = padre.find('td input.input_monto_gasto').first().val();
@@ -909,11 +909,14 @@ $(document).on('ready', function(){
             var subtotal = padre.find('td span.subtotal_fila').first();
             var resultado = monto * cantidad;
             subtotal.text(resultado);
-            totalGastos += resultado;
+            gastosVariablesServicios += resultado;
         });
         elementos.each(function () {
-            $(this).text(totalGastos);
+            $(this).text(gastosVariablesServicios);
         });
+        totalGastosVariables = gastosVariablesServicios;
+
+        calcularPrecioNuevo();
     }
     function limpiarTablaGastos() {
         $('.gasto_elementoTabla').each(function () {
@@ -1318,6 +1321,8 @@ $(document).on('ready', function(){
             // alert('#'+grupo);
             $('#'+grupo).text(sumatoria);
             calcularTotal();
+
+            calcularPrecioNuevo();
         });
 
         function calcularTotal(){
@@ -1507,7 +1512,6 @@ $(document).on('ready', function(){
     });
 </script>
 
-
 <!--Script para calcular precio de servicio en lineas de detalle-->
 <script type="text/javascript">
     var totalGastosFijosAnuales = 0;
@@ -1614,8 +1618,8 @@ $(document).on('ready', function(){
     function calcularPrecio(numeroFila) {
         gastosFijosAnuales();
         horasLaborales();
-        var totalGastosVariables = parseFloat($('#gastosVariablesLinea_' + numeroFila).val());
-        var totalGastos = totalGastosFijosAnuales + totalGastosVariables;
+        var totalGastosV = parseFloat($('#gastosVariablesLinea_' + numeroFila).val());
+        var totalGastos = totalGastosFijosAnuales + totalGastosV;
 
         var costoHora = totalGastos / totalHorasLaborales;
         var cantidadHoras = horasServicio(numeroFila);
@@ -1638,7 +1642,7 @@ $(document).on('ready', function(){
         $('#subTotal_' + numeroFila).val(subTotalServicio);
     }
 
-    $(document).on('change', '.cantidad', function () {
+    $(document).on('change', '.campo_cantidad', function () {
         var lineaPadre = $(this).parents('tr');
         var numeroLineaPadre = lineaPadre.find('td input.campo_numeroFila').first().val();
         calcularPrecio(numeroLineaPadre);
@@ -1652,5 +1656,63 @@ $(document).on('ready', function(){
         var lineaPadre = $(this).parents('tr');
         var numeroLineaPadre = lineaPadre.find('td input.campo_numeroFila').first().val();
         calcularPrecio(numeroLineaPadre);
+    });
+</script>
+<!--Script para calcular precio servicio que se agrega-->
+<script type="text/javascript">
+    function horasServicioNuevo() {
+        var tiempoServicio = parseFloat($('#agregarServicio #cantidadTotal').val());
+        var tipoTiempo = $('#agregarServicio #servicioTiempo').val();
+        var cantidadHoras = 0;
+        switch (tipoTiempo) {
+            case '1':
+                cantidadHoras = tiempoServicio;
+                break;
+            case '2':
+                cantidadHoras = tiempoServicio * 24;
+                break;
+            case '3':
+                cantidadHoras = tiempoServicio * 168;
+                break;
+            case '4':
+                cantidadHoras = tiempoServicio * 730.001;
+                break;
+            case '5':
+                cantidadHoras = tiempoServicio * 8760;
+                break;
+        }
+        return cantidadHoras;
+    }
+
+    function calcularPrecioNuevo() {
+        gastosFijosAnuales();
+        horasLaborales();
+        var totalGastos = totalGastosFijosAnuales + totalGastosVariables;
+
+        var costoHora = totalGastos / totalHorasLaborales;
+        var cantidadHoras = horasServicioNuevo();
+        var margenUtilidad = parseFloat($('#agregarServicio #servicio_utilidad').val()) / 100;
+
+        var precioServicio = (cantidadHoras * costoHora) / (1 - margenUtilidad);
+
+        var impuestosAgregados = 0;
+        $.each($("#agregarServicio #servicio_impuestos").tagsinput('items'), function( index, value ) {
+            impuestosAgregados += precioServicio * (value['valor'] / 100);
+        });
+        precioServicio += impuestosAgregados;
+
+        precioServicio = precioServicio.toFixed(2);
+
+        $('#agregarServicio #servicio_total').val(precioServicio);
+    }
+
+    $(document).on('change', '#agregarServicio #servicio_utilidad', function () {
+        calcularPrecioNuevo();
+    });
+    $(document).on('change', '#agregarServicio #servicioTiempo', function () {
+        calcularPrecioNuevo();
+    });
+    $(document).on('change', '#agregarServicio #servicio_impuestos', function () {
+        calcularPrecioNuevo();
     });
 </script>
