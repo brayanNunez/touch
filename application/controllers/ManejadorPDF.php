@@ -288,7 +288,7 @@ class ManejadorPDF extends CI_Controller
     public function enviarCotizacionRechazada($idEmpresa, $idCotizacionEncriptado){
 
         $data['idCotizacion'] = decryptIt($idCotizacionEncriptado);
-        $data['estado'] = 2; //estado rechazada
+        $data['estado'] = 3; //estado rechazada
 
         $resultado = $this->Cotizacion_model->editarEstado($data); 
 
@@ -329,6 +329,8 @@ class ManejadorPDF extends CI_Controller
         $data['idCotizacion'] = decryptIt($idCotizacionEncriptado);
 
         $data['estado'] = 4; //estado aprobada
+
+        $idCotizacion = $data['idCotizacion'];
 
         $resultado = $this->Cotizacion_model->editarEstado($data); 
 
@@ -391,6 +393,35 @@ class ManejadorPDF extends CI_Controller
                 $this->email->attach($rutaCliente);
             }
             $this->email->send();
+
+            $correo = $this->Cotizacion_model->cargarCorreoVendedor($idCotizacion)['correo'];
+
+            $data = array( 
+                'correoVendedor' => $correo,
+                'envio_asunto' => label('aprobar_asuntoVendedor'),  
+                'envio_texto' => label('aprobar_textoVendedor')
+                );
+            // $data = array( 
+            //     'correoVendedor' => $correo,
+            //     'envio_asunto' => 'prueba',  
+            //     'envio_texto' => 'texto';
+            //     );
+
+            // echo print_r($data); exit();
+
+            $linkCotizacionVer = base_url().'cotizacion/ver/'.$idCotizacionEncriptado;
+
+            
+            // $this->load->library('email');
+            $this->email->from('brayannr@hotmail.es', 'Brayan');
+            $this->email->to($data['correoVendedor']);
+
+            $this->email->subject($data['envio_asunto']);
+
+            $this->email->message($data['envio_texto'].' '.$linkCotizacionVer);
+
+            
+            $this->email->send(); 
 
         }
 
