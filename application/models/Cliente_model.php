@@ -28,6 +28,55 @@ class Cliente_model extends CI_Model
         }
     }
 
+    function busquedaCotizacion($idEmpresa, $busqueda)
+    {
+        try{
+            $this->db->trans_begin();
+
+
+            $desde = date("Y-m-d", strtotime($busqueda["desde"]));
+            $hasta = date("Y-m-d", strtotime($busqueda["hasta"]));
+
+            $hasta = strtotime('+1 day', strtotime($hasta));
+            $hasta = date('Y-m-d', $hasta); 
+
+            $where = '(co.fechaCreacion BETWEEN "'.$desde.'" AND "'.$hasta.'")';
+            if ($busqueda["busquedaCotizacion_estado"] != 0) {
+                $where = 'co.idEstadoCotizacion = '.$busqueda["busquedaCotizacion_estado"].' AND (co.fechaCreacion BETWEEN "'.$desde.'" AND "'.$hasta.'")';
+            }
+            
+            // $where = 'co.idEstadoCotizacion = '.$busqueda["busquedaCotizacion_estado"].' AND (co.fechaCreacion BETWEEN "'.$desde.'" AND "'.$hasta.'")';
+
+            // echo $where; exit();
+
+            $this->db->distinct();
+            $this->db->select('cl.idCliente, cl.identificacion, cl.nombre, cl.juridico, cl.primerApellido, cl.segundoApellido, cl.telefonoFijo, cl.correo');
+            $this->db->from('cliente as cl');
+            $this->db->join('cotizacion as co', 'co.idCliente = cl.idCliente');
+            $this->db->where($where);
+
+            $clientes = $this->db->get();
+
+
+            if (!$clientes) throw new Exception("Error en la BD"); 
+            // echo 'jola'; exit();
+            $clientes = $clientes->result_array();
+            $resultado = array();
+            foreach ($clientes as $cliente) {
+                $cliente['idCliente'] = encryptIt($cliente['idCliente']);
+                array_push($resultado, $cliente);
+            }
+            // echo print_r($resultado);exit();
+
+            $this->db->trans_commit();
+            return $resultado;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+       
+    }
+
     function busqueda($idEmpresa, $busqueda)
     {
         try{
@@ -477,10 +526,22 @@ class Cliente_model extends CI_Model
             $this->db->select('idCliente, identificacion, nombre, juridico, primerApellido, segundoApellido, telefonoFijo, correo');
             $clientes = $this->db->get_where('cliente', array('eliminado' => 0,'idEmpresa' => $idEmpresa));
             if (!$clientes) throw new Exception("Error en la BD"); 
-            $clientes = $clientes->result_array();
+            $data['lista'] =  $clientes->result_array();
+
+            $estado = $this->db->get('estadocotizacion');
+            if (!$estado) throw new Exception("Error en la BD"); 
+            $data['estados'] = $estado->result_array();
+
+            $this->db->select('MIN(fechaCreacion) as fecha');
+            $fecha = $this->db->get_where('cotizacion', array('eliminado' => 0,'idEmpresa' => $idEmpresa));
+            if (!$fecha) throw new Exception("Error en la BD"); 
+            $fecha = $fecha->result_array();
+            $fecha = array_shift($fecha);
+            $data['fechaMinima'] = $fecha['fecha'];
+
 
             $this->db->trans_commit();
-            return $clientes;
+            return $data;
         } catch (Exception $e) {
             $this->db->trans_rollback();
             return false;

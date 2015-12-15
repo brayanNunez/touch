@@ -16,8 +16,11 @@ class Clientes extends CI_Controller
         verificarLogin();//helper
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
-        $lista = $this->Cliente_model->cargarTodos($idEmpresa);
-        $data['lista'] = $lista;
+        $data = $this->Cliente_model->cargarTodos($idEmpresa);
+        // $data['lista'] = $lista;
+        if ($data == false) {
+            $data['lista'] = false;
+        }
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
         $this->load->view('clientes/clientes_lista', $data);
@@ -37,6 +40,25 @@ class Clientes extends CI_Controller
         $busqueda = $this->Cliente_model->busqueda($idEmpresa, $busqueda);
 
         
+        if ($busqueda === false) {
+            echo "0";
+        } else {
+            echo json_encode($busqueda); 
+        }
+    }
+
+    public function busquedaCotizacion(){
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+        
+        $busqueda = array('desde' => $this->input->post('busqueda-fecha-desde'),
+            'hasta' => $this->input->post('busqueda-fecha-hasta'),
+            'busquedaCotizacion_estado' => $this->input->post('busquedaCotizacion_estado')
+            );
+        // echo print_r($busqueda); exit();
+
+        $busqueda = $this->Cliente_model->busquedaCotizacion($idEmpresa, $busqueda);
+
         if ($busqueda === false) {
             echo "0";
         } else {
