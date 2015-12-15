@@ -95,6 +95,7 @@ class Servicio_model extends CI_Model
             $resultado = array();
             foreach ($servicios as $row) {
                 $idServicio = $row['idServicio'];
+
                 $this->db->select('im.*');
                 $this->db->from('impuesto im');
                 $this->db->join('impuesto_servicio is', 'is.idImpuesto = im.idImpuesto');
@@ -103,6 +104,25 @@ class Servicio_model extends CI_Model
                 $impuestos = $this->db->get();
                 if (!$impuestos)  throw new Exception("Error en la BD");
                 $row['impuestos'] = $impuestos->result_array();
+
+                $this->db->select('sum(cantidadTiempo) as cantidadHoras');
+                $this->db->from('fase_servicio');
+                $this->db->where('idServicio', $idServicio);
+                $cantidadHoras = $this->db->get();
+                $resultadoCantidadHoras = $cantidadHoras->result_array();
+                $res = array_shift($resultadoCantidadHoras);
+                $row['cantidadHoras'] = $res['cantidadHoras'];
+
+                $this->db->select('sum(g.monto * gs.cantidad) as gastosVariables');
+                $this->db->from('gasto as g');
+                $this->db->join('gastoservicio as gs', 'g.idGasto = gs.idGasto');
+                $this->db->join('servicio as s', 'gs.idServicio = s.idServicio');
+                $this->db->where('s.idServicio', $idServicio);
+                $gastosVariablesServicio = $this->db->get();
+                $resultadoGastosVariablesServicio = $gastosVariablesServicio->result_array();
+                $resGastos = array_shift($resultadoGastosVariablesServicio);
+                $row['gastosVariables'] = $resGastos['gastosVariables'];
+
                 array_push($resultado, $row);
             }
 
