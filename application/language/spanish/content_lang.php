@@ -590,7 +590,7 @@
     $lang['paso1_labelContacto'] = 'Atención';
     $lang['paso1_labelFormaPago'] = 'Forma de pago';
     $lang['paso1_labelTipoMoneda'] = 'Tipo de moneda';
-    $lang['paso1_labelTiempoVlidez'] = 'Tiempo de validez';
+    $lang['paso1_labelTiempoVlidez'] = 'Cotización válida hasta';
     $lang['paso1_labelTipoCambio'] = 'Tipo de cambio';
     $lang['paso1_labelDetalle'] = 'Detalle';
 
