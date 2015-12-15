@@ -815,7 +815,7 @@
               <form id="formBusqueda">
                 <div class="row" style="margin-bottom: 0;">
                     
-                    <div class="inputTag col s12 m4">
+                    <div class="inputTag  col s12 m4">
                         <label for="vendedoresCliente"><?= label('formCliente_cotizador'); ?></label>
                         <br>
                         <div id="vendedoresCliente" class="example tags_vendedores">
@@ -825,7 +825,7 @@
                         </div>
                         <br>
                     </div>
-                    <div class="inputTag col s12 m4">
+                    <div class="inputTag  col s12 m4">
                         <label for="gustosCliente"><?= label('formCliente_gustos_preferencias'); ?></label>
                         <br>
                         <div id="gustosCliente" class="example tags_gustosCliente">
@@ -835,7 +835,7 @@
                         </div>
                         <br>
                     </div>
-                    <div class="inputTag col s12 m4">
+                    <div class="inputTag  col s12 m4">
                         <label for="mediosCliente"><?= label('formCliente_mediosContacto'); ?></label>
                         <br>
                         <div id="mediosCliente" class="example tags_mediosContacto">

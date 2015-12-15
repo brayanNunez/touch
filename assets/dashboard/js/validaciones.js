@@ -537,10 +537,10 @@
                 personajuridico_fax: { required: true, maxlength: 45},
                 persona_palabras: { required: true, maxlength: 45},
                 persona_descripcion: { required: true, maxlength: 200},
-                persona_direccionPais: { required: true, maxlength: 45},
-                persona_direccionProvincia: { required: true, maxlength: 45},
-                persona_direccionCanton: { required: true, maxlength: 45},
-                persona_direccionDomicilio: { required: true, maxlength: 200}
+                // persona_direccionPais: { required: true, maxlength: 45},
+                // persona_direccionProvincia: { required: true, maxlength: 45},
+                // persona_direccionCanton: { required: true, maxlength: 45},
+                // persona_direccionDomicilio: { required: true, maxlength: 200}
             };
 
             $('#formPersona').validate({
