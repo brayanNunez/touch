@@ -98,10 +98,10 @@
     //   editarEstado(4);
     // });
 
-    $('#rechazar #boton').on('click', function(){
-      // alert('rechazar');
-      editarEstado(3);
-    });
+    // $('#rechazar #boton').on('click', function(){
+    //   // alert('rechazar');
+    //   editarEstado(3);
+    // });
 
     var correo = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
@@ -188,6 +188,31 @@
 
 }
   
+   function validacionCorrectaRechazar(){
+    // alert('validacion correcta');
+    var url = $('#formRechazar').attr('action');
+    var method = 'POST'; 
+    $.ajax({
+           type: method,
+           url: url,
+           data: $('#formRechazar').serialize(), 
+           success: function(response)
+           {
+            // alert(response);
+            if (response == 1) {
+              $('#mensajeAprobacion').css('display', 'block');
+              $('#botonesAprobar').css('display', 'none');
+              $('#rechazar').closeModal();
+              $('#cotizacionRechazada').openModal();
+            } else {
+              $('#rechazar').closeModal();
+              $('#modal_transaccionIncorrecta').openModal();
+            }
+          }
+        });
+
+}
+  
 
 
 
@@ -230,7 +255,7 @@
     </div>
     <form id="formEnvio" action="<?=base_url()?>ManejadorPDF/enviarCotizacionCliente/<?= $resultado['idEmpresa'];?>/<?= encryptIt($resultado['idCotizacion']);?>">
     <div class="modal-content" style="text-align: left">
-        <p><?= label('envio_titulo'); ?></p>
+        <p style="text-align: center"><?= label('envio_titulo'); ?></p>
 
 
         <div class="inputTag col s12">
@@ -291,12 +316,12 @@
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
-    <form id="formRechazar">
+    <form id="formRechazar" action="<?=base_url()?>ManejadorPDF/enviarCotizacionRechazada/<?= $resultado['idEmpresa'];?>/<?= encryptIt($resultado['idCotizacion']);?>">
       <div class="modal-content">
-          <p><?= label('confirmarRechazar'); ?></p>
+          <p style="text-align: center"><?= label('rechazar_titulo'); ?></p>
 
           <div class="input-field col s12 m6">
-              <input id="envio_asunto" name="envio_asunto" type="text" value="">
+              <input id="envio_asunto" name="envio_asunto" type="text" value="<?= label('rechazar_asuntoDefecto'); ?>">
               <label for="envio_asunto"><?= label('envio_asunto'); ?></label>
           </div>
           <div class="input-field col s12">
@@ -307,7 +332,7 @@
       </div>
       <div class="modal-footer">
           <div id="boton" class="modal-footer black-text">
-            <a onclick="$(this).closest('form').submit()" class="waves-effect waves-green btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+            <a onclick="$(this).closest('form').submit()" class="waves-effect waves-green btn-flat modal-action"><?= label('anvio_botonEnviar'); ?></a>
          </div>
       </div>
       

@@ -282,6 +282,47 @@ class ManejadorPDF extends CI_Controller
             }
         }
     }
+
+    
+
+    public function enviarCotizacionRechazada($idEmpresa, $idCotizacionEncriptado){
+
+        $data['idCotizacion'] = decryptIt($idCotizacionEncriptado);
+        $data['estado'] = 2; //estado rechazada
+
+        $resultado = $this->Cotizacion_model->editarEstado($data); 
+
+        if ($resultado) {
+
+            $correo = $this->Cotizacion_model->cargarCorreoVendedor($data['idCotizacion'])['correo']; 
+
+            $data = array( 
+                'correoVendedor' => $correo,
+                'envio_asunto' => $this->input->post('envio_asunto'),  
+                'envio_texto' => $this->input->post('envio_texto')
+                );
+
+            // echo print_r($data); exit();
+
+            $linkCotizacionEditar = base_url().'cotizacion/editar/'.$idCotizacionEncriptado;
+
+            
+            $this->load->library('email');
+            $this->email->from('brayannr@hotmail.es', 'Brayan');
+            $this->email->to($data['correoVendedor']);
+
+            $this->email->subject($data['envio_asunto']);
+
+            $this->email->message($data['envio_texto'].' '.$linkCotizacionEditar);
+
+            
+            $this->email->send();
+
+        }
+
+        echo $resultado;
+
+    }
     
     public function enviarCotizacionCliente($idEmpresa, $idCotizacionEncriptado){
 
@@ -342,7 +383,7 @@ class ManejadorPDF extends CI_Controller
 
             $texto = $data['envio_texto'];
             if ($data['envio_link']) {
-                $texto = $data['envio_texto'].''.base_url().'files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/cliente/test.pdf';
+                $texto = $data['envio_texto'].' '.base_url().'files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/cliente/test.pdf';
             }
             $this->email->message($texto);
 

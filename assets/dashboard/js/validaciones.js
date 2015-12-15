@@ -289,6 +289,20 @@
                   }
             });
 
+            $('#formRechazar').validate({
+                rules:
+                {
+                    envio_asunto: {required: true},
+                    envio_texto: {required: true}
+                },
+                 errorElement: 'div',
+                 submitHandler: function(form) {
+                    validacionCorrectaRechazar();
+                  }
+            });
+
+            
+
             $('#form_empleado').validate({
                 rules:
                 {

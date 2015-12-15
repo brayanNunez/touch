@@ -54,7 +54,7 @@
     $lang['fases_eliminarElementosSeleccionados'] = '¿Realmente desea eliminar las fases seleccionadas?';
     $lang['gastos_eliminarElementosSeleccionados'] = '¿Realmente desea eliminar los gastos seleccionados?';
     // $lang['confirmarEnviarCliente'] = '¿Realmente desea aprobar y enviar la cotización?';
-    $lang['confirmarRechazar'] = '¿Realmente desea rechazar la cotización?';
+    // $lang['confirmarRechazar'] = '¿Realmente desea rechazar la cotización?';
 
     
 
@@ -1418,6 +1418,11 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['envio_pdf'] = 'Enviar PDF de la cotización';
     $lang['envio_link'] = 'Enviar link de la cotización';
     $lang['anvio_botonEnviar'] = 'Enviar';
+
+    $lang['rechazar_titulo'] = 'Rechazar cotización';
+    $lang['rechazar_asuntoDefecto'] = 'Cotización no aprobada';
+
+    
 
 
 ?>

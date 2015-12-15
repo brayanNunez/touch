@@ -394,12 +394,12 @@ class Cotizacion_model extends CI_Model
         }
     }
 
-    function cargarCorreoCliente($idCotizacion){
+    function cargarCorreoVendedor($idCotizacion){
          try {
             $this->db->trans_begin();
-            $this->db->select("cl.correo");
-            $this->db->from('cliente as cl');
-            $this->db->join('cotizacion as co', 'co.idCliente = cl.idCliente');
+            $this->db->select("us.correo");
+            $this->db->from('usuario as us');
+            $this->db->join('cotizacion as co', 'co.idUsuario = us.idUsuario');
             $this->db->where(array('co.idCotizacion' => $idCotizacion));
             $correo = $this->db->get();
             if (!$correo) {
