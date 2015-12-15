@@ -131,39 +131,39 @@
 
   });
 
-  function editarEstado(estado){
-    var url = '<?= base_url() ?>Cotizacion/cambiarEstado/<?= encryptIt($resultado['idCotizacion']);?>' + '/' + estado;
-      var method = 'POST'; 
-      $.ajax({
-             type: method,
-             url: url,
-             // data: $('#formAprobadores, #formLineasDetalle, #formGeneral, #form_encabezado, #form_paso3AgregarPlantilla, #form_cuerpo, #form_informacion, #form_footer').serialize(), 
-             success: function(response)
-             {
-              // alert(response);
-              if (response ==1) {
-                $('#mensajeAprobacion').css('display', 'block');
-                $('#botonesAprobar').css('display', 'none');
-                if (estado == 3) {
-                  $('#cotizacionRechazada').openModal();
-                } else {
-                  $.ajax({
-                         type: 'POST',
-                         url: '<?=base_url()?>ManejadorPDF/enviarCotizacionCliente/<?= $resultado['idEmpresa'];?>/<?= encryptIt($resultado['idCotizacion']);?>',
-                         // data: $('#formAprobadores, #formLineasDetalle, #formGeneral, #form_encabezado, #form_paso3AgregarPlantilla, #form_cuerpo, #form_informacion, #form_footer').serialize(), 
-                         success: function(response) {
+  // function editarEstado(estado){
+  //   var url = '<?= base_url() ?>Cotizacion/cambiarEstado/<?= encryptIt($resultado['idCotizacion']);?>' + '/' + estado;
+  //     var method = 'POST'; 
+  //     $.ajax({
+  //            type: method,
+  //            url: url,
+  //            // data: $('#formAprobadores, #formLineasDetalle, #formGeneral, #form_encabezado, #form_paso3AgregarPlantilla, #form_cuerpo, #form_informacion, #form_footer').serialize(), 
+  //            success: function(response)
+  //            {
+  //             // alert(response);
+  //             if (response ==1) {
+  //               $('#mensajeAprobacion').css('display', 'block');
+  //               $('#botonesAprobar').css('display', 'none');
+  //               if (estado == 3) {
+  //                 $('#cotizacionRechazada').openModal();
+  //               } else {
+  //                 $.ajax({
+  //                        type: 'POST',
+  //                        url: '<?=base_url()?>ManejadorPDF/enviarCotizacionCliente/<?= $resultado['idEmpresa'];?>/<?= encryptIt($resultado['idCotizacion']);?>',
+  //                        // data: $('#formAprobadores, #formLineasDetalle, #formGeneral, #form_encabezado, #form_paso3AgregarPlantilla, #form_cuerpo, #form_informacion, #form_footer').serialize(), 
+  //                        success: function(response) {
 
-                         }
-                      });
-                  $('#cotizacionEnviada').openModal();
-                }
-              } else {
-                $('#transaccionIncorrecta').openModal();
-            };
-          }
-          });
+  //                        }
+  //                     });
+  //                 $('#cotizacionEnviada').openModal();
+  //               }
+  //             } else {
+  //               $('#transaccionIncorrecta').openModal();
+  //           };
+  //         }
+  //         });
 
-  }
+  // }
 
  function validacionCorrecta(){
     var url = $('#formEnvio').attr('action');
@@ -174,14 +174,23 @@
            data: $('#formEnvio').serialize(), 
            success: function(response)
            {
+            // alert(response);
             if (response == 1) {
               $('#mensajeAprobacion').css('display', 'block');
               $('#botonesAprobar').css('display', 'none');
               $('#enviar').closeModal();
               $('#cotizacionEnviada').openModal();
             } else {
-              $('#enviar').closeModal();
-              $('#modal_transaccionIncorrecta').openModal();
+              if (response == -1) {
+                alert('<?= label('aprobarRechazar_errorCotizacionTramitada'); ?>');
+                $('#mensajeAprobacion').css('display', 'block');
+                $('#botonesAprobar').css('display', 'none');
+                $('#enviar').closeModal();
+
+              } else{
+                $('#enviar').closeModal();
+                $('#modal_transaccionIncorrecta').openModal();
+              };
             }
           }
         });
@@ -205,8 +214,17 @@
               $('#rechazar').closeModal();
               $('#cotizacionRechazada').openModal();
             } else {
-              $('#rechazar').closeModal();
-              $('#modal_transaccionIncorrecta').openModal();
+              if (response == -1) {
+                alert('<?= label('aprobarRechazar_errorCotizacionTramitada'); ?>');
+                $('#mensajeAprobacion').css('display', 'block');
+                $('#botonesAprobar').css('display', 'none');
+                $('#rechazar').closeModal();
+
+              } else{
+                $('#rechazar').closeModal();
+                $('#modal_transaccionIncorrecta').openModal();
+              };
+              
             }
           }
         });

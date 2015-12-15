@@ -120,6 +120,16 @@ class Cotizacion_model extends CI_Model
             $this->db->trans_begin();
 
             $this->db->where('idCotizacion', $data['idCotizacion']);
+            $query = $this->db->get('cotizacion');
+            if (!$query) throw new Exception("Error en la BD");
+            $query = $query->result_array();
+            $estado = array_shift($query)['idEstadoCotizacion'];
+            if (($estado == 3 || $estado == 4) && ($data['estado'] == 3 || $data['estado'] == 4)) { //Si se está intentando cambiar el estado a aprobada o rechazada y el estado actual ya es uno de esos dos es porque otro aprobador ya la tramito, por lo tanto no se hace el cambio y se le informa al usuario que ya otro aprobador hizo el tramite.
+                $this->db->trans_commit();
+                return -1;
+            }
+
+            $this->db->where('idCotizacion', $data['idCotizacion']);
             $query = $this->db->update('cotizacion', array('idEstadoCotizacion' => $data['estado']));
             if (!$query) throw new Exception("Error en la BD"); 
 

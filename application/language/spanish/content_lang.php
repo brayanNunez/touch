@@ -1421,6 +1421,15 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
 
     $lang['rechazar_titulo'] = 'Rechazar cotización';
     $lang['rechazar_asuntoDefecto'] = 'Cotización no aprobada';
+    $lang['aprobarRechazar_errorCotizacionTramitada'] = 'Otro aprobador tramito la cotización primero que tu.';
+
+    $lang['aprobar_asuntoVendedor'] = 'Cotización aprobada';
+    $lang['aprobar_textoVendedor'] = 'Tu cotización ha sido aprobada.';
+
+    
+
+
+
 
     
 
