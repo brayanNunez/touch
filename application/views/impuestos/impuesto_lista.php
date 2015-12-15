@@ -833,17 +833,17 @@ function validacionCorrectaEditar(){
     <form id="form_impuesto" action="<?=base_url()?>Impuesto/insertar" method="post">
         <div class="modal-content">
             <div class="row">
-                <div class="input-field col s12 m4">
+                <div class="input-field col s12">
                     <input id="impuesto_nombre" name="impuesto_nombre" type="text">
                     <label for="impuesto_nombre"><?= label('formImpuesto_nombre'); ?></label>
                 </div>
 
-                <div class="input-field col s12 m4"> 
+                <div class="input-field col s12">
                     <input id="impuesto_descripcion" name="impuesto_descripcion"  type="text">
                     <label for="impuesto_descripcion"><?= label('formImpuesto_descripcion'); ?></label>
                 </div>
 
-                <div class="input-field col s12 m4">
+                <div class="input-field col s12">
                     <input id="impuesto_valor" name="impuesto_valor" type="number">
                     <label for="impuesto_valor"><?= label('formImpuesto_valor'); ?></label>
                 </div>
@@ -871,19 +871,19 @@ function validacionCorrectaEditar(){
     <form id="form_impuestoEditar" action="<?=base_url()?>Impuesto/modificar" method="post">
         <div class="modal-content">
             <div class="row">
-                <div class="input-field col s12 m4">
+                <div class="input-field col s12">
                     <input style="display:none" id="idImpuesto" name="idImpuesto" type="text">
                     <input style="display:none" id="impuesto_nombreOriginal" name="impuesto_nombreOriginal" type="text">
                     <input id="impuesto_nombre" name="impuesto_nombre" type="text">
                     <label for="impuesto_nombre"><?= label('formImpuesto_nombre'); ?></label>
                 </div>
 
-                <div class="input-field col s12 m4"> 
+                <div class="input-field col s12">
                     <input id="impuesto_descripcion" name="impuesto_descripcion"  type="text">
                     <label for="impuesto_descripcion"><?= label('formImpuesto_descripcion'); ?></label>
                 </div>
 
-                <div class="input-field col s12 m4">
+                <div class="input-field col s12">
                     <input id="impuesto_valor" name="impuesto_valor" type="number">
                     <label for="impuesto_valor"><?= label('formImpuesto_valor'); ?></label>
                 </div>
