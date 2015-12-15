@@ -152,9 +152,16 @@ $(document).ready(function(){
             $('#precio_' + numeroFila).val(linea['precioUnidad']);  
             $('#cantidad_' + numeroFila).val(linea['cantidad']);  
             cargarImpuestosPorServicio(numeroFila, linea['impuestos'])
-            $('#utilidad_' + numeroFila).val(linea['utilidad']);  
+            $('#utilidad_' + numeroFila).val(linea['utilidad']);
 
-            
+            for (var j = arrayServicios.length - 1; j >= 0; j--) {
+                var servicio = arrayServicios[j];
+                if (servicio['idServicio'] == linea['idServicio']) {
+                    $('#cantidadHorasLinea_' + numeroFila).val(servicio['cantidadHoras']);
+                    $('#tipoTiempoLinea_' + numeroFila).val(servicio['idTiempo']);
+                    $('#gastosVariablesLinea_' + numeroFila).val(servicio['gastosVariables']);
+                }
+            }
         };
     }
 
@@ -168,12 +175,16 @@ $(document).ready(function(){
                 $('#descripcion_' + numeroFila).val(servicio['descripcion']);
                 $('#precio_' + numeroFila).val(servicio['total']);  
                 $('#cantidad_' + numeroFila).val(1);  
-                cargarImpuestosPorServicio(numeroFila, servicio['impuestos'])
+                cargarImpuestosPorServicio(numeroFila, servicio['impuestos']);
                 $('#utilidad_' + numeroFila).val(servicio['utilidad']);  
                 // alert(servicio['nombre'] + ', ' + servicio['descripcion']);
-            } 
-            
+
+                $('#cantidadHorasLinea_' + numeroFila).val(servicio['cantidadHoras']);
+                $('#tipoTiempoLinea_' + numeroFila).val(servicio['idTiempo']);
+                $('#gastosVariablesLinea_' + numeroFila).val(servicio['gastosVariables']);
+            }
         };
+        calcularPrecio(numeroFila);
      // alert('bien');
     }
 // });
@@ -218,6 +229,11 @@ $(document).ready(function(){
             '<div style="text-align: center;">'+
                 '<input class="accionAplicada" style="display:none" name="linea_'+contadorFilas+'" id="linea_'+contadorFilas+'" type="text" value="'+ accionAplicada + '">'+ 
                 '<input style="display:none" name="idLinea_'+contadorFilas+'" type="text" value="'+ idLinea +'">'+
+                '<input style="display:none" id="cantidadHorasLinea_'+contadorFilas+'" name="cantidadHorasLinea_'+contadorFilas+'" type="text" value="'+ contadorFilas +'">'+
+                '<input style="display:none" id="tipoTiempoLinea_'+contadorFilas+'" name="tipoTiempoLinea_'+contadorFilas+'" type="text" value="'+ contadorFilas +'">'+
+                '<input style="display:none" id="gastosVariablesLinea_'+contadorFilas+'" name="gastosVariablesLinea_'+contadorFilas+'" type="text" value="'+ contadorFilas +'">'+
+                '<input style="display:none" class="campo_numeroFila" id="numeroLinea_'+contadorFilas+'" name="numeroLinea_'+contadorFilas+'" type="text" value="'+ contadorFilas +'">'+
+
                 '<input type="checkbox" class="filled-in checkbox" id="checkbox_linea'+contadorFilas+'"/>'+
                 '<label for="checkbox_linea'+contadorFilas+'"></label>'+
             '</div>'+
@@ -259,7 +275,7 @@ $(document).ready(function(){
             '<row>'+
                 '<div id="impuestosProducto'+contadorFilas+'" class="example tags_Impuestos">'+
                     '<div class="bs-example">'+
-                        '<input id="impuestos_'+contadorFilas+'" name="impuestos_'+contadorFilas+'" placeholder="<?= label('formProducto_anadirImpuesto'); ?>" type="text"/>'+
+                        '<input class="campo_impuestos" id="impuestos_'+contadorFilas+'" name="impuestos_'+contadorFilas+'" placeholder="<?= label('formProducto_anadirImpuesto'); ?>" type="text"/>'+
                     '</div>'+
                 '</div>'+
             '</row>'+
@@ -1488,5 +1504,153 @@ $(document).on('ready', function(){
         });
 //        elt.tagsinput('add', {"idImpuesto": 1, "nombre": "Impuestos directos"});
 //        elt.tagsinput('add', {"idImpuesto": 2, "nombre": "Impuestos indirectos"});
+    });
+</script>
+
+
+<!--Script para calcular precio de servicio en lineas de detalle-->
+<script type="text/javascript">
+    var totalGastosFijosAnuales = 0;
+    var totalHorasLaborales = 0;
+
+    function gastosFijosAnuales() {
+        $.ajax({
+            type: 'POST',
+            url: '<?= base_url(); ?>gastos/gastosFijos',
+            data: {  },
+            async: false,
+            success: function(response)
+            {
+                var $arrayGastosFijos = $.parseJSON(response);
+
+                var totalGastosFijos = 0;
+                for(var i = 0; i < $arrayGastosFijos.length; i++) {
+                    var gastoFijo = $arrayGastosFijos[i];
+                    var monto = 0;
+                    switch (gastoFijo['formaPago']) {
+                        case '1':
+                            monto = parseFloat(gastoFijo['monto']) * 8760;
+                            break;
+                        case '2':
+                            monto = parseFloat(gastoFijo['monto']) * 365;
+                            break;
+                        case '3':
+                            monto = parseFloat(gastoFijo['monto']) * 52.1429;
+                            break;
+                        case '4':
+                            monto = parseFloat(gastoFijo['monto']) * 12;
+                            break;
+                        case '5':
+                            monto = parseFloat(gastoFijo['monto']);
+                            break;
+                    }
+                    totalGastosFijos += monto;
+                }
+                totalGastosFijosAnuales = totalGastosFijos;
+            }
+        });
+    }
+    function horasLaborales() {
+        $.ajax({
+            type: 'post',
+            url: '<?= base_url(); ?>horas/cargarDatos',
+            data: {  },
+            async: false,
+            success: function(response)
+            {
+                if(response != 'null') {
+                    var datosHoras = $.parseJSON(response);
+
+                    var diasAnno = 365;
+                    var finesSemana = parseFloat(datosHoras['finesSemana']);
+                    var festivosObligatorios = parseFloat(datosHoras['festivosObligatorios']);
+                    var incluirNoObligatorios = datosHoras['incluirNoObligatorios'];
+                    var festivosNoObligatorios = parseFloat(datosHoras['festivosNoObligatorios']);
+                    var vacaciones = parseFloat(datosHoras['vacaciones']);
+                    var promedioBajas = parseFloat(datosHoras['promedioBajas']);
+                    var promedioHorasDiarias = parseFloat(datosHoras['promedioHorasDiarias']);
+                    var cantidadManoObra = parseFloat(datosHoras['cantidadManoObra']);
+
+                    var diasNoFacturables = finesSemana + festivosObligatorios + vacaciones + promedioBajas;
+                    if(incluirNoObligatorios == 1) {
+                        diasNoFacturables += festivosNoObligatorios;
+                    }
+                    var diasFacturables = (diasAnno - diasNoFacturables).toFixed(2);
+                    var totalHorasAnual = (diasFacturables * promedioHorasDiarias * cantidadManoObra).toFixed(2);
+                    var promedioHorasMensual = ((diasFacturables / 12) * promedioHorasDiarias * cantidadManoObra).toFixed(2);
+
+                    totalHorasLaborales = totalHorasAnual;
+                } else {
+                    totalHorasLaborales = 0;
+                }
+            }
+        });
+    }
+    function horasServicio(numeroFila) {
+        var tiempoServicio = parseFloat($('#cantidadHorasLinea_' + numeroFila).val());
+        var tipoTiempo = $('#tipoTiempoLinea_' + numeroFila).val();
+
+        var cantidadHoras = 0;
+        switch (tipoTiempo) {
+            case '1':
+                cantidadHoras = tiempoServicio;
+                break;
+            case '2':
+                cantidadHoras = tiempoServicio * 24;
+                break;
+            case '3':
+                cantidadHoras = tiempoServicio * 168;
+                break;
+            case '4':
+                cantidadHoras = tiempoServicio * 730.001;
+                break;
+            case '5':
+                cantidadHoras = tiempoServicio * 8760;
+                break;
+        }
+        return cantidadHoras;
+    }
+
+    function calcularPrecio(numeroFila) {
+        gastosFijosAnuales();
+        horasLaborales();
+        var totalGastosVariables = parseFloat($('#gastosVariablesLinea_' + numeroFila).val());
+        var totalGastos = totalGastosFijosAnuales + totalGastosVariables;
+
+        var costoHora = totalGastos / totalHorasLaborales;
+        var cantidadHoras = horasServicio(numeroFila);
+        var margenUtilidad = parseFloat($('#utilidad_' + numeroFila).val()) / 100;
+
+        var precioServicio = (cantidadHoras * costoHora) / (1 - margenUtilidad);
+
+        var impuestosAgregados = 0;
+        $.each($("#impuestos_" + numeroFila).tagsinput('items'), function( index, value ) {
+            impuestosAgregados += precioServicio * (value['valor'] / 100);
+        });
+        precioServicio += impuestosAgregados;
+
+        precioServicio = precioServicio.toFixed(2);
+
+        $('#precio_' + numeroFila).val(precioServicio);
+        var cantidadServicio = parseFloat($('#cantidad_' + numeroFila).val());
+        var subTotalServicio = precioServicio * cantidadServicio;
+        subTotalServicio = subTotalServicio.toFixed(2);
+        $('#subTotal_' + numeroFila).val(subTotalServicio);
+    }
+
+    $(document).on('change', '.cantidad', function () {
+        var lineaPadre = $(this).parents('tr');
+        var numeroLineaPadre = lineaPadre.find('td input.campo_numeroFila').first().val();
+        calcularPrecio(numeroLineaPadre);
+    });
+    $(document).on('change', '.campo_impuestos', function () {
+        var lineaPadre = $(this).parents('tr');
+        var numeroLineaPadre = lineaPadre.find('td input.campo_numeroFila').first().val();
+        calcularPrecio(numeroLineaPadre);
+    });
+    $(document).on('change', '.utilidad', function () {
+        var lineaPadre = $(this).parents('tr');
+        var numeroLineaPadre = lineaPadre.find('td input.campo_numeroFila').first().val();
+        calcularPrecio(numeroLineaPadre);
     });
 </script>
