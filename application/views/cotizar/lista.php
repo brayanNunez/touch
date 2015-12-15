@@ -735,16 +735,6 @@
                     </div>
                 </div>
 
-              <!--   <div class="input-field col s12 m6 l6">
-                    <select class="input-field col s12">
-                        <option value="1" selected>Todos</option>
-                        <option value="2">Nueva</option>
-                        <option value="3">Enviada</option>
-                        <option value="4">Finalizada</option>
-                        <option value="5">Rechazada</option>
-                    </select>
-                    <label>Estado</label>
-                </div> -->
 
                  <div class="input-field col s12 m4 l4 inputSelector">            
                   <label for="contenedorSelectEstado"><?= label("busqueda_selectEstado"); ?></label>
@@ -793,11 +783,7 @@
                           <?php 
                               foreach ($clientes as $cliente) {
                                   $valor = "value='".$cliente['idCliente']."'";
-                                  if ($cliente['todosVendedores'] == 1 || $cliente['valido'] == 1) {
-                                      echo '<option '.$valor.'>'.$cliente['nombre'].' '.$cliente['primerApellido'].' '.$cliente['segundoApellido'].'</option>");';
-                                  } else{
-                                      echo '<option '.$valor.' disabled>'.$cliente['nombre'].' '.$cliente['primerApellido'].' '.$cliente['segundoApellido'].'</option>");';
-                                  }
+                                  echo '<option '.$valor.'>'.$cliente['nombre'].' '.$cliente['primerApellido'].' '.$cliente['segundoApellido'].'</option>");';
                               }
                                   
                           ?>

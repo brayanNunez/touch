@@ -157,7 +157,7 @@
                 $('#paso1FormaPago option[value='+ arrayCotizacion['idFormaPago'] +']').prop('selected', true);
                 $('#paso1Moneda option[value='+ arrayCotizacion['idMoneda'] +']').prop('selected', true);
                 $('#paso1_tipoCambio').val(arrayCotizacion['tipoCambio']);
-                $('#paso1_validez').val('<?=date("d-m-Y", strtotime($resultado['cotizacion']['fechaValidez']))?>');
+                $('#paso1_validez').val('<?php if($resultado['cotizacion']['fechaValidez'] != '0000-00-00 00:00:00') { echo date("d-m-Y", strtotime($resultado['cotizacion']['fechaValidez']));}?>');
 
                 // var date = new Date(arrayCotizacion['fechaValidez']);
                 // var fecha = (date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear();

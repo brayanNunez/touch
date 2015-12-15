@@ -413,12 +413,15 @@ class ManejadorPDF extends CI_Controller
 
             
             // $this->load->library('email');
+            
+            $this->email->clear(true);
             $this->email->from('brayannr@hotmail.es', 'Brayan');
             $this->email->to($data['correoVendedor']);
 
             $this->email->subject($data['envio_asunto']);
 
             $this->email->message($data['envio_texto'].' '.$linkCotizacionVer);
+            // $this->email->attach(null);
 
             
             $this->email->send(); 

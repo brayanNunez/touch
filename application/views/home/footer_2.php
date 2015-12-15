@@ -120,6 +120,9 @@
 <script src="<?= base_url() ?>assets/dashboard/js/jquery.validate.min.js" type="text/javascript"></script>
 <script src="<?= base_url() ?>assets/dashboard/js/messages_es.js" type="text/javascript"></script>
 
+<!-- autocompletar con boton dentro -->
+<script src="<?= base_url()?>assets/dashboard/js/chosen.jquery.js" type="text/javascript"></script>
+
 
 
 <!-- Lista Modals -->

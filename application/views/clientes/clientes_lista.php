@@ -201,6 +201,12 @@
 
 <script type="text/javascript">
    $(document).on("ready", function () { 
+
+      var config = {'.chosen-select'           : {}}
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+
    
        <?php
       if (isset($lista)) {
@@ -547,13 +553,46 @@
 
    // script busqueda avanzada
    $(document).on('ready', function(){
-      $('#botonBusqueda').on('click', function(){
+      $('#botonBusquedaCliente').on('click', function(){
         var url = '<?= base_url() ?>Clientes/busqueda';
         var method = 'POST'; 
         $.ajax({
                type: method,
                url: url,
                data: $('#formBusqueda').serialize(), 
+               success: function(response)
+               {
+                // alert(response);
+                  if (response ==0) {
+                    alert('<?= label('errorLeerDatos'); ?>');
+                  } else{
+                    // alert('hola');
+                    arrayBusqueda = $.parseJSON(response);
+                    
+                    var table = $('#clientes-tabla-lista').DataTable();
+                    table.clear().draw();
+
+                    for (var i = 0; i < arrayBusqueda.length; i++) {
+                      var fila = arrayBusqueda[i];
+                      agregarFila(fila['idCliente'], fila['identificacion'], fila['nombre'], fila['juridico'], fila['primerApellido'], fila['segundoApellido'], fila['telefonoFijo'], fila['correo'], i);
+                    };
+                    
+                  };
+                  $('#busquedaAvanzada').closeModal();
+                  
+               }
+             });
+      })
+
+
+      $('#botonBusquedaCotizacion').on('click', function(){
+        // alert('busqueda 2');
+        var url = '<?= base_url() ?>Clientes/busquedaCotizacion';
+        var method = 'POST'; 
+        $.ajax({
+               type: method,
+               url: url,
+               data: $('#formBusquedaCotizacion').serialize(), 
                success: function(response)
                {
                 // alert(response);
@@ -752,83 +791,135 @@
     </div>
     <div class="modal-content">
         <div id="formGeneral" class="section" style="padding-bottom: 0;">
-          <form id="formBusqueda">
-            <div class="row" style="margin-bottom: 0;">
-                <div class="input-field col s12 m3 l3">
-                    <div class="input-field col s12">
-                        <input id="busqueda-fecha-desde" type="text" class="datepicker-fecha">
-                        <label for="busqueda-fecha-desde"><?= label('clientes_busquedaDesde') ?></label>
-                    </div>
-                </div>
-                <div class="input-field col s12 m3 l3">
-                    <div class="input-field col s12">
-                        <input id="busqueda-fecha-hasta" type="text" class="datepicker-fecha">
-                        <label for="busqueda-fecha-hasta"><?= label('clientes_busquedaHasta') ?></label>
-                    </div>
-                </div>
 
-                <div class="input-field col s12 m6 l6">
-                    <select class="input-field col s12">
-                        <option value="1" selected>Todos</option>
-                        <option value="2">Enviada</option>
-                        <option value="3">Finalizada</option>
-                        <option value="4">Rechazada</option>
-                    </select>
-                    <label>Estado de la cotización</label>
-                </div>
-                <!-- <div class="input-field col s12 m6 l6">
-                    <select class="input-field col s12">
-                        <option value="1" selected>Todos</option>
-                        <option value="2">Juan Alfaro Alfaro</option>
-                        <option value="3">Diego Rojas</option>
-                    </select>
-                    <label>Clientes</label>
-                </div>
-                <div class="input-field col s12 m6 l6">
-                    <select id="reporte-cliente" class="input-field col s12">
-                        <option value="1" selected>Todos</option>
-                        <option value="2">Transportes Rojas</option>
-                        <option value="3">Música en vivo</option>
-                    </select>
-                    <label for="reporte-cliente">Proveedores</label>
-                </div> -->
-                <div class="inputTag col s12 m4">
-                    <label for="vendedoresCliente"><?= label('formCliente_cotizador'); ?></label>
-                    <br>
-                    <div id="vendedoresCliente" class="example tags_vendedores">
-                        <div class="bs-example">
-                            <input id="cliente_vendedores" name="cliente_vendedores" placeholder="<?= label('formCliente_anadirVendedor'); ?>" type="text"/>
-                        </div>
-                    </div>
-                    <br>
-                </div>
-                <div class="inputTag col s12 m4">
-                    <label for="gustosCliente"><?= label('formCliente_gustos_preferencias'); ?></label>
-                    <br>
-                    <div id="gustosCliente" class="example tags_gustosCliente">
-                        <div class="bs-example">
-                            <input id="cliente_gustos" name="cliente_gustos" placeholder="<?= label('formCliente_anadirGusto'); ?>" type="text"/>
-                        </div>
-                    </div>
-                    <br>
-                </div>
-                <div class="inputTag col s12 m4">
-                    <label for="mediosCliente"><?= label('formCliente_mediosContacto'); ?></label>
-                    <br>
-                    <div id="mediosCliente" class="example tags_mediosContacto">
-                        <div class="bs-example">
-                            <input id="cliente_medios" name="cliente_medios" placeholder="<?= label('formCliente_anadirMedio'); ?>" type="text"/>
-                        </div>
-                    </div>
-                    <br>
-                </div>
+        <div class="col s12">
+          <ul class="tabs tab-demo-active z-depth-1 cliente-info">
+              <li class="tab col s12 ">
+                  <a class="white-text darken-1 waves-effect waves-light"
+                      href="#tab-informacion"><i
+                          class="mdi-action-perm-identity"></i>
+                      <?= label('clientes_ver'); ?></a>
+              </li>
+              <li class="tab-interior tab col s12">
+                  <a class="white-text darken-1 waves-effect waves-light"
+                      href="#tab-cotizacion"><i
+                          class="mdi-editor-format-list-numbered"></i>
+                      <?= label('clientes_cotizaciones'); ?></a>
+              </li>
+              
+          </ul>
+      </div>
 
-            </div>
-          </form>
-        </div>
+        <div class="col s12">
+          <div id="tab-informacion" class="card col s12">
+              <form id="formBusqueda">
+                <div class="row" style="margin-bottom: 0;">
+                    
+                    <div class="inputTag  col s12 m4">
+                        <label for="vendedoresCliente"><?= label('formCliente_cotizador'); ?></label>
+                        <br>
+                        <div id="vendedoresCliente" class="example tags_vendedores">
+                            <div class="bs-example">
+                                <input id="cliente_vendedores" name="cliente_vendedores" placeholder="<?= label('formCliente_anadirVendedor'); ?>" type="text"/>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <div class="inputTag  col s12 m4">
+                        <label for="gustosCliente"><?= label('formCliente_gustos_preferencias'); ?></label>
+                        <br>
+                        <div id="gustosCliente" class="example tags_gustosCliente">
+                            <div class="bs-example">
+                                <input id="cliente_gustos" name="cliente_gustos" placeholder="<?= label('formCliente_anadirGusto'); ?>" type="text"/>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <div class="inputTag  col s12 m4">
+                        <label for="mediosCliente"><?= label('formCliente_mediosContacto'); ?></label>
+                        <br>
+                        <div id="mediosCliente" class="example tags_mediosContacto">
+                            <div class="bs-example">
+                                <input id="cliente_medios" name="cliente_medios" placeholder="<?= label('formCliente_anadirMedio'); ?>" type="text"/>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+
+                </div>
+              </form>
+              <div class="modal-footer black-text">
+                  <a id="botonBusquedaCliente" class="waves-effect waves-red btn-flat modal-action"><?= label('aceptar'); ?></a>
+              </div>
+          </div>
+          <div id="tab-cotizacion" class="card col s12">
+              <form id="formBusquedaCotizacion">
+                <div class="row" style="margin-bottom: 0;">
+
+                  <div class="row">
+                    <div class="input-field col s12 m4 l4">
+                        <div class="input-field col s12">
+                            <input id="busqueda-fecha-desde" name="busqueda-fecha-desde" type="text" value="<?= date("d-m-Y", strtotime($fechaMinima))?>" class="datepicker-fecha">
+                            <label for="busqueda-fecha-desde" class=""><?= label('clientes_busquedaDesde') ?></label>
+                        </div>
+                    </div>
+                    <div class="input-field col s12 m4 l4">
+                        <div class="input-field col s12">
+                            <input id="busqueda-fecha-hasta" name="busqueda-fecha-hasta" type="text" class="datepicker-fecha" value="<?php echo date('d-m-Y'); ?>">
+                            <label for="busqueda-fecha-hasta" class=""><?= label('clientes_busquedaHasta') ?></label>
+                        </div>
+                    </div>
+
+
+                     <div class="input-field col s12 m4 l4 inputSelector">            
+                      <label for="contenedorSelectEstado"><?= label("busqueda_selectEstado"); ?></label>
+                      <br>
+                      <div id="contenedorSelectEstado">  
+                          <select data-incluirBoton="0" placeholder="seleccionar" id="busquedaCotizacion_estado" name="busquedaCotizacion_estado" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirCliente"); ?>" class="chosen-select browser-default" style="width:350px;" tabindex="2">
+                              <!-- <option value="nuevo"><?= label("agregarNuevo"); ?></option> -->
+                              <option value="0" selected ><?= label("busquedaAvanzada_Todos"); ?></option>
+                              <?php 
+                                  foreach ($estados as $estado) {
+                                      $valor = "value='".$estado['idEstadoCotizacion']."'";
+                                      $miEstado =  '';
+                                      switch ($estado['descripcion']) {
+                                        case 'nueva':
+                                          $miEstado =  label('estado_nueva');
+                                          break;
+                                        case 'espera':
+                                          $miEstado =  label('estado_espera');
+                                          break;
+                                        case 'rechazada':
+                                          $miEstado =  label('estado_rechazada');
+                                          break;
+                                        case 'enviada':
+                                          $miEstado =  label('estado_enviada');
+                                          break;
+                                        case 'finalizada':
+                                          $miEstado =  label('estado_finalizada');
+                                          break;
+                                      }
+                                      echo '<option '.$valor.'>'.$miEstado.'</option>");';
+                                  }
+                                      
+                              ?>
+                          </select>  
+                       </div>
+                    </div>
+                  </div>
+                    
+
+                </div>
+              </form>
+              <div class="modal-footer black-text">
+                  <a id="botonBusquedaCotizacion" class="waves-effect waves-red btn-flat modal-action"><?= label('aceptar'); ?></a>
+              </div>
+          </div>
+        <!-- <div>
+
+          
+        </div> -->
     </div>
-    <div class="modal-footer black-text">
-        <a id="botonBusqueda" class="waves-effect waves-red btn-flat modal-action"><?= label('aceptar'); ?></a>
-    </div>
+    
 </div>
 <!--Fin lista modals -->

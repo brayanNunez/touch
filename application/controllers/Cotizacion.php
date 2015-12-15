@@ -164,7 +164,10 @@ class Cotizacion extends CI_Controller
          // echo print_r($data); exit();
 
 
-        
+        $fecha = '';
+        if ($this->input->post('paso1_validez') != '') {
+            $fecha = date("Y-m-d", strtotime($this->input->post('paso1_validez')));
+        }
         $data['datosGenerales'] = array(
             // 'numero' => $this->input->post('paso1_numero'),
             'codigo' => $this->input->post('paso1_codigo'),
@@ -177,7 +180,7 @@ class Cotizacion extends CI_Controller
             'idEstadoCotizacion' => $estado,
             'ascendente' => $this->input->post('ascendente'),
             'columna' => $this->input->post('columna'),
-            'fechaValidez' => date("Y-m-d", strtotime($this->input->post('paso1_validez')))
+            'fechaValidez' => $fecha
             );
         // echo print_r($data['datosGenerales']); exit();
 
