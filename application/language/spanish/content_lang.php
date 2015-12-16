@@ -582,6 +582,21 @@
     $lang['paso1_elegirAtencion'] = 'Elegir atención';
     $lang['paso2_elegirProductoNombre'] = 'Elegir';
     $lang['paso2_elegirProductoItem'] = 'Elegir';
+    $lang['paso2_descuento'] = 'Descuento';
+    $lang['paso2_total'] = 'Total';
+    $lang['paso2_agregarServicio'] = 'Agregar servicio';
+
+    $lang['modalServicio_total'] = 'TOTAL';
+
+    $lang['tablaLineasDetalle_item'] = 'Item';
+    $lang['tablaLineasDetalle_nombre'] = 'Nombre';
+    $lang['tablaLineasDetalle_descripcion'] = 'Descripción';
+    $lang['tablaLineasDetalle_preciounitario'] = 'Precio unitario';
+    $lang['tablaLineasDetalle_cantidad'] = 'Cant';
+    $lang['tablaLineasDetalle_impuesto'] = 'Imp';
+    $lang['tablaLineasDetalle_utilidad'] = 'Margen de utilidad';
+    $lang['tablaLineasDetalle_total'] = 'Total';
+    $lang['tablaLineasDetalle_opciones'] = 'Opciones';
 
 
     $lang['paso1_labelCodido'] = 'Código';

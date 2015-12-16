@@ -376,31 +376,31 @@ $(document).ready(function(){
                                     <label for="checkbox-all"></label>
                                 </th>
                                 <th data-indice-columna="1">
-                                    Item
+                                    <?=label('tablaLineasDetalle_item');?>
                                 </th>
                                 <th  data-indice-columna="2">
-                                    Nombre
+                                    <?=label('tablaLineasDetalle_nombre');?>
                                 </th>
                                 <th  data-indice-columna="3">
-                                    Descripción
+                                    <?=label('tablaLineasDetalle_descripcion');?>
                                 </th>
                                 <th  data-indice-columna="4">
-                                    Precio unitario
+                                    <?=label('tablaLineasDetalle_preciounitario');?>
                                 </th>
                                 <th  data-indice-columna="5">
-                                    Cantidad
+                                    <?=label('tablaLineasDetalle_cantidad');?>
                                 </th>
                                 <th  data-indice-columna="6">
-                                    Impuesto de venta
+                                    <?=label('tablaLineasDetalle_impuesto');?>
                                 </th>
                                 <th  data-indice-columna="7">
-                                    Margen de utilidad
+                                    <?=label('tablaLineasDetalle_utilidad');?>
                                 </th>
                                 <th data-indice-columna="8">
-                                    Total
+                                    <?=label('tablaLineasDetalle_total');?>
                                 </th>
                                 <th data-indice-columna="9">
-                                    Opciones
+                                    <?=label('tablaLineasDetalle_opciones');?>
                                 </th>
                             </tr>
                         </thead>
@@ -442,11 +442,11 @@ $(document).ready(function(){
                     <div class="col s12" style="float: right;">
                         <div class="input-field col s12">
                             <input id="last_name" type="number">
-                            <label for="last_name" class="">Descuento</label>
+                            <label for="last_name" class=""><?=''?><?=label('paso2_descuento');?></label>
                         </div>
                         <div class="input-field col s12">
                             <input value="$140" id="last_name" type="text" disabled>
-                            <label for="last_name">Total</label>
+                            <label for="last_name"><?=''?><?=label('paso2_total');?></label>
                         </div>
                     </div>
                 </div>
@@ -533,7 +533,7 @@ $(document).on('ready', function(){
     </div>
     <div class="modal-content" style="padding: 0 24px;">
         <div class="row">
-            <h5 style="float: left;">Agregar servicio</h5>
+            <h5 style="float: left;"><?=label('paso2_agregarServicio');?></h5>
         </div>
         <form id="form_servicio_cotizar" action="<?= base_url(); ?>servicios/insertar" method="POST" class="col s12">
             <div class="input-field col s12">
@@ -703,8 +703,8 @@ $(document).on('ready', function(){
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td>TOTAL</td>
-                                    <td>$<span class="total_gastos_variables">0</span></td>
+                                    <td><?= label('modalServicio_total'); ?></td>
+                                    <td><span class="moneda_signo"></span><span class="total_gastos_variables">0</span></td>
                                     <td></td>
                                 </tr>
                                 </tbody>
@@ -712,7 +712,7 @@ $(document).on('ready', function(){
                         </div>
                     </div>
                     <div class="col s12" style="margin-top: 20px;">
-                        <h5><?= label('servicioGastos_total'); ?>: $<span class="total_gastos_variables">0</span></h5>
+                        <h5><?= label('servicioGastos_total'); ?>: <span class="moneda_signo"></span><span class="total_gastos_variables">0</span></h5>
                     </div>
                 </div>
             </div>
