@@ -16,7 +16,7 @@ class Servicios extends CI_Controller
         verificarLogin();//helper
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
-        $data['lista'] = $this->Servicio_model->cargarTodos($idEmpresa);
+        $data['lista'] = $this->Servicio_model->servicios($idEmpresa);
         $data['gastos'] = $this->Servicio_model->gastosVariables($idEmpresa);
 
         $this->load->view('layout/default/header');

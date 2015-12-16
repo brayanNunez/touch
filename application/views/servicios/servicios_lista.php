@@ -58,17 +58,27 @@
                                                                 $nombre = $fila['nombre'];
                                                                 $descripcion = $fila['descripcion'];
                                                                 $utilidad = $fila['utilidad'];
+                                                                $horasServicio = $fila['cantidadHoras'];
+                                                                $tipoTiempo = $fila['idTiempo'];
+                                                                $gastosVariables = $fila['gastosVariables'];
                                                                 $total = $fila['total']; ?>
 
                                                                 <tr id="fila<?= $contador ?>" data-idElemento="<?= $idEncriptado ?>">
                                                                     <td style="text-align: center;">
                                                                         <input type="checkbox" class="filled-in checkbox" id="<?= $idEncriptado; ?>"/>
                                                                         <label for="<?= $idEncriptado; ?>"></label>
+
+                                                                        <input id="horasServicio_<?= $contador; ?>" type="text" style="display: none;" value="<?= $horasServicio; ?>">
+                                                                        <input id="tipoTiempoServicio_<?= $contador; ?>" type="text" style="display: none;" value="<?= $tipoTiempo; ?>">
+                                                                        <input id="gastosVariablesServicio_<?= $contador; ?>" type="text" style="display: none;" value="<?= $gastosVariables; ?>">
+                                                                        <input id="utilidadServicio_<?= $contador; ?>" type="text" style="display: none;" value="<?= $utilidad; ?>">
+
+                                                                        <input id="idServicio_<?= $contador; ?>" type="text" style="display: none;" value="<?= $fila['idServicio']; ?>">
                                                                     </td>
                                                                     <td><?= $codigo; ?></td>
                                                                     <td><a href="<?= base_url() ?>servicios/editar/<?= $idEncriptado; ?>"><?= $nombre; ?></a></td>
                                                                     <td><?= $descripcion; ?></td>
-                                                                    <td><span class="moneda_signo"></span><?= $total; ?></td>
+                                                                    <td><span class="moneda_signo"></span><span id="precioServicio_<?= $contador; ?>"></span></td>
                                                                     <td>
                                                                         <ul id="dropdown-servicio<?= $contador; ?>" class="dropdown-content">
                                                                             <li>
@@ -152,6 +162,7 @@
 </div>
 <!-- END CONTENT-->
 
+<!--Script para manejo de tabla y checks-->
 <script type="text/javascript">
     $(document).on("ready", function () {
 
@@ -428,6 +439,157 @@
 
 
 
+</script>
+<!--Script para manejo de precio de servicios-->
+<script type="text/javascript">
+    <?php
+        $js_array = json_encode($lista);
+        echo "var arrayServicios =". $js_array .";";
+    ?>
+    var totalGastosFijosAnuales = 0;
+    var totalHorasLaborales = 0;
+
+    function gastosFijosAnuales() {
+        $.ajax({
+            type: 'POST',
+            url: '<?= base_url(); ?>gastos/gastosFijos',
+            data: {  },
+            async: false,
+            success: function(response)
+            {
+                var $arrayGastosFijos = $.parseJSON(response);
+
+                var totalGastosFijos = 0;
+                for(var i = 0; i < $arrayGastosFijos.length; i++) {
+                    var gastoFijo = $arrayGastosFijos[i];
+                    var monto = 0;
+                    switch (gastoFijo['formaPago']) {
+                        case '1':
+                            monto = parseFloat(gastoFijo['monto']) * 8760;
+                            break;
+                        case '2':
+                            monto = parseFloat(gastoFijo['monto']) * 365;
+                            break;
+                        case '3':
+                            monto = parseFloat(gastoFijo['monto']) * 52.1429;
+                            break;
+                        case '4':
+                            monto = parseFloat(gastoFijo['monto']) * 12;
+                            break;
+                        case '5':
+                            monto = parseFloat(gastoFijo['monto']);
+                            break;
+                    }
+                    totalGastosFijos += monto;
+                }
+
+                totalGastosFijosAnuales = totalGastosFijos;
+            }
+        });
+    }
+    function horasLaborales() {
+        $.ajax({
+            type: 'post',
+            url: '<?= base_url(); ?>horas/cargarDatos',
+            data: {  },
+            async: false,
+            success: function(response)
+            {
+                if(response != 'null') {
+                    var datosHoras = $.parseJSON(response);
+
+                    var diasAnno = 365;
+                    var finesSemana = parseFloat(datosHoras['finesSemana']);
+                    var festivosObligatorios = parseFloat(datosHoras['festivosObligatorios']);
+                    var incluirNoObligatorios = datosHoras['incluirNoObligatorios'];
+                    var festivosNoObligatorios = parseFloat(datosHoras['festivosNoObligatorios']);
+                    var vacaciones = parseFloat(datosHoras['vacaciones']);
+                    var promedioBajas = parseFloat(datosHoras['promedioBajas']);
+                    var promedioHorasDiarias = parseFloat(datosHoras['promedioHorasDiarias']);
+                    var cantidadManoObra = parseFloat(datosHoras['cantidadManoObra']);
+
+                    var diasNoFacturables = finesSemana + festivosObligatorios + vacaciones + promedioBajas;
+                    if(incluirNoObligatorios == 1) {
+                        diasNoFacturables += festivosNoObligatorios;
+                    }
+                    var diasFacturables = (diasAnno - diasNoFacturables).toFixed(2);
+                    var totalHorasAnual = (diasFacturables * promedioHorasDiarias * cantidadManoObra).toFixed(2);
+                    var promedioHorasMensual = ((diasFacturables / 12) * promedioHorasDiarias * cantidadManoObra).toFixed(2);
+
+                    totalHorasLaborales = totalHorasAnual;
+                } else {
+                    totalHorasLaborales = 0;
+                }
+            }
+        });
+    }
+    function horasServicio(numeroFila) {
+        var tiempoServicio = parseFloat($('#horasServicio_' + numeroFila).val());
+        var tipoTiempo = $('#tipoTiempoServicio_' + numeroFila).val();
+
+        var cantidadHoras = 0;
+        switch (tipoTiempo) {
+            case '1':
+                cantidadHoras = tiempoServicio;
+                break;
+            case '2':
+                cantidadHoras = tiempoServicio * 24;
+                break;
+            case '3':
+                cantidadHoras = tiempoServicio * 168;
+                break;
+            case '4':
+                cantidadHoras = tiempoServicio * 730.001;
+                break;
+            case '5':
+                cantidadHoras = tiempoServicio * 8760;
+                break;
+        }
+        return cantidadHoras;
+    }
+    function impuestosServicio(idServicio, precioServicio) {
+        var impuestosAgregados = 0;
+        for (var j = 0; j < arrayServicios.length; j++) {
+            var servicio = arrayServicios[j];
+            if (servicio['idServicio'] == idServicio) {
+                var impuestos = servicio['impuestos'];
+                for(var i = 0; i < impuestos.length; i++) {
+                    var valorImpuesto = parseFloat(impuestos[i]['valor']);
+                    impuestosAgregados += precioServicio * (valorImpuesto / 100);
+                }
+            }
+        }
+        return impuestosAgregados;
+    }
+
+    function calcularPrecio(numeroFila) {
+        var idServicio = parseFloat($('#idServicio_' + numeroFila).val());
+
+        gastosFijosAnuales();
+        horasLaborales();
+        var totalGastosV = parseFloat($('#gastosVariablesServicio_' + numeroFila).val());
+        var totalGastos = totalGastosFijosAnuales + totalGastosV;
+
+        var costoHora = totalGastos / totalHorasLaborales;
+        var cantidadHoras = horasServicio(numeroFila);
+        var margenUtilidad = parseFloat($('#utilidadServicio_' + numeroFila).val()) / 100;
+
+        var precioServicio = (cantidadHoras * costoHora) / (1 - margenUtilidad);
+
+        var impuestosAgregados = impuestosServicio(idServicio, precioServicio);
+        precioServicio += impuestosAgregados;
+
+        precioServicio = precioServicio.toFixed(2);
+
+        $('#precioServicio_' + numeroFila).text(precioServicio);
+    }
+
+    $(document).ready(function () {
+        var numeroServicios = arrayServicios.length;
+        for(var i = 0; i < numeroServicios; i++) {
+            calcularPrecio(i);
+        }
+    });
 </script>
 
 <!-- lista modals -->
