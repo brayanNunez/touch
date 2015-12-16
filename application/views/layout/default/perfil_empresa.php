@@ -253,7 +253,7 @@
                                         <div id="datosEmpresa_contacto" style="display: none;">
                                             <div class="col s12" style="padding: 0;">
                                                 <div class="col s12">
-                                                    <h5>Datos del contacto (Se recomiendo representante legal)</h5>
+                                                    <h5>Datos del contacto (Se recomienda representante legal)</h5>
                                                 </div>
                                                 <div class="input-field col s12 m4 l4">
                                                     <input id="empresa_nombreContacto" name="empresa_nombreContacto" type="text" value="<?= $nombreContacto; ?>">
