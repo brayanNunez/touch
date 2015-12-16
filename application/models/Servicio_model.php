@@ -209,7 +209,7 @@ class Servicio_model extends CI_Model
                 $this->db->select('gs.idGastoServicio, ga.idGasto, ga.codigo, ga.nombre as nombreGasto, ga.monto, gs.cantidad, pe.juridico, pe.nombre as nombrePersona, pe.primerApellido, pe.segundoApellido, fp.nombre as formaPago');
                 $this->db->from('gasto ga');
                 $this->db->join('proveedor pe', 'ga.idProveedor = pe.idProveedor');
-                $this->db->join('formapago fp', 'ga.formaPago = fp.idFormaPago');
+                $this->db->join('tiempo fp', 'ga.formaPago = fp.idTiempo');
                 $this->db->join('gastoservicio gs', 'ga.idGasto = gs.idGasto');
                 $this->db->join('servicio se', 'gs.idServicio = se.idServicio');
                 $this->db->where('se.idServicio', $id);
@@ -452,8 +452,8 @@ class Servicio_model extends CI_Model
             $this->db->where('idCategoriaGasto' , $row['idCategoriaGasto']);
             $query1 = $this->db->get('categoriagasto');
             $this->db->select('nombre');
-            $this->db->where('idFormaPago', $row['formaPago']);
-            $query2 = $this->db->get('formapago');
+            $this->db->where('idTiempo', $row['formaPago']);
+            $query2 = $this->db->get('tiempo');
             $this->db->select('nombre');
             $this->db->where('idProveedor', $row['idProveedor']);
             $query3 = $this->db->get('proveedor');
