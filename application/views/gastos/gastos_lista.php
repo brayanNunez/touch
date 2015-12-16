@@ -1707,7 +1707,7 @@
                     <label for="persona_nacionalidad"><?= label('formCliente_nacionalidad'); ?></label>
                     <br>
                     <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="persona_nacionalidad" name="persona_nacionalidad" class="required browser-default chosen-select">
-                        <option value=""></option>
+                        <option value="0" disabled selected style="display:none;"><?= label("agregarCliente_elegirNacionalidad"); ?></option>
                         <?php
                         if(isset($paises)) {
                             foreach ($paises as $pais) { ?>
@@ -1826,7 +1826,7 @@
                             <label for="persona_direccionPais"><?= label('formPersona_direccionPais'); ?></label>
                             <br>
                             <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="persona_direccionPais" name="persona_direccionPais" class="browser-default chosen-select">
-                                <option value=""></option>
+                                <option value="0" disabled selected style="display:none;"><?= label("agregarCliente_elegirPais"); ?></option>
                                 <?php
                                 if(isset($paises)) {
                                     foreach ($paises as $pais) { ?>
