@@ -321,8 +321,9 @@ $(document).ready(function(){
         
         // $('#contenedorLineas').append(html);
         cargarTags_Impuestos(contadorFilas);
-        generarAutocompletarProductoNombre(contadorFilas);
-        generarAutocompletarProductoItem(contadorFilas);
+        actualizarSelectServiciosNuevos(contadorFilas);
+        // generarAutocompletarProductoNombre(contadorFilas);aqui
+        // generarAutocompletarProductoItem(contadorFilas);
         generarListas();
         // generarListasBotones();
         $('.modal-trigger').leanModal(); 
@@ -376,31 +377,31 @@ $(document).ready(function(){
                                     <label for="checkbox-all"></label>
                                 </th>
                                 <th data-indice-columna="1">
-                                    <?=label('tablaLineasDetalle_item');?>
+                                    Item
                                 </th>
                                 <th  data-indice-columna="2">
-                                    <?=label('tablaLineasDetalle_nombre');?>
+                                    Nombre
                                 </th>
                                 <th  data-indice-columna="3">
-                                    <?=label('tablaLineasDetalle_descripcion');?>
+                                    Descripción
                                 </th>
                                 <th  data-indice-columna="4">
-                                    <?=label('tablaLineasDetalle_preciounitario');?>
+                                    Precio unitario
                                 </th>
                                 <th  data-indice-columna="5">
-                                    <?=label('tablaLineasDetalle_cantidad');?>
+                                    Cantidad
                                 </th>
                                 <th  data-indice-columna="6">
-                                    <?=label('tablaLineasDetalle_impuesto');?>
+                                    Impuesto de venta
                                 </th>
                                 <th  data-indice-columna="7">
-                                    <?=label('tablaLineasDetalle_utilidad');?>
+                                    Margen de utilidad
                                 </th>
                                 <th data-indice-columna="8">
-                                    <?=label('tablaLineasDetalle_total');?>
+                                    Total
                                 </th>
                                 <th data-indice-columna="9">
-                                    <?=label('tablaLineasDetalle_opciones');?>
+                                    Opciones
                                 </th>
                             </tr>
                         </thead>
@@ -442,11 +443,11 @@ $(document).ready(function(){
                     <div class="col s12" style="float: right;">
                         <div class="input-field col s12">
                             <input id="last_name" type="number">
-                            <label for="last_name" class=""><?=''?><?=label('paso2_descuento');?></label>
+                            <label for="last_name" class="">Descuento</label>
                         </div>
                         <div class="input-field col s12">
                             <input value="$140" id="last_name" type="text" disabled>
-                            <label for="last_name"><?=''?><?=label('paso2_total');?></label>
+                            <label for="last_name">Total</label>
                         </div>
                     </div>
                 </div>
@@ -533,7 +534,7 @@ $(document).on('ready', function(){
     </div>
     <div class="modal-content" style="padding: 0 24px;">
         <div class="row">
-            <h5 style="float: left;"><?=label('paso2_agregarServicio');?></h5>
+            <h5 style="float: left;">Agregar servicio</h5>
         </div>
         <form id="form_servicio_cotizar" action="<?= base_url(); ?>servicios/insertar" method="POST" class="col s12">
             <div class="input-field col s12">
@@ -703,8 +704,8 @@ $(document).on('ready', function(){
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td><?= label('modalServicio_total'); ?></td>
-                                    <td><span class="moneda_signo"></span><span class="total_gastos_variables">0</span></td>
+                                    <td>TOTAL</td>
+                                    <td>$<span class="total_gastos_variables">0</span></td>
                                     <td></td>
                                 </tr>
                                 </tbody>
@@ -712,7 +713,7 @@ $(document).on('ready', function(){
                         </div>
                     </div>
                     <div class="col s12" style="margin-top: 20px;">
-                        <h5><?= label('servicioGastos_total'); ?>: <span class="moneda_signo"></span><span class="total_gastos_variables">0</span></h5>
+                        <h5><?= label('servicioGastos_total'); ?>: $<span class="total_gastos_variables">0</span></h5>
                     </div>
                 </div>
             </div>
@@ -1419,6 +1420,51 @@ $(document).on('ready', function(){
             }
         });
     }
+
+     function actualizarSelectServiciosNuevos(fila) {
+        generarAutocompletarServiciosNuevo(arrayServicios, fila);
+        generarListas();
+    }
+
+
+        function generarAutocompletarServiciosNuevo($array, id){
+
+            var selectNombre = $('<select data-incluirBoton="1" placeholder="seleccionar" data-tipo="productoNombre" data-fila="' + id + '" id="productoNombre_' + id + '" name="productoNombre_' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso2_elegirProductoNombre"); ?>" class="chosen-select nombreServicio" style="width:350px;" tabindex="2"></select>');
+            selectNombre.append('<option value="0" disabled selected style="display:none;"><?= label("paso2_elegirProductoNombre"); ?></option>');
+            selectNombre.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+            
+
+            var selectItem = $('<select data-incluirBoton="1" placeholder="seleccionar" data-tipo="productoItem" data-fila="' + id + '" id="productoItem_' + id + '" name="productoItem_' + id + '" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso2_elegirProductoItem"); ?>" class="chosen-select itemServicio" style="width:350px;" tabindex="2"></select>');
+            selectItem.append('<option value="0" disabled selected style="display:none;"><?= label("paso2_elegirProductoItem"); ?></option>');
+            selectItem.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+            
+
+
+            selectNombre.empty();
+            selectNombre.append('<option value="0" disabled selected style="display:none;"><?= label("paso2_elegirProductoNombre"); ?></option>');
+            selectNombre.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+
+            selectItem.empty();
+            selectItem.append('<option value="0" disabled selected style="display:none;"><?= label("paso2_elegirProductoItem"); ?></option>');
+            selectItem.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+
+            for(var i = 0; i < $array.length; i++) {
+                var servicio = $array[i];
+                if(servicio != null) {
+                    selectNombre.append('<option value="' + servicio['idServicio'] + '">' + servicio['nombre'] + '</option>');
+                    selectItem.append('<option value="' + servicio['idServicio'] + '">' + servicio['codigo'] + '</option>');
+                }
+            }
+            $('#contenedorSelectProductoNombre' + id + '').html(selectNombre);
+            $('#contenedorSelectProductoItem' + id + '').html(selectItem);
+
+            selectNombre.trigger("chosen:updated");
+            selectItem.trigger("chosen:updated");
+
+
+    }
+
+
 
     function actualizarSelectServicios($idServicio, selectSeleccionado) {
         // alert($idServicio + ' ' + selectSeleccionado);
