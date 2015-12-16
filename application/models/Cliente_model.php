@@ -374,7 +374,7 @@ class Cliente_model extends CI_Model
                 $row['paisNacionalidad'] = array_shift($paisNacionalidad)['nombre'];
 
                 $this->db->select('nombre');
-                $formaPago = $this->db->get_where('formaPago', array('idFormaPago' => $row['idFormaPagoDefecto']));
+                $formaPago = $this->db->get_where('formapago', array('idFormaPago' => $row['idFormaPagoDefecto']));
                 if (!$formaPago) throw new Exception("Error en la BD");
                 $resultado = $formaPago->result_array();
                 $row['nombre_formaPago'] = array_shift($resultado)['nombre'];
