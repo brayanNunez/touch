@@ -91,9 +91,11 @@ $(document).ready(function(){
            event.preventDefault();
            var tipo = filaEliminar.find('.accionAplicada').val();
            if (tipo == '0') {
-                filaEliminar.fadeOut(function () {
-                    filaEliminar.remove();
-               });
+                var table = $('#tablaLineasDetalle').DataTable();
+                table
+                .row(filaEliminar)
+                .remove()
+                .draw();
                cantidadLineas--;
                actualizarCantidad();
            } else{
@@ -149,7 +151,7 @@ $(document).ready(function(){
             select.trigger("chosen:updated");
 
             $('#descripcion_' + numeroFila).val(linea['descripcion']);
-            $('#precio_' + numeroFila).val(linea['precioUnidad']);  
+            // $('#precio_' + numeroFila).val(linea['precioUnidad']);  
             $('#cantidad_' + numeroFila).val(linea['cantidad']);  
             cargarImpuestosPorServicio(numeroFila, linea['impuestos'])
             $('#utilidad_' + numeroFila).val(linea['utilidad']);
@@ -162,6 +164,7 @@ $(document).ready(function(){
                     $('#gastosVariablesLinea_' + numeroFila).val(servicio['gastosVariables']);
                 }
             }
+            calcularPrecio(numeroFila);
         };
     }
 
@@ -206,12 +209,14 @@ $(document).ready(function(){
 
 
     function verificarExiste(valorVerificar, numeroFilaVerificar){
-        // alert('bien');
+        // alert(valorVerificar + ',  ' + numeroFilaVerificar);
         var existe = false;
         $('.nombreServicio').each(function(){ 
             var valor = $(this).val();
             var numeroFila = $(this).data('fila');
             var estadoFila = $('#linea_' + numeroFila).val();
+
+            // alert('fila: ' + numeroFila + ', estado' + estadoFila + 'valor ' + valor);
             if (estadoFila != 2) {
                 if (numeroFilaVerificar != numeroFila && valorVerificar == valor) {
                     existe = true;
@@ -419,8 +424,8 @@ $(document).ready(function(){
                         <a id="botonAgregarFila" class="btn-default opcionesDetalles btn-newLine">Agregar linea</a>
                     </div> -->
 
-                    <div id="botonAgregarFila" class="col s12">
-                        <a class="btn btn-default"><?= label('paso2_agregarLinea'); ?></a>
+                    <div>
+                        <a id="botonAgregarFila" class="btn btn-default"><?= label('paso2_agregarLinea'); ?></a>
                     </div>
 
                     <div class="tabla-conAgregar tabla-detalles-cotizacion">
@@ -1639,6 +1644,7 @@ $(document).on('ready', function(){
         var cantidadServicio = parseFloat($('#cantidad_' + numeroFila).val());
         var subTotalServicio = precioServicio * cantidadServicio;
         subTotalServicio = subTotalServicio.toFixed(2);
+        // alert(subTotalServicio);
         $('#subTotal_' + numeroFila).val(subTotalServicio);
     }
 
