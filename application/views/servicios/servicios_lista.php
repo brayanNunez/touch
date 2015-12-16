@@ -568,7 +568,10 @@
         gastosFijosAnuales();
         horasLaborales();
         var totalGastosV = parseFloat($('#gastosVariablesServicio_' + numeroFila).val());
-        var totalGastos = totalGastosFijosAnuales + totalGastosV;
+        var totalGastos = totalGastosFijosAnuales;
+        if(totalGastosV > 0) {
+            totalGastos += totalGastosV;
+        }
 
         var costoHora = totalGastos / totalHorasLaborales;
         var cantidadHoras = horasServicio(numeroFila);
