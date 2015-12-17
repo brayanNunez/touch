@@ -581,6 +581,12 @@
     $lang['paso1_elegirMoneda'] = 'Elegir moneda';
     $lang['paso1_elegirCliente'] = 'Elegir cliente';
     $lang['paso1_elegirAtencion'] = 'Elegir atención';
+
+    $lang['paso1_clientesOtrosDatos'] = 'Otros datos';
+    $lang['paso1_formContactos'] = 'Contactos';
+    $lang['paso1_formAdicional'] = 'Info adicional';
+    $lang['paso1_formFacturacion'] = 'Info facturación';
+
     $lang['paso2_elegirProductoNombre'] = 'Elegir';
     $lang['paso2_elegirProductoItem'] = 'Elegir';
     $lang['paso2_descuento'] = 'Descuento';
@@ -615,13 +621,69 @@
     $lang['cotizacionEnviadaCliente'] = 'Cotización enviada al cliente';
     $lang['cotizacionRechazada'] = 'Cotización rechazada';
 
-    
+    $lang['paso3_codCotizacion:'] = 'Código de cotización: ';
+    $lang['paso3_cliente:'] = 'Cliente: ';
+    $lang['paso3_atencion:'] = 'Atención: ';
+    $lang['paso3_vendedor:'] = 'Vendedor: ';
+    $lang['paso3_fecha:'] = 'Fecha: ';
+    $lang['paso3_hora:'] = 'Hora: ';
+    $lang['paso3_descuento:'] = 'Descuento: ';
+    $lang['paso3_impuesto:'] = 'Impuestos: ';
+    $lang['paso3_total:'] = 'Total: ';
 
+    $lang['paso3_item'] = 'Item';
+    $lang['paso3_nombre'] = 'Nombre';
+    $lang['paso3_descripcion'] = 'Descripción';
+    $lang['paso3_precioUnitario'] = 'Precio unitario';
+    $lang['paso3_cantidad'] = 'Cantidad';
+    $lang['paso3_impuesto'] = 'Impuestos';
+    $lang['paso3_total'] = 'Total';
+     
+
+    $lang['paso3_formaPago:'] = 'Forma de pago: ';
+    $lang['paso3_validoHasta:'] = 'Válido hasta: ';
+    $lang['paso3_firma:'] = 'Firma: ';
+    $lang['paso3_telefono:'] = 'Teléfono: ';
+    $lang['paso3_sitioWeb:'] = 'Sitio web: ';
+    $lang['paso3_correo:'] = 'Correo: ';
+    
+    $lang['paso3_nombreEmpresa'] = 'Nombre de la empresa';
+    $lang['paso3_codCotizacion'] = 'Código de cotización';
+    $lang['paso3_cliente'] = 'Cliente';
+    $lang['paso3_atencion'] = 'Atención';
+    $lang['paso3_vendedor'] = 'Vendedor';
+    $lang['paso3_fecha'] = 'Fecha';
+    $lang['paso3_hora'] = 'Hora';
+    $lang['paso3_imagen'] = 'Imagen';
+
+    $lang['paso3_colorFondo:'] = 'Color de fondo: ';
+    $lang['paso3_colorLetra:'] = 'Color de letra: ';
+    $lang['paso3_colorBarraHorizontal:'] = 'Color de barra horizontal: ';
+
+    $lang['paso3_mostrarColumnas:'] = 'Mostrar las siguientes columnas: ';
+    $lang['paso3_mostrarTotales'] = 'Mostrar los siguientes totales: ';
+    $lang['paso3_impuesto'] = 'Impuesto';
+    $lang['paso3_descuento'] = 'Descuento';
+    $lang['paso3_total'] = 'Total';
+
+    $lang['paso3_formaPago'] = 'Forma de pago';
+    $lang['paso3_validez'] = 'Validez';
+    $lang['paso3_firma'] = 'Firma';
+    $lang['paso3_textoAdicional'] = 'Texto adicional';
+
+    $lang['paso3_telefono'] = 'Teléfono';
+    $lang['paso3_sitioWeb'] = 'Sitio web';
+    $lang['paso3_correo'] = 'Correo';
+
+    $lang['paso3_cargando'] = 'Cargando...';
     
     $lang['paso4_codigoCotizacion'] = 'Código de la cotización: ';
     $lang['paso4_cotizacionGuardada'] = 'La cotización ha sido guardada.';
     $lang['paso4_cotizacionGuardadaDescargando'] = 'La cotización ha sido guardada y está en proceso de descarga.';
     $lang['paso4_cotizacionGuardadaEnviada'] = 'La cotización ha sido guardada y enviada para su aprobación.';
+
+    $lang['paso4_seleccionarAprobadores'] = 'Seleccionar aprobadores';
+    $lang['paso4_'] = '';
 
     $lang['cotizacion_agregarCliente'] = 'Agregar cliente';
     $lang['agregarCliente_elegirMoneda'] = 'Tipo de moneda preferida para cotización';
@@ -1342,6 +1404,7 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['tooltip_descargarArchivo'] = 'Abrir archivo en otra pestaña';
     $lang['clientes_busquedaDesde'] = 'Desde: ';
     $lang['clientes_busquedaHasta'] = 'Hasta: ';
+    $lang['clientes_noHayContactos'] = 'No hay contactos disponibles para mostrar';
 
 //Olvidar contrasenna
     $lang['olvidarContrasenna_mensaje'] = 'Digite una dirección de correo electrónico para poder reestablecer la contraseña de su cuenta';
