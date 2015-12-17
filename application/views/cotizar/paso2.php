@@ -152,11 +152,17 @@ $(document).ready(function(){
 
             $('#descripcion_' + numeroFila).val(linea['descripcion']);
             cargarImpuestosPorServicio(numeroFila, linea['impuestos']);
-            $('#precio_' + numeroFila).val(linea['precioUnidad']);  
-            $('#subTotal_' + numeroFila).val(linea['total']);  
+                      
             $('#cantidad_' + numeroFila).val(linea['cantidad']);  
-            
             $('#utilidad_' + numeroFila).val(linea['utilidad']);
+
+            $('#precio_' + numeroFila).val(linea['precioUnidad']);
+            $('#subTotal_' + numeroFila).val(linea['total']);
+
+            var precioPropio = linea['precioUnidadPropio'];
+            $('#precioUnidadPropio_' + numeroFila).val(precioPropio);//aqui
+
+            
 
             for (var j = arrayServicios.length - 1; j >= 0; j--) {
                 var servicio = arrayServicios[j];
@@ -166,13 +172,62 @@ $(document).ready(function(){
                     $('#gastosVariablesLinea_' + numeroFila).val(servicio['gastosVariables']);
                 }
             }
-            // calcularPrecio(numeroFila);
+            var precioActual =  calcularPrecioActualizado(numeroFila);
+            alert('comparacion: ' +  precioActual + ', '+ precioPropio);
+            if (precioActual != precioPropio) {
+                var precio = $('#precio_' + numeroFila).val();
+                var row = $('#precio_' + numeroFila).parent('row');
+                html  = row.html();
+                html = '<a data-fila="'+numeroFila+'" id="actualizar_'+numeroFila+'" href = "#actualizarPrecio" class="modal-trigger linkActualizar">'+html+'<a>';
+                row.empty();
+                row.append(html);
+                $('#precio_' + numeroFila).val(precio);
+            } 
         };
     }
 
+    
+    var filaLinkActualizar = '';
+    $(document).on('click', '.linkActualizar', function(){
+        filaLinkActualizar = $(this).attr('data-fila');
+    });
+
+    $(document).on('ready',function(){
+        $('#aceptarActualizar').on('click', function(){
+            var numeroFila = filaLinkActualizar;
+            $('#actualizarPrecio').closeModal();
+            var precioActual =  calcularPrecioActualizado(numeroFila);
+            $('#precioUnidadPropio_' + numeroFila).val(precioActual);//aqui
+            calcularPrecioPropio(numeroFila);
+
+            $('#actualizar_' + numeroFila).attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none', 'color' : 'black'});
+
+            // var precio = $('#precio_' + numeroFila).val();
+            // var row = $('#precio_' + numeroFila).parent('row');
+
+            // // row.empty()
+
+            // // html  = row.html();
+            // var html = $('#actualizar_' + numeroFila).html();
+            // $('#actualizar_' + numeroFila).remove();
+            // alert(html);
+
+            // row.append('<p>hola</p>');
+            // $('#precio_' + numeroFila).val(precio);
+
+        });
+    });
+        
 
 
-    function cargarFila(idServicio, numeroFila){
+
+    
+
+    
+
+
+
+    function cargarDatosFila(idServicio, numeroFila){
         // alert(idServicio + ', ' + numeroFila);
         for (var i = arrayServicios.length - 1; i >= 0; i--) {
             var servicio = arrayServicios[i];
@@ -239,6 +294,7 @@ $(document).ready(function(){
                 '<input style="display:none" id="cantidadHorasLinea_'+contadorFilas+'" name="cantidadHorasLinea_'+contadorFilas+'" type="text" value="'+ contadorFilas +'">'+
                 '<input style="display:none" id="tipoTiempoLinea_'+contadorFilas+'" name="tipoTiempoLinea_'+contadorFilas+'" type="text" value="'+ contadorFilas +'">'+
                 '<input style="display:none" id="gastosVariablesLinea_'+contadorFilas+'" name="gastosVariablesLinea_'+contadorFilas+'" type="text" value="'+ contadorFilas +'">'+
+                '<input style="display:none" id="precioUnidadPropio_'+contadorFilas+'" name="precioUnidadPropio_'+contadorFilas+'" type="text" value="">'+
                 '<input style="display:none" class="campo_numeroFila" id="numeroLinea_'+contadorFilas+'" name="numeroLinea_'+contadorFilas+'" type="text" value="'+ contadorFilas +'">'+
 
                 '<input type="checkbox" class="filled-in checkbox" id="checkbox_linea'+contadorFilas+'"/>'+
@@ -268,7 +324,7 @@ $(document).ready(function(){
 
         var precio ='<td>'+
             '<row>'+
-                '<input class="precio" value="" type="text" id="precio_'+contadorFilas+'" name="precio_'+contadorFilas+'">'+
+                '<input class="precio" value="" type="text" id="precio_'+contadorFilas+'" name="precio_'+contadorFilas+'" readonly="true">'+
             '</row>'+
         '</td>';
 
@@ -760,6 +816,22 @@ $(document).on('ready', function(){
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>
+
+<div id="actualizarPrecio" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('confirmarActualizarPrecio'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a id="aceptarActualizar" class="waves-effect waves-red btn-flat modal-action"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+
+
+
 <div id="eliminarElementosSeleccionados" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
@@ -1530,7 +1602,7 @@ $(document).on('ready', function(){
             selectNombre.trigger("chosen:updated");
             selectItem.trigger("chosen:updated");
         });
-        cargarFila($idServicio, numeroFilaNuevo);
+        cargarDatosFila($idServicio, numeroFilaNuevo);
     }
 
 
@@ -1668,7 +1740,8 @@ $(document).on('ready', function(){
         return cantidadHoras;
     }
 
-    function calcularPrecio(numeroFila) {
+    function calcularPrecioActualizado(numeroFila){
+
         gastosFijosAnuales();
         horasLaborales();
         var totalGastosV = parseFloat($('#gastosVariablesLinea_' + numeroFila).val());
@@ -1681,7 +1754,53 @@ $(document).on('ready', function(){
         var cantidadHoras = horasServicio(numeroFila);
         var margenUtilidad = parseFloat($('#utilidad_' + numeroFila).val()) / 100;
 
-        var precioServicio = (cantidadHoras * costoHora) / (1 - margenUtilidad);
+        return cantidadHoras * costoHora;
+    }
+
+    function calcularPrecio(numeroFila) {
+        alert('calcularPrecio');
+        gastosFijosAnuales();
+        horasLaborales();
+        var totalGastosV = parseFloat($('#gastosVariablesLinea_' + numeroFila).val());
+        var totalGastos = totalGastosFijosAnuales;
+        if(totalGastosV > 0) {
+            totalGastos += totalGastosV;
+        }
+
+        var costoHora = totalGastos / totalHorasLaborales;
+        var cantidadHoras = horasServicio(numeroFila);
+        var margenUtilidad = parseFloat($('#utilidad_' + numeroFila).val()) / 100;
+
+        var precioBase = cantidadHoras * costoHora;
+
+        $('#precioUnidadPropio_' + numeroFila).val(precioBase);//Este va a ser el precio Unidad que va a mantener la línea de detalle, aunque el precio del servicio cambie.
+
+        var precioServicio = (precioBase) / (1 - margenUtilidad);
+
+        var impuestosAgregados = 0;
+        $.each($("#impuestos_" + numeroFila).tagsinput('items'), function( index, value ) {
+            impuestosAgregados += precioServicio * (value['valor'] / 100);
+        });
+        precioServicio += impuestosAgregados;
+
+        precioServicio = precioServicio.toFixed(2);
+
+        $('#precio_' + numeroFila).val(precioServicio);
+        var cantidadServicio = parseFloat($('#cantidad_' + numeroFila).val());
+        var subTotalServicio = precioServicio * cantidadServicio;
+        subTotalServicio = subTotalServicio.toFixed(2);
+        // alert(subTotalServicio);
+        $('#subTotal_' + numeroFila).val(subTotalServicio);
+
+    }
+
+    function calcularPrecioPropio(numeroFila) {
+
+        var margenUtilidad = parseFloat($('#utilidad_' + numeroFila).val()) / 100;
+
+        var precioPorpio = $('#precioUnidadPropio_' + numeroFila).val();//Este va a ser el precio Unidad que va a mantener la línea de detalle, aunque el precio del servicio cambie.
+
+        var precioServicio = precioPorpio / (1 - margenUtilidad);
 
         var impuestosAgregados = 0;
         $.each($("#impuestos_" + numeroFila).tagsinput('items'), function( index, value ) {
@@ -1700,19 +1819,22 @@ $(document).on('ready', function(){
     }
 
     $(document).on('change', '.campo_cantidad', function () {
+        // alert('cambio en cantidad');
         var lineaPadre = $(this).parents('tr');
         var numeroLineaPadre = lineaPadre.find('td input.campo_numeroFila').first().val();
-        calcularPrecio(numeroLineaPadre);
+        calcularPrecioPropio(numeroLineaPadre);
     });
     $(document).on('change', '.campo_impuestos', function () {
+        // alert('cambio en impuestos');
         var lineaPadre = $(this).parents('tr');
         var numeroLineaPadre = lineaPadre.find('td input.campo_numeroFila').first().val();
-        calcularPrecio(numeroLineaPadre);
+        calcularPrecioPropio(numeroLineaPadre);
     });
     $(document).on('change', '.utilidad', function () {
+        // alert('cambio en utilidad');
         var lineaPadre = $(this).parents('tr');
         var numeroLineaPadre = lineaPadre.find('td input.campo_numeroFila').first().val();
-        calcularPrecio(numeroLineaPadre);
+        calcularPrecioPropio(numeroLineaPadre);
     });
 </script>
 <!--Script para calcular precio servicio que se agrega-->
@@ -1742,6 +1864,7 @@ $(document).on('ready', function(){
     }
 
     function calcularPrecioNuevo() {
+        alert('calcularPrecio nuevo');
         gastosFijosAnuales();
         horasLaborales();
         var totalGastos = totalGastosFijosAnuales + totalGastosVariables;

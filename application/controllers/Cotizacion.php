@@ -131,6 +131,7 @@ class Cotizacion extends CI_Controller
                          'utilidad' => $this->input->post('utilidad_'.$contador),
                          'impuestos' => $this->input->post('impuestos_'.$contador),
                          'total' => $this->input->post('subTotal_'.$contador),
+                         'precioUnidadPropio' => $this->input->post('precioUnidadPropio_'.$contador),
                          'eliminado' => '0'
                          );
                         array_push($editados, $linea);
@@ -149,6 +150,7 @@ class Cotizacion extends CI_Controller
                          'utilidad' => $this->input->post('utilidad_'.$contador),
                          'impuestos' => $this->input->post('impuestos_'.$contador),
                          'total' => $this->input->post('subTotal_'.$contador),
+                         'precioUnidadPropio' => $this->input->post('precioUnidadPropio_'.$contador),
                          'eliminado' => '0'
                          );
                         array_push($nuevos, $linea);

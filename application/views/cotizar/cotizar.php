@@ -132,7 +132,7 @@
                             var select = $('#productoNombre_' + numeroFila);
                             select.val(valor);
                             select.trigger("chosen:updated");
-                            cargarFila(valor, numeroFila);
+                            cargarDatosFila(valor, numeroFila);
                         }
                     break;
                     case 'productoNombre':
@@ -146,7 +146,7 @@
                             var select = $('#productoItem_' + numeroFila);
                             select.val(valor);
                             select.trigger("chosen:updated");
-                            cargarFila(valor, numeroFila);
+                            cargarDatosFila(valor, numeroFila);
                         }
                     break;
 //                    case 'paso1Cliente':

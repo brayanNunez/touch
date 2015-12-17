@@ -192,6 +192,7 @@ class Cotizacion_model extends CI_Model
                      'cantidad' => $nuevo['cantidad'],
                      'utilidad' => $nuevo['utilidad'],
                      'total' => $nuevo['total'],
+                     'precioUnidadPropio' => $nuevo['precioUnidadPropio'],
                      'eliminado' => '0'
                      );
                 $query = $this->db->insert('lineadetalle', $nuevo);
@@ -225,6 +226,7 @@ class Cotizacion_model extends CI_Model
                      'cantidad' => $editado['cantidad'],
                      'utilidad' => $editado['utilidad'],
                      'total' => $editado['total'],
+                     'precioUnidadPropio' => $editado['precioUnidadPropio'],
                      'eliminado' => '0'
                      );
                 $this->db->where('idLineaDetalle', $editado['idLineaDetalle']);

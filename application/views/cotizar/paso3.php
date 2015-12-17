@@ -612,7 +612,7 @@
                            '<td class="celdaColumna col_2">'+ fila.find('.nombreServicio option:selected').text() +'</td>'+
                            '<td class="celdaColumna col_3">'+ fila.find('.descripcion').val() +'</td>'+
                            '<td class="celdaColumna col_4">'+ fila.find('.precio').val() +'</td>'+  
-                           '<td class="celdaColumna col_5">'+ fila.find('.cantidad').val() +'</td>'+
+                           '<td class="celdaColumna col_5">'+ fila.find('.campo_cantidad').val() +'</td>'+
                            '<td class="celdaColumna col_6">13%</td>'+
                            '<td class="celdaColumna col_7">'+ fila.find('.subTotal').val() +'</td>'+
                        '</tr>';
