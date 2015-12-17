@@ -598,6 +598,9 @@
               case 'finalizada':
                 miEstado =  '<?=label('estado_finalizada')?>';
                 break;
+              case 'facturada':
+                miEstado =  '<?=label('estado_facturada')?>';
+                break;
             }
             var estado = '<td>' + miEstado +'</td>';
 

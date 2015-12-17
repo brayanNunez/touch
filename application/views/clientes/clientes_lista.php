@@ -113,14 +113,14 @@
                                                                     class="-text modal-trigger confirmarEliminar"
                                                                     data-id-eliminar="<?= $idEncriptado ?>"  data-fila-eliminar="fila<?= $contador?>"><?= label('menuOpciones_eliminar') ?></a>
                                                               </li>
-                                                              <li>
+                                                              <!-- <li>
                                                                  <a href="<?= base_url(); ?>cotizacion/cotizar"
                                                                     class="-text"><?= label('menuOpciones_cotizar') ?></a>
-                                                             </li>
-                                                             <li>
+                                                             </li> -->
+                                                             <!-- <li>
                                                                  <a href="#desactivarCliente"
                                                                     class="-text modal-trigger"><?= label('menuOpciones_desactivar') ?></a>
-                                                             </li>
+                                                             </li> -->
                                                            </ul>
                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
                                                               href="#!"

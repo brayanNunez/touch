@@ -141,7 +141,7 @@
 
                      <!-- <p id="textoFirma">Firma:<span><img id="imagenFirma" class="imagen" src="<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/Firma.png"/></span></p> -->
                      <div id="contenedorNombreFirma">
-                        <p id="nombreFirma">Brayan Nunez Rojas</p>
+                        <p id="nombreFirma"><?=$resultado['empresa']['nombreRepresentante'].' '.$resultado['empresa']['primerApellidoRepresentante'].' '.$resultado['empresa']['segundoApellidoRepresentante']?></p>
                      </div>
                   </div>
                </div>

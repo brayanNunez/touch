@@ -151,9 +151,11 @@ $(document).ready(function(){
             select.trigger("chosen:updated");
 
             $('#descripcion_' + numeroFila).val(linea['descripcion']);
-            // $('#precio_' + numeroFila).val(linea['precioUnidad']);  
+            cargarImpuestosPorServicio(numeroFila, linea['impuestos']);
+            $('#precio_' + numeroFila).val(linea['precioUnidad']);  
+            $('#subTotal_' + numeroFila).val(linea['total']);  
             $('#cantidad_' + numeroFila).val(linea['cantidad']);  
-            cargarImpuestosPorServicio(numeroFila, linea['impuestos'])
+            
             $('#utilidad_' + numeroFila).val(linea['utilidad']);
 
             for (var j = arrayServicios.length - 1; j >= 0; j--) {
@@ -164,7 +166,7 @@ $(document).ready(function(){
                     $('#gastosVariablesLinea_' + numeroFila).val(servicio['gastosVariables']);
                 }
             }
-            calcularPrecio(numeroFila);
+            // calcularPrecio(numeroFila);
         };
     }
 
@@ -288,7 +290,7 @@ $(document).ready(function(){
 
         var utilidad ='<td>'+
             '<row>'+
-                '<input class="utilidad" value="" type="number" id="utilidad_'+contadorFilas+'" name="utilidad_'+contadorFilas+'">'+
+                '<input class="utilidad" type="number" id="utilidad_'+contadorFilas+'" name="utilidad_'+contadorFilas+'">'+
             '</row>'+
         '</td>';
 

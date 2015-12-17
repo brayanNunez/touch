@@ -191,6 +191,7 @@ class Cotizacion_model extends CI_Model
                      'precioUnidad' => $nuevo['precioUnidad'],
                      'cantidad' => $nuevo['cantidad'],
                      'utilidad' => $nuevo['utilidad'],
+                     'total' => $nuevo['total'],
                      'eliminado' => '0'
                      );
                 $query = $this->db->insert('lineadetalle', $nuevo);
@@ -223,6 +224,7 @@ class Cotizacion_model extends CI_Model
                      'precioUnidad' => $editado['precioUnidad'],
                      'cantidad' => $editado['cantidad'],
                      'utilidad' => $editado['utilidad'],
+                     'total' => $editado['total'],
                      'eliminado' => '0'
                      );
                 $this->db->where('idLineaDetalle', $editado['idLineaDetalle']);
@@ -395,7 +397,7 @@ class Cotizacion_model extends CI_Model
              $query = $this->db->insert('plantilladiseno', array('idEmpresa' => $datos['idEmpresa'],'idCotizacion' => $data['idCotizacion'],'publica' => 0, 'eliminado' => 0));
             if (!$query) throw new Exception("Error en la BD");
 
-            $this->db->select('nombre, correo, telefono, logo, firma, sitioWeb, codigoCotizacion');
+            $this->db->select('nombre, correo, telefono, logo, firma, sitioWeb, codigoCotizacion, nombreRepresentante,primerApellidoRepresentante,segundoApellidoRepresentante');
             $query = $this->db->get_where('empresa', array('idEmpresa'=> $datos['idEmpresa']));
             if (!$query) throw new Exception("Error en la BD");   
 
@@ -609,7 +611,7 @@ class Cotizacion_model extends CI_Model
             // if (!$query) throw new Exception("Error en la BD"); 
             // $data['idCotizacion'] = $this->db->insert_id();
 
-            $this->db->select('nombre, correo, telefono, logo, firma, sitioWeb, codigoCotizacion');
+            $this->db->select('nombre, correo, telefono, logo, firma, sitioWeb, codigoCotizacion, nombreRepresentante,primerApellidoRepresentante,segundoApellidoRepresentante');
             $query = $this->db->get_where('empresa', array('idEmpresa'=> $datos['idEmpresa']));
             if (!$query) throw new Exception("Error en la BD");   
 
