@@ -512,6 +512,27 @@
         $('#form_persona_Gastos')[0].reset();
         var validator = $("#form_persona_Gastos").validate();
         validator.resetForm();
+
+        document.getElementById('seleccion_TipoProveedor').style.display = 'block';
+        document.getElementById('camposObligatorios_fisico').style.display = 'block';
+        document.getElementById('camposObligatorios_juridico').style.display = 'none';
+        document.getElementById('campos-proveedor-fisico').style.display = 'block';
+        document.getElementById('campos-proveedor-juridico').style.display = 'none';
+        document.getElementById('datosNoObligatorios').style.display = 'none';
+        document.getElementById('datosContactos').style.display = 'none';
+
+        $('#persona_palabras').tagsinput('removeAll');
+        $('#categorias_persona').tagsinput('removeAll');
+
+        $('#persona_nacionalidad').val('').trigger('chosen:updated');
+        $('#persona_direccionPais').val('').trigger('chosen:updated');
+
+        $('#imagen_seleccionada').attr('src', '<?= base_url(); ?>files/default-user-image.png');
+        cantidad = 0;
+        contador = 0;
+        actualizarCantidad();
+
+        $('#contenedorContactos').empty();
     }
 
     $(document).ready(function () {
@@ -602,6 +623,7 @@
                                     alert("<?=label('gastos_PersonaGuardadoCorrectamente'); ?>");
                                     if (cerrarModalPersona) {
                                         $('#agregarPersona .modal-header a').click();
+                                        limpiarFormPersona();
                                     } else{
                                         limpiarFormPersona();
                                     }
@@ -1207,10 +1229,16 @@
     function tipoProveedor(opcionSeleccionada) {
         if (opcionSeleccionada.value == "1") {
             document.getElementById('seleccion_TipoProveedor').style.display = 'block';
+            document.getElementById('camposObligatorios_fisico').style.display = 'block';
+            document.getElementById('camposObligatorios_juridico').style.display = 'none';
+            document.getElementById('campos-proveedor-fisico').style.display = 'block';
+            document.getElementById('campos-proveedor-juridico').style.display = 'none';
         } else {
             document.getElementById('seleccion_TipoProveedor').style.display = 'none';
             document.getElementById('camposObligatorios_fisico').style.display = 'block';
             document.getElementById('camposObligatorios_juridico').style.display = 'none';
+            document.getElementById('campos-proveedor-fisico').style.display = 'block';
+            document.getElementById('campos-proveedor-juridico').style.display = 'none';
         }
     }
     function datosProveedor(opcionSeleccionada) {
