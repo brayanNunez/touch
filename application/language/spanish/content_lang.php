@@ -560,6 +560,7 @@
     $lang['estado_rechazada'] = 'Rechazada';
     $lang['estado_enviada'] = 'Enviada';
     $lang['estado_finalizada'] = 'Finalizada';
+    $lang['estado_facturada'] = 'Facturada';
 
 
 	$lang['paso1'] = '1 General';
