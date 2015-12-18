@@ -88,7 +88,7 @@
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        Seleccionar aprobadores
+        <?= label('paso4_seleccionarAprobadores'); ?>
         <div class="row">
             <div class="col s12 m12 l12">
                 <form id="formAprobadores">

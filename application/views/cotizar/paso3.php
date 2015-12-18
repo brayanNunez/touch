@@ -38,10 +38,10 @@
                   <div class="datos" id="datos1">
                      <div></div>
                      <p class="box" id="nombreEmpresa"><?= $resultado['empresa']['nombre']?></p>
-                     <p class="box" id="codigoCotizacion">Código de cotización: <span id="disenoCodigo"></span><span id="separador">-</span><span id="disenoNumero"></span></p>
-                     <p class="box" id="cliente">Cliente: <span id="disenoCliente"></span></p>
-                     <p class="box" id="atencion">Atención: <span id='disenoAtencion'></span></p>
-                     <p class="box" id="vendedor">Vendedor: <?= $resultado['usuario']['nombre'].' '.$resultado['usuario']['primerApellido'].' '.$resultado['usuario']['segundoApellido']?></p>
+                     <p class="box" id="codigoCotizacion"><?= label("paso3_codCotizacion:"); ?><span id="disenoCodigo"></span><span id="separador">-</span><span id="disenoNumero"></span></p>
+                     <p class="box" id="cliente"><?= label("paso3_cliente:"); ?><span id="disenoCliente"></span></p>
+                     <p class="box" id="atencion"><?= label("paso3_atencion:"); ?><span id='disenoAtencion'></span></p>
+                     <p class="box" id="vendedor"><?= label("paso3_vendedor:"); ?><?= $resultado['usuario']['nombre'].' '.$resultado['usuario']['primerApellido'].' '.$resultado['usuario']['segundoApellido']?></p>
                   </div>
                   <div class="datos" id="datos2">
                      <div></div>
@@ -54,8 +54,8 @@
                      }
 
                      ?>
-                     <p class="box" id="fecha">Fecha: <?= date("d-m-Y", strtotime($fecha));?></p>
-                     <p class="box" id="hora">Hora: <?php 
+                     <p class="box" id="fecha"><?= label("paso3_fecha:"); ?><?= date("d-m-Y", strtotime($fecha));?></p>
+                     <p class="box" id="hora"><?= label("paso3_hora:"); ?><?php 
                         $date = new DateTime($fecha);
                         echo $date->format('g:i a');
 
@@ -77,13 +77,13 @@
                <table>
                   <thead>
                      <tr>
-                        <th class="celdaColumna col_1">Item</th>
-                        <th class="celdaColumna col_2">Nombre</th>
-                        <th class="celdaColumna col_3">Descripción</th>
-                        <th class="celdaColumna col_4">Precio unitario</th>
-                        <th class="celdaColumna col_5">Cantidad</th>
-                        <th class="celdaColumna col_6">Impuesto</th>
-                        <th class="celdaColumna col_7">Total</th>
+                        <th class="celdaColumna col_1"><?= label("paso3_item"); ?></th>
+                        <th class="celdaColumna col_2"><?= label("paso3_nombre"); ?></th>
+                        <th class="celdaColumna col_3"><?= label("paso3_descripcion"); ?></th>
+                        <th class="celdaColumna col_4"><?= label("paso3_precioUnitario"); ?></th>
+                        <th class="celdaColumna col_5"><?= label("paso3_cantidad"); ?></th>
+                        <th class="celdaColumna col_6"><?= label("paso3_impuesto"); ?></th>
+                        <th class="celdaColumna col_7"><?= label("paso3_total"); ?></th>
                      </tr>
                   </thead>
                   <tbody id="lineasDiseno">
@@ -93,15 +93,15 @@
                <div id="contenedorResultados">
                   <div id="resultados">
                      <p class="box" id="descuento">
-                        Descuento: 
+                        <?= label("paso3_descuento:"); ?> 
                         <spam id="resultadoDescuento">15%</spam>
                      </p>
                      <p class="box" id="impuesto">
-                        Impuesto: 
+                        <?= label("paso3_impuesto:"); ?> 
                         <spam id="resultadoImpuesto">13%</spam>
                      </p>
                      <p class="box" id="total">
-                        Total: 
+                        <?= label("paso3_total:"); ?> 
                         <spam id="resultadoTotal">$780</spam>
                      </p>
                   </div>
@@ -118,13 +118,13 @@
                   </a>
                </div>
                <div id="informacion">
-                  <div></div>                  <p class="box" id="formaPago">Forma de pago: <span id="disenoFormaPago"></span></p>
+                  <div></div>                  <p class="box" id="formaPago"><?= label("paso3_formaPago:"); ?><span id="disenoFormaPago"></span></p>
 
-                  <p class="box" id="validez">Válido hasta: <span id="disenoValidez"></span></p>
+                  <p class="box" id="validez"><?= label("paso3_validoHasta:"); ?><span id="disenoValidez"></span></p>
                   <p id="informacionDetalle"></p>
                   <div class="box" id="firma">
                      <!-- <img id="imagenFirma" class="imagen" src="<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/img_firmaEmpresa_1.jpg"/> -->
-                     <p id="textoFirma">Firma:<span>
+                     <p id="textoFirma"><?= label("paso3_firma:"); ?><span>
                      <?php
                      if ($resultado['empresa']['firma'] != '') {
                         ?>
@@ -171,9 +171,9 @@
                   <div id="datosFooter">
                      <div class="datos" id="datos1">
                         <div></div>
-                        <p class="box" id="telefono">Teléfono: <span><?= $resultado['empresa']['telefono'];?></span></p>
-                        <p class="box" id="sitio">Sitio web: <span><?= $resultado['empresa']['sitioWeb'];?></span></p>
-                        <p class="box" id="correo">Correo: <span><?= $resultado['empresa']['correo'];?></span></p>
+                        <p class="box" id="telefono"><?= label("paso3_telefono:"); ?><span><?= $resultado['empresa']['telefono'];?></span></p>
+                        <p class="box" id="sitio"><?= label("paso3_sitioWeb:"); ?><span><?= $resultado['empresa']['sitioWeb'];?></span></p>
+                        <p class="box" id="correo"><?= label("paso3_correo:"); ?><span><?= $resultado['empresa']['correo'];?></span></p>
                      </div>
                      <div class="datos" id="datos2">
                         <div></div>  <!-- sin esta lina no sirve -->
@@ -228,54 +228,54 @@
                      <p>
                         <input name="checksEncabezado_nombreEmpresa" value="nombreEmpresa" type="checkbox" class="filled-in checksEncabezado"
                            id="filled-in-box1">
-                        <label for="filled-in-box1">Nombre de la empresa</label>
+                        <label for="filled-in-box1"><?= label("paso3_nombreEmpresa"); ?></label>
                      </p>
                      <p>
                         <input name="checksEncabezado_codigoCotizacion" value="codigoCotizacion" type="checkbox"
                            class="filled-in checksEncabezado" id="filled-in-box2">
-                        <label for="filled-in-box2">Código de cotización</label>
+                        <label for="filled-in-box2"><?= label("paso3_codCotizacion"); ?></label>
                      </p>
                      <p>
                         <input name="checksEncabezado_cliente" value="cliente" type="checkbox" class="filled-in checksEncabezado"
                            id="filled-in-box3">
-                        <label for="filled-in-box3">Cliente</label>
+                        <label for="filled-in-box3"><?= label("paso3_cliente"); ?></label>
                      </p>
                      <p>
                         <input name="checksEncabezado_atencion" value="atencion" type="checkbox" class="filled-in checksEncabezado"
                            id="filled-in-box4">
-                        <label for="filled-in-box4">Atención</label>
+                        <label for="filled-in-box4"><?= label("paso3_atencion"); ?></label>
                      </p>
                      <p>
                         <input name="checksEncabezado_vendedor" value="vendedor" type="checkbox" class="filled-in checksEncabezado"
                            id="filled-in-box5">
-                        <label for="filled-in-box5">Vendedor</label>
+                        <label for="filled-in-box5"><?= label("paso3_vendedor"); ?></label>
                      </p>
                      <p>
                         <input name="checksEncabezado_fecha" value="fecha" type="checkbox" class="filled-in checksEncabezado"
                            id="filled-in-box6">
-                        <label for="filled-in-box6">Fecha</label>
+                        <label for="filled-in-box6"><?= label("paso3_fecha"); ?></label>
                      </p>
                      <p>
                         <input name="checksEncabezado_hora" value="hora" type="checkbox" class="filled-in checksEncabezado"
                            id="filled-in-box7">
-                        <label for="filled-in-box7">Hora</label>
+                        <label for="filled-in-box7"><?= label("paso3_hora"); ?></label>
                      </p>
                      <p>
                         <input name="checksEncabezado_logo" value="logo" type="checkbox" class="filled-in checksEncabezado"
                            id="filled-in-box8">
-                        <label for="filled-in-box8">Imagen</label>
+                        <label for="filled-in-box8"><?= label("paso3_imagen"); ?></label>
                      </p>
                   </div>
                </div>
                <div class="row col s12 m6 l6">
                   <div class="inputModals input-field col s12">
-                     <p>Color de fondo: <input name="colorEncabezado_colorFondo" class="colorFondo" type="color" id="myColor1"></p>
+                     <p><?= label("paso3_colorFondo:"); ?><input name="colorEncabezado_colorFondo" class="colorFondo" type="color" id="myColor1"></p>
                   </div>
                   <div class="inputModals input-field col s12">
-                     <p>Color de letra: <input name="colorEncabezado_colorLetra" class="colorLetra" type="color" id="myColor2"></p>
+                     <p><?= label("paso3_colorLetra:"); ?><input name="colorEncabezado_colorLetra" class="colorLetra" type="color" id="myColor2"></p>
                   </div>
                   <div class="inputModals input-field col s12">
-                     <p>Color de barra horizontal: <input name="colorEncabezado_colorBarra" class="colorBarra" type="color" id="myColor3"></p>
+                     <p><?= label("paso3_colorBarraHorizontal:"); ?><input name="colorEncabezado_colorBarra" class="colorBarra" type="color" id="myColor3"></p>
                   </div>
                   <!-- <div class="input-field col s12">
                      <textarea id="message" class="materialize-textarea" style="height: 24px;"></textarea>
@@ -303,63 +303,63 @@
             <form id="form_cuerpo">
                <div class="row col s12 m6 l6">
                   <div class="listaCecksModals">
-                     <p>Mostrar las siguientes columnas:</p>
+                     <p><?= label("paso3_mostrarColumnas:"); ?></p>
                      <p>
                         <input value="col_1" name="checksDetalle_ColumnaItem" type="checkbox" class="filled-in checksCuerpo" id="cuerpofilled-in-box1">
-                        <label for="cuerpofilled-in-box1">Item</label>
+                        <label for="cuerpofilled-in-box1"><?= label("paso3_item"); ?></label>
                      </p>
                      <p>
                         <input value="col_2" name="checksDetalle_ColumnaNombre" type="checkbox" class="filled-in checksCuerpo" id="cuerpofilled-in-box2">
-                        <label for="cuerpofilled-in-box2">Nombre</label>
+                        <label for="cuerpofilled-in-box2"><?= label("paso3_nombre"); ?></label>
                      </p>
                      <p>
                         <input value="col_3" name="checksDetalle_ColumnaDescripcion" type="checkbox" class="filled-in checksCuerpo" id="cuerpofilled-in-box3">
-                        <label for="cuerpofilled-in-box3">Descripción</label>
+                        <label for="cuerpofilled-in-box3"><?= label("paso3_descripcion"); ?></label>
                      </p>
                      <p>
                         <input value="col_4" name="checksDetalle_ColumnaPrecio" type="checkbox" class="filled-in checksCuerpo" id="cuerpofilled-in-box5">
-                        <label for="cuerpofilled-in-box5">Precio unitario</label>
+                        <label for="cuerpofilled-in-box5"><?= label("paso3_precioUnitario"); ?></label>
                      </p>
                      <p>
                         <input value="col_5" name="checksDetalle_ColumnaCantidad" type="checkbox" class="filled-in checksCuerpo" id="cuerpofilled-in-box6">
-                        <label for="cuerpofilled-in-box6">Cantidad</label>
+                        <label for="cuerpofilled-in-box6"><?= label("paso3_cantidad"); ?></label>
                      </p>
                      <p>
                         <input value="col_6" name="checksDetalle_ColumnaImpuesto" type="checkbox" class="filled-in checksCuerpo" id="cuerpofilled-in-box7">
-                        <label for="cuerpofilled-in-box7">Impuesto</label>
+                        <label for="cuerpofilled-in-box7"><?= label("paso3_impuesto"); ?></label>
                      </p>
                      <p>
                         <input value="col_7" name="checksDetalle_ColumnaTotal" type="checkbox" class="filled-in checksCuerpo" id="cuerpofilled-in-box8">
-                        <label for="cuerpofilled-in-box8">Total</label>
+                        <label for="cuerpofilled-in-box8"><?= label("paso3_total"); ?></label>
                      </p>
                   </div>
                </div>
                <div class="row col s12 m6 l6">
                   <div class="listaCecksModals">
-                     <p>Mostrar los siguientes totales:</p>
+                     <p><?= label("paso3_mostrarTotales:"); ?></p>
                      <p>
                         <input name="checksDetalle_impuesto" value="impuesto" type="checkbox" class="filled-in checksCuerpo" id="cuerpofilled-in-box9">
-                        <label for="cuerpofilled-in-box9">Impuesto</label>
+                        <label for="cuerpofilled-in-box9"><?= label("paso3_impuesto"); ?></label>
                      </p>
                      <p>
                         <input name="checksDetalle_descuento" value="descuento" type="checkbox" class="filled-in checksCuerpo" id="cuerpofilled-in-box10">
-                        <label for="cuerpofilled-in-box10">Descuento</label>
+                        <label for="cuerpofilled-in-box10"><?= label("paso3_descuento"); ?></label>
                      </p>
                      <p>
                         <input name="checksDetalle_total" value="total" type="checkbox" class="filled-in checksCuerpo" id="cuerpofilled-in-box11">
-                        <label for="cuerpofilled-in-box11">Tolal</label>
+                        <label for="cuerpofilled-in-box11"><?= label("paso3_total"); ?></label>
                      </p>
                   </div>
                </div>
                <div class="row col s12 m6 l6">
                   <div class="inputModals input-field col s12">
-                     <p>Color de fondo: <input name="colorCuerpo_colorFondo" class="colorFondo" type="color" id="myColor1"></p>
+                     <p><?= label("paso3_colorFondo:"); ?><input name="colorCuerpo_colorFondo" class="colorFondo" type="color" id="myColor1"></p>
                   </div>
                   <div class="inputModals input-field col s12">
-                     <p>Color de letra: <input name="colorCuerpo_colorLetra" class="colorLetra" type="color" id="myColor2"></p>
+                     <p><?= label("paso3_colorLetra:"); ?><input name="colorCuerpo_colorLetra" class="colorLetra" type="color" id="myColor2"></p>
                   </div>
                   <div class="inputModals input-field col s12">
-                     <p>Color de barra horizontal: <input name="colorCuerpo_colorBarra"class="colorBarra" type="color" id="myColor3"></p>
+                     <p><?= label("paso3_colorBarraHorizontal:"); ?><input name="colorCuerpo_colorBarra"class="colorBarra" type="color" id="myColor3"></p>
                   </div>
                </div>
             </form>
@@ -386,12 +386,12 @@
                      <p>
                         <input name="checksInformacion_formaPago" value="formaPago" type="checkbox" class="filled-in checksInformacion"
                            id="informacionfilled-in-box1">
-                        <label for="informacionfilled-in-box1">Forma de pago</label>
+                        <label for="informacionfilled-in-box1"><?= label("paso3_formaPago"); ?></label>
                      </p>
                      <p>
                         <input name="checksInformacion_validez" value="validez" type="checkbox" class="filled-in checksInformacion"
                            id="informacionfilled-in-box2">
-                        <label for="informacionfilled-in-box2">Vlidez</label>
+                        <label for="informacionfilled-in-box2"><?= label("paso3_validez"); ?></label>
                      </p>
                      <!-- <p>
                         <input name="checksInformacion_informacionDetalle" value="informacionDetalle" type="checkbox" class="filled-in checksInformacion" id="informacionfilled-in-box3">
@@ -400,7 +400,7 @@
                      <p>
                         <input name="checksInformacion_firma" value="firma" type="checkbox" class="filled-in checksInformacion"
                            id="informacionfilled-in-box4">
-                        <label for="informacionfilled-in-box4">Firma</label>
+                        <label for="informacionfilled-in-box4"><?= label("paso3_firma"); ?></label>
                      </p>
                      <!-- <div class="file-field input-field col s12">
                         <div class="inputModals">Firma electónica:<input type="file">
@@ -411,19 +411,19 @@
                </div>
                <div class="row col s12 m6 l6">
                   <div class="inputModals input-field col s12">
-                     <p>Color de fondo: <input name="colorInformacion_colorFondo" class="colorFondo" type="color" id="myColor1"></p>
+                     <p><?= label("paso3_colorFondo:"); ?><input name="colorInformacion_colorFondo" class="colorFondo" type="color" id="myColor1"></p>
                   </div>
                   <div class="inputModals input-field col s12">
-                     <p>Color de letra: <input name="colorInformacion_colorLetra" class="colorLetra" type="color" id="myColor2"></p>
+                     <p><?= label("paso3_colorLetra:"); ?><input name="colorInformacion_colorLetra" class="colorLetra" type="color" id="myColor2"></p>
                   </div>
                   <div class="inputModals input-field col s12">
-                     <p>Color de barra horizontal: <input name="colorInformacion_colorBarra" class="colorBarra" type="color" id="myColor3"></p>
+                     <p><?= label("paso3_colorBarraHorizontal:"); ?><input name="colorInformacion_colorBarra" class="colorBarra" type="color" id="myColor3"></p>
                   </div>
                   
                </div>
                <div class="input-field col s12">
                      <textarea length="600" maxlength="600" id="textoAdicionalInformacion" name="textoAdicionalInformacion" class="materialize-textarea" style="height: 24px;"></textarea>
-                     <label for="message" class="">Texto adicional</label>
+                     <label for="message" class=""><?= label("paso3_textoAdicional"); ?></label>
                </div>
             </form>
          </div>
@@ -449,35 +449,35 @@
                      <p>
                         <input name="checksFooter_telefono" value="telefono" type="checkbox" class="filled-in checksFooter"
                            id="footerfilled-in-box1">
-                        <label for="footerfilled-in-box1">Teléfono</label>
+                        <label for="footerfilled-in-box1"><?= label("paso3_telefono"); ?></label>
                      </p>
                      <p>
                         <input name="checksFooter_sitio" value="sitio" type="checkbox" class="filled-in checksFooter"
                            id="footerfilled-in-box2">
-                        <label for="footerfilled-in-box2">Sitio web</label>
+                        <label for="footerfilled-in-box2"><?= label("paso3_sitioWeb"); ?></label>
                      </p>
                      <p>
                         <input name="checksFooter_correo" value="correo" type="checkbox" class="filled-in checksFooter"
                            id="footerfilled-in-box3">
-                        <label for="footerfilled-in-box3">Correo</label>
+                        <label for="footerfilled-in-box3"><?= label("paso3_correo"); ?></label>
                      </p>
                      <p>
                         <input name="checksFooter_logo" value="logo" type="checkbox" class="filled-in checksFooter"
                            id="footerfilled-in-box4">
-                        <label for="footerfilled-in-box4">Imagen</label>
+                        <label for="footerfilled-in-box4"><?= label("paso3_imagen"); ?></label>
                      </p>
                   </div>
                </div>
                <div class="row col s12 m6 l6">
                   <div class="inputModals input-field col s12">
-                     <p>Color de fondo: <input name="colorFooter_colorFondo" class="colorFondo" type="color" id="myColor1"></p>
+                     <p><?= label("paso3_colorFondo:"); ?><input name="colorFooter_colorFondo" class="colorFondo" type="color" id="myColor1"></p>
                   </div>
                   <div class="inputModals input-field col s12">
-                     <p>Color de letra: <input name="colorFooter_colorLetra" class="colorLetra" type="color" id="myColor2"></p>
+                     <p><?= label("paso3_colorLetra:"); ?><input name="colorFooter_colorLetra" class="colorLetra" type="color" id="myColor2"></p>
                   </div>
                   <div class="input-field col s12">
                      <textarea length="100" maxlength="100" id="textoAdicionalFooter" name="textoAdicionalFooter" class="materialize-textarea" style="height: 24px;"></textarea>
-                     <label for="message" class="">Texto adicional</label>
+                     <label for="message" class=""><?= label("paso3_textoAdicional"); ?></label>
                   </div>
                </div>
             </form>
@@ -551,7 +551,7 @@
           url:   '<?=base_url()?>ManejadorPDF/generarCotizacion',
           type:  'post',
           beforeSend: function(){
-               $('#botonPaso4').text('Cargando...');
+               $('#botonPaso4').text('<?= label("paso3_cargando"); ?>');
                // $('#vistaPrevia').hide();
                // $('#preCarga').show();
 

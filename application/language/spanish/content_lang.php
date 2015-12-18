@@ -664,7 +664,7 @@
     $lang['paso3_colorBarraHorizontal:'] = 'Color de barra horizontal: ';
 
     $lang['paso3_mostrarColumnas:'] = 'Mostrar las siguientes columnas: ';
-    $lang['paso3_mostrarTotales'] = 'Mostrar los siguientes totales: ';
+    $lang['paso3_mostrarTotales:'] = 'Mostrar los siguientes totales: ';
     $lang['paso3_impuesto'] = 'Impuesto';
     $lang['paso3_descuento'] = 'Descuento';
     $lang['paso3_total'] = 'Total';
