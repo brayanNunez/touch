@@ -173,8 +173,10 @@ $(document).ready(function(){
                 }
             }
             var precioActual =  calcularPrecioActualizado(numeroFila);
-            alert('comparacion: ' +  precioActual + ', '+ precioPropio);
+            // alert('comparacion: ' +  precioActual + ', '+ precioPropio);
             if (precioActual != precioPropio) {
+                // alert('generando link');
+
                 var precio = $('#precio_' + numeroFila).val();
                 var row = $('#precio_' + numeroFila).parent('row');
                 html  = row.html();
@@ -202,28 +204,26 @@ $(document).ready(function(){
 
             $('#actualizar_' + numeroFila).attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none', 'color' : 'black'});
 
-            // var precio = $('#precio_' + numeroFila).val();
-            // var row = $('#precio_' + numeroFila).parent('row');
-
-            // // row.empty()
-
-            // // html  = row.html();
-            // var html = $('#actualizar_' + numeroFila).html();
-            // $('#actualizar_' + numeroFila).remove();
-            // alert(html);
-
-            // row.append('<p>hola</p>');
-            // $('#precio_' + numeroFila).val(precio);
-
         });
-    });
+
+
         
 
 
+    });
 
-    
+    function actualizarTotal(){
+        var sumatoria = 0;
+        $('.subTotal').each(function(){
+            // alert($(this).val());
+            sumatoria += parseFloat($(this).val());
+        });
+        var descuento = parseFloat($('#paso2_descuentoCotizacion').val());
+        var total = sumatoria - (sumatoria * (descuento/100));
+        // alert(sumatoria);
+        $('#paso2_totalCotizacion').val(total);
+    }
 
-    
 
 
 
@@ -245,6 +245,7 @@ $(document).ready(function(){
             }
         };
         calcularPrecio(numeroFila);
+        $('#actualizar_' + numeroFila).attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none', 'color' : 'black'});
      // alert('bien');
     }
 // });
@@ -352,7 +353,7 @@ $(document).ready(function(){
 
         var total ='<td>'+
             '<row>'+
-                '<input class="subTotal" value="" type="text" id="subTotal_'+contadorFilas+'" name="subTotal_'+contadorFilas+'" readonly="true">'+
+                '<input class="subTotal" value="" type="text" id="subTotal_'+contadorFilas+'" name="subTotal_'+contadorFilas+'">'+
             '</row>'+
         '</td>';
 
@@ -498,16 +499,18 @@ $(document).ready(function(){
                     </div>
                 </div>
                 <div id="resultadoDetalles" class="col s12 m6 l5">
-                    <div class="col s12" style="float: right;">
-                        <div class="input-field col s12">
-                            <input id="last_name" type="number">
-                            <label for="last_name" class="">Descuento</label>
+                    <form id="form_resultados">
+                        <div class="col s12" style="float: right;">
+                            <div class="input-field col s12">
+                                <input id="paso2_descuentoCotizacion" name="paso2_descuentoCotizacion" type="number" value="<?=$resultado['cotizacion']['descuento']?>">
+                                <label for="paso2_descuentoCotizacion" class="">Descuento</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input value="<?=$resultado['cotizacion']['monto']?>" id="paso2_totalCotizacion" name="paso2_totalCotizacion" type="text" readonly="true">
+                                <label for="paso2_totalCotizacion">Total</label>
+                            </div>
                         </div>
-                        <div class="input-field col s12">
-                            <input value="$140" id="last_name" type="text" disabled>
-                            <label for="last_name">Total</label>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -1758,7 +1761,7 @@ $(document).on('ready', function(){
     }
 
     function calcularPrecio(numeroFila) {
-        alert('calcularPrecio');
+        // alert('calcularPrecio');
         gastosFijosAnuales();
         horasLaborales();
         var totalGastosV = parseFloat($('#gastosVariablesLinea_' + numeroFila).val());
@@ -1818,24 +1821,50 @@ $(document).on('ready', function(){
         $('#subTotal_' + numeroFila).val(subTotalServicio);
     }
 
+$(document).on('ready', function () {
+
+    $(document).on('change', '.subTotal', function () {
+        actualizarTotal();
+    });
+
+    $(document).on('change', '#paso2_descuentoCotizacion', function () {
+        actualizarTotal();
+    });
+
     $(document).on('change', '.campo_cantidad', function () {
         // alert('cambio en cantidad');
         var lineaPadre = $(this).parents('tr');
         var numeroLineaPadre = lineaPadre.find('td input.campo_numeroFila').first().val();
         calcularPrecioPropio(numeroLineaPadre);
+        actualizarTotal();
     });
+
+    $(document).on('change', '.precio', function () {
+        // alert('cambio en impuestos');
+        var lineaPadre = $(this).parents('tr');
+        var numeroLineaPadre = lineaPadre.find('td input.campo_numeroFila').first().val();
+        calcularPrecioPropio(numeroLineaPadre);
+        actualizarTotal();
+    });
+
+    
+
     $(document).on('change', '.campo_impuestos', function () {
         // alert('cambio en impuestos');
         var lineaPadre = $(this).parents('tr');
         var numeroLineaPadre = lineaPadre.find('td input.campo_numeroFila').first().val();
         calcularPrecioPropio(numeroLineaPadre);
+        actualizarTotal();
     });
     $(document).on('change', '.utilidad', function () {
         // alert('cambio en utilidad');
         var lineaPadre = $(this).parents('tr');
         var numeroLineaPadre = lineaPadre.find('td input.campo_numeroFila').first().val();
         calcularPrecioPropio(numeroLineaPadre);
+        actualizarTotal();
     });
+
+});
 </script>
 <!--Script para calcular precio servicio que se agrega-->
 <script type="text/javascript">
@@ -1864,7 +1893,7 @@ $(document).on('ready', function(){
     }
 
     function calcularPrecioNuevo() {
-        alert('calcularPrecio nuevo');
+        // alert('calcularPrecio nuevo');
         gastosFijosAnuales();
         horasLaborales();
         var totalGastos = totalGastosFijosAnuales + totalGastosVariables;

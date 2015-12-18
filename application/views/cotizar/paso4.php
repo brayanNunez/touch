@@ -258,7 +258,7 @@
             $.ajax({
                    type: method,
                    url: url,
-                   data: $('#formAprobadores, #formLineasDetalle, #formGeneral, #form_encabezado, #form_paso3AgregarPlantilla, #form_cuerpo, #form_informacion, #form_footer').serialize() + '&columna='+ columnaSeleccionada +'&ascendente='+ ascendente, 
+                   data: $('#form_resultados, #formAprobadores, #formLineasDetalle, #formGeneral, #form_encabezado, #form_paso3AgregarPlantilla, #form_cuerpo, #form_informacion, #form_footer').serialize() + '&columna='+ columnaSeleccionada +'&ascendente='+ ascendente, 
                    // data.push({name: 'columna', value: columnaSeleccionada}, {name: 'ascendente', value: ascendente});
                    success: function(response)
                    {
