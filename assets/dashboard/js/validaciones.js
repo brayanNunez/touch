@@ -11,7 +11,7 @@
 
              var reglasImpuesto =  {
                     impuesto_nombre: {required: true, maxlength: 45},
-                    impuesto_descripcion: {required: true, maxlength: 45},
+                    impuesto_descripcion: {required: false, maxlength: 45},
                     impuesto_valor: {required: true, max: 99.99, min: 0}
 
                 };
@@ -229,7 +229,7 @@
                 {
                     servicio_codigo: {required: true, maxlength: 45},
                     servicio_nombre: {required: true, maxlength: 45},
-                    servicio_descripcion: {required: true, maxlength: 200},
+                    servicio_descripcion: {required: false, maxlength: 200},
                     servicio_utilidad: {required: true, maxlength: 45}
                 },
                 errorElement: 'div',
@@ -536,7 +536,7 @@
                 personajuridico_telefono: { required: true, maxlength: 45},
                 personajuridico_fax: { required: true, maxlength: 45},
                 persona_palabras: { required: true, maxlength: 45},
-                persona_descripcion: { required: true, maxlength: 200},
+                persona_descripcion: { required: false, maxlength: 200},
                 // persona_direccionPais: { required: true, maxlength: 45},
                 // persona_direccionProvincia: { required: true, maxlength: 45},
                 // persona_direccionCanton: { required: true, maxlength: 45},
@@ -574,7 +574,7 @@
         var reglasServicio = {
             servicio_codigo: { required: true },
             servicio_nombre: { required: true, maxlength: 45},
-            servicio_descripcion: { required: true, maxlength: 200},
+            servicio_descripcion: { required: false, maxlength: 200},
             servicio_utilidad: { required: true, max: 99.9, min: 0 }
         };
 
@@ -623,7 +623,7 @@
 
         var reglasFormaPago =  {
             formaPago_nombre: {required: true, maxlength: 100},
-            formaPago_descripcion: {required: true, maxlength: 200}
+            formaPago_descripcion: {required: false, maxlength: 200}
         };
         $('#form_formaPago').validate({
             rules: reglasFormaPago,
@@ -696,7 +696,7 @@
 
         var reglasCategoriaGasto =  {
             categoriaGasto_nombre: {required: true, maxlength: 45},
-            categoriaGasto_descripcion: {required: true, maxlength: 200}
+            categoriaGasto_descripcion: {required: false, maxlength: 200}
         };
         $('#form_categoriaGasto').validate({
             rules: reglasCategoriaGasto,
@@ -715,7 +715,7 @@
 
         var reglasCategoriaPersona =  {
             categoriaPersona_nombre: {required: true, maxlength: 45},
-            categoriaPersona_descripcion: {required: true, maxlength: 200}
+            categoriaPersona_descripcion: {required: false, maxlength: 200}
         };
         $('#form_categoriaPersona').validate({
             rules: reglasCategoriaPersona,
