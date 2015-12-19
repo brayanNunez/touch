@@ -96,7 +96,7 @@
                                                           <?= $fila['vendedor'] ?>
                                                           <a>
                                                         </td>
-                                                        <td><span class="moneda_signo"></span>HOLA</td>
+                                                        <td><span><?=$fila['signo']?> </span><?=$fila['monto']?></td>
                                                         <td>
                                                         <?php
                                                           $estado =  '';
@@ -115,6 +115,9 @@
                                                               break;
                                                             case 'finalizada':
                                                               $estado =  label('estado_finalizada');
+                                                              break;
+                                                            case 'facturada':
+                                                              $estado =  label('estado_facturada');
                                                               break;
                                                           }
                                                           echo $estado;
@@ -514,7 +517,7 @@
 
                     for (var i = 0; i < arrayBusqueda.length; i++) {
                       var fila = arrayBusqueda[i];
-                      agregarFila(fila['idCotizacion'], fila['codigo'], fila['numero'], fila['fechaCreacion'], fila['cliente'], fila['vendedor'], 'monto', fila['estado'], fila['idCliente'], fila['idUsuario'], i);
+                      agregarFila(fila['idCotizacion'], fila['codigo'], fila['numero'], fila['fechaCreacion'], fila['cliente'], fila['vendedor'], fila['monto'],fila['signo'], fila['estado'], fila['idCliente'], fila['idUsuario'], i);
                     };
                     
                   };
@@ -525,7 +528,7 @@
       })
 });
 
-   function agregarFila(idEncriptado, codigo, numero, fechaCreacion, cliente, vendedor, monto, estado, idCliente, idUsuario, contadorFilas){
+   function agregarFila(idEncriptado, codigo, numero, fechaCreacion, cliente, vendedor, monto, signo, estado, idCliente, idUsuario, contadorFilas){
 
 
             var urlBase = '<?= base_url(); ?>';
@@ -579,7 +582,7 @@
             } 
             var cliente = '<td><a href="'+urlBase+'clientes/editar/'+idCliente+'#tab-informacion">'+cliente+'<a></td>';
             var vendedor = '<td><a href="'+urlBase+'usuarios/editar/'+idUsuario+'#tab-informacion">'+vendedor+'<a></td>';
-            var monto = '<td>Hola</td>';
+            var monto = '<td><span>'+signo+' </span>' + monto +'</td>';
 
             var miEstado = '';
             switch(estado){
@@ -765,6 +768,9 @@
                                       break;
                                     case 'finalizada':
                                       $miEstado =  label('estado_finalizada');
+                                      break;
+                                    case 'facturada':
+                                      $miEstado =  label('estado_facturada');
                                       break;
                                   }
                                   echo '<option '.$valor.'>'.$miEstado.'</option>");';

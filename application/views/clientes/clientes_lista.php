@@ -886,6 +886,9 @@
                                                         case 'finalizada':
                                                             $miEstado =  label('estado_finalizada');
                                                             break;
+                                                        case 'facturada':
+                                                            $miEstado =  label('estado_facturada');
+                                                            break;
                                                     }
                                                     echo '<option '.$valor.'>'.$miEstado.'</option>");';
                                                 }
