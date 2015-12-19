@@ -511,6 +511,8 @@ $(document).ready(function(){
                                 <input id="paso2_descuentoCotizacion" name="paso2_descuentoCotizacion" type="number" value="<?php
                                 if (isset($resultado['cotizacion'])) {
                                     echo $resultado['cotizacion']['descuento'];
+                                } else {
+                                    echo 0;
                                 }
                                 ?>">
                                 <label for="paso2_descuentoCotizacion" class=""><?= label('paso2_descuento'); ?></label>
