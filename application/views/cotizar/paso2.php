@@ -539,6 +539,8 @@ $(document).ready(function(){
                                 <input id="paso2_totalCotizacion" name="paso2_totalCotizacion" type="text" readonly="true" value="<?php
                                 if (isset($resultado['cotizacion'])) {
                                     echo $resultado['cotizacion']['monto'];
+                                }  else {
+                                    echo 0;
                                 }
                                 ?>">
                                 <label for="paso2_totalCotizacion"><?= label('paso2_total'); ?></label>
@@ -1823,6 +1825,9 @@ $(document).on('ready', function(){
         precioServicio = precioServicio.toFixed(2);
 
         var moneda = $('#paso1_tipoCambio').val();
+        if (moneda == '') {
+            moneda = 1;
+        };
         precioServicio = precioServicio / parseFloat(moneda);
         precioServicio = precioServicio.toFixed(2);
         $('#precio_' + numeroFila).val(precioServicio);
@@ -1851,6 +1856,9 @@ $(document).on('ready', function(){
         precioServicio = precioServicio.toFixed(2);
 
         var moneda = $('#paso1_tipoCambio').val();
+        if (moneda == '') {
+            moneda = 1;
+        };
         precioServicio = precioServicio / parseFloat(moneda);
         precioServicio = precioServicio.toFixed(2);
         $('#precio_' + numeroFila).val(precioServicio);
