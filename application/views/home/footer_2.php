@@ -152,7 +152,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12 m12 l12  login-text">
-                    <input class="filled-in" type="checkbox" id="remember-me"/>
+                    <input class="filled-in" type="checkbox" id="remember-me" name="remember-me"/>
                     <label for="remember-me"><?= label('recordar') ?></label>
                 </div>
             </div>
@@ -241,18 +241,18 @@
                             break;
                         case '3'://correcto
                             $('#mensajeValidacion').text('correcto');
+//                            alert('login en prueba');
+                            <?php
+                            if (isset($urlInicial)) {?>
+                                window.location.href = "<?= $urlInicial?>";
+                            <?php
+                            } else{?>
+                                window.location.href = "<?= base_url() ?>inicio";
+                            <?php
+                            }
+                            ?>
                             break;
                     }
-                    alert('login en prueba');
-                    <?php
-                          if (isset($urlInicial)) {?>
-                                    window.location.href = "<?= $urlInicial?>";
-                          <?php
-                          } else{?>
-                                 window.location.href = "<?= base_url() ?>inicio";
-                          <?php
-                             }
-                        ?>
                }
              });
          // alert('2');
