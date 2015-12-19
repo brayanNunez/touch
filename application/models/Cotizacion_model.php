@@ -532,7 +532,12 @@ class Cotizacion_model extends CI_Model
             }
 
             // echo $datos['idUsuario']; exit();
-            $query = $this->db->get_where('cotizacion', array('idCotizacion'=> $datos['idCotizacion']));
+            // left join moneda as mo on co.idMoneda = mo.idMoneda
+            $this->db->select('co.*, mo.signo');
+            $this->db->from('cotizacion as co');
+            $this->db->join('moneda as mo', 'co.idMoneda = mo.idMoneda', 'left');
+            $query = $this->db->where(array('idCotizacion'=> $datos['idCotizacion']));
+            $query = $this->db->get();
             if (!$query) throw new Exception("Error en la BD");  
             $array = $query->result_array(); 
             $data['cotizacion'] = array_shift($array);

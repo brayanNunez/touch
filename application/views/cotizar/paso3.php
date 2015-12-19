@@ -82,7 +82,7 @@
                         <th class="celdaColumna col_3"><?= label("paso3_descripcion"); ?></th>
                         <th class="celdaColumna col_4"><?= label("paso3_precioUnitario"); ?></th>
                         <th class="celdaColumna col_5"><?= label("paso3_cantidad"); ?></th>
-                        <th class="celdaColumna col_6"><?= label("paso3_impuesto"); ?></th>
+                        <!-- <th class="celdaColumna col_6"><?= label("paso3_impuesto"); ?></th> -->
                         <th class="celdaColumna col_7"><?= label("paso3_total"); ?></th>
                      </tr>
                   </thead>
@@ -611,15 +611,16 @@
                            '<td class="celdaColumna col_1" >'+ fila.find('.itemServicio option:selected').text() +'</td>'+
                            '<td class="celdaColumna col_2">'+ fila.find('.nombreServicio option:selected').text() +'</td>'+
                            '<td class="celdaColumna col_3">'+ fila.find('.descripcion').val() +'</td>'+
-                           '<td class="celdaColumna col_4">'+ fila.find('.precio').val() +'</td>'+  
+                           '<td class="celdaColumna col_4"><spam class="monedaCotizacion"></spam>'+ fila.find('.precio').val() +'</td>'+  
                            '<td class="celdaColumna col_5">'+ fila.find('.campo_cantidad').val() +'</td>'+
-                           '<td class="celdaColumna col_6">13%</td>'+
-                           '<td class="celdaColumna col_7">'+ fila.find('.subTotal').val() +'</td>'+
+                           // '<td class="celdaColumna col_6">13%</td>'+
+                           '<td class="celdaColumna col_7"><spam class="monedaCotizacion"></spam>'+ fila.find('.subTotal').val() +'</td>'+
                        '</tr>';
                    $('#lineasDiseno').append(lineaDetalle);
    
                }
            });
+         $('.monedaCotizacion').text(signoMoneda + ' ');
             
             
             //Las nuevas filas que se insertaron no están actualizadas en cuanto a si sus columnas son visibles o no. El siguiente código los actualiza según los th de la tabla  
@@ -648,7 +649,7 @@
            var color = $('#hoja').css("color");
            var style = 'style="background: ' + backgroundcolor + '; font-family: ' + fuente + '; color: ' + color + '"';
    
-           var html = '<!DOCTYPE html><html><head><title>403 Forbidden</title><link rel="stylesheet" href="<?= base_url() ?>assets/dashboard/css/estiloDisenoHoja.css"></head><body id="hojaPDF" ' + style + '>';
+           var html = '<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>403 Forbidden</title><link rel="stylesheet" href="<?= base_url() ?>assets/dashboard/css/estiloDisenoHoja.css"></head><body id="hojaPDF" ' + style + '>';
            html += '<div id="headerDiseno">' + $('#headerDiseno').html() + '</div>';
            html += '<div id="informacionSistema">' + $('#informacionSistema').html() + '</div>';
            html += '<div id="cuerpoDocumento">' + $('#cuerpoDocumento').html() + '</div></body></html>';

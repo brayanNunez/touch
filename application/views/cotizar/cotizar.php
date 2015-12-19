@@ -153,6 +153,7 @@
                     break;
                    case 'paso1Moneda':
                         valorMonedaElegida(valor);
+                        
                    break;
 //                    case 'paso1Moneda':
 //                        cargarTipoCambio(valor);

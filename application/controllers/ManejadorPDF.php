@@ -159,7 +159,7 @@ class ManejadorPDF extends CI_Controller
             //hacemos que coja la vista como datos a imprimir
             //importante utf8_decode para mostrar bien las tildes, ñ y demás
             // $this->html2pdf->html(utf8_decode($this->load->view('index', $data, true)));
-            $this->html2pdf->html(utf8_decode($htmlEntrada));
+            $this->html2pdf->html(($htmlEntrada));
             //si el pdf se guarda correctamente lo mostramos en pantalla
 
             $path = $this->html2pdf->create('save');

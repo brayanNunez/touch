@@ -686,13 +686,14 @@
 
     }
 
-    // $(document).on('ready', function(){
-    //     $(document).on('change', '#paso1Moneda', function () {
-    //         var monedaElegida = $(this).val();
-    //         valorMonedaElegida(monedaElegida);
-    //     });
-    // })
-    
+    <?php
+    $signo = '';
+    if (isset($resultado['cotizacion'])) {
+        $signo = $resultado['cotizacion']['signo'];
+    };
+        
+    ?>
+    var signoMoneda = '<?=$signo?>'; //esta variable se usa en el paso 3 en el metodo actualizarDiseno()
     function valorMonedaElegida($idMoneda) {
         $.ajax({
             type: 'POST',
@@ -704,7 +705,7 @@
                 $('#paso1_tipoCambio').val(tipoMoneda['tipoCambio']);
                 $('label[for="paso1_tipoCambio"]').addClass('active');
                 modificarMontos();
-            }
+                signoMoneda = tipoMoneda['signo'];            }
         });
     }
 
