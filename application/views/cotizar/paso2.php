@@ -105,6 +105,7 @@ $(document).ready(function(){
            });
 
            }
+           actualizarTotal();
         });
 
    });
@@ -203,6 +204,7 @@ $(document).ready(function(){
             calcularPrecioPropio(numeroFila);
 
             $('#actualizar_' + numeroFila).attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none', 'color' : 'black'});
+            actualizarTotal();
 
         });
 
@@ -215,8 +217,12 @@ $(document).ready(function(){
     function actualizarTotal(){
         var sumatoria = 0;
         $('.subTotal').each(function(){
-            // alert($(this).val());
-            sumatoria += parseFloat($(this).val());
+            var fila = $(this).attr('data-numeroFila');
+            var accionAplicada = $('#linea_' + fila).val();
+            if ($(this).val() != '' && accionAplicada != 2) {
+                sumatoria += parseFloat($(this).val());
+            };
+            
         });
         var descuento = parseFloat($('#paso2_descuentoCotizacion').val());
         var total = sumatoria - (sumatoria * (descuento/100));
@@ -246,7 +252,7 @@ $(document).ready(function(){
         };
         calcularPrecio(numeroFila);
         $('#actualizar_' + numeroFila).attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none', 'color' : 'black'});
-     // alert('bien');
+        actualizarTotal();
     }
 // });
 
@@ -353,7 +359,7 @@ $(document).ready(function(){
 
         var total ='<td>'+
             '<row>'+
-                '<input class="subTotal" value="" type="text" id="subTotal_'+contadorFilas+'" name="subTotal_'+contadorFilas+'">'+
+                '<input data-numeroFila="'+contadorFilas+'" class="subTotal" value="" type="text" id="subTotal_'+contadorFilas+'" name="subTotal_'+contadorFilas+'">'+
             '</row>'+
         '</td>';
 
@@ -502,12 +508,20 @@ $(document).ready(function(){
                     <form id="form_resultados">
                         <div class="col s12" style="float: right;">
                             <div class="input-field col s12">
-                                <input id="paso2_descuentoCotizacion" name="paso2_descuentoCotizacion" type="number" value="<?=$resultado['cotizacion']['descuento']?>">
+                                <input id="paso2_descuentoCotizacion" name="paso2_descuentoCotizacion" type="number" value="<?php
+                                if (isset($resultado['cotizacion'])) {
+                                    echo $resultado['cotizacion']['descuento'];
+                                }
+                                ?>">
                                 <label for="paso2_descuentoCotizacion" class=""><?= label('paso2_descuento'); ?></label>
                                 <span class="icono-porcentaje-descuento">%</span>
                             </div>
                             <div class="input-field col s12">
-                                <input value="<?=$resultado['cotizacion']['monto']?>" id="paso2_totalCotizacion" name="paso2_totalCotizacion" type="text" readonly="true">
+                                <input id="paso2_totalCotizacion" name="paso2_totalCotizacion" type="text" readonly="true" value="<?php
+                                if (isset($resultado['cotizacion'])) {
+                                    echo $resultado['cotizacion']['monto'];
+                                }
+                                ?>">
                                 <label for="paso2_totalCotizacion"><?= label('paso2_total'); ?></label>
                             </div>
                         </div>
