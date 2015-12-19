@@ -184,64 +184,10 @@
         };
     }
 
+    $('#paso1_tipoCambio').on('change', function(){
+        modificarMontos();
+    });
 
-    // function cargarAtencion(idCliente){
-    //     $('#paso1Atencion').empty(); //remove all child nodes
-    //     $('#paso1Atencion').removeAttr('disabled');
-    //     $('#paso1Atencion').append($('<option value="0" disabled selected style="display:none;"><?= label("paso1_elegirAtencion"); ?></option>'));
-    //     $('#paso1Atencion').append($('<option value="nuevo"><?= label("agregarNuevo"); ?></option>'));
-    //     // $('#paso1Atencion').append($('<option value="todas"><?= label("formServicio_fases_agregarTodas"); ?></option>'));
-    //     for (var i = 0; i < arrayClientes.length; i++) {
-    //         if (arrayClientes[i]['idCliente'] == idCliente) {
-    //             for (var j = 0; j < arrayClientes[i]['contactos'].length; j++) {
-    //                 var contacto = arrayClientes[i]['contactos'][j];
-    //                 var newOption = $('<option value="'+contacto['idCliente']+'">'+contacto['nombre'] + ' ' + contacto['primerApellido'] + ' ' + contacto['segundoApellido']+'</option>');
-    //                 $('#paso1Atencion').append(newOption);
-    //             }
-    //         } 
-    //     };
-
-    //     $('#paso1Atencion').trigger("chosen:updated");
-
-    // }
-
-    // $(document).ready(function () {
-    //     // actualizarSelects();
-    // });
-    // var idEditar = 0;
-    // function actualizarSelects() {
-    //     var idOpcionCliente = arrayCotizacion['idCliente'];
-    //     var idOpcionFormaPago = arrayCotizacion['idFormaPago'];
-    //     var idOpcionMoneda = arrayCotizacion['idMoneda'];
-    //     $.ajax({
-    //         type: 'POST',
-    //         url: '<?= base_url(); ?>cotizacion/tiposMoneda',
-    //         data: {  },
-    //         success: function(response)
-    //         {
-    //             generarAutocompletarMoneda($.parseJSON(response), idOpcionMoneda);
-    //         }
-    //     });
-    //     $.ajax({
-    //         type: 'POST',
-    //         url: '<?= base_url(); ?>cotizacion/formasPago',
-    //         data: {  },
-    //         success: function(response)
-    //         {
-    //             generarAutocompletarFormaPago($.parseJSON(response), idOpcionFormaPago);
-    //         }
-    //     });
-    //     $.ajax({
-    //         type: 'POST',
-    //         url: '<?= base_url(); ?>cotizacion/clientes',
-    //         data: {  },
-    //         success: function(response)
-    //         {
-    //             generarAutocompletarClientes($.parseJSON(response), idOpcionCliente);
-    //             generarListas();
-    //         }
-    //     });
-    // }
 
     function actualizarSelectMonedas($id) {
         $.ajax({
@@ -740,10 +686,13 @@
 
     }
 
-    $(document).on('change', '#paso1Moneda', function () {
-        var monedaElegida = $(this).val();
-        valorMonedaElegida(monedaElegida);
-    });
+    // $(document).on('ready', function(){
+    //     $(document).on('change', '#paso1Moneda', function () {
+    //         var monedaElegida = $(this).val();
+    //         valorMonedaElegida(monedaElegida);
+    //     });
+    // })
+    
     function valorMonedaElegida($idMoneda) {
         $.ajax({
             type: 'POST',
@@ -754,6 +703,7 @@
                 var tipoMoneda = $.parseJSON(response);
                 $('#paso1_tipoCambio').val(tipoMoneda['tipoCambio']);
                 $('label[for="paso1_tipoCambio"]').addClass('active');
+                modificarMontos();
             }
         });
     }

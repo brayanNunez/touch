@@ -209,26 +209,43 @@ $(document).ready(function(){
         });
 
 
-        
-
-
     });
+
+    function modificarMontos(){
+        // alert('modificar moneda');
+        $('.subTotal').each(function(){
+
+            var fila = $(this).attr('data-numeroFila');
+            var monto = $(this).val();
+            var accionAplicada = $('#linea_' + fila).val();
+            if ($('#productoNombre_' + fila).val() != null && accionAplicada != 2) {
+                // alert('entre');
+                calcularPrecioPropio(fila);
+            };
+            
+        });
+
+        // calcularPrecioPropio();//aqui
+        actualizarTotal();
+    }
+
 
     function actualizarTotal(){
         var sumatoria = 0;
         $('.subTotal').each(function(){
             var fila = $(this).attr('data-numeroFila');
             var accionAplicada = $('#linea_' + fila).val();
-            if ($(this).val() != '' && accionAplicada != 2) {
+            if ($('#productoNombre_' + fila).val() != null && accionAplicada != 2) {
                 sumatoria += parseFloat($(this).val());
             };
             
         });
         var descuento = parseFloat($('#paso2_descuentoCotizacion').val());
         var total = sumatoria - (sumatoria * (descuento/100));
-        // alert(sumatoria);
+        total = total.toFixed(2);
         $('#paso2_totalCotizacion').val(total);
     }
+
 
 
 
@@ -1805,6 +1822,9 @@ $(document).on('ready', function(){
 
         precioServicio = precioServicio.toFixed(2);
 
+        var moneda = $('#paso1_tipoCambio').val();
+        precioServicio = precioServicio / parseFloat(moneda);
+        precioServicio = precioServicio.toFixed(2);
         $('#precio_' + numeroFila).val(precioServicio);
         var cantidadServicio = parseFloat($('#cantidad_' + numeroFila).val());
         var subTotalServicio = precioServicio * cantidadServicio;
@@ -1830,6 +1850,9 @@ $(document).on('ready', function(){
 
         precioServicio = precioServicio.toFixed(2);
 
+        var moneda = $('#paso1_tipoCambio').val();
+        precioServicio = precioServicio / parseFloat(moneda);
+        precioServicio = precioServicio.toFixed(2);
         $('#precio_' + numeroFila).val(precioServicio);
         var cantidadServicio = parseFloat($('#cantidad_' + numeroFila).val());
         var subTotalServicio = precioServicio * cantidadServicio;

@@ -109,8 +109,10 @@
         // generarAutocompletarFormaPago("paso1_formaPago");
         generarListas();
         $(document).on('change','.chosen-select',function(){
+
             var valor = $(this).val();
             var tipo = $(this).attr("data-tipo");
+            // alert(tipo);
             if (valor=="nuevo") {
                 var idBoton = $(this).attr("id");
                 var nuevoElementoAgregar = "";
@@ -149,9 +151,9 @@
                             cargarDatosFila(valor, numeroFila);
                         }
                     break;
-//                    case 'paso1Cliente':
-//                        cargarAtencion(valor);
-//                    break;
+                   case 'paso1Moneda':
+                        valorMonedaElegida(valor);
+                   break;
 //                    case 'paso1Moneda':
 //                        cargarTipoCambio(valor);
 //                    break;
