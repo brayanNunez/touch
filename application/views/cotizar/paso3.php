@@ -94,15 +94,15 @@
                   <div id="resultados">
                      <p class="box" id="descuento">
                         <?= label("paso3_descuento:"); ?> 
-                        <spam id="resultadoDescuento">15%</spam>
+                        <spam id="disenoDescuento"></spam><spam>%</spam>
                      </p>
                      <p class="box" id="impuesto">
                         <?= label("paso3_impuesto:"); ?> 
-                        <spam id="resultadoImpuesto">13%</spam>
+                        <spam id="disenoImpuesto">13</spam><spam>%</spam>
                      </p>
                      <p class="box" id="total">
                         <?= label("paso3_total:"); ?> 
-                        <spam id="resultadoTotal">$780</spam>
+                        <spam class='monedaCotizacion'></spam><spam id="disenoTotal"></spam>
                      </p>
                   </div>
                </div>
@@ -591,6 +591,12 @@
 
                var formaPago = $('#paso1FormaPago option:selected').text();
                $('#disenoFormaPago').text(formaPago);
+
+               var totalCotizacion = $('#paso2_totalCotizacion').val();
+               $('#disenoTotal').text(totalCotizacion);
+
+               var totalCotizacion = $('#paso2_descuentoCotizacion').val();
+               $('#disenoDescuento').text(totalCotizacion);
            // } 
    
            if (codigo != '') {
