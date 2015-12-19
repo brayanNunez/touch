@@ -14,7 +14,7 @@
                            href="<?= base_url() ?>welcome/quienes"><?= label('quienesLoUsan'); ?></a></li>
                     <li><a class="footer-link"
                            href="<?= base_url() ?>welcome/beneficios"><?= label('beneficios'); ?></a></li>
-                    <li><a class="footer-link" href="<?= base_url() ?>welcome/precios"><?= label('precios'); ?></a></li>
+                    <!--<li><a class="footer-link" href="<?= base_url() ?>welcome/precios"><?= label('precios'); ?></a></li>-->
                     <li><a class="footer-link" href="<?= base_url() ?>welcome/faq"><?= label('faq'); ?></a></li>
                     <li><a class="footer-link" href="<?= base_url() ?>welcome/prensa"><?= label('prensa'); ?></a></li>
                     <li><a class="footer-link"

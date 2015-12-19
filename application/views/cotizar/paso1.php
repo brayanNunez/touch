@@ -1331,7 +1331,7 @@
 
                 <!-- Otros datos -->
                 <div class="col s12">
-                    <a id="btn_cliente_otrosDatos" class="btn_mostrarElementosOcultos">Otros datos</a>
+                    <a id="btn_cliente_otrosDatos" class="btn_mostrarElementosOcultos"><?= label('paso1_clientesOtrosDatos'); ?></a>
                 </div>
                 <div id="datosNoObligatorios" style="display: none;">
                     <div id="campos-cliente-fisico" style="display: block;">
@@ -1406,7 +1406,7 @@
 
                 <!-- Datos de contactos -->
                 <div class="col s12">
-                    <a id="btn_cliente_contactos" class="btn_mostrarElementosOcultos">Contactos</a>
+                    <a id="btn_cliente_contactos" class="btn_mostrarElementosOcultos"><?= label('paso1_formContactos'); ?></a>
                 </div>
                 <div id="datosContactos" style="display: none;">
                     <div id="contenedorContactos"></div>
@@ -1419,7 +1419,7 @@
 
                 <!-- Datos de informacion adicional-->
                 <div class="col s12">
-                    <a id="btn_cliente_informacionAdicional" class="btn_mostrarElementosOcultos">Info adicional</a>
+                    <a id="btn_cliente_informacionAdicional" class="btn_mostrarElementosOcultos"><?= label('paso1_formAdicional'); ?></a>
                 </div>
                 <div id="datosInformacionAdicional" style="display: none;">
                     <div class="inputTag col s12">
@@ -1464,7 +1464,7 @@
 
                 <!-- Datos de facturacion-->
                 <div class="col s12">
-                    <a id="btn_cliente_informacionFacturacion" class="btn_mostrarElementosOcultos">Info facturacion</a>
+                    <a id="btn_cliente_informacionFacturacion" class="btn_mostrarElementosOcultos"><?= label('paso1_formFacturacion'); ?></a>
                 </div>
                 <div id="datosInformacionFacturacion" style="display: none;">
                     <div class="input-field col s12 inputSelector" >

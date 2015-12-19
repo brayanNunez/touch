@@ -846,6 +846,7 @@ function validacionCorrectaEditar(){
                 <div class="input-field col s12">
                     <input id="impuesto_valor" name="impuesto_valor" type="number">
                     <label for="impuesto_valor"><?= label('formImpuesto_valor'); ?></label>
+                    <span class="icono-porcentaje-descuento">%</span>
                 </div>
                 
             </div>
@@ -886,6 +887,7 @@ function validacionCorrectaEditar(){
                 <div class="input-field col s12">
                     <input id="impuesto_valor" name="impuesto_valor" type="number">
                     <label for="impuesto_valor"><?= label('formImpuesto_valor'); ?></label>
+                    <span class="icono-porcentaje-descuento">%</span>
                 </div>
                 
             </div>

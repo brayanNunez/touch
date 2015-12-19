@@ -88,7 +88,7 @@
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        Seleccionar aprobadores
+        <?= label('paso4_seleccionarAprobadores'); ?>
         <div class="row">
             <div class="col s12 m12 l12">
                 <form id="formAprobadores">
@@ -258,7 +258,7 @@
             $.ajax({
                    type: method,
                    url: url,
-                   data: $('#formAprobadores, #formLineasDetalle, #formGeneral, #form_encabezado, #form_paso3AgregarPlantilla, #form_cuerpo, #form_informacion, #form_footer').serialize() + '&columna='+ columnaSeleccionada +'&ascendente='+ ascendente, 
+                   data: $('#form_resultados, #formAprobadores, #formLineasDetalle, #formGeneral, #form_encabezado, #form_paso3AgregarPlantilla, #form_cuerpo, #form_informacion, #form_footer').serialize() + '&columna='+ columnaSeleccionada +'&ascendente='+ ascendente, 
                    // data.push({name: 'columna', value: columnaSeleccionada}, {name: 'ascendente', value: ascendente});
                    success: function(response)
                    {

@@ -180,6 +180,8 @@ class Cotizacion extends CI_Controller
             'idFormaPago' => $this->input->post('paso1FormaPago'),
             'idMoneda' => $this->input->post('paso1Moneda'),  
             'tipoCambio' => $this->input->post('paso1_tipoCambio'),
+            'descuento' => $this->input->post('paso2_descuentoCotizacion'),
+            'monto' => $this->input->post('paso2_totalCotizacion'),
             'eliminado' => 0,
             'idEstadoCotizacion' => $estado,
             'ascendente' => $this->input->post('ascendente'),
