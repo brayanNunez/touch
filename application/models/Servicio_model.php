@@ -454,7 +454,7 @@ class Servicio_model extends CI_Model
             $this->db->select('nombre');
             $this->db->where('idTiempo', $row['formaPago']);
             $query2 = $this->db->get('tiempo');
-            $this->db->select('nombre');
+            $this->db->select('nombre, primerApellido, segundoApellido, juridico');
             $this->db->where('idProveedor', $row['idProveedor']);
             $query3 = $this->db->get('proveedor');
             if (!$query1 || !$query2 || !$query3) {
@@ -477,7 +477,11 @@ class Servicio_model extends CI_Model
             if($query3->num_rows() > 0) {
                 $valores_query3 = $query3->result_array();
                 $valor = array_shift($valores_query3);
-                $persona = $valor['nombre'];
+                if($valor['juridico']) {
+                    $persona = $valor['nombre'];
+                } else {
+                    $persona = $valor['nombre'].' '.$valor['primerApellido'].' '.$valor['segundoApellido'];
+                }
             }
             $row['datosAdicionales'] = array(
                 'categoria' => $categoria,

@@ -190,7 +190,6 @@
                                                                 <th><?= label('tituloGastos_codigo'); ?></th>
                                                                 <th><?= label('tituloGastos_gasto'); ?></th>
                                                                 <th><?= label('tituloGastos_proveedor'); ?></th>
-                                                                <th><?= label('tituloGastos_proveedorCategoria'); ?></th>
                                                                 <th><?= label('tituloGastos_tiempo'); ?></th>
                                                                 <th><?= label('tituloGastos_monto'); ?></th>
                                                                 <th><?= label('tituloGastos_cantidad'); ?></th>
@@ -200,7 +199,6 @@
                                                             </thead>
                                                             <tbody>
                                                                 <tr>
-                                                                    <td></td>
                                                                     <td></td>
                                                                     <td></td>
                                                                     <td></td>
@@ -470,10 +468,9 @@
                         '<input name="gasto' + contadorFilasGastos + '_idGasto" type="text" style="display: none;" value="' + idEncriptado + '" />' + cod + '</td>';
         var nombre = '<td>' + nom + '</td>';
         var persona = '<td>' + per + '</td>';
-        var categoriaPersona = '<td>' + categoria + '</td>';
         var tiempo = '<td>' + tmp +' </td>';
         var cantidad = '<td><input class="input_cantidad_gasto" min="0" name="gasto' + contadorFilasGastos + '_cantidad" type="number" value="0"/></td>';
-        var monto = '<td><input class="input_monto_gasto" style="display: none;" name="gasto' + contadorFilasGastos + '_monto" type="text" value="' + mont + '" />' + mont + '</td>';
+        var monto = '<td><input class="input_monto_gasto" style="display: none;" name="gasto' + contadorFilasGastos + '_monto" type="text" value="' + mont + '" /><span class="moneda_signo"></span>' + mont + '</td>';
         var subtotal = '<td><span class="moneda_signo"></span><span class="subtotal_fila">0</span></td>';
 
         var tBody = $('#gastos-tabla-lista');
@@ -481,14 +478,14 @@
             if (tBody.find('tbody tr').length == 1) {
                 tBody.find('tbody tr:first').before('' +
                     '<tr>' +
-                    codigo + nombre + persona + categoriaPersona + tiempo + monto + cantidad + subtotal + boton +
+                    codigo + nombre + persona + tiempo + monto + cantidad + subtotal + boton +
                     '</tr>'
                 );
 
             } else {
                 tBody.find('tbody tr:last').before('' +
                     '<tr>' +
-                    codigo + nombre + persona + categoriaPersona + tiempo + monto + cantidad + subtotal + boton +
+                    codigo + nombre + persona + tiempo + monto + cantidad + subtotal + boton +
                     '</tr>'
                 );
             }

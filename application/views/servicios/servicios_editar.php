@@ -248,7 +248,7 @@
                                                                         $monto = $gasto['monto'];
                                                                         $formaPago = $gasto['formaPago'];
                                                                         $cantidad = $gasto['cantidad'];
-                                                                        if($juridico) {
+                                                                        if(!$juridico) {
                                                                             $proveedor .= ' '.$gasto['primerApellido'].' '.$gasto['segundoApellido'];
                                                                         }
                                                                         $subtotal = $cantidad * $monto;
@@ -274,12 +274,12 @@
                                                                             </td>
                                                                             <td>
                                                                                 <input class="input_monto_gasto" style="display: none;" name="gasto<?= $contador; ?>_monto" type="text" value="<?= $monto; ?>" />
-                                                                                <?= $monto; ?>
+                                                                                <span class="moneda_signo"></span><?= $monto; ?>
                                                                             </td>
                                                                             <td>
                                                                                 <input class="input_cantidad_gasto" min="0" name="gasto<?= $contador; ?>_cantidad" type="number" value="<?= $cantidad; ?>"/>
                                                                             </td>
-                                                                            <td><span class="subtotal_fila"><span class="moneda_signo"></span><?= $subtotal; ?></span></td>
+                                                                            <td><span class="moneda_signo"></span><span class="subtotal_fila"><?= $subtotal; ?></span></td>
                                                                             <td>
                                                                                 <a class="boton-opciones btn-flat white-text confirmarEliminarGasto"
                                                                                    data-id-eliminar="<?= $idGasto; ?>"  data-fila-eliminar="fila<?= $contador++; ?>"><?= label('menuOpciones_eliminar'); ?></a>
@@ -528,7 +528,7 @@
             var cantidad = $(this).val();
             var subtotal = padre.find('td span.subtotal_fila').first();
             var resultado = monto * cantidad;
-            subtotal.empty().html('<span class="moneda_signo"></span>' + resultado);
+            subtotal.text(resultado);
             gastosVariablesServicios += resultado;
         });
         elementos.each(function () {
@@ -597,7 +597,7 @@
 //        var categoriaPersona = '<td>' + categoria + '</td>';
         var tiempo = '<td>' + tmp +' </td>';
         var cantidad = '<td><input class="input_cantidad_gasto" min="0" name="gasto' + contadorFilasGastos + '_cantidad" type="number" value="0"/></td>';
-        var monto = '<td><input class="input_monto_gasto" style="display: none;" name="gasto' + contadorFilasGastos + '_monto" type="text" value="' + mont + '" />' + mont + '</td>';
+        var monto = '<td><input class="input_monto_gasto" style="display: none;" name="gasto' + contadorFilasGastos + '_monto" type="text" value="' + mont + '" /><span class="moneda_signo"></span>' + mont + '</td>';
         var subtotal = '<td><span class="moneda_signo"></span><span class="subtotal_fila">0</pan></td>';
 
         var tBody = $('#gastos-tabla-lista');

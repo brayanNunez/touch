@@ -240,7 +240,7 @@
                             // alert(response);
                             break;
                         case '3'://correcto
-                            $('#mensajeValidacion').text('correcto');
+//                            $('#mensajeValidacion').text('correcto');
 //                            alert('login en prueba');
                             <?php
                             if (isset($urlInicial)) {?>
