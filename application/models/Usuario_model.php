@@ -406,6 +406,69 @@ class Usuario_model extends CI_Model
         }
     }
 
+    function datosPerfilCorreo($correoUsuario)
+    {
+        try {
+            $this->db->trans_begin();
+
+            $this->db->select("idUsuario, idEmpresa, CONCAT(nombre, ' ', primerApellido, ' ', segundoApellido) as nombreUsuario, fotografia", false);
+            $this->db->where('correo', $correoUsuario);
+            $query = $this->db->get('usuario');
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+            $row = array();
+            if ($query->num_rows() > 0) {
+                $array = $query->result_array();
+                $row = array_shift($array);//obtiene el primer elemento.. el [0] no sirve en el server
+                $row['idUsuarioEncriptado'] = encryptIt($row['idUsuario']);
+
+                $query = $this->db->get_where('privilegio_usuario', array('idUsuario' => $row['idUsuario']));
+                if (!$query) {
+                    throw new Exception("Error en la BD");
+                }
+                $privilegios = $query->result_array();
+                $roles = array(
+                    'rolAdministrador' => false,
+                    'rolAprobador' => false,
+                    'rolCotizador' => false,
+                    'rolContador' => false
+                );
+                $rolesAsignados = '';
+                foreach ($privilegios as $pr) {
+                    if($rolesAsignados != '') {
+                        $rolesAsignados .= ',';
+                    }
+                    switch($pr['idPrivilegio']) {
+                        case 1:
+                            $roles['rolAdministrador'] = true;
+                            $rolesAsignados .= 'Administrador';
+                            break;
+                        case 2:
+                            $roles['rolAprobador'] = true;
+                            $rolesAsignados .= 'Aprobador';
+                            break;
+                        case 3:
+                            $roles['rolCotizador'] = true;
+                            $rolesAsignados .= 'Cotizador';
+                            break;
+                        case 4:
+                            $roles['rolContador'] = true;
+                            $rolesAsignados .= 'Contador';
+                            break;
+                    }
+                }
+                $row['roles_string'] = $rolesAsignados;
+                $row['roles'] = $roles;
+            }
+            $this->db->trans_commit();
+            return $row;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
 }
 
 ?>

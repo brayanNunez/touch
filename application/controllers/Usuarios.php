@@ -230,8 +230,9 @@ class Usuarios extends CI_Controller
     }
 
     private function actualizarSesion() {
-        $idUsuario = 1;
-        $idEmpresa = 1;
+        $sessionActual = $this->session->userdata('logged_in');
+        $idUsuario = $sessionActual['idUsuario'];
+        $idEmpresa = $sessionActual['idEmpresa'];
         $resultado = $this->Usuario_model->datosPerfil($idUsuario);
 
         $sess_array = array(
@@ -263,34 +264,37 @@ class Usuarios extends CI_Controller
         $this->session->sess_destroy();
         // $this->session->unset_userdata('logged_in');
         // session_destroy();
-        redirect('Welcome');
+
+        delete_cookie('logged_in_touch');
+
+        redirect('welcome');
     }
 
     //Metodo llamado mediante ajax
-    public function verificar() {
-        $username = $this->input->post('username');
-        $password = $this->input->post('password');
-
-        $idUsuario = 1;
-        $idEmpresa = 1;
-        $resultado = $this->Usuario_model->datosPerfil($idUsuario);
-
-        $sess_array = array(
-            'idEmpresa' => $idEmpresa,
-            'idUsuario' => $idUsuario,
-            'idUsuarioEncriptado' => encryptIt($idUsuario),
-            'nombreUsuario' => $resultado['nombreUsuario'],
-            'rolesUsuario' => $resultado['roles'],
-            'rutaImagenUsuario' => base_url().'files/empresas/'.$idEmpresa.'/usuarios/'.$idUsuario.'/'.$resultado['fotografia'],
-            'administrador' => true,
-            'aprobador' => true,
-            'cotizador' => true,
-            'contador' => true
-        );
-        $this->session->set_userdata('logged_in', $sess_array);
-        // }
-        echo 1;
-    }
+//    public function verificar() {
+//        $username = $this->input->post('username');
+//        $password = $this->input->post('password');
+//
+//        $idUsuario = 1;
+//        $idEmpresa = 1;
+//        $resultado = $this->Usuario_model->datosPerfil($idUsuario);
+//
+//        $sess_array = array(
+//            'idEmpresa' => $idEmpresa,
+//            'idUsuario' => $idUsuario,
+//            'idUsuarioEncriptado' => encryptIt($idUsuario),
+//            'nombreUsuario' => $resultado['nombreUsuario'],
+//            'rolesUsuario' => $resultado['roles'],
+//            'rutaImagenUsuario' => base_url().'files/empresas/'.$idEmpresa.'/usuarios/'.$idUsuario.'/'.$resultado['fotografia'],
+//            'administrador' => true,
+//            'aprobador' => true,
+//            'cotizador' => true,
+//            'contador' => true
+//        );
+//        $this->session->set_userdata('logged_in', $sess_array);
+//        // }
+//        echo 1;
+//    }
 
     public function vendedorSugerencia()
     {
@@ -302,44 +306,71 @@ class Usuarios extends CI_Controller
         echo json_encode($resultado); 
     }
 
+    public function crearSesion() {
+        $correoUsuario = $this->input->cookie('logged_in_touch');
+        $resultado = $this->Usuario_model->datosPerfilCorreo($correoUsuario);
+        $sess_array = array(
+            'idEmpresa' => $resultado['idEmpresa'],
+            'idUsuario' => $resultado['idUsuario'],
+            'idUsuarioEncriptado' => encryptIt($resultado['idUsuario']),
+            'nombreUsuario' => $resultado['nombreUsuario'],
+            'rolesUsuario' => $resultado['roles_string'],
+            'rutaImagenUsuario' => base_url().'files/empresas/'.$resultado['idEmpresa'].'/usuarios/'.$resultado['idUsuario'].'/'.$resultado['fotografia'],
+            'administrador' => $resultado['roles']['rolAdministrador'],
+            'aprobador' => $resultado['roles']['rolAprobador'],
+            'cotizador' => $resultado['roles']['rolCotizador'],
+            'contador' => $resultado['roles']['rolContador']
+        );
+        $this->session->set_userdata('logged_in', $sess_array);
 
+        $rutaIndicada = $this->session->userdata('urlInicial');
+        redirect($rutaIndicada);
+    }
 
     //Metodo llamado mediante ajax
-    // public function verificar() {
-    //     $data['correo'] = $this->input->post('username');
-    //     $data['contrasena'] =  $this->input->post('password');
-        
+     public function verificar() {
+         $data['correo'] = $this->input->post('username');
+         $data['contrasena'] =  $this->input->post('password');
+         $rememberLogin = 0;
+         if ($this->input->post('remember-me')) {
+             $rememberLogin = 1;
+         }
+         $resultado = $this->Usuario_model->cargarPorCorreoUsuarioContrasena($data);
+         if ($resultado == 0) {
+             echo 0; //Error en la transacci�n
+         } else {
+             if ($resultado == 1) {
+                 echo 1; //no encontrado
+             } else {
+                 if ($resultado == 2) {
+                     echo 2;//si encontrado pero contrasena mala
+                 } else {
+                     if($rememberLogin) {
+                         $this->input->set_cookie('logged_in_touch', $data['correo'], 2592000);
+                     }
+                     $idUsuario = $resultado['idUsuario'];
+                     $idEmpresa = $resultado['idEmpresa'];
+                     $resultado_datos = $this->Usuario_model->datosPerfil($idUsuario);
+                     $sess_array = array(
+                         'idEmpresa' => $idEmpresa,
+                         'idUsuario' => $idUsuario,
+                         'idUsuarioEncriptado' => encryptIt($idUsuario),
+                         'nombreUsuario' => $resultado_datos['nombreUsuario'],
+                         'rolesUsuario' => $resultado_datos['roles'],
+                         'rutaImagenUsuario' => base_url().'files/empresas/'.$idEmpresa.'/usuarios/'.$idUsuario.'/'.$resultado_datos['fotografia'],
+                         'administrador' => $resultado['roles']['rolAdministrador'],
+                         'aprobador' => $resultado['roles']['rolAprobador'],
+                         'cotizador' => $resultado['roles']['rolCotizador'],
+                         'contador' => $resultado['roles']['rolContador']
+                     );
+                     $this->session->set_userdata('logged_in', $sess_array);
 
-    //     $resultado = $this->Usuario_model->cargarPorCorreoUsuarioContrasena($data);
+                     echo 3;//correcto
+                 }
+             }
+         }
+     }
 
-    //     if ($resultado == 0) {
-    //         echo 0; //Error en la transacci�n
-    //     } else {
-    //         if ($resultado == 1) {
-    //             echo 1; //no encontrado
-    //         } else {
-    //             if ($resultado == 2) {
-    //                 echo 2;//si encontrado pero contrasena mala
-    //             } else {
-    //                  $sess_array = array(
-    //                 'idEmpresa' => $resultado['idEmpresa'],
-    //                 'administrador' => $resultado['roles']['rolAdministrador'],
-    //                 'aprobador' => $resultado['roles']['rolAprobador'],
-    //                 'cotizador' => $resultado['roles']['rolCotizador'],
-    //                 'contador' => $resultado['roles']['rolContador']
-    //                 );
-    //                 $this->session->set_userdata('logged_in', $sess_array);
-    //                 echo 3;//correcto
-    //             }
-                
-
-               
-    //         }
-            
-    //     }
-        
-                
-    // }
 }
 
 ?>
