@@ -546,8 +546,8 @@ $js_array = json_encode($fases);
 echo "var arrayFases =". $js_array.";";
 ?>
 
-    var cantidadFases = 0;
-    var contadorFases = cantidadFases;
+    // var cantidadFases = 0;
+    // var contadorFases = cantidadFases;
 
     $(document).on('ready', function() {
         function exiteEnTabla(idFase){
@@ -676,11 +676,16 @@ echo "var arrayFases =". $js_array.";";
             $('#cantidadFases').val(cantidadFases);
         }
 
+        var cantidadFases = 0;
+        var contadorFases = cantidadFases;
+
         
         function agregarFila(codigo, nombre, des, codigoPadre, nombrePadre, desPadre, idFase){
             // alert(cantidadFases);
             cantidadFases++;
             actualizarCantidad();
+
+            // alert(cantidadFases);
        
             var boton = '<a href="#eliminarSubFase" data-id-eliminar="1" class="-text modal-trigger confirmarEliminar boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>';
             // var codigo = 'PROG-0001';
@@ -731,7 +736,7 @@ echo "var arrayFases =". $js_array.";";
                 $('#tabla-servicio').dataTable().fnDeleteRow(filaEliminar);
                 verificarChecks();
             });
-            cantidad--;
+            cantidadFases--;
             actualizarCantidad();
         });
 
@@ -743,11 +748,11 @@ echo "var arrayFases =". $js_array.";";
                 $(this).fadeOut(function () {
                     $('#tabla-servicio').dataTable().fnDeleteRow($(this));
                 });
-                cantidad--;
+                cantidadFases--;
                 actualizarCantidad();
             });
             verificarChecks();
-            cantidad--;
+            cantidadFases--;
             actualizarCantidad();
         });
 

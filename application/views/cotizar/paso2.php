@@ -843,6 +843,31 @@ $(document).on('ready', function(){
     </div>
 </div>
 
+<div id="eliminarSubFase" class="modal">
+   <div class="modal-header">
+      <p><?= label('nombreSistema'); ?></p>
+      <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+   </div>
+   <div class="modal-content">
+      <p><?= label('confirmarEliminarSubFase'); ?></p>
+   </div>
+   <div id="botonEliminar" class="modal-footer black-text">
+      <a href="" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+   </div>
+</div>
+<div id="eliminarFase" class="modal">
+   <div class="modal-header">
+      <p><?= label('nombreSistema'); ?></p>
+      <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+   </div>
+   <div class="modal-content">
+      <p><?= label('confirmarEliminarFase'); ?></p>
+   </div>
+   <div id="botonEliminar" class="modal-footer black-text">
+      <a href="" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+   </div>
+</div>
+
 <div id="Elminar" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
@@ -1181,8 +1206,8 @@ $(document).on('ready', function(){
     echo "var arrayFases =". $js_array.";";
     ?>
 
-    var cantidadFases = 0;
-    var contadorFases = cantidadFases;
+    // var cantidadFases = 0;
+    // var contadorFases = cantidadFases;
 
     $(document).on('ready', function() {
         function exiteEnTabla(idFase){
@@ -1311,6 +1336,8 @@ $(document).on('ready', function(){
             $('#cantidadFases').val(cantidadFases);
         }
 
+        var cantidadFases = 0;
+        var contadorFases = cantidadFases;
 
         function agregarFila(codigo, nombre, des, codigoPadre, nombrePadre, desPadre, idFase){
             // alert(cantidadFases);
@@ -1366,7 +1393,7 @@ $(document).on('ready', function(){
                 $('#tabla-servicio').dataTable().fnDeleteRow(filaEliminar);
                 verificarChecks();
             });
-            cantidad--;
+            cantidadFases--;
             actualizarCantidad();
         });
 
@@ -1378,11 +1405,11 @@ $(document).on('ready', function(){
                 $(this).fadeOut(function () {
                     $('#tabla-servicio').dataTable().fnDeleteRow($(this));
                 });
-                cantidad--;
+                cantidadFases--;
                 actualizarCantidad();
             });
             verificarChecks();
-            cantidad--;
+            cantidadFases--;
             actualizarCantidad();
         });
 

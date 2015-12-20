@@ -815,21 +815,23 @@ echo "var arrayFases =". $js_array.";";
         //     agregarFila();
         // });
         function actualizarCantidad(){
-            $('#cantidadFases').val(cantidad);
+            $('#cantidadFases').val(cantidadFases);
         }
 
-        var cantidad = <?= count($resultado['misFases'])?>;
-        var contador = cantidad;
+        var cantidadFases = <?= count($resultado['misFases'])?>;
+        var contadorFases = cantidadFases;
         function agregarFila(codigo, nombre, des, codigoPadre, nombrePadre, desPadre, idFase){
-            cantidad++;
+            cantidadFases++;
             actualizarCantidad();
+
+            // alert(cantidadFases);
        
             var boton = '<a href="#eliminarSubFase" data-id-eliminar="1" class="-text modal-trigger confirmarEliminar boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>';
             // var codigo = 'PROG-0001';
             // var nombre = 'ERS';
             // var des = 'Requerimientos de software Nuevo';
-            var idFase = '<input class="id_fase"  name="id_'+contador+'" id="id_'+contador+'" type="number" value="'+idFase+'" />';                                                             
-            var cantidadTiempo = '<input class="cantidad" data-grupo="'+codigoPadre+'" name="cantidadhoras_'+contador+'" id="cantidadhoras_'+contador+'" type="number" value="0" />';
+            var idFase = '<input class="id_fase"  name="id_'+contadorFases+'" id="id_'+contadorFases+'" type="number" value="'+idFase+'" />';                                                             
+            var cantidadTiempo = '<input class="cantidad" data-grupo="'+codigoPadre+'" name="cantidadhoras_'+contadorFases+'" id="cantidadhoras_'+contadorFases+'" type="number" value="0" />';
             // var codigoPadre = 'PROG-0002Padre';
             // var nombrePadre = 'ERSPadre';
             // var desPadre = 'Requerimientos de softwarePadre';
@@ -849,7 +851,7 @@ echo "var arrayFases =". $js_array.";";
 
             $('.modal-trigger').leanModal();
       
-            contador++;
+            contadorFases++;
         }
 
         // function generarListasBotones(){
@@ -891,7 +893,7 @@ echo "var arrayFases =". $js_array.";";
                 $('#tabla-servicio').dataTable().fnDeleteRow(filaEliminar);
                 verificarChecks();
             });
-            cantidad--;
+            cantidadFases--;
             actualizarCantidad();
         });
 
@@ -903,11 +905,11 @@ echo "var arrayFases =". $js_array.";";
                 $(this).fadeOut(function () {
                     $('#tabla-servicio').dataTable().fnDeleteRow($(this));
                 });
-                cantidad--;
+                cantidadFases--;
                 actualizarCantidad();
             });
             verificarChecks();
-            cantidad--;
+            cantidadFases--;
             actualizarCantidad();
         });
 
