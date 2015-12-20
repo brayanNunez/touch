@@ -92,18 +92,19 @@
                </table>
                <div id="contenedorResultados">
                   <div id="resultados">
-                     <p class="box" id="descuento">
-                        <?= label("paso3_descuento:"); ?> 
-                        <spam id="disenoDescuento"></spam><spam>%</spam>
-                     </p>
-                     <p class="box" id="impuesto">
-                        <?= label("paso3_impuesto:"); ?> 
-                        <spam id="disenoImpuesto">13</spam><spam>%</spam>
-                     </p>
-                     <p class="box" id="total">
-                        <?= label("paso3_total:"); ?> 
-                        <spam class='monedaCotizacion'></spam><spam id="disenoTotal"></spam>
-                     </p>
+                     <div class="box" id="descuento">
+                        <div></div>
+                        <p><?= label("paso3_descuento:"); ?> 
+                        <spam id="disenoDescuento"></spam><spam>%</spam></p>
+                     </div>
+                     <div class="box" id="impuesto">
+                        <p><?= label("paso3_impuesto:"); ?><p>
+                        <ul id="disenoImpuesto" style="list-style: none; padding: 0px;"></ul>
+                     </div>
+                     <div class="box" id="total">
+                        <p><?= label("paso3_total:"); ?> 
+                        <b><spam class='monedaCotizacion'></spam><spam id="disenoTotal"></spam></b><p>
+                     </div>
                   </div>
                </div>
                <div id="prefooter">
@@ -567,6 +568,19 @@
     }
 
     function actualizarDiseno(){
+
+               calcularTotalImpuestos();
+               $('#disenoImpuesto').empty();
+               for (var i = 0; i < arrayImpuestos.length; i++) {
+
+                  var moneda = $('#paso1_tipoCambio').val();
+                  if (moneda == '' || moneda == 0) {
+                     moneda = 1;
+                  };
+                  costoImpuesto = (arrayImpuestos[i]['valor'] / parseFloat(moneda)).toFixed(2);
+                  // alert(arrayImpuestos[i]['nombre'] + ', '+ arrayImpuestos[i]['valor']);
+                  $('#disenoImpuesto').append('<li>'+arrayImpuestos[i]['nombre'] + ': <spam class="monedaCotizacion"> </spam>'+ costoImpuesto + '</li>');
+               };
          // alert('actualizarInformacion');
            // if ($('#paso1Cliente option:selected').val() != 0) {
                var cliente = $('#paso1Cliente option:selected').text();

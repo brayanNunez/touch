@@ -641,7 +641,7 @@
     $lang['paso3_fecha:'] = 'Fecha: ';
     $lang['paso3_hora:'] = 'Hora: ';
     $lang['paso3_descuento:'] = 'Descuento: ';
-    $lang['paso3_impuesto:'] = 'Impuestos: ';
+    $lang['paso3_impuesto:'] = 'Impuestos incluidos: ';
     $lang['paso3_total:'] = 'Total: ';
 
     $lang['paso3_item'] = 'Item';

@@ -1882,11 +1882,12 @@ $(document).on('ready', function(){
 
         var impuestosAgregados = 0;
         $.each($("#impuestos_" + numeroFila).tagsinput('items'), function( index, value ) {
+
             impuestosAgregados += precioServicio * (value['valor'] / 100);
         });
         precioServicio += impuestosAgregados;
 
-        precioServicio = precioServicio.toFixed(2);
+        // precioServicio = precioServicio.toFixed(2);
 
         var moneda = $('#paso1_tipoCambio').val();
         if (moneda == '' || moneda == 0) {
@@ -1903,6 +1904,44 @@ $(document).on('ready', function(){
 
     }
 
+    
+    var arrayImpuestos = [];
+
+    function calcularTotalImpuestos() {
+        // alert('entre');
+        arrayImpuestos = [];
+        $('.subTotal').each(function(){
+            var numeroFila = $(this).attr('data-numeroFila');
+            var accionAplicada = $('#linea_' + numeroFila).val();
+            if ($('#productoNombre_' + numeroFila).val() != null && accionAplicada != 2) {
+
+                var margenUtilidad = parseFloat($('#utilidad_' + numeroFila).val()) / 100;
+
+                var precioPorpio = $('#precioUnidadPropio_' + numeroFila).val();//Este va a ser el precio Unidad que va a mantener la línea de detalle, aunque el precio del servicio cambie.
+
+                var precioServicio = precioPorpio / (1 - margenUtilidad);
+
+                $.each($("#impuestos_" + numeroFila).tagsinput('items'), function( index, value ) {
+                    var costoImpuesto = precioServicio * (value['valor'] / 100);
+
+                    
+                    var existe = false;
+                    for (var i = 0; i < arrayImpuestos.length; i++) {
+                        if (arrayImpuestos[i]['nombre'] == value['nombre']) {
+                            existe = true;
+                            arrayImpuestos[i]['valor'] += costoImpuesto;
+                        }
+
+                    };
+                    if (!existe) {
+                         arrayImpuestos.push({'nombre': value['nombre'],'valor': costoImpuesto});
+                    };
+                });
+
+            };
+        });
+    }
+
     function calcularPrecioPropio(numeroFila) {
 
         var margenUtilidad = parseFloat($('#utilidad_' + numeroFila).val()) / 100;
@@ -1913,11 +1952,12 @@ $(document).on('ready', function(){
 
         var impuestosAgregados = 0;
         $.each($("#impuestos_" + numeroFila).tagsinput('items'), function( index, value ) {
+            // alert(value['nombre']);
             impuestosAgregados += precioServicio * (value['valor'] / 100);
         });
         precioServicio += impuestosAgregados;
 
-        precioServicio = precioServicio.toFixed(2);
+        // precioServicio = precioServicio.toFixed(2);
 
         var moneda = $('#paso1_tipoCambio').val();
         if (moneda == '' || moneda == 0) {
