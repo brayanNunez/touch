@@ -301,6 +301,12 @@ ul.cliente-busqueda li a.active, ul.usuario-info li a.active, ul.proveedor-info 
 ul.cliente-busqueda li { width: 50% !important; }
 ul.cliente-busqueda li a { background-color: #009966; }
 
+div#mensaje_cambioMonedaCorrecto .modal-content p, div#mensaje_cambioMonedaError .modal-content p { text-align: left; }
+ul#list_rolesUsuarioLogueado li { font-size:11px; }
+ul#list_rolesUsuarioLogueado li:hover { background-color: transparent; }
+span#span_nombreUsuarioLogueado { text-transform: uppercase; }
+a#btn_nombreUsuarioLogueado:hover { background-color: #47b475; }
+
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/
     div#login-page { width: 380px !important; max-height: 408px !important; top: 0 !important; }

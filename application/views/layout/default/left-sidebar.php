@@ -38,7 +38,7 @@
                     </a>
 
                     <p class="user-roal">
-                    <ul id="list_rolesUsuarioLogueado" style="font-size:11px;">
+                    <ul id="list_rolesUsuarioLogueado">
                         <?php
                         $arrayRoles = explode(",", $rolesUsuarioLogueado);
                         foreach ($arrayRoles as $rol) { ?>

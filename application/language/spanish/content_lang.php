@@ -466,6 +466,8 @@
     $lang['tiposMoneda_tipoMonedaEditadoCorrectamente'] = 'El tipo de moneda fue editado con éxito.';
     $lang['tipoMonedaDefectoEditadoCorrectamente'] = 'El tipo de moneda por defecto fue cambiado con éxito';
     $lang['tipoMonedaDefectoNoEditado'] = 'El tipo de moneda por defecto no pudo ser editado.';
+    $lang['tipoMoneda_notaModificarMonedas'] = 'Al cambiar la moneda principal de la empresa es necesario editar el tipo de cambio de las monedas restantes para que posean su valor real con respecto a la nueva moneda de la empresa.';
+    $lang['tipoMoneda_nota'] = 'Nota:';
 
 //Formas de pago
     $lang['formasPago'] = 'Formas de pago';

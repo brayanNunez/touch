@@ -152,6 +152,9 @@
 <div style="display: none">
     <a id="linkModalErrorCargarDatos" href="#transaccionIncorrectaCargar" class="btn btn-default modal-trigger"></a>
     <a id="linkModalErrorEliminar" href="#transaccionIncorrectaEliminar" class="btn btn-default modal-trigger"></a>
+
+    <a id="linkCambioMonedaCorrecto" href="#mensaje_cambioMonedaCorrecto" class="btn btn-default modal-trigger"></a>
+    <a id="linkCambioMonedaError" href="#mensaje_cambioMonedaError" class="btn btn-default modal-trigger"></a>
 </div>
 <!-- END CONTENT-->
 
@@ -220,10 +223,10 @@
             success: function(response)
             {
                 if(response != 0) {
-                    alert('<?= label('tipoMonedaDefectoEditadoCorrectamente'); ?>');
                     tipoMonedaDefecto = opcionSeleccionada;
+                    $('#linkCambioMonedaCorrecto').click();
                 } else {
-                    alert('<?= label('tipoMonedaDefectoNoEditado'); ?>');
+                    $('#linkCambioMonedaError').click();
                 }
             }
         });
@@ -841,6 +844,34 @@ function validacionCorrectaEditar(){
     </div>
     <div class="modal-content">
         <p><?= label('errorEliminar'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a  class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+
+<div id="mensaje_cambioMonedaCorrecto" class="modal">
+    <div  class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('tipoMonedaDefectoEditadoCorrectamente'); ?></p>
+        <br />
+        <p style="text-decoration: underline;"><?= label('tipoMoneda_nota'); ?></p>
+        <p><?= label('tipoMoneda_notaModificarMonedas'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a  class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="mensaje_cambioMonedaError" class="modal">
+    <div  class="modal-header headerTransaccionIncorrecta">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('tipoMonedaDefectoNoEditado'); ?></p>
     </div>
     <div class="modal-footer">
         <a  class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
