@@ -324,7 +324,22 @@ class ManejadorPDF extends CI_Controller
 
     }
 
-        public function enviarCotizacionContador($idEmpresa, $idCotizacionEncriptado){
+    
+    public function facturarCotizacion($idCotizacionEncriptado){
+
+        $data['idCotizacion'] = decryptIt($idCotizacionEncriptado);
+
+        $data['estado'] = 6; //estado facturada
+
+        $idCotizacion = $data['idCotizacion'];
+
+        $resultado = $this->Cotizacion_model->editarEstado($data); 
+        
+        echo $resultado;
+
+    }
+
+    public function enviarCotizacionContador($idEmpresa, $idCotizacionEncriptado){
 
         $data['idCotizacion'] = decryptIt($idCotizacionEncriptado);
 
@@ -337,7 +352,6 @@ class ManejadorPDF extends CI_Controller
         if ($resultado) {
            
             $this->load->library('email');
-            $this->email->from('brayannr@hotmail.es', 'Brayan');
 
             $linkCotizacionVer = base_url().'cotizacion/facturar/'.$idCotizacionEncriptado;
 

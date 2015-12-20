@@ -311,6 +311,30 @@ class Cotizacion extends CI_Controller
         }
     }
 
+    public function facturar($idCotizacion)
+    {
+        verificarLogin();//helper
+        $sessionActual = $this->session->userdata('logged_in');
+        $data['idEmpresa'] = $sessionActual['idEmpresa'];
+        $data['idUsuario'] = $sessionActual['idUsuario'];
+        $data['idCotizacion'] = decryptIt($idCotizacion);
+
+        $resultado = $this->Cotizacion_model->cargarFacturar($data); 
+        if ($resultado === false) {
+            echo "Error en la transacción";
+        } else {
+            // $resultado['lineasDetalle'] = array();
+            $resultado['idEmpresa'] = $data['idEmpresa'];
+            $resultado['idCotizacion'] = decryptIt($idCotizacion);
+        
+            $data['resultado'] = $resultado;
+            $this->load->view('layout/default/header');
+            $this->load->view('layout/default/left-sidebar');
+            $this->load->view('cotizar/facturar', $data);
+            $this->load->view('layout/default/footer');
+        }
+    }
+
     public function ver($idCotizacion)
     {
         verificarLogin();//helper

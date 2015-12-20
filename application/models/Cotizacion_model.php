@@ -754,6 +754,42 @@ class Cotizacion_model extends CI_Model
         }
     }
 
+    function cargarFacturar($datos)
+    {
+        try {
+            $this->db->trans_begin();
+            
+            $this->db->select("ec.descripcion as estado");
+            $this->db->from('estadocotizacion as ec');
+            $this->db->join('cotizacion as co', 'co.idEstadoCotizacion = ec.idEstadoCotizacion');
+            $this->db->where(array('co.idCotizacion' => $datos['idCotizacion']));
+
+            $estado = $this->db->get();
+            if (!$estado) throw new Exception("Error en la BD");
+            $estado = $estado->result_array();
+            $data['estado'] = array_shift($estado)['estado'];
+            // echo print_r($data['estado']); exit();
+
+            $this->db->select("us.*");
+            $this->db->from('usuario as us');
+            $this->db->join('privilegio_usuario as pu', 'pu.idUsuario = us.idUsuario');
+            $this->db->join('privilegio as pr', 'pr.idPrivilegio = pu.idPrivilegio');
+            $this->db->where(array('us.idUsuario' => $datos['idUsuario'], 'pr.nombre' => 'Contador'));
+            $contador = $this->db->get();
+            
+            if (!$contador) throw new Exception("Error en la BD");
+            $contador = $contador->result_array();
+
+            $data['contadorEstaCotizacion'] = count($contador);
+
+            $this->db->trans_commit();
+            return $data;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
     function cargarAprobacion($datos)
     {
         try {

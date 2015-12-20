@@ -33,12 +33,12 @@
                                                   <!-- <div class="input-field col s12 m4 l4"> -->
                                                   <?php
                                                   // echo $resultado['estado'];
-                                                  if ($resultado['estado'] == 'enviada' && $resultado['vendedorEstaCotizacion'] == '1') {
+                                                  if ($resultado['estado'] == 'finalizada' && $resultado['contadorEstaCotizacion'] == '1') {
                                                     ?>
                                                     <div id="botonesAprobar">
                                                       <div class="input-field col s12 m6 l6">
-                                                        <a href="#enviar" class="left btn btn-default modal-trigger opt-finalizar"
-                                                           title="<?= label('tooltip_finalizar'); ?>"><?= label('finalizar'); ?></a>
+                                                        <a href="#enviar" class="left btn btn-default modal-trigger opt-facturar"
+                                                           title="<?= label('tooltip_facturar'); ?>"><?= label('facturar'); ?></a>
                                                       </div>
                                                       
                                                     </div>
@@ -47,7 +47,7 @@
                                                     <?php
                                                     } else {
 
-                                                      if (($resultado['estado'] == 'finalizada' || $resultado['estado'] == 'facturada') && $resultado['vendedorEstaCotizacion'] == '1') {
+                                                      if ($resultado['estado'] == 'facturada' && $resultado['contadorEstaCotizacion'] == '1') {
                                                     ?>
 
                                                     <p id="mensajeAprobacion"><?= label('aprobacion_cotizacionTramitada'); ?></p>
@@ -91,13 +91,13 @@
 
 
 $(document).on('ready', function(){
-  $('#finalizarCotizacion').on('click', function(){
-    finalizarCotizacion();
+  $('#facturarCotizacion').on('click', function(){
+    facturarCotizacion();
   });
 });
 
- function finalizarCotizacion(){
-    var url = '<?=base_url()?>ManejadorPDF/enviarCotizacionContador/<?= $resultado['idEmpresa'];?>/<?= encryptIt($resultado['idCotizacion']);?>';
+ function facturarCotizacion(){
+    var url = '<?=base_url()?>ManejadorPDF/facturarCotizacion/<?= encryptIt($resultado['idCotizacion']);?>';
     var method = 'POST'; 
     $.ajax({
            type: method,
@@ -134,12 +134,12 @@ $(document).on('ready', function(){
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content" style="text-align: left">
-        <p style="text-align: center"><?= label('finalizar_mensaje'); ?></p>
+        <p style="text-align: center"><?= label('facturar_mensaje'); ?></p>
     </div>
 
     <div class="modal-footer">
         <div id="boton" class="modal-footer black-text">
-          <a id='finalizarCotizacion' class="waves-effect waves-green btn-flat modal-action"><?= label('aceptar'); ?></a>
+          <a id='facturarCotizacion' class="waves-effect waves-green btn-flat modal-action"><?= label('aceptar'); ?></a>
        </div>
     </div>
 </div>
@@ -153,7 +153,7 @@ $(document).on('ready', function(){
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <p><?= label('cotizacionEnviadaContador'); ?></p>
+        <p><?= label('cotizacionFacturada'); ?></p>
     </div>
     <div class="modal-footer">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
