@@ -541,6 +541,7 @@
     $lang['aprobarEnvioCliente'] = 'Aprobar';
     $lang['guardarEnviar'] = 'Guardar y enviar';
     $lang['aprobar'] = 'Aprobar y enviar';
+    $lang['finalizar'] = 'Finalizar';
     $lang['rechazar'] = 'Rechazar';
     $lang['guardarDescargar'] = 'Guardar y descargar';
     $lang['soloGuardar'] = 'Guardar';
@@ -557,8 +558,8 @@
 
 
 
-    $lang['estado_nueva'] = 'Nueva';
-    $lang['estado_espera'] = 'Espera';
+    $lang['estado_nueva'] = 'Creada';
+    $lang['estado_espera'] = 'Revisión';
     $lang['estado_rechazada'] = 'Rechazada';
     $lang['estado_enviada'] = 'Enviada';
     $lang['estado_finalizada'] = 'Finalizada';
@@ -1357,6 +1358,7 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['tooltip_guardarEnviar'] = 'Guardar y enviar';
     $lang['tooltip_guardarDescargar'] = 'Guardar y descargar';
     $lang['tooltip_aprobar'] = 'Aprobar';
+    $lang['tooltip_finalizar'] = 'Finalizar';
     $lang['tooltip_rechazar'] = 'Rechazar';
     $lang['tooltip_guardarCerrar'] = 'Guardar y cerrar';
     $lang['tooltip_cancelarCot'] = 'Cancelar cotización';
@@ -1508,7 +1510,14 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['aprobarRechazar_errorCotizacionTramitada'] = 'Otro aprobador tramito la cotización primero que tu.';
 
     $lang['aprobar_asuntoVendedor'] = 'Cotización aprobada';
-    $lang['aprobar_textoVendedor'] = 'Tu cotización ha sido aprobada.';
+    $lang['aprobar_textoVendedor'] = 'Tu cotización ha sido aprobada, en el siguiente enlace  puedes finalizarla.';
+
+    $lang['finalizar_asuntoContador'] = 'Cotización finalizada ';
+    $lang['finalizar_textoContador'] = 'Se ha finalizado una cotización, en el siguiente enlace puedes facturarla.';
+
+    $lang['finalizar_mensaje'] = 'Al finalizar la cotización esta podrá ser facturada. ¿Realmente desea finalizar la cotización?';
+
+    
 
     
 
