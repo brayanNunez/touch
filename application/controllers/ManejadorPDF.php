@@ -341,14 +341,20 @@ class ManejadorPDF extends CI_Controller
 
             $linkCotizacionVer = base_url().'cotizacion/facturar/'.$idCotizacionEncriptado;
 
+            $listaCorreos = $this->Cotizacion_model->cargarCorreosCotizadores($idEmpresa);
+            $arrayCorreos = array();
+            foreach ($listaCorreos as $correo) {
+                array_push($arrayCorreos, $correo['correo']);
+            }
+
             $data = array( 
-                'correoVendedor' => $correo,
+                'correosCotizadores' => $arrayCorreos,
                 'envio_asunto' => label('finalizar_asuntoContador'),  
                 'envio_texto' => label('finalizar_textoContador')
                 );
 
             $this->email->from('brayannr@hotmail.es', 'Brayan');
-            $this->email->to($data['correoVendedor']);
+            $this->email->to($data['correosCotizadores']);
 
             $this->email->subject($data['envio_asunto']);
 

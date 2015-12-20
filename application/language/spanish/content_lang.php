@@ -629,6 +629,8 @@
     $lang['cotizacionEnviadaCliente'] = 'Cotización enviada al cliente';
     $lang['cotizacionRechazada'] = 'Cotización rechazada';
 
+    $lang['cotizacionEnviadaContador'] = 'Cotización enviada a los contadores.';
+
     $lang['paso3_codCotizacion:'] = 'Código de cotización: ';
     $lang['paso3_cliente:'] = 'Cliente: ';
     $lang['paso3_atencion:'] = 'Atención: ';
@@ -1517,7 +1519,7 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['finalizar_asuntoContador'] = 'Cotización finalizada ';
     $lang['finalizar_textoContador'] = 'Se ha finalizado una cotización, en el siguiente enlace puedes facturarla.';
 
-    $lang['finalizar_mensaje'] = 'Al finalizar la cotización esta podrá ser facturada. ¿Realmente desea finalizar la cotización?';
+    $lang['finalizar_mensaje'] = 'Al finalizar la cotización, esta podrá ser facturada. ¿Realmente desea finalizar la cotización?';
 
     
 

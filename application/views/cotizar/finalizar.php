@@ -97,7 +97,7 @@ $(document).on('ready', function(){
 });
 
  function finalizarCotizacion(){
-    var url = '<?=base_url()?>ManejadorPDF/enviarCotizacionCliente/<?= $resultado['idEmpresa'];?>/<?= encryptIt($resultado['idCotizacion']);?>';
+    var url = '<?=base_url()?>ManejadorPDF/enviarCotizacionContador/<?= $resultado['idEmpresa'];?>/<?= encryptIt($resultado['idCotizacion']);?>';
     var method = 'POST'; 
     $.ajax({
            type: method,
@@ -112,16 +112,8 @@ $(document).on('ready', function(){
               $('#enviar').closeModal();
               $('#cotizacionEnviada').openModal();
             } else {
-              if (response == -1) {
-                alert('<?= label('aprobarRechazar_errorCotizacionTramitada'); ?>');
-                $('#mensajeAprobacion').css('display', 'block');
-                $('#botonesAprobar').css('display', 'none');
-                $('#enviar').closeModal();
-
-              } else{
-                $('#enviar').closeModal();
-                $('#modal_transaccionIncorrecta').openModal();
-              };
+              $('#enviar').closeModal();
+              $('#modal_transaccionIncorrecta').openModal();
             }
           }
         });
@@ -161,7 +153,7 @@ $(document).on('ready', function(){
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <p><?= label('cotizacionEnviadaCliente'); ?></p>
+        <p><?= label('cotizacionEnviadaContador'); ?></p>
     </div>
     <div class="modal-footer">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
