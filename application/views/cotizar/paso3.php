@@ -324,10 +324,10 @@
                         <input value="col_5" name="checksDetalle_ColumnaCantidad" type="checkbox" class="filled-in checksCuerpo" id="cuerpofilled-in-box6">
                         <label for="cuerpofilled-in-box6"><?= label("paso3_cantidad"); ?></label>
                      </p>
-                     <p>
+                     <!-- <p>
                         <input value="col_6" name="checksDetalle_ColumnaImpuesto" type="checkbox" class="filled-in checksCuerpo" id="cuerpofilled-in-box7">
                         <label for="cuerpofilled-in-box7"><?= label("paso3_impuesto"); ?></label>
-                     </p>
+                     </p> -->
                      <p>
                         <input value="col_7" name="checksDetalle_ColumnaTotal" type="checkbox" class="filled-in checksCuerpo" id="cuerpofilled-in-box8">
                         <label for="cuerpofilled-in-box8"><?= label("paso3_total"); ?></label>
@@ -1009,11 +1009,11 @@
    } else{
        $("#modalCuerpo input[value='col_5']").prop("checked", false );
    }
-   if (plantilla['mostrarColumnaImpuesto'] == 1) {
-       $("#modalCuerpo input[value='col_6']").prop("checked", true );
-   } else{
-       $("#modalCuerpo input[value='col_6']").prop("checked", false );
-   }
+   // if (plantilla['mostrarColumnaImpuesto'] == 1) {
+   //     $("#modalCuerpo input[value='col_6']").prop("checked", true );
+   // } else{
+   //     $("#modalCuerpo input[value='col_6']").prop("checked", false );
+   // }
    if (plantilla['mostrarColumnaTotal'] == 1) {
        $("#modalCuerpo input[value='col_7']").prop("checked", true );
    } else{
@@ -1217,7 +1217,7 @@
    'mostrarColumnaDescripcion': $('#cuerpoDocumento thead .col_3').is(':visible'),
    'mostrarColumnaPrecio': $('#cuerpoDocumento thead .col_4').is(':visible'),
    'mostrarColumnaCantidad': $('#cuerpoDocumento thead .col_5').is(':visible'),
-   'mostrarColumnaImpuesto': $('#cuerpoDocumento thead .col_6').is(':visible'),
+   // 'mostrarColumnaImpuesto': $('#cuerpoDocumento thead .col_6').is(':visible'),
    'mostrarColumnaTotal': $('#cuerpoDocumento thead .col_7').is(':visible'),
    "mostrarImpuesto": $('#cuerpoDocumento .box#impuesto').is(':visible'),
    "mostrarDescuento": $('#cuerpoDocumento .box#descuento').is(':visible'),

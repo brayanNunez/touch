@@ -491,10 +491,10 @@ class Cotizacion extends CI_Controller
         if (isset($_POST['checksDetalle_ColumnaCantidad'])) {
            $columnaCantidad = 1;
         }
-        $columnaImpuesto = 0;
-        if (isset($_POST['checksDetalle_ColumnaImpuesto'])) {
-           $columnaImpuesto = 1;
-        }
+        // $columnaImpuesto = 0;
+        // if (isset($_POST['checksDetalle_ColumnaImpuesto'])) {
+        //    $columnaImpuesto = 1;
+        // }
         $columnaTotal = 0;
         if (isset($_POST['checksDetalle_ColumnaTotal'])) {
            $columnaTotal = 1;
@@ -559,7 +559,7 @@ class Cotizacion extends CI_Controller
             'mostrarColumnaDescripcion' => $columnaDescripcion, 
             'mostrarColumnaPrecio' => $columnaPrecio, 
             'mostrarColumnaCantidad' => $columnaCantidad, 
-            'mostrarColumnaImpuesto' => $columnaImpuesto, 
+            // 'mostrarColumnaImpuesto' => $columnaImpuesto, 
             'mostrarColumnaTotal' => $columnaTotal,
             'publica' => $publica,
             'eliminado' => 0

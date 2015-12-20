@@ -1875,8 +1875,9 @@ $(document).on('ready', function(){
 
         var precioBase = cantidadHoras * costoHora;
 
-        $('#precioUnidadPropio_' + numeroFila).val(precioBase);//Este va a ser el precio Unidad que va a mantener la línea de detalle, aunque el precio del servicio cambie.
 
+        $('#precioUnidadPropio_' + numeroFila).val(precioBase);//Este va a ser el precio Unidad que va a mantener la línea de detalle, aunque el precio del servicio cambie.
+        // alert($('#precioUnidadPropio_' + numeroFila).val());
         var precioServicio = (precioBase) / (1 - margenUtilidad);
 
         var impuestosAgregados = 0;
@@ -1888,7 +1889,7 @@ $(document).on('ready', function(){
         precioServicio = precioServicio.toFixed(2);
 
         var moneda = $('#paso1_tipoCambio').val();
-        if (moneda == '') {
+        if (moneda == '' || moneda == 0) {
             moneda = 1;
         };
         precioServicio = precioServicio / parseFloat(moneda);
@@ -1919,7 +1920,7 @@ $(document).on('ready', function(){
         precioServicio = precioServicio.toFixed(2);
 
         var moneda = $('#paso1_tipoCambio').val();
-        if (moneda == '') {
+        if (moneda == '' || moneda == 0) {
             moneda = 1;
         };
         precioServicio = precioServicio / parseFloat(moneda);
