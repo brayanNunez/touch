@@ -24,6 +24,22 @@ class Registro_model extends CI_Model
             $queryU = $this->db->insert('usuario', $data['usuario']);
             $idUsuario = $this->db->insert_id();
 
+            $this->db->select('idPrivilegio');
+            $this->db->where('nombre', 'Administrador');
+            $queryRoles = $this->db->get('privilegio');
+            $resultado = $queryRoles->result_array();
+            $idRolAdministrador = array_shift($resultado)['idPrivilegio'];
+            if($idRolAdministrador != null && $idRolAdministrador != '') {
+                $row = array(
+                    'idUsuario' => $idUsuario,
+                    'idPrivilegio' => $idRolAdministrador
+                );
+                $query = $this->db->insert('privilegio_usuario', $row);
+                if (!$query) {
+                    throw new Exception("Error en la BD");
+                }
+            }
+
             if (!$queryE || !$queryD || !$queryU) {
                 throw new Exception("Error en la BD");
             }
