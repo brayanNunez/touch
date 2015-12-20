@@ -22,7 +22,7 @@ class Registro_model extends CI_Model
 
             $data['usuario']['idEmpresa'] = $idEmpresa;
             $queryU = $this->db->insert('usuario', $data['usuario']);
-
+            $idUsuario = $this->db->insert_id();
 
             if (!$queryE || !$queryD || !$queryU) {
                 throw new Exception("Error en la BD");
@@ -35,6 +35,7 @@ class Registro_model extends CI_Model
             $pathClientes = 'files/empresas/'.$idEmpresa.'/clientes';
             $pathProveedores = 'files/empresas/'.$idEmpresa.'/proveedores';
             $pathCotizaciones = 'files/empresas/'.$idEmpresa.'/cotizaciones';
+            $pathUsuarioPrincipal = 'files/empresas/'.$idEmpresa.'/usuarios/'.$idUsuario;
             if(!is_dir($pathEmpresa)){
                 mkdir($pathEmpresa);
                 if(is_dir($pathEmpresa)){
@@ -42,6 +43,9 @@ class Registro_model extends CI_Model
                     mkdir($pathClientes);
                     mkdir($pathProveedores);
                     mkdir($pathCotizaciones);
+                    if(is_dir($pathUsuarios)) {
+                        mkdir($pathUsuarioPrincipal);
+                    }
                 }
             }
 

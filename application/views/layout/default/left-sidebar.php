@@ -9,6 +9,10 @@
                     $nombreUsuarioLogueado = $sessionActual['nombreUsuario'];
                     $rolesUsuarioLogueado = $sessionActual['rolesUsuario'];
                     $imagenUsuarioLogueado = $sessionActual['rutaImagenUsuario'];
+                    $rutaInvalida = base_url().'files/empresas/'.$sessionActual['idEmpresa'].'/usuarios/'.$sessionActual['idUsuario'].'/';
+                    if($imagenUsuarioLogueado == null || $imagenUsuarioLogueado == $rutaInvalida) {
+                        $imagenUsuarioLogueado = base_url().'files/default-user-image.png';
+                    }
                 ?>
                 <div class="col col s4 m4 l4">
                     <img src="<?= $imagenUsuarioLogueado; ?>" id="img_imagenUsuarioLogueado" alt="Imagen de perfil de usuario" class="circle responsive-img valign profile-image">
