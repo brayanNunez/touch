@@ -248,6 +248,8 @@ class Usuarios extends CI_Controller
             'contador' => true
         );
         $this->session->set_userdata('logged_in', $sess_array);
+
+        $this->input->set_cookie('logged_in_touch', $resultado['correo'], 2592000);
     }
 
     //-----------------------------------------------------

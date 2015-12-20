@@ -358,7 +358,7 @@ class Usuario_model extends CI_Model
         try {
             $this->db->trans_begin();
 
-            $this->db->select("idUsuario, idEmpresa, CONCAT(nombre, ' ', primerApellido, ' ', segundoApellido) as nombreUsuario, fotografia", false);
+            $this->db->select("idUsuario, idEmpresa, correo, CONCAT(nombre, ' ', primerApellido, ' ', segundoApellido) as nombreUsuario, fotografia", false);
             $this->db->where('idUsuario', $idUsuario);
             $query = $this->db->get('usuario');
             if (!$query) {
