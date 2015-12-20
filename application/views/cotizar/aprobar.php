@@ -50,7 +50,7 @@
                                                     <?php
                                                     } else {
 
-                                                      if ($resultado['estado'] != 'espera' && $resultado['aprobadorEstaCotizacion'] == '1') {
+                                                      if (($resultado['estado'] == 'finalizada' || $resultado['estado'] == 'facturada' || $resultado['estado'] == 'enviada' || $resultado['estado'] == 'rechazada') && $resultado['aprobadorEstaCotizacion'] == '1') {
                                                     ?>
 
                                                     <p id="mensajeAprobacion"><?= label('aprobacion_cotizacionTramitada'); ?></p>

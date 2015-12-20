@@ -530,6 +530,7 @@
 	$lang['editar'] = 'Editar';
 	$lang['duplicar'] = 'Duplicar';
 	$lang['finalizar'] = 'Finalizar';
+    $lang['facturar'] = 'Facturar';
 	$lang['on'] = 'Activo';
 	$lang['off'] = 'Inactivo';
 	$lang['loguear'] = 'Ingresar';
@@ -630,6 +631,8 @@
     $lang['cotizacionRechazada'] = 'Cotización rechazada';
 
     $lang['cotizacionEnviadaContador'] = 'Cotización enviada a los contadores.';
+
+    $lang['cotizacionFacturada'] = 'Cotización facturada correctamente.';
 
     $lang['paso3_codCotizacion:'] = 'Código de cotización: ';
     $lang['paso3_cliente:'] = 'Cliente: ';
@@ -1349,6 +1352,7 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['tooltip_annadir'] = 'Añadir';
     $lang['tooltip_duplicar'] = 'Duplicar';
     $lang['tooltip_finalizar'] = 'Finalizar';
+    $lang['tooltip_facturar'] = 'Facturar';
     $lang['tooltip_examinar'] = 'Examinar';
     $lang['tooltip_eliminar'] = 'Eliminar';
     $lang['tooltip_revisar'] = 'Revisar';
@@ -1520,6 +1524,10 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['finalizar_textoContador'] = 'Se ha finalizado una cotización, en el siguiente enlace puedes facturarla.';
 
     $lang['finalizar_mensaje'] = 'Al finalizar la cotización, esta podrá ser facturada. ¿Realmente desea finalizar la cotización?';
+
+    $lang['facturar_mensaje'] = '¿Realmente desea dar por facturada esta cotización?';
+
+    
 
     
 
