@@ -385,7 +385,7 @@
     </div>
 </div>
 
-<div id="transaccionIncorrecta" class="modal">
+<!-- <div id="transaccionIncorrecta" class="modal">
     <div  class="modal-header headerTransaccionIncorrecta">
         <p><?= label('nombreSistema'); ?></p>
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
@@ -396,7 +396,7 @@
     <div class="modal-footer">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
-</div>
+</div> -->
 
 <div id="modal_transaccionIncorrecta" class="modal">
     <div  class="modal-header headerTransaccionIncorrecta">

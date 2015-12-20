@@ -323,6 +323,46 @@ class ManejadorPDF extends CI_Controller
         echo $resultado;
 
     }
+
+        public function enviarCotizacionContador($idEmpresa, $idCotizacionEncriptado){
+
+        $data['idCotizacion'] = decryptIt($idCotizacionEncriptado);
+
+        $data['estado'] = 5; //estado finalizada
+
+        $idCotizacion = $data['idCotizacion'];
+
+        $resultado = $this->Cotizacion_model->editarEstado($data); 
+
+        if ($resultado) {
+           
+            $this->load->library('email');
+            $this->email->from('brayannr@hotmail.es', 'Brayan');
+
+            $linkCotizacionVer = base_url().'cotizacion/facturar/'.$idCotizacionEncriptado;
+
+            $data = array( 
+                'correoVendedor' => $correo,
+                'envio_asunto' => label('finalizar_asuntoContador'),  
+                'envio_texto' => label('finalizar_textoContador')
+                );
+
+            $this->email->from('brayannr@hotmail.es', 'Brayan');
+            $this->email->to($data['correoVendedor']);
+
+            $this->email->subject($data['envio_asunto']);
+
+            $this->email->message($data['envio_texto'].' '.$linkCotizacionVer);
+            // $this->email->attach(null);
+
+            
+            $this->email->send(); 
+
+        }
+
+        echo $resultado;
+
+    }
     
     public function enviarCotizacionCliente($idEmpresa, $idCotizacionEncriptado){
 
@@ -409,7 +449,7 @@ class ManejadorPDF extends CI_Controller
 
             // echo print_r($data); exit();
 
-            $linkCotizacionVer = base_url().'cotizacion/ver/'.$idCotizacionEncriptado;
+            $linkCotizacionVer = base_url().'cotizacion/finalizar/'.$idCotizacionEncriptado;
 
             
             // $this->load->library('email');
