@@ -596,7 +596,9 @@
     $lang['paso2_agregarServicio'] = 'Agregar servicio';
     $lang['confirmarActualizarPrecio'] = 'Este servicio ha cambiado su precio con respecto al momento en el que se agregó la línea de detalle. ¿Desea actualizar el precio del servicio?';
 
-    
+    $lang['paso2_servicio_confirmarEliminarGasto'] = '¿Realmente desea eliminar el gasto seleccionado?';
+    $lang['paso2_servicio_confirmarEliminarSubfase'] = '¿Realmente desea eliminar la subfase seleccionada?';
+    $lang['paso2_servicio_confirmarEliminarFase'] = '¿Realmente desea eliminar la fase seleccionada?';
 
     $lang['modalServicio_total'] = 'TOTAL';
 

@@ -1182,8 +1182,20 @@ $(document).on('ready', function(){
         $(document).on('click','.confirmarEliminarGasto', function () {
             idEliminarGasto = $(this).data('id-eliminar');
             filaEliminarGasto = $(this).parents('tr');
-            $('#linkGastosEliminar').click();
-            //esto se hace porque al agregar un <a class="modal-trigger"> dinamicamente con el metodo de agregarNuevoContacto() pareciera no servir, entonces lo que se hace es llamar al evento click del modal-trigger con el id = linkContactosElimminar
+            var confirmarEliminarGasto = confirm('<?= label('paso2_servicio_confirmarEliminarGasto'); ?>');
+            if(confirmarEliminarGasto == 1) {
+                filaEliminarGasto.fadeOut(function () {
+                    filaEliminarGasto.empty();
+                    filaEliminarGasto.remove();
+                    actualizarMontos();
+                });
+                contadorFilasGastos--;
+                actualizarCantidadGastos();
+                var id = gastosTabla.indexOf('' + idEliminarGasto);
+                gastosTabla[id] = '';
+            }
+//            $('#linkGastosEliminar').click();
+//            esto se hace porque al agregar un <a class="modal-trigger"> dinamicamente con el metodo de agregarNuevoContacto() pareciera no servir, entonces lo que se hace es llamar al evento click del modal-trigger con el id = linkContactosElimminar
         });
         $('#eliminarGasto #botonEliminar').on('click', function () {
             event.preventDefault();
@@ -1344,7 +1356,7 @@ $(document).on('ready', function(){
             cantidadFases++;
             actualizarCantidad();
 
-            var boton = '<a href="#eliminarSubFase" data-id-eliminar="1" class="-text modal-trigger confirmarEliminar boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>';
+            var boton = '<a data-id-eliminar="1" class="-text confirmarEliminar boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a>';
             // var codigo = 'PROG-0001';
             // var nombre = 'ERS';
             // var des = 'Requerimientos de software Nuevo';
@@ -1378,13 +1390,37 @@ $(document).on('ready', function(){
         $(document).on('click','.confirmarEliminar', function () {
             // idEliminar = $(this).data('id-eliminar');
             filaEliminar = $(this).parents('tr');
+
+            var confirmarEliminarSubfase = confirm('<?= label('paso2_servicio_confirmarEliminarSubfase'); ?>');
+            if(confirmarEliminarSubfase == 1) {
+                filaEliminar.fadeOut(function () {
+                    $('#tabla-servicio').dataTable().fnDeleteRow(filaEliminar);
+                    verificarChecks();
+                });
+                cantidadFases--;
+                actualizarCantidad();
+            }
         });
         var grupoEliminar = null;
 
         $(document).on('click','.confirmarEliminarGrupo', function () {
             // idEliminar = $(this).data('id-eliminar');
             grupoEliminar = $(this).attr('data-grupo');
-            // filaEliminar = $(this).parents('tr');
+
+            var confirmarEliminarFase = confirm('<?= label('paso2_servicio_confirmarEliminarFase'); ?>');
+            if(confirmarEliminarFase == 1) {
+                $('input[data-grupo=' + grupoEliminar + ']').parents('tr').each(function () {
+                    // alert($(this).parents('tr').html);
+                    $(this).fadeOut(function () {
+                        $('#tabla-servicio').dataTable().fnDeleteRow($(this));
+                    });
+                    cantidadFases--;
+                    actualizarCantidad();
+                });
+                verificarChecks();
+                cantidadFases--;
+                actualizarCantidad();
+            }
         });
 
         $('#eliminarSubFase #botonEliminar').on('click', function () {
@@ -1442,7 +1478,7 @@ $(document).on('ready', function(){
                     if ( last !== group ) {
                         // alert(group);
                         $(rows).eq( i ).before(
-                            '<tr class="group"><td>'+codigo+'</td><td>'+nombre+'</td><td>'+descripcion+'</td><td id="'+codigo+'">0</td><td><a href="#eliminarFase" data-grupo="'+codigo+'" class="-text modal-trigger confirmarEliminarGrupo boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a></td></tr>'
+                            '<tr class="group"><td>'+codigo+'</td><td>'+nombre+'</td><td>'+descripcion+'</td><td id="'+codigo+'">0</td><td><a data-grupo="'+codigo+'" class="-text confirmarEliminarGrupo boton-opciones btn-flat white-text"><?= label('menuOpciones_eliminar'); ?></a></td></tr>'
                         );
 
                         last = group;
