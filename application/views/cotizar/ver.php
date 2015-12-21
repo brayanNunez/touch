@@ -28,7 +28,7 @@
                                     <div id="table-datatables">
                                         <div class="row">
                                             <div class="col s12">
-                                              <iframe id="vistaPrevia" class="col s12" height="500px" src="<?= base_url() ?>files/empresas/<?= $idEmpresa;?>/cotizaciones/<?= encryptIt($idCotizacion);?>/sistema/test.pdf">
+                                              <iframe id="vistaPrevia" class="col s12" height="500px" src="<?= base_url() ?>files/empresas/<?= $idEmpresa;?>/cotizaciones/<?= encryptIt($idCotizacion);?>/sistema/cotizacion.pdf">
                                               </iframe>
                                             </div>
                                         </div>
