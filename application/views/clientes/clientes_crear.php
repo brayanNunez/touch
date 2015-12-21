@@ -414,6 +414,11 @@
                                     contador = 0;
                                     actualizarCantidad();
                                     $('#contenedorContactos').empty();
+
+                                    var checkVendedores = $('#checkbox_todosVendedores');
+                                    if (!checkVendedores.prop('checked')) {
+                                        checkVendedores.click();
+                                    }
                                 }
                             },
                             cache: false,

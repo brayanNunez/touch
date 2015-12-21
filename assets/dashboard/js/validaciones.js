@@ -34,7 +34,7 @@
 
              var cliente_contactoNombre = {required: true, maxlength: 45};
              var cliente_contactoApellido1 = {required: true, maxlength: 45};
-             var cliente_contactoApellido2 = {required: true, maxlength: 45};
+             var cliente_contactoApellido2 = {required: false, maxlength: 45};
              var cliente_contactoCorreo = {required: true, maxlength: 45};
              var cliente_contactoPuesto = {required: true, maxlength: 45};
              var cliente_contactoTelefono = {required: true, maxlength: 45};
@@ -114,7 +114,7 @@
 
                 cliente_id: {required: true, maxlength: 45},
                 cliente_apellido1: {required: true, maxlength: 45},
-                cliente_apellido2: {required: true, maxlength: 45},
+                cliente_apellido2: {required: false, maxlength: 45},
                 cliente_nombre: {required: true, maxlength: 45},
                 cliente_correo: {required: true, maxlength: 45},
                 cliente_telefonoMovil: {required: true, maxlength: 45},
@@ -128,10 +128,10 @@
                 clientejuridico_telefono: {required: true, maxlength: 45},
                 clientejuridico_fax: {required: true, maxlength: 45},
 
-                // cliente_direccionPais: {required: true, maxlength: 45},
-                // cliente_direccionProvincia: {required: true, maxlength: 45},
-                // cliente_direccionCanton: {required: true, maxlength: 45},
-                // cliente_direccionDomicilio: {required: true, maxlength: 200},
+                 cliente_direccionPais: {required: false, maxlength: 45},
+                 cliente_direccionProvincia: {required: true, maxlength: 45},
+                 cliente_direccionCanton: {required: true, maxlength: 45},
+                 cliente_direccionDomicilio: {required: false, maxlength: 200},
 
                 cliente_descuento: {required: true, maxlength: 45}
              };
