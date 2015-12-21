@@ -1,13 +1,4 @@
-<button id="prueba">(PRUEBA)Ver el valor de los impuestos</button>
-
-<script type="text/javascript">
-// $(document).on('ready', function()){
-    $('#prueba').click(function(){
-        $.each($("#servicio_impuestos").tagsinput('items'), function( index, value ) {
-            alert( index + ": " + value['valor'] );
-        });
-     });
-</script>
+<!-- <button id="prueba">(PRUEBA)Ver el valor de los impuestos</button> -->
 
 <section id="content">
     <!--start breadcrumbs-->

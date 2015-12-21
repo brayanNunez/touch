@@ -28,7 +28,7 @@
                                     <div id="table-datatables">
                                         <div class="row">
                                             <div class="col s12">
-                                              <iframe id="vistaPrevia" class="col s12" height="500px" src="<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/cotizaciones/<?= encryptIt($resultado['idCotizacion']);?>/sistema/test.pdf">
+                                              <iframe id="vistaPrevia" class="col s12" height="500px" src="<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/cotizaciones/<?= encryptIt($resultado['idCotizacion']);?>/sistema/cotizacion.pdf">
                                               </iframe>
                                                   <!-- <div class="input-field col s12 m4 l4"> -->
                                                   <?php

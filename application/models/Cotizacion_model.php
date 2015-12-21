@@ -343,7 +343,7 @@ class Cotizacion_model extends CI_Model
 
             // echo $datos['idUsuario']; exit();
 
-            $clientes = $this->db->query("SELECT cl.idCliente, cl.nombre, cl.primerApellido, cl.segundoApellido, cl.todosVendedores, mec.valido  FROM cliente as cl left join (SELECT uc.idCliente, 1 as valido FROM usuario_cliente as uc inner join usuario as u on u.idUsuario = uc.idUsuario where u.idUsuario = ".$datos['idUsuario'].") as mec on mec.idCliente = cl.idCliente where cl.eliminado = 0 order by nombre ASC ;");
+            $clientes = $this->db->query("SELECT cl.idMonedaDefecto, cl.idFormaPagoDefecto, cl.descuentoFijo, cl.idCliente, cl.nombre, cl.primerApellido, cl.segundoApellido, cl.todosVendedores, mec.valido  FROM cliente as cl left join (SELECT uc.idCliente, 1 as valido FROM usuario_cliente as uc inner join usuario as u on u.idUsuario = uc.idUsuario where u.idUsuario = ".$datos['idUsuario'].") as mec on mec.idCliente = cl.idCliente where cl.eliminado = 0 order by nombre ASC ;");
             if (!$clientes)  throw new Exception("Error en la BD");
             $clientes = $clientes->result_array();
             // echo print_r($clientes); exit();
@@ -567,7 +567,7 @@ class Cotizacion_model extends CI_Model
             $array = $query->result_array(); 
             $data['cotizacion'] = array_shift($array);
 
-            $clientes = $this->db->query("SELECT cl.idCliente, cl.nombre, cl.primerApellido, cl.segundoApellido, cl.todosVendedores, mec.valido  FROM cliente as cl left join (SELECT uc.idCliente, 1 as valido FROM usuario_cliente as uc inner join usuario as u on u.idUsuario = uc.idUsuario where u.idUsuario = ".$data['cotizacion']['idUsuario'].") as mec on mec.idCliente = cl.idCliente where cl.eliminado = 0 order by nombre ASC ;");
+            $clientes = $this->db->query("SELECT cl.idMonedaDefecto, cl.idFormaPagoDefecto, cl.descuentoFijo, cl.idCliente, cl.nombre, cl.primerApellido, cl.segundoApellido, cl.todosVendedores, mec.valido  FROM cliente as cl left join (SELECT uc.idCliente, 1 as valido FROM usuario_cliente as uc inner join usuario as u on u.idUsuario = uc.idUsuario where u.idUsuario = ".$data['cotizacion']['idUsuario'].") as mec on mec.idCliente = cl.idCliente where cl.eliminado = 0 order by nombre ASC ;");
             if (!$clientes)  throw new Exception("Error en la BD");
             $clientes = $clientes->result_array();
             $misClientes = array();
@@ -1053,7 +1053,7 @@ class Cotizacion_model extends CI_Model
             // }
             // $resultado = $clientes->result_array();
 
-            $clientes = $this->db->query("SELECT cl.idCliente, cl.nombre, cl.primerApellido, cl.segundoApellido, cl.todosVendedores, mec.valido, cl.juridico  FROM cliente as cl left join (SELECT uc.idCliente, 1 as valido FROM usuario_cliente as uc inner join usuario as u on u.idUsuario = uc.idUsuario where u.idUsuario = ".$idUsuario.") as mec on mec.idCliente = cl.idCliente where cl.eliminado = 0 order by nombre ASC ;");
+            $clientes = $this->db->query("SELECT cl.idMonedaDefecto, cl.idFormaPagoDefecto, cl.descuentoFijo, cl.idCliente, cl.nombre, cl.primerApellido, cl.segundoApellido, cl.todosVendedores, mec.valido, cl.juridico  FROM cliente as cl left join (SELECT uc.idCliente, 1 as valido FROM usuario_cliente as uc inner join usuario as u on u.idUsuario = uc.idUsuario where u.idUsuario = ".$idUsuario.") as mec on mec.idCliente = cl.idCliente where cl.eliminado = 0 order by nombre ASC ;");
             if (!$clientes)  throw new Exception("Error en la BD");
             $clientes = $clientes->result_array();
             // echo print_r($clientes); exit();

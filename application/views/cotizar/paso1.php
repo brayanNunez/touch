@@ -233,6 +233,7 @@
             data: { idCliente : $idCliente },
             success: function(response)
             {
+                arrayClientes = $.parseJSON(response);
                 generarAutocompletarContactos($.parseJSON(response), $id);
                 generarListas();
             }
@@ -712,11 +713,30 @@
     $(document).on('change', '#paso1Cliente', function () {
         // alert('aqui es');
         var clienteElegido = $(this).val();
-        // cargarAtencion(clienteElegido);
+        for (var i = 0; i < arrayClientes.length; i++) {
+            var cliente = arrayClientes[i];
+            if (cliente['idCliente'] == clienteElegido) {
+                seleccionarMonedaClienteDefecto(cliente['idMonedaDefecto']);
+                seleccionarFormaPagoClienteDefecto(cliente['idFormaPagoDefecto']);
+                $('#paso2_descuentoCotizacion').val(cliente['descuentoFijo']);
+            };
+        };
+        
 
         actualizarSelectContactos(clienteElegido,  0);
         $('#cliente_contactoIdCliente').val(clienteElegido);
     });
+
+
+    function seleccionarMonedaClienteDefecto(idMoneda){
+        $('#paso1Moneda option[value='+ idMoneda +']').prop('selected', true);
+        $('#paso1Moneda').trigger("chosen:updated");
+        valorMonedaElegida(idMoneda);
+    }
+    function seleccionarFormaPagoClienteDefecto(idFormaPago){
+        $('#paso1FormaPago option[value='+ idFormaPago +']').prop('selected', true);
+        $('#paso1FormaPago').trigger("chosen:updated");
+    }
     // function contactosClienteAgregado($idCliente) {
     //     actualizarSelectContactos($idCliente, 0);
     // }

@@ -563,7 +563,7 @@
                 // alert(response);
                $('#botonPaso4').text('<?= label('paso4'); ?>');
 
-               $('#vistaPrevia').attr('src', "<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/cotizaciones/<?= encryptIt($resultado['idCotizacion']);?>/sistema/test.pdf");
+               $('#vistaPrevia').attr('src', "<?= base_url() ?>files/empresas/<?= $resultado['idEmpresa'];?>/cotizaciones/<?= encryptIt($resultado['idCotizacion']);?>/sistema/cotizacion.pdf");
            }
      });
 

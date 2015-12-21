@@ -95,7 +95,7 @@ class ManejadorPDF extends CI_Controller
             $this->html2pdf->folder('./files/facturas/');
 
             //establecemos el nombre del archivo
-            $this->html2pdf->filename('test.pdf');
+            $this->html2pdf->filename('cotizacion.pdf');
 
             //establecemos el tipo de papel
             $this->html2pdf->paper('a4', 'portrait');
@@ -148,7 +148,7 @@ class ManejadorPDF extends CI_Controller
             $this->html2pdf->folder("./files/empresas/".$idEmpresa."/cotizaciones/".$idCotizacion."/sistema/");
 
             //establecemos el nombre del archivo
-            $this->html2pdf->filename('test.pdf');
+            $this->html2pdf->filename('cotizacion.pdf');
 
             //establecemos el tipo de papel
             $this->html2pdf->paper('a4', 'portrait');
@@ -183,10 +183,10 @@ class ManejadorPDF extends CI_Controller
             $this->createFolder($idEmpresa, $idCotizacion);
 
             //importante el slash del final o no funcionará correctamente
-            $this->html2pdf->folder('./files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacion.'/sistema/');//http://localhost/Proyectos/touch/files/empresas/1/cotizaciones/sUHDEO5uALpWDV9EYoz7nwX5kRlMa_OcdGtdOhB2-es/sistema/test.pdf
+            $this->html2pdf->folder('./files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacion.'/sistema/');//http://localhost/Proyectos/touch/files/empresas/1/cotizaciones/sUHDEO5uALpWDV9EYoz7nwX5kRlMa_OcdGtdOhB2-es/sistema/cotizacion.pdf
 
             //establecemos el nombre del archivo
-            $this->html2pdf->filename('test.pdf');
+            $this->html2pdf->filename('cotizacion.pdf');
 
             //establecemos el tipo de papel
             $this->html2pdf->paper('a4', 'portrait');
@@ -226,7 +226,7 @@ class ManejadorPDF extends CI_Controller
         $this->html2pdf->folder('./files/pdfs/');
 
         //establecemos el nombre del archivo
-        $this->html2pdf->filename('test.pdf');
+        $this->html2pdf->filename('cotizacion.pdf');
 
         //establecemos el tipo de papel
         $this->html2pdf->paper('a4', 'portrait');
@@ -252,9 +252,9 @@ class ManejadorPDF extends CI_Controller
         //si existe el directorio
         if (is_dir("./files/pdfs")) {
             //ruta completa al archivo
-            $route = base_url("files/pdfs/test.pdf");
+            $route = base_url("files/pdfs/cotizacion.pdf");
             //nombre del archivo
-            $filename = "test.pdf";
+            $filename = "cotizacion.pdf";
             //si existe el archivo empezamos la descarga del pdf
             if (file_exists("./files/empresas/1/cotizaciones/1Wne37xEaHvwxOH8dvJ9-XHuNfMq8NtfPawpbQqLB7w/sistema" . $filename)) {
                 header("Cache-Control: public");
@@ -274,8 +274,8 @@ class ManejadorPDF extends CI_Controller
     public function show()
     {
         if (is_dir("./files/pdfs")) {
-            $filename = "test.pdf";
-            $route = base_url("files/pdfs/test.pdf");
+            $filename = "cotizacion.pdf";
+            $route = base_url("files/pdfs/cotizacion.pdf");
             if (file_exists("./files/pdfs/" . $filename)) {
                 header('Content-type: application/pdf');
                 readfile($route);
@@ -431,8 +431,8 @@ class ManejadorPDF extends CI_Controller
             // echo print_r($arrayDestinatario); exit();
 
 
-            $rutaSistema = './files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/sistema/test.pdf';
-            $rutaCliente ='./files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/cliente/test.pdf';
+            $rutaSistema = './files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/sistema/cotizacion.pdf';
+            $rutaCliente ='./files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/cliente/cotizacion.pdf';
             copy($rutaSistema, $rutaCliente); 
             
             $this->load->library('email');
@@ -445,7 +445,7 @@ class ManejadorPDF extends CI_Controller
 
             $texto = $data['envio_texto'];
             if ($data['envio_link']) {
-                $texto = $data['envio_texto'].' '.base_url().'files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/cliente/test.pdf';
+                $texto = $data['envio_texto'].' '.base_url().'files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/cliente/cotizacion.pdf';
             }
             $this->email->message($texto);
 
@@ -532,7 +532,7 @@ class ManejadorPDF extends CI_Controller
         $this->html2pdf->folder('./files/pdfs/');
 
         //establecemos el nombre del archivo
-        $this->html2pdf->filename('test.pdf');
+        $this->html2pdf->filename('cotizacion.pdf');
 
         //establecemos el tipo de papel
         $this->html2pdf->paper('a4', 'portrait');
