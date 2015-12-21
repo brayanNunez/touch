@@ -932,9 +932,34 @@
             }
         }
         if(!existeCodigoAgregar) {
-            agregarNuevoGasto(tipo.val(), codigo.val(), nombre.val(), categoria.val(), formaPago.val(), monto.val());
-            $('#agregarGasto .modal-header a').click();
-            limpiarFormGasto();
+            if(codigo.val() == '') {
+                alert('<?= label('formProveedores_gastos_codigo'); ?>');
+                codigo.focus();
+            } else {
+                if (nombre.val() == '') {
+                    alert('<?= label('formProveedores_gastos_nombre'); ?>');
+                    nombre.focus();
+                } else {
+                    if (categoria.val() == null) {
+                        alert('<?= label('formProveedores_gastos_categoria'); ?>');
+                        categoria.focus();
+                    } else {
+                        if (formaPago.val() == null) {
+                            alert('<?= label('formProveedores_gastos_formaPago'); ?>');
+                            formaPago.focus();
+                        } else {
+                            if (monto.val() == '') {
+                                alert('<?= label('formProveedores_gastos_monto'); ?>');
+                                monto.focus();
+                            } else {
+                                agregarNuevoGasto(tipo.val(), codigo.val(), nombre.val(), categoria.val(), formaPago.val(), monto.val());
+                                $('#agregarGasto .modal-header a').click();
+                                limpiarFormGasto();
+                            }
+                        }
+                    }
+                }
+            }
         } else {
             alert('<?= label('proveedores_codigoGastoNoValido'); ?>');
             $('#agregarGasto #gasto_codigo').focus();
@@ -1031,54 +1056,79 @@
         $('label').addClass('active');
     });
     $(document).on('click', '#editarGasto #btnEditarGasto', function () {
-        var tipo = $('#editarGasto #gasto_tipo').val();
-        var codigo = $('#editarGasto #gasto_codigo').val();
-        var nombre = $('#editarGasto #gasto_nombre').val();
-        var categoria = $('#editarGasto #gasto_categoria').val();
-        var formaPago = $('#editarGasto #gasto_formaPago').val();
-        var monto = $('#editarGasto #gasto_monto').val();
+        var tipo = $('#editarGasto #gasto_tipo');
+        var codigo = $('#editarGasto #gasto_codigo');
+        var nombre = $('#editarGasto #gasto_nombre');
+        var categoria = $('#editarGasto #gasto_categoria');
+        var formaPago = $('#editarGasto #gasto_formaPago');
+        var monto = $('#editarGasto #gasto_monto');
         var existeCodigo = false;
         for(var j = 0; j < arrayNombres.length; j++) {
-            if(arrayNombres[j]['codigo'] == codigo) {
+            if(arrayNombres[j]['codigo'] == codigo.val()) {
                 existeCodigo = true;
                 break;
             }
         }
         for(var k = 0; k < nombres.length; k++) {
-            if(nombres[k]['codigo'] == codigo && nombres[k]['idGasto'] != idEditar) {
+            if(nombres[k]['codigo'] == codigo.val() && nombres[k]['idGasto'] != idEditar) {
                 existeCodigo = true;
                 break;
             }
         }
         if(!existeCodigo) {
-            $('#gasto' + idEditar + '_tipo').val(tipo);
-            $('#gasto' + idEditar + '_codigo').val(codigo);
-            $('#gasto' + idEditar + '_nombre').val(nombre);
-            $('#gasto' + idEditar + '_categoria').val(categoria);
-            $('#gasto' + idEditar + '_formaPago').val(formaPago);
-            $('#gasto' + idEditar + '_monto').val(monto);
+            if(codigo.val() == '') {
+                alert('<?= label('formProveedores_gastos_codigo'); ?>');
+                codigo.focus();
+            } else {
+                if (nombre.val() == '') {
+                    alert('<?= label('formProveedores_gastos_nombre'); ?>');
+                    nombre.focus();
+                } else {
+                    if (categoria.val() == null) {
+                        alert('<?= label('formProveedores_gastos_categoria'); ?>');
+                        categoria.focus();
+                    } else {
+                        if (formaPago.val() == null) {
+                            alert('<?= label('formProveedores_gastos_formaPago'); ?>');
+                            formaPago.focus();
+                        } else {
+                            if (monto.val() == '') {
+                                alert('<?= label('formProveedores_gastos_monto'); ?>');
+                                monto.focus();
+                            } else {
+                                $('#gasto' + idEditar + '_tipo').val(tipo.val());
+                                $('#gasto' + idEditar + '_codigo').val(codigo.val());
+                                $('#gasto' + idEditar + '_nombre').val(nombre.val());
+                                $('#gasto' + idEditar + '_categoria').val(categoria.val());
+                                $('#gasto' + idEditar + '_formaPago').val(formaPago.val());
+                                $('#gasto' + idEditar + '_monto').val(monto.val());
 
-            var nombreTipo = 'Fijo';
-            if (tipo == 2) {
-                nombreTipo = 'Variable';
-            }
-            var nombreCategoria = $("#editarGasto #gasto_categoria option[value='" + categoria + "']").text();
-            var nombreFormaPago = $("#editarGasto #gasto_formaPago option[value='" + formaPago + "']").text();
+                                var nombreTipo = 'Fijo';
+                                if (tipo.val() == 2) {
+                                    nombreTipo = 'Variable';
+                                }
+                                var nombreCategoria = $("#editarGasto #gasto_categoria option[value='" + categoria.val() + "']").text();
+                                var nombreFormaPago = $("#editarGasto #gasto_formaPago option[value='" + formaPago.val() + "']").text();
 
-//        alert(nombreTipo + '  -  ' + codigo + '  -  ' + nombre + '  -  ' + nombreCategoria + '  -  ' + nombreFormaPago + '  -  ' + monto);
-            $('#span_gasto' + idEditar + '_tipo').text(nombreTipo);
-            $('#span_gasto' + idEditar + '_codigo').text(codigo);
-            $('#span_gasto' + idEditar + '_nombre').text(nombre);
-            $('#span_gasto' + idEditar + '_categoria').text(nombreCategoria);
-            $('#span_gasto' + idEditar + '_formaPago').text(nombreFormaPago);
-            $('#span_gasto' + idEditar + '_monto').empty().html('<span class="moneda_signo"></span>' + monto);
+//                              alert(nombreTipo + '  -  ' + codigo + '  -  ' + nombre + '  -  ' + nombreCategoria + '  -  ' + nombreFormaPago + '  -  ' + monto);
+                                $('#span_gasto' + idEditar + '_tipo').text(nombreTipo);
+                                $('#span_gasto' + idEditar + '_codigo').text(codigo.val());
+                                $('#span_gasto' + idEditar + '_nombre').text(nombre.val());
+                                $('#span_gasto' + idEditar + '_categoria').text(nombreCategoria);
+                                $('#span_gasto' + idEditar + '_formaPago').text(nombreFormaPago);
+                                $('#span_gasto' + idEditar + '_monto').empty().html('<span class="moneda_signo"></span>' + monto.val());
 
-            for (var i = 0; i < nombres.length; i++) {
-                if (nombres[i]['idGasto'] == idEditar) {
-                    nombres[i]['codigo'] = codigo;
+                                for (var i = 0; i < nombres.length; i++) {
+                                    if (nombres[i]['idGasto'] == idEditar) {
+                                        nombres[i]['codigo'] = codigo.val();
+                                    }
+                                }
+                                $('#editarGasto .modal-header a').click();
+                            }
+                        }
+                    }
                 }
             }
-            $('#editarGasto .modal-header a').click();
         } else {
             alert('<?= label('proveedores_codigoGastoNoValido'); ?>');
             $('#editarGasto #gasto_codigo').focus();

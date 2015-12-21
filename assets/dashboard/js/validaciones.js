@@ -128,7 +128,7 @@
                 clientejuridico_telefono: {required: true, maxlength: 45},
                 clientejuridico_fax: {required: true, maxlength: 45},
 
-                 cliente_direccionPais: {required: false, maxlength: 45},
+                 cliente_direccionPais: {required: true, maxlength: 45},
                  cliente_direccionProvincia: {required: true, maxlength: 45},
                  cliente_direccionCanton: {required: true, maxlength: 45},
                  cliente_direccionDomicilio: {required: false, maxlength: 200},
@@ -468,7 +468,7 @@
 
             var proveedor_contactoNombre = {required: true, maxlength: 45};
             var proveedor_contactoApellido1 = {required: true, maxlength: 45};
-            var proveedor_contactoApellido2 = {required: true, maxlength: 45};
+            var proveedor_contactoApellido2 = {required: false, maxlength: 45};
             var proveedor_contactoCorreo = {required: true, maxlength: 45};
             var proveedor_contactoPuesto = {required: true, maxlength: 45};
             var proveedor_contactoTelefono = {required: true, maxlength: 45};
@@ -523,7 +523,7 @@
 
                 persona_identificacion: { required: true, maxlength: 45},
                 persona_apellido1: { required: true, maxlength: 45},
-                persona_apellido2: { required: true, maxlength: 45},
+                persona_apellido2: { required: false, maxlength: 45},
                 persona_nombre: { required: true, maxlength: 45},
                 persona_correo: { required: true, maxlength: 45},
                 persona_telefonoMovil: { required: true, maxlength: 45},
@@ -537,10 +537,10 @@
                 personajuridico_fax: { required: true, maxlength: 45},
                 persona_palabras: { required: true, maxlength: 45},
                 persona_descripcion: { required: false, maxlength: 200},
-                // persona_direccionPais: { required: true, maxlength: 45},
-                // persona_direccionProvincia: { required: true, maxlength: 45},
-                // persona_direccionCanton: { required: true, maxlength: 45},
-                // persona_direccionDomicilio: { required: true, maxlength: 200}
+                 persona_direccionPais: { required: false, maxlength: 45},
+                 persona_direccionProvincia: { required: true, maxlength: 45},
+                 persona_direccionCanton: { required: true, maxlength: 45},
+                 persona_direccionDomicilio: { required: false, maxlength: 200}
             };
 
             $('#formPersona').validate({
