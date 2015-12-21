@@ -240,12 +240,12 @@ class Usuarios extends CI_Controller
             'idUsuario' => $idUsuario,
             'idUsuarioEncriptado' => encryptIt($idUsuario),
             'nombreUsuario' => $resultado['nombreUsuario'],
-            'rolesUsuario' => $resultado['roles'],
+            'rolesUsuario' => $resultado['roles_string'],
             'rutaImagenUsuario' => base_url().'files/empresas/'.$idEmpresa.'/usuarios/'.$idUsuario.'/'.$resultado['fotografia'],
-            'administrador' => true,
-            'aprobador' => true,
-            'cotizador' => true,
-            'contador' => true
+            'administrador' => $resultado['roles']['rolAdministrador'],
+            'aprobador' => $resultado['roles']['rolAprobador'],
+            'cotizador' => $resultado['roles']['rolCotizador'],
+            'contador' => $resultado['roles']['rolContador']
         );
         $this->session->set_userdata('logged_in', $sess_array);
 
@@ -358,7 +358,7 @@ class Usuarios extends CI_Controller
                          'idUsuario' => $idUsuario,
                          'idUsuarioEncriptado' => encryptIt($idUsuario),
                          'nombreUsuario' => $resultado_datos['nombreUsuario'],
-                         'rolesUsuario' => $resultado_datos['roles'],
+                         'rolesUsuario' => $resultado_datos['roles_string'],
                          'rutaImagenUsuario' => base_url().'files/empresas/'.$idEmpresa.'/usuarios/'.$idUsuario.'/'.$resultado_datos['fotografia'],
                          'administrador' => $resultado['roles']['rolAdministrador'],
                          'aprobador' => $resultado['roles']['rolAprobador'],

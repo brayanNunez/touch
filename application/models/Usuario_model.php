@@ -375,7 +375,12 @@ class Usuario_model extends CI_Model
                     throw new Exception("Error en la BD");
                 }
                 $privilegios = $query->result_array();
-
+                $roles = array(
+                    'rolAdministrador' => false,
+                    'rolAprobador' => false,
+                    'rolCotizador' => false,
+                    'rolContador' => false
+                );
                 $rolesAsignados = '';
                 foreach ($privilegios as $pr) {
                     if($rolesAsignados != '') {
@@ -383,20 +388,25 @@ class Usuario_model extends CI_Model
                     }
                     switch($pr['idPrivilegio']) {
                         case 1:
+                            $roles['rolAdministrador'] = true;
                             $rolesAsignados .= 'Administrador';
                             break;
                         case 2:
+                            $roles['rolAprobador'] = true;
                             $rolesAsignados .= 'Aprobador';
                             break;
                         case 3:
+                            $roles['rolCotizador'] = true;
                             $rolesAsignados .= 'Cotizador';
                             break;
                         case 4:
+                            $roles['rolContador'] = true;
                             $rolesAsignados .= 'Contador';
                             break;
                     }
                 }
-                $row['roles'] = $rolesAsignados;
+                $row['roles_string'] = $rolesAsignados;
+                $row['roles'] = $roles;
             }
             $this->db->trans_commit();
             return $row;

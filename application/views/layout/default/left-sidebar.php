@@ -1,19 +1,23 @@
 <!-- START LEFT SIDEBAR NAV-->
 <aside id="left-sidebar-nav">
+    <?php
+    $sessionActual = $this->session->userdata('logged_in');
+    $idUsuarioLogueado = $sessionActual['idUsuarioEncriptado'];
+    $nombreUsuarioLogueado = $sessionActual['nombreUsuario'];
+    $rolesUsuarioLogueado = $sessionActual['rolesUsuario'];
+    $imagenUsuarioLogueado = $sessionActual['rutaImagenUsuario'];
+    $rutaInvalida = base_url().'files/empresas/'.$sessionActual['idEmpresa'].'/usuarios/'.$sessionActual['idUsuario'].'/';
+    if($imagenUsuarioLogueado == null || $imagenUsuarioLogueado == $rutaInvalida) {
+        $imagenUsuarioLogueado = base_url().'files/default-user-image.png';
+    }
+    $rolAdministrador = $sessionActual['administrador'];
+    $rolAprobador = $sessionActual['aprobador'];
+    $rolCotizador = $sessionActual['cotizador'];
+    $rolContador = $sessionActual['contador'];
+    ?>
     <ul id="slide-out" class="side-nav fixed leftside-navigation">
         <li class="user-details cyan darken-2">
             <div class="row">
-                <?php
-                    $sessionActual = $this->session->userdata('logged_in');
-                    $idUsuarioLogueado = $sessionActual['idUsuarioEncriptado'];
-                    $nombreUsuarioLogueado = $sessionActual['nombreUsuario'];
-                    $rolesUsuarioLogueado = $sessionActual['rolesUsuario'];
-                    $imagenUsuarioLogueado = $sessionActual['rutaImagenUsuario'];
-                    $rutaInvalida = base_url().'files/empresas/'.$sessionActual['idEmpresa'].'/usuarios/'.$sessionActual['idUsuario'].'/';
-                    if($imagenUsuarioLogueado == null || $imagenUsuarioLogueado == $rutaInvalida) {
-                        $imagenUsuarioLogueado = base_url().'files/default-user-image.png';
-                    }
-                ?>
                 <div class="col col s4 m4 l4">
                     <img src="<?= $imagenUsuarioLogueado; ?>" id="img_imagenUsuarioLogueado" alt="Imagen de perfil de usuario" class="circle responsive-img valign profile-image">
                 </div>
@@ -27,10 +31,10 @@
                                 <i class="mdi-action-home"></i>Perfil empresa
                             </a>
                         </li>
-                        <li><a href="#"><i class="mdi-action-settings"></i> Settings</a>
-                        </li>
-                        <li><a href="#"><i class="mdi-communication-live-help"></i> Ayuda</a>
-                        </li>
+<!--                        <li><a href="#"><i class="mdi-action-settings"></i> Settings</a>-->
+<!--                        </li>-->
+<!--                        <li><a href="#"><i class="mdi-communication-live-help"></i> Ayuda</a>-->
+<!--                        </li>-->
                         <li class="divider"></li>
                         <li><a href="<?= base_url()?>usuarios/logout"><i class="mdi-hardware-keyboard-tab"></i> Cerrar sesión</a>
                         </li>
@@ -60,84 +64,55 @@
         <li class="no-padding">
             <ul class="collapsible collapsible-accordion">
 
-                <li class="bold"><a href="<?= base_url(); ?>clientes" class="waves-effect waves-cyan"><i
-                            class="mdi-social-person"></i> <?= label('clientes'); ?></a>
-                </li>
-
+                <?php
+                if($rolAdministrador || $rolCotizador) {
+                ?>
+                    <li class="bold">
+                        <a href="<?= base_url(); ?>clientes" class="waves-effect waves-cyan">
+                            <i class="mdi-social-person"></i> <?= label('clientes'); ?>
+                        </a>
+                    </li>
+                <?php
+                }
+                ?>
+                <?php
+                if($rolAdministrador || $rolCotizador) {
+                ?>
+                    <li class="bold">
+                        <a href="<?= base_url(); ?>gastos" class="waves-effect waves-cyan">
+                            <i class="mdi-action-subject"></i><?= label('gastos'); ?>
+                        </a>
+                    </li>
+                <?php
+                }
+                ?>
                 <li class="bold">
-                    <a href="<?= base_url(); ?>gastos" class="waves-effect waves-cyan"><i
-                            class="mdi-action-subject"></i><?= label('gastos'); ?></a>
+                    <a href="<?= base_url(); ?>cotizacion" class="waves-effect waves-cyan">
+                        <i class="mdi-editor-format-list-numbered"></i><?= label('cotizaciones'); ?>
+                    </a>
                 </li>
-
-                <li class="bold">
-                    <a href="<?= base_url(); ?>cotizacion" class="waves-effect waves-cyan"><i
-                            class="mdi-editor-format-list-numbered"></i><?= label('cotizaciones'); ?></a>
-                </li>
-
-                <li class="bold"><a href="<?= base_url(); ?>servicios/" class="waves-effect waves-cyan"><i
-                            class="mdi-maps-beenhere"></i> <?= label('tituloServicios'); ?></a>
-                </li>
-
-                <li class="bold"><a href="<?= base_url(); ?>proveedores/" class="waves-effect waves-cyan"><i
-                            class="mdi-action-account-child"></i> <?= label('personas'); ?></a>
-                </li>
-
-<!--                <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i-->
-<!--                            class="mdi-communication-vpn-key"></i> --><?//= label('productos'); ?><!--</a>-->
-<!---->
-<!--                    <div class="collapsible-body">-->
-<!--                        <ul>-->
-<!--                            <li><a href="--><?//= base_url(); ?><!--productos/agregar">--><?//= label('agregarP'); ?><!--</a>-->
-<!--                            </li>-->
-<!--                            <li><a href="--><?//= base_url(); ?><!--productos/">--><?//= label('listarP'); ?><!--</a>-->
-<!--                            </li>-->
-<!--                        </ul>-->
-<!--                    </div>-->
-<!--                </li>-->
-
-                <!--<li class="bold">
-                    <a href="<?= base_url() ?>empleados" class="waves-effect waves-cyan"><i
-                            class="mdi-action-perm-identity"></i><?= label('empleados'); ?></a>
-                </li>-->
-
-                <!--<li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-action-settings-applications"></i> <?= label('administración'); ?></a>
-                                <div class="collapsible-body">
-                                    <ul>
-                                        <li>
-                                            <a href="<?= base_url() ?>tiposMoneda"><?= label('monedas'); ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="<?= base_url() ?>usuarios"><?= label('usuarios'); ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="<?= base_url(); ?>financiamiento"><?= label('financiamiento'); ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="<?= base_url(); ?>pagos"><?= label('pagos'); ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="<?= base_url(); ?>impuesto"><?= label('impuesto'); ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="<?= base_url(); ?>unidad"><?= label('unidad'); ?></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>-->
-
-                <!-- <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-trending-up"></i> <?= label('reportes'); ?></a>
-                                <div class="collapsible-body">
-                                    <ul>
-                                        <li><a href="<?= base_url(); ?>reporte/"><?= label('listarReporteCot'); ?></a>
-                                        </li>
-                                        <li><a href="<?= base_url(); ?>clientes/reporte"><?= label('listarReporteCli'); ?></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li> -->
-                <!--<li class="bold"><a href="<?= base_url(); ?>embed" class="waves-effect waves-cyan"><i
-                            class="mdi-action-settings-ethernet"></i> <?= label('avanzado'); ?></a>
-                </li>-->
+                <?php
+                if($rolAdministrador || $rolCotizador) {
+                ?>
+                    <li class="bold">
+                        <a href="<?= base_url(); ?>servicios/" class="waves-effect waves-cyan">
+                            <i class="mdi-maps-beenhere"></i> <?= label('tituloServicios'); ?>
+                        </a>
+                    </li>
+                <?php
+                }
+                ?>
+                <?php
+                if($rolAdministrador || $rolCotizador) {
+                ?>
+                    <li class="bold">
+                        <a href="<?= base_url(); ?>proveedores/" class="waves-effect waves-cyan">
+                            <i class="mdi-action-account-child"></i> <?= label('personas'); ?>
+                        </a>
+                    </li>
+                <?php
+                }
+                ?>
             </ul>
         </li>
         <li class="li-hover">
@@ -147,42 +122,10 @@
         <li><a href="<?= base_url() ?>cotizacion/cotizar"><i
                     class="mdi-action-swap-vert-circle"></i> <?= label('agregarCotizacion'); ?></a>
         </li>
-
-        <!--                    </li>-->
-        <!--                    <li><a href="#"><i class="mdi-action-swap-vert-circle"></i> -->
-        <? //=label('agregarProduto_Servicio');?><!--</a>-->
-        <!--                    </li>-->
-
-        <!--                    <li class="no-padding">-->
-        <!--                        <ul class="collapsible collapsible-accordion">-->
-        <!--                            <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-swap-vert-circle"></i> -->
-        <? //=label('agregarProduto_Servicio');?><!--</a>-->
-        <!--                                <div class="collapsible-body">-->
-        <!--                                    <ul>-->
-        <!--                                        <li><a href="--><? //=base_url();?><!--productos/agregar">-->
-        <? //=label('agregarProducto');?><!--</a>-->
-        <!--                                        </li>-->
-        <!--                                        <li><a href="--><? //=base_url();?><!--servicios/agregar">-->
-        <? //=label('agregarServicio');?><!--</a>-->
-        <!--                                        </li>-->
-        <!--                                    </ul>-->
-        <!--                                </div>-->
-        <!--                            </li>-->
-        <!--                        </ul>-->
-        <!--                    </li>-->
-        <!---->
-        <!--                    <li><a href="-->
-        <? //=base_url()?><!--empleados/agregar"><i class="mdi-action-swap-vert-circle"></i> -->
-        <? //=label('agregarEmpleado');?><!--</a>-->
-        <!--                    </li> -->
-        <!--                    <li><a href="-->
-        <? //=base_url()?><!--proveedores/agregar"><i class="mdi-action-swap-vert-circle"></i> -->
-        <? //=label('agregarProveedor');?><!--</a>-->
-        <!--                    </li>                    -->
-
     </ul>
-    <a href="#" data-activates="slide-out"
-       class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only darken-2"><i
-            class="mdi-navigation-menu"></i></a>
+    <a href="#" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only darken-2"
+       data-activates="slide-out">
+        <i class="mdi-navigation-menu"></i>
+    </a>
 </aside>
 <!-- END LEFT SIDEBAR NAV-->
