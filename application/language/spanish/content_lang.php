@@ -1014,6 +1014,8 @@ $lang['formProveedores_gastos_categoria'] = 'El campo de categoria es requerido,
 $lang['formProveedores_gastos_formaPago'] = 'El campo de forma de pago es requerido, por favor completelo.';
 $lang['formProveedores_gastos_monto'] = 'El campo de monto es requerido, por favor completelo.';
 
+$lang['formEmpresa_seleccioneUno'] = 'Seleccione uno';
+
 // Personas
 $lang['agregar_persona'] = 'Agregar persona';
 $lang['persona_info'] = 'Información de la persona';

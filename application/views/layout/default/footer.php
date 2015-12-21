@@ -806,8 +806,8 @@ Scripts
                         registroCompleto = 0;
                     }
                     if(telefonoFijo == '' || telefonoFijo == null || telefonoMovil == '' || telefonoMovil == null || nombreRepresentante == '' || nombreRepresentante == null
-                        || primerApellidoRepresentante == '' || primerApellidoRepresentante == null || segundoApellidoRepresentante == '' || segundoApellidoRepresentante == null
-                        || sitio == '' || sitio == null || codigoCotizacion == '' || codigoCotizacion == null || firmaRepresentate == '' || firmaRepresentate == null
+                        || primerApellidoRepresentante == '' || primerApellidoRepresentante == null || sitio == '' || sitio == null
+                        || codigoCotizacion == '' || codigoCotizacion == null || firmaRepresentate == '' || firmaRepresentate == null
                         || logoEmpresa == '' || logoEmpresa == null) {
                         registroCompleto = 0;
                     }

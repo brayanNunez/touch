@@ -231,9 +231,20 @@
                                                 <div class="col s12">
                                                     <h5><?= label('formEmpresa_direccion'); ?></h5>
                                                 </div>
-                                                <div class="input-field col s12 m4 l4">
-                                                    <input id="empresa_direccionPais" name="empresa_direccionPais" type="text" value="<?= $pais; ?>">
+                                                <div class="input-field col s12 m4 l4 inputSelector">
                                                     <label for="empresa_direccionPais"><?= label('formEmpresa_direccionPais'); ?></label>
+                                                    <br>
+                                                    <select data-placeholder="<?= label('formEmpresa_seleccioneUno'); ?>" data-incluirBoton="0" id="empresa_direccionPais" name="empresa_direccionPais" class="browser-default chosen-select">
+                                                        <option value="0" disabled selected style="display:none;"><?= label("formEmpresa_seleccioneUno"); ?></option>
+                                                        <?php
+                                                        if(isset($paises)) {
+                                                            foreach ($paises as $p) { ?>
+                                                                <option value="<?= $p['idPais']; ?>"><?= $p['nombre']; ?></option>
+                                                                <?php
+                                                            }
+                                                        }
+                                                        ?>
+                                                    </select>
                                                 </div>
                                                 <div class="input-field col s12 m4 l4">
                                                     <input id="empresa_direccionProvincia" name="empresa_direccionProvincia" type="text" value="<?= $provincia; ?>">
@@ -330,8 +341,12 @@
 </section>
 <!-- END CONTENT-->
 
-<!-- Funcion para insercion de datos y para mostrar elementos -->
+<!--Script para insercion de datos y para mostrar elementos -->
 <script>
+    $(document).ready(function () {
+        $('#empresa_direccionPais').val('<?= $pais; ?>').change();
+    });
+
     $(document).ready(function () {
         var actividadEmpresa = $('#empresa_actividadComercial');
         var tipo = '<?= $tipoEmpresa; ?>';
@@ -426,6 +441,16 @@
             document.getElementById('datosTrabajadorIndependiente').style.display = 'none';
         }
     }
+</script>
+<!--Script para select de busqueda-->
+<script>
+    $(document).on('ready', function(){
+        var config = {'.chosen-select'           : {}}
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+
+    });
 </script>
 
 <!-- lista modals -->

@@ -158,11 +158,12 @@ class Registro extends CI_Controller
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
         $resultado = $this->Registro_model->cargar($idEmpresa);
-
-        if ($resultado === false || $resultado === array()) {
+        $paises = $this->Registro_model->paises();
+        if ($resultado === false || $resultado === array() || $paises === false) {
             echo "Error en la transacción";
         } else {
             $data['resultado'] = $resultado;
+            $data['paises'] = $paises;
             $this->load->view('layout/default/header');
             $this->load->view('layout/default/left-sidebar');
             $this->load->view('layout/default/perfil_empresa', $data);

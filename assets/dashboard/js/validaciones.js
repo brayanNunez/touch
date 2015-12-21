@@ -787,7 +787,10 @@
                 empresa_nombreContacto: {required: true},
                 empresa_primerApellidoContacto: {required: true},
                 empresa_segundoApellidoContacto: {required: false},
-                empresa_correoContacto: {required: true}
+                empresa_correoContacto: {required: true},
+                empresa_codigoCotizacion: {required: true},
+                empresa_nombreRepresentante: {required: true},
+                empresa_primerApellidoRepresentante: {required: true}
             },
             errorElement: 'div',
             submitHandler: function (form) {
