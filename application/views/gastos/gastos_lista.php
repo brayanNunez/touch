@@ -579,6 +579,7 @@
                                     alert("<?=label('gastos_categoriaGuardadoCorrectamente'); ?>");
                                     if (cerrarModalCategoria) {
                                         $('#agregarCategoria .modal-header a').click();
+                                        limpiarFormCategoria();
                                     } else{
                                         limpiarFormCategoria();
                                     }
@@ -797,6 +798,9 @@
         $('#form_gasto')[0].reset();
         var validator = $("#form_gasto").validate();
         validator.resetForm();
+
+        actualizarSelectTipo();
+        actualizarSelects();
     }
 
     function validacionCorrecta() {
