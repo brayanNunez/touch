@@ -536,7 +536,7 @@ $(document).ready(function(){
                                 <span class="icono-porcentaje-descuento">%</span>
                             </div>
                             <div class="input-field col s12">
-                                <input id="paso2_totalCotizacion" name="paso2_totalCotizacion" type="text" readonly="true" value="<?php
+                                <input id="paso2_totalCotizacion" name="paso2_totalCotizacion" type="text" value="<?php
                                 if (isset($resultado['cotizacion'])) {
                                     echo $resultado['cotizacion']['monto'];
                                 }  else {
@@ -1923,8 +1923,9 @@ $(document).on('ready', function(){
 
                 $.each($("#impuestos_" + numeroFila).tagsinput('items'), function( index, value ) {
                     var costoImpuesto = precioServicio * (value['valor'] / 100);
+                    var cantidadServicio = parseFloat($('#cantidad_' + numeroFila).val());
+                    var costoImpuesto = costoImpuesto * cantidadServicio;
 
-                    
                     var existe = false;
                     for (var i = 0; i < arrayImpuestos.length; i++) {
                         if (arrayImpuestos[i]['nombre'] == value['nombre']) {

@@ -26,6 +26,7 @@
 }
 
 #hojaPDF {
+
     /*background: red;*/
 	width:100%;
     height:100%;
@@ -119,6 +120,7 @@ etiqueta*/
 	width: 794px;
 }*/
 #contenidoDiseno{
+	font-family: helvetica;
 	padding: 50px;
 
 	width: 694px;
@@ -215,6 +217,7 @@ etiqueta*/
 }
 
 #informacionSistema{
+	 font-family: helvetica ;
 	width: 794px;
 	height: 20px;    /*%%%%%%%%%%%%%%%%%%%%%%%%%%*/
 	/*background-color: blue;*/
@@ -380,11 +383,34 @@ p{
 
 #resultados{
 	/*background: blue;*/
-	width: 50%;
+	width: 100%;
 	/*height: 30px;*/
 	display: inline-block;
 	vertical-align: top;
 }
+#descuento{
+	width: 34%;
+	/*background-color: red;*/
+	display: inline-block;
+	vertical-align: top;
+}
+#enlaceCotizacion{
+	 text-decoration: none;
+	 color: #039be5;
+}
+#impuesto{
+	width: 42%;
+	/*background-color: blue;*/
+	display: inline-block;
+	vertical-align: top;
+}
+#total{
+	width: 22%;
+	/*background-color: blue;*/
+	display: inline-block;
+	vertical-align: top;
+}
+
 #contenedorResultados{
 	margin-top: 20px;
 }

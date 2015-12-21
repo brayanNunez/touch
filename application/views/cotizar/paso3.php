@@ -92,15 +92,17 @@
                </table>
                <div id="contenedorResultados">
                   <div id="resultados">
+                     <div class="box" id="impuesto">
+                        <p><?= label("paso3_impuesto:"); ?><p>
+                        <ul id="disenoImpuesto" style="list-style: none; padding: 0px;"></ul>
+                     </div>
+
                      <div class="box" id="descuento">
                         <div></div>
                         <p><?= label("paso3_descuento:"); ?> 
                         <spam id="disenoDescuento"></spam><spam>%</spam></p>
                      </div>
-                     <div class="box" id="impuesto">
-                        <p><?= label("paso3_impuesto:"); ?><p>
-                        <ul id="disenoImpuesto" style="list-style: none; padding: 0px;"></ul>
-                     </div>
+                     
                      <div class="box" id="total">
                         <p><?= label("paso3_total:"); ?> 
                         <b><spam class='monedaCotizacion'></spam><spam id="disenoTotal"></spam></b><p>
@@ -186,7 +188,7 @@
          </div>
          <div id="informacionSistema">
             <span>
-               <p><?= label('paso3_Diseno_mensajeFotter').label('link_paginaInicial'); ?></p>
+               <p><?= label('paso3_Diseno_mensajeFotter')?><a id="enlaceCotizacion" target="_blank" href="<?=base_url()?>"><?=label('link_paginaInicial'); ?><a></p>
             </span>
          </div>
       </div>
