@@ -852,6 +852,10 @@ echo "var arrayFases =". $js_array.";";
             $('.modal-trigger').leanModal();
       
             contadorFases++;
+
+            var selectSubases = $('#servicio_subFase');
+            selectSubases.val(0);
+            selectSubases.trigger("chosen:updated");
         }
 
         // function generarListasBotones(){
@@ -1052,6 +1056,15 @@ echo "var arrayFases =". $js_array.";";
                                             break;
                                         case '1':
                                             $('#linkModalGuardado').click();
+
+                                            var selectFases = $('#servicioFase');
+                                            var selectSubases = $('#servicio_subFase');
+                                            selectFases.val(0);
+                                            selectFases.trigger("chosen:updated");
+                                            selectSubases.empty();
+                                            selectSubases.attr('disabled', 'disabled');
+                                            selectSubases.trigger("chosen:updated");
+
                                             break;
                                     }
                                 }

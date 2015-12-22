@@ -13,7 +13,7 @@ class Servicio_model extends CI_Model
     function existeCodigo($data) {
         try {
             $this->db->trans_begin();
-            $query = $this->db->get_where('servicio', array('codigo' => $data['codigo'],  'estado' => 0));
+            $query = $this->db->get_where('servicio', array('idEmpresa' => $data['idEmpresa'], 'codigo' => $data['codigo'],  'estado' => 0));
             if (!$query) {
                 throw new Exception("Error en la BD");
             }
@@ -83,7 +83,6 @@ class Servicio_model extends CI_Model
         }
     }
 
-            
     function servicios($idEmpresa)
     {
         try{
