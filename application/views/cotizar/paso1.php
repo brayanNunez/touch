@@ -151,12 +151,16 @@
                     numero = '#';
                 };
                 $('#paso1_numero').val(numero);
-                $('#paso1Cliente option[value='+ arrayCotizacion['idCliente'] +']').prop('selected', true);
-                if(arrayCotizacion['idCliente'] != null){
-                    // alert(arrayCotizacion['idCliente']);
-                    actualizarSelectContactos(arrayCotizacion['idCliente'], arrayCotizacion['idPersonaContacto']);
-                    // cargarAtencion(arrayCotizacion['idCliente']);
-                }
+                if ($('#paso1Cliente option[value='+ arrayCotizacion['idCliente'] +']').attr('disabled') != 'disabled') {
+                    $('#paso1Cliente option[value='+ arrayCotizacion['idCliente'] +']').prop('selected', true);
+                    if(arrayCotizacion['idCliente'] != null){
+                        // alert(arrayCotizacion['idCliente']);
+                        actualizarSelectContactos(arrayCotizacion['idCliente'], arrayCotizacion['idPersonaContacto']);
+                        // cargarAtencion(arrayCotizacion['idCliente']);
+                    }
+                };
+                
+                
                 // $('#paso1Atencion option[value='+ arrayCotizacion['idPersonaContacto'] +']').prop('selected', true);
                 $('#paso1FormaPago option[value='+ arrayCotizacion['idFormaPago'] +']').prop('selected', true);
                 $('#paso1Moneda option[value='+ arrayCotizacion['idMoneda'] +']').prop('selected', true);
