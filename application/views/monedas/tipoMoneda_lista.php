@@ -29,8 +29,9 @@
                                                 <div class="col s12">
                                                     <span style="font-size: larger;"><?= label('tiposMoneda_defecto'); ?></span>
                                                 </div>
-                                                <div class="col offset-s1 s11">
-                                                    <select id="tipoMoneda_principal" onchange="actualizarTipoPrincipal(this)"></select>
+                                                <div class="input-field col offset-s1 s11 inputSelector" style="padding-bottom: 25px;">
+                                                    <select data-placeholder="<?= label('formMoneda_seleccioneUno'); ?>" data-incluirBoton="0" id="tipoMoneda_principal" class="browser-default chosen-select">
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div>
@@ -158,6 +159,7 @@
 </div>
 <!-- END CONTENT-->
 
+<!--Script para el manejo de tipo de moneda principal-->
 <script>
     var tipoMonedaDefecto = '<?php if(isset($monedaDefecto)) { echo $monedaDefecto; } ?>';
     $(document).ready(function () {
@@ -174,65 +176,61 @@
                 var tiposMoneda = $.parseJSON(response);
 
                 var valorTipoDefecto = parseInt(tipoMonedaDefecto);
-                var selectTipo = $('#tipoMoneda_principal');
-                selectTipo.empty();
-                if(valorTipoDefecto != 0 && valorTipoDefecto != null) {
-                    selectTipo.append($('<option>', {
-                        value: 0,
-                        text: 'Seleccione uno',
-                        disabled: true
-                    }));
-                } else {
-                    selectTipo.append($('<option>', {
-                        value: 0,
-                        text: 'Seleccione uno',
-                        selected: true,
-                        disabled: true
-                    }));
-                }
+                var selectMonedaPrincipal = $('#tipoMoneda_principal');
+                selectMonedaPrincipal.empty();
+                selectMonedaPrincipal.append('<option value="0" disabled selected style="display:none;"><?= label("agregarMoneda_elegirMonedaPrincipal"); ?></option>');
+//                selectMonedaPrincipal.append('<option value="nuevo"><?//= label("agregarNuevo"); ?>//</option>');
 
-                var i;
-                for(i = 0; i < tiposMoneda.length; i++) {
-                    var tipo = tiposMoneda[i];
-                    if(tipo != null) {
-                        if(tipo['idMoneda'] == valorTipoDefecto) {
-                            selectTipo.append($('<option>', {
-                                value: tipo['idMoneda'],
-                                text: tipo['nombre'],
-                                selected: true
-                            }));
+                for(var i = 0; i < tiposMoneda.length; i++) {
+                    var tipoMoneda = tiposMoneda[i];
+                    if(tipoMoneda != null) {
+                        if(tipoMoneda['idMoneda'] == valorTipoDefecto){
+                            selectMonedaPrincipal.append('<option value="' + tipoMoneda['idMoneda'] + '" selected>' + tipoMoneda['nombre'] + '</option>');
                         } else {
-                            selectTipo.append($('<option>', {
-                                value: tipo['idMoneda'],
-                                text: tipo['nombre'],
-                                selected: false
-                            }));
+                            selectMonedaPrincipal.append('<option value="' + tipoMoneda['idMoneda'] + '">' + tipoMoneda['nombre'] + '</option>');
                         }
                     }
                 }
-                selectTipo.material_select();
+                selectMonedaPrincipal.trigger("chosen:updated");
             }
         });
     }
-    function actualizarTipoPrincipal(opcionSeleccionada) {
-        var selectTipo = $('#tipoMoneda_principal');
-        $.ajax({
-            type: 'POST',
-            url: '<?= base_url(); ?>tiposMoneda/cambiarTipoPrincipal',
-            data: {idMoneda : opcionSeleccionada.value},
-            success: function(response)
-            {
-                if(response != 0) {
-                    tipoMonedaDefecto = opcionSeleccionada;
-                    $('#linkCambioMonedaCorrecto').click();
-                } else {
-                    $('#linkCambioMonedaError').click();
-                }
+    $(document).on('change', '#tipoMoneda_principal', function () {
+        var valorTipoDefecto = parseInt(tipoMonedaDefecto);
+        var valorSeleccionado = parseInt($(this).val());
+        if(valorTipoDefecto != valorSeleccionado) {
+            var confirmarCambioMoneda = confirm('<?= label('formMoneda_confirmarCambio'); ?>');
+            if(confirmarCambioMoneda) {
+                $.ajax({
+                    type: 'POST',
+                    url: '<?= base_url(); ?>tiposMoneda/cambiarTipoPrincipal',
+                    data: {idMoneda: valorSeleccionado},
+                    success: function (response) {
+                        if (response != 0) {
+                            tipoMonedaDefecto = valorSeleccionado;
+                            $('#linkCambioMonedaCorrecto').click();
+                        } else {
+                            $('#linkCambioMonedaError').click();
+                        }
+                    }
+                });
+            } else {
+                $(this).val(valorTipoDefecto);
+                $(this).trigger("chosen:updated");
             }
-        });
-    }
+        }
+    });
 </script>
-
+<!--Script para select de busqueda-->
+<script>
+    $(document).on('ready', function(){
+        var config = {'.chosen-select'           : {}}
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    });
+</script>
+<!--Script para el manejo de la tabla, checks y opciones-->
 <script type="text/javascript">
 
         var menuOpciones_editar = '<?= label('menuOpciones_editar'); ?>';

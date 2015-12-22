@@ -360,7 +360,7 @@
 
             var reglasUsuario = {
                 usuario_primeroApellido: {required: true, maxlength: 45},
-                usuario_segundoApellido: {required: true, maxlength: 45},
+                usuario_segundoApellido: {required: false, maxlength: 45},
                 usuario_nombre: {required: true, maxlength: 45},
                 usuario_correo: {required: true, maxlength: 45},
                 usuario_contrasena: {required: true, maxlength: 45},
@@ -378,8 +378,9 @@
             $('#form_usuario_editar').validate({
                 rules:
                 {
+                    usuario_correo: {required: true},
                     usuario_primerApellido: {required: true, maxlength: 45},
-                    usuario_segundoApellido: {required: true, maxlength: 45},
+                    usuario_segundoApellido: {required: false, maxlength: 45},
                     usuario_nombre: {required: true, maxlength: 45}
                 },
                 errorElement: 'div',

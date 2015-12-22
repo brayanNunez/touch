@@ -1016,6 +1016,11 @@ $lang['formProveedores_gastos_monto'] = 'El campo de monto es requerido, por fav
 
 $lang['formEmpresa_seleccioneUno'] = 'Seleccione uno';
 
+$lang['formMoneda_seleccioneUno'] = 'Seleccione uno';
+$lang['agregarMoneda_elegirMonedaPrincipal'] = 'Seleccione el tipo de moneda por defecto';
+$lang['formMoneda_monedaPrincipal'] = 'Tipo de moneda por defecto';
+$lang['formMoneda_confirmarCambio'] = '¿Realmente desea cambiar el tipo de moneda por defecto de la empresa?';
+
 // Personas
 $lang['agregar_persona'] = 'Agregar persona';
 $lang['persona_info'] = 'Información de la persona';
