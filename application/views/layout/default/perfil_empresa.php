@@ -155,6 +155,7 @@
                                             </div>
                                             <div class="input-field col s12 m6 l6">
                                                 <select id="empresa_tamano" name="empresa_tamano">
+                                                    <option value="0" selected disabled><?= label('formRegistro_seleccioneUno'); ?></option>
                                                     <option value="1">1 a 5</option>
                                                     <option value="2">6 a 10</option>
                                                     <option value="3">11 a 25</option>
@@ -355,7 +356,10 @@
         } else {
             actividadEmpresa.val(1).change();
         }
-        $('#empresa_tamano').val('<?= $tamano; ?>').change();
+        var valorTamano = '<?= $tamano; ?>';
+        if(valorTamano != '' && valorTamano != null) {
+            $('#empresa_tamano').val(valorTamano).change();
+        }
     });
     function validacionCorrecta(){
         var formulario = $('#form_registroEditar');

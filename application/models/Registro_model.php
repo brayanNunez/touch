@@ -14,6 +14,7 @@ class Registro_model extends CI_Model
         try{
             $this->db->trans_begin();
 
+            $this->db->set('fechaInicio', 'CURDATE()', FALSE);
             $queryE = $this->db->insert('empresa', $data['datos']);
             $idEmpresa = $this->db->insert_id();
 
