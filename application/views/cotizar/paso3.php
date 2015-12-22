@@ -6,6 +6,7 @@
       <div id="contenedorSelectPalntilla"></div>
    </div>
 </div>
+<br>
 <!-- <div class="contenedorHoja col s12"> -->
 <div style="display: none" id="inset_form"></div>
 <div id="contenedorDisenoHoja">

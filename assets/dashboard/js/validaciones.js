@@ -128,7 +128,7 @@
                 clientejuridico_telefono: {required: true, maxlength: 45},
                 clientejuridico_fax: {required: true, maxlength: 45},
 
-                 cliente_direccionPais: {required: true, maxlength: 45},
+                 // cliente_direccionPais: {required: true, maxlength: 45},
                  cliente_direccionProvincia: {required: true, maxlength: 45},
                  cliente_direccionCanton: {required: true, maxlength: 45},
                  cliente_direccionDomicilio: {required: false, maxlength: 200},

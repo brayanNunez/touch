@@ -503,6 +503,80 @@ class Cotizacion_model extends CI_Model
 
     }
 
+    function duplicar($datos)
+    {
+        try {
+            $this->db->trans_begin();
+            
+            // inicio duplicar
+
+            $this->db->select('co.*');
+            $this->db->from('cotizacion as co');
+            $query = $this->db->where(array('idCotizacion'=> $datos['idCotizacion']));
+            $query = $this->db->get();
+            if (!$query) throw new Exception("Error en la BD");  
+            $array = $query->result_array(); 
+            $cotizacionDuplicada = array_shift($array);
+            $cotizacionDuplicada['idCotizacion'] = null;
+            $cotizacionDuplicada['numero'] = 0;
+            $cotizacionDuplicada['idUsuario'] = $datos['idUsuario'];
+            $cotizacionDuplicada['idEstadoCotizacion'] = 1;// estado nueva
+            $cotizacionDuplicada['eliminado'] = 1;
+            unset($cotizacionDuplicada['fechaCreacion']);//elimina el campo [fechaCreacion] del array.
+            $this->db->set('fechaCreacion', 'NOW()', FALSE);
+            $query = $this->db->insert('cotizacion', $cotizacionDuplicada);
+            if (!$query) throw new Exception("Error en la BD"); 
+            $idCotizacionDuplicada = $this->db->insert_id(); 
+
+
+            $lineas = $this->db->get_where('lineadetalle', array('eliminado' => 0,'idCotizacion' => $datos['idCotizacion']));
+            if (!$lineas)throw new Exception("Error en la BD");
+            $lineas = $lineas->result_array();
+
+            foreach ($lineas as $linea) {
+                $idLinea = $linea['idLineaDetalle'];
+                $linea['idLineaDetalle'] = null;
+                $linea['idCotizacion'] = $idCotizacionDuplicada;
+                $query = $this->db->insert('lineadetalle', $linea);
+                if (!$query) throw new Exception("Error en la BD"); 
+                $idLineaDuplicada = $this->db->insert_id();
+
+
+                $lineas_impuesto = $this->db->get_where('impuesto_lineadetalle', array('idLineaDetalle' => $idLinea));
+                if (!$lineas_impuesto)throw new Exception("Error en la BD");
+                $lineas_impuesto = $lineas_impuesto->result_array();
+
+                foreach ($lineas_impuesto as $linea_umpuesto) {
+                    $linea_umpuesto['idImpuesto_LineaDetalle'] = null;
+                    $linea_umpuesto['idLineaDetalle'] = $idLineaDuplicada;
+                    $query = $this->db->insert('impuesto_lineadetalle', $linea_umpuesto);
+                    if (!$query) throw new Exception("Error en la BD");
+                }
+
+            }
+
+            $query = $this->db->get_where('plantilladiseno', array('idCotizacion'=> $datos['idCotizacion']));
+            if (!$query) throw new Exception("Error en la BD");   
+
+            $array = $query->result_array(); 
+            $plantillaDuplicada = array_shift($array);
+            $plantillaDuplicada['idPlantillaDiseno'] = null;
+            $plantillaDuplicada['idCotizacion'] = $idCotizacionDuplicada;
+            $query = $this->db->insert('plantilladiseno', $plantillaDuplicada);
+            if (!$query) throw new Exception("Error en la BD");
+
+            //fin duplicar
+
+
+            $this->db->trans_commit();
+            return $idCotizacionDuplicada;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
+
     function cargar($datos)
     {
         try {
@@ -683,6 +757,7 @@ class Cotizacion_model extends CI_Model
             return false;
         }
     }
+
     function correosSugerencia($idCotizacion)
     {
         try {

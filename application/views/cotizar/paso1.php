@@ -146,13 +146,21 @@
             echo "arrayCotizacion =". $js_array.";";
             ?>
                 $('#paso1_codigo').val(arrayCotizacion['codigo']);
-                $('#paso1_numero').val(arrayCotizacion['numero']);
-                $('#paso1Cliente option[value='+ arrayCotizacion['idCliente'] +']').prop('selected', true);
-                if(arrayCotizacion['idCliente'] != null){
-                    // alert(arrayCotizacion['idCliente']);
-                    actualizarSelectContactos(arrayCotizacion['idCliente'], arrayCotizacion['idPersonaContacto']);
-                    // cargarAtencion(arrayCotizacion['idCliente']);
-                }
+                var numero = arrayCotizacion['numero'];
+                if (arrayCotizacion['numero'] == 0) {// es una cotizacion duplicada
+                    numero = '#';
+                };
+                $('#paso1_numero').val(numero);
+                if ($('#paso1Cliente option[value='+ arrayCotizacion['idCliente'] +']').attr('disabled') != 'disabled') {
+                    $('#paso1Cliente option[value='+ arrayCotizacion['idCliente'] +']').prop('selected', true);
+                    if(arrayCotizacion['idCliente'] != null){
+                        // alert(arrayCotizacion['idCliente']);
+                        actualizarSelectContactos(arrayCotizacion['idCliente'], arrayCotizacion['idPersonaContacto']);
+                        // cargarAtencion(arrayCotizacion['idCliente']);
+                    }
+                };
+                
+                
                 // $('#paso1Atencion option[value='+ arrayCotizacion['idPersonaContacto'] +']').prop('selected', true);
                 $('#paso1FormaPago option[value='+ arrayCotizacion['idFormaPago'] +']').prop('selected', true);
                 $('#paso1Moneda option[value='+ arrayCotizacion['idMoneda'] +']').prop('selected', true);
