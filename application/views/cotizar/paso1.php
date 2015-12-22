@@ -146,7 +146,11 @@
             echo "arrayCotizacion =". $js_array.";";
             ?>
                 $('#paso1_codigo').val(arrayCotizacion['codigo']);
-                $('#paso1_numero').val(arrayCotizacion['numero']);
+                var numero = arrayCotizacion['numero'];
+                if (arrayCotizacion['numero'] == 0) {// es una cotizacion duplicada
+                    numero = '#';
+                };
+                $('#paso1_numero').val(numero);
                 $('#paso1Cliente option[value='+ arrayCotizacion['idCliente'] +']').prop('selected', true);
                 if(arrayCotizacion['idCliente'] != null){
                     // alert(arrayCotizacion['idCliente']);

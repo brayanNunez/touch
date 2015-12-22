@@ -263,6 +263,23 @@ class Cotizacion extends CI_Controller
         }
     }
 
+    public function duplicar($idCotizacion)
+    {
+        verificarLogin();//helper
+        $sessionActual = $this->session->userdata('logged_in');
+        $data['idUsuario'] = $sessionActual['idUsuario'];
+        $data['idCotizacion'] = decryptIt($idCotizacion);
+
+        $idDuplicado = $this->Cotizacion_model->duplicar($data);
+
+        if ($idDuplicado === false) {
+            echo "Error en la transacción";
+        } else {
+            $this->editar(encryptIt($idDuplicado));
+        }
+    }
+
+
     public function aprobar($idCotizacion)
     {
         verificarLogin();//helper

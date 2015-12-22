@@ -136,7 +136,7 @@
                                                                     class="-text"><?= label('menuOpciones_editar') ?></a>
                                                               </li>
                                                               <li>
-                                                                  <a class="-text modal-trigger confirmarDuplicar"
+                                                                  <a href="<?= base_url() ?>cotizacion/duplicar/<?= $idEncriptado?>" class="-text"
                                                                      ><?= label('tablaCotizaciones_opcionDuplicar') ?>
                                                                   </a>
                                                               </li>
@@ -554,7 +554,7 @@
                                      '<a href="<?= base_url(); ?>cotizacion/editar/'+idEncriptado+'" class="-text">'+label_editar+'</a>' +
                                 '</li>' +
                                 '<li>' +
-                                     '<a class="-text modal-trigger confirmarDuplicar">'+label_dublicar+'</a>' +
+                                     '<a href="<?= base_url(); ?>cotizacion/duplicar/'+idEncriptado+'" class="-text">'+label_dublicar+'</a>' +
                                 '</li>' +
                                 '<li>' +
                                      '<a href="#eliminarCotizacion" class="-text modal-trigger confirmarEliminar" data-id-eliminar="'+idEncriptado+'"  data-fila-eliminar="fila'+ contadorFilas +'">'+label_eliminar+'</a>' +
