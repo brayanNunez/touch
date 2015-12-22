@@ -214,7 +214,6 @@
                                             <label for="cantidadTotal"><?= label('formServicio_totalTiempo'); ?> <span id='unidadTiempo'></span>
                                             </label>
                                         </div>
-
                                         <div class="input-field col offset-s6 s6">
                                             <input id="servicio_utilidad" name="servicio_utilidad" type="number" min="0" value="0">
                                             <label for="servicio_utilidad"><?= label('formServicio_utilidad'); ?>
@@ -704,6 +703,10 @@ echo "var arrayFases =". $js_array.";";
             $('.modal-trigger').leanModal();
       
             contadorFases++;
+
+            var selectSubases = $('#servicio_subFase');
+            selectSubases.val(0);
+            selectSubases.trigger("chosen:updated");
         }
 
        
@@ -853,11 +856,23 @@ echo "var arrayFases =". $js_array.";";
                                         var table = $('#tabla-servicio').DataTable();
                                         table.clear().draw();
 
+                                        var selectFases = $('#servicioFase');
+                                        var selectSubases = $('#servicio_subFase');
+                                        selectFases.val(0);
+                                        selectFases.trigger("chosen:updated");
+                                        selectSubases.empty();
+                                        selectSubases.attr('disabled', 'disabled');
+                                        selectSubases.trigger("chosen:updated");
+
                                         var $incluir = $(this).is(':checked');
                                         var $gastos = $('#servicio_gastosVariables');
                                         $gastos.css('display', 'none');
-
                                         limpiarTablaGastos();
+
+                                        $('label[for="cantidadTotal"]').addClass('active');
+                                        $('label[for="servicio_utilidad"]').addClass('active');
+                                        $('label[for="servicio_total"]').addClass('active');
+
                                         break;
                                 }
                             }
