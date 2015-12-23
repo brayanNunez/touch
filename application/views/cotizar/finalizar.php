@@ -36,9 +36,11 @@
                                                   if ($resultado['estado'] == 'enviada' && $resultado['vendedorEstaCotizacion'] == '1') {
                                                     ?>
                                                     <div id="botonesAprobar">
-                                                      <div class="input-field col s12 m6 l6">
+                                                      <div class="input-field col s12 offset-m3 m6 offset-l3 l6" style="padding: 10px 0;">
                                                         <a href="#enviar" class="left btn btn-default modal-trigger opt-finalizar"
-                                                           title="<?= label('tooltip_finalizar'); ?>"><?= label('finalizar'); ?></a>
+                                                           title="<?= label('tooltip_finalizar'); ?>">
+                                                            <?= label('finalizar'); ?>
+                                                        </a>
                                                       </div>
                                                       
                                                     </div>
