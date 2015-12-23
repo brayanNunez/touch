@@ -13,11 +13,13 @@ class Cotizacion_model extends CI_Model
     {
         try{
             $this->db->trans_begin();
-            $cotizaciones = $this->db->query('SELECT month(co.fechaCreacion) as mes, count(*) as cantidad, sum(co.monto * co.tipoCambio) as suma FROM cotizacion as co where eliminado = 0 and year(co.fechaCreacion) = year(now())  and co.idEmpresa = '.$idEmpresa.' group by mes;');
 
+           $query = "SELECT month(co.fechaCreacion) as mes, count(*) as cantidad, sum(co.monto * co.tipoCambio) as suma FROM cotizacion as co inner join estadocotizacion as ec on co.idEstadoCotizacion = ec.idEstadoCotizacion where eliminado = 0 and year(co.fechaCreacion) = year(now())  and co.idEmpresa = ".$idEmpresa." and ec.descripcion = 'facturada'  group by mes;";
 
-            if (!$cotizaciones) throw new Exception("Error en la BD"); 
-            $resultado = $cotizaciones->result_array();
+            $resultado = $this->db->query($query);
+
+            if (!$resultado) throw new Exception("Error en la BD"); 
+            $resultado = $resultado->result_array();
 
             // echo print_r($resultado); exit();
 

@@ -1,6 +1,5 @@
 <?php 
 
-
         $listaGraficoLineal = '';
         $listaGraficoBarras = '';
         $sumaTotal = 0;

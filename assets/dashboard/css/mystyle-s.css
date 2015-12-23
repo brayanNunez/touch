@@ -126,7 +126,7 @@ label#fecha-desde, label#fecha-hasta { left: 0; top: -29px; font-size: 0.8rem; }
 i.icono-opciones-varios { font-size: 40px; }
 div.btn-login-forgot a { float: right; }
 
-/*.card { overflow: visible !important; }*/
+.card { overflow: visible !important; }
 
 div.dataTables_length, div.dataTables_filter { width: 200px; }
 div.dataTables_filter input { margin-left: 0 !important; }
