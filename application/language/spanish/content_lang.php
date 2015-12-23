@@ -1412,6 +1412,10 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['opciones_seleccionadosExportarPdf'] = 'Pdf';
     $lang['opciones_seleccionadosExportarExcel'] = 'Excel';
 
+    $lang['menuOpciones_aprobar'] = 'Aprobar';
+    $lang['menuOpciones_finalizar'] = 'Finalizar';
+    $lang['menuOpciones_facturar'] = 'Facturar';
+
 //Captcha
     $lang['cambiar_captcha'] = 'Cambiar captcha';
 

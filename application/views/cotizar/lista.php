@@ -125,26 +125,73 @@
                                                         
                                                         </td>
                                                         <td>
-                                                           <ul id="dropdown-cotizacion<?= $contador ?>"
-                                                              class="dropdown-content">
-                                                              <li>
-                                                                 <a href="<?= base_url(); ?>cotizacion/ver/<?= $idEncriptado?>"
-                                                                    class="-text"><?= label('menuOpciones_ver') ?></a>
-                                                             </li>
-                                                              <li>
-                                                                 <a href="<?= base_url() ?>cotizacion/editar/<?= $idEncriptado?>"
-                                                                    class="-text"><?= label('menuOpciones_editar') ?></a>
-                                                              </li>
-                                                              <li>
-                                                                  <a href="<?= base_url() ?>cotizacion/duplicar/<?= $idEncriptado?>" class="-text"
-                                                                     ><?= label('tablaCotizaciones_opcionDuplicar') ?>
-                                                                  </a>
-                                                              </li>
-                                                              <li>
-                                                                 <a href="#eliminarCotizacion"
-                                                                    class="-text modal-trigger confirmarEliminar"
-                                                                    data-id-eliminar="<?= $idEncriptado ?>"  data-fila-eliminar="fila<?= $contador?>"><?= label('menuOpciones_eliminar') ?></a>
-                                                              </li>
+                                                            <ul id="dropdown-cotizacion<?= $contador ?>" class="dropdown-content">
+
+                                                                <?php
+                                                                switch ($fila['estado']) {
+                                                                    case 'nueva': ?>
+                                                                        <li>
+                                                                            <a href="<?= base_url() ?>cotizacion/editar/<?= $idEncriptado?>" class="-text">
+                                                                                <?= label('menuOpciones_editar') ?>
+                                                                            </a>
+                                                                        </li>
+                                                                <?php
+                                                                        break;
+                                                                    case 'espera': ?>
+                                                                        <li>
+                                                                            <a href="<?= base_url() ?>cotizacion/aprobar/<?= $idEncriptado?>" class="-text">
+                                                                                <?= label('menuOpciones_aprobar') ?>
+                                                                            </a>
+                                                                        </li>
+                                                                <?php
+                                                                        break;
+                                                                    case 'rechazada': ?>
+                                                                        <li>
+                                                                            <a href="<?= base_url() ?>cotizacion/editar/<?= $idEncriptado?>" class="-text">
+                                                                                <?= label('menuOpciones_editar') ?>
+                                                                            </a>
+                                                                        </li>
+                                                                <?php
+                                                                        break;
+                                                                    case 'enviada': ?>
+                                                                        <li>
+                                                                            <a href="<?= base_url() ?>cotizacion/finalizar/<?= $idEncriptado?>" class="-text">
+                                                                                <?= label('menuOpciones_finalizar') ?>
+                                                                            </a>
+                                                                        </li>
+                                                                <?php
+                                                                        break;
+                                                                    case 'finalizada': ?>
+                                                                        <li>
+                                                                            <a href="<?= base_url() ?>cotizacion/facturar/<?= $idEncriptado?>" class="-text">
+                                                                                <?= label('menuOpciones_facturar') ?>
+                                                                            </a>
+                                                                        </li>
+                                                                <?php
+                                                                        break;
+                                                                    case 'facturada': ?>
+                                                                <?php
+                                                                        break;
+                                                                }
+                                                                ?>
+
+                                                                <li>
+                                                                    <a href="<?= base_url(); ?>cotizacion/ver/<?= $idEncriptado?>" class="-text">
+                                                                        <?= label('menuOpciones_ver') ?>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="<?= base_url() ?>cotizacion/duplicar/<?= $idEncriptado?>" class="-text">
+                                                                        <?= label('tablaCotizaciones_opcionDuplicar') ?>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#eliminarCotizacion" class="-text modal-trigger confirmarEliminar"
+                                                                       data-id-eliminar="<?= $idEncriptado ?>"  data-fila-eliminar="fila<?= $contador?>">
+                                                                        <?= label('menuOpciones_eliminar') ?>
+                                                                    </a>
+                                                                </li>
+
                                                            </ul>
                                                            <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
                                                               href="#!"
@@ -278,7 +325,7 @@
        $('#cotizaciones-tabla-lista').dataTable( {
            'aoColumnDefs': [{
                'bSortable': false,
-               'aTargets': [0, -1] //desactiva en primer y última columna opción de ordenar
+               'aTargets': [0, -1] //desactiva en primer y ï¿½ltima columna opciï¿½n de ordenar
            }]
        });
    });
