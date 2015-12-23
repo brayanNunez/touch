@@ -9,30 +9,27 @@ class Inicio extends CI_Controller
         parent::__construct();
         $this->lang->load('content');
 
-        // $sessionActual = $this->session->userdata('logged_in');
-
-        // $this->session->set_userdata('DireccionInicial', current_url());
-        // if(!$sessionActual) {
-        //     redirect(base_url().'welcome/index/1');
-        // } elseif (!($sessionActual['administrador'])) {
-        //     redirect(base_url());
-        // }
+        $this->load->model('Cotizacion_model');
     } 
 
     public function index()
     {
-        // $sessionActual = $this->session->userdata('logged_in');
-        // $this->session->set_userdata('DireccionInicial', current_url());
-        // if(!$sessionActual) {
-        //     redirect(base_url().'welcome/index/1');
-        // } elseif (!($sessionActual['administrador'])) {
-        //     redirect(base_url());
-        // }
+
         verificarLogin();//helper
-        $this->load->view('layout/default/header');
-        $this->load->view('layout/default/left-sidebar');
-        $this->load->view('inicio/index.php');
-        $this->load->view('layout/default/footer');
+
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $data['resultado'] = $this->Cotizacion_model->datosGrafica($idEmpresa); 
+        if ($data['resultado'] === false) {
+            echo "Error en la transacción";
+        } else {
+            $this->load->view('layout/default/header');
+            $this->load->view('layout/default/left-sidebar');
+            $this->load->view('inicio/index.php', $data);
+            $this->load->view('layout/default/footer');
+        }
+        
     }
 
 }

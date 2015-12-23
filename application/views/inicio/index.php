@@ -1,3 +1,28 @@
+<?php 
+
+
+        $listaGraficoLineal = '';
+        $listaGraficoBarras = '';
+        $sumaTotal = 0;
+
+        for ($i = 0; $i < 12; $i++) {
+            $existe = false;
+            foreach ($resultado as $row) {
+                if ($row['mes'] == ($i+1)) {
+                    $existe = true;
+                    $listaGraficoLineal .= $row['suma'].',';
+                    $sumaTotal = $sumaTotal + $row['suma'];
+                    $listaGraficoBarras .= $row['cantidad'].',';
+                };
+            }
+            if(!$existe){
+                $listaGraficoLineal .= '0,';
+                $listaGraficoBarras .= '0,';
+            }
+        }; 
+            
+    ?>
+
 <!-- START CONTENT -->
 <section id="content">
     <!--start container-->
@@ -10,54 +35,61 @@
                         <div class="card-move-up waves-effect waves-block waves-light">
                             <div class="move-up cyan darken-1">
                                 <div>
-                                    <span class="chart-title white-text">Ingresos</span>
+                                    <span class="chart-title white-text"><?= label("grafica_ingresos"); ?></span>
 
                                     <div class="chart-revenue cyan darken-2 white-text">
-                                        <p class="chart-revenue-total">$4,500.85</p>
+                                        <p class="chart-revenue-total"><span class="moneda_signo"> </span><?=$sumaTotal?></p>
 
-                                        <p class="chart-revenue-per"><i class="mdi-navigation-arrow-drop-up"></i> 21.80
-                                            %</p>
+                                       <!--  <p class="chart-revenue-per"><i class="mdi-navigation-arrow-drop-up"></i> 21.80
+                                            %</p> -->
                                     </div>
-                                    <div class="switch chart-revenue-switch right">
+                                    <!-- <div class="switch chart-revenue-switch right">
                                         <label class="cyan-text text-lighten-5">
                                             Mes
                                             <input type="checkbox">
                                             <span class="lever"></span> Año
                                         </label>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="trending-line-chart-wrapper">
                                     <canvas id="trending-line-chart" height="70"></canvas>
                                 </div>
                             </div>
                         </div>
+
                         <div id="card-graficos-inicio" class="card-content">
-                            <a class="btn-floating btn-move-up waves-effect waves-light darken-2 right"><i
-                                    class="mdi-content-add activator"></i></a>
+                        <!-- <span class="chart-title">Ingresos</span> -->
+                            <!-- <a class="btn-floating btn-move-up waves-effect waves-light darken-2 right"><i
+                                    class="mdi-content-add activator"></i></a> -->
+
 
                             <div class="col s12 m3 l3">
                                 <div id="doughnut-chart-wrapper">
-                                    <canvas id="doughnut-chart" height="200"></canvas>
-                                    <div class="doughnut-chart-status">$4500
+                                    <span class="chart-title"><?= label("grafica_tituloGraficaCantidad"); ?></span>
+                                    <p><?= label("grafica_facturadas"); ?></p>
+
+                                    <canvas id="doughnut-chart" height="0"></canvas>
+                                    <!-- <div class="doughnut-chart-status">$4500
                                         <p class="ultra-small center-align">Vendido</p>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
-                            <div class="col s12 m2 l2">
-                                <ul class="doughnut-chart-legend">
+                            <!-- <div class="col s12 m2 l2"> -->
+                                <!-- <ul class="doughnut-chart-legend">
                                     <li class="mobile ultra-small"><span class="legend-color"></span>Apps</li>
                                     <li class="kitchen ultra-small"><span class="legend-color"></span> Software</li>
                                     <li class="home ultra-small"><span class="legend-color"></span> Sitios web</li>
-                                </ul>
-                            </div>
+                                </ul> -->
+                            <!-- </div> -->
                             <div class="col s12 m5 l6">
                                 <div class="trending-bar-chart-wrapper">
                                     <canvas id="trending-bar-chart" height="90"></canvas>
                                 </div>
                             </div>
                         </div>
+                        <!-- <p>s</p> -->
 
-                        <div class="card-reveal">
+                        <!-- <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">Ingresos mensuales <i
                                     class="mdi-navigation-close right"></i></span>
                             <table class="responsive-table">
@@ -157,7 +189,7 @@
                                 </tr>
                                 </tbody>
                             </table>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
         <!--chart dashboard end-->
@@ -368,6 +400,50 @@
     $(document).ready(function () {
         gastosFijosMensuales();
     });
+
+
+
+    var data = {
+    labels : ["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SET","OCT","NOV","DIC"],
+    // ["ENERO","FEBRERO","MARZO","ABRIL","MAYO","JUNIO","JULIO","AGOSTO","SEPTIEMBRE","OCTUBRE","NOVIEMBRE","DICIEMBRE"],
+    datasets : [
+        {
+            label: "First dataset",
+            fillColor : "rgba(128, 222, 234, 0.6)",
+            strokeColor : "#ffffff",
+            pointColor : "#00bcd4",
+            pointStrokeColor : "#ffffff",
+            pointHighlightFill : "#ffffff",
+            pointHighlightStroke : "#ffffff",
+            data: [<?=$listaGraficoLineal?>]
+        }
+     //    ,{
+     //     label: "Second dataset",
+     //     fillColor : "rgba(128, 222, 234, 0.3)",
+     //     strokeColor : "#80deea",
+     //     pointColor : "#00bcd4",
+     //     pointStrokeColor : "#80deea",
+     //     pointHighlightFill : "#80deea",
+     //     pointHighlightStroke : "#80deea",
+     //     data: [1000, 5000, 2000, 4000, 0000, 50000, 80000,0000,0000,0000,0000,1400]
+     // }
+    ]
+};
+
+    var dataBarChart = {
+    labels : ["E","F","M","A","M","J","J","A","S","O","N","D"],
+    datasets: [
+        {
+            label: "Bar dataset",
+            fillColor: "#46BFBD",
+            strokeColor: "#46BFBD",
+            highlightFill: "rgba(70, 191, 189, 0.4)",
+            highlightStroke: "rgba(70, 191, 189, 0.9)",
+            data: [<?=$listaGraficoBarras?>]
+        }
+    ]
+};
+
 </script>
 
 <!-- lista modals -->

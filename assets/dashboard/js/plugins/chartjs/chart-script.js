@@ -2,31 +2,31 @@
 * Trending line chart
 */
 //var randomScalingFactor = function(){ return Math.round(Math.random()*10)};
-var data = {
-	labels : ["JAN","FEB","MAR","APR","MAY","JUNE","JULY"],
-	datasets : [
-		{
-			label: "First dataset",
-			fillColor : "rgba(128, 222, 234, 0.6)",
-			strokeColor : "#ffffff",
-			pointColor : "#00bcd4",
-			pointStrokeColor : "#ffffff",
-			pointHighlightFill : "#ffffff",
-			pointHighlightStroke : "#ffffff",
-			data: [1, 5, 2, 4, 8, 5, 8]
-		},
-		{
-			label: "Second dataset",
-			fillColor : "rgba(128, 222, 234, 0.3)",
-			strokeColor : "#80deea",
-			pointColor : "#00bcd4",
-			pointStrokeColor : "#80deea",
-			pointHighlightFill : "#80deea",
-			pointHighlightStroke : "#80deea",
-			data: [6, 2, 9, 2, 5, 10, 4]
-		}
-	]
-};
+// var data = {
+// 	labels : ["JAN","FEB","MAR","APR","MAY","JUNE","JULY"],
+// 	datasets : [
+// 		{
+// 			label: "First dataset",
+// 			fillColor : "rgba(128, 222, 234, 0.6)",
+// 			strokeColor : "#ffffff",
+// 			pointColor : "#00bcd4",
+// 			pointStrokeColor : "#ffffff",
+// 			pointHighlightFill : "#ffffff",
+// 			pointHighlightStroke : "#ffffff",
+// 			data: [1, 5, 2, 4, 8, 5, 8]
+// 		},
+// 		{
+// 			label: "Second dataset",
+// 			fillColor : "rgba(128, 222, 234, 0.3)",
+// 			strokeColor : "#80deea",
+// 			pointColor : "#00bcd4",
+// 			pointStrokeColor : "#80deea",
+// 			pointHighlightFill : "#80deea",
+// 			pointHighlightStroke : "#80deea",
+// 			data: [6, 2, 9, 2, 5, 10, 4]
+// 		}
+// 	]
+// };
 
 var nReloads = 0;
 var min = 1;
@@ -78,19 +78,19 @@ var doughnutData = [
 Trending Bar Chart
 */
 
-var dataBarChart = {
-    labels : ["JAN","FEB","MAR","APR","MAY"],
-    datasets: [
-        {
-            label: "Bar dataset",
-            fillColor: "#46BFBD",
-            strokeColor: "#46BFBD",
-            highlightFill: "rgba(70, 191, 189, 0.4)",
-            highlightStroke: "rgba(70, 191, 189, 0.9)",
-            data: [6, 9, 8, 4, 6]
-        }
-    ]
-};
+// var dataBarChart = {
+//     labels : ["E","F","M","A","M","J","J","A","S","O","N","D"],
+//     datasets: [
+//         {
+//             label: "Bar dataset",
+//             fillColor: "#46BFBD",
+//             strokeColor: "#46BFBD",
+//             highlightFill: "rgba(70, 191, 189, 0.4)",
+//             highlightStroke: "rgba(70, 191, 189, 0.9)",
+//             data: [6, 9, 8, 4, 6,6, 9, 8, 4, 6,2,2]
+//         }
+//     ]
+// };
 
 
 var nReloads1 = 0;
@@ -106,7 +106,7 @@ function updateBarChart() {
 	l1++;
 	if( l1 == dataBarChart.labels.length){ l1 = 0;} 
 }
-setInterval(updateBarChart, 3000);
+// setInterval(updateBarChart, 3000);
 
 /*
 Trending Bar Chart

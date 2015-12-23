@@ -1545,11 +1545,18 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
 
     $lang['facturar_mensaje'] = '¿Realmente desea dar por facturada esta cotización?';
 
-    
+    $lang['grafica_ingresos'] = 'Ingresos';
+    $lang['grafica_tituloGraficaCantidad'] = 'Número de cotizaciones';
+    $lang['grafica_facturadas'] = 'facturadas';
 
     
 
     
+
+     
+  
+ 
+
 
 
 
