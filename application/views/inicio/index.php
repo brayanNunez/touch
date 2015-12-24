@@ -200,8 +200,7 @@
                             <div class="col s12 m6 l4">
                                 <div class="card">
                                     <div class="card-content  green white-text">
-                                        <p class="card-stats-title"><i class="mdi-social-group-add"></i> Total
-                                            cotizaciones</p>
+                                        <p class="card-stats-title"><i class="mdi-social-group-add"></i> <?= label("inicio_totalCotizaciones"); ?></p>
                                         <h4 class="card-stats-number">76</h4>
                                     </div>
                                     <div class="card-action  green darken-2">
@@ -214,8 +213,7 @@
                             <div class="col s12 m6 l4">
                                 <div class="card">
                                     <div class="card-content purple white-text">
-                                        <p class="card-stats-title"><i class="mdi-editor-attach-money"></i>Cotizaciones
-                                            aprobadas</p>
+                                        <p class="card-stats-title"><i class="mdi-editor-attach-money"></i><?= label("inicio_cotAprobadas"); ?></p>
                                         <h4 class="card-stats-number">8</h4>
                                     </div>
                                     <div class="card-action purple darken-2">
@@ -230,7 +228,7 @@
                                 <div class="card">
                                     <div class="card-content deep-purple white-text">
                                         <p class="card-stats-title"><i class="mdi-editor-insert-drive-file"></i>
-                                            Cotizaciones facturadas </p>
+                                            <?= label("inicio_cotFacturadas"); ?></p>
                                         <h4 class="card-stats-number">16</h4>
 
                                     </div>
@@ -244,8 +242,7 @@
                             <div class="col s12 m6 l4">
                                 <div class="card">
                                     <div class="card-content blue-grey white-text">
-                                        <p class="card-stats-title"><i class="mdi-action-trending-up"></i> Cotizaciones
-                                            enviadas</p>
+                                        <p class="card-stats-title"><i class="mdi-action-trending-up"></i> <?= label("inicio_cotEnviadas"); ?></p>
                                         <h4 class="card-stats-number">67</h4>
 
                                     </div>
@@ -259,8 +256,7 @@
                             <div class="col s12 m6 l4">
                                 <div class="card">
                                     <div class="card-content  green white-text">
-                                        <p class="card-stats-title"><i class="mdi-social-group-add"></i> Cotizaciones en
-                                            revisi&oacute;n</p>
+                                        <p class="card-stats-title"><i class="mdi-social-group-add"></i> <?= label("inicio_cotRevision"); ?></p>
                                         <h4 class="card-stats-number">8</h4>
 
                                     </div>
@@ -275,7 +271,7 @@
                                 <div class="card">
                                     <div class="card-content deep-purple white-text">
                                         <p class="card-stats-title"><i class="mdi-editor-insert-drive-file"></i>
-                                            Cotizaciones rechazadas</p>
+                                            <?= label("inicio_cotRechazadas"); ?></p>
                                         <h4 class="card-stats-number">16</h4>
 
                                     </div>
@@ -290,7 +286,7 @@
                                 <div class="card">
                                     <div class="card-content green white-text">
                                         <p class="card-stats-title"><i class="mdi-editor-insert-drive-file"></i>
-                                            Total gasto fijo mensual</p>
+                                            <?= label("inicio_totalGastoFijoMensual"); ?></p>
                                         <h4 class="card-stats-number"><span class="moneda_signo"></span><span id="total_gastosMensuales"></span></h4>
 
                                     </div>
@@ -321,18 +317,16 @@
                                     </a>
 
                                     <span
-                                        class="card-title activator grey-text text-darken-4">Gestión de usuarios</span>
+                                        class="card-title activator grey-text text-darken-4"><?= label("inicio_gestionUsuarios"); ?></span>
                                 </div>
                                 <div class="card-reveal">
-                                    <span class="card-title grey-text text-darken-4">Gestión de usuarios <i
+                                    <span class="card-title grey-text text-darken-4"><?= label("inicio_gestionUsuarios"); ?><i
                                             class="mdi-navigation-close right"></i></span>
 
                                     <a href="<?= base_url() ?>clientes/agregar"><p><i
-                                                class="mdi-action-perm-identity cyan-text text-darken-2"></i> Agregar
-                                            Clientes</p></a>
+                                                class="mdi-action-perm-identity cyan-text text-darken-2"></i><?= label("inicio_agregarClientes"); ?></p></a>
                                     <a href="<?= base_url() ?>proveedores/agregar"><p><i
-                                                class="mdi-action-perm-identity cyan-text text-darken-2"></i> Agregar
-                                            Personas</p></a>
+                                                class="mdi-action-perm-identity cyan-text text-darken-2"></i><?= label("inicio_agregarPersonas"); ?></p></a>
                                 </div>
                             </div>
                         </div>

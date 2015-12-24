@@ -4,14 +4,7 @@
             <div class="col-sm-12 text-center">
                 <h4 class="uppercase mb16"><?= label('beneficios'); ?></h4>
 
-                <p class="lead mb64">
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
-                    mus.</p>
+                <p class="lead mb64"><?= label('texto_beneficios'); ?></p>
             </div>
         </div>
 

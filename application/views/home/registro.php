@@ -84,8 +84,8 @@
 
                                     <div class="input-field col s12 m8 l6">
                                         <select id="registro_tipo" name="registro_tipo" onChange="datosRegistro(this)">
-                                            <option value="1">Trabajador independiente</option>
-                                            <option value="2">Empresa</option>
+                                            <option value="1"><?= label('formRegistro_trabajadorIndependiente'); ?></option>
+                                            <option value="2"><?= label('formRegistro_empresa'); ?></option>
                                         </select>
                                         <label for="registro_tipo"><?= label('formRegistro_tipo'); ?></label>
                                     </div>
@@ -381,7 +381,7 @@
         $('#formulario_registro').submit(function(event) {
             var $terms = $('#registro_terminos').is(':checked');
             if(!$terms) {
-                alert('Por favor, acepte primero los terminos de uso.');
+                alert('<?= label('formRegistro_mensajeAceptarTerminos'); ?>');
                 return false;
             }
         });

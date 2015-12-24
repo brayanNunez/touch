@@ -17,6 +17,30 @@
     $lang['link_paginaInicial'] = 'touchcr.com';
     
 
+//paginas informativas
+    $lang['texto_terminosCondiciones'] = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+                    mus.';
+    $lang['texto_beneficios'] = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+                    mus.';
+    $lang['texto_comoFunciona'] = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+                    mus.';
+
+
 //mensajes 
 	$lang['confirmarEliminarCotizacion'] = '¿Realmente desea eliminar la cotización seleccionada?';
 	$lang['confirmarFinalizarCotizacion'] = '¿Realmente desea finalizar la cotización seleccionada?';
@@ -262,6 +286,8 @@
     $lang['gastos_busquedaBuscar'] = 'Buscar';
     $lang['gastos_guardarCambios'] = 'Guardar cambios';
 
+    $lang['otrosDatos'] = 'Otros datos';
+    $lang['gastos_editarGasto'] = 'Editar gastos';
     $lang['gastos_Tipo'] = 'Tipo';
     $lang['gastos_tipoFijo'] = 'Fijo';
     $lang['gastos_tipoVariable'] = 'Variable';
@@ -771,6 +797,9 @@
 
 //Formulario informacion del perfil
     $lang['formRegistro_tipo'] = 'Tipo de registro';
+    $lang['formRegistro_empresa'] = 'Empresa';
+    $lang['formRegistro_trabajadorIndependiente'] = 'Trabajador independiente';
+    $lang['formRegistro_mensajeAceptarTerminos'] = 'Por favor, acepte primero los terminos de uso.';
     $lang['formPerfil_numeroIdentificacion'] = 'Número de identificación';
     $lang['formPerfil_cedulaJuridica'] = 'Cédula jurídica';
     $lang['formPerfil_nombreArtistico'] = 'Nombre artístico';
@@ -1071,6 +1100,8 @@ $lang['formPersona_descripcion'] = 'Descripción';
 $lang['formPersona_enviar'] = 'Agregar persona';
 $lang['formPersona_editar'] = 'Guardar cambios';
 $lang['formPersona_fotografia'] = 'Imagen de perfil';
+$lang['formPersona_otrosDatos'] = 'Otros datos';
+$lang['formPersona_contactos'] = 'Contactos';
 $lang['personaErrorSubirArchivo'] = 'Ha ocurrido un error al subir el archivo';
 $lang['Persona_tablaTipo'] = 'Tipo';
 $lang['Persona_tablaTipoPersona'] = 'Tipo persona';
@@ -1552,6 +1583,18 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['grafica_ingresos'] = 'Ingresos';
     $lang['grafica_tituloGraficaCantidad'] = 'Número de cotizaciones';
     $lang['grafica_facturadas'] = 'facturadas';
+
+//inicio
+    $lang['inicio_totalCotizaciones'] = 'Total cotizaciones';    
+    $lang['inicio_cotAprobadas'] = 'Cotizaciones aprobadas'; 
+    $lang['inicio_cotFacturadas'] = 'Cotizaciones facturadas'; 
+    $lang['inicio_cotEnviadas'] = 'Cotizaciones enviadas'; 
+    $lang['inicio_cotRevision'] = 'Cotizaciones en revisión'; 
+    $lang['inicio_cotRechazadas'] = 'Cotizaciones rechazadas'; 
+    $lang['inicio_totalGastoFijoMensual'] = 'Total gasto fijo mensual'; 
+    $lang['inicio_gestionUsuarios'] = 'Gestión de usuarios'; 
+    $lang['inicio_agregarClientes'] = 'Agregar clientes'; 
+    $lang['inicio_agregarPersonas'] = 'Agregar personas'; 
 
     
 

@@ -277,23 +277,23 @@
         if($fijo === '1') {
             selectTipo.append($('<option>', {
                 value: 1,
-                text: 'Fijo',
+                text: '<?= label('gastos_tipoFijo') ?>',
                 selected: true
             }));
             selectTipo.append($('<option>', {
                 value: 2,
-                text: 'Variable',
+                text: '<?= label('gastos_tipoVariable') ?>',
                 selected: false
             }));
         } else {
             selectTipo.append($('<option>', {
                 value: 1,
-                text: 'Fijo',
+                text: '<?= label('gastos_tipoFijo') ?>',
                 selected: false
             }));
             selectTipo.append($('<option>', {
                 value: 2,
-                text: 'Variable',
+                text: '<?= label('gastos_tipoVariable') ?>',
                 selected: true
             }));
         }
@@ -1579,7 +1579,7 @@
     </div>
     <div class="modal-content" style="padding: 0 24px;">
         <div class="row">
-            <h5 style="float: left;">Editar gasto</h5>
+            <h5 style="float: left;"><?= label('gastos_editarGasto') ?></h5>
         </div>
         <form id="form_gastoEditar" action="<?=base_url()?>gastos/modificar" method="post">
             <div class="row">
@@ -1793,7 +1793,7 @@
 
                 <!-- Otros datos -->
                 <div class="col s12">
-                    <a id="btn_persona_otrosDatos" class="btn_mostrarElementosOcultos">Otros datos</a>
+                    <a id="btn_persona_otrosDatos" class="btn_mostrarElementosOcultos"><?= label('formPersona_otrosDatos'); ?></a>
                 </div>
                 <div id="datosNoObligatorios" style="display: none;">
                     <div id="campos-proveedor-fisico" style="display: block;">
@@ -1906,7 +1906,7 @@
 
                 <!-- Datos de contactos -->
                 <div class="col s12">
-                    <a id="btn_persona_contactos" class="btn_mostrarElementosOcultos">Contactos</a>
+                    <a id="btn_persona_contactos" class="btn_mostrarElementosOcultos"><?= label('formPersona_contactos'); ?></a>
                 </div>
                 <div id="datosContactos" style="display: none;">
                     <div id="contenedorContactos"></div>
