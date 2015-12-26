@@ -338,7 +338,7 @@
                     <div class="input-field col s12">
                         <div class="col s12">
                             <button class="btn btn-default" type="submit" name="cambiar" style="display: block; margin: 0 auto; width: 300px;"
-                                    id="cambiar-contrasena-usuario" onclick="">Guardar cambios</button>
+                                    id="cambiar-contrasena-usuario" onclick=""><?= label('formUsuario_editar'); ?></button>
                         </div>
                     </div>
                 </div>
