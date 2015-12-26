@@ -297,7 +297,7 @@
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td>
-                                                                <td>TOTAL</td>
+                                                                <td><?= label('modalServicio_total'); ?></td>
                                                                 <td><span class="moneda_signo"></span><span class="total_gastos_variables"><?= $totalGastos; ?></span></td>
                                                                 <td></td>
                                                             </tr>
@@ -1420,7 +1420,7 @@ echo "var arrayFases =". $js_array.";";
         <div class="row">
             <div class="input-field col s6">
                 <select>
-                    <option value="">Seleccione</option>
+                    <option value=""><?= label('formServicio_seleccione'); ?></option>
                     <option value="1" selected><?= label('horas') ?></option>
                     <option value="2"><?= label('dia') ?></option>
                     <option value="3"><?= label('semana') ?></option>

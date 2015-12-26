@@ -1163,6 +1163,7 @@ $lang['Persona_tablaOpciones'] = 'Opciones';
     $lang['Servicio_tablaPrecio'] = 'Precio';
     $lang['Servicio_tablaOpciones'] = 'Opciones';
     $lang['Servicio_nuevo'] = 'Agregar servicio';
+    $lang['formServicio_seleccione'] = 'Seleccione';
     $lang['formServicio_codigo'] = 'Código';
     $lang['formServicio_nombre'] = 'Nombre';
     $lang['formServicio_descripcion'] = 'Descripción';
