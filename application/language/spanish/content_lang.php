@@ -40,6 +40,9 @@
                     Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
                     mus.';
 
+//header
+    $lang['header_perfilIncompleto'] = 'Recuerda que tu perfil esta incompleto';
+    $lang['header_perfilEditar'] = ' editar';
 
 //mensajes 
 	$lang['confirmarEliminarCotizacion'] = '¿Realmente desea eliminar la cotización seleccionada?';
@@ -418,6 +421,7 @@
     $lang['formEmpresa_codigoCotizacion'] = 'Código de cotización';
     $lang['formEmpresa_tituloFirma'] = 'Firma electrónica del representante de la empresa';
     $lang['formEmpresa_infoCotizacion'] = 'Información para cotización';
+    $lang['formEmpresa_nota'] = '* Nota:';
     $lang['formEmpresa_firma'] = 'Imagen de firma electrónica del representante de la empresa';
     $lang['formEmpresa_imagenTipoPreferible'] = 'Se recomienda el uso de imagenes de tipo PNG o sin fondo, pues ofrecen una mejor visualización.';
     $lang['registroEditadoCorrectamente'] = 'El perfil de empresa fue editado correctamente';
@@ -437,6 +441,7 @@
     $lang['completarRegistro_correo'] = 'Correo electrónico empresarial';
     $lang['completarRegistro_fechaCreacion'] = 'Fecha de creación';
     $lang['completarRegistro_tamano'] = 'Tamaño';
+    $lang['completarRegistro_omitir'] = 'Omitir';
     $lang['registro_enviar'] = 'Guardar cambios';
     $lang['registro_exitoCompletar'] = 'Los cambios han sido guardados correctamente';
     $lang['completarRegistro_nombreRepresentante'] = 'Nombre representante';
@@ -783,6 +788,7 @@
 	$lang['monedas'] = 'Monedas';
 	$lang['usuarios'] = 'Usuarios';
 	$lang['financiamiento'] = 'Formas de pago';
+    $lang['fases'] = 'Fases';
 	$lang['gastos'] = 'Gastos';
 	$lang['avanzado'] = 'Avanzado';
 	$lang['masOpciones'] = 'MÁS OPCIONES';

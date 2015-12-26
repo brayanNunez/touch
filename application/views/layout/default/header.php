@@ -159,11 +159,11 @@
                     <a id="logo-principal-header" href="<?= base_url() ?>inicio" class="brand-logo darken-1">
                         <img src="<?= base_url() ?>assets/dashboard/images/materialize-logo.png" alt="materialize logo">
                     </a>
-                    <span class="logo-text">Touch!</span>
+                    <span class="logo-text"><?= label('nombreSistema'); ?></span>
                 </h1>
 
-                <span id="span_mensajeRegistroIncompleto">Recuerda que tu perfil esta incompleto
-                    <a id="btn_completarRegistro" href="#completarRegistroEmpresa" class="-text modal-trigger"> editar</a>
+                <span id="span_mensajeRegistroIncompleto"><?= label('header_perfilIncompleto'); ?>
+                    <a id="btn_completarRegistro" href="#completarRegistroEmpresa" class="-text modal-trigger"><?= label('header_perfilEditar'); ?></a>
                 </span>
 
                 <ul id="opciones-barra-superior" class="right hide-on-med-and-down">
@@ -261,7 +261,7 @@
                             <a id="btn_horasLaborales" href="#horasLaborales" class="modal-trigger"><?= label('horas'); ?></a>
                         </li>
                         <li>
-                            <a href="<?= base_url(); ?>fases">Fases</a>
+                            <a href="<?= base_url(); ?>fases"><?= label('fases'); ?></a>
                         </li>
                     </ul>
 

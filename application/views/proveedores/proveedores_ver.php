@@ -190,7 +190,7 @@
                         </div>
                 <?php
                     } else { ?>
-                        <h5 style="padding: 25px;">No hay contactos disponibles para mostrar</h5>
+                        <h5 style="padding: 25px;"><?= label('clientes_noHayContactosNo'); ?></h5>
                 <?php
                     }
                 }

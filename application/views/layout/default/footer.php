@@ -427,7 +427,7 @@ Scripts
     </div>
     <div class="modal-footer">
         <div class="input-field col s12 m6 l6 opt-modal-registro">
-            <a style="float:left;" href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Omitir</a>
+            <a style="float:left;" href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('completarRegistro_omitir'); ?></a>
         </div>
     </div>
 </div>
@@ -461,7 +461,7 @@ Scripts
                 </figure>
             </div>
             <div class="col s12">
-                <h5 style="text-align: left;">* Nota:</h5>
+                <h5 style="text-align: left;"><?= label('formEmpresa_nota'); ?></h5>
                 <h6>- <?= label('formEmpresa_imagenTipoPreferible'); ?></h6>
             </div>
         </div>
@@ -501,7 +501,7 @@ Scripts
                 </figure>
             </div>
             <div class="col s12">
-                <h5 style="text-align: left;">* Nota:</h5>
+                <h5 style="text-align: left;"><?= label('formEmpresa_nota'); ?></h5>
                 <h6>- <?= label('formEmpresa_imagenTipoPreferible'); ?></h6>
             </div>
         </div>
