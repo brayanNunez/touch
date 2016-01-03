@@ -59,7 +59,7 @@
 
         <div class="col s12" style="margin-top: 20px;">
             <ul class="tabs tab-demo-active z-depth-1 cliente-info tags-secundarios">
-                <li class="tab-interior tab col s3">
+                <li class="tab col s3">
                     <a class="white-text darken-1 waves-effect waves-light"
                        id="cliente-informacion" href="#tab-contactos"><i
                             class="mdi-communication-contacts"></i>

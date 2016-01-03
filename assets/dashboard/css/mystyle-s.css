@@ -70,11 +70,11 @@ div.new-file { float: left; margin: 3% 3% 0 3%; }
 
 ul.cliente-info li a.active, ul.usuario-info li a.active, ul.proveedor-info li a.active { color: green !important; background-color: lightgray; }
 ul.cliente-info li { width: 25% !important; }
-ul.cliente-info.tags-secundarios li { width: 33.3% !important; }
+ul.cliente-info.tags-secundarios li { width: 33.33% !important; }
 ul.cliente-info li a { background-color: #009966; }
-ul.usuario-info li { width: 33% !important; }
+ul.usuario-info li { width: 33.33% !important; }
 ul.usuario-info li a { background-color: #009966; }
-ul.proveedor-info li { width: 33.3% !important; }
+ul.proveedor-info li { width: 33.33% !important; }
 ul.proveedor-info.tags-secundarios li { width: 50% !important; }
 ul.proveedor-info li a { background-color: #009966; }
 /*ul.proveedor-info-juridico li { width: 33.3% !important; }*/
