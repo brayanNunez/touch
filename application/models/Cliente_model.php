@@ -674,6 +674,26 @@ class Cliente_model extends CI_Model
             return false;
         }
     }
+
+    public function cambiarContactoPrincipal($idContacto, $idCliente) {
+        try{
+            $this->db->trans_begin();
+
+            $this->db->where('idCliente', $idCliente);
+            $query = $this->db->update('personacontacto', array('principal' => 0));
+            if (!$query) throw new Exception("Error en la BD");
+
+            $this->db->where('idPersonaContacto', $idContacto);
+            $query = $this->db->update('personacontacto', array('principal' => 1));
+            if (!$query) throw new Exception("Error en la BD");
+
+            $this->db->trans_commit();
+            return true;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
     
 }
 

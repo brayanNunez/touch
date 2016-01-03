@@ -634,6 +634,18 @@ class Clientes extends CI_Controller
         }
     }
 
+    public function cambiarContactoPrincipal() {
+        $idContacto = $_POST['idContacto'];
+        $idCliente = $_POST['idCliente'];
+        if (!$this->Cliente_model->cambiarContactoPrincipal($idContacto, $idCliente)) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            //correcto
+            echo 1;
+        }
+    }
+
     //Funcion para eliminar el acento de los nombres de los archivos
     public function convertirNombre($str, $charset='utf-8'){
         $str = htmlentities($str, ENT_NOQUOTES, $charset);
