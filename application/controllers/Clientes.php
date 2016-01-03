@@ -196,6 +196,7 @@ class Clientes extends CI_Controller
                  'telefono' => $this->input->post('cliente_contactoTelefono_'.$contador),
                  'puesto' => $this->input->post('cliente_contactoPuesto_'.$contador),
                  'enviarFacturas' => $enviarFacturas,   
+                 'principal' => '0',
                  'eliminado' => '0'
                  );
                 array_push($contactos, $contacto);

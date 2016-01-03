@@ -136,6 +136,7 @@ class Proveedores extends CI_Controller
                     'correo' => $this->input->post('proveedor_contactoCorreo_'.$contador),
                     'telefono' => $this->input->post('proveedor_contactoTelefono_'.$contador),
                     'puesto' => $this->input->post('proveedor_contactoPuesto_'.$contador),
+                    'principal' => '0',
                     'eliminado' => '0'
                 );
                 array_push($contactos, $contacto);
