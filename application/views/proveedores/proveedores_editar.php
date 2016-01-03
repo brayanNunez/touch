@@ -597,6 +597,7 @@
                     $('#imagen_perfil_usuario').attr('src', response + '?' + d.getTime());
                     $('#imagen_perfil_usuario_ver').attr('src', response + '?' + d.getTime());
                     formPW.find('input:file,input:text').val('');
+                    $('#cambio-imagen .modal-header a').click();
                 }
             },
             cache: false,
