@@ -42,7 +42,6 @@ class Registro extends CI_Controller
                 'correo' => $this->input->post('registro_correoTrabajador'),
                 'nombre' => $this->input->post('registro_nombreEmpresaTrabajador'),
                 'enviarCorreos' => $enviarCorreos,
-                'idMoneda' => 1,
                 'activa' => 1
             );
             $data['direccion'] = array(
@@ -68,7 +67,6 @@ class Registro extends CI_Controller
                 'nombre' => $this->input->post('registro_nombreEmpresa'),
                 'nombreFantasia' => $this->input->post('registro_nombreFantasiaEmpresa'),
                 'enviarCorreos' => $enviarCorreos,
-                'idMoneda' => 1,
                 'activa' => 1
             );
             $data['direccion'] = array(
