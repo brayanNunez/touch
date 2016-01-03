@@ -586,6 +586,18 @@ class Proveedores extends CI_Controller
         }
     }
 
+    public function cambiarContactoPrincipal() {
+        $idContacto = $_POST['idContacto'];
+        $idPersona = $_POST['idPersona'];
+        if (!$this->Proveedor_model->cambiarContactoPrincipal($idContacto, $idPersona)) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            //correcto
+            echo 1;
+        }
+    }
+
     //Funcion para eliminar el acento de los nombres de los archivos
     public function convertirNombre($str, $charset='utf-8'){
         $str = htmlentities($str, ENT_NOQUOTES, $charset);

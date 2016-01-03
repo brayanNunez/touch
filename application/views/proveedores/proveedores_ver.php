@@ -159,24 +159,27 @@
                                                 <p><?= $contacto['puesto']; ?></p>
                                                 <p><?= $contacto['correo']; ?></p>
                                                 <p>Tel. <?= $contacto['telefono']; ?></p>
-<!--                                                <div class="contacto-opciones">-->
-<!--                                                    <a href="#editarContacto" class="modal-trigger"-->
-<!--                                                       title="--><?//= label('formProveedor_contactoEditar') ?><!--">-->
-<!--                                                        <i class="mdi-editor-mode-edit"></i>-->
-<!--                                                    </a>-->
-<!--                                                    <a href="#" title="--><?//= label('formProveedor_contactoDescargar')?><!--">-->
-<!--                                                        <i class="mdi-file-file-download"></i>-->
-<!--                                                    </a>-->
-<!--                                                    <a href="#eliminarContacto" class="modal-trigger" title="--><?//= label('formProveedor_contactoEliminar')?><!--">-->
-<!--                                                        <i class="mdi-action-delete"></i>-->
-<!--                                                    </a>-->
-<!--                                                </div>-->
-<!--                                                El principal se pone con la clase es-principal-->
-                                                <div class="contacto-principal">
-                                                    <a href="#cambiarPrincipal" class="modal-trigger" title="<?= label('formProveedor_contactoPrincipal') ?>">
-                                                        <i class="mdi-action-done"></i>
-                                                    </a>
-                                                </div>
+                                                <?php
+                                                if($contacto['principal'] == 1) { ?>
+                                                    <div class="contacto-principal es-principal">
+                                                        <a href="#cambiarPrincipal" class="modal-trigger confirmarPrincipal"
+                                                           data-id-contacto="<?= $contacto['idProveedorContacto'] ?>" data-id-persona="<?= $contacto['idProveedor'] ?>"
+                                                           title="<?= label('formProveedor_contactoPrincipal') ?>">
+                                                            <i class="mdi-action-done"></i>
+                                                        </a>
+                                                    </div>
+                                                <?php
+                                                } else { ?>
+                                                    <div class="contacto-principal">
+                                                        <a href="#cambiarPrincipal" class="modal-trigger confirmarPrincipal"
+                                                           data-id-contacto="<?= $contacto['idProveedorContacto'] ?>" data-id-persona="<?= $contacto['idProveedor'] ?>"
+                                                           title="<?= label('formProveedor_contactoPrincipal') ?>">
+                                                            <i class="mdi-action-done"></i>
+                                                        </a>
+                                                    </div>
+                                                <?php
+                                                }
+                                                ?>
                                             </div>
                                         </div>
                                     </li>
@@ -241,6 +244,7 @@
     </div>
 </div>
 
+<!--Script para slider de contactos-->
 <script>
     $(window).load(function () {
         document.getElementById('btn-previous').style.visibility = 'hidden';
@@ -326,7 +330,41 @@
         });
     });
 </script>
-
+<!--Script para manejo de contacto principal-->
+<script type="text/javascript">
+    $(document).on("ready", function () {
+        var idContactoSeleccionado = 0;
+        var idPersona = 0;
+        var divContacto = null;
+        var listaContactos = null;
+        $(document).on('click','.confirmarPrincipal', function () {
+            idContactoSeleccionado = $(this).data('id-contacto');
+            idPersona = $(this).data('id-persona');
+            divContacto = $(this).parent();
+            listaContactos = $(this).parents('ul');
+        });
+        $('#cambiarPrincipal #botonCambiarPrincipal').on('click', function () {
+            event.preventDefault();
+            $.ajax({
+                data: { idContacto : idContactoSeleccionado, idPersona : idPersona },
+                url:   '<?=base_url()?>proveedores/cambiarContactoPrincipal',
+                type:  'post',
+                success:  function (response) {
+                    if (response == 1) {
+                        var contactos = listaContactos.find('div.contacto-principal');
+                        contactos.each(function () {
+                            $(this).removeClass('es-principal');
+                        });
+                        divContacto.addClass('es-principal');
+                        alert('El contacto principal fue editado correctamente');
+                    } else{
+                        alert('Error al cambiar el contacto principal');
+                    }
+                }
+            });
+        });
+    });
+</script>
 <!-- Script para tags -->
 <script>
     $(document).ready(function () {
@@ -418,7 +456,6 @@
 </script>
 
 <!-- Lista de modals-->
-
 <div id="eliminarContacto" class="modal">
     <div class="modal-header">
         <p><?= label('nombreSistema'); ?></p>
@@ -439,7 +476,7 @@
     <div class="modal-content">
         <p><?= label('confirmarCambiarPrincipal'); ?></p>
     </div>
-    <div class="modal-footer black-text">
+    <div id="botonCambiarPrincipal"  class="modal-footer black-text">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
     </div>
 </div>

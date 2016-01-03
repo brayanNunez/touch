@@ -540,6 +540,26 @@ class Proveedor_model extends CI_Model
         }
     }
 
+    public function cambiarContactoPrincipal($idContacto, $idPersona) {
+        try{
+            $this->db->trans_begin();
+
+            $this->db->where('idProveedor', $idPersona);
+            $query = $this->db->update('proveedorcontacto', array('principal' => 0));
+            if (!$query) throw new Exception("Error en la BD");
+
+            $this->db->where('idProveedorContacto', $idContacto);
+            $query = $this->db->update('proveedorcontacto', array('principal' => 1));
+            if (!$query) throw new Exception("Error en la BD");
+
+            $this->db->trans_commit();
+            return true;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
 }
 
 ?>
