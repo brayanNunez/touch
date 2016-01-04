@@ -356,9 +356,12 @@
                             $(this).removeClass('es-principal');
                         });
                         divContacto.addClass('es-principal');
-                        alert('El contacto principal fue editado correctamente');
+
+                        document.getElementById('cambiarPrincipal').style.visibility = 'hidden';
+                        alert('<?= label('persona_contacto_exitoCambiarPrincipal'); ?>');
+                        document.getElementById('cambiarPrincipal').style.visibility = 'visible';
                     } else{
-                        alert('Error al cambiar el contacto principal');
+                        alert('<?= label('persona_contacto_errorCambiarPrincipal'); ?>');
                     }
                 }
             });

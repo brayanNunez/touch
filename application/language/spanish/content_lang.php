@@ -1411,6 +1411,11 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['tablaFinanciamiento_nombre'] = 'Nombre';
     $lang['tablaFinanciamiento_descripcion'] = 'Descripción';
 
+    $lang['cliente_contacto_exitoCambiarPrincipal'] = 'El contacto principal fue editado correctamente';
+    $lang['cliente_contacto_errorCambiarPrincipal'] = 'El contacto principal no pudo ser editado';
+    $lang['persona_contacto_exitoCambiarPrincipal'] = 'El contacto principal fue editado correctamente';
+    $lang['persona_contacto_errorCambiarPrincipal'] = 'El contacto principal no pudo ser editado';
+
 //Tool tips
     $lang['tooltip_verEditar'] = 'Ver / Editar';
     $lang['tooltip_annadir'] = 'Añadir';
