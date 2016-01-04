@@ -196,12 +196,12 @@
                 <!--card stats start-->
                 <div id="card-stats">
                     <div class="row">
-                        <a href="<?= base_url() ?>cotizacion">
+                        <a href="<?= base_url() ?>cotizacion/index/1">
                             <div class="col s12 m6 l4">
                                 <div class="card">
                                     <div class="card-content  green white-text">
-                                        <p class="card-stats-title"><i class="mdi-social-group-add"></i> <?= label("inicio_totalCotizaciones"); ?></p>
-                                        <h4 class="card-stats-number">76</h4>
+                                        <p class="card-stats-title"><i class="mdi-action-note-add"></i> <?= label("inicio_estado_nueva"); ?></p>
+                                        <h4 class="card-stats-number"><?=$cantidades['cantidadNueva']?></h4>
                                     </div>
                                     <div class="card-action  green darken-2">
                                         <div></div>
@@ -209,12 +209,12 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="<?= base_url() ?>cotizacion">
+                        <a href="<?= base_url() ?>cotizacion/index/2">
                             <div class="col s12 m6 l4">
                                 <div class="card">
                                     <div class="card-content purple white-text">
-                                        <p class="card-stats-title"><i class="mdi-editor-attach-money"></i><?= label("inicio_cotAprobadas"); ?></p>
-                                        <h4 class="card-stats-number">8</h4>
+                                        <p class="card-stats-title"><i class="mdi-action-alarm-add"></i> <?= label("inicio_estado_espera"); ?></p>
+                                        <h4 class="card-stats-number"><?=$cantidades['cantidadEspera']?></h4>
                                     </div>
                                     <div class="card-action purple darken-2">
                                         <div></div>
@@ -223,13 +223,13 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="<?= base_url() ?>cotizacion">
+                        <a href="<?= base_url() ?>cotizacion/index/3">
                             <div class="col s12 m6 l4">
                                 <div class="card">
                                     <div class="card-content deep-purple white-text">
-                                        <p class="card-stats-title"><i class="mdi-editor-insert-drive-file"></i>
-                                            <?= label("inicio_cotFacturadas"); ?></p>
-                                        <h4 class="card-stats-number">16</h4>
+                                        <p class="card-stats-title"><i class="mdi-action-autorenew"></i>
+                                            <?= label("inicio_estado_rechazada"); ?></p>
+                                        <h4 class="card-stats-number"><?=$cantidades['cantidadRechazada']?></h4>
 
                                     </div>
                                     <div class="card-action  deep-purple darken-2">
@@ -238,12 +238,12 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="<?= base_url() ?>cotizacion">
+                        <a href="<?= base_url() ?>cotizacion/index/4">
                             <div class="col s12 m6 l4">
                                 <div class="card">
                                     <div class="card-content blue-grey white-text">
-                                        <p class="card-stats-title"><i class="mdi-action-trending-up"></i> <?= label("inicio_cotEnviadas"); ?></p>
-                                        <h4 class="card-stats-number">67</h4>
+                                        <p class="card-stats-title"><i class="mdi-content-send"></i> <?= label("inicio_estado_enviada"); ?></p>
+                                        <h4 class="card-stats-number"><?=$cantidades['cantidadEnviada']?></h4>
 
                                     </div>
                                     <div class="card-action blue-grey darken-2">
@@ -252,12 +252,12 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="<?= base_url() ?>cotizacion">
+                        <a href="<?= base_url() ?>cotizacion/index/5">
                             <div class="col s12 m6 l4">
                                 <div class="card">
                                     <div class="card-content  green white-text">
-                                        <p class="card-stats-title"><i class="mdi-social-group-add"></i> <?= label("inicio_cotRevision"); ?></p>
-                                        <h4 class="card-stats-number">8</h4>
+                                        <p class="card-stats-title"><i class="mdi-action-done"></i> <?= label("inicio_estado_finalizada"); ?></p>
+                                        <h4 class="card-stats-number"><?=$cantidades['cantidadFinalizada']?></h4>
 
                                     </div>
                                     <div class="card-action  green darken-2">
@@ -266,13 +266,13 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="<?= base_url() ?>cotizacion">
+                        <a href="<?= base_url() ?>cotizacion/index/6">
                             <div class="col s12 m6 l4">
                                 <div class="card">
                                     <div class="card-content deep-purple white-text">
-                                        <p class="card-stats-title"><i class="mdi-editor-insert-drive-file"></i>
-                                            <?= label("inicio_cotRechazadas"); ?></p>
-                                        <h4 class="card-stats-number">16</h4>
+                                        <p class="card-stats-title"><i class="mdi-editor-attach-money"></i>
+                                            <?= label("inicio_estado_facturada"); ?></p>
+                                        <h4 class="card-stats-number"><?=$cantidades['cantidadFacturada']?></h4>
 
                                     </div>
                                     <div class="card-action  deep-purple darken-2">

@@ -20,8 +20,10 @@ class Inicio extends CI_Controller
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
 
+        
+        $data['cantidades'] = $this->Cotizacion_model->datosAccesosDirectos($idEmpresa); 
         $data['resultado'] = $this->Cotizacion_model->datosGrafica($idEmpresa); 
-        if ($data['resultado'] === false) {
+        if ($data['resultado'] === false || $data['cantidades'] === false) {
             echo "Error en la transacción";
         } else {
             $this->load->view('layout/default/header');

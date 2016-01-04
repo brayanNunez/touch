@@ -31,6 +31,87 @@ class Cotizacion_model extends CI_Model
         }
     }
 
+    function datosAccesosDirectos($idEmpresa)
+    {
+        try{
+
+            $this->db->trans_begin();
+            $this->db->select('count(*) as cantidad');
+            $this->db->from('cotizacion co');
+            $this->db->join('estadocotizacion as ec', 'co.idEstadoCotizacion = ec.idEstadoCotizacion');
+            $this->db->where(array('eliminado' => 0, 'idEmpresa' => $idEmpresa, 'descripcion' => 'nueva'));
+            $query = $this->db->get();
+            if (!$query) throw new Exception("Error en la BD"); 
+
+            $query = $query->result_array();
+            $query = array_shift($query);
+            $data['cantidadNueva'] = $query['cantidad'];
+
+            $this->db->select('count(*) as cantidad');
+            $this->db->from('cotizacion co');
+            $this->db->join('estadocotizacion as ec', 'co.idEstadoCotizacion = ec.idEstadoCotizacion');
+            $this->db->where(array('eliminado' => 0, 'idEmpresa' => $idEmpresa, 'descripcion' => 'espera'));
+            $query = $this->db->get();
+            if (!$query) throw new Exception("Error en la BD"); 
+
+            $query = $query->result_array();
+            $query = array_shift($query);
+            $data['cantidadEspera'] = $query['cantidad'];
+
+            $this->db->select('count(*) as cantidad');
+            $this->db->from('cotizacion co');
+            $this->db->join('estadocotizacion as ec', 'co.idEstadoCotizacion = ec.idEstadoCotizacion');
+            $this->db->where(array('eliminado' => 0, 'idEmpresa' => $idEmpresa, 'descripcion' => 'rechazada'));
+            $query = $this->db->get();
+            if (!$query) throw new Exception("Error en la BD"); 
+
+            $query = $query->result_array();
+            $query = array_shift($query);
+            $data['cantidadRechazada'] = $query['cantidad'];
+
+            $this->db->select('count(*) as cantidad');
+            $this->db->from('cotizacion co');
+            $this->db->join('estadocotizacion as ec', 'co.idEstadoCotizacion = ec.idEstadoCotizacion');
+            $this->db->where(array('eliminado' => 0, 'idEmpresa' => $idEmpresa, 'descripcion' => 'enviada'));
+            $query = $this->db->get();
+            if (!$query) throw new Exception("Error en la BD"); 
+
+            $query = $query->result_array();
+            $query = array_shift($query);
+            $data['cantidadEnviada'] = $query['cantidad'];
+
+            $this->db->select('count(*) as cantidad');
+            $this->db->from('cotizacion co');
+            $this->db->join('estadocotizacion as ec', 'co.idEstadoCotizacion = ec.idEstadoCotizacion');
+            $this->db->where(array('eliminado' => 0, 'idEmpresa' => $idEmpresa, 'descripcion' => 'finalizada'));
+            $query = $this->db->get();
+            if (!$query) throw new Exception("Error en la BD"); 
+
+            $query = $query->result_array();
+            $query = array_shift($query);
+            $data['cantidadFinalizada'] = $query['cantidad'];
+
+            $this->db->select('count(*) as cantidad');
+            $this->db->from('cotizacion co');
+            $this->db->join('estadocotizacion as ec', 'co.idEstadoCotizacion = ec.idEstadoCotizacion');
+            $this->db->where(array('eliminado' => 0, 'idEmpresa' => $idEmpresa, 'descripcion' => 'facturada'));
+            $query = $this->db->get();
+            if (!$query) throw new Exception("Error en la BD"); 
+
+            $query = $query->result_array();
+            $query = array_shift($query);
+            $data['cantidadFacturada'] = $query['cantidad'];
+
+            // echo print_r($data); exit();
+
+            $this->db->trans_commit();
+            return $data;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
     function busqueda($idEmpresa, $busqueda)
     {
         try{
@@ -90,15 +171,40 @@ class Cotizacion_model extends CI_Model
        
     }
 
-     function cargarTodos($idEmpresa)
+     function cargarTodos($idEmpresa, $estado)
     {
         try{
             $this->db->trans_begin();
 
             // $this->db->from('cotizacion');
+            $miEstado = '';
+            switch ($estado) {
+                case '1':
+                    $miEstado = 'nueva';
+                    break;
+                case '2':
+                    $miEstado = 'espera';
+                    break;
+                case '3':
+                    $miEstado = 'rechazada';
+                    break;
+                case '4':
+                    $miEstado = 'enviada';
+                    break;
+                case '5':
+                    $miEstado = 'finalizada';
+                    break;
+                case '6':
+                    $miEstado = 'facturada';
+                    break;
+            }
 
+            $estadoCotizacion = '';
+            if ($miEstado != '') {
+                $estadoCotizacion = ' AND ec.descripcion = "'.$miEstado.'"';
+            }
             
-            $cotizaciones = $this->db->query("SELECT mo.signo ,co.idCotizacion, co.numero, co.codigo, co.fechaCreacion, co.monto, if(cl.juridico = 1,cl.nombre,CONCAT(cl.nombre, ' ', cl.primerApellido, ' ', cl.segundoApellido)) as cliente, cl.idCliente, CONCAT(us.nombre, ' ', us.primerApellido, ' ', us.segundoApellido) as vendedor, us.idUsuario,ec.descripcion as estado FROM cotizacion as co left join cliente as cl on co.idCliente = cl.idCliente left join moneda as mo on co.idMoneda = mo.idMoneda left join estadocotizacion as ec on co.idEstadoCotizacion = ec.idEstadoCotizacion left join usuario as us on co.idUsuario = us.idUsuario where co.idEmpresa = ".$idEmpresa." AND co.eliminado=0;");
+            $cotizaciones = $this->db->query("SELECT mo.signo ,co.idCotizacion, co.numero, co.codigo, co.fechaCreacion, co.monto, if(cl.juridico = 1,cl.nombre,CONCAT(cl.nombre, ' ', cl.primerApellido, ' ', cl.segundoApellido)) as cliente, cl.idCliente, CONCAT(us.nombre, ' ', us.primerApellido, ' ', us.segundoApellido) as vendedor, us.idUsuario,ec.descripcion as estado FROM cotizacion as co left join cliente as cl on co.idCliente = cl.idCliente left join moneda as mo on co.idMoneda = mo.idMoneda left join estadocotizacion as ec on co.idEstadoCotizacion = ec.idEstadoCotizacion left join usuario as us on co.idUsuario = us.idUsuario where co.idEmpresa = ".$idEmpresa." AND co.eliminado=0".$estadoCotizacion);
 
 
             if (!$cotizaciones) throw new Exception("Error en la BD"); 

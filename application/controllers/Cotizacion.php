@@ -11,7 +11,7 @@ class Cotizacion extends CI_Controller
         $this->load->model('Cotizacion_model');
     }
 
-    public function index()
+    public function index($estado = 0)
     {
         // verificarLogin();//helper
         // esAdministrador();//helper
@@ -19,7 +19,7 @@ class Cotizacion extends CI_Controller
         verificarLogin();//helper
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
-        $data = $this->Cotizacion_model->cargarTodos($idEmpresa);
+        $data = $this->Cotizacion_model->cargarTodos($idEmpresa, $estado);
         if ($data == false) {
             $data['lista'] = false;
         }
@@ -28,6 +28,7 @@ class Cotizacion extends CI_Controller
         $this->load->view('cotizar/lista', $data);
         $this->load->view('layout/default/footer');
     }
+
 
     public function correosSugerencia($idCotizacion)
     {

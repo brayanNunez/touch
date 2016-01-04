@@ -600,6 +600,14 @@
     $lang['estado_finalizada'] = 'Finalizada';
     $lang['estado_facturada'] = 'Facturada';
 
+    $lang['inicio_estado_nueva'] = 'Cotizaciones creadas';
+    $lang['inicio_estado_espera'] = 'Cotizaciones  en revisión';
+    $lang['inicio_estado_rechazada'] = 'Cotizaciones  rechazadas';
+    $lang['inicio_estado_enviada'] = 'Cotizaciones  enviadas';
+    $lang['inicio_estado_finalizada'] = 'Cotizaciones  finalizadas';
+    $lang['inicio_estado_facturada'] = 'Cotizaciones  facturadas';
+
+
 
 	$lang['paso1'] = '1 General';
 	$lang['paso2'] = '2 Detalle';
@@ -1592,12 +1600,12 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
     $lang['grafica_facturadas'] = 'facturadas';
 
 //inicio
-    $lang['inicio_totalCotizaciones'] = 'Total cotizaciones';    
-    $lang['inicio_cotAprobadas'] = 'Cotizaciones aprobadas'; 
-    $lang['inicio_cotFacturadas'] = 'Cotizaciones facturadas'; 
-    $lang['inicio_cotEnviadas'] = 'Cotizaciones enviadas'; 
-    $lang['inicio_cotRevision'] = 'Cotizaciones en revisión'; 
-    $lang['inicio_cotRechazadas'] = 'Cotizaciones rechazadas'; 
+    // $lang['inicio_totalCotizaciones'] = 'Total cotizaciones';    
+    // $lang['inicio_cotAprobadas'] = 'Cotizaciones aprobadas'; 
+    // $lang['inicio_cotFacturadas'] = 'Cotizaciones facturadas'; 
+    // $lang['inicio_cotEnviadas'] = 'Cotizaciones enviadas'; 
+    // $lang['inicio_cotRevision'] = 'Cotizaciones en revisión'; 
+    // $lang['inicio_cotRechazadas'] = 'Cotizaciones rechazadas'; 
     $lang['inicio_totalGastoFijoMensual'] = 'Total gasto fijo mensual'; 
     $lang['inicio_gestionUsuarios'] = 'Gestión de usuarios'; 
     $lang['inicio_agregarClientes'] = 'Agregar clientes'; 
