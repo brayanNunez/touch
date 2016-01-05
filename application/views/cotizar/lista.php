@@ -576,103 +576,108 @@
 });
 
    function agregarFila(idEncriptado, codigo, numero, fechaCreacion, cliente, vendedor, monto, signo, estado, idCliente, idUsuario, contadorFilas){
+       var urlBase = '<?= base_url(); ?>';
+       var label_ver = '<?= label('menuOpciones_ver') ?>';
+       var label_editar = '<?= label('menuOpciones_editar') ?>';
+       var label_dublicar = '<?= label('tablaCotizaciones_opcionDuplicar') ?>';
+       var label_eliminar = '<?= label('menuOpciones_eliminar') ?>';
+       var label_seleccionar = '<?= label('menuOpciones_seleccionar') ?>';
+       var label_aprobar = '<?= label('menuOpciones_aprobar') ?>';
+       var label_finalizar = '<?= label('menuOpciones_finalizar') ?>';
+       var label_facturar = '<?= label('menuOpciones_facturar') ?>';
 
-
-            var urlBase = '<?= base_url(); ?>';
-            var label_ver = '<?= label('menuOpciones_ver') ?>';
-            var label_editar = '<?= label('menuOpciones_editar') ?>';
-            var label_dublicar = '<?= label('tablaCotizaciones_opcionDuplicar') ?>';
-            var label_eliminar = '<?= label('menuOpciones_eliminar') ?>';
-            var label_seleccionar = '<?= label('menuOpciones_seleccionar') ?>';
-
-            
-            var check = '<td>' +
-                        '<div style="text-align: center;">'+
-                       '<input type="checkbox" class="filled-in checkbox" id="'+idEncriptado+'"/>' +
-                       '<label for="'+idEncriptado+'"></label>' +
+       var check = '<td>' +
+                       '<div style="text-align: center;">'+
+                           '<input type="checkbox" class="filled-in checkbox" id="'+idEncriptado+'"/>' +
+                           '<label for="'+idEncriptado+'"></label>' +
                        '</div>'+
                     '</td>';
-            var boton = '<td>' +
-                            '<ul id="dropdown-cotizacion'+ contadorFilas +'" class="dropdown-content">' +
-                                '<li>' +
-                                    '<a href="<?= base_url(); ?>cotizacion/ver/'+idEncriptado+'" class="-text">'+label_ver+'</a>' +
-                                '</li>' +
-                                '<li>' +
-                                     '<a href="<?= base_url(); ?>cotizacion/editar/'+idEncriptado+'" class="-text">'+label_editar+'</a>' +
-                                '</li>' +
-                                '<li>' +
-                                     '<a href="<?= base_url(); ?>cotizacion/duplicar/'+idEncriptado+'" class="-text">'+label_dublicar+'</a>' +
-                                '</li>' +
-                                '<li>' +
-                                     '<a href="#eliminarCotizacion" class="-text modal-trigger confirmarEliminar" data-id-eliminar="'+idEncriptado+'"  data-fila-eliminar="fila'+ contadorFilas +'">'+label_eliminar+'</a>' +
-                                '</li>' +
-                            '</ul>' +
-                            '<a class="boton-opciones btn-flat dropdown-button waves-effect white-text"' +
-                              'href="#!"' +
-                              'data-activates="dropdown-cotizacion'+ contadorFilas +'">' +
-                           ''+ label_seleccionar +'<i class="mdi-navigation-arrow-drop-down"></i>' +
-                           '</a>' +
-                        '</td>';
             
-            var miCodigo = '';
+       var miCodigo = '';
+       if (codigo == '') {
+           miCodigo = numero;
+       } else {
+           miCodigo = codigo +'-'+numero;
+       }
+       var codigo = '<td><a href="'+urlBase+'cotizacion/editar/'+idEncriptado+'">'+miCodigo+'<a></td>';
+       var fechaCreacion = '<td>'+fechaCreacion+'</td>';
+       if (cliente == null) {
+           cliente = '';
+       }
+       var cliente = '<td><a href="'+urlBase+'clientes/editar/'+idCliente+'#tab-informacion">'+cliente+'<a></td>';
+       var vendedor = '<td><a href="'+urlBase+'usuarios/editar/'+idUsuario+'#tab-informacion">'+vendedor+'<a></td>';
+       var monto = '<td><span>'+signo+' </span>' + monto +'</td>';
 
-            if (codigo == '') {
-               miCodigo = numero;
-            } else{
-              miCodigo = codigo +'-'+numero;
-            };
+       var boton = '<td>' +
+           '<ul id="dropdown-cotizacion'+ contadorFilas +'" class="dropdown-content">';
+       var miEstado = '';
+       switch(estado){
+           case 'nueva':
+               miEstado =  '<?=label('estado_nueva')?>';
+               boton += '<li>' +
+                            '<a href="<?= base_url(); ?>cotizacion/editar/'+idEncriptado+'" class="-text">'+label_editar+'</a>' +
+                        '</li>';
+               break;
+           case 'espera':
+               miEstado =  '<?=label('estado_espera')?>';
+               boton += '<li>' +
+                            '<a href="<?= base_url(); ?>cotizacion/aprobar/'+idEncriptado+'" class="-text">'+label_aprobar+'</a>' +
+                        '</li>';
+               break;
+           case 'rechazada':
+               miEstado =  '<?=label('estado_rechazada')?>';
+               boton += '<li>' +
+                            '<a href="<?= base_url(); ?>cotizacion/editar/'+idEncriptado+'" class="-text">'+label_editar+'</a>' +
+                        '</li>';
+               break;
+           case 'enviada':
+               miEstado =  '<?=label('estado_enviada')?>';
+               boton += '<li>' +
+                            '<a href="<?= base_url(); ?>cotizacion/finalizar/'+idEncriptado+'" class="-text">'+label_finalizar+'</a>' +
+                        '</li>';
+               break;
+           case 'finalizada':
+               miEstado =  '<?=label('estado_finalizada')?>';
+               boton += '<li>' +
+                            '<a href="<?= base_url(); ?>cotizacion/facturar/'+idEncriptado+'" class="-text">'+label_facturar+'</a>' +
+                        '</li>';
+               break;
+           case 'facturada':
+               miEstado =  '<?=label('estado_facturada')?>';
+               break;
+       }
+       var estado = '<td>' + miEstado +'</td>';
+       boton +=    '<li>' +
+                       '<a href="<?= base_url(); ?>cotizacion/ver/'+idEncriptado+'" class="-text">'+label_ver+'</a>' +
+                   '</li>' +
+                   '<li>' +
+                       '<a href="<?= base_url(); ?>cotizacion/duplicar/'+idEncriptado+'" class="-text">'+label_dublicar+'</a>' +
+                   '</li>' +
+                   '<li>' +
+                       '<a href="#eliminarCotizacion" class="-text modal-trigger confirmarEliminar" data-id-eliminar="'+idEncriptado+'"  data-fila-eliminar="fila'+ contadorFilas +'">'+label_eliminar+'</a>' +
+                   '</li>' +
+               '</ul>' +
+               '<a class="boton-opciones btn-flat dropdown-button waves-effect white-text"' +
+               'href="#!"' +
+               'data-activates="dropdown-cotizacion'+ contadorFilas +'">' +
+               ''+ label_seleccionar +'<i class="mdi-navigation-arrow-drop-down"></i>' +
+               '</a>' +
+           '</td>';
 
-            var codigo = '<td><a href="'+urlBase+'cotizacion/editar/'+idEncriptado+'">'+miCodigo+'<a></td>';
-            var fechaCreacion = '<td>'+fechaCreacion+'</td>';
-            if (cliente == null) {
-              cliente = '';
-            } 
-            var cliente = '<td><a href="'+urlBase+'clientes/editar/'+idCliente+'#tab-informacion">'+cliente+'<a></td>';
-            var vendedor = '<td><a href="'+urlBase+'usuarios/editar/'+idUsuario+'#tab-informacion">'+vendedor+'<a></td>';
-            var monto = '<td><span>'+signo+' </span>' + monto +'</td>';
+       $('table').dataTable().fnAddData([
+           check,
+           codigo,
+           fechaCreacion,
+           cliente,
+           vendedor,
+           monto,
+           estado,
+           boton ]);
 
-            var miEstado = '';
-            switch(estado){
-              case 'nueva':
-                miEstado =  '<?=label('estado_nueva')?>';
-                break;
-              case 'espera':
-                miEstado =  '<?=label('estado_espera')?>';
-                break;
-              case 'rechazada':
-                miEstado =  '<?=label('estado_rechazada')?>';
-                break;
-              case 'enviada':
-                miEstado =  '<?=label('estado_enviada')?>';
-                break;
-              case 'finalizada':
-                miEstado =  '<?=label('estado_finalizada')?>';
-                break;
-              case 'facturada':
-                miEstado =  '<?=label('estado_facturada')?>';
-                break;
-            }
-            var estado = '<td>' + miEstado +'</td>';
-
-
-           $('table').dataTable().fnAddData([
-            check,
-            codigo,
-            fechaCreacion,
-            cliente,
-            vendedor,
-            monto,
-            estado,
-            boton ]);
-
-
-            generarListasBotones();
-            $('.modal-trigger').leanModal();
-      
+       generarListasBotones();
+       $('.modal-trigger').leanModal();
             // contadorFilas++;
-            
-            };
-
+   }
           function generarListasBotones(){
             $('.boton-opciones').sideNav({
             // menuWidth: 0, // Default is 240
