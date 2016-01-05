@@ -1382,7 +1382,7 @@ class Cotizacion_model extends CI_Model
         try{
             $this->db->trans_begin();
 
-            $this->db->select("idPersonaContacto, CONCAT(nombre, ' ', primerApellido, ' ', segundoApellido) as nombreContacto", false);
+            $this->db->select("idPersonaContacto, principal, CONCAT(nombre, ' ', primerApellido, ' ', segundoApellido) as nombreContacto", false);
             $this->db->where(array('idCliente' => $idCliente, 'eliminado' => 0));
             $contactosClientes = $this->db->get('personacontacto');
             if (!$contactosClientes) {

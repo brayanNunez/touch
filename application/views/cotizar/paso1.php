@@ -228,6 +228,7 @@
             data: {  },
             success: function(response)
             {
+                arrayClientes = $.parseJSON(response);
                 generarAutocompletarClientes($.parseJSON(response), $id);
                 generarListas();
             }
@@ -241,7 +242,7 @@
             data: { idCliente : $idCliente },
             success: function(response)
             {
-                arrayClientes = $.parseJSON(response);
+                // arrayClientes = $.parseJSON(response);
                 generarAutocompletarContactos($.parseJSON(response), $id);
                 generarListas();
             }
@@ -366,10 +367,14 @@
             }
         }
         miSelect.trigger("chosen:updated");
+
+        var clienteElegido =  $id;
+        cargarValoresDefectoCliente(clienteElegido);
     }
 
 
     function generarAutocompletarContactos($array, $id){
+        // alert($id);
         var miSelect = $('#paso1Atencion');
         miSelect.empty();
         miSelect.removeAttr('disabled');
@@ -381,7 +386,11 @@
                 if(atencion['idPersonaContacto'] == $id) {
                     miSelect.append('<option value="' + atencion['idPersonaContacto'] + '" selected>' + atencion['nombreContacto'] + '</option>');
                 } else {
-                    miSelect.append('<option value="' + atencion['idPersonaContacto'] + '">' + atencion['nombreContacto'] + '</option>');
+                    if ($id == 0 && atencion['principal'] == 1) {
+                        miSelect.append('<option value="' + atencion['idPersonaContacto'] + '" selected>' + atencion['nombreContacto'] + '</option>');
+                    } else {
+                        miSelect.append('<option value="' + atencion['idPersonaContacto'] + '">' + atencion['nombreContacto'] + '</option>');
+                    }
                 }
             }
         }
@@ -719,8 +728,13 @@
     }
 
     $(document).on('change', '#paso1Cliente', function () {
-        // alert('aqui es');
         var clienteElegido = $(this).val();
+        cargarValoresDefectoCliente(clienteElegido);
+        
+    });
+
+    function cargarValoresDefectoCliente(clienteElegido){
+        // var clienteElegido = $(this).val();
         for (var i = 0; i < arrayClientes.length; i++) {
             var cliente = arrayClientes[i];
             if (cliente['idCliente'] == clienteElegido) {
@@ -729,11 +743,10 @@
                 $('#paso2_descuentoCotizacion').val(cliente['descuentoFijo']);
             };
         };
-        
 
         actualizarSelectContactos(clienteElegido,  0);
         $('#cliente_contactoIdCliente').val(clienteElegido);
-    });
+    }
 
 
     function seleccionarMonedaClienteDefecto(idMoneda){
@@ -856,6 +869,8 @@
             }
         }
         miSelect.trigger("chosen:updated");
+
+
     }
     function generarSelectFormaPago_cliente($array, $id){
         var miSelect = $('#cliente_formaPago');
