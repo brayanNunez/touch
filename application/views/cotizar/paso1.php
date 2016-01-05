@@ -374,6 +374,7 @@
 
 
     function generarAutocompletarContactos($array, $id){
+        // alert($id);
         var miSelect = $('#paso1Atencion');
         miSelect.empty();
         miSelect.removeAttr('disabled');
@@ -385,7 +386,11 @@
                 if(atencion['idPersonaContacto'] == $id) {
                     miSelect.append('<option value="' + atencion['idPersonaContacto'] + '" selected>' + atencion['nombreContacto'] + '</option>');
                 } else {
-                    miSelect.append('<option value="' + atencion['idPersonaContacto'] + '">' + atencion['nombreContacto'] + '</option>');
+                    if ($id == 0 && atencion['principal'] == 1) {
+                        miSelect.append('<option value="' + atencion['idPersonaContacto'] + '" selected>' + atencion['nombreContacto'] + '</option>');
+                    } else {
+                        miSelect.append('<option value="' + atencion['idPersonaContacto'] + '">' + atencion['nombreContacto'] + '</option>');
+                    }
                 }
             }
         }
