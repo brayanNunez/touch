@@ -737,6 +737,10 @@
     $lang['paso4_cotizacionGuardadaDescargando'] = 'La cotización ha sido guardada y está en proceso de descarga.';
     $lang['paso4_cotizacionGuardadaEnviada'] = 'La cotización ha sido guardada y enviada para su aprobación.';
 
+    $lang['validaciones_seleccionarMoneda'] = 'Debe seleccionar la moneda antes de guardar.';
+    $lang['validaciones_lineasIncompletas'] = 'Existen líneas de detalle sin un servicio seleccionado.';
+
+
     $lang['paso4_seleccionarAprobadores'] = 'Seleccionar aprobadores';
     $lang['paso4_'] = '';
 

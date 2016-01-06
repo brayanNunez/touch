@@ -227,16 +227,47 @@
 
     $(document).on("ready", function(){
 
+      function validacionesCotizacion(){
+        var miSelect = $('#paso1Moneda');
+        if (miSelect.val()== null) {
+          alert('<?= label('validaciones_seleccionarMoneda');?>');
+          return false;
+        };
+
+        var miSelect = $('.nombreServicio');
+        var lineasIncompletas = false;
+        miSelect.each(function(){
+          if ($(this).val()==null) {
+            lineasIncompletas = true;
+          };
+        });
+        if(lineasIncompletas){
+          alert('<?= label('validaciones_lineasIncompletas');?>');
+          return false;
+        }
+
+        return true;
+      }
+
       $('#btnGuardarDescargar').on('click', function(){
+        if (validacionesCotizacion()) {
           guardar(1,1);
+        };
+          
       });
 
       $('#aprobadoresAceptar').on('click', function(){
+        if (validacionesCotizacion()) {
           guardar(2,2);
+        };
+          
       });
 
         $('#btnGuardarCerrar').on("click", function() {
-          guardar(0,1);  
+          if (validacionesCotizacion()) {
+          guardar(0,1);
+        };
+            
         });
 
         function guardar(accion, estado){
