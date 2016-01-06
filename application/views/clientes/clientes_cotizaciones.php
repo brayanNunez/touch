@@ -6,7 +6,7 @@
     <a id="busqueda-avanzada-agregar" href="#busquedaAvanzada"
        class="modal-trigger"><?= label('clientes_busquedaAvanzada') ?></a>
 </div>
-<table id="cliente1-cotizaciones" class="data-table-information responsive-table display" cellspacing="0">
+<table id="cliente_cotizaciones" class="data-table-information responsive-table display" cellspacing="0">
     <thead>
         <tr>
             <th style="text-align: center;">
@@ -16,159 +16,157 @@
             </th>
             <th><?= label('tablaCotizaciones_codigo'); ?></th>
             <th><?= label('tablaCotizaciones_fecha'); ?></th>
-            <th><?= label('tablaCotizaciones_cliente'); ?></th>
+<!--            <th>--><?//= label('tablaCotizaciones_cliente'); ?><!--</th>-->
+            <th><?= label('tablaCotizaciones_vendedor'); ?></th>
             <th><?= label('tablaCotizaciones_monto'); ?></th>
             <th><?= label('tablaCotizaciones_estado'); ?></th>
             <th><?= label('tablaCotizaciones_opciones'); ?></th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td style="text-align: center;">
-                <input type="checkbox" class="filled-in checkbox checkbox-cotizacion" id="checkbox_cliente1_cotizacion1"/>
-                <label for="checkbox_cliente1_cotizacion1"></label>
-            </td>
-            <td>MRR-001</td>
-            <td>2009/01/12</td>
-            <td><a href="">Dos Pinos</a></td>
-            <td>$300</td>
-            <td>Finalizada</td>
-            <td>
-                <ul id="dropdown-cotizacion1" class="dropdown-content">
-                    <li>
-                        <a class="btn_duplicar modal-trigger icono-edicion" href="#duplicarCotizacion">
-                            <?= label('tablaCotizaciones_opcionDuplicar') ?>
+    <?php
+    if(isset($resultado)) {
+        $cotizaciones = $resultado['cotizaciones'];
+        if ($cotizaciones !== false) {
+            $contador = 0;
+            foreach ($cotizaciones as $fila) {
+                $idEncriptado = encryptIt($fila['idCotizacion']);
+    ?>
+                <tr id="fila<?= $contador ?>" data-idElemento="<?= $idEncriptado ?>">
+                    <td style="text-align: center;">
+                        <input type="checkbox" class="filled-in checkbox"
+                               id="<?=$idEncriptado?>"/>
+                        <label for="<?=$idEncriptado?>"></label>
+                    </td>
+                    <td>
+                        <a href="<?= base_url(); ?>cotizacion/editar/<?= encryptIt($fila['idCotizacion'])?>">
+                            <?php
+                            if ($fila['codigo'] == '') {
+                                echo $fila['numero'];
+                            } else {
+                                echo $fila['codigo'].'-'.$fila['numero'];
+                            }
+                            ?>
                         </a>
-                    </li>
-                    <li>
-                        <a class="btn_ver icono-edicion" href="<?= base_url() ?>cotizacion/cotizar">
-                            <?= label('tablaCotizaciones_opcionVerEditar') ?>
+                    </td>
+                    <td>
+                        <?= date("d-m-Y", strtotime($fila['fechaCreacion']));?>
+<!--                    <td>-->
+<!--                        <a href="--><?//= base_url(); ?><!--clientes/editar/--><?//= encryptIt($fila['idCliente'])?><!--#tab-informacion">-->
+<!--                            --><?//= $fila['cliente'] ?>
+<!--                        </a>-->
+<!--                    </td>-->
+                    <td>
+                        <a href="<?= base_url(); ?>usuarios/editar/<?= encryptIt($fila['idUsuario'])?>#tab-informacion">
+                            <?= $fila['vendedor'] ?>
                         </a>
-                    </li>
-                    <li>
-                        <a class="btn_eliminar modal-trigger icono-edicion" href="#eliminarCotizacion">
-                            <?= label('tablaCotizaciones_opcionEliminar') ?>
+                    </td>
+                    <td><span><?=$fila['signo']?> </span><?=$fila['monto']?></td>
+                    <td>
+                        <?php
+                        $estado =  '';
+                        switch ($fila['estado']) {
+                            case 'nueva':
+                                $estado =  label('estado_nueva');
+                                break;
+                            case 'espera':
+                                $estado =  label('estado_espera');
+                                break;
+                            case 'rechazada':
+                                $estado =  label('estado_rechazada');
+                                break;
+                            case 'enviada':
+                                $estado =  label('estado_enviada');
+                                break;
+                            case 'finalizada':
+                                $estado =  label('estado_finalizada');
+                                break;
+                            case 'facturada':
+                                $estado =  label('estado_facturada');
+                                break;
+                        }
+                        echo $estado;
+                        ?>
+                    </td>
+                    <td>
+                        <ul id="dropdown-cotizacion<?= $contador ?>" class="dropdown-content">
+                            <?php
+                            switch ($fila['estado']) {
+                                case 'nueva': ?>
+                                    <li>
+                                        <a href="<?= base_url() ?>cotizacion/editar/<?= $idEncriptado?>" class="-text">
+                                            <?= label('menuOpciones_editar') ?>
+                                        </a>
+                                    </li>
+                                    <?php
+                                    break;
+                                case 'espera': ?>
+                                    <li>
+                                        <a href="<?= base_url() ?>cotizacion/aprobar/<?= $idEncriptado?>" class="-text">
+                                            <?= label('menuOpciones_aprobar') ?>
+                                        </a>
+                                    </li>
+                                    <?php
+                                    break;
+                                case 'rechazada': ?>
+                                    <li>
+                                        <a href="<?= base_url() ?>cotizacion/editar/<?= $idEncriptado?>" class="-text">
+                                            <?= label('menuOpciones_editar') ?>
+                                        </a>
+                                    </li>
+                                    <?php
+                                    break;
+                                case 'enviada': ?>
+                                    <li>
+                                        <a href="<?= base_url() ?>cotizacion/finalizar/<?= $idEncriptado?>" class="-text">
+                                            <?= label('menuOpciones_finalizar') ?>
+                                        </a>
+                                    </li>
+                                    <?php
+                                    break;
+                                case 'finalizada': ?>
+                                    <li>
+                                        <a href="<?= base_url() ?>cotizacion/facturar/<?= $idEncriptado?>" class="-text">
+                                            <?= label('menuOpciones_facturar') ?>
+                                        </a>
+                                    </li>
+                                    <?php
+                                    break;
+                                case 'facturada': ?>
+                                    <?php
+                                    break;
+                            }
+                            ?>
+
+                            <li>
+                                <a href="<?= base_url(); ?>cotizacion/ver/<?= $idEncriptado?>" class="-text">
+                                    <?= label('menuOpciones_ver') ?>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?= base_url() ?>cotizacion/duplicar/<?= $idEncriptado?>" class="-text">
+                                    <?= label('tablaCotizaciones_opcionDuplicar') ?>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#eliminarCotizacion" class="-text modal-trigger confirmarEliminar"
+                                   data-id-eliminar="<?= $idEncriptado ?>"  data-fila-eliminar="fila<?= $contador?>">
+                                    <?= label('menuOpciones_eliminar') ?>
+                                </a>
+                            </li>
+
+                        </ul>
+                        <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#"
+                           data-activates="dropdown-cotizacion<?= $contador++ ?>">
+                            <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
                         </a>
-                    </li>
-                </ul>
-                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#"
-                   data-activates="dropdown-cotizacion1">
-                    <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align: center;">
-                <input type="checkbox" class="filled-in checkbox checkbox-cotizacion" id="checkbox_cliente1_cotizacion2"/>
-                <label for="checkbox_cliente1_cotizacion2"></label>
-            </td>
-            <td>MRR-002</td>
-            <td>2015/01/12</td>
-            <td><a href="">Dos Pinos</a></td>
-            <td>$100</td>
-            <td>Enviada</td>
-            <td>
-                <ul id="dropdown-cotizacion2" class="dropdown-content">
-                    <li>
-                        <a class="btn_duplicar modal-trigger icono-edicion" href="#duplicarCotizacion">
-                            <?= label('tablaCotizaciones_opcionDuplicar') ?>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="btn_ver icono-edicion" href="<?= base_url() ?>cotizacion/cotizar">
-                            <?= label('tablaCotizaciones_opcionVerEditar') ?>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="btn_ver icono-edicion" href="<?= base_url() ?>cotizacion/cotizar">
-                            <?= label('tablaCotizaciones_opcionEliminar') ?>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="btn_eliminar modal-trigger icono-edicion" href="#eliminarCotizacion">
-                            <?= label('tablaCotizaciones_opcionEliminar') ?>
-                        </a>
-                    </li>
-                </ul>
-                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#"
-                   data-activates="dropdown-cotizacion2">
-                    <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align: center;">
-                <input type="checkbox" class="filled-in checkbox checkbox-cotizacion" id="checkbox_cliente1_cotizacion3"/>
-                <label for="checkbox_cliente1_cotizacion3"></label>
-            </td>
-            <td>MRR-003</td>
-            <td>2015/02/05</td>
-            <td><a href="">Dos Pinos</a></td>
-            <td>$700</td>
-            <td>Aprobada</td>
-            <td>
-                <ul id="dropdown-cotizacion3" class="dropdown-content">
-                    <li>
-                        <a class="btn_duplicar modal-trigger icono-edicion" href="#duplicarCotizacion">
-                            <?= label('tablaCotizaciones_opcionDuplicar') ?>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="btn_ver icono-edicion" href="<?= base_url() ?>cotizacion/cotizar">
-                            <?= label('tablaCotizaciones_opcionVerEditar') ?>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="btn_eliminar modal-trigger icono-edicion" href="#eliminarCotizacion">
-                            <?= label('tablaCotizaciones_opcionEliminar') ?>
-                        </a>
-                    </li>
-                </ul>
-                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#"
-                   data-activates="dropdown-cotizacion3">
-                    <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align: center;">
-                <input type="checkbox" class="filled-in checkbox checkbox-cotizacion" id="checkbox_cliente1_cotizacion4"/>
-                <label for="checkbox_cliente1_cotizacion4"></label>
-            </td>
-            <td>MRR-004</td>
-            <td>2015/03/25</td>
-            <td><a href="">Dos Pinos</a></td>
-            <td>$850</td>
-            <td>Enviada</td>
-            <td>
-                <ul id="dropdown-cotizacion4" class="dropdown-content">
-                    <li>
-                        <a class="btn_duplicar modal-trigger icono-edicion" href="#duplicarCotizacion">
-                            <?= label('tablaCotizaciones_opcionDuplicar') ?>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="btn_ver icono-edicion" href="<?= base_url() ?>cotizacion/cotizar">
-                            <?= label('tablaCotizaciones_opcionVerEditar') ?>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="btn_ver icono-edicion" href="<?= base_url() ?>cotizacion/cotizar">
-                            <?= label('tablaCotizaciones_opcionEliminar') ?>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="btn_eliminar modal-trigger icono-edicion" href="#eliminarCotizacion">
-                            <?= label('tablaCotizaciones_opcionEliminar') ?>
-                        </a>
-                    </li>
-                </ul>
-                <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#"
-                   data-activates="dropdown-cotizacion4">
-                    <?= label('menuOpciones_seleccionar') ?><i class="mdi-navigation-arrow-drop-down"></i>
-                </a>
-            </td>
-        </tr>
+                    </td>
+                </tr>
+    <?php
+            }
+        }
+    }
+    ?>
     </tbody>
 </table>
 
@@ -237,19 +235,19 @@
         });
     });
     $(document).ready( function () {
-        $('#cliente1-cotizaciones').dataTable( {
+        $('#cliente_cotizaciones').dataTable( {
             'aoColumnDefs': [{
                 'bSortable': false,
                 'aTargets': [0, -1] /* 1st one, start by the right */
             }]
         });
-        $('table#cliente1-cotizaciones thead th:first').removeClass('sorting_asc').addClass('sorting_disabled');
-        $('table#cliente1-cotizaciones thead th:nth-child(2)').removeClass('sorting').addClass('sorting_asc');
+        $('table#cliente_cotizaciones thead th:first').removeClass('sorting_asc').addClass('sorting_disabled');
+        $('table#cliente_cotizaciones thead th:nth-child(2)').removeClass('sorting').addClass('sorting_asc');
     });
     $(document).ready(function () {
         $('#checkbox-all-cotizaciones').click(function (event) {
             var $this = $(this);
-            var tableBody = $('#cliente1-cotizaciones').find('tbody tr[role=row] input[type=checkbox]');
+            var tableBody = $('#cliente_cotizaciones').find('tbody tr[role=row] input[type=checkbox]');
             tableBody.each(function() {
                 var check = $(this);
                 if ($this.is(':checked')) {
@@ -326,7 +324,7 @@
         <p><?= label('clientes_archivosSeleccionadosEliminar'); ?></p>
     </div>
     <div class="modal-footer black-text">
-        <div id="botonEliminarCotizacionesSeleccionadas" title="cliente1-cotizaciones">
+        <div id="botonEliminarCotizacionesSeleccionadas" title="cliente_cotizaciones">
             <a href="#"
                class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
         </div>
@@ -377,7 +375,7 @@
                         <!--	                                 <option value="" disabled selected>Empleados</option>-->
                         <option value="1" selected>Todos</option>
                         <option value="2">Juan Carlos Porras</option>
-                        <option value="3">Ana Bolaños Rojas</option>
+                        <option value="3">Ana Bolaï¿½os Rojas</option>
                     </select>
                     <label>Vendedores</label>
                 </div>
@@ -386,7 +384,7 @@
                         <!--                                     <option value="" disabled selected>Outsourcing</option>-->
                         <option value="1" selected>Todos</option>
                         <option value="2">Transportes Rojas</option>
-                        <option value="3">Música en vivo</option>
+                        <option value="3">Mï¿½sica en vivo</option>
                     </select>
                     <label for="reporte-cliente">Proveedores</label>
                 </div>
