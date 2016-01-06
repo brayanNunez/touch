@@ -56,7 +56,11 @@
                                                 ?>
                                             </div>
                                             <div id="tab-cotizaciones" class="card col s12">
-                                                <?php $this->load->view('usuarios/usuarios_cotizaciones'); ?>
+                                                <?php
+                                                    if(isset($resultado)) {
+                                                        $this->load->view('usuarios/usuarios_cotizaciones');
+                                                    }
+                                                ?>
                                             </div>
                                             <div id="tab-edicion" class="card col s12">
                                                 <?php

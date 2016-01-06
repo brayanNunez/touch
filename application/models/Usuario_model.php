@@ -170,6 +170,13 @@ class Usuario_model extends CI_Model
                     }
                 }
                 $row['roles'] = $roles;
+
+                $cotizaciones = $this->db->query("SELECT mo.signo ,co.idCotizacion, co.numero, co.codigo, co.fechaCreacion, co.monto, if(cl.juridico = 1,cl.nombre,CONCAT(cl.nombre, ' ', cl.primerApellido, ' ', cl.segundoApellido)) as cliente, cl.idCliente, CONCAT(us.nombre, ' ', us.primerApellido, ' ', us.segundoApellido) as vendedor, us.idUsuario,ec.descripcion as estado FROM cotizacion as co left join cliente as cl on co.idCliente = cl.idCliente left join moneda as mo on co.idMoneda = mo.idMoneda left join estadocotizacion as ec on co.idEstadoCotizacion = ec.idEstadoCotizacion left join usuario as us on co.idUsuario = us.idUsuario where co.idUsuario = ".$id." AND co.eliminado=0");
+                if (!$cotizaciones) {
+                    throw new Exception("Error en la BD");
+                }
+                $row['cotizaciones'] = $cotizaciones->result_array();
+
             }
             $this->db->trans_commit();
             return $row;
