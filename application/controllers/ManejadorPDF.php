@@ -296,6 +296,10 @@ class ManejadorPDF extends CI_Controller
 
             $correo = $this->Cotizacion_model->cargarCorreoVendedor($data['idCotizacion'])['correo']; 
 
+            $datosEmpresa = $this->Cotizacion_model->cargarCorreoNombreEmpresa($idEmpresa); 
+            $correoEmpresa = $datosEmpresa['correo'];
+            $nombreEmpresa = $datosEmpresa['nombre'];
+
             $data = array( 
                 'correoVendedor' => $correo,
                 'envio_asunto' => $this->input->post('envio_asunto'),  
@@ -308,7 +312,7 @@ class ManejadorPDF extends CI_Controller
 
             
             $this->load->library('email');
-            $this->email->from('brayannr@hotmail.es', 'Brayan');
+            $this->email->from($correoEmpresa, $nombreEmpresa);
             $this->email->to($data['correoVendedor']);
 
             $this->email->subject($data['envio_asunto']);
@@ -355,6 +359,10 @@ class ManejadorPDF extends CI_Controller
 
             $linkCotizacionVer = base_url().'cotizacion/facturar/'.$idCotizacionEncriptado;
 
+            $datosEmpresa = $this->Cotizacion_model->cargarCorreoNombreEmpresa($idEmpresa); 
+            $correoEmpresa = $datosEmpresa['correo'];
+            $nombreEmpresa = $datosEmpresa['nombre'];
+
             $listaCorreos = $this->Cotizacion_model->cargarCorreosCotizadores($idEmpresa);
             $arrayCorreos = array();
             foreach ($listaCorreos as $correo) {
@@ -367,7 +375,7 @@ class ManejadorPDF extends CI_Controller
                 'envio_texto' => label('finalizar_textoContador')
                 );
 
-            $this->email->from('brayannr@hotmail.es', 'Brayan');
+            $this->email->from($correoEmpresa, $nombreEmpresa);
             $this->email->to($data['correosCotizadores']);
 
             $this->email->subject($data['envio_asunto']);
@@ -430,13 +438,17 @@ class ManejadorPDF extends CI_Controller
             }
             // echo print_r($arrayDestinatario); exit();
 
+            $datosEmpresa = $this->Cotizacion_model->cargarCorreoNombreEmpresa($idEmpresa); 
+            $correoEmpresa = $datosEmpresa['correo'];
+            $nombreEmpresa = $datosEmpresa['nombre'];
+
 
             $rutaSistema = './files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/sistema/cotizacion.pdf';
             $rutaCliente ='./files/empresas/'.$idEmpresa.'/cotizaciones/'.$idCotizacionEncriptado.'/cliente/cotizacion.pdf';
             copy($rutaSistema, $rutaCliente); 
             
             $this->load->library('email');
-            $this->email->from('brayannr@hotmail.es', 'Brayan');
+            $this->email->from($correoEmpresa, $nombreEmpresa);
             // echo print_r($arrayCorreos); exit();
             $this->email->to($arrayDestinatario);
             $this->email->cc($arrayDestinatarioCC);
@@ -455,6 +467,10 @@ class ManejadorPDF extends CI_Controller
             $this->email->send();
 
             $correo = $this->Cotizacion_model->cargarCorreoVendedor($idCotizacion)['correo'];
+
+            $datosEmpresa = $this->Cotizacion_model->cargarCorreoNombreEmpresa($idEmpresa); 
+            $correoEmpresa = $datosEmpresa['correo'];
+            $nombreEmpresa = $datosEmpresa['nombre'];
 
             $data = array( 
                 'correoVendedor' => $correo,
@@ -475,7 +491,7 @@ class ManejadorPDF extends CI_Controller
             // $this->load->library('email');
             
             $this->email->clear(true);
-            $this->email->from('brayannr@hotmail.es', 'Brayan');
+            $this->email->from($correoEmpresa, $nombreEmpresa);
             $this->email->to($data['correoVendedor']);
 
             $this->email->subject($data['envio_asunto']);
@@ -500,13 +516,16 @@ class ManejadorPDF extends CI_Controller
             array_push($arrayCorreos, $correo['correo']);
         }
 
+        $datosEmpresa = $this->Cotizacion_model->cargarCorreoNombreEmpresa($idEmpresa); 
+        $correoEmpresa = $datosEmpresa['correo'];
+        $nombreEmpresa = $datosEmpresa['nombre'];
         
 
         $this->load->library('email');
-        $this->email->from('brayannr@hotmail.es', 'Brayan');
+        $this->email->from($correoEmpresa, $nombreEmpresa);
         // echo print_r($arrayCorreos); exit();
         $this->email->to($arrayCorreos);
-        $this->email->cc('brayan.nunez@ucrso.info');
+        // $this->email->cc('brayan.nunez@ucrso.info');
 
         $this->email->subject('Aprobación touch');
         $this->email->message('Cotización pendiente de aprobar http://touchcr.com/cotizacion/aprobar/'.$idCotizacionEncriptado);

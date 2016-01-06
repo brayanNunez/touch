@@ -329,9 +329,10 @@
 	margin-top: 5px;
 }
 
-/*#contenerdorTablaDetalles{
+#contenerdorTablaDetalles{
+	padding-bottom: 80px;
 	overflow-x: scroll;
-}*/
+}
 /*
 #resultadoDetalles {
 	float: right;

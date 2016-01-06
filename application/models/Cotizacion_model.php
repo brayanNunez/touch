@@ -586,6 +586,30 @@ class Cotizacion_model extends CI_Model
 
     }
 
+    function cargarCorreoNombreEmpresa($idEmpresa){
+         try {
+            $this->db->trans_begin();
+            $this->db->select("em.correo, em.nombre");
+            $this->db->from('empresa as em');
+            $this->db->where(array('em.idEmpresa' => $idEmpresa));
+            $correo = $this->db->get();
+            if (!$correo) {
+                throw new Exception("Error en la BD");
+            }
+            $correo = $correo->result_array();
+            $correo = array_shift($correo);
+
+            // $data['correos'] = $correos;
+
+            $this->db->trans_commit();
+            return $correo;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+
+    }
+
     function cargarCorreosAprobadores($idCotizacion){
          try {
             $this->db->trans_begin();

@@ -231,6 +231,7 @@ class Cotizacion extends CI_Controller
     }
     public function editar($idCotizacion)
     {
+
         verificarLogin();//helper
         $sessionActual = $this->session->userdata('logged_in');
         $data['idEmpresa'] = $sessionActual['idEmpresa'];
