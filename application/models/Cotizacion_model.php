@@ -765,8 +765,9 @@ class Cotizacion_model extends CI_Model
 
             // echo $datos['idUsuario']; exit();
             // left join moneda as mo on co.idMoneda = mo.idMoneda
-            $this->db->select('co.*, mo.signo');
+            $this->db->select('co.*, mo.signo, ec.descripcion');
             $this->db->from('cotizacion as co');
+            $this->db->join('estadocotizacion as ec', 'co.idEstadoCotizacion = ec.idEstadoCotizacion');
             $this->db->join('moneda as mo', 'co.idMoneda = mo.idMoneda', 'left');
             $query = $this->db->where(array('idCotizacion'=> $datos['idCotizacion']));
             $query = $this->db->get();

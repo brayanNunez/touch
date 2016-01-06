@@ -128,6 +128,8 @@
         }
 
     });
+
+    
 </script>
 
 <!--Script para manejo de datos de cotizacion_editar y valores precargados (codigo) -->

@@ -237,18 +237,28 @@ class Cotizacion extends CI_Controller
         // $data['idUsuario'] = $sessionActual['idUsuario'];
         $data['idCotizacion'] = decryptIt($idCotizacion);
 
-        $data['gastos'] = $this->Cotizacion_model->gastosVariables($data['idEmpresa']);
-        $data['personas'] = $this->Cotizacion_model->personas($data['idEmpresa']);
-        $data['categorias'] = $this->Cotizacion_model->categorias($data['idEmpresa']);
-        $data['tiempos'] = $this->Cotizacion_model->tiempos($data['idEmpresa']);
-        $data['fases'] = $this->Cotizacion_model->fases($data['idEmpresa']);
-
         $resultado = $this->Cotizacion_model->cargar($data);
-
 
         if ($resultado === false) {
             echo "Error en la transacción";
         } else {
+
+            $estado =  $resultado['cotizacion']['descripcion']; 
+
+            if ($estado == 'espera' || $estado == 'finalizada' || $estado == 'facturada') {
+                $this->ver($idCotizacion);
+            } else {
+
+            $data['gastos'] = $this->Cotizacion_model->gastosVariables($data['idEmpresa']);
+            $data['personas'] = $this->Cotizacion_model->personas($data['idEmpresa']);
+            $data['categorias'] = $this->Cotizacion_model->categorias($data['idEmpresa']);
+            $data['tiempos'] = $this->Cotizacion_model->tiempos($data['idEmpresa']);
+            $data['fases'] = $this->Cotizacion_model->fases($data['idEmpresa']);
+
+            // $resultado = $this->Cotizacion_model->cargar($data);
+
+
+        
             // $resultado['lineasDetalle'] = array();
             $resultado['idEmpresa'] = $data['idEmpresa'];
             $resultado['idCotizacion'] = decryptIt($idCotizacion);
@@ -261,6 +271,8 @@ class Cotizacion extends CI_Controller
             $this->load->view('layout/default/left-sidebar');
             $this->load->view('cotizar/cotizar', $data);
             $this->load->view('layout/default/footer');
+
+            }
         }
     }
 
