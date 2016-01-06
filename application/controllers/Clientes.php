@@ -658,6 +658,61 @@ class Clientes extends CI_Controller
         return $str;
     }
 
+    public function formasPago() {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $resultado = $this->Cliente_model->formasPago($idEmpresa);
+        if ($resultado === false || $resultado === array()) {
+            echo 0;
+        } else {
+            echo json_encode($resultado);
+        }
+    }
+    public function verificarNombreFormaPago(){
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+
+        $data['datos'] = array(
+            'idEmpresa' => $idEmpresa,
+            'nombre' => $this->input->post('formaPago_nombre'),
+            'eliminado' => '0'
+        );
+        $resultado = $this->Cliente_model->verificarNombreFormaPago($data);
+        if ($resultado === false) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            if ($resultado == 1) {
+                //Ya existe esta identificacion
+                echo 1;
+            } else {
+                //Identificacion Valida
+                echo 2;
+            }
+        }
+    }
+    public function insertarFormaPago()
+    {
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+        $data['datos'] = array(
+            'idEmpresa' => $idEmpresa,
+            'nombre' => $this->input->post('formaPago_nombre'),
+            'descripcion' => $this->input->post('formaPago_descripcion'),
+            'eliminado' => 0
+        );
+
+        $res = $this->Cliente_model->insertarFormaPago($data);
+        if (!$res) {
+            //Error en la transacción
+            echo 0;
+        } else {
+            // correcto
+            echo $res;
+        }
+    }
+
 }
 
 ?>

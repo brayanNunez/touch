@@ -217,6 +217,46 @@ class Cliente_model extends CI_Model
             return false;
         }
     }
+    function verificarNombreFormaPago($data)
+    {
+        try{
+            $this->db->trans_begin();
+            $existe = 0;
+
+            $query = $this->db->get_where('formapago', $data['datos']);
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+            if ($query->num_rows() > 0) {
+                $existe = 1;
+            }
+
+            $this->db->trans_commit();
+            return $existe;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+    function insertarFormaPago($data)
+    {
+        try{
+            $this->db->trans_begin();
+
+            $query = $this->db->insert('formapago', $data['datos']);
+            if (!$query) {
+                throw new Exception("Error en la BD");
+            }
+            $insert_id = $this->db->insert_id();
+
+            $this->db->trans_commit();
+            return $insert_id;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+    }
+
     function monedas($idEmpresa) {
         try{
             $this->db->trans_begin();
