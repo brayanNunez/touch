@@ -461,7 +461,7 @@ $(document).ready(function(){
                                 <th data-indice-columna="1">
                                     <?= label('tablaLineasDetalle_item'); ?>
                                 </th>
-                                <th  data-indice-columna="2">
+                                <th data-indice-columna="2">
                                     <?= label('tablaLineasDetalle_nombre'); ?>
                                 </th>
                                 <th  data-indice-columna="3">
@@ -496,6 +496,15 @@ $(document).ready(function(){
                     </table>
                 </form>
             </div>
+            <!-- <div class="tabla-conAgregar">
+             <a id="opciones-seleccionados-delete"
+                class="modal-trigger black-text opciones-seleccionados option-delete-elements"
+                style="visibility: hidden;"
+                href="#eliminarElementosSeleccionados" data-toggle="tooltip"
+                title="<?= label('opciones_seleccionadosEliminar') ?>">
+             <i class="mdi-action-delete icono-opciones-varios"></i>
+             </a>
+          </div> -->
             <br>
 
             <div>
@@ -513,7 +522,7 @@ $(document).ready(function(){
 
                     <div class="tabla-conAgregar tabla-detalles-cotizacion">
                         <a id="opciones-seleccionados-delete"
-                           class="modal-trigger waves-effect black-text opciones-seleccionados option-delete-elements"
+                           class="modal-trigger black-text opciones-seleccionados option-delete-elements"
                            style="visibility: hidden;"
                            href="#eliminarElementosSeleccionados" data-toggle="tooltip"
                            title="<?= label('opciones_seleccionadosEliminar') ?>">
@@ -902,10 +911,10 @@ $(document).on('ready', function(){
         <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
     </div>
     <div class="modal-content">
-        <p><?= label('clientes_archivosSeleccionadosEliminar'); ?></p>
+        <p><?= label('cotizacion_lineasSeleccionadosEliminar'); ?></p>
     </div>
     <div class="modal-footer black-text">
-        <div id="botonElimnar" title="cotizacion1-detalles">
+        <div id="botonEliminar" title="cotizacion1-detalles">
             <a href="#"
                class="deleteall waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
         </div>
@@ -2077,4 +2086,96 @@ $(document).on('ready', function () {
     $(document).on('change', '#agregarServicio #servicio_impuestos', function () {
         calcularPrecioNuevo();
     });
+</script>
+
+
+
+<!-- script checks de tabla -->
+<script>
+
+   $(document).ready(function () {
+       $(document).on("click",'#eliminarElementosSeleccionados #botonEliminar', function () {
+           var ch = $('#tablaLineasDetalle tbody input[type=checkbox]');
+           // var marcados = $('.checkbox:checked').not('#checkbox-all').size();
+           // var contadorErrores = 0;
+           // var contadorTotal = 0;
+           ch.each(function () {
+               var $this = $(this);
+               if ($this.is(':checked')) {
+                   sel = true;
+                    var filaEliminar = $this.parents('tr');
+                   // var idEliminar = $this.parents('tr').attr('data-idElemento');
+                   
+                   var tipo = filaEliminar.find('.accionAplicada').val();
+                   
+                   if (tipo == '0') {
+                        var table = $('#tablaLineasDetalle').DataTable();
+                        table
+                        .row(filaEliminar)
+                        .remove()
+                        .draw();
+                       cantidadLineas--;
+                       actualizarCantidad();
+                   } else{
+                    filaEliminar.find('.accionAplicada').val('2');
+                    // filaEliminar.fadeOut(function () {
+                        filaEliminar.hide();
+                   // });
+
+                }
+
+      
+             }
+           });
+            verificarChecks();
+           return false;
+   
+       });
+   });
+
+    $(window).load(function () {
+        verificarChecks();
+    });
+
+   $(document).ready(function () {
+       $('#checkbox-all').click(function (event) {
+           var $this = $(this);
+           var tableBody = $('#tablaLineasDetalle').find('tbody tr[role=row] input[type=checkbox]');
+           tableBody.each(function() {
+               var check = $(this);
+               if ($this.is(':checked')) {
+                   check.prop('checked', true);
+               } else {
+                   check.prop('checked', false);
+               }
+           });
+       });
+   });
+    $(document).ready(function () {
+      $(document).on('click','.checkbox',function (event) {
+        verificarChecks();
+      });
+    });
+   
+   function verificarChecks(){
+
+       // alert($('.checkbox:checked:visible').not('#checkbox-all').size());
+       
+       var marcados = $('.checkbox:checked:visible').not('#checkbox-all').size();
+       if (marcados >= 1) {
+           var elems = document.getElementsByClassName('opciones-seleccionados');
+           var e;
+           for (e in elems) {
+               elems[e].style.visibility = 'visible';
+           }
+       } else {
+           $('#checkbox-all').prop('checked', false);
+           var elems = document.getElementsByClassName('opciones-seleccionados');
+           var e;
+           for (e in elems) {
+               elems[e].style.visibility = 'hidden';
+           }
+       }
+   }
+    
 </script>
