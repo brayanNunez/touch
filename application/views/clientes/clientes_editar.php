@@ -413,7 +413,9 @@
                     <div class="input-field col s12 inputSelector" >
                         <label for="cliente_formaPago"><?= label('formCliente_formaPagoFavorita'); ?></label>
                         <br>
-                        <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="cliente_formaPago" name="cliente_formaPago" class=" browser-default chosen-select">
+                        <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="1"
+                                data-tipo="agregarCliente_formaPago" id="cliente_formaPago" name="cliente_formaPago"
+                                data-textoBoton="<?= label("agregarNuevo"); ?>" class=" browser-default chosen-select">
                             <option value="0" disabled selected style="display:none;"><?= label("formCliente_seleccioneUno"); ?></option>
                             <?php
                             if(isset($formasPago)) {
@@ -458,6 +460,9 @@
 
 <div style="visibility:hidden; position:absolute">
     <a id="linkContactosElimminar" href="#eliminarContacto-editar" class="modal-trigger" data-fila-eliminar="1" title="<?= label('formCliente_contactoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>
+</div>
+<div style="display: none;">
+    <a id="linkNuevaFormaPago" href="#agregarFormaPago" class="modal-trigger"></a>
 </div>
 
 <!-- Script para manejo de tags, select de busqueda, insercion de datos, checks y tabla-->
@@ -788,6 +793,136 @@
     }
 </script>
 
+<!--Script para el manejo de formas de pago-->
+<script type="text/javascript">
+    $(document).on('ready', function(){
+        var config = {'.chosen-select'           : {}}
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    });
+    $(document).ready(function () {
+        actualizarSelectFormasPago('<?= $formaPago; ?>');
+    });
+
+    function actualizarSelectFormasPago($id) {
+        $.ajax({
+            type: 'POST',
+            url: '<?= base_url(); ?>clientes/formasPago',
+            data: {  },
+            success: function(response)
+            {
+                generarSelectFormaPago($.parseJSON(response), $id);
+                generarListas();
+            }
+        });
+    }
+    function generarSelectFormaPago($array, $id){
+        var miSelect = $('#cliente_formaPago');
+        miSelect.empty();
+        miSelect.append('<option value="0" disabled selected style="display:none;"><?= label("agregarCliente_elegirFormaPago"); ?></option>');
+        miSelect.append('<option value="nuevo"><?= label("agregarNuevo"); ?></option>');
+        for(var i = 0; i < $array.length; i++) {
+            var formaP = $array[i];
+            if(formaP != null) {
+                if(formaP['idFormaPago'] == $id) {
+                    miSelect.append('<option value="' + formaP['idFormaPago'] + '" selected>' + formaP['nombre'] + '</option>');
+                } else {
+                    miSelect.append('<option value="' + formaP['idFormaPago'] + '">' + formaP['nombre'] + '</option>');
+                }
+            }
+        }
+        miSelect.trigger("chosen:updated");
+    }
+
+    function botonEnLista(tipo, idBoton, nuevoElementoAgregar){
+        if (tipo == "agregarCliente_formaPago") {
+            $('#formaPago_nombre').val(nuevoElementoAgregar);
+            $('#linkNuevaFormaPago').click();
+            $('#formaPago_nombre').focus();
+        }
+    }
+    function generarListas(){
+        var config = {'.chosen-select'           : {}}
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    }
+    $(document).on('change','.chosen-select',function(){
+        var valor = $(this).val();
+        var tipo = $(this).attr("data-tipo");
+        if (valor=="nuevo") {
+            var idBoton = $(this).attr("id");
+            var nuevoElementoAgregar = "";
+            botonEnLista(tipo, idBoton, nuevoElementoAgregar)
+        }
+    });
+
+
+    var cerrarModalFormaPago = false;
+    $(document).on('ready', function(){
+        $('#guardarOtroFormaPago').on('click', function(){
+            cerrarModalFormaPago = false;
+        });
+        $('#guardarCerrarFormaPago').on('click', function(){
+            cerrarModalFormaPago = true;
+        });
+    });
+    function limpiarFormFormaPago() {
+//        $('#form_formaPago_cotizar')[0].reset();
+        $('#formaPago_nombre').val('');
+        $('#formaPago_descripcion').val('');
+        $('label [for=formaPago_nombre]').removeClass('active');
+        $('label [for=formaPago_descripcion]').removeClass('active');
+
+        var validator = $("#form_formaPago_cotizar").validate();
+        validator.resetForm();
+    }
+
+    function validacionCorrecta_FormaPago() {
+        $.ajax({
+            data: $('#form_formaPago_cotizar').serialize(),
+            url:   '<?=base_url()?>clientes/verificarNombreFormaPago',
+            type:  'post',
+            success:  function (response) {
+                if (response == '0') {
+                    alert("<?=label('errorGuardar'); ?>");
+                    $('#agregarFormaPago .modal-header a').click();
+                } else{
+                    if (response == '2') {
+                        var url = $('#form_formaPago_cotizar').attr('action');
+                        var method = $('#form_formaPago_cotizar').attr('method');
+                        $.ajax({
+                            type: method,
+                            url: url,
+                            data: $('#form_formaPago_cotizar').serialize(),
+                            success: function(response)
+                            {
+                                if (response == 0) {
+                                    alert("<?=label('errorGuardar'); ?>");
+                                    $('#agregarFormaPago .modal-header a').click();
+                                } else {
+                                    actualizarSelectFormasPago(response);
+                                    alert("<?=label('cotizacion_formaPagoGuardadoCorrectamente'); ?>");
+                                    if (cerrarModalFormaPago) {
+                                        limpiarFormFormaPago();
+                                        $('#agregarFormaPago .modal-header a').click();
+                                    } else{
+                                        limpiarFormFormaPago();
+                                    }
+                                }
+                            }
+                        });
+                    } else{
+                        alert("<?=label('formaPago_error_nombreExisteEnBD'); ?>");
+                        $('#form_formaPago_cotizar #formaPago_nombre').focus();
+                    }
+                }
+            }
+        });
+    }
+</script>
+
 <!-- Inicio lista modals -->
 <div id="eliminarContacto-editar" class="modal">
     <div class="modal-header">
@@ -864,6 +999,38 @@
     </div>
     <div class="modal-footer">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+
+<div id="agregarFormaPago" class="modal" style="width: 70%;height: 50%;">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action cerrar-modal modal-close"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content" style="padding: 0 24px;">
+        <div class="row">
+            <h5 style="float: left;"><?= label('gasto_agregarFormaPago'); ?></h5>
+        </div>
+        <form id="form_formaPago_cotizar" action="<?=base_url()?>clientes/insertarFormaPago" method="post">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="formaPago_nombre" name="formaPago_nombre" type="text">
+                    <label for="formaPago_nombre"><?= label('formaPago_Nombre') ?></label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="formaPago_descripcion" name="formaPago_descripcion" type="text">
+                    <label for="formaPago_descripcion"><?= label('formaPago_descripcion') ?></label>
+                </div>
+            </div>
+            <div class="row">
+                <a onclick="$(this).closest('form').submit()" id="guardarCerrarFormaPago" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                    <?= label('guardarCerrar'); ?>
+                </a>
+                <a onclick="$(this).closest('form').submit()" id="guardarOtroFormaPago" href="#" class="waves-effect btn modal-action" style="margin: 0 20px;">
+                    <?= label('guardarAgregarOtro'); ?>
+                </a>
+            </div>
+        </form>
     </div>
 </div>
 <!-- Fin lista modals-->
