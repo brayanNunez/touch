@@ -159,6 +159,11 @@
                                                                                 <?= label('menuOpciones_finalizar') ?>
                                                                             </a>
                                                                         </li>
+                                                                        <li>
+                                                                            <a href="<?= base_url() ?>cotizacion/editar/<?= $idEncriptado?>" class="-text">
+                                                                                <?= label('menuOpciones_editar') ?>
+                                                                            </a>
+                                                                        </li>
                                                                 <?php
                                                                         break;
                                                                     case 'finalizada': ?>
@@ -634,6 +639,9 @@
                miEstado =  '<?=label('estado_enviada')?>';
                boton += '<li>' +
                             '<a href="<?= base_url(); ?>cotizacion/finalizar/'+idEncriptado+'" class="-text">'+label_finalizar+'</a>' +
+                        '</li>' +
+                        '<li>' +
+                            '<a href="<?= base_url(); ?>cotizacion/editar/'+idEncriptado+'" class="-text">'+label_editar+'</a>' +
                         '</li>';
                break;
            case 'finalizada':
