@@ -335,7 +335,8 @@ Scripts
                         <div class="col s6 offset-m1 m5 l4">
                             <div id="registro_empresa_logo_editar" class="cliente-ver-logo" style="margin: 5px 0;">
                                 <a id="btn_cambioLogoRegistro" class="modal-trigger" href="#cambio-imagen_registro" title="Cambiar firma" style="position: relative; cursor:pointer;">
-                                    <img id="registro_logo" alt="Logo de la empresa" style="position:relative;height: 200px;width: 200px;" />
+                                    <img id="registro_logo" src="<?= base_url() ?>files/default-company-image.png" alt="Logo de la empresa"
+                                         style="position:relative;height: 200px;width: 200px;" />
                                     <img id="icon-image-edit" src="<?= base_url() ?>files/edit-image.png">
                                 </a>
                             </div>
@@ -409,7 +410,7 @@ Scripts
                         <div class="col s6 offset-m1 m5 l4">
                             <div id="registro_empresa_firma_editar" class="cliente-ver-logo" style="margin: 5px 0;">
                                 <a id="btn_cambioFirmaRegistro" class="modal-trigger" href="#cambio-imagenFirma_registro" title="Cambiar firma" style="position: relative; cursor:pointer;">
-                                    <img id="registro_firma" alt="Logo de la empresa" style="position:relative;height: 200px;width: 200px;" />
+                                    <img id="registro_firma" src="<?= base_url()?>files/default-company-image.png" alt="Logo de la empresa" style="position:relative;height: 200px;width: 200px;" />
                                     <img id="icon-image-edit" src="<?= base_url() ?>files/edit-image.png">
                                 </a>
                             </div>
@@ -885,10 +886,20 @@ Scripts
                     $('#form_completarRegistro #registro_primerApellidoRepresentante').val(datosEmpresa['primerApellidoRepresentante']);
                     $('#form_completarRegistro #registro_segundoApellidoRepresentante').val(datosEmpresa['segundoApellidoRepresentante']);
 
-                    $('#registro_firma').attr('src', '<?= base_url(); ?>files/empresas/' + datosEmpresa['idEmpresa'] + '/' + datosEmpresa['firma']);
-                    $('#completarRegistro_imagen_seleccionadaFirma').attr('src', '<?= base_url(); ?>files/empresas/' + datosEmpresa['idEmpresa'] + '/' + datosEmpresa['firma']);
-                    $('#registro_logo').attr('src', '<?= base_url(); ?>files/empresas/' + datosEmpresa['idEmpresa'] + '/' + datosEmpresa['logo']);
-                    $('#completarRegistro_imagen_seleccionada').attr('src', '<?= base_url(); ?>files/empresas/' + datosEmpresa['idEmpresa'] + '/' + datosEmpresa['logo']);
+                    if (datosEmpresa['firma'] != null && datosEmpresa['firma'] != '') {
+                        $('#registro_firma').attr('src', '<?= base_url(); ?>files/empresas/' + datosEmpresa['idEmpresa'] + '/' + datosEmpresa['firma']);
+                        $('#completarRegistro_imagen_seleccionadaFirma').attr('src', '<?= base_url(); ?>files/empresas/' + datosEmpresa['idEmpresa'] + '/' + datosEmpresa['firma']);
+                    } else {
+                        $('#registro_firma').attr('src', '<?= base_url(); ?>files/default-company-image.png');
+                        $('#completarRegistro_imagen_seleccionadaFirma').attr('src', '<?= base_url(); ?>files/default-company-image.png');
+                    }
+                    if(datosEmpresa['logo'] != null && datosEmpresa['logo'] != '') {
+                        $('#registro_logo').attr('src', '<?= base_url(); ?>files/empresas/' + datosEmpresa['idEmpresa'] + '/' + datosEmpresa['logo']);
+                        $('#completarRegistro_imagen_seleccionada').attr('src', '<?= base_url(); ?>files/empresas/' + datosEmpresa['idEmpresa'] + '/' + datosEmpresa['logo']);
+                    } else {
+                        $('#registro_logo').attr('src', '<?= base_url(); ?>files/default-company-image.png');
+                        $('#completarRegistro_imagen_seleccionada').attr('src', '<?= base_url(); ?>files/default-company-image.png');
+                    }
 
                     generarSelectTamano(datosEmpresa['tamano']);
 
