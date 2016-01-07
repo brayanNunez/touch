@@ -509,6 +509,9 @@ class ManejadorPDF extends CI_Controller
     }
 
     public function enviarCorreoParaAprobacion($idCotizacionEncriptado){
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+        
         $idCotizacion = decryptIt($idCotizacionEncriptado);
         $listaCorreos = $this->Cotizacion_model->cargarCorreosAprobadores($idCotizacion);
         $arrayCorreos = array();
@@ -519,6 +522,8 @@ class ManejadorPDF extends CI_Controller
         $datosEmpresa = $this->Cotizacion_model->cargarCorreoNombreEmpresa($idEmpresa); 
         $correoEmpresa = $datosEmpresa['correo'];
         $nombreEmpresa = $datosEmpresa['nombre'];
+
+        // echo print_r($correoEmpresa); exit();
         
 
         $this->load->library('email');

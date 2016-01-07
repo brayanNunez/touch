@@ -799,7 +799,7 @@ class Cotizacion_model extends CI_Model
             $array = $query->result_array(); 
             $data['cotizacion'] = array_shift($array);
 
-            $clientes = $this->db->query("SELECT cl.idMonedaDefecto, cl.idFormaPagoDefecto, cl.descuentoFijo, cl.idCliente, cl.nombre, cl.primerApellido, cl.segundoApellido, cl.todosVendedores, mec.valido  FROM cliente as cl left join (SELECT uc.idCliente, 1 as valido FROM usuario_cliente as uc inner join usuario as u on u.idUsuario = uc.idUsuario where u.idUsuario = ".$data['cotizacion']['idUsuario'].") as mec on mec.idCliente = cl.idCliente where cl.eliminado = 0 order by nombre ASC ;");
+            $clientes = $this->db->query("SELECT cl.idMonedaDefecto, cl.idFormaPagoDefecto, cl.descuentoFijo, cl.idCliente, cl.nombre, cl.primerApellido, cl.segundoApellido, cl.todosVendedores, mec.valido  FROM cliente as cl left join (SELECT uc.idCliente, 1 as valido FROM usuario_cliente as uc inner join usuario as u on u.idUsuario = uc.idUsuario where u.idUsuario = ".$data['cotizacion']['idUsuario'].") as mec on mec.idCliente = cl.idCliente where cl.eliminado = 0 and cl.idEmpresa= ". $datos['idEmpresa']." order by nombre ASC ;");
             if (!$clientes)  throw new Exception("Error en la BD");
             $clientes = $clientes->result_array();
             $misClientes = array();
@@ -1028,7 +1028,7 @@ class Cotizacion_model extends CI_Model
         try {
             $this->db->trans_begin();
 
-            $this->db->select("cl.nombre,cl.primerApellido, cl.segundoApellido, cl.correo, cl.enviarFacturas");
+            $this->db->select("cl.idCliente, cl.nombre,cl.primerApellido, cl.segundoApellido, cl.correo, cl.enviarFacturas");
             $this->db->from('cotizacion as co');
             $this->db->join('cliente as cl', 'cl.idCliente =  co.idCliente ');
             $this->db->where(array('co.idCotizacion' => $datos['idCotizacion']));
@@ -1039,8 +1039,8 @@ class Cotizacion_model extends CI_Model
             $data['cliente'] = array_shift($cliente);
 
             $this->db->select("pc.idPersonaContacto, pc.nombre,pc.primerApellido, pc.segundoApellido, pc.correo, pc.enviarFacturas");
-            $this->db->from('cotizacion as co, personacontacto as pc');
-            $this->db->where(array('co.idCliente = pc.idCliente', 'co.idCotizacion' => $datos['idCotizacion']));
+            $this->db->from('personacontacto as pc');
+            $this->db->where(array('pc.idCliente' => $data['cliente']['idCliente']));
 
             $atenciones = $this->db->get();
             if (!$atenciones) throw new Exception("Error en la BD");
