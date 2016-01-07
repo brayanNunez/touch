@@ -1,6 +1,7 @@
 <div class="col s12">
     <?php $this->load->helper('form'); ?>
     <?php
+    $id = '';
     $idUsuario = '';
     $primerApellido = '';
     $segundoApellido = '';
@@ -14,6 +15,7 @@
     $accion = base_url().'usuarios/modificar/';
     $ruta = base_url().'files/empresas/';
     if (isset($resultado)) {
+        $id = $resultado['idUsuario'];
         $idUsuario = encryptIt($resultado['idUsuario']);
         $accion .= encryptIt($resultado['idUsuario']);
         $primerApellido = $resultado['primerApellido'];
@@ -152,12 +154,12 @@
         </div>
     </form>
 </div>
-
 <div style="display: none">
     <a id="linkModalEditado" href="#transaccionCorrecta" class="btn btn-default modal-trigger"></a>
     <a id="linkModalError" href="#transaccionIncorrecta" class="btn btn-default modal-trigger"></a>
 </div>
 
+<!--Script para mostrar elementos-->
 <script>
     function mostrarCambioImagen() {
         document.getElementById('input-cambio-imagen').style.display = 'block';
@@ -172,33 +174,7 @@
         document.getElementById('cambio-contrasena').style.display = 'none';
     }
 </script>
-
-<!-- lista modals -->
-<div id="transaccionCorrecta" class="modal">
-    <div class="modal-header">
-        <p><?= label('nombreSistema'); ?></p>
-        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
-    </div>
-    <div class="modal-content">
-        <p><?= label('usuarioEditadoCorrectamente'); ?></p>
-    </div>
-    <div class="modal-footer">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
-    </div>
-</div>
-<div id="transaccionIncorrecta" class="modal">
-    <div  class="modal-header headerTransaccionIncorrecta">
-        <p><?= label('nombreSistema'); ?></p>
-        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
-    </div>
-    <div class="modal-content">
-        <p><?= label('errorGuardar'); ?></p>
-    </div>
-    <div class="modal-footer">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
-    </div>
-</div>
-
+<!--Script para insercion de datos-->
 <script>
     function validacionCorrecta_UsuariosEditar(){
         var miCorreoActual = "<?= $correo; ?>";
@@ -286,6 +262,15 @@
         });
     }
     function validacionCorrecta_Imagen(){
+        <?php
+        $sessionActual = $this->session->userdata('logged_in');
+        $idUsuarioLogueado = $sessionActual['idUsuario'];
+        if($idUsuarioLogueado == $id) {
+            echo 'var esUsuarioLogueado = 1;';
+        } else {
+            echo 'var esUsuarioLogueado = 0;';
+        }
+        ?>
         var formPW = $('#usuario-cambio-imagen');
         $.ajax({
             data: new FormData(formPW[0]),
@@ -300,10 +285,10 @@
                     $('#imagen_seleccionada').attr('src', response + '?' + d.getTime());
                     $('#imagen_perfil_usuario').attr('src', response + '?' + d.getTime());
                     $('#imagen_perfil_usuario_ver').attr('src', response + '?' + d.getTime());
-                    $('#img_imagenUsuarioLogueado').attr('src', response + '?' + d.getTime());
-
+                    if(esUsuarioLogueado == 1) {
+                        $('#img_imagenUsuarioLogueado').attr('src', response + '?' + d.getTime());
+                    }
                     formPW.find('input:file,input:text').val('');
-
                     $('#cambio-imagen .modal-header a').click();
                 }
             },
@@ -313,6 +298,32 @@
         });
     }
 </script>
+
+<!-- lista modals -->
+<div id="transaccionCorrecta" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('usuarioEditadoCorrectamente'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="transaccionIncorrecta" class="modal">
+    <div  class="modal-header headerTransaccionIncorrecta">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('errorGuardar'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
 
 <div id="cambio-contrasena" class="modal">
     <div class="modal-header">
@@ -383,6 +394,7 @@
 </div>
 <!-- Fin lista modals -->
 
+<!--Script para el manejo de la imagen del usuario-->
 <script>
     function readURL(input) {
         if (input.files && input.files[0]) {
