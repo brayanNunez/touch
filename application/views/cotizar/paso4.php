@@ -339,6 +339,7 @@
                            url: '<?=base_url()?>ManejadorPDF/enviarCorreoParaAprobacion/<?= encryptIt($resultado['idCotizacion']);?>',
                            // data: $('#formAprobadores, #formLineasDetalle, #formGeneral, #form_encabezado, #form_paso3AgregarPlantilla, #form_cuerpo, #form_informacion, #form_footer').serialize(), 
                            success: function(response) {
+                            // alert(response);
                             $('#modal_guardarEnviada').openModal();
 
                             if (cotizacionSinCodigo) {
