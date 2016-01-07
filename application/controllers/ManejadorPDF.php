@@ -523,6 +523,7 @@ class ManejadorPDF extends CI_Controller
 
         $this->load->library('email');
         $this->email->from($correoEmpresa, $nombreEmpresa);
+        // $this->email->from('brayannr@hotmail.es', 'brayan');
         // echo print_r($arrayCorreos); exit();
         $this->email->to($arrayCorreos);
         // $this->email->cc('brayan.nunez@ucrso.info');
