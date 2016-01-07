@@ -713,6 +713,26 @@ class Clientes extends CI_Controller
         }
     }
 
+    public function busquedaAvanzada_cotizaciones(){
+        $idCliente = $this->input->post('busquedaCotizacion_idCliente');
+
+        $busqueda = array('idServicio' => $this->input->post('busquedaCotizacion_servicio'),
+            'idCliente' => $this->input->post('busquedaCotizacion_cliente'),
+            'idUsuario' => $this->input->post('busquedaCotizacion_vendedor'),
+            'idEstado' => $this->input->post('busquedaCotizacion_estado'),
+            'desde' => $this->input->post('busqueda-fecha-desde'),
+            'hasta' => $this->input->post('busqueda-fecha-hasta')
+        );
+//        echo print_r($busqueda);exit();
+        $busqueda = $this->Cliente_model->busquedaAvanzada_cotizaciones($idCliente, $busqueda);
+
+        if ($busqueda === false) {
+            echo "0";
+        } else {
+            echo json_encode($busqueda);
+        }
+    }
+
 }
 
 ?>
