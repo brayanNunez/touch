@@ -231,6 +231,7 @@ $(document).ready(function(){
 
 
     function actualizarTotal(){
+        // alert('actualizando');
         var sumatoria = 0;
         $('.subTotal').each(function(){
             var fila = $(this).attr('data-numeroFila');
@@ -2127,7 +2128,9 @@ $(document).on('ready', function () {
       
              }
            });
-            verificarChecks();
+           actualizarTotal();
+           verificarChecks();
+            
            return false;
    
        });
