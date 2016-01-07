@@ -177,6 +177,30 @@ class Usuario_model extends CI_Model
                 }
                 $row['cotizaciones'] = $cotizaciones->result_array();
 
+                $idEmpresa = $row['idEmpresa'];
+                $clientes = $this->db->get_where('cliente', array('eliminado' => 0,'idEmpresa' => $idEmpresa));
+                if (!$clientes) throw new Exception("Error en la BD");
+                $row['clientes'] = $clientes->result_array();
+
+                $servicios = $this->db->get_where('servicio', array('estado' => 0,'idEmpresa' => $idEmpresa));
+                if (!$servicios) throw new Exception("Error en la BD");
+                $row['servicios'] = $servicios->result_array();
+
+//                $usuarios = $this->db->get_where('usuario', array('eliminado' => 0,'idEmpresa' => $idEmpresa));
+//                if (!$usuarios) throw new Exception("Error en la BD");
+//                $row['vendedores'] = $usuarios->result_array();
+
+                $estado = $this->db->get('estadocotizacion');
+                if (!$estado) throw new Exception("Error en la BD");
+                $row['estados'] = $estado->result_array();
+
+                $this->db->select('MIN(fechaCreacion) as fecha');
+                $fecha = $this->db->get_where('cotizacion', array('eliminado' => 0,'idEmpresa' => $idEmpresa));
+                if (!$fecha) throw new Exception("Error en la BD");
+                $fecha = $fecha->result_array();
+                $fecha = array_shift($fecha);
+                $row['fechaMinima'] = $fecha['fecha'];
+//                echo $data['fechaMinima']; exit();
             }
             $this->db->trans_commit();
             return $row;
@@ -484,6 +508,57 @@ class Usuario_model extends CI_Model
             $this->db->trans_rollback();
             return false;
         }
+    }
+
+    function busqueda($idUsuario, $busqueda)
+    {
+        try{
+            $this->db->trans_begin();
+
+            $whereEstado = '';
+            if ($busqueda['idEstado'] != 0) {
+                $whereEstado = ' AND ec.idEstadoCotizacion = '.$busqueda["idEstado"];
+            }
+
+            $whereCliente = '';
+            if ($busqueda['idCliente'] != 0) {
+                $whereCliente = ' AND cl.idCliente = '.$busqueda["idCliente"];
+            }
+
+            $desde = date("Y-m-d", strtotime($busqueda["desde"]));
+            $hasta = date("Y-m-d", strtotime($busqueda["hasta"]));
+
+            $hasta = strtotime('+1 day', strtotime($hasta));
+            $hasta = date('Y-m-d', $hasta);
+
+            $whereFechas = ' AND (co.fechaCreacion BETWEEN "'.$desde.'" AND "'.$hasta.'")';
+
+            $whereServicio = '';
+            $leftJoinServicio = '';
+            if ($busqueda['idServicio'] != 0) {
+                $whereServicio = ' AND li.idServicio = '.$busqueda["idServicio"];
+                $leftJoinServicio = ' left join lineadetalle as li on li.idCotizacion = co.idCotizacion ';
+            }
+
+            $cotizaciones = $this->db->query("SELECT mo.signo ,co.idCotizacion, co.numero, co.codigo, co.fechaCreacion, co.monto, if(cl.juridico = 1,cl.nombre,CONCAT(cl.nombre, ' ', cl.primerApellido, ' ', cl.segundoApellido)) as cliente, cl.idCliente, CONCAT(us.nombre, ' ', us.primerApellido, ' ', us.segundoApellido) as vendedor, us.idUsuario,ec.descripcion as estado FROM cotizacion as co left join cliente as cl on co.idCliente = cl.idCliente left join moneda as mo on co.idMoneda = mo.idMoneda left join estadocotizacion as ec on co.idEstadoCotizacion = ec.idEstadoCotizacion left join usuario as us on co.idUsuario = us.idUsuario".$leftJoinServicio." where co.idUsuario = ".$idUsuario." AND co.eliminado=0".$whereEstado.$whereCliente.$whereFechas.$whereServicio);
+
+            if (!$cotizaciones) throw new Exception("Error en la BD");
+            $cotizaciones = $cotizaciones->result_array();
+            $resultado = array();
+            foreach ($cotizaciones as $cotizacion) {
+                $cotizacion['idCotizacion'] = encryptIt($cotizacion['idCotizacion']);
+                $cotizacion['idCliente'] = encryptIt($cotizacion['idCliente']);
+                $cotizacion['idUsuario'] = encryptIt($cotizacion['idUsuario']);
+                $cotizacion['fechaCreacion'] = date("d-m-Y", strtotime($cotizacion['fechaCreacion']));
+                array_push($resultado, $cotizacion);
+            }
+            $this->db->trans_commit();
+            return $resultado;
+        } catch (Exception $e) {
+            $this->db->trans_rollback();
+            return false;
+        }
+
     }
 
 }

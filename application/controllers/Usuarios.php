@@ -252,6 +252,27 @@ class Usuarios extends CI_Controller
         $this->input->set_cookie('logged_in_touch', $resultado['correo'], 2592000);
     }
 
+    public function busqueda(){
+        $sessionActual = $this->session->userdata('logged_in');
+        $idUsuario = $sessionActual['idUsuario'];
+
+        $busqueda = array('idServicio' => $this->input->post('busquedaCotizacion_servicio'),
+            'idCliente' => $this->input->post('busquedaCotizacion_cliente'),
+            'idUsuario' => $this->input->post('busquedaCotizacion_vendedor'),
+            'idEstado' => $this->input->post('busquedaCotizacion_estado'),
+            'desde' => $this->input->post('busqueda-fecha-desde'),
+            'hasta' => $this->input->post('busqueda-fecha-hasta')
+        );
+        // echo print_r($busqueda);
+        $busqueda = $this->Usuario_model->busqueda($idUsuario, $busqueda);
+
+        if ($busqueda === false) {
+            echo "0";
+        } else {
+            echo json_encode($busqueda);
+        }
+    }
+
     //-----------------------------------------------------
 
     public function existeUsuario()

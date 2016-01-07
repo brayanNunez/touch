@@ -456,6 +456,155 @@
         }
     });
     // Fin script de descarga pdf, excel e imprimir
+
+    // script busqueda avanzada
+    $(document).on('ready', function(){
+        $('#botonBusqueda').on('click', function(){
+            var url = '<?= base_url() ?>usuarios/busqueda';
+            var method = 'POST';
+            $.ajax({
+                type: method,
+                url: url,
+                data: $('#formBusqueda').serialize(),
+                success: function(response)
+                {
+                    // alert(response);
+                    if (response ==0) {
+                        alert('<?= label('errorLeerDatos'); ?>');
+                    } else{
+                        arrayBusqueda = $.parseJSON(response);
+                        var table = $('#usuario_cotizaciones').DataTable();
+                        table.clear().draw();
+
+                        for (var i = 0; i < arrayBusqueda.length; i++) {
+                            var fila = arrayBusqueda[i];
+                            agregarFila(fila['idCotizacion'], fila['codigo'], fila['numero'], fila['fechaCreacion'], fila['cliente'], fila['vendedor'], fila['monto'],fila['signo'], fila['estado'], fila['idCliente'], fila['idUsuario'], i);
+                        }
+                    }
+                    $('#busquedaAvanzada').closeModal();
+                }
+            });
+        });
+    });
+    function agregarFila(idEncriptado, codigo, numero, fechaCreacion, cliente, vendedor, monto, signo, estado, idCliente, idUsuario, contadorFilas){
+        var urlBase = '<?= base_url(); ?>';
+        var label_ver = '<?= label('menuOpciones_ver') ?>';
+        var label_editar = '<?= label('menuOpciones_editar') ?>';
+        var label_dublicar = '<?= label('tablaCotizaciones_opcionDuplicar') ?>';
+        var label_eliminar = '<?= label('menuOpciones_eliminar') ?>';
+        var label_seleccionar = '<?= label('menuOpciones_seleccionar') ?>';
+        var label_aprobar = '<?= label('menuOpciones_aprobar') ?>';
+        var label_finalizar = '<?= label('menuOpciones_finalizar') ?>';
+        var label_facturar = '<?= label('menuOpciones_facturar') ?>';
+
+        var check = '<td>' +
+            '<div style="text-align: center;">'+
+            '<input type="checkbox" class="filled-in checkbox-cotizacion" id="'+idEncriptado+'"/>' +
+            '<label for="'+idEncriptado+'"></label>' +
+            '</div>'+
+            '</td>';
+
+        var miCodigo = '';
+        if (codigo == '') {
+            miCodigo = numero;
+        } else {
+            miCodigo = codigo +'-'+numero;
+        }
+        var codigo = '<td><a href="'+urlBase+'cotizacion/editar/'+idEncriptado+'">'+miCodigo+'<a></td>';
+        var fechaCreacion = '<td>'+fechaCreacion+'</td>';
+        if (cliente == null) {
+            cliente = '';
+        }
+        var cliente = '<td><a href="'+urlBase+'clientes/editar/'+idCliente+'#tab-informacion">'+cliente+'<a></td>';
+//        var vendedor = '<td><a href="'+urlBase+'usuarios/editar/'+idUsuario+'#tab-informacion">'+vendedor+'<a></td>';
+        var monto = '<td><span>'+signo+' </span>' + monto +'</td>';
+
+        var boton = '<td>' +
+            '<ul id="dropdown-cotizacion'+ contadorFilas +'" class="dropdown-content">';
+        var miEstado = '';
+        switch(estado){
+            case 'nueva':
+                miEstado =  '<?=label('estado_nueva')?>';
+                boton += '<li>' +
+                    '<a href="<?= base_url(); ?>cotizacion/editar/'+idEncriptado+'" class="-text">'+label_editar+'</a>' +
+                    '</li>';
+                break;
+            case 'espera':
+                miEstado =  '<?=label('estado_espera')?>';
+                boton += '<li>' +
+                    '<a href="<?= base_url(); ?>cotizacion/aprobar/'+idEncriptado+'" class="-text">'+label_aprobar+'</a>' +
+                    '</li>';
+                break;
+            case 'rechazada':
+                miEstado =  '<?=label('estado_rechazada')?>';
+                boton += '<li>' +
+                    '<a href="<?= base_url(); ?>cotizacion/editar/'+idEncriptado+'" class="-text">'+label_editar+'</a>' +
+                    '</li>';
+                break;
+            case 'enviada':
+                miEstado =  '<?=label('estado_enviada')?>';
+                boton += '<li>' +
+                    '<a href="<?= base_url(); ?>cotizacion/finalizar/'+idEncriptado+'" class="-text">'+label_finalizar+'</a>' +
+                    '</li>';
+                break;
+            case 'finalizada':
+                miEstado =  '<?=label('estado_finalizada')?>';
+                boton += '<li>' +
+                    '<a href="<?= base_url(); ?>cotizacion/facturar/'+idEncriptado+'" class="-text">'+label_facturar+'</a>' +
+                    '</li>';
+                break;
+            case 'facturada':
+                miEstado =  '<?=label('estado_facturada')?>';
+                break;
+        }
+        var estado = '<td>' + miEstado +'</td>';
+        boton +=    '<li>' +
+            '<a href="<?= base_url(); ?>cotizacion/ver/'+idEncriptado+'" class="-text">'+label_ver+'</a>' +
+            '</li>' +
+            '<li>' +
+            '<a href="<?= base_url(); ?>cotizacion/duplicar/'+idEncriptado+'" class="-text">'+label_dublicar+'</a>' +
+            '</li>' +
+            '<li>' +
+            '<a href="#eliminarCotizacion" class="-text modal-trigger confirmarEliminar" data-id-eliminar="'+idEncriptado+'"  data-fila-eliminar="fila'+ contadorFilas +'">'+label_eliminar+'</a>' +
+            '</li>' +
+            '</ul>' +
+            '<a class="boton-opciones btn-flat dropdown-button waves-effect white-text"' +
+            'href="#!"' +
+            'data-activates="dropdown-cotizacion'+ contadorFilas +'">' +
+            ''+ label_seleccionar +'<i class="mdi-navigation-arrow-drop-down"></i>' +
+            '</a>' +
+            '</td>';
+
+        $('table').dataTable().fnAddData([
+            check,
+            codigo,
+            fechaCreacion,
+            cliente,
+//            vendedor,
+            monto,
+            estado,
+            boton ]);
+
+        generarListasBotones();
+        $('.modal-trigger').leanModal();
+        // contadorFilas++;
+    }
+    function generarListasBotones(){
+        $('.boton-opciones').sideNav({
+            // menuWidth: 0, // Default is 240
+            edge: 'right', // Choose the horizontal origin
+            closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+        });
+        $('.dropdown-button').dropdown({
+            inDuration: 300,
+            outDuration: 225,
+            constrain_width: true, // Does not change width of dropdown to that of the activator
+            hover: false, // Activate on hover
+            gutter: 0, // Spacing from edge
+            belowOrigin: true, // Displays dropdown below the button
+            alignment: 'left' // Displays dropdown with edge aligned to the left of button
+        });
+    }
 </script>
 
 <!-- lista modals -->
@@ -590,7 +739,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field col s12 m12 l4 inputSelector">
+                        <div class="input-field col s12 m12 l6 inputSelector">
                             <label for="contenedorSelectCliente"><?= label("busqueda_selectClientes"); ?></label>
                             <br>
                             <div id="contenedorSelectCliente">
@@ -608,25 +757,7 @@
                             </div>
                         </div>
 
-                        <div class="input-field col s12 m12 l4 inputSelector">
-                            <label for="contenedorSelectVendedor"><?= label("busqueda_selectVendedores"); ?></label>
-                            <br>
-                            <div id="contenedorSelectVendedor">
-                                <select data-incluirBoton="0" placeholder="seleccionar" id="busquedaCotizacion_vendedor" name="busquedaCotizacion_vendedor" data-textoBoton="<?= label("agregarNuevo"); ?>" data-placeholder="<?= label("paso1_elegirVendedor"); ?>" class="chosen-select browser-default" style="width:350px;" tabindex="2">
-                                    <!-- <option value="nuevo"><?= label("agregarNuevo"); ?></option> -->
-                                    <option value="0" selected ><?= label("busquedaAvanzada_Todos"); ?></option>
-                                    <?php
-                                    foreach ($vendedores as $vendedor) {
-                                        $valor = "value='".$vendedor['idUsuario']."'";
-                                        echo '<option '.$valor.'>'.$vendedor['nombre'].' '.$vendedor['primerApellido'].' '.$vendedor['segundoApellido'].'</option>");';
-                                    }
-
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="input-field col s12 m12 l4 inputSelector">
+                        <div class="input-field col s12 m12 l6 inputSelector">
                             <label for="contenedorSelectServicio"><?= label("busqueda_selectServicios"); ?></label>
                             <br>
                             <div id="contenedorSelectServicio">
