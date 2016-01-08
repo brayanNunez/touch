@@ -27,8 +27,9 @@
                                         <div class="row">
                                             <div class="col s12 m12 l12">
                                                 <div class="agregar_nuevo">
-                                                    <a href="<?= base_url() ?>servicios/agregar"
-                                                       class="btn btn-default modal-trigger"><?= label('agregar_servicio'); ?></a>
+                                                    <a id="btn_agregarNuevo" class="btn btn-default">
+                                                        <?= label('agregar_servicio'); ?>
+                                                    </a>
                                                 </div>
                                                 <table id="servicios-tabla-lista" cellspacing="0"
                                                        class="data-table-information responsive-table display">
@@ -159,6 +160,9 @@
 <div style="display: none">
     <a id="linkModalErrorCargarDatos" href="#transaccionIncorrectaCargar" class="btn btn-default modal-trigger"></a>
     <a id="linkModalErrorEliminar" href="#transaccionIncorrectaEliminar" class="btn btn-default modal-trigger"></a>
+
+    <a id="btn_errorHoras" href="#mensajeHorasIncompletas" style="display: none;" class="modal-trigger"></a>
+    <a id="btn_agregarServicio" href="<?= base_url() ?>servicios/agregar" style="display: none;"></a>
 </div>
 <!-- END CONTENT-->
 
@@ -593,6 +597,24 @@
             calcularPrecio(i);
         }
     });
+
+    $(document).on('click', '#btn_agregarNuevo', function () {
+        horasLaborales();
+        if(totalHorasLaborales != 0) {
+//            $('#btn_agregarServicio').click();
+            window.location.href = "<?= base_url() ?>servicios/agregar";
+        } else {
+            document.getElementById('mensajeHorasIncompletas').style.visibility = 'visible';
+            $('#btn_errorHoras').click();
+        }
+    });
+    $(document).on('click', '#btn_completarHorasMensaje', function () {
+        document.getElementById('mensajeHorasIncompletas').style.visibility = 'hidden';
+        $('#btn_horasLaborales').click();
+    });
+    $(document).on('click', '.lean-overlay', function () {
+        document.getElementById('mensajeHorasIncompletas').style.visibility = 'visible';
+    });
 </script>
 
 <!-- lista modals -->
@@ -618,6 +640,18 @@
     </div>
     <div class="modal-footer">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="mensajeHorasIncompletas" class="modal">
+    <div  class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('errorHoras'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a id="btn_completarHorasMensaje" href="#" class="waves-effect waves-red btn-flat"><?= label('irCompletarHoras'); ?></a>
     </div>
 </div>
 
