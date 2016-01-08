@@ -255,6 +255,7 @@
 <div style="visibility:hidden; position:absolute">
     <a id="linkGastosEliminar" href="#eliminarGasto" class="modal-trigger" data-fila-eliminar="1"
        title="<?= label('formProveedor_gastoEliminar') ?>"><i class="mdi-action-delete medium" style="color: black;"></i></a>
+    <a id="btn_errorHoras" href="#mensajeHorasIncompletas" style="display: none;" class="modal-trigger"></a>
 </div>
 <!-- END CONTENT-->
 
@@ -1106,25 +1107,30 @@ echo "var arrayFases =". $js_array.";";
     function calcularPrecio() {
         gastosFijosAnuales();
         horasLaborales();
-        var totalGastos = totalGastosFijosAnuales + totalGastosVariables;
+        if(totalHorasLaborales != 0) {
+            var totalGastos = totalGastosFijosAnuales + totalGastosVariables;
 
-        var costoHora = totalGastos / totalHorasLaborales;
-        var cantidadHoras = horasServicio();
-        var margenUtilidad = parseFloat($('#servicio_utilidad').val()) / 100;
+            var costoHora = totalGastos / totalHorasLaborales;
+            var cantidadHoras = horasServicio();
+            var margenUtilidad = parseFloat($('#servicio_utilidad').val()) / 100;
 
-        var precioServicio = (cantidadHoras * costoHora) / (1 - margenUtilidad);
+            var precioServicio = (cantidadHoras * costoHora) / (1 - margenUtilidad);
 
-        var impuestosAgregados = 0;
-        $.each($("#servicio_impuestos").tagsinput('items'), function( index, value ) {
-            impuestosAgregados += precioServicio * (value['valor'] / 100);
-//            impuestosAgregados += parseFloat(value['valor']);
-        });
-        precioServicio += impuestosAgregados;
-//        precioServicio += precioServicio * (impuestosAgregados / 100);
+            var impuestosAgregados = 0;
+            $.each($("#servicio_impuestos").tagsinput('items'), function (index, value) {
+                impuestosAgregados += precioServicio * (value['valor'] / 100);
+//              impuestosAgregados += parseFloat(value['valor']);
+            });
+            precioServicio += impuestosAgregados;
+//          precioServicio += precioServicio * (impuestosAgregados / 100);
 
-        precioServicio = precioServicio.toFixed(2);
+            precioServicio = precioServicio.toFixed(2);
 
-        $('#servicio_total').val(precioServicio);
+            $('#servicio_total').val(precioServicio);
+        } else {
+            document.getElementById('mensajeHorasIncompletas').style.visibility = 'visible';
+            $('#btn_errorHoras').click();
+        }
     }
 
     $(document).on('change', '#servicio_utilidad', function () {
@@ -1135,6 +1141,14 @@ echo "var arrayFases =". $js_array.";";
     });
     $(document).on('change', '#servicio_impuestos', function () {
         calcularPrecio();
+    });
+
+    $(document).on('click', '#btn_completarHorasMensaje', function () {
+        document.getElementById('mensajeHorasIncompletas').style.visibility = 'hidden';
+        $('#btn_horasLaborales').click();
+    });
+    $(document).on('click', '.lean-overlay', function () {
+        document.getElementById('mensajeHorasIncompletas').style.visibility = 'visible';
     });
 </script>
 
@@ -1161,6 +1175,18 @@ echo "var arrayFases =". $js_array.";";
     </div>
     <div class="modal-footer">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="mensajeHorasIncompletas" class="modal">
+    <div  class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('errorHoras'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a id="btn_completarHorasMensaje" href="#" class="waves-effect waves-red btn-flat"><?= label('irCompletarHoras'); ?></a>
     </div>
 </div>
 
