@@ -17,7 +17,7 @@ class Gastos extends CI_Controller
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
         $lista = $this->Gasto_model->cargarTodos($idEmpresa);
-        $categorias = $this->Gasto_model->categoriasGasto();
+        $categorias = $this->Gasto_model->categoriasGasto($idEmpresa);
         $formasPago = $this->Gasto_model->formasPago();
         $personas = $this->Gasto_model->proveedores($idEmpresa);
         $paises = $this->Gasto_model->paises();
@@ -165,7 +165,9 @@ class Gastos extends CI_Controller
     }
 
     public function categoriasGasto() {
-        $resultado = $this->Gasto_model->categoriasGasto();
+        $sessionActual = $this->session->userdata('logged_in');
+        $idEmpresa = $sessionActual['idEmpresa'];
+        $resultado = $this->Gasto_model->categoriasGasto($idEmpresa);
         if ($resultado === false) {
             echo 0;
         } else {

@@ -226,11 +226,12 @@ class Gasto_model extends CI_Model
         }
     }
 
-    function categoriasGasto() {
+    function categoriasGasto($idEmpresa) {
         try{
             $this->db->trans_begin();
 
             $this->db->select('idCategoriaGasto, nombre');
+            $this->db->where('idEmpresa', $idEmpresa);
             $categoriasGasto = $this->db->get('categoriagasto');
             if (!$categoriasGasto) {
                 throw new Exception("Error en la BD");
