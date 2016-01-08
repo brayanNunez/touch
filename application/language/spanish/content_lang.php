@@ -18,27 +18,23 @@
     
 
 //paginas informativas
-    $lang['texto_terminosCondiciones'] = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
-                    mus.';
-    $lang['texto_beneficios'] = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
-                    mus.';
-    $lang['texto_comoFunciona'] = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
-                    mus.';
+    $lang['texto_queEs'] = 'Touch! es una herramienta gratuita que le ayuda a crear, controlar y supervisar cotizaciones.';
+    $lang['texto_quienesUtilizan'] = 'Touch!  es utilizado tanto por empresas como por trabajadores independientes del sector 
+    servicio, que requieren orden, agilidad y control de sus cotizaciones. Quienes deseen manejar una estrategia de precios 
+    que les permitan competir en el mercado sin comprometer sus finanzas.';
+    $lang['texto_FAQsubtitulo1'] = 'Generales';
+    $lang['texto_FAQsubtitulo2'] = 'Costos';
+    $lang['texto_pregunta1'] = '¿Quién puede utilizar Touch?';
+    $lang['texto_respuesta1_1'] = 'Quien sea,';
+    $lang['texto_respuesta1_2'] = ' regístrate aquí ';
+    $lang['texto_pregunta2'] = '¿Cuáles son las principales funciones de Touch!?';
+    $lang['texto_respuesta2_1'] = 'Gestión de usuarios';
+    $lang['texto_respuesta2_2'] = 'Gestión de cotizaciones';
+    $lang['texto_respuesta2_3'] = 'Control de permisos (Vendedor, administrador, aprobador de cotizaciones)';
+    $lang['texto_respuesta2_4'] = 'Configuración avanzada (Moneda, impuestos)';
+    $lang['texto_respuesta2_5'] = 'Definición de precios y costos';
+    $lang['texto_pregunta3'] = '¿Cuanto tengo que pagar por touch?';
+    $lang['texto_respuesta3'] = 'Es gratuito.';
 
 //header
     $lang['header_perfilIncompleto'] = 'Recuerda que tu perfil esta incompleto';

@@ -8,17 +8,17 @@
                 <h6 class="uppercase"><?= label('sobreTouch'); ?></h6>
                 <ul>
                     <li><a class="footer-link" href="<?= base_url() ?>welcome/que"><?= label('queEsTouch'); ?></a></li>
-                    <li><a class="footer-link" href="<?= base_url() ?>welcome/como"><?= label('comoFunciona'); ?></a>
-                    </li>
+                    <!--<li><a class="footer-link" href="<?= base_url() ?>welcome/como"><?= label('comoFunciona'); ?></a>
+                    </li>-->
                     <li><a class="footer-link"
                            href="<?= base_url() ?>welcome/quienes"><?= label('quienesLoUsan'); ?></a></li>
-                    <li><a class="footer-link"
+                    <!--<li><a class="footer-link"
                            href="<?= base_url() ?>welcome/beneficios"><?= label('beneficios'); ?></a></li>
-                    <!--<li><a class="footer-link" href="<?= base_url() ?>welcome/precios"><?= label('precios'); ?></a></li>-->
+                    <li><a class="footer-link" href="<?= base_url() ?>welcome/precios"><?= label('precios'); ?></a></li>-->
                     <li><a class="footer-link" href="<?= base_url() ?>welcome/faq"><?= label('faq'); ?></a></li>
-                    <li><a class="footer-link" href="<?= base_url() ?>welcome/prensa"><?= label('prensa'); ?></a></li>
+                    <!--<li><a class="footer-link" href="<?= base_url() ?>welcome/prensa"><?= label('prensa'); ?></a></li>
                     <li><a class="footer-link"
-                           href="<?= base_url() ?>welcome/terminos"><?= label('terminosCondiciones'); ?></a></li>
+                           href="<?= base_url() ?>welcome/terminos"><?= label('terminosCondiciones'); ?></a></li>-->
                 </ul>
             </div>
             <!--<div class="col-md-3 col-sm-3 mb-xs-24">

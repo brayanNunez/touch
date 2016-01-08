@@ -74,10 +74,10 @@
                                     <a href="<?= base_url() ?>welcome/quienes"
                                        class="nosotros-opcion"><?= label('quienesLoUsan'); ?><br></a>
                                 </li>
-                                <li>
+                                <!--<li>
                                     <a href="<?= base_url() ?>welcome/prensa"
                                        class="nosotros-opcion"><?= label('prensa'); ?><br>&nbsp;<br></a>
-                                </li>
+                                </li>-->
                             </ul>
                         </li>
                     </ul>
