@@ -345,11 +345,13 @@
                         var data = new FormData(formulario[0]);
                         var url = formulario.attr('action');
                         var method = formulario.attr('method');
+                        // alert('aqui vamos');
                         $.ajax({
                             type: method,
                             url: url,
                             data: data,
                             success: function(response) {
+                                // alert(response);
                                 switch(response) {
                                     case '0':
                                         $('#linkModalError').click();

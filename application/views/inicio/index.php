@@ -86,7 +86,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <p>s</p> -->
 
                         <!-- <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">Ingresos mensuales <i

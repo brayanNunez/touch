@@ -237,7 +237,7 @@ class Usuario_model extends CI_Model
             // CONCAT(nombre, ' ' ,primerApellido, ' ', segundoApellido) as 
             $this->db->select("CONCAT(us.nombre, ' ', us.primerApellido, ' ', us.segundoApellido) as nombre, us.idUsuario", false);
             $this->db->from('usuario as us');
-            $this->db->join('privilegio_Usuario as pu', 'pu.idUsuario = us.idUsuario');
+            $this->db->join('privilegio_usuario as pu', 'pu.idUsuario = us.idUsuario');
             $this->db->join('privilegio as pr', 'pr.idPrivilegio = pu.idPrivilegio');
             $this->db->where(array('us.eliminado' => 0,'us.idEmpresa' => $idEmpresa, 'pr.nombre' => 'Cotizador'));
 

@@ -533,6 +533,8 @@
                 url: url,
                 data: data,
                 success: function (response) {
+
+                    // alert(response);
                     switch (response) {
                         case '0':
                             $('#linkModalError').click();

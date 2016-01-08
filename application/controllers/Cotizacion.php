@@ -235,7 +235,7 @@ class Cotizacion extends CI_Controller
         verificarLogin();//helper
         $sessionActual = $this->session->userdata('logged_in');
         $data['idEmpresa'] = $sessionActual['idEmpresa'];
-        // $data['idUsuario'] = $sessionActual['idUsuario'];
+        $idUsuario = $sessionActual['idUsuario'];
         $data['idCotizacion'] = decryptIt($idCotizacion);
 
         $resultado = $this->Cotizacion_model->cargar($data);
@@ -245,8 +245,9 @@ class Cotizacion extends CI_Controller
         } else {
 
             $estado =  $resultado['cotizacion']['descripcion']; 
+            $vendedor =  $resultado['cotizacion']['idUsuario']; 
 
-            if ($estado == 'espera' || $estado == 'finalizada' || $estado == 'facturada') {
+            if (($estado == 'espera' || $estado == 'finalizada' || $estado == 'facturada')|| ($vendedor != $idUsuario)) {
                 $this->ver($idCotizacion);
             } else {
 

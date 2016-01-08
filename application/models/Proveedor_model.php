@@ -105,7 +105,7 @@ class Proveedor_model extends CI_Model
                         'idPersona' => $insert_id,
                         'idCategoriaPersona' => $categoria
                     );
-                    $query = $this->db->insert('categoriaPersona_persona', $row);
+                    $query = $this->db->insert('categoriapersona_persona', $row);
                     if (!$query) {
                         throw new Exception("Error en la BD");
                     }
