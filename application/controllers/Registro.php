@@ -158,6 +158,7 @@ class Registro extends CI_Controller
         $resultado = $this->Registro_model->cargar($idEmpresa);
         $paises = $this->Registro_model->paises();
         if ($resultado === false || $resultado === array() || $paises === false) {
+            // echo print_r($resultado);
             echo "Error en la transacción";
         } else {
             $data['resultado'] = $resultado;
