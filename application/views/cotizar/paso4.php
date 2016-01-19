@@ -119,7 +119,7 @@
     </div>
     <div class="modal-footer">
       <div id="aprobadoresAceptar">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <a href="#" class="waves-effect waves-red btn-flat modal-action"><?= label('aceptar'); ?></a>
       </div>
         
     </div>
@@ -225,9 +225,15 @@
     
     ?>
 
+    // $('#guardar-enviar').leanModal({
+    //         complete: function() { alert('Closed'); } // Callback for Modal close
+    //       }
+    //     );
+
     $(document).on("ready", function(){
 
       $('#btnGuardarEnviar').on('click', function(){
+        if (validacionesCotizacion()) {
         <?php
           if (isset($resultado['aprobadores'])) {
              $cantidadAprobadores = count($resultado['aprobadores']);
@@ -244,7 +250,11 @@
           }
         ?>
 
+      }
       });
+
+
+        
 
       function validacionesCotizacion(){
         var miSelect = $('#paso1Moneda');
@@ -272,13 +282,19 @@
         if (validacionesCotizacion()) {
           guardar(1,1);
         };
-          
+          // 
       });
 
       $('#aprobadoresAceptar').on('click', function(){
-        if (validacionesCotizacion()) {
-          guardar(2,2);
-        };
+        
+        var cantidad = $('.aprobadores:checked').size();
+        if (cantidad != 0) {
+          // guardar(2,2);
+          alert('guardar');
+        } else {
+          alert('<?= label('paso4_seleccioneAprobador'); ?>');
+        }
+
           
       });
 
