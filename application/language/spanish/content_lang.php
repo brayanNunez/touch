@@ -737,6 +737,7 @@
 
     $lang['validaciones_seleccionarMoneda'] = 'Debe seleccionar la moneda antes de guardar.';
     $lang['validaciones_lineasIncompletas'] = 'Existen líneas de detalle sin un servicio seleccionado.';
+    $lang['validaciones_noHayAprobadores'] = 'La cotización no puede ser enviada ya que no existen usuarios aprobadores.';
 
 
     $lang['paso4_seleccionarAprobadores'] = 'Seleccionar aprobadores';

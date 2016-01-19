@@ -44,7 +44,7 @@
 <div class="col s12 m12 l12">
     <div class="input-field col s12 m4 l4">
         <div class="input-field col s12">
-            <a href="#guardar-enviar" id="btnGuardarEnviar" class="left btn btn-default modal-trigger opt-finalizar"
+            <a id="btnGuardarEnviar" class="left btn btn-default opt-finalizar"
                title="<?= label('tooltip_guardarEnviar'); ?>"><?= label('guardarEnviar'); ?></a>
         </div>
     </div>
@@ -226,6 +226,25 @@
     ?>
 
     $(document).on("ready", function(){
+
+      $('#btnGuardarEnviar').on('click', function(){
+        <?php
+          if (isset($resultado['aprobadores'])) {
+             $cantidadAprobadores = count($resultado['aprobadores']);
+
+             if ($cantidadAprobadores == 0) {
+              ?>
+                alert('<?= label('validaciones_noHayAprobadores');?>');
+              <?php
+             } else {
+             ?>
+              $('#guardar-enviar').openModal();
+             <?php
+           }
+          }
+        ?>
+
+      });
 
       function validacionesCotizacion(){
         var miSelect = $('#paso1Moneda');
