@@ -62,7 +62,8 @@
                 monthNamesShort: [ "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic" ],
                 dayNames: [ "Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado" ],
                 dayNamesMin: [ "Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa" ],
-                dayNamesShort: [ "Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sab" ]
+                dayNamesShort: [ "Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sab" ],
+                yearRange: "1970:+nn"
             });
         });
     </script>
