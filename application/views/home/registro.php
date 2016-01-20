@@ -306,6 +306,9 @@
     <!--end container-->
 </section>
 <!-- END CONTENT-->
+<div style="display: none">
+    <a id="linkModalExito" href="#msj_exitoRegistro" class="btn btn-default modal-trigger"></a>
+</div>
 
 <!--Script para selects de busqueda-->
 <script type="text/javascript">
@@ -340,20 +343,24 @@
             campoCedula = $('#registro_cedulaEmpresa');
         }
         if(error != '') {
-            if (error == 0) {
-                alert('Error de bd');
+            if(error == -1) {
+                $('#linkModalExito').click();
             } else {
-                if (error == 1) {
-                    alert('Error en el correo');
-                    campoCorreo.focus();
+                if (error == 0) {
+                    alert('Error de bd');
                 } else {
-                    if (error == 2) {
-                        alert('Error en el captcha');
-                        $('#defaultReal').focus();
+                    if (error == 1) {
+                        alert('Error en el correo');
+                        campoCorreo.focus();
                     } else {
-                        if (error == 3) {
-                            alert('Error en la identificacion');
-                            campoCedula.focus();
+                        if (error == 2) {
+                            alert('Error en el captcha');
+                            $('#defaultReal').focus();
+                        } else {
+                            if (error == 3) {
+                                alert('Error en la identificacion');
+                                campoCedula.focus();
+                            }
                         }
                     }
                 }
@@ -368,6 +375,13 @@
 //        $('#registro_tipo').options[tipoF].selected = true;
 //        $('#registro_paisTrabajador').options[paisT].selected = true;
 //        $('#registro_paisEmpresa').options[paisE].selected = true;
+    });
+    $(document).ready(function () {
+        $('#linkModalExito').leanModal({
+            complete: function () {
+                window.location.href='<?= base_url(); ?>inicio';
+            }
+        });
     });
     $(document).ready(function(){
         $('#registro_terminos').click(function(event) {
@@ -388,3 +402,16 @@
     });
 </script>
 
+<!--Inicio lista de modals-->
+<div id="msj_exitoRegistro" class="modal">
+    <div class="modal-header">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('registroExistoso'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>

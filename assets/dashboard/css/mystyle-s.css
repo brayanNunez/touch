@@ -307,6 +307,12 @@ ul#list_rolesUsuarioLogueado li:hover { background-color: transparent; }
 span#span_nombreUsuarioLogueado { text-transform: uppercase; }
 a#btn_nombreUsuarioLogueado:hover { background-color: #47b475; }
 
+div#msj_exitoRegistro { height: 34%; top: 0 !important; }
+div#msj_exitoRegistro .modal-header p { font-size: xx-large; text-align: center; padding: 10px 0 0; margin-bottom: 0; }
+div#msj_exitoRegistro .modal-content { border: none; border-radius: 0; box-shadow: none; }
+div#msj_exitoRegistro .modal-content p { font-size: 14px; margin-bottom: 0; }
+div#msj_exitoRegistro .modal-footer { max-height: 56px; border: none; }
+
 @media only screen and (max-width: 1200px) {
     /*ul#slide-out { left: 0 !important; }*/
     div#login-page { width: 380px !important; max-height: 408px !important; top: 0 !important; }

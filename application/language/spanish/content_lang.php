@@ -142,7 +142,7 @@
 
     $lang['irCompletarHoras'] = 'Ir a completar datos de horas';
 
-    
+    $lang['registroExistoso'] = 'El registro fue realizado de manera exitosa, ahora es necesario que se loguee en el sistema para poder comenzar.';
     
     
 //tipos de salario

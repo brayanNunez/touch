@@ -137,7 +137,11 @@ class Registro extends CI_Controller
                                 $this->load->view('home/footer_2');
                             } else {
                                 //Exito en la transaccion
-                                redirect('inicio/index', 'refresh');
+//                                redirect('inicio/index', 'refresh');
+                                $data['error'] = -1;
+                                $this->load->view('home/header_2');
+                                $this->load->view('home/registro', $data);
+                                $this->load->view('home/footer_2');
                             }
                         } else {
                             //Error en el captcha
