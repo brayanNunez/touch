@@ -226,13 +226,11 @@
                                     }
                                 }
                             });
-
                             break;
                     }
                 }
             });
-
-        };
+        }
     }
     function validacionCorrecta_Contrasena(){
         var formPW = $('#usuario-cambio-contrasena');
@@ -297,6 +295,14 @@
             processData: false
         });
     }
+
+    $(document).ready(function () {
+        $('#linkModalEditado').leanModal({
+            complete: function () {
+                window.location.href='<?= base_url(); ?>usuarios/editar/<?= $idUsuario; ?>';
+            }
+        });
+    });
 </script>
 
 <!-- lista modals -->

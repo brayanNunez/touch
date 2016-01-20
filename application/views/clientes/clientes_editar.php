@@ -463,6 +463,8 @@
 </div>
 <div style="display: none;">
     <a id="linkNuevaFormaPago" href="#agregarFormaPago" class="modal-trigger"></a>
+
+    <a id="linkModalEditado" href="#transaccionCorrecta" class="btn btn-default modal-trigger"></a>
 </div>
 
 <!-- Script para manejo de tags, select de busqueda, insercion de datos, checks y tabla-->
@@ -518,7 +520,7 @@
                     if (response == 0) {
                         $('#transaccionIncorrecta').openModal();
                     } else {
-                        $('#transaccionCorrecta').openModal();
+                        $('#linkModalEditado').click();
                     }
                 }
             });
@@ -552,7 +554,7 @@
                                     if (response == 0) {
                                         $('#transaccionIncorrecta').openModal();
                                     } else {
-                                        $('#transaccionCorrecta').openModal();
+                                        $('#linkModalEditado').click();
                                         miIdActual = idNuevo;
                                     }
                                 }
@@ -588,6 +590,13 @@
             processData: false
         });
     }
+    $(document).ready(function () {
+        $('#linkModalEditado').leanModal({
+            complete: function () {
+                window.location.href='<?= base_url() ?>clientes/editar/<?php if (isset($resultado)) echo encryptIt($resultado['idCliente']);?>';
+            }
+        });
+    });
 
     $(window).load(function () {
         var marcados = $('.checkbox-edicion:checked').size();

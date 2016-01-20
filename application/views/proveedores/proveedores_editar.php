@@ -276,6 +276,10 @@
                                         <div class="col s12 m11 l11">
                                             <div class="row">
                                                 <div class="input-field col s12 m4 l4">
+                                                    <input id="proveedor_contactoNombre_<?=$contador?>" name="proveedor_contactoNombre_<?=$contador?>" type="text" value="<?=$contacto['nombre']?>">
+                                                    <label for="proveedor_contactoNombre_<?=$contador?>"><?= label("formContacto_nombre"); ?></label>
+                                                </div>
+                                                <div class="input-field col s12 m4 l4">
                                                     <input class="accionAplicada" style="display:none" name="contacto_<?=$contador?>" type="text" value="1"> <!-- value 1 para existentes, 0 los nuevos y 2 los eliminados -->
                                                     <input style="display:none" name="idContacto_<?=$contador?>" type="text" value="<?=encryptIt($contacto['idProveedorContacto'])?>">
 
@@ -285,10 +289,6 @@
                                                 <div class="input-field col s12 m4 l4">
                                                     <input id="proveedor_contactoApellido2_<?=$contador?>" name="proveedor_contactoApellido2_<?=$contador?>" type="text" value="<?=$contacto['segundoApellido']?>">
                                                     <label for="proveedor_contactoApellido2_<?=$contador?>"><?= label("formContacto_apellido2"); ?></label>
-                                                </div>
-                                                <div class="input-field col s12 m4 l4">
-                                                    <input id="proveedor_contactoNombre_<?=$contador?>" name="proveedor_contactoNombre_<?=$contador?>" type="text" value="<?=$contacto['nombre']?>">
-                                                    <label for="proveedor_contactoNombre_<?=$contador?>"><?= label("formContacto_nombre"); ?></label>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -607,6 +607,14 @@
             processData: false
         });
     }
+
+    $(document).ready(function () {
+        $('#linkModalGuardado').leanModal({
+            complete: function () {
+                window.location.href='<?= base_url(); ?>proveedores/editar/<?= $idEncriptado; ?>';
+            }
+        });
+    });
 </script>
 <!--Script para manejo de checkbox y eliminar datos-->
 <script>
