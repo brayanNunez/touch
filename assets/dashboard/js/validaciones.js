@@ -161,8 +161,8 @@
             var subfase_notas = {required: true, maxlength: 200};
             var reglasFases =  {
                     fase_codigo: {required: true, maxlength: 45},
-                    fase_nombre: {required: true, maxlength: 45},
-                    fase_notas: {required: true, maxlength: 200},
+                    fase_nombre: {required: true, maxlength: 200},
+                    fase_notas: {required: false, maxlength: 200},
 
                     fase_codigo0: subfase_codigo,
                     fase_codigo1: subfase_codigo,
