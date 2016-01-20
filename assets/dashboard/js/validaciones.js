@@ -650,17 +650,18 @@
 
         var reglasGasto =  {
             gasto_codigo: {required: true},
-            gasto_nombre: {required: true}
+            gasto_nombre: {required: true},
+            gasto_monto: {required: true}
         };
         $('#form_gasto').validate({
-            rules: reglasFormaPago,
+            rules: reglasGasto,
             errorElement: 'div',
             submitHandler: function(form) {
                 validacionCorrecta();
             }
         });
         $('#form_gastoEditar').validate({
-            rules: reglasFormaPago,
+            rules: reglasGasto,
             errorElement: 'div',
             submitHandler: function(form) {
                 validacionCorrectaEditar();

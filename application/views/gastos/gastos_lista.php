@@ -1554,11 +1554,11 @@
                     </div>
                 </div>
                 <div class="input-field col s12 m6 l6">
-                    <input id="gasto_monto" name="gasto_monto" type="number">
+                    <input id="gasto_monto" name="gasto_monto" type="number" min="1">
                     <label for="gasto_monto"><?= label('gastos_Monto') ?></label>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="margin-top: 30px;">
 <!--                <a href="#" style="font-size: larger;float: left;text-decoration: underline;"-->
 <!--                   class="modal-action modal-close">--><?//= label('cancelar'); ?>
 <!--                </a>-->
@@ -1627,11 +1627,11 @@
                     </div>
                 </div>
                 <div class="input-field col s12 m6 l6">
-                    <input id="gasto_monto" name="gasto_monto" type="number">
+                    <input id="gasto_monto" name="gasto_monto" type="number" min="1">
                     <label for="gasto_monto"><?= label('gastos_Monto') ?></label>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="margin-top: 30px;">
 <!--                <a href="#" style="font-size: larger;float: left;text-decoration: underline;"-->
 <!--                   class="modal-action modal-close">--><?//= label('cancelar'); ?>
 <!--                </a>-->
