@@ -100,7 +100,7 @@
     </div>
     <div class="row">
         <div class="input-field col s12 m6 l6">
-            <input id="paso1_validez" name="paso1_validez" class="datepicker-fecha" type="text">
+            <input id="paso1_validez" name="paso1_validez" class="datepicker-fechaCotizacion" type="text">
             <label for="paso1_validez"><?= label("paso1_labelTiempoVlidez"); ?></label>
         </div>
         <div class="input-field col s12 m6 l6">
