@@ -617,6 +617,8 @@
     $lang['paso2_agregarLinea'] = 'Agregar linea';
     $lang['paso2_servicioRepetido'] = 'El servicio seleccionado ya fue agregado.';
 
+    $lang['paso4_seleccioneAprobador'] = 'Seleccione al menos un aprobador.';
+
     
     
 
@@ -1595,6 +1597,9 @@ $lang['agregar_nuevo'] = 'Agregar nuevo';
 
     $lang['aprobar_asuntoVendedor'] = 'Cotización aprobada';
     $lang['aprobar_textoVendedor'] = 'Tu cotización ha sido aprobada, en el siguiente enlace  puedes finalizarla.';
+    $lang['aprobar_anadir'] = 'Agregar';
+
+    
 
     $lang['finalizar_asuntoContador'] = 'Cotización finalizada ';
     $lang['finalizar_textoContador'] = 'Se ha finalizado una cotización, en el siguiente enlace puedes facturarla.';

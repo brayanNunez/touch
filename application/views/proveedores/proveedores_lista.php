@@ -101,10 +101,10 @@
                                                                         <a href="#eliminarProveedor" class="-text modal-trigger confirmarEliminar" data-id-eliminar="<?= $idEncriptado ?>"
                                                                            data-fila-eliminar="fila<?= $contador?>"><?= label('menuOpciones_eliminar') ?></a>
                                                                     </li>
-                                                                    <li>
+                                                                    <!-- <li>
                                                                         <a href="#desactivarProveedor"
                                                                            class="-text modal-trigger"><?= label('menuOpciones_desactivar') ?></a>
-                                                                    </li>
+                                                                    </li> -->
                                                                 </ul>
                                                                 <a class="boton-opciones btn-flat dropdown-button waves-effect white-text"
                                                                    href="#" data-activates="dropdown-proveedor<?= $contador++; ?>">

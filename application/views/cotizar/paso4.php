@@ -67,6 +67,7 @@
        title="<?= label('tooltip_cancelarCot'); ?>"><?= label('cancelarCot'); ?></a>
 </div>
 
+<a id="linkEnviada" style="display: none" class="waves-effect waves-light btn modal-trigger" href="#modal_guardarEnviada"></a>
 
 
 <!-- </div>
@@ -119,7 +120,7 @@
     </div>
     <div class="modal-footer">
       <div id="aprobadoresAceptar">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+        <a class="waves-effect waves-red btn-flat modal-action"><?= label('aceptar'); ?></a>
       </div>
         
     </div>
@@ -225,9 +226,12 @@
     
     ?>
 
+
+
     $(document).on("ready", function(){
 
       $('#btnGuardarEnviar').on('click', function(){
+        if (validacionesCotizacion()) {
         <?php
           if (isset($resultado['aprobadores'])) {
              $cantidadAprobadores = count($resultado['aprobadores']);
@@ -244,7 +248,18 @@
           }
         ?>
 
+      }
       });
+
+      $('#linkEnviada').leanModal({
+            complete: function() { 
+             window.location.href='<?= base_url() ?>Cotizacion';
+            } // Callback for Modal close
+          }
+        );
+
+
+        
 
       function validacionesCotizacion(){
         var miSelect = $('#paso1Moneda');
@@ -272,13 +287,20 @@
         if (validacionesCotizacion()) {
           guardar(1,1);
         };
-          
+          // 
       });
 
       $('#aprobadoresAceptar').on('click', function(){
-        if (validacionesCotizacion()) {
+        
+        var cantidad = $('.aprobadores:checked').size();
+        if (cantidad != 0) {
+          $('#guardar-enviar').closeModal();
           guardar(2,2);
-        };
+          // alert('guardar');
+        } else {
+          alert('<?= label('paso4_seleccioneAprobador'); ?>');
+        }
+
           
       });
 
@@ -359,7 +381,8 @@
                            // data: $('#formAprobadores, #formLineasDetalle, #formGeneral, #form_encabezado, #form_paso3AgregarPlantilla, #form_cuerpo, #form_informacion, #form_footer').serialize(), 
                            success: function(response) {
                             // alert(response);
-                            $('#modal_guardarEnviada').openModal();
+                            //$('#modal_guardarEnviada').openModal(); //mec
+                            $('#linkEnviada').click();
 
                             if (cotizacionSinCodigo) {
                               generarPDF();
