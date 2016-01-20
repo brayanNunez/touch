@@ -67,6 +67,7 @@
        title="<?= label('tooltip_cancelarCot'); ?>"><?= label('cancelarCot'); ?></a>
 </div>
 
+<a id="linkEnviada" style="display: none" class="waves-effect waves-light btn modal-trigger" href="#modal_guardarEnviada"></a>
 
 
 <!-- </div>
@@ -119,7 +120,7 @@
     </div>
     <div class="modal-footer">
       <div id="aprobadoresAceptar">
-        <a href="#" class="waves-effect waves-red btn-flat modal-action"><?= label('aceptar'); ?></a>
+        <a class="waves-effect waves-red btn-flat modal-action"><?= label('aceptar'); ?></a>
       </div>
         
     </div>
@@ -225,10 +226,7 @@
     
     ?>
 
-    // $('#guardar-enviar').leanModal({
-    //         complete: function() { alert('Closed'); } // Callback for Modal close
-    //       }
-    //     );
+
 
     $(document).on("ready", function(){
 
@@ -252,6 +250,13 @@
 
       }
       });
+
+      $('#linkEnviada').leanModal({
+            complete: function() { 
+             window.location.href='<?= base_url() ?>Cotizacion';
+            } // Callback for Modal close
+          }
+        );
 
 
         
@@ -289,8 +294,9 @@
         
         var cantidad = $('.aprobadores:checked').size();
         if (cantidad != 0) {
-          // guardar(2,2);
-          alert('guardar');
+          $('#guardar-enviar').closeModal();
+          guardar(2,2);
+          // alert('guardar');
         } else {
           alert('<?= label('paso4_seleccioneAprobador'); ?>');
         }
@@ -375,7 +381,8 @@
                            // data: $('#formAprobadores, #formLineasDetalle, #formGeneral, #form_encabezado, #form_paso3AgregarPlantilla, #form_cuerpo, #form_informacion, #form_footer').serialize(), 
                            success: function(response) {
                             // alert(response);
-                            $('#modal_guardarEnviada').openModal();
+                            //$('#modal_guardarEnviada').openModal(); //mec
+                            $('#linkEnviada').click();
 
                             if (cotizacionSinCodigo) {
                               generarPDF();
