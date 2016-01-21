@@ -14,6 +14,8 @@ class Usuarios extends CI_Controller
 
     public function index()
     {
+        verificarLogin();//helper
+
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
         $data['lista'] = $this->Usuario_model->cargarTodos($idEmpresa);
@@ -26,6 +28,8 @@ class Usuarios extends CI_Controller
 
     public function agregar()
     {
+        verificarLogin();//helper
+
         $this->load->view('layout/default/header');
         $this->load->view('layout/default/left-sidebar');
         $this->load->view('usuarios/usuarios');
@@ -80,6 +84,8 @@ class Usuarios extends CI_Controller
 
     public function editar($id)
     {
+        verificarLogin();//helper
+        
         $resultado = $this->Usuario_model->cargar(decryptIt($id));
         if ($resultado === false || $resultado === array()) {
             echo "Error en la transacci�n";

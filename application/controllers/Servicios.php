@@ -156,6 +156,8 @@ class Servicios extends CI_Controller
 
     public function editar($id)
     {
+        verificarLogin();//helper
+        
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
         $data['gastos'] = $this->Servicio_model->gastosVariables($idEmpresa);

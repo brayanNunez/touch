@@ -68,6 +68,8 @@ class Clientes extends CI_Controller
 
     public function agregar()
     {
+        verificarLogin();//helper
+        
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
         $paises = $this->Cliente_model->paises();
@@ -233,6 +235,8 @@ class Clientes extends CI_Controller
 
     public function editar($id)
     {
+        verificarLogin();//helper
+
         $sessionActual = $this->session->userdata('logged_in');
         $idEmpresa = $sessionActual['idEmpresa'];
         $resultado = $this->Cliente_model->cargar(decryptIt($id));
