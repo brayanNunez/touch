@@ -120,6 +120,7 @@
                 cliente_telefonoMovil: {required: false, maxlength: 45},
                 cliente_telefono: {required: false, maxlength: 45},
                 cliente_fechaNacimiento: {required: false, maxlength: 45},
+                cliente_nacionalidad: {required: false, maxlength: 45},
 
                 clientejuridico_id: {required: true, maxlength: 45},
                 clientejuridico_nombre: {required: true, maxlength: 45},
@@ -530,6 +531,7 @@
                 persona_telefonoMovil: { required: false, maxlength: 45},
                 persona_telefono: { required: false, maxlength: 45},
                 persona_fechaNacimiento: { required: false, maxlength: 45},
+                persona_nacionalidad: { required: false, maxlength: 45},
                 personajuridico_identificacion: { required: false, maxlength: 45},
                 personajuridico_nombre: { required: true, maxlength: 45},
                 personajuridico_nombreFantasia: { required: false, maxlength: 45},

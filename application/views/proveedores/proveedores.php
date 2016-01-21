@@ -44,7 +44,7 @@
                                         <div class="input-field col s12 inputSelector">
                                             <label for="persona_nacionalidad"><?= label('formCliente_nacionalidad'); ?></label>
                                             <br>
-                                            <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="persona_nacionalidad" name="persona_nacionalidad" class="required browser-default chosen-select">
+                                            <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="persona_nacionalidad" name="persona_nacionalidad" class="browser-default chosen-select">
                                                 <option value="0" disabled selected style="display:none;"><?= label("formCliente_seleccioneUno"); ?></option>
                                                 <?php
                                                 if(isset($paises)) {
@@ -56,7 +56,6 @@
                                                 ?>
                                             </select>
                                         </div>
-
                                         <div id="campos-proveedor-fisico" style="display: block;">
                                             <div class="input-field col s12">
                                                 <input id="persona_identificacion" name="persona_identificacion" type="text">

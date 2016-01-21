@@ -38,7 +38,7 @@
                                         <div class="input-field col s12 inputSelector" >
                                             <label for="cliente_nacionalidad"><?= label('formCliente_nacionalidad'); ?></label>
                                             <br>
-                                            <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="cliente_nacionalidad" name="cliente_nacionalidad" class="required browser-default chosen-select">
+                                            <select data-placeholder="<?= label('formCliente_seleccioneUno'); ?>" data-incluirBoton="0" id="cliente_nacionalidad" name="cliente_nacionalidad" class="browser-default chosen-select">
                                                 <option value="0" disabled selected style="display:none;"><?= label("formCliente_seleccioneUno"); ?></option>
                                                 <?php
                                                 if(isset($paises)) {
