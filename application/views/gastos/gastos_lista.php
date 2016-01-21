@@ -533,6 +533,31 @@
         actualizarCantidad();
 
         $('#contenedorContactos').empty();
+
+        var valorCodigo = $('#agregarGasto #gasto_codigo').val();
+        if(valorCodigo != '' && valorCodigo != null) {
+            $('#agregarGasto label[for=gasto_codigo]').addClass('active');
+        }
+        var valorNombre = $('#agregarGasto #gasto_nombre').val();
+        if(valorNombre != '' && valorNombre != null) {
+            $('#agregarGasto label[for=gasto_nombre]').addClass('active');
+        }
+        var valorMonto = $('#agregarGasto #gasto_monto').val();
+        if(valorMonto != '' && valorMonto != null) {
+            $('#agregarGasto label[for=gasto_monto]').addClass('active');
+        }
+        var valorCodigoEditar = $('#editarGasto #gasto_codigo').val();
+        if(valorCodigoEditar != '' && valorCodigoEditar != null) {
+            $('#editarGasto label[for=gasto_codigo]').addClass('active');
+        }
+        var valorNombreEditar = $('#editarGasto #gasto_nombre').val();
+        if(valorNombreEditar != '' && valorNombreEditar != null) {
+            $('#editarGasto label[for=gasto_nombre]').addClass('active');
+        }
+        var valorMontoEditar = $('#editarGasto #gasto_monto').val();
+        if(valorMontoEditar != '' && valorMontoEditar != null) {
+            $('#editarGasto label[for=gasto_monto]').addClass('active');
+        }
     }
 
     $(document).ready(function () {
@@ -681,7 +706,11 @@
                     actualizarSelectCategoriasGasto_Editar(gasto['idCategoriaGasto']);
                     actualizarSelectFormasPago_Editar(gasto['formaPago']);
                     actualizarSelectPersonas_Editar(gasto['idProveedor']);
-                    $('label').addClass('active');
+                    $('#editarGasto label').addClass('active');
+
+                    $('label[for=gasto_categoria]').removeClass('active');
+                    $('label[for=gasto_formaPago]').removeClass('active');
+                    $('label[for=gasto_persona]').removeClass('active');
                 }
             });
         });
@@ -1617,7 +1646,7 @@
                         </div>
                     </div>
                     <div class="input-field col s12 m4 l4 inputSelector">
-                        <label for="gasto_categoria"><?= label("gastos_Persona"); ?></label>
+                        <label for="gasto_persona"><?= label("gastos_Persona"); ?></label>
                         <br>
                         <div id="contenedorSelectPersonas">
                             <select data-incluirBoton="1" placeholder="seleccionar" data-tipo="agregarGasto_persona" id="gasto_personaEditar" name="gasto_persona"
