@@ -919,7 +919,7 @@ echo "var arrayFases =". $js_array.";";
 
         var table = $('#tabla-servicio').DataTable({
           "bPaginate": false,
-          "ordering": false,
+          // "ordering": false,
           "searching": false,
             "columnDefs": [
                 { "visible": false, "targets": 3 },
@@ -1005,75 +1005,80 @@ echo "var arrayFases =". $js_array.";";
         });
         $('#cantidadTotal').val(sumatoria);
     }
+    function validarServicioCompleto(){
+
+    }
     function validacionCorrecta_Servicios(){
-        var codigoActual = '<?= $codigo; ?>';
-        var codigoNuevo = $('#servicio_codigo').val();
-        if(codigoActual == codigoNuevo) {
-            var formulario = $('#form_servicio');
-            var data = formulario.serialize();
-            var url = formulario.attr('action');
-            var method = formulario.attr('method');
-            $.ajax({
-                type: method,
-                url: url,
-                data: data,
-                success: function(response)
-                {
-                    if (response == 0) {
-                        $('#linkModalError').click();
-                    } else {
-                        $('#linkModalGuardado').click();
+        if (true) {
+            var codigoActual = '<?= $codigo; ?>';
+            var codigoNuevo = $('#servicio_codigo').val();
+            if(codigoActual == codigoNuevo) {
+                var formulario = $('#form_servicio');
+                var data = formulario.serialize();
+                var url = formulario.attr('action');
+                var method = formulario.attr('method');
+                $.ajax({
+                    type: method,
+                    url: url,
+                    data: data,
+                    success: function(response)
+                    {
+                        if (response == 0) {
+                            $('#linkModalError').click();
+                        } else {
+                            $('#linkModalGuardado').click();
+                        }
                     }
-                }
-            });
-        } else {
-            $.ajax({
-                data: {servicio_codigo: $('#servicio_codigo').val()},
-                url: '<?=base_url()?>servicios/existeCodigo',
-                type: 'post',
-                success: function (response) {
-                    switch (response) {
-                        case '0':
-                            $('#linkModalError').click();//error al ir a verificar codigo
-                            break;
-                        case '1':
-                            alert('<?= label("servicioCodigoExistente"); ?>');
-                            $('#servicio_codigo').focus();
-                            break;
-                        case '2':
-                            var formulario = $('#form_servicio');
-                            var data = formulario.serialize();
-                            var url = formulario.attr('action');
-                            var method = formulario.attr('method');
-                            $.ajax({
-                                type: method,
-                                url: url,
-                                data: data,
-                                success: function (response) {
-                                    switch (response) {
-                                        case '0':
-                                            $('#linkModalError').click();
-                                            break;
-                                        case '1':
-                                            $('#linkModalGuardado').click();
+                });
+            } else {
+                $.ajax({
+                    data: {servicio_codigo: $('#servicio_codigo').val()},
+                    url: '<?=base_url()?>servicios/existeCodigo',
+                    type: 'post',
+                    success: function (response) {
+                        switch (response) {
+                            case '0':
+                                $('#linkModalError').click();//error al ir a verificar codigo
+                                break;
+                            case '1':
+                                alert('<?= label("servicioCodigoExistente"); ?>');
+                                $('#servicio_codigo').focus();
+                                break;
+                            case '2':
+                                var formulario = $('#form_servicio');
+                                var data = formulario.serialize();
+                                var url = formulario.attr('action');
+                                var method = formulario.attr('method');
+                                $.ajax({
+                                    type: method,
+                                    url: url,
+                                    data: data,
+                                    success: function (response) {
+                                        switch (response) {
+                                            case '0':
+                                                $('#linkModalError').click();
+                                                break;
+                                            case '1':
+                                                $('#linkModalGuardado').click();
 
-                                            var selectFases = $('#servicioFase');
-                                            var selectSubases = $('#servicio_subFase');
-                                            selectFases.val(0);
-                                            selectFases.trigger("chosen:updated");
-                                            selectSubases.empty();
-                                            selectSubases.attr('disabled', 'disabled');
-                                            selectSubases.trigger("chosen:updated");
+                                                var selectFases = $('#servicioFase');
+                                                var selectSubases = $('#servicio_subFase');
+                                                selectFases.val(0);
+                                                selectFases.trigger("chosen:updated");
+                                                selectSubases.empty();
+                                                selectSubases.attr('disabled', 'disabled');
+                                                selectSubases.trigger("chosen:updated");
 
-                                            break;
+                                                break;
+                                        }
                                     }
-                                }
-                            });
-                            break;
+                                });
+                                break;
+                        }
                     }
-                }
-            });
-        }
+                });
+            }
+        };
     }
 </script>
 <!--Script para tags de impuestos-->

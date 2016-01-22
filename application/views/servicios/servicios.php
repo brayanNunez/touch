@@ -753,7 +753,7 @@ echo "var arrayFases =". $js_array.";";
 
         var table = $('#tabla-servicio').DataTable({
           "bPaginate": false,
-          "ordering": false,
+          // "ordering": false,
           "searching": false,
             "columnDefs": [
                 { "visible": false, "targets": 3 },
