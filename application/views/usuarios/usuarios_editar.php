@@ -75,6 +75,12 @@
                 </div>
             </div>
 
+            <?php
+            $sessionActual = $this->session->userdata('logged_in');
+            $rolAdministradorUsuarios = $sessionActual['administrador'];
+
+            if($rolAdministradorUsuarios) {
+            ?>
             <div class="input-field col s12">
                 <label style="font-size: 0.8rem; top: 0;"><?= label('formUsuario_roles'); ?></label>
                 <br>
@@ -146,6 +152,9 @@
                 </table>
                 <hr/>
             </div>
+            <?php
+            }
+            ?>
 
             <div class="input-field col s12 envio-formulario" style="margin-bottom: 30px;">
                 <button class="btn waves-effect waves-light right" type="submit" id="guardar-cambios-usuario"

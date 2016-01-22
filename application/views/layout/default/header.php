@@ -181,11 +181,9 @@
                 <ul id="opciones-barra-superior" class="right hide-on-med-and-down">
                     <?php
                     $sessionActual = $this->session->userdata('logged_in');
-                    $rolAdministrador = $sessionActual['administrador'];
-                    $rolCotizador = $sessionActual['cotizador'];
-                    ?>
-                    <?php
-                    if($rolAdministrador) {
+                    $rolAdministradorConfiguracion = $sessionActual['administrador'];
+
+                    if($rolAdministradorConfiguracion) {
                     ?>
                         <li>
                             <a class="dropdown-button" href="#" data-activates="listaConfiguracion"
