@@ -150,6 +150,8 @@
 <div style="display: none">
     <a id="linkModalErrorCargarDatos" href="#transaccionIncorrectaCargar" class="btn btn-default modal-trigger"></a>
     <a id="linkModalErrorEliminar" href="#transaccionIncorrectaEliminar" class="btn btn-default modal-trigger"></a>
+
+    <a id="linkModalErrorEliminarUsuarioLogueado" href="#errorEliminarUsuarioLogueado" class="btn btn-default modal-trigger"></a>
 </div>
 <!-- END CONTENT-->
 
@@ -194,8 +196,8 @@
                        });
                        
                    } else{
-                       $('#linkModalErrorEliminar').click();
-                   };
+                       $('#linkModalErrorEliminarUsuarioLogueado').click();
+                   }
                }
            });
         });
@@ -209,7 +211,7 @@
         $('#usuarios-tabla-lista').dataTable( {
             'aoColumnDefs': [{
                 'bSortable': false,
-                'aTargets': [0, -1] //desactiva en primer y última columna opción de ordenar
+                'aTargets': [0, -1] //desactiva en primer y ï¿½ltima columna opciï¿½n de ordenar
             }]
         });
     });
@@ -450,6 +452,18 @@
     </div>
     <div class="modal-content">
         <p><?= label('errorEliminar'); ?></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>
+    </div>
+</div>
+<div id="errorEliminarUsuarioLogueado" class="modal">
+    <div  class="modal-header headerTransaccionIncorrecta">
+        <p><?= label('nombreSistema'); ?></p>
+        <a class="modal-action modal-close cerrar-modal"><i class="mdi-content-clear"></i></a>
+    </div>
+    <div class="modal-content">
+        <p><?= label('errorEliminarUsuarioLogueado'); ?></p>
     </div>
     <div class="modal-footer">
         <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close"><?= label('aceptar'); ?></a>

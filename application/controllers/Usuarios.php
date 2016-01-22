@@ -129,12 +129,19 @@ class Usuarios extends CI_Controller
 
     public function eliminar() {
         $id = $_POST['idEliminar'];
-        if (!$this->Usuario_model->eliminar(decryptIt($id))) {
-            //Error en la transacci�n
+        $sessionActual = $this->session->userdata('logged_in');
+        $idUsuarioLogueado = $sessionActual['idUsuario'];
+        if(decryptIt($id) == $idUsuarioLogueado) {
             echo 0;
         } else {
-            //correcto
-            echo 1;
+            $resultado = $this->Usuario_model->eliminar(decryptIt($id));
+            if (!$resultado) {
+                //Error en la transacci�n
+                echo 0;
+            } else {
+                //correcto
+                echo 1;
+            }
         }
     }
 

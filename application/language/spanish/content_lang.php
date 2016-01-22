@@ -137,6 +137,9 @@
     $lang['errorGuardar'] = 'Ha ocurrido un error al intentar guardar los datos.';
     $lang['errorLeerDatos'] = 'Ha ocurrido un error al intentar leer los datos.';
     $lang['errorEliminar'] = 'Ha ocurrido un error al intentar eliminar los datos.';
+
+    $lang['errorEliminarUsuarioLogueado'] = 'Ha ocurrido un error al intentar eliminar los datos, debido a que el usuario logueado no puede ser eliminado por sí mismo.';
+
     $lang['errorEditar'] = 'Ha ocurrido un error al intentar editar los datos.';
     $lang['errorHoras'] = 'Los datos de horas laborales se encuentran incompletos, por lo que no se puede calcular el precio de los servicios.';
 
