@@ -31,12 +31,9 @@
                                 <i class="mdi-action-home"></i>Perfil empresa
                             </a>
                         </li>
-<!--                        <li><a href="#"><i class="mdi-action-settings"></i> Settings</a>-->
-<!--                        </li>-->
-<!--                        <li><a href="#"><i class="mdi-communication-live-help"></i> Ayuda</a>-->
-<!--                        </li>-->
                         <li class="divider"></li>
-                        <li><a href="<?= base_url()?>usuarios/logout"><i class="mdi-hardware-keyboard-tab"></i> Cerrar sesión</a>
+                        <li>
+                            <a href="<?= base_url()?>usuarios/logout"><i class="mdi-hardware-keyboard-tab"></i> Cerrar sesión</a>
                         </li>
                     </ul>
                     <a id="btn_nombreUsuarioLogueado" class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#"
@@ -65,7 +62,7 @@
             <ul class="collapsible collapsible-accordion">
 
                 <?php
-                if($rolAdministrador || $rolCotizador) {
+                if($rolAdministrador) {
                 ?>
                     <li class="bold">
                         <a href="<?= base_url(); ?>clientes" class="waves-effect waves-cyan">
@@ -76,7 +73,7 @@
                 }
                 ?>
                 <?php
-                if($rolAdministrador || $rolCotizador) {
+                if($rolAdministrador) {
                 ?>
                     <li class="bold">
                         <a href="<?= base_url(); ?>gastos" class="waves-effect waves-cyan">
@@ -86,13 +83,19 @@
                 <?php
                 }
                 ?>
-                <li class="bold">
-                    <a href="<?= base_url(); ?>cotizacion" class="waves-effect waves-cyan">
-                        <i class="mdi-editor-format-list-numbered"></i><?= label('cotizaciones'); ?>
-                    </a>
-                </li>
                 <?php
-                if($rolAdministrador || $rolCotizador) {
+                if($rolAdministrador || $rolCotizador || $rolAprobador || $rolContador) {
+                ?>
+                    <li class="bold">
+                        <a href="<?= base_url(); ?>cotizacion" class="waves-effect waves-cyan">
+                            <i class="mdi-editor-format-list-numbered"></i><?= label('cotizaciones'); ?>
+                        </a>
+                    </li>
+                <?php
+                }
+                ?>
+                <?php
+                if($rolAdministrador) {
                 ?>
                     <li class="bold">
                         <a href="<?= base_url(); ?>servicios/" class="waves-effect waves-cyan">
@@ -103,7 +106,7 @@
                 }
                 ?>
                 <?php
-                if($rolAdministrador || $rolCotizador) {
+                if($rolAdministrador) {
                 ?>
                     <li class="bold">
                         <a href="<?= base_url(); ?>proveedores/" class="waves-effect waves-cyan">
@@ -119,9 +122,17 @@
             <div class="divider"></div>
         </li>
         <li class="li-hover"><p class="ultra-small margin more-text"><?= label('masOpciones'); ?> </p></li>
-        <li><a href="<?= base_url() ?>cotizacion/cotizar"><i
-                    class="mdi-action-swap-vert-circle"></i> <?= label('agregarCotizacion'); ?></a>
-        </li>
+        <?php
+        if($rolAdministrador || $rolCotizador) {
+        ?>
+            <li>
+                <a href="<?= base_url() ?>cotizacion/cotizar">
+                    <i class="mdi-action-swap-vert-circle"></i><?= label('agregarCotizacion'); ?>
+                </a>
+            </li>
+        <?php
+        }
+        ?>
     </ul>
     <a href="#" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only darken-2"
        data-activates="slide-out">

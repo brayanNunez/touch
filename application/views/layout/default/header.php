@@ -179,105 +179,49 @@
                 </span>
 
                 <ul id="opciones-barra-superior" class="right hide-on-med-and-down">
-
-
-                    <!--<li>
-                            <a class="btn-floating btn-large red" href="<?= base_url(); ?>cotizacion/cotizar">
-                                <i class="large mdi-editor-mode-edit"></i>
+                    <?php
+                    $sessionActual = $this->session->userdata('logged_in');
+                    $rolAdministrador = $sessionActual['administrador'];
+                    $rolCotizador = $sessionActual['cotizador'];
+                    ?>
+                    <?php
+                    if($rolAdministrador) {
+                    ?>
+                        <li>
+                            <a class="dropdown-button" href="#" data-activates="listaConfiguracion"
+                               title="<?= label('tooltip_configuracion') ?>">
+                                <i class="mdi-action-settings-applications"></i>
                             </a>
-                            <a class="" href="<?= base_url(); ?>cotizacion/cotizar" data-toggle="tooltip" title="<?= label('tooltip_cotizar') ?>">
-                                <i class="mdi-editor-mode-edit"></i>
-                            </a>
-                        </li> -->
-                    <!-- <li class="search-out">
-                        <input type="text" class="search-out-text">
-                    </li>
-                    <li>
-                        <a href="#login-page" class="modal-trigger waves-effect waves-block waves-light show-search"><i class="mdi-action-search"></i></a>
-                    </li> -->
-                    <!-- <li><a style="width: 135px;" class="dropdown-button" data-activates="dropdown3" href="javascript:void(0);"
-                               class="waves-effect waves-block waves-light" data-toggle="tooltip" title="<?= label('tooltip_configuracion') ?>">
-                                <i style="margin-left: 75px;" class="mdi-action-settings-applications"></i>
-                            </a>
-                        </li> -->
-                    
-
-                    <li>
-                        <a class="dropdown-button" href="#!" data-activates="listaConfiguracion"
-                           title="<?= label('tooltip_configuracion') ?>">
-                            <i class="mdi-action-settings-applications"></i>
-                        </a>
-                    </li>
-
-
-                    <!--<li>
-                        <a class="dropdown-button" href="#!" data-activates="listaNotificaciones"
-                           title="<?= label('tooltip_notificaciones') ?>">
-                            <i class="mdi-social-notifications"></i>
-                        </a>
-                    </li> -->
-
-                    <!-- <li>
-                        <a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen"
-                           data-toggle="tooltip" title="<?= label('tooltip_pantallaCompleta') ?>" id="pantalla-completa">
-                            <i class="mdi-action-settings-overscan"></i>
-                        </a>
-                    </li> -->
-
-
-                    <!--<ul id="listaNotificaciones" class="dropdown-content active"
-                        style="width: 250px; position: absolute; top: 622.250010172526px; left: 2182.9375px; opacity: 1; display: block;">
-                        <li><a href="<?= base_url(); ?>cotizacion" class="-text">Revisadas 3</a>
                         </li>
-                        <li><a href="<?= base_url(); ?>Solicitud/porAbrobar" class="-text">Pendientes 2</a>
-                        </li>
-                        <li><a href="<?= base_url(); ?>cotizacion" class="-text">Rechazadas 2</a>
-                        </li>
-
-                        </li>
-                        <li><a href="<?= base_url(); ?>Solicitud/listaAsignar" class="-text">Nuevo cliente 1</a>
-                        </li>
-                        </li>
-                        <li><a href="<?= base_url(); ?>Solicitud/listaPendientes" class="-text">Solicitudes 1</a>
-                    </ul>-->
-
-                    <ul id="listaConfiguracion" class="dropdown-content">
-                        <li>
-                            <a href="<?= base_url() ?>tiposMoneda"><?= label('monedas'); ?></a>
-                        </li>
-                        <li>
-                            <a href="<?= base_url() ?>usuarios"><?= label('usuarios'); ?></a>
-                        </li>
-                        <li>
-                            <a href="<?= base_url(); ?>formasPago"><?= label('formasPago'); ?></a>
-                        </li>
-                        <!--<li>
-                            <a href="<?= base_url(); ?>pagos"><?= label('pagos'); ?></a>
-                        </li>-->
-                        <li>
-                            <a href="<?= base_url(); ?>impuesto"><?= label('impuesto'); ?></a>
-                        </li>
-                        <!--<li>
-                            <a href="<?= base_url(); ?>unidad"><?= label('unidad'); ?></a>
-                        </li>
-                        <li>
-                            <a href="<?= base_url(); ?>categorias"><?= label('Categorias_titulo'); ?></a>
-                        </li>-->
-                        <li>
-                            <a href="<?= base_url(); ?>categoriasGasto"><?= label('categoriaDeGastos'); ?></a>
-                        </li>
-                        <li>
-                            <a href="<?= base_url(); ?>categoriasPersona"><?= label('categoriaDeProveedores'); ?></a>
-                        </li>
-                        <li>
-                            <a id="btn_horasLaborales" href="#horasLaborales" class="modal-trigger"><?= label('horas'); ?></a>
-                        </li>
-                        <li>
-                            <a href="<?= base_url(); ?>fases"><?= label('fases'); ?></a>
-                        </li>
-                    </ul>
-
-
+                        <ul id="listaConfiguracion" class="dropdown-content">
+                            <li>
+                                <a href="<?= base_url() ?>tiposMoneda"><?= label('monedas'); ?></a>
+                            </li>
+                            <li>
+                                <a href="<?= base_url() ?>usuarios"><?= label('usuarios'); ?></a>
+                            </li>
+                            <li>
+                                <a href="<?= base_url(); ?>formasPago"><?= label('formasPago'); ?></a>
+                            </li>
+                            <li>
+                                <a href="<?= base_url(); ?>impuesto"><?= label('impuesto'); ?></a>
+                            </li>
+                            <li>
+                                <a href="<?= base_url(); ?>categoriasGasto"><?= label('categoriaDeGastos'); ?></a>
+                            </li>
+                            <li>
+                                <a href="<?= base_url(); ?>categoriasPersona"><?= label('categoriaDeProveedores'); ?></a>
+                            </li>
+                            <li>
+                                <a id="btn_horasLaborales" href="#horasLaborales" class="modal-trigger"><?= label('horas'); ?></a>
+                            </li>
+                            <li>
+                                <a href="<?= base_url(); ?>fases"><?= label('fases'); ?></a>
+                            </li>
+                        </ul>
+                    <?php
+                    }
+                    ?>
                     <!-- Dropdown Trigger -->
                     <!-- <li><a href="#" data-activates="chat-out" class="waves-effect waves-block waves-light chat-collapse"><i class="mdi-communication-chat"></i></a>
                     </li> -->
