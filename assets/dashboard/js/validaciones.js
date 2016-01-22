@@ -158,8 +158,8 @@
 
         
             var subfase_codigo = {required: true, maxlength: 45};
-            var subfase_nombre = {required: true, maxlength: 45};
-            var subfase_notas = {required: true, maxlength: 200};
+            var subfase_nombre = {required: true, maxlength: 200};
+            var subfase_notas = {required: false, maxlength: 200};
             var reglasFases =  {
                     fase_codigo: {required: true, maxlength: 45},
                     fase_nombre: {required: true, maxlength: 200},
