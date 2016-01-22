@@ -255,6 +255,11 @@
                     case '1':
                         alert('<?= label('usuarioExitoCambioContrasena'); ?>');
                         formPW.find('input:password').val(null);
+
+                        $('label[for=usuario_contrasena_actual]').removeClass('active');;
+                        $('label[for=usuario_contrasena_nueva]').removeClass('active');;
+                        $('label[for=usuario_contrasena_confirmar]').removeClass('active');;
+                        $('#cambio-contrasena .modal-header a').click();
                         break;
                     case '2':
                         alert('<?= label('usuarioErrorContrasenaActual'); ?>');
