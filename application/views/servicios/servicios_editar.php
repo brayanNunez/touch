@@ -1006,10 +1006,19 @@ echo "var arrayFases =". $js_array.";";
         $('#cantidadTotal').val(sumatoria);
     }
     function validarServicioCompleto(){
-
+        if ($('#tabla-servicio >tbody >tr').length == 1){
+            alert('<?= label("servicio_error_agregarFases"); ?>');
+            return false;
+        } 
+        if ($('#servicioTiempo').val()== null) {
+            alert('<?= label("servicio_error_agregarUnidadTiempo"); ?>');
+            return false;
+        }
+        return true;
     }
+    
     function validacionCorrecta_Servicios(){
-        if (true) {
+        if (validarServicioCompleto()) {
             var codigoActual = '<?= $codigo; ?>';
             var codigoNuevo = $('#servicio_codigo').val();
             if(codigoActual == codigoNuevo) {

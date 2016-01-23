@@ -1,4 +1,9 @@
-<!-- <button id="prueba">(PRUEBA)Ver el valor de los impuestos</button> -->
+<!-- <button id="prueba">(PRUEBA)Ver el valor de los impuestos</button>
+ -->
+
+
+
+
 
 <section id="content">
     <!--start breadcrumbs-->
@@ -537,8 +542,8 @@ $js_array = json_encode($fases);
 echo "var arrayFases =". $js_array.";";
 ?>
 
-    // var cantidadFases = 0;
-    // var contadorFases = cantidadFases;
+    var cantidadFases = 0;
+    var contadorFases = cantidadFases;
 
     $(document).on('ready', function() {
         function exiteEnTabla(idFase){
@@ -667,8 +672,16 @@ echo "var arrayFases =". $js_array.";";
             $('#cantidadFases').val(cantidadFases);
         }
 
-        var cantidadFases = 0;
-        var contadorFases = cantidadFases;
+        // $('#prueba').on('click', function(){
+        //     alert(cantidadFases);
+        // })
+
+
+
+
+        // var cantidadFases = 0;
+        // var contadorFases = cantidadFases;
+        // var variablePrueba = 'hola';
 
         
         function agregarFila(codigo, nombre, des, codigoPadre, nombrePadre, desPadre, idFase){
@@ -754,6 +767,10 @@ echo "var arrayFases =". $js_array.";";
         var table = $('#tabla-servicio').DataTable({
           "bPaginate": false,
           // "ordering": false,
+          // 'aoColumnDefs': [{
+          //      // 'bSortable': false,
+          //      'aTargets': [0, 1, 2, 7, 8]//estas columnas pierden la propiedad de ordering
+          //  }],
           "searching": false,
             "columnDefs": [
                 { "visible": false, "targets": 3 },
@@ -818,70 +835,88 @@ echo "var arrayFases =". $js_array.";";
         }
     });
 
+    function validarServicioCompleto(){
+        if ($('#tabla-servicio >tbody >tr').length == 1){
+            alert('<?= label("servicio_error_agregarFases"); ?>');
+            return false;
+        } 
+        if ($('#servicioTiempo').val()== null) {
+            alert('<?= label("servicio_error_agregarUnidadTiempo"); ?>');
+            return false;
+        }
+        return true;
+    }
+
+
     function validacionCorrecta_Servicios(){
-        $.ajax({
-            data: {servicio_codigo :  $('#servicio_codigo').val()},
-            url:   '<?=base_url()?>servicios/existeCodigo',
-            type:  'post',
-            success:  function (response) {
-                switch(response){
-                    case '0':
-                        $('#linkModalError').click();//error al ir a verificar codigo
-                        break;
-                    case '1':
-                        alert('<?= label("servicioCodigoExistente"); ?>');
-                        $('#servicio_codigo').focus();
-                        break;
-                    case '2':
-                        var formulario = $('#form_servicio');
-                        var formData = formulario.serialize();
-                        var url = formulario.attr('action');
-                        var method = formulario.attr('method');
-                        $.ajax({
-                            type: method,
-                            url: url,
-                            data: formData,
-                            success: function(response) {
-                                switch(response) {
-                                    case '0':
-                                        $('#linkModalError').click();
-                                        break;
-                                    default:
-                                        $('#linkModalGuardado').click();
-                                        $('form')[0].reset();
-                                        $('#servicio_impuestos').tagsinput('removeAll');
-                                        $('#servicioTiempo').val('').trigger('chosen:updated');
-                                        cantidadFases = 0;
-                                        contadorFases = 0;
+        if(validarServicioCompleto()){
+            $.ajax({
+                data: {servicio_codigo :  $('#servicio_codigo').val()},
+                url:   '<?=base_url()?>servicios/existeCodigo',
+                type:  'post',
+                success:  function (response) {
+                    switch(response){
+                        case '0':
+                            $('#linkModalError').click();//error al ir a verificar codigo
+                            break;
+                        case '1':
+                            alert('<?= label("servicioCodigoExistente"); ?>');
+                            $('#servicio_codigo').focus();
+                            break;
+                        case '2':
+                            var formulario = $('#form_servicio');
+                            var formData = formulario.serialize();
+                            var url = formulario.attr('action');
+                            var method = formulario.attr('method');
+                            $.ajax({
+                                type: method,
+                                url: url,
+                                data: formData,
+                                success: function(response) {
+                                    switch(response) {
+                                        case '0':
+                                            $('#linkModalError').click();
+                                            break;
+                                        default:
+                                            $('#linkModalGuardado').click();
+                                            $('form')[0].reset();
+                                            $('#servicio_impuestos').tagsinput('removeAll');
+                                            $('#servicioTiempo').val('').trigger('chosen:updated');
 
-                                        var table = $('#tabla-servicio').DataTable();
-                                        table.clear().draw();
+                                            cantidadFases = 0;
+                                            contadorFases = cantidadFases;
+                                            
 
-                                        var selectFases = $('#servicioFase');
-                                        var selectSubases = $('#servicio_subFase');
-                                        selectFases.val(0);
-                                        selectFases.trigger("chosen:updated");
-                                        selectSubases.empty();
-                                        selectSubases.attr('disabled', 'disabled');
-                                        selectSubases.trigger("chosen:updated");
+                                            var table = $('#tabla-servicio').DataTable();
+                                            table.clear().draw();
 
-                                        var $incluir = $(this).is(':checked');
-                                        var $gastos = $('#servicio_gastosVariables');
-                                        $gastos.css('display', 'none');
-                                        limpiarTablaGastos();
+                                            var selectFases = $('#servicioFase');
+                                            var selectSubases = $('#servicio_subFase');
+                                            selectFases.val(0);
+                                            selectFases.trigger("chosen:updated");
+                                            selectSubases.empty();
+                                            selectSubases.attr('disabled', 'disabled');
+                                            selectSubases.trigger("chosen:updated");
 
-                                        $('label[for="cantidadTotal"]').addClass('active');
-                                        $('label[for="servicio_utilidad"]').addClass('active');
-                                        $('label[for="servicio_total"]').addClass('active');
+                                            var $incluir = $(this).is(':checked');
+                                            var $gastos = $('#servicio_gastosVariables');
+                                            $gastos.css('display', 'none');
+                                            limpiarTablaGastos();
 
-                                        break;
+                                            $('label[for="cantidadTotal"]').addClass('active');
+                                            $('label[for="servicio_utilidad"]').addClass('active');
+                                            $('label[for="servicio_total"]').addClass('active');
+
+                                            break;
+                                    }
                                 }
-                            }
-                        });
-                        break;
+                            });
+                            
+                            break;
+                    }
                 }
-            }
-        });
+            });
+        };
     }
 
 

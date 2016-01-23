@@ -107,6 +107,9 @@
     $lang['servicioEditadoCorrectamente'] = 'El servicio ha sido editado correctamente.';
     $lang['servicioCodigoExistente'] = 'El código de servicio indicado ya existe.';
 
+    $lang['servicio_error_agregarFases'] = 'Debe agregar al menos una fase al servicio.';
+    $lang['servicio_error_agregarUnidadTiempo'] = 'Debe seleccionar la unidad de tiempo.';
+
 
     $lang['usuarioGuardadoCorrectamente'] = 'El usuario ha sido creado correctamente.';
     $lang['usuarioEditadoCorrectamente'] = 'El usuario ha sido editado correctamente.';
