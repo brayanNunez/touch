@@ -78,14 +78,20 @@
                                                     <option value="0" disabled selected style="display:none;"><?= label("servicio_elegirTiempo"); ?></option>
                                                     <!-- <option value="nuevo"><?= label("agregarNuevo"); ?></option> -->
                                                      <?php
-                                                        if (isset($tiempos)) {                                                               
-                                                                foreach ($tiempos as $tiempo) {
-                                                    ?>
-                                                    <option value="<?=$tiempo['idTiempo']?>"><?=$tiempo['nombre']?></option>
-                                                    <?php 
-                                                        }
-                                                    }
-                                                    ?>
+                                                     if (isset($tiempos)) {
+                                                         foreach ($tiempos as $tiempo) {
+                                                             if($tiempo['idTiempo'] == 4) {
+                                                     ?>
+                                                                 <option value="<?=$tiempo['idTiempo']?>" selected><?=$tiempo['nombre']?></option>
+                                                     <?php
+                                                             } else {
+                                                     ?>
+                                                                 <option value="<?=$tiempo['idTiempo']?>"><?=$tiempo['nombre']?></option>
+                                                     <?php
+                                                             }
+                                                         }
+                                                     }
+                                                     ?>
                                                     <!-- <option value="1">Horas</option>
                                                     <option value="2">Días</option>
                                                     <option value="3">Semanas</option>
@@ -325,6 +331,7 @@
             } else {
                 $gastos.css('display', 'none');
             }
+            calcularPrecio();
         });
         <?php
         $js_arrayPersonas = json_encode($personas);
@@ -1143,7 +1150,11 @@ echo "var arrayFases =". $js_array.";";
         gastosFijosAnuales();
         horasLaborales();
         if(totalHorasLaborales != 0) {
-            var totalGastos = totalGastosFijosAnuales + totalGastosVariables;
+            var totalGastos = totalGastosFijosAnuales;
+            var $incluir = $('#servicio_incluirGastosVariables').is(':checked');
+            if($incluir) {
+                totalGastos += totalGastosVariables;
+            }
 
             var costoHora = totalGastos / totalHorasLaborales;
             var cantidadHoras = horasServicio();

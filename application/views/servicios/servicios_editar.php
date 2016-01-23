@@ -467,6 +467,7 @@
             } else {
                 $gastos.css('display', 'none');
             }
+            calcularPrecio();
         });
         <?php
         $js_arrayPersonas = json_encode($personas);
@@ -1324,8 +1325,11 @@ echo "var arrayFases =". $js_array.";";
     function calcularPrecio() {
         gastosFijosAnuales();
         horasLaborales();
-        var totalGastos = totalGastosFijosAnuales + totalGastosVariables;
-
+        var totalGastos = totalGastosFijosAnuales;
+        var $incluir = $('#servicio_incluirGastosVariables').is(':checked');
+        if($incluir) {
+            totalGastos += totalGastosVariables;
+        }
         var costoHora = totalGastos / totalHorasLaborales;
         var cantidadHoras = horasServicio();
         var margenUtilidad = parseFloat($('#servicio_utilidad').val()) / 100;
