@@ -126,53 +126,73 @@
                                                         </td>
                                                         <td>
                                                             <ul id="dropdown-cotizacion<?= $contador ?>" class="dropdown-content">
-
                                                                 <?php
+                                                                $sessionActual = $this->session->userdata('logged_in');
+                                                                $rolAdministrador = $sessionActual['administrador'];
+                                                                $rolAprobador = $sessionActual['aprobador'];
+                                                                $rolCotizador = $sessionActual['cotizador'];
+                                                                $rolContador = $sessionActual['contador'];
                                                                 switch ($fila['estado']) {
-                                                                    case 'nueva': ?>
-                                                                        <li>
-                                                                            <a href="<?= base_url() ?>cotizacion/editar/<?= $idEncriptado?>" class="-text">
-                                                                                <?= label('menuOpciones_editar') ?>
-                                                                            </a>
-                                                                        </li>
+                                                                    case 'nueva':
+                                                                        if($rolCotizador) { ?>
+                                                                            <li>
+                                                                                <a href="<?= base_url() ?>cotizacion/editar/<?= $idEncriptado ?>"
+                                                                                   class="-text">
+                                                                                    <?= label('menuOpciones_editar') ?>
+                                                                                </a>
+                                                                            </li>
                                                                 <?php
+                                                                        }
                                                                         break;
-                                                                    case 'espera': ?>
-                                                                        <li>
-                                                                            <a href="<?= base_url() ?>cotizacion/aprobar/<?= $idEncriptado?>" class="-text">
-                                                                                <?= label('menuOpciones_aprobar') ?>
-                                                                            </a>
-                                                                        </li>
+                                                                    case 'espera':
+                                                                        if($rolAprobador) { ?>
+                                                                            <li>
+                                                                                <a href="<?= base_url() ?>cotizacion/aprobar/<?= $idEncriptado ?>"
+                                                                                   class="-text">
+                                                                                    <?= label('menuOpciones_aprobar') ?>
+                                                                                </a>
+                                                                            </li>
                                                                 <?php
+                                                                        }
                                                                         break;
-                                                                    case 'rechazada': ?>
-                                                                        <li>
-                                                                            <a href="<?= base_url() ?>cotizacion/editar/<?= $idEncriptado?>" class="-text">
-                                                                                <?= label('menuOpciones_editar') ?>
-                                                                            </a>
-                                                                        </li>
+                                                                    case 'rechazada':
+                                                                        if($rolCotizador) { ?>
+                                                                            <li>
+                                                                                <a href="<?= base_url() ?>cotizacion/editar/<?= $idEncriptado ?>"
+                                                                                   class="-text">
+                                                                                    <?= label('menuOpciones_editar') ?>
+                                                                                </a>
+                                                                            </li>
                                                                 <?php
+                                                                        }
                                                                         break;
-                                                                    case 'enviada': ?>
-                                                                        <li>
-                                                                            <a href="<?= base_url() ?>cotizacion/finalizar/<?= $idEncriptado?>" class="-text">
-                                                                                <?= label('menuOpciones_finalizar') ?>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="<?= base_url() ?>cotizacion/editar/<?= $idEncriptado?>" class="-text">
-                                                                                <?= label('menuOpciones_editar') ?>
-                                                                            </a>
-                                                                        </li>
+                                                                    case 'enviada':
+                                                                        if($rolCotizador) { ?>
+                                                                            <li>
+                                                                                <a href="<?= base_url() ?>cotizacion/finalizar/<?= $idEncriptado ?>"
+                                                                                   class="-text">
+                                                                                    <?= label('menuOpciones_finalizar') ?>
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="<?= base_url() ?>cotizacion/editar/<?= $idEncriptado ?>"
+                                                                                   class="-text">
+                                                                                    <?= label('menuOpciones_editar') ?>
+                                                                                </a>
+                                                                            </li>
                                                                 <?php
+                                                                        }
                                                                         break;
-                                                                    case 'finalizada': ?>
-                                                                        <li>
-                                                                            <a href="<?= base_url() ?>cotizacion/facturar/<?= $idEncriptado?>" class="-text">
-                                                                                <?= label('menuOpciones_facturar') ?>
-                                                                            </a>
-                                                                        </li>
-                                                                <?php
+                                                                    case 'finalizada':
+                                                                        if($rolContador) { ?>
+                                                                            <li>
+                                                                                <a href="<?= base_url() ?>cotizacion/facturar/<?= $idEncriptado ?>"
+                                                                                   class="-text">
+                                                                                    <?= label('menuOpciones_facturar') ?>
+                                                                                </a>
+                                                                            </li>
+                                                                            <?php
+                                                                        }
                                                                         break;
                                                                     case 'facturada': ?>
                                                                 <?php
@@ -185,11 +205,16 @@
                                                                         <?= label('menuOpciones_ver') ?>
                                                                     </a>
                                                                 </li>
-                                                                <li>
-                                                                    <a href="<?= base_url() ?>cotizacion/duplicar/<?= $idEncriptado?>" class="-text">
-                                                                        <?= label('tablaCotizaciones_opcionDuplicar') ?>
-                                                                    </a>
-                                                                </li>
+                                                                <?php
+                                                                if($rolCotizador) { ?>
+                                                                    <li>
+                                                                        <a href="<?= base_url() ?>cotizacion/duplicar/<?= $idEncriptado ?>"
+                                                                           class="-text">
+                                                                            <?= label('tablaCotizaciones_opcionDuplicar') ?>
+                                                                        </a>
+                                                                    </li>
+                                                                <?php
+                                                                } ?>
                                                                 <li>
                                                                     <a href="#eliminarCotizacion" class="-text modal-trigger confirmarEliminar"
                                                                        data-id-eliminar="<?= $idEncriptado ?>"  data-fila-eliminar="fila<?= $contador?>">
@@ -616,61 +641,91 @@
        var boton = '<td>' +
            '<ul id="dropdown-cotizacion'+ contadorFilas +'" class="dropdown-content">';
        var miEstado = '';
-       switch(estado){
+       var rolAdministrador = '<?= $rolAdministrador; ?>';
+       var rolCotizador = '<?= $rolCotizador; ?>';
+       var rolContador = '<?= $rolContador; ?>';
+       var rolAprobador = '<?= $rolAprobador; ?>';
+       switch(estado) {
            case 'nueva':
-               miEstado =  '<?=label('estado_nueva')?>';
-               boton += '<li>' +
-                            '<a href="<?= base_url(); ?>cotizacion/editar/'+idEncriptado+'" class="-text">'+label_editar+'</a>' +
-                        '</li>';
+               miEstado = '<?=label('estado_nueva')?>';
+               if (rolCotizador) {
+                   boton += '<li>' +
+                       '<a href="<?= base_url(); ?>cotizacion/editar/' + idEncriptado + '" class="-text">' + label_editar + '</a>' +
+                       '</li>';
+               }
                break;
            case 'espera':
-               miEstado =  '<?=label('estado_espera')?>';
-               boton += '<li>' +
-                            '<a href="<?= base_url(); ?>cotizacion/aprobar/'+idEncriptado+'" class="-text">'+label_aprobar+'</a>' +
-                        '</li>';
+               miEstado = '<?=label('estado_espera')?>';
+               if (rolAprobador) {
+                   boton += '<li>' +
+                       '<a href="<?= base_url(); ?>cotizacion/aprobar/' + idEncriptado + '" class="-text">' + label_aprobar + '</a>' +
+                       '</li>';
+               }
                break;
            case 'rechazada':
                miEstado =  '<?=label('estado_rechazada')?>';
-               boton += '<li>' +
-                            '<a href="<?= base_url(); ?>cotizacion/editar/'+idEncriptado+'" class="-text">'+label_editar+'</a>' +
-                        '</li>';
+               if (rolCotizador) {
+                   boton += '<li>' +
+                       '<a href="<?= base_url(); ?>cotizacion/editar/' + idEncriptado + '" class="-text">' + label_editar + '</a>' +
+                       '</li>';
+               }
                break;
            case 'enviada':
                miEstado =  '<?=label('estado_enviada')?>';
-               boton += '<li>' +
-                            '<a href="<?= base_url(); ?>cotizacion/finalizar/'+idEncriptado+'" class="-text">'+label_finalizar+'</a>' +
-                        '</li>' +
-                        '<li>' +
-                            '<a href="<?= base_url(); ?>cotizacion/editar/'+idEncriptado+'" class="-text">'+label_editar+'</a>' +
-                        '</li>';
+               if (rolCotizador) {
+                   boton += '<li>' +
+                       '<a href="<?= base_url(); ?>cotizacion/finalizar/' + idEncriptado + '" class="-text">' + label_finalizar + '</a>' +
+                       '</li>' +
+                       '<li>' +
+                       '<a href="<?= base_url(); ?>cotizacion/editar/' + idEncriptado + '" class="-text">' + label_editar + '</a>' +
+                       '</li>';
+               }
                break;
            case 'finalizada':
                miEstado =  '<?=label('estado_finalizada')?>';
-               boton += '<li>' +
-                            '<a href="<?= base_url(); ?>cotizacion/facturar/'+idEncriptado+'" class="-text">'+label_facturar+'</a>' +
-                        '</li>';
+               if (rolContador) {
+                   boton += '<li>' +
+                       '<a href="<?= base_url(); ?>cotizacion/facturar/' + idEncriptado + '" class="-text">' + label_facturar + '</a>' +
+                       '</li>';
+               }
                break;
            case 'facturada':
                miEstado =  '<?=label('estado_facturada')?>';
                break;
        }
        var estado = '<td>' + miEstado +'</td>';
-       boton +=    '<li>' +
-                       '<a href="<?= base_url(); ?>cotizacion/ver/'+idEncriptado+'" class="-text">'+label_ver+'</a>' +
-                   '</li>' +
-                   '<li>' +
-                       '<a href="<?= base_url(); ?>cotizacion/duplicar/'+idEncriptado+'" class="-text">'+label_dublicar+'</a>' +
-                   '</li>' +
-                   '<li>' +
-                       '<a href="#eliminarCotizacion" class="-text modal-trigger confirmarEliminar" data-id-eliminar="'+idEncriptado+'"  data-fila-eliminar="fila'+ contadorFilas +'">'+label_eliminar+'</a>' +
-                   '</li>' +
+       if (rolCotizador) {
+           boton += '<li>' +
+               '<a href="<?= base_url(); ?>cotizacion/ver/' + idEncriptado + '" class="-text">' + label_ver + '</a>' +
+               '</li>' +
+               '<li>' +
+               '<a href="<?= base_url(); ?>cotizacion/duplicar/' + idEncriptado + '" class="-text">' + label_dublicar + '</a>' +
+               '</li>' +
+               '<li>' +
+               '<a href="#eliminarCotizacion" class="-text modal-trigger confirmarEliminar" data-id-eliminar="' + idEncriptado + '"  data-fila-eliminar="fila' + contadorFilas + '">' + label_eliminar + '</a>' +
+               '</li>' +
                '</ul>' +
                '<a class="boton-opciones btn-flat dropdown-button waves-effect white-text"' +
                'href="#!"' +
-               'data-activates="dropdown-cotizacion'+ contadorFilas +'">' +
-               ''+ label_seleccionar +'<i class="mdi-navigation-arrow-drop-down"></i>' +
+               'data-activates="dropdown-cotizacion' + contadorFilas + '">' +
+               '' + label_seleccionar + '<i class="mdi-navigation-arrow-drop-down"></i>' +
                '</a>' +
-           '</td>';
+               '</td>';
+       } else {
+           boton += '<li>' +
+               '<a href="<?= base_url(); ?>cotizacion/ver/' + idEncriptado + '" class="-text">' + label_ver + '</a>' +
+               '</li>' +
+               '<li>' +
+               '<a href="#eliminarCotizacion" class="-text modal-trigger confirmarEliminar" data-id-eliminar="' + idEncriptado + '"  data-fila-eliminar="fila' + contadorFilas + '">' + label_eliminar + '</a>' +
+               '</li>' +
+               '</ul>' +
+               '<a class="boton-opciones btn-flat dropdown-button waves-effect white-text"' +
+               'href="#!"' +
+               'data-activates="dropdown-cotizacion' + contadorFilas + '">' +
+               '' + label_seleccionar + '<i class="mdi-navigation-arrow-drop-down"></i>' +
+               '</a>' +
+               '</td>';
+       }
 
        $('table').dataTable().fnAddData([
            check,
