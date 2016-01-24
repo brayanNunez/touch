@@ -173,14 +173,16 @@
                                     </a>
                                 </li>
                             <?php
+                            }
+                            if($rolAdministrador) { ?>
+                                <li>
+                                    <a href="#eliminarCotizacion" class="-text modal-trigger confirmarEliminar"
+                                       data-id-eliminar="<?= $idEncriptado ?>"  data-fila-eliminar="fila<?= $contador?>">
+                                        <?= label('menuOpciones_eliminar') ?>
+                                    </a>
+                                </li>
+                            <?php
                             } ?>
-                            <li>
-                                <a href="#eliminarCotizacion" class="-text modal-trigger confirmarEliminar"
-                                   data-id-eliminar="<?= $idEncriptado ?>"  data-fila-eliminar="fila<?= $contador?>">
-                                    <?= label('menuOpciones_eliminar') ?>
-                                </a>
-                            </li>
-
                         </ul>
                         <a class="boton-opciones btn-flat dropdown-button waves-effect white-text" href="#"
                            data-activates="dropdown-cotizacion<?= $contador++ ?>">
@@ -599,7 +601,7 @@
                 break;
         }
         var estado = '<td>' + miEstado +'</td>';
-        if (rolCotizador) {
+        if (rolCotizador && rolAdministrador) {
             boton += '<li>' +
                 '<a href="<?= base_url(); ?>cotizacion/ver/' + idEncriptado + '" class="-text">' + label_ver + '</a>' +
                 '</li>' +
@@ -617,19 +619,35 @@
                 '</a>' +
                 '</td>';
         } else {
-            boton += '<li>' +
-                '<a href="<?= base_url(); ?>cotizacion/ver/' + idEncriptado + '" class="-text">' + label_ver + '</a>' +
-                '</li>' +
-                '<li>' +
-                '<a href="#eliminarCotizacion" class="-text modal-trigger confirmarEliminar" data-id-eliminar="' + idEncriptado + '"  data-fila-eliminar="fila' + contadorFilas + '">' + label_eliminar + '</a>' +
-                '</li>' +
-                '</ul>' +
-                '<a class="boton-opciones btn-flat dropdown-button waves-effect white-text"' +
-                'href="#!"' +
-                'data-activates="dropdown-cotizacion' + contadorFilas + '">' +
-                '' + label_seleccionar + '<i class="mdi-navigation-arrow-drop-down"></i>' +
-                '</a>' +
-                '</td>';
+            if(rolAdministrador) {
+                boton += '<li>' +
+                    '<a href="<?= base_url(); ?>cotizacion/ver/' + idEncriptado + '" class="-text">' + label_ver + '</a>' +
+                    '</li>' +
+                    '<li>' +
+                    '<a href="#eliminarCotizacion" class="-text modal-trigger confirmarEliminar" data-id-eliminar="' + idEncriptado + '"  data-fila-eliminar="fila' + contadorFilas + '">' + label_eliminar + '</a>' +
+                    '</li>' +
+                    '</ul>' +
+                    '<a class="boton-opciones btn-flat dropdown-button waves-effect white-text"' +
+                    'href="#!"' +
+                    'data-activates="dropdown-cotizacion' + contadorFilas + '">' +
+                    '' + label_seleccionar + '<i class="mdi-navigation-arrow-drop-down"></i>' +
+                    '</a>' +
+                    '</td>';
+            } else {
+                boton += '<li>' +
+                    '<a href="<?= base_url(); ?>cotizacion/ver/' + idEncriptado + '" class="-text">' + label_ver + '</a>' +
+                    '</li>' +
+                    '<li>' +
+                    '<a href="<?= base_url(); ?>cotizacion/duplicar/' + idEncriptado + '" class="-text">' + label_dublicar + '</a>' +
+                    '</li>' +
+                    '</ul>' +
+                    '<a class="boton-opciones btn-flat dropdown-button waves-effect white-text"' +
+                    'href="#!"' +
+                    'data-activates="dropdown-cotizacion' + contadorFilas + '">' +
+                    '' + label_seleccionar + '<i class="mdi-navigation-arrow-drop-down"></i>' +
+                    '</a>' +
+                    '</td>';
+            }
         }
 
         $('#cliente_cotizaciones').dataTable().fnAddData([
