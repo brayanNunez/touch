@@ -778,9 +778,12 @@
       }
 
       
-
-
-
+    $(document).ready(function () {
+        var esCotizador = '<?= $rolCotizador; ?>';
+        if(esCotizador == 0) {
+            $('.agregar_nuevo').css('visibility', 'hidden');
+        }
+    });
 </script>
 <!-- lista modals -->
 <div id="transaccionIncorrectaCargar" class="modal">

@@ -680,6 +680,13 @@
             alignment: 'left' // Displays dropdown with edge aligned to the left of button
         });
     }
+
+    $(document).ready(function () {
+        var esCotizador = '<?= $rolCotizador; ?>';
+        if(esCotizador == 0) {
+            $('.agregar_nuevo').css('visibility', 'hidden');
+        }
+    });
 </script>
 
 <!-- lista modals -->

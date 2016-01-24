@@ -121,10 +121,10 @@
         <li class="li-hover">
             <div class="divider"></div>
         </li>
-        <li class="li-hover"><p class="ultra-small margin more-text"><?= label('masOpciones'); ?> </p></li>
         <?php
-        if($rolAdministrador || $rolCotizador) {
+        if($rolCotizador) {
         ?>
+            <li class="li-hover"><p class="ultra-small margin more-text"><?= label('masOpciones'); ?> </p></li>
             <li>
                 <a href="<?= base_url() ?>cotizacion/cotizar">
                     <i class="mdi-action-swap-vert-circle"></i><?= label('agregarCotizacion'); ?>
