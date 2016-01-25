@@ -696,9 +696,15 @@ $(document).on('ready', function(){
                         <?php
                         if (isset($tiempos)) {
                             foreach ($tiempos as $tiempo) {
-                                ?>
-                                <option value="<?=$tiempo['idTiempo']?>"><?=$tiempo['nombre']?></option>
-                                <?php
+                                if($tiempo['idTiempo'] == 4) {
+                                    ?>
+                                    <option value="<?=$tiempo['idTiempo']?>" selected><?=$tiempo['nombre']?></option>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <option value="<?=$tiempo['idTiempo']?>"><?=$tiempo['nombre']?></option>
+                                    <?php
+                                }
                             }
                         }
                         ?>
@@ -1002,6 +1008,7 @@ $(document).on('ready', function(){
             } else {
                 $gastos.css('display', 'none');
             }
+            calcularPrecioNuevo();
         });
         <?php
         $js_arrayPersonas = json_encode($personas);
@@ -2091,7 +2098,11 @@ $(document).on('ready', function () {
         // alert('calcularPrecio nuevo');
         gastosFijosAnuales();
         horasLaborales();
-        var totalGastos = totalGastosFijosAnuales + totalGastosVariables;
+        var totalGastos = totalGastosFijosAnuales;
+        var $incluir = $('#servicio_incluirGastosVariables').is(':checked');
+        if($incluir) {
+            totalGastos += totalGastosVariables;
+        }
 
         var costoHora = totalGastos / totalHorasLaborales;
         var cantidadHoras = horasServicioNuevo();
