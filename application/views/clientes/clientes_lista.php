@@ -139,7 +139,7 @@
                                                 </table>
                                                 </div>
 
-                                                <div class="tabla-conAgregar">
+                                                <div class="tabla-conAgregar tabla-conBusqueda">
                                                  <a id="opciones-seleccionados-print"
                                                     class="black-text opciones-seleccionados option-print-table"
                                                     style="visibility: hidden;"

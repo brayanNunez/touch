@@ -1,13 +1,26 @@
 <div style="display: none" id="inset_form"></div>
 
-<div class="agregar_nuevo">
-    <a href="<?= base_url() ?>cotizacion/cotizar"
-       class="btn btn-default"><?= label('agregarCotizacion'); ?></a>
-</div>
-<div>
-    <a id="busqueda-avanzada-agregar" href="#busquedaAvanzada"
-       class="modal-trigger"><?= label('clientes_busquedaAvanzada') ?></a>
-</div>
+<?php
+$sessionActual = $this->session->userdata('logged_in');
+$esCotizador = $sessionActual['cotizador'];
+if($esCotizador) { ?>
+    <div class="agregar_nuevo">
+        <a href="<?= base_url() ?>cotizacion/cotizar"
+           class="btn btn-default"><?= label('agregarCotizacion'); ?></a>
+    </div>
+    <div>
+        <a id="busqueda-avanzada-agregar" href="#busquedaAvanzada"
+           class="modal-trigger"><?= label('clientes_busquedaAvanzada') ?></a>
+    </div>
+<?php
+} else { ?>
+    <div>
+        <a id="busqueda-avanzada-sinAgregar" href="#busquedaAvanzada"
+           class="modal-trigger"><?= label('clientes_busquedaAvanzada') ?></a>
+    </div>
+<?php
+}
+?>
 <table id="usuario_cotizaciones" class="data-table-information responsive-table display" cellspacing="0">
     <thead>
     <tr>
@@ -201,40 +214,84 @@
     ?>
     </tbody>
 </table>
-<div class="tabla-conAgregar">
-    <a id="opciones-seleccionados-print"
-       class="black-text opciones-seleccionados-cotizaciones option-print-table"
-       style="visibility: hidden;"
-       href="#" data-toggle="tooltip"
-       title="<?= label('opciones_seleccionadosImprimir') ?>">
-        <i class="mdi-action-print icono-opciones-varios"></i>
-    </a>
-    <ul id="dropdown-exportar" class="dropdown-content">
-        <li>
-            <a id="opciones-seleccionados-PDF" href="#"
-               class="-text"><?= label('opciones_seleccionadosExportarPdf') ?></a>
-        </li>
-        <li>
-            <a id="opciones-seleccionados-Excel" href="#"
-               class="-text"><?= label('opciones_seleccionadosExportarExcel') ?></a>
-        </li>
-    </ul>
-    <a id="opciones-seleccionados-export"
-       style="visibility: hidden;"
-       class="opciones-seleccionados-cotizaciones boton-opciones black-text dropdown-button option-export-table"
-       href="#" data-toggle="tooltip"
-       title="<?= label('opciones_seleccionadosExportar') ?>"
-       data-activates="dropdown-exportar">
-        <i class="mdi-file-file-download icono-opciones-varios"></i>
-    </a>
-    <a id="opciones-seleccionados-delete"
-       class="modal-trigger black-text opciones-seleccionados-cotizaciones option-delete-elements"
-       style="visibility: hidden;"
-       href="#eliminarElementosSeleccionados" data-toggle="tooltip"
-       title="<?= label('opciones_seleccionadosEliminar') ?>">
-        <i class="mdi-action-delete icono-opciones-varios"></i>
-    </a>
-</div>
+
+<?php
+$sessionActual = $this->session->userdata('logged_in');
+$esCotizador = $sessionActual['cotizador'];
+if($esCotizador) { ?>
+    <div class="tabla-conAgregar tabla-conBusqueda">
+        <a id="opciones-seleccionados-print"
+           class="black-text opciones-seleccionados-cotizaciones option-print-table"
+           style="visibility: hidden;"
+           href="#" data-toggle="tooltip"
+           title="<?= label('opciones_seleccionadosImprimir') ?>">
+            <i class="mdi-action-print icono-opciones-varios"></i>
+        </a>
+        <ul id="dropdown-exportar" class="dropdown-content">
+            <li>
+                <a id="opciones-seleccionados-PDF" href="#"
+                   class="-text"><?= label('opciones_seleccionadosExportarPdf') ?></a>
+            </li>
+            <li>
+                <a id="opciones-seleccionados-Excel" href="#"
+                   class="-text"><?= label('opciones_seleccionadosExportarExcel') ?></a>
+            </li>
+        </ul>
+        <a id="opciones-seleccionados-export"
+           style="visibility: hidden;"
+           class="opciones-seleccionados-cotizaciones boton-opciones black-text dropdown-button option-export-table"
+           href="#" data-toggle="tooltip"
+           title="<?= label('opciones_seleccionadosExportar') ?>"
+           data-activates="dropdown-exportar">
+            <i class="mdi-file-file-download icono-opciones-varios"></i>
+        </a>
+        <a id="opciones-seleccionados-delete"
+           class="modal-trigger black-text opciones-seleccionados-cotizaciones option-delete-elements"
+           style="visibility: hidden;"
+           href="#eliminarElementosSeleccionados" data-toggle="tooltip"
+           title="<?= label('opciones_seleccionadosEliminar') ?>">
+            <i class="mdi-action-delete icono-opciones-varios"></i>
+        </a>
+    </div>
+<?php
+} else { ?>
+    <div class="tabla-sinAgregar tabla-conBusqueda">
+        <a id="opciones-seleccionados-print"
+           class="black-text opciones-seleccionados-cotizaciones option-print-table"
+           style="visibility: hidden;"
+           href="#" data-toggle="tooltip"
+           title="<?= label('opciones_seleccionadosImprimir') ?>">
+            <i class="mdi-action-print icono-opciones-varios"></i>
+        </a>
+        <ul id="dropdown-exportar" class="dropdown-content">
+            <li>
+                <a id="opciones-seleccionados-PDF" href="#"
+                   class="-text"><?= label('opciones_seleccionadosExportarPdf') ?></a>
+            </li>
+            <li>
+                <a id="opciones-seleccionados-Excel" href="#"
+                   class="-text"><?= label('opciones_seleccionadosExportarExcel') ?></a>
+            </li>
+        </ul>
+        <a id="opciones-seleccionados-export"
+           style="visibility: hidden;"
+           class="opciones-seleccionados-cotizaciones boton-opciones black-text dropdown-button option-export-table"
+           href="#" data-toggle="tooltip"
+           title="<?= label('opciones_seleccionadosExportar') ?>"
+           data-activates="dropdown-exportar">
+            <i class="mdi-file-file-download icono-opciones-varios"></i>
+        </a>
+        <a id="opciones-seleccionados-delete"
+           class="modal-trigger black-text opciones-seleccionados-cotizaciones option-delete-elements"
+           style="visibility: hidden;"
+           href="#eliminarElementosSeleccionados" data-toggle="tooltip"
+           title="<?= label('opciones_seleccionadosEliminar') ?>">
+            <i class="mdi-action-delete icono-opciones-varios"></i>
+        </a>
+    </div>
+<?php
+}
+?>
 
 <!--Script para el manejo de tabla, checks y opciones de elementos seleccionados-->
 <script>
@@ -684,13 +741,6 @@
             alignment: 'left' // Displays dropdown with edge aligned to the left of button
         });
     }
-
-    $(document).ready(function () {
-        var esCotizador = '<?= $rolCotizador; ?>';
-        if(esCotizador == 0) {
-            $('.agregar_nuevo').css('visibility', 'hidden');
-        }
-    });
 </script>
 
 <!-- lista modals -->

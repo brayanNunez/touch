@@ -259,7 +259,7 @@
                                                 $sessionActual = $this->session->userdata('logged_in');
                                                 $esCotizador = $sessionActual['cotizador'];
                                                 if($esCotizador) { ?>
-                                                    <div class="tabla-conAgregar">
+                                                    <div class="tabla-conAgregar tabla-conBusqueda">
                                                         <a id="opciones-seleccionados-print"
                                                            class="black-text opciones-seleccionados option-print-table"
                                                            style="visibility: hidden;"
@@ -296,7 +296,7 @@
                                                 <?php
                                                 } else {
                                                 ?>
-                                                    <div class="tabla-sinAgregar">
+                                                    <div class="tabla-sinAgregar tabla-conBusqueda">
                                                         <a id="opciones-seleccionados-print"
                                                            class="black-text opciones-seleccionados option-print-table"
                                                            style="visibility: hidden;"

@@ -494,6 +494,8 @@ div#msj_exitoRegistro .modal-footer { max-height: 56px; border: none; }
     div.tabla_GastosPersona_agregar { top: 300px; }
 
     ul.cliente-busqueda li a { background-color: #009966; font-size: 8px; }
+
+    div.tabla-conBusqueda { margin-left: 0; }
 }
 
 @media only screen and (max-width: 600px) {
@@ -515,6 +517,8 @@ div#msj_exitoRegistro .modal-footer { max-height: 56px; border: none; }
     /*div.navbar-fixed { height: 70px; }*/
     /*nav.touch { height: 80px; }*/
     span#span_mensajeRegistroIncompleto { top: 42px; }
+
+    div.tabla-conBusqueda { margin-left: 0; }
 }
 
 @media only screen and (max-width: 480px) {
@@ -646,6 +650,8 @@ div#msj_exitoRegistro .modal-footer { max-height: 56px; border: none; }
     div#card-widgets div.card div.card-content img { top: 30px; }
 
     span#span_mensajeRegistroIncompleto { right: 50px; }
+
+    div.tabla-conBusqueda { margin-left: 0; }
 }
 
 @media only screen and (max-width: 360px) {
